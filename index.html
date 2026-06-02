@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matlyst – Oppskrifter du faktisk lager</title>
+  <meta name="description" content="Importer oppskrifter fra nettet, planlegg uken og lag handlelisten automatisk. Matlyst gjør middagsplanlegging enkelt.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --dark: #0C0A08;
+      --orange: #FF5500;
+      --warm: #F6F3EF;
+      --muted: rgba(246, 243, 239, 0.5);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background: var(--dark);
+      color: var(--warm);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .wordmark {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(3rem, 10vw, 5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .wordmark span {
+      color: var(--orange);
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      color: var(--muted);
+      max-width: 28ch;
+      line-height: 1.5;
+      margin-bottom: 2.5rem;
+    }
+
+    .app-store-btn {
+      display: inline-block;
+      text-decoration: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .app-store-btn:hover {
+      opacity: 0.85;
+      transform: scale(1.03);
+    }
+
+    .app-store-btn img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--warm);
+    }
+  </style>
+</head>
+<body>
+
+  <p class="wordmark">Mat<span>lyst</span></p>
+  <p class="tagline">Oppskrifter du faktisk lager — importer, planlegg og handle på minutter.</p>
+
+  <a class="app-store-btn" href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Last ned på App Store">
+  </a>
+
+  <footer>
+    <a href="/personvern">Personvern</a> &nbsp;·&nbsp; &copy; 2026 Matlyst
+  </footer>
+
+</body>
+</html>
