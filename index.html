@@ -54,8 +54,8 @@
       box-shadow: 0 2px 2px rgba(255,255,255,0.18) inset, 0 -2px 3px rgba(0,0,0,0.6) inset,
         0 50px 90px -30px rgba(26,22,18,0.55), 0 30px 60px -40px rgba(26,22,18,0.5); }
     .iphone-screen { position: relative; width: 100%; height: 100%; border-radius: 50px; overflow: hidden; background: var(--app-bg); }
-    .island { position: absolute; top: 13px; left: 50%; transform: translateX(-50%); width: 116px; height: 33px;
-      background: #000; border-radius: 20px; z-index: 30; }
+    .island { position: absolute; top: 25px; left: 50%; transform: translateX(-50%); width: 120px; height: 35px;
+      background: #000; border-radius: 19px; z-index: 30; }
     .island::after { content: ''; position: absolute; top: 50%; right: 13px; transform: translateY(-50%);
       width: 9px; height: 9px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #2a2f38, #050608 70%); }
     .screen-shot { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; background: var(--app-bg); }
@@ -117,6 +117,14 @@
       background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(196,85,42,0.16) 0%, rgba(247,243,236,0) 70%); z-index: 0; }
     .showcase-visual .stage { position: relative; z-index: 2; --zoom: 0.74; }
 
+    /* HOUSEHOLD */
+    .household { background: var(--cream-deep); padding: 104px 80px; text-align: center; }
+    .household-inner { max-width: 660px; margin: 0 auto; }
+    .household-icon { width: 46px; height: 46px; color: var(--terracotta); margin: 0 auto 24px; display: block; }
+    .household-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 3.5vw, 50px); font-weight: 300; line-height: 1.12; margin-bottom: 18px; }
+    .household-title em { font-style: italic; color: var(--terracotta); }
+    .household-sub { font-size: 16px; color: var(--warm-gray); line-height: 1.75; max-width: 540px; margin: 0 auto; }
+
     /* NEWSLETTER */
     .newsletter { background: var(--ink); padding: 110px 80px; }
     .newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; }
@@ -166,6 +174,7 @@
       .showcase.reverse .showcase-visual { order: 0; }
       .showcase-visual { min-height: 520px; }
       .showcase-visual .stage { --zoom: 0.72; }
+      .household { padding: 72px 32px; }
       .newsletter { padding: 80px 32px; }
       .newsletter-form { flex-direction: column; }
       .cta { padding: 80px 32px; }
@@ -327,6 +336,18 @@
     <div class="stage"><div class="iphone"><div class="island"></div>
       <div class="iphone-screen"><img class="screen-shot" src="images/screens/spor-matlyst.jpg" alt="Spør Matlyst – AI-assistent som svarer på spørsmål om oppskriften"></div>
     </div></div>
+  </div>
+</div>
+
+<!-- HOUSEHOLD -->
+<div class="household">
+  <div class="household-inner">
+    <svg class="household-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </svg>
+    <p class="section-label">Husstand og grupper</p>
+    <h2 class="household-title">Planlegg sammen,<br><em>handle hver for seg</em></h2>
+    <p class="household-sub">Del ukemenyen og handlelista med hele husstanden eller en gruppe. Dere planlegger måltidene sammen, og alt holder seg synkronisert i sanntid — så alle ser den samme lista i butikken.</p>
   </div>
 </div>
 
