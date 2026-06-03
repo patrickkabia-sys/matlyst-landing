@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personvern — Matlyst</title>
+  <meta name="description" content="Personvernerklæring for Matlyst: hvilke data vi samler, hvordan de brukes, og dine rettigheter.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://matlyst-app.no/personvern.html">
+  <meta name="theme-color" content="#F7F3EC">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#F7F3EC; --sand:#F1EADD; --sand-2:#EADFCE; --taupe:#CFBDA0;
+      --ink:#1E1813; --ink-soft:#6E6155; --ink-faint:rgba(30,24,19,0.42);
+      --terracotta:#C4552A; --line:rgba(74,58,42,0.13); --line-soft:rgba(74,58,42,0.08);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--cream); color:var(--ink); font-family:'DM Sans',sans-serif;
+      font-weight:300; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    ::selection { background:var(--terracotta); color:var(--cream); }
+    a { color:var(--terracotta); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    nav { position:fixed; inset:0 0 auto 0; z-index:100; padding:18px 56px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(247,243,236,0.82); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line-soft); }
+    .nav-brand { font-family:'Fraunces',serif; font-size:23px; font-weight:400; color:var(--ink); letter-spacing:-0.01em; }
+    .nav-brand em { font-style:normal; color:var(--terracotta); }
+    .nav-back { font-size:13px; font-weight:500; color:var(--ink-soft); }
+    .nav-back:hover { color:var(--ink); text-decoration:none; }
+
+    .doc { max-width:760px; margin:0 auto; padding:160px 32px 40px; }
+    .doc-kicker { font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
+    .doc-title { font-family:'Fraunces',serif; font-size:clamp(40px,6vw,64px); font-weight:300; line-height:1.02; letter-spacing:-0.02em; margin-bottom:16px; }
+    .doc-title em { font-style:italic; color:var(--terracotta); }
+    .doc-updated { font-size:13px; color:var(--ink-faint); margin-bottom:8px; }
+    .doc-intro { font-size:17px; color:var(--ink-soft); line-height:1.8; margin:28px 0 8px; }
+
+    .doc h2 { font-family:'Fraunces',serif; font-size:26px; font-weight:400; letter-spacing:-0.01em;
+      margin:52px 0 14px; padding-top:26px; border-top:1px solid var(--line); }
+    .doc h3 { font-family:'Fraunces',serif; font-size:18px; font-weight:500; margin:26px 0 8px; }
+    .doc p { color:var(--ink-soft); margin-bottom:14px; }
+    .doc strong { color:var(--ink); font-weight:500; }
+    .doc ul { list-style:none; margin:0 0 16px; padding:0; }
+    .doc li { color:var(--ink-soft); padding:9px 0 9px 22px; position:relative; border-bottom:1px solid var(--line-soft); }
+    .doc li:last-child { border-bottom:none; }
+    .doc li::before { content:''; position:absolute; left:2px; top:18px; width:6px; height:6px; border-radius:50%; background:var(--terracotta); }
+    .doc li strong { display:block; color:var(--ink); font-weight:500; margin-bottom:1px; }
+
+    .callout { background:var(--sand); border:1px solid var(--line); border-radius:16px; padding:22px 24px; margin:22px 0; }
+    .callout p { margin:0; font-size:14.5px; }
+
+    footer { background:var(--taupe); color:var(--ink); margin-top:80px; padding:42px 56px;
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px; }
+    .footer-brand { font-family:'Fraunces',serif; font-size:24px; font-weight:300; font-style:italic; }
+    .footer-links { display:flex; gap:28px; }
+    .footer-links a { font-size:13px; color:var(--ink-soft); }
+    .footer-links a:hover { color:var(--ink); text-decoration:none; }
+    .footer-copy { font-size:12px; color:var(--ink-faint); }
+
+    @media (max-width:640px) {
+      nav { padding:14px 22px; }
+      .doc { padding:130px 22px 32px; }
+      footer { padding:34px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">Mat<em>lyst</em></a>
+  <a href="/" class="nav-back">← Tilbake</a>
+</nav>
+
+<main class="doc">
+  <p class="doc-kicker">Personvern</p>
+  <h1 class="doc-title">Personvern­erklæring</h1>
+  <p class="doc-updated">Sist oppdatert 3. juni 2026</p>
+
+  <p class="doc-intro">
+    Matlyst er en matapp som lar deg importere, organisere og lage oppskrifter. Vi samler kun dataene
+    som trengs for at appen skal fungere, og selger dem aldri videre. Denne erklæringen forklarer hva vi
+    samler, hvorfor, hvem vi deler det med, og hvilke rettigheter du har.
+  </p>
+
+  <h2>Behandlingsansvarlig</h2>
+  <p>
+    Matlyst drives av Patrick Kabia. Har du spørsmål om personvern eller vil bruke rettighetene dine,
+    kontakt oss på <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.
+  </p>
+
+  <h2>Hvilke opplysninger vi behandler</h2>
+
+  <h3>Konto</h3>
+  <ul>
+    <li><strong>E-post og passord</strong> hvis du registrerer deg med e-post.</li>
+    <li><strong>Apple-ID</strong> hvis du bruker «Logg inn med Apple». Apple deler navn og e-post (du kan velge å skjule e-posten).</li>
+    <li><strong>Anonym konto.</strong> For at innholdet ditt skal lagres trygt fra første åpning, oppretter appen en anonym konto automatisk. Den kan senere knyttes til en e-post eller Apple-ID.</li>
+  </ul>
+
+  <h3>Profil og innstillinger</h3>
+  <ul>
+    <li>Navn, brukernavn og profilbilde (valgfritt).</li>
+    <li>Preferanser du oppgir: kostholdsvalg, mål, måleenheter, kaloriemål og fødselsdato (valgfritt).</li>
+  </ul>
+
+  <h3>Innholdet ditt</h3>
+  <ul>
+    <li>Oppskrifter du importerer eller lager, mapper, favoritter, vurderinger og notater.</li>
+    <li>Ukemeny, handleliste og spiskammer.</li>
+    <li>Husstand/gruppe du eventuelt deler planlegging med, og medlemmene der.</li>
+  </ul>
+
+  <h3>Import-data</h3>
+  <p>
+    Når du importerer en oppskrift, sender vi <strong>lenken, bildet, teksten eller filen</strong> du velger til
+    serveren vår for å hente ut og oversette oppskriften. Vi henter kun innhold du selv deler med appen.
+  </p>
+
+  <h3>Teknisk bruk</h3>
+  <ul>
+    <li>Feil- og krasjrapporter for å forbedre stabiliteten.</li>
+    <li>Enhetsidentifikatorer for annonser (kun for gratisbrukere — se «Annonser»).</li>
+    <li>Push-token hvis du tillater varsler.</li>
+  </ul>
+
+  <h2>Hvordan vi bruker opplysningene</h2>
+  <ul>
+    <li>Levere kjernefunksjonene: import, lagring, planlegging og synkronisering mellom enhetene dine.</li>
+    <li>Behandle abonnement (Matlyst Pro) og fjerne annonser for betalende brukere.</li>
+    <li>Sende varsler du har samtykket til.</li>
+    <li>Feilsøke, sikre og forbedre appen.</li>
+  </ul>
+
+  <h2>AI-behandling</h2>
+  <p>
+    Import, oversettelse til norsk og funksjonen «Spør Matlyst» bruker en AI-tjeneste fra Anthropic (Claude).
+    Innholdet du importerer eller spør om, sendes til denne tjenesten for behandling. Dataene brukes til å
+    svare deg der og da, og brukes <strong>ikke</strong> til å trene AI-modeller.
+  </p>
+
+  <h2>Annonser</h2>
+  <p>
+    Gratisversjonen viser annonser via Google AdMob, som kan bruke enhetsidentifikatorer for å vise relevante
+    annonser. Du kan begrense annonsesporing i enhetens innstillinger. <strong>Matlyst Pro fjerner alle annonser.</strong>
+  </p>
+
+  <h2>Hvem vi deler med (databehandlere)</h2>
+  <p>Vi selger aldri dataene dine. Vi bruker betrodde leverandører for å drifte tjenesten:</p>
+  <ul>
+    <li><strong>Supabase</strong> — database, innlogging og fillagring.</li>
+    <li><strong>Apple</strong> — «Logg inn med Apple», App Store og kjøp.</li>
+    <li><strong>RevenueCat</strong> — administrasjon av abonnement.</li>
+    <li><strong>Google AdMob</strong> — annonser i gratisversjonen.</li>
+    <li><strong>Anthropic</strong> — AI-behandling av import og «Spør Matlyst».</li>
+    <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
+  </ul>
+  <p>
+    Noen av disse leverandørene behandler data utenfor Norge/EØS (f.eks. i USA). Overføringen skjer på
+    grunnlag av leverandørenes personvernvilkår og gjeldende overføringsmekanismer.
+  </p>
+
+  <h2>Lagring og sletting</h2>
+  <p>
+    Vi lagrer opplysningene så lenge du har en konto. Du kan slette kontoen din i appen eller ved å kontakte
+    oss på <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> — da slettes innholdet ditt.
+  </p>
+
+  <h2>Dine rettigheter</h2>
+  <p>Etter personvernreglene (GDPR) har du rett til å:</p>
+  <ul>
+    <li>be om innsyn i opplysningene vi har om deg,</li>
+    <li>få rettet feil eller ufullstendige opplysninger,</li>
+    <li>få slettet opplysningene dine,</li>
+    <li>be om en kopi av dataene dine (dataportabilitet).</li>
+  </ul>
+  <p>
+    Kontakt <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> for å bruke rettighetene dine. Du kan også
+    klage til Datatilsynet hvis du mener vi behandler opplysningene dine feil.
+  </p>
+
+  <h2>Barn</h2>
+  <p>Matlyst er ikke rettet mot barn under 13 år, og vi samler ikke bevisst inn opplysninger om dem.</p>
+
+  <h2>Endringer</h2>
+  <p>
+    Vi kan oppdatere denne erklæringen. Ved vesentlige endringer oppdaterer vi datoen øverst, og varsler
+    i appen der det er relevant.
+  </p>
+
+  <div class="callout">
+    <p>Har du spørsmål om personvern? Skriv til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> — vi svarer så fort vi kan.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">Matlyst</div>
+  <div class="footer-links">
+    <a href="/">Hjem</a>
+    <a href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">App Store</a>
+  </div>
+  <span class="footer-copy">&copy; 2026 Matlyst</span>
+</footer>
+
+</body>
+</html>
