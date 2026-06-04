@@ -236,6 +236,27 @@
     .footer-links a:hover { color: var(--ink); }
     .footer-copy { font-size: 12px; color: var(--ink-faint); }
 
+    /* COOKIE / SAMTYKKE-BANNER */
+    .cookie { position: fixed; z-index: 1000; left: 32px; bottom: 32px; width: 392px; max-width: calc(100vw - 40px);
+      background: rgba(247,243,236,0.97); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border: 1px solid var(--line-soft); border-radius: 22px; padding: 26px 26px 24px;
+      box-shadow: 0 30px 60px -22px rgba(60,45,30,0.42), 0 8px 20px -14px rgba(60,45,30,0.3);
+      transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .4s; }
+    .cookie[hidden] { display: none; }
+    .cookie.hide { transform: translateY(28px); opacity: 0; pointer-events: none; }
+    .cookie h3 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 21px; letter-spacing: -0.01em; margin-bottom: 10px; }
+    .cookie p { font-size: 14px; line-height: 1.65; color: var(--ink-soft); margin-bottom: 20px; }
+    .cookie a { color: var(--terracotta); text-decoration: none; font-weight: 500; }
+    .cookie a:hover { text-decoration: underline; }
+    .cookie-actions { display: flex; gap: 10px; }
+    .ck-btn { flex: 1; padding: 13px 18px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+      font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: transform .2s, opacity .2s, background .2s; white-space: nowrap; }
+    .ck-btn:hover { transform: translateY(-1px); }
+    .ck-accept { background: var(--terracotta); color: #fff; }
+    .ck-accept:hover { opacity: .9; }
+    .ck-reject { background: transparent; color: var(--ink); border-color: var(--line); }
+    .ck-reject:hover { background: rgba(74,58,42,0.05); }
+
     /* RESPONSIVE */
     @media (max-width: 1100px) { .hero-right .stage { --zoom: 0.78; } }
     @media (max-width: 960px) {
@@ -263,6 +284,7 @@
       .flow { grid-template-columns: 1fr; }
       .hero-right .stage { --zoom: 0.74; }
       .hero-duo { transform: scale(0.58); }
+      .cookie { left: 10px; right: 10px; bottom: 10px; width: auto; }
       .showcase-visual .stage { --zoom: 0.62; }
       .flow-duo { transform: scale(0.62); }
     }
@@ -529,6 +551,16 @@
   <span class="footer-copy">&copy; 2026 Matlyst</span>
 </footer>
 
+<!-- Samtykke-banner (informasjonskapsler / Meta Pixel) -->
+<div class="cookie" id="cookie" hidden>
+  <h3>Vi bruker informasjonskapsler</h3>
+  <p>Vi måler hva som fungerer, slik at vi kan forbedre Matlyst og vise relevante annonser. Du bestemmer. Les mer i <a href="/personvern.html">personvernerklæringen</a>.</p>
+  <div class="cookie-actions">
+    <button class="ck-btn ck-accept" id="ck-accept" type="button">Godta</button>
+    <button class="ck-btn ck-reject" id="ck-reject" type="button">Bare nødvendige</button>
+  </div>
+</div>
+
 <script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
@@ -538,6 +570,40 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
+  // --- Samtykke + Meta Pixel (lastes KUN etter «Godta») ---
+  (function () {
+    var PIXEL_ID = '35960255793618130';
+    var KEY = 'matlyst-consent';
+    var banner = document.getElementById('cookie');
+
+    function loadPixel() {
+      if (window.fbq) return;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL_ID);
+      fbq('track', 'PageView');
+    }
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    function hide() { banner.classList.add('hide'); setTimeout(function () { banner.hidden = true; }, 520); }
+
+    var consent = get();
+    if (consent === 'granted') loadPixel();
+    else if (!consent) banner.hidden = false;
+
+    var accept = document.getElementById('ck-accept');
+    var reject = document.getElementById('ck-reject');
+    if (accept) accept.addEventListener('click', function () { set('granted'); loadPixel(); hide(); });
+    if (reject) reject.addEventListener('click', function () { set('denied'); hide(); });
+
+    // Konverteringssporing — kun når samtykke er gitt (da finnes fbq)
+    document.addEventListener('click', function (e) {
+      if (!window.fbq) return;
+      var a = e.target.closest('a');
+      if (!a) return;
+      if (a.href && a.href.indexOf('apps.apple.com') > -1) fbq('track', 'Lead', { content_name: 'App Store' });
+      else if (a.getAttribute('href') === '#nyhetsbrev') fbq('trackCustom', 'NyhetsbrevIntent');
+    });
+  })();
 </script>
 
 </body>
