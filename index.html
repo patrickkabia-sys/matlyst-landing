@@ -212,7 +212,26 @@
     .newsletter-title em { font-style: italic; color: var(--terracotta); }
     .newsletter-sub { font-size: 15px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 40px; }
     .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
-    .newsletter-eo { max-width: 460px; margin: 0 auto; min-height: 56px; }
+    .newsletter-eo { max-width: 460px; margin: 0 auto; min-height: 56px; font-family: 'DM Sans', sans-serif; }
+    /* EmailOctopus innebygd skjema — overstyrt for å matche siden (widgeten er i vanlig DOM) */
+    .newsletter-eo .main-form { display: flex; flex-direction: column; gap: 10px; }
+    .newsletter-eo .main-form > div { margin: 0 !important; }
+    .newsletter-eo .emailoctopus-form-row { margin: 0 !important; }
+    .newsletter-eo .form-control {
+      width: 100% !important; height: auto !important; padding: 15px 22px !important;
+      background: rgba(255,255,255,0.6) !important; border: 1px solid var(--line) !important;
+      border-radius: 100px !important; color: var(--ink) !important; box-shadow: none !important;
+      font-family: 'DM Sans', sans-serif !important; font-size: 15px !important; font-weight: 300 !important;
+      outline: none !important; transition: border-color .2s, background .2s; }
+    .newsletter-eo .form-control::placeholder { color: var(--ink-faint) !important; }
+    .newsletter-eo .form-control:focus { border-color: var(--terracotta) !important; background: rgba(255,255,255,0.85) !important; }
+    .newsletter-eo input[type=submit], .newsletter-eo .btn-primary {
+      width: 100% !important; height: auto !important; margin: 0 !important; padding: 15px 28px !important;
+      background: var(--terracotta) !important; color: #fff !important; border: none !important;
+      border-radius: 100px !important; box-shadow: none !important;
+      font-family: 'DM Sans', sans-serif !important; font-size: 15px !important; font-weight: 500 !important;
+      cursor: pointer; transition: transform .2s, opacity .2s; }
+    .newsletter-eo input[type=submit]:hover, .newsletter-eo .btn-primary:hover { transform: translateY(-1px); opacity: .92; }
     .newsletter-input { flex: 1; padding: 15px 22px; background: rgba(255,255,255,0.55); border: 1px solid var(--line);
       border-radius: 100px; color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 300; outline: none; transition: border-color .2s, background .2s; }
     .newsletter-input::placeholder { color: var(--ink-faint); }
@@ -613,6 +632,20 @@
         fbq('track', 'Lead', { content_name: 'Nyhetsbrev' });
       }
     }, true);
+  })();
+
+  // EmailOctopus injiseres asynkront — oversett skjematekst til norsk når det dukker opp
+  (function () {
+    var host = document.querySelector('.newsletter-eo');
+    if (!host) return;
+    function localize() {
+      var email = host.querySelector('input[type=email]');
+      if (email && email.placeholder !== 'Din e-postadresse') email.placeholder = 'Din e-postadresse';
+      var submit = host.querySelector('input[type=submit]');
+      if (submit && submit.value !== 'Meld meg på') submit.value = 'Meld meg på';
+    }
+    localize();
+    new MutationObserver(localize).observe(host, { childList: true, subtree: true });
   })();
 </script>
 
