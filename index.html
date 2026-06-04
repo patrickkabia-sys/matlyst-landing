@@ -214,9 +214,10 @@
     .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
     .newsletter-eo { max-width: 460px; margin: 0 auto; min-height: 56px; font-family: 'DM Sans', sans-serif; }
     /* EmailOctopus innebygd skjema — overstyrt for å matche siden (widgeten er i vanlig DOM) */
-    .newsletter-eo .main-form { display: flex; flex-direction: column; gap: 10px; }
-    .newsletter-eo .main-form > div { margin: 0 !important; }
-    .newsletter-eo .emailoctopus-form-row { margin: 0 !important; }
+    /* EO tvinger .main-form til flex+center; vi tvinger alt tilbake til full-bredde blokk */
+    .newsletter-eo .main-form { display: block !important; }
+    .newsletter-eo .main-form > div { display: block !important; width: 100% !important; margin: 0 0 10px !important; }
+    .newsletter-eo .emailoctopus-form-row { display: block !important; width: 100% !important; margin: 0 !important; }
     .newsletter-eo .form-control {
       width: 100% !important; height: auto !important; padding: 15px 22px !important;
       background: rgba(255,255,255,0.6) !important; border: 1px solid var(--line) !important;
