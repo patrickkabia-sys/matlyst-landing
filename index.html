@@ -603,6 +603,15 @@
       if (a.href && a.href.indexOf('apps.apple.com') > -1) fbq('track', 'Lead', { content_name: 'App Store' });
       else if (a.getAttribute('href') === '#nyhetsbrev') fbq('trackCustom', 'NyhetsbrevIntent');
     });
+
+    // Nyhetsbrev-påmelding: EmailOctopus-skjemaet injiseres asynkront,
+    // men submit-hendelsen bobler — så vi lytter på document.
+    document.addEventListener('submit', function (e) {
+      if (!window.fbq) return;
+      if (e.target && e.target.classList && e.target.classList.contains('emailoctopus-form')) {
+        fbq('track', 'Lead', { content_name: 'Nyhetsbrev' });
+      }
+    }, true);
   })();
 </script>
 
