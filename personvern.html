@@ -81,7 +81,7 @@
 <main class="doc">
   <p class="doc-kicker">Personvern</p>
   <h1 class="doc-title">Personvern­erklæring</h1>
-  <p class="doc-updated">Sist oppdatert 4. juni 2026</p>
+  <p class="doc-updated">Sist oppdatert 16. juni 2026</p>
 
   <p class="doc-intro">
     Matlyst er en matapp som lar deg importere, organisere og lage oppskrifter. Vi samler kun dataene
@@ -127,6 +127,7 @@
   <ul>
     <li>Feil- og krasjrapporter for å forbedre stabiliteten.</li>
     <li>Enhetsidentifikatorer for annonser (kun for gratisbrukere — se «Annonser»).</li>
+    <li>Anonymisert bruksstatistikk (hvilke funksjoner som brukes) for å forbedre appen — knyttet til en pseudonym bruker-ID, aldri til navn, e-post eller oppskriftsinnhold.</li>
     <li>Push-token hvis du tillater varsler.</li>
   </ul>
 
@@ -147,8 +148,10 @@
 
   <h2>Annonser</h2>
   <p>
-    Gratisversjonen viser annonser via Google AdMob, som kan bruke enhetsidentifikatorer for å vise relevante
-    annonser. Du kan begrense annonsesporing i enhetens innstillinger. <strong>Matlyst Pro fjerner alle annonser.</strong>
+    Gratisversjonen viser annonser via Google AdMob. I EU/EØS ber vi om samtykke til personaliserte annonser;
+    takker du nei — eller ikke har gitt sporingstillatelse — viser vi kun ikke-personaliserte annonser. Du kan
+    endre valget i appens annonseinnstillinger eller begrense sporing i enhetens innstillinger.
+    <strong>Matlyst Pro fjerner alle annonser.</strong>
   </p>
 
   <h2>Nettstedet matlyst-app.no</h2>
@@ -168,12 +171,20 @@
     <li><strong>Google AdMob</strong> — annonser i gratisversjonen.</li>
     <li><strong>Anthropic</strong> — AI-behandling av import og «Spør Matlyst».</li>
     <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
+    <li><strong>PostHog</strong> — anonymisert produktanalyse (hostet i EU).</li>
     <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet.</li>
     <li><strong>Meta (Facebook)</strong> — annonsemåling på nettstedet (kun ved samtykke).</li>
   </ul>
   <p>
     Noen av disse leverandørene behandler data utenfor Norge/EØS (f.eks. i USA). Overføringen skjer på
     grunnlag av leverandørenes personvernvilkår og gjeldende overføringsmekanismer.
+  </p>
+
+  <h2>Lagring på enheten din</h2>
+  <p>
+    For at oppskriftene dine skal være tilgjengelige uten nett, lagrer appen en lokal kopi av oppskriftene,
+    ingrediensene og oppskriftsbildene dine på enheten. Disse ligger kun i appens beskyttede lagringsområde,
+    deles ikke videre, og slettes når du logger ut.
   </p>
 
   <h2>Lagring og sletting</h2>
