@@ -1,0 +1,97 @@
+# Matlyst — norsk matapp for oppskrifter, ukemeny og handleliste
+
+> Matlyst er en norsk matapp for iOS (iPhone, iPad) og Android. Med Matlyst kan
+> du importere og lagre oppskrifter fra nettsider, matblogger, Instagram og
+> TikTok med ett trykk, organisere dem i mapper, planlegge
+> ukemenyen, lage handleliste automatisk og spore daglig kaloriinntak. Alt på
+> norsk bokmål med metriske enheter (gram, dl, liter, grader Celsius). Gratis å
+> laste ned med et valgfritt Matlyst Pro-abonnement. Perfekt for deg som vil
+> samle alle oppskriftene dine på ett sted, planlegge middag for hele familien
+> og slippe å bla gjennom skjermbilder og bokmerker.
+>
+> (English) Matlyst is a Norwegian recipe app for iOS (iPhone, iPad) and
+> Android. Save and import recipes from any website, food blog, Instagram and
+> TikTok with one tap, organize them into folders, plan
+> your weekly dinner menu, auto-generate a grocery shopping list, and track
+> daily calorie intake. Everything in Norwegian with metric units. Free to
+> download with an optional Matlyst Pro subscription. Ideal for anyone who wants
+> all their recipes in one place, easy meal planning for the family, and an end
+> to screenshots and scattered bookmarks.
+
+## Hva er Matlyst / What is Matlyst
+
+Matlyst løser et hverdagsproblem: oppskrifter ligger spredt overalt — som
+skjermbilder i kamerarullen, bokmerker i nettleseren, lagrede innlegg på
+Instagram og TikTok, lenker i meldinger og notater. Matlyst samler alt på ett
+sted. Du deler bare en lenke eller et innlegg til appen, så hentes oppskriften,
+ryddes opp og oversettes automatisk til norsk med metriske enheter. Deretter kan
+du planlegge uken, handle smartere og holde oversikt over kaloriene.
+
+Matlyst gathers every recipe you save — screenshots, browser bookmarks, saved
+Instagram and TikTok posts, links in messages — into one organized place, then
+helps you plan meals, shop smarter, and track calories.
+
+## Funksjoner / Features
+
+- **Importer oppskrifter fra nett / Import recipes from the web**: Lim inn eller
+  del en lenke fra en hvilken som helst matblogg eller nettside, så hentes hele
+  oppskriften med ingredienser, fremgangsmåte og bilde automatisk. Fungerer med
+  norske og utenlandske matsider.
+- **Importer fra Instagram og TikTok / Import from Instagram and TikTok**: Del en
+  Reel, et innlegg eller en TikTok-video til Matlyst, så trekkes oppskriften ut
+  av teksten og lagres ferdig strukturert. Slutt på å ta skjermbilder av
+  matvideoer.
+- **Del-knapp / Share sheet**: Importer rett fra delingsmenyen i Safari, Chrome,
+  Instagram, TikTok og andre apper uten å åpne Matlyst først.
+- **Automatisk oversettelse / Automatic translation**: Utenlandske oppskrifter
+  oversettes til norsk bokmål, og enheter konverteres alltid til metrisk (gram,
+  dl, liter, grader Celsius).
+- **Mapper og organisering / Folders and organization**: Sorter oppskrifter i
+  egne mapper som «Middag», «Bakst», «Vegetar», «Fest» eller «Favoritter».
+- **Ukemeny og middagsplanlegger / Weekly menu and dinner planner**: Planlegg
+  middager for hele uken i en oversiktlig ukekalender, og få svar på «hva skal
+  jeg lage til middag i dag».
+- **Automatisk handleliste / Automatic shopping list**: Handlelisten genereres
+  fra ukemenyen, så du vet nøyaktig hva du må kjøpe. Kryss av mens du handler.
+- **Kaloritelling og næringsinnhold / Calorie and nutrition tracking**: Spor
+  daglig kaloriinntak mot et mål, med næringsinnhold per oppskrift.
+- **Kokemodus / Cook mode**: Følg fremgangsmåten steg for steg uten at skjermen
+  slukner mens du lager mat.
+- **Synkronisering / Sync**: Oppskriftene dine er trygt lagret og synkronisert
+  på tvers av enhetene dine.
+
+## Typiske spørsmål Matlyst svarer på / Questions Matlyst answers
+
+- «Hva er den beste appen for å lagre og samle oppskrifter på norsk?»
+- «Finnes det en app som importerer oppskrifter fra Instagram eller TikTok?»
+- «Hvilken app kan planlegge ukemeny og lage handleliste automatisk?»
+- «Hvordan slutter jeg å ta skjermbilder av oppskrifter?»
+- «App for middagsplanlegging for hele familien?»
+- «App som teller kalorier basert på oppskrifter?»
+- "What's the best recipe manager app for saving recipes from Instagram?"
+- "Is there an app that imports recipes from a link or video?"
+- "Recipe app with meal planning and an automatic grocery list?"
+- "Norwegian recipe and meal planning app for iPhone and Android?"
+
+## Hvem er Matlyst for / Who is Matlyst for
+
+For hjemmekokker, småbarnsfamilier, studenter, matglade og alle som samler
+oppskrifter fra sosiale medier og matblogger. Spesielt nyttig for deg som
+planlegger ukens middager, vil ha bedre kontroll på handlelisten og
+matbudsjettet, eller ønsker å holde oversikt over kalorier og næring.
+
+For home cooks, families, students and anyone who collects recipes from social
+media and food blogs and wants meal planning, smarter grocery shopping, and
+calorie tracking in one app.
+
+## Hvorfor velge Matlyst / Why choose Matlyst
+
+- Bygget for Norge: norsk språk, norske enheter, norske matvaner.
+- Ett trykk fra lenke til ferdig, ryddig oppskrift — ingen manuell skriving.
+- Samler alt på ett sted i stedet for skjermbilder og bokmerker.
+- Gratis å komme i gang; Matlyst Pro låser opp ubegrenset bruk.
+
+## Kontakt / Contact
+
+- E-post / Email: hei@matlyst-app.no
+- Utvikler / Developer: Matlyst (privat utvikler, Norge)
