@@ -22,6 +22,21 @@
   <meta name="twitter:description" content="Importer fra en lenke eller et bilde, planlegg uka, og la handlelista skrive seg selv. Gratis å prøve.">
   <meta name="twitter:image" content="https://matlyst-app.no/images/screens/oppskrift.jpg">
   <link rel="icon" type="image/png" href="images/icon.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Matlyst",
+    "operatingSystem": "iOS",
+    "applicationCategory": "LifestyleApplication",
+    "url": "https://matlyst-app.no/",
+    "downloadUrl": "https://apps.apple.com/no/app/matlyst/id6762563515",
+    "description": "Importer oppskrifter fra en lenke, et bilde eller en annen matapp. Planlegg uken og la handlelista skrive seg selv.",
+    "inLanguage": "nb-NO",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NOK" },
+    "publisher": { "@type": "Organization", "name": "Matlyst", "url": "https://matlyst-app.no/" }
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -603,34 +618,51 @@
       fbq('init', PIXEL_ID);
       fbq('track', 'PageView');
     }
+
+    // PostHog (samme prosjekt som appen, EU-cloud) — lastes KUN etter «Godta».
+    // person_profiles: 'identified_only' → ingen personprofil for anonyme besøkende.
+    function loadPostHog() {
+      if (window.posthog && window.posthog.__loaded) return;
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+      posthog.init('phc_CnHuX3D6byju4qDSyVXQ9PQJZ6VxY7xFrCgtBTiiqeTr', {
+        api_host: 'https://eu.i.posthog.com',
+        person_profiles: 'identified_only',
+        disable_session_recording: true,
+        capture_pageview: true
+      });
+    }
     function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
     function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
     function hide() { banner.classList.add('hide'); setTimeout(function () { banner.hidden = true; }, 520); }
 
     var consent = get();
-    if (consent === 'granted') loadPixel();
+    if (consent === 'granted') { loadPixel(); loadPostHog(); }
     else if (!consent) banner.hidden = false;
 
     var accept = document.getElementById('ck-accept');
     var reject = document.getElementById('ck-reject');
-    if (accept) accept.addEventListener('click', function () { set('granted'); loadPixel(); hide(); });
+    if (accept) accept.addEventListener('click', function () { set('granted'); loadPixel(); loadPostHog(); hide(); });
     if (reject) reject.addEventListener('click', function () { set('denied'); hide(); });
 
-    // Konverteringssporing — kun når samtykke er gitt (da finnes fbq)
+    // Konverteringssporing — kun når samtykke er gitt (da finnes fbq/posthog)
     document.addEventListener('click', function (e) {
-      if (!window.fbq) return;
       var a = e.target.closest('a');
       if (!a) return;
-      if (a.href && a.href.indexOf('apps.apple.com') > -1) fbq('track', 'Lead', { content_name: 'App Store' });
-      else if (a.getAttribute('href') === '#nyhetsbrev') fbq('trackCustom', 'NyhetsbrevIntent');
+      if (a.href && a.href.indexOf('apps.apple.com') > -1) {
+        if (window.fbq) fbq('track', 'Lead', { content_name: 'App Store' });
+        if (window.posthog) posthog.capture('appstore_click');
+      } else if (a.getAttribute('href') === '#nyhetsbrev') {
+        if (window.fbq) fbq('trackCustom', 'NyhetsbrevIntent');
+        if (window.posthog) posthog.capture('newsletter_intent');
+      }
     });
 
     // Nyhetsbrev-påmelding: EmailOctopus-skjemaet injiseres asynkront,
     // men submit-hendelsen bobler — så vi lytter på document.
     document.addEventListener('submit', function (e) {
-      if (!window.fbq) return;
       if (e.target && e.target.classList && e.target.classList.contains('emailoctopus-form')) {
-        fbq('track', 'Lead', { content_name: 'Nyhetsbrev' });
+        if (window.fbq) fbq('track', 'Lead', { content_name: 'Nyhetsbrev' });
+        if (window.posthog) posthog.capture('newsletter_signup');
       }
     }, true);
   })();
