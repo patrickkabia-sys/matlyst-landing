@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brukervilkår — Matlyst</title>
+  <meta name="description" content="Brukervilkår for Matlyst: bruk av tjenesten, immaterielle rettigheter, abonnement og ansvar.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://matlyst-app.no/vilkar.html">
+  <meta name="theme-color" content="#F7F3EC">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#F7F3EC; --sand:#F1EADD; --sand-2:#EADFCE; --taupe:#CFBDA0;
+      --ink:#1E1813; --ink-soft:#6E6155; --ink-faint:rgba(30,24,19,0.42);
+      --terracotta:#C4552A; --line:rgba(74,58,42,0.13); --line-soft:rgba(74,58,42,0.08);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--cream); color:var(--ink); font-family:'DM Sans',sans-serif;
+      font-weight:300; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    ::selection { background:var(--terracotta); color:var(--cream); }
+    a { color:var(--terracotta); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    nav { position:fixed; inset:0 0 auto 0; z-index:100; padding:18px 56px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(247,243,236,0.82); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line-soft); }
+    .nav-brand { font-family:'Fraunces',serif; font-size:23px; font-weight:400; color:var(--ink); letter-spacing:-0.01em; }
+    .nav-brand em { font-style:normal; color:var(--terracotta); }
+    .nav-back { font-size:13px; font-weight:500; color:var(--ink-soft); }
+    .nav-back:hover { color:var(--ink); text-decoration:none; }
+
+    .doc { max-width:760px; margin:0 auto; padding:160px 32px 40px; }
+    .doc-kicker { font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
+    .doc-title { font-family:'Fraunces',serif; font-size:clamp(40px,6vw,64px); font-weight:300; line-height:1.02; letter-spacing:-0.02em; margin-bottom:16px; }
+    .doc-title em { font-style:italic; color:var(--terracotta); }
+    .doc-updated { font-size:13px; color:var(--ink-faint); margin-bottom:8px; }
+    .doc-intro { font-size:17px; color:var(--ink-soft); line-height:1.8; margin:28px 0 8px; }
+
+    .doc h2 { font-family:'Fraunces',serif; font-size:26px; font-weight:400; letter-spacing:-0.01em;
+      margin:52px 0 14px; padding-top:26px; border-top:1px solid var(--line); }
+    .doc p { color:var(--ink-soft); margin-bottom:14px; }
+    .doc strong { color:var(--ink); font-weight:500; }
+    .doc ul { list-style:none; margin:0 0 16px; padding:0; }
+    .doc li { color:var(--ink-soft); padding:9px 0 9px 22px; position:relative; border-bottom:1px solid var(--line-soft); }
+    .doc li:last-child { border-bottom:none; }
+    .doc li::before { content:''; position:absolute; left:2px; top:18px; width:6px; height:6px; border-radius:50%; background:var(--terracotta); }
+
+    .callout { background:var(--sand); border:1px solid var(--line); border-radius:16px; padding:22px 24px; margin:22px 0; }
+    .callout p { margin:0; font-size:14.5px; }
+
+    footer { background:var(--taupe); color:var(--ink); margin-top:80px; padding:42px 56px;
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px; }
+    .footer-brand { font-family:'Fraunces',serif; font-size:24px; font-weight:300; font-style:italic; }
+    .footer-links { display:flex; gap:28px; }
+    .footer-links a { font-size:13px; color:var(--ink-soft); }
+    .footer-links a:hover { color:var(--ink); text-decoration:none; }
+    .footer-copy { font-size:12px; color:var(--ink-faint); }
+
+    @media (max-width:640px) {
+      nav { padding:14px 22px; }
+      .doc { padding:130px 22px 32px; }
+      footer { padding:34px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">Mat<em>lyst</em></a>
+  <a href="/" class="nav-back">← Tilbake</a>
+</nav>
+
+<main class="doc">
+  <p class="doc-kicker">Vilkår</p>
+  <h1 class="doc-title">Bruker­vilkår</h1>
+  <p class="doc-updated">Sist oppdatert 3. juli 2026</p>
+
+  <p class="doc-intro">
+    Disse vilkårene gjelder bruk av Matlyst-appen og tjenesten. Ved å bruke Matlyst godtar du vilkårene under.
+  </p>
+
+  <h2>1. Bruk av tjenesten</h2>
+  <p>
+    Matlyst er en matplanleggingstjeneste for personlig, ikke-kommersiell bruk. Du er selv ansvarlig for innholdet
+    du lagrer og importerer i appen — herunder at du har rett til å importere det, og at bruken ikke krenker andres
+    rettigheter eller bryter vilkårene til nettstedet eller tjenesten innholdet hentes fra. Du forplikter deg til
+    ikke å bruke tjenesten i strid med gjeldende lov.
+  </p>
+
+  <h2>2. Immaterielle rettigheter</h2>
+  <p>
+    Oppskrifter og bilder du importerer fra nettet kan være beskyttet av opphavsrett og tilhøre andre. Matlyst henter
+    slikt innhold utelukkende for din private, personlige bruk, og lagrer det som en privat samling som ikke gjøres
+    offentlig tilgjengelig eller videredistribueres. Du får ingen rett til å videredistribuere, publisere eller
+    utnytte importert innhold kommersielt. Ansvaret for at du har rett til å importere og bruke innholdet, ligger hos deg.
+  </p>
+  <p>KI-genererte oppskrifter og middagsforslag er produsert av Matlyst og kan benyttes fritt til personlig bruk.</p>
+
+  <h2>3. Opphavsrett og fjerning av innhold</h2>
+  <p>
+    Matlyst respekterer opphavsrett. Importfunksjonen henter innhold på vegne av den enkelte bruker til privat bruk,
+    og innhold gjøres ikke tilgjengelig for allmennheten.
+  </p>
+  <p>
+    Er du rettighetshaver, eller representerer en rettighetshaver, og mener at innhold hentet via Matlyst krenker din
+    opphavsrett, kan du be oss om å fjerne det. Send en henvendelse til
+    <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> som inneholder:
+  </p>
+  <ul>
+    <li>hvilket verk eller innhold det gjelder, og hvor det er hentet fra (kilde-URL eller nettsted),</li>
+    <li>grunnlaget for at du er rettighetshaver eller har fullmakt til å opptre på vegne av denne,</li>
+    <li>kontaktinformasjon vi kan nå deg på.</li>
+  </ul>
+  <p>
+    Ved en berettiget henvendelse fjerner vi tilgjengeliggjøringen og blokkerer import fra den aktuelle kilden så
+    raskt som praktisk mulig. Vi kan sperre kilder permanent og utestenge brukere som gjentatte ganger bruker
+    tjenesten i strid med disse vilkårene. Behandlingen skjer i tråd med åndsverkloven og e-handelsloven.
+  </p>
+
+  <h2>4. Abonnement og betaling</h2>
+  <p>
+    Matlyst tilbyr et Pro-abonnement fakturert månedlig. Betaling håndteres av Apple App Store eller Google Play Store.
+    Du kan avbestille når som helst via kontoinnstillingene i den aktuelle butikken, og abonnementet løper til slutten
+    av inneværende betalingsperiode.
+  </p>
+  <p>Early adopter-prisen er låst så lenge abonnementet holdes aktivt uten avbrudd.</p>
+
+  <h2>5. Ansvarsbegrensning</h2>
+  <p>
+    Oppskrifter og næringsinnhold i appen er importert fra tredjeparter eller generert av KI og er utelukkende
+    veiledende. Matlyst garanterer ikke riktigheten av næringsberegninger, ingrediensangivelser eller
+    allergeninformasjon. Brukere med matallergier eller spesielle ernæringsbehov bør alltid kontrollere informasjonen
+    mot pålitelige kilder.
+  </p>
+  <p>Holdbarhetsdatoer i spiskammeret er estimater basert på generelle normer og er ikke en garanti for faktisk holdbarhet.</p>
+
+  <h2>6. Endringer i tjenesten</h2>
+  <p>
+    Vi forbeholder oss retten til å endre, begrense eller avvikle funksjoner i Matlyst. Vesentlige endringer varsles
+    i appen eller via e-post med rimelig frist.
+  </p>
+
+  <h2>7. Gjeldende lov</h2>
+  <p>
+    Disse vilkårene er underlagt norsk lov. Tvister søkes løst i minnelighet. Dersom dette ikke fører frem, er Oslo
+    tingrett verneting.
+  </p>
+
+  <h2>8. Kontakt</h2>
+  <p><a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a></p>
+
+  <div class="callout">
+    <p>Se også <a href="/personvern.html">personvernerklæringen</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">Matlyst</div>
+  <div class="footer-links">
+    <a href="/">Hjem</a>
+    <a href="/personvern.html">Personvern</a>
+    <a href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">App Store</a>
+  </div>
+  <span class="footer-copy">&copy; 2026 Matlyst</span>
+</footer>
+
+</body>
+</html>

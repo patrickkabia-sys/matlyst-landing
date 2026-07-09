@@ -86,13 +86,14 @@
   <p class="doc-intro">
     Matlyst er en matapp som lar deg importere, organisere og lage oppskrifter. Vi samler kun dataene
     som trengs for at appen skal fungere, og selger dem aldri videre. Denne erklæringen forklarer hva vi
-    samler, hvorfor, hvem vi deler det med, og hvilke rettigheter du har.
+    samler, hvorfor, hvem vi deler det med, og hvilke rettigheter du har. Den gjelder både appen og
+    nettstedet matlyst-app.no, og etterlever EUs personvernforordning (GDPR) og norsk personopplysningslov.
   </p>
 
   <h2>Behandlingsansvarlig</h2>
   <p>
     Matlyst er et personlig hobbyprosjekt drevet av en privatperson i Norge. Har du spørsmål om personvern
-    eller vil bruke rettighetene dine, kontakt på <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.
+    eller vil bruke rettighetene dine, kontakt <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.
   </p>
 
   <h2>Hvilke opplysninger vi behandler</h2>
@@ -104,10 +105,11 @@
     <li><strong>Anonym konto.</strong> For at innholdet ditt skal lagres trygt fra første åpning, oppretter appen en anonym konto automatisk. Den kan senere knyttes til en e-post eller Apple-ID.</li>
   </ul>
 
-  <h3>Profil og innstillinger</h3>
+  <h3>Profil og synlighet</h3>
   <ul>
     <li>Navn, brukernavn og profilbilde (valgfritt).</li>
-    <li>Preferanser du oppgir: kostholdsvalg, mål, måleenheter, kaloriemål og fødselsdato (valgfritt).</li>
+    <li>Preferanser du oppgir: kostholdsvalg, allergier, mål, måleenheter, kaloriemål og fødselsdato (valgfritt).</li>
+    <li><strong>Synlighet.</strong> Navn, brukernavn og profilbilde er synlige for andre innloggede brukere når de søker deg opp, følger deg eller deler husstand med deg. Dette er valgfritt og kan når som helst fjernes i Profil-innstillingene.</li>
   </ul>
 
   <h3>Innholdet ditt</h3>
@@ -120,35 +122,59 @@
   <h3>Import-data</h3>
   <p>
     Når du importerer en oppskrift, sender vi <strong>lenken, bildet, teksten eller filen</strong> du velger til
-    serveren vår for å hente ut og oversette oppskriften. Vi henter kun innhold du selv deler med appen.
+    serveren vår for å hente ut og oversette oppskriften. Du kan blant annet lime inn en lenke, dele fra en app,
+    eller <strong>ta bilde av en håndskrevet oppskrift eller en kokebok</strong>. Vi henter kun innhold du selv
+    deler med appen.
   </p>
 
   <h3>Teknisk bruk</h3>
   <ul>
     <li>Feil- og krasjrapporter for å forbedre stabiliteten.</li>
+    <li>Push-token (en unik enhets-ID) hvis du tillater varsler — brukes kun til å sende deg varsler, ikke til sporing, og slettes ved utlogging.</li>
+    <li>Appversjon og anonymisert enhetsinformasjon for feilretting.</li>
     <li>Anonymisert bruksstatistikk (hvilke funksjoner som brukes) for å forbedre appen — knyttet til en pseudonym bruker-ID, aldri til navn, e-post eller oppskriftsinnhold.</li>
-    <li>Push-token hvis du tillater varsler.</li>
   </ul>
 
-  <h2>Hvordan vi bruker opplysningene</h2>
+  <h2>Formål og rettslig grunnlag</h2>
+  <p>Vi behandler dine opplysninger på følgende grunnlag etter GDPR:</p>
   <ul>
-    <li>Levere kjernefunksjonene: import, lagring, planlegging og synkronisering mellom enhetene dine.</li>
-    <li>Behandle abonnement (Matlyst Pro).</li>
-    <li>Sende varsler du har samtykket til.</li>
-    <li>Feilsøke, sikre og forbedre appen.</li>
+    <li><strong>Avtale (art. 6 b).</strong> Levere kjernefunksjonene: import, lagring, planlegging og synkronisering mellom enhetene dine, samt behandle abonnement (Matlyst Pro).</li>
+    <li><strong>Avtale (art. 6 b).</strong> Vise navn, brukernavn og profilbilde til andre brukere gjennom søk, følging og husstand — valgfritt og kan fjernes når som helst.</li>
+    <li><strong>Berettiget interesse (art. 6 f).</strong> Anonymisert bruksstatistikk for å feilsøke, sikre og forbedre appen.</li>
+    <li><strong>Samtykke (art. 6 a).</strong> Personaliserte daglige middagsforslag generert av KI, og push-varsler. Begge kan trekkes tilbake når som helst.</li>
   </ul>
+  <p>Vi selger aldri dine personopplysninger til tredjeparter.</p>
 
   <h2>AI-behandling</h2>
   <p>
     Import, oversettelse til norsk og funksjonen «Spør Matlyst» bruker en AI-tjeneste fra Anthropic (Claude).
-    Innholdet du importerer eller spør om, sendes til denne tjenesten for behandling. Dataene brukes til å
-    svare deg der og da, og brukes <strong>ikke</strong> til å trene AI-modeller.
+    Innholdet du importerer eller spør om — inkludert bilder av oppskrifter — sendes til denne tjenesten for
+    behandling. Dataene brukes til å svare deg der og da, og brukes <strong>ikke</strong> til å trene AI-modeller.
+  </p>
+  <p>
+    For <strong>daglige middagsforslag</strong> sendes ingen identifiserbare personopplysninger til Anthropic —
+    kun kostholdsfiltre, årstid og ukedag.
+  </p>
+
+  <h2>Spiskammer og matsvinn</h2>
+  <p>
+    Når du huker av varer i handlelisten, kan de registreres i spiskammeret med en estimert holdbarhetsdato basert
+    på varekategori (f.eks. kjøtt/fisk 3 dager, meieri 7 dager, grønnsaker 5 dager). Estimatene er veiledende og
+    ingen garanti for faktisk holdbarhet. Du kan justere eller slette spiskammerdata når som helst.
+  </p>
+
+  <h2>Utklippstavle</h2>
+  <p>
+    Slår du på «Lenker fra utklippstavle» i Innstillinger, ser Matlyst etter en lenke i utklippstavlen din for å
+    foreslå import. Dette skjer kun på enheten din, vi leser aldri annet enn nettadresser, og innholdet sendes
+    ingen steder før du selv velger å importere. Du kan skru funksjonen av når som helst.
   </p>
 
   <h2>Nettstedet matlyst-app.no</h2>
   <p>Erklæringen gjelder også nettstedet vårt. Det er en enkel landingsside, men bruker noen tjenester du bør kjenne til:</p>
   <ul>
     <li><strong>Analyse (Meta Pixel).</strong> Vi bruker Meta Pixel for å måle effekten av markedsføringen vår. Den lastes <strong>kun hvis du samtykker</strong> i samtykke-banneret — velger du «Bare nødvendige», settes ingen sporing. Du kan ombestemme deg ved å tømme nettleserdataene dine.</li>
+    <li><strong>Produktanalyse (PostHog).</strong> Anonymisert statistikk om bruk av nettstedet, hostet i EU, lastes <strong>kun ved samtykke</strong>.</li>
     <li><strong>Nyhetsbrev (EmailOctopus).</strong> Melder du deg på, lagres e-postadressen din hos EmailOctopus så vi kan sende deg oppdateringer. Du kan melde deg av når som helst via lenken i e-postene.</li>
     <li><strong>reCAPTCHA (Google).</strong> Påmeldingsskjemaet er beskyttet mot spam med Google reCAPTCHA.</li>
   </ul>
@@ -156,11 +182,11 @@
   <h2>Hvem vi deler med (databehandlere)</h2>
   <p>Vi selger aldri dataene dine. Vi bruker betrodde leverandører for å drifte tjenesten:</p>
   <ul>
-    <li><strong>Supabase</strong> — database, innlogging og fillagring.</li>
+    <li><strong>Supabase</strong> — database, innlogging og fillagring (EU/EØS).</li>
     <li><strong>Apple</strong> — «Logg inn med Apple», App Store og kjøp.</li>
     <li><strong>RevenueCat</strong> — administrasjon av abonnement.</li>
     <li><strong>Anthropic</strong> — AI-behandling av import og «Spør Matlyst».</li>
-    <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
+    <li><strong>Sentry</strong> — anonymisert feil- og krasjlogging.</li>
     <li><strong>PostHog</strong> — anonymisert produktanalyse i appen og på nettstedet (hostet i EU; på nettstedet kun ved samtykke).</li>
     <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet.</li>
     <li><strong>Meta (Facebook)</strong> — måling av markedsføring på nettstedet (kun ved samtykke).</li>
@@ -173,8 +199,9 @@
   <h2>Lagring på enheten din</h2>
   <p>
     For at oppskriftene dine skal være tilgjengelige uten nett, lagrer appen en lokal kopi av oppskriftene,
-    ingrediensene og oppskriftsbildene dine på enheten. Disse ligger kun i appens beskyttede lagringsområde,
-    deles ikke videre, og slettes når du logger ut.
+    ingrediensene og oppskriftsbildene dine på enheten, sammen med innloggingsøkt og appinnstillinger. Disse
+    ligger kun i appens beskyttede lagringsområde, deles ikke videre, og slettes når du logger ut. Ingen
+    sporingsmekanismer benyttes lokalt.
   </p>
 
   <h2>Lagring og sletting</h2>
@@ -188,12 +215,14 @@
   <ul>
     <li>be om innsyn i opplysningene vi har om deg,</li>
     <li>få rettet feil eller ufullstendige opplysninger,</li>
-    <li>få slettet opplysningene dine,</li>
-    <li>be om en kopi av dataene dine (dataportabilitet).</li>
+    <li>få slettet opplysningene dine («retten til å bli glemt»),</li>
+    <li>be om en kopi av dataene dine (dataportabilitet),</li>
+    <li>protestere mot behandling basert på berettiget interesse.</li>
   </ul>
   <p>
-    Kontakt <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> for å bruke rettighetene dine. Du kan også
-    klage til Datatilsynet hvis du mener vi behandler opplysningene dine feil.
+    Kontakt <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> for å bruke rettighetene dine. Vi svarer
+    innen 30 dager. Du kan også klage til Datatilsynet (datatilsynet.no) hvis du mener vi behandler
+    opplysningene dine feil.
   </p>
 
   <h2>Barn</h2>
@@ -202,11 +231,11 @@
   <h2>Endringer</h2>
   <p>
     Vi kan oppdatere denne erklæringen. Ved vesentlige endringer oppdaterer vi datoen øverst, og varsler
-    i appen der det er relevant.
+    i appen eller via e-post der det er relevant.
   </p>
 
   <div class="callout">
-    <p>Har du spørsmål om personvern? Skriv til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> — vi svarer så fort vi kan.</p>
+    <p>Se også <a href="/vilkar.html">brukervilkårene</a>. Spørsmål om personvern? Skriv til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> — vi svarer så fort vi kan.</p>
   </div>
 </main>
 
@@ -214,6 +243,7 @@
   <div class="footer-brand">Matlyst</div>
   <div class="footer-links">
     <a href="/">Hjem</a>
+    <a href="/vilkar.html">Vilkår</a>
     <a href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">App Store</a>
   </div>
   <span class="footer-copy">&copy; 2026 Matlyst</span>
