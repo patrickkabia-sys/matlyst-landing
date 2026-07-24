@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slett konto — Matlyst</title>
+  <meta name="description" content="Slik sletter du Matlyst-kontoen din og alle tilknyttede data, direkte i appen eller ved å kontakte oss.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://matlyst-app.no/slett-konto.html">
+  <meta name="theme-color" content="#F7F3EC">
+  <link rel="icon" type="image/png" href="images/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#F7F3EC; --sand:#F1EADD; --sand-2:#EADFCE; --taupe:#CFBDA0;
+      --ink:#1E1813; --ink-soft:#6E6155; --ink-faint:rgba(30,24,19,0.42);
+      --terracotta:#C4552A; --line:rgba(74,58,42,0.13); --line-soft:rgba(74,58,42,0.08);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--cream); color:var(--ink); font-family:'DM Sans',sans-serif;
+      font-weight:300; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    ::selection { background:var(--terracotta); color:var(--cream); }
+    a { color:var(--terracotta); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    nav { position:fixed; inset:0 0 auto 0; z-index:100; padding:18px 56px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(247,243,236,0.82); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line-soft); }
+    .nav-brand { font-family:'Fraunces',serif; font-size:23px; font-weight:400; color:var(--ink); letter-spacing:-0.01em; }
+    .nav-brand em { font-style:normal; color:var(--terracotta); }
+    .nav-back { font-size:13px; font-weight:500; color:var(--ink-soft); }
+    .nav-back:hover { color:var(--ink); text-decoration:none; }
+
+    .doc { max-width:760px; margin:0 auto; padding:160px 32px 40px; }
+    .doc-kicker { font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--terracotta); margin-bottom:18px; }
+    .doc-title { font-family:'Fraunces',serif; font-size:clamp(40px,6vw,64px); font-weight:300; line-height:1.02; letter-spacing:-0.02em; margin-bottom:16px; }
+    .doc-title em { font-style:italic; color:var(--terracotta); }
+    .doc-updated { font-size:13px; color:var(--ink-faint); margin-bottom:8px; }
+    .doc-intro { font-size:17px; color:var(--ink-soft); line-height:1.8; margin:28px 0 8px; }
+
+    .doc h2 { font-family:'Fraunces',serif; font-size:26px; font-weight:400; letter-spacing:-0.01em;
+      margin:52px 0 14px; padding-top:26px; border-top:1px solid var(--line); }
+    .doc h3 { font-family:'Fraunces',serif; font-size:18px; font-weight:500; margin:26px 0 8px; }
+    .doc p { color:var(--ink-soft); margin-bottom:14px; }
+    .doc strong { color:var(--ink); font-weight:500; }
+    .doc ul { list-style:none; margin:0 0 16px; padding:0; }
+    .doc li { color:var(--ink-soft); padding:9px 0 9px 22px; position:relative; border-bottom:1px solid var(--line-soft); }
+    .doc li:last-child { border-bottom:none; }
+    .doc li::before { content:''; position:absolute; left:2px; top:18px; width:6px; height:6px; border-radius:50%; background:var(--terracotta); }
+    .doc li strong { display:block; color:var(--ink); font-weight:500; margin-bottom:1px; }
+
+    .steps { list-style:none; counter-reset:step; margin:0 0 16px; padding:0; }
+    .steps li { counter-increment:step; color:var(--ink-soft); padding:14px 0 14px 46px; position:relative;
+      border-bottom:1px solid var(--line-soft); }
+    .steps li:last-child { border-bottom:none; }
+    .steps li::before { content:counter(step); position:absolute; left:0; top:12px;
+      width:28px; height:28px; border-radius:50%; background:var(--terracotta); color:var(--cream);
+      font-family:'DM Sans',sans-serif; font-weight:600; font-size:14px;
+      display:flex; align-items:center; justify-content:center; }
+    .steps li strong { color:var(--ink); font-weight:500; }
+
+    .callout { background:var(--sand); border:1px solid var(--line); border-radius:16px; padding:22px 24px; margin:22px 0; }
+    .callout p { margin:0; font-size:14.5px; }
+
+    footer { background:var(--taupe); color:var(--ink); margin-top:80px; padding:42px 56px;
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:18px; }
+    .footer-brand { font-family:'Fraunces',serif; font-size:24px; font-weight:300; font-style:italic; }
+    .footer-links { display:flex; gap:28px; }
+    .footer-links a { font-size:13px; color:var(--ink-soft); }
+    .footer-links a:hover { color:var(--ink); text-decoration:none; }
+    .footer-copy { font-size:12px; color:var(--ink-faint); }
+
+    @media (max-width:640px) {
+      nav { padding:14px 22px; }
+      .doc { padding:130px 22px 32px; }
+      footer { padding:34px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">Mat<em>lyst</em></a>
+  <a href="/" class="nav-back">← Tilbake</a>
+</nav>
+
+<main class="doc">
+  <p class="doc-kicker">Kontosletting</p>
+  <h1 class="doc-title">Slett <em>kontoen</em> din</h1>
+  <p class="doc-updated">Sist oppdatert 24. juli 2026</p>
+
+  <p class="doc-intro">
+    Du kan når som helst slette Matlyst-kontoen din og alle tilknyttede data. Sletting er permanent og kan
+    ikke angres. Denne siden forklarer hvordan du gjør det, og nøyaktig hvilke data som slettes.
+  </p>
+
+  <h2>Slik sletter du kontoen i appen</h2>
+  <ol class="steps">
+    <li>Åpne <strong>Matlyst</strong>-appen og logg inn på kontoen du vil slette.</li>
+    <li>Gå til <strong>Innstillinger</strong>.</li>
+    <li>Trykk <strong>Slett konto</strong> nederst.</li>
+    <li>Bekreft i dialogen. Kontoen og alle data slettes umiddelbart, og du logges ut.</li>
+  </ol>
+
+  <h2>Hvis du ikke har tilgang til appen</h2>
+  <p>
+    Kan du ikke logge inn eller åpne appen, sender du en e-post til
+    <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> fra e-postadressen som er knyttet til kontoen,
+    og ber om sletting. Vi bekrefter identiteten din og sletter kontoen innen 30 dager.
+  </p>
+
+  <h2>Hvilke data som slettes</h2>
+  <p>Når du sletter kontoen, fjernes alt følgende permanent:</p>
+  <ul>
+    <li>Kontoen din (e-post, innlogging og pseudonym bruker-ID)</li>
+    <li>Profil: navn, brukernavn, profilbilde og preferanser (kostholdsvalg, allergier, mål, kaloriemål, fødselsdato)</li>
+    <li>Oppskriftene dine, mapper, favoritter, vurderinger og notater</li>
+    <li>Ukemeny, handleliste og spiskammer</li>
+    <li>Medlemskap i husstand/delt planlegging</li>
+    <li>Push-token og lokalt lagrede data på enheten (fjernes ved utlogging)</li>
+  </ul>
+
+  <h2>Hva som eventuelt beholdes</h2>
+  <p>
+    Kontoen og innholdet slettes umiddelbart og permanent fra databasen vår. Eventuelle restkopier i
+    krypterte sikkerhetskopier fjernes automatisk <strong>innen 30 dager</strong>. Vi beholder ingen
+    personlig identifiserbare opplysninger utover dette, med unntak av opplysninger vi er lovpålagt å
+    oppbevare (for eksempel transaksjonsdata knyttet til kjøp, som håndteres av App Store, Google Play og
+    RevenueCat). Anonymisert bruksstatistikk som ikke kan knyttes til deg, kan bestå.
+  </p>
+
+  <div class="callout">
+    <p>Se også <a href="/personvern.html">personvernerklæringen</a> for hvordan vi behandler data mens du har
+    en konto. Spørsmål? Skriv til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-brand">Matlyst</div>
+  <div class="footer-links">
+    <a href="/">Hjem</a>
+    <a href="/personvern.html">Personvern</a>
+    <a href="/vilkar.html">Vilkår</a>
+    <a href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">App Store</a>
+  </div>
+  <span class="footer-copy">&copy; 2026 Matlyst</span>
+</footer>
+
+</body>
+</html>
