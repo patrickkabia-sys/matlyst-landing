@@ -151,8 +151,8 @@ footer .c{font-size:12px;color:var(--ink-faint)}
 .page-cta{text-align:center;padding:48px 24px 8px}
 
 /* App-skjermbilder (migreringsside) */
-.feat-media.shot{background:var(--sand-2);display:flex;align-items:center;justify-content:center;padding:clamp(28px,6vh,72px);overflow:visible;min-height:0}
-.feat-media.shot img{width:min(72%,300px)!important;height:auto!important;min-width:0;max-height:none;object-fit:contain;border-radius:30px;box-shadow:0 20px 54px rgba(20,14,9,.22)}
+.feat-media.shot{background:var(--sand-2);display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,48px);overflow:visible;min-height:0}
+.feat-media.shot img{width:min(88%,380px)!important;height:auto!important;min-width:0;max-height:none;object-fit:contain;border-radius:30px;box-shadow:0 22px 56px rgba(20,14,9,.24)}
 .prose figure{margin:30px 0;text-align:center}
 .prose figure img{display:block;width:100%;max-width:280px;margin:0 auto;border-radius:26px;box-shadow:0 16px 44px rgba(20,14,9,.18)}
 .prose figcaption{font-size:14px;color:var(--ink-faint);margin-top:12px}
