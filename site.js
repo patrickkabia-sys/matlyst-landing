@@ -31,14 +31,25 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
   function hide() { if (banner) { banner.classList.add('hide'); setTimeout(function () { banner.hidden = true; }, 520); } }
+  function loadGA() {
+    if (window.gtag) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-X3J7DVSH2R';
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-X3J7DVSH2R');
+  }
 
   var consent = get();
-  if (consent === 'granted') { loadPixel(); loadPostHog(); }
+  if (consent === 'granted') { loadPixel(); loadPostHog(); loadGA(); }
   else if (!consent && banner) banner.hidden = false;
 
   var accept = document.getElementById('ck-accept');
   var reject = document.getElementById('ck-reject');
-  if (accept) accept.addEventListener('click', function () { set('granted'); loadPixel(); loadPostHog(); hide(); });
+  if (accept) accept.addEventListener('click', function () { set('granted'); loadPixel(); loadPostHog(); loadGA(); hide(); });
   if (reject) reject.addEventListener('click', function () { set('denied'); hide(); });
 
   document.addEventListener('click', function (e) {
