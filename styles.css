@@ -149,3 +149,11 @@ footer .c{font-size:12px;color:var(--ink-faint)}
 .prose a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
 .prose .more{display:inline-block;margin-top:8px;font-weight:500;text-decoration:none;color:var(--ink)}
 .page-cta{text-align:center;padding:48px 24px 8px}
+
+/* App-skjermbilder (migreringsside) */
+.feat-media.shot{background:var(--sand-2);display:flex;align-items:center;justify-content:center;padding:clamp(28px,6vh,72px)}
+.feat-media.shot img{width:auto;height:auto;max-height:100%;max-width:min(78%,320px);object-fit:contain;border-radius:30px;box-shadow:0 20px 54px rgba(20,14,9,.22)}
+.prose figure{margin:30px 0;text-align:center}
+.prose figure img{display:block;width:100%;max-width:280px;margin:0 auto;border-radius:26px;box-shadow:0 16px 44px rgba(20,14,9,.18)}
+.prose figcaption{font-size:14px;color:var(--ink-faint);margin-top:12px}
+.disclaimer{max-width:720px;margin:8px auto 0;padding:0 24px;font-size:13px;color:var(--ink-faint);line-height:1.6}
