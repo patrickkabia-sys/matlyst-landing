@@ -37,6 +37,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://matlyst-app.no/finn-oppskrifter</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/hva-kan-jeg-lage</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/middagsforslag</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/handskrevne-oppskrifter</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/personvern.html</loc>
     <lastmod>2026-07-26</lastmod>
     <changefreq>yearly</changefreq>
