@@ -154,7 +154,7 @@ footer .c{font-size:12px;color:var(--ink-faint)}
 .feat-media.shot{background:var(--sand-2);display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,48px);overflow:visible;min-height:0}
 .feat-media.shot img{width:min(88%,380px)!important;height:auto!important;min-width:0;max-height:none;object-fit:contain;border-radius:30px;box-shadow:0 22px 56px rgba(20,14,9,.24)}
 .prose figure{margin:30px 0;text-align:center}
-.prose figure img{display:block;width:100%;max-width:280px;margin:0 auto;border-radius:26px;box-shadow:0 16px 44px rgba(20,14,9,.18)}
+.prose figure img{display:block;width:100%;max-width:280px;height:auto;margin:0 auto;border-radius:26px;box-shadow:0 16px 44px rgba(20,14,9,.18)}
 .prose figcaption{font-size:14px;color:var(--ink-faint);margin-top:12px}
 .disclaimer{max-width:720px;margin:8px auto 0;padding:0 24px;font-size:13px;color:var(--ink-faint);line-height:1.6}
 
