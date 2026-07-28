@@ -27,6 +27,10 @@
   .store .glyph{width:19px;height:19px;flex:none;fill:currentColor}
   .store .name{font-size:16px;font-weight:500}
   .store .hint{display:block;font-size:12.5px;font-weight:300;opacity:.78;margin-top:5px;line-height:1.35}
+  /* Midlertidig: Android er ikke publisert ennå. Dempet, ikke klikkbar. */
+  .store.soon{background:var(--sand);border:1px solid var(--line);color:var(--ink-soft);cursor:default}
+  .store.soon:hover{transform:none;opacity:1}
+  .store.soon .hint{opacity:1}
 
   /* Kodekortet ligger UNDER knappene: velger du App Store er du ferdig og
      trenger aldri se koden. Velger du Play, er den allerede kopiert av
@@ -51,7 +55,7 @@
   <img class="appicon" src="/images/icon.png" width="62" height="62" alt="">
   <p class="k">Matlyst × Sara</p>
   <h1>14 dager <em>gratis</em> Matlyst Pro</h1>
-  <p class="lead">Matlyst samler oppskriftene dine fra nett og sosiale medier, planlegger uka og skriver handlelista for deg. Velg butikken du bruker.</p>
+  <p class="lead">Matlyst samler oppskriftene dine fra nett og sosiale medier, planlegger uka og skriver handlelista for deg.</p>
 
   <div class="stores">
     <a class="store" id="btn-ios" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6762563515&amp;code=SARA14">
@@ -61,13 +65,17 @@
       </span>
       <span class="hint">Løs inn i App Store. Koden fylles inn automatisk.</span>
     </a>
-    <a class="store" id="btn-android" href="https://play.google.com/store/apps/details?id=app.matlyst">
+    <!-- Android er IKKE publisert i Google Play ennå. Oppføringen svarer 404, så
+         dette må stå som en beskjed og ikke som en lenke. Når appen er live:
+         gjør dette om til <a class="store" id="btn-android" href="PLAY_URL"> igjen,
+         legg tilbake klikk-handtereren nederst, og fjern .soon fra CSS-en. -->
+    <div class="store soon">
       <span class="row">
         <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1zM17.2 15.1l-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2zM16.9 15.4 13.5 12l-9.9 9.9c.4.4 1 .4 1.7.1l11.6-6.6zM16.9 8.6 5.3 2c-.7-.4-1.3-.3-1.7.1L13.5 12l3.4-3.4z"/></svg>
-        <span class="name">Android</span>
+        <span class="name">Android kommer snart</span>
       </span>
-      <span class="hint">Last ned i Google Play, og skriv inn koden når du registrerer deg i appen.</span>
-    </a>
+      <span class="hint">Matlyst er ikke i Google Play ennå. Koden gjelder iPhone og iPad så lenge.</span>
+    </div>
   </div>
 
   <div class="code-card">
@@ -112,12 +120,12 @@
 
   copyBtn.addEventListener('click', function () { copyCode(); cap('sara_code_copied'); });
 
-  // Android-brukeren MÅ taste koden i appen etterpå, så vi legger den på
-  // utklippstavlen automatisk når hen går til Play. Beste innsats, aldri blokkerende.
-  document.getElementById('btn-android').addEventListener('click', function () {
-    copyCode();
-    cap('sara_store_click', { store: 'play' });
-  });
+  // Android-knappen finnes ikke så lenge appen ikke er i Google Play. Når den
+  // kommer tilbake skal den også kopiere koden ved klikk, siden Android-brukeren
+  // MÅ taste den inn i appen etterpå:
+  //   document.getElementById('btn-android').addEventListener('click', function () {
+  //     copyCode(); cap('sara_store_click', { store: 'play' });
+  //   });
   document.getElementById('btn-ios').addEventListener('click', function () {
     cap('sara_store_click', { store: 'app_store' });
   });
