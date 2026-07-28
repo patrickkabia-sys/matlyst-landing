@@ -1,45 +1,120 @@
 <!doctype html>
 <html lang="no">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>Matlyst × Sara</title>
-  <link rel="canonical" href="https://apps.apple.com/redeem?ctx=offercodes&id=6762563515&code=SARA14">
-  <!-- Fallback hvis JS er av: videresend etter 3s. Med JS skjer det raskere under. -->
-  <meta http-equiv="refresh" content="3; url=https://apps.apple.com/redeem?ctx=offercodes&id=6762563515&code=SARA14">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Matlyst × Sara</title>
+<meta name="theme-color" content="#F7F3EC">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/png" href="/images/icon.png">
+<style>
+  .sara{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(28px,7vw,64px) var(--pad);gap:26px}
+  .sara .k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-faint)}
+  .sara h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(32px,7vw,52px);line-height:1.05;letter-spacing:-.02em;max-width:14ch}
+  .sara h1 em{font-style:italic;color:var(--orange)}
+  .sara .lead{font-size:clamp(15px,2.4vw,17px);color:var(--ink-soft);max-width:34ch}
+  .code-card{background:var(--sand);border:1px solid var(--line);border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;align-items:center;width:100%;max-width:340px}
+  .code-card .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .code{font-family:'Fraunces',serif;font-size:clamp(30px,8vw,40px);letter-spacing:.12em;color:var(--ink);line-height:1}
+  .copy{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--terracotta);background:none;border:1px solid var(--line);border-radius:999px;padding:7px 16px;cursor:pointer;transition:background .2s,color .2s}
+  .copy:hover{background:var(--terracotta);color:var(--cream)}
+  .copy[data-done="1"]{background:var(--terracotta);color:var(--cream);border-color:var(--terracotta)}
+  .stores{display:flex;flex-direction:column;gap:16px;width:100%;max-width:340px}
+  .store{display:block;text-decoration:none;background:var(--ink);color:var(--cream);border-radius:14px;padding:15px 20px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;transition:transform .2s,opacity .2s}
+  .store:hover{transform:translateY(-2px);opacity:.92}
+  .store .hint{display:block;font-size:12.5px;font-weight:300;opacity:.72;margin-top:3px;line-height:1.35}
+  .foot{font-size:12.5px;color:var(--ink-faint);max-width:32ch}
+  .foot a{color:var(--ink-soft)}
+</style>
 </head>
-<body style="font-family:system-ui,-apple-system,sans-serif;text-align:center;padding:3rem;color:#0C0A08">
-  <p>Sender deg til App Store …</p>
-  <p><a href="https://apps.apple.com/redeem?ctx=offercodes&id=6762563515&code=SARA14">Trykk her hvis ingenting skjer</a></p>
-  <script>
-    (function () {
-      var APPLE = "https://apps.apple.com/redeem?ctx=offercodes&id=6762563515&code=SARA14";
-      function go() { location.replace(APPLE); }
+<body>
+<main class="sara">
+  <p class="k">Matlyst × Sara</p>
+  <h1>14 dager <em>gratis</em> Matlyst Pro</h1>
+  <p class="lead">Sara har gitt deg koden under. Velg butikken du bruker.</p>
 
-      // Personvern: spor KUN hvis besøkeren har samtykket på matlyst-app.no (samme
-      // 'matlyst-consent'-flagg som resten av siden, GDPR). Uten samtykke: ingen
-      // sporing, bare videresend. Førstegangs-lenkeklikk uten tidligere samtykke
-      // telles derfor ikke — bevisst, for å ikke bryte sidens personvern-modell.
-      var consent = null;
-      try { consent = localStorage.getItem('matlyst-consent'); } catch (e) {}
+  <div class="code-card">
+    <span class="lbl">Din kode</span>
+    <span class="code" id="code">SARA14</span>
+    <button class="copy" id="copy" type="button">Kopier koden</button>
+  </div>
 
-      if (consent === 'granted') {
-        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-        posthog.init('phc_CnHuX3D6byju4qDSyVXQ9PQJZ6VxY7xFrCgtBTiiqeTr', {
-          api_host: 'https://eu.i.posthog.com',
-          person_profiles: 'identified_only',
-          disable_session_recording: true,
-          capture_pageview: true
-        });
-        try { posthog.capture('sara_link_click', { code: 'SARA14' }); } catch (e) {}
-        // Kort forsinkelse så eventet rekker å sendes (PostHog flusher også via
-        // sendBeacon ved unload), deretter videresend.
-        setTimeout(go, 700);
-      } else {
-        go();
-      }
-    })();
-  </script>
+  <div class="stores">
+    <a class="store" id="btn-ios" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6762563515&amp;code=SARA14">
+      iPhone og iPad
+      <span class="hint">Løs inn i App Store. Koden fylles inn automatisk.</span>
+    </a>
+    <a class="store" id="btn-android" href="https://play.google.com/store/apps/details?id=app.matlyst">
+      Android
+      <span class="hint">Last ned i Google Play, og skriv inn koden når du registrerer deg i appen.</span>
+    </a>
+  </div>
+
+  <p class="foot">Abonnementet fornyes automatisk etter prøveperioden, og kan sies opp når som helst. <a href="/vilkar.html">Vilkår</a> og <a href="/personvern.html">personvern</a>.</p>
+</main>
+
+<script>
+(function () {
+  var CODE = 'SARA14';
+
+  // Kopier-knapp. Clipboard API krever sikker kontekst (siden kjører på https),
+  // men feiler stille i eldre nettlesere → da markerer vi ingenting.
+  var copyBtn = document.getElementById('copy');
+  copyBtn.addEventListener('click', function () {
+    var done = function () {
+      copyBtn.textContent = 'Kopiert';
+      copyBtn.setAttribute('data-done', '1');
+      cap('sara_code_copied');
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(CODE).then(done, function () {});
+    } else {
+      var r = document.createRange();
+      r.selectNode(document.getElementById('code'));
+      var s = window.getSelection();
+      s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      s.removeAllRanges();
+    }
+  });
+
+  // Android-brukeren MÅ taste koden i appen etterpå, så vi legger den på
+  // utklippstavlen automatisk når hen går til Play. Beste innsats, aldri blokkerende.
+  document.getElementById('btn-android').addEventListener('click', function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try { navigator.clipboard.writeText(CODE); } catch (e) {}
+    }
+    cap('sara_store_click', { store: 'play' });
+  });
+  document.getElementById('btn-ios').addEventListener('click', function () {
+    cap('sara_store_click', { store: 'app_store' });
+  });
+
+  // Personvern: spor KUN hvis besøkeren har samtykket på matlyst-app.no (samme
+  // 'matlyst-consent'-flagg som resten av siden, GDPR). Uten samtykke lastes
+  // PostHog aldri, og cap() blir en no-op.
+  var consent = null;
+  try { consent = localStorage.getItem('matlyst-consent'); } catch (e) {}
+  var tracking = consent === 'granted';
+
+  function cap(name, props) {
+    if (!tracking || !window.posthog) return;
+    try { posthog.capture(name, props || {}); } catch (e) {}
+  }
+
+  if (tracking) {
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_CnHuX3D6byju4qDSyVXQ9PQJZ6VxY7xFrCgtBTiiqeTr', {
+      api_host: 'https://eu.i.posthog.com',
+      person_profiles: 'identified_only',
+      disable_session_recording: true,
+      capture_pageview: true
+    });
+    cap('sara_link_click', { code: CODE });
+  }
+})();
+</script>
 </body>
 </html>
