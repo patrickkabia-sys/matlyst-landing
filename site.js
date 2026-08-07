@@ -47,6 +47,22 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   if (consent === 'granted') { loadPixel(); loadPostHog(); loadGA(); }
   else if (!consent && banner) banner.hidden = false;
 
+  // Tilbaketrekking (GDPR art. 7(3): skal vaere like enkelt som a gi samtykke).
+  // Nullstiller valget og laster siden pa nytt, slik at ingen av skriptene kjorer
+  // videre i okten. Uten reload ville piksel, GA og PostHog blitt vaerende til
+  // brukeren selv navigerte bort -- altsa ikke en reell tilbaketrekking.
+  function withdraw() {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    try { if (window.posthog && posthog.opt_out_capturing) posthog.opt_out_capturing(); } catch (e) {}
+    location.reload();
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-consent-withdraw]');
+    if (!t) return;
+    e.preventDefault();
+    withdraw();
+  });
+
   var accept = document.getElementById('ck-accept');
   var reject = document.getElementById('ck-reject');
   if (accept) accept.addEventListener('click', function () { set('granted'); loadPixel(); loadPostHog(); loadGA(); hide(); });

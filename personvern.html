@@ -81,7 +81,7 @@
 <main class="doc">
   <p class="doc-kicker">Personvern</p>
   <h1 class="doc-title">Personvern­erklæring</h1>
-  <p class="doc-updated">Sist oppdatert 2. august 2026</p>
+  <p class="doc-updated">Sist oppdatert 5. august 2026</p>
 
   <p class="doc-intro">
     Matlyst er en matapp som lar deg importere, organisere og lage oppskrifter. Vi samler kun dataene
@@ -111,7 +111,7 @@
   <h3>Profil og synlighet</h3>
   <ul>
     <li>Navn, brukernavn og profilbilde (valgfritt).</li>
-    <li>Preferanser du oppgir: kostholdsvalg, allergier, mål, måleenheter, kaloriemål og fødselsdato (valgfritt).</li>
+    <li>Preferanser du oppgir: kostholdsvalg, allergier, mål, måleenheter og kaloriemål. Alt er valgfritt. Vi spør ikke om alder eller fødselsdato.</li>
     <li><strong>Synlighet.</strong> Navn, brukernavn og profilbilde er synlige for andre innloggede brukere når de søker deg opp, følger deg eller deler husstand med deg. Dette er valgfritt og kan når som helst fjernes i Profil-innstillingene.</li>
   </ul>
 
@@ -132,8 +132,9 @@
 
   <h3>Teknisk bruk</h3>
   <ul>
-    <li>Feil- og krasjrapporter for å forbedre stabiliteten.</li>
-    <li>Push-token (en unik enhets-ID) hvis du tillater varsler — brukes kun til å sende deg varsler, ikke til sporing, og slettes ved utlogging.</li>
+    <li>En teknisk feilsøkingslogg i vår egen database når noe går galt i appen, knyttet til konto-ID-en din. Den slettes automatisk etter 90 dager, og når du sletter kontoen.</li>
+    <li>Feil- og krasjrapporter (Sentry) for å forbedre stabiliteten.</li>
+    <li>Push-token (en unik enhets-ID) hvis du tillater varsler — brukes kun til å sende deg varsler, ikke til sporing. Det slettes når du logger ut, og når du sletter kontoen.</li>
     <li>Appversjon og enhetsinformasjon for feilretting.</li>
     <li>Bruksstatistikk (hvilke funksjoner og skjermer som brukes) for å forbedre appen, og kun hvis du har samtykket. Statistikken er <strong>pseudonym, ikke anonym</strong>: den knyttes til den tilfeldig genererte konto-ID-en din, slik at hendelser fra samme bruker kan ses i sammenheng. Vi sender aldri navn, e-post eller oppskriftsinnhold.</li>
   </ul>
@@ -143,7 +144,7 @@
   <ul>
     <li><strong>Avtale (art. 6 b).</strong> Levere kjernefunksjonene: import, lagring, planlegging og synkronisering mellom enhetene dine, samt behandle abonnement (Matlyst Pro).</li>
     <li><strong>Avtale (art. 6 b).</strong> Vise navn, brukernavn og profilbilde til andre brukere gjennom søk, følging og husstand — valgfritt og kan fjernes når som helst.</li>
-    <li><strong>Berettiget interesse (art. 6 f).</strong> Feil- og krasjrapportering for å holde appen stabil og sikker.</li>
+    <li><strong>Berettiget interesse (art. 6 f).</strong> Teknisk feilsøkingslogg og feil- og krasjrapportering for å holde appen stabil og sikker, og skriftene på nettstedet (Google Fonts), som lastes for at siden skal se ut som den skal. Du kan protestere mot begge — se «Dine rettigheter».</li>
     <li><strong>Samtykke (art. 6 a).</strong> Bruksstatistikk i appen. Vi spør deg eksplisitt, og vi samler ingenting før du har sagt ja. Du kan trekke samtykket tilbake når som helst under Innstillinger, like enkelt som du ga det.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Personaliserte daglige middagsforslag generert av KI, og push-varsler. Begge kan trekkes tilbake når som helst.</li>
   </ul>
@@ -177,11 +178,27 @@
   <h2>Nettstedet matlyst-app.no</h2>
   <p>Erklæringen gjelder også nettstedet vårt. Det er en enkel landingsside, men bruker noen tjenester du bør kjenne til:</p>
   <ul>
-    <li><strong>Analyse (Meta Pixel).</strong> Vi bruker Meta Pixel for å måle effekten av markedsføringen vår. Den lastes <strong>kun hvis du samtykker</strong> i samtykke-banneret — velger du «Bare nødvendige», settes ingen sporing. Du kan ombestemme deg ved å tømme nettleserdataene dine.</li>
+    <li><strong>Analyse (Meta Pixel).</strong> Vi bruker Meta Pixel for å måle effekten av markedsføringen vår. Den lastes <strong>kun hvis du samtykker</strong> i samtykke-banneret — velger du «Bare nødvendige», settes ingen sporing.</li>
     <li><strong>Produktanalyse (PostHog).</strong> Statistikk om bruk av nettstedet, hostet i EU, lastes <strong>kun ved samtykke</strong>.</li>
+    <li><strong>Google Analytics.</strong> Besøksstatistikk (måling nr. G-X3J7DVSH2R). Lastes <strong>kun ved samtykke</strong>, sammen med de to over. Google mottar blant annet IP-adressen din og hvilke sider du åpner.</li>
     <li><strong>Nyhetsbrev (EmailOctopus).</strong> Melder du deg på, lagres e-postadressen din hos EmailOctopus så vi kan sende deg oppdateringer. Du kan melde deg av når som helst via lenken i e-postene.</li>
-    <li><strong>reCAPTCHA (Google).</strong> Påmeldingsskjemaet er beskyttet mot spam med Google reCAPTCHA.</li>
+    <li>
+      <strong>Google Fonts.</strong> Skrifttypene på nettstedet hentes fra Googles servere. Dette skjer
+      <strong>uavhengig av samtykke-banneret</strong>, fordi siden trenger skriftene for å vises riktig — og
+      Google mottar da IP-adressen din. Vi behandler dette på grunnlag av berettiget interesse (art. 6 f).
+      Vil du unngå det, må du blokkere <code>fonts.googleapis.com</code> og <code>fonts.gstatic.com</code> i
+      nettleseren din; siden virker fortsatt, men med andre skrifter.
+    </li>
   </ul>
+  <p>
+    <strong>Du kan ombestemme deg når som helst.</strong> Nederst på forsiden ligger lenken
+    «Endre samtykke», som nullstiller valget ditt og henter fram banneret igjen. Da stopper
+    Meta Pixel, PostHog og Google Analytics umiddelbart. Det skal være like enkelt å trekke
+    tilbake et samtykke som å gi det.
+  </p>
+  <p>
+    <a href="/" data-consent-withdraw><strong>Endre samtykket mitt nå →</strong></a>
+  </p>
 
   <h2>Hvem vi deler med (databehandlere)</h2>
   <p>Vi selger aldri dataene dine. Vi bruker betrodde leverandører for å drifte tjenesten:</p>
@@ -195,11 +212,20 @@
     <li><strong>PostHog</strong> — produktanalyse i appen og på nettstedet, knyttet til en pseudonym konto-ID (hostet i EU; kun ved samtykke, både i appen og på nettstedet).</li>
     <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet.</li>
     <li><strong>Meta (Facebook)</strong> — måling av markedsføring på nettstedet (kun ved samtykke).</li>
+    <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke) og skrifttyper på nettstedet (Google Fonts).</li>
   </ul>
+
+  <h3>Overføring ut av EØS</h3>
   <p>
-    Noen av disse leverandørene behandler data utenfor Norge/EØS (f.eks. i USA). Overføringen skjer på
-    grunnlag av leverandørenes personvernvilkår og gjeldende overføringsmekanismer.
+    Flere av leverandørene behandler data i USA. Vi navngir grunnlaget for hver enkelt, slik
+    art. 13(1)(f) krever:
   </p>
+  <ul>
+    <li><strong>Ingen overføring.</strong> Supabase (database, innlogging, fillagring) og PostHog ligger begge i EU.</li>
+    <li><strong>Storbritannia — adekvansbeslutning.</strong> EmailOctopus. EU fornyet adekvansbeslutningen for Storbritannia 19. desember 2025, med gyldighet til 27. desember 2031.</li>
+    <li><strong>USA — standard personvernbestemmelser (SCC, art. 46).</strong> Anthropic. Anthropic er <strong>ikke</strong> sertifisert under EU–US Data Privacy Framework, og overføringen hviler derfor på SCC.</li>
+    <li><strong>USA — EU–US Data Privacy Framework, subsidiært standard personvernbestemmelser.</strong> Apple, Google, Meta og RevenueCat. Overføringen bygger på deltakelse i rammeverket, som Europakommisjonen godkjente 10. juli 2023, og på standard personvernbestemmelser (SCC, art. 46) der rammeverket ikke dekker behandlingen. Gjeldende status for hver leverandør kan slås opp på <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener">dataprivacyframework.gov</a>.</li>
+  </ul>
 
   <h2>Lagring på enheten din</h2>
   <p>
@@ -210,9 +236,20 @@
   </p>
 
   <h2>Lagring og sletting</h2>
+  <p>Vi lagrer ikke opplysninger lenger enn vi trenger dem. Konkret:</p>
+  <ul>
+    <li><strong>Konto, profil og innholdet ditt</strong> — så lenge du har en konto. Det finnes ingen automatisk utløpstid; du bestemmer selv når det slettes.</li>
+    <li><strong>Teknisk feilsøkingslogg</strong> — slettes automatisk 90 dager etter at den ble skrevet.</li>
+    <li><strong>Push-token</strong> — slettes når du logger ut, eller når du sletter kontoen.</li>
+    <li><strong>Bruksstatistikk hos PostHog</strong> — samles kun mens samtykket ditt står. Trekker du samtykket, stopper innsamlingen umiddelbart. Statistikk som allerede er samlet, slettes når du sletter kontoen, eller hvis du ber oss om det.</li>
+    <li><strong>Nyhetsbrev hos EmailOctopus</strong> — til du melder deg av, eller sletter kontoen.</li>
+    <li><strong>Restopplysninger under sletting</strong> — går slettingen hos en av leverandørene våre ikke gjennom med én gang, beholder vi konto-ID-en din, og e-postadressen hvis den trengs, til slettingen er fullført. Ikke noe annet, og ikke lenger enn det tar.</li>
+  </ul>
   <p>
-    Vi lagrer opplysningene så lenge du har en konto. Du kan slette kontoen din i appen eller ved å kontakte
-    oss på <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> — da slettes innholdet ditt.
+    Du sletter kontoen selv under Innstillinger → Slett konto, eller ved å kontakte oss på
+    <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>. Da fjernes kontoen, alt innholdet ditt,
+    bildene dine og opplysningene vi har sendt til PostHog, EmailOctopus og RevenueCat. Abonnementet ditt
+    hos Apple eller Google må du si opp selv i butikken — vi har ikke tilgang til det.
   </p>
 
   <h2>Dine rettigheter</h2>
@@ -225,7 +262,14 @@
     <li>protestere mot behandling basert på berettiget interesse.</li>
   </ul>
   <p>
-    Kontakt <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> for å bruke rettighetene dine. Vi svarer
+    <strong>Innsyn og dataportabilitet kan du gjøre selv, med én gang.</strong> I appen, under
+    Innstillinger → Eksport → «Last ned personopplysningene mine», får du en JSON-fil med alt vi har
+    lagret om deg. Samme sted finner du «Slett konto», som sletter kontoen og alle data — også hos
+    leverandørene våre. Filen dekker våre egne systemer; data som ligger hos PostHog, EmailOctopus,
+    RevenueCat, Apple eller Google må du be om direkte hos dem.
+  </p>
+  <p>
+    For alt annet, kontakt <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>. Vi svarer
     innen 30 dager. Du kan også klage til Datatilsynet (datatilsynet.no) hvis du mener vi behandler
     opplysningene dine feil.
   </p>
@@ -254,5 +298,19 @@
   <span class="footer-copy">&copy; 2026 Matlyst</span>
 </footer>
 
+<script>
+// Kun tilbaketrekking av samtykke (GDPR art. 7(3)). Denne siden laster BEVISST
+// ikke site.js, sa ingen sporing startes her selv om du har samtykket.
+// Nokkelen ma vaere den samme som i site.js: 'matlyst-consent'.
+(function () {
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-consent-withdraw]');
+    if (!t) return;
+    e.preventDefault();
+    try { localStorage.removeItem('matlyst-consent'); } catch (err) {}
+    alert('Samtykket er nullstilt. Du blir spurt pa nytt neste gang du apner forsiden.');
+  });
+})();
+</script>
 </body>
 </html>
