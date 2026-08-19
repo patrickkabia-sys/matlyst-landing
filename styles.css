@@ -165,3 +165,21 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .skip-link:focus{top:0}
 /* Inline kode */
 .prose code{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.86em;background:var(--sand-2);padding:2px 6px;border-radius:6px;color:var(--ink)}
+
+/* FAQ (spørsmål og svar) — synlig tekst + FAQPage-schema.
+   Google krever at svaret står på sida; skjult tekst i JSON-LD alene
+   gir ingen rike resultater og kan regnes som strukturert-data-spam. */
+.faq{max-width:720px;margin:44px auto 0;padding:0 24px}
+.faq h2{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:clamp(24px,3vw,34px);line-height:1.15;margin:0 0 18px}
+.faq details{border-top:1px solid var(--line-soft);padding:2px 0}
+.faq details:last-of-type{border-bottom:1px solid var(--line-soft)}
+.faq summary{list-style:none;cursor:pointer;font-size:17px;font-weight:500;line-height:1.5;
+  padding:16px 34px 16px 0;position:relative;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:9px;height:9px;
+  border-right:1.5px solid var(--ink-soft);border-bottom:1.5px solid var(--ink-soft);
+  transform:translateY(-70%) rotate(45deg);transition:transform .18s ease}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq details p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin:0 0 16px;padding-right:34px}
+.faq details a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
+@media (prefers-reduced-motion:reduce){.faq summary::after{transition:none}}
