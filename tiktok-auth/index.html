@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Matlyst — TikTok-tilkobling</title>
+<meta name="theme-color" content="#F7F3EC">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/png" href="/images/icon.png">
+<style>
+  .auth{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(28px,7vw,64px) var(--pad);gap:20px}
+  .auth h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(26px,5vw,36px);line-height:1.1}
+  .auth p{font-size:14.5px;color:var(--ink-soft);max-width:44ch;line-height:1.55}
+  .box{background:var(--sand);border:1px solid var(--line);border-radius:16px;padding:18px;width:100%;max-width:560px;display:flex;flex-direction:column;gap:12px}
+  .lbl{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.5;word-break:break-all;color:var(--ink);text-align:left;background:var(--cream);border:1px solid var(--line-soft);border-radius:10px;padding:12px}
+  button{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--cream);background:var(--ink);border:1px solid var(--ink);border-radius:999px;padding:11px 22px;cursor:pointer;transition:opacity .2s}
+  button:hover{opacity:.9}
+  .err{color:#8E2A15}
+</style>
+</head>
+<body>
+<main class="auth">
+  <h1 id="tittel">Kobler til TikTok…</h1>
+  <p id="hjelp">Kopier koden under og lim den inn i terminalen.</p>
+
+  <div class="box" id="boks" hidden>
+    <span class="lbl">Autorisasjonskode</span>
+    <code id="kode"></code>
+    <button id="kopier" type="button">Kopier koden</button>
+  </div>
+
+  <p id="detalj" style="font-size:12.5px"></p>
+</main>
+
+<script>
+/* Denne siden gjør ÉN ting: fanger `code` fra TikToks redirect og viser den så
+   den kan limes inn lokalt. Den bytter bevisst IKKE koden mot et token — det
+   ville krevd client_secret i klientkoden, altså å publisere hemmeligheten på
+   et statisk nettsted. Byttet skjer på Patricks maskin, av
+   marketing/scripts/tiktok-token.mjs.
+
+   Koden er kortlevd og engangs, så den er ufarlig å vise her. Siden er
+   noindex/nofollow og laster ingen sporing. */
+(function () {
+  var q = new URLSearchParams(location.search);
+  var code = q.get('code');
+  var feil = q.get('error');
+  var tittel = document.getElementById('tittel');
+  var hjelp = document.getElementById('hjelp');
+  var detalj = document.getElementById('detalj');
+
+  if (feil) {
+    tittel.textContent = 'Tilkoblingen ble avbrutt';
+    tittel.className = 'err';
+    hjelp.textContent = 'TikTok returnerte en feil. Prøv autoriseringslenken på nytt.';
+    detalj.textContent = feil + (q.get('error_description') ? ' — ' + q.get('error_description') : '');
+    return;
+  }
+
+  if (!code) {
+    tittel.textContent = 'Ingenting å vise';
+    hjelp.textContent = 'Denne siden brukes bare som returadresse når du kobler til TikTok. Åpne autoriseringslenken fra terminalen.';
+    return;
+  }
+
+  tittel.textContent = 'Koblet til';
+  document.getElementById('kode').textContent = code;
+  document.getElementById('boks').hidden = false;
+  var gitt = q.get('scopes');
+  if (gitt) detalj.textContent = 'Tillatelser gitt: ' + gitt;
+
+  document.getElementById('kopier').addEventListener('click', function () {
+    var b = this;
+    var ferdig = function () { b.textContent = 'Kopiert'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(ferdig, function () {});
+    } else {
+      try {
+        var r = document.createRange();
+        r.selectNode(document.getElementById('kode'));
+        var s = window.getSelection();
+        s.removeAllRanges(); s.addRange(r);
+        document.execCommand('copy'); s.removeAllRanges(); ferdig();
+      } catch (e) {}
+    }
+  });
+})();
+</script>
+</body>
+</html>

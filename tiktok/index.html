@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Matlyst — fra TikTok til middag</title>
+<meta name="description" content="Del en TikTok til Matlyst og få oppskriften ferdig strukturert på norsk, med gram og desiliter. Ukemeny og handleliste skriver seg selv.">
+<meta name="theme-color" content="#F7F3EC">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://matlyst-app.no/tiktok/">
+<meta property="og:title" content="Fra TikTok til middag">
+<meta property="og:description" content="Del en TikTok til Matlyst og få oppskriften ferdig strukturert på norsk, med gram og desiliter.">
+<meta property="og:image" content="https://matlyst-app.no/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:site_name" content="Matlyst">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fra TikTok til middag">
+<meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" type="image/png" href="/images/icon.png">
+<style>
+  .tt{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(28px,7vw,64px) var(--pad);gap:22px}
+  .appicon{width:62px;height:62px;border-radius:14px;box-shadow:0 6px 22px rgba(30,24,19,.12)}
+  .tt .k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
+  .tt h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(32px,7vw,52px);line-height:1.05;letter-spacing:-.02em;max-width:15ch}
+  .tt h1 em{font-style:italic;color:var(--orange)}
+  .tt .lead{font-size:clamp(15px,2.4vw,17px);color:var(--ink-soft);max-width:38ch;line-height:1.55}
+
+  /* Tre steg. Kort nok til å leses på en telefon i en scroll-pause — den som
+     kommer hit har akkurat sett mekanismen i en video og trenger bekreftelse,
+     ikke en ny forklaring. */
+  .steps{display:flex;flex-direction:column;gap:11px;width:100%;max-width:360px;text-align:left}
+  .step{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
+  .step b{display:flex;align-items:center;justify-content:center;flex:none;width:22px;height:22px;border-radius:50%;background:var(--sand-2);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;margin-top:1px}
+
+  /* Samme visuelle vekt på begge butikkvalg, som på /sara: bommer en
+     OS-gjetning, klikker brukeren den høyeste og havner i en blindvei. */
+  .stores{display:flex;flex-direction:column;gap:14px;width:100%;max-width:360px;margin-top:2px}
+  .store{display:block;text-decoration:none;background:var(--ink);color:var(--cream);border-radius:14px;padding:15px 20px;font-family:'DM Sans',sans-serif;transition:transform .2s,opacity .2s}
+  .store:hover{transform:translateY(-2px);opacity:.92}
+  .store .row{display:flex;align-items:center;justify-content:center;gap:10px}
+  .store .glyph{width:19px;height:19px;flex:none;fill:currentColor}
+  .store .name{font-size:16px;font-weight:500}
+  .store .hint{display:block;font-size:12.5px;font-weight:300;opacity:.78;margin-top:5px;line-height:1.35}
+  .store.soon{background:var(--sand);border:1px solid var(--line);color:var(--ink-soft);cursor:default}
+  .store.soon:hover{transform:none;opacity:1}
+  .store.soon .hint{opacity:1}
+
+  .foot{font-size:12.5px;color:var(--ink-soft);max-width:34ch;line-height:1.5}
+  .foot a{color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<main class="tt">
+  <img class="appicon" src="/images/icon.png" width="62" height="62" alt="">
+  <p class="k">Fra TikTok til middag</p>
+  <h1>Videoen du nettopp så, som <em>ferdig oppskrift</em></h1>
+  <p class="lead">Matlyst leser oppskriften ut av TikTok-en og gir deg den på norsk, med gram og desiliter. Uansett hvilket språk den var på.</p>
+
+  <div class="steps">
+    <div class="step"><b>1</b><span>Trykk «Del» på en TikTok med mat</span></div>
+    <div class="step"><b>2</b><span>Velg Matlyst — oppskriften står ferdig på sekunder</span></div>
+    <div class="step"><b>3</b><span>Legg den i ukemenyen. Handlelista skriver seg selv.</span></div>
+  </div>
+
+  <div class="stores">
+    <!-- ct= er Apples kampanjeparameter. Den vises i App Analytics, men Apple
+         attribuerer den mest pålitelig sammen med en pt-verdi fra App Store
+         Connect. Vår egen måling er PostHog-eventet under — ct er et bonusspor,
+         ikke fasiten. -->
+    <a class="store" id="btn-ios" href="https://apps.apple.com/no/app/matlyst/id6762563515?ct=tiktok-bio" target="_blank" rel="noopener">
+      <span class="row">
+        <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.02-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.24 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.28-1.27 3.13-2.53.99-1.45 1.4-2.86 1.42-2.93-.03-.01-2.72-1.04-2.75-4.13zM14.6 4.5c.71-.87 1.19-2.07 1.06-3.27-1.02.04-2.26.68-3 1.54-.66.76-1.24 1.98-1.08 3.15 1.14.09 2.31-.58 3.02-1.42z"/></svg>
+        <span class="name">Last ned gratis</span>
+      </span>
+      <span class="hint">iPhone og iPad. 5 importer i måneden er gratis for alltid.</span>
+    </a>
+    <!-- Android er IKKE publisert i Google Play ennå — oppføringen svarer 404.
+         Når appen er live: gjør dette om til <a class="store" id="btn-android"
+         href="PLAY_URL">, legg tilbake klikk-håndtereren nederst, og fjern
+         .soon fra CSS-en. Samme mønster som /sara/. -->
+    <div class="store soon">
+      <span class="row">
+        <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1zM17.2 15.1l-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2zM16.9 15.4 13.5 12l-9.9 9.9c.4.4 1 .4 1.7.1l11.6-6.6zM16.9 8.6 5.3 2c-.7-.4-1.3-.3-1.7.1L13.5 12l3.4-3.4z"/></svg>
+        <span class="name">Android kommer snart</span>
+      </span>
+      <span class="hint">Matlyst er ikke i Google Play ennå. Følg @matlyst.appen, så sier vi fra.</span>
+    </div>
+  </div>
+
+  <p class="foot">Ingen annonser, ingen datasalg. <a href="/vilkar.html">Vilkår</a> og <a href="/personvern.html">personvern</a>.</p>
+</main>
+
+<!-- Samtykke-banner -->
+<div class="cookie" id="cookie" hidden>
+  <h3>Vi bruker informasjonskapsler</h3>
+  <p>Vi måler hva som fungerer, slik at vi kan forbedre Matlyst. Du bestemmer. Les mer i <a href="/personvern.html">personvernerklæringen</a>.</p>
+  <div class="cookie-actions">
+    <button class="ck-btn ck-accept" id="ck-accept" type="button">Godta</button>
+    <button class="ck-btn ck-reject" id="ck-reject" type="button">Bare nødvendige</button>
+  </div>
+</div>
+
+<!-- site.js eier banneret og all lasting av PostHog, og MÅ ligge før skriptet
+     under — ellers rekker ikke «Godta»-lytteren i site.js å sette samtykket og
+     starte PostHog før vårt eget event fyrer. Samme rekkefølge som /sara/. -->
+<script src="/site.js"></script>
+<script>
+(function () {
+  // Personvern: spor KUN ved samtykke (samme 'matlyst-consent'-flagg som resten
+  // av siden). Samtykket leses på nytt ved hvert kall, ikke låst ved page load,
+  // slik at et samtykke gitt eller trukket tilbake underveis virker med en gang.
+  function hasConsent() {
+    try { return localStorage.getItem('matlyst-consent') === 'granted'; } catch (e) { return false; }
+  }
+  function cap(name, props) {
+    if (!hasConsent() || !window.posthog) return;
+    try { posthog.capture(name, props || {}); } catch (e) {}
+  }
+
+  document.getElementById('btn-ios').addEventListener('click', function () {
+    cap('tiktok_store_click', { store: 'app_store' });
+  });
+
+  // ⚠️ Besøket MÅ også telles når noen trykker «Godta», ikke bare ved page load.
+  // Alle som kommer fra TikTok-bioen er førstegangsbesøkende og møter banneret,
+  // så uten dette ville vi mistet hele trafikken. Dette er nøyaktig fella
+  // /sara/ gikk i før den ble rettet.
+  if (hasConsent()) {
+    cap('tiktok_link_view');
+  } else {
+    var accept = document.getElementById('ck-accept');
+    if (accept) accept.addEventListener('click', function () { cap('tiktok_link_view'); });
+  }
+})();
+</script>
+</body>
+</html>
