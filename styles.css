@@ -34,6 +34,23 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
 .hero-actions{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .btn-store{transition:transform .25s,opacity .25s}.btn-store:hover{transform:translateY(-2px);opacity:.9}
 .btn-store img{height:52px}
+/* App Store og Google Play side om side. To fallgruver, begge målt i nettleser:
+
+   1) SYNLIG høyde er ikke boksens høyde. App Store-merket er en SVG med
+      viewBox 119.66 x 40 i en boks på 120 x 52. Den skalerer proporsjonalt og
+      brevkasses, så det svarte merket blir 120 x 40, ikke 120 x 52. Play-merket
+      leveres av Google med innebygd luft: bare 192 av PNG-ens 250 px er selve
+      merket. 52 px totalhøyde gir derfor 40 px synlig merke, altså nøyaktig
+      samme høyde som App Store. Beskjær aldri PNG-en for å slippe regnestykket:
+      Googles retningslinjer krever den luften som klaring rundt merket.
+
+   2) width:auto er IKKE valgfri. PNG-en har width="646" i markupen, og uten
+      width:auto strekkes den til attributtbredden (klippet av img{max-width:100%})
+      mens CSS-høyden står fast. Resultatet var 496 x 68, et merke trukket ut
+      til nesten dobbel bredde. SVG-en slipper unna fordi den skalerer i sin
+      egen boks; PNG-en gjør ikke det. */
+.store-badges{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.btn-store-play img{height:52px;width:auto}
 .scroll-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);text-decoration:none}
 .scroll-link:hover{color:var(--ink)}
 @keyframes fu{to{opacity:1;transform:none}}
@@ -104,6 +121,7 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
 .cta h2 em{font-style:italic;color:var(--terracotta)}
 .cta p{color:var(--ink-soft);font-size:15px;margin-bottom:30px}
 .cta .btn-store{display:inline-block}
+.cta .store-badges{justify-content:center}
 .wordmark{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(96px,26vw,400px);line-height:.82;letter-spacing:-.035em;text-align:center;padding:clamp(40px,7vh,90px) 8px 0;color:var(--ink)}
 .wordmark em{font-style:italic;color:var(--orange)}
 
@@ -149,6 +167,7 @@ footer .c{font-size:12px;color:var(--ink-faint)}
 .prose a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
 .prose .more{display:inline-block;margin-top:8px;font-weight:500;text-decoration:none;color:var(--ink)}
 .page-cta{text-align:center;padding:48px 24px 8px}
+.page-cta .store-badges{justify-content:center}
 
 /* App-skjermbilder (migreringsside) */
 .feat-media.shot{background:var(--sand-2);display:flex;align-items:center;justify-content:center;padding:clamp(20px,4vw,48px);overflow:visible;min-height:0}
