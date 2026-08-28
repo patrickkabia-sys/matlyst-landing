@@ -46,9 +46,6 @@
   .store .glyph{width:19px;height:19px;flex:none;fill:currentColor}
   .store .name{font-size:16px;font-weight:500}
   .store .hint{display:block;font-size:12.5px;font-weight:300;opacity:.78;margin-top:5px;line-height:1.35}
-  .store.soon{background:var(--sand);border:1px solid var(--line);color:var(--ink-soft);cursor:default}
-  .store.soon:hover{transform:none;opacity:1}
-  .store.soon .hint{opacity:1}
 
   .foot{font-size:12.5px;color:var(--ink-soft);max-width:34ch;line-height:1.5}
   .foot a{color:var(--ink-soft)}
@@ -79,17 +76,13 @@
       </span>
       <span class="hint">iPhone og iPad. 5 importer i måneden er gratis for alltid.</span>
     </a>
-    <!-- Android er IKKE publisert i Google Play ennå — oppføringen svarer 404.
-         Når appen er live: gjør dette om til <a class="store" id="btn-android"
-         href="PLAY_URL">, legg tilbake klikk-håndtereren nederst, og fjern
-         .soon fra CSS-en. Samme mønster som /sara/. -->
-    <div class="store soon">
+    <a class="store" id="btn-android" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;referrer=utm_source%3Dtiktok%26utm_medium%3Dbio" target="_blank" rel="noopener">
       <span class="row">
         <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1zM17.2 15.1l-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2zM16.9 15.4 13.5 12l-9.9 9.9c.4.4 1 .4 1.7.1l11.6-6.6zM16.9 8.6 5.3 2c-.7-.4-1.3-.3-1.7.1L13.5 12l3.4-3.4z"/></svg>
-        <span class="name">Android kommer snart</span>
+        <span class="name">Last ned gratis</span>
       </span>
-      <span class="hint">Matlyst er ikke i Google Play ennå. Følg @matlyst.appen, så sier vi fra.</span>
-    </div>
+      <span class="hint">Android. 5 importer i måneden er gratis for alltid.</span>
+    </a>
   </div>
 
   <p class="foot">Ingen annonser, ingen datasalg. <a href="/vilkar.html">Vilkår</a> og <a href="/personvern.html">personvern</a>.</p>
@@ -124,6 +117,10 @@
 
   document.getElementById('btn-ios').addEventListener('click', function () {
     cap('tiktok_store_click', { store: 'app_store' });
+  });
+
+  document.getElementById('btn-android').addEventListener('click', function () {
+    cap('tiktok_store_click', { store: 'play' });
   });
 
   // ⚠️ Besøket MÅ også telles når noen trykker «Godta», ikke bare ved page load.

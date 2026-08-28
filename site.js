@@ -74,6 +74,9 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     if (a.href && a.href.indexOf('apps.apple.com') > -1) {
       if (window.fbq) fbq('track', 'Lead', { content_name: 'App Store' });
       if (window.posthog) posthog.capture('appstore_click');
+    } else if (a.href && a.href.indexOf('play.google.com') > -1) {
+      if (window.fbq) fbq('track', 'Lead', { content_name: 'Google Play' });
+      if (window.posthog) posthog.capture('play_click');
     } else if (a.getAttribute('href') === '#nyhetsbrev') {
       if (window.fbq) fbq('trackCustom', 'NyhetsbrevIntent');
       if (window.posthog) posthog.capture('newsletter_intent');
@@ -86,4 +89,17 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       if (window.posthog) posthog.capture('newsletter_signup');
     }
   }, true);
+})();
+
+// «Last ned» i navigasjonen står som App Store-lenke i markupen. Det er riktig
+// for de fleste, og det gjør at knappen virker uten JavaScript. På Android er
+// den samme lenka en blindvei, så der byttes den til Google Play. Merkene i
+// heroen og nederst på sida viser begge butikkene uansett, så dette gjelder
+// bare snarveien i toppen.
+(function () {
+  if (!/android/i.test(navigator.userAgent)) return;
+  var PLAY = 'https://play.google.com/store/apps/details?id=app.matlyst';
+  document.querySelectorAll('a.nav-cta[href*="apps.apple.com"]').forEach(function (a) {
+    a.href = PLAY;
+  });
 })();
