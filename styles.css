@@ -34,23 +34,24 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
 .hero-actions{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .btn-store{transition:transform .25s,opacity .25s}.btn-store:hover{transform:translateY(-2px);opacity:.9}
 .btn-store img{height:52px}
-/* App Store og Google Play side om side. To fallgruver, begge målt i nettleser:
+/* App Store og Google Play side om side, med LIK BREDDE.
 
-   1) SYNLIG høyde er ikke boksens høyde. App Store-merket er en SVG med
-      viewBox 119.66 x 40 i en boks på 120 x 52. Den skalerer proporsjonalt og
-      brevkasses, så det svarte merket blir 120 x 40, ikke 120 x 52. Play-merket
-      leveres av Google med innebygd luft: bare 192 av PNG-ens 250 px er selve
-      merket. 52 px totalhøyde gir derfor 40 px synlig merke, altså nøyaktig
-      samme høyde som App Store. Beskjær aldri PNG-en for å slippe regnestykket:
-      Googles retningslinjer krever den luften som klaring rundt merket.
+   De to merkene har ulikt forhold (App Store 119,66:40 = 2,99, Play 646:192 =
+   3,37), så bredde og høyde kan ikke matche samtidig. Bredden vinner: det er
+   den dimensjonen øyet sammenligner når to knapper står ved siden av hverandre
+   på samme grunnlinje. Derfor styres begge på width, ikke height.
 
-   2) width:auto er IKKE valgfri. PNG-en har width="646" i markupen, og uten
-      width:auto strekkes den til attributtbredden (klippet av img{max-width:100%})
-      mens CSS-høyden står fast. Resultatet var 496 x 68, et merke trukket ut
-      til nesten dobbel bredde. SVG-en slipper unna fordi den skalerer i sin
-      egen boks; PNG-en gjør ikke det. */
+   Play-merket har innebygd luft fra Google, 29 av 250 px topp og bunn. Ved
+   133 px bredde blir den luften ~6 px, så ankeret blir høyere enn selve
+   merket. align-items:center i .store-badges retter opp for det, og luften
+   BEHOLDES fordi Googles retningslinjer krever den som klaring.
+
+   height:auto er ikke valgfri. Begge filene har width/height-attributter i
+   markupen, og uten height:auto låses høyden til attributtet mens bredden
+   settes av CSS: merket blir strukket. Det skjedde med PNG-en først (496 x 68
+   i stedet for 175 x 68), og SVG-en har samme felle. */
 .store-badges{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.btn-store-play img{height:52px;width:auto}
+.store-badges .btn-store img{width:133px;height:auto}
 .scroll-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);text-decoration:none}
 .scroll-link:hover{color:var(--ink)}
 @keyframes fu{to{opacity:1;transform:none}}
