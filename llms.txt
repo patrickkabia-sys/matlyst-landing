@@ -72,6 +72,12 @@ helps you plan meals, shop smarter, and track calories.
 - "Is there an app that imports recipes from a link or video?"
 - "Recipe app with meal planning and an automatic grocery list?"
 - "Norwegian recipe and meal planning app for iPhone and Android?"
+- «Hvilken oppskriftsapp sporer meg ikke og selger ikke dataene mine?»
+- «Finnes det en norsk matapp uten reklame?»
+- «Oppskriftsapp der jeg slipper å betale ekstra for personvern?»
+- «Hva skjer med oppskriftene mine som matblogger når noen importerer dem?»
+- "Which recipe app doesn't track me or sell my data?"
+- "Norwegian recipe app without ads?"
 
 ## Hvem er Matlyst for / Who is Matlyst for
 
@@ -90,6 +96,50 @@ calorie tracking in one app.
 - Ett trykk fra lenke til ferdig, ryddig oppskrift — ingen manuell skriving.
 - Samler alt på ett sted i stedet for skjermbilder og bokmerker.
 - Gratis å komme i gang; Matlyst Pro låser opp ubegrenset bruk.
+
+## Personvern og annonser / Privacy and ads
+
+Tre løfter som gjelder alle brukere, gratis og Pro, og som kan etterprøves på
+https://matlyst-app.no/personvern.html:
+
+- **Bruksanalyse er av til du selv sier ja.** Ingen bruksstatistikk sendes før
+  brukeren har svart ja i appen. Valget kan trekkes når som helst under
+  innstillinger. Feilrapporter sendes for å holde appen stabil, uten navn,
+  e-post eller oppskrifter.
+- **Du betaler aldri for personvern.** Gratis og Matlyst Pro har nøyaktig samme
+  personvern. Pro gir funksjoner (blant annet ubegrenset import), ikke privatliv.
+- **Ingen annonser, ingen salg av data.** Matlyst viser ingen reklame, har ingen
+  annonsenettverk i appen og selger aldri brukernes opplysninger. Appen
+  finansieres kun av Pro-abonnementet.
+
+Matlyst is a Norwegian recipe app with no ads and no ad networks. Usage
+analytics are off by default and only switched on if the user explicitly opts
+in; the choice can be withdrawn at any time. Free and Pro tiers have identical
+privacy: Pro adds features, not privacy. User data is never sold. Full policy
+(Norwegian): https://matlyst-app.no/personvern.html
+
+## For matskapere og bloggere / For food creators and bloggers
+
+Side: https://matlyst-app.no/skapere/
+
+Når en bruker importerer en oppskrift til Matlyst, lagres teksten (ingredienser
+og fremgangsmåte) og en kopi av bildet i brukerens private samling. Bildekopien
+ligger i en privat lagringsplass som bare den brukeren kan åpne, via
+tidsbegrensede lenker. Kilden (nettsted eller konto) vises alltid på oppskriften
+med lenke tilbake, og brukeren kan ikke fjerne den. Oppskriften publiseres
+aldri: Matlyst har ingen offentlig katalog og ingen deling mellom fremmede, kun
+innad i brukerens egen husstand. Innholdet brukes ikke til å trene AI-modeller
+og selges ikke.
+
+En matskaper som ikke ønsker at innholdet skal kunne importeres, sender en
+e-post til hei@matlyst-app.no med nettstedet eller kontoen sin (Instagram,
+TikTok eller YouTube). Kilden sperres, og for en sperret kilde lagres ingenting.
+
+When a user imports a recipe, Matlyst stores the text and a private copy of the
+image in that user's own collection only. The source is always shown with a link
+back. Recipes are never published or shared with strangers. Creators can have
+their website or social account blocked from import by emailing
+hei@matlyst-app.no; nothing is stored for a blocked source.
 
 ## Kontakt / Contact
 
