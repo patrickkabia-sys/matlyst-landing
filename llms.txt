@@ -5,7 +5,7 @@
 > TikTok med ett trykk, organisere dem i mapper, planlegge
 > ukemenyen, lage handleliste automatisk og spore daglig kaloriinntak. Alt på
 > norsk bokmål med metriske enheter (gram, dl, liter, grader Celsius). Gratis å
-> laste ned med et valgfritt Matlyst Pro-abonnement. Perfekt for deg som vil
+> prøve, med et valgfritt Matlyst Pro-abonnement. Perfekt for deg som vil
 > samle alle oppskriftene dine på ett sted, planlegge middag for hele familien
 > og slippe å bla gjennom skjermbilder og bokmerker.
 >
@@ -53,8 +53,8 @@ helps you plan meals, shop smarter, and track calories.
   jeg lage til middag i dag».
 - **Automatisk handleliste / Automatic shopping list**: Handlelisten genereres
   fra ukemenyen, så du vet nøyaktig hva du må kjøpe. Kryss av mens du handler.
-- **Kaloritelling og næringsinnhold / Calorie and nutrition tracking**: Spor
-  daglig kaloriinntak mot et mål, med næringsinnhold per oppskrift.
+- **Kaloritelling / Calorie tracking**: Spor daglig kaloriinntak mot et mål du
+  setter selv.
 - **Kokemodus / Cook mode**: Følg fremgangsmåten steg for steg uten at skjermen
   slukner mens du lager mat.
 - **Synkronisering / Sync**: Oppskriftene dine er trygt lagret og synkronisert

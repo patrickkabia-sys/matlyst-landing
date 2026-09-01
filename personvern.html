@@ -73,6 +73,19 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Personvernerklæring for Matlyst",
+  "url": "https://matlyst-app.no/personvern.html",
+  "inLanguage": "nb-NO",
+  "dateModified": "2026-09-01",
+  "author": { "@type": "Person", "name": "Patrick Kabia" },
+  "publisher": { "@type": "Organization", "name": "Matlyst", "url": "https://matlyst-app.no/" },
+  "description": "Hva Matlyst samler, hvorfor, hvem som behandler det, og tre løfter som gjelder alle brukere: bruksanalyse av til du sier ja, ingen betaling for personvern, ingen annonser og ingen salg av data."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
     {
@@ -185,12 +198,12 @@
 
   <h2>AI-behandling</h2>
   <p>
-    Import, oversettelse til norsk og funksjonen «Spør Matlyst» bruker en AI-tjeneste fra Anthropic (Claude).
-    Innholdet du importerer eller spør om — inkludert bilder av oppskrifter — sendes til denne tjenesten for
-    behandling. Dataene brukes til å svare deg der og da, og brukes <strong>ikke</strong> til å trene AI-modeller.
+    Import, oversettelse til norsk, bildeanalyse, daglige middagsforslag og funksjonen «Spør Matlyst» bruker AI-tjenester fra
+    Google (Gemini API) og Anthropic (Claude), begge via betalte API-er. Innholdet du importerer eller spør om, inkludert bilder av oppskrifter, sendes til tjenesten for
+    behandling. Dataene brukes til å svare deg der og da, lagres ikke hos leverandøren etter behandling, og brukes <strong>ikke</strong> til å trene AI-modeller.
   </p>
   <p>
-    For <strong>daglige middagsforslag</strong> sendes ingen identifiserbare personopplysninger til Anthropic —
+    For <strong>daglige middagsforslag</strong> sendes ingen identifiserbare personopplysninger til AI-tjenesten,
     kun kostholdsfiltre, årstid og ukedag.
   </p>
 
@@ -240,7 +253,8 @@
     <li><strong>Apple</strong> — «Logg inn med Apple», App Store og kjøp (iOS).</li>
     <li><strong>Google</strong> — «Logg inn med Google», Google Play og kjøp (Android).</li>
     <li><strong>RevenueCat</strong> — administrasjon av abonnement.</li>
-    <li><strong>Anthropic</strong> — AI-behandling av import og «Spør Matlyst».</li>
+    <li><strong>Google (Gemini API)</strong>: AI-behandling av import, bildeanalyse, daglige forslag og «Spør Matlyst» (USA, betalt API uten trening på innholdet).</li>
+    <li><strong>Anthropic</strong>: AI-behandling av import og «Spør Matlyst» når Gemini ikke er tilgjengelig.</li>
     <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
     <li><strong>PostHog</strong> — produktanalyse i appen og på nettstedet, knyttet til en pseudonym konto-ID (hostet i EU; kun ved samtykke, både i appen og på nettstedet).</li>
     <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet.</li>
@@ -255,9 +269,9 @@
   </p>
   <ul>
     <li><strong>Ingen overføring.</strong> Supabase (database, innlogging, fillagring), PostHog og Sentry ligger alle i EU. Sentry-prosjektene våre er opprettet i Frankfurt-regionen, så krasjrapporter forlater ikke EU.</li>
-    <li><strong>Storbritannia — adekvansbeslutning.</strong> EmailOctopus. EU fornyet adekvansbeslutningen for Storbritannia 19. desember 2025, med gyldighet til 27. desember 2031.</li>
-    <li><strong>USA — standard personvernbestemmelser (SCC, art. 46).</strong> Anthropic. Anthropic er <strong>ikke</strong> sertifisert under EU–US Data Privacy Framework, og overføringen hviler derfor på SCC.</li>
-    <li><strong>USA — EU–US Data Privacy Framework, subsidiært standard personvernbestemmelser.</strong> Apple, Google, Meta og RevenueCat. Overføringen bygger på deltakelse i rammeverket, som Europakommisjonen godkjente 10. juli 2023, og på standard personvernbestemmelser (SCC, art. 46) der rammeverket ikke dekker behandlingen. Gjeldende status for hver leverandør kan slås opp på <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener">dataprivacyframework.gov</a>.</li>
+    <li><strong>Storbritannia: adekvansbeslutning.</strong> EmailOctopus. EU fornyet adekvansbeslutningen for Storbritannia 19. desember 2025, med gyldighet til 27. desember 2031.</li>
+    <li><strong>USA: standard personvernbestemmelser (SCC, art. 46).</strong> Anthropic. Anthropic er <strong>ikke</strong> sertifisert under EU-US Data Privacy Framework, og overføringen hviler derfor på SCC.</li>
+    <li><strong>USA: EU-US Data Privacy Framework, subsidiært standard personvernbestemmelser.</strong> Apple, Google (inkludert Gemini API), Meta og RevenueCat. Overføringen bygger på deltakelse i rammeverket, som Europakommisjonen godkjente 10. juli 2023, og på standard personvernbestemmelser (SCC, art. 46) der rammeverket ikke dekker behandlingen. Gjeldende status for hver leverandør kan slås opp på <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener">dataprivacyframework.gov</a>.</li>
   </ul>
 
   <h2>Lagring på enheten din</h2>

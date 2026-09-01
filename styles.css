@@ -66,6 +66,8 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
 .manifesto{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(32px,6vw,90px);padding:clamp(70px,12vh,140px) var(--pad);border-bottom:1px solid var(--line)}
 .manifesto h2{font-size:clamp(28px,3.6vw,52px);line-height:1.08;max-width:12ch}
 .manifesto h2 em{font-style:italic;color:var(--terracotta)}
+.manifesto .answer{margin-top:22px;max-width:48ch;font-size:16px;line-height:1.7;color:var(--ink-soft)}
+.manifesto .answer a{color:var(--terracotta)}
 .steps{align-self:end}
 .step{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--line)}
 .step:last-child{border-bottom:1px solid var(--line)}
