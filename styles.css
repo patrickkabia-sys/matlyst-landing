@@ -232,7 +232,7 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 
    Feil signaliseres ikke med farge alene: feilteksten sier hva som er galt,
    feltet får aria-invalid, og kvitteringen ligger i et aria-live-område. */
-.sperre-form{display:none;max-width:520px;margin:22px 0 26px}
+.sperre-form{position:relative;display:none;max-width:520px;margin:22px 0 26px}
 .js .sperre-form{display:block}
 .sperre-form .sperre-eyebrow{font-size:11px;line-height:1.4;color:var(--ink-soft);margin:0 0 20px}
 .sperre-form .sperre-felt{margin:0 0 22px}
@@ -268,6 +268,29 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
    fokusmarkering: nettleserens standardring er dessuten blå og faller
    utenfor paletten. */
 .sperre-form .sperre-status:focus{outline:none}
+
+/* Honningkrukka `emne`. Endepunktet avviser en innsending der feltet er
+   utfylt, så det skal aldri nå et menneske, men det må heller ikke nå en
+   skjermleser eller tabulatoren.
+
+   Hvorfor ikke display:none alene: det er det mest kjente agn-mønsteret, og
+   enkle boter hopper nettopp over felt som er display:none eller
+   visibility:hidden. Feltet blir derfor liggende i layouten, flyttet utenfor
+   skjermen, slik at en bot som leser DOM-en fyller det.
+
+   Men utenfor skjermen ER sr-only-mønsteret: skjermlesere leser slik tekst.
+   Derfor er beholderen aria-hidden="true" i markupen, som tar feltet ut av
+   tilgjengelighetstreet, og tabindex="-1" tar det ut av tabulatorrekkefølgen.
+   Uten tabindex="-1" ville et fokuserbart felt inne i aria-hidden vært et
+   ekte brudd (en tastaturbruker kunne landet i noe som ikke annonseres).
+
+   autocomplete="off" er ikke pynt: fylte nettleseren dette feltet
+   automatisk, ville endepunktet avvist et ekte menneske.
+
+   Ingen kontrastkrav her, feltet skal aldri leses av noen. Beholderen er
+   position:absolute inne i .sperre-form (som er position:relative), så
+   left:-9999px lager ingen vannrett rullefelt. */
+.sperre-agn{position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden}
 .sperre-form .sperre-status strong{font-weight:500}
 @media (prefers-reduced-motion:reduce){
   .sperre-form .sperre-knapp{transition:none}

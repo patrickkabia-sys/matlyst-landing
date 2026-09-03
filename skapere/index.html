@@ -148,6 +148,15 @@
       <p class="sperre-feil" id="sperre-epost-feil" hidden></p>
     </div>
 
+    <!-- Honningkrukke. Endepunktet avviser innsendinger der `emne` er utfylt,
+         så feltet skal alltid sendes tomt. Skjulingen er begrunnet i
+         .sperre-agn i styles.css: den er utenfor skjermen og ikke display:none,
+         aria-hidden mot skjermlesere, og tabindex="-1" mot tabulatoren. -->
+    <div class="sperre-agn" aria-hidden="true">
+      <label for="sperre-emne">Emne</label>
+      <input id="sperre-emne" name="emne" type="text" tabindex="-1" autocomplete="off" value="">
+    </div>
+
     <div class="sperre-felt">
       <label class="sperre-avkryss" for="sperre-bekreft">
         <input id="sperre-bekreft" name="bekreftet" type="checkbox" aria-describedby="sperre-bekreft-feil" required>
