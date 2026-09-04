@@ -128,51 +128,10 @@
   </ul>
 
   <h2>Vil du ikke at oppskriftene dine skal kunne importeres?</h2>
-  <p>Da sperrer du kilden din selv, her og nå. Fyll inn nettstedet ditt eller kontoen din på Instagram, TikTok eller YouTube, og sperra virker med en gang. For en sperret kilde lagres ingenting: verken tekst eller bildekopi. Brukeren som prøver, får beskjed om at innholdet ikke kan importeres. Du trenger ikke konto hos oss, og du trenger ikke vente på svar.</p>
-  <p>Sperra gjelder framtidige importer. Den fjerner ikke av seg selv det som alt kan ligge i noens private samling. Finner du noe som alt er lagret, si det til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>, så fjerner vi det. Vil du heller bare sende en e-post i stedet for å bruke skjemaet, går det like bra: samme adresse.</p>
-
-  <form class="sperre-form" id="sperre-form" novalidate>
-    <p class="eyebrow sperre-eyebrow">Sperr kilden min</p>
-
-    <div class="sperre-felt">
-      <label for="sperre-kilde">Konto eller nettsted</label>
-      <input id="sperre-kilde" name="kilde" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@navnet_ditt" aria-describedby="sperre-kilde-hjelp sperre-kilde-feil" required>
-      <p class="sperre-hjelp" id="sperre-kilde-hjelp">Skriv det slik du vil: @navn, navn, instagram.com/navn eller https://minblogg.no. Har du flere kontoer, send inn én om gangen.</p>
-      <p class="sperre-feil" id="sperre-kilde-feil" hidden></p>
-    </div>
-
-    <div class="sperre-felt">
-      <label for="sperre-epost">E-post <span class="sperre-valgfri">(valgfritt)</span></label>
-      <input id="sperre-epost" name="epost" type="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="deg@eksempel.no" aria-describedby="sperre-epost-hjelp sperre-epost-feil">
-      <p class="sperre-hjelp" id="sperre-epost-hjelp">Bare hvis du vil kunne nås om noe er uklart. Vi bruker den ikke til noe annet, og du havner ikke på noen liste.</p>
-      <p class="sperre-feil" id="sperre-epost-feil" hidden></p>
-    </div>
-
-    <!-- Honningkrukke. Endepunktet avviser innsendinger der `emne` er utfylt,
-         så feltet skal alltid sendes tomt. Skjulingen er begrunnet i
-         .sperre-agn i styles.css: den er utenfor skjermen og ikke display:none,
-         aria-hidden mot skjermlesere, og tabindex="-1" mot tabulatoren. -->
-    <div class="sperre-agn" aria-hidden="true">
-      <label for="sperre-emne">Emne</label>
-      <input id="sperre-emne" name="emne" type="text" tabindex="-1" autocomplete="off" value="">
-    </div>
-
-    <div class="sperre-felt">
-      <label class="sperre-avkryss" for="sperre-bekreft">
-        <input id="sperre-bekreft" name="bekreftet" type="checkbox" aria-describedby="sperre-bekreft-feil" required>
-        <span>Jeg bekrefter at dette er min konto eller mitt nettsted.</span>
-      </label>
-      <p class="sperre-feil" id="sperre-bekreft-feil" hidden></p>
-    </div>
-
-    <button class="sperre-knapp" id="sperre-send" type="submit">Sperr kilden min</button>
-
-    <p class="sperre-status" id="sperre-status" role="status" aria-live="polite" tabindex="-1"></p>
-  </form>
-
-  <noscript>
-    <p>Skjemaet krever JavaScript. Er det slått av, sender du i stedet en e-post til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> med nettstedet ditt eller kontoen din, så legger vi inn sperra for deg.</p>
-  </noscript>
+  <p>Send en e-post til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> med nettstedet ditt eller kontoen din på Instagram, TikTok eller YouTube. Da legger vi inn sperra, og du får svar når den er på plass. Vi svarer så fort vi kan, og som regel samme dag.</p>
+  <p>For en sperret kilde lagres ingenting: verken tekst eller bildekopi. Brukeren som prøver, får beskjed om at innholdet ikke kan importeres. Du trenger ingen konto hos oss.</p>
+  <p>Sperra gjelder framtidige importer. Den fjerner ikke av seg selv det som alt kan ligge i noens private samling. Finner du noe som alt er lagret, si det i samme e-post, så fjerner vi det.</p>
+  <p>Det er et menneske som legger inn sperra, med vilje. Et skjema som sperrer i samme sekund ville gjort det mulig for en fremmed å sperre kontoen din uten at du hadde bedt om det, og en sperre kan ikke oppheves av seg selv.</p>
 
   <h2>Vil du heller samarbeide?</h2>
   <p>Matlyst lages av Patrick Kabia, alene, i Norge, og folk finner oppskriftene sine hos deg, ikke hos oss. Har du lyst til å teste appen, få tilbakemelding fra brukerne dine eller bare stille et spørsmål, er adressen den samme: <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</p>
@@ -221,6 +180,5 @@
 </div>
 
 <script src="/site.js"></script>
-<script src="/skapere/sperre.js"></script>
 </body>
 </html>
