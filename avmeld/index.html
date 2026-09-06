@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meld deg av nyhetsbrevet — Matlyst</title>
+  <meta name="description" content="Meld deg av Matlysts nyhetsbrev. Du beholder kontoen din og får fortsatt e-post som gjelder kontoen.">
+  <!-- ⚠️ Denne sida skal ALDRI indekseres: adressen bærer et signert token. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#F7F3EC">
+  <link rel="icon" type="image/png" href="../images/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#F7F3EC; --sand:#F1EADD; --sand-2:#EADFCE; --taupe:#CFBDA0;
+      --ink:#1E1813; --ink-soft:#6E6155; --ink-faint:rgba(30,24,19,0.42);
+      --terracotta:#C4552A; --line:rgba(74,58,42,0.13); --line-soft:rgba(74,58,42,0.08);
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    body { background:var(--cream); color:var(--ink); font-family:'DM Sans',sans-serif;
+      font-weight:300; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    ::selection { background:var(--terracotta); color:var(--cream); }
+    a { color:var(--terracotta); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+
+    nav { position:fixed; inset:0 0 auto 0; z-index:100; padding:18px 56px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(247,243,236,0.82); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--line-soft); }
+    .nav-brand { font-family:'Fraunces',serif; font-size:23px; font-weight:400; color:var(--ink); letter-spacing:-0.01em; }
+    .nav-brand em { font-style:normal; color:var(--terracotta); }
+    .nav-back { font-size:13px; font-weight:500; color:var(--ink-soft); }
+    .nav-back:hover { color:var(--ink); text-decoration:none; }
+
+    .doc { max-width:600px; margin:0 auto; padding:170px 32px 64px; }
+    .doc-kicker { font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase;
+      color:var(--terracotta); margin-bottom:18px; }
+    .doc-title { font-family:'Fraunces',serif; font-size:clamp(34px,5.4vw,52px); font-weight:300;
+      line-height:1.06; letter-spacing:-0.02em; margin-bottom:18px; }
+    .doc-title em { font-style:italic; color:var(--terracotta); }
+    .doc-intro { font-size:17px; color:var(--ink-soft); line-height:1.8; }
+    .doc-intro + .doc-intro { margin-top:14px; }
+
+    .kort { margin-top:34px; background:var(--sand); border:1px solid var(--line);
+      border-radius:18px; padding:28px; }
+    .knapp { display:inline-flex; align-items:center; justify-content:center; min-height:52px;
+      padding:0 30px; border:0; border-radius:999px; background:var(--terracotta); color:var(--cream);
+      font-family:'DM Sans',sans-serif; font-size:15px; font-weight:500; line-height:1; cursor:pointer;
+      transition:opacity .18s ease; }
+    .knapp:hover { opacity:.9; }
+    .knapp:disabled { opacity:.55; cursor:default; }
+    .knapp:focus-visible { outline:3px solid var(--ink); outline-offset:3px; }
+    .fot { margin-top:18px; font-size:14px; color:var(--ink-faint); }
+    .feil { color:#8C2F12; }
+    [hidden] { display:none !important; }
+
+    @media (max-width:640px) {
+      nav { padding:16px 22px; }
+      .doc { padding:130px 22px 48px; }
+      .kort { padding:22px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="/">Mat<em>lyst</em></a>
+    <a class="nav-back" href="/">Til forsiden</a>
+  </nav>
+
+  <main class="doc">
+    <!-- Steg 1: bekreftelse. Vises kun når lenka bærer et token. -->
+    <section id="bekreft" hidden>
+      <p class="doc-kicker">Nyhetsbrev</p>
+      <h1 class="doc-title">Vil du melde deg <em>av</em>?</h1>
+      <p class="doc-intro">Da slutter nyhetsbrevet, som kommer annenhver uke med ett tips og
+        det som er nytt i appen.</p>
+      <p class="doc-intro">Kontoen din står urørt, og du får fortsatt e-post som gjelder den
+        selv — for eksempel hvis du ber om å tilbakestille passordet.</p>
+      <div class="kort">
+        <button class="knapp" id="meldAv" type="button">Meld meg av</button>
+        <p class="fot" id="status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- Steg 2: ferdig. -->
+    <section id="ferdig" hidden>
+      <p class="doc-kicker">Nyhetsbrev</p>
+      <h1 class="doc-title">Du er meldt <em>av</em></h1>
+      <p class="doc-intro">Takk for at du prøvde det. Vi sender deg ikke flere nyhetsbrev.</p>
+      <p class="doc-intro">Ombestemmer du deg, kan du slå det på igjen under Profil i appen.</p>
+    </section>
+
+    <!-- Lenke uten token, eller et token som ikke gikk igjennom. -->
+    <section id="mangler" hidden>
+      <p class="doc-kicker">Nyhetsbrev</p>
+      <h1 class="doc-title">Denne lenken mangler <em>noe</em></h1>
+      <p class="doc-intro">Adressen ser ut til å ha mistet en bit på veien — noen e-postklienter
+        klipper lange lenker. Åpne den fra e-posten på nytt, eller send oss en linje på
+        <a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20nyhetsbrevet">hei@matlyst-app.no</a>,
+        så ordner vi det for deg.</p>
+    </section>
+
+    <noscript>
+      <!-- Uten JavaScript: samme handling, men skjemaet går rett til funksjonen,
+           og brukeren lander på dens egen bekreftelsesside. -->
+      <p class="doc-kicker">Nyhetsbrev</p>
+      <h1 class="doc-title">Meld deg <em>av</em></h1>
+      <p class="doc-intro">Nettleseren din kjører ikke JavaScript. Knappen under gjør samme
+        jobb, men tar deg til en enklere kvitteringsside.</p>
+      <form class="kort" method="POST" id="reserve"
+            action="https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld">
+        <input type="hidden" name="List-Unsubscribe" value="One-Click">
+        <button class="knapp" type="submit">Meld meg av</button>
+      </form>
+    </noscript>
+  </main>
+
+  <script>
+    // Sida er ren kulisse rundt ETT kall. All logikk — signaturen, idempotensen,
+    // vernet mot at en e-postskanner melder folk av — bor i edge-funksjonen
+    // `avmeld`. Her ligger bare adressen brukeren tør å lese.
+    //
+    // ⚠️ Hvorfor sida finnes: den ekte lenka går til
+    // <prosjekt-id>.supabase.co, et vertsnavn ingen kjenner igjen, med en UUID
+    // og en 43-tegns signatur etter seg. Den er trygg og ser ut som svindel.
+    var FUNKSJON = 'https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld';
+
+    var q = new URLSearchParams(location.search);
+    var u = q.get('u') || '';
+    var s = q.get('s') || '';
+
+    // Formkravene speiler avmeldLenke.ts. De er en høflighetssjekk, ikke et
+    // vern: serveren verifiserer signaturen uansett hva vi slipper videre.
+    var gyldigForm = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u)
+      && /^[A-Za-z0-9_-]{43}$/.test(s);
+
+    function vis(id) {
+      ['bekreft', 'ferdig', 'mangler'].forEach(function (n) {
+        document.getElementById(n).hidden = n !== id;
+      });
+    }
+
+    if (!gyldigForm) {
+      vis('mangler');
+    } else {
+      vis('bekreft');
+      var reserve = document.getElementById('reserve');
+      if (reserve) reserve.action = FUNKSJON + '?u=' + encodeURIComponent(u) + '&s=' + encodeURIComponent(s);
+
+      var knapp = document.getElementById('meldAv');
+      var status = document.getElementById('status');
+
+      knapp.addEventListener('click', function () {
+        knapp.disabled = true;
+        status.className = 'fot';
+        status.textContent = 'Melder deg av …';
+
+        fetch(FUNKSJON + '?u=' + encodeURIComponent(u) + '&s=' + encodeURIComponent(s), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          // RFC 8058-kroppen. Den ber funksjonen svare kort i stedet for med sin
+          // egen HTML-side, som er nettopp det vi vil her: kvitteringen er vår.
+          body: 'List-Unsubscribe=One-Click',
+        }).then(function (r) {
+          if (r.ok) { vis('ferdig'); return; }
+          throw new Error('status ' + r.status);
+        }).catch(function () {
+          knapp.disabled = false;
+          status.className = 'fot feil';
+          // Aldri en teknisk kode til brukeren. Én vei videre som alltid virker.
+          status.innerHTML = 'Det gikk ikke akkurat nå. Prøv en gang til, eller skriv til '
+            + '<a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20nyhetsbrevet">hei@matlyst-app.no</a>.';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
