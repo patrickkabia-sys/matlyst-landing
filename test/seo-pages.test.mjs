@@ -39,11 +39,29 @@ test('importsiden opplyser at bildeimport krever Pro', () => {
 
 test('skip-lenken peker på et hovedlandemerke som omslutter sideinnholdet', () => {
   assert.match(importerSide, /<main id="hovedinnhold">\s*<header class="hero">/u);
-  assert.match(importerSide, /<\/section>\s*<\/main>\s*<footer>/u);
+  assert.match(importerSide, /<div class="page-cta">[\s\S]*<\/div>\s*<\/main>\s*<footer>/u);
+  assert.doesNotMatch(importerSide, /<section class="page-cta">/u);
 });
 
 test('delingsbildet har alternativtekst i Open Graph og Twitter', () => {
   const alt = 'Matlyst viser hvordan du deler en oppskrift fra Instagram til appen';
   assert.match(importerSide, new RegExp(`<meta property="og:image:alt" content="${alt}">`, 'u'));
   assert.match(importerSide, new RegExp(`<meta name="twitter:image:alt" content="${alt}">`, 'u'));
+});
+
+test('Pro-løftet beskriver kvotefordelen uten å love et grenseløst system', () => {
+  assert.doesNotMatch(importerSide, /ubegrenset import/iu);
+  assert.equal(
+    importerSide.match(/Pro fjerner grensen på fem lenkeimporter/gu)?.length,
+    2,
+  );
+});
+
+test('enhetsløftet tar høyde for brukerens valgte innstilling', () => {
+  assert.doesNotMatch(importerSide, /regnes alltid om til metris/iu);
+  assert.doesNotMatch(importerSide, /gjør målene metriske/iu);
+  assert.equal(
+    importerSide.match(/Metriske mål er standard, og du kan velge amerikanske mål i innstillingene\./gu)?.length,
+    2,
+  );
 });
