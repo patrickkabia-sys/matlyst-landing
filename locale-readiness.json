@@ -1,0 +1,32 @@
+{
+  "da": {
+    "public": false,
+    "blockers": [
+      "physical_address",
+      "norwegian_legal_source_current",
+      "localized_legal_pages",
+      "language_routed_app_legal_links",
+      "apple_store_listing",
+      "google_play_listing",
+      "recipe_translation_verification",
+      "consent_banner",
+      "self_hosted_fonts",
+      "wcag_aa"
+    ]
+  },
+  "sv": {
+    "public": false,
+    "blockers": [
+      "physical_address",
+      "norwegian_legal_source_current",
+      "localized_legal_pages",
+      "language_routed_app_legal_links",
+      "apple_store_listing",
+      "google_play_listing",
+      "recipe_translation_verification",
+      "consent_banner",
+      "self_hosted_fonts",
+      "wcag_aa"
+    ]
+  }
+}
