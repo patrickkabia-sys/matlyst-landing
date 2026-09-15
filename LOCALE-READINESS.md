@@ -6,7 +6,7 @@ Sidene ligger under `_previews/`, som er eksplisitt utelatt fra GitHub Pages i `
 
 ## Harde blokker
 
-- [ ] Velg en fysisk kontaktadresse som kan publiseres permanent på nettstedet og i vilkårene.
+- [x] Bruk den eksisterende offentlige identitetsadressen fra Google Play. Verifisert 15. september 2026 og godkjent av Patrick for gjenbruk i lokale juridiske sider.
 - [ ] Oppdater den norske personvernerklæringen og vilkårene til faktisk produktatferd.
 - [ ] Få danske og svenske juridiske tekster godkjent, med identitet, adresse, klagevei og forbrukerrettigheter.
 - [ ] Verifiser Apple App Store-oppføringer for Danmark og Sverige.

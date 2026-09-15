@@ -25,7 +25,6 @@ const pages = {
 };
 
 const requiredBlockers = [
-  'physical_address',
   'norwegian_legal_source_current',
   'localized_legal_pages',
   'language_routed_app_legal_links',
