@@ -80,3 +80,13 @@ test('personvernerklæringen sier at skjemaet først lastes når du bruker det',
   assert.match(personvern, /først når du tar i e-postfeltet/u);
   assert.match(personvern, /reCAPTCHA/u);
 });
+
+test('lenka i feilmeldingen holder AA mot flata den står på', () => {
+  // Terrakotta pa sand gir 3,75:1 og faller under AA for vanlig tekst.
+  // Feilmeldinga bruker derfor tekstfargen, med understrek som markor.
+  const css = readFileSync(join(ROT, 'styles.css'), 'utf8');
+  const regel = css.match(/\.nl-feil a\{([^}]*)\}/u)?.[1];
+  assert.ok(regel, 'fant ingen regel for lenka i feilmeldingen');
+  assert.match(regel, /color:var\(--ink\)/u);
+  assert.match(regel, /text-decoration:underline/u);
+});

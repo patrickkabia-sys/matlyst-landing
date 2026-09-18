@@ -129,7 +129,7 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
 .nl-plassholder .form-control{margin:0 0 10px !important}
 .nl-plassholder .btn-primary{display:block;width:100%;border:none}
 .nl-feil{margin-top:14px;font-size:14px;line-height:1.6;color:var(--ink)}
-.nl-feil a{color:var(--terracotta);font-weight:500}
+.nl-feil a{color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:2px}
 
 .quote{padding:clamp(80px,14vh,160px) var(--pad);text-align:center;border-bottom:1px solid var(--line)}
 .quote blockquote{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(26px,4vw,58px);line-height:1.24;letter-spacing:-.01em;max-width:20ch;margin:0 auto}
@@ -160,10 +160,15 @@ footer .c{font-size:12px;color:var(--ink-faint)}
 .cookie a{color:var(--terracotta);text-decoration:none;font-weight:500}
 .cookie a:hover{text-decoration:underline}
 .cookie-actions{display:flex;gap:10px}
-.ck-btn{flex:1;padding:13px 18px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;border:1px solid transparent;transition:transform .2s, opacity .2s, background .2s;white-space:nowrap}
-.ck-btn:hover{transform:translateY(-1px)}
-.ck-accept{background:var(--orange);color:#fff}.ck-accept:hover{opacity:.9}
-.ck-reject{background:transparent;color:var(--ink);border-color:var(--line)}.ck-reject:hover{background:rgba(74,58,42,0.05)}
+/* Samtykkeknappene skal veie likt. «Godta» var fylt og oransje mens «Bare
+   nodvendige» var et gjennomsiktig omriss, altsa funksjonelt like valg med
+   ulik visuell vekt. Datatilsynet DK og Digitaliseringsstyrelsen krever i
+   fellesveiledninga fra mai 2025 at a avvise er like synlig som a godta, sa de
+   to knappene deler na hver eneste visuelle egenskap. Alt som skiller dem er
+   teksten. Lases av test/samtykkeVekt.test.mjs. */
+.ck-btn{flex:1;padding:13px 18px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;background:var(--ink);color:var(--cream);border:1px solid var(--ink);transition:transform .2s, opacity .2s, background .2s;white-space:nowrap}
+.ck-btn:hover{transform:translateY(-1px);opacity:.9}
+.ck-btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
 @media(max-width:860px){
   .hero{grid-template-columns:1fr;align-items:start;gap:36px}
