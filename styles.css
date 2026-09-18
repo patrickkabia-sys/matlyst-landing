@@ -126,6 +126,10 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
 .newsletter-eo .form-control:focus{border-color:var(--terracotta) !important;background:#fff !important}
 .newsletter-eo input[type=submit], .newsletter-eo .btn-primary{width:100% !important;height:auto !important;margin:0 !important;padding:15px 28px !important;background:var(--orange) !important;color:#fff !important;border:none !important;border-radius:100px !important;box-shadow:none !important;font-family:'DM Sans',sans-serif !important;font-size:15px !important;font-weight:500 !important;cursor:pointer;transition:transform .2s, opacity .2s}
 .newsletter-eo input[type=submit]:hover, .newsletter-eo .btn-primary:hover{transform:translateY(-1px);opacity:.92}
+.nl-plassholder .form-control{margin:0 0 10px !important}
+.nl-plassholder .btn-primary{display:block;width:100%;border:none}
+.nl-feil{margin-top:14px;font-size:14px;line-height:1.6;color:var(--ink)}
+.nl-feil a{color:var(--terracotta);font-weight:500}
 
 .quote{padding:clamp(80px,14vh,160px) var(--pad);text-align:center;border-bottom:1px solid var(--line)}
 .quote blockquote{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(26px,4vw,58px);line-height:1.24;letter-spacing:-.01em;max-width:20ch;margin:0 auto}
