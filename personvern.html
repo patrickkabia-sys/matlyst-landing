@@ -225,7 +225,7 @@
     ingen steder før du selv velger å importere. Du kan skru funksjonen av når som helst.
   </p>
 
-  <h2>Nettstedet matlyst-app.no</h2>
+  <h2 id="nettstedet">Nettstedet matlyst-app.no</h2>
   <p>Erklæringen gjelder også nettstedet vårt. Det er en enkel landingsside, men bruker noen tjenester du bør kjenne til:</p>
   <ul>
     <li><strong>Analyse (Meta Pixel).</strong> Vi bruker Meta Pixel for å måle effekten av markedsføringen vår. Den lastes <strong>kun hvis du samtykker</strong> i samtykke-banneret — velger du «Bare nødvendige», settes ingen sporing.</li>
@@ -296,7 +296,8 @@
     <li><strong>Anthropic</strong>: AI-behandling av import og «Spør Matlyst» når Gemini ikke er tilgjengelig.</li>
     <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
     <li><strong>PostHog</strong> — produktanalyse i appen og på nettstedet, knyttet til en pseudonym konto-ID (hostet i EU; kun ved samtykke, både i appen og på nettstedet).</li>
-    <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet.</li>
+    <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet. Skjemaet lastes først når du tar i e-postfeltet.</li>
+    <li><strong>Google (reCAPTCHA)</strong> — robotkontroll i påmeldingsskjemaet for nyhetsbrevet. Lastes av EmailOctopus sitt skjema, altså først når du tar i e-postfeltet, og Google mottar da IP-adressen din. Rører du ikke feltet, kontaktes den ikke.</li>
     <li><strong>Meta (Facebook)</strong> — måling av markedsføring på nettstedet (kun ved samtykke).</li>
     <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke).</li>
   </ul>

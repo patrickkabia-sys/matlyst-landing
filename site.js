@@ -141,6 +141,9 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     if (plassholder) plassholder.remove();
     if (felt) {
       if (skrevet) felt.value = skrevet;
+      // Opplysninga om EmailOctopus og reCAPTCHA folger med til EmailOctopus
+      // sitt eget felt, sa den ogsa leses opp der.
+      felt.setAttribute('aria-describedby', 'nyhetsbrev-vilkar');
       felt.focus();
     }
   });
