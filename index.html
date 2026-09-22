@@ -39,9 +39,6 @@
   "dateModified": "2026-09-01"
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script>document.documentElement.className += ' js';</script>
 <link rel="stylesheet" href="/styles.css">
 </head>
@@ -174,10 +171,14 @@
     <p class="eyebrow">Hold deg oppdatert</p>
     <h2 class="disp">Få <em>nyheter</em> rett i innboksen</h2>
     <p class="nl-sub">Vær blant de første til å høre om nye funksjoner, oppdateringer og tips til appen.</p>
-    <div class="newsletter-eo">
-      <script async src="https://eocampaign1.com/form/858fff68-6016-11f1-a1ae-991ff41a803c.js" data-form="858fff68-6016-11f1-a1ae-991ff41a803c"></script>
+    <div class="newsletter-eo" id="nyhetsbrev-skjema" data-eo-form="858fff68-6016-11f1-a1ae-991ff41a803c">
+      <form class="nl-plassholder" id="nyhetsbrev-plassholder" action="#nyhetsbrev">
+        <input class="form-control" type="email" name="email" autocomplete="email" aria-label="E-postadressen din" aria-describedby="nyhetsbrev-vilkar" placeholder="Din e-postadresse">
+        <button class="btn-primary" type="submit">Meld meg på</button>
+      </form>
+      <p class="nl-feil" id="nyhetsbrev-feil" role="alert" hidden>Vi fikk ikke lastet påmeldingsskjemaet. Prøv igjen, eller send oss en e-post på <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</p>
     </div>
-    <p class="nl-note">Ingen spam. Avmeld når som helst.</p>
+    <p class="nl-note" id="nyhetsbrev-vilkar">Ingen spam. Avmeld når som helst. Tar du i feltet, lastes påmeldingsskjemaet fra EmailOctopus, som bruker Google reCAPTCHA mot robotpåmeldinger. Begge får da IP-adressen din. Se <a href="/personvern.html#nettstedet">personvernerklæringen</a>.</p>
   </div>
 </section>
 
