@@ -120,6 +120,73 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   }, true);
 })();
 
+// --- Nyhetsbrev: EmailOctopus lastes KUN etter en uttrykkelig handling ---
+// Skjemaet la tidligere som <script src> i markupen og gikk til EmailOctopus,
+// Google reCAPTCHA og Google Fonts ved hver sidelast, for brukeren hadde
+// svart pa samtykkebanneret. Fram til brukeren tar i feltet viser vi derfor et
+// rent HTML-felt uten tredjepart, og laster det ekte skjemaet forst da.
+(function () {
+  var vert = document.getElementById('nyhetsbrev-skjema');
+  if (!vert) return;
+  var plassholder = document.getElementById('nyhetsbrev-plassholder');
+  var feil = document.getElementById('nyhetsbrev-feil');
+  var startet = false;
+
+  function visNyhetsbrevFeil() {
+    startet = false;
+    if (feil) feil.hidden = false;
+    if (plassholder) plassholder.hidden = false;
+  }
+
+  function ekteSkjema() {
+    return vert.querySelector('form:not(.nl-plassholder)');
+  }
+
+  function lastNyhetsbrev() {
+    if (startet || ekteSkjema()) return;
+    startet = true;
+    if (feil) feil.hidden = true;
+    var id = vert.getAttribute('data-eo-form');
+    var s = document.createElement('script');
+    s.async = true;
+    s.setAttribute('data-form', id);
+    s.src = 'https://eocampaign1.com/form/' + id + '.js';
+    s.onerror = visNyhetsbrevFeil;
+    vert.appendChild(s);
+    // Et skript som svarer 200 med sol kan fortsatt la vaere a tegne skjemaet.
+    // Da skal brukeren fa beskjed, ikke et felt som ikke gjor noe.
+    setTimeout(function () { if (!ekteSkjema()) visNyhetsbrevFeil(); }, 10000);
+  }
+
+  // Nar EmailOctopus har tegnet skjemaet sitt, tar det over for plassholderen,
+  // og e-posten brukeren allerede hadde skrevet folger med.
+  var speider = new MutationObserver(function () {
+    var skjema = ekteSkjema();
+    if (!skjema) return;
+    speider.disconnect();
+    if (feil) feil.hidden = true;
+    var felt = skjema.querySelector('input[type=email]');
+    var skrevet = plassholder ? plassholder.querySelector('input[type=email]').value : '';
+    if (plassholder) plassholder.remove();
+    if (felt) {
+      if (skrevet) felt.value = skrevet;
+      // Opplysninga om EmailOctopus og reCAPTCHA folger med til EmailOctopus
+      // sitt eget felt, sa den ogsa leses opp der.
+      felt.setAttribute('aria-describedby', 'nyhetsbrev-vilkar');
+      felt.focus();
+    }
+  });
+  speider.observe(vert, { childList: true, subtree: true });
+
+  if (plassholder) {
+    plassholder.addEventListener('focusin', function () { lastNyhetsbrev(); });
+    plassholder.addEventListener('submit', function (e) {
+      e.preventDefault();
+      lastNyhetsbrev();
+    });
+  }
+})();
+
 // «Last ned» i navigasjonen står som App Store-lenke i markupen. Det er riktig
 // for de fleste, og det gjør at knappen virker uten JavaScript. På Android er
 // den samme lenka en blindvei, så der byttes den til Google Play. Merkene i
