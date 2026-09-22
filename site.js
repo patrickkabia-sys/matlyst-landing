@@ -43,6 +43,32 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     gtag('config', 'G-X3J7DVSH2R');
   }
 
+  function ctaLocation(a) {
+    if (a.classList.contains('nav-cta')) return 'navigation';
+    if (a.closest('.hero')) return 'hero';
+    if (a.closest('.page-cta')) return 'page_cta';
+    if (a.closest('footer')) return 'footer';
+    return 'other';
+  }
+
+  function eventProperties(a, destination) {
+    var bilde = a.querySelector('img[alt]');
+    var tekst = a.getAttribute('aria-label') || (bilde && bilde.alt) || a.textContent || '';
+    return {
+      page_path: location.pathname,
+      page_title: document.title,
+      cta_location: ctaLocation(a),
+      link_text: tekst.replace(/\s+/g, ' ').trim().slice(0, 80) || null,
+      destination_store: destination || null
+    };
+  }
+
+  function capture(name, properties) {
+    if (get() !== 'granted') return;
+    if (window.posthog) window.posthog.capture(name, properties);
+    if (window.gtag) window.gtag('event', name, properties);
+  }
+
   var consent = get();
   if (consent === 'granted') { loadPixel(); loadPostHog(); loadGA(); }
   else if (!consent && banner) banner.hidden = false;
@@ -73,20 +99,23 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     if (!a) return;
     if (a.href && a.href.indexOf('apps.apple.com') > -1) {
       if (window.fbq) fbq('track', 'Lead', { content_name: 'App Store' });
-      if (window.posthog) posthog.capture('appstore_click');
+      capture('appstore_click', eventProperties(a, 'app_store'));
     } else if (a.href && a.href.indexOf('play.google.com') > -1) {
       if (window.fbq) fbq('track', 'Lead', { content_name: 'Google Play' });
-      if (window.posthog) posthog.capture('play_click');
+      capture('play_click', eventProperties(a, 'google_play'));
     } else if (a.getAttribute('href') === '#nyhetsbrev') {
       if (window.fbq) fbq('trackCustom', 'NyhetsbrevIntent');
-      if (window.posthog) posthog.capture('newsletter_intent');
+      capture('newsletter_intent', eventProperties(a, null));
     }
   });
 
   document.addEventListener('submit', function (e) {
     if (e.target && e.target.classList && e.target.classList.contains('emailoctopus-form')) {
       if (window.fbq) fbq('track', 'Lead', { content_name: 'Nyhetsbrev' });
-      if (window.posthog) posthog.capture('newsletter_signup');
+      capture('newsletter_signup', {
+        page_path: location.pathname,
+        page_title: document.title
+      });
     }
   }, true);
 })();
