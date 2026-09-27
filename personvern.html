@@ -81,7 +81,7 @@
   "name": "Personvernerklæring for Matlyst",
   "url": "https://matlyst-app.no/personvern.html",
   "inLanguage": "nb-NO",
-  "dateModified": "2026-09-01",
+  "dateModified": "2026-09-27",
   "author": { "@type": "Person", "name": "Patrick Kabia" },
   "publisher": { "@type": "Organization", "name": "Matlyst", "url": "https://matlyst-app.no/" },
   "description": "Hva Matlyst samler, hvorfor, hvem som behandler det, og tre løfter som gjelder alle brukere: bruksanalyse av til du sier ja, ingen betaling for personvern, ingen annonser og ingen salg av data."
@@ -121,7 +121,7 @@
 <main class="doc">
   <p class="doc-kicker">Personvern</p>
   <h1 class="doc-title">Personvern­erklæring</h1>
-  <p class="doc-updated">Sist oppdatert 4. september 2026</p>
+  <p class="doc-updated">Sist oppdatert 27. september 2026</p>
 
   <p class="doc-intro">
     Matlyst er en matapp som lar deg importere, organisere og lage oppskrifter. Vi samler kun dataene
@@ -161,7 +161,8 @@
   <h3>Profil og synlighet</h3>
   <ul>
     <li>Navn, brukernavn og profilbilde (valgfritt).</li>
-    <li>Preferanser du oppgir: kostholdsvalg, allergier, mål, måleenheter og kaloriemål. Alt er valgfritt. Vi spør ikke om alder eller fødselsdato.</li>
+    <li>Preferanser du oppgir: kostholdsvalg, allergier, mål og måleenheter. Alt er valgfritt. Matlogg og kalorimål krever et eget uttrykkelig samtykke, se under.</li>
+    <li><strong>Samtykkebekreftelser.</strong> For analyse, matlogg og den nye KI-tillatelsen lagrer vi bostedsland, bekreftet minstealder og tidspunkt separat for hvert samtykke. Vi lagrer ikke fødselsdato eller fødselsår. Se «Alder og samtykke» nedenfor.</li>
     <li><strong>Synlighet.</strong> Navn, brukernavn og profilbilde er synlige for andre innloggede brukere når de søker deg opp, følger deg eller deler husstand med deg. Dette er valgfritt og kan når som helst fjernes i Profil-innstillingene.</li>
   </ul>
 
@@ -171,6 +172,15 @@
     <li>Ukemeny, handleliste og spiskammer.</li>
     <li>Husstand/gruppe du eventuelt deler planlegging med, og medlemmene der.</li>
   </ul>
+
+  <h3>Matlogg og kalorimål</h3>
+  <p>
+    Hvis du aktiverer matloggen, behandler vi opplysninger om måltider, kalorier, næringsinnhold og
+    kalorimålet ditt. Dette er valgfrie helseopplysninger som krever et eget uttrykkelig samtykke,
+    i tillegg til bekreftelse av minstealderen for bostedslandet ditt. Du kan bruke resten av Matlyst
+    uten disse funksjonene. Du kan trekke samtykket tilbake i appens innstillinger. Da slettes
+    matloggen og kalorimålet nullstilles.
+  </p>
 
   <h3>Import-data</h3>
   <p>
@@ -196,19 +206,31 @@
     <li><strong>Avtale (art. 6 b).</strong> Vise navn, brukernavn og profilbilde til andre brukere gjennom søk, følging og husstand — valgfritt og kan fjernes når som helst.</li>
     <li><strong>Berettiget interesse (art. 6 f).</strong> Teknisk feilsøkingslogg og feil- og krasjrapportering for å holde appen stabil og sikker. Du kan protestere, se «Dine rettigheter».</li>
     <li><strong>Samtykke (art. 6 a).</strong> Bruksstatistikk i appen. Vi spør deg eksplisitt, og vi samler ingenting før du har sagt ja. Du kan trekke samtykket tilbake når som helst under Innstillinger, like enkelt som du ga det.</li>
+    <li><strong>Uttrykkelig samtykke (art. 6 nr. 1 bokstav a og art. 9 nr. 2 bokstav a).</strong> Behandling av helseopplysninger i matlogg og kalorimål. Dette samtykket er separat fra analyse og KI og kan trekkes tilbake i appens innstillinger.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Personaliserte daglige middagsforslag generert av KI, og push-varsler. Begge kan trekkes tilbake når som helst.</li>
   </ul>
   <p>Vi selger aldri dine personopplysninger til tredjeparter.</p>
 
-  <h2>AI-behandling</h2>
+  <h2>KI-behandling</h2>
   <p>
-    Import, oversettelse til norsk, bildeanalyse, daglige middagsforslag og funksjonen «Spør Matlyst» bruker AI-tjenester fra
-    Google (Gemini API) og Anthropic (Claude), begge via betalte API-er. Innholdet du importerer eller spør om, inkludert bilder av oppskrifter, sendes til tjenesten for
-    behandling. Dataene brukes til å svare deg der og da. Leverandøren kan logge dem i en begrenset periode for å avdekke misbruk, og bruker dem <strong>ikke</strong> til å trene AI-modeller.
+    Matlyst bruker KI til blant annet å tolke, kategorisere og oversette oppskrifter og svare på spørsmål
+    gjennom «Spør Matlyst». For kontoer som har bekreftet den nye KI-opplysningen og gitt delingstillatelse,
+    behandles innholdet av <strong>Anthropic Ireland, Limited</strong>. Eldre kontoer uten den nye bekreftelsen
+    bruker inntil videre dagens oppsett med <strong>Google (Gemini API) som primærleverandør og Anthropic som
+    reserve</strong>. Google er derfor fortsatt en mottaker av KI-innhold i overgangsperioden.
   </p>
   <p>
-    For <strong>daglige middagsforslag</strong> sendes ingen identifiserbare personopplysninger til AI-tjenesten,
-    kun kostholdsfiltre, årstid og ukedag.
+    Tekst, bilder eller filer du velger i KI-funksjonene, sendes til leverandøren for behandling.
+    Ved bildeimport kan det valgte kildebildet behandles av KI for å lese oppskriften. Unngå å sende
+    private opplysninger som ikke er nødvendige for oppskriften. Begge leverandørene brukes via betalte
+    API-er. Dataene brukes til å svare deg der og da. Leverandøren kan logge dem i en begrenset periode
+    for å avdekke misbruk, og bruker dem <strong>ikke</strong> til å trene KI-modeller.
+  </p>
+  <p>
+    Før du gir den nye KI-tillatelsen, bekrefter du minstealderen etter bostedsland, se «Alder og samtykke».
+    Du kan bruke resten av appen uten å gi denne tillatelsen. KI-svar kan være feil. Kontroller særlig
+    allergener, mattrygghet og instrukser med varme eller skarpe redskaper. Mindreårige bør be en
+    ansvarlig voksen om hjelp ved slike oppgaver.
   </p>
 
   <h2>Spiskammer og matsvinn</h2>
@@ -292,8 +314,8 @@
     <li><strong>Apple</strong> — «Logg inn med Apple», App Store og kjøp (iOS).</li>
     <li><strong>Google</strong> — «Logg inn med Google», Google Play og kjøp (Android).</li>
     <li><strong>RevenueCat</strong> — administrasjon av abonnement.</li>
-    <li><strong>Google (Gemini API)</strong>: AI-behandling av import, bildeanalyse, daglige forslag og «Spør Matlyst» (USA, betalt API uten trening på innholdet).</li>
-    <li><strong>Anthropic</strong>: AI-behandling av import og «Spør Matlyst» når Gemini ikke er tilgjengelig.</li>
+    <li><strong>Google (Gemini API)</strong>: primærleverandør for KI-behandling i det eksisterende oppsettet for eldre kontoer uten den nye KI-bekreftelsen (USA, betalt API uten trening på innholdet).</li>
+    <li><strong>Anthropic Ireland, Limited</strong>: KI-behandling for kontoer med den nye KI-bekreftelsen og reserveleverandør i det eksisterende oppsettet for eldre kontoer uten denne bekreftelsen.</li>
     <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
     <li><strong>PostHog</strong> — produktanalyse i appen og på nettstedet, knyttet til en pseudonym konto-ID (hostet i EU; kun ved samtykke, både i appen og på nettstedet).</li>
     <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet. Skjemaet lastes først når du tar i e-postfeltet.</li>
@@ -326,6 +348,7 @@
   <p>Vi lagrer ikke opplysninger lenger enn vi trenger dem. Konkret:</p>
   <ul>
     <li><strong>Konto, profil og innholdet ditt</strong> — så lenge du har en konto. Det finnes ingen automatisk utløpstid; du bestemmer selv når det slettes.</li>
+    <li><strong>Matlogg og kalorimål.</strong> Trekker du tilbake samtykket til disse helseopplysningene, slettes matloggen og kalorimålet nullstilles. Dette krever ikke at du sletter kontoen.</li>
     <li><strong>Teknisk feilsøkingslogg</strong> — slettes automatisk 90 dager etter at den ble skrevet.</li>
     <li><strong>Push-token</strong> — slettes når du logger ut, eller når du sletter kontoen.</li>
     <li><strong>Bruksstatistikk hos PostHog</strong> — samles kun mens samtykket ditt står. Trekker du samtykket, stopper innsamlingen umiddelbart. Statistikk som allerede er samlet, slettes når du sletter kontoen, eller hvis du ber oss om det.</li>
@@ -362,8 +385,25 @@
     opplysningene dine feil.
   </p>
 
-  <h2>Barn</h2>
-  <p>Matlyst er ikke rettet mot barn under 13 år, og vi samler ikke bevisst inn opplysninger om dem.</p>
+  <h2>Alder og samtykke</h2>
+  <p>
+    Matlyst har ingen generell aldersgrense for bruk av appen. For å gi eget samtykke til bruksanalyse
+    eller aktivere matlogg og kalorimål må du bekrefte minstealderen for bostedslandet ditt. Vi ber om
+    samme bekreftelse før du gir den nye tillatelsen til å dele innhold med Anthropic:
+  </p>
+  <ul>
+    <li><strong>Norge: 13 år.</strong> <a href="https://lovdata.no/lov/2018-06-15-38/%C2%A75">Personopplysningsloven § 5</a>.</li>
+    <li><strong>Sverige: 13 år.</strong> <a href="https://data.riksdagen.se/dokument/sfs-2018-218.html">Dataskyddslagen (2018:218) 2 kap. 4 §</a>.</li>
+    <li><strong>Danmark: 15 år.</strong> <a href="https://www.retsinformation.dk/eli/lta/2024/289/pdf">Databeskyttelsesloven § 6 stk. 2</a>.</li>
+  </ul>
+  <p>
+    Velg landet du bor i, uavhengig av appens språk. Vi lagrer land, bekreftet minstealder og tidspunkt
+    per samtykke, ikke fødselsdato eller fødselsår. Vi har ingen løsning for foreldresamtykke.
+    Uten aldersbekreftelsen kan du bruke resten av appen, men ikke aktivere funksjonen som krever den.
+    Disse tersklene gjelder barns samtykke til digitale tjenester. Matloggens helseopplysninger krever
+    i tillegg et eget uttrykkelig samtykke etter GDPR art. 9 nr. 2 bokstav a. Aldersbekreftelsen er ikke
+    i seg selv en rett til å inngå alle avtaler eller kjøpe abonnement uten nødvendige tillatelser.
+  </p>
 
   <h2>Endringer</h2>
   <p>
