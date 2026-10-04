@@ -1,6 +1,7 @@
 # Fast ordliste for svensk og dansk
 
-Status: underlag for språkgranskning før sidetekst  
+Status: underlag for språkgranskning før sidetekst
+
 Dato: 2026-10-05
 
 Ordlistevalgene er hentet fra appens gjeldende `origin/master`, filene `lib/sprak/tekster/sv.ts` og `lib/sprak/tekster/da.ts`, lest 2026-10-05. Nettstedet bruker de samme produktnavnene som appen. Søkeord kan brukes i forklarende tekst når de avviker fra produktnavnet, men de skal ikke erstatte etiketten brukeren møter i appen.

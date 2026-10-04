@@ -1,7 +1,9 @@
 # Sökord Sverige
 
-Status: underlag för granskning före sidproduktion  
-Datum: 2026-10-05  
+Status: underlag för granskning före sidproduktion
+
+Datum: 2026-10-05
+
 Marknad: Sverige (`sv-SE`)
 
 ## Källor och begränsningar

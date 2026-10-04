@@ -1,7 +1,9 @@
 # Søgeord Danmark
 
-Status: grundlag for gennemgang før sideproduktion  
-Dato: 2026-10-05  
+Status: grundlag for gennemgang før sideproduktion
+
+Dato: 2026-10-05
+
 Marked: Danmark (`da-DK`)
 
 ## Kilder og begrænsninger
