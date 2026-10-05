@@ -50,22 +50,16 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
 .hero-actions{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .btn-store{transition:transform .25s,opacity .25s}.btn-store:hover{transform:translateY(-2px);opacity:.9}
 .btn-store img{height:52px}
-/* App Store og Google Play side om side, med LIK BREDDE.
+/* App Store og Google Play side om side, med LIK SYNLIG HØYDE (40 px).
 
-   De to merkene har ulikt forhold (App Store 119,66:40 = 2,99, Play 646:192 =
-   3,37), så bredde og høyde kan ikke matche samtidig. Bredden vinner: det er
-   den dimensjonen øyet sammenligner når to knapper står ved siden av hverandre
-   på samme grunnlinje. Derfor styres begge på width, ikke height.
+   Begge filene er beskåret til selve merket: appstore-badge.svg er 119,66 x 40,
+   og googleplay-badge-en.png er beskåret fra 646 x 250 til det synlige merket,
+   564 x 168 (Googles gjennomsiktige kant er fjernet). Derfor gir samme
+   height:40px samme synlige høyde. Bredden følger forholdet (ca. 120 og 134 px).
+   Klaringen rundt merkene kommer fra gap i .store-badges, ikke fra luft i filen.
 
-   Play-merket har innebygd luft fra Google, 29 av 250 px topp og bunn. Ved
-   133 px bredde blir den luften ~6 px, så ankeret blir høyere enn selve
-   merket. align-items:center i .store-badges retter opp for det, og luften
-   BEHOLDES fordi Googles retningslinjer krever den som klaring.
-
-   height:auto er ikke valgfri. Begge filene har width/height-attributter i
-   markupen, og uten height:auto låses høyden til attributtet mens bredden
-   settes av CSS: merket blir strukket. Det skjedde med PNG-en først (496 x 68
-   i stedet for 175 x 68), og SVG-en har samme felle. */
+   width:auto er ikke valgfri. Noen sider har width/height-attributter i
+   markupen; uten width:auto blir merket strukket til attributtets bredde. */
 .store-badges{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .store-badges .btn-store img{width:auto;height:40px}
 .scroll-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);text-decoration:none}

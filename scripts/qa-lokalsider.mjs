@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import { spawn } from 'node:child_process';
-import { mkdirSync, mkdtempSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { extname, join, normalize } from 'node:path';
 
 const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:4173';
 const out = process.argv[2] || 'qa/sv-da/skjermbilder';
@@ -60,6 +61,30 @@ function cdp(url) {
   };
 }
 
+const typer = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.woff2': 'font/woff2', '.json': 'application/json' };
+
+async function svarer(url) {
+  try { return (await fetch(url)).ok; } catch { return false; }
+}
+
+// Bruk en server som allerede kjører på BASE_URL, ellers start en statisk server selv.
+async function sikreServer() {
+  if (await svarer(`${baseUrl}/sv/`)) return null;
+  const { hostname, port: serverPort } = new URL(baseUrl);
+  const rot = process.cwd();
+  const server = createServer((req, res) => {
+    let fil = join(rot, normalize(decodeURIComponent(new URL(req.url, baseUrl).pathname)));
+    if (existsSync(fil) && statSync(fil).isDirectory()) fil = join(fil, 'index.html');
+    if (!fil.startsWith(rot) || !existsSync(fil)) { res.writeHead(404); res.end('404'); return; }
+    res.writeHead(200, { 'content-type': typer[extname(fil)] ?? 'application/octet-stream' });
+    res.end(readFileSync(fil));
+  });
+  await new Promise((resolve) => server.listen(Number(serverPort), hostname, resolve));
+  if (!(await svarer(`${baseUrl}/sv/`))) throw new Error(`Fikk ikke kontakt med ${baseUrl}`);
+  return server;
+}
+
+const server = await sikreServer();
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 const chrome = spawn(chromePath, [
@@ -80,8 +105,13 @@ try {
       await session.send('Emulation.setDeviceMetricsOverride', {
         width: bredde, height: hoyde, deviceScaleFactor: 1, mobile: false,
       });
-      await session.send('Page.navigate', { url: `${baseUrl}${path}` });
+      const { errorText } = await session.send('Page.navigate', { url: `${baseUrl}${path}` });
+      if (errorText) throw new Error(`${path}: ${errorText}`);
       await vent(180);
+      const { result } = await session.send('Runtime.evaluate', {
+        expression: 'location.protocol.startsWith("http") && !!document.querySelector("main#hovedinnhold h1")', returnByValue: true,
+      });
+      if (result.value !== true) throw new Error(`${path}: siden ble ikke lastet (mangler main og h1)`);
       await session.send('Runtime.evaluate', {
         expression: 'document.fonts.ready', awaitPromise: true, returnByValue: true,
       });
@@ -100,6 +130,7 @@ try {
   session.close();
   console.log(`Skrev ${filer.length * 2} skjermbilder til ${out}`);
 } finally {
+  server?.close();
   chrome.kill('SIGTERM');
   await Promise.race([
     new Promise((resolve) => chrome.once('exit', resolve)),

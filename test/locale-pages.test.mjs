@@ -137,8 +137,11 @@ test('alle sider som laster site.js har samtykkebanner og mulighet for å trekke
 
 test('produktbevis har språktilpassede kildesider og riktige funksjonsreferanser', () => {
   const qa = les(join(root, 'qa/sv-da/produktpaastander.md'));
-  assert.match(qa, /\/sv\/koket\/ \| Offentliga länkar/u);
-  assert.match(qa, /\/da\/dr-mad\/ \| Offentlige links/u);
+  const rader = [...qa.matchAll(/^\| (\/(?:sv|da)\/[^ ]+\/) \| (.+?) \| `/gmu)];
+  assert.equal(rader.length, 34);
+  for (const [, side, sitat] of rader) {
+    assert.ok(les(join(root, side, 'index.html')).includes(sitat), `${side}: påstanden er ikke sitert ordrett`);
+  }
   assert.match(qa, /\/da\/haandskrevne-opskrifter\/[^\n]+lib\/importEngine\.ts/u);
   assert.match(qa, /\/da\/spisekammer-app\/[^\n]+hooks\/usePantry\.ts/u);
 });
