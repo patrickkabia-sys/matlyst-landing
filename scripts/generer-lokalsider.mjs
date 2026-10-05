@@ -290,6 +290,48 @@ ${nav(lang,path)}<main id="hovedinnhold"><header class="locale-page-hero"><p cla
 <section class="page-cta"><h2 class="disp">${lang === 'sv' ? 'Samla vardagen i Matlyst' : 'Saml hverdagen i Matlyst'}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
+const sourcePages = {
+  sv: [
+    ['spara-recept-fran-koket/','gem-opskrifter-fra-dr-mad/','Spara recept från Köket.se','Så sparar du ett offentligt recept från Köket.se i Matlyst, med källan kvar.','Köket.se','https://www.koket.se/'],
+    ['spara-recept-fran-landleys-kok/','gem-opskrifter-fra-alletiders-kogebog/','Spara recept från Landleys Kök','Så sparar du ett offentligt recept från Landleys Kök i Matlyst, med källan kvar.','Landleys Kök','https://www.landleyskok.se/'],
+  ],
+  da: [
+    ['gem-opskrifter-fra-alletiders-kogebog/','spara-recept-fran-landleys-kok/','Gem opskrifter fra Alletiders Kogebog','Sådan gemmer du en offentlig opskrift fra Alletiders Kogebog i Matlyst med kilden bevaret.','Alletiders Kogebog','https://www.dk-kogebogen.dk/'],
+    ['gem-opskrifter-fra-dr-mad/','spara-recept-fran-koket/','Gem opskrifter fra DR Mad','Sådan gemmer du en offentlig opskrift fra DR Mad i Matlyst med kilden bevaret.','DR Mad','https://www.dr.dk/mad'],
+  ],
+};
+
+function sourcePage(lang, row) {
+  const [path,counterpart,title,description,source,sourceUrl] = row;
+  const sv = lang === 'sv';
+  const faq = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:[
+    {'@type':'Question',name:sv ? `Samarbetar Matlyst med ${source}?` : `Samarbejder Matlyst med ${source}?`,acceptedAnswer:{'@type':'Answer',text:sv ? 'Nej. Sidan beskriver hur du själv kan spara en offentlig länk.' : 'Nej. Siden beskriver, hvordan du selv kan gemme et offentligt link.'}},
+  ]};
+  return `${head({lang,path,counterpart,title:`${title} | Matlyst`,description,nb:'/importer-fra-matprat/',schema:faq})}<body data-locale="${lang}">
+${nav(lang,path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${sv ? 'Spara med källan kvar' : 'Gem med kilden bevaret'}</p><h1 class="disp">${title}</h1><p class="lead">${description}</p></header>
+<section class="prose locale-prose"><h2>${sv ? 'Så gör du' : 'Sådan gør du'}</h2><ol><li>${sv ? `Öppna ett offentligt recept på ${source}.` : `Åbn en offentlig opskrift hos ${source}.`}</li><li>${sv ? 'Dela länken till Matlyst eller klistra in den i importen.' : 'Del linket til Matlyst, eller indsæt det i importen.'}</li><li>${sv ? 'Kontrollera ingredienser, mängder och steg innan du sparar.' : 'Kontrollér ingredienser, mængder og trin før lagring.'}</li></ol>
+<h2>${sv ? 'Källa och ansvar' : 'Kilde og ansvar'}</h2><p>${sv ? `Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med ${source} och gör inte anspråk på deras texter eller bilder.` : `Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med ${source} og gør ikke krav på deres tekster eller billeder.`}</p><p><a href="${sourceUrl}" rel="noopener">${sv ? `Besök ${source}` : `Besøg ${source}`}</a></p></section>
+<section class="page-cta"><h2 class="disp">${sv ? 'Spara receptet där du använder det' : 'Gem opskriften der, hvor du bruger den'}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
+}
+
+const supportPages = {
+  sv: [
+    ['avregistrera/','afmeld/','Avregistrera e-post','Avregistrera dig via länken längst ned i e-postmeddelandet eller kontakta hei@matlyst-app.no.'],
+    ['tiktok/','tiktok/','TikTok och Matlyst','Den här sidan används när du delar en offentlig TikTok-länk till Matlyst. Privat eller borttaget innehåll kan inte alltid läsas.'],
+    ['tiktok-auth/','tiktok-auth/','TikTok-anslutning','Teknisk retursida för TikTok-anslutning i Matlyst.'],
+  ],
+  da: [
+    ['afmeld/','avregistrera/','Afmeld e-mail','Afmeld dig via linket nederst i e-mailen, eller skriv til hei@matlyst-app.no.'],
+    ['tiktok/','tiktok/','TikTok og Matlyst','Denne side bruges, når du deler et offentligt TikTok-link til Matlyst. Privat eller slettet indhold kan ikke altid læses.'],
+    ['tiktok-auth/','tiktok-auth/','TikTok-forbindelse','Teknisk returside til TikTok-forbindelse i Matlyst.'],
+  ],
+};
+
+function supportPage(lang, row) {
+  const [path,counterpart,title,text] = row;
+  return `${head({lang,path,counterpart,title:`${title} | Matlyst`,description:text,nb:path.startsWith('av') ? '/avmeld/' : `/${path}`,noindex:true})}<body data-locale="${lang}">${nav(lang,path)}<main id="hovedinnhold" class="legal-doc"><header><p class="eyebrow">Matlyst</p><h1 class="disp">${title}</h1><p class="lead">${text}</p></header></main>${footer(lang)}</body></html>`;
+}
+
 function write(path, content) {
   const file = fileURLToPath(new URL(path, import.meta.url));
   mkdirSync(dirname(file), { recursive: true });
@@ -303,6 +345,8 @@ for (const lang of ['sv','da']) {
     write(`../${lang}/${d.path}index.html`, legalPage(lang,key));
   }
   for (const row of featurePages[lang]) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
+  for (const row of sourcePages[lang]) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
+  for (const row of supportPages[lang]) write(`../${lang}/${row[0]}index.html`, supportPage(lang,row));
 }
 
 const sammenheng = ['# Funksjonssider: norsk, svensk og dansk', '', 'Kontrollgrunnlag generert 2026-10-05. Hver rad viser samme produktløfte med lokal formulering.', '', '| Felles produktløfte | Svensk | Dansk |', '|---|---|---|'];
@@ -328,4 +372,13 @@ const paastander = ['# Produktpåstander per side', '', 'Kontrollert mot appens 
 for (const lang of ['sv','da']) for (const row of featurePages[lang]) {
   paastander.push(`| /${lang}/${row[0]} | ${row[6]} | ${bevis(row[0])} |`);
 }
+for (const lang of ['sv','da']) for (const row of sourcePages[lang]) {
+  paastander.push(`| /${lang}/${row[0]} | Offentliga länkar kan skickas till importen; källan ska behållas och resultatet kontrolleras. | \`lib/importEngine.ts:201-229\`, \`lib/source.ts:20-74\` |`);
+}
 write('../qa/sv-da/produktpaastander.md', paastander.join('\n') + '\n');
+
+const kildeQa = ['# Lokale kildesider', '', 'Kontrollert 2026-10-05. Sidene beskriver import av offentlige URL-er og påstår ikke samarbeid.', '', '| Side | Offisiell kilde | Fem tilfeldige importer |', '|---|---|---|'];
+for (const lang of ['sv','da']) for (const row of sourcePages[lang]) {
+  kildeQa.push(`| /${lang}/${row[0]} | ${row[5]} | Ikke kjørt: krever testkonto og er en lanseringsport |`);
+}
+write('../qa/sv-da/lokale-kilder.md', kildeQa.join('\n') + '\n');
