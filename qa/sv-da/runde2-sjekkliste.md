@@ -1,4 +1,4 @@
-# Landing #9 – retterunde 3
+# Landing #9 – retterunde 3 og 4
 
 Kontrollgrunnlag: `matlyst-kontroll/rapporter/2026-10-05-landing9-claude-qa-runde3.md`. Hver rad er kontrollert mot den regenererte filen den peker på: sitatet står ordrett i filen. Filen heter fortsatt `runde2-sjekkliste.md` slik at lenker fra runde 2 virker.
 
@@ -27,7 +27,7 @@ Kontrollgrunnlag: `matlyst-kontroll/rapporter/2026-10-05-landing9-claude-qa-rund
 | DA M4 madplan-app | RETTET | `da/madplan-app/index.html` | `Er Madplan og Indkøbsliste gratis?` |
 | DA M4 nem-mad | UENDRET (allerede rett) | `da/nem-mad/index.html` | `Spisekammeret, Madplanen og Indkøbslisten.` |
 | DA slet-konto frist | RETTET | `da/slet-konto/index.html` | `slettes automatisk senest 30 dage efter sletningen.` |
-| DA like overskrifter, middagsforslag | RETTET | `da/middagsforslag/index.html` | `<h2>Hvor forslagene kommer fra</h2>` |
+| DA like overskrifter, middagsforslag | RETTET (runde 4: ny H2) | `da/middagsforslag/index.html` | `<h2>Forslag fra din egen samling</h2>` |
 | DA like overskrifter, nem-mad | RETTET | `da/nem-mad/index.html` | `<h2>Fra gemt opskrift til aftensmad</h2>` |
 | DA madplan-app gjentakelse | RETTET | `da/madplan-app/index.html` | `Vælg en opskrift til de dage, du vil planlægge. Du bestemmer selv, hvad der skal på bordet.` / `Deling af Madplan og Indkøbsliste i en husstand kræver Matlyst Pro.` |
 | DA derhjemme, H1 | RETTET | `da/opskrifter-ud-fra-ingredienser/index.html` | `Søg med det, du har derhjemme` |
@@ -63,3 +63,17 @@ Kontrollgrunnlag: `matlyst-kontroll/rapporter/2026-10-05-landing9-claude-qa-rund
 | SV doble avsnitt, paprika | RETTET | `sv/byt-fran-paprika/index.html` | `Matlyst kan importera recept från länkar och filer som appen stöder.` (ansvarsfraskrivelsen om Paprika står igjen under «Bra att veta») |
 | SV /sv/tiktok/ | RETTET | `sv/tiktok/index.html` | `delar en länk till en TikTok-video från ett offentligt konto med Matlyst.` |
 | hreflang juridiske sider | RETTET | `sv/integritet/index.html` | Ingen `hreflang="nb-NO"` eller `hreflang="x-default"`; gjelder alle 48 sv/da-sider, også støttesidene |
+
+## Runde 4 (kontrollørens funn på `e505fb2`)
+
+| Punkt | Status | Fil | Nytt sitat |
+|---|---|---|---|
+| R4-1 AI-samtykke DA | RETTET | `da/privatliv/index.html` | `Du kan trække samtykket tilbage i appens indstillinger.` / lenken bare under nettsiden: `Du kan trække analysesamtykket tilbage via «Skift samtykke» nederst på siden.` |
+| R4-1 AI-samtykke SV | RETTET | `sv/integritet/index.html` | `Du kan återkalla samtycket när som helst i appens inställningar.` / lenken bare under nettsiden: `Du kan återkalla analyssamtycket via länken Ändra samtycke längst ned på sidan.` |
+| R4-2 DA vilkaar §5 | RETTET | `da/vilkaar/index.html` | `regnet fra den dag, aftalen indgås. Fortrydelsesretten kan bortfalde, når du udtrykkeligt beder om, at leveringen starter straks, og samtidig anerkender, at du dermed mister fortrydelsesretten. Købet sker hos Apple eller Google, som håndterer betaling, fortrydelse og eventuel refusion efter den lov, der gælder for dig.` |
+| R4-3 DA middagsforslag H2 | RETTET | `da/middagsforslag/index.html` | `<h2>Forslag fra din egen samling</h2>` |
+| R4-4 DA vilkaar §8 domstol | RETTET | `da/vilkaar/index.html` | `Du kan også anlægge sag ved en domstol i Danmark.` (kilde i `qa/sv-da/juridiske-kilder.md`, raden «Forbrukeren kan saksøke i eget land») |
+| R4-5 DA slet-konto | RETTET | `da/slet-konto/index.html` | `behandler din anmodning inden 30 dage.` |
+| R4-6 SV skafferi-app | RETTET | `sv/skafferi-app/index.html` | `Skafferi-app för recept` i title, meta og H2; ingen «Skafferiapp» igjen |
+| R4-7 SV feedback | RETTET | `sv/integritet/index.html` | `och för att hantera feedback du skickar.` / `Feedback sparas så länge kontot finns eller tills du ber oss radera den.` |
+| R4-7 DA feedback | RETTET | `da/privatliv/index.html` | `og til at håndtere feedback, du sender.` / `Feedback gemmes, så længe kontoen findes, eller til du beder os slette den.` |

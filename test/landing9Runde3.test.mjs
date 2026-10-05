@@ -87,3 +87,12 @@ test('skjermbildene er ekte sider, ikke like feilsider', () => {
   assert.ok(new Set(storrelser).size >= 90, `bare ${new Set(storrelser).size} ulike filstørrelser`);
   assert.ok(Math.min(...storrelser) > 20_000, 'et skjermbilde er mistenkelig lite');
 });
+
+test('AI-samtykket trekkes tilbake i appen, ikke via nettsidelenken', () => {
+  for (const [side, overskrift] of [['sv/integritet/index.html', 'AI-behandling'], ['da/privatliv/index.html', 'AI-behandling']]) {
+    const avsnitt = les(side).match(new RegExp(`<h2>${overskrift}</h2><p>([\\s\\S]*?)</p>`, 'u'))?.[1];
+    assert.ok(avsnitt, `${side}: fant ikke ${overskrift}`);
+    assert.doesNotMatch(avsnitt, /Ändra samtycke|Skift samtykke|nederst på siden|längst ned på sidan/u, side);
+    assert.match(avsnitt, /appens (?:inställningar|indstillinger)/u, side);
+  }
+});
