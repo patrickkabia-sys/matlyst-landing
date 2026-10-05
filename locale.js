@@ -2,8 +2,64 @@
   'use strict';
 
   var STORAGE_KEY = 'matlyst-sprak';
-  // Publiseringsport: fylles fra hreflang-parene i samme commit som sv/da lanseres.
-  var LOCALE_PAGE_MAP = Object.freeze({});
+  // Generert av scripts/generer-lokalsider.mjs fra hreflang-parene. Ikke rediger for hånd.
+  // Rekkefølge: ?sprak= vinner og lagres, deretter lagret valg, deretter nettleserens språk.
+  var LOCALE_PAGE_MAP = Object.freeze({
+    "/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
+    "/da/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
+    "/da/afmeld/": {"sv": "/sv/avregistrera/", "da": "/da/afmeld/"},
+    "/da/alletiders-kogebog/": {"sv": "/sv/landleys-kok/", "da": "/da/alletiders-kogebog/"},
+    "/da/dr-mad/": {"sv": "/sv/koket/", "da": "/da/dr-mad/"},
+    "/da/find-opskrifter/": {"sv": "/sv/hitta-recept/", "da": "/da/find-opskrifter/"},
+    "/da/gem-opskrifter-fra-instagram/": {"sv": "/sv/spara-recept-fran-instagram/", "da": "/da/gem-opskrifter-fra-instagram/"},
+    "/da/gem-opskrifter-fra-tiktok/": {"sv": "/sv/spara-recept-fran-tiktok/", "da": "/da/gem-opskrifter-fra-tiktok/"},
+    "/da/haandskrevne-opskrifter/": {"sv": "/sv/handskrivna-recept/", "da": "/da/haandskrevne-opskrifter/"},
+    "/da/importer-opskrifter/": {"sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/"},
+    "/da/indkoebsliste-app/": {"sv": "/sv/inkopslista/", "da": "/da/indkoebsliste-app/"},
+    "/da/madplan-app/": {"sv": "/sv/veckomeny-app/", "da": "/da/madplan-app/"},
+    "/da/middagsforslag/": {"sv": "/sv/vad-ska-jag-laga/", "da": "/da/middagsforslag/"},
+    "/da/nem-mad/": {"sv": "/sv/enkel-middag/", "da": "/da/nem-mad/"},
+    "/da/opskrifter-ud-fra-ingredienser/": {"sv": "/sv/recept-pa-ingredienser/", "da": "/da/opskrifter-ud-fra-ingredienser/"},
+    "/da/opskrifts-app/": {"sv": "/sv/receptbok-app/", "da": "/da/opskrifts-app/"},
+    "/da/opskriftsskabere/": {"sv": "/sv/receptskapare/", "da": "/da/opskriftsskabere/"},
+    "/da/privatliv/": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/"},
+    "/da/skift-fra-paprika/": {"sv": "/sv/byt-fran-paprika/", "da": "/da/skift-fra-paprika/"},
+    "/da/slet-konto/": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
+    "/da/spisekammer-app/": {"sv": "/sv/skafferi-app/", "da": "/da/spisekammer-app/"},
+    "/da/tiktok/": {"sv": "/sv/tiktok/", "da": "/da/tiktok/"},
+    "/da/toem-koeleskabet/": {"sv": "/sv/tom-kylskapet/", "da": "/da/toem-koeleskabet/"},
+    "/da/vilkaar/": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/"},
+    "/index.html": {"nb": "/", "sv": "/sv/", "da": "/da/"},
+    "/personvern": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/"},
+    "/personvern.html": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/"},
+    "/slett-konto": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
+    "/slett-konto.html": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
+    "/sv/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
+    "/sv/avregistrera/": {"sv": "/sv/avregistrera/", "da": "/da/afmeld/"},
+    "/sv/byt-fran-paprika/": {"sv": "/sv/byt-fran-paprika/", "da": "/da/skift-fra-paprika/"},
+    "/sv/enkel-middag/": {"sv": "/sv/enkel-middag/", "da": "/da/nem-mad/"},
+    "/sv/handskrivna-recept/": {"sv": "/sv/handskrivna-recept/", "da": "/da/haandskrevne-opskrifter/"},
+    "/sv/hitta-recept/": {"sv": "/sv/hitta-recept/", "da": "/da/find-opskrifter/"},
+    "/sv/importera-recept/": {"sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/"},
+    "/sv/inkopslista/": {"sv": "/sv/inkopslista/", "da": "/da/indkoebsliste-app/"},
+    "/sv/integritet/": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/"},
+    "/sv/koket/": {"sv": "/sv/koket/", "da": "/da/dr-mad/"},
+    "/sv/landleys-kok/": {"sv": "/sv/landleys-kok/", "da": "/da/alletiders-kogebog/"},
+    "/sv/radera-konto/": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
+    "/sv/recept-pa-ingredienser/": {"sv": "/sv/recept-pa-ingredienser/", "da": "/da/opskrifter-ud-fra-ingredienser/"},
+    "/sv/receptbok-app/": {"sv": "/sv/receptbok-app/", "da": "/da/opskrifts-app/"},
+    "/sv/receptskapare/": {"sv": "/sv/receptskapare/", "da": "/da/opskriftsskabere/"},
+    "/sv/skafferi-app/": {"sv": "/sv/skafferi-app/", "da": "/da/spisekammer-app/"},
+    "/sv/spara-recept-fran-instagram/": {"sv": "/sv/spara-recept-fran-instagram/", "da": "/da/gem-opskrifter-fra-instagram/"},
+    "/sv/spara-recept-fran-tiktok/": {"sv": "/sv/spara-recept-fran-tiktok/", "da": "/da/gem-opskrifter-fra-tiktok/"},
+    "/sv/tiktok/": {"sv": "/sv/tiktok/", "da": "/da/tiktok/"},
+    "/sv/tom-kylskapet/": {"sv": "/sv/tom-kylskapet/", "da": "/da/toem-koeleskabet/"},
+    "/sv/vad-ska-jag-laga/": {"sv": "/sv/vad-ska-jag-laga/", "da": "/da/middagsforslag/"},
+    "/sv/veckomeny-app/": {"sv": "/sv/veckomeny-app/", "da": "/da/madplan-app/"},
+    "/sv/villkor/": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/"},
+    "/vilkar": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/"},
+    "/vilkar.html": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/"},
+  });
 
   function normaliserSprak(verdi) {
     var kode = String(verdi || '').toLowerCase().split('-')[0];
@@ -39,7 +95,7 @@
     try { lagret = global.localStorage.getItem(STORAGE_KEY); } catch (e) {}
     var valgt = velgSprak(global.navigator.languages || [global.navigator.language], lagret);
     var maal = finnMaalsti(global.location.pathname, valgt, LOCALE_PAGE_MAP);
-    if (maal && maal !== global.location.pathname) global.location.replace(maal);
+    if (maal && maal !== global.location.pathname) global.location.replace(maal + global.location.search + global.location.hash);
   }
 
   global.MatlystLocale = {

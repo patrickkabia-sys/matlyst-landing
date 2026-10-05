@@ -3,8 +3,10 @@
   <url>
     <loc>https://matlyst-app.no/da/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/alletiders-kogebog/</loc>
@@ -93,8 +95,10 @@
   <url>
     <loc>https://matlyst-app.no/da/privatliv/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/personvern.html"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/integritet/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/privatliv/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/personvern.html"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/skift-fra-paprika/</loc>
@@ -105,8 +109,10 @@
   <url>
     <loc>https://matlyst-app.no/da/slet-konto/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/slett-konto.html"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/radera-konto/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/slet-konto/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/slett-konto.html"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/spisekammer-app/</loc>
@@ -123,7 +129,9 @@
   <url>
     <loc>https://matlyst-app.no/da/vilkaar/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/vilkar.html"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/villkor/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vilkaar/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/vilkar.html"/>
   </url>
 </urlset>

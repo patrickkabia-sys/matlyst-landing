@@ -105,7 +105,8 @@ try {
       await session.send('Emulation.setDeviceMetricsOverride', {
         width: bredde, height: hoyde, deviceScaleFactor: 1, mobile: false,
       });
-      const { errorText } = await session.send('Page.navigate', { url: `${baseUrl}${path}` });
+      // ?sprak= låser språket, så automatisk språk ikke sender siden videre.
+      const { errorText } = await session.send('Page.navigate', { url: `${baseUrl}${path}?sprak=${path.split('/')[1]}` });
       if (errorText) throw new Error(`${path}: ${errorText}`);
       await vent(180);
       const { result } = await session.send('Runtime.evaluate', {

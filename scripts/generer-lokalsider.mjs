@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -26,10 +26,12 @@ const common = {
 const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const json = (value) => JSON.stringify(value).replaceAll('<', '\\u003c');
 
-function alternateLinks(lang, path, counterpart = path) {
+// nb brukes bare der den norske siden lenker tilbake med hreflang (forside og juridiske sider).
+function alternateLinks(lang, path, counterpart = path, nb = null) {
   const svPath = lang === 'sv' ? path : counterpart;
   const daPath = lang === 'da' ? path : counterpart;
   const links = [['sv-SE', '/sv/' + (svPath || '')], ['da-DK', '/da/' + (daPath || '')]];
+  if (nb) links.unshift(['nb-NO', nb]), links.push(['x-default', nb]);
   return links.map(([lang, href]) => `<link rel="alternate" hreflang="${lang}" href="${base}${href}">`).join('\n');
 }
 
@@ -67,7 +69,7 @@ function consentBanner(lang) {
   return `<div class="cookie" id="cookie" hidden><div class="cookie-inner" id="samtykke"><p>${text}</p><div class="cookie-actions"><button class="ck-btn ck-accept" id="ck-accept" type="button">${sv ? 'Godkänn' : 'Acceptér'}</button><button class="ck-btn ck-reject" id="ck-reject" type="button">${sv ? 'Bara nödvändiga' : 'Kun nødvendige'}</button></div></div></div>`;
 }
 
-function head({ lang, path = '', counterpart = path, title, description, image = '/images/og.jpg', noindex = false, schema }) {
+function head({ lang, path = '', counterpart = path, title, description, image = '/images/og.jpg', nb = null, noindex = false, schema }) {
   const c = common[lang];
   const canonical = `${base}/${lang}/${path}`;
   return `<!DOCTYPE html>
@@ -79,7 +81,7 @@ function head({ lang, path = '', counterpart = path, title, description, image =
 <meta name="description" content="${esc(description)}">
 <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow'}">
 <link rel="canonical" href="${canonical}">
-${alternateLinks(lang, path, counterpart)}
+${alternateLinks(lang, path, counterpart, nb)}
 <meta name="theme-color" content="#F7F3EC">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
@@ -121,8 +123,8 @@ function home(lang) {
     applicationCategory: 'LifestyleApplication', operatingSystem: 'iOS, Android',
     description, url: `${base}/${lang}/`,
   };
-  return `${head({ lang, title, description, schema })}<body data-locale="${lang}">
-${nav(lang)}
+  return `${head({ lang, title, description, nb: '/', schema })}<body data-locale="${lang}">
+${nav(lang, '', '', '/')}
 <main id="hovedinnhold">
 <header class="hero locale-home-hero" data-section="hero">
   <div><p class="eyebrow hero-eyebrow">${sv ? 'Receptappen för vardagen' : 'Opskriftsappen til hverdagen'}</p>
@@ -241,11 +243,11 @@ function legalPage(lang, key) {
     {'@type':'ListItem',position:1,name:common[lang].home,item:`${base}/${lang}/`},
     {'@type':'ListItem',position:2,name:d.h1,item:`${base}/${lang}/${d.path}`},
   ]};
-  return `${head({lang,path:d.path,counterpart:d.counterpart,title:d.title,description,schema:breadcrumb})}<body data-locale="${lang}">
+  return `${head({lang,path:d.path,counterpart:d.counterpart,title:d.title,description,nb:d.nb,schema:breadcrumb})}<body data-locale="${lang}">
 ${nav(lang,d.path,d.counterpart,d.nb)}
 <main id="hovedinnhold" class="legal-doc">
 <header><p class="eyebrow">${common[lang].legal}</p><h1 class="disp">${d.h1}</h1><p class="lead">${d.intro}</p><p class="legal-updated">${lang === 'sv' ? 'Senast uppdaterad 5 oktober 2026' : 'Senest opdateret 5. oktober 2026'}</p></header>
-${d.sections.map(([h,p])=>`<section><h2>${h}</h2><p>${p}</p></section>`).join('\n')}
+${d.sections.map(([h,p])=>`<section${key === 'terms' && h.startsWith('2.') ? ' id="alder"' : ''}><h2>${h}</h2><p>${p}</p></section>`).join('\n')}
 <section class="legal-callout"><h2>${lang === 'sv' ? 'Kontakt' : 'Kontakt'}</h2><p>${lang === 'sv' ? 'Frågor och begäranden skickas till' : 'Spørgsmål og anmodninger sendes til'} <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</p></section>
 </main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
@@ -418,6 +420,33 @@ for (const lang of ['sv','da']) {
     .sort();
   write(`../sitemap-${lang}.xml`, ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">', ...urls, '</urlset>'].join('\n') + '\n');
 }
+
+// Automatisk språk: LOCALE_PAGE_MAP bygges fra hreflang-parene på sidene.
+// tiktok-auth er en teknisk retursida og omdirigeres aldri.
+const sprakKode = { 'nb-NO': 'nb', 'sv-SE': 'sv', 'da-DK': 'da' };
+const sidekart = {};
+for (const html of lokaleSider) {
+  const canonical = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
+  if (/\/tiktok-auth\/$/u.test(canonical)) continue;
+  const rad = {};
+  for (const [, kode, href] of html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/gu)) {
+    if (sprakKode[kode]) rad[sprakKode[kode]] = new URL(href).pathname;
+  }
+  const stier = Object.values(rad);
+  for (const sti of stier) {
+    sidekart[sti] = rad;
+    if (sti.endsWith('.html')) sidekart[sti.slice(0, -'.html'.length)] = rad;
+    if (sti === '/') sidekart['/index.html'] = rad;
+  }
+}
+const kartTekst = Object.keys(sidekart).sort()
+  .map((sti) => `    ${JSON.stringify(sti)}: ${JSON.stringify(sidekart[sti]).replaceAll(',', ', ').replaceAll(':', ': ')},`)
+  .join('\n');
+const localeFil = fileURLToPath(new URL('../locale.js', import.meta.url));
+const localeKilde = readFileSync(localeFil, 'utf8');
+const nyLocale = localeKilde.replace(/var LOCALE_PAGE_MAP = Object\.freeze\(\{[\s\S]*?\}\);/u, `var LOCALE_PAGE_MAP = Object.freeze({\n${kartTekst}\n  });`);
+if (nyLocale === localeKilde && !localeKilde.includes(kartTekst)) throw new Error('Fant ikke LOCALE_PAGE_MAP i locale.js');
+writeFileSync(localeFil, nyLocale);
 
 const norskeAvsnitt = {
   'importera-recept/': 'Send en lenke eller del innholdet til Matlyst. Appen tolker ingredienser og fremgangsmåte og viser kilden på oppskriften.',

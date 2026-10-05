@@ -74,3 +74,16 @@ test('forsidene har posisjoneringen i ingress og meta description, uten superlat
     assert.doesNotMatch(html.match(/<head>[\s\S]*?<\/head>/u)[0], superlativ, `${fil}: head`);
   }
 });
+
+test('lanseringsstatusen er oppdatert og samsvarer mellom JSON og markdown', () => {
+  const status = JSON.parse(les('locale-readiness.json'));
+  assert.equal(status.status_dato, '2026-10-05');
+  for (const lang of ['sv', 'da']) {
+    assert.equal(status[lang].public, true, lang);
+    assert.ok(Object.keys(status[lang].lukket).length > 0, lang);
+    assert.ok('apple_store_listing' in status[lang].apne, lang);
+  }
+  const md = les('LOCALE-READINESS.md');
+  assert.match(md, /Merge av PR #9 er lanseringen/u);
+  assert.equal((md.match(/^- \[ \]/gmu) ?? []).length, Object.keys(status.sv.apne).length);
+});

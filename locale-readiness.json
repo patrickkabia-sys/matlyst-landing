@@ -1,30 +1,40 @@
 {
+  "status_dato": "2026-10-05",
+  "lansering": "Merge av PR #9 er lanseringen. Før merge er ingen sv/da-side publisert.",
   "da": {
-    "public": false,
-    "blockers": [
-      "norwegian_legal_source_current",
-      "localized_legal_pages",
-      "language_routed_app_legal_links",
-      "apple_store_listing",
-      "google_play_listing",
-      "recipe_translation_verification",
-      "consent_banner",
-      "self_hosted_fonts",
-      "wcag_aa"
-    ]
+    "public": true,
+    "lukket": {
+      "localized_legal_pages": "sv/integritet, sv/villkor, sv/radera-konto, da/privatliv, da/vilkaar, da/slet-konto; kontrollørens runde 4 (2026-10-05) uten alvorlige funn. Ingen advokatgjennomgang.",
+      "consent_banner": "Samtykkebanner med like tunge valg på alle sv/da-sider (test/samtykkeVekt.test.mjs, test/locale-pages.test.mjs).",
+      "self_hosted_fonts": "Fonter fra /fonts/, ingen tredjepart (test/fonter.test.mjs).",
+      "hreflang_and_sitemaps": "Gjensidig hreflang nb/sv/da for forside, personvern, vilkår og slett konto; sitemap-sv.xml og sitemap-da.xml i robots.txt (test/lansering.test.mjs, test/landing9Runde3.test.mjs).",
+      "automatic_language": "LOCALE_PAGE_MAP generert fra hreflang; ?sprak= og lagret valg vinner over nettleserspråket (test/locale-routing.test.mjs)."
+    },
+    "apne": {
+      "apple_store_listing": "Ikke verifisert i dette repoet: lokaliserte App Store-metadata for DK og SE.",
+      "google_play_listing": "Ikke verifisert i dette repoet: lokaliserte Google Play-metadata for DK og SE.",
+      "recipe_translation_verification": "Appen oversetter import til profilspråket nb/da/sv (matlyst origin/master supabase/functions/import-recipe/index.ts:826-831), men et evalueringssett for dansk og svensk er ikke dokumentert her.",
+      "language_routed_app_legal_links": "Appen lenker fortsatt til /personvern.html og /vilkar.html for alle språk (matlyst origin/master constants/legal.ts:22-29). Nettstedets automatiske språk sender da/sv-enheter videre til lokal side; #alder finnes på sv/villkor og da/vilkaar.",
+      "wcag_aa": "Kontrasttester og Lighthouse på forsidene finnes; full tastatur- og skjermlesergjennomgang er ikke dokumentert.",
+      "norwegian_legal_source_current": "personvern.html og vilkar.html (sist oppdatert 27. september 2026) er brukt som fasit; samsvar med faktisk produktatferd er ikke kontrollert i denne runden."
+    }
   },
   "sv": {
-    "public": false,
-    "blockers": [
-      "norwegian_legal_source_current",
-      "localized_legal_pages",
-      "language_routed_app_legal_links",
-      "apple_store_listing",
-      "google_play_listing",
-      "recipe_translation_verification",
-      "consent_banner",
-      "self_hosted_fonts",
-      "wcag_aa"
-    ]
+    "public": true,
+    "lukket": {
+      "localized_legal_pages": "sv/integritet, sv/villkor, sv/radera-konto, da/privatliv, da/vilkaar, da/slet-konto; kontrollørens runde 4 (2026-10-05) uten alvorlige funn. Ingen advokatgjennomgang.",
+      "consent_banner": "Samtykkebanner med like tunge valg på alle sv/da-sider (test/samtykkeVekt.test.mjs, test/locale-pages.test.mjs).",
+      "self_hosted_fonts": "Fonter fra /fonts/, ingen tredjepart (test/fonter.test.mjs).",
+      "hreflang_and_sitemaps": "Gjensidig hreflang nb/sv/da for forside, personvern, vilkår og slett konto; sitemap-sv.xml og sitemap-da.xml i robots.txt (test/lansering.test.mjs, test/landing9Runde3.test.mjs).",
+      "automatic_language": "LOCALE_PAGE_MAP generert fra hreflang; ?sprak= og lagret valg vinner over nettleserspråket (test/locale-routing.test.mjs)."
+    },
+    "apne": {
+      "apple_store_listing": "Ikke verifisert i dette repoet: lokaliserte App Store-metadata for DK og SE.",
+      "google_play_listing": "Ikke verifisert i dette repoet: lokaliserte Google Play-metadata for DK og SE.",
+      "recipe_translation_verification": "Appen oversetter import til profilspråket nb/da/sv (matlyst origin/master supabase/functions/import-recipe/index.ts:826-831), men et evalueringssett for dansk og svensk er ikke dokumentert her.",
+      "language_routed_app_legal_links": "Appen lenker fortsatt til /personvern.html og /vilkar.html for alle språk (matlyst origin/master constants/legal.ts:22-29). Nettstedets automatiske språk sender da/sv-enheter videre til lokal side; #alder finnes på sv/villkor og da/vilkaar.",
+      "wcag_aa": "Kontrasttester og Lighthouse på forsidene finnes; full tastatur- og skjermlesergjennomgang er ikke dokumentert.",
+      "norwegian_legal_source_current": "personvern.html og vilkar.html (sist oppdatert 27. september 2026) er brukt som fasit; samsvar med faktisk produktatferd er ikke kontrollert i denne runden."
+    }
   }
 }

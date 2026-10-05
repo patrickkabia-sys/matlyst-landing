@@ -68,9 +68,21 @@ test('ingen «del/dele/deler/dela/delar … til Matlyst»', () => {
   }
 });
 
-test('juridiske sv/da-sider peker ikke hreflang mot norske sider som ikke lenker tilbake', () => {
+test('nb-NO/x-default finnes bare der den norske siden lenker tilbake', () => {
+  const medNorsk = new Set(['sv/index.html', 'da/index.html', 'sv/integritet/index.html', 'da/privatliv/index.html', 'sv/villkor/index.html', 'da/vilkaar/index.html', 'sv/radera-konto/index.html', 'da/slet-konto/index.html']);
   for (const fil of sider) {
-    assert.doesNotMatch(readFileSync(fil, 'utf8'), /hreflang="(?:nb-NO|x-default)"/u, relative(ROOT, fil));
+    const rel = relative(ROOT, fil);
+    const html = readFileSync(fil, 'utf8');
+    const nb = html.match(/hreflang="nb-NO" href="https:\/\/matlyst-app\.no([^"]+)"/u)?.[1];
+    if (!medNorsk.has(rel)) {
+      assert.doesNotMatch(html, /hreflang="(?:nb-NO|x-default)"/u, rel);
+      continue;
+    }
+    assert.ok(nb, rel);
+    assert.match(html, new RegExp(`hreflang="x-default" href="https://matlyst-app\\.no${nb.replace('.', '\\.')}"`, 'u'), rel);
+    const norsk = les(nb === '/' ? 'index.html' : nb.slice(1));
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)">/u)[1];
+    assert.ok(norsk.includes(`href="${canonical}"`), `${nb} lenker ikke tilbake til ${canonical}`);
   }
 });
 
