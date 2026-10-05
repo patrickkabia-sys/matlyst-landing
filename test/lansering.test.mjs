@@ -61,14 +61,14 @@ test('det norske sitemapet er fortsatt bare norske sider', () => {
 test('forsidene har posisjoneringen i ingress og meta description, uten superlativer', () => {
   const forsider = [
     ['index.html', 'Oppskriftsappen som oversetter og tilpasser oppskriftene dine.'],
-    ['sv/index.html', 'Receptappen som översätter och anpassar dina recept.'],
-    ['da/index.html', 'Opskriftsappen, der oversætter og tilpasser dine opskrifter.'],
+    ['sv/index.html', 'Receptappen som översätter och anpassar dina recept.', 'Matlyst översätter och anpassar dina recept.'],
+    ['da/index.html', 'Opskriftsappen, der oversætter og tilpasser dine opskrifter.', 'Matlyst oversætter og tilpasser dine opskrifter.'],
   ];
   const superlativ = /(?<!\p{L})(?:beste?|bedste|bästa?|best|nr\. ?1|nummer (?:1|én|en|ett)|#1)(?!\p{L})/iu;
-  for (const [fil, posisjonering] of forsider) {
+  for (const [fil, posisjonering, ingress = posisjonering] of forsider) {
     const html = les(fil);
     assert.ok(html.match(/<meta name="description" content="([^"]+)"/u)[1].startsWith(posisjonering), `${fil}: meta description`);
-    assert.ok(html.match(/<p class="lead">([^<]+)<\/p>/u)[1].startsWith(posisjonering), `${fil}: ingress`);
+    assert.ok(html.match(/<p class="lead">([^<]+)<\/p>/u)[1].startsWith(ingress), `${fil}: ingress`);
     const synlig = html.replace(/<script[\s\S]*?<\/script>/gu, ' ').replace(/<[^>]+>/gu, ' ');
     assert.doesNotMatch(synlig, superlativ, fil);
     assert.doesNotMatch(html.match(/<head>[\s\S]*?<\/head>/u)[0], superlativ, `${fil}: head`);
@@ -124,8 +124,8 @@ test('llms.txt beskriver lanseringstilstanden etter #536', () => {
   assert.doesNotMatch(llms, /foreløpig på norsk|indtil videre på norsk|tills vidare på norska|currently written in Norwegian|Ugemenu/u);
   const dansk = llms.slice(llms.indexOf('\n## Dansk\n'), llms.indexOf('\n## Svenska\n'));
   assert.match(dansk, /planlægger du ugen i Madplan/u);
-  assert.match(dansk, /Spørg Matlyst[^.]*svarer på dansk/u);
-  assert.match(llms.slice(llms.indexOf('\n## Svenska\n')), /Fråga Matlyst[^.]*svarar på svenska/u);
+  assert.match(dansk, /Spørg Matlyst[^.]*svarene kommer på dansk/u);
+  assert.match(llms.slice(llms.indexOf('\n## Svenska\n')), /Fråga Matlyst[^.]*svaren kommer på svenska/u);
   const qa = les('qa/sv-da/produktpaastander.md');
   assert.ok((qa.match(/forutsetter #536/gu) ?? []).length >= 3);
   assert.match(qa, /origin\/feat\/f2-spor-matlyst-da-sv/u);
@@ -144,5 +144,46 @@ test('alle vurderingstall sier 5,0 og 12 vurderinger', () => {
   assert.ok(les('llms.txt').includes('5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026)'));
   for (const fil of ['index.html', 'sv/index.html', 'da/index.html', 'llms.txt']) {
     assert.doesNotMatch(les(fil), /"ratingCount": "(?!12")|\b(?!12\b)\d+ (?:vurderinger|betyg|ratings)\b/u, fil);
+  }
+});
+
+test('nb-forsiden: grammatisk importsetning, presis handleliste og ny posisjonering i JSON-LD', () => {
+  const html = les('index.html');
+  const setning = 'Importer fra en lenke, en video eller et bilde, også av håndskrevne oppskrifter. Planlegg uka og send ukas ingredienser til handlelista.';
+  for (const felt of [/<meta name="description" content="([^"]+)"/u, /<meta property="og:description" content="([^"]+)"/u, /<meta name="twitter:description" content="([^"]+)"/u, /"description": "([^"]+)"/u]) {
+    const verdi = html.match(felt)[1];
+    assert.ok(verdi.startsWith(`Oppskriftsappen som oversetter og tilpasser oppskriftene dine. ${setning}`), verdi);
+  }
+  assert.doesNotMatch(html, /skrive seg selv|også håndskrevne,|\buken\b/u);
+  const ingress = html.match(/<p class="lead">([^<]+)<\/p>/u)[1];
+  assert.equal((ingress.match(/oversett/gu) ?? []).length, 1, ingress);
+});
+
+test('sv/da-forsiden gjentar ikke posisjoneringen i overlinje og ingress', () => {
+  for (const [fil, ord] of [['sv/index.html', 'Receptappen'], ['da/index.html', 'Opskriftsappen']]) {
+    const html = les(fil);
+    assert.ok(html.match(/<p class="eyebrow hero-eyebrow">([^<]+)<\/p>/u)[1].startsWith(ord), fil);
+    assert.ok(!html.match(/<p class="lead">([^<]+)<\/p>/u)[1].startsWith(ord), fil);
+  }
+});
+
+test('Spør Matlyst-sidene sier at spørsmål er gratis og endringer krever Pro', () => {
+  assert.ok(les('da/middagsforslag/index.html').includes('Det er gratis at stille spørgsmål om en opskrift. Når Spørg Matlyst skal lave eller ændre opskrifter, kræver det Matlyst Pro.'));
+  assert.ok(les('sv/vad-ska-jag-laga/index.html').includes('Det är gratis att ställa frågor om ett recept. När Fråga Matlyst ska skapa eller ändra recept krävs Matlyst Pro.'));
+  const qa = les('qa/sv-da/produktpaastander.md');
+  assert.match(qa, /\/da\/middagsforslag\/[^\n]*sporMatlyst\/skjema\.ts:390-391/u);
+  assert.match(qa, /send ukas ingredienser til handlelista[^\n]*ukemeny\.tsx:593-599/u);
+});
+
+test('llms.txt følger lenkeformatet og lokal bøying', () => {
+  const llms = les('llms.txt');
+  const urler = [...llms.matchAll(/https?:\/\/[^\s)]+/gu)];
+  assert.ok(urler.length > 15);
+  for (const { index } of urler) assert.equal(llms.slice(index - 2, index), '](', `rå URL ved ${index}`);
+  for (const linje of llms.split('\n').filter((l) => l.includes('](http'))) {
+    assert.match(linje, /^- \[[^\]]+\]\(https:\/\/matlyst-app\.no\/[^)]*\): \S/u, linje);
+  }
+  for (const tekst of ['til Indkøbslisten', 'i Spisekammeret', 'till Inköpslistan', 'i Skafferiet', 'tilpasse portioner, og svarene kommer på dansk.', 'anpassa portioner, och svaren kommer på svenska.', 'når kilden er kjent']) {
+    assert.ok(llms.includes(tekst), tekst);
   }
 });

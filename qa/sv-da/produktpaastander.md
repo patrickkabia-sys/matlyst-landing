@@ -9,7 +9,7 @@ Kontrollert mot appens `origin/master` `2613d17d3173676a0eb6229a16b3e534a670a946
 | /sv/inkopslista/ | När en vara bockas av kan den flyttas till Skafferi. Hushållsdelning kräver Matlyst Pro. | `app/(tabs)/grocery.tsx:285-367`, `hooks/useGrocery.ts` |
 | /sv/handskrivna-recept/ | Fotoimport kräver Matlyst Pro. Du kan skriva in var receptet kommer ifrån, till exempel ”Mormors receptbok”. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /sv/recept-pa-ingredienser/ | Förslagen är ett hjälpmedel. Kontrollera alltid mängderna, hållbarheten och att varorna fortfarande går att äta. | `hooks/useRecipeSearch.ts:53-94`, `hooks/usePantryRecipes.ts` |
-| /sv/vad-ska-jag-laga/ | Fråga Matlyst kräver Matlyst Pro. | `hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221` |
+| /sv/vad-ska-jag-laga/ | Det är gratis att ställa frågor om ett recept. När Fråga Matlyst ska skapa eller ändra recept krävs Matlyst Pro. | `hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221`, `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` (gratis: bare spørsmål i en oppskrift) |
 | /sv/veckomeny-app/ | Veckomenyn och den vanliga inköpslistan kan användas utan Pro. Hushållsdelning kräver Pro. | `app/(tabs)/ukemeny.tsx:371-433`, `app/recipe-picker.tsx` |
 | /sv/byt-fran-paprika/ | Matlyst har ingen koppling till Paprika och garanterar inte att alla fält kan flyttas automatiskt. | `components/RecipeFileImport.tsx`, `lib/importEngine.ts:248-270` |
 | /sv/receptbok-app/ | Du bestämmer över innehållet. Källan visas på importerade recept när den finns. | `hooks/useRecipes.ts:169-199`, `hooks/useRecipeSearch.ts:53-94` |
@@ -24,7 +24,7 @@ Kontrollert mot appens `origin/master` `2613d17d3173676a0eb6229a16b3e534a670a946
 | /da/indkoebsliste-app/ | Når en vare krydses af, kan den flyttes til Spisekammeret. Deling i en husstand kræver Matlyst Pro. | `app/(tabs)/grocery.tsx:285-367`, `hooks/useGrocery.ts` |
 | /da/haandskrevne-opskrifter/ | Fotoimport kræver Matlyst Pro. Du kan selv notere, hvor opskriften stammer fra. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /da/opskrifter-ud-fra-ingredienser/ | Forslagene er kun vejledende. Tjek mængder, holdbarhed, og om varerne stadig kan bruges. | `hooks/useRecipeSearch.ts:53-94`, `hooks/usePantryRecipes.ts` |
-| /da/middagsforslag/ | Spørg Matlyst kræver Matlyst Pro. | `hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221` |
+| /da/middagsforslag/ | Det er gratis at stille spørgsmål om en opskrift. Når Spørg Matlyst skal lave eller ændre opskrifter, kræver det Matlyst Pro. | `hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221`, `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` (gratis: bare spørsmål i en oppskrift) |
 | /da/madplan-app/ | Deling af Madplan og Indkøbsliste i en husstand kræver Matlyst Pro. | `app/(tabs)/ukemeny.tsx:371-433`, `app/recipe-picker.tsx` |
 | /da/skift-fra-paprika/ | Matlyst har ingen tilknytning til Paprika og garanterer ikke, at alle felter kan flyttes automatisk. | `components/RecipeFileImport.tsx`, `lib/importEngine.ts:248-270` |
 | /da/opskrifts-app/ | Du bestemmer over indholdet. Kilden vises på importerede opskrifter, når den findes. | `hooks/useRecipes.ts:169-199`, `hooks/useRecipeSearch.ts:53-94` |
@@ -55,11 +55,12 @@ Kontrollert mot appens `origin/master` `1692bc59`, lest 2026-10-05 (bare lesing)
 | Metriske mål som standard; kan beholde amerikanske mål | `supabase/migrations/20260419000000_unit_system_and_delete_account.sql:3` (default `metric`); `supabase/functions/_shared/sprak.ts:176-177, 200-201, 224-225`; `app/innstillinger.tsx:141` |
 | Spør Matlyst / Spørg Matlyst / Fråga Matlyst | `lib/sprak/tekster/nb.ts:1187`, `da.ts:435`, `sv.ts:435` |
 | Tilpassing: bytte, fjerne, legge til ingredienser og endre porsjoner | `supabase/functions/_shared/sporMatlyst/prompt.ts:27-28` (master); forutsetter #536: `prompt.ts:109` på PR-grenen |
-| Endringer med Spør Matlyst krever Pro; gratis kan bare stille spørsmål i en oppskrift | `supabase/functions/spor-matlyst/index.ts:89-92`; `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` |
+| Spørsmål om en oppskrift er gratis; å lage eller endre oppskrifter med Spør Matlyst krever Pro (/sv/vad-ska-jag-laga/, /da/middagsforslag/, llms.txt) | `supabase/functions/spor-matlyst/index.ts:89-92`; `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` |
 | Spør/Spørg/Fråga Matlyst svarer på brukerens språk (nb, da, sv) — forutsetter #536 | PR-grenen: `hooks/useSporMatlyst.ts:54,122` (sender `sprak`), `supabase/functions/_shared/sporMatlyst/skjema.ts:235` (godtar bare nb/da/sv), `supabase/functions/spor-matlyst/index.ts:89,122` (`byggSystemtekst(f.sprak)`), `supabase/functions/_shared/sporMatlyst/prompt.ts:116-126` («All user-visible text … must be in ${lokal.navn}»). På master er funksjonen nb-only (`skjema.ts:8`) |
 | Madplan (da), Veckomeny (sv), Indkøbsliste/Inköpslista og Spisekammer/Skafferi — forutsetter #536 | PR-grenen: `lib/sprak/tekster/da.ts:94,201` (`Madplan`), `da.ts:109,203` (`Spisekammer`, `Indkøbsliste`); `sv.ts:94,109,203` (`Veckomeny`, `Skafferi`, `Inköpslista`). På master heter den danske funksjonen `Ugemenu` |
 | Håndskrevne oppskrifter (nb-forsiden, /sv/handskrivna-recept/, /da/haandskrevne-opskrifter/) | Generell bildeavlesning, ikke nevnt spesifikt: `supabase/functions/import-recipe/index.ts:1318` («Analyser bildet og ekstraher oppskriften som JSON», samme linje på master og PR-grenen); `lib/sprak/tekster/nb.ts:1209` («Skann en oppskrift fra kokebok, blad eller skjerm»). Verken prompt eller UI nevner håndskrift |
 | Kokemodus holder skjermen våken | `hooks/useCookSession.ts:137`; `lib/keepAwake.ts` |
+| Planlegg uka og send ukas ingredienser til handlelista (nb-forsiden; «la handlelista skrive seg selv» på /ukemeny/) | `app/(tabs)/ukemeny.tsx:593-599` (knappen `handleAddWeekToGrocery`, `ukemeny.leggUkeIHandleliste`): ett trykk legger ukas ingredienser i handlelista. Handlelisten fylles ikke uten at brukeren trykker |
 | Fem gratis importer i måneden | `constants/limits.ts:5` (`FREE_IMPORT_LIMIT = 5`) |
 | Bildeimport krever Pro | `app/(tabs)/legg-til.tsx:879` (`kilde === 'bilde' && fotoGate === 'låst'`) |
 | Ingen reklame, ingen annonsenettverk | `package.json` har ingen annonse-SDK (bare RevenueCat, PostHog, Sentry og Expo) |

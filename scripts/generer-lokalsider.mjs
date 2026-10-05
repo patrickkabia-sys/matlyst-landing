@@ -129,7 +129,7 @@ ${nav(lang, '', '', '/')}
 <header class="hero locale-home-hero" data-section="hero">
   <div><p class="eyebrow hero-eyebrow">${sv ? 'Receptappen för vardagen' : 'Opskriftsappen til hverdagen'}</p>
   <h1 class="disp">${sv ? 'Recepten du sparar,<br><span class="it">klara för vardagen.</span>' : 'Dine opskrifter,<br><span class="it">klar til hverdagen.</span>'}</h1></div>
-  <div class="hero-side"><p class="lead">${description}</p>${storeButtons(lang)}</div>
+  <div class="hero-side"><p class="lead">${sv ? 'Matlyst översätter och anpassar dina recept. Spara dem från en länk, en video eller ett foto.' : 'Matlyst oversætter og tilpasser dine opskrifter. Gem dem fra et link, en video eller et foto.'}</p>${storeButtons(lang)}</div>
 </header>
 <section class="manifesto" id="funktioner" data-section="overview">
   <div>${sv ? '<p class="eyebrow">Ett lugnare kök</p>' : ''}<h2 class="disp">${sv ? 'Från inspiration till <em>middag</em>.' : 'Fra inspiration til <em>aftensmad</em>.'}</h2>
@@ -295,7 +295,7 @@ const featureOverrides = {
       'inkopslista/': { description:'Skicka ingredienser från recept och veckomeny till en och samma inköpslista.', p1:'Välj ett recept eller en hel planerad dag. Ingredienserna läggs till i listan, där du också kan skriva in egna varor.' },
       'handskrivna-recept/': { q:'Klarar appen all handstil?', p2:'Fotoimport kräver Matlyst Pro. Du kan skriva in var receptet kommer ifrån, till exempel ”Mormors receptbok”.' },
       'recept-pa-ingredienser/': { p1:'Skriv in ingredienser eller utgå från Skafferi.', p2:'Förslagen är ett hjälpmedel. Kontrollera alltid mängderna, hållbarheten och att varorna fortfarande går att äta.' },
-      'vad-ska-jag-laga/': { h1:'Middagsförslag från dina egna recept', p2:'Fråga Matlyst kräver Matlyst Pro.', p1:'På fliken Hem visas förslag från din egen receptsamling. Skafferi kan hjälpa till att lyfta fram rätter som passar det du har.' },
+      'vad-ska-jag-laga/': { h1:'Middagsförslag från dina egna recept', p2:'Det är gratis att ställa frågor om ett recept. När Fråga Matlyst ska skapa eller ändra recept krävs Matlyst Pro.', p1:'På fliken Hem visas förslag från din egen receptsamling. Skafferi kan hjälpa till att lyfta fram rätter som passar det du har.' },
       'veckomeny-app/': { title:'Veckomeny-app: planera veckans middagar', h1:'Veckomeny: planera veckans middagar', h2:'Så fungerar Veckomeny' },
       'byt-fran-paprika/': { h1:'Byt från Paprika – och kontrollera varje recept', p1:'Matlyst kan importera recept från länkar och filer som appen stöder. Exakt hur det går till beror på vilka exportmöjligheter din nuvarande app har.', q:'Finns det en direktkoppling till Paprika?' },
       'receptbok-app/': { p1:'Spara familjerecept, länkar du hittar och rätter du gör ofta på samma ställe. Med mappar och sökning är det lätt att hitta runt i samlingen.' },
@@ -310,7 +310,7 @@ const featureOverrides = {
       'indkoebsliste-app/': { p1:'Vælg en opskrift eller en planlagt dag. Ingredienserne lægges på Indkøbslisten, hvor du også kan skrive egne varer.', q:'Er Indkøbsliste gratis?', a:'Ja. Du kan bruge Indkøbsliste uden Pro. Deling i en husstand er en Pro-funktion.' },
       'haandskrevne-opskrifter/': { p1:'Fotoimporten tolker titel, ingredienser og trin. Tjek resultatet, før du gemmer – især mængderne, og når håndskriften er svær at læse.', p2:'Fotoimport kræver Matlyst Pro. Du kan selv notere, hvor opskriften stammer fra.' },
       'opskrifter-ud-fra-ingredienser/': { p1:'Skriv ingredienser, eller brug Spisekammeret. Matlyst sammenligner dem med de opskrifter, du allerede har gemt.', p2:'Forslagene er kun vejledende. Tjek mængder, holdbarhed, og om varerne stadig kan bruges.' },
-      'middagsforslag/': { title:'Forslag til aftensmad fra dine egne opskrifter', h1:'Forslag til aftensmad fra dine egne opskrifter', h2:'Forslag fra din egen samling', p1:'På Hjem vises forslag fra din opskriftssamling. Spisekammeret kan hjælpe med at fremhæve retter, der passer til det, du har. Se også <a href="/da/nem-mad/">nem mad</a>.', p2:'Spørg Matlyst kræver Matlyst Pro.' },
+      'middagsforslag/': { title:'Forslag til aftensmad fra dine egne opskrifter', h1:'Forslag til aftensmad fra dine egne opskrifter', h2:'Forslag fra din egen samling', p1:'På Hjem vises forslag fra din opskriftssamling. Spisekammeret kan hjælpe med at fremhæve retter, der passer til det, du har. Se også <a href="/da/nem-mad/">nem mad</a>.', p2:'Det er gratis at stille spørgsmål om en opskrift. Når Spørg Matlyst skal lave eller ændre opskrifter, kræver det Matlyst Pro.' },
       'madplan-app/': { description:'Planlæg ugens aftensmad med egne opskrifter, og send ingredienserne til Indkøbslisten.', p1:'Vælg en opskrift til de dage, du vil planlægge. Du bestemmer selv, hvad der skal på bordet.', p2:'Deling af Madplan og Indkøbsliste i en husstand kræver Matlyst Pro.', q:'Er Madplan og Indkøbsliste gratis?', a:'Ja. Du kan bruge Madplan og Indkøbsliste uden Pro.' },
       'skift-fra-paprika/': { description:'Flyt dine opskrifter med Matlysts import, og kontrollér hvert resultat, før du gemmer det.', h1:'Skift til Matlyst – uden tomme løfter', p1:'Matlyst kan importere links og filer, som appen understøtter. Det konkrete forløb afhænger af eksporten fra din nuværende app.' },
       'opskrifts-app/': { p1:'Gem familieopskrifter, links og retter, du laver ofte, på samme sted. Med mapper og søgning er det let at finde rundt i samlingen.' },
@@ -481,7 +481,7 @@ function bevis(path) {
   if (/inkop|indkoeb/.test(path)) return '`app/(tabs)/grocery.tsx:285-367`, `hooks/useGrocery.ts`';
   if (/veckomeny|madplan/.test(path)) return '`app/(tabs)/ukemeny.tsx:371-433`, `app/recipe-picker.tsx`';
   if (/skafferi|spisekammer|kylskap|koeleskab/.test(path)) return '`hooks/usePantry.ts:247-276`, `hooks/usePantryRecipes.ts`';
-  if (/vad-ska|middagsforslag/.test(path)) return '`hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221`';
+  if (/vad-ska|middagsforslag/.test(path)) return '`hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221`, `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` (gratis: bare spørsmål i en oppskrift)';
   if (/paprika/.test(path)) return '`components/RecipeFileImport.tsx`, `lib/importEngine.ts:248-270`';
   if (/receptskapare|opskriftsskabere/.test(path)) return '`lib/source.ts:20-74`, `lib/source.ts:84-107`';
   return '`hooks/useRecipes.ts:169-199`, `hooks/useRecipeSearch.ts:53-94`';
@@ -505,11 +505,12 @@ paastander.push("| Oversetting til brukerens språk nb, da eller sv | `lib/sprak
 paastander.push('| Metriske mål som standard; kan beholde amerikanske mål | `supabase/migrations/20260419000000_unit_system_and_delete_account.sql:3` (default `metric`); `supabase/functions/_shared/sprak.ts:176-177, 200-201, 224-225`; `app/innstillinger.tsx:141` |');
 paastander.push('| Spør Matlyst / Spørg Matlyst / Fråga Matlyst | `lib/sprak/tekster/nb.ts:1187`, `da.ts:435`, `sv.ts:435` |');
 paastander.push('| Tilpassing: bytte, fjerne, legge til ingredienser og endre porsjoner | `supabase/functions/_shared/sporMatlyst/prompt.ts:27-28` (master); forutsetter #536: `prompt.ts:109` på PR-grenen |');
-paastander.push('| Endringer med Spør Matlyst krever Pro; gratis kan bare stille spørsmål i en oppskrift | `supabase/functions/spor-matlyst/index.ts:89-92`; `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` |');
+paastander.push('| Spørsmål om en oppskrift er gratis; å lage eller endre oppskrifter med Spør Matlyst krever Pro (/sv/vad-ska-jag-laga/, /da/middagsforslag/, llms.txt) | `supabase/functions/spor-matlyst/index.ts:89-92`; `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` |');
 paastander.push('| Spør/Spørg/Fråga Matlyst svarer på brukerens språk (nb, da, sv) — forutsetter #536 | PR-grenen: `hooks/useSporMatlyst.ts:54,122` (sender `sprak`), `supabase/functions/_shared/sporMatlyst/skjema.ts:235` (godtar bare nb/da/sv), `supabase/functions/spor-matlyst/index.ts:89,122` (`byggSystemtekst(f.sprak)`), `supabase/functions/_shared/sporMatlyst/prompt.ts:116-126` («All user-visible text … must be in ${lokal.navn}»). På master er funksjonen nb-only (`skjema.ts:8`) |');
 paastander.push('| Madplan (da), Veckomeny (sv), Indkøbsliste/Inköpslista og Spisekammer/Skafferi — forutsetter #536 | PR-grenen: `lib/sprak/tekster/da.ts:94,201` (`Madplan`), `da.ts:109,203` (`Spisekammer`, `Indkøbsliste`); `sv.ts:94,109,203` (`Veckomeny`, `Skafferi`, `Inköpslista`). På master heter den danske funksjonen `Ugemenu` |');
 paastander.push('| Håndskrevne oppskrifter (nb-forsiden, /sv/handskrivna-recept/, /da/haandskrevne-opskrifter/) | Generell bildeavlesning, ikke nevnt spesifikt: `supabase/functions/import-recipe/index.ts:1318` («Analyser bildet og ekstraher oppskriften som JSON», samme linje på master og PR-grenen); `lib/sprak/tekster/nb.ts:1209` («Skann en oppskrift fra kokebok, blad eller skjerm»). Verken prompt eller UI nevner håndskrift |');
 paastander.push('| Kokemodus holder skjermen våken | `hooks/useCookSession.ts:137`; `lib/keepAwake.ts` |');
+paastander.push('| Planlegg uka og send ukas ingredienser til handlelista (nb-forsiden; «la handlelista skrive seg selv» på /ukemeny/) | `app/(tabs)/ukemeny.tsx:593-599` (knappen `handleAddWeekToGrocery`, `ukemeny.leggUkeIHandleliste`): ett trykk legger ukas ingredienser i handlelista. Handlelisten fylles ikke uten at brukeren trykker |');
 paastander.push('| Fem gratis importer i måneden | `constants/limits.ts:5` (`FREE_IMPORT_LIMIT = 5`) |');
 paastander.push("| Bildeimport krever Pro | `app/(tabs)/legg-til.tsx:879` (`kilde === 'bilde' && fotoGate === 'låst'`) |");
 paastander.push('| Ingen reklame, ingen annonsenettverk | `package.json` har ingen annonse-SDK (bare RevenueCat, PostHog, Sentry og Expo) |');
