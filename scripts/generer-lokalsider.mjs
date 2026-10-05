@@ -385,10 +385,12 @@ function supportPage(lang, row) {
   return `${head({lang,path,counterpart,title:`${title} | Matlyst`,description:text,noindex:true,schema})}<body data-locale="${lang}">${nav(lang,path,counterpart,nb)}<main id="hovedinnhold" class="legal-doc"><header><p class="eyebrow">Matlyst</p><h1 class="disp">${title}</h1><p class="lead">${text}</p></header></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
+const lokaleSider = [];
 function write(path, content) {
   const file = fileURLToPath(new URL(path, import.meta.url));
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, content);
+  if (/^\.\.\/(?:sv|da)\/(?:.*\/)?index\.html$/u.test(path)) lokaleSider.push(content);
 }
 
 for (const lang of ['sv','da']) {
@@ -400,6 +402,21 @@ for (const lang of ['sv','da']) {
   for (const row of featurePages[lang]) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
   for (const row of sourcePages[lang]) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
   for (const row of supportPages[lang]) write(`../${lang}/${row[0]}index.html`, supportPage(lang,row));
+}
+
+// Ett sitemap per språk. Sider med noindex (støttesidene) tas ikke med.
+const sistEndret = '2026-10-05';
+for (const lang of ['sv','da']) {
+  const urls = lokaleSider
+    .filter((html) => html.includes(`<html lang="${lang}">`) && !html.includes('content="noindex'))
+    .map((html) => {
+      const loc = html.match(/<link rel="canonical" href="([^"]+)">/u)[1];
+      const alternativer = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/gu)]
+        .map(([, kode, href]) => `    <xhtml:link rel="alternate" hreflang="${kode}" href="${href}"/>`);
+      return [`  <url>`, `    <loc>${loc}</loc>`, `    <lastmod>${sistEndret}</lastmod>`, ...alternativer, `  </url>`].join('\n');
+    })
+    .sort();
+  write(`../sitemap-${lang}.xml`, ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">', ...urls, '</urlset>'].join('\n') + '\n');
 }
 
 const norskeAvsnitt = {

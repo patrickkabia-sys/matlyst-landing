@@ -10,7 +10,7 @@ Kontrollert 2026-10-05 på branchen `feat/sv-da-lansering`.
 - `node --test test/*.test.mjs` (69 tester) kontrollerer språk, slugs, canonical, gjensidig hreflang, JSON-LD, noindex, stoppliste, badge-innhold og -beskjæring, FAQ-samsvar, ordrette produktpåstander, klagevei, artikkel 9, ulike H1/H2, «del … med Matlyst», ulike skjermbilder og tom omdirigeringstabell.
 - `runde2-sjekkliste.md` har én verifisert rad for hvert punkt i QA-rapporten fra runde 3 (`2026-10-05-landing9-claude-qa-runde3.md`).
 - Lighthouse 12.8.2 på mobil: svensk forside 100 tilgjengelighet / 100 SEO; dansk forside 100 / 100.
-- `sitemap.xml` inneholder ikke `/sv/` eller `/da/` før Patrick sier «lanser».
+- `sitemap.xml` er bare norsk. `sitemap-sv.xml` og `sitemap-da.xml` (21 indekserbare sider hver, med hreflang-alternativer) genereres av generatoren og er oppført i `robots.txt`; de blir offentlige først ved merge («lanser»). Støttesidene med noindex er ikke med.
 - De fem tilfeldige importene fra hver lokal kildeside er ikke kjørt. De krever testkonto og står som lanseringsport i `lokale-kilder.md`.
 
 Skjermbildene viser branchens upubliserte HTML. De er ikke bevis på publisering, butikkoppsett eller Search Console-konfigurasjon.
