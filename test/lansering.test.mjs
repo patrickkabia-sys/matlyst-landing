@@ -57,3 +57,20 @@ test('det norske sitemapet er fortsatt bare norske sider', () => {
   assert.doesNotMatch(les('sitemap.xml'), /matlyst-app\.no\/(?:sv|da)\//u);
 });
 
+
+test('forsidene har posisjoneringen i ingress og meta description, uten superlativer', () => {
+  const forsider = [
+    ['index.html', 'Oppskriftsappen som oversetter og tilpasser oppskriftene dine.'],
+    ['sv/index.html', 'Receptappen som översätter och anpassar dina recept.'],
+    ['da/index.html', 'Opskriftsappen, der oversætter og tilpasser dine opskrifter.'],
+  ];
+  const superlativ = /(?<!\p{L})(?:beste?|bedste|bästa?|best|nr\. ?1|nummer (?:1|én|en|ett)|#1)(?!\p{L})/iu;
+  for (const [fil, posisjonering] of forsider) {
+    const html = les(fil);
+    assert.ok(html.match(/<meta name="description" content="([^"]+)"/u)[1].startsWith(posisjonering), `${fil}: meta description`);
+    assert.ok(html.match(/<p class="lead">([^<]+)<\/p>/u)[1].startsWith(posisjonering), `${fil}: ingress`);
+    const synlig = html.replace(/<script[\s\S]*?<\/script>/gu, ' ').replace(/<[^>]+>/gu, ' ');
+    assert.doesNotMatch(synlig, superlativ, fil);
+    assert.doesNotMatch(html.match(/<head>[\s\S]*?<\/head>/u)[0], superlativ, `${fil}: head`);
+  }
+});

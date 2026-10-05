@@ -114,8 +114,8 @@ function home(lang) {
   const c = common[lang];
   const title = sv ? 'Receptapp för vardagen | Matlyst Sverige' : 'Opskriftsapp til hverdagen | Matlyst Danmark';
   const description = sv
-    ? 'Samla egna recept, planera veckans middagar och gör en inköpslista i Matlyst.'
-    : 'Saml dine egne opskrifter, planlæg ugens aftensmad og lav en indkøbsliste i Matlyst.';
+    ? 'Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.'
+    : 'Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.';
   const schema = {
     '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Matlyst',
     applicationCategory: 'LifestyleApplication', operatingSystem: 'iOS, Android',
