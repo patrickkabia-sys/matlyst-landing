@@ -118,3 +118,31 @@ test('produktpåstandene i llms.txt har kodebevis i produktpaastander.md', () =>
     assert.ok(rader.some((rad) => rad.includes(krav)), krav);
   }
 });
+
+test('llms.txt beskriver lanseringstilstanden etter #536', () => {
+  const llms = les('llms.txt');
+  assert.doesNotMatch(llms, /foreløpig på norsk|indtil videre på norsk|tills vidare på norska|currently written in Norwegian|Ugemenu/u);
+  const dansk = llms.slice(llms.indexOf('\n## Dansk\n'), llms.indexOf('\n## Svenska\n'));
+  assert.match(dansk, /planlægger du ugen i Madplan/u);
+  assert.match(dansk, /Spørg Matlyst[^.]*svarer på dansk/u);
+  assert.match(llms.slice(llms.indexOf('\n## Svenska\n')), /Fråga Matlyst[^.]*svarar på svenska/u);
+  const qa = les('qa/sv-da/produktpaastander.md');
+  assert.ok((qa.match(/forutsetter #536/gu) ?? []).length >= 3);
+  assert.match(qa, /origin\/feat\/f2-spor-matlyst-da-sv/u);
+  assert.match(qa, /Håndskrevne oppskrifter[^\n]*import-recipe\/index\.ts:1318/u);
+});
+
+test('#9 merges ikke før #536 er merget og deployet', () => {
+  assert.match(les('LOCALE-READINESS.md'), /#9 merges ikke før #536 er merget og edge-funksjonen er deployet/u);
+  assert.match(JSON.parse(les('locale-readiness.json')).forutsetning, /#536/u);
+});
+
+test('alle vurderingstall sier 5,0 og 12 vurderinger', () => {
+  assert.match(les('index.html'), /"ratingValue": "5\.0", "ratingCount": "12"/u);
+  assert.match(les('sv/index.html'), /5,0 i norska App Store den 5 oktober 2026, baserat på 12 betyg\./u);
+  assert.match(les('da/index.html'), /5,0 i den norske App Store den 5\. oktober 2026, baseret på 12 vurderinger\./u);
+  assert.ok(les('llms.txt').includes('5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026)'));
+  for (const fil of ['index.html', 'sv/index.html', 'da/index.html', 'llms.txt']) {
+    assert.doesNotMatch(les(fil), /"ratingCount": "(?!12")|\b(?!12\b)\d+ (?:vurderinger|betyg|ratings)\b/u, fil);
+  }
+});

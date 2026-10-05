@@ -2,6 +2,8 @@
 
 Status per 5. oktober 2026: sidene under `/sv/` og `/da/` ligger ferdige i PR #9 (`feat/sv-da-lansering`). **Merge av PR #9 er lanseringen.** Før Patrick sier «lanser» er ingen sv/da-side publisert. Den maskinlesbare statusen ligger i `locale-readiness.json`.
 
+**Regel: #9 merges ikke før #536 er merget og edge-funksjonen er deployet.** `llms.txt` og `qa/sv-da/produktpaastander.md` beskriver lanseringstilstanden: Spørg/Fråga Matlyst svarer på dansk og svensk, og den danske funksjonen heter Madplan. Begge deler kommer med #536 (`feat/f2-spor-matlyst-da-sv`).
+
 Det som skjer ved merge, ligger allerede i PR-en:
 
 - 48 sider generert fra `scripts/generer-lokalsider.mjs` (24 per språk, tre støttesider med `noindex`).

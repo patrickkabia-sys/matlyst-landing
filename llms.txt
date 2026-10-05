@@ -11,7 +11,7 @@ Fakta (kontrollert mot appens kode 5. oktober 2026):
 - Import: lenke til en nettside eller matblogg, Instagram (reel eller innlegg), Facebook, TikTok og YouTube, delt fra delingsmenyen eller limt inn. Bilde av en oppskrift fra kokebok, blad eller skjerm. Eksportfil fra Paprika Recipe Manager.
 - Oversetting: importerte oppskrifter oversettes til språket brukeren har valgt i appen: norsk bokmål (nb), dansk (da) eller svensk (sv).
 - Enheter: metriske mål (g, dl, ml, °C) er standard. I innstillingene kan brukeren velge å beholde amerikanske mål fra kilden.
-- Tilpassing: Spør Matlyst (dansk: Spørg Matlyst, svensk: Fråga Matlyst) kan bytte, fjerne og legge til ingredienser og endre porsjoner i en oppskrift. Endringer krever Matlyst Pro. Svarene skrives foreløpig på norsk bokmål.
+- Tilpassing: Spør Matlyst (dansk: Spørg Matlyst, svensk: Fråga Matlyst) kan bytte, fjerne og legge til ingredienser og endre porsjoner i en oppskrift. Svarene kommer på brukerens språk (nb, da eller sv). Endringer krever Matlyst Pro.
 - Planlegging: ukemeny, handleliste fra oppskriftene, spiskammer, mapper og favoritter. Kokemodus holder skjermen våken.
 - Gratis: fem importer i måneden. Bildeimport og endringer med Spør Matlyst krever Matlyst Pro.
 - Ingen reklame og ingen annonsenettverk i appen.
@@ -29,7 +29,7 @@ Matlyst henter oppskriften fra lenken, videoen eller bildet du deler, oversetter
 
 ## Dansk
 
-Matlyst henter opskriften fra det link, den video eller det billede, du deler, oversætter den til dansk og bruger metriske mål. I appen planlægger du ugen i Ugemenu, sender ingredienserne til Indkøbsliste og holder styr på varerne i Spisekammer. Spørg Matlyst kan bytte ingredienser og tilpasse portioner; svarene skrives indtil videre på norsk.
+Matlyst henter opskriften fra det link, den video eller det billede, du deler, oversætter den til dansk og bruger metriske mål. I appen planlægger du ugen i Madplan, sender ingredienserne til Indkøbsliste og holder styr på varerne i Spisekammer. Spørg Matlyst kan bytte ingredienser og tilpasse portioner og svarer på dansk.
 
 - Forside: https://matlyst-app.no/da/
 - Importér opskrifter: https://matlyst-app.no/da/importer-opskrifter/
@@ -41,7 +41,7 @@ Matlyst henter opskriften fra det link, den video eller det billede, du deler, o
 
 ## Svenska
 
-Matlyst hämtar receptet från länken, videon eller bilden du delar, översätter det till svenska och använder metriska mått. I appen planerar du veckan i Veckomeny, skickar ingredienserna till Inköpslista och håller koll på varorna i Skafferi. Fråga Matlyst kan byta ingredienser och anpassa portioner; svaren skrivs tills vidare på norska.
+Matlyst hämtar receptet från länken, videon eller bilden du delar, översätter det till svenska och använder metriska mått. I appen planerar du veckan i Veckomeny, skickar ingredienserna till Inköpslista och håller koll på varorna i Skafferi. Fråga Matlyst kan byta ingredienser och anpassa portioner och svarar på svenska.
 
 - Startsida: https://matlyst-app.no/sv/
 - Importera recept: https://matlyst-app.no/sv/importera-recept/
@@ -53,7 +53,7 @@ Matlyst hämtar receptet från länken, videon eller bilden du delar, översätt
 
 ## English
 
-Matlyst imports a recipe from a shared link, video or photo, translates it into the language chosen in the app (Norwegian Bokmål, Danish or Swedish) and uses metric units by default. Users plan the week, send ingredients to a shopping list and keep track of a pantry. "Spør Matlyst" (Ask Matlyst) can swap, remove or add ingredients and change servings; changes require Matlyst Pro, and answers are currently written in Norwegian Bokmål. The app has no ads and no ad networks.
+Matlyst imports a recipe from a shared link, video or photo, translates it into the language chosen in the app (Norwegian Bokmål, Danish or Swedish) and uses metric units by default. Users plan the week, send ingredients to a shopping list and keep track of a pantry. "Spør Matlyst" (Ask Matlyst) can swap, remove or add ingredients and change servings; answers come in the user's language, and changes require Matlyst Pro. The app has no ads and no ad networks.
 
 ## Personvern / Privacy
 

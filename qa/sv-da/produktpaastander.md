@@ -41,7 +41,7 @@ Kontrollert mot appens `origin/master` `2613d17d3173676a0eb6229a16b3e534a670a946
 
 ## llms.txt og forsidene
 
-Kontrollert mot appens `origin/master` `1692bc59`, lest 2026-10-05 (bare lesing). Ikke tatt med fordi belegg mangler i koden: håndskrevne oppskrifter, Pinterest, PDF- og tekstfiler.
+Kontrollert mot appens `origin/master` `1692bc59`, lest 2026-10-05 (bare lesing). Rader merket «forutsetter #536» er kontrollert mot PR-grenen `origin/feat/f2-spor-matlyst-da-sv` (`b051ac02`, lest 2026-10-05, bare lesing) og stemmer først når #536 er merget og edge-funksjonen er deployet. Ikke tatt med i llms.txt fordi belegg mangler: Pinterest, PDF- og tekstfiler.
 
 | Påstand | Kodebevis |
 |---|---|
@@ -54,12 +54,13 @@ Kontrollert mot appens `origin/master` `1692bc59`, lest 2026-10-05 (bare lesing)
 | Oversetting til brukerens språk nb, da eller sv | `lib/sprak/koder.ts:24` (`SPRAK = ['nb', 'da', 'sv']`); `supabase/functions/import-recipe/index.ts:826-831` (`velgImportSprak(language, profile.app_language)`) |
 | Metriske mål som standard; kan beholde amerikanske mål | `supabase/migrations/20260419000000_unit_system_and_delete_account.sql:3` (default `metric`); `supabase/functions/_shared/sprak.ts:176-177, 200-201, 224-225`; `app/innstillinger.tsx:141` |
 | Spør Matlyst / Spørg Matlyst / Fråga Matlyst | `lib/sprak/tekster/nb.ts:1187`, `da.ts:435`, `sv.ts:435` |
-| Tilpassing: bytte, fjerne, legge til ingredienser og endre porsjoner | `supabase/functions/_shared/sporMatlyst/prompt.ts:27-28` |
+| Tilpassing: bytte, fjerne, legge til ingredienser og endre porsjoner | `supabase/functions/_shared/sporMatlyst/prompt.ts:27-28` (master); forutsetter #536: `prompt.ts:109` på PR-grenen |
 | Endringer med Spør Matlyst krever Pro; gratis kan bare stille spørsmål i en oppskrift | `supabase/functions/spor-matlyst/index.ts:89-92`; `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` |
-| Spør Matlyst svarer foreløpig på norsk bokmål | `supabase/functions/_shared/sporMatlyst/skjema.ts:8` («Spør Matlyst er nb-only i denne omgangen») |
-| Ukemeny, handleliste og spiskammer på dansk og svensk | `lib/sprak/tekster/da.ts:94,109,203` (`Ugemenu`, `Spisekammer`, `Indkøbsliste`); `sv.ts:94,109,203` (`Veckomeny`, `Skafferi`, `Inköpslista`) |
+| Spør/Spørg/Fråga Matlyst svarer på brukerens språk (nb, da, sv) — forutsetter #536 | PR-grenen: `hooks/useSporMatlyst.ts:54,122` (sender `sprak`), `supabase/functions/_shared/sporMatlyst/skjema.ts:235` (godtar bare nb/da/sv), `supabase/functions/spor-matlyst/index.ts:89,122` (`byggSystemtekst(f.sprak)`), `supabase/functions/_shared/sporMatlyst/prompt.ts:116-126` («All user-visible text … must be in ${lokal.navn}»). På master er funksjonen nb-only (`skjema.ts:8`) |
+| Madplan (da), Veckomeny (sv), Indkøbsliste/Inköpslista og Spisekammer/Skafferi — forutsetter #536 | PR-grenen: `lib/sprak/tekster/da.ts:94,201` (`Madplan`), `da.ts:109,203` (`Spisekammer`, `Indkøbsliste`); `sv.ts:94,109,203` (`Veckomeny`, `Skafferi`, `Inköpslista`). På master heter den danske funksjonen `Ugemenu` |
+| Håndskrevne oppskrifter (nb-forsiden, /sv/handskrivna-recept/, /da/haandskrevne-opskrifter/) | Generell bildeavlesning, ikke nevnt spesifikt: `supabase/functions/import-recipe/index.ts:1318` («Analyser bildet og ekstraher oppskriften som JSON», samme linje på master og PR-grenen); `lib/sprak/tekster/nb.ts:1209` («Skann en oppskrift fra kokebok, blad eller skjerm»). Verken prompt eller UI nevner håndskrift |
 | Kokemodus holder skjermen våken | `hooks/useCookSession.ts:137`; `lib/keepAwake.ts` |
 | Fem gratis importer i måneden | `constants/limits.ts:5` (`FREE_IMPORT_LIMIT = 5`) |
 | Bildeimport krever Pro | `app/(tabs)/legg-til.tsx:879` (`kilde === 'bilde' && fotoGate === 'låst'`) |
 | Ingen reklame, ingen annonsenettverk | `package.json` har ingen annonse-SDK (bare RevenueCat, PostHog, Sentry og Expo) |
-| 5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026) | Ikke i koden: tallet er oppgitt av Patrick 2026-10-05 og står på `sv/index.html` og `da/index.html`. JSON-LD på `index.html` har fortsatt `ratingCount` 9 |
+| 5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026) | Ikke i koden: tallet er oppgitt av Patrick 2026-10-05 og bekreftet med iTunes-oppslag (id 6762563515, country=no: snitt 5, 12 vurderinger) 2026-10-05. Står på `sv/index.html`, `da/index.html` og i JSON-LD på `index.html` (`ratingCount` 12) |

@@ -36,5 +36,6 @@
       "wcag_aa": "Kontrasttester og Lighthouse på forsidene finnes; full tastatur- og skjermlesergjennomgang er ikke dokumentert.",
       "norwegian_legal_source_current": "personvern.html og vilkar.html (sist oppdatert 27. september 2026) er brukt som fasit; samsvar med faktisk produktatferd er ikke kontrollert i denne runden."
     }
-  }
+  },
+  "forutsetning": "#9 merges ikke før #536 (feat/f2-spor-matlyst-da-sv) er merget og edge-funksjonen spor-matlyst er deployet."
 }
