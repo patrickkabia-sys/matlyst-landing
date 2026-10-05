@@ -26,7 +26,7 @@ Kontrollert mot appens `origin/master` `2613d17d3173676a0eb6229a16b3e534a670a946
 | /da/opskrifter-ud-fra-ingredienser/ | Forslagene er hjælp. Kontrollér mængder, holdbarhed og om varerne kan bruges. | `hooks/useRecipeSearch.ts:53-94`, `hooks/usePantryRecipes.ts` |
 | /da/middagsforslag/ | Spørg Matlyst kan lave eller ændre opskrifter. Spørg Matlyst kræver Matlyst Pro. | `hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221` |
 | /da/madplan-app/ | Madplanen og den almindelige indkøbsliste kan bruges uden Pro. Deling i en husstand kræver Pro. | `app/(tabs)/ukemeny.tsx:371-433`, `app/recipe-picker.tsx` |
-| /da/skift-fra-paprika/ | Matlyst er ikke tilknytning til Paprika og garanterer ikke, at alle felter kan flyttes automatisk. | `components/RecipeFileImport.tsx`, `lib/importEngine.ts:248-270` |
+| /da/skift-fra-paprika/ | Matlyst har ingen tilknytning til Paprika og garanterer ikke, at alle felter kan flyttes automatisk. | `components/RecipeFileImport.tsx`, `lib/importEngine.ts:248-270` |
 | /da/opskrifts-app/ | Du bestemmer over indholdet. Kilden vises på importerede opskrifter, når den findes. | `hooks/useRecipes.ts:169-199`, `hooks/useRecipeSearch.ts:53-94` |
 | /da/gem-opskrifter-fra-instagram/ | Kilden følger med. Privat eller utilgængeligt indhold kan ikke altid importeres. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /da/gem-opskrifter-fra-tiktok/ | Privat, slettet eller geografisk blokeret indhold kan ikke altid læses. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |

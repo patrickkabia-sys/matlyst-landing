@@ -26,15 +26,15 @@ const common = {
 const esc = (s) => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 const json = (value) => JSON.stringify(value).replaceAll('<', '\\u003c');
 
-function alternateLinks(lang, path, counterpart = path, nb = '/') {
+function alternateLinks(lang, path, counterpart = path, nb = null) {
   const svPath = lang === 'sv' ? path : counterpart;
   const daPath = lang === 'da' ? path : counterpart;
-  return [
-    ['nb-NO', nb], ['sv-SE', '/sv/' + (svPath || '')], ['da-DK', '/da/' + (daPath || '')], ['x-default', nb],
-  ].map(([lang, href]) => `<link rel="alternate" hreflang="${lang}" href="${base}${href}">`).join('\n');
+  const links = [['sv-SE', '/sv/' + (svPath || '')], ['da-DK', '/da/' + (daPath || '')]];
+  if (nb) links.unshift(['nb-NO', nb], ['x-default', nb]);
+  return links.map(([lang, href]) => `<link rel="alternate" hreflang="${lang}" href="${base}${href}">`).join('\n');
 }
 
-function nav(lang, activePath = '', counterpart = activePath, nb = '/') {
+function nav(lang, activePath = '', counterpart = activePath, nb = null) {
   const c = common[lang];
   const svPath = lang === 'sv' ? activePath : counterpart;
   const daPath = lang === 'da' ? activePath : counterpart;
@@ -44,8 +44,7 @@ function nav(lang, activePath = '', counterpart = activePath, nb = '/') {
   <div class="nav-right">
     <a class="link" href="/${lang}/#funktioner">${c.features}</a>
     <span class="language-switcher" aria-label="${c.langLabel}">
-      <a href="${nb}?sprak=nb" lang="nb">NO</a>
-      <a href="/sv/${svPath}?sprak=sv" lang="sv" ${lang === 'sv' ? 'aria-current="page"' : ''}>SV</a>
+      ${nb ? `<a href="${nb}?sprak=nb" lang="nb">NO</a>` : ''}<a href="/sv/${svPath}?sprak=sv" lang="sv" ${lang === 'sv' ? 'aria-current="page"' : ''}>SV</a>
       <a href="/da/${daPath}?sprak=da" lang="da" ${lang === 'da' ? 'aria-current="page"' : ''}>DA</a>
     </span>
   </div>
@@ -63,10 +62,13 @@ function footer(lang) {
 
 function consentBanner(lang) {
   const sv = lang === 'sv';
-  return `<div class="cookie" id="cookie" hidden><div class="cookie-inner" id="samtykke"><p>${sv ? 'Vi använder nödvändiga kakor och, om du säger ja, analys för att förbättra Matlyst.' : 'Vi bruger nødvendige cookies og, hvis du siger ja, analyse til at forbedre Matlyst.'}</p><div class="cookie-actions"><button class="ck-btn ck-accept" id="ck-accept" type="button">${sv ? 'Godkänn' : 'Acceptér'}</button><button class="ck-btn ck-reject" id="ck-reject" type="button">${sv ? 'Bara nödvändiga' : 'Kun nødvendige'}</button></div></div></div>`;
+  const text = sv
+    ? 'Vi använder nödvändig lagring för att webbplatsen ska fungera. Om du säger ja använder vi även kakor för analys (PostHog, Google Analytics) och marknadsföring (Meta Pixel). Läs mer i vår <a href="/sv/integritet/">integritetspolicy</a>.'
+    : 'Vi bruger nødvendige cookies. Siger du ja, bruger vi også analyse og måling af markedsføring (PostHog, Google Analytics og Meta Pixel) til at forbedre Matlyst. Læs mere i vores <a href="/da/privatliv/">privatlivspolitik</a>.';
+  return `<div class="cookie" id="cookie" hidden><div class="cookie-inner" id="samtykke"><p>${text}</p><div class="cookie-actions"><button class="ck-btn ck-accept" id="ck-accept" type="button">${sv ? 'Godkänn' : 'Acceptér'}</button><button class="ck-btn ck-reject" id="ck-reject" type="button">${sv ? 'Bara nödvändiga' : 'Kun nødvendige'}</button></div></div></div>`;
 }
 
-function head({ lang, path = '', counterpart = path, title, description, image = '/images/og.jpg', nb = '/', noindex = false, schema }) {
+function head({ lang, path = '', counterpart = path, title, description, image = '/images/og.jpg', nb = null, noindex = false, schema }) {
   const c = common[lang];
   const canonical = `${base}/${lang}/${path}`;
   return `<!DOCTYPE html>
@@ -103,8 +105,8 @@ ${schema ? `<script type="application/ld+json">${json(schema)}</script>` : ''}
 function storeButtons(lang) {
   const c = common[lang];
   return `<div class="store-badges">
-<a class="btn-store" href="${c.appStore}" rel="noopener"><img src="/images/appstore-badge.svg" width="120" height="40" alt="Download on the App Store"></a>
-<a class="btn-store" href="${c.play}" rel="noopener"><img src="/images/googleplay-badge-en.png" width="103" height="40" alt="Get it on Google Play"></a>
+<a class="btn-store" href="${c.appStore}" rel="noopener"><img src="/images/appstore-badge.svg" alt="Download on the App Store"></a>
+<a class="btn-store" href="${c.play}" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Get it on Google Play"></a>
 </div>`;
 }
 
@@ -129,7 +131,7 @@ ${nav(lang)}
   <div class="hero-side"><p class="lead">${description}</p>${storeButtons(lang)}</div>
 </header>
 <section class="manifesto" id="funktioner" data-section="overview">
-  <div><p class="eyebrow">${sv ? 'Ett lugnare kök' : 'Et roligere køkken'}</p><h2 class="disp">${sv ? 'Från inspiration till <em>middag</em>.' : 'Fra inspiration til <em>aftensmad</em>.'}</h2>
+  <div><p class="eyebrow">${sv ? 'Ett lugnare kök' : ''}</p><h2 class="disp">${sv ? 'Från inspiration till <em>middag</em>.' : 'Fra inspiration til <em>aftensmad</em>.'}</h2>
   <p class="answer">${sv ? 'Importera recept från webben, Instagram, TikTok eller ett foto. Ordna dem i mappar och hitta dem igen när det är dags att laga mat.' : 'Importér opskrifter fra nettet, Instagram, TikTok eller et foto. Saml dem i mapper, og find dem igen, når det er tid til at lave mad.'}</p></div>
   <div class="steps">
     <div class="step"><div class="n">01</div><div><div class="h">${sv ? 'Samla recepten' : 'Saml opskrifterne'}</div><div class="d">${sv ? 'Källan följer med när ett recept importeras.' : 'Kilden følger med, når en opskrift importeres.'}</div></div></div>
@@ -142,7 +144,7 @@ ${nav(lang)}
     sv ? ['Importera recept','Länk, video eller foto blir ett recept du kan använda.','importera-recept/'] : ['Importér opskrifter','Link, video eller foto bliver til en opskrift, du kan bruge.','importer-opskrifter/'],
     sv ? ['Veckomeny','Lägg egna recept på de dagar som passar.','veckomeny-app/'] : ['Madplan','Læg dine egne opskrifter på de dage, der passer.','madplan-app/'],
     sv ? ['Inköpslista','Samla ingredienser och egna varor på samma lista.','inkopslista/'] : ['Indkøbsliste','Saml ingredienser og egne varer på den samme liste.','indkoebsliste-app/'],
-    sv ? ['Fråga Matlyst','Fråga om receptet eller anpassa en rätt.','vad-ska-jag-laga/'] : ['Spørg Matlyst','Stil spørgsmål om opskriften, eller tilpas en ret.','middagsforslag/'],
+    sv ? ['Fråga Matlyst','Fråga om receptet eller anpassa en rätt.','vad-ska-jag-laga/'] : ['Spørg Matlyst','Stil spørgsmål om opskriften, eller find <a href="/da/nem-mad/">nem mad</a>.','middagsforslag/'],
   ].map(([h,p,u]) => `<article class="locale-card"><h2 class="disp">${h}</h2><p>${p}</p><a class="more" href="/${lang}/${u}">${sv ? 'Läs mer' : 'Læs mere'} →</a></article>`).join('')}
 </section>
 <section class="house" data-section="household"><img src="/images/life/life-household-1400.webp" width="1408" height="3050" alt="${sv ? 'Två personer planerar mat tillsammans' : 'To personer planlægger mad sammen'}" loading="lazy"><div class="house-text"><p class="eyebrow">${sv ? 'Ett kök med överblick' : 'Et køkken med overblik'}</p><h2 class="disp">${sv ? 'Samma plan<br><em>för hela hushållet.</em>' : 'Den samme plan<br><em>for hele husstanden.</em>'}</h2><p>${sv ? 'Med Matlyst Pro kan ett hushåll dela recept, veckomeny, inköpslista och skafferi.' : 'Med Matlyst Pro kan en husstand dele opskrifter, Madplan, indkøbsliste og spisekammer.'}</p></div></section>
@@ -157,13 +159,13 @@ const legal = {
       intro:'Villkoren gäller när du använder Matlyst. Matlyst tillhandahålls av Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge. Kontakta oss på hei@matlyst-app.no om något är oklart.',
       sections:[
         ['1. Användning av tjänsten','Du ansvarar för att uppgifterna i kontot är riktiga och för aktiviteten på kontot. Matlyst får inte användas olagligt, för att göra intrång i andras rättigheter eller för att försöka kringgå säkerheten.'],
-        ['2. Ålder, samtycke och AI','Vissa funktioner kräver åldersbekräftelse och ett separat samtycke innan innehåll skickas till en AI-leverantör. Du kan använda övriga delar av appen utan detta samtycke.'],
+    ['2. Ålder, samtycke och AI','Vissa funktioner kräver åldersbekräftelse och ett separat samtycke innan innehåll skickas till en AI-leverantör. Du kan använda övriga delar av appen utan detta samtycke.'],
         ['3. Innehåll och rättigheter','Du behåller rättigheterna till recepten och annat innehåll du lägger in. Du ger Matlyst den begränsade rätt som behövs för att lagra, visa, bearbeta och säkerhetskopiera innehållet åt dig.'],
         ['4. Upphovsrätt och borttagning','Importera bara innehåll som du har rätt att använda. Rättighetshavare kan kontakta hei@matlyst-app.no. Vi kan stoppa import från en källa eller ta bort innehåll när det krävs.'],
         ['5. Abonnemang och betalning','Abonnemanget förnyas automatiskt tills du säger upp det. Du säger upp det i inställningarna för ditt Apple-ID eller i Google Play, och det gäller då till periodens slut. Du har 14 dagars ångerrätt enligt lagen om distansavtal och avtal utanför affärslokaler. Ångerrätten kan upphöra när du uttryckligen begär att tjänsten ska börja levereras direkt och bekräftar detta. Apple eller Google hanterar betalning och eventuell återbetalning.'],
-        ['6. Ansvar','Matlyst hjälper till med planering och matlagning men ersätter inte professionell rådgivning. Kontrollera allergener, hållbarhet och säker tillagning själv. Vi ansvarar inte för indirekt skada utom i den mån tvingande lag föreskriver annat.'],
-        ['7. Ändringar och avslut','Vi kan ändra tjänsten och villkoren. Väsentliga ändringar meddelas i god tid innan de börjar gälla. Om du inte godtar ändringarna kan du säga upp tjänsten. Du kan sluta använda tjänsten och radera kontot när som helst.'],
-        ['8. Lag och klagomål','Norsk lag gäller i den utsträckning tvingande svensk konsumenträtt inte ger dig ett starkare skydd. Kontakta oss först. Om vi inte kommer överens kan du vända dig till Konsument Europa (ECC Sverige) eller Forbrukerklageutvalget i Norge.'],
+        ['6. Ansvar','Matlyst hjälper till med planering och matlagning men ersätter inte professionell rådgivning. Kontrollera allergener, hållbarhet och säker tillagning själv. Vi ansvarar inte för indirekt skada om inte tvingande lag föreskriver annat.'],
+        ['7. Ändringar och avslut','Vi kan ändra tjänsten och villkoren. Väsentliga ändringar meddelas i god tid innan de börjar gälla, i appen eller via e-post. Om du inte godtar ändringarna kan du säga upp avtalet. Du kan sluta använda tjänsten och radera kontot när som helst.'],
+        ['8. Lag och klagomål','Norsk lag gäller i den utsträckning tvingande svensk konsumenträtt inte ger dig ett starkare skydd. Kontakta oss först. Om vi inte kommer överens kan du vända dig till Konsument Europa (ECC Sverige) eller Forbrukerrådet i Norge.'],
       ],
     },
     privacy: {
@@ -173,11 +175,11 @@ const legal = {
         ['Tre löften','Vi säljer inte dina personuppgifter. Recept används inte för att träna allmänna AI-modeller. Analys på webbplatsen och i appen kräver samtycke.'],
         ['Uppgifter vi behandlar','Vi behandlar konto och inloggning, profil och inställningar, recept och bilder, veckomeny, inköpslista, skafferi, feedback, tekniska loggar och de uppgifter du aktivt skickar till import eller Fråga Matlyst. Matlogg och kalorimål behandlas bara med uttryckligt samtycke.'],
         ['Ändamål och rättslig grund','Avtal enligt GDPR artikel 6.1 b används för konto, synkronisering, import och funktionerna du begär. Berättigat intresse enligt artikel 6.1 f används för säkerhet och nödvändig felsökning. Samtycke enligt artikel 6.1 a används för analys, marknadsföring och känsliga hälsouppgifter. Rättslig förpliktelse enligt artikel 6.1 c används där lag kräver det.'],
-        ['AI-behandling','När du har godkänt AI-funktionen skickas det innehåll som behövs för din begäran till den leverantör som visas i samtycket. Vi använder inte recept eller frågor för att träna allmänna modeller. Du kan återkalla samtycket i inställningarna.'],
-        ['Webbplats och lokal lagring','Webbplatsen använder nödvändig lokal lagring för språkvalet matlyst-sprak. Meta Pixel, PostHog och Google Analytics laddas först efter ett aktivt samtycke. Analys och marknadsföringsmätning startar först efter samtycke.'],
-        ['Leverantörer och överföring','Supabase lagrar konto och innehåll i EU. PostHog och Sentry används i EU enligt avtal och EU-lagring. RevenueCat, Apple och Google hanterar köp. Anthropic eller Google behandlar AI-begäran enligt ditt samtycke; överföring utanför EES bygger på Data Privacy Framework där leverantören omfattas eller standardavtalsklausuler. Meta Pixel och Google Analytics används bara efter samtycke och överföring bygger på Data Privacy Framework eller standardavtalsklausuler. EmailOctopus hanterar nyhetsbrev enligt samtycke. Google reCAPTCHA laddas bara när du använder nyhetsbrevformuläret och använder Googles standardavtalsklausuler.'],
+        ['AI-behandling','När du har godkänt AI-funktionen skickas det innehåll som behövs för din begäran till den leverantör som visas i samtycket. Vi använder inte recept eller frågor för att träna allmänna modeller. Du kan återkalla samtycket via länken Ändra samtycke längst ned på sidan eller i appens inställningar.'],
+        ['Webbplats och lokal lagring','Webbplatsen använder nödvändig lokal lagring för språkval och ditt samtyckesval i matlyst-sprak och matlyst-consent. Meta Pixel, PostHog och Google Analytics laddas först efter ett aktivt samtycke. På den norska webbplatsen används EmailOctopus för nyhetsbrev, och Google reCAPTCHA laddas först när du fyller i nyhetsbrevsformuläret.'],
+        ['Leverantörer och överföring','Supabase, PostHog och Sentry lagrar uppgifterna inom EU (ingen överföring). Apple, Google, Meta och RevenueCat använder Data Privacy Framework där mottagaren omfattas, subsidiärt standardavtalsklausuler. EmailOctopus omfattas av Storbritanniens adekvansbeslut. Anthropic använder standardavtalsklausuler.'],
         ['Lagring och radering','Konto och innehåll lagras tills du raderar kontot. Tekniska felsökningsloggar raderas efter 90 dagar och Sentry-rapporter efter 30 dagar. Push-token raderas vid utloggning eller kontoradering. Samtycke till analys kan återkallas när som helst.'],
-        ['Dina rättigheter','Du kan begära tillgång, rättelse, radering, begränsning, dataportabilitet och invända mot viss behandling. Kontakta hei@matlyst-app.no. Du kan också klaga hos Integritetsskyddsmyndigheten (IMY).'],
+        ['Dina rättigheter','Du har rätt att begära tillgång till, rättelse och radering av dina uppgifter, begränsning av behandlingen och dataportabilitet. Du har också rätt att invända mot viss behandling och att återkalla ett samtycke. Kontakta hei@matlyst-app.no. Du kan också klaga hos Integritetsskyddsmyndigheten (IMY).'],
         ['Ålder och samtycke','I Sverige är åldersgränsen 13 år för att själv samtycka till de digitala funktioner som kräver samtycke. För detta lagrar vi land, bekräftad åldersgräns och tidpunkt – inte födelsedatum.'],
       ],
     },
@@ -186,7 +188,7 @@ const legal = {
       intro:'Du kan radera Matlyst-kontot och innehållet permanent. Ett abonnemang måste sägas upp separat i App Store eller Google Play.',
       sections:[
         ['Radera i appen','Öppna Matlyst, gå till Inställningar och välj Radera konto. Bekräfta åtgärden. Kontot och innehållet raderas och du loggas ut.'],
-        ['Om du inte kan logga in','Mejla hei@matlyst-app.no från adressen som hör till kontot. Vi kontrollerar din identitet och behandlar begäran inom 30 dagar.'],
+        ['Om du inte kan logga in','Mejla hei@matlyst-app.no från adressen som hör till kontot. Vi kontrollerar din identitet och behandlar begäranden inom 30 dagar.'],
         ['Det som raderas','Konto, profil, recept, mappar, bilder, anteckningar, veckomeny, inköpslista, skafferi, hushållsmedlemskap, feedback och push-token raderas. Krypterade säkerhetskopior rensas automatiskt inom 30 dagar.'],
       ],
     },
@@ -200,10 +202,10 @@ const legal = {
         ['2. Alder, samtykke og AI','Nogle funktioner kræver aldersbekræftelse og et særskilt samtykke, før indhold sendes til en AI-leverandør. Du kan bruge resten af appen uden dette samtykke.'],
         ['3. Indhold og rettigheder','Du beholder rettighederne til opskrifter og andet indhold, du lægger ind. Du giver Matlyst den begrænsede ret, der er nødvendig for at lagre, vise, behandle og sikkerhedskopiere indholdet for dig.'],
         ['4. Ophavsret og fjernelse','Importér kun indhold, du har ret til at bruge. Rettighedshavere kan kontakte hei@matlyst-app.no. Vi kan stoppe import fra en kilde eller fjerne indhold, når det er nødvendigt.'],
-        ['5. Abonnement og betaling','Abonnementet fornyes automatisk, indtil du opsiger det. Du opsiger det i indstillingerne for dit Apple-ID eller i Google Play, og det gælder derefter til periodens slutning. Du har 14 dages fortrydelsesret efter forbrugeraftaleloven. Fortrydelsesretten kan bortfalde, når du udtrykkeligt beder om, at leveringen starter straks, og bekræfter dette. Apple eller Google håndterer betaling og eventuel refusion.'],
-        ['6. Ansvar','Matlyst hjælper med planlægning og madlavning, men erstatter ikke professionel rådgivning. Kontrollér selv allergener, holdbarhed og sikker tilberedning. Vi hæfter ikke for indirekte tab ud over, hvad ufravigelig lov kræver.'],
+        ['5. Abonnement og betaling','Abonnementet fornyes automatisk, indtil du opsiger det. Du opsiger det i indstillingerne for din Apple-konto eller i Google Play, og abonnementet løber så til udgangen af den betalte periode. Du har 14 dages fortrydelsesret efter forbrugeraftaleloven. Fortrydelsesretten kan bortfalde, når du udtrykkeligt beder om, at leveringen starter straks, og anerkender, at du dermed mister fortrydelsesretten. Apple eller Google håndterer betaling og eventuel refusion.'],
+        ['6. Ansvar','Matlyst hjælper med planlægning og madlavning, men erstatter ikke professionel rådgivning. Kontrollér selv allergener, holdbarhed og sikker tilberedning. Vi hæfter ikke for indirekte tab, medmindre ufravigelig lovgivning bestemmer andet.'],
         ['7. Ændringer og ophør','Vi kan ændre tjenesten og vilkårene. Væsentlige ændringer meddeles i god tid, før de træder i kraft. Hvis du ikke accepterer ændringerne, kan du opsige tjenesten. Du kan stoppe med at bruge tjenesten og slette kontoen når som helst.'],
-        ['8. Lovvalg og klage','Norsk ret gælder, i det omfang ufravigelig dansk forbrugerret ikke giver dig bedre beskyttelse. Kontakt os først. Hvis vi ikke finder en løsning, kan du bruge klageportalen hos Nævnenes Hus eller få vejledning hos Forbrug.dk og Forbruger Europa.'],
+        ['8. Lovvalg og klage','Norsk ret gælder, i det omfang ufravigelig dansk forbrugerret ikke giver dig bedre beskyttelse. Kontakt os først. Hvis vi ikke finder en løsning, kan du få hjælp hos Forbruger Europa, som hjælper med klager mod virksomheder i Norge. I Norge kan Forbrukerrådet rådgive og sende sagen videre til Forbrukerklageutvalget.'],
       ],
     },
     privacy: {
@@ -211,14 +213,14 @@ const legal = {
       intro:'Patrick Kabia er dataansvarlig for Matlyst. Matlyst drives som et personligt projekt i Norge. Kontakt: Vollebekkveien 2J, 0598 Oslo, Norge, hei@matlyst-app.no.',
       sections:[
         ['Tre løfter','Vi sælger ikke dine personoplysninger. Opskrifter bruges ikke til at træne generelle AI-modeller. Analyse på hjemmesiden og i appen kræver samtykke.'],
-        ['Oplysninger, vi behandler','Vi behandler konto og login, profil og indstillinger, opskrifter og billeder, Madplan, indkøbsliste, spisekammer, feedback, tekniske logge og de oplysninger, du aktivt sender til import eller Spørg Matlyst. Madlog og kaloriemål behandles kun med udtrykkeligt samtykke.'],
+        ['Oplysninger, vi behandler','Vi behandler oplysninger om din konto og dit login, din profil og dine indstillinger, opskrifter og billeder, Madplan, Indkøbsliste, Spisekammer, feedback, tekniske logge og de oplysninger, du aktivt sender til import eller Spørg Matlyst. Madlog og kaloriemål behandles kun med udtrykkeligt samtykke efter GDPR artikel 9, stk. 2, litra a.'],
         ['Formål og retsgrundlag','Aftale efter GDPR artikel 6, stk. 1, litra b bruges til konto, synkronisering, import og de funktioner, du beder om. Legitim interesse efter artikel 6, stk. 1, litra f bruges til sikkerhed og nødvendig fejlfinding. Samtykke efter artikel 6, stk. 1, litra a bruges til analyse, markedsføring og følsomme helbredsoplysninger. Retlig forpligtelse efter artikel 6, stk. 1, litra c bruges, hvor loven kræver det.'],
-        ['AI-behandling','Når du har godkendt AI-funktionen, sendes det indhold, der er nødvendigt for din anmodning, til den leverandør, som står i samtykket. Vi bruger ikke opskrifter eller spørgsmål til at træne generelle modeller. Du kan trække samtykket tilbage i indstillingerne.'],
-        ['Hjemmesiden og lokal lagring','Hjemmesiden bruger nødvendig lokal lagring til sprogvalget matlyst-sprak. Meta Pixel, PostHog og Google Analytics indlæses først efter et aktivt samtykke. Analyse og markedsføringsmåling starter først efter samtykke.'],
-        ['Leverandører og overførsel','Supabase lagrer konto og indhold i EU. PostHog og Sentry bruges i EU efter aftale og med EU-lagring. RevenueCat, Apple og Google håndterer køb. Anthropic eller Google behandler AI-anmodninger efter dit samtykke; overførsel uden for EØS bygger på en tilstrækkelighedsafgørelse, Data Privacy Framework, hvor leverandøren er omfattet, eller standardkontraktbestemmelser. Meta Pixel og Google Analytics bruges kun efter samtykke og bruger Data Privacy Framework eller standardkontraktbestemmelser. EmailOctopus håndterer nyhedsbrev efter samtykke. Google reCAPTCHA indlæses kun, når du bruger nyhedsbrevsformularen, efter samtykke, og bruger standardkontraktbestemmelser.'],
+        ['AI-behandling','Når du har godkendt AI-funktionen, sendes det indhold, der er nødvendigt for din anmodning, til den leverandør, som står i samtykket. Vi bruger ikke opskrifter eller spørgsmål til at træne generelle modeller. Du kan trække samtykket tilbage via «Skift samtykke» nederst på siden eller i appens indstillinger.'],
+        ['Hjemmesiden og lokal lagring','Hjemmesiden bruger nødvendig lokal lagring til sprogvalg og dit samtykkevalg i matlyst-sprak og matlyst-consent. Meta Pixel, PostHog og Google Analytics indlæses først efter et aktivt samtykke. På den norske hjemmeside bruges EmailOctopus til nyhedsbreve, og Google reCAPTCHA indlæses først, når du udfylder nyhedsbrevsformularen.'],
+        ['Leverandører og overførsel','Supabase, PostHog og Sentry lagrer oplysningerne i EU (ingen overførsel). Apple, Google, Meta og RevenueCat bruger Data Privacy Framework, hvor modtageren er omfattet, subsidiært standardkontraktbestemmelser. EmailOctopus er omfattet af Storbritanniens tilstrækkelighedsafgørelse. Anthropic bruger standardkontraktbestemmelser. Apple og Google bruges også til login.'],
         ['Opbevaring og sletning','Konto og indhold opbevares, til du sletter kontoen. Tekniske fejlfindingslogge slettes efter 90 dage og Sentry-rapporter efter 30 dage. Push-token slettes ved logout eller kontosletning. Samtykke til analyse kan trækkes tilbage når som helst.'],
-        ['Dine rettigheder','Du kan bede om indsigt, rettelse, sletning, begrænsning, dataportabilitet og gøre indsigelse mod visse behandlinger. Skriv til hei@matlyst-app.no. Du kan også klage til Datatilsynet.'],
-        ['Alder og samtykke','I Danmark er aldersgrænsen 15 år for selv at give samtykke til de digitale funktioner, der kræver samtykke. Vi gemmer det land, du har valgt, din bekræftelse af aldersgrænsen og tidspunktet, men ikke din fødselsdato.'],
+        ['Dine rettigheder','Du har ret til at bede om indsigt i, rettelse og sletning af dine oplysninger, begrænsning af behandlingen og dataportabilitet. Du har også ret til at gøre indsigelse mod visse behandlinger og trække et samtykke tilbage. Skriv til hei@matlyst-app.no. Du kan også klage til Datatilsynet.'],
+        ['Alder og samtykke','I Danmark skal du være mindst 15 år for selv at give samtykke til de funktioner i Matlyst, der kræver samtykke. Vi gemmer det land, du har valgt, din bekræftelse af aldersgrænsen og tidspunktet, men ikke din fødselsdato.'],
       ],
     },
     delete: {
@@ -226,7 +228,7 @@ const legal = {
       intro:'Du kan slette Matlyst-kontoen og indholdet permanent. Et abonnement skal opsiges særskilt i App Store eller Google Play.',
       sections:[
         ['Slet i appen','Åbn Matlyst, gå til Indstillinger, og vælg Slet konto. Bekræft handlingen. Kontoen og indholdet slettes, og du logges ud.'],
-        ['Hvis du ikke kan logge ind','Skriv til hei@matlyst-app.no fra den adresse, der hører til kontoen. Vi kontrollerer din identitet og behandler anmodningen inden 30 dage.'],
+        ['Hvis du ikke kan logge ind','Skriv til hei@matlyst-app.no fra den adresse, der hører til kontoen. Vi kontrollerer din identitet og behandler anmodninger inden 30 dage.'],
         ['Det, der slettes','Konto, profil, opskrifter, mapper, billeder, noter, Madplan, indkøbsliste, spisekammer, husstandsmedlemskab, feedback og push-token slettes. Krypterede sikkerhedskopier slettes automatisk senest 30 dage efter.'],
       ],
     },
@@ -253,32 +255,32 @@ const featurePages = {
   sv: [
     ['importera-recept/','importer-opskrifter/','Importera recept till en app','Importera recept från en länk, Instagram, TikTok eller ett foto och samla dem i Matlyst.','Importera recept','Skicka en länk eller dela innehållet till Matlyst. Appen tolkar ingredienser och steg, och visar källan på receptet.','Länkimport ingår med fem importer per månad utan Pro. Fotoimport kräver Matlyst Pro.','Kan jag importera från en webbsida?','Ja. Klistra in länken eller dela den till Matlyst.'],
     ['hitta-recept/','find-opskrifter/','Hitta mina recept','Sök i din egen receptsamling efter namn, ingrediens, kategori eller källa.','Hitta tillbaka till det du sparat','Sökningen gäller recepten i din samling. Filter hjälper dig att begränsa listan utan att blanda in recept från webben.','Mappar och favoriter ger fler vägar tillbaka till rätter du vill laga igen.','Söker Matlyst på hela webben?','Nej. Den här sökningen gäller din egen receptsamling.'],
-    ['inkopslista/','indkoebsliste-app/','Inköpslista från recept','Skicka ingredienser från recept och veckomeny till en gemensam inköpslista.','En inköpslista som börjar i recepten','Välj ett recept eller en hel planerad dag. Ingredienserna läggs i listan, där du också kan skriva in egna varor.','När en vara bockas av kan den flyttas till Skafferiet. Hushållsdelning kräver Matlyst Pro.','Är inköpslistan gratis?','Den vanliga inköpslistan kan användas utan Pro. Hushållsdelning är en Pro-funktion.'],
+    ['inkopslista/','indkoebsliste-app/','Inköpslista från recept','Skicka ingredienser från recept och veckomeny till en gemensam inköpslista.','En inköpslista från dina recept','Välj ett recept eller en hel planerad dag. Ingredienserna läggs i listan, där du också kan skriva in egna varor.','När en vara bockas av kan den flyttas till Skafferiet. Hushållsdelning kräver Matlyst Pro.','Är inköpslistan gratis?','Den vanliga inköpslistan kan användas utan Pro. Hushållsdelning är en Pro-funktion.'],
     ['handskrivna-recept/','haandskrevne-opskrifter/','Digitalisera handskrivna recept','Fotografera ett receptkort och gör texten sökbar i din receptsamling.','Från receptkort till digital kokbok','Fotoimporten tolkar titel, ingredienser och steg. Kontrollera resultatet innan du sparar, särskilt svårläst handstil och mängder.','Fotoimport kräver Matlyst Pro. Originalets källa kan beskrivas i receptet.','Blir all handstil rätt?','Nej. Resultatet beror på bilden och handstilen och ska alltid kontrolleras.'],
     ['recept-pa-ingredienser/','opskrifter-ud-fra-ingredienser/','Vad kan jag laga med dessa ingredienser?','Hitta recept i din egen samling som passar ingredienserna du har hemma.','Sök med det som finns hemma','Skriv ingredienser eller använd Skafferiet. Matlyst jämför med recepten du redan har sparat och visar relevanta träffar.','Förslagen är ett hjälpmedel. Kontrollera alltid att du faktiskt har rätt mängd och att varorna är användbara.','Skapar sökningen nya recept?','Nej. Den matchar mot recept i din egen samling. Fråga Matlyst kan skapa eller anpassa en rätt.'],
-    ['vad-ska-jag-laga/','middagsforslag/','Vad ska jag laga till middag?','Få middagsförslag från egna recept och fråga Matlyst när du vill anpassa en rätt.','Middagsförslag med sammanhang','På Hem visas förslag från din egen receptsamling. Skafferiet kan hjälpa till att lyfta fram rätter som passar det du har.','Fråga Matlyst kan skapa eller ändra recept. Den funktionen följer appens Pro-gate.','Varifrån kommer förslagen?','Från recepten du har sparat och de uppgifter appen har om Skafferiet.'],
+    ['vad-ska-jag-laga/','middagsforslag/','Vad ska jag laga till middag?','Få middagsförslag från egna recept och fråga Matlyst när du vill anpassa en rätt.','Middagsförslag från din samling','På Hem visas förslag från din egen receptsamling. Skafferiet kan hjälpa till att lyfta fram rätter som passar det du har.','Fråga Matlyst kan skapa eller ändra recept. Den funktionen följer appens Pro-gate.','Varifrån kommer förslagen?','Från recepten du har sparat och de uppgifter appen har om Skafferiet.'],
     ['veckomeny-app/','madplan-app/','Matplanering och inköpslista','Planera veckans middagar med egna recept och skicka ingredienserna till inköpslistan.','Planera veckan själv','Välj ett recept för varje dag du vill planera. Matlyst skapar inte en färdig vecka automatiskt.','Veckomenyn och den vanliga inköpslistan kan användas utan Pro. Hushållsdelning kräver Pro.','Gör Matlyst veckomenyn åt mig?','Nej. Du väljer själv recept och dagar.'],
-    ['byt-fran-paprika/','skift-fra-paprika/','Alternativ till Paprika Recipe Manager','Flytta recept genom Matlysts importflöde och kontrollera varje resultat innan du sparar.','Byt utan att lova en magisk flytt','Matlyst kan importera recept från länkar och filer som appen stöder. Exakt flöde beror på hur recepten kan exporteras från din nuvarande app.','Matlyst är inte knutet till Paprika och garanterar inte att alla fält kan flyttas automatiskt.','Finns en direktkoppling till Paprika?','Nej. Använd export- och importmöjligheterna som apparna erbjuder.'],
+    ['byt-fran-paprika/','skift-fra-paprika/','Alternativ till Paprika Recipe Manager','Flytta dina recept med Matlysts import och kontrollera varje resultat innan du sparar.','Byt utan att lova en magisk flytt','Matlyst kan importera recept från länkar och filer som appen stöder. Exakt flöde beror på hur recepten kan exporteras från din nuvarande app.','Matlyst har ingen koppling till Paprika och garanterar inte att alla fält kan flyttas automatiskt.','Finns en direktkoppling till Paprika?','Nej. Använd export- och importmöjligheterna som apparna erbjuder.'],
     ['receptbok-app/','opskrifts-app/','Egen kokbok i en app','Samla egna och importerade recept i mappar, med favoriter, anteckningar och källa.','Din digitala kokbok','Spara familjerecept, länkar du hittar och rätter du gör ofta på samma ställe. Mappar och sökning håller samlingen användbar.','Du bestämmer över innehållet. Källan visas på importerade recept när den finns.','Kan jag lägga in egna recept?','Ja. Du kan skriva in ett recept själv eller importera från källor som stöds.'],
     ['spara-recept-fran-instagram/','gem-opskrifter-fra-instagram/','Spara recept från Instagram','Dela en offentlig reel till Matlyst och kontrollera receptet innan du sparar.','Från reel till recept','Använd Instagrams delningsmeny och välj Matlyst. När importen kan läsa innehållet får du ingredienser och steg i ett redigerbart recept.','Källan följer med. Privat eller otillgängligt innehåll kan inte alltid importeras.','Är Matlyst knutet till Instagram?','Nej. Matlyst använder den länk eller delning du själv skickar.'],
-    ['spara-recept-fran-tiktok/','gem-opskrifter-fra-tiktok/','Spara TikTok-recept','Dela en offentlig TikTok till Matlyst och samla receptet med källan kvar.','Spara när du hittar något gott','Välj Matlyst i delningsmenyn. Kontrollera mängder och steg innan receptet sparas i din samling.','Privat, borttaget eller geografiskt spärrat innehåll kan inte alltid läsas.','Behålls länken till videon?','Ja, när källan är tillgänglig sparas den tillsammans med receptet.'],
+    ['spara-recept-fran-tiktok/','gem-opskrifter-fra-tiktok/','Spara TikTok-recept','Dela en TikTok-video från ett offentligt konto med Matlyst och samla receptet med källan kvar.','Spara när du hittar något gott','Välj Matlyst i delningsmenyn. Kontrollera mängder och steg innan receptet sparas i din samling.','Privat, borttaget eller geografiskt spärrat innehåll kan inte alltid läsas.','Behålls länken till videon?','Ja, när källan är tillgänglig sparas den tillsammans med receptet.'],
     ['skafferi-app/','spisekammer-app/','Skafferi-app för recept','Håll koll på varor hemma och hitta recept som passar innan maten blir gammal.','Det du har, synligt','Lägg in varor manuellt eller flytta avbockade inköp till Skafferiet. Förslag kan sedan använda innehållet som underlag.','Gratisnivån visar ett begränsat antal skafferivaror; Pro öppnar mer kapacitet.','Är lagersaldot exakt?','Bara om du håller Skafferiet uppdaterat. Matlyst känner inte av varorna automatiskt.'],
-    ['tom-kylskapet/','toem-koeleskabet/','Töm kylskåpet med recept','Använd det du redan har genom att matcha Skafferiet mot din egen receptsamling.','Börja med det som finns','Se vilka sparade recept som passar varorna hemma och vilka ingredienser som saknas. Det minskar onödiga extraköp.','Matlyst kan inte avgöra om en vara är säker att äta. Kontrollera lukt, utseende, datum och förvaring själv.','Ger Matlyst hållbarhetsgaranti?','Nej. Du ansvarar alltid för att bedöma maten.'],
+    ['tom-kylskapet/','toem-koeleskabet/','Töm kylskåpet med recept','Använd det du redan har genom att matcha Skafferiet mot din egen receptsamling.','Börja med det som finns','Se vilka sparade recept som passar varorna hemma och vilka ingredienser som saknas. Det minskar onödiga extraköp.','Matlyst kan inte avgöra om en vara är säker att äta. Kontrollera lukt, utseende, datum och förvaring själv.','Kan Matlyst avgöra om maten fortfarande är bra?','Nej. Du ansvarar alltid för att bedöma maten.'],
     ['enkel-middag/','nem-mad/','Enkel middag från det du har','Planera enkel middag med egna recept, Skafferiet, Veckomenyn och Inköpslistan.','Enklare vardagsmiddag','Välj en snabb rätt du redan tycker om, planera den till rätt dag och skicka det som saknas till listan.','Exempel som köttbullar med potatis, ugnslax eller en enkel pastarätt är inspiration, inte färdiga recept på sidan.','Vad är en enkel vardagsmiddag?','En rätt med tydliga steg, rimlig tid och råvaror du faktiskt har eller lätt kan köpa.'],
-    ['receptskapare/','opskriftsskabere/','Matlyst för receptskapare','Så visar Matlyst källa, hanterar import och tar emot begäran från rättighetshavare.','Källan ska vara tydlig','Importerade recept behåller källänken när den finns. Matlyst påstår inte ägande till skaparens text eller bilder.','En skapare kan kontakta hei@matlyst-app.no för frågor, rättelse eller blockering av import från en källa.','Kan en skapare stoppa import?','Ja. Kontakta oss med källan och underlag så behandlar vi begäran.'],
+    ['receptskapare/','opskriftsskabere/','Matlyst för receptskapare','Så visar Matlyst källa, hanterar import och tar emot begäran från rättighetshavare.','Källan ska vara tydlig','Importerade recept behåller källänken när den finns.','En skapare kan kontakta hei@matlyst-app.no för frågor, rättelse eller blockering av import från en källa.','Kan en skapare stoppa import?','Ja. Kontakta oss med källan och underlag så behandlar vi begäran.'],
   ],
   da: [
     ['importer-opskrifter/','importera-recept/','Importér opskrifter til en app','Importér opskrifter fra et link, Instagram, TikTok eller et foto, og saml dem i Matlyst.','Importér opskrifter','Send et link, eller del indholdet til Matlyst. Appen tolker ingredienser og trin og viser kilden på opskriften.','Linkimport omfatter fem importer om måneden uden Pro. Fotoimport kræver Matlyst Pro.','Kan jeg importere fra en hjemmeside?','Ja. Indsæt linket, eller del det til Matlyst.'],
     ['find-opskrifter/','hitta-recept/','Find mine opskrifter','Søg i din egen opskriftssamling efter navn, ingrediens, kategori eller kilde.','Find tilbage til det, du har gemt','Søgningen gælder opskrifterne i din samling. Filtre begrænser listen uden at blande opskrifter fra nettet ind.','Mapper og favoritter giver flere veje tilbage til de retter, du vil lave igen.','Søger Matlyst på hele nettet?','Nej. Denne søgning gælder din egen opskriftssamling.'],
-    ['indkoebsliste-app/','inkopslista/','Fælles indkøbsliste fra opskrifter','Send ingredienser fra opskrifter og Madplan til én indkøbsliste.','En indkøbsliste, der begynder i opskrifterne','Vælg en opskrift eller en planlagt dag. Ingredienserne føjes til listen, hvor du også kan skrive egne varer.','Når en vare krydses af, kan den flyttes til Spisekammeret. Deling i en husstand kræver Matlyst Pro.','Er indkøbslisten gratis?','Den almindelige indkøbsliste kan bruges uden Pro. Deling i en husstand er en Pro-funktion.'],
+    ['indkoebsliste-app/','inkopslista/','Fælles indkøbsliste fra opskrifter','Send ingredienser fra opskrifter og Madplan til én indkøbsliste.','En indkøbsliste fra dine opskrifter','Vælg en opskrift eller en planlagt dag. Ingredienserne føjes til listen, hvor du også kan skrive egne varer.','Når en vare krydses af, kan den flyttes til Spisekammeret. Deling i en husstand kræver Matlyst Pro.','Er indkøbslisten gratis?','Den almindelige indkøbsliste kan bruges uden Pro. Deling i en husstand er en Pro-funktion.'],
     ['haandskrevne-opskrifter/','handskrivna-recept/','Scan håndskrevne opskrifter','Fotografér et opskriftskort, og gør teksten søgbar i din opskriftssamling.','Fra opskriftskort til digital kogebog','Fotoimporten tolker titel, ingredienser og trin. Kontrollér resultatet før lagring, især ved svær håndskrift og mængder.','Fotoimport kræver Matlyst Pro. Den oprindelige kilde kan beskrives på opskriften.','Bliver al håndskrift læst korrekt?','Nej. Resultatet afhænger af billedet og håndskriften og skal altid kontrolleres.'],
     ['opskrifter-ud-fra-ingredienser/','recept-pa-ingredienser/','Opskrifter ud fra ingredienser','Find opskrifter i din egen samling, der passer til de ingredienser, du har hjemme.','Søg med det, der er hjemme','Skriv ingredienser, eller brug Spisekammeret. Matlyst sammenligner med opskrifterne, du allerede har gemt.','Forslagene er hjælp. Kontrollér mængder, holdbarhed og om varerne kan bruges.','Laver søgningen nye opskrifter?','Nej. Den matcher din egen samling. Spørg Matlyst kan lave eller tilpasse en ret.'],
     ['middagsforslag/','vad-ska-jag-laga/','Hvad skal jeg lave til aftensmad?','Få middagsforslag fra egne opskrifter, og brug Spørg Matlyst til at tilpasse en ret.','Middagsforslag med sammenhæng','På Forsiden vises forslag fra din opskriftssamling. Spisekammeret kan hjælpe med at fremhæve retter, der passer til det, du har.','Spørg Matlyst kan lave eller ændre opskrifter. Funktionen følger appens Pro-gate.','Hvor kommer forslagene fra?','Fra opskrifter, du har gemt, og oplysninger i Spisekammeret.'],
-    ['madplan-app/','veckomeny-app/','Madplan-app med indkøbsliste','Planlæg ugens aftensmad med egne opskrifter, og send ingredienserne til indkøbslisten.','Planlæg ugen selv','Vælg en opskrift til hver dag, du vil planlægge. Matlyst laver ikke en færdig uge automatisk.','Madplanen og den almindelige indkøbsliste kan bruges uden Pro. Deling i en husstand kræver Pro.','gratis madplan med indkøbsliste','Madplanen og den almindelige indkøbsliste kan bruges uden Pro. Du vælger selv opskrifter og dage.'],
-    ['skift-fra-paprika/','byt-fran-paprika/','Alternativ til Paprika Recipe Manager','Flyt opskrifter gennem Matlysts import, og kontrollér hvert resultat før lagring.','Skift uden løfter om en magisk flytning','Matlyst kan importere links og filer, som appen understøtter. Det konkrete forløb afhænger af eksporten fra din nuværende app.','Matlyst er ikke forbundet med Paprika og garanterer ikke, at alle felter kan flyttes automatisk.','Er der en direkte forbindelse til Paprika?','Nej. Brug de eksport- og importmuligheder, som tjenesterne tilbyder.'],
+    ['madplan-app/','veckomeny-app/','Madplan-app med indkøbsliste','Planlæg ugens aftensmad med egne opskrifter, og send ingredienserne til indkøbslisten.','Planlæg ugen selv','Vælg en opskrift til hver dag, du vil planlægge. Du bestemmer selv, hvad der skal på bordet hver dag.','Madplanen og den almindelige indkøbsliste kan bruges uden Pro. Deling i en husstand kræver Pro.','Er madplanen og indkøbslisten gratis?','Madplanen og den almindelige indkøbsliste kan bruges uden Pro. Du vælger selv opskrifter og dage.'],
+    ['skift-fra-paprika/','byt-fran-paprika/','Alternativ til Paprika Recipe Manager','Flyt dine opskrifter med Matlysts import, og kontrollér hvert resultat, før du gemmer det.','Skift uden løfter om en magisk flytning','Matlyst kan importere links og filer, som appen understøtter. Det konkrete forløb afhænger af eksporten fra din nuværende app.','Matlyst har ingen tilknytning til Paprika og garanterer ikke, at alle felter kan flyttes automatisk.','Er der en direkte forbindelse til Paprika?','Nej. Brug de eksport- og importmuligheder, som tjenesterne tilbyder.'],
     ['opskrifts-app/','receptbok-app/','App til egne opskrifter','Saml egne og importerede opskrifter i mapper med favoritter, noter og kilde.','Din digitale kogebog','Gem familieopskrifter, links og retter, du laver ofte, på samme sted. Mapper og søgning holder samlingen anvendelig.','Du bestemmer over indholdet. Kilden vises på importerede opskrifter, når den findes.','Kan jeg skrive mine egne opskrifter ind?','Ja. Du kan skrive en opskrift selv eller importere fra en understøttet kilde.'],
-    ['gem-opskrifter-fra-instagram/','spara-recept-fran-instagram/','Gem opskrifter fra Instagram','Del en offentlig reel til Matlyst, og kontrollér opskriften før lagring.','Fra reel til opskrift','Brug Instagrams delingsmenu, og vælg Matlyst. Når indholdet kan læses, får du ingredienser og trin i en redigerbar opskrift.','Kilden følger med. Privat eller utilgængeligt indhold kan ikke altid importeres.','Er Matlyst forbundet med Instagram?','Nej. Matlyst bruger det link eller den deling, du selv sender.'],
-    ['gem-opskrifter-fra-tiktok/','spara-recept-fran-tiktok/','Gem TikTok-opskrifter','Del en offentlig TikTok til Matlyst, og saml opskriften med kilden bevaret.','Gem, når du finder noget godt','Vælg Matlyst i delingsmenuen. Kontrollér mængder og trin, før opskriften gemmes.','Privat, slettet eller geografisk blokeret indhold kan ikke altid læses.','Bevares linket til videoen?','Ja, når kilden er tilgængelig, gemmes den med opskriften.'],
+    ['gem-opskrifter-fra-instagram/','spara-recept-fran-instagram/','Gem opskrifter fra Instagram','Del en offentlig reel til Matlyst, og kontrollér opskriften, før du gemmer den.','Fra reel til opskrift','Brug Instagrams delingsmenu, og vælg Matlyst. Når indholdet kan læses, får du ingredienser og trin i en redigerbar opskrift.','Kilden følger med. Privat eller utilgængeligt indhold kan ikke altid importeres.','Har Matlyst tilknytning til Instagram?','Nej. Matlyst bruger det link eller den deling, du selv sender.'],
+    ['gem-opskrifter-fra-tiktok/','spara-recept-fran-tiktok/','Gem TikTok-opskrifter','Del en TikTok-video fra en offentlig konto med Matlyst, og saml opskriften med kilden bevaret.','Gem, når du finder noget godt','Vælg Matlyst i delingsmenuen. Kontrollér mængder og trin, før opskriften gemmes.','Privat, slettet eller geografisk blokeret indhold kan ikke altid læses.','Bevares linket til videoen?','Ja, når kilden er tilgængelig, gemmes den med opskriften.'],
     ['spisekammer-app/','skafferi-app/','Spisekammer-app til opskrifter','Hold styr på varer hjemme, og find opskrifter, der passer, før maden bliver gammel.','Det, du har, samlet','Tilføj varer manuelt, eller flyt afkrydsede indkøb til Spisekammeret. Forslag kan derefter bruge indholdet som grundlag.','Gratisniveauet viser et begrænset antal varer; Pro giver mere kapacitet.','Er beholdningen altid præcis?','Kun hvis du holder Spisekammeret opdateret. Matlyst registrerer ikke varer automatisk.'],
     ['toem-koeleskabet/','tom-kylskapet/','Tøm køleskabet med opskrifter','Brug det, du har, ved at matche Spisekammeret med din egen opskriftssamling.','Begynd med det, der er hjemme','Se, hvilke gemte opskrifter der passer til varerne hjemme, og hvilke ingredienser der mangler.','Matlyst kan ikke afgøre, om en vare er sikker at spise. Kontrollér selv lugt, udseende, dato og opbevaring.','Giver Matlyst en holdbarhedsgaranti?','Nej. Du har altid ansvaret for at vurdere maden.'],
     ['nem-mad/','enkel-middag/','Nem mad til hverdagen','Planlæg nem mad med egne opskrifter, Spisekammeret, Madplanen og Indkøbslisten.','Nem aftensmad med overblik','Vælg en hurtig ret, du allerede kan lide, læg den på den rigtige dag, og send det, du mangler, til listen.','Frikadeller med kartofler, en pastaret eller ovnbagt laks er eksempler, ikke færdige opskrifter på siden.','Hvad er nem mad til hverdag?','En ret med tydelige trin, rimelig tid og råvarer, du har eller let kan købe.'],
@@ -306,15 +308,15 @@ function featurePage(lang, row) {
     },
     da: {
       'importer-opskrifter/': { title:'Importér opskrifter til din opskriftsapp', p2:'Uden Pro kan du importere fem links om måneden.' },
-      'indkoebsliste-app/': { p1:'Vælg en opskrift eller en planlagt dag. Ingredienserne lægges i den samme indkøbsliste, hvor du også kan skrive egne varer.' },
+      'indkoebsliste-app/': { p1:'Vælg en opskrift eller en planlagt dag. Ingredienserne lægges på indkøbslisten, hvor du også kan skrive egne varer.' },
       'haandskrevne-opskrifter/': { p1:'Fotoimporten tolker titel, ingredienser og trin. Tjek resultatet, før du gemmer – især mængderne, og når håndskriften er svær at læse.', p2:'Fotoimport kræver Matlyst Pro. Du kan selv notere, hvor opskriften stammer fra.' },
       'opskrifter-ud-fra-ingredienser/': { p1:'Skriv ingredienser, eller brug Spisekammeret. Matlyst sammenligner dem med de opskrifter, du allerede har gemt.', p2:'Forslagene er kun vejledende. Tjek mængder, holdbarhed, og om varerne stadig kan bruges.' },
-      'middagsforslag/': { title:'Forslag til aftensmad fra dine egne opskrifter', h1:'Forslag til aftensmad fra dine egne opskrifter', p1:'På Hjem vises forslag fra din opskriftssamling. Spisekammeret kan hjælpe med at fremhæve retter, der passer til det, du har.', p2:'Spørg Matlyst kræver Matlyst Pro.' },
+      'middagsforslag/': { title:'Forslag til aftensmad fra dine egne opskrifter', h1:'Forslag til aftensmad fra dine egne opskrifter', p1:'På Hjem vises forslag fra din opskriftssamling. Spisekammeret kan hjælpe med at fremhæve retter, der passer til det, du har. Se også <a href="/da/nem-mad/">nem mad</a>.', p2:'Spørg Matlyst kræver Matlyst Pro.' },
       'madplan-app/': { p2:'Madplanen og den almindelige indkøbsliste kan bruges uden Pro. Du bestemmer selv opskrifter og dage.', q:'Er madplanen og indkøbslisten gratis?' },
-      'skift-fra-paprika/': { description:'Skift fra Paprika til Matlyst, og kontrollér hvert resultat før lagring.', h1:'Skift til Matlyst – uden tomme løfter', p1:'Flyt dine opskrifter gennem Matlysts import.', p2:'Det konkrete forløb afhænger af eksporten fra din nuværende app.', p2b:'Matlyst har ingen tilknytning til Paprika og garanterer ikke, at alle felter kan flyttes automatisk.' },
+      'skift-fra-paprika/': { description:'Skift fra Paprika til Matlyst, og kontrollér hvert resultat, før du gemmer det.', h1:'Skift til Matlyst – uden tomme løfter', p1:'Flyt dine opskrifter med Matlysts import.', p2:'Det konkrete forløb afhænger af eksporten fra din nuværende app.', p2b:'Matlyst har ingen tilknytning til Paprika og garanterer ikke, at alle felter kan flyttes automatisk.' },
       'opskrifts-app/': { p1:'Gem familieopskrifter, links og retter, du laver ofte, på samme sted. Med mapper og søgning er det let at finde rundt i samlingen.' },
       'gem-opskrifter-fra-instagram/': { description:'Gem opskrifter fra Instagram i Matlyst, og kontrollér dem, før du laver mad.', p1:'Del en reel fra en offentlig konto med Matlyst, og kontrollér opskriften, før du gemmer den.' },
-      'gem-opskrifter-fra-tiktok/': { p1:'Del en TikTok-video fra et offentligt konto med Matlyst, og gem opskriften med kilden bevaret.' },
+      'gem-opskrifter-fra-tiktok/': { p1:'Del en TikTok-video fra en offentlig konto med Matlyst, og gem opskriften med kilden bevaret.' },
       'spisekammer-app/': { title:'Spisekammer-app til opskrifter', description:'Hold styr på varer hjemme, og find opskrifter, der passer, før maden skal smides ud.', h1:'Overblik over det, du har', p1:'Tilføj varer manuelt, eller flyt afkrydsede indkøb til Spisekammeret. Så kan forslagene tage udgangspunkt i det.', p2:'I gratisversionen er der plads til et begrænset antal varer. Med Pro er der plads til flere.', },
       'nem-mad/': { h1:'Nem mad til hverdagen', p1:'Vælg en hurtig ret, du allerede kan lide, læg den på en dag, der passer, og send det, du mangler, til listen.', p2:'Det kan være frikadeller med kartofler, en hurtig pastaret eller laks i ovnen – retter, du allerede kender.' },
     },
@@ -325,17 +327,18 @@ function featurePage(lang, row) {
     {'@type':'ListItem',position:1,name:common[lang].home,item:`${base}/${lang}/`},
     {'@type':'ListItem',position:2,name:values.h1,item:`${base}/${lang}/${path}`},
   ]};
-  return `${head({lang,path,counterpart,title:`${values.title} | Matlyst`,description:values.description,nb:'/',schema:[crumbs,faq]})}<body data-locale="${lang}">
-${nav(lang,path,counterpart,'/')}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">Matlyst</p><h1 class="disp">${values.h1}</h1><p class="lead">${values.description}</p></header>
-<section class="prose locale-prose"><h2>${values.title}</h2><p>${values.p1}</p><h2>${lang === 'sv' ? 'Det här gäller' : 'Godt at vide'}</h2><p>${values.p2}</p></section>
+  const sectionLabel = lang === 'sv' ? 'Bra att veta' : 'Godt at vide';
+  return `${head({lang,path,counterpart,title:`${values.title} | Matlyst`,description:values.description,schema:[crumbs,faq]})}<body data-locale="${lang}">
+${nav(lang,path,counterpart)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">Matlyst</p><h1 class="disp">${values.h1}</h1><p class="lead">${values.description}</p></header>
+<section class="prose locale-prose"><h2>${values.title}</h2><p>${values.p1}</p><h2>${sectionLabel}</h2><p>${values.p2}</p></section>
 <section class="faq"><h2>${lang === 'sv' ? 'Vanliga frågor' : 'Ofte stillede spørgsmål'}</h2><details open><summary>${values.q}</summary><p>${values.a}</p></details></section>
 <section class="page-cta"><h2 class="disp">${lang === 'sv' ? 'Få ordning på vardagsmaten med Matlyst' : 'Få styr på hverdagen med Matlyst'}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
 const sourcePages = {
   sv: [
-    ['koket/','dr-mad/','Spara recept från Köket.se','Så sparar du ett offentligt recept från Köket.se i Matlyst, med källan kvar.','Köket.se','https://www.koket.se/'],
-    ['landleys-kok/','alletiders-kogebog/','Spara recept från Landleys Kök','Så sparar du ett offentligt recept från Landleys Kök i Matlyst, med källan kvar.','Landleys Kök','https://www.landleyskok.se/'],
+    ['koket/','dr-mad/','Spara recept från Köket.se','Så sparar du ett recept från Köket.se i Matlyst, med källan kvar.','Köket.se','https://www.koket.se/'],
+    ['landleys-kok/','alletiders-kogebog/','Spara recept från Landleys Kök','Så sparar du ett recept från Landleys Kök i Matlyst, med källan kvar.','Landleys Kök','https://www.landleyskok.se/'],
   ],
   da: [
     ['alletiders-kogebog/','landleys-kok/','Gem opskrifter fra Alletiders Kogebog','Sådan gemmer du en offentlig opskrift fra Alletiders Kogebog i Matlyst med kilden bevaret.','Alletiders Kogebog','https://www.dk-kogebogen.dk/'],
@@ -350,8 +353,8 @@ function sourcePage(lang, row) {
     {'@type':'ListItem',position:1,name:common[lang].home,item:`${base}/${lang}/`},
     {'@type':'ListItem',position:2,name:title,item:`${base}/${lang}/${path}`},
   ]};
-  return `${head({lang,path,counterpart,title:`${title} | Matlyst`,description,nb:'/',schema:crumbs})}<body data-locale="${lang}">
-${nav(lang,path,counterpart,'/')}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${sv ? 'Spara med källan kvar' : 'Gem med kilden bevaret'}</p><h1 class="disp">${title}</h1><p class="lead">${description}</p></header>
+  return `${head({lang,path,counterpart,title:`${title} | Matlyst`,description,schema:crumbs})}<body data-locale="${lang}">
+${nav(lang,path,counterpart)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${sv ? 'Spara med källan kvar' : 'Gem med kilden bevaret'}</p><h1 class="disp">${title}</h1><p class="lead">${description}</p></header>
 <section class="prose locale-prose"><h2>${sv ? 'Så gör du' : 'Sådan gør du'}</h2><ol><li>${sv ? `Öppna ett recept från ${source}.` : `Åbn en opskrift fra ${source}.`}</li><li>${sv ? 'Dela länken till Matlyst eller klistra in den i importen.' : 'Del linket til Matlyst, eller indsæt det i importen.'}</li><li>${sv ? 'Kontrollera ingredienser, mängder och steg innan du sparar.' : 'Kontrollér ingredienser, mængder og trin, før du gemmer den.'}</li></ol>
 <h2>${sv ? 'Källa och ansvar' : 'Kilde og ansvar'}</h2><p>${sv ? `Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med ${source} och gör inte anspråk på deras texter eller bilder.` : `Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med ${source} og gør ikke krav på deres tekster eller billeder.`}</p><p><a href="${sourceUrl}" rel="noopener">${sv ? `Besök ${source}` : `Besøg ${source}`}</a></p></section>
 <section class="page-cta"><h2 class="disp">${sv ? 'Spara recepten där du lagar maten' : 'Gem dine yndlingsopskrifter ét sted'}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
@@ -359,12 +362,12 @@ ${nav(lang,path,counterpart,'/')}<main id="hovedinnhold"><header class="locale-p
 
 const supportPages = {
   sv: [
-    ['avregistrera/','afmeld/','Avregistrera e-post','Avregistrera dig via länken längst ned i e-postmeddelandet eller kontakta hei@matlyst-app.no.'],
+    ['avregistrera/','afmeld/','Avregistrera dig från nyhetsbrevet','Avregistrera dig via länken längst ned i e-postmeddelandet eller kontakta hei@matlyst-app.no.'],
     ['tiktok/','tiktok/','TikTok och Matlyst','Den här sidan används när du delar en offentlig TikTok-länk till Matlyst. Privat eller borttaget innehåll kan inte alltid läsas.'],
     ['tiktok-auth/','tiktok-auth/','TikTok-anslutning','Teknisk retursida för TikTok-anslutning i Matlyst.'],
   ],
   da: [
-    ['afmeld/','avregistrera/','Afmeld e-mail','Afmeld dig via linket nederst i e-mailen, eller skriv til hei@matlyst-app.no.'],
+    ['afmeld/','avregistrera/','Afmeld nyhedsbrevet','Afmeld dig via linket nederst i e-mailen, eller skriv til hei@matlyst-app.no.'],
     ['tiktok/','tiktok/','TikTok og Matlyst','Denne side bruges, når du deler et offentligt TikTok-link til Matlyst. Privat eller slettet indhold kan ikke altid læses.'],
     ['tiktok-auth/','tiktok-auth/','TikTok-forbindelse','Teknisk returside til TikTok-forbindelse i Matlyst.'],
   ],
@@ -448,9 +451,43 @@ write('../qa/sv-da/juridiske-kilder.md', [
   '| Påstand | Kilde | Lest |', '|---|---|---|',
   '| Identitet og geografisk adresse | `matlyst-landing-jus-da-sv/personvern.html` og `vilkar.html`: Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge, hei@matlyst-app.no | 2026-10-05 |',
   '| Ångerrätt og fortrydelsesret | `matlyst-plan1/docs/juridisk/kilder/forbruker.md`, avsnittene om App Store/Google Play og distanseavtaler | 2026-10-05 |',
-  '| Svensk klagevei | Konsument Europa (ECC Sverige) og Forbrukerklageutvalget i Norge; ARN er ikke presentert som bekreftet forum for dette norske foretaket | 2026-10-05 |',
+  '| Dansk klagevei | [Forbruger Europa](https://forbrugereuropa.dk/klag/) hjelper med klager mot virksomheter i Norge; [Forbrukerrådet](https://www.forbrukerradet.no/her-klager-du/) gir råd i Norge, og [Forbrukertilsynet](https://www.forbrukertilsynet.no/forbrukerklageutvalget/) beskriver Forbrukerklageutvalget | 2026-10-05 |',
+  '| Svensk klagevei | [Forbrukerrådet](https://www.forbrukerradet.no/her-klager-du/) gir råd og [Forbrukertilsynet](https://www.forbrukertilsynet.no/forbrukerklageutvalget/) behandler norske klager; ingen svensk nemnd påstås for en norsk tilbyder | 2026-10-05 |',
   '| Overføringsgrunnlag | GDPR art. 6.1 og art. 13.1(f), med mottaker og mekanisme angitt i lokale personverntekster | 2026-10-05 |',
 ].join('\n') + '\n');
+
+const runde2Sjekkliste = [
+  '# Landing #9 – retterunde 2', '',
+  'Kontrollgrunnlag: `rapporter/2026-10-05-landing9-claude-qa-runde2.md`. Alle punkter er verifisert mot regenerert HTML eller kildedata.', '',
+  '| Punkt | Status | Fil | Nytt sitat/bevis |', '|---|---|---|---|',
+  ['B1','RETTET','images/appstore-badge.svg','`Download_on_the_App_Store_Badge_US-UK…`; innholdstesten avviser NO/DA/SV-tekst.'],
+  ['B2','RETTET','styles.css','.store-badges img bruker samme synlige høyde: `height:40px; width:auto`.'],
+  ['N1','RETTET','scripts/generer-lokalsider.mjs','Samtykket nevner nødvendig lagring/cookies, PostHog, Google Analytics, Meta Pixel og lokal personvernlenke.'],
+  ['N2','RETTET','sv/integritet/index.html; da/privatliv/index.html','Mottakere har DPF/SCC, britisk adekvans eller EU uten overføring per leverandør.'],
+  ['N3','RETTET','sv/integritet/index.html; da/privatliv/index.html','Helseopplysninger krever uttryckligt/udtrykkeligt samtykke etter artikkel 9.2(a).'],
+  ['N4','RETTET','sv/integritet/index.html; da/privatliv/index.html','reCAPTCHA beskrives på norsk nettsted og først ved utfylling av nyhetsbrevsformulæret.'],
+  ['N5','RETTET','qa/sv-da/juridiske-kilder.md','Klageveier har offisiell URL og lest 2026-10-05.'],
+  ['DA M3','RETTET','da/skift-fra-paprika/index.html','`kontrollér hvert resultat, før du gemmer det`.'],
+  ['DA M4','RETTET','scripts/generer-lokalsider.mjs','Funksjonsnavnene står som `Madplan`, `Indkøbsliste` og `Spisekammer`.'],
+  ['DA M15','RETTET','da/privatliv/index.html','`der er nævnt i samtykketeksten`.'],
+  ['DA M20','RETTET','da/index.html; da/middagsforslag/index.html','Lenken `nem mad` går til `/da/nem-mad/`.'],
+  ['DA kjønn','RETTET','da/gem-opskrifter-fra-tiktok/index.html','`fra en offentlig konto`.'],
+  ['DA småtekster','RETTET','scripts/generer-lokalsider.mjs','Avmeld nyhedsbrevet, offentlig språkbruk, del med Matlyst og egen Madplan-tekst er regenerert.'],
+  ['DA personvern','RETTET','da/privatliv/index.html','Alder 15 år, matlyst-consent, Apple/Google-login og tilbaketrekking er eksplisitt.'],
+  ['DA vilkår','RETTET','da/vilkaar/index.html','Apple-konto, bortfall av fortrydelsesret, betalt periode og ufravigelig lovgivning er presisert.'],
+  ['DA sletting','RETTET','da/slet-konto/index.html','Anmodningen behandles senest innen 30 dage efter sletningen.'],
+  ['SV M1','RETTET','sv/avregistrera/index.html','Tittel og H1: `Avregistrera dig från nyhetsbrevet`.'],
+  ['SV M3','RETTET','sv/byt-fran-paprika/index.html','`Flytta dina recept med Matlysts import`.'],
+  ['SV M9','RETTET','sv/integritet/index.html','Konto, inloggning, profil och inställningar er formulert naturlig.'],
+  ['SV M12','RETTET','sv/koket/index.html; sv/landleys-kok/index.html; sv/spara-recept-fran-tiktok/index.html','`Så sparar du ett recept` og `från ett offentligt konto`.'],
+  ['SV M15','RETTET','sv/receptskapare/index.html','Dublettpåstanden om ägande er fjernet.'],
+  ['SV småtekster','RETTET','scripts/generer-lokalsider.mjs','Skafferi, hållbarhetstid, integritet och steget på forsiden er oppdatert.'],
+  ['SV personvern','RETTET','sv/integritet/index.html','Rettigheter, begäranden, samtyckevalg og nyhetsbrevstekst er eksplisitte.'],
+  ['SV vilkår','RETTET','sv/villkor/index.html','Ångerrätt, avtalsuppsägning og frist fra avtalets dag er presisert.'],
+  ['Teknisk hreflang','RETTET','scripts/generer-lokalsider.mjs','Funksjons- og kildesider har bare sv-SE/da-DK; juridiske sider beholder norsk motpart.'],
+  ['Teknisk produktpåstander','RETTET','qa/sv-da/produktpaastander.md','Tabellen regenereres fra aktuelle feature- og source-tekster.'],
+].map((r) => `| ${r[0]} | ${r[1]} | \`${r[2]}\` | ${r[3]} |`);
+write('../qa/sv-da/runde2-sjekkliste.md', runde2Sjekkliste.join('\n') + '\n');
 
 const kildeQa = ['# Lokale kildesider', '', 'Kontrollert 2026-10-05. Sidene beskriver import av offentlige URL-er og påstår ikke samarbeid.', '', '| Side | Offisiell kilde | Fem tilfeldige importer |', '|---|---|---|'];
 for (const lang of ['sv','da']) for (const row of sourcePages[lang]) {

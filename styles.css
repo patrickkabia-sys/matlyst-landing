@@ -67,7 +67,7 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
    settes av CSS: merket blir strukket. Det skjedde med PNG-en først (496 x 68
    i stedet for 175 x 68), og SVG-en har samme felle. */
 .store-badges{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.store-badges .btn-store img{width:133px;height:auto}
+.store-badges .btn-store img{width:auto;height:40px}
 .scroll-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);text-decoration:none}
 .scroll-link:hover{color:var(--ink)}
 @keyframes fu{to{opacity:1;transform:none}}

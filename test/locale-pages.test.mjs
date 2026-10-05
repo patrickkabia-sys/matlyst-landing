@@ -31,7 +31,7 @@ test('alle lokale sider har språk, canonical, hreflang og gyldig strukturert da
     const lang = rel.startsWith('sv/') ? 'sv' : 'da';
     assert.match(html, new RegExp(`<html lang="${lang}">`), rel);
     assert.match(html, /<link rel="canonical" href="https:\/\/matlyst-app\.no\/(?:sv|da)\/[^"]*">/u, rel);
-    for (const kode of ['nb-NO', 'sv-SE', 'da-DK', 'x-default']) {
+    for (const kode of ['sv-SE', 'da-DK']) {
       assert.match(html, new RegExp(`<link rel="alternate" hreflang="${kode}" href="[^"]+">`), `${rel}: ${kode}`);
     }
     const blokker = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gu)];
