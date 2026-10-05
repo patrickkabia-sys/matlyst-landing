@@ -1,5 +1,7 @@
 # QA for svenske og danske sider
 
+Landing #9 er en upublisert leveranse. **Merge er selve publiseringen** og skal ikke skje før Patrick uttrykkelig sier «lanser». Det finnes ingen skjult forhåndsvisning.
+
 Kontrollert 2026-10-05 på branchen `feat/sv-da-lansering`.
 
 - `skjermbilder/` inneholder alle 48 sider ved 390 × 844 og 1280 × 900, totalt 96 PNG-er.
@@ -12,3 +14,13 @@ Kontrollert 2026-10-05 på branchen `feat/sv-da-lansering`.
 
 Skjermbildene viser branchens upubliserte HTML. De er ikke bevis på publisering, butikkoppsett eller Search Console-konfigurasjon.
 - Butikklenkene er testlenker i upublisert innhold og skal ikke gå live før Patrick sier «lanser».
+- Alle sider bruker Apples og Googles offisielle engelske butikkmerker. Landskodene i lenkene (`SE`/`DK`) er beholdt.
+- Alle sider som laster `site.js` har samtykkebanner med like tydelige valg og lenke for å trekke samtykket tilbake.
+- FAQ-spørsmålene i synlig HTML og JSON-LD er samme tekst. Kildesider har bare synlig innhold og brødsmuledata; de har ingen skjult FAQ i JSON-LD.
+
+## Juridiske kilder og datoer
+
+- Identitet og adresse: den godkjente identiteten i `matlyst-landing-jus-da-sv` (`personvern.html`/`vilkar.html`), lest 2026-10-05: Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge, hei@matlyst-app.no.
+- Fortrydelsesret/ångerrätt, automatisk fornyelse og oppsigelse: `docs/juridisk/kilder/forbruker.md`, lest 2026-10-05, supplert med den lokale teksten i generatoren.
+- Svensk klagevei: Konsument Europa (ECC Sverige) og norsk Forbrukerklageutvalg; ARN er ikke brukt som påstand om jurisdiksjon for en norsk privatperson. Kilde kontrollert 2026-10-05.
+- Overføringer: GDPR artikkel 6 og 13(1)(f), samt leverandørgrunnlagene dokumentert i generatorens lokale personverntekst, lest 2026-10-05. Hver mottaker og mekanismen er nevnt per mottaker.

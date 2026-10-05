@@ -69,17 +69,69 @@ test('synlig lokal tekst inneholder ikke sentrale norske restord', () => {
   }
 });
 
-test('lokale sider bruker lokale butikkmerker og kundespråk', () => {
+test('lokale sider bruker engelske butikkmerker og kundespråk', () => {
   for (const fil of filer) {
     const html = les(fil);
     const rel = relative(root, fil);
-    const lang = rel.startsWith('sv/') ? 'sv' : 'da';
     if (html.includes('class="btn-store"')) {
-      assert.match(html, new RegExp(`/images/appstore-badge-${lang}\\.svg`), rel);
-      assert.match(html, new RegExp(`/images/googleplay-badge-${lang}\\.svg`), rel);
+      assert.match(html, /\/images\/appstore-badge\.svg/u, rel);
+      assert.match(html, /\/images\/googleplay-badge-en\.png/u, rel);
+      assert.doesNotMatch(html, /badge-(?:sv|da)\./u, rel);
     }
+    const lang = rel.startsWith('sv/') ? 'sv' : 'da';
     assert.doesNotMatch(html, /abonnemangs?gate|abonnementsgate/iu, rel);
     if (lang === 'da') assert.doesNotMatch(html, /\bugemenu(?:en)?\b/iu, rel);
+  }
+});
+
+test('alle statiske HTML-sider bruker bare offisielle engelske butikkmerker', () => {
+  const htmlFiler = finnHtml(root).filter((fil) => !relative(root, fil).startsWith('qa/'));
+  for (const fil of htmlFiler) {
+    const html = les(fil);
+    if (!html.includes('class="btn-store"')) continue;
+    const rel = relative(root, fil);
+    assert.ok(html.includes('images/appstore-badge.svg'), rel);
+    assert.ok(html.includes('images/googleplay-badge-en.png'), rel);
+    assert.doesNotMatch(html, /badge-(?:sv|da)./u, rel);
+    assert.doesNotMatch(html, /googleplay-badge.png/u, rel);
+  }
+});
+
+test('FAQ-spørsmål ender med spørsmålstegn og synlig FAQ er identisk med JSON-LD', () => {
+  for (const fil of filer) {
+    const html = les(fil);
+    const rel = relative(root, fil);
+    const visible = [...html.matchAll(/<details[^>]*>\s*<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>/gu)]
+      .map(([, question, answer]) => ({ question: question.replace(/<[^>]+>/gu, '').trim(), answer: answer.replace(/<[^>]+>/gu, '').trim() }));
+    const jsonLd = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gu)]
+      .map(([, raw]) => JSON.parse(raw)).flatMap((schema) => Array.isArray(schema) ? schema : [schema])
+      .filter((schema) => schema['@type'] === 'FAQPage')
+      .flatMap((schema) => schema.mainEntity ?? [])
+      .map((entry) => ({ question: entry.name, answer: entry.acceptedAnswer.text }));
+    assert.deepEqual(jsonLd, visible, rel);
+    for (const entry of visible) assert.match(entry.question, /\?$/u, rel);
+  }
+});
+
+test('overskrifter har ikke gjentatte ord', () => {
+  for (const fil of filer) {
+    const html = les(fil);
+    const rel = relative(root, fil);
+    for (const [, raw] of html.matchAll(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/gu)) {
+      const text = raw.replace(/<[^>]+>/gu, ' ').replace(/&[^;]+;/gu, ' ').trim();
+      const words = text.toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+      for (let i = 1; i < words.length; i += 1) assert.notEqual(words[i], words[i - 1], `${rel}: ${text}`);
+    }
+  }
+});
+
+test('alle sider som laster site.js har samtykkebanner og mulighet for å trekke samtykke tilbake', () => {
+  for (const fil of filer) {
+    const html = les(fil);
+    const rel = relative(root, fil);
+    assert.match(html, /<script src="\/site\.js" defer><\/script>/u, rel);
+    assert.match(html, /id="cookie"/u, rel);
+    assert.match(html, /data-consent-withdraw/u, rel);
   }
 });
 
