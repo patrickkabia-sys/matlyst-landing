@@ -251,3 +251,8 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .legal-doc section p{font-size:16px;line-height:1.8;color:var(--ink-soft)}
 .legal-callout{margin-top:30px;padding:28px!important;background:var(--sand);border:1px solid var(--line)!important;border-radius:20px}
 @media(max-width:700px){.locale-grid{grid-template-columns:1fr}.locale-card{border-right:0}.nav-right .link{display:none}.language-switcher{gap:2px}}
+.locale-page-hero{padding:clamp(150px,19vh,210px) var(--pad) clamp(54px,8vh,90px);border-bottom:1px solid var(--line);max-width:1100px;margin:0 auto}
+.locale-page-hero h1{font-size:clamp(46px,7vw,92px);max-width:13ch;margin:16px 0 24px}
+.locale-page-hero .lead{font-size:clamp(17px,2vw,22px);line-height:1.65;max-width:62ch}
+.locale-prose{padding-top:clamp(52px,8vh,88px)}
+.page-cta h2{font-size:clamp(32px,4.5vw,64px);margin-bottom:28px}
