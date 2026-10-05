@@ -10,23 +10,21 @@ Marked: Danmark (`da-DK`)
 
 Listen bygger på `matlyst-kontroll/rapporter/2026-10-05-sokeord-da.md`, læst 2026-10-05. Rapporten omfatter cirka 1.500 Google-autocomplete-forslag (`hl=da`, `gl=dk`) og SERP-kontrol af 98 kandidater via DuckDuckGo som proxy. Autocomplete viser efterspørgsel, men ikke præcist søgevolumen. De fem øverste Google.dk-resultater skal derfor åbnes og vurderes manuelt, før teksten til hver side skrives.
 
-Regel for kommende sider: hovedfrasen skal stå naturligt i `title`, `h1`, første afsnit og den danske slug. Fraser med samme søgeintention samles på én side.
+Regel for kommende sider: hovedfrasen skal stå naturligt i `title`, `h1`, første afsnit og den danske slug. Fraser med samme søgeintention samles på én side. Danske tegn transskriberes konsekvent i sluggen: `æ→ae`, `ø→oe`, `å→aa`.
 
 ## Prioriteret sideliste
 
 | Prioritet | Side | Hovedsøgeord | Nære varianter og spørgsmål | Grundlag og konkurrence | Indholdsvinkel |
 |---|---|---|---|---|---|
 | 1 | `/da/` | opskriftsapp | app til egne opskrifter; saml opskrifter app; madapp | Konkurrence 2–3 for funktionsfraserne, højere for brede madord. Forsiden skal støtte de smalle sider. | Matlyst som en skandinavisk app til opskrifter, planlægning og madlavning. |
-| 1 | `/da/madplan-app/` | app madplan og indkøbsliste | madplanlægning app; madplan app gratis; fælles madplan app | AC nr. 4; konkurrence 2–3. Små apps og appbutikker, ingen store madsider. | Ugemenu med brugerens egne opskrifter og en indkøbsliste lavet fra planen. |
+| 1 | `/da/madplan-app/` | app madplan og indkøbsliste | madplanlægning app; madplan app gratis; gratis madplan med indkøbsliste; fælles madplan app | AC nr. 4 for appfrasen og AC nr. 1 for gratis madplan med indkøbsliste; samme produktintention samles på én side. | Ugemenu med brugerens egne opskrifter og en indkøbsliste lavet fra planen. Egen H2: «gratis madplan med indkøbsliste». Appkoden viser at begge grundfunktioner er uden abonnementsgate. |
 | 1 | `/da/opskrifts-app/` | app til egne opskrifter | app samle opskrifter; app til at gemme opskrifter; gem opskrifter app; digital opskriftsbog | AC på flere varianter; konkurrence 2–3. | Saml egne og importerede opskrifter med kilde og mapper. |
 | 1 | `/da/gem-opskrifter-fra-instagram/` | gemme opskrifter fra instagram | gem opskrifter fra Instagram; samle opskrifter fra Instagram | Ingen dokumenteret AC for den fulde frase, men svag SERP og høj produktfit. | Del en reel til Matlyst og gem opskriften struktureret. |
 | 1 | `/da/gem-opskrifter-fra-tiktok/` | gemme opskrifter fra tiktok | gem TikTok-opskrifter; importér opskrift fra TikTok | Strategisk kernefunktion; efterspørgslen skal genkontrolleres. | TikToks delingsflow forklaret konkret, uden generelle marketingfraser. |
 | 1 | `/da/importer-opskrifter/` | importér opskrifter | importér opskrift fra link; gem opskrifter fra hjemmesider; saml opskrifter i en app | Strategisk produktside; de sociale kanaler får egne, smallere sider. | Import fra web, video, billede og link inden for appens faktiske funktioner. |
 | 2 | `/da/find-opskrifter/` | find mine opskrifter | søg i opskrifter; find opskrift efter ingrediens; søg i egen opskriftssamling | Ingen særskilt volumenmåling i rapporten. Siden er den lokale pendant til søgning i egen samling. | Søg og filtrér egne opskrifter efter ingrediens, tag og kilde. |
-| 1 | `/da/gratis-madplan/` | gratis madplan med indkøbsliste | gratis madplan app; madplan skabelon | AC nr. 1; konkurrence 2 og ingen stærke domæner i top 10. | En brugbar, gratis indgang til madplan og indkøbsliste. Prispåstande skal følge den aktuelle app. |
-| 1 | `/da/madplan-generator/` | madplan generator | madplan chatgpt; madplan ai | AC; konkurrence 2. | Planen bygger på brugerens egne opskrifter. Undgå at love fuldautomatisk planlægning, hvis appen kræver valg. |
 | 1 | `/da/nem-mad/` | nem mad | nem aftensmad; nem mad til hverdag; hurtig aftensmad; nem aftensmad med få ingredienser | Høj efterspørgsel, men 9 af 10 stærke resultater: Valdemarsro, Arla, Madens Verden, Mummum, Coop og Spis Bedre. | Bred destinationsside om, hvordan Matlyst gør hverdagsmaden nem med forslag, ugeplan, indkøbsliste og Spørg Matlyst. Skal indeholde reelle eksempler og FAQ. |
-| 2 | `/da/tom-koeleskabet/` | tøm køleskabet app | tøm køleskabet opskrift; hvad kan jeg lave af det, jeg har i køleskabet | AC nr. 1; konkurrence 2–3. | Opskrifter fra eget spisekammer og varer, der bør bruges. |
+| 2 | `/da/toem-koeleskabet/` | tøm køleskabet app | tøm køleskabet opskrift; hvad kan jeg lave af det, jeg har i køleskabet | AC nr. 1; konkurrence 2–3. | Opskrifter fra eget spisekammer og varer, der bør bruges. |
 | 2 | `/da/opskrifter-ud-fra-ingredienser/` | søg opskrift ud fra ingredienser | hvad kan jeg lave af disse ingredienser | AC; konkurrence 2–3. | Søg i egne opskrifter og få forslag ud fra de ingredienser, brugeren har. |
 | 2 | `/da/indkoebsliste-app/` | fælles indkøbsliste app | delt indkøbsliste app; indkøbsliste app på dansk | AC nr. 1; konkurrence 3. | En indkøbsliste fra opskrifter og ugeplan. Delingspåstanden kontrolleres mod appen før tekst. |
 | 2 | `/da/haandskrevne-opskrifter/` | skan håndskrevne opskrifter | digitalisér mormors opskrifter; opskrift fra billede | Konkurrence cirka 2, men lav eller udokumenteret efterspørgsel. | Fotografer et opskriftskort og gør det søgbart. |
@@ -72,3 +70,7 @@ Varianterne er redaktionelle kombinationer af rapportens dokumenterede ord og Ma
 ## Kontrol før sidetekst
 
 For hver valgt side dokumenteres dato, de fem øverste Google.dk-resultater, faktisk søgeintention, relevante «Andre spørgsmål» og om hovedfrasen stadig har efterspørgsel. Det sker før siden skrives, ikke som efterkontrol.
+
+## Verificeret produktavgrænsning
+
+Appens Ugemenu udfyldes af brugeren ved at vælge opskrifter til de enkelte dage; appen genererer ikke en færdig ugeplan automatisk. Siden `madplan-generator` udgår derfor. Ugemenuen og den almindelige Indkøbsliste har ingen abonnementsgate i deres skærme. Formuleringen «gratis madplan med indkøbsliste» kan bruges som et afsnit på `madplan-app`, så længe denne kodekontrol fortsat holder ved publicering.
