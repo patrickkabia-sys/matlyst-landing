@@ -87,3 +87,34 @@ test('lanseringsstatusen er oppdatert og samsvarer mellom JSON og markdown', () 
   assert.match(md, /Merge av PR #9 er lanseringen/u);
   assert.equal((md.match(/^- \[ \]/gmu) ?? []).length, Object.keys(status.sv.apne).length);
 });
+
+test('llms.txt er skandinavisk, posisjonert og uten udokumenterte påstander', () => {
+  const llms = les('llms.txt');
+  assert.match(llms, /^# Matlyst\n\n> Matlyst er oppskriftsappen for å oversette og tilpasse oppskrifter\./u);
+  for (const seksjon of ['## Norsk', '## Dansk', '## Svenska', '## English']) assert.ok(llms.includes(`\n${seksjon}\n`), seksjon);
+  assert.ok(llms.includes('5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026)'));
+  for (const sprak of ['norsk bokmål (nb)', 'dansk (da)', 'svensk (sv)']) assert.ok(llms.includes(sprak), sprak);
+  for (const navn of ['Spør Matlyst', 'Spørg Matlyst', 'Fråga Matlyst']) assert.ok(llms.includes(navn), navn);
+  assert.match(llms, /metriske mål/u);
+  assert.doesNotMatch(llms, /Alt på norsk|oversettes[^.\n]*til norsk|(?<!\p{L})(?:beste?|bedste|bästa?|best|nr\. ?1)(?!\p{L})|håndskrev|handskriv|håndskrift|ubegrenset|unlimited|Pinterest|PDF/iu);
+  const lenker = [...llms.matchAll(/https:\/\/matlyst-app\.no(\/[^\s)]*)/gu)].map(([, sti]) => sti);
+  for (const sti of ['/sv/', '/da/', '/sv/importera-recept/', '/da/importer-opskrifter/', '/sv/veckomeny-app/', '/da/madplan-app/']) {
+    assert.ok(lenker.includes(sti), sti);
+  }
+  for (const sti of lenker) {
+    const fil = join(ROOT, sti.endsWith('/') ? `${sti}index.html` : sti);
+    assert.ok(existsSync(fil), `${sti} finnes ikke`);
+  }
+});
+
+test('produktpåstandene i llms.txt har kodebevis i produktpaastander.md', () => {
+  const qa = les('qa/sv-da/produktpaastander.md');
+  const del = qa.slice(qa.indexOf('## llms.txt og forsidene'));
+  assert.ok(del.length > 0);
+  const rader = del.split('\n').filter((linje) => /^\| (?!Påstand|---)/u.test(linje));
+  assert.ok(rader.length >= 15, `${rader.length} rader`);
+  for (const rad of rader) assert.equal(rad.split(' | ').length, 2, rad);
+  for (const krav of ['Oversetting', 'Metriske', 'Spør Matlyst / Spørg Matlyst / Fråga Matlyst', 'Tilpassing', 'Fem gratis', '5,0 i App Store']) {
+    assert.ok(rader.some((rad) => rad.includes(krav)), krav);
+  }
+});

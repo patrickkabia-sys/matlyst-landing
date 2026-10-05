@@ -494,6 +494,25 @@ for (const lang of ['sv','da']) for (const row of featurePages[lang]) {
 for (const lang of ['sv','da']) for (const row of sourcePages[lang]) {
   paastander.push(`| /${lang}/${row[0]} | ${lang === 'sv' ? `Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med ${row[4]} och gör inte anspråk på deras texter eller bilder.` : `Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med ${row[4]} og gør ikke krav på deres tekster eller billeder.`} | \`lib/importEngine.ts:201-229\`, \`lib/source.ts:20-74\` |`);
 }
+paastander.push('', '## llms.txt og forsidene', '', 'Kontrollert mot appens `origin/master` `1692bc59`, lest 2026-10-05 (bare lesing). Ikke tatt med fordi belegg mangler i koden: håndskrevne oppskrifter, Pinterest, PDF- og tekstfiler.', '', '| Påstand | Kodebevis |', '|---|---|');
+paastander.push('| Plattformer: iOS (iPhone og iPad) og Android | `app.json:24-25` (`"supportsTablet": true`), `app.json:76` (`"android"`) |');
+paastander.push('| Import fra nettside/matblogg, Instagram, TikTok og YouTube | `lib/sprak/tekster/nb.ts:1205`, `da.ts:453`, `sv.ts:453` («Fra Instagram, TikTok, YouTube eller en matblogg»); `lib/importEngine.ts:121-126`; `supabase/functions/import-recipe/index.ts:33,1478` (YouTube) |');
+paastander.push('| Import fra Facebook | `supabase/functions/import-recipe/index.ts:1406` (`isMeta` matcher instagram.com, facebook.com og fb.watch); `lib/importEngine.ts:124` |');
+paastander.push('| Delingsmenyen på iOS og Android | `app.json:142-158` (share extension), `plugins/withAndroidShareActivity.js:57` (`android.intent.action.SEND`) |');
+paastander.push('| Bilde av oppskrift fra kokebok, blad eller skjerm | `lib/sprak/tekster/nb.ts:1209`, `da.ts:457`, `sv.ts:457` |');
+paastander.push('| Eksportfil fra Paprika Recipe Manager | `components/RecipeFileImport.tsx:258` |');
+paastander.push("| Oversetting til brukerens språk nb, da eller sv | `lib/sprak/koder.ts:24` (`SPRAK = ['nb', 'da', 'sv']`); `supabase/functions/import-recipe/index.ts:826-831` (`velgImportSprak(language, profile.app_language)`) |");
+paastander.push('| Metriske mål som standard; kan beholde amerikanske mål | `supabase/migrations/20260419000000_unit_system_and_delete_account.sql:3` (default `metric`); `supabase/functions/_shared/sprak.ts:176-177, 200-201, 224-225`; `app/innstillinger.tsx:141` |');
+paastander.push('| Spør Matlyst / Spørg Matlyst / Fråga Matlyst | `lib/sprak/tekster/nb.ts:1187`, `da.ts:435`, `sv.ts:435` |');
+paastander.push('| Tilpassing: bytte, fjerne, legge til ingredienser og endre porsjoner | `supabase/functions/_shared/sporMatlyst/prompt.ts:27-28` |');
+paastander.push('| Endringer med Spør Matlyst krever Pro; gratis kan bare stille spørsmål i en oppskrift | `supabase/functions/spor-matlyst/index.ts:89-92`; `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` |');
+paastander.push('| Spør Matlyst svarer foreløpig på norsk bokmål | `supabase/functions/_shared/sporMatlyst/skjema.ts:8` («Spør Matlyst er nb-only i denne omgangen») |');
+paastander.push('| Ukemeny, handleliste og spiskammer på dansk og svensk | `lib/sprak/tekster/da.ts:94,109,203` (`Ugemenu`, `Spisekammer`, `Indkøbsliste`); `sv.ts:94,109,203` (`Veckomeny`, `Skafferi`, `Inköpslista`) |');
+paastander.push('| Kokemodus holder skjermen våken | `hooks/useCookSession.ts:137`; `lib/keepAwake.ts` |');
+paastander.push('| Fem gratis importer i måneden | `constants/limits.ts:5` (`FREE_IMPORT_LIMIT = 5`) |');
+paastander.push("| Bildeimport krever Pro | `app/(tabs)/legg-til.tsx:879` (`kilde === 'bilde' && fotoGate === 'låst'`) |");
+paastander.push('| Ingen reklame, ingen annonsenettverk | `package.json` har ingen annonse-SDK (bare RevenueCat, PostHog, Sentry og Expo) |');
+paastander.push('| 5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026) | Ikke i koden: tallet er oppgitt av Patrick 2026-10-05 og står på `sv/index.html` og `da/index.html`. JSON-LD på `index.html` har fortsatt `ratingCount` 9 |');
 write('../qa/sv-da/produktpaastander.md', paastander.join('\n') + '\n');
 
 write('../qa/sv-da/juridiske-kilder.md', [

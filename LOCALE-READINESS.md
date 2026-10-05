@@ -8,6 +8,7 @@ Det som skjer ved merge, ligger allerede i PR-en:
 - `sitemap-sv.xml` og `sitemap-da.xml` (21 indekserbare sider hver) er oppført i `robots.txt`. `sitemap.xml` er fortsatt bare norsk.
 - Gjensidig `hreflang` (`nb-NO`, `sv-SE`, `da-DK`, `x-default`) mellom forsiden, personvern, vilkår og slett konto og deres sv/da-motparter. Funksjonssidene har bare `sv-SE`/`da-DK`.
 - Automatisk språk: `LOCALE_PAGE_MAP` i `locale.js` genereres fra hreflang-parene. `?sprak=` vinner og lagres, deretter lagret valg, deretter telefonens eller nettleserens språk. Norsk språk blir på norsk. TikTok-retursidene omdirigeres aldri.
+- `llms.txt` med posisjonering og dokumenterte fakta på norsk, dansk, svensk og engelsk (belegg i `qa/sv-da/produktpaastander.md`).
 
 ## Lukket
 
