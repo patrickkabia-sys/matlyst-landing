@@ -17,8 +17,8 @@ Ordlistevalgene er hentet fra appens gjeldende `origin/master`, filene `lib/spra
 | kokebok | kokbok | kogebog | Bruk om brukerens samling. Appens onboarding bruker «kokbok» / «kogebog». |
 | oppskriftssamling | receptsamling | opskriftssamling | Forklarende markedsføringsterm; ikke et eget funksjonsnavn. |
 | spiskammer | **Skafferi** | **Spisekammer** | Fast skjerm- og funksjonsnavn. `felles.spiskammer`, `spiskammer.tittel`. Stor forbokstav når funksjonen navngis. |
-| ukemeny | **Veckomeny** | **Ugemenu** | Fast systemmappe/etikett: `felles.mappe.ukemeny`. Dansk søkeord «madplan» kan forklare funksjonen, men appetiketten er Ugemenu. |
-| ukeplan | veckoplanering / plan för veckan | ugeplan / plan for ugen | Beskrivende ord. Dansk onboarding bruker «Ugeplan» noen steder; nettsiden skal si «Ugemenu» om funksjonen og «madplan» om søkeintensjonen. |
+| ukemeny | **Veckomeny** | **Madplan** | Fast systemmappe/etikett: `felles.mappe.ukemeny`. Dansk søkeord «madplan» kan forklare funksjonen, men appetiketten er Madplan. |
+| ukeplan | veckoplanering / plan för veckan | ugeplan / plan for ugen | Beskrivende ord. Dansk onboarding bruker «Ugeplan» noen steder; nettsiden skal si «Madplan» om funksjonen og «madplan» om søkeintensjonen. |
 | handleliste | **Inköpslista** | **Indkøbsliste** | Fast funksjonsnavn. `felles.mappe.handleliste`, `handleliste.tittel`. |
 | middagsforslag | middagsförslag | middagsforslag | Appens onboarding og Spør Matlyst-tekster. |
 | middag | middag | aftensmad / middag | Svensk bruker «middag». Dansk bruker «aftensmad» for måltidet i søketekst og «middag» der appteksten gjør det. Ikke oversett mekanisk. |
@@ -53,7 +53,7 @@ Ordlistevalgene er hentet fra appens gjeldende `origin/master`, filene `lib/spra
 | Sverige | matplanering, veckoplanering | «Planera veckan i Veckomeny» eller «Veckomeny för matplanering». |
 | Sverige | receptbok app | Forklar Matlyst som en digital kokbok; appen har ikke en knapp som heter «Receptbok». |
 | Sverige | töm kylskåpet | Bruk som søkeintensjon og overskrift, men kall funksjonen Skafferi. |
-| Danmark | madplan, madplan app | Forklar at madplanen lages i Ugemenu. Ikke døp om appens funksjon. |
+| Danmark | madplan, madplan app | Forklar at madplanen lages i Madplan. Ikke døp om appens funksjon. |
 | Danmark | opskriftsapp | Bruk i SEO-tekst; inne i produktbeskrivelsen heter innholdet opskrifter og kogebog. |
 | Danmark | tøm køleskabet | Bruk som søkeintensjon, og vis videre til Spisekammer. |
 | Begge | AI-matapp | Bruk bare der funksjonen forklares konkret; Matlyst er ikke en generell chatbot. |
@@ -61,6 +61,6 @@ Ordlistevalgene er hentet fra appens gjeldende `origin/master`, filene `lib/spra
 ## Språkvern
 
 - Svensk: bruk aldri «oppskrift», «handleliste», «ukemeny», «spiskammer» eller norsk ordstilling.
-- Dansk: bruk aldri «oppskrift», «handleliste» eller norsk «ukemeny». Skjelne mellom produktnavnet Ugemenu og søkeordet madplan.
+- Dansk: bruk aldri «oppskrift», «handleliste» eller norsk «ukemeny». Skjelne mellom produktnavnet Madplan og søkeordet madplan.
 - Behold konteksten fra den norske siden. Eksempler, butikker, måltidsord og spørsmål skal være lokale, ikke ordrette oversettelser.
 - Påstander om pris, rangering, butikktilgjengelighet og funksjoner kontrolleres på nytt før publisering.

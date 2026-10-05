@@ -11,3 +11,4 @@ Kontrollert 2026-10-05 på branchen `feat/sv-da-lansering`.
 - De fem tilfeldige importene fra hver lokal kildeside er ikke kjørt. De krever testkonto og står som lanseringsport i `lokale-kilder.md`.
 
 Skjermbildene viser branchens upubliserte HTML. De er ikke bevis på publisering, butikkoppsett eller Search Console-konfigurasjon.
+- Butikklenkene er testlenker i upublisert innhold og skal ikke gå live før Patrick sier «lanser».

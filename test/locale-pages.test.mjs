@@ -69,6 +69,33 @@ test('synlig lokal tekst inneholder ikke sentrale norske restord', () => {
   }
 });
 
+test('lokale sider bruker lokale butikkmerker og kundespråk', () => {
+  for (const fil of filer) {
+    const html = les(fil);
+    const rel = relative(root, fil);
+    const lang = rel.startsWith('sv/') ? 'sv' : 'da';
+    if (html.includes('class="btn-store"')) {
+      assert.match(html, new RegExp(`/images/appstore-badge-${lang}\\.svg`), rel);
+      assert.match(html, new RegExp(`/images/googleplay-badge-${lang}\\.svg`), rel);
+    }
+    assert.doesNotMatch(html, /abonnemangs?gate|abonnementsgate/iu, rel);
+    if (lang === 'da') assert.doesNotMatch(html, /\bugemenu(?:en)?\b/iu, rel);
+  }
+});
+
+test('produktbevis har språktilpassede kildesider og riktige funksjonsreferanser', () => {
+  const qa = les(join(root, 'qa/sv-da/produktpaastander.md'));
+  assert.match(qa, /\/sv\/koket\/ \| Offentliga länkar/u);
+  assert.match(qa, /\/da\/dr-mad\/ \| Offentlige links/u);
+  assert.match(qa, /\/da\/haandskrevne-opskrifter\/[^\n]+lib\/importEngine\.ts/u);
+  assert.match(qa, /\/da\/spisekammer-app\/[^\n]+hooks\/usePantry\.ts/u);
+});
+
+test('butikklenkene er dokumentert som sperret til Patricks lanseringsordre', () => {
+  const qa = les(join(root, 'qa/sv-da/README.md'));
+  assert.match(qa, /butikklenkene[^\n]+ikke[^\n]+live[^\n]+Patrick[^\n]+«lanser»/iu);
+});
+
 test('støttesider er noindex og publiseringssitemap er urørt', () => {
   for (const fil of filer.filter((f) => /\/(?:avregistrera|afmeld|tiktok|tiktok-auth)\//u.test(f))) {
     assert.match(les(fil), /<meta name="robots" content="noindex, follow">/u, relative(root, fil));

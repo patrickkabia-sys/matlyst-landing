@@ -63,4 +63,4 @@ För varje vald sida ska kontrollen dokumentera datum, de fem högsta Google.se-
 
 ## Verifierad produktavgränsning
 
-Appens Veckomeny fylls av användaren genom att välja recept för en dag; den skapar inte en hel vecka automatiskt. Därför stryks den tidigare sidan `veckomeny-mall`, som lovade en väg till automatisk planering. Veckomenyn och den vanliga Inköpslistan har ingen abonnemangsgate i sina skärmar och kan beskrivas som tillgängliga utan Pro, men inga andra gratisfunktioner antas utan egen kontroll.
+Appens Veckomeny fylls av användaren genom att välja recept för en dag; den skapar inte en hel vecka automatiskt. Därför stryks den tidigare sidan `veckomeny-mall`, som lovade en väg till automatisk planering. Veckomenyn och den vanliga Inköpslistan har kan användas utan Pro i sina skärmar och kan beskrivas som tillgängliga utan Pro, men inga andra gratisfunktioner antas utan egen kontroll.
