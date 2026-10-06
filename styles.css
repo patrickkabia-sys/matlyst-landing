@@ -50,24 +50,18 @@ nav.scrolled{background:rgba(247,243,236,.82);backdrop-filter:blur(16px);-webkit
 .hero-actions{display:flex;flex-direction:column;gap:18px;align-items:flex-start}
 .btn-store{transition:transform .25s,opacity .25s}.btn-store:hover{transform:translateY(-2px);opacity:.9}
 .btn-store img{height:52px}
-/* App Store og Google Play side om side, med LIK BREDDE.
+/* App Store og Google Play side om side, med LIK SYNLIG HØYDE (40 px).
 
-   De to merkene har ulikt forhold (App Store 119,66:40 = 2,99, Play 646:192 =
-   3,37), så bredde og høyde kan ikke matche samtidig. Bredden vinner: det er
-   den dimensjonen øyet sammenligner når to knapper står ved siden av hverandre
-   på samme grunnlinje. Derfor styres begge på width, ikke height.
+   Begge filene er beskåret til selve merket: appstore-badge.svg er 119,66 x 40,
+   og googleplay-badge-en.png er beskåret fra 646 x 250 til det synlige merket,
+   564 x 168 (Googles gjennomsiktige kant er fjernet). Derfor gir samme
+   height:40px samme synlige høyde. Bredden følger forholdet (ca. 120 og 134 px).
+   Klaringen rundt merkene kommer fra gap i .store-badges, ikke fra luft i filen.
 
-   Play-merket har innebygd luft fra Google, 29 av 250 px topp og bunn. Ved
-   133 px bredde blir den luften ~6 px, så ankeret blir høyere enn selve
-   merket. align-items:center i .store-badges retter opp for det, og luften
-   BEHOLDES fordi Googles retningslinjer krever den som klaring.
-
-   height:auto er ikke valgfri. Begge filene har width/height-attributter i
-   markupen, og uten height:auto låses høyden til attributtet mens bredden
-   settes av CSS: merket blir strukket. Det skjedde med PNG-en først (496 x 68
-   i stedet for 175 x 68), og SVG-en har samme felle. */
+   width:auto er ikke valgfri. Noen sider har width/height-attributter i
+   markupen; uten width:auto blir merket strukket til attributtets bredde. */
 .store-badges{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.store-badges .btn-store img{width:133px;height:auto}
+.store-badges .btn-store img{width:auto;height:40px}
 .scroll-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-soft);text-decoration:none}
 .scroll-link:hover{color:var(--ink)}
 @keyframes fu{to{opacity:1;transform:none}}
@@ -230,3 +224,35 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .faq details p{font-size:17px;line-height:1.7;color:var(--ink-soft);margin:0 0 16px;padding-right:34px}
 .faq details a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
 @media (prefers-reduced-motion:reduce){.faq summary::after{transition:none}}
+
+/* Svenske og danske landingssider */
+.language-switcher{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:600;letter-spacing:.08em}
+.language-switcher a{color:var(--ink-soft);text-decoration:none;padding:8px 4px;min-width:28px;text-align:center}
+.language-switcher a[aria-current=page]{color:var(--ink);border-bottom:2px solid var(--orange-deep)}
+.locale-home-hero{min-height:78vh}
+.locale-home-hero>*{min-width:0}
+.locale-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.locale-card{padding:clamp(42px,7vw,88px) var(--pad);border-right:1px solid var(--line);border-top:1px solid var(--line)}
+.locale-card:nth-child(2n){border-right:0}
+.locale-card h2{font-size:clamp(28px,3.4vw,48px);margin-bottom:16px}
+.locale-card p{max-width:42ch;color:var(--ink-soft);font-size:16px;line-height:1.75}
+.legal-doc{max-width:780px;margin:0 auto;padding:clamp(140px,18vh,190px) 24px 80px}
+.legal-doc header{padding-bottom:28px;border-bottom:1px solid var(--line)}
+.legal-doc h1{font-size:clamp(44px,7vw,76px);margin:12px 0 22px}
+.legal-doc .lead{font-size:18px;line-height:1.75;max-width:62ch}
+.legal-updated{margin-top:18px;color:var(--ink-faint);font-size:13px}
+.legal-doc section{padding:32px 0;border-bottom:1px solid var(--line-soft)}
+.legal-doc section h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(24px,3vw,32px);margin-bottom:12px}
+.legal-doc section p{font-size:16px;line-height:1.8;color:var(--ink-soft)}
+.legal-callout{margin-top:30px;padding:28px!important;background:var(--sand);border:1px solid var(--line)!important;border-radius:20px}
+@media(max-width:700px){.locale-grid{grid-template-columns:1fr}.locale-card{border-right:0}.nav-right .link{display:none}.language-switcher{gap:2px}}
+.locale-page-hero{padding:clamp(150px,19vh,210px) var(--pad) clamp(54px,8vh,90px);border-bottom:1px solid var(--line);max-width:1100px;margin:0 auto}
+.locale-page-hero h1{font-size:clamp(46px,7vw,92px);max-width:13ch;margin:16px 0 24px}
+.locale-page-hero .lead{font-size:clamp(17px,2vw,22px);line-height:1.65;max-width:62ch}
+.locale-prose{padding-top:clamp(52px,8vh,88px)}
+.page-cta h2{font-size:clamp(32px,4.5vw,64px);margin-bottom:28px}
+@media(max-width:700px){
+  .locale-home-hero h1,.locale-home-hero h1>*{font-size:clamp(39px,11vw,46px);overflow-wrap:anywhere;min-width:0}
+  .locale-page-hero h1{font-size:clamp(40px,11.5vw,50px);overflow-wrap:anywhere}
+  .locale-page-hero .lead,.locale-prose p,.faq p{overflow-wrap:anywhere}
+}
