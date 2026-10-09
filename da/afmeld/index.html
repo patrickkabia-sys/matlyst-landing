@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Afmeld nyhedsbrevet","url":"https://matlyst-app.no/da/afmeld/"}</script>
 
+<link rel="stylesheet" href="/avmeld.css">
 </head><body data-locale="da"><a class="skip-link" href="#hovedinnhold">Spring til indholdet</a>
 <nav aria-label="Hovednavigation">
   <a href="/da/" class="brand">Mat<em>lyst</em></a>
@@ -40,8 +41,14 @@
       <a href="/da/afmeld/?sprak=da" lang="da" aria-current="page">DA</a>
     </span>
   </div>
-</nav><main id="hovedinnhold" class="legal-doc"><header><p class="eyebrow">Matlyst</p><h1 class="disp">Afmeld nyhedsbrevet</h1><p class="lead">Afmeld dig via linket nederst i e-mailen, eller skriv til hei@matlyst-app.no.</p></header></main><footer>
+</nav><main id="hovedinnhold" class="avmeld-doc">
+<section id="bekreft" hidden><p class="avmeld-kicker">Nyhedsbrev</p><h1 class="avmeld-title">Vil du <em>afmelde dig</em>?</h1><p class="avmeld-intro">Så stopper nyhedsbrevet, som sendes hver anden uge med et tip og nyt fra appen. Din konto ændres ikke.</p><div class="avmeld-kort"><button class="avmeld-knapp" id="meldAv" type="button">Afmeld mig</button><p class="avmeld-status" id="status" data-venter="Afmelder …" role="status" aria-live="polite"></p></div></section>
+<section id="ferdig" hidden><p class="avmeld-kicker">Nyhedsbrev</p><h1 class="avmeld-title">Du er <em>afmeldt</em></h1><p class="avmeld-intro">Vi sender dig ikke flere nyhedsbreve.</p><p class="avmeld-intro">Skifter du mening, kan du slå nyhedsbrevet til igen under Profil i appen.</p></section>
+<section id="mangler" hidden><p class="avmeld-kicker">Nyhedsbrev</p><h1 class="avmeld-title">Der mangler <em>noget</em> i linket</h1><p class="avmeld-intro">Adressen ser ud til at have mistet en del undervejs. Åbn linket fra e-mailen igen, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Afmeld%20mig%20nyhedsbrevet">hei@matlyst-app.no</a>.</p></section>
+<noscript><p class="avmeld-kicker">Nyhedsbrev</p><h1 class="avmeld-title">Vil du <em>afmelde dig</em>?</h1><p class="avmeld-intro">Din browser kører ikke JavaScript. Knappen nedenfor gør det samme, men fører dig til en enklere bekræftelsesside.</p><form class="avmeld-kort" method="POST" id="reserve" action="https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld"><input type="hidden" name="List-Unsubscribe" value="One-Click"><button class="avmeld-knapp" type="submit">Afmeld mig</button></form></noscript>
+<template id="feilmelding">Det lykkedes ikke lige nu. Prøv igen, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Afmeld%20mig%20nyhedsbrevet">hei@matlyst-app.no</a>.</template>
+</main><footer>
   <a href="/da/" class="brand">Mat<em>lyst</em></a>
   <div class="f-l"><a href="/da/vilkaar/">Vilkår</a><a href="/da/privatliv/">Privatliv</a><a href="#samtykke" data-consent-withdraw>Skift samtykke</a><a href="mailto:hei@matlyst-app.no">Kontakt</a></div>
   <span class="c">© 2026 Matlyst · Opskrifter, madplan og indkøbsliste.</span>
-</footer><div class="cookie" id="cookie" hidden><div class="cookie-inner" id="samtykke"><p>Vi bruger nødvendig lagring, for at siden virker. Siger du ja, bruger vi også analyse og måling af markedsføring (PostHog, Google Analytics og Meta Pixel) til at forbedre Matlyst. Læs mere i vores <a href="/da/privatliv/">privatlivspolitik</a>.</p><div class="cookie-actions"><button class="ck-btn ck-accept" id="ck-accept" type="button">Acceptér</button><button class="ck-btn ck-reject" id="ck-reject" type="button">Kun nødvendige</button></div></div></div><script src="/site.js" defer></script></body></html>
+</footer><div class="cookie" id="cookie" hidden><div class="cookie-inner" id="samtykke"><p>Vi bruger nødvendig lagring, for at siden virker. Siger du ja, bruger vi også analyse og måling af markedsføring (PostHog, Google Analytics og Meta Pixel) til at forbedre Matlyst. Læs mere i vores <a href="/da/privatliv/">privatlivspolitik</a>.</p><div class="cookie-actions"><button class="ck-btn ck-accept" id="ck-accept" type="button">Acceptér</button><button class="ck-btn ck-reject" id="ck-reject" type="button">Kun nødvendige</button></div></div></div><script src="/avmeld.js" defer></script><script src="/site.js" defer></script></body></html>
