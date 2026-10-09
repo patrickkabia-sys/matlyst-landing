@@ -394,6 +394,53 @@ function supportPage(lang, row) {
   return `${head({lang,path,title:`${title} | Matlyst`,description:text,noindex:true,schema})}<body data-locale="${lang}">${nav(lang,path)}<main id="hovedinnhold" class="legal-doc"><header><p class="eyebrow">Matlyst</p><h1 class="disp">${title}</h1><p class="lead">${text}</p></header></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
+const avmeldTekst = {
+  sv: {
+    kicker: 'Nyhetsbrev',
+    tittel: 'Vill du <em>avregistrera dig</em>?',
+    intro: 'Då slutar nyhetsbrevet att komma. Det skickas varannan vecka med ett tips och det som är nytt i appen. Ditt konto påverkas inte.',
+    knapp: 'Avregistrera mig',
+    venter: 'Avregistrerar …',
+    ferdigTittel: 'Du är <em>avregistrerad</em>',
+    ferdig: 'Vi skickar inga fler nyhetsbrev till dig.',
+    angre: 'Om du ändrar dig kan du slå på nyhetsbrevet igen under Profil i appen.',
+    manglerTittel: 'Den här länken saknar <em>något</em>',
+    mangler: 'Adressen verkar ha tappat en del på vägen. Öppna länken från e-postmeddelandet igen eller skriv till',
+    utenJs: 'Din webbläsare kör inte JavaScript. Knappen nedan gör samma sak, men tar dig till en enklare bekräftelsesida.',
+    feil: 'Det gick inte just nu. Försök igen eller skriv till',
+    emne: 'Avregistrera%20mig%20från%20nyhetsbrevet',
+  },
+  da: {
+    kicker: 'Nyhedsbrev',
+    tittel: 'Vil du <em>afmelde dig</em>?',
+    intro: 'Så stopper nyhedsbrevet, som sendes hver anden uge med et tip og nyt fra appen. Din konto ændres ikke.',
+    knapp: 'Afmeld mig',
+    venter: 'Afmelder …',
+    ferdigTittel: 'Du er <em>afmeldt</em>',
+    ferdig: 'Vi sender dig ikke flere nyhedsbreve.',
+    angre: 'Skifter du mening, kan du slå nyhedsbrevet til igen under Profil i appen.',
+    manglerTittel: 'Der mangler <em>noget</em> i linket',
+    mangler: 'Adressen ser ud til at have mistet en del undervejs. Åbn linket fra e-mailen igen, eller skriv til',
+    utenJs: 'Din browser kører ikke JavaScript. Knappen nedenfor gør det samme, men fører dig til en enklere bekræftelsesside.',
+    feil: 'Det lykkedes ikke lige nu. Prøv igen, eller skriv til',
+    emne: 'Afmeld%20mig%20nyhedsbrevet',
+  },
+};
+
+function avmeldPage(lang, row) {
+  const [path,title,description] = row;
+  const tekst = avmeldTekst[lang];
+  const schema = {'@context':'https://schema.org','@type':'WebPage',name:title,url:`${base}/${lang}/${path}`};
+  const kontakt = `<a href="mailto:hei@matlyst-app.no?subject=${tekst.emne}">hei@matlyst-app.no</a>`;
+  return `${head({lang,path,title:`${title} | Matlyst`,description,noindex:true,schema})}<body data-locale="${lang}">${nav(lang,path)}<main id="hovedinnhold" class="legal-doc avmeld-side">
+<section id="bekreft" hidden><p class="eyebrow">${tekst.kicker}</p><h1 class="disp">${tekst.tittel}</h1><p class="lead">${tekst.intro}</p><div class="avmeld-kort"><button class="primary-cta" id="meldAv" type="button">${tekst.knapp}</button><p class="avmeld-status" id="status" data-venter="${tekst.venter}" role="status" aria-live="polite"></p></div></section>
+<section id="ferdig" hidden><p class="eyebrow">${tekst.kicker}</p><h1 class="disp">${tekst.ferdigTittel}</h1><p class="lead">${tekst.ferdig}</p><p class="lead">${tekst.angre}</p></section>
+<section id="mangler" hidden><p class="eyebrow">${tekst.kicker}</p><h1 class="disp">${tekst.manglerTittel}</h1><p class="lead">${tekst.mangler} ${kontakt}.</p></section>
+<noscript><p class="eyebrow">${tekst.kicker}</p><h1 class="disp">${tekst.tittel}</h1><p class="lead">${tekst.utenJs}</p><form class="avmeld-kort" method="POST" id="reserve" action="https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld"><input type="hidden" name="List-Unsubscribe" value="One-Click"><button class="primary-cta" type="submit">${tekst.knapp}</button></form></noscript>
+<template id="feilmelding">${tekst.feil} ${kontakt}.</template>
+</main>${footer(lang)}<script src="/avmeld.js" defer></script><script src="/site.js" defer></script></body></html>`;
+}
+
 const lokaleSider = [];
 function write(path, content) {
   const file = fileURLToPath(new URL(path, import.meta.url));
@@ -410,7 +457,12 @@ for (const lang of ['sv','da']) {
   }
   for (const row of featurePages[lang]) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
   for (const row of sourcePages[lang]) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
-  for (const row of supportPages[lang]) write(`../${lang}/${row[0]}index.html`, supportPage(lang,row));
+  for (const row of supportPages[lang]) {
+    const innhold = row[0] === 'avregistrera/' || row[0] === 'afmeld/'
+      ? avmeldPage(lang,row)
+      : supportPage(lang,row);
+    write(`../${lang}/${row[0]}index.html`, innhold);
+  }
 }
 
 // Norske og lokale sider får hreflang fra den samme tabellen som språkredirecten.

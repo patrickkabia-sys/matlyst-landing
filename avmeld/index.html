@@ -87,7 +87,7 @@
         og det som er nytt i appen. Kontoen din forblir uendret.</p>
       <div class="kort">
         <button class="knapp" id="meldAv" type="button">Meld meg av</button>
-        <p class="fot" id="status" role="status" aria-live="polite"></p>
+        <p class="fot" id="status" data-venter="Melder deg av …" role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -123,65 +123,7 @@
       </form>
     </noscript>
   </main>
-
-  <script>
-    // Sida er ren kulisse rundt ETT kall. All logikk — signaturen, idempotensen,
-    // vernet mot at en e-postskanner melder folk av — bor i edge-funksjonen
-    // `avmeld`. Her ligger bare adressen brukeren tør å lese.
-    //
-    // ⚠️ Hvorfor sida finnes: den ekte lenka går til
-    // <prosjekt-id>.supabase.co, et vertsnavn ingen kjenner igjen, med en UUID
-    // og en 43-tegns signatur etter seg. Den er trygg og ser ut som svindel.
-    var FUNKSJON = 'https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld';
-
-    var q = new URLSearchParams(location.search);
-    var u = q.get('u') || '';
-    var s = q.get('s') || '';
-
-    // Formkravene speiler avmeldLenke.ts. De er en høflighetssjekk, ikke et
-    // vern: serveren verifiserer signaturen uansett hva vi slipper videre.
-    var gyldigForm = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u)
-      && /^[A-Za-z0-9_-]{43}$/.test(s);
-
-    function vis(id) {
-      ['bekreft', 'ferdig', 'mangler'].forEach(function (n) {
-        document.getElementById(n).hidden = n !== id;
-      });
-    }
-
-    if (!gyldigForm) {
-      vis('mangler');
-    } else {
-      vis('bekreft');
-      var reserve = document.getElementById('reserve');
-      if (reserve) reserve.action = FUNKSJON + '?u=' + encodeURIComponent(u) + '&s=' + encodeURIComponent(s);
-
-      var knapp = document.getElementById('meldAv');
-      var status = document.getElementById('status');
-
-      knapp.addEventListener('click', function () {
-        knapp.disabled = true;
-        status.className = 'fot';
-        status.textContent = 'Melder deg av …';
-
-        fetch(FUNKSJON + '?u=' + encodeURIComponent(u) + '&s=' + encodeURIComponent(s), {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          // RFC 8058-kroppen. Den ber funksjonen svare kort i stedet for med sin
-          // egen HTML-side, som er nettopp det vi vil her: kvitteringen er vår.
-          body: 'List-Unsubscribe=One-Click',
-        }).then(function (r) {
-          if (r.ok) { vis('ferdig'); return; }
-          throw new Error('status ' + r.status);
-        }).catch(function () {
-          knapp.disabled = false;
-          status.className = 'fot feil';
-          // Aldri en teknisk kode til brukeren. Én vei videre som alltid virker.
-          status.innerHTML = 'Det gikk ikke akkurat nå. Prøv en gang til, eller skriv til '
-            + '<a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20nyhetsbrevet">hei@matlyst-app.no</a>.';
-        });
-      });
-    }
-  </script>
+  <template id="feilmelding">Det gikk ikke akkurat nå. Prøv en gang til, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20nyhetsbrevet">hei@matlyst-app.no</a>.</template>
+  <script src="/avmeld.js" defer></script>
 </body>
 </html>
