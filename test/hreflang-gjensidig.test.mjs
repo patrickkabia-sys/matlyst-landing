@@ -34,10 +34,13 @@ test('sidetabellen har alle ekte trioer, par og enkeltstående sider', () => {
 
 test('alle tabellførte sider har eksisterende, gjensidig hreflang fra samme tabell', () => {
   for (const gruppe of SIDEGRUPPER) {
+    let gruppensFaktiskeSett = null;
     for (const [sprak, sti] of Object.entries(gruppe.sider)) {
       const fil = join(ROOT, filForSti(sti));
       assert.equal(existsSync(fil), true, `${gruppe.id}: ${sti}`);
       const faktisk = hreflang(readFileSync(fil, 'utf8'));
+      gruppensFaktiskeSett ??= faktisk;
+      assert.deepEqual(faktisk, gruppensFaktiskeSett, `${gruppe.id}: ulikt faktisk hreflang-sett for ${sprak}`);
       const forventet = Object.fromEntries(alternativerFor(sti).map(([kode, maal]) => [kode, `${BASE}${maal}`]));
       assert.deepEqual(faktisk, forventet, `${gruppe.id}: ${sprak}`);
 
@@ -48,6 +51,17 @@ test('alle tabellførte sider har eksisterende, gjensidig hreflang fra samme tab
         const egenKode = { nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK' }[sprak];
         assert.equal(tilbake[egenKode], `${BASE}${sti}`, `${maal} → ${sti}`);
       }
+    }
+  }
+});
+
+test('sider som bruker spørrestreng eller funksjonskall blir ikke språk-omdirigert', () => {
+  for (const gruppe of SIDEGRUPPER) {
+    for (const sti of Object.values(gruppe.sider)) {
+      const html = les(sti);
+      if (!/(?:URLSearchParams|functions\/v1)/u.test(html)) continue;
+      assert.equal(gruppe.redirect, false, `${gruppe.id}: ${sti}`);
+      assert.doesNotMatch(html, /<script src="\/locale\.js"><\/script>/u, sti);
     }
   }
 });

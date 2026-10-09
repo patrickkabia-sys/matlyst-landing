@@ -93,6 +93,12 @@ test('tekniske TikTok-retursider omdirigeres aldri', () => {
   }
 });
 
+test('avmeldingslenker omdirigeres aldri og beholder funksjonskallet på siden', () => {
+  for (const sti of ['/avmeld/', '/sv/avregistrera/', '/da/afmeld/']) {
+    assert.equal(besok(`${sti}?u=bruker&s=signatur`, { sprak: ['sv-SE'], lagret: 'da' }).til, null, sti);
+  }
+});
+
 test('LOCALE_PAGE_MAP er bygd fra den samme tabellen som hreflang', () => {
   const faktisk = JSON.parse(JSON.stringify(lastInn().LOCALE_PAGE_MAP));
   assert.deepEqual(faktisk, byggLocalePageMap());

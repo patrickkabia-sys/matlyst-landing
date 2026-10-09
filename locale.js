@@ -6,10 +6,8 @@
   // Rekkefølge: ?sprak= vinner og lagres, deretter lagret valg, deretter nettleserens språk.
   var LOCALE_PAGE_MAP = Object.freeze({
     "/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
-    "/avmeld/": {"nb": "/avmeld/", "sv": "/sv/avregistrera/", "da": "/da/afmeld/"},
     "/bytt-fra-paprika/": {"nb": "/bytt-fra-paprika/", "sv": "/sv/byt-fran-paprika/", "da": "/da/skift-fra-paprika/"},
     "/da/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
-    "/da/afmeld/": {"nb": "/avmeld/", "sv": "/sv/avregistrera/", "da": "/da/afmeld/"},
     "/da/find-opskrifter/": {"nb": "/finn-oppskrifter/", "sv": "/sv/hitta-recept/", "da": "/da/find-opskrifter/"},
     "/da/gem-opskrifter-fra-instagram/": {"sv": "/sv/spara-recept-fran-instagram/", "da": "/da/gem-opskrifter-fra-instagram/"},
     "/da/gem-opskrifter-fra-tiktok/": {"sv": "/sv/spara-recept-fran-tiktok/", "da": "/da/gem-opskrifter-fra-tiktok/"},
@@ -42,7 +40,6 @@
     "/slett-konto": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
     "/slett-konto.html": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
     "/sv/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
-    "/sv/avregistrera/": {"nb": "/avmeld/", "sv": "/sv/avregistrera/", "da": "/da/afmeld/"},
     "/sv/byt-fran-paprika/": {"nb": "/bytt-fra-paprika/", "sv": "/sv/byt-fran-paprika/", "da": "/da/skift-fra-paprika/"},
     "/sv/enkel-middag/": {"sv": "/sv/enkel-middag/", "da": "/da/nem-mad/"},
     "/sv/handskrivna-recept/": {"nb": "/handskrevne-oppskrifter/", "sv": "/sv/handskrivna-recept/", "da": "/da/haandskrevne-opskrifter/"},

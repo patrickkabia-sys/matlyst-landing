@@ -2,7 +2,7 @@ const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK' });
 const SPRAKREKKEFOLGE = Object.freeze(['nb', 'sv', 'da']);
 
 // Én kilde for sider som faktisk dekker samme funksjon eller hensikt.
-// x-default peker på bokmål når det finnes. For par og enkeltstående sider peker den på siden selv.
+// x-default peker på bokmål når det finnes, ellers på gruppens første språk.
 export const SIDEGRUPPER = Object.freeze([
   { id: 'forside', sider: { nb: '/', sv: '/sv/', da: '/da/' } },
   { id: 'importer-oppskrifter', sider: { nb: '/importer-oppskrifter/', sv: '/sv/importera-recept/', da: '/da/importer-opskrifter/' } },
@@ -17,7 +17,7 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'personvern', sider: { nb: '/personvern.html', sv: '/sv/integritet/', da: '/da/privatliv/' } },
   { id: 'vilkar', sider: { nb: '/vilkar.html', sv: '/sv/villkor/', da: '/da/vilkaar/' } },
   { id: 'slett-konto', sider: { nb: '/slett-konto.html', sv: '/sv/radera-konto/', da: '/da/slet-konto/' } },
-  { id: 'avmeld', sider: { nb: '/avmeld/', sv: '/sv/avregistrera/', da: '/da/afmeld/' } },
+  { id: 'avmeld', redirect: false, sider: { nb: '/avmeld/', sv: '/sv/avregistrera/', da: '/da/afmeld/' } },
   { id: 'tiktok-stotte', sider: { nb: '/tiktok/', sv: '/sv/tiktok/', da: '/da/tiktok/' } },
   { id: 'tiktok-auth', redirect: false, sider: { nb: '/tiktok-auth/', sv: '/sv/tiktok-auth/', da: '/da/tiktok-auth/' } },
 
@@ -50,7 +50,7 @@ export function alternativerFor(sti) {
   const alternativer = SPRAKREKKEFOLGE
     .filter((sprak) => gruppe.sider[sprak])
     .map((sprak) => [SPRAKKODER[sprak], gruppe.sider[sprak]]);
-  return [...alternativer, ['x-default', gruppe.sider.nb ?? sti]];
+  return [...alternativer, ['x-default', gruppe.sider.nb ?? gruppe.sider.sv ?? gruppe.sider.da]];
 }
 
 export function byggLocalePageMap() {
