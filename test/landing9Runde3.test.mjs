@@ -32,7 +32,7 @@ test('klageveien nevner Forbrukertilsynet som mekler, ikke Forbrukerrådet', () 
     const html = readFileSync(fil, 'utf8');
     assert.doesNotMatch(html, /Forbrukerrådet/u, relative(ROOT, fil));
   }
-  assert.match(les('da/vilkaar/index.html'), /Forbrukertilsynet mægle, og en sag om fortrydelsesret/u);
+  assert.match(les('da/vilkaar/index.html'), /Forbrukertilsynet \(norsk forbrugermyndighed\) mægle, og en sag om fortrydelsesret/u);
   assert.match(les('sv/villkor/index.html'), /Konsument Europa, som kan medla i tvister med företag i Norge/u);
   const kilder = les('qa/sv-da/juridiske-kilder.md');
   for (const url of ['https://forbrugereuropa.dk/klag/', 'https://www.konsumenteuropa.se/', 'https://www.forbrukerradet.no/her-klager-du/', 'https://www.forbrukertilsynet.no/forbrukerklageutvalget/']) {
