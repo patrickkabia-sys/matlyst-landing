@@ -4,6 +4,8 @@ import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
+import { alternativerFor } from '../scripts/locale-sider.mjs';
+
 const root = dirname(fileURLToPath(import.meta.url)) + '/..';
 
 function finnHtml(dir) {
@@ -31,8 +33,9 @@ test('alle lokale sider har språk, canonical, hreflang og gyldig strukturert da
     const lang = rel.startsWith('sv/') ? 'sv' : 'da';
     assert.match(html, new RegExp(`<html lang="${lang}">`), rel);
     assert.match(html, /<link rel="canonical" href="https:\/\/matlyst-app\.no\/(?:sv|da)\/[^"]*">/u, rel);
-    for (const kode of ['sv-SE', 'da-DK']) {
-      assert.match(html, new RegExp(`<link rel="alternate" hreflang="${kode}" href="[^"]+">`), `${rel}: ${kode}`);
+    const canonicalSti = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
+    for (const [kode, href] of alternativerFor(canonicalSti)) {
+      assert.match(html, new RegExp(`<link rel="alternate" hreflang="${kode}" href="https://matlyst-app\\.no${regexEsc(href)}">`), `${rel}: ${kode}`);
     }
     const blokker = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gu)];
     assert.ok(blokker.length > 0, `${rel}: mangler JSON-LD`);
@@ -162,9 +165,11 @@ test('støttesider er noindex og publiseringssitemap er urørt', () => {
 test('språkvelgeren peker på samme sides motstykker', () => {
   for (const fil of filer) {
     const html = les(fil);
-    const sv = html.match(/hreflang="sv-SE" href="([^"]+)"/u)?.[1];
-    const da = html.match(/hreflang="da-DK" href="([^"]+)"/u)?.[1];
-    assert.match(html, new RegExp(`href="${regexEsc(new URL(sv).pathname)}\\?sprak=sv"`), relative(root, fil));
-    assert.match(html, new RegExp(`href="${regexEsc(new URL(da).pathname)}\\?sprak=da"`), relative(root, fil));
+    const canonicalSti = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
+    for (const [kode, href] of alternativerFor(canonicalSti)) {
+      if (kode === 'x-default') continue;
+      const sprak = { 'nb-NO': 'nb', 'sv-SE': 'sv', 'da-DK': 'da' }[kode];
+      assert.match(html, new RegExp(`href="${regexEsc(href)}\\?sprak=${sprak}"`), `${relative(root, fil)}: ${sprak}`);
+    }
   }
 });

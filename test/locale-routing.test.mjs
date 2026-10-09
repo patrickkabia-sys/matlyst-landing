@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
 import vm from 'node:vm';
+
+import { SIDEGRUPPER, byggLocalePageMap, filForSti } from '../scripts/locale-sider.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const source = readFileSync(join(ROOT, 'locale.js'), 'utf8');
@@ -53,7 +55,7 @@ test('en norsk bruker blir på norsk', () => {
 test('en norsk bruker på en svensk eller dansk side med norsk motpart sendes til norsk', () => {
   assert.equal(besok('/sv/', { sprak: ['nb-NO'] }).til, '/');
   assert.equal(besok('/da/privatliv/', { sprak: ['nb'] }).til, '/personvern.html');
-  assert.equal(besok('/sv/importera-recept/', { sprak: ['nb-NO'] }).til, null);
+  assert.equal(besok('/sv/importera-recept/', { sprak: ['nb-NO'] }).til, '/importer-oppskrifter/');
 });
 
 test('svensk og dansk språk sendes til riktig side', () => {
@@ -91,40 +93,21 @@ test('tekniske TikTok-retursider omdirigeres aldri', () => {
   }
 });
 
-function finnHtml(dir) {
-  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
-    const path = join(dir, entry.name);
-    return entry.isDirectory() ? finnHtml(path) : entry.name === 'index.html' ? [path] : [];
-  });
-}
-
-test('LOCALE_PAGE_MAP er nøyaktig hreflang-parene på sidene', () => {
-  const kode = { 'nb-NO': 'nb', 'sv-SE': 'sv', 'da-DK': 'da' };
-  const filer = [...finnHtml(join(ROOT, 'sv')), ...finnHtml(join(ROOT, 'da')), ...['index.html', 'personvern.html', 'vilkar.html', 'slett-konto.html'].map((f) => join(ROOT, f))];
-  const forventet = {};
-  for (const fil of filer) {
-    const html = readFileSync(fil, 'utf8');
-    const canonical = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
-    if (canonical.endsWith('/tiktok-auth/')) continue;
-    const rad = {};
-    for (const [, k, href] of html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/gu)) {
-      if (kode[k]) rad[kode[k]] = new URL(href).pathname;
-    }
-    assert.ok(Object.values(rad).includes(canonical), `${canonical}: peker ikke på seg selv`);
-    for (const sti of Object.values(rad)) {
-      if (forventet[sti]) assert.deepEqual(forventet[sti], rad, `${sti}: ulike hreflang-sett`);
-      forventet[sti] = rad;
-      if (sti.endsWith('.html')) forventet[sti.slice(0, -5)] = rad;
-      if (sti === '/') forventet['/index.html'] = rad;
-    }
+test('avmeldingslenker omdirigeres aldri og beholder funksjonskallet på siden', () => {
+  for (const sti of ['/avmeld/', '/sv/avregistrera/', '/da/afmeld/']) {
+    assert.equal(besok(`${sti}?u=bruker&s=signatur`, { sprak: ['sv-SE'], lagret: 'da' }).til, null, sti);
   }
+});
+
+test('LOCALE_PAGE_MAP er bygd fra den samme tabellen som hreflang', () => {
   const faktisk = JSON.parse(JSON.stringify(lastInn().LOCALE_PAGE_MAP));
-  assert.deepEqual(faktisk, forventet);
+  assert.deepEqual(faktisk, byggLocalePageMap());
   assert.equal(Object.keys(faktisk).length > 40, true);
 });
 
-test('de fire norske sidene med motpart laster locale.js', () => {
-  for (const fil of ['index.html', 'personvern.html', 'vilkar.html', 'slett-konto.html']) {
+test('alle norske sider med en motpart laster locale.js', () => {
+  for (const gruppe of SIDEGRUPPER.filter(({ sider, redirect }) => sider.nb && Object.keys(sider).length > 1 && redirect !== false)) {
+    const fil = filForSti(gruppe.sider.nb);
     assert.match(readFileSync(join(ROOT, fil), 'utf8'), /<script src="\/locale\.js"><\/script>/u, fil);
   }
 });

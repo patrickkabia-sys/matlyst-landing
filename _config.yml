@@ -1,2 +1,2 @@
 exclude:
-  - _previews
+  - test-results
