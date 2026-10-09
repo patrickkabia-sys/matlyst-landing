@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  // Bekreftelsessida finnes for at e-postskannere ikke skal melde brukeren av
+  // bare ved å følge lenken. RFC 8058-kallet går direkte til samme funksjon.
+  // Formatkravene speiler supabase/functions/_shared/avmeldLenke.ts: UUID for
+  // brukeren og en 43 tegn lang base64url-signatur.
   var FUNKSJON = 'https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld';
   var q = new URLSearchParams(location.search);
   var u = q.get('u') || '';
@@ -29,12 +33,13 @@
   var feil = document.getElementById('feilmelding');
   knapp.addEventListener('click', function () {
     knapp.disabled = true;
-    status.className = 'fot';
+    status.className = 'avmeld-status';
     status.textContent = status.dataset.venter;
 
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      // RFC 8058 krever denne eksakte skjemaverdien for ettklikksavmelding.
       body: 'List-Unsubscribe=One-Click',
     }).then(function (svar) {
       if (svar.ok) {
@@ -44,7 +49,7 @@
       throw new Error('avmeld feilet');
     }).catch(function () {
       knapp.disabled = false;
-      status.className = 'fot feil';
+      status.className = 'avmeld-status avmeld-feil';
       status.innerHTML = feil.innerHTML;
     });
   });

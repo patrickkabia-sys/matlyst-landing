@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Afmeld nyhedsbrevet","url":"https://matlyst-app.no/da/afmeld/"}</script>
 
+<link rel="stylesheet" href="/avmeld.css">
 </head><body data-locale="da"><a class="skip-link" href="#hovedinnhold">Spring til indholdet</a>
 <nav aria-label="Hovednavigation">
   <a href="/da/" class="brand">Mat<em>lyst</em></a>
@@ -40,11 +41,11 @@
       <a href="/da/afmeld/?sprak=da" lang="da" aria-current="page">DA</a>
     </span>
   </div>
-</nav><main id="hovedinnhold" class="legal-doc avmeld-side">
-<section id="bekreft" hidden><p class="eyebrow">Nyhedsbrev</p><h1 class="disp">Vil du <em>afmelde dig</em>?</h1><p class="lead">Så stopper nyhedsbrevet, som sendes hver anden uge med et tip og nyt fra appen. Din konto ændres ikke.</p><div class="avmeld-kort"><button class="primary-cta" id="meldAv" type="button">Afmeld mig</button><p class="avmeld-status" id="status" data-venter="Afmelder …" role="status" aria-live="polite"></p></div></section>
-<section id="ferdig" hidden><p class="eyebrow">Nyhedsbrev</p><h1 class="disp">Du er <em>afmeldt</em></h1><p class="lead">Vi sender dig ikke flere nyhedsbreve.</p><p class="lead">Skifter du mening, kan du slå nyhedsbrevet til igen under Profil i appen.</p></section>
-<section id="mangler" hidden><p class="eyebrow">Nyhedsbrev</p><h1 class="disp">Der mangler <em>noget</em> i linket</h1><p class="lead">Adressen ser ud til at have mistet en del undervejs. Åbn linket fra e-mailen igen, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Afmeld%20mig%20nyhedsbrevet">hei@matlyst-app.no</a>.</p></section>
-<noscript><p class="eyebrow">Nyhedsbrev</p><h1 class="disp">Vil du <em>afmelde dig</em>?</h1><p class="lead">Din browser kører ikke JavaScript. Knappen nedenfor gør det samme, men fører dig til en enklere bekræftelsesside.</p><form class="avmeld-kort" method="POST" id="reserve" action="https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld"><input type="hidden" name="List-Unsubscribe" value="One-Click"><button class="primary-cta" type="submit">Afmeld mig</button></form></noscript>
+</nav><main id="hovedinnhold" class="avmeld-doc">
+<section id="bekreft" hidden><p class="avmeld-kicker">Nyhedsbrev</p><h1 class="avmeld-title">Vil du <em>afmelde dig</em>?</h1><p class="avmeld-intro">Så stopper nyhedsbrevet, som sendes hver anden uge med et tip og nyt fra appen. Din konto ændres ikke.</p><div class="avmeld-kort"><button class="avmeld-knapp" id="meldAv" type="button">Afmeld mig</button><p class="avmeld-status" id="status" data-venter="Afmelder …" role="status" aria-live="polite"></p></div></section>
+<section id="ferdig" hidden><p class="avmeld-kicker">Nyhedsbrev</p><h1 class="avmeld-title">Du er <em>afmeldt</em></h1><p class="avmeld-intro">Vi sender dig ikke flere nyhedsbreve.</p><p class="avmeld-intro">Skifter du mening, kan du slå nyhedsbrevet til igen under Profil i appen.</p></section>
+<section id="mangler" hidden><p class="avmeld-kicker">Nyhedsbrev</p><h1 class="avmeld-title">Der mangler <em>noget</em> i linket</h1><p class="avmeld-intro">Adressen ser ud til at have mistet en del undervejs. Åbn linket fra e-mailen igen, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Afmeld%20mig%20nyhedsbrevet">hei@matlyst-app.no</a>.</p></section>
+<noscript><p class="avmeld-kicker">Nyhedsbrev</p><h1 class="avmeld-title">Vil du <em>afmelde dig</em>?</h1><p class="avmeld-intro">Din browser kører ikke JavaScript. Knappen nedenfor gør det samme, men fører dig til en enklere bekræftelsesside.</p><form class="avmeld-kort" method="POST" id="reserve" action="https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld"><input type="hidden" name="List-Unsubscribe" value="One-Click"><button class="avmeld-knapp" type="submit">Afmeld mig</button></form></noscript>
 <template id="feilmelding">Det lykkedes ikke lige nu. Prøv igen, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Afmeld%20mig%20nyhedsbrevet">hei@matlyst-app.no</a>.</template>
 </main><footer>
   <a href="/da/" class="brand">Mat<em>lyst</em></a>

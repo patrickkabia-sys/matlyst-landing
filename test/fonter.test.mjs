@@ -156,7 +156,7 @@ test('alle vektene sidene bruker er dekket av de lokale fontene', () => {
 // /styles.css. De trenger derfor sine egne @font-face. Testen sammenligner dem
 // mot styles.css i stedet for å gjenta mønsteret, slik at et par som driver fra
 // hverandre blir rødt.
-const SIDER_MED_EGET_STILARK = ['personvern.html', 'slett-konto.html', 'vilkar.html', 'avmeld/index.html'];
+const SIDER_MED_EGET_STILARK = ['personvern.html', 'slett-konto.html', 'vilkar.html'];
 
 function fontFaces(tekst) {
   return [...tekst.matchAll(/@font-face\s*\{[^}]*\}/gu)].map((m) => m[0].replace(/\s+/gu, ''));
@@ -170,6 +170,10 @@ test('sidene med eget stilark har nøyaktig de samme @font-face som styles.css',
     assert.ok(!/href="\/?styles\.css"/u.test(tekst), `${side} lenker nå styles.css, oppdater lista i testen`);
     assert.deepEqual(fontFaces(tekst), fasit, `${side} har andre @font-face enn styles.css`);
   }
+});
+
+test('avmeld.css har de samme lokale fontene som styles.css', () => {
+  assert.deepEqual(fontFaces(readFileSync(join(ROT, 'avmeld.css'), 'utf8')), fontFaces(css()));
 });
 
 test('personvernerklæringen sier ikke lenger at skriftene hentes fra Google', () => {
