@@ -164,6 +164,7 @@ ${nav(lang, '', '', '/')}
 const legal = {
   sv: {
     terms: {
+      oppdatert:'Senast uppdaterad 9 oktober 2026',
       path:'villkor/', title:'Användarvillkor | Matlyst', h1:'Användarvillkor',
       intro:'Villkoren gäller när du använder Matlyst. Matlyst tillhandahålls av Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge. Kontakta oss på hei@matlyst-app.no om något är oklart.',
       sections:[
@@ -178,6 +179,7 @@ const legal = {
       ],
     },
     privacy: {
+      oppdatert:'Senast uppdaterad 9 oktober 2026',
       path:'integritet/', title:'Integritetspolicy | Matlyst', h1:'Integritetspolicy',
       intro:'Patrick Omassa Kabia är personuppgiftsansvarig för Matlyst. Matlyst drivs som ett personligt projekt i Norge. Kontakt: Vollebekkveien 2J, 0598 Oslo, Norge, hei@matlyst-app.no.',
       sections:[
@@ -188,11 +190,12 @@ const legal = {
         ['Webbplats och lokal lagring','Webbplatsen använder nödvändig lokal lagring för språkval och ditt samtyckesval i matlyst-sprak och matlyst-consent. Meta Pixel, PostHog och Google Analytics laddas först efter ett aktivt samtycke. Du kan återkalla analyssamtycket via länken Ändra samtycke längst ned på sidan. På den norska webbplatsen används EmailOctopus för nyhetsbrev, och Google reCAPTCHA laddas först när du fyller i nyhetsbrevsformuläret.'],
         ['Leverantörer och överföring','Supabase, PostHog och Sentry lagrar uppgifterna inom EU (ingen överföring). Apple, Google (inloggning, köp, Gemini, Google Analytics och reCAPTCHA), Meta och RevenueCat: EU–US Data Privacy Framework, i andra hand standardavtalsklausuler. EmailOctopus: Storbritanniens adekvansbeslut. Anthropic: standardavtalsklausuler (inte certifierat enligt Data Privacy Framework).'],
         ['Lagring och radering','Konto och innehåll lagras tills du raderar kontot. Tekniska felsökningsloggar raderas efter 90 dagar och Sentry-rapporter efter 30 dagar. Push-token raderas vid utloggning eller kontoradering. Feedback sparas så länge kontot finns eller tills du ber oss radera den. Statistik i PostHog samlas bara in medan ditt samtycke gäller; redan insamlad statistik raderas när du raderar kontot eller ber oss om det. Din e-postadress hos EmailOctopus sparas tills du avregistrerar dig från nyhetsbrevet eller raderar kontot. Om du återkallar samtycket till matloggen raderas matloggen och kalorimålet nollställs. Samtycke till analys kan återkallas när som helst.'],
-        ['Dina rättigheter','Du har rätt att begära tillgång till, rättelse och radering av dina uppgifter, begränsning av behandlingen och dataportabilitet. Du har också rätt att invända mot viss behandling och att återkalla ett samtycke. Kontakta hei@matlyst-app.no. Eftersom Matlyst är etablerat i Norge är Datatilsynet i Norge (datatilsynet.no) ledande tillsynsmyndighet. Du kan också klaga hos din lokala tillsynsmyndighet, Integritetsskyddsmyndigheten (imy.se).'],
+        ['Dina rättigheter','Du har rätt att begära tillgång till, rättelse och radering av dina uppgifter, begränsning av behandlingen och dataportabilitet. Du har också rätt att invända mot viss behandling och att återkalla ett samtycke. Kontakta hei@matlyst-app.no. Eftersom Matlyst är etablerat i Norge är Datatilsynet i Norge (datatilsynet.no) ledande tillsynsmyndighet. Du kan klaga hos Datatilsynet i Norge eller hos din lokala tillsynsmyndighet, Integritetsskyddsmyndigheten (imy.se).'],
         ['Ålder och samtycke','I Sverige är åldersgränsen 13 år för att själv samtycka till de digitala funktioner som kräver samtycke. För detta lagrar vi land, bekräftad åldersgräns och tidpunkt – inte födelsedatum.'],
       ],
     },
     delete: {
+      oppdatert:'Senast uppdaterad 5 oktober 2026',
       path:'radera-konto/', title:'Radera konto | Matlyst', h1:'Radera ditt konto',
       intro:'Du kan radera Matlyst-kontot och innehållet permanent. Ett abonnemang måste sägas upp separat i App Store eller Google Play.',
       sections:[
@@ -204,6 +207,7 @@ const legal = {
   },
   da: {
     terms: {
+      oppdatert:'Senest opdateret 9. oktober 2026',
       path:'vilkaar/', title:'Brugervilkår | Matlyst', h1:'Brugervilkår',
       intro:'Vilkårene gælder, når du bruger Matlyst. Matlyst udbydes af Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge. Skriv til hei@matlyst-app.no, hvis noget er uklart.',
       sections:[
@@ -218,6 +222,7 @@ const legal = {
       ],
     },
     privacy: {
+      oppdatert:'Senest opdateret 9. oktober 2026',
       path:'privatliv/', title:'Privatlivspolitik | Matlyst', h1:'Privatlivspolitik',
       intro:'Patrick Omassa Kabia er dataansvarlig for Matlyst. Matlyst drives som et personligt projekt i Norge. Kontakt: Vollebekkveien 2J, 0598 Oslo, Norge, hei@matlyst-app.no.',
       sections:[
@@ -228,11 +233,12 @@ const legal = {
         ['Hjemmesiden og lokal lagring','Hjemmesiden bruger nødvendig lokal lagring til sprogvalg og dit samtykkevalg i matlyst-sprak og matlyst-consent. Meta Pixel, PostHog og Google Analytics indlæses først efter et aktivt samtykke. Du kan trække analysesamtykket tilbage via «Skift samtykke» nederst på siden. På den norske hjemmeside bruges EmailOctopus til nyhedsbreve, og Google reCAPTCHA indlæses først, når du udfylder nyhedsbrevsformularen.'],
         ['Leverandører og overførsel','Supabase, PostHog og Sentry lagrer oplysningerne i EU (ingen overførsel). Apple og Google bruges til login og køb. Overførsel til Apple, Google (herunder Gemini), Meta og RevenueCat i USA sker på grundlag af EU-US Data Privacy Framework og ellers standardkontraktbestemmelser. Anthropic er ikke certificeret, og overførslen dertil sker på grundlag af standardkontraktbestemmelser. EmailOctopus er omfattet af Storbritanniens tilstrækkelighedsafgørelse.'],
         ['Opbevaring og sletning','Konto og indhold opbevares, til du sletter kontoen. Tekniske fejlfindingslogge slettes efter 90 dage og Sentry-rapporter efter 30 dage. Push-token slettes ved logout eller kontosletning. Feedback gemmes, så længe kontoen findes, eller til du beder os slette den. Statistik hos PostHog indsamles kun, mens dit samtykke gælder; allerede indsamlet statistik slettes, når du sletter kontoen, eller hvis du beder os om det. Din e-mailadresse hos EmailOctopus gemmes, til du afmelder nyhedsbrevet eller sletter kontoen. Trækker du samtykket til madloggen tilbage, slettes madloggen, og kaloriemålet nulstilles. Samtykke til analyse kan trækkes tilbage når som helst.'],
-        ['Dine rettigheder','Du har ret til at bede om indsigt i, rettelse og sletning af dine oplysninger, begrænsning af behandlingen og dataportabilitet. Du har også ret til at gøre indsigelse mod visse behandlinger og trække et samtykke tilbage. Skriv til hei@matlyst-app.no. Da Matlyst er etableret i Norge, er Datatilsynet i Norge (datatilsynet.no) ledende tilsynsmyndighed. Du kan også klage til din lokale tilsynsmyndighed, Datatilsynet i Danmark (datatilsynet.dk).'],
+        ['Dine rettigheder','Du har ret til at bede om indsigt i, rettelse og sletning af dine oplysninger, begrænsning af behandlingen og dataportabilitet. Du har også ret til at gøre indsigelse mod visse behandlinger og trække et samtykke tilbage. Skriv til hei@matlyst-app.no. Da Matlyst er etableret i Norge, er Datatilsynet i Norge (datatilsynet.no) ledende tilsynsmyndighed. Du kan klage til Datatilsynet i Norge eller til din lokale tilsynsmyndighed, Datatilsynet i Danmark (datatilsynet.dk).'],
         ['Alder og samtykke','I Danmark skal du være mindst 15 år for selv at give samtykke til de funktioner i Matlyst, der kræver samtykke. Vi gemmer det land, du har valgt, din bekræftelse af aldersgrænsen og tidspunktet, men ikke din fødselsdato.'],
       ],
     },
     delete: {
+      oppdatert:'Senest opdateret 5. oktober 2026',
       path:'slet-konto/', title:'Slet konto | Matlyst', h1:'Slet din konto',
       intro:'Du kan slette Matlyst-kontoen og indholdet permanent. Et abonnement skal opsiges særskilt i App Store eller Google Play.',
       sections:[
@@ -247,9 +253,6 @@ const legal = {
 function legalPage(lang, key) {
   const d = legal[lang][key];
   const description = d.intro;
-  const oppdatert = key === 'delete'
-    ? (lang === 'sv' ? 'Senast uppdaterad 5 oktober 2026' : 'Senest opdateret 5. oktober 2026')
-    : (lang === 'sv' ? 'Senast uppdaterad 9 oktober 2026' : 'Senest opdateret 9. oktober 2026');
   const breadcrumb = {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:common[lang].home,item:`${base}/${lang}/`},
     {'@type':'ListItem',position:2,name:d.h1,item:`${base}/${lang}/${d.path}`},
@@ -257,7 +260,7 @@ function legalPage(lang, key) {
   return `${head({lang,path:d.path,title:d.title,description,schema:breadcrumb})}<body data-locale="${lang}">
 ${nav(lang,d.path)}
 <main id="hovedinnhold" class="legal-doc">
-<header><p class="eyebrow">${common[lang].legal}</p><h1 class="disp">${d.h1}</h1><p class="lead">${d.intro}</p><p class="legal-updated">${oppdatert}</p></header>
+<header><p class="eyebrow">${common[lang].legal}</p><h1 class="disp">${d.h1}</h1><p class="lead">${d.intro}</p><p class="legal-updated">${d.oppdatert}</p></header>
 ${d.sections.map(([h,p])=>`<section${key === 'terms' && h.startsWith('2.') ? ' id="alder"' : ''}><h2>${h}</h2><p>${p}</p></section>`).join('\n')}
 <section class="legal-callout"><h2>${lang === 'sv' ? 'Kontakt' : 'Kontakt'}</h2><p>${lang === 'sv' ? 'Frågor och begäranden skickas till' : 'Spørgsmål og anmodninger sendes til'} <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</p></section>
 </main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;

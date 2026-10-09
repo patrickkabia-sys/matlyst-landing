@@ -12,8 +12,8 @@ test('bokmålsvilkårene beskriver abonnement, prøveperiode, angrerett og forbr
   assert.match(html, /gratis prøveperiode på én uke/u);
   assert.match(html, /senest 24 timer før/u);
   assert.match(html, /14 dagers angrerett/u);
-  assert.match(html, /ufravikelig forbrukervern/iu);
-  assert.match(html, /rett til å saksøke i ditt eget hjemland/u);
+  assert.match(html, /ufravikelige forbrukervernet du har der du bor/u);
+  assert.match(html, /Som forbruker\s+kan du alltid reise sak ved domstolen der du bor/u);
   assert.match(html, /Sist oppdatert 9\. oktober 2026/u);
 });
 
