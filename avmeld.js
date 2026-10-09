@@ -54,6 +54,7 @@
       }
       throw new Error('avmeld feilet');
     }).catch(function () {
+      // Aldri en teknisk kode til brukeren. Én vei videre som alltid virker.
       knapp.disabled = false;
       status.className = 'avmeld-status avmeld-feil';
       status.innerHTML = feil.innerHTML;
