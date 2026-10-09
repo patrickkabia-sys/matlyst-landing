@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { extname, join, normalize } from 'node:path';
 
 const baseUrl = process.env.BASE_URL || 'http://127.0.0.1:4173';
-const out = process.argv[2] || 'qa/sv-da/skjermbilder';
+const out = process.argv[2] || 'test-results/sv-da/skjermbilder';
 const chromePath = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const port = 9335;
 const profile = mkdtempSync(join(tmpdir(), 'matlyst-lokalsider-'));

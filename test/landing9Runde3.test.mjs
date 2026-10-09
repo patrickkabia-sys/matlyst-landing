@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import test from 'node:test';
+
+import { alternativerFor } from '../scripts/locale-sider.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const les = (path) => readFileSync(join(ROOT, path), 'utf8');
@@ -68,21 +70,15 @@ test('ingen «del/dele/deler/dela/delar … til Matlyst»', () => {
   }
 });
 
-test('nb-NO/x-default finnes bare der den norske siden lenker tilbake', () => {
-  const medNorsk = new Set(['sv/index.html', 'da/index.html', 'sv/integritet/index.html', 'da/privatliv/index.html', 'sv/villkor/index.html', 'da/vilkaar/index.html', 'sv/radera-konto/index.html', 'da/slet-konto/index.html']);
+test('nb-NO og x-default følger den felles sidetabellen', () => {
   for (const fil of sider) {
     const rel = relative(ROOT, fil);
     const html = readFileSync(fil, 'utf8');
+    const sti = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
+    const forventet = Object.fromEntries(alternativerFor(sti));
     const nb = html.match(/hreflang="nb-NO" href="https:\/\/matlyst-app\.no([^"]+)"/u)?.[1];
-    if (!medNorsk.has(rel)) {
-      assert.doesNotMatch(html, /hreflang="(?:nb-NO|x-default)"/u, rel);
-      continue;
-    }
-    assert.ok(nb, rel);
-    assert.match(html, new RegExp(`hreflang="x-default" href="https://matlyst-app\\.no${nb.replace('.', '\\.')}"`, 'u'), rel);
-    const norsk = les(nb === '/' ? 'index.html' : nb.slice(1));
-    const canonical = html.match(/<link rel="canonical" href="([^"]+)">/u)[1];
-    assert.ok(norsk.includes(`href="${canonical}"`), `${nb} lenker ikke tilbake til ${canonical}`);
+    assert.equal(nb, forventet['nb-NO'], rel);
+    assert.match(html, new RegExp(`hreflang="x-default" href="https://matlyst-app\\.no${forventet['x-default'].replaceAll('.', '\\.')}"`, 'u'), rel);
   }
 });
 
@@ -91,13 +87,9 @@ test('Google Play-merket er beskåret til det synlige merket', () => {
   assert.deepEqual([png.readUInt32BE(16), png.readUInt32BE(20)], [564, 168]);
 });
 
-test('skjermbildene er ekte sider, ikke like feilsider', () => {
-  const dir = join(ROOT, 'qa/sv-da/skjermbilder');
-  const filer = readdirSync(dir).filter((navn) => navn.endsWith('.png'));
-  assert.equal(filer.length, 96);
-  const storrelser = filer.map((navn) => statSync(join(dir, navn)).size);
-  assert.ok(new Set(storrelser).size >= 90, `bare ${new Set(storrelser).size} ulike filstørrelser`);
-  assert.ok(Math.min(...storrelser) > 20_000, 'et skjermbilde er mistenkelig lite');
+test('arbeidsbilder ligger ikke i den publiserbare kilden', () => {
+  assert.equal(existsSync(join(ROOT, '_previews')), false);
+  assert.equal(existsSync(join(ROOT, 'qa/sv-da/skjermbilder')), false);
 });
 
 test('AI-samtykket trekkes tilbake i appen, ikke via nettsidelenken', () => {
