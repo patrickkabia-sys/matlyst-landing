@@ -1,14 +1,19 @@
 (function () {
   'use strict';
 
-  // Bekreftelsessida finnes for at e-postskannere ikke skal melde brukeren av
-  // bare ved å følge lenken. RFC 8058-kallet går direkte til samme funksjon.
-  // Formatkravene speiler supabase/functions/_shared/avmeldLenke.ts: UUID for
-  // brukeren og en 43 tegn lang base64url-signatur.
+  // Sida er ren kulisse rundt ETT kall. All logikk — signaturen, idempotensen,
+  // vernet mot at en e-postskanner melder folk av — bor i edge-funksjonen
+  // `avmeld`. Her ligger bare adressen brukeren tør å lese.
+  //
+  // ⚠️ Hvorfor sida finnes: den ekte lenka går til
+  // <prosjekt-id>.supabase.co, et vertsnavn ingen kjenner igjen, med en UUID
+  // og en 43-tegns signatur etter seg. Den er trygg og ser ut som svindel.
   var FUNKSJON = 'https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld';
   var q = new URLSearchParams(location.search);
   var u = q.get('u') || '';
   var s = q.get('s') || '';
+  // Formkravene speiler avmeldLenke.ts. De er en høflighetssjekk, ikke et
+  // vern: serveren verifiserer signaturen uansett hva vi slipper videre.
   var gyldigForm = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u)
     && /^[A-Za-z0-9_-]{43}$/.test(s);
 
@@ -39,7 +44,8 @@
     fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      // RFC 8058 krever denne eksakte skjemaverdien for ettklikksavmelding.
+      // RFC 8058-kroppen. Den ber funksjonen svare kort i stedet for med sin
+      // egen HTML-side, som er nettopp det vi vil her: kvitteringen er vår.
       body: 'List-Unsubscribe=One-Click',
     }).then(function (svar) {
       if (svar.ok) {

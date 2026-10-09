@@ -25,6 +25,15 @@ test('alle sidene bruker klassene fra det felles stilarket', () => {
     }
   }
   assert.match(css, /\.avmeld-feil\b/u);
+  assert.match(css, /\.avmeld-intro \+ \.avmeld-intro/u);
+  assert.doesNotMatch(css, /\.doc-intro/u);
+  for (const velger of [':root', '*', 'body', 'a']) {
+    assert.doesNotMatch(css, new RegExp(`(?:^|\\n)\\s*${velger.replace('*', '\\*')}(?:[\\s,{])`, 'u'), velger);
+  }
+  assert.match(css, /\.avmeld-rot\s*\{/u);
+  assert.match(css, /\.avmeld-rot \*, \.avmeld-rot \*::before, \.avmeld-rot \*::after/u);
+  assert.match(css, /body\.avmeld-rot/u);
+  assert.match(css, /\.avmeld-rot a\s*\{/u);
   assert.doesNotMatch(readFileSync(join(ROOT, 'avmeld/index.html'), 'utf8'), /<style>/u);
 });
 
@@ -37,8 +46,16 @@ test('det delte skriptet sender u og s til avmeld-endepunktet', () => {
   assert.match(js, /List-Unsubscribe=One-Click/u);
   assert.match(js, /RFC 8058/u);
   assert.match(js, /avmeldLenke\.ts/u);
-  assert.match(js, /Bekreftelsessida/u);
   assert.match(js, /avmeld-status avmeld-feil/u);
+  assert.match(js, /den ekte lenka går til/u);
+  assert.match(js, /høflighetssjekk, ikke et/u);
+  assert.match(js, /RFC 8058-kroppen/u);
+});
+
+test('bokmålssiden beholder forklaringen for reserveflyten uten JavaScript', () => {
+  const html = readFileSync(join(ROOT, 'avmeld/index.html'), 'utf8');
+  assert.match(html, /Uten JavaScript: samme handling, men skjemaet går rett til funksjonen,/u);
+  assert.match(html, /og brukeren lander på dens egen bekreftelsesside\./u);
 });
 
 test('alle sidene har samme funksjonelle elementer', () => {
