@@ -5,14 +5,14 @@
   // Generert av scripts/generer-lokalsider.mjs fra hreflang-parene. Ikke rediger for hånd.
   // Rekkefølge: ?sprak= vinner og lagres, deretter lagret valg, deretter nettleserens språk.
   var LOCALE_PAGE_MAP = Object.freeze({
-    "/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
+    "/": {"nb": "/", "sv": "/sv/", "da": "/da/", "en": "/en/"},
     "/bytt-fra-paprika/": {"nb": "/bytt-fra-paprika/", "sv": "/sv/byt-fran-paprika/", "da": "/da/skift-fra-paprika/"},
-    "/da/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
+    "/da/": {"nb": "/", "sv": "/sv/", "da": "/da/", "en": "/en/"},
     "/da/find-opskrifter/": {"nb": "/finn-oppskrifter/", "sv": "/sv/hitta-recept/", "da": "/da/find-opskrifter/"},
     "/da/gem-opskrifter-fra-instagram/": {"sv": "/sv/spara-recept-fran-instagram/", "da": "/da/gem-opskrifter-fra-instagram/"},
     "/da/gem-opskrifter-fra-tiktok/": {"sv": "/sv/spara-recept-fran-tiktok/", "da": "/da/gem-opskrifter-fra-tiktok/"},
     "/da/haandskrevne-opskrifter/": {"nb": "/handskrevne-oppskrifter/", "sv": "/sv/handskrivna-recept/", "da": "/da/haandskrevne-opskrifter/"},
-    "/da/importer-opskrifter/": {"nb": "/importer-oppskrifter/", "sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/"},
+    "/da/importer-opskrifter/": {"nb": "/importer-oppskrifter/", "sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/", "en": "/en/import-recipes/"},
     "/da/indkoebsliste-app/": {"nb": "/handleliste/", "sv": "/sv/inkopslista/", "da": "/da/indkoebsliste-app/"},
     "/da/madplan-app/": {"nb": "/ukemeny/", "sv": "/sv/veckomeny-app/", "da": "/da/madplan-app/"},
     "/da/middagsforslag/": {"nb": "/middagsforslag/", "sv": "/sv/vad-ska-jag-laga/", "da": "/da/middagsforslag/"},
@@ -20,33 +20,37 @@
     "/da/opskrifter-ud-fra-ingredienser/": {"nb": "/hva-kan-jeg-lage/", "sv": "/sv/recept-pa-ingredienser/", "da": "/da/opskrifter-ud-fra-ingredienser/"},
     "/da/opskrifts-app/": {"sv": "/sv/receptbok-app/", "da": "/da/opskrifts-app/"},
     "/da/opskriftsskabere/": {"nb": "/skapere/", "sv": "/sv/receptskapare/", "da": "/da/opskriftsskabere/"},
-    "/da/privatliv/": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/"},
+    "/da/privatliv/": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/", "en": "/en/privacy/"},
     "/da/skift-fra-paprika/": {"nb": "/bytt-fra-paprika/", "sv": "/sv/byt-fran-paprika/", "da": "/da/skift-fra-paprika/"},
     "/da/slet-konto/": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
     "/da/spisekammer-app/": {"sv": "/sv/skafferi-app/", "da": "/da/spisekammer-app/"},
     "/da/tiktok/": {"nb": "/tiktok/", "sv": "/sv/tiktok/", "da": "/da/tiktok/"},
     "/da/toem-koeleskabet/": {"sv": "/sv/tom-kylskapet/", "da": "/da/toem-koeleskabet/"},
-    "/da/vilkaar/": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/"},
+    "/da/vilkaar/": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/", "en": "/en/terms/"},
+    "/en/": {"nb": "/", "sv": "/sv/", "da": "/da/", "en": "/en/"},
+    "/en/import-recipes/": {"nb": "/importer-oppskrifter/", "sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/", "en": "/en/import-recipes/"},
+    "/en/privacy/": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/", "en": "/en/privacy/"},
+    "/en/terms/": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/", "en": "/en/terms/"},
     "/finn-oppskrifter/": {"nb": "/finn-oppskrifter/", "sv": "/sv/hitta-recept/", "da": "/da/find-opskrifter/"},
     "/handleliste/": {"nb": "/handleliste/", "sv": "/sv/inkopslista/", "da": "/da/indkoebsliste-app/"},
     "/handskrevne-oppskrifter/": {"nb": "/handskrevne-oppskrifter/", "sv": "/sv/handskrivna-recept/", "da": "/da/haandskrevne-opskrifter/"},
     "/hva-kan-jeg-lage/": {"nb": "/hva-kan-jeg-lage/", "sv": "/sv/recept-pa-ingredienser/", "da": "/da/opskrifter-ud-fra-ingredienser/"},
-    "/importer-oppskrifter/": {"nb": "/importer-oppskrifter/", "sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/"},
-    "/index.html": {"nb": "/", "sv": "/sv/", "da": "/da/"},
+    "/importer-oppskrifter/": {"nb": "/importer-oppskrifter/", "sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/", "en": "/en/import-recipes/"},
+    "/index.html": {"nb": "/", "sv": "/sv/", "da": "/da/", "en": "/en/"},
     "/middagsforslag/": {"nb": "/middagsforslag/", "sv": "/sv/vad-ska-jag-laga/", "da": "/da/middagsforslag/"},
-    "/personvern": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/"},
-    "/personvern.html": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/"},
+    "/personvern": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/", "en": "/en/privacy/"},
+    "/personvern.html": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/", "en": "/en/privacy/"},
     "/skapere/": {"nb": "/skapere/", "sv": "/sv/receptskapare/", "da": "/da/opskriftsskabere/"},
     "/slett-konto": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
     "/slett-konto.html": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
-    "/sv/": {"nb": "/", "sv": "/sv/", "da": "/da/"},
+    "/sv/": {"nb": "/", "sv": "/sv/", "da": "/da/", "en": "/en/"},
     "/sv/byt-fran-paprika/": {"nb": "/bytt-fra-paprika/", "sv": "/sv/byt-fran-paprika/", "da": "/da/skift-fra-paprika/"},
     "/sv/enkel-middag/": {"sv": "/sv/enkel-middag/", "da": "/da/nem-mad/"},
     "/sv/handskrivna-recept/": {"nb": "/handskrevne-oppskrifter/", "sv": "/sv/handskrivna-recept/", "da": "/da/haandskrevne-opskrifter/"},
     "/sv/hitta-recept/": {"nb": "/finn-oppskrifter/", "sv": "/sv/hitta-recept/", "da": "/da/find-opskrifter/"},
-    "/sv/importera-recept/": {"nb": "/importer-oppskrifter/", "sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/"},
+    "/sv/importera-recept/": {"nb": "/importer-oppskrifter/", "sv": "/sv/importera-recept/", "da": "/da/importer-opskrifter/", "en": "/en/import-recipes/"},
     "/sv/inkopslista/": {"nb": "/handleliste/", "sv": "/sv/inkopslista/", "da": "/da/indkoebsliste-app/"},
-    "/sv/integritet/": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/"},
+    "/sv/integritet/": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/", "en": "/en/privacy/"},
     "/sv/radera-konto/": {"nb": "/slett-konto.html", "sv": "/sv/radera-konto/", "da": "/da/slet-konto/"},
     "/sv/recept-pa-ingredienser/": {"nb": "/hva-kan-jeg-lage/", "sv": "/sv/recept-pa-ingredienser/", "da": "/da/opskrifter-ud-fra-ingredienser/"},
     "/sv/receptbok-app/": {"sv": "/sv/receptbok-app/", "da": "/da/opskrifts-app/"},
@@ -58,26 +62,29 @@
     "/sv/tom-kylskapet/": {"sv": "/sv/tom-kylskapet/", "da": "/da/toem-koeleskabet/"},
     "/sv/vad-ska-jag-laga/": {"nb": "/middagsforslag/", "sv": "/sv/vad-ska-jag-laga/", "da": "/da/middagsforslag/"},
     "/sv/veckomeny-app/": {"nb": "/ukemeny/", "sv": "/sv/veckomeny-app/", "da": "/da/madplan-app/"},
-    "/sv/villkor/": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/"},
+    "/sv/villkor/": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/", "en": "/en/terms/"},
     "/tiktok/": {"nb": "/tiktok/", "sv": "/sv/tiktok/", "da": "/da/tiktok/"},
     "/ukemeny/": {"nb": "/ukemeny/", "sv": "/sv/veckomeny-app/", "da": "/da/madplan-app/"},
-    "/vilkar": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/"},
-    "/vilkar.html": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/"},
+    "/vilkar": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/", "en": "/en/terms/"},
+    "/vilkar.html": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/", "en": "/en/terms/"},
   });
 
   function normaliserSprak(verdi) {
     var kode = String(verdi || '').toLowerCase().split('-')[0];
-    if (kode === 'sv' || kode === 'da') return kode;
+    if (kode === 'sv' || kode === 'da' || kode === 'en') return kode;
     if (kode === 'nb' || kode === 'nn' || kode === 'no') return 'nb';
     return null;
   }
 
+  // Engelsk velges bare aktivt (?sprak=en eller lagret valg), aldri fra
+  // nettleserspråket. Mange nordmenn har engelsk nettleser, og Googlebot
+  // kjører med en-US; begge skal bli på siden de åpnet.
   function velgSprak(sprakliste, lagret) {
     var valgt = normaliserSprak(lagret);
     if (valgt) return valgt;
     for (var i = 0; i < (sprakliste || []).length; i += 1) {
       valgt = normaliserSprak(sprakliste[i]);
-      if (valgt) return valgt;
+      if (valgt && valgt !== 'en') return valgt;
     }
     return null;
   }

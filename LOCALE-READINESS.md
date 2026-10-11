@@ -30,3 +30,11 @@ Det som skjer ved merge, ligger allerede i PR-en:
 - [ ] Bekreft at `personvern.html` og `vilkar.html` (27. september 2026) fortsatt stemmer med appen.
 
 Ingen av punktene over skal omgås med antatte adresser, foreløpige butikkadresser eller udokumenterte språkfunksjoner.
+
+# Engelsk (/en/)
+
+Status per 11. oktober 2026: PR `feat/en-sider`. Fem sider fra `scripts/generer-lokalsider.mjs`: forside, `/en/import-recipes/`, `/en/unsubscribe/` (noindex), `/en/privacy/` og `/en/terms/`. Stiene er de appen allerede bruker (`juridiskeLenker.ts`, `lib/sprak/en/epost.ts`).
+
+- `hreflang="en"` i gruppene forside, import, personvern, vilkår og avmelding; `x-default` peker på engelsk der den finnes.
+- Engelsk velges bare aktivt (`?sprak=en` eller lagret valg), aldri fra nettleserspråket. Googlebot og nordmenn med engelsk nettleser blir der de er.
+- `/en/privacy/` og `/en/terms/` er UTKAST til juristen har lest dem (HTML-kommentar på sidene). Merge er publisering.

@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import test from 'node:test';
 import vm from 'node:vm';
 
-import { SIDEGRUPPER, alternativerFor, byggLocalePageMap, filForSti } from '../scripts/locale-sider.mjs';
+import { SIDEGRUPPER, SPRAKKODER, alternativerFor, byggLocalePageMap, filForSti } from '../scripts/locale-sider.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const BASE = 'https://matlyst-app.no';
@@ -48,7 +48,7 @@ test('alle tabellførte sider har eksisterende, gjensidig hreflang fra samme tab
         assert.equal(existsSync(join(ROOT, filForSti(maal))), true, `${sti} → ${maal}`);
         if (kode === 'x-default') continue;
         const tilbake = hreflang(les(maal));
-        const egenKode = { nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK' }[sprak];
+        const egenKode = SPRAKKODER[sprak];
         assert.equal(tilbake[egenKode], `${BASE}${sti}`, `${maal} → ${sti}`);
       }
     }

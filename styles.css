@@ -250,6 +250,11 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .locale-page-hero h1{font-size:clamp(46px,7vw,92px);max-width:13ch;margin:16px 0 24px}
 .locale-page-hero .lead{font-size:clamp(17px,2vw,22px);line-height:1.65;max-width:62ch}
 .locale-prose{padding-top:clamp(52px,8vh,88px)}
+.prose ol{margin:0 0 16px;padding-left:22px}
+.prose ol li{padding-left:4px}
+.legal-doc section ul{margin:12px 0 0;padding-left:22px}
+.legal-doc section li{font-size:16px;line-height:1.8;color:var(--ink-soft);margin:0 0 8px}
+.legal-doc section p+p,.legal-doc section ul+p{margin-top:12px}
 .page-cta h2{font-size:clamp(32px,4.5vw,64px);margin-bottom:28px}
 @media(max-width:700px){
   .locale-home-hero h1,.locale-home-hero h1>*{font-size:clamp(39px,11vw,46px);overflow-wrap:anywhere;min-width:0}

@@ -15,7 +15,7 @@ function finnHtml(dir) {
   });
 }
 
-const sider = ['sv', 'da'].flatMap((lang) => finnHtml(join(ROOT, lang)));
+const sider = ['sv', 'da', 'en'].flatMap((lang) => finnHtml(join(ROOT, lang)));
 const tekst = (html) => html
   .replace(/<script(?! type="application\/ld\+json")[\s\S]*?<\/script>/gu, ' ')
   .replace(/<[^>]+>/gu, ' ')

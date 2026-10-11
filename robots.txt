@@ -4,3 +4,4 @@ Allow: /
 Sitemap: https://matlyst-app.no/sitemap.xml
 Sitemap: https://matlyst-app.no/sitemap-sv.xml
 Sitemap: https://matlyst-app.no/sitemap-da.xml
+Sitemap: https://matlyst-app.no/sitemap-en.xml
