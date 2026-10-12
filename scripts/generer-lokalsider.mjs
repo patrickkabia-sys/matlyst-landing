@@ -258,11 +258,11 @@ ${t.steps.map(([h, d], i) => `    <div class="step"><div class="n">0${i + 1}</di
 const legal = {
   sv: {
     terms: {
-      oppdatert:'Senast uppdaterad 9 oktober 2026',
+      oppdatert:'Senast uppdaterad 13 oktober 2026',
       path:'villkor/', title:'Användarvillkor | Matlyst', h1:'Användarvillkor',
       intro:'Villkoren gäller när du använder Matlyst. Matlyst tillhandahålls av Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge. Kontakta oss på hei@matlyst-app.no om något är oklart.',
       sections:[
-        ['1. Användning av tjänsten','Du ansvarar för att uppgifterna i kontot är riktiga och för aktiviteten på kontot. Matlyst får inte användas olagligt, för att göra intrång i andras rättigheter eller för att försöka kringgå säkerheten.'],
+        ['1. Användning av tjänsten','Du ansvarar för att uppgifterna i kontot är riktiga och för aktiviteten på kontot. Matlyst får inte användas olagligt, för att göra intrång i andras rättigheter eller för att försöka kringgå säkerheten. Matlyst använder YouTube API Services. När du importerar från YouTube godkänner du att du är bunden av <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTubes användarvillkor</a>.'],
     ['2. Ålder, samtycke och AI','Vissa funktioner kräver åldersbekräftelse och ett separat samtycke innan innehåll skickas till en AI-leverantör. Du kan använda övriga delar av appen utan detta samtycke.'],
         ['3. Innehåll och rättigheter','Du behåller rättigheterna till recepten och annat innehåll du lägger in. Du ger Matlyst den begränsade rätt som behövs för att lagra, visa, bearbeta och säkerhetskopiera innehållet åt dig.'],
         ['4. Upphovsrätt och borttagning','Importera bara innehåll som du har rätt att använda. Rättighetshavare kan kontakta hei@matlyst-app.no. Vi kan stoppa import från en källa eller ta bort innehåll när det krävs.'],
@@ -305,11 +305,11 @@ const legal = {
   },
   da: {
     terms: {
-      oppdatert:'Senest opdateret 9. oktober 2026',
+      oppdatert:'Senest opdateret 13. oktober 2026',
       path:'vilkaar/', title:'Brugervilkår | Matlyst', h1:'Brugervilkår',
       intro:'Vilkårene gælder, når du bruger Matlyst. Matlyst udbydes af Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge. Skriv til hei@matlyst-app.no, hvis noget er uklart.',
       sections:[
-        ['1. Brug af tjenesten','Du er ansvarlig for, at oplysningerne på kontoen er korrekte, og for aktiviteten på kontoen. Matlyst må ikke bruges ulovligt, til at krænke andres rettigheder eller til at omgå sikkerheden.'],
+        ['1. Brug af tjenesten','Du er ansvarlig for, at oplysningerne på kontoen er korrekte, og for aktiviteten på kontoen. Matlyst må ikke bruges ulovligt, til at krænke andres rettigheder eller til at omgå sikkerheden. Matlyst bruger YouTube API Services. Når du importerer fra YouTube, accepterer du at være bundet af <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTubes servicevilkår</a>.'],
         ['2. Alder, samtykke og AI','Nogle funktioner kræver aldersbekræftelse og et særskilt samtykke, før indhold sendes til en AI-leverandør. Du kan bruge resten af appen uden dette samtykke.'],
         ['3. Indhold og rettigheder','Du beholder rettighederne til opskrifter og andet indhold, du lægger ind. Du giver Matlyst den begrænsede ret, der er nødvendig for at lagre, vise, behandle og sikkerhedskopiere indholdet for dig.'],
         ['4. Ophavsret og fjernelse','Importér kun indhold, du har ret til at bruge. Rettighedshavere kan kontakte hei@matlyst-app.no. Vi kan stoppe import fra en kilde eller fjerne indhold, når det er nødvendigt.'],
@@ -560,11 +560,11 @@ const avsnitt = (...ps) => ps.map((p) => `<p>${p}</p>`).join('');
 legal.en = {
   terms: {
     utkast: UTKAST_EN,
-    oppdatert: 'Last updated 11 October 2026',
+    oppdatert: 'Last updated 13 October 2026',
     path: 'terms/', title: 'Terms of Use | Matlyst', h1: 'Terms of Use',
     intro: 'By using Matlyst you agree to these terms. Matlyst is provided by Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norway. If anything here is unclear, email hei@matlyst-app.no.',
     sections: [
-      ['1. Using Matlyst', 'Matlyst is a meal-planning service for personal, non-commercial use. You are responsible for the content you import and store, including your right to import it, and for not breaching the terms of the site or service it comes from. You agree not to use Matlyst unlawfully.'],
+      ['1. Using Matlyst', 'Matlyst is a meal-planning service for personal, non-commercial use. You are responsible for the content you import and store, including your right to import it, and for not breaching the terms of the site or service it comes from. You agree not to use Matlyst unlawfully. Matlyst uses YouTube API Services. By importing from YouTube, you agree to be bound by the <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a>.'],
       ['2. Age, consent and AI', avsnitt(
         'Matlyst has no general age limit. Some features (analytics, the food log and AI sharing) require you to confirm the minimum age for the country you live in, as described in the <a href="/en/privacy/">Privacy Policy</a>. Confirming your age does not give you the right to enter into every agreement or buy a subscription without permission from a parent or guardian where that is needed.',
         'Matlyst uses AI to read, categorise and translate recipes and to answer questions. When you import from a photo, the image may be processed by AI to read the recipe, so please don’t send private information the recipe doesn’t need. AI output can be wrong. Always check allergens, food safety and instructions yourself.',
