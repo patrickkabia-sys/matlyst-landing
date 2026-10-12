@@ -6,34 +6,35 @@ import test from 'node:test';
 const ROOT = new URL('..', import.meta.url).pathname;
 const les = (sti) => readFileSync(join(ROOT, sti), 'utf8');
 
+// nb dekkes av personvern-underleverandorer-nb.test.mjs. Her: sv, da og en, som genereres
+// fra scripts/generer-lokalsider.mjs og skal ha samme innhold.
 const SIDER = {
-  nb: 'personvern.html',
   sv: 'sv/integritet/index.html',
   da: 'da/privatliv/index.html',
   en: 'en/privacy/index.html',
 };
 
-// Dataflytene i appen (supabase/functions/_shared/email.ts, expoPush.ts, recipeImage.ts,
-// youtube.ts, check-password-breach, app.json googleServicesFile og updates.url) skal stå
-// i personvernteksten på alle fire språk.
-test('alle språk nevner underleverandørene og dataflytene fra 12.10', () => {
+test('sv, da og en nevner underleverandørene og dataflytene', () => {
   for (const [sprak, fil] of Object.entries(SIDER)) {
     const html = les(fil);
-    for (const navn of ['Resend', 'Google Fonts', 'Firebase Cloud Messaging', 'Expo', 'Pwned Passwords', 'YouTube Data API', 'TikTok', 'Meta']) {
+    for (const navn of ['Resend', 'Google Fonts', 'Firebase Cloud Messaging', 'Expo', 'Pwned Passwords', 'YouTube Data API', 'TikTok', 'Meta', 'SHA-1', '48', 'hei@matlyst-app.no']) {
       assert.ok(html.includes(navn), `${sprak}: mangler ${navn}`);
     }
-    assert.ok(html.includes('SHA-1'), `${sprak}: passordsjekken skal forklare hashen`);
-    assert.ok(html.includes('48'), `${sprak}: påminnelsen etter 48 timer`);
   }
 });
 
-test('Resend står ikke med et overføringsgrunnlag som ikke er avklart', () => {
-  assert.doesNotMatch(les(SIDER.en), /RevenueCat and Resend/u);
+// Resend og Expo var aktive på dataprivacyframework.gov/list 13.10.2026.
+test('Resend og Expo står under Data Privacy Framework på alle språk', () => {
+  const dpf = {
+    sv: /Resend \(mejl\) och Expo \(notiser och appuppdateringar\): EU–US Data Privacy Framework/u,
+    da: /Resend \(e-mails\) og Expo \(notifikationer og appopdateringer\) i USA sker på grundlag af EU-US Data Privacy Framework/u,
+    en: /Data Privacy Framework, with Standard Contractual Clauses where it does not apply:<\/strong> Apple, Google, Meta, RevenueCat, Resend and Expo\./u,
+  };
+  for (const [sprak, fil] of Object.entries(SIDER)) assert.match(les(fil), dpf[sprak], sprak);
 });
 
-test('sist oppdatert er 12. oktober 2026 på alle språk', () => {
-  assert.match(les(SIDER.nb), /Sist oppdatert 12\. oktober 2026/u);
-  assert.match(les(SIDER.sv), /Senast uppdaterad 12 oktober 2026/u);
-  assert.match(les(SIDER.da), /Senest opdateret 12\. oktober 2026/u);
-  assert.match(les(SIDER.en), /Last updated 12 October 2026/u);
+test('sist oppdatert er 13. oktober 2026 på sv, da og en', () => {
+  assert.match(les(SIDER.sv), /Senast uppdaterad 13 oktober 2026/u);
+  assert.match(les(SIDER.da), /Senest opdateret 13\. oktober 2026/u);
+  assert.match(les(SIDER.en), /Last updated 13 October 2026/u);
 });
