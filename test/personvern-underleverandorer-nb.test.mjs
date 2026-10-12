@@ -19,9 +19,13 @@ test('personvernerklæringen nevner underleverandørene og dataflytene', () => {
   assert.match(nb, /Sist oppdatert 13\. oktober 2026/u);
 });
 
-// YouTube API Services Developer Policies III.A.2 b–c: erklæringen må si at appen bruker
-// YouTube API Services og lenke til Googles personvernerklæring (og YouTubes vilkår, III.A.1).
+// YouTube API Services Developer Policies III.A.2 b–c og III.D.2: erklæringen må si at appen
+// bruker YouTube API Services, lenke til Googles personvernerklæring og til Googles
+// sikkerhetsinnstillinger. Setningen om YouTubes vilkår i egne vilkår (III.A.1) testes i
+// vilkar-youtube.test.mjs.
 test('YouTube API Services er opplyst med lenker, og spillelistebildene fra i.ytimg.com', () => {
+  assert.ok(nb.includes('href="https://security.google.com/settings/security/permissions"'));
+  assert.match(nb, /ber ikke om tilgang til Google- eller\s+YouTube-kontoen din/u);
   assert.match(nb, /Matlyst bruker YouTube API Services/u);
   assert.ok(nb.includes('href="https://www.youtube.com/t/terms"'));
   assert.ok(nb.includes('href="https://policies.google.com/privacy"'));
