@@ -86,7 +86,7 @@
   "name": "Personvernerklæring for Matlyst",
   "url": "https://matlyst-app.no/personvern.html",
   "inLanguage": "nb-NO",
-  "dateModified": "2026-10-09",
+  "dateModified": "2026-10-12",
   "author": { "@type": "Person", "name": "Patrick Kabia" },
   "publisher": { "@type": "Organization", "name": "Matlyst", "url": "https://matlyst-app.no/" },
   "description": "Hva Matlyst samler, hvorfor, hvem som behandler det, og tre løfter som gjelder alle brukere: bruksanalyse av til du sier ja, ingen betaling for personvern, ingen annonser og ingen salg av data."
@@ -126,7 +126,7 @@
 <main class="doc">
   <p class="doc-kicker">Personvern</p>
   <h1 class="doc-title">Personvern­erklæring</h1>
-  <p class="doc-updated">Sist oppdatert 9. oktober 2026</p>
+  <p class="doc-updated">Sist oppdatert 12. oktober 2026</p>
 
   <p class="doc-intro">
     Matlyst er en matapp som lar deg importere, organisere og lage oppskrifter. Vi samler kun dataene
@@ -194,12 +194,19 @@
     eller <strong>ta bilde av en håndskrevet oppskrift eller en kokebok</strong>. Vi henter kun innhold du selv
     deler med appen. Lager du oppskrifter selv? <a href="/skapere/">Slik behandler vi innholdet til matskapere og bloggere</a>.
   </p>
+  <p>
+    Importerer du fra Instagram, TikTok eller YouTube, spør serveren vår plattformen om bildetekst,
+    miniatyrbilde og hvem som la ut innholdet. Instagram-lenken går da til Meta, TikTok-lenken til TikTok,
+    og ID-en til videoen eller spillelisten til Google (YouTube Data API). Det er serveren vår som spør,
+    så plattformene får ingen opplysninger om deg: verken konto-ID, e-post eller IP-adressen din.
+  </p>
 
   <h3>Teknisk bruk</h3>
   <ul>
     <li>En teknisk feilsøkingslogg i vår egen database når noe går galt i appen, knyttet til konto-ID-en din. Den slettes automatisk etter 90 dager, og når du sletter kontoen.</li>
     <li>Feil- og krasjrapporter (Sentry) for å forbedre stabiliteten.</li>
-    <li>Push-token (en unik enhets-ID) hvis du tillater varsler — brukes kun til å sende deg varsler, ikke til sporing. Det slettes når du logger ut, og når du sletter kontoen.</li>
+    <li>Push-token (en unik enhets-ID) hvis du tillater varsler — brukes kun til å sende deg varsler, ikke til sporing. Varslene leveres gjennom Expo, som sender dem videre via Apple på iOS og Google Firebase Cloud Messaging på Android. De får push-tokenet og teksten i varselet, for eksempel navnet på en oppskrift. Firebase brukes bare til å levere varsler, ikke til analyse. Tokenet slettes når du logger ut, og når du sletter kontoen.</li>
+    <li>Appoppdateringer: appen henter oppdateringer fra serverne til Expo. Expo får da IP-adressen din og hvilken appversjon og plattform du bruker.</li>
     <li>Appversjon og enhetsinformasjon for feilretting.</li>
     <li>Bruksstatistikk (hvilke funksjoner og skjermer som brukes) for å forbedre appen, og kun hvis du har samtykket. Statistikken er <strong>pseudonym, ikke anonym</strong>: den knyttes til den tilfeldig genererte konto-ID-en din, slik at hendelser fra samme bruker kan ses i sammenheng. Vi sender aldri navn, e-post eller oppskriftsinnhold.</li>
   </ul>
@@ -218,13 +225,36 @@
     bruksstatistikk. Selve teksten, skjermbildet og oppskrifts-ID-en sendes ikke til PostHog.
   </p>
 
+  <h3>E-post fra Matlyst</h3>
+  <p>
+    Vi sender bare noen få e-poster fra appen: en velkomst når du har registrert deg, en takk når du kjøper
+    Matlyst Pro, én påminnelse 48 timer etter registreringen hvis du ennå ikke har lagret en oppskrift, og
+    beskjed når en tilbakemelding du har sendt, er publisert eller fikset. E-postene sendes gjennom
+    <strong>Resend</strong> (USA), som får e-postadressen din, fornavnet ditt der e-posten bruker det, og
+    innholdet i e-posten.
+  </p>
+  <p>
+    Velkomsten, takken og påminnelsen henter skrifttyper fra <strong>Google Fonts</strong>. Viser
+    e-postprogrammet ditt bilder og annet eksternt innhold, får Google IP-adressen din når du åpner e-posten.
+  </p>
+
+  <h3>Passordsjekk</h3>
+  <p>
+    Når du velger et passord, sjekker vi om det finnes i kjente datalekkasjer. Serveren vår lager en
+    SHA-1-hash av passordet og sender bare de fem første tegnene av hashen til tjenesten
+    <strong>Pwned Passwords</strong> (Have I Been Pwned). Tjenesten svarer med lekkede hasher som begynner
+    likt, og sammenligningen skjer hos oss. Verken passordet, hele hashen eller e-posten din sendes ut.
+  </p>
+
   <h2>Formål og rettslig grunnlag</h2>
   <p>Vi behandler dine opplysninger på følgende grunnlag etter GDPR:</p>
   <ul>
     <li><strong>Avtale (art. 6 b).</strong> Levere kjernefunksjonene: import, lagring, planlegging og synkronisering mellom enhetene dine, samt behandle abonnement (Matlyst Pro).</li>
+    <li><strong>Avtale (art. 6 b).</strong> Velkomst-e-post, takk for kjøpet og appoppdateringer.</li>
     <li><strong>Avtale (art. 6 b).</strong> Vise navn, brukernavn og profilbilde til andre brukere gjennom søk, følging og husstand — valgfritt og kan fjernes når som helst.</li>
     <li><strong>Berettiget interesse (art. 6 f).</strong> Teknisk feilsøkingslogg og feil- og krasjrapportering for å holde appen stabil og sikker. Du kan protestere, se «Dine rettigheter».</li>
     <li><strong>Berettiget interesse (art. 6 f).</strong> Behandle tilbakemeldinger du selv sender, vise godkjente innspill anonymt og gi deg status på saken, slik at vi kan forbedre og drifte Matlyst.</li>
+    <li><strong>Berettiget interesse (art. 6 f).</strong> Passordsjekken mot kjente datalekkasjer, for å beskytte kontoen din, og én påminnelse på e-post etter registreringen.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Bruksstatistikk i appen. Vi spør deg eksplisitt, og vi samler ingenting før du har sagt ja. Du kan trekke samtykket tilbake når som helst under Innstillinger, like enkelt som du ga det.</li>
     <li><strong>Uttrykkelig samtykke (art. 6 nr. 1 bokstav a og art. 9 nr. 2 bokstav a).</strong> Behandling av helseopplysninger i matlogg og kalorimål. Dette samtykket er separat fra analyse og KI og kan trekkes tilbake i appens innstillinger.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Personaliserte daglige middagsforslag generert av KI, og push-varsler. Begge kan trekkes tilbake når som helst.</li>
@@ -331,8 +361,10 @@
   <p>Vi selger aldri dataene dine. Vi bruker betrodde leverandører for å drifte tjenesten:</p>
   <ul>
     <li><strong>Supabase</strong> — database, innlogging og fillagring (EU/EØS).</li>
-    <li><strong>Apple</strong> — «Logg inn med Apple», App Store og kjøp (iOS).</li>
-    <li><strong>Google</strong> — «Logg inn med Google», Google Play og kjøp (Android).</li>
+    <li><strong>Apple</strong> — «Logg inn med Apple», App Store, kjøp og push-varsler (iOS).</li>
+    <li><strong>Google</strong> — «Logg inn med Google», Google Play, kjøp og push-varsler via Firebase Cloud Messaging (Android).</li>
+    <li><strong>Expo</strong> — levering av push-varsler og appoppdateringer (USA).</li>
+    <li><strong>Resend</strong> — utsending av e-post fra appen, som velkomst og takk for kjøpet (USA).</li>
     <li><strong>RevenueCat</strong> — administrasjon av abonnement.</li>
     <li><strong>Google (Gemini API)</strong>: primærleverandør for KI-behandling i det eksisterende oppsettet for eldre kontoer uten den nye KI-bekreftelsen (USA, betalt API uten trening på innholdet).</li>
     <li><strong>Anthropic Ireland, Limited</strong>: KI-behandling for kontoer med den nye KI-bekreftelsen og reserveleverandør i det eksisterende oppsettet for eldre kontoer uten denne bekreftelsen.</li>
@@ -341,7 +373,7 @@
     <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet. Skjemaet lastes først når du tar i e-postfeltet.</li>
     <li><strong>Google (reCAPTCHA)</strong> — robotkontroll i påmeldingsskjemaet for nyhetsbrevet. Lastes av EmailOctopus sitt skjema, altså først når du tar i e-postfeltet, og Google mottar da IP-adressen din. Rører du ikke feltet, kontaktes den ikke.</li>
     <li><strong>Meta (Facebook)</strong> — måling av markedsføring på nettstedet (kun ved samtykke).</li>
-    <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke).</li>
+    <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke) og skrifttyper i e-postene våre (Google Fonts).</li>
   </ul>
 
   <h3>Overføring ut av EØS</h3>

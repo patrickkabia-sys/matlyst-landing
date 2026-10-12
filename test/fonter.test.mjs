@@ -176,8 +176,12 @@ test('avmeld.css har de samme lokale fontene som styles.css', () => {
   assert.deepEqual(fontFaces(readFileSync(join(ROT, 'avmeld.css'), 'utf8')), fontFaces(css()));
 });
 
-test('personvernerklæringen sier ikke lenger at skriftene hentes fra Google', () => {
+test('personvernerklæringen sier ikke lenger at nettstedet henter skriftene fra Google', () => {
   const tekst = readFileSync(join(ROT, 'personvern.html'), 'utf8');
-  assert.doesNotMatch(tekst, /Google Fonts/u);
-  assert.match(tekst, /Skriftene ligger på vår egen server/u);
+  // Nettstedet selvhoster skriftene. Google Fonts nevnes bare for e-postene fra appen,
+  // som fortsatt henter skrifttyper derfra (supabase/functions/_shared/velkomstEpost.ts m.fl.).
+  const nettstedet = tekst.slice(tekst.indexOf('id="nettstedet"'), tekst.indexOf('<h2', tekst.indexOf('id="nettstedet"') + 1));
+  assert.doesNotMatch(nettstedet, /Google Fonts/u);
+  assert.match(nettstedet, /Skriftene ligger på vår egen server/u);
+  assert.match(tekst, /<h3>E-post fra Matlyst<\/h3>[\s\S]*Google Fonts/u);
 });
