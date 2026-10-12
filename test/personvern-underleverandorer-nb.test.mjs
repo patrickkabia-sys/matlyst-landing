@@ -19,6 +19,22 @@ test('personvernerklæringen nevner underleverandørene og dataflytene', () => {
   assert.match(nb, /Sist oppdatert 13\. oktober 2026/u);
 });
 
+// YouTube API Services Developer Policies III.A.2 b–c: erklæringen må si at appen bruker
+// YouTube API Services og lenke til Googles personvernerklæring (og YouTubes vilkår, III.A.1).
+test('YouTube API Services er opplyst med lenker, og spillelistebildene fra i.ytimg.com', () => {
+  assert.match(nb, /Matlyst bruker YouTube API Services/u);
+  assert.ok(nb.includes('href="https://www.youtube.com/t/terms"'));
+  assert.ok(nb.includes('href="https://policies.google.com/privacy"'));
+  assert.match(nb, /i\.ytimg\.com/u);
+});
+
+// TikTok er en selvstendig mottaker av en offentlig lenke, ikke databehandler.
+test('TikTok står ikke i leverandørlista', () => {
+  const liste = nb.slice(nb.indexOf('Hvem vi deler med'), nb.indexOf('Lagring på enheten din'));
+  assert.doesNotMatch(liste, /TikTok/u);
+  assert.match(nb, /Expo og Apple eller Google får push-tokenet/u);
+});
+
 // Resend og Expo var aktive på dataprivacyframework.gov/list 13.10.2026.
 test('Resend og Expo står i DPF-raden for overføring', () => {
   const rad = nb.match(/<li><strong>USA: EU-US Data Privacy Framework[^]*?<\/li>/u)[0];

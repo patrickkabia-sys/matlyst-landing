@@ -23,6 +23,26 @@ test('sv, da og en nevner underleverandørene og dataflytene', () => {
   }
 });
 
+test('sv, da og en låser formuleringene fra Opus-kontrollen', () => {
+  const krav = {
+    sv: [/Matlyst använder YouTube API Services/u, /spårningskoder/u, /slumpmässigt id som hör till just den installationen/u, /mejl för inloggning \(/u, /Expo och Apple eller Google får din push-token/u, /i\.ytimg\.com/u],
+    da: [/Matlyst bruger YouTube API Services/u, /sporingskoder/u, /tilfældigt id, der er knyttet til netop denne installation/u, /e-mails til login \(/u, /Expo og Apple eller Google får dit push-token/u, /i\.ytimg\.com/u],
+    en: [/Matlyst uses YouTube API Services/u, /tracking codes/u, /random ID that stays the same for your installation/u, /sign-in emails, such as/u, /Expo and Apple or Google receive the push token/u, /i\.ytimg\.com/u],
+  };
+  for (const [sprak, fil] of Object.entries(SIDER)) {
+    const html = les(fil);
+    for (const m of krav[sprak]) assert.match(html, m, sprak);
+    assert.ok(html.includes('href="https://www.youtube.com/t/terms"'), `${sprak}: YouTubes vilkår`);
+    assert.ok(html.includes('href="https://policies.google.com/privacy"'), `${sprak}: Googles personvernerklæring`);
+  }
+});
+
+test('TikTok står ikke som leverandør eller i overføringsavsnittet', () => {
+  assert.doesNotMatch(les(SIDER.sv), /TikTok får länken/u);
+  assert.doesNotMatch(les(SIDER.da), /TikTok får linket/u);
+  assert.doesNotMatch(les(SIDER.en), /<strong>TikTok:<\/strong>/u);
+});
+
 // Resend og Expo var aktive på dataprivacyframework.gov/list 13.10.2026.
 test('Resend og Expo står under Data Privacy Framework på alle språk', () => {
   const dpf = {
