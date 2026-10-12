@@ -201,12 +201,19 @@
     så vi sender ikke konto-ID-en, e-postadressen eller IP-adressen din. Instagram- og TikTok-lenken sendes
     slik du delte den, og delingslenker kan inneholde plattformens egne sporingskoder.
   </p>
+  <p>
+    Matlyst bruker YouTube API Services. Når du importerer fra YouTube, godtar du
+    <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTubes vilkår for bruk</a>.
+    Se også <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Googles personvernerklæring</a>.
+    Importerer du en hel spilleliste, viser appen miniatyrbildene til videoene rett fra YouTubes servere
+    (i.ytimg.com), og da får Google IP-adressen din.
+  </p>
 
   <h3>Teknisk bruk</h3>
   <ul>
     <li>En teknisk feilsøkingslogg i vår egen database når noe går galt i appen, knyttet til konto-ID-en din. Den slettes automatisk etter 90 dager, og når du sletter kontoen.</li>
     <li>Feil- og krasjrapporter (Sentry) for å forbedre stabiliteten.</li>
-    <li>Push-token (en unik enhets-ID) hvis du tillater varsler — brukes kun til å sende deg varsler, ikke til sporing. Varslene leveres gjennom Expo, som sender dem videre via Apple på iOS og Google Firebase Cloud Messaging på Android. Fremdriften for en import på låseskjermen (Live Activity) sender serveren vår direkte til Apple. De får push-tokenet og teksten i varselet, for eksempel navnet på en oppskrift. Firebase brukes bare til å levere varsler, ikke til analyse. Tokenet slettes når du logger ut, og når du sletter kontoen.</li>
+    <li>Push-token (en unik enhets-ID) hvis du tillater varsler — brukes kun til å sende deg varsler, ikke til sporing. Varslene leveres gjennom Expo, som sender dem videre via Apple på iOS og Google Firebase Cloud Messaging på Android. Fremdriften for en import på låseskjermen (Live Activity) sender serveren vår direkte til Apple. Expo og Apple eller Google får push-tokenet og teksten i varselet, for eksempel navnet på en oppskrift. Firebase brukes bare til å levere varsler, ikke til analyse. Tokenet slettes når du logger ut, og når du sletter kontoen.</li>
     <li>Appoppdateringer: appen henter oppdateringer fra serverne til Expo. Expo får da IP-adressen din, hvilken appversjon og plattform du bruker, og en tilfeldig ID som er fast for installasjonen.</li>
     <li>Appversjon og enhetsinformasjon for feilretting.</li>
     <li>Bruksstatistikk (hvilke funksjoner og skjermer som brukes) for å forbedre appen, og kun hvis du har samtykket. Statistikken er <strong>pseudonym, ikke anonym</strong>: den knyttes til den tilfeldig genererte konto-ID-en din, slik at hendelser fra samme bruker kan ses i sammenheng. Vi sender aldri navn, e-post eller oppskriftsinnhold.</li>
@@ -228,8 +235,8 @@
 
   <h3>E-post fra Matlyst</h3>
   <p>
-    Vi sender noen få typer e-post fra appen: e-poster for innlogging, som bekreftelse av kontoen, lenke for
-    nytt passord og bekreftelse når du endrer e-postadressen, en velkomst når du har registrert deg, en takk
+    Vi sender noen få typer e-post fra appen: e-poster for innlogging (bekreftelse av kontoen, lenke for
+    nytt passord og bekreftelse når du endrer e-postadressen), en velkomst når du har registrert deg, en takk
     når du kjøper Matlyst Pro, én påminnelse 48 timer etter registreringen hvis du ennå ikke har lagret en
     oppskrift, og beskjed når en tilbakemelding du har sendt, er publisert eller fikset. Alle sendes gjennom
     <strong>Resend</strong> (USA), som får e-postadressen din, fornavnet ditt der e-posten bruker det, og
@@ -376,7 +383,6 @@
     <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet. Skjemaet lastes først når du tar i e-postfeltet.</li>
     <li><strong>Google (reCAPTCHA)</strong> — robotkontroll i påmeldingsskjemaet for nyhetsbrevet. Lastes av EmailOctopus sitt skjema, altså først når du tar i e-postfeltet, og Google mottar da IP-adressen din. Rører du ikke feltet, kontaktes den ikke.</li>
     <li><strong>Meta (Facebook)</strong> — oppslag når du importerer fra Instagram, og måling av markedsføring på nettstedet (kun ved samtykke).</li>
-    <li><strong>TikTok</strong> — oppslag når du importerer fra TikTok. TikTok får lenken du delte.</li>
     <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke), skrifttyper i e-postene våre (Google Fonts) og oppslag når du importerer fra YouTube.</li>
   </ul>
 
