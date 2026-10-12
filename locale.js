@@ -76,18 +76,24 @@
     return null;
   }
 
-  // Engelsk velges bare aktivt (?sprak=en eller lagret valg), aldri fra
-  // nettleserspråket. Mange nordmenn har engelsk nettleser, og Googlebot
-  // kjører med en-US; begge skal bli på siden de åpnet.
+  // Markedsregel: nb/sv/da beholder sitt, resten av verden får engelsk.
+  // Første nordiske språk i listen vinner, så en nordmann med engelsk
+  // nettleser og norsk som andrevalg blir på norsk. Står ingen av dem i
+  // listen, er svaret engelsk.
   function velgSprak(sprakliste, lagret) {
     var valgt = normaliserSprak(lagret);
     if (valgt) return valgt;
-    for (var i = 0; i < (sprakliste || []).length; i += 1) {
-      valgt = normaliserSprak(sprakliste[i]);
+    var liste = (sprakliste || []).filter(Boolean);
+    for (var i = 0; i < liste.length; i += 1) {
+      valgt = normaliserSprak(liste[i]);
       if (valgt && valgt !== 'en') return valgt;
     }
-    return null;
+    return liste.length ? 'en' : null;
   }
+
+  // Søkemotorer omdirigeres ikke automatisk. De kjører med en-US og skal
+  // indeksere hver språkside der den står; hreflang og x-default gjør resten.
+  var ROBOT = /bot|crawl|spider|slurp|lighthouse/i;
 
   function finnMaalsti(sti, maalSprak, tabell) {
     var rad = (tabell || LOCALE_PAGE_MAP)[sti];
@@ -104,6 +110,7 @@
     }
     var lagret = null;
     try { lagret = global.localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (!lagret && ROBOT.test(global.navigator.userAgent || '')) return;
     var valgt = velgSprak(global.navigator.languages || [global.navigator.language], lagret);
     var maal = finnMaalsti(global.location.pathname, valgt, LOCALE_PAGE_MAP);
     if (maal && maal !== global.location.pathname) global.location.replace(maal + global.location.search + global.location.hash);

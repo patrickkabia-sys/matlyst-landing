@@ -25,6 +25,16 @@ test('juridiske sider er merket som utkast og viser ingen interne markører', ()
   }
 });
 
+test('engelsk personvern nevner de samme leverandørene som norsk', () => {
+  const norsk = les('personvern.html');
+  const engelsk = les('en/privacy/');
+  const leverandorer = ['Supabase', 'Apple', 'Google', 'Gemini', 'Anthropic Ireland, Limited', 'RevenueCat', 'Sentry', 'PostHog', 'EmailOctopus', 'reCAPTCHA', 'Meta', 'Google Analytics'];
+  for (const navn of leverandorer) {
+    assert.ok(norsk.includes(navn), `norsk mangler ${navn}`);
+    assert.ok(engelsk.includes(navn), `engelsk mangler ${navn}`);
+  }
+});
+
 test('engelske sider har engelsk sitemap i robots.txt', () => {
   assert.match(les('robots.txt'), /^Sitemap: https:\/\/matlyst-app\.no\/sitemap-en\.xml$/mu);
   const xml = les('sitemap-en.xml');
@@ -34,24 +44,41 @@ test('engelske sider har engelsk sitemap i robots.txt', () => {
   assert.doesNotMatch(xml, /en\/unsubscribe/u);
 });
 
-function besok(url, { sprak = ['en-US'], lagret = null } = {}) {
+function besok(url, { sprak = ['en-US'], lagret = null, agent = 'Mozilla/5.0' } = {}) {
   const { pathname, search, hash } = new URL(url, 'https://matlyst-app.no');
   const lager = new Map(lagret ? [['matlyst-sprak', lagret]] : []);
   const omdirigert = [];
   const window = {
     location: { pathname, search, hash, replace: (til) => omdirigert.push(til) },
-    navigator: { languages: sprak, language: sprak[0] },
+    navigator: { languages: sprak, language: sprak[0], userAgent: agent },
     localStorage: { getItem: (k) => lager.get(k) ?? null, setItem: (k, v) => lager.set(k, v) },
   };
   vm.runInNewContext(les('locale.js'), { window, URLSearchParams });
   return { til: omdirigert[0] ?? null, lagret: lager.get('matlyst-sprak') ?? null };
 }
 
-test('engelsk nettleser omdirigeres aldri, verken norsk side eller engelsk', () => {
-  assert.equal(besok('/').til, null);
+test('ukjente og engelske nettleserspråk får engelsk, nordiske beholder sitt', () => {
+  assert.equal(besok('/').til, '/en/');
+  assert.equal(besok('/', { sprak: ['de-DE', 'fr'] }).til, '/en/');
+  assert.equal(besok('/vilkar.html', { sprak: ['es-ES'] }).til, '/en/terms/');
+  assert.equal(besok('/sv/integritet/', { sprak: ['ja-JP'] }).til, '/en/privacy/');
   assert.equal(besok('/en/', { sprak: ['en-GB'] }).til, null);
   assert.equal(besok('/', { sprak: ['en-US', 'nb-NO'] }).til, null);
+  assert.equal(besok('/', { sprak: ['de-DE', 'nn'] }).til, null);
   assert.equal(besok('/', { sprak: ['en-US', 'sv-SE'] }).til, '/sv/');
+  assert.equal(besok('/en/', { sprak: ['da-DK'] }).til, '/da/');
+});
+
+test('ukjent språk på en side uten engelsk motstykke blir der den er', () => {
+  assert.equal(besok('/ukemeny/', { sprak: ['de-DE'] }).til, null);
+  assert.equal(besok('/sv/enkel-middag/', { sprak: ['fr-FR'] }).til, null);
+});
+
+test('søkemotorer omdirigeres ikke automatisk', () => {
+  const googlebot = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+  assert.equal(besok('/', { agent: googlebot }).til, null);
+  assert.equal(besok('/sv/', { agent: googlebot }).til, null);
+  assert.equal(besok('/', { agent: 'Mozilla/5.0 (compatible; bingbot/2.0)' }).til, null);
 });
 
 test('engelsk som aktivt valg lagres og følges', () => {

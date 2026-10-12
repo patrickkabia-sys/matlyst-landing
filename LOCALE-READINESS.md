@@ -36,5 +36,5 @@ Ingen av punktene over skal omgås med antatte adresser, foreløpige butikkadres
 Status per 11. oktober 2026: PR `feat/en-sider`. Fem sider fra `scripts/generer-lokalsider.mjs`: forside, `/en/import-recipes/`, `/en/unsubscribe/` (noindex), `/en/privacy/` og `/en/terms/`. Stiene er de appen allerede bruker (`juridiskeLenker.ts`, `lib/sprak/en/epost.ts`).
 
 - `hreflang="en"` i gruppene forside, import, personvern, vilkår og avmelding; `x-default` peker på engelsk der den finnes.
-- Engelsk velges bare aktivt (`?sprak=en` eller lagret valg), aldri fra nettleserspråket. Googlebot og nordmenn med engelsk nettleser blir der de er.
+- Markedsregel (Patrick 12.10): nb/no/nn, sv og da beholder sitt; andre nettleserspråk sendes til det engelske motstykket der det finnes. Første nordiske språk i listen vinner, så `en-US, nb-NO` blir på norsk. Søkemotorer (bot/crawl/spider i user agent) omdirigeres ikke.
 - `/en/privacy/` og `/en/terms/` er UTKAST til juristen har lest dem (HTML-kommentar på sidene). Merge er publisering.

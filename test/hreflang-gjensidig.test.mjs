@@ -90,3 +90,12 @@ test('lokale kildesider har ingen falske språk-motstykker', () => {
     assert.deepEqual(språklenker, [[sti.startsWith('/sv/') ? 'sv-SE' : 'da-DK', sti]]);
   }
 });
+
+test('x-default peker på det engelske motstykket i alle grupper som har et', () => {
+  for (const gruppe of SIDEGRUPPER.filter(({ sider }) => sider.en)) {
+    for (const sti of Object.values(gruppe.sider)) {
+      const html = les(sti);
+      assert.match(html, new RegExp(`<link rel="alternate" hreflang="x-default" href="https://matlyst-app\\.no${gruppe.sider.en}">`, 'u'), sti);
+    }
+  }
+});
