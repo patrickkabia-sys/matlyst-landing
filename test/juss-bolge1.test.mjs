@@ -8,13 +8,30 @@ import test from 'node:test';
 const ROOT = new URL('..', import.meta.url).pathname;
 const les = (sti) => readFileSync(join(ROOT, sti), 'utf8');
 
-// sv, da og en kommer med grenen fix/juss-bolge1-sv-da-en.
 const SPRAK = {
   nb: {
     personvern: 'personvern.html',
     sletting: 'slett-konto.html',
     vilkar: 'vilkar.html',
     sprakene: /norsk, svensk, dansk eller engelsk/u,
+  },
+  sv: {
+    personvern: 'sv/integritet/index.html',
+    sletting: 'sv/radera-konto/index.html',
+    vilkar: 'sv/villkor/index.html',
+    sprakene: /svenska, norska, danska eller engelska/u,
+  },
+  da: {
+    personvern: 'da/privatliv/index.html',
+    sletting: 'da/slet-konto/index.html',
+    vilkar: 'da/vilkaar/index.html',
+    sprakene: /dansk, norsk, svensk eller engelsk/u,
+  },
+  en: {
+    personvern: 'en/privacy/index.html',
+    sletting: 'en/privacy/index.html',
+    vilkar: 'en/terms/index.html',
+    sprakene: /English, Norwegian, Swedish or Danish/u,
   },
 };
 const ANDRE_SPRAK = ['sv', 'da', 'en'].filter((k) => !(k in SPRAK));
