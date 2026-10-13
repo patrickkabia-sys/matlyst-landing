@@ -17,7 +17,7 @@ const SIDER = {
 test('sv, da og en nevner underleverandørene og dataflytene', () => {
   for (const [sprak, fil] of Object.entries(SIDER)) {
     const html = les(fil);
-    for (const navn of ['Resend', 'Google Fonts', 'Firebase Cloud Messaging', 'Expo', 'Pwned Passwords', 'YouTube Data API', 'TikTok', 'Meta', 'SHA-1', '48', 'hei@matlyst-app.no']) {
+    for (const navn of ['Resend', 'GitHub', 'Firebase Cloud Messaging', 'Expo', 'Pwned Passwords', 'YouTube Data API', 'TikTok', 'Meta', 'SHA-1', '48', 'hei@matlyst-app.no']) {
       assert.ok(html.includes(navn), `${sprak}: mangler ${navn}`);
     }
   }
@@ -47,9 +47,9 @@ test('TikTok står ikke som leverandør eller i overføringsavsnittet', () => {
 // Resend og Expo var aktive på dataprivacyframework.gov/list 13.10.2026.
 test('Resend og Expo står under Data Privacy Framework på alle språk', () => {
   const dpf = {
-    sv: /Resend \(mejl\) och Expo \(notiser och appuppdateringar\): EU–US Data Privacy Framework/u,
-    da: /Resend \(e-mails\) og Expo \(notifikationer og appopdateringer\) i USA sker på grundlag af EU-US Data Privacy Framework/u,
-    en: /Data Privacy Framework, with Standard Contractual Clauses where it does not apply:<\/strong> Apple, Google, Meta, RevenueCat, Resend and Expo\./u,
+    sv: /Resend \(mejl\), Expo \(notiser och appuppdateringar\) och GitHub \(statusfilen\): EU–US Data Privacy Framework/u,
+    da: /Resend \(e-mails\), Expo \(notifikationer og appopdateringer\) og GitHub \(statusfilen\) i USA sker på grundlag af EU-US Data Privacy Framework/u,
+    en: /Data Privacy Framework, with Standard Contractual Clauses where it does not apply:<\/strong> Apple, Google, Meta, RevenueCat, Resend, Expo and GitHub\./u,
   };
   for (const [sprak, fil] of Object.entries(SIDER)) assert.match(les(fil), dpf[sprak], sprak);
 });

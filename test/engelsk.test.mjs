@@ -28,7 +28,7 @@ test('juridiske sider er merket som utkast og viser ingen interne markører', ()
 test('engelsk personvern nevner de samme leverandørene som norsk', () => {
   const norsk = les('personvern.html');
   const engelsk = les('en/privacy/');
-  const leverandorer = ['Supabase', 'Apple', 'Google', 'Gemini', 'Anthropic Ireland, Limited', 'RevenueCat', 'Sentry', 'PostHog', 'EmailOctopus', 'reCAPTCHA', 'Meta', 'Google Analytics'];
+  const leverandorer = ['Supabase', 'Apple', 'Google', 'GitHub', 'Anthropic Ireland, Limited', 'RevenueCat', 'Sentry', 'PostHog', 'EmailOctopus', 'reCAPTCHA', 'Meta', 'Google Analytics'];
   for (const navn of leverandorer) {
     assert.ok(norsk.includes(navn), `norsk mangler ${navn}`);
     assert.ok(engelsk.includes(navn), `engelsk mangler ${navn}`);
