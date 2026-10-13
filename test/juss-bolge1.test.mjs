@@ -22,18 +22,24 @@ const SPRAK = {
     sletting: 'sv/radera-konto/index.html',
     vilkar: 'sv/villkor/index.html',
     sprakene: /svenska, norska, danska eller engelska/u,
+    nyhetsbrev: /Nyhetsbrevet via e-post bygger på samtycke enligt artikel 6\.1 a/u,
+    avmelding: 'avregistreringslänken i varje nyhetsbrev',
   },
   da: {
     personvern: 'da/privatliv/index.html',
     sletting: 'da/slet-konto/index.html',
     vilkar: 'da/vilkaar/index.html',
     sprakene: /dansk, norsk, svensk eller engelsk/u,
+    nyhetsbrev: /Nyhedsbrevet pr\. e-mail bygger på samtykke efter artikel 6, stk\. 1, litra a/u,
+    avmelding: 'afmeldingslinket i hvert nyhedsbrev',
   },
   en: {
     personvern: 'en/privacy/index.html',
     sletting: 'en/privacy/index.html',
     vilkar: 'en/terms/index.html',
     sprakene: /English, Norwegian, Swedish or Danish/u,
+    nyhetsbrev: /Consent \(Art\. 6\(1\)\(a\)\):<\/strong> the email newsletter/u,
+    avmelding: 'unsubscribe link in every newsletter',
   },
 };
 const ANDRE_SPRAK = ['sv', 'da', 'en'].filter((k) => !(k in SPRAK));
