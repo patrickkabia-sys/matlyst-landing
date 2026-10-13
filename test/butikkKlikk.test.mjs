@@ -37,6 +37,6 @@ test('eksisterende hendelsesnavn beholdes for historisk sammenligning', () => {
 });
 
 test('analyseverktøyene lastes fortsatt bare etter samtykke', () => {
-  assert.match(siteJs, /if \(consent === 'granted'\) \{ loadPixel\(\); loadPostHog\(\); loadGA\(\); \}/u);
+  assert.match(siteJs, /if \(consent === 'granted'\) \{ loadPostHog\(\); loadGA\(\); \}/u);
   assert.match(siteJs, /if \(accept\) accept\.addEventListener\('click',[\s\S]*loadPostHog\(\); loadGA\(\);/u);
 });
