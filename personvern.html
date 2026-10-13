@@ -148,7 +148,7 @@
 
   <h2>Behandlingsansvarlig</h2>
   <p>
-    Matlyst er et personlig hobbyprosjekt drevet av en privatperson i Norge, ikke et selskap.
+    Matlyst drives av en privatperson i Norge.
     Behandlingsansvarlig for personopplysningene dine er Patrick Kabia. Har du spørsmål om personvern,
     eller ønsker innsyn i, retting av eller sletting av opplysningene dine, kontakt på
     <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.
@@ -167,7 +167,7 @@
   <h3>Profil og synlighet</h3>
   <ul>
     <li>Navn, brukernavn og profilbilde (valgfritt).</li>
-    <li>Preferanser du oppgir: kostholdsvalg, allergier, mål og måleenheter. Alt er valgfritt. Matlogg og kalorimål krever et eget uttrykkelig samtykke, se under.</li>
+    <li>Preferanser du oppgir: mål og måleenheter. Begge er valgfrie. Matlogg og kalorimål krever et eget uttrykkelig samtykke, se under.</li>
     <li><strong>Samtykkebekreftelser.</strong> For analyse, matlogg og den nye KI-tillatelsen lagrer vi bostedsland, bekreftet minstealder og tidspunkt separat for hvert samtykke. Vi lagrer ikke fødselsdato eller fødselsår. Se «Alder og samtykke» nedenfor.</li>
     <li><strong>Synlighet.</strong> Navn, brukernavn og profilbilde er synlige for andre innloggede brukere når de søker deg opp, følger deg eller deler husstand med deg. Dette er valgfritt og kan når som helst fjernes i Profil-innstillingene.</li>
   </ul>
@@ -271,6 +271,7 @@
     <li><strong>Samtykke (art. 6 a).</strong> Bruksstatistikk i appen. Vi spør deg eksplisitt, og vi samler ingenting før du har sagt ja. Du kan trekke samtykket tilbake når som helst under Innstillinger, like enkelt som du ga det.</li>
     <li><strong>Uttrykkelig samtykke (art. 6 nr. 1 bokstav a og art. 9 nr. 2 bokstav a).</strong> Behandling av helseopplysninger i matlogg og kalorimål. Dette samtykket er separat fra analyse og KI og kan trekkes tilbake i appens innstillinger.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Personaliserte daglige middagsforslag generert av KI, og push-varsler. Begge kan trekkes tilbake når som helst.</li>
+    <li><strong>Samtykke (art. 6 a).</strong> Nyhetsbrev på e-post. I appen sier du ja ved å krysse av når du registrerer deg, eller ved å svare «Ja takk» når appen spør. Vi lagrer svaret og tidspunktet, og nyhetsbrevet sendes via Resend. Påmelding på nettstedet (EmailOctopus) bygger også på samtykke. Du trekker samtykket tilbake med avmeldingslenken i hvert nyhetsbrev eller ved å skrive til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</li>
   </ul>
   <p>Vi selger aldri dine personopplysninger til tredjeparter.</p>
 
@@ -313,9 +314,8 @@
   <h2 id="nettstedet">Nettstedet matlyst-app.no</h2>
   <p>Erklæringen gjelder også nettstedet vårt. Det er en enkel landingsside, men bruker noen tjenester du bør kjenne til:</p>
   <ul>
-    <li><strong>Analyse (Meta Pixel).</strong> Vi bruker Meta Pixel for å måle effekten av markedsføringen vår. Den lastes <strong>kun hvis du samtykker</strong> i samtykke-banneret — velger du «Bare nødvendige», settes ingen sporing.</li>
-    <li><strong>Produktanalyse (PostHog).</strong> Statistikk om bruk av nettstedet, hostet i EU, lastes <strong>kun ved samtykke</strong>.</li>
-    <li><strong>Google Analytics.</strong> Besøksstatistikk (måling nr. G-X3J7DVSH2R). Lastes <strong>kun ved samtykke</strong>, sammen med de to over. Google mottar blant annet IP-adressen din og hvilke sider du åpner.</li>
+    <li><strong>Produktanalyse (PostHog).</strong> Statistikk om bruk av nettstedet, hostet i EU, lastes <strong>kun hvis du samtykker</strong> i samtykke-banneret. Velger du «Bare nødvendige», settes ingen sporing.</li>
+    <li><strong>Google Analytics.</strong> Besøksstatistikk (måling nr. G-X3J7DVSH2R). Lastes <strong>kun ved samtykke</strong>, sammen med PostHog. Google mottar blant annet IP-adressen din og hvilke sider du åpner.</li>
     <li><strong>Nyhetsbrev (EmailOctopus).</strong> Påmeldingsskjemaet lastes <strong>først når du tar i e-postfeltet</strong>, ikke når siden åpnes. Gjør du ikke det, kontakter nettstedet verken EmailOctopus eller Google reCAPTCHA, som skjemaet bruker mot robotpåmeldinger. Melder du deg på, lagres e-postadressen din hos EmailOctopus så vi kan sende deg oppdateringer, og du kan melde deg av når som helst via lenken i e-postene.</li>
     <li>
       <strong>Skrifttyper.</strong> Skriftene ligger på vår egen server og lastes derfra.
@@ -326,7 +326,7 @@
   <p>
     <strong>Du kan ombestemme deg når som helst.</strong> Nederst på forsiden ligger lenken
     «Endre samtykke», som nullstiller valget ditt og henter fram banneret igjen. Da stopper
-    Meta Pixel, PostHog og Google Analytics umiddelbart. Det skal være like enkelt å trekke
+    PostHog og Google Analytics umiddelbart. Det skal være like enkelt å trekke
     tilbake et samtykke som å gi det.
   </p>
   <p>
@@ -385,7 +385,7 @@
     <li><strong>PostHog</strong> — produktanalyse i appen og på nettstedet, knyttet til en pseudonym konto-ID (hostet i EU; kun ved samtykke, både i appen og på nettstedet).</li>
     <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet. Skjemaet lastes først når du tar i e-postfeltet.</li>
     <li><strong>Google (reCAPTCHA)</strong> — robotkontroll i påmeldingsskjemaet for nyhetsbrevet. Lastes av EmailOctopus sitt skjema, altså først når du tar i e-postfeltet, og Google mottar da IP-adressen din. Rører du ikke feltet, kontaktes den ikke.</li>
-    <li><strong>Meta (Facebook)</strong> — oppslag når du importerer fra Instagram, og måling av markedsføring på nettstedet (kun ved samtykke).</li>
+    <li><strong>Meta (Facebook)</strong> — oppslag når du importerer fra Instagram.</li>
     <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke), skrifttyper i e-postene våre (Google Fonts) og oppslag når du importerer fra YouTube.</li>
   </ul>
 
