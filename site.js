@@ -6,18 +6,11 @@ const io = new IntersectionObserver((es) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-// --- Samtykke + PostHog + Meta Pixel (lastes KUN etter «Godta») ---
+// --- Samtykke + PostHog + Google Analytics (lastes KUN etter «Godta») ---
 (function () {
-  var PIXEL_ID = '35960255793618130';
   var KEY = 'matlyst-consent';
   var banner = document.getElementById('cookie');
 
-  function loadPixel() {
-    if (window.fbq) return;
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
-  }
   function loadPostHog() {
     if (window.posthog && window.posthog.__loaded) return;
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -70,12 +63,12 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   }
 
   var consent = get();
-  if (consent === 'granted') { loadPixel(); loadPostHog(); loadGA(); }
+  if (consent === 'granted') { loadPostHog(); loadGA(); }
   else if (!consent && banner) banner.hidden = false;
 
   // Tilbaketrekking (GDPR art. 7(3): skal vaere like enkelt som a gi samtykke).
   // Nullstiller valget og laster siden pa nytt, slik at ingen av skriptene kjorer
-  // videre i okten. Uten reload ville piksel, GA og PostHog blitt vaerende til
+  // videre i okten. Uten reload ville GA og PostHog blitt vaerende til
   // brukeren selv navigerte bort -- altsa ikke en reell tilbaketrekking.
   function withdraw() {
     try { localStorage.removeItem(KEY); } catch (e) {}
@@ -91,27 +84,23 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
   var accept = document.getElementById('ck-accept');
   var reject = document.getElementById('ck-reject');
-  if (accept) accept.addEventListener('click', function () { set('granted'); loadPixel(); loadPostHog(); loadGA(); hide(); });
+  if (accept) accept.addEventListener('click', function () { set('granted'); loadPostHog(); loadGA(); hide(); });
   if (reject) reject.addEventListener('click', function () { set('denied'); hide(); });
 
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a');
     if (!a) return;
     if (a.href && a.href.indexOf('apps.apple.com') > -1) {
-      if (window.fbq) fbq('track', 'Lead', { content_name: 'App Store' });
       capture('appstore_click', eventProperties(a, 'app_store'));
     } else if (a.href && a.href.indexOf('play.google.com') > -1) {
-      if (window.fbq) fbq('track', 'Lead', { content_name: 'Google Play' });
       capture('play_click', eventProperties(a, 'google_play'));
     } else if (a.getAttribute('href') === '#nyhetsbrev') {
-      if (window.fbq) fbq('trackCustom', 'NyhetsbrevIntent');
       capture('newsletter_intent', eventProperties(a, null));
     }
   });
 
   document.addEventListener('submit', function (e) {
     if (e.target && e.target.classList && e.target.classList.contains('emailoctopus-form')) {
-      if (window.fbq) fbq('track', 'Lead', { content_name: 'Nyhetsbrev' });
       capture('newsletter_signup', {
         page_path: location.pathname,
         page_title: document.title
