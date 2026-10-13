@@ -15,6 +15,8 @@ const SPRAK = {
     sletting: 'slett-konto.html',
     vilkar: 'vilkar.html',
     sprakene: /norsk, svensk, dansk eller engelsk/u,
+    nyhetsbrev: /Samtykke \(art\. 6 a\)\.<\/strong> Nyhetsbrev på e-post/u,
+    avmelding: 'avmeldingslenken i hvert nyhetsbrev',
   },
 };
 const ANDRE_SPRAK = ['sv', 'da', 'en'].filter((k) => !(k in SPRAK));
@@ -45,6 +47,8 @@ test('B1: personvern og sletting nevner ikke allergier eller kostholdsvalg som n
     assert.doesNotMatch(les(s.personvern), KOSTHOLD, s.personvern);
     assert.doesNotMatch(les(s.sletting), KOSTHOLD, s.sletting);
   }
+  // Vi lagrer ikke fødselsdato (profiles.birthdate er tom med vilje).
+  assert.doesNotMatch(les('slett-konto.html'), /fødselsdato|kaloriemål/u);
   assert.match(les('personvern.html'), /Preferanser du oppgir: mål og måleenheter/u);
 });
 
@@ -56,6 +60,14 @@ test('Meta Pixel er fjernet fra alle skript og sider', () => {
   }
   for (const fil of sider()) {
     assert.doesNotMatch(readFileSync(fil, 'utf8'), /Meta Pixel/iu, relative(ROOT, fil));
+  }
+});
+
+test('nyhetsbrev-samtykket har rettslig grunnlag og vei ut', () => {
+  for (const [kode, s] of Object.entries(SPRAK)) {
+    const html = les(s.personvern);
+    assert.match(html, s.nyhetsbrev, `${s.personvern}: nyhetsbrev på samtykke`);
+    assert.ok(html.includes(s.avmelding), `${kode}: avmeldingslenken`);
   }
 });
 
