@@ -9,7 +9,7 @@ const nb = readFileSync(join(ROOT, 'personvern.html'), 'utf8');
 // Dataflytene i appen (supabase/functions/_shared/email.ts og Auth-SMTP, expoPush.ts, apns.ts,
 // recipeImage.ts, youtube.ts, check-password-breach, app.json googleServicesFile og updates.url).
 test('personvernerklæringen nevner underleverandørene og dataflytene', () => {
-  for (const navn of ['Resend', 'Google Fonts', 'Firebase Cloud Messaging', 'Expo', 'Pwned Passwords', 'YouTube Data API', 'TikTok', 'Meta', 'SHA-1', '48 timer', 'Live Activity']) {
+  for (const navn of ['Resend', 'GitHub', 'Firebase Cloud Messaging', 'Expo', 'Pwned Passwords', 'YouTube Data API', 'TikTok', 'Meta', 'SHA-1', '48 timer', 'Live Activity']) {
     assert.ok(nb.includes(navn), `mangler ${navn}`);
   }
   assert.match(nb, /e-poster for innlogging/u);

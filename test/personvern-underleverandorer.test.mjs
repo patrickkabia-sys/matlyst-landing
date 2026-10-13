@@ -17,7 +17,7 @@ const SIDER = {
 test('sv, da og en nevner underleverandørene og dataflytene', () => {
   for (const [sprak, fil] of Object.entries(SIDER)) {
     const html = les(fil);
-    for (const navn of ['Resend', 'Google Fonts', 'Firebase Cloud Messaging', 'Expo', 'Pwned Passwords', 'YouTube Data API', 'TikTok', 'Meta', 'SHA-1', '48', 'hei@matlyst-app.no']) {
+    for (const navn of ['Resend', 'GitHub', 'Firebase Cloud Messaging', 'Expo', 'Pwned Passwords', 'YouTube Data API', 'TikTok', 'Meta', 'SHA-1', '48', 'hei@matlyst-app.no']) {
       assert.ok(html.includes(navn), `${sprak}: mangler ${navn}`);
     }
   }

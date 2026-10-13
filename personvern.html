@@ -161,14 +161,14 @@
     <li><strong>E-post og passord</strong> hvis du registrerer deg med e-post.</li>
     <li><strong>Apple-ID</strong> hvis du bruker «Logg inn med Apple» (iOS). Apple deler navn og e-post (du kan velge å skjule e-posten).</li>
     <li><strong>Google-konto</strong> hvis du bruker «Logg inn med Google». Google deler navn og e-postadresse.</li>
-    <li><strong>Anonym konto.</strong> For at innholdet ditt skal lagres trygt fra første åpning, oppretter appen en anonym konto automatisk. Den kan senere knyttes til en e-post, Apple-ID eller Google-konto.</li>
+    <li><strong>Anonym konto fra eldre versjoner.</strong> Eldre versjoner av appen opprettet en anonym konto automatisk første gang du åpnet den. Nye versjoner gjør ikke det. En slik konto kan knyttes til en e-post, Apple-ID eller Google-konto.</li>
   </ul>
 
   <h3>Profil og synlighet</h3>
   <ul>
     <li>Navn, brukernavn og profilbilde (valgfritt).</li>
     <li>Preferanser du oppgir: mål og måleenheter. Begge er valgfrie. Matlogg og kalorimål krever et eget uttrykkelig samtykke, se under.</li>
-    <li><strong>Samtykkebekreftelser.</strong> For analyse, matlogg og den nye KI-tillatelsen lagrer vi bostedsland, bekreftet minstealder og tidspunkt separat for hvert samtykke. Vi lagrer ikke fødselsdato eller fødselsår. Se «Alder og samtykke» nedenfor.</li>
+    <li><strong>Samtykkebekreftelser.</strong> For analyse, matlogg og KI-tillatelsen lagrer vi bostedsland, bekreftet minstealder og tidspunkt separat for hvert samtykke. Vi lagrer ikke fødselsdato eller fødselsår. Se «Alder og samtykke» nedenfor.</li>
     <li><strong>Synlighet.</strong> Navn, brukernavn og profilbilde er synlige for andre innloggede brukere når de søker deg opp, følger deg eller deler husstand med deg. Dette er valgfritt og kan når som helst fjernes i Profil-innstillingene.</li>
   </ul>
 
@@ -182,10 +182,15 @@
   <h3>Matlogg og kalorimål</h3>
   <p>
     Hvis du aktiverer matloggen, behandler vi opplysninger om måltider, kalorier, næringsinnhold og
-    kalorimålet ditt. Dette er valgfrie helseopplysninger som krever et eget uttrykkelig samtykke,
-    i tillegg til bekreftelse av minstealderen for bostedslandet ditt. Du kan bruke resten av Matlyst
-    uten disse funksjonene. Du kan trekke samtykket tilbake i appens innstillinger. Da slettes
+    kalorimålet ditt. Dette er valgfrie helseopplysninger som krever et eget uttrykkelig samtykke, og du
+    må bekrefte at du er <strong>minst 18 år</strong>, uansett hvilket land du bor i. Du kan bruke resten
+    av Matlyst uten disse funksjonene. Du kan trekke samtykket tilbake i appens innstillinger. Da slettes
     matloggen og kalorimålet nullstilles.
+  </p>
+  <p>
+    Ga du samtykket før 18-årsgrensen kom, med aldersgrensen for landet ditt, beholder vi matloggen og
+    kalorimålet, men skjuler dem og stopper nye føringer til du bekrefter at du er minst 18 år. Svarer du
+    nei eller at du er under 18, slettes matloggen og kalorimålet nullstilles.
   </p>
 
   <h3>Import-data</h3>
@@ -196,11 +201,21 @@
     deler med appen. Lager du oppskrifter selv? <a href="/skapere/">Slik behandler vi innholdet til matskapere og bloggere</a>.
   </p>
   <p>
-    Importerer du fra Instagram, TikTok eller YouTube, spør serveren vår plattformen om bildetekst,
-    miniatyrbilde og hvem som la ut innholdet. Instagram-lenken går da til Meta, TikTok-lenken til TikTok,
-    og ID-en til videoen eller spillelisten til Google (YouTube Data API). Det er serveren vår som spør,
-    så vi sender ikke konto-ID-en, e-postadressen eller IP-adressen din. Instagram- og TikTok-lenken sendes
-    slik du delte den, og delingslenker kan inneholde plattformens egne sporingskoder.
+    Importerer du fra TikTok eller YouTube, spør serveren vår plattformen om bildetekst, miniatyrbilde og
+    hvem som la ut innholdet. TikTok-lenken går da til TikTok, og ID-en til videoen eller spillelisten til
+    Google (YouTube Data API). Det er serveren vår som spør, så vi sender ikke konto-ID-en, e-postadressen
+    eller IP-adressen din.
+  </p>
+  <p>
+    <strong>Instagram</strong> stenger ofte ute forespørsler fra servere. Derfor henter appen innlegget
+    direkte fra telefonen din, og serveren vår kan i tillegg spørre Meta om det samme innlegget. Når
+    telefonen henter innlegget, får Meta lenken, IP-adressen din og vanlig teknisk informasjon fra
+    forespørselen, og Instagram kan sette informasjonskapsler i appen. Appen sender så bildeteksten,
+    bildet og hvem som la ut innlegget til serveren vår. Hver gang appen starter, henter den også
+    forsiden til Instagram én gang, slik at den første importen fra Instagram virker. Det skjer selv
+    om du ikke importerer noe, og Meta får da IP-adressen din, men ingenting om Matlyst-kontoen din.
+    Instagram- og TikTok-lenken sendes slik du delte den, og delingslenker kan inneholde plattformens
+    egne sporingskoder.
   </p>
   <p>
     Matlyst bruker YouTube API Services. Når du importerer fra YouTube, godtar du
@@ -214,11 +229,11 @@
 
   <h3>Teknisk bruk</h3>
   <ul>
-    <li>En teknisk feilsøkingslogg i vår egen database når noe går galt i appen, knyttet til konto-ID-en din. Den slettes automatisk etter 90 dager, og når du sletter kontoen.</li>
     <li>Feil- og krasjrapporter (Sentry) for å forbedre stabiliteten.</li>
     <li>Push-token (en unik enhets-ID) hvis du tillater varsler — brukes kun til å sende deg varsler, ikke til sporing. Varslene leveres gjennom Expo, som sender dem videre via Apple på iOS og Google Firebase Cloud Messaging på Android. Fremdriften for en import på låseskjermen (Live Activity) sender serveren vår direkte til Apple. Expo og Apple eller Google får push-tokenet og teksten i varselet, for eksempel navnet på en oppskrift. Firebase brukes bare til å levere varsler, ikke til analyse. Tokenet slettes når du logger ut, og når du sletter kontoen.</li>
     <li>Appoppdateringer: appen henter oppdateringer fra serverne til Expo. Expo får da IP-adressen din, hvilken appversjon og plattform du bruker, og en tilfeldig ID som er fast for installasjonen.</li>
     <li>Appversjon og enhetsinformasjon for feilretting.</li>
+    <li>Driftsstatus: appen sjekker en statusfil på status.matlyst-app.no når den åpnes og hvert femte minutt mens den er i bruk, slik at den kan vise et varsel hvis Matlyst er nede. Fila ligger hos GitHub Pages (GitHub, USA), som da ser IP-adressen din og vanlig teknisk informasjon fra forespørselen, men ingenting om kontoen din.</li>
     <li>Bruksstatistikk (hvilke funksjoner og skjermer som brukes) for å forbedre appen, og kun hvis du har samtykket. Statistikken er <strong>pseudonym, ikke anonym</strong>: den knyttes til den tilfeldig genererte konto-ID-en din, slik at hendelser fra samme bruker kan ses i sammenheng. Vi sender aldri navn, e-post eller oppskriftsinnhold.</li>
   </ul>
 
@@ -246,10 +261,6 @@
     innholdet i e-posten. Påminnelsen sendes bare én gang. Vil du ikke ha den, kan du protestere ved å svare
     på en e-post fra oss eller skrive til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.
   </p>
-  <p>
-    Velkomsten, takken og påminnelsen henter skrifttyper fra <strong>Google Fonts</strong>. Viser
-    e-postprogrammet ditt bilder og annet eksternt innhold, får Google IP-adressen din når du åpner e-posten.
-  </p>
 
   <h3>Passordsjekk</h3>
   <p>
@@ -265,33 +276,32 @@
     <li><strong>Avtale (art. 6 b).</strong> Levere kjernefunksjonene: import, lagring, planlegging og synkronisering mellom enhetene dine, samt behandle abonnement (Matlyst Pro).</li>
     <li><strong>Avtale (art. 6 b).</strong> E-post for innlogging, takk for kjøpet og appoppdateringer.</li>
     <li><strong>Avtale (art. 6 b).</strong> Vise navn, brukernavn og profilbilde til andre brukere gjennom søk, følging og husstand — valgfritt og kan fjernes når som helst.</li>
-    <li><strong>Berettiget interesse (art. 6 f).</strong> Teknisk feilsøkingslogg og feil- og krasjrapportering for å holde appen stabil og sikker. Du kan protestere, se «Dine rettigheter».</li>
+    <li><strong>Berettiget interesse (art. 6 f).</strong> Feil- og krasjrapportering og sjekk av driftsstatus for å holde appen stabil og sikker. Du kan protestere, se «Dine rettigheter».</li>
     <li><strong>Berettiget interesse (art. 6 f).</strong> Behandle tilbakemeldinger du selv sender, vise godkjente innspill anonymt og gi deg status på saken, slik at vi kan forbedre og drifte Matlyst.</li>
     <li><strong>Berettiget interesse (art. 6 f).</strong> Passordsjekken mot kjente datalekkasjer, for å beskytte kontoen din, velkomst-e-posten og én påminnelse på e-post etter registreringen.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Bruksstatistikk i appen. Vi spør deg eksplisitt, og vi samler ingenting før du har sagt ja. Du kan trekke samtykket tilbake når som helst under Innstillinger, like enkelt som du ga det.</li>
     <li><strong>Uttrykkelig samtykke (art. 6 nr. 1 bokstav a og art. 9 nr. 2 bokstav a).</strong> Behandling av helseopplysninger i matlogg og kalorimål. Dette samtykket er separat fra analyse og KI og kan trekkes tilbake i appens innstillinger.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Personaliserte daglige middagsforslag generert av KI, og push-varsler. Begge kan trekkes tilbake når som helst.</li>
-    <li><strong>Samtykke (art. 6 a).</strong> Nyhetsbrev på e-post. I appen sier du ja ved å krysse av når du registrerer deg, eller ved å svare «Ja takk» når appen spør. Vi lagrer svaret og tidspunktet, og nyhetsbrevet sendes via Resend. Påmelding på nettstedet (EmailOctopus) bygger også på samtykke. Du trekker samtykket tilbake med avmeldingslenken i hvert nyhetsbrev eller ved å skrive til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</li>
+    <li><strong>Samtykke (art. 6 a).</strong> Nyhetsbrev på e-post. I appen sier du ja ved å krysse av når du registrerer deg, eller ved å svare «Ja takk» når appen spør. Vi lagrer svaret og tidspunktet. Nyhetsbrevet sendes via Resend, og e-postadressen og fornavnet ditt legges i nyhetsbrevlista hos EmailOctopus. Påmelding på nettstedet (EmailOctopus) bygger også på samtykke. Du trekker samtykket tilbake med avmeldingslenken i hvert nyhetsbrev eller ved å skrive til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</li>
   </ul>
   <p>Vi selger aldri dine personopplysninger til tredjeparter.</p>
 
   <h2>KI-behandling</h2>
   <p>
     Matlyst bruker KI til blant annet å tolke, kategorisere og oversette oppskrifter og svare på spørsmål
-    gjennom «Spør Matlyst». For kontoer som har bekreftet den nye KI-opplysningen og gitt delingstillatelse,
-    behandles innholdet av <strong>Anthropic Ireland, Limited</strong>. Eldre kontoer uten den nye bekreftelsen
-    bruker inntil videre dagens oppsett med <strong>Google (Gemini API) som primærleverandør og Anthropic som
-    reserve</strong>. Google er derfor fortsatt en mottaker av KI-innhold i overgangsperioden.
+    gjennom «Spør Matlyst». Innholdet behandles av <strong>Anthropic Ireland, Limited</strong>, og bare når du
+    har bekreftet KI-opplysningen og gitt delingstillatelse. Uten tillatelsen sender vi ingenting til KI,
+    heller ikke fra eldre kontoer eller fra jobber som kjører i bakgrunnen.
   </p>
   <p>
     Tekst, bilder eller filer du velger i KI-funksjonene, sendes til leverandøren for behandling.
     Ved bildeimport kan det valgte kildebildet behandles av KI for å lese oppskriften. Unngå å sende
-    private opplysninger som ikke er nødvendige for oppskriften. Begge leverandørene brukes via betalte
-    API-er. Dataene brukes til å svare deg der og da. Leverandøren kan logge dem i en begrenset periode
+    private opplysninger som ikke er nødvendige for oppskriften. Anthropic brukes via et betalt
+    API. Dataene brukes til å svare deg der og da. Leverandøren kan logge dem i en begrenset periode
     for å avdekke misbruk, og bruker dem <strong>ikke</strong> til å trene KI-modeller.
   </p>
   <p>
-    Før du gir den nye KI-tillatelsen, bekrefter du minstealderen etter bostedsland, se «Alder og samtykke».
+    Før du gir KI-tillatelsen, bekrefter du minstealderen etter bostedsland, se «Alder og samtykke».
     Du kan bruke resten av appen uten å gi denne tillatelsen. KI-svar kan være feil. Kontroller særlig
     allergener, mattrygghet og instrukser med varme eller skarpe redskaper. Mindreårige bør be en
     ansvarlig voksen om hjelp ved slike oppgaver.
@@ -377,16 +387,16 @@
     <li><strong>Apple</strong> — «Logg inn med Apple», App Store, kjøp og push-varsler (iOS).</li>
     <li><strong>Google</strong> — «Logg inn med Google», Google Play, kjøp og push-varsler via Firebase Cloud Messaging (Android).</li>
     <li><strong>Expo</strong> — levering av push-varsler og appoppdateringer (USA).</li>
-    <li><strong>Resend</strong> — utsending av e-post fra appen, som innlogging, velkomst og takk for kjøpet (USA).</li>
+    <li><strong>Resend</strong> — utsending av e-post fra appen, som innlogging, velkomst, takk for kjøpet og nyhetsbrevet (USA).</li>
     <li><strong>RevenueCat</strong> — administrasjon av abonnement.</li>
-    <li><strong>Google (Gemini API)</strong>: primærleverandør for KI-behandling i det eksisterende oppsettet for eldre kontoer uten den nye KI-bekreftelsen (USA, betalt API uten trening på innholdet).</li>
-    <li><strong>Anthropic Ireland, Limited</strong>: KI-behandling for kontoer med den nye KI-bekreftelsen og reserveleverandør i det eksisterende oppsettet for eldre kontoer uten denne bekreftelsen.</li>
+    <li><strong>Anthropic Ireland, Limited</strong> — KI-behandling når du har gitt KI-tillatelsen (betalt API uten trening på innholdet).</li>
     <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
     <li><strong>PostHog</strong> — produktanalyse i appen og på nettstedet, knyttet til en pseudonym konto-ID (hostet i EU; kun ved samtykke, både i appen og på nettstedet).</li>
-    <li><strong>EmailOctopus</strong> — nyhetsbrev og påmeldinger fra nettstedet. Skjemaet lastes først når du tar i e-postfeltet.</li>
+    <li><strong>EmailOctopus</strong> — nyhetsbrevlista, med påmeldinger fra appen og fra nettstedet. Skjemaet på nettstedet lastes først når du tar i e-postfeltet.</li>
     <li><strong>Google (reCAPTCHA)</strong> — robotkontroll i påmeldingsskjemaet for nyhetsbrevet. Lastes av EmailOctopus sitt skjema, altså først når du tar i e-postfeltet, og Google mottar da IP-adressen din. Rører du ikke feltet, kontaktes den ikke.</li>
-    <li><strong>Meta (Facebook)</strong> — oppslag når du importerer fra Instagram.</li>
-    <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke), skrifttyper i e-postene våre (Google Fonts) og oppslag når du importerer fra YouTube.</li>
+    <li><strong>Meta (Facebook)</strong> — Instagram-innlegg du importerer, hentet fra telefonen din og fra serveren vår, og forsiden til Instagram når appen starter.</li>
+    <li><strong>GitHub</strong> — statusfila appen sjekker for driftsavvik (GitHub Pages, USA).</li>
+    <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke) og oppslag når du importerer fra YouTube.</li>
   </ul>
 
   <h3>Overføring ut av EØS</h3>
@@ -398,7 +408,7 @@
     <li><strong>Ingen overføring.</strong> Supabase (database, innlogging, fillagring), PostHog og Sentry ligger alle i EU. Sentry-prosjektene våre er opprettet i Frankfurt-regionen, så krasjrapporter forlater ikke EU.</li>
     <li><strong>Storbritannia: adekvansbeslutning.</strong> EmailOctopus. EU fornyet adekvansbeslutningen for Storbritannia 19. desember 2025, med gyldighet til 27. desember 2031.</li>
     <li><strong>USA: standard personvernbestemmelser (SCC, art. 46).</strong> Anthropic. Anthropic er <strong>ikke</strong> sertifisert under EU-US Data Privacy Framework, og overføringen hviler derfor på SCC.</li>
-    <li><strong>USA: EU-US Data Privacy Framework, subsidiært standard personvernbestemmelser.</strong> Apple, Google (inkludert Gemini API), Meta, RevenueCat, Resend og Expo. Overføringen bygger på deltakelse i rammeverket, som Europakommisjonen godkjente 10. juli 2023, og på standard personvernbestemmelser (SCC, art. 46) der rammeverket ikke dekker behandlingen. Gjeldende status for hver leverandør kan slås opp på <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener">dataprivacyframework.gov</a>.</li>
+    <li><strong>USA: EU-US Data Privacy Framework, subsidiært standard personvernbestemmelser.</strong> Apple, Google, Meta, RevenueCat, Resend og Expo. Overføringen bygger på deltakelse i rammeverket, som Europakommisjonen godkjente 10. juli 2023, og på standard personvernbestemmelser (SCC, art. 46) der rammeverket ikke dekker behandlingen. Gjeldende status for hver leverandør kan slås opp på <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener">dataprivacyframework.gov</a>.</li>
   </ul>
 
   <h2>Lagring på enheten din</h2>
@@ -414,7 +424,6 @@
   <ul>
     <li><strong>Konto, profil og innholdet ditt</strong> — så lenge du har en konto. Det finnes ingen automatisk utløpstid; du bestemmer selv når det slettes.</li>
     <li><strong>Matlogg og kalorimål.</strong> Trekker du tilbake samtykket til disse helseopplysningene, slettes matloggen og kalorimålet nullstilles. Dette krever ikke at du sletter kontoen.</li>
-    <li><strong>Teknisk feilsøkingslogg</strong> — slettes automatisk 90 dager etter at den ble skrevet.</li>
     <li><strong>Tilbakemeldinger</strong> — lagres mens kontoen din finnes eller til du ber oss slette dem. Du kan selv slette egne innspill mens de er til vurdering eller avslått. De følger også med i persondataeksporten og slettes sammen med kontoen.</li>
     <li><strong>Push-token</strong> — slettes når du logger ut, eller når du sletter kontoen.</li>
     <li><strong>Bruksstatistikk hos PostHog</strong> — samles kun mens samtykket ditt står. Trekker du samtykket, stopper innsamlingen umiddelbart. Statistikk som allerede er samlet, slettes når du sletter kontoen, eller hvis du ber oss om det.</li>
@@ -455,8 +464,7 @@
   <h2>Alder og samtykke</h2>
   <p>
     Matlyst har ingen generell aldersgrense for bruk av appen. For å gi eget samtykke til bruksanalyse
-    eller aktivere matlogg og kalorimål må du bekrefte minstealderen for bostedslandet ditt. Vi ber om
-    samme bekreftelse før du gir den nye tillatelsen til å dele innhold med Anthropic:
+    eller til å dele innhold med Anthropic i KI-funksjonene må du bekrefte minstealderen for bostedslandet ditt:
   </p>
   <ul>
     <li><strong>Norge: 13 år.</strong> <a href="https://lovdata.no/lov/2018-06-15-38/%C2%A75">Personopplysningsloven § 5</a>.</li>
@@ -467,8 +475,12 @@
     Velg landet du bor i, uavhengig av appens språk. Vi lagrer land, bekreftet minstealder og tidspunkt
     per samtykke, ikke fødselsdato eller fødselsår. Vi har ingen løsning for foreldresamtykke.
     Uten aldersbekreftelsen kan du bruke resten av appen, men ikke aktivere funksjonen som krever den.
-    Disse tersklene gjelder barns samtykke til digitale tjenester. Matloggens helseopplysninger krever
-    i tillegg et eget uttrykkelig samtykke etter GDPR art. 9 nr. 2 bokstav a. Aldersbekreftelsen er ikke
+    Disse tersklene gjelder barns samtykke til digitale tjenester.
+  </p>
+  <p>
+    <strong>Matlogg og kalorimål krever at du er minst 18 år</strong>, uansett hvilket land du bor i. Den
+    grensen har vi satt selv for å beskytte unge brukere. Matloggens helseopplysninger krever i tillegg et
+    eget uttrykkelig samtykke etter GDPR art. 9 nr. 2 bokstav a. Aldersbekreftelsen er ikke
     i seg selv en rett til å inngå alle avtaler eller kjøpe abonnement uten nødvendige tillatelser.
   </p>
 
