@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import test from 'node:test';
 
 const ROOT = new URL('..', import.meta.url).pathname;
-const SIDER = ['avmeld/index.html', 'sv/avregistrera/index.html', 'da/afmeld/index.html'];
+const SIDER = ['avmeld/index.html', 'sv/avregistrera/index.html', 'da/afmeld/index.html', 'en/unsubscribe/index.html'];
 
 test('alle avmeldingssider bruker det samme skriptet og omdirigeres ikke', () => {
   for (const fil of SIDER) {

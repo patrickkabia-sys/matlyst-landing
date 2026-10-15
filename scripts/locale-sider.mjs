@@ -1,11 +1,13 @@
-const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK' });
-const SPRAKREKKEFOLGE = Object.freeze(['nb', 'sv', 'da']);
+// Engelsk er internasjonalt (ingen region), derfor bare «en».
+export const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en' });
+export const SPRAKREKKEFOLGE = Object.freeze(Object.keys(SPRAKKODER));
 
 // Én kilde for sider som faktisk dekker samme funksjon eller hensikt.
-// x-default peker på bokmål når det finnes, ellers på gruppens første språk.
+// x-default peker på engelsk når det finnes (besøkende med andre språk), ellers på
+// bokmål, ellers på gruppens første språk.
 export const SIDEGRUPPER = Object.freeze([
-  { id: 'forside', sider: { nb: '/', sv: '/sv/', da: '/da/' } },
-  { id: 'importer-oppskrifter', sider: { nb: '/importer-oppskrifter/', sv: '/sv/importera-recept/', da: '/da/importer-opskrifter/' } },
+  { id: 'forside', sider: { nb: '/', sv: '/sv/', da: '/da/', en: '/en/' } },
+  { id: 'importer-oppskrifter', sider: { nb: '/importer-oppskrifter/', sv: '/sv/importera-recept/', da: '/da/importer-opskrifter/', en: '/en/import-recipes/' } },
   { id: 'finn-oppskrifter', sider: { nb: '/finn-oppskrifter/', sv: '/sv/hitta-recept/', da: '/da/find-opskrifter/' } },
   { id: 'handleliste', sider: { nb: '/handleliste/', sv: '/sv/inkopslista/', da: '/da/indkoebsliste-app/' } },
   { id: 'handskrevne-oppskrifter', sider: { nb: '/handskrevne-oppskrifter/', sv: '/sv/handskrivna-recept/', da: '/da/haandskrevne-opskrifter/' } },
@@ -14,10 +16,10 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'ukemeny', sider: { nb: '/ukemeny/', sv: '/sv/veckomeny-app/', da: '/da/madplan-app/' } },
   { id: 'bytt-fra-paprika', sider: { nb: '/bytt-fra-paprika/', sv: '/sv/byt-fran-paprika/', da: '/da/skift-fra-paprika/' } },
   { id: 'skapere', sider: { nb: '/skapere/', sv: '/sv/receptskapare/', da: '/da/opskriftsskabere/' } },
-  { id: 'personvern', sider: { nb: '/personvern.html', sv: '/sv/integritet/', da: '/da/privatliv/' } },
-  { id: 'vilkar', sider: { nb: '/vilkar.html', sv: '/sv/villkor/', da: '/da/vilkaar/' } },
+  { id: 'personvern', sider: { nb: '/personvern.html', sv: '/sv/integritet/', da: '/da/privatliv/', en: '/en/privacy/' } },
+  { id: 'vilkar', sider: { nb: '/vilkar.html', sv: '/sv/villkor/', da: '/da/vilkaar/', en: '/en/terms/' } },
   { id: 'slett-konto', sider: { nb: '/slett-konto.html', sv: '/sv/radera-konto/', da: '/da/slet-konto/' } },
-  { id: 'avmeld', redirect: false, sider: { nb: '/avmeld/', sv: '/sv/avregistrera/', da: '/da/afmeld/' } },
+  { id: 'avmeld', redirect: false, sider: { nb: '/avmeld/', sv: '/sv/avregistrera/', da: '/da/afmeld/', en: '/en/unsubscribe/' } },
   { id: 'tiktok-stotte', sider: { nb: '/tiktok/', sv: '/sv/tiktok/', da: '/da/tiktok/' } },
   { id: 'tiktok-auth', redirect: false, sider: { nb: '/tiktok-auth/', sv: '/sv/tiktok-auth/', da: '/da/tiktok-auth/' } },
 
@@ -50,7 +52,8 @@ export function alternativerFor(sti) {
   const alternativer = SPRAKREKKEFOLGE
     .filter((sprak) => gruppe.sider[sprak])
     .map((sprak) => [SPRAKKODER[sprak], gruppe.sider[sprak]]);
-  return [...alternativer, ['x-default', gruppe.sider.nb ?? gruppe.sider.sv ?? gruppe.sider.da]];
+  const standard = ['en', ...SPRAKREKKEFOLGE].find((sprak) => gruppe.sider[sprak]);
+  return [...alternativer, ['x-default', gruppe.sider[standard]]];
 }
 
 export function byggLocalePageMap() {
