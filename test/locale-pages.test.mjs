@@ -42,7 +42,7 @@ test('alle lokale sider har språk, canonical, hreflang og gyldig strukturert da
     for (const [, raw] of blokker) assert.doesNotThrow(() => JSON.parse(raw), rel);
     assert.match(html, /<main id="hovedinnhold"/u, rel);
     assert.doesNotMatch(html, /\sstyle=/u, rel);
-    assert.doesNotMatch(html, /\b(?:NOK|SEK|DKK)\b|\d+\s*(?:kr|kroner)\b/iu, rel);
+    assert.doesNotMatch(html, /\b(?:NOK|SEK|DKK)\b|\d+\s*(?:kr(?![a-zåäöæø])|kroner\b)/iu, rel);
   }
 });
 

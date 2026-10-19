@@ -170,20 +170,20 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter" id="nyhetsbrev">
-  <div class="nl-inner reveal">
-    <p class="eyebrow">Hold deg oppdatert</p>
-    <h2 class="disp">Få <em>nyheter</em> rett i innboksen</h2>
-    <p class="nl-sub">Vær blant de første til å høre om nye funksjoner, oppdateringer og tips til appen.</p>
-    <div class="newsletter-eo" id="nyhetsbrev-skjema" data-eo-form="858fff68-6016-11f1-a1ae-991ff41a803c">
-      <form class="nl-plassholder" id="nyhetsbrev-plassholder" action="#nyhetsbrev">
-        <input class="form-control" type="email" name="email" autocomplete="email" aria-label="E-postadressen din" aria-describedby="nyhetsbrev-vilkar" placeholder="Din e-postadresse">
-        <button class="btn-primary" type="submit">Meld meg på</button>
-      </form>
-      <p class="nl-feil" id="nyhetsbrev-feil" role="alert" hidden>Vi fikk ikke lastet påmeldingsskjemaet. Prøv igjen, eller send oss en e-post på <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</p>
+<!-- LAST NED -->
+<section class="last-ned" id="last-ned">
+  <div class="last-ned-inner reveal">
+    <p class="eyebrow">Last ned</p>
+    <h2 class="disp">Prøv Matlyst <em>gratis</em></h2>
+    <p class="last-ned-sub">Matlyst finnes for iPhone, iPad og Android.</p>
+    <div class="store-badges">
+      <a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">
+        <img src="images/appstore-badge.svg" width="120" height="40" alt="Download on the App Store">
+      </a>
+      <a class="btn-store btn-store-play" href="https://play.google.com/store/apps/details?id=app.matlyst" target="_blank" rel="noopener">
+        <img src="images/googleplay-badge-en.png" width="646" height="250" alt="Get it on Google Play">
+      </a>
     </div>
-    <p class="nl-note" id="nyhetsbrev-vilkar">Ingen spam. Avmeld når som helst. Tar du i feltet, lastes påmeldingsskjemaet fra EmailOctopus, som bruker Google reCAPTCHA mot robotpåmeldinger. Begge får da IP-adressen din. Se <a href="/personvern.html#nettstedet">personvernerklæringen</a>.</p>
   </div>
 </section>
 
@@ -237,21 +237,6 @@
 </div>
 
 <script src="/site.js"></script>
-<script>
-  // EmailOctopus injiseres asynkront — oversett skjematekst til norsk
-  (function () {
-    var host = document.querySelector('.newsletter-eo');
-    if (!host) return;
-    function localize() {
-      var email = host.querySelector('input[type=email]');
-      if (email && email.placeholder !== 'Din e-postadresse') email.placeholder = 'Din e-postadresse';
-      var submit = host.querySelector('input[type=submit]');
-      if (submit && submit.value !== 'Meld meg på') submit.value = 'Meld meg på';
-    }
-    localize();
-    new MutationObserver(localize).observe(host, { childList: true, subtree: true });
-  })();
-</script>
 
 </body>
 </html>

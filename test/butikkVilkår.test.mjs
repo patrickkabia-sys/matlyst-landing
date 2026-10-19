@@ -15,7 +15,7 @@ test('svenske og danske vilkår har butikkens prøveperiode og 24-timersfrist', 
   assert.ok(les('sv/villkor/index.html').includes(PROVEPERIODE.sv));
   assert.ok(les('da/vilkaar/index.html').includes(PROVEPERIODE.da));
 
-  const generator = les('scripts/generer-lokalsider.mjs');
+  const generator = les('scripts/juridisk-tekster.mjs');
   assert.ok(generator.includes(PROVEPERIODE.sv));
   assert.ok(generator.includes(PROVEPERIODE.da));
 });
