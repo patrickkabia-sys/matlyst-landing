@@ -25,7 +25,7 @@ test('vilkårene binder YouTube-import til YouTubes vilkår (sv, da, en)', () =>
     assert.match(html, setning, fil);
     assert.ok(html.includes('href="https://www.youtube.com/t/terms"'), fil);
   }
-  assert.match(les('sv/villkor/index.html'), /Senast uppdaterad 19 oktober 2026/u);
-  assert.match(les('da/vilkaar/index.html'), /Senest opdateret 19\. oktober 2026/u);
-  assert.match(les('en/terms/index.html'), /Last updated 19 October 2026/u);
+  assert.match(les('sv/villkor/index.html'), /Senast uppdaterad 20 oktober 2026/u);
+  assert.match(les('da/vilkaar/index.html'), /Senest opdateret 20\. oktober 2026/u);
+  assert.match(les('en/terms/index.html'), /Last updated 20 October 2026/u);
 });

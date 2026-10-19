@@ -35,12 +35,37 @@ test('personvernerklæringen dekker de samme temaene på nb, sv, da og en', () =
   }
 });
 
-test('ingen interne filnavn og ingen art. 6.1 c i brukerteksten', () => {
+test('ingen interne filnavn i brukerteksten', () => {
   for (const [kode, sti] of Object.entries(SIDER)) {
-    const t = tekst(lesSide(sti));
-    assert.doesNotMatch(t, /site\.js/u, `${kode}: site.js`);
-    assert.doesNotMatch(t, /6\.1 c|litra c|6 nr\. 1 bokstav c|6\(1\)\(c\)/u, `${kode}: art. 6.1 c`);
+    assert.doesNotMatch(tekst(lesSide(sti)), /site\.js/u, `${kode}: site.js`);
   }
+});
+
+// Konto-ID og e-post beholdes til slettingen hos leverandørene er fullført.
+// Grunnlaget er art. 6.1 c (GDPR art. 17 og 19), likt på alle språk og bare der.
+test('restopplysninger under sletting har art. 6.1 c som grunnlag på alle språk', () => {
+  const krav = {
+    nb: /til slettingen er fullført\. Ikke noe annet, og ikke lenger enn det tar\. Grunnlaget er rettslig forpliktelse \(art\. 6 nr\. 1 bokstav c\), fordi vi må fullføre slettingen hos leverandørene etter GDPR art\. 17 og 19\./u,
+    sv: /Inget annat, och inte längre än så\. Den rättsliga grunden är rättslig förpliktelse enligt artikel 6\.1 c, eftersom vi måste slutföra raderingen hos leverantörerna enligt artiklarna 17 och 19 i GDPR\./u,
+    da: /Intet andet, og ikke længere end nødvendigt\. Retsgrundlaget er retlig forpligtelse efter artikel 6, stk\. 1, litra c, fordi vi skal gennemføre sletningen hos leverandørerne efter artikel 17 og 19 i GDPR\./u,
+    en: /Nothing else, and no longer than it takes\. The legal basis is legal obligation \(Art\. 6\(1\)\(c\)\), because GDPR Articles 17 and 19 require us to complete the deletion at our providers\./u,
+  };
+  const c = /6 nr\. 1 bokstav c|6\.1 c|litra c|6\(1\)\(c\)/gu;
+  for (const [kode, m] of Object.entries(krav)) {
+    const t = tekst(lesSide(SIDER[kode]));
+    assert.match(t, m, kode);
+    assert.equal(t.match(c)?.length, 1, `${kode}: art. 6.1 c skal stå én gang, i slettesetningen`);
+  }
+});
+
+test('personvern, vilkår og slett konto har samme dato på alle språk', () => {
+  const sider = ['personvern.html', 'vilkar.html', 'slett-konto.html', 'sv/integritet/index.html', 'sv/villkor/index.html', 'sv/radera-konto/index.html', 'da/privatliv/index.html', 'da/vilkaar/index.html', 'da/slet-konto/index.html', 'en/privacy/index.html', 'en/terms/index.html'];
+  const datoer = new Set(sider.map((sti) => {
+    const m = tekst(lesSide(sti)).match(/(?:Sist oppdatert|Senast uppdaterad|Senest opdateret|Last updated) (\d{1,2})\.? (oktober|October) 2026/u);
+    assert.ok(m, `${sti}: fant ingen dato`);
+    return m[1];
+  }));
+  assert.deepEqual([...datoer], ['20']);
 });
 
 test('engelsk har ingen avsnitt for USA eller Storbritannia (bølge 2)', () => {
