@@ -6,9 +6,8 @@ import { join, relative } from 'node:path';
 import test from 'node:test';
 
 const ROOT = new URL('..', import.meta.url).pathname;
-const les = (sti) => readFileSync(join(ROOT, sti), 'utf8');
+import { lesSide as les } from './hjelp/side.mjs';
 
-// sv, da og en kommer med grenen fix/juss-bolge1-sv-da-en.
 const SPRAK = {
   nb: {
     personvern: 'personvern.html',
@@ -17,6 +16,30 @@ const SPRAK = {
     sprakene: /norsk, svensk, dansk eller engelsk/u,
     nyhetsbrev: /Samtykke \(art\. 6 a\)\.<\/strong> Nyhetsbrev på e-post/u,
     avmelding: 'avmeldingslenken i hvert nyhetsbrev',
+  },
+  sv: {
+    personvern: 'sv/integritet/index.html',
+    sletting: 'sv/radera-konto/index.html',
+    vilkar: 'sv/villkor/index.html',
+    sprakene: /svenska, norska, danska eller engelska/u,
+    nyhetsbrev: /Nyhetsbrevet via e-post bygger på samtycke enligt artikel 6\.1 a/u,
+    avmelding: 'avregistreringslänken i varje nyhetsbrev',
+  },
+  da: {
+    personvern: 'da/privatliv/index.html',
+    sletting: 'da/slet-konto/index.html',
+    vilkar: 'da/vilkaar/index.html',
+    sprakene: /dansk, norsk, svensk eller engelsk/u,
+    nyhetsbrev: /Nyhedsbrevet pr\. e-mail bygger på samtykke efter artikel 6, stk\. 1, litra a/u,
+    avmelding: 'afmeldingslinket i hvert nyhedsbrev',
+  },
+  en: {
+    personvern: 'en/privacy/index.html',
+    sletting: 'en/privacy/index.html',
+    vilkar: 'en/terms/index.html',
+    sprakene: /English, Norwegian, Swedish or Danish/u,
+    nyhetsbrev: /Consent \(Art\. 6\(1\)\(a\)\):<\/strong> the email newsletter/u,
+    avmelding: 'unsubscribe link in every newsletter',
   },
 };
 const ANDRE_SPRAK = ['sv', 'da', 'en'].filter((k) => !(k in SPRAK));

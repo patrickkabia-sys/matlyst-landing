@@ -1,5 +1,5 @@
-const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK' });
-const SPRAKREKKEFOLGE = Object.freeze(['nb', 'sv', 'da']);
+export const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK' });
+export const SPRAKREKKEFOLGE = Object.freeze(['nb', 'sv', 'da']);
 
 // Én kilde for sider som faktisk dekker samme funksjon eller hensikt.
 // x-default peker på bokmål når det finnes, ellers på gruppens første språk.
