@@ -87,7 +87,7 @@
   "name": "Personvernerklæring for Matlyst",
   "url": "https://matlyst-app.no/personvern.html",
   "inLanguage": "nb-NO",
-  "dateModified": "2026-10-13",
+  "dateModified": "2026-10-19",
   "author": { "@type": "Person", "name": "Patrick Kabia" },
   "publisher": { "@type": "Organization", "name": "Matlyst", "url": "https://matlyst-app.no/" },
   "description": "Hva Matlyst samler, hvorfor, hvem som behandler det, og tre løfter som gjelder alle brukere: bruksanalyse av til du sier ja, ingen betaling for personvern, ingen annonser og ingen salg av data."
@@ -127,7 +127,7 @@
 <main class="doc">
   <p class="doc-kicker">Personvern</p>
   <h1 class="doc-title">Personvern­erklæring</h1>
-  <p class="doc-updated">Sist oppdatert 13. oktober 2026</p>
+  <p class="doc-updated">Sist oppdatert 19. oktober 2026</p>
 
   <p class="doc-intro">
     Matlyst er en matapp som lar deg importere, organisere og lage oppskrifter. Vi samler kun dataene
@@ -234,8 +234,35 @@
     <li>Appoppdateringer: appen henter oppdateringer fra serverne til Expo. Expo får da IP-adressen din, hvilken appversjon og plattform du bruker, og en tilfeldig ID som er fast for installasjonen.</li>
     <li>Appversjon og enhetsinformasjon for feilretting.</li>
     <li>Driftsstatus: appen sjekker en statusfil på status.matlyst-app.no når den åpnes eller kommer tilbake på skjermen, og hvert femte minutt mens den viser et driftsvarsel, slik at den kan varsle deg hvis Matlyst er nede. Fila ligger hos GitHub Pages (GitHub, USA), som da ser IP-adressen din og vanlig teknisk informasjon fra forespørselen, men ingenting om kontoen din.</li>
-    <li>Bruksstatistikk (hvilke funksjoner og skjermer som brukes) for å forbedre appen, og kun hvis du har samtykket. Statistikken er <strong>pseudonym, ikke anonym</strong>: den knyttes til den tilfeldig genererte konto-ID-en din, slik at hendelser fra samme bruker kan ses i sammenheng. Vi sender aldri navn, e-post eller oppskriftsinnhold.</li>
+    <li>Bruksstatistikk om hvilke funksjoner og skjermer som brukes, bare hvis du har samtykket. Selve statistikkflyten er beskrevet nedenfor.</li>
   </ul>
+
+  <h3>Anonym bruksstatistikk i appen</h3>
+  <p>
+    Bruksstatistikken er anonym i betydningen i GDPR fortale 26. Hver hendelse sendes alene til
+    Matlysts egen server hos Supabase i EU, uten ID og uten innlogging. Tidspunktet rundes ned til
+    hele timen, og bare kjente hendelsesnavn og forhåndsbestemte egenskaper godtas.
+  </p>
+  <p>
+    På serveren lagres hendelsen midlertidig uten bruker-, konto-, enhets- eller IP-felt. Raden slettes
+    etter videresending, og senest etter sju dager. Før hendelsene sendes videre, stokkes de. PostHog
+    i EU mottar hver hendelse med en ny tilfeldig ID, uten IP-adresse, sted eller personprofil.
+    Hendelsene kan derfor ikke slås opp per person.
+  </p>
+  <p>
+    Køen på telefonen skrives først etter at du har sagt ja. Den inneholder ingen ID, og tømmes hvis
+    du sier nei eller logger ut. Når du trekker samtykket, stopper innsamlingen. Grunnlaget for lagring
+    og tilgang på telefonen er samtykke etter ePrivacy-direktivet artikkel 5 nr. 3 og ekomloven § 3-15.
+  </p>
+  <p>
+    Når appen sender en hendelse, registrerer Supabase IP-adresse, land, user agent og nøyaktig
+    tidspunkt i sine driftslogger. På Matlysts Pro-plan lagres loggene i sju dager. Matlyst leser ikke
+    disse loggene. De inneholder ingen bruker-ID og ikke innholdet i hendelsen.
+  </p>
+  <p>
+    Eldre appversjoner sender fortsatt pseudonymt til det gamle PostHog-prosjektet fram til de er
+    oppdatert. Nettstedets eget PostHog i <code>site.js</code> er en egen flyt og endres ikke av dette.
+  </p>
 
   <h3>Tilbakemeldinger i appen</h3>
   <p>
@@ -246,9 +273,9 @@
   </p>
   <p>
     Publiserte innspill vises uten navn, e-post, skjermbilde eller teknisk kontekst. Kun Matlysts
-    administratorer kan se innsenderopplysninger og vedlegg. Analysehendelser om at veggen ble åpnet,
-    et innspill ble sendt eller en stemme ble gitt, sendes bare til PostHog når du har samtykket til
-    bruksstatistikk. Selve teksten, skjermbildet og oppskrifts-ID-en sendes ikke til PostHog.
+    administratorer kan se innsenderopplysninger og vedlegg. Den anonyme statistikkflyten ovenfor kan
+    registrere at veggen ble åpnet, et innspill ble sendt eller en stemme ble gitt, men bare når du har
+    samtykket. Selve teksten, skjermbildet og oppskrifts-ID-en inngår ikke i bruksstatistikken.
   </p>
 
   <h3>E-post fra Matlyst</h3>
@@ -279,7 +306,7 @@
     <li><strong>Berettiget interesse (art. 6 f).</strong> Feil- og krasjrapportering og sjekk av driftsstatus for å holde appen stabil og sikker. Du kan protestere, se «Dine rettigheter».</li>
     <li><strong>Berettiget interesse (art. 6 f).</strong> Behandle tilbakemeldinger du selv sender, vise godkjente innspill anonymt og gi deg status på saken, slik at vi kan forbedre og drifte Matlyst.</li>
     <li><strong>Berettiget interesse (art. 6 f).</strong> Passordsjekken mot kjente datalekkasjer, for å beskytte kontoen din, velkomst-e-posten og én påminnelse på e-post etter registreringen.</li>
-    <li><strong>Samtykke (art. 6 a).</strong> Bruksstatistikk i appen. Vi spør deg eksplisitt, og vi samler ingenting før du har sagt ja. Du kan trekke samtykket tilbake når som helst under Innstillinger, like enkelt som du ga det.</li>
+    <li><strong>Samtykke etter ePrivacy-direktivet artikkel 5 nr. 3 og ekomloven § 3-15.</strong> Bruksstatistikk i appen. Vi samler ingenting før du har sagt ja, og du kan trekke samtykket tilbake når som helst under Innstillinger. Selve statistikken er anonym etter GDPR fortale 26 og er derfor ikke personopplysninger.</li>
     <li><strong>Uttrykkelig samtykke (art. 6 nr. 1 bokstav a og art. 9 nr. 2 bokstav a).</strong> Behandling av helseopplysninger i matlogg og kalorimål. Dette samtykket er separat fra analyse og KI og kan trekkes tilbake i appens innstillinger.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Personaliserte daglige middagsforslag generert av KI, og push-varsler. Begge kan trekkes tilbake når som helst.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Nyhetsbrev på e-post. I appen sier du ja ved å krysse av når du registrerer deg, eller ved å svare «Ja takk» når appen spør. Vi lagrer svaret og tidspunktet. Nyhetsbrevet sendes via Resend, og e-postadressen og fornavnet ditt legges i nyhetsbrevlista hos EmailOctopus. Påmelding på nettstedet (EmailOctopus) bygger også på samtykke. Du trekker samtykket tilbake med avmeldingslenken i hvert nyhetsbrev eller ved å skrive til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</li>
@@ -383,7 +410,7 @@
   <h2>Hvem vi deler med (databehandlere)</h2>
   <p>Vi selger aldri dataene dine. Vi bruker betrodde leverandører for å drifte tjenesten:</p>
   <ul>
-    <li><strong>Supabase</strong> — database, innlogging og fillagring (EU/EØS).</li>
+    <li><strong>Supabase</strong> — database, innlogging, fillagring og midlertidig mottak av anonym bruksstatistikk (EU/EØS).</li>
     <li><strong>Apple</strong> — «Logg inn med Apple», App Store, kjøp og push-varsler (iOS).</li>
     <li><strong>Google</strong> — «Logg inn med Google», Google Play, kjøp og push-varsler via Firebase Cloud Messaging (Android).</li>
     <li><strong>Expo</strong> — levering av push-varsler og appoppdateringer (USA).</li>
@@ -391,7 +418,7 @@
     <li><strong>RevenueCat</strong> — administrasjon av abonnement.</li>
     <li><strong>Anthropic Ireland, Limited</strong> — KI-behandling når du har gitt KI-tillatelsen (betalt API uten trening på innholdet).</li>
     <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
-    <li><strong>PostHog</strong> — produktanalyse i appen og på nettstedet, knyttet til en pseudonym konto-ID (hostet i EU; kun ved samtykke, både i appen og på nettstedet).</li>
+    <li><strong>PostHog</strong> — anonym bruksstatistikk fra appen og en egen produktanalyseflyt på nettstedet (EU; begge bare ved samtykke).</li>
     <li><strong>EmailOctopus</strong> — nyhetsbrevlista, med påmeldinger fra appen og fra nettstedet. Skjemaet på nettstedet lastes først når du tar i e-postfeltet.</li>
     <li><strong>Google (reCAPTCHA)</strong> — robotkontroll i påmeldingsskjemaet for nyhetsbrevet. Lastes av EmailOctopus sitt skjema, altså først når du tar i e-postfeltet, og Google mottar da IP-adressen din. Rører du ikke feltet, kontaktes den ikke.</li>
     <li><strong>Meta (Facebook)</strong> — Instagram-innlegg du importerer, hentet fra telefonen din og fra serveren vår, og forsiden til Instagram når appen starter.</li>
@@ -415,8 +442,8 @@
   <p>
     For at oppskriftene dine skal være tilgjengelige uten nett, lagrer appen en lokal kopi av oppskriftene,
     ingrediensene og oppskriftsbildene dine på enheten, sammen med innloggingsøkt og appinnstillinger. Disse
-    ligger kun i appens beskyttede lagringsområde, deles ikke videre, og slettes når du logger ut. Ingen
-    sporingsmekanismer benyttes lokalt.
+    ligger kun i appens beskyttede lagringsområde, deles ikke videre, og slettes når du logger ut. Etter
+    analysesamtykke kan telefonen i tillegg ha den ID-frie statistikkøen som er beskrevet ovenfor.
   </p>
 
   <h2>Lagring og sletting</h2>
@@ -426,7 +453,7 @@
     <li><strong>Matlogg og kalorimål.</strong> Trekker du tilbake samtykket til disse helseopplysningene, slettes matloggen og kalorimålet nullstilles. Dette krever ikke at du sletter kontoen.</li>
     <li><strong>Tilbakemeldinger</strong> — lagres mens kontoen din finnes eller til du ber oss slette dem. Du kan selv slette egne innspill mens de er til vurdering eller avslått. De følger også med i persondataeksporten og slettes sammen med kontoen.</li>
     <li><strong>Push-token</strong> — slettes når du logger ut, eller når du sletter kontoen.</li>
-    <li><strong>Bruksstatistikk hos PostHog</strong> — samles kun mens samtykket ditt står. Trekker du samtykket, stopper innsamlingen umiddelbart. Statistikk som allerede er samlet, slettes når du sletter kontoen, eller hvis du ber oss om det.</li>
+    <li><strong>Anonym bruksstatistikk</strong> — samles bare mens samtykket ditt står. Sier du nei, stopper innsamlingen og køen på telefonen tømmes. Serverraden slettes etter videresending og senest etter sju dager. Videresendte hendelser kan ikke slås opp per person.</li>
     <li><strong>Nyhetsbrev hos EmailOctopus</strong> — til du melder deg av, eller sletter kontoen.</li>
     <li><strong>Feil- og krasjrapporter hos Sentry</strong> — slettes automatisk etter 30 dager. Rapportene er ikke knyttet til kontoen din: vi sender aldri navn, e-post eller bruker-ID med dem, så de kan ikke spores tilbake til deg.</li>
     <li><strong>Restopplysninger under sletting</strong> — går slettingen hos en av leverandørene våre ikke gjennom med én gang, beholder vi konto-ID-en din, og e-postadressen hvis den trengs, til slettingen er fullført. Ikke noe annet, og ikke lenger enn det tar.</li>
@@ -434,7 +461,8 @@
   <p>
     Du sletter kontoen selv under Innstillinger → Slett konto, eller ved å kontakte oss på
     <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>. Da fjernes kontoen, alt innholdet ditt,
-    bildene dine og opplysningene vi har sendt til PostHog, EmailOctopus og RevenueCat. Abonnementet ditt
+    bildene dine og opplysningene vi har sendt til EmailOctopus og RevenueCat. Pseudonyme PostHog-data
+    fra eldre appversjoner slettes der de kan slås opp med den gamle konto-ID-en. Abonnementet ditt
     hos Apple eller Google må du si opp selv i butikken — vi har ikke tilgang til det.
   </p>
 
