@@ -277,6 +277,16 @@
     samtykket. Selve teksten, skjermbildet og oppskrifts-ID-en inngår ikke i bruksstatistikken.
   </p>
 
+  <h3>Rapporter om KI-innhold</h3>
+  <p>
+    Rapporterer du et svar, et tips eller en oppskrift som er laget med KI, lagrer vi teksten slik den
+    sto på skjermen, oppskrifts-ID-en hvis det gjelder en lagret oppskrift, grunnen du valgte, en eventuell
+    kommentar, kontoen din og tidspunktet. Vi bruker rapporten til å vurdere innholdet og rette feil.
+    Grunnlaget er berettiget interesse (art. 6 f) i å holde KI-innholdet trygt. Rapporten slettes etter
+    12 måneder, og når du sletter kontoen. Varselet vi selv får om en ny rapport, inneholder bare stedet i
+    appen og grunnen, ikke teksten eller hvem du er.
+  </p>
+
   <h3>E-post fra Matlyst</h3>
   <p>
     Vi sender noen få typer e-post fra appen: e-poster for innlogging (bekreftelse av kontoen, lenke for
@@ -309,7 +319,7 @@
     <li><strong>Samtykke (art. 6 nr. 1 bokstav a).</strong> Pseudonym bruksstatistikk fra eldre appversjoner fram til appen er oppdatert, og analyse på nettstedet. Begge flytene er separate fra den anonyme bruksstatistikken i oppdaterte appversjoner.</li>
     <li><strong>Uttrykkelig samtykke (art. 6 nr. 1 bokstav a og art. 9 nr. 2 bokstav a).</strong> Behandling av helseopplysninger i matlogg og kalorimål. Dette samtykket er separat fra analyse og KI og kan trekkes tilbake i appens innstillinger.</li>
     <li><strong>Samtykke (art. 6 a).</strong> Personaliserte daglige middagsforslag generert av KI, og push-varsler. Begge kan trekkes tilbake når som helst.</li>
-    <li><strong>Samtykke (art. 6 a).</strong> Nyhetsbrev på e-post. I appen sier du ja ved å krysse av når du registrerer deg, eller ved å svare «Ja takk» når appen spør. Vi lagrer svaret og tidspunktet. Nyhetsbrevet sendes via Resend, og e-postadressen og fornavnet ditt legges i nyhetsbrevlista hos EmailOctopus. Påmelding på nettstedet (EmailOctopus) bygger også på samtykke. Du trekker samtykket tilbake med avmeldingslenken i hvert nyhetsbrev eller ved å skrive til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</li>
+    <li><strong>Samtykke (art. 6 a).</strong> Nyhetsbrev på e-post. Nyhetsbrevet er for brukere av appen, og du melder deg på i appen: du sier ja ved å krysse av når du registrerer deg, eller ved å svare «Ja takk» når appen spør. Vi lagrer svaret og tidspunktet. Nyhetsbrevet sendes via Resend til e-postadressen på kontoen din, på språket du bruker i appen. Du trekker samtykket tilbake med avmeldingslenken i hvert nyhetsbrev eller ved å skrive til <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.</li>
   </ul>
   <p>Vi selger aldri dine personopplysninger til tredjeparter.</p>
 
@@ -353,7 +363,6 @@
   <ul>
     <li><strong>Produktanalyse (PostHog).</strong> Statistikk om bruk av nettstedet, hostet i EU, lastes <strong>kun hvis du samtykker</strong> i samtykke-banneret. Velger du «Bare nødvendige», settes ingen sporing.</li>
     <li><strong>Google Analytics.</strong> Besøksstatistikk (måling nr. G-X3J7DVSH2R). Lastes <strong>kun ved samtykke</strong>, sammen med PostHog. Google mottar blant annet IP-adressen din og hvilke sider du åpner.</li>
-    <li><strong>Nyhetsbrev (EmailOctopus).</strong> Påmeldingsskjemaet lastes <strong>først når du tar i e-postfeltet</strong>, ikke når siden åpnes. Gjør du ikke det, kontakter nettstedet verken EmailOctopus eller Google reCAPTCHA, som skjemaet bruker mot robotpåmeldinger. Melder du deg på, lagres e-postadressen din hos EmailOctopus så vi kan sende deg oppdateringer, og du kan melde deg av når som helst via lenken i e-postene.</li>
     <li>
       <strong>Skrifttyper.</strong> Skriftene ligger på vår egen server og lastes derfra.
       Nettstedet henter dem <strong>ikke</strong> fra Google eller noen annen tredjepart, så
@@ -419,8 +428,6 @@
     <li><strong>Anthropic Ireland, Limited</strong> — KI-behandling når du har gitt KI-tillatelsen (betalt API uten trening på innholdet).</li>
     <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
     <li><strong>PostHog</strong> — anonym bruksstatistikk fra appen og en egen produktanalyseflyt på nettstedet (EU; begge bare ved samtykke).</li>
-    <li><strong>EmailOctopus</strong> — nyhetsbrevlista, med påmeldinger fra appen og fra nettstedet. Skjemaet på nettstedet lastes først når du tar i e-postfeltet.</li>
-    <li><strong>Google (reCAPTCHA)</strong> — robotkontroll i påmeldingsskjemaet for nyhetsbrevet. Lastes av EmailOctopus sitt skjema, altså først når du tar i e-postfeltet, og Google mottar da IP-adressen din. Rører du ikke feltet, kontaktes den ikke.</li>
     <li><strong>Meta (Facebook)</strong> — Instagram-innlegg du importerer, hentet fra telefonen din og fra serveren vår, og forsiden til Instagram når appen starter.</li>
     <li><strong>GitHub</strong> — statusfila appen sjekker for driftsavvik (GitHub Pages, USA).</li>
     <li><strong>Google</strong> — i tillegg til innlogging og Play: besøksstatistikk (Google Analytics, kun ved samtykke) og oppslag når du importerer fra YouTube.</li>
@@ -433,7 +440,6 @@
   </p>
   <ul>
     <li><strong>Ingen overføring.</strong> Supabase (database, innlogging, fillagring), PostHog og Sentry ligger alle i EU. Sentry-prosjektene våre er opprettet i Frankfurt-regionen, så krasjrapporter forlater ikke EU.</li>
-    <li><strong>Storbritannia: adekvansbeslutning.</strong> EmailOctopus. EU fornyet adekvansbeslutningen for Storbritannia 19. desember 2025, med gyldighet til 27. desember 2031.</li>
     <li><strong>USA: standard personvernbestemmelser (SCC, art. 46).</strong> Anthropic. Anthropic er <strong>ikke</strong> sertifisert under EU-US Data Privacy Framework, og overføringen hviler derfor på SCC.</li>
     <li><strong>USA: EU-US Data Privacy Framework, subsidiært standard personvernbestemmelser.</strong> Apple, Google, Meta, RevenueCat, Resend, Expo og GitHub. Overføringen bygger på deltakelse i rammeverket, som Europakommisjonen godkjente 10. juli 2023, og på standard personvernbestemmelser (SCC, art. 46) der rammeverket ikke dekker behandlingen. Gjeldende status for hver leverandør kan slås opp på <a href="https://www.dataprivacyframework.gov/list" target="_blank" rel="noopener">dataprivacyframework.gov</a>.</li>
   </ul>
@@ -452,16 +458,17 @@
     <li><strong>Konto, profil og innholdet ditt</strong> — så lenge du har en konto. Det finnes ingen automatisk utløpstid; du bestemmer selv når det slettes.</li>
     <li><strong>Matlogg og kalorimål.</strong> Trekker du tilbake samtykket til disse helseopplysningene, slettes matloggen og kalorimålet nullstilles. Dette krever ikke at du sletter kontoen.</li>
     <li><strong>Tilbakemeldinger</strong> — lagres mens kontoen din finnes eller til du ber oss slette dem. Du kan selv slette egne innspill mens de er til vurdering eller avslått. De følger også med i persondataeksporten og slettes sammen med kontoen.</li>
+    <li><strong>Rapporter om KI-innhold</strong> — slettes etter 12 måneder, og når du sletter kontoen.</li>
     <li><strong>Push-token</strong> — slettes når du logger ut, eller når du sletter kontoen.</li>
     <li><strong>Anonym bruksstatistikk</strong> — samles bare mens samtykket ditt står. Sier du nei, stopper innsamlingen og køen på telefonen tømmes. Serverraden slettes etter videresending og senest etter sju dager. Videresendte hendelser kan ikke slås opp per person.</li>
-    <li><strong>Nyhetsbrev hos EmailOctopus</strong> — til du melder deg av, eller sletter kontoen.</li>
+    <li><strong>Samtykket til nyhetsbrevet</strong> — til du melder deg av, eller sletter kontoen.</li>
     <li><strong>Feil- og krasjrapporter hos Sentry</strong> — slettes automatisk etter 30 dager. Rapportene er ikke knyttet til kontoen din: vi sender aldri navn, e-post eller bruker-ID med dem, så de kan ikke spores tilbake til deg.</li>
     <li><strong>Restopplysninger under sletting</strong> — går slettingen hos en av leverandørene våre ikke gjennom med én gang, beholder vi konto-ID-en din, og e-postadressen hvis den trengs, til slettingen er fullført. Ikke noe annet, og ikke lenger enn det tar.</li>
   </ul>
   <p>
     Du sletter kontoen selv under Innstillinger → Slett konto, eller ved å kontakte oss på
     <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>. Da fjernes kontoen, alt innholdet ditt,
-    bildene dine og opplysningene vi har sendt til EmailOctopus og RevenueCat. Pseudonyme PostHog-data
+    bildene dine og opplysningene vi har sendt til RevenueCat. Pseudonyme PostHog-data
     fra eldre appversjoner slettes der de kan slås opp med den gamle konto-ID-en. Abonnementet ditt
     hos Apple eller Google må du si opp selv i butikken — vi har ikke tilgang til det.
   </p>
@@ -479,7 +486,7 @@
     <strong>Innsyn og dataportabilitet kan du gjøre selv, med én gang.</strong> I appen, under
     Innstillinger → Eksport → «Last ned personopplysningene mine», får du en JSON-fil med alt vi har
     lagret om deg. Samme sted finner du «Slett konto», som sletter kontoen og alle data — også hos
-    leverandørene våre. Filen dekker våre egne systemer; data som ligger hos PostHog, EmailOctopus,
+    leverandørene våre. Filen dekker våre egne systemer; data som ligger hos PostHog,
     RevenueCat, Apple eller Google må du be om direkte hos dem.
   </p>
   <p>
@@ -498,6 +505,7 @@
     <li><strong>Norge: 13 år.</strong> <a href="https://lovdata.no/lov/2018-06-15-38/%C2%A75">Personopplysningsloven § 5</a>.</li>
     <li><strong>Sverige: 13 år.</strong> <a href="https://data.riksdagen.se/dokument/sfs-2018-218.html">Dataskyddslagen (2018:218) 2 kap. 4 §</a>.</li>
     <li><strong>Danmark: 15 år.</strong> <a href="https://www.retsinformation.dk/eli/lta/2024/289/pdf">Databeskyttelsesloven § 6 stk. 2</a>.</li>
+    <li><strong>Annet land: 16 år.</strong> Hovedregelen i <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj">GDPR art. 8 nr. 1</a>.</li>
   </ul>
   <p>
     Velg landet du bor i, uavhengig av appens språk. Vi lagrer land, bekreftet minstealder og tidspunkt

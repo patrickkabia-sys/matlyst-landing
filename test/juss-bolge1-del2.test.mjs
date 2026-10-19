@@ -68,7 +68,8 @@ test('datakartet: ingen feilsøkingslogg eller Google Fonts i e-post, men Instag
     assert.doesNotMatch(html, /feilsøkingslogg|felsökningslogg|fejlfindingslogge|troubleshooting log|Google Fonts/iu, kode);
     assert.match(html, s.instagram, `${kode}: Instagram-forhåndskallet`);
     assert.ok(html.includes(s.status) && html.includes('GitHub'), `${kode}: statusfila hos GitHub`);
-    assert.match(html, /EmailOctopus/u, `${kode}: nyhetsbrevlista`);
+    // EmailOctopus er faset ut (19.10): nyhetsbrevet sendes via Resend, se nyhetsbrev-utfasing.test.mjs.
+    assert.doesNotMatch(html, /EmailOctopus/u, `${kode}: nyhetsbrevlista`);
     assert.match(html, s.dpf, `${kode}: GitHub i DPF-punktet`);
     assert.doesNotMatch(html, /hvert femte minutt mens den er i bruk|var femte minut medan den används|hvert femte minut, mens den er i brug|every five minutes while you use it/u, `${kode}: statussjekken`);
   }

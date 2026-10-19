@@ -24,8 +24,11 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
   function hide() { if (banner) { banner.classList.add('hide'); setTimeout(function () { banner.hidden = true; }, 520); } }
+  // Kampanjesiden /sara/ skal aldri laste Google Analytics, heller ikke etter
+  // samtykke (vedtak 09.09, bekreftet 19.10). PostHog måler kampanjen der.
+  var utenGA = /^\/sara(?:\/|$)/.test(location.pathname);
   function loadGA() {
-    if (window.gtag) return;
+    if (utenGA || window.gtag) return;
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-X3J7DVSH2R';
@@ -94,86 +97,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       capture('appstore_click', eventProperties(a, 'app_store'));
     } else if (a.href && a.href.indexOf('play.google.com') > -1) {
       capture('play_click', eventProperties(a, 'google_play'));
-    } else if (a.getAttribute('href') === '#nyhetsbrev') {
-      capture('newsletter_intent', eventProperties(a, null));
     }
   });
-
-  document.addEventListener('submit', function (e) {
-    if (e.target && e.target.classList && e.target.classList.contains('emailoctopus-form')) {
-      capture('newsletter_signup', {
-        page_path: location.pathname,
-        page_title: document.title
-      });
-    }
-  }, true);
-})();
-
-// --- Nyhetsbrev: EmailOctopus lastes KUN etter en uttrykkelig handling ---
-// Skjemaet la tidligere som <script src> i markupen og gikk til EmailOctopus,
-// Google reCAPTCHA og Google Fonts ved hver sidelast, for brukeren hadde
-// svart pa samtykkebanneret. Fram til brukeren tar i feltet viser vi derfor et
-// rent HTML-felt uten tredjepart, og laster det ekte skjemaet forst da.
-(function () {
-  var vert = document.getElementById('nyhetsbrev-skjema');
-  if (!vert) return;
-  var plassholder = document.getElementById('nyhetsbrev-plassholder');
-  var feil = document.getElementById('nyhetsbrev-feil');
-  var startet = false;
-
-  function visNyhetsbrevFeil() {
-    startet = false;
-    if (feil) feil.hidden = false;
-    if (plassholder) plassholder.hidden = false;
-  }
-
-  function ekteSkjema() {
-    return vert.querySelector('form:not(.nl-plassholder)');
-  }
-
-  function lastNyhetsbrev() {
-    if (startet || ekteSkjema()) return;
-    startet = true;
-    if (feil) feil.hidden = true;
-    var id = vert.getAttribute('data-eo-form');
-    var s = document.createElement('script');
-    s.async = true;
-    s.setAttribute('data-form', id);
-    s.src = 'https://eocampaign1.com/form/' + id + '.js';
-    s.onerror = visNyhetsbrevFeil;
-    vert.appendChild(s);
-    // Et skript som svarer 200 med sol kan fortsatt la vaere a tegne skjemaet.
-    // Da skal brukeren fa beskjed, ikke et felt som ikke gjor noe.
-    setTimeout(function () { if (!ekteSkjema()) visNyhetsbrevFeil(); }, 10000);
-  }
-
-  // Nar EmailOctopus har tegnet skjemaet sitt, tar det over for plassholderen,
-  // og e-posten brukeren allerede hadde skrevet folger med.
-  var speider = new MutationObserver(function () {
-    var skjema = ekteSkjema();
-    if (!skjema) return;
-    speider.disconnect();
-    if (feil) feil.hidden = true;
-    var felt = skjema.querySelector('input[type=email]');
-    var skrevet = plassholder ? plassholder.querySelector('input[type=email]').value : '';
-    if (plassholder) plassholder.remove();
-    if (felt) {
-      if (skrevet) felt.value = skrevet;
-      // Opplysninga om EmailOctopus og reCAPTCHA folger med til EmailOctopus
-      // sitt eget felt, sa den ogsa leses opp der.
-      felt.setAttribute('aria-describedby', 'nyhetsbrev-vilkar');
-      felt.focus();
-    }
-  });
-  speider.observe(vert, { childList: true, subtree: true });
-
-  if (plassholder) {
-    plassholder.addEventListener('focusin', function () { lastNyhetsbrev(); });
-    plassholder.addEventListener('submit', function (e) {
-      e.preventDefault();
-      lastNyhetsbrev();
-    });
-  }
 })();
 
 // «Last ned» i navigasjonen står som App Store-lenke i markupen. Det er riktig
