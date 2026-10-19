@@ -13,7 +13,7 @@ const KRAV = {
   'vilkar.html': [/Norge: 13 år/u, /Sverige: 13 år/u, /Danmark: 15 år/u, /Annet land: 16 år/u],
   'sv/integritet/index.html': [/13 år om du bor i Sverige eller Norge, 15 år om du bor i Danmark och 16 år om du bor i ett annat land/u],
   'da/privatliv/index.html': [/mindst 15 år, hvis du bor i Danmark, 13 år, hvis du bor i Norge eller Sverige, og 16 år, hvis du bor i et andet land/u],
-  'en/privacy/index.html': [/13 in Norway and Sweden, 15 in Denmark and 16 anywhere else/u],
+  'en/privacy/index.html': [/13 in Norway and Sweden, 15 in Denmark and 16 in any other country/u],
 };
 
 test('minstealderen for eget samtykke står med alle fire landvalg', () => {
