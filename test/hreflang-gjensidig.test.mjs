@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import test from 'node:test';
 import vm from 'node:vm';
 
-import { SIDEGRUPPER, alternativerFor, byggLocalePageMap, filForSti } from '../scripts/locale-sider.mjs';
+import { SIDEGRUPPER, SPRAKKODER, alternativerFor, byggLocalePageMap, filForSti } from '../scripts/locale-sider.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const BASE = 'https://matlyst-app.no';
@@ -48,7 +48,7 @@ test('alle tabellførte sider har eksisterende, gjensidig hreflang fra samme tab
         assert.equal(existsSync(join(ROOT, filForSti(maal))), true, `${sti} → ${maal}`);
         if (kode === 'x-default') continue;
         const tilbake = hreflang(les(maal));
-        const egenKode = { nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK' }[sprak];
+        const egenKode = SPRAKKODER[sprak];
         assert.equal(tilbake[egenKode], `${BASE}${sti}`, `${maal} → ${sti}`);
       }
     }
@@ -88,5 +88,14 @@ test('lokale kildesider har ingen falske språk-motstykker', () => {
   for (const sti of ['/sv/koket/', '/sv/landleys-kok/', '/da/alletiders-kogebog/', '/da/dr-mad/']) {
     const språklenker = alternativerFor(sti).filter(([kode]) => kode !== 'x-default');
     assert.deepEqual(språklenker, [[sti.startsWith('/sv/') ? 'sv-SE' : 'da-DK', sti]]);
+  }
+});
+
+test('x-default peker på det engelske motstykket i alle grupper som har et', () => {
+  for (const gruppe of SIDEGRUPPER.filter(({ sider }) => sider.en)) {
+    for (const sti of Object.values(gruppe.sider)) {
+      const html = les(sti);
+      assert.match(html, new RegExp(`<link rel="alternate" hreflang="x-default" href="https://matlyst-app\\.no${gruppe.sider.en}">`, 'u'), sti);
+    }
   }
 });

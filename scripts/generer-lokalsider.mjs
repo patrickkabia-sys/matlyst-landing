@@ -213,7 +213,7 @@ const hjem = {
     cards: [
       ['Import recipes', 'A link, a video or a photo becomes a recipe you can cook from.', 'import-recipes/'],
       ['Meal plan', 'Put your own recipes on the days that suit you.'],
-      ['Shopping list', 'Your recipe ingredients and everything else you need, all on one list.'],
+      ['Shopping list', 'The ingredients from your recipes and everything else you need, on one list.'],
       ['Ask Matlyst', 'Ask about a recipe or get help adapting a dish.'],
     ],
     houseAlt: 'Two people planning meals together',
@@ -598,7 +598,7 @@ for (const gruppe of SIDEGRUPPER) {
 }
 
 // Ett sitemap per språk. Sider med noindex (støttesidene) tas ikke med.
-const sistEndret = { en: '2026-10-11' };
+const sistEndret = { en: '2026-10-20' };
 for (const lang of SPRAK) {
   const urls = lokaleSider
     .filter((html) => html.includes(`<html lang="${lang}">`) && !html.includes('content="noindex'))

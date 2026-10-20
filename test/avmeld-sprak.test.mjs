@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import test from 'node:test';
 
 const ROOT = new URL('..', import.meta.url).pathname;
-const SIDER = ['avmeld/index.html', 'sv/avregistrera/index.html', 'da/afmeld/index.html'];
+const SIDER = ['avmeld/index.html', 'sv/avregistrera/index.html', 'da/afmeld/index.html', 'en/unsubscribe/index.html'];
 
 test('alle avmeldingssider bruker det samme skriptet og omdirigeres ikke', () => {
   for (const fil of SIDER) {
@@ -73,12 +73,10 @@ test('avmeldingssidene laster ingen analyse og lekker ikke tokenet', () => {
   for (const fil of SIDER) {
     const html = readFileSync(join(ROOT, fil), 'utf8');
     assert.match(html, /<meta name="robots" content="noindex, nofollow">/u, fil);
+    assert.match(html, /<meta name="referrer" content="no-referrer">/u, fil);
     assert.doesNotMatch(html, /\/site\.js|cookie-banner|data-consent|gtag|googletagmanager|posthog/iu, fil);
     const skript = [...html.matchAll(/<script[^>]*\ssrc="([^"]+)"/gu)].map(([, src]) => src);
     assert.deepEqual(skript, ['/avmeld.js'], fil);
-  }
-  for (const fil of ['sv/avregistrera/index.html', 'da/afmeld/index.html']) {
-    assert.match(readFileSync(join(ROOT, fil), 'utf8'), /<meta name="referrer" content="no-referrer">/u, fil);
   }
 });
 
@@ -90,11 +88,11 @@ test('avmeld.js fjerner u og s fra URL-en og beholder resten', async () => {
   const byttet = [];
   const element = () => ({ hidden: true, dataset: {}, addEventListener() {}, innerHTML: '' });
   const ctx = {
-    location: { search: `?u=${u}&s=${s}&utm=x`, pathname: '/sv/avregistrera/', hash: '#a' },
+    location: { search: `?u=${u}&s=${s}&utm=x`, pathname: '/en/unsubscribe/', hash: '#a' },
     history: { state: null, replaceState: (_st, _t, url) => byttet.push(url) },
     document: { getElementById: element },
     URLSearchParams, fetch: () => new Promise(() => {}),
   };
   vm.runInNewContext(js, ctx);
-  assert.deepEqual(byttet, ['/sv/avregistrera/?utm=x#a']);
+  assert.deepEqual(byttet, ['/en/unsubscribe/?utm=x#a']);
 });

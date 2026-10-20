@@ -21,7 +21,7 @@ const urlTilFil = (href) => {
 test('robots.txt tillater alt og peker på norsk, svensk og dansk sitemap', () => {
   const robots = les('robots.txt');
   assert.match(robots, /^User-agent: \*\nAllow: \/\n/u);
-  for (const navn of ['sitemap.xml', 'sitemap-sv.xml', 'sitemap-da.xml']) {
+  for (const navn of ['sitemap.xml', 'sitemap-sv.xml', 'sitemap-da.xml', 'sitemap-en.xml']) {
     assert.match(robots, new RegExp(`^Sitemap: https://matlyst-app\\.no/${navn.replace('.', '\\.')}$`, 'mu'), navn);
     assert.ok(existsSync(join(ROOT, navn)), navn);
   }

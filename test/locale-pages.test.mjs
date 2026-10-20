@@ -4,7 +4,7 @@ import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
-import { alternativerFor } from '../scripts/locale-sider.mjs';
+import { SPRAKKODER, alternativerFor } from '../scripts/locale-sider.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url)) + '/..';
 
@@ -15,7 +15,7 @@ function finnHtml(dir) {
   });
 }
 
-const filer = ['sv', 'da'].flatMap((lang) => finnHtml(join(root, lang)));
+const filer = ['sv', 'da', 'en'].flatMap((lang) => finnHtml(join(root, lang)));
 const les = (fil) => readFileSync(fil, 'utf8');
 const urlTilFil = (href) => {
   const path = new URL(href).pathname;
@@ -26,13 +26,13 @@ const urlTilFil = (href) => {
 const regexEsc = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 test('alle lokale sider har språk, canonical, hreflang og gyldig strukturert data', () => {
-  assert.equal(filer.length, 48);
+  assert.equal(filer.length, 53);
   for (const fil of filer) {
     const html = les(fil);
     const rel = relative(root, fil);
-    const lang = rel.startsWith('sv/') ? 'sv' : 'da';
+    const lang = rel.split('/')[0];
     assert.match(html, new RegExp(`<html lang="${lang}">`), rel);
-    assert.match(html, /<link rel="canonical" href="https:\/\/matlyst-app\.no\/(?:sv|da)\/[^"]*">/u, rel);
+    assert.match(html, new RegExp(`<link rel="canonical" href="https://matlyst-app\\.no/${lang}/[^"]*">`, 'u'), rel);
     const canonicalSti = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
     for (const [kode, href] of alternativerFor(canonicalSti)) {
       assert.match(html, new RegExp(`<link rel="alternate" hreflang="${kode}" href="https://matlyst-app\\.no${regexEsc(href)}">`), `${rel}: ${kode}`);
@@ -53,8 +53,8 @@ test('alle hreflang-mål finnes og peker gjensidig tilbake', () => {
     for (const [, kode, href] of html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/gu)) {
       const målfil = urlTilFil(href);
       assert.equal(existsSync(målfil), true, `${relative(root, fil)} → ${href}`);
-      if (kode === 'sv-SE' || kode === 'da-DK') {
-        assert.match(les(målfil), new RegExp(`<link rel="alternate" hreflang="(?:sv-SE|da-DK)" href="${regexEsc(canonical)}">`), href);
+      if (kode !== 'x-default' && href !== canonical) {
+        assert.match(les(målfil), new RegExp(`<link rel="alternate" hreflang="[^"]+" href="${regexEsc(canonical)}">`), href);
       }
     }
   }
@@ -132,7 +132,7 @@ test('alle sider som laster site.js har samtykkebanner og mulighet for å trekke
   for (const fil of filer) {
     const html = les(fil);
     const rel = relative(root, fil);
-    if (/\/(?:avregistrera|afmeld)\/index\.html$/u.test(fil)) {
+    if (/\/(?:avregistrera|afmeld|unsubscribe)\/index\.html$/u.test(fil)) {
       assert.doesNotMatch(html, /site\.js|id="cookie"|data-consent-withdraw/u, rel);
       continue;
     }
@@ -162,7 +162,7 @@ test('støttesider er noindex og publiseringssitemap er urørt', () => {
   for (const fil of filer.filter((f) => /\/(?:tiktok|tiktok-auth)\//u.test(f))) {
     assert.match(les(fil), /<meta name="robots" content="noindex, follow">/u, relative(root, fil));
   }
-  for (const fil of filer.filter((f) => /\/(?:avregistrera|afmeld)\//u.test(f))) {
+  for (const fil of filer.filter((f) => /\/(?:avregistrera|afmeld|unsubscribe)\//u.test(f))) {
     assert.match(les(fil), /<meta name="robots" content="noindex, nofollow">/u, relative(root, fil));
   }
   const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8');
@@ -175,7 +175,7 @@ test('språkvelgeren peker på samme sides motstykker', () => {
     const canonicalSti = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
     for (const [kode, href] of alternativerFor(canonicalSti)) {
       if (kode === 'x-default') continue;
-      const sprak = { 'nb-NO': 'nb', 'sv-SE': 'sv', 'da-DK': 'da' }[kode];
+      const sprak = Object.keys(SPRAKKODER).find((k) => SPRAKKODER[k] === kode);
       assert.match(html, new RegExp(`href="${regexEsc(href)}\\?sprak=${sprak}"`), `${relative(root, fil)}: ${sprak}`);
     }
   }
