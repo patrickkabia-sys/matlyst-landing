@@ -66,3 +66,35 @@ test('alle sidene har samme funksjonelle elementer', () => {
     }
   }
 });
+
+// Avmeldingstokenet (u/s) står i URL-en. Ingen analyse, samtykkebanner, referrer
+// eller lenkefølging på sidene, og skriptet fjerner tokenet fra adresselinja.
+test('avmeldingssidene laster ingen analyse og lekker ikke tokenet', () => {
+  for (const fil of SIDER) {
+    const html = readFileSync(join(ROOT, fil), 'utf8');
+    assert.match(html, /<meta name="robots" content="noindex, nofollow">/u, fil);
+    assert.doesNotMatch(html, /\/site\.js|cookie-banner|data-consent|gtag|googletagmanager|posthog/iu, fil);
+    const skript = [...html.matchAll(/<script[^>]*\ssrc="([^"]+)"/gu)].map(([, src]) => src);
+    assert.deepEqual(skript, ['/avmeld.js'], fil);
+  }
+  for (const fil of ['sv/avregistrera/index.html', 'da/afmeld/index.html']) {
+    assert.match(readFileSync(join(ROOT, fil), 'utf8'), /<meta name="referrer" content="no-referrer">/u, fil);
+  }
+});
+
+test('avmeld.js fjerner u og s fra URL-en og beholder resten', async () => {
+  const vm = await import('node:vm');
+  const js = readFileSync(join(ROOT, 'avmeld.js'), 'utf8');
+  const u = '12345678-1234-1234-1234-123456789abc';
+  const s = 'a'.repeat(43);
+  const byttet = [];
+  const element = () => ({ hidden: true, dataset: {}, addEventListener() {}, innerHTML: '' });
+  const ctx = {
+    location: { search: `?u=${u}&s=${s}&utm=x`, pathname: '/sv/avregistrera/', hash: '#a' },
+    history: { state: null, replaceState: (_st, _t, url) => byttet.push(url) },
+    document: { getElementById: element },
+    URLSearchParams, fetch: () => new Promise(() => {}),
+  };
+  vm.runInNewContext(js, ctx);
+  assert.deepEqual(byttet, ['/sv/avregistrera/?utm=x#a']);
+});

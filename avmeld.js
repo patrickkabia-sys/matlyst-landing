@@ -12,6 +12,17 @@
   var q = new URLSearchParams(location.search);
   var u = q.get('u') || '';
   var s = q.get('s') || '';
+  // Tokenet skal ikke bli stående i adresselinja, historikken eller et
+  // skjermbilde. Det er lest over; fjern u og s og behold resten.
+  if (q.has('u') || q.has('s')) {
+    try {
+      var rest = new URLSearchParams(location.search);
+      rest.delete('u');
+      rest.delete('s');
+      var sok = rest.toString();
+      history.replaceState(history.state, '', location.pathname + (sok ? '?' + sok : '') + location.hash);
+    } catch (e) {}
+  }
   // Formkravene speiler avmeldLenke.ts. De er en høflighetssjekk, ikke et
   // vern: serveren verifiserer signaturen uansett hva vi slipper videre.
   var gyldigForm = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(u)
