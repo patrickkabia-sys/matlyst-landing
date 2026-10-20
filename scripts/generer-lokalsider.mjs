@@ -447,6 +447,9 @@ function avmeldPage(lang, row) {
   const schema = {'@context':'https://schema.org','@type':'WebPage',name:title,url:`${base}/${lang}/${path}`};
   const kontakt = `<a href="mailto:hei@matlyst-app.no?subject=${tekst.emne}">hei@matlyst-app.no</a>`;
   const sideHode = head({lang,path,title:`${title} | Matlyst`,description,noindex:true,schema})
+    // Avmeldingstokenet (u/s) står i URL-en: ingen analyse, ingen samtykkebanner,
+    // ingen referrer og ingen indeksering eller lenkefølging (som nb /avmeld/).
+    .replace('<meta name="robots" content="noindex, follow">', '<meta name="robots" content="noindex, nofollow">\n<meta name="referrer" content="no-referrer">')
     .replace('</head>', '<link rel="stylesheet" href="/avmeld.css">\n</head>');
   return `${sideHode}<body data-locale="${lang}">${nav(lang,path)}<main id="hovedinnhold" class="avmeld-doc">
 <section id="bekreft" hidden><p class="avmeld-kicker">${tekst.kicker}</p><h1 class="avmeld-title">${tekst.tittel}</h1><p class="avmeld-intro">${tekst.intro}</p><div class="avmeld-kort"><button class="avmeld-knapp" id="meldAv" type="button">${tekst.knapp}</button><p class="avmeld-status" id="status" data-venter="${tekst.venter}" role="status" aria-live="polite"></p></div></section>
@@ -454,7 +457,7 @@ function avmeldPage(lang, row) {
 <section id="mangler" hidden><p class="avmeld-kicker">${tekst.kicker}</p><h1 class="avmeld-title">${tekst.manglerTittel}</h1><p class="avmeld-intro">${tekst.mangler} ${kontakt}.</p></section>
 <noscript><p class="avmeld-kicker">${tekst.kicker}</p><h1 class="avmeld-title">${tekst.tittel}</h1><p class="avmeld-intro">${tekst.utenJs}</p><form class="avmeld-kort" method="POST" id="reserve" action="https://uaryzmqvoqljjwqvgzoi.supabase.co/functions/v1/avmeld"><input type="hidden" name="List-Unsubscribe" value="One-Click"><button class="avmeld-knapp" type="submit">${tekst.knapp}</button></form></noscript>
 <template id="feilmelding">${tekst.feil} ${kontakt}.</template>
-</main>${footer(lang)}<script src="/avmeld.js" defer></script><script src="/site.js" defer></script></body></html>`;
+</main><script src="/avmeld.js" defer></script></body></html>`;
 }
 
 

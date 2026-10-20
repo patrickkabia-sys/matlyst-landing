@@ -132,6 +132,10 @@ test('alle sider som laster site.js har samtykkebanner og mulighet for å trekke
   for (const fil of filer) {
     const html = les(fil);
     const rel = relative(root, fil);
+    if (/\/(?:avregistrera|afmeld)\/index\.html$/u.test(fil)) {
+      assert.doesNotMatch(html, /site\.js|id="cookie"|data-consent-withdraw/u, rel);
+      continue;
+    }
     assert.match(html, /<script src="\/site\.js" defer><\/script>/u, rel);
     assert.match(html, /id="cookie"/u, rel);
     assert.match(html, /data-consent-withdraw/u, rel);
@@ -155,8 +159,11 @@ test('butikklenkene er dokumentert som sperret til Patricks lanseringsordre', ()
 });
 
 test('støttesider er noindex og publiseringssitemap er urørt', () => {
-  for (const fil of filer.filter((f) => /\/(?:avregistrera|afmeld|tiktok|tiktok-auth)\//u.test(f))) {
+  for (const fil of filer.filter((f) => /\/(?:tiktok|tiktok-auth)\//u.test(f))) {
     assert.match(les(fil), /<meta name="robots" content="noindex, follow">/u, relative(root, fil));
+  }
+  for (const fil of filer.filter((f) => /\/(?:avregistrera|afmeld)\//u.test(f))) {
+    assert.match(les(fil), /<meta name="robots" content="noindex, nofollow">/u, relative(root, fil));
   }
   const sitemap = readFileSync(join(root, 'sitemap.xml'), 'utf8');
   assert.doesNotMatch(sitemap, /matlyst-app\.no\/(?:sv|da)\//u);
