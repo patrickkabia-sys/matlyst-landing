@@ -62,6 +62,10 @@ footer .language-switcher-bottom { margin: -8px 6px -8px 0; }
 }
 
 @media (max-width: 700px) {
+  /* Bunnvelgeren får egen rad, og lenkerekka i footeren brytes i stedet for å
+     gjøre siden bredere enn skjermen (fanget ved 375 px). */
+  footer .f-l, footer .footer-links { flex-wrap: wrap; column-gap: 22px; row-gap: 6px; }
+  footer .language-switcher-bottom { flex-basis: 100%; margin: 0; }
   .language-switcher { gap: 0; }
   .language-switcher a { min-width: 40px; padding-inline: 5px; }
   .nav-right > .language-switcher-top { margin-right: 0; }

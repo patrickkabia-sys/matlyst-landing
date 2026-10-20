@@ -48,3 +48,11 @@ test('direkte språkparameter lagres også på tekniske sider', () => {
   assert.equal(side.lager.get('matlyst-sprak-vurdert'), '1');
   assert.equal(side.lenke.href, '/da/tiktok-auth/?code=abc&sprak=da');
 });
+
+test('footerens lenkerekke brytes på mobil, så bunnvelgeren ikke gjør siden bredere enn skjermen', () => {
+  const css = readFileSync(new URL('../language-switcher.css', import.meta.url), 'utf8');
+  const mobil = css.match(/@media \(max-width: 700px\) \{([\s\S]*?)\n\}/u);
+  assert.ok(mobil, 'mangler mobilblokk');
+  assert.match(mobil[1], /footer \.f-l, footer \.footer-links \{[^}]*flex-wrap: wrap/u);
+  assert.match(mobil[1], /footer \.language-switcher-bottom \{[^}]*flex-basis: 100%/u);
+});
