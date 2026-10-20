@@ -35,6 +35,10 @@ test('språklisten velger første språk Matlyst støtter', () => {
   assert.equal(velgSprak(['en-GB', 'da'], null), 'da');
   assert.equal(velgSprak(['nb-NO'], null), 'nb');
   assert.equal(velgSprak(['en-US'], null), null);
+  assert.equal(velgSprak(['de-DE'], null), null);
+  assert.equal(velgSprak(['de-DE', 'no'], null), 'nb');
+  assert.equal(velgSprak([], null), null);
+  assert.equal(velgSprak(['nb-NO'], 'en'), 'en');
 });
 
 test('lagret språk overstyrer nettleserspråket', () => {

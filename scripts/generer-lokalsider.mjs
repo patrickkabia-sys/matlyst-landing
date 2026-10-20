@@ -598,7 +598,7 @@ for (const gruppe of SIDEGRUPPER) {
 }
 
 // Ett sitemap per språk. Sider med noindex (støttesidene) tas ikke med.
-const sistEndret = { en: '2026-10-11' };
+const sistEndret = { en: '2026-10-20' };
 for (const lang of SPRAK) {
   const urls = lokaleSider
     .filter((html) => html.includes(`<html lang="${lang}">`) && !html.includes('content="noindex'))
