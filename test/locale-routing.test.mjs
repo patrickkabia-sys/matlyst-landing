@@ -15,91 +15,107 @@ function lastInn() {
   return context.globalThis.MatlystLocale;
 }
 
-// Kjører locale.js som i en nettleser og returnerer hvor siden sendes, og hva som er lagret.
-function besok(url, { sprak = ['nb-NO'], lagret = null } = {}) {
+// Kjører locale.js som i en nettleser. Last-handleren utløses eksplisitt, slik at
+// testen også låser at ingen navigasjon skjer før siden er ferdig lastet.
+function besok(url, {
+  sprak = 'nb-NO',
+  sprakliste = [sprak],
+  lagret = null,
+  vurdert = false,
+  userAgent = 'Mozilla/5.0',
+} = {}) {
   const { pathname, search, hash } = new URL(url, 'https://matlyst-app.no');
-  const lager = new Map(lagret ? [['matlyst-sprak', lagret]] : []);
+  const lager = new Map();
+  if (lagret) lager.set('matlyst-sprak', lagret);
+  if (vurdert) lager.set('matlyst-sprak-vurdert', '1');
   const omdirigert = [];
+  let vedLast = null;
+  const document = { readyState: 'loading', cookie: '' };
   const window = {
+    document,
     location: { pathname, search, hash, replace: (til) => omdirigert.push(til) },
-    navigator: { languages: sprak, language: sprak[0] },
+    navigator: { languages: sprakliste, language: sprak, userAgent },
     localStorage: { getItem: (k) => lager.get(k) ?? null, setItem: (k, v) => lager.set(k, v) },
+    addEventListener: (navn, handler) => { if (navn === 'load') vedLast = handler; },
   };
   vm.runInNewContext(source, { window, URLSearchParams });
-  return { til: omdirigert[0] ?? null, lagret: lager.get('matlyst-sprak') ?? null };
+  const forLast = omdirigert[0] ?? null;
+  vedLast?.();
+  return {
+    forLast,
+    til: omdirigert[0] ?? null,
+    lagret: lager.get('matlyst-sprak') ?? null,
+    vurdert: lager.get('matlyst-sprak-vurdert') ?? null,
+  };
 }
 
-test('språklisten velger første språk Matlyst støtter', () => {
-  const { velgSprak } = lastInn();
-  assert.equal(velgSprak(['sv-SE', 'en'], null), 'sv');
-  assert.equal(velgSprak(['en-GB', 'da'], null), 'da');
-  assert.equal(velgSprak(['nb-NO'], null), 'nb');
-  assert.equal(velgSprak(['en-US'], null), null);
-  assert.equal(velgSprak(['de-DE'], null), null);
-  assert.equal(velgSprak(['de-DE', 'no'], null), 'nb');
-  assert.equal(velgSprak([], null), null);
-  assert.equal(velgSprak(['nb-NO'], 'en'), 'en');
-});
-
-test('lagret språk overstyrer nettleserspråket', () => {
-  assert.equal(lastInn().velgSprak(['sv-SE'], 'da'), 'da');
+test('bare primært svensk eller dansk nettleserspråk foreslår automatisk språk', () => {
+  const { foreslaSprak } = lastInn();
+  assert.equal(foreslaSprak('sv-SE'), 'sv');
+  assert.equal(foreslaSprak('da-DK'), 'da');
+  assert.equal(foreslaSprak('nb-NO'), null);
+  assert.equal(foreslaSprak('en-US'), null);
 });
 
 test('side uten motstykke omdirigeres ikke', () => {
   assert.equal(lastInn().finnMaalsti('/ukjent/', 'sv', {}), null);
 });
 
-test('en norsk bruker blir på norsk', () => {
-  for (const sti of ['/', '/personvern.html', '/vilkar.html', '/slett-konto.html', '/ukemeny/']) {
-    assert.equal(besok(sti, { sprak: ['nb-NO', 'en'] }).til, null, sti);
-    assert.equal(besok(sti, { sprak: ['no'] }).til, null, sti);
+test('omdirigering skjer først etter lasting', () => {
+  const svar = besok('/', { sprak: 'sv-SE' });
+  assert.equal(svar.forLast, null);
+  assert.equal(svar.til, '/sv/');
+});
+
+test('første norske besøk med svensk eller dansk primærspråk sendes til motstykket', () => {
+  assert.equal(besok('/', { sprak: 'sv-SE' }).til, '/sv/');
+  assert.equal(besok('/personvern.html', { sprak: 'da-DK' }).til, '/da/privatliv/');
+  assert.equal(besok('/vilkar.html?utm_source=x#les', { sprak: 'sv-SE' }).til, '/sv/villkor/?utm_source=x#les');
+});
+
+test('sekundært svensk eller dansk språk utløser ikke omdirigering', () => {
+  assert.equal(besok('/', { sprak: 'en-US', sprakliste: ['en-US', 'sv-SE'] }).til, null);
+  assert.equal(besok('/', { sprak: 'nb-NO', sprakliste: ['nb-NO', 'da-DK'] }).til, null);
+});
+
+test('norsk og engelsk primærspråk blir på norsk', () => {
+  for (const sprak of ['nb-NO', 'no', 'en-US']) assert.equal(besok('/', { sprak }).til, null, sprak);
+});
+
+test('direkte besøk på lokaliserte sider omdirigeres aldri', () => {
+  for (const sti of ['/sv/', '/da/privatliv/', '/en/', '/sv/importera-recept/']) {
+    assert.equal(besok(sti, { sprak: 'nb-NO' }).til, null, sti);
+    assert.equal(besok(sti, { sprak: 'da-DK' }).til, null, sti);
   }
 });
 
-test('en norsk bruker på en svensk eller dansk side med norsk motpart sendes til norsk', () => {
-  assert.equal(besok('/sv/', { sprak: ['nb-NO'] }).til, '/');
-  assert.equal(besok('/da/privatliv/', { sprak: ['nb'] }).til, '/personvern.html');
-  assert.equal(besok('/sv/importera-recept/', { sprak: ['nb-NO'] }).til, '/importer-oppskrifter/');
+test('førstegangsbeslutningen huskes og gjentas ikke på en norsk side', () => {
+  const forste = besok('/', { sprak: 'sv-SE' });
+  assert.deepEqual(forste, { forLast: null, til: '/sv/', lagret: 'sv', vurdert: '1' });
+  assert.equal(besok('/personvern.html', { sprak: 'sv-SE', lagret: forste.lagret, vurdert: true }).til, null);
 });
 
-test('svensk og dansk språk sendes til riktig side', () => {
-  assert.equal(besok('/', { sprak: ['sv-SE'] }).til, '/sv/');
-  assert.equal(besok('/', { sprak: ['da-DK'] }).til, '/da/');
-  assert.equal(besok('/index.html', { sprak: ['da'] }).til, '/da/');
-  assert.equal(besok('/personvern.html', { sprak: ['sv-SE'] }).til, '/sv/integritet/');
-  assert.equal(besok('/personvern', { sprak: ['da-DK'] }).til, '/da/privatliv/');
-  assert.equal(besok('/vilkar.html', { sprak: ['da-DK'] }).til, '/da/vilkaar/');
-  assert.equal(besok('/slett-konto.html', { sprak: ['sv-SE'] }).til, '/sv/radera-konto/');
-  assert.equal(besok('/sv/importera-recept/', { sprak: ['da-DK'] }).til, '/da/importer-opskrifter/');
-  assert.equal(besok('/da/nem-mad/', { sprak: ['sv-SE'] }).til, '/sv/enkel-middag/');
-  assert.equal(besok('/', { sprak: ['en-US'] }).til, null);
+test('språkvelgeren lagrer norsk og hindrer senere automatisk omdirigering', () => {
+  const valgt = besok('/?sprak=nb', { sprak: 'sv-SE' });
+  assert.deepEqual(valgt, { forLast: null, til: null, lagret: 'nb', vurdert: '1' });
+  assert.equal(besok('/personvern.html', { sprak: 'sv-SE', lagret: 'nb', vurdert: true }).til, null);
 });
 
-test('omdirigering beholder spørring og anker', () => {
-  assert.equal(besok('/?utm_source=x#funksjoner', { sprak: ['sv-SE'] }).til, '/sv/?utm_source=x#funksjoner');
+test('språkvelgeren omdirigeres ikke på målsiden og lagrer valget', () => {
+  assert.deepEqual(besok('/sv/?sprak=sv', { sprak: 'da-DK' }), {
+    forLast: null, til: null, lagret: 'sv', vurdert: '1',
+  });
 });
 
-test('?sprak= vinner over nettleserspråket og lagres', () => {
-  const svar = besok('/?sprak=nb', { sprak: ['sv-SE'] });
-  assert.deepEqual(svar, { til: null, lagret: 'nb' });
-  assert.deepEqual(besok('/sv/?sprak=sv', { sprak: ['da-DK'], lagret: 'nb' }), { til: null, lagret: 'sv' });
+test('roboter omdirigeres aldri', () => {
+  const svar = besok('/', { sprak: 'sv-SE', userAgent: 'Googlebot/2.1' });
+  assert.equal(svar.til, null);
+  assert.equal(svar.vurdert, null);
 });
 
-test('lagret valg vinner over nettleserspråket', () => {
-  assert.equal(besok('/', { sprak: ['sv-SE'], lagret: 'nb' }).til, null);
-  assert.equal(besok('/', { sprak: ['nb-NO'], lagret: 'da' }).til, '/da/');
-  assert.equal(besok('/sv/villkor/', { sprak: ['sv-SE'], lagret: 'da' }).til, '/da/vilkaar/');
-});
-
-test('tekniske TikTok-retursider omdirigeres aldri', () => {
-  for (const sti of ['/sv/tiktok-auth/', '/da/tiktok-auth/', '/tiktok-auth/']) {
-    assert.equal(besok(`${sti}?code=abc`, { sprak: ['da-DK'] }).til, null, sti);
-  }
-});
-
-test('avmeldingslenker omdirigeres aldri og beholder funksjonskallet på siden', () => {
-  for (const sti of ['/avmeld/', '/sv/avregistrera/', '/da/afmeld/']) {
-    assert.equal(besok(`${sti}?u=bruker&s=signatur`, { sprak: ['sv-SE'], lagret: 'da' }).til, null, sti);
+test('tekniske retursider og avmeldingslenker omdirigeres aldri', () => {
+  for (const sti of ['/tiktok-auth/?code=abc', '/avmeld/?u=bruker&s=signatur']) {
+    assert.equal(besok(sti, { sprak: 'sv-SE' }).til, null, sti);
   }
 });
 
@@ -109,9 +125,9 @@ test('LOCALE_PAGE_MAP er bygd fra den samme tabellen som hreflang', () => {
   assert.equal(Object.keys(faktisk).length > 40, true);
 });
 
-test('alle norske sider med en motpart laster locale.js', () => {
+test('alle norske sider med motstykke laster locale.js utsatt', () => {
   for (const gruppe of SIDEGRUPPER.filter(({ sider, redirect }) => sider.nb && Object.keys(sider).length > 1 && redirect !== false)) {
     const fil = filForSti(gruppe.sider.nb);
-    assert.match(readFileSync(join(ROOT, fil), 'utf8'), /<script src="\/locale\.js"><\/script>/u, fil);
+    assert.match(readFileSync(join(ROOT, fil), 'utf8'), /<script src="\/locale\.js" defer><\/script>/u, fil);
   }
 });

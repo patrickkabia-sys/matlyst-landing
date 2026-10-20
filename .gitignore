@@ -3,3 +3,5 @@
 .playwright-mcp/
 .DS_Store
 test-results/
+node_modules/
+playwright-report/

@@ -1,0 +1,11 @@
+{
+  "name": "matlyst-landing",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}

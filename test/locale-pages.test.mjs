@@ -4,7 +4,7 @@ import { dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
-import { SPRAKKODER, alternativerFor } from '../scripts/locale-sider.mjs';
+import { SIDEGRUPPER, alternativerFor, filForSti } from '../scripts/locale-sider.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url)) + '/..';
 
@@ -132,7 +132,7 @@ test('alle sider som laster site.js har samtykkebanner og mulighet for å trekke
   for (const fil of filer) {
     const html = les(fil);
     const rel = relative(root, fil);
-    if (/\/(?:avregistrera|afmeld|unsubscribe)\/index\.html$/u.test(fil)) {
+    if (/\/(?:avregistrera|afmeld|unsubscribe|tiktok-auth)\/index\.html$/u.test(fil)) {
       assert.doesNotMatch(html, /site\.js|id="cookie"|data-consent-withdraw/u, rel);
       continue;
     }
@@ -170,13 +170,59 @@ test('støttesider er noindex og publiseringssitemap er urørt', () => {
 });
 
 test('språkvelgeren peker på samme sides motstykker', () => {
-  for (const fil of filer) {
-    const html = les(fil);
-    const canonicalSti = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
-    for (const [kode, href] of alternativerFor(canonicalSti)) {
-      if (kode === 'x-default') continue;
-      const sprak = Object.keys(SPRAKKODER).find((k) => SPRAKKODER[k] === kode);
-      assert.match(html, new RegExp(`href="${regexEsc(href)}\\?sprak=${sprak}"`), `${relative(root, fil)}: ${sprak}`);
+  for (const gruppe of SIDEGRUPPER) {
+    for (const [aktivtSprak, sti] of Object.entries(gruppe.sider)) {
+      const fil = join(root, filForSti(sti));
+      const html = les(fil);
+      assert.match(html, /<link rel="stylesheet" href="\/language-switcher\.css">/u, relative(root, fil));
+      assert.match(html, /<script src="\/language-switcher\.js" defer><\/script>/u, relative(root, fil));
+      assert.equal((html.match(/class="language-switcher(?: [^"]*)?"/gu) ?? []).length, 2, relative(root, fil));
+      assert.equal((html.match(/role="navigation" aria-label="(?:Språk|Sprog|Language)"/gu) ?? []).length, 2, relative(root, fil));
+      assert.equal((html.match(/aria-current="page"/gu) ?? []).length, 2, relative(root, fil));
+      for (const [sprak, href] of Object.entries(gruppe.sider)) {
+        const lenke = `href="${href}?sprak=${sprak}"`;
+        assert.equal(html.split(lenke).length - 1, 2, `${relative(root, fil)}: ${sprak}`);
+      }
+      assert.match(html, new RegExp(`href="${regexEsc(sti)}\\?sprak=${aktivtSprak}"[^>]*aria-current="page"`), relative(root, fil));
+    }
+  }
+});
+
+test('språkvelgeren lager ingen tomme plassholdere', () => {
+  for (const gruppe of SIDEGRUPPER) {
+    for (const sti of Object.values(gruppe.sider)) {
+      const html = les(join(root, filForSti(sti)));
+      assert.doesNotMatch(html, /<div class="language-switcher-standalone[^"]*">\s*<\/div>/u, sti);
+    }
+  }
+});
+
+test('alle TikTok-retursidene viser og kan kopiere autorisasjonskoden', () => {
+  for (const sti of ['/tiktok-auth/', '/sv/tiktok-auth/', '/da/tiktok-auth/']) {
+    const html = les(join(root, filForSti(sti)));
+    assert.match(html, /id="kode"/u, sti);
+    assert.match(html, /id="kopier"/u, sti);
+    assert.match(html, /<script src="\/tiktok-auth\.js" defer><\/script>/u, sti);
+    assert.match(html, /<link rel="stylesheet" href="\/tiktok-auth\.css">/u, sti);
+    assert.doesNotMatch(html, /site\.js|posthog|googletagmanager/iu, sti);
+  }
+});
+
+test('tokenbærende tekniske sider laster aldri nettstedsanalyse', () => {
+  for (const sti of [
+    '/avmeld/', '/sv/avregistrera/', '/da/afmeld/', '/en/unsubscribe/',
+    '/tiktok-auth/', '/sv/tiktok-auth/', '/da/tiktok-auth/',
+  ]) {
+    const html = les(join(root, filForSti(sti)));
+    assert.doesNotMatch(html, /site\.js|posthog|googletagmanager/iu, sti);
+    assert.match(html, /<meta name="referrer" content="no-referrer">/u, sti);
+  }
+});
+
+test('x-default peker på engelsk når gruppen har det, ellers på bokmål', () => {
+  for (const gruppe of SIDEGRUPPER.filter(({ sider }) => sider.nb)) {
+    for (const sti of Object.values(gruppe.sider)) {
+      assert.deepEqual(alternativerFor(sti).at(-1), ['x-default', gruppe.sider.en ?? gruppe.sider.nb], sti);
     }
   }
 });

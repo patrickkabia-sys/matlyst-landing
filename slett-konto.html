@@ -11,7 +11,7 @@
   <link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/radera-konto/">
   <link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/slet-konto/">
   <link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/slett-konto.html">
-  <script src="/locale.js"></script>
+  <script src="/locale.js" defer></script>
   <meta name="theme-color" content="#F7F3EC">
   <link rel="icon" type="image/png" href="images/icon.png">
   <style>
@@ -89,12 +89,15 @@
       footer { padding:34px 22px; }
     }
   </style>
+<link rel="stylesheet" href="/language-switcher.css">
+<script src="/language-switcher.js" defer></script>
 </head>
 <body>
 
 <nav>
   <a href="/" class="nav-brand">Mat<em>lyst</em></a>
   <a href="/" class="nav-back">← Tilbake</a>
+  <!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/slett-konto.html?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/radera-konto/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/slet-konto/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a></span><!-- /språkvelger:topp -->
 </nav>
 
 <main class="doc">
@@ -150,7 +153,7 @@
 
 <footer>
   <div class="footer-brand">Matlyst</div>
-  <div class="footer-links">
+  <div class="footer-links"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Språk"><a href="/slett-konto.html?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/radera-konto/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/slet-konto/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a></span><!-- /språkvelger:bunn -->
     <a href="/">Hjem</a>
     <a href="/personvern.html">Personvern</a>
     <a href="/vilkar.html">Vilkår</a>

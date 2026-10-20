@@ -91,11 +91,12 @@ test('lokale kildesider har ingen falske språk-motstykker', () => {
   }
 });
 
-test('x-default peker på det engelske motstykket i alle grupper som har et', () => {
-  for (const gruppe of SIDEGRUPPER.filter(({ sider }) => sider.en)) {
+test('x-default peker på engelsk når gruppen har det, ellers på bokmål (12.10, bekreftet 19.10)', () => {
+  for (const gruppe of SIDEGRUPPER.filter(({ sider }) => sider.nb)) {
+    const maal = gruppe.sider.en ?? gruppe.sider.nb;
     for (const sti of Object.values(gruppe.sider)) {
       const html = les(sti);
-      assert.match(html, new RegExp(`<link rel="alternate" hreflang="x-default" href="https://matlyst-app\\.no${gruppe.sider.en}">`, 'u'), sti);
+      assert.match(html, new RegExp(`<link rel="alternate" hreflang="x-default" href="https://matlyst-app\\.no${maal}">`, 'u'), sti);
     }
   }
 });

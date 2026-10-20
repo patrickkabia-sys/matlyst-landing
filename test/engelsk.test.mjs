@@ -58,26 +58,47 @@ function besok(url, { sprak = ['en-US'], lagret = null, agent = 'Mozilla/5.0' } 
   const { pathname, search, hash } = new URL(url, 'https://matlyst-app.no');
   const lager = new Map(lagret ? [['matlyst-sprak', lagret]] : []);
   const omdirigert = [];
+  let vedLast = null;
+  const document = { readyState: 'loading', cookie: '' };
   const window = {
+    document,
     location: { pathname, search, hash, replace: (til) => omdirigert.push(til) },
     navigator: { languages: sprak, language: sprak[0], userAgent: agent },
     localStorage: { getItem: (k) => lager.get(k) ?? null, setItem: (k, v) => lager.set(k, v) },
+    addEventListener: (navn, handler) => { if (navn === 'load') vedLast = handler; },
   };
   vm.runInNewContext(les('locale.js'), { window, URLSearchParams });
+  vedLast?.();
   return { til: omdirigert[0] ?? null, lagret: lager.get('matlyst-sprak') ?? null };
 }
 
-test('nettleserspråket sender aldri til engelsk (19.10: bare nb/sv/da følger nettleseren)', () => {
+test('engelsk og ukjent språk blir på siden brukeren åpnet', () => {
   assert.equal(besok('/').til, null);
   assert.equal(besok('/', { sprak: ['de-DE', 'fr'] }).til, null);
-  assert.equal(besok('/vilkar.html', { sprak: ['en-GB'] }).til, null);
+  assert.equal(besok('/vilkar.html', { sprak: ['es-ES'] }).til, null);
+  assert.equal(besok('/sv/integritet/', { sprak: ['ja-JP'] }).til, null);
   assert.equal(besok('/en/', { sprak: ['en-GB'] }).til, null);
-  assert.equal(besok('/', { sprak: ['en-US', 'sv-SE'] }).til, '/sv/');
+  assert.equal(besok('/', { sprak: ['en-US', 'nb-NO'] }).til, null);
+  assert.equal(besok('/', { sprak: ['de-DE', 'nn'] }).til, null);
+  assert.equal(besok('/', { sprak: ['en-US', 'sv-SE'] }).til, null);
+  assert.equal(besok('/en/', { sprak: ['da-DK'] }).til, null);
 });
 
-test('engelsk som aktivt valg lagres og følges', () => {
+test('ukjent språk på en side uten engelsk motstykke blir der den er', () => {
+  assert.equal(besok('/ukemeny/', { sprak: ['de-DE'] }).til, null);
+  assert.equal(besok('/sv/enkel-middag/', { sprak: ['fr-FR'] }).til, null);
+});
+
+test('søkemotorer omdirigeres ikke automatisk', () => {
+  const googlebot = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)';
+  assert.equal(besok('/', { agent: googlebot }).til, null);
+  assert.equal(besok('/sv/', { agent: googlebot }).til, null);
+  assert.equal(besok('/', { agent: 'Mozilla/5.0 (compatible; bingbot/2.0)' }).til, null);
+});
+
+test('engelsk som aktivt valg lagres uten å tvinge senere direkte URL-er', () => {
   assert.deepEqual(besok('/en/?sprak=en', { sprak: ['nb-NO'] }), { til: null, lagret: 'en' });
-  assert.equal(besok('/', { sprak: ['nb-NO'], lagret: 'en' }).til, '/en/');
-  assert.equal(besok('/vilkar.html', { sprak: ['nb-NO'], lagret: 'en' }).til, '/en/terms/');
-  assert.equal(besok('/en/privacy/', { sprak: ['en-US'], lagret: 'da' }).til, '/da/privatliv/');
+  assert.equal(besok('/', { sprak: ['nb-NO'], lagret: 'en' }).til, null);
+  assert.equal(besok('/vilkar.html', { sprak: ['nb-NO'], lagret: 'en' }).til, null);
+  assert.equal(besok('/en/privacy/', { sprak: ['en-US'], lagret: 'da' }).til, null);
 });
