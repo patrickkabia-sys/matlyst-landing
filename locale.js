@@ -69,6 +69,8 @@
     "/vilkar.html": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/", "en": "/en/terms/"},
   });
 
+  var DECISION_KEY = 'matlyst-sprak-vurdert';
+
   function normaliserSprak(verdi) {
     var kode = String(verdi || '').toLowerCase().split('-')[0];
     if (kode === 'sv' || kode === 'da' || kode === 'en') return kode;
@@ -76,44 +78,92 @@
     return null;
   }
 
-  function velgSprak(sprakliste, lagret) {
-    var valgt = normaliserSprak(lagret);
-    if (valgt) return valgt;
-    // Nettleserens språk sender bare til nb/sv/da. Engelsk velges med
-    // språkvelgeren (?sprak=en) og huskes; x-default viser søkemotorene /en/.
-    for (var i = 0; i < (sprakliste || []).length; i += 1) {
-      valgt = normaliserSprak(sprakliste[i]);
-      if (valgt && valgt !== 'en') return valgt;
-    }
-    return null;
+  // Bare nettleserens primærspråk brukes til førstegangsvalget. Sekundære
+  // Accept-Language-verdier skal ikke overstyre siden brukeren ba om.
+  function foreslaSprak(verdi) {
+    var sprak = normaliserSprak(verdi);
+    return sprak === 'sv' || sprak === 'da' ? sprak : null;
   }
+
+  // Søkemotorer omdirigeres ikke automatisk. Klientkontrollen skjer først
+  // etter at siden er lastet; hreflang og x-default styrer indekseringen.
+  var ROBOT = /bot|crawl|spider|slurp|lighthouse/i;
 
   function finnMaalsti(sti, maalSprak, tabell) {
     var rad = (tabell || LOCALE_PAGE_MAP)[sti];
     return rad && rad[maalSprak] ? rad[maalSprak] : null;
   }
 
+  function erNorskSide(sti, tabell) {
+    var rad = (tabell || LOCALE_PAGE_MAP)[sti];
+    return Boolean(rad && rad.nb && !/^\/(?:sv|da|en)(?:\/|$)/i.test(sti));
+  }
+
+  function lesCookie(nokkel) {
+    if (!global.document) return null;
+    var navn = encodeURIComponent(nokkel) + '=';
+    var deler = String(global.document.cookie || '').split(';');
+    for (var i = 0; i < deler.length; i += 1) {
+      var del = deler[i].trim();
+      if (del.indexOf(navn) === 0) return decodeURIComponent(del.slice(navn.length));
+    }
+    return null;
+  }
+
+  function lesValg(nokkel) {
+    try {
+      var verdi = global.localStorage.getItem(nokkel);
+      if (verdi) return verdi;
+    } catch (e) {}
+    return lesCookie(nokkel);
+  }
+
+  function lagreValg(nokkel, verdi) {
+    try { global.localStorage.setItem(nokkel, verdi); } catch (e) {}
+    if (global.document) {
+      try {
+        global.document.cookie = encodeURIComponent(nokkel) + '=' + encodeURIComponent(verdi)
+          + '; Max-Age=31536000; Path=/; SameSite=Lax';
+      } catch (e) {}
+    }
+  }
+
   function start() {
     if (!global.location || !global.navigator) return;
+    if (ROBOT.test(global.navigator.userAgent || '')) return;
     var param = new URLSearchParams(global.location.search).get('sprak');
     var eksplisitt = normaliserSprak(param);
     if (eksplisitt) {
-      try { global.localStorage.setItem(STORAGE_KEY, eksplisitt); } catch (e) {}
+      lagreValg(STORAGE_KEY, eksplisitt);
+      lagreValg(DECISION_KEY, '1');
       return;
     }
-    var lagret = null;
-    try { lagret = global.localStorage.getItem(STORAGE_KEY); } catch (e) {}
-    var valgt = velgSprak(global.navigator.languages || [global.navigator.language], lagret);
+    if (!erNorskSide(global.location.pathname, LOCALE_PAGE_MAP)) return;
+    if (lesValg(DECISION_KEY) || lesValg(STORAGE_KEY)) {
+      lagreValg(DECISION_KEY, '1');
+      return;
+    }
+
+    var valgt = foreslaSprak(global.navigator.language);
+    lagreValg(DECISION_KEY, '1');
+    if (!valgt) return;
     var maal = finnMaalsti(global.location.pathname, valgt, LOCALE_PAGE_MAP);
-    if (maal && maal !== global.location.pathname) global.location.replace(maal + global.location.search + global.location.hash);
+    if (!maal || maal === global.location.pathname) return;
+    lagreValg(STORAGE_KEY, valgt);
+    global.location.replace(maal + global.location.search + global.location.hash);
   }
 
   global.MatlystLocale = {
     STORAGE_KEY: STORAGE_KEY,
+    DECISION_KEY: DECISION_KEY,
     LOCALE_PAGE_MAP: LOCALE_PAGE_MAP,
     normaliserSprak: normaliserSprak,
-    velgSprak: velgSprak,
+    foreslaSprak: foreslaSprak,
     finnMaalsti: finnMaalsti,
+    erNorskSide: erNorskSide,
   };
-  start();
+  if (global.document && typeof global.addEventListener === 'function') {
+    if (global.document.readyState === 'complete') start();
+    else global.addEventListener('load', start, { once: true });
+  }
 })(typeof window === 'undefined' ? globalThis : window);

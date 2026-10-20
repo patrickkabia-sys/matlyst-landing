@@ -63,20 +63,11 @@ function alternateLinks(sti) {
 
 function nav(lang, activePath = '') {
   const c = common[lang];
-  const sti = sideSti(lang, activePath);
-  const gruppe = gruppeForSti(sti);
-  const bytter = Object.entries(gruppe.sider).map(([sprak, href]) => {
-    const etikett = sprak === 'nb' ? 'NO' : sprak.toUpperCase();
-    return `<a href="${href}?sprak=${sprak}" lang="${sprak}" ${sprak === lang ? 'aria-current="page"' : ''}>${etikett}</a>`;
-  }).join('\n      ');
   return `<a class="skip-link" href="#hovedinnhold">${c.skip}</a>
 <nav aria-label="${c.navLabel}">
   <a href="/${lang}/" class="brand">Mat<em>lyst</em></a>
   <div class="nav-right">
     <a class="link" href="/${lang}/#funktioner">${c.features}</a>
-    <span class="language-switcher" aria-label="${c.langLabel}">
-      ${bytter}
-    </span>
   </div>
 </nav>`;
 }
@@ -128,7 +119,7 @@ ${alternateLinks(sti)}
 <link rel="icon" type="image/png" href="/images/icon.png">
 <link rel="stylesheet" href="/styles.css">
 ${schema ? `<script type="application/ld+json">${json(schema)}</script>` : ''}
-${brukerSprakredirect ? '<script src="/locale.js"></script>' : ''}
+${brukerSprakredirect ? '<script src="/locale.js" defer></script>' : ''}
 </head>`;
 }
 
@@ -408,6 +399,38 @@ function supportPage(lang, row) {
   return `${head({lang,path,title:`${title} | Matlyst`,description:text,noindex:true,schema})}<body data-locale="${lang}">${nav(lang,path)}<main id="hovedinnhold" class="legal-doc"><header><p class="eyebrow">Matlyst</p><h1 class="disp">${title}</h1><p class="lead">${text}</p></header></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
+const tiktokAuthTekst = {
+  sv: {
+    kobler: 'Ansluter till TikTok…',
+    hjelp: 'Kopiera koden nedan och klistra in den i terminalen.',
+    etikett: 'Auktoriseringskod',
+    kopier: 'Kopiera koden',
+  },
+  da: {
+    kobler: 'Opretter forbindelse til TikTok…',
+    hjelp: 'Kopiér koden nedenfor, og indsæt den i terminalen.',
+    etikett: 'Godkendelseskode',
+    kopier: 'Kopiér koden',
+  },
+};
+
+function tiktokAuthPage(lang, row) {
+  const [path,title,text] = row;
+  const c = tiktokAuthTekst[lang];
+  const felles = common[lang];
+  const schema = {'@context':'https://schema.org','@type':'WebPage',name:title,url:`${base}/${lang}/${path}`};
+  const sidehode = head({lang,path,title:`${title} | Matlyst`,description:text,noindex:true,schema})
+    .replace('</head>', '<link rel="stylesheet" href="/tiktok-auth.css">\n</head>');
+  return `${sidehode}<body data-locale="${lang}"><a class="skip-link" href="#hovedinnhold">${felles.skip}</a>
+<nav aria-label="${felles.navLabel}"><a href="/${lang}/" class="brand">Mat<em>lyst</em></a><div class="nav-right"></div></nav>
+<main id="hovedinnhold" class="auth">
+  <h1 id="tittel">${c.kobler}</h1>
+  <p id="hjelp">${c.hjelp}</p>
+  <div class="box" id="boks" hidden><span class="lbl">${c.etikett}</span><code id="kode"></code><button id="kopier" type="button">${c.kopier}</button></div>
+  <p id="detalj"></p>
+</main><script src="/tiktok-auth.js" defer></script></body></html>`;
+}
+
 const avmeldTekst = {
   sv: {
     kicker: 'Nyhetsbrev',
@@ -543,6 +566,65 @@ function write(path, content) {
   if (SPRAK.some((sprak) => path.startsWith(`../${sprak}/`)) && path.endsWith('index.html')) lokaleSider.push(content);
 }
 
+const sprakvelgerMeta = Object.freeze({
+  nb: { etikett: 'NO', navn: 'Norsk', gruppe: 'Språk' },
+  sv: { etikett: 'SV', navn: 'Svenska', gruppe: 'Språk' },
+  da: { etikett: 'DA', navn: 'Dansk', gruppe: 'Sprog' },
+  en: { etikett: 'EN', navn: 'English', gruppe: 'Language' },
+});
+
+function sprakvelger(gruppe, aktivtSprak, plassering) {
+  const lenker = Object.entries(gruppe.sider).map(([sprak, href]) => {
+    const meta = sprakvelgerMeta[sprak];
+    const aktiv = sprak === aktivtSprak ? ' aria-current="page"' : '';
+    return `<a href="${href}?sprak=${sprak}" lang="${sprak}" hreflang="${sprak}" aria-label="${meta.navn}"${aktiv}>${meta.etikett}</a>`;
+  }).join('');
+  return `<span class="language-switcher language-switcher-${plassering}" role="navigation" aria-label="${sprakvelgerMeta[aktivtSprak].gruppe}">${lenker}</span>`;
+}
+
+function medSprakvelgere(html, gruppe, aktivtSprak) {
+  let neste = html.replace(/\s*<div class="language-switcher-standalone language-switcher-standalone-(?:top|bottom)">\s*<\/div>/gu, '');
+
+  if ((gruppe.id === 'avmeld' || gruppe.id === 'tiktok-auth')
+      && !neste.includes('<meta name="referrer" content="no-referrer">')) {
+    neste = neste.replace('</head>', '<meta name="referrer" content="no-referrer">\n</head>');
+  }
+
+  if (!neste.includes('<link rel="stylesheet" href="/language-switcher.css">')) {
+    neste = neste.replace('</head>', '<link rel="stylesheet" href="/language-switcher.css">\n</head>');
+  }
+  if (!neste.includes('<script src="/language-switcher.js" defer></script>')) {
+    neste = neste.replace('</head>', '<script src="/language-switcher.js" defer></script>\n</head>');
+  }
+
+  const topp = `<!-- språkvelger:topp -->${sprakvelger(gruppe, aktivtSprak, 'top')}<!-- /språkvelger:topp -->`;
+  const toppMonster = /<!-- språkvelger:topp -->[\s\S]*?<!-- \/språkvelger:topp -->/u;
+  if (toppMonster.test(neste)) {
+    neste = neste.replace(toppMonster, topp);
+  } else if (neste.includes('<div class="nav-right">')) {
+    neste = neste.replace('<div class="nav-right">', `<div class="nav-right">\n    ${topp}`);
+  } else if (/<nav(?:\s[^>]*)?>/u.test(neste)) {
+    neste = neste.replace('</nav>', `  ${topp}\n</nav>`);
+  } else {
+    neste = neste.replace(/<body([^>]*)>/u, `<body$1>\n<div class="language-switcher-standalone language-switcher-standalone-top">${topp}</div>`);
+  }
+
+  const bunn = `<!-- språkvelger:bunn -->${sprakvelger(gruppe, aktivtSprak, 'bottom')}<!-- /språkvelger:bunn -->`;
+  const bunnMonster = /<!-- språkvelger:bunn -->[\s\S]*?<!-- \/språkvelger:bunn -->/u;
+  if (bunnMonster.test(neste)) {
+    neste = neste.replace(bunnMonster, bunn);
+  } else if (neste.includes('<div class="f-l">')) {
+    neste = neste.replace('<div class="f-l">', `<div class="f-l">${bunn}`);
+  } else if (neste.includes('<div class="footer-links">')) {
+    neste = neste.replace('<div class="footer-links">', `<div class="footer-links">${bunn}`);
+  } else if (/<footer(?:\s[^>]*)?>/u.test(neste)) {
+    neste = neste.replace('</footer>', `  ${bunn}\n</footer>`);
+  } else {
+    neste = neste.replace('</body>', `<div class="language-switcher-standalone language-switcher-standalone-bottom">${bunn}</div>\n</body>`);
+  }
+  return neste;
+}
+
 for (const lang of SPRAK) {
   write(`../${lang}/index.html`, home(lang));
   for (const key of Object.keys(legal[lang])) {
@@ -553,9 +635,12 @@ for (const lang of SPRAK) {
   for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
   for (const row of sourcePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
   for (const row of supportPages[lang] ?? []) {
-    const innhold = gruppeForSti(`/${lang}/${row[0]}`)?.id === 'avmeld'
+    const gruppeId = gruppeForSti(`/${lang}/${row[0]}`)?.id;
+    const innhold = gruppeId === 'avmeld'
       ? avmeldPage(lang,row)
-      : supportPage(lang,row);
+      : gruppeId === 'tiktok-auth'
+        ? tiktokAuthPage(lang,row)
+        : supportPage(lang,row);
     write(`../${lang}/${row[0]}index.html`, innhold);
   }
 }
@@ -563,10 +648,11 @@ for (const lang of SPRAK) {
 // Norske og lokale sider får hreflang fra den samme tabellen som språkredirecten.
 // Dette gjør også eldre, håndskrevne norske sider gjensidige uten å endre innholdet deres.
 for (const gruppe of SIDEGRUPPER) {
-  for (const sti of Object.values(gruppe.sider)) {
+  for (const [aktivtSprak, sti] of Object.entries(gruppe.sider)) {
     const fil = fileURLToPath(new URL(`../${filForSti(sti)}`, import.meta.url));
     if (!existsSync(fil)) throw new Error(`Finner ikke tabellført side: ${sti}`);
     let html = readFileSync(fil, 'utf8');
+    const opprinneligHtml = html;
     const canonical = `<link rel="canonical" href="${base}${sti}">`;
     const eksisterendeCanonical = html.match(/^(\s*)<link rel="canonical" href="[^"]+">/mu);
     const innrykk = eksisterendeCanonical?.[1] ?? '';
@@ -574,26 +660,29 @@ for (const gruppe of SIDEGRUPPER) {
     const faktiskeAlternativer = [...html.matchAll(/^\s*<link rel="alternate" hreflang="[^"]+" href="[^"]+">\s*$/gmu)]
       .map(([linje]) => linje.trimEnd());
     const skalHaRedirect = gruppe.redirect !== false && Object.keys(gruppe.sider).length > 1;
-    const harRedirect = html.includes('<script src="/locale.js"></script>');
+    const harRedirect = html.includes('<script src="/locale.js" defer></script>');
     const erOppdatert = eksisterendeCanonical?.[0].trim() === canonical
       && JSON.stringify(faktiskeAlternativer) === JSON.stringify(forventedeAlternativer)
       && harRedirect === skalHaRedirect;
-    if (erOppdatert) continue;
 
-    html = html
-      // [ \t] og ikke \s: \s spiser linjeskiftet og innrykket på neste linje, så
-      // annenhver innrykkede lenke ble stående igjen.
-      .replace(/^[ \t]*<link rel="alternate" hreflang="[^"]+" href="[^"]+">[ \t]*\n?/gmu, '')
-      .replace(/^[ \t]*<script src="\/locale\.js"><\/script>[ \t]*\n?/gmu, '');
-    if (eksisterendeCanonical) {
-      html = html.replace(eksisterendeCanonical[0], `${innrykk}${canonical}`);
-    } else {
-      html = html.replace(/(<meta name="viewport"[^>]*>\n)/u, `$1${canonical}\n`);
+    if (!erOppdatert) {
+      html = html
+        // [ \t] og ikke \s: \s spiser linjeskiftet og innrykket på neste linje, så
+        // annenhver innrykkede lenke ble stående igjen.
+        .replace(/^[ \t]*<link rel="alternate" hreflang="[^"]+" href="[^"]+">[ \t]*\n?/gmu, '')
+        .replace(/^[ \t]*<script src="\/locale\.js"(?: defer)?><\/script>[ \t]*\n?/gmu, '');
+      if (eksisterendeCanonical) {
+        html = html.replace(eksisterendeCanonical[0], `${innrykk}${canonical}`);
+      } else {
+        html = html.replace(/(<meta name="viewport"[^>]*>\n)/u, `$1${canonical}\n`);
+      }
+      const teknisk = [`${innrykk}${canonical}`, ...forventedeAlternativer];
+      if (skalHaRedirect) teknisk.push(`${innrykk}<script src="/locale.js" defer></script>`);
+      html = html.replace(`${innrykk}${canonical}`, teknisk.join('\n'));
     }
-    const teknisk = [`${innrykk}${canonical}`, ...forventedeAlternativer];
-    if (skalHaRedirect) teknisk.push(`${innrykk}<script src="/locale.js"></script>`);
-    html = html.replace(`${innrykk}${canonical}`, teknisk.join('\n'));
-    writeFileSync(fil, html);
+
+    html = medSprakvelgere(html, gruppe, aktivtSprak);
+    if (html !== opprinneligHtml) writeFileSync(fil, html);
   }
 }
 

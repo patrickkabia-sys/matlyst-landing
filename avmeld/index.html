@@ -18,12 +18,15 @@
   <link rel="icon" type="image/png" href="../images/icon.png">
   <link rel="stylesheet" href="/avmeld.css">
 
+<link rel="stylesheet" href="/language-switcher.css">
+<script src="/language-switcher.js" defer></script>
 </head>
 <body class="avmeld-rot">
   <nav>
     <a class="nav-brand" href="/">Mat<em>lyst</em></a>
     <a class="nav-back" href="/">Til forsiden</a>
-  </nav>
+  <!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/avmeld/?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/avregistrera/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/afmeld/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a><a href="/en/unsubscribe/?sprak=en" lang="en" hreflang="en" aria-label="English">EN</a></span><!-- /språkvelger:topp -->
+</nav>
 
   <main class="avmeld-doc">
     <section id="bekreft" hidden>
@@ -67,5 +70,6 @@
   </main>
   <template id="feilmelding">Det gikk ikke akkurat nå. Prøv en gang til, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20nyhetsbrevet">hei@matlyst-app.no</a>.</template>
   <script src="/avmeld.js" defer></script>
+<div class="language-switcher-standalone language-switcher-standalone-bottom"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Språk"><a href="/avmeld/?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/avregistrera/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/afmeld/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a><a href="/en/unsubscribe/?sprak=en" lang="en" hreflang="en" aria-label="English">EN</a></span><!-- /språkvelger:bunn --></div>
 </body>
 </html>

@@ -76,7 +76,8 @@ test('avmeldingssidene laster ingen analyse og lekker ikke tokenet', () => {
     assert.match(html, /<meta name="referrer" content="no-referrer">/u, fil);
     assert.doesNotMatch(html, /\/site\.js|cookie-banner|data-consent|gtag|googletagmanager|posthog/iu, fil);
     const skript = [...html.matchAll(/<script[^>]*\ssrc="([^"]+)"/gu)].map(([, src]) => src);
-    assert.deepEqual(skript, ['/avmeld.js'], fil);
+    // Språkvelgeren (#22) er det eneste andre skriptet; den sender ingenting ut.
+    assert.deepEqual(skript.filter((src) => src !== '/language-switcher.js'), ['/avmeld.js'], fil);
   }
 });
 
