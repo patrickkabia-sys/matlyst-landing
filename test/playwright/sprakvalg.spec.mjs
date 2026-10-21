@@ -81,10 +81,17 @@ test('velgeren bruker riktig motstykke på personvernsiden', async ({ browser, b
 test('språkbytte på avmeldingssiden bevarer token og norsk valg', async ({ browser, baseURL }) => {
   const { context, page } = await nySide(browser, 'sv-SE');
   await page.goto('/avmeld/?u=bruker&s=signatur');
+  // Tokenet følger med i lenka, men avmeld.js fjerner u og s fra adresselinja
+  // straks siden har lest dem. Lenkene viser derfor at tokenet ble med, og
+  // URL-en viser at det ikke ble stående.
+  await expect(page.locator('.language-switcher-top a[aria-label="Svenska"]'))
+    .toHaveAttribute('href', '/sv/avregistrera/?u=bruker&s=signatur&sprak=sv');
   await page.locator('.language-switcher-top a[aria-label="Svenska"]').click();
-  await expect(page).toHaveURL(`${baseURL}/sv/avregistrera/?u=bruker&s=signatur&sprak=sv`);
+  await expect(page).toHaveURL(`${baseURL}/sv/avregistrera/?sprak=sv`);
+  await expect(page.locator('.language-switcher-top a[aria-label="Norsk"]'))
+    .toHaveAttribute('href', '/avmeld/?u=bruker&s=signatur&sprak=nb');
   await page.locator('.language-switcher-top a[aria-label="Norsk"]').click();
-  await expect(page).toHaveURL(`${baseURL}/avmeld/?u=bruker&s=signatur&sprak=nb`);
+  await expect(page).toHaveURL(`${baseURL}/avmeld/?sprak=nb`);
   await page.goto('/');
   await page.waitForTimeout(100);
   await expect(page).toHaveURL(`${baseURL}/`);
