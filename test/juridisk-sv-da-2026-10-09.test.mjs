@@ -14,7 +14,7 @@ test('bokmålsvilkårene beskriver abonnement, prøveperiode, angrerett og forbr
   assert.match(html, /14 dagers angrerett/u);
   assert.match(html, /ufravikelige forbrukervernet du har der du bor/u);
   assert.match(html, /Som forbruker\s+kan du alltid reise sak ved domstolen der du bor/u);
-  assert.match(html, /Sist oppdatert 20\. oktober 2026/u);
+  assert.match(html, /Sist oppdatert 22\. oktober 2026/u);
 });
 
 test('svenske og danske vilkår forklarer de norske klageorganene', () => {

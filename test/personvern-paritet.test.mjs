@@ -63,7 +63,7 @@ test('restopplysninger under sletting har art. 6.1 c som grunnlag på alle språ
 const DATO = /(?:Sist oppdatert|Senast uppdaterad|Senest opdateret|Last updated) (\d{1,2})\.? (oktober|October) 2026/u;
 const DOKUMENTER = {
   personvern: [['personvern.html', 'sv/integritet/index.html', 'da/privatliv/index.html', 'en/privacy/index.html'], '22'],
-  vilkar: [['vilkar.html', 'sv/villkor/index.html', 'da/vilkaar/index.html', 'en/terms/index.html'], '20'],
+  vilkar: [['vilkar.html', 'sv/villkor/index.html', 'da/vilkaar/index.html', 'en/terms/index.html'], '22'],
   slettKonto: [['slett-konto.html', 'sv/radera-konto/index.html', 'da/slet-konto/index.html'], '20'],
 };
 for (const [navn, [sider, dag]] of Object.entries(DOKUMENTER)) {
