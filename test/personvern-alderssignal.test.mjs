@@ -10,10 +10,10 @@ const les = (fil) => readFileSync(join(ROOT, fil), 'utf8');
 // Erklæringen skal på alle språk si at alderen ikke lagres, at en installasjons-ID
 // lagres for å følge en forelders tilbaketrekking, og hvilket rettslig grunnlag som brukes.
 const SIDER = {
-  nb: ['personvern.html', [/lagrer\s+ikke alderen eller aldersgruppen din/u, /ID for installasjonen/u, /RevenueCat\)/u, /art\. 6 nr\. 1 bokstav f/u]],
-  da: ['da/privatliv/index.html', [/Din alder og din aldersgruppe gemmes ikke/u, /id for installationen/u, /RevenueCat\)/u, /artikel 6, stk\. 1, litra f, i at overholde/u]],
-  sv: ['sv/integritet/index.html', [/Din ålder och åldersgrupp sparas inte/u, /id för installationen/u, /RevenueCat\)/u, /artikel 6\.1 f, att följa lagarna/u]],
-  en: ['en/privacy/index.html', [/We don't store your age or age range/u, /installation ID/u, /RevenueCat\)/u, /Art\. 6\(1\)\(f\)\) in following the laws/u]],
+  nb: ['personvern.html', [/lagrer\s+ikke alderen eller aldersgruppen din/u, /ID for installasjonen/u, /art\. 6 nr\. 1 bokstav f/u]],
+  da: ['da/privatliv/index.html', [/Din alder og din aldersgruppe gemmes ikke/u, /id for installationen/u, /artikel 6, stk\. 1, litra f, i at overholde/u]],
+  sv: ['sv/integritet/index.html', [/Din ålder och åldersgrupp sparas inte/u, /id för installationen/u, /artikel 6\.1 f, att följa lagarna/u]],
+  en: ['en/privacy/index.html', [/We don't store your age or age range/u, /installation ID/u, /Art\. 6\(1\)\(f\)\) in following the laws/u]],
 };
 
 for (const [sprak, [fil, krav]] of Object.entries(SIDER)) {
