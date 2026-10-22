@@ -130,7 +130,7 @@
 <main class="doc">
   <p class="doc-kicker">Personvern</p>
   <h1 class="doc-title">Personvern­erklæring</h1>
-  <p class="doc-updated">Sist oppdatert 20. oktober 2026</p>
+  <p class="doc-updated">Sist oppdatert 22. oktober 2026</p>
 
   <p class="doc-intro">
     Matlyst er en matapp som lar deg importere, organisere og lage oppskrifter. Vi samler kun dataene
@@ -428,7 +428,7 @@
     <li><strong>Google</strong> — «Logg inn med Google», Google Play, kjøp og push-varsler via Firebase Cloud Messaging (Android).</li>
     <li><strong>Expo</strong> — levering av push-varsler og appoppdateringer (USA).</li>
     <li><strong>Resend</strong> — utsending av e-post fra appen, som innlogging, velkomst, takk for kjøpet og nyhetsbrevet (USA).</li>
-    <li><strong>RevenueCat</strong> — administrasjon av abonnement.</li>
+    <li><strong>RevenueCat</strong> — administrasjon av abonnement, og videresending av varsler fra Apple når en forelder trekker tilbake samtykket.</li>
     <li><strong>Anthropic Ireland, Limited</strong> — KI-behandling når du har gitt KI-tillatelsen (betalt API uten trening på innholdet).</li>
     <li><strong>Sentry</strong> — feil- og krasjlogging.</li>
     <li><strong>PostHog</strong> — anonym bruksstatistikk fra appen og en egen produktanalyseflyt på nettstedet (EU; begge bare ved samtykke).</li>
@@ -477,6 +477,19 @@
     hos Apple eller Google må du si opp selv i butikken — vi har ikke tilgang til det.
   </p>
 
+  <h2 id="sikkerhet">Sikkerhet</h2>
+  <p>
+    Opplysningene dine sendes kryptert (HTTPS) mellom appen og serveren. Tilgangsregler i databasen gjør at
+    bare du og de du selv deler med, kan se innholdet ditt. Passord lagres som en hash, aldri i klartekst, og
+    bare Matlyst har administratortilgang. Ingen systemer er helt sikre, så vi kan ikke garantere at
+    uvedkommende aldri får tilgang.
+  </p>
+  <p>
+    Skjer det et brudd på personopplysningssikkerheten, melder vi det til Datatilsynet innen 72 timer når
+    loven krever det. Kan bruddet gi høy risiko for deg, varsler vi deg også uten unødig opphold
+    (GDPR art. 33 og 34).
+  </p>
+
   <h2>Dine rettigheter</h2>
   <p>Etter personvernreglene (GDPR) har du rett til å:</p>
   <ul>
@@ -502,7 +515,8 @@
 
   <h2>Alder og samtykke</h2>
   <p>
-    Matlyst har ingen generell aldersgrense for bruk av appen. For å gi eget samtykke til bruksanalyse
+    Matlyst har ingen generell aldersgrense for bruk av appen, med unntaket som står under om
+    alderssignal fra appbutikken. For å gi eget samtykke til bruksanalyse
     eller til å dele innhold med Anthropic i KI-funksjonene må du bekrefte minstealderen for bostedslandet ditt:
   </p>
   <ul>
@@ -522,6 +536,30 @@
     grensen har vi satt selv for å beskytte unge brukere. Matloggens helseopplysninger krever i tillegg et
     eget uttrykkelig samtykke etter GDPR art. 9 nr. 2 bokstav a. Aldersbekreftelsen er ikke
     i seg selv en rett til å inngå alle avtaler eller kjøpe abonnement uten nødvendige tillatelser.
+  </p>
+
+  <h3 id="alderssignal">Alderssignal fra App Store og Google Play</h3>
+  <p>
+    Enkelte steder krever loven at apper bruker aldersopplysninger fra appbutikken, for eksempel
+    delstaten Texas i USA. Der spør appen butikken om aldersgruppen din når den starter. Andre steder
+    spør appen ikke, og du merker ingenting av dette.
+  </p>
+  <p>
+    Svaret fra butikken brukes bare på telefonen din, til å avgjøre om du kan bruke appen. Vi lagrer
+    ikke alderen eller aldersgruppen din, verken på serveren vår, i bruksstatistikk eller i feillogger.
+    Er du under 13 år, kan du ikke bruke Matlyst der loven gjelder. Sier butikken to ganger at du er
+    under 13, sletter vi kontoen din. Telefonen husker bare tidspunktet for det første svaret.
+  </p>
+  <p>
+    For at vi skal kunne følge en forelders beslutning, lagrer vi en ID for installasjonen som
+    butikken gir oss (fra Apple eller Google), koblet til kontoen din, og om installasjonen er sperret.
+    Trekker en forelder tilbake samtykket i butikken, får vi beskjed fra Apple eller fra Google. Da sperrer vi kontoene som har brukt installasjonen. Sperren oppheves
+    når du kontakter oss og forelderen har godkjent på nytt i butikken. Vi bruker verken
+    aldersopplysningene eller ID-en til noe annet. ID-en slettes når kontoen din slettes.
+  </p>
+  <p>
+    Rettslig grunnlag er vår berettigede interesse i å følge lovene der du bor og å beskytte barn
+    (GDPR art. 6 nr. 1 bokstav f).
   </p>
 
   <h2>Endringer</h2>
