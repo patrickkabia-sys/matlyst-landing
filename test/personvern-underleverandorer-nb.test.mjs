@@ -16,7 +16,7 @@ test('personvernerklæringen nevner underleverandørene og dataflytene', () => {
   assert.match(nb, /sporingskoder/u);
   assert.match(nb, /tilfeldig ID som er fast for installasjonen/u);
   assert.doesNotMatch(nb, /plattformene får ingen opplysninger om deg/u);
-  assert.match(nb, /Sist oppdatert 20\. oktober 2026/u);
+  assert.match(nb, /Sist oppdatert 22\. oktober 2026/u);
 });
 
 // YouTube API Services Developer Policies III.A.2 b–c og III.D.2: erklæringen må si at appen

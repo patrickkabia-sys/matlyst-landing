@@ -58,15 +58,24 @@ test('restopplysninger under sletting har art. 6.1 c som grunnlag på alle språ
   }
 });
 
-test('personvern, vilkår og slett konto har samme dato på alle språk', () => {
-  const sider = ['personvern.html', 'vilkar.html', 'slett-konto.html', 'sv/integritet/index.html', 'sv/villkor/index.html', 'sv/radera-konto/index.html', 'da/privatliv/index.html', 'da/vilkaar/index.html', 'da/slet-konto/index.html', 'en/privacy/index.html', 'en/terms/index.html'];
-  const datoer = new Set(sider.map((sti) => {
-    const m = tekst(lesSide(sti)).match(/(?:Sist oppdatert|Senast uppdaterad|Senest opdateret|Last updated) (\d{1,2})\.? (oktober|October) 2026/u);
-    assert.ok(m, `${sti}: fant ingen dato`);
-    return m[1];
-  }));
-  assert.deepEqual([...datoer], ['20']);
-});
+// Hvert dokument har samme dato på alle språk. Personvernet kan få ny dato uten at vilkårene
+// endres (alderssignalet 22.10), så dokumentene sammenlignes hver for seg.
+const DATO = /(?:Sist oppdatert|Senast uppdaterad|Senest opdateret|Last updated) (\d{1,2})\.? (oktober|October) 2026/u;
+const DOKUMENTER = {
+  personvern: [['personvern.html', 'sv/integritet/index.html', 'da/privatliv/index.html', 'en/privacy/index.html'], '22'],
+  vilkar: [['vilkar.html', 'sv/villkor/index.html', 'da/vilkaar/index.html', 'en/terms/index.html'], '20'],
+  slettKonto: [['slett-konto.html', 'sv/radera-konto/index.html', 'da/slet-konto/index.html'], '20'],
+};
+for (const [navn, [sider, dag]] of Object.entries(DOKUMENTER)) {
+  test(`${navn} har samme dato på alle språk`, () => {
+    const datoer = new Set(sider.map((sti) => {
+      const m = tekst(lesSide(sti)).match(DATO);
+      assert.ok(m, `${sti}: fant ingen dato`);
+      return m[1];
+    }));
+    assert.deepEqual([...datoer], [dag]);
+  });
+}
 
 test('engelsk har ingen avsnitt for USA eller Storbritannia (bølge 2)', () => {
   const t = tekst(lesSide(SIDER.en)) + tekst(lesSide('en/terms/index.html'));

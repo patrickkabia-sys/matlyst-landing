@@ -30,9 +30,9 @@ test('personvernsidene forklarer ledende og lokale tilsynsmyndigheter', () => {
   const nb = les('personvern.html');
   const sv = les('sv/integritet/index.html');
   const da = les('da/privatliv/index.html');
-  assert.match(nb, /Sist oppdatert 20\. oktober 2026/u);
-  assert.match(sv, /Senast uppdaterad 20 oktober 2026/u);
-  assert.match(da, /Senest opdateret 20\. oktober 2026/u);
+  assert.match(nb, /Sist oppdatert 22\. oktober 2026/u);
+  assert.match(sv, /Senast uppdaterad 22 oktober 2026/u);
+  assert.match(da, /Senest opdateret 22\. oktober 2026/u);
   assert.match(nb, /Integritetsskyddsmyndigheten \(imy\.se\)/u);
   assert.match(nb, /Datatilsynet i Danmark \(datatilsynet\.dk\)/u);
   assert.match(sv, /Datatilsynet i Norge \(datatilsynet\.no\) ledande tillsynsmyndighet/u);
