@@ -4,6 +4,7 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { legal, liste } from './juridisk-tekster.mjs';
 import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, byggLocalePageMap, filForSti, gruppeForSti } from './locale-sider.mjs';
+import { lokaleImportGuider } from './import-guider-lokale.mjs';
 
 const base = 'https://matlyst-app.no';
 const common = {
@@ -776,6 +777,7 @@ for (const lang of SPRAK) {
   }
   for (const row of featurePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
   for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
+  for (const v of lokaleImportGuider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
   for (const row of sourcePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
   for (const row of supportPages[lang] ?? []) {
     const gruppeId = gruppeForSti(`/${lang}/${row[0]}`)?.id;
@@ -837,9 +839,12 @@ const sistEndretSide = {
   'https://matlyst-app.no/en/import-recipes-from-instagram/': '2026-10-27',
   'https://matlyst-app.no/en/import-recipes-from-paprika/': '2026-10-27',
   'https://matlyst-app.no/en/import-recipes-from-tiktok/': '2026-10-27',
+  ...Object.fromEntries(['importera-recept', 'spara-recept-fran-instagram', 'spara-recept-fran-tiktok', 'byt-fran-paprika', 'handskrivna-recept'].map((sti) => [`https://matlyst-app.no/sv/${sti}/`, '2026-10-27'])),
+  ...Object.fromEntries(['importer-opskrifter', 'gem-opskrifter-fra-instagram', 'gem-opskrifter-fra-tiktok', 'skift-fra-paprika', 'haandskrevne-opskrifter'].map((sti) => [`https://matlyst-app.no/da/${sti}/`, '2026-10-27'])),
 };
 for (const lang of SPRAK) {
-  const urls = lokaleSider
+  const unikeSider = [...new Map(lokaleSider.map((html) => [html.match(/<link rel="canonical" href="([^"]+)">/u)?.[1], html])).values()];
+  const urls = unikeSider
     .filter((html) => html.includes(`<html lang="${lang}">`) && !html.includes('content="noindex'))
     .map((html) => {
       const loc = html.match(/<link rel="canonical" href="([^"]+)">/u)[1];

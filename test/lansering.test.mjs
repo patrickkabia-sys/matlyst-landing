@@ -42,7 +42,9 @@ for (const lang of ['sv', 'da']) {
     assert.deepEqual([...loc].sort(), forventet);
     for (const blokk of blokker) {
       const side = blokk.match(/<loc>([^<]+)<\/loc>/u)[1];
-      assert.match(blokk, /<loc>[^<]+<\/loc>\s*<lastmod>2026-10-05<\/lastmod>/u, side);
+      const oppdatertGuide = /\/(?:sv\/(?:importera-recept|spara-recept-fran-instagram|spara-recept-fran-tiktok|byt-fran-paprika|handskrivna-recept)|da\/(?:importer-opskrifter|gem-opskrifter-fra-instagram|gem-opskrifter-fra-tiktok|skift-fra-paprika|haandskrevne-opskrifter))\/$/u.test(side);
+      const forventetDato = oppdatertGuide ? '2026-10-27' : '2026-10-05';
+      assert.match(blokk, new RegExp(`<loc>[^<]+<\\/loc>\\s*<lastmod>${forventetDato}<\\/lastmod>`, 'u'), side);
       const html = readFileSync(urlTilFil(side), 'utf8');
       assert.doesNotMatch(html, /content="noindex/u, side);
       const iSitemap = [...blokk.matchAll(/hreflang="([^"]+)" href="([^"]+)"/gu)].map(([, k, h]) => `${k} ${h}`).sort();

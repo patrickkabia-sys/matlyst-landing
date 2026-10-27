@@ -1,198 +1,47 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="nb">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Importer oppskrifter fra Instagram og TikTok | Matlyst</title>
-<meta name="description" content="Lagre oppskrifter fra Instagram, TikTok eller en nettside. Matlyst henter oppskriften og oversetter den til norsk. Lenkeimport er gratis å prøve. Bildeimport krever Pro.">
+<title>Importer oppskrifter fra sosiale medier og nettsider | Matlyst</title>
+<meta name="description" content="Importer oppskrifter fra Instagram, TikTok, YouTube, nettsider, Pinterest-lenker, bilder, tekst og Paprika. Bildeimport krever Pro.">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://matlyst-app.no/importer-oppskrifter/">
 <link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/importer-oppskrifter/">
 <link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/importera-recept/">
 <link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/importer-opskrifter/">
 <link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/import-recipes/">
 <link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/import-recipes/">
-<script src="/locale.js" defer></script>
 <meta name="theme-color" content="#F7F3EC">
-<meta name="apple-itunes-app" content="app-id=6762563515">
-<meta property="og:title" content="Importer oppskrifter fra hvor som helst | Matlyst">
-<meta property="og:description" content="Fra Instagram, TikTok eller en nettside. Matlyst henter oppskriften og oversetter til norsk. Lenkeimport er gratis å prøve.">
-<meta property="og:image" content="https://matlyst-app.no/images/og-importer-oppskrifter.jpg">
-<meta property="og:image:alt" content="Matlyst viser hvordan du deler en oppskrift fra Instagram til appen">
+<meta property="og:title" content="Importer oppskrifter fra sosiale medier og nettsider | Matlyst">
+<meta property="og:description" content="Importer oppskrifter fra Instagram, TikTok, YouTube, nettsider, Pinterest-lenker, bilder, tekst og Paprika. Bildeimport krever Pro.">
+<meta property="og:image" content="https://matlyst-app.no/images/og.jpg">
+<meta property="og:image:alt" content="Importer oppskrifter fra Instagram, TikTok, YouTube, nettsider, Pinterest-lenker, bilder, tekst og Paprika. Bildeimport krever Pro.">
 <meta property="og:url" content="https://matlyst-app.no/importer-oppskrifter/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Matlyst">
 <meta property="og:locale" content="nb_NO">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Importer oppskrifter fra hvor som helst | Matlyst">
-<meta name="twitter:description" content="Fra Instagram, TikTok eller en nettside. Matlyst henter oppskriften og oversetter til norsk. Lenkeimport er gratis å prøve.">
-<meta name="twitter:image" content="https://matlyst-app.no/images/og-importer-oppskrifter.jpg">
-<meta name="twitter:image:alt" content="Matlyst viser hvordan du deler en oppskrift fra Instagram til appen">
-<link rel="stylesheet" href="/styles.css">
+<meta name="twitter:title" content="Importer oppskrifter fra sosiale medier og nettsider | Matlyst">
+<meta name="twitter:description" content="Importer oppskrifter fra Instagram, TikTok, YouTube, nettsider, Pinterest-lenker, bilder, tekst og Paprika. Bildeimport krever Pro.">
+<meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
+<meta name="twitter:image:alt" content="Importer oppskrifter fra Instagram, TikTok, YouTube, nettsider, Pinterest-lenker, bilder, tekst og Paprika. Bildeimport krever Pro.">
 <link rel="icon" type="image/png" href="/images/icon.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Matlyst","item":"https://matlyst-app.no/"},{"@type":"ListItem","position":2,"name":"Importer oppskrifter","item":"https://matlyst-app.no/importer-oppskrifter/"}]}</script>
-<script>document.documentElement.className += ' js';</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Hvordan lagrer jeg en oppskrift fra Instagram eller TikTok?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Trykk del på innlegget eller videoen, og velg Matlyst i delingsmenyen. Velg eventuelt en mappe, og trykk Lagre. Oppskriften behandles i bakgrunnen. Åpne den i Matlyst når importen er ferdig, med ingredienser og fremgangsmåte hver for seg."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Blir utenlandske oppskrifter oversatt?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Ingredienser og fremgangsmåte oversettes til norsk bokmål. Metriske mål er standard, og du kan velge amerikanske mål i innstillingene. Titler på norsk og engelsk beholdes. Titler på andre språk oversettes til norsk bokmål."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Kan jeg lagre en håndskrevet oppskrift?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. Ta et bilde av oppskriften, så leses teksten og legges inn på samme måte som en oppskrift fra nettet."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Hva koster det?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Du får 5 importer fra lenker i måneden gratis. Pro fjerner grensen på fem lenkeimporter. Bildeimport krever Matlyst Pro. Gjeldende pris og abonnementsvilkår vises i appen før du kjøper."
-      }
-    }
-  ]
-}
-</script>
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Forside","item":"https://matlyst-app.no/"},{"@type":"ListItem","position":2,"name":"Samle oppskrifter fra sosiale medier, nettsider og apper","item":"https://matlyst-app.no/importer-oppskrifter/"}]},{"@context":"https://schema.org","@type":"HowTo","name":"Slik lagrer du den første oppskriften","step":[{"@type":"HowToStep","position":1,"name":"Finn oppskriften","text":"Åpne innlegget, videoen eller oppskriftssiden på Instagram, TikTok, YouTube eller nettet."},{"@type":"HowToStep","position":2,"name":"Del til Matlyst","text":"Trykk på Del, og velg Matlyst i delingsmenyen. Velg eventuelt en mappe, og lagre."},{"@type":"HowToStep","position":3,"name":"Kontroller resultatet","text":"Åpne oppskriften, og sammenlign ingredienser, mengder og fremgangsmåte med originalen før du lager maten."}]},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Hvordan lagrer jeg en oppskrift fra Instagram eller TikTok?","acceptedAnswer":{"@type":"Answer","text":"Trykk på Del i innlegget eller videoen, og velg Matlyst. Kontroller oppskriften før du lagrer den."}},{"@type":"Question","name":"Kan jeg importere oppskrifter fra YouTube?","acceptedAnswer":{"@type":"Answer","text":"Ja. Del en video, Short eller offentlig spilleliste. Oppskriftsinformasjonen må finnes i tekst som Matlyst kan lese."}},{"@type":"Question","name":"Kan jeg importere oppskrifter fra Pinterest?","acceptedAnswer":{"@type":"Answer","text":"Åpne nettsiden som pinnen lenker til, og del eller lim inn den siden i Matlyst."}},{"@type":"Question","name":"Kan jeg flytte oppskrifter fra Paprika?","acceptedAnswer":{"@type":"Answer","text":"Ja. Eksporter oppskriftene fra Paprika, og velg eksportfilen i Matlyst."}},{"@type":"Question","name":"Blir oppskrifter på andre språk oversatt?","acceptedAnswer":{"@type":"Answer","text":"Ja. Ingredienser og fremgangsmåte oversettes til valgt appspråk. Kontroller alltid resultatet mot originalen."}},{"@type":"Question","name":"Kan jeg skanne en oppskrift fra en kokebok?","acceptedAnswer":{"@type":"Answer","text":"Ja, med Matlyst Pro. Velg ett eller flere tydelige bilder, og kontroller mengdene etter importen."}},{"@type":"Question","name":"Hva koster import?","acceptedAnswer":{"@type":"Answer","text":"Du får 5 importer fra lenker i måneden gratis. Pro fjerner grensen på fem lenkeimporter og gir bildeimport. Gjeldende pris og vilkår vises i appen før kjøp."}}]}]</script>
+<script src="/locale.js" defer></script>
 <link rel="stylesheet" href="/language-switcher.css">
 <script src="/language-switcher.js" defer></script>
-</head>
-<body>
-<a class="skip-link" href="#hovedinnhold">Hopp til innhold</a>
-
-<nav id="nav">
-  <a href="/" class="brand">Mat<em>lyst</em></a>
-  <div class="nav-right">
-    <!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/importer-oppskrifter/?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/importera-recept/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/importer-opskrifter/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a><a href="/en/import-recipes/?sprak=en" lang="en" hreflang="en" aria-label="English">EN</a></span><!-- /språkvelger:topp -->
-    <a class="link" href="/#funksjoner">Funksjoner</a>
-    <a class="nav-cta" href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">Last ned</a>
-  </div>
-</nav>
-
-<main id="hovedinnhold">
-<header class="hero">
-  <div>
-    <p class="eyebrow hero-eyebrow">Oppskriftsimport</p>
-    <h1 class="disp"><span class="a">Lagre oppskrifter</span> <span class="a">fra <span class="it">Instagram og TikTok</span></span></h1>
-  </div>
-  <div class="hero-side">
-    <p class="lead">Fant du noe du vil lage? Del lenken med Matlyst, så får du oppskriften samlet med ingredienser og fremgangsmåte på norsk. Legg den i ukemenyen når det passer, og lag handleliste fra oppskriften.</p>
-    <div class="hero-actions">
-      <div class="store-badges">
-        <a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">
-          <img src="/images/appstore-badge.svg" width="120" height="40" alt="Download on the App Store">
-        </a>
-        <a class="btn-store btn-store-play" href="https://play.google.com/store/apps/details?id=app.matlyst" target="_blank" rel="noopener">
-          <img src="/images/googleplay-badge-en.png" width="646" height="250" alt="Get it on Google Play">
-        </a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<section class="feat">
-  <div class="feat-media"><span class="num">Import</span><img src="/images/life/life-share-1400.webp" srcset="/images/life/life-share-800.webp 800w, /images/life/life-share-1400.webp 1400w" sizes="(max-width:860px) 100vw, 50vw" width="1408" height="3050" alt="Deler en oppskrift fra en reel inn i Matlyst" loading="lazy"></div>
-  <div class="feat-text">
-    <p class="eyebrow">Slik virker det</p>
-    <h2>Slik lagrer du en <em>oppskrift</em></h2>
-    <p>Installer Matlyst og logg inn før du deler oppskriften.</p>
-    <ol class="steps">
-      <li class="step"><span class="n" aria-hidden="true">01</span><div><h3 class="h">Finn oppskriften</h3><p class="d">Åpne innlegget eller videoen på Instagram eller TikTok.</p></div></li>
-      <li class="step"><span class="n" aria-hidden="true">02</span><div><h3 class="h">Del lenken til Matlyst</h3><p class="d">Bruk delingsmenyen og velg Matlyst. Velg eventuelt en mappe, og trykk Lagre. Oppskriften behandles i bakgrunnen.</p></div></li>
-      <li class="step"><span class="n" aria-hidden="true">03</span><div><h3 class="h">Åpne den importerte oppskriften</h3><p class="d">Se gjennom ingrediensene og fremgangsmåten før du begynner å lage maten.</p></div></li>
-    </ol>
-    <p>Du kan også kopiere lenken og lime den inn under Importer i Matlyst. Trykk Hent oppskrift, deretter Lagre oppskrift. Velg eventuelt en mappe og trykk Ferdig.</p>
-    <p>Importen avhenger av at Matlyst får tilgang til innholdet. Et privat innlegg eller en video uten tilgjengelig oppskriftstekst kan derfor være vanskelig å hente. Har du oppskriften som tekst eller bilde, kan du legge den inn den veien.</p>
-  </div>
-</section>
-
-<section class="prose">
-  <h2>Fire måter å importere på</h2>
-  <p>Matlyst er bygget for måten folk faktisk finner oppskrifter på i dag. Du trenger ikke skrive noe av for hånd.</p>
-  <ul>
-    <li><strong>Fra en lenke:</strong> lim inn adressen til en oppskrift fra en nettside eller matblogg.</li>
-    <li><strong>Fra sosiale medier:</strong> del en reel eller video fra Instagram eller TikTok rett inn i Matlyst.</li>
-    <li><strong>Fra et bilde:</strong> ta bilde av en oppskrift, også håndskrevne kort fra kjøkkenskuffen. Bildeimport krever Matlyst Pro.</li>
-    <li><strong>Fra kjente matsider:</strong> norske sider som Matprat leses strukturert, med ingredienser og steg på plass.</li>
-  </ul>
-
-  <h2>Ingredienser og fremgangsmåte på norsk</h2>
-  <p>Matlyst oversetter ingredienser og fremgangsmåte til norsk bokmål og bruker metriske mål som standard. Titler på norsk og engelsk beholdes. Titler på andre språk oversettes til norsk bokmål. Kilden følger med, slik at du kan finne tilbake til den som laget oppskriften.</p>
-
-  <h2>Bruk oppskriften når middagen skal planlegges</h2>
-  <p>Samle oppskriftene i mapper, og finn dem igjen når du skal bestemme middag. Legg en oppskrift i <a href="/ukemeny/">ukemenyen</a> og bruk ingrediensene til å lage <a href="/handleliste/">handleliste</a>. Da kan inspirasjonen du fant på mobilen bli en del av ukas middager.</p>
-
-  <p><a class="more" href="/importer-fra-matprat/">Se hvordan import fra Matprat fungerer →</a></p>
-  <p><a class="more" href="/bytt-fra-paprika/">Bytter du fra Paprika eller en annen app? →</a></p>
-  <p><a class="more" href="/handskrevne-oppskrifter/">Digitaliser håndskrevne oppskrifter →</a></p>
-</section>
-
-<section class="faq">
-  <h2>Spørsmål og svar</h2>
-  <details>
-    <summary>Hvordan lagrer jeg en oppskrift fra Instagram eller TikTok?</summary>
-    <p>Trykk del på innlegget eller videoen, og velg Matlyst i delingsmenyen. Velg eventuelt en mappe, og trykk Lagre. Oppskriften behandles i bakgrunnen. Åpne den i Matlyst når importen er ferdig, med ingredienser og fremgangsmåte hver for seg.</p>
-  </details>
-  <details>
-    <summary>Blir utenlandske oppskrifter oversatt?</summary>
-    <p>Ja. Ingredienser og fremgangsmåte oversettes til norsk bokmål. Metriske mål er standard, og du kan velge amerikanske mål i innstillingene. Titler på norsk og engelsk beholdes. Titler på andre språk oversettes til norsk bokmål.</p>
-  </details>
-  <details>
-    <summary>Kan jeg lagre en håndskrevet oppskrift?</summary>
-    <p>Ja. Ta et bilde av oppskriften, så leses teksten og legges inn på samme måte som en oppskrift fra nettet.</p>
-  </details>
-  <details>
-    <summary>Hva koster det?</summary>
-    <p>Du får 5 importer fra lenker i måneden gratis. Pro fjerner grensen på fem lenkeimporter. Bildeimport krever Matlyst Pro. Gjeldende pris og abonnementsvilkår vises i appen før du kjøper.</p>
-  </details>
-</section>
-
-
-<div class="page-cta">
-  <div class="store-badges">
-    <a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">
-      <img src="/images/appstore-badge.svg" width="120" height="40" alt="Download on the App Store">
-    </a>
-    <a class="btn-store btn-store-play" href="https://play.google.com/store/apps/details?id=app.matlyst" target="_blank" rel="noopener">
-      <img src="/images/googleplay-badge-en.png" width="646" height="250" alt="Get it on Google Play">
-    </a>
-  </div>
-</div>
-</main>
-
-<footer>
-  <a href="/" class="brand">Mat<em>lyst</em></a>
-  <div class="f-l"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Språk"><a href="/importer-oppskrifter/?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/importera-recept/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/importer-opskrifter/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a><a href="/en/import-recipes/?sprak=en" lang="en" hreflang="en" aria-label="English">EN</a></span><!-- /språkvelger:bunn -->
-<a href="/personvern.html">Personvern</a><a href="/vilkar.html">Vilkår</a><a href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">App Store</a><a href="https://play.google.com/store/apps/details?id=app.matlyst" target="_blank" rel="noopener">Google Play</a></div>
-  <span class="c">© 2026 Matlyst. Laget i Norge.</span>
-</footer>
-
-<div class="cookie" id="cookie" hidden>
-  <h3>Vi bruker informasjonskapsler</h3>
-  <p>Vi måler hva som fungerer, slik at vi kan forbedre Matlyst. Du bestemmer. Les mer i <a href="/personvern.html">personvernerklæringen</a>.</p>
-  <div class="cookie-actions">
-    <button class="ck-btn ck-accept" id="ck-accept" type="button">Godta</button>
-    <button class="ck-btn ck-reject" id="ck-reject" type="button">Bare nødvendige</button>
-  </div>
-</div>
-
-<script src="/site.js"></script>
-</body>
-</html>
+</head><body data-locale="nb">
+<a class="skip-link" href="#hovedinnhold">Hopp til innholdet</a>
+<nav aria-label="Hovednavigasjon"><a href="/" class="brand">Mat<em>lyst</em></a><div class="nav-right">
+    <!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/importer-oppskrifter/?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/importera-recept/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/importer-opskrifter/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a><a href="/en/import-recipes/?sprak=en" lang="en" hreflang="en" aria-label="English">EN</a></span><!-- /språkvelger:topp --><a class="link" href="/#funksjoner">Funksjoner</a></div></nav>
+<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">Importer oppskrifter</p><h1 class="disp">Samle oppskrifter fra sosiale medier, nettsider og apper</h1><p class="lead">Del en lenke, video, et bilde, tekst eller en eksportfil med Matlyst. Du får en redigerbar oppskrift med ingredienser og fremgangsmåte i tydelige deler.</p></header>
+<section class="prose locale-prose"><h2>Slik lagrer du den første oppskriften</h2><p>Åpne Matlyst og godta informasjonen om KI før du importerer første gang. Matlyst bruker KI til å lese, strukturere og oversette oppskrifter.</p><ol><li><strong>Finn oppskriften.</strong> Åpne innlegget, videoen eller oppskriftssiden på Instagram, TikTok, YouTube eller nettet.</li><li><strong>Del til Matlyst.</strong> Trykk på <strong>Del</strong>, og velg <strong>Matlyst</strong> i delingsmenyen. Velg eventuelt en mappe, og lagre.</li><li><strong>Kontroller resultatet.</strong> Åpne oppskriften, og sammenlign ingredienser, mengder og fremgangsmåte med originalen før du lager maten.</li></ol><p>Du kan også kopiere lenken og velge <strong>Lim inn lenke</strong> under <strong>Legg til oppskrift</strong>. En oppskrift du allerede har som tekst, kan limes inn under <strong>Skriv selv</strong>.</p><p>Matlyst kan bare lese informasjon som er tilgjengelig. Privat, slettet eller begrenset innhold kan mangle, og en video uten oppskrift i beskrivelsen kan ikke transkriberes automatisk.</p>
+<h2>Måter å importere en oppskrift på</h2><ul><li><strong>Instagram:</strong> del et offentlig innlegg eller en reel. Les guiden om å <a href="/lagre-oppskrifter-fra-instagram/">lagre oppskrifter fra Instagram</a>.</li><li><strong>TikTok:</strong> del en offentlig video eller lim inn lenken. Les guiden om å <a href="/lagre-oppskrifter-fra-tiktok/">lagre TikTok-oppskrifter</a>.</li><li><strong>YouTube:</strong> del en video, Short eller offentlig spilleliste. For en spilleliste velger du hvilke videoer som skal importeres.</li><li><strong>Oppskriftsnettsider:</strong> del siden fra nettleseren eller lim inn adressen.</li><li><strong>Pinterest:</strong> åpne oppskriftsnettsiden som pinnen lenker til, og importer den siden. Selve pinnen inneholder ikke alltid hele oppskriften.</li><li><strong>Bilde:</strong> velg en kokebokside, et ukeblad, et håndskrevet oppskriftskort eller et skjermbilde. Bildeimport krever Matlyst Pro. Les guiden om å <a href="/handskrevne-oppskrifter/">skanne oppskrifter</a>.</li><li><strong>Paprika:</strong> eksporter oppskriftene og importer filen i Matlyst. Følg guiden for å <a href="/bytt-fra-paprika/">flytte fra Paprika</a>.</li></ul>
+<h2>På norsk, uansett originalspråk</h2><p>Titler på norsk og engelsk beholdes. Titler på andre språk oversettes til norsk bokmål. Ingredienser og fremgangsmåte oversettes til norsk. Metriske mål er standard, og du kan velge amerikanske mål i innstillingene. Kildelenken lagres når den er tilgjengelig.</p>
+<h2>Bruk oppskriften i hverdagen</h2><p>Legg oppskriften i en mappe, sett den inn i ukemenyen og send ingrediensene til handlelisten. Under <strong>Spør Matlyst</strong> kan du spørre om erstatninger, allergener og tilberedning i den lagrede oppskriften.</p></section>
+<section class="faq"><h2>Spørsmål og svar om import</h2><details open><summary>Hvordan lagrer jeg en oppskrift fra Instagram eller TikTok?</summary><p>Trykk på Del i innlegget eller videoen, og velg Matlyst. Kontroller oppskriften før du lagrer den.</p></details><details><summary>Kan jeg importere oppskrifter fra YouTube?</summary><p>Ja. Del en video, Short eller offentlig spilleliste. Oppskriftsinformasjonen må finnes i tekst som Matlyst kan lese.</p></details><details><summary>Kan jeg importere oppskrifter fra Pinterest?</summary><p>Åpne nettsiden som pinnen lenker til, og del eller lim inn den siden i Matlyst.</p></details><details><summary>Kan jeg flytte oppskrifter fra Paprika?</summary><p>Ja. Eksporter oppskriftene fra Paprika, og velg eksportfilen i Matlyst.</p></details><details><summary>Blir oppskrifter på andre språk oversatt?</summary><p>Ja. Ingredienser og fremgangsmåte oversettes til valgt appspråk. Kontroller alltid resultatet mot originalen.</p></details><details><summary>Kan jeg skanne en oppskrift fra en kokebok?</summary><p>Ja, med Matlyst Pro. Velg ett eller flere tydelige bilder, og kontroller mengdene etter importen.</p></details><details><summary>Hva koster import?</summary><p>Du får 5 importer fra lenker i måneden gratis. Pro fjerner grensen på fem lenkeimporter og gir bildeimport. Gjeldende pris og vilkår vises i appen før kjøp.</p></details></section>
+<section class="page-cta"><h2 class="disp">Begynn med én oppskrift</h2><div class="store-badges"><a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" rel="noopener"><img src="/images/appstore-badge.svg" alt="Last ned i App Store"></a><a class="btn-store" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;hl=no&amp;gl=NO" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Last ned fra Google Play"></a></div></section></main>
+<footer><a href="/" class="brand">Mat<em>lyst</em></a><div class="f-l"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Språk"><a href="/importer-oppskrifter/?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/importera-recept/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/importer-opskrifter/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a><a href="/en/import-recipes/?sprak=en" lang="en" hreflang="en" aria-label="English">EN</a></span><!-- /språkvelger:bunn --><a href="/vilkar.html">Vilkår</a><a href="/personvern.html">Personvern</a><a href="#samtykke" data-consent-withdraw>Endre samtykke</a><a href="mailto:hei@matlyst-app.no">Kontakt</a></div><span class="c">© 2026 Matlyst · Oppskrifter, ukemeny og handleliste.</span></footer>
+<div class="cookie" id="cookie" hidden><div class="cookie-inner" id="samtykke"><p>Vi bruker nødvendig lagring for at siden skal virke. Sier du ja, bruker vi også analyse (PostHog og Google Analytics) til å forbedre Matlyst. Les mer i <a href="/personvern.html">personvernerklæringen</a>.</p><div class="cookie-actions"><button class="ck-btn ck-accept" id="ck-accept" type="button">Godta</button><button class="ck-btn ck-reject" id="ck-reject" type="button">Bare nødvendige</button></div></div></div><script src="/site.js" defer></script></body></html>
