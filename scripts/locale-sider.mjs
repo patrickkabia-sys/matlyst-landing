@@ -24,8 +24,8 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'tiktok-auth', redirect: false, sider: { nb: '/tiktok-auth/', sv: '/sv/tiktok-auth/', da: '/da/tiktok-auth/' } },
 
   { id: 'oppskrifts-app', sider: { sv: '/sv/receptbok-app/', da: '/da/opskrifts-app/' } },
-  { id: 'instagram-oppskrifter', sider: { sv: '/sv/spara-recept-fran-instagram/', da: '/da/gem-opskrifter-fra-instagram/', en: '/en/import-recipes-from-instagram/' } },
-  { id: 'tiktok-oppskrifter', sider: { sv: '/sv/spara-recept-fran-tiktok/', da: '/da/gem-opskrifter-fra-tiktok/', en: '/en/import-recipes-from-tiktok/' } },
+  { id: 'instagram-oppskrifter', sider: { nb: '/lagre-oppskrifter-fra-instagram/', sv: '/sv/spara-recept-fran-instagram/', da: '/da/gem-opskrifter-fra-instagram/', en: '/en/import-recipes-from-instagram/' } },
+  { id: 'tiktok-oppskrifter', sider: { nb: '/lagre-oppskrifter-fra-tiktok/', sv: '/sv/spara-recept-fran-tiktok/', da: '/da/gem-opskrifter-fra-tiktok/', en: '/en/import-recipes-from-tiktok/' } },
   { id: 'spiskammer', sider: { sv: '/sv/skafferi-app/', da: '/da/spisekammer-app/' } },
   { id: 'tom-kjoleskapet', sider: { sv: '/sv/tom-kylskapet/', da: '/da/toem-koeleskabet/' } },
   { id: 'enkel-middag', sider: { sv: '/sv/enkel-middag/', da: '/da/nem-mad/' } },

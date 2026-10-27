@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alternativ till Paprika Recipe Manager | Matlyst</title>
-<meta name="description" content="Flytta dina recept med Matlysts import och kontrollera varje resultat innan du sparar.">
+<title>Importera recept från Paprika till Matlyst | Matlyst</title>
+<meta name="description" content="Exportera recepten från Paprika och importera filen i Matlyst. Välj vilka recept du vill flytta och kontrollera resultatet.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://matlyst-app.no/sv/byt-fran-paprika/">
 <link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/bytt-fra-paprika/">
@@ -13,22 +13,22 @@
 <link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/import-recipes-from-paprika/">
 <link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/import-recipes-from-paprika/">
 <meta name="theme-color" content="#F7F3EC">
-<meta property="og:title" content="Alternativ till Paprika Recipe Manager | Matlyst">
-<meta property="og:description" content="Flytta dina recept med Matlysts import och kontrollera varje resultat innan du sparar.">
+<meta property="og:title" content="Importera recept från Paprika till Matlyst | Matlyst">
+<meta property="og:description" content="Exportera recepten från Paprika och importera filen i Matlyst. Välj vilka recept du vill flytta och kontrollera resultatet.">
 <meta property="og:image" content="https://matlyst-app.no/images/og.jpg">
-<meta property="og:image:alt" content="Flytta dina recept med Matlysts import och kontrollera varje resultat innan du sparar.">
+<meta property="og:image:alt" content="Exportera recepten från Paprika och importera filen i Matlyst. Välj vilka recept du vill flytta och kontrollera resultatet.">
 <meta property="og:url" content="https://matlyst-app.no/sv/byt-fran-paprika/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Matlyst">
 <meta property="og:locale" content="sv_SE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Alternativ till Paprika Recipe Manager | Matlyst">
-<meta name="twitter:description" content="Flytta dina recept med Matlysts import och kontrollera varje resultat innan du sparar.">
+<meta name="twitter:title" content="Importera recept från Paprika till Matlyst | Matlyst">
+<meta name="twitter:description" content="Exportera recepten från Paprika och importera filen i Matlyst. Välj vilka recept du vill flytta och kontrollera resultatet.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
-<meta name="twitter:image:alt" content="Flytta dina recept med Matlysts import och kontrollera varje resultat innan du sparar.">
+<meta name="twitter:image:alt" content="Exportera recepten från Paprika och importera filen i Matlyst. Välj vilka recept du vill flytta och kontrollera resultatet.">
 <link rel="icon" type="image/png" href="/images/icon.png">
 <link rel="stylesheet" href="/styles.css">
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Hem","item":"https://matlyst-app.no/sv/"},{"@type":"ListItem","position":2,"name":"Byt från Paprika – och kontrollera varje recept","item":"https://matlyst-app.no/sv/byt-fran-paprika/"}]},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Finns det en direktkoppling till Paprika?","acceptedAnswer":{"@type":"Answer","text":"Nej. Använd export- och importmöjligheterna som apparna erbjuder."}}]}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Hem","item":"https://matlyst-app.no/sv/"},{"@type":"ListItem","position":2,"name":"Ta med recepten från Paprika till Matlyst","item":"https://matlyst-app.no/sv/byt-fran-paprika/"}]},{"@context":"https://schema.org","@type":"HowTo","name":"Så flyttar du recept från Paprika","step":[{"@type":"HowToStep","position":1,"name":"Exportera från Paprika","text":"Markera recepten och exportera dem i Paprika-format. Det skapar normalt en fil med ändelsen .paprikarecipes."},{"@type":"HowToStep","position":2,"name":"Öppna filen i Matlyst","text":"Öppna importavsnittet i Inställningar och välj exportfilen."},{"@type":"HowToStep","position":3,"name":"Välj och importera","text":"Välj recepten som Matlyst hittar, importera dem och kontrollera resultatet."}]},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Kan jag importera recept från Paprika?","acceptedAnswer":{"@type":"Answer","text":"Ja. Exportera recepten från Paprika, välj filen i Matlyst och markera recepten du vill importera."}},{"@type":"Question","name":"Vilka Paprika-filer stöds?","acceptedAnswer":{"@type":"Answer","text":"Matlyst stöder .paprikarecipe, .paprikarecipes och kompatibla .zip-filer upp till 25 MB och 300 recept per import."}},{"@type":"Question","name":"Följer Paprika-mapparna med?","acceptedAnswer":{"@type":"Answer","text":"Paprika-kategorier blir Matlyst-mappar när de kan läsas ur exporten. Kontrollera samlingen efteråt."}},{"@type":"Question","name":"Importeras receptbilder?","acceptedAnswer":{"@type":"Answer","text":"Giltiga bilder i en stödd export importeras. Ett recept kan fortfarande importeras om en bild saknas eller är skadad."}},{"@type":"Question","name":"Behöver Matlyst mitt Paprika-lösenord?","acceptedAnswer":{"@type":"Answer","text":"Nej. Importen använder bara exportfilen som du själv väljer."}}]}]</script>
 <script src="/locale.js" defer></script>
 <link rel="stylesheet" href="/language-switcher.css">
 <script src="/language-switcher.js" defer></script>
@@ -40,10 +40,13 @@
     <!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/bytt-fra-paprika/?sprak=nb" lang="nb" hreflang="nb" aria-label="Norsk">NO</a><a href="/sv/byt-fran-paprika/?sprak=sv" lang="sv" hreflang="sv" aria-label="Svenska" aria-current="page">SV</a><a href="/da/skift-fra-paprika/?sprak=da" lang="da" hreflang="da" aria-label="Dansk">DA</a><a href="/en/import-recipes-from-paprika/?sprak=en" lang="en" hreflang="en" aria-label="English">EN</a></span><!-- /språkvelger:topp -->
     <a class="link" href="/sv/#funktioner">Funktioner</a>
   </div>
-</nav><main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">Matlyst</p><h1 class="disp">Byt från Paprika – och kontrollera varje recept</h1><p class="lead">Flytta dina recept med Matlysts import och kontrollera varje resultat innan du sparar.</p></header>
-<section class="prose locale-prose"><h2>Alternativ till Paprika Recipe Manager</h2><p>Matlyst kan importera recept från länkar och filer som appen stöder. Exakt hur det går till beror på vilka exportmöjligheter din nuvarande app har.</p><h2>Bra att veta</h2><p>Matlyst har ingen koppling till Paprika och garanterar inte att alla fält kan flyttas automatiskt.</p></section>
-<section class="faq"><h2>Vanliga frågor</h2><details open><summary>Finns det en direktkoppling till Paprika?</summary><p>Nej. Använd export- och importmöjligheterna som apparna erbjuder.</p></details></section>
-<section class="page-cta"><h2 class="disp">Få ordning på vardagsmaten med Matlyst</h2><div class="store-badges">
+</nav><main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">Flytta receptsamlingen</p><h1 class="disp">Ta med recepten från Paprika till Matlyst</h1><p class="lead">Du behöver inte lägga in hela samlingen för hand. Exportera den från Paprika, öppna filen i Matlyst och välj recepten du vill ta med.</p></header>
+<section class="prose locale-prose"><h2>Så flyttar du recept från Paprika</h2><p>Behåll originalfilen tills du har kontrollerat importen. Matlyst läser filen du väljer och visar recepten innan de sparas.</p><ol><li><strong>Exportera från Paprika.</strong> Markera recepten och exportera dem i Paprika-format. Det skapar normalt en fil med ändelsen <code>.paprikarecipes</code>.</li><li><strong>Öppna filen i Matlyst.</strong> Öppna importavsnittet i <strong>Inställningar</strong> och välj exportfilen.</li><li><strong>Välj och importera.</strong> Välj recepten som Matlyst hittar, importera dem och kontrollera resultatet.</li></ol><p>Matlyst stöder <code>.paprikarecipe</code>, <code>.paprikarecipes</code> och kompatibla <code>.zip</code>-filer. Du kan även öppna en stödd fil i appen Filer och välja Matlyst.</p><p>En fil kan innehålla upp till 300 recept och vara högst 25 MB. Dela en större samling i flera exporter. Importen använder ditt tillgängliga importutrymme. Matlyst har ingen koppling till Paprika och garanterar inte att alla fält kan flyttas automatiskt.</p>
+<h2>Det som kan följa med</h2><p>Matlyst bevarar receptdata som kan läsas: titel, beskrivning, ingredienser, instruktioner, portioner, tider, taggar, källänkar, betyg, bilder och Paprika-kategorier. Kategorier blir mappar när de kan läsas.</p>
+<h2>Efter flytten</h2><p>Recepten hamnar i samma sökbara samling som recept från Instagram, TikTok, YouTube, webben, foton och text.</p>
+<h2>Import med en fil du väljer</h2><p>Matlyst ansluter inte till ditt Paprika-konto och frågar inte efter ditt lösenord. Läs <a href="/sv/importera-recept/">hela guiden om receptimport</a>.</p></section>
+<section class="faq"><h2>Frågor om Paprika-import</h2><details open><summary>Kan jag importera recept från Paprika?</summary><p>Ja. Exportera recepten från Paprika, välj filen i Matlyst och markera recepten du vill importera.</p></details><details><summary>Vilka Paprika-filer stöds?</summary><p>Matlyst stöder .paprikarecipe, .paprikarecipes och kompatibla .zip-filer upp till 25 MB och 300 recept per import.</p></details><details><summary>Följer Paprika-mapparna med?</summary><p>Paprika-kategorier blir Matlyst-mappar när de kan läsas ur exporten. Kontrollera samlingen efteråt.</p></details><details><summary>Importeras receptbilder?</summary><p>Giltiga bilder i en stödd export importeras. Ett recept kan fortfarande importeras om en bild saknas eller är skadad.</p></details><details><summary>Behöver Matlyst mitt Paprika-lösenord?</summary><p>Nej. Importen använder bara exportfilen som du själv väljer.</p></details></section>
+<section class="page-cta"><h2 class="disp">Flytta recepten till Matlyst</h2><div class="store-badges">
 <a class="btn-store" href="https://apps.apple.com/se/app/matlyst/id6762563515" rel="noopener"><img src="/images/appstore-badge.svg" alt="Download on the App Store"></a>
 <a class="btn-store" href="https://play.google.com/store/apps/details?id=app.matlyst&hl=sv&gl=SE" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Get it on Google Play"></a>
 </div></section></main><footer>

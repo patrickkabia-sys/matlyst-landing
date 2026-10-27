@@ -11,7 +11,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/byt-fran-paprika/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/bytt-fra-paprika/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/byt-fran-paprika/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/skift-fra-paprika/"/>
@@ -27,7 +27,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/handskrivna-recept/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/handskrevne-oppskrifter/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/handskrivna-recept/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/haandskrevne-opskrifter/"/>
@@ -44,7 +44,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/importera-recept/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/importer-oppskrifter/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/importera-recept/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/importer-opskrifter/"/>
@@ -120,7 +120,8 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/spara-recept-fran-instagram/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/lagre-oppskrifter-fra-instagram/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/spara-recept-fran-instagram/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/gem-opskrifter-fra-instagram/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/import-recipes-from-instagram/"/>
@@ -128,7 +129,8 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/spara-recept-fran-tiktok/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/lagre-oppskrifter-fra-tiktok/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/spara-recept-fran-tiktok/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/gem-opskrifter-fra-tiktok/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/import-recipes-from-tiktok/"/>

@@ -27,8 +27,8 @@ test('sidetabellen har alle ekte trioer, par og enkeltstående sider', () => {
   const trioer = SIDEGRUPPER.filter(({ sider }) => sider.nb && sider.sv && sider.da);
   const par = SIDEGRUPPER.filter(({ sider }) => !sider.nb && sider.sv && sider.da);
   const enkelt = SIDEGRUPPER.filter(({ sider }) => Object.keys(sider).length === 1);
-  assert.equal(trioer.length, 16);
-  assert.equal(par.length, 6);
+  assert.equal(trioer.length, 18);
+  assert.equal(par.length, 4);
   assert.equal(enkelt.length, 7);
 });
 
