@@ -488,11 +488,11 @@ function avmeldPage(lang, row) {
 const veiledninger = {
   en: [{
     path: 'import-recipes/',
-    title: 'How to import recipes from Instagram, TikTok and the web',
-    description: 'Save a recipe from Instagram, TikTok, YouTube or any website in a few taps. Matlyst gives you the ingredients and method in English, ready for your meal plan and shopping list.',
+    title: 'Import recipes from social media and websites',
+    description: 'Import recipes from Instagram, TikTok, YouTube, recipe websites, Pinterest links, photos, text or a Paprika export file with Matlyst.',
     eyebrow: 'Recipe import',
-    h1: 'Save a recipe from Instagram, TikTok or any website',
-    lead: 'Found something you want to cook? Share it with Matlyst and you get the recipe with its ingredients and method, in English, ready for your meal plan and shopping list.',
+    h1: 'Import recipes from social media, websites and apps',
+    lead: 'Found something you want to cook? Share the link, video, photo, text or export file with Matlyst and turn it into a recipe with organised ingredients and instructions.',
     forst: 'Before your first import, open Matlyst once and accept the AI notice. Matlyst uses AI to read and translate recipes.',
     stegTittel: 'Save your first recipe',
     steg: [
@@ -503,23 +503,166 @@ const veiledninger = {
     alternativ: 'Prefer to paste? Copy the link, open <strong>Add recipe</strong> in Matlyst and choose <strong>Paste a link</strong>. Tap <strong>Get recipe</strong>, then <strong>Save recipe</strong>.',
     grense: 'Matlyst can only read what’s publicly visible in a post. If a post is private, or the recipe isn’t in the caption, copy the text and paste it under <strong>Type it in</strong> instead.',
     seksjoner: [
-      ['Four ways to add a recipe', liste([
-        '<strong>A link:</strong> paste the address of a recipe from any website or food blog.',
-        '<strong>A video or post:</strong> share a reel or video from Instagram, TikTok or YouTube straight to Matlyst.',
-        '<strong>A photo:</strong> snap a cookbook page, a magazine or a handwritten card. Photo import needs Matlyst Pro.',
+      ['Ways to import a recipe', liste([
+        '<strong>Instagram:</strong> share a public post or reel with Matlyst. Read the guide to <a href="/en/import-recipes-from-instagram/">importing recipes from Instagram</a>.',
+        '<strong>TikTok:</strong> share a public video or paste its link. Read the guide to <a href="/en/import-recipes-from-tiktok/">importing recipes from TikTok</a>.',
+        '<strong>YouTube:</strong> share a video, Short or public playlist. A playlist opens a picker so you can choose which videos to import.',
+        '<strong>Recipe websites:</strong> share the page from your browser or paste its address from a food blog or recipe site.',
+        '<strong>Pinterest:</strong> open the original recipe website linked by the pin, then share or paste that page. A pin does not always contain the full recipe.',
+        '<strong>A photo:</strong> scan a cookbook page, magazine, handwritten card or screenshot. You can use more than one image for a multi-page recipe. Photo import needs Matlyst Pro. Read the guide to <a href="/en/import-recipes-from-photos/">importing recipes from photos</a>.',
         '<strong>Text:</strong> paste or type a recipe straight into the app.',
+        '<strong>Paprika:</strong> export your collection and bring the file into Matlyst. Follow the guide to <a href="/en/import-recipes-from-paprika/">importing recipes from Paprika</a>.',
       ])],
       ['In English, whatever the original language', avsnitt('Matlyst translates the ingredients and method into your app’s language, so with the app in English, every recipe arrives in English. It uses metric units unless you switch to US units in Settings. A link to the source stays with the recipe, so you can always find your way back to the person who made it.')],
-      ['Put your recipes to work', avsnitt('Sort your recipes into folders and find them again when it’s time to decide what to cook. Add a recipe to your meal plan and send its ingredients to your shopping list.')],
+      ['Put your recipes to work', avsnitt('Sort your recipes into folders and find them again when it’s time to decide what to cook. Add a recipe to your meal plan, send its ingredients to your shopping list, or open <strong>Ask Matlyst</strong> on the recipe to ask about ingredient swaps, allergens, preparation and serving ideas.')],
     ],
     faqTittel: 'Questions and answers',
     faq: [
       ['How do I save a recipe from Instagram or TikTok?', 'Tap Share on the post or video and choose Matlyst. Pick a folder if you like and tap Save. The recipe is ready in Matlyst a few seconds later.'],
+      ['Can I import a recipe from YouTube?', 'Yes. Share a YouTube video or Short with Matlyst, or paste its link. You can also share a public playlist and choose which videos to import. The recipe needs to be available in the video description or other text Matlyst can access.'],
+      ['Can I import recipes from Pinterest?', 'Open the original recipe website linked by the Pinterest pin, then share or paste that page in Matlyst. A pin does not always contain the complete recipe.'],
+      ['Can I move recipes from Paprika to Matlyst?', 'Yes. Export your recipes from Paprika, open the import area in Matlyst and choose the export file. Matlyst supports Paprika recipe files and compatible ZIP exports.'],
       ['Are recipes in other languages translated?', 'Yes. The ingredients and method are translated into your app language. Metric units are the default, and you can switch to US units in Settings.'],
       ['Can I save a handwritten recipe?', 'Yes, with Matlyst Pro. Take a photo and Matlyst reads the text and adds it, just like a recipe from the web.'],
       ['What does it cost?', 'You get 5 free link imports a month. Matlyst Pro removes that limit and adds photo import. The current price and terms are shown in the app before you buy.'],
     ],
     cta: 'Start with one recipe',
+  }, {
+    path: 'import-recipes-from-photos/',
+    title: 'Import recipes from photos and cookbooks',
+    description: 'Turn photos of cookbook pages, handwritten recipe cards, magazines and screenshots into organised ingredients and instructions with Matlyst.',
+    eyebrow: 'Photo recipe import',
+    h1: 'Import recipes from photos, cookbooks and screenshots',
+    lead: 'Photograph a cookbook page, handwritten family recipe, magazine clipping or screenshot. Matlyst turns the visible text into an editable recipe with separate ingredients and instructions.',
+    forst: 'Photo import is a Matlyst Pro feature. Before your first import, open Matlyst and accept the AI notice. Use a clear, well-lit image and keep the full recipe inside the frame.',
+    stegTittel: 'How to scan a recipe',
+    steg: [
+      ['Open photo import', 'Open <strong>Add recipe</strong> in Matlyst and choose <strong>Take a photo</strong>.'],
+      ['Photograph or choose the pages', 'Take a new photo or pick one or more images from your library. Add every page when the ingredients and instructions span several images.'],
+      ['Review and save', 'Check the title, quantities, ingredients and instructions against the original. Correct anything that needs changing, add the source if you want to keep it, then save the recipe.'],
+    ],
+    alternativ: 'A screenshot works too. Save the screenshot to your photo library, choose <strong>Take a photo</strong> in Matlyst and select it from your images. For a recipe already available as text or a public web page, pasting the text or link may give a cleaner result.',
+    grense: 'Image quality and handwriting affect the result. Avoid glare, shadows, curved pages and cropped lines. Matlyst can make mistakes when reading quantities, allergens or instructions, so always compare the imported recipe with the original before cooking.',
+    seksjoner: [
+      ['Cookbooks, magazines and recipe cards', avsnitt('Photo import is useful when a recipe has no link to share. Scan printed cookbook pages, magazine recipes, clippings and handwritten family cards, then keep them in the same searchable collection as recipes from the web and social media.')],
+      ['Screenshots and recipes with several pages', avsnitt('Choose a screenshot from your photo library, or select several images when one recipe continues across multiple pages. Make sure the images are in reading order and that no ingredient or instruction is cut off.')],
+      ['Use the recipe after import', avsnitt('Put the saved recipe in a folder, add it to your meal plan and send its ingredients to your shopping list. Open <strong>Ask Matlyst</strong> on the recipe when you want practical help with ingredient swaps, allergens, preparing it ahead or what to serve with it.')],
+      ['Keep the original credit', avsnitt('A photo usually does not contain a reliable source link. Add the cookbook title, author, magazine or person who wrote the recipe yourself if you want to preserve where it came from. See the <a href="/en/import-recipes/">complete recipe import guide</a> for links, social media, YouTube, Pinterest and Paprika imports.')],
+    ],
+    faqTittel: 'Photo and cookbook import questions',
+    faq: [
+      ['Can I import a recipe from a photo?', 'Yes. In Matlyst, open Add recipe, choose Take a photo and either photograph the recipe or select an image from your library. Photo import requires Matlyst Pro.'],
+      ['Can Matlyst scan a cookbook page?', 'Yes. Photograph the full cookbook page in good light, keep the camera straight and avoid glare or curved text near the binding. Review the imported quantities and instructions before saving.'],
+      ['Can Matlyst read handwritten recipes?', 'Matlyst can read many handwritten recipe cards, but the result depends on how clear the handwriting and image are. Always compare the imported recipe with the original, especially quantities and allergens.'],
+      ['Can I import a recipe from a screenshot?', 'Yes. Save the screenshot to your photo library, open photo import in Matlyst and select the image. Include every screenshot if the recipe continues across several images.'],
+      ['Can I use more than one photo for a recipe?', 'Yes. You can choose multiple images for a recipe that spans several cookbook pages or screenshots. Put them in reading order and make sure the images do not omit any lines.'],
+      ['How do I get the best recipe scan?', 'Use sharp, well-lit images taken straight above the page. Avoid shadows, glare, folds, curved pages and cropped text. One clear page per image is usually easiest to review.'],
+      ['Is photo import free?', 'Photo import requires Matlyst Pro. The current price and terms are shown in the app before you buy.'],
+      ['What can I ask Ask Matlyst about?', 'Open Ask Matlyst on a saved recipe to ask practical questions about ingredient swaps, allergens, preparing the dish ahead or what to serve with it. Check important allergy information against the original recipe and product labels.'],
+    ],
+    cta: 'Scan your first recipe',
+  }, {
+    path: 'import-recipes-from-instagram/',
+    title: 'How to import recipes from Instagram',
+    description: 'Share a public Instagram post or reel with Matlyst and turn the available recipe caption into organised ingredients and instructions you can save.',
+    eyebrow: 'Instagram recipe import',
+    h1: 'Turn an Instagram reel into a recipe you can cook',
+    lead: 'Found a recipe on Instagram? Share the public post or reel with Matlyst. The app uses the available caption to create an editable recipe with separate ingredients and instructions.',
+    forst: 'Open Matlyst once before your first import and accept the AI notice. Matlyst uses AI to identify and structure the recipe information that Instagram makes available.',
+    stegTittel: 'How to import a recipe from Instagram',
+    steg: [
+      ['Open the post or reel', 'Find a public Instagram post or reel with the recipe in its caption. Tap the <strong>Share</strong> button.'],
+      ['Share it to Matlyst', 'Choose <strong>Share to</strong>, then select <strong>Matlyst</strong> from the app list.'],
+      ['Review and save', 'Check the title, ingredients and instructions against the original. Make any corrections, choose a folder if you like, then save the recipe.'],
+    ],
+    alternativ: 'You can also copy the Instagram link, open <strong>Add recipe</strong> in Matlyst and choose <strong>Paste a link</strong>. If you can access the recipe text but the link cannot be read, paste the text under <strong>Type it in</strong>.',
+    grense: 'Matlyst reads recipe information available with the public post, usually the caption. It does not transcribe speech or text shown only inside a reel. Private, deleted, restricted or unavailable posts may not be readable.',
+    seksjoner: [
+      ['From reel caption to organised recipe', avsnitt('Matlyst separates the available caption into ingredients and instructions, translates them into your selected app language and uses metric units by default. Always check quantities and steps before cooking.')],
+      ['Where your Instagram recipes are saved', avsnitt('The imported recipe is saved in your Matlyst collection, where you can search for it, put it in a folder, add it to your meal plan and send its ingredients to your shopping list. The original source stays attached when it is available.')],
+      ['Save recipes from more than Instagram', avsnitt('Matlyst also imports supported recipes from TikTok, YouTube, recipe websites, photos, text and Paprika export files. See the <a href="/en/import-recipes/">complete recipe import guide</a>.')],
+    ],
+    faqTittel: 'Instagram recipe questions',
+    faq: [
+      ['How do I import recipes from Instagram?', 'Open a public Instagram post or reel, tap Share, choose Share to and select Matlyst. Review the imported ingredients and instructions before saving.'],
+      ['Is there a free app to import recipes from Instagram?', 'Matlyst includes a limited number of free link imports each month. Current limits, Pro features and prices are shown in the app before you buy.'],
+      ['How do I extract a recipe from an Instagram reel?', 'Share the public reel with Matlyst. If the recipe is available in its caption, Matlyst can organise it into ingredients and instructions. It does not transcribe speech or text shown only inside the reel.'],
+      ['How can I convert an Instagram reel to a recipe?', 'Share the reel or paste its link in Matlyst. The app turns accessible recipe text into an editable recipe you can organise, plan and shop from.'],
+      ['Where are imported Instagram recipes saved?', 'They are saved in your Matlyst recipe collection, not in Instagram. You can find them with search, organise them in folders and keep the original source link when it is available.'],
+      ['Can I copy a recipe from an Instagram caption on iPhone?', 'Yes. You can share the post directly to Matlyst, or copy accessible recipe text and paste it under Type it in.'],
+      ['Can Matlyst import recipes from private Instagram accounts?', 'Not reliably. Matlyst needs access to the recipe information in a public post. Private, deleted, restricted or unavailable posts may not be readable.'],
+      ['Does Matlyst download the Instagram video?', 'No. Matlyst saves the structured recipe information and keeps the source link when available. It does not download the reel as a video file.'],
+    ],
+    cta: 'Save your next Instagram recipe',
+  }, {
+    path: 'import-recipes-from-tiktok/',
+    title: 'How to import recipes from TikTok',
+    description: 'Share a public TikTok with Matlyst and turn the recipe information in its caption into organised ingredients and steps you can save, plan and shop from.',
+    eyebrow: 'TikTok recipe import',
+    h1: 'Turn a TikTok into a recipe you can actually cook',
+    lead: 'Found a TikTok recipe you want to make? Share the public video with Matlyst. The app reads the available recipe text and turns it into organised ingredients and steps, ready to save.',
+    forst: 'Open Matlyst once before your first import and accept the AI notice. Matlyst uses AI to identify and structure the recipe information that TikTok makes publicly available.',
+    stegTittel: 'How to save a recipe from TikTok',
+    steg: [
+      ['Open the TikTok', 'Find a public TikTok with the recipe written in its caption. Tap <strong>Share</strong>.'],
+      ['Share it to Matlyst', 'Choose <strong>Matlyst</strong> in the share menu. If it is not visible, open the app list and select it there.'],
+      ['Check and save the recipe', 'Review the title, ingredients and method. Correct anything that needs changing, choose a folder if you like, then save it.'],
+    ],
+    alternativ: 'You can also copy the TikTok link, open <strong>Add recipe</strong> in Matlyst and choose <strong>Paste a link</strong>. Matlyst keeps the source link with the saved recipe when it is available.',
+    grense: 'Matlyst reads recipe information that is publicly available with the TikTok, usually the caption. It does not transcribe speech or text shown only inside the video. If the caption is incomplete, copy any recipe text you can access and paste it under <strong>Type it in</strong>. Private, deleted or region-restricted videos may not be readable.',
+    seksjoner: [
+      ['From TikTok caption to usable recipe', avsnitt('Instead of cooking from a long caption, you get separate ingredients and instructions. Matlyst can translate them into your app language and uses metric units by default. Always check quantities and steps against the original before cooking.')],
+      ['Keep recipes from social media in one place', avsnitt(
+        'TikTok is only one source. You can also save recipes from Instagram, YouTube, websites, photos and text. Organise them into folders, add them to your meal plan and send the ingredients to your shopping list.',
+        'For all supported import methods, read the <a href="/en/import-recipes/">complete recipe import guide</a>.',
+      )],
+      ['A better way to find the recipe again', avsnitt('A TikTok saved inside TikTok is still a video in a feed. A recipe saved in Matlyst is searchable and ready to use while planning, shopping and cooking. The original source stays attached when it is available.')],
+    ],
+    faqTittel: 'TikTok recipe questions',
+    faq: [
+      ['How can I extract a recipe from a TikTok video?', 'Share a public TikTok with Matlyst. If recipe information is available in the caption, Matlyst can organise it into ingredients and steps. It does not transcribe speech or text shown only inside the video.'],
+      ['How do I save a TikTok recipe?', 'Open the TikTok, tap Share and choose Matlyst. Check the imported ingredients and method, then save the recipe to your collection. You can also paste the TikTok link into Matlyst.'],
+      ['How can I convert a TikTok recipe to text?', 'Share or paste the public TikTok link in Matlyst. The app turns the available recipe text into a structured recipe with separate ingredients and instructions.'],
+      ['Can I copy a recipe from a TikTok caption?', 'Yes. You can share the TikTok directly with Matlyst, or copy accessible recipe text from the caption and paste it under Type it in.'],
+      ['Is there an app for saving recipes from TikTok?', 'Matlyst lets you save recipe information from public TikToks, organise the recipes in folders and use them in your meal plan and shopping list.'],
+      ['Is there a free app that imports recipes?', 'Matlyst includes a limited number of free link imports each month. Current limits, Pro features and prices are shown in the app before you buy.'],
+      ['What is the best way to save recipes from social media?', 'Save the recipe as structured ingredients and instructions, keep the source link and organise it somewhere searchable. Matlyst does this for supported public posts and links from TikTok, Instagram, YouTube and the web.'],
+      ['Can Matlyst import TikTok recipes in another language?', 'Yes. Matlyst can translate the ingredients and method into your selected app language. Review the imported recipe before cooking, especially quantities and translated ingredient names.'],
+    ],
+    cta: 'Save your next TikTok recipe',
+  }, {
+    path: 'import-recipes-from-paprika/',
+    title: 'How to import recipes from Paprika',
+    description: 'Move recipes from Paprika to Matlyst with a Paprika export file. Choose what to import and keep recognised ingredients, instructions, images and folders.',
+    eyebrow: 'Move your recipe collection',
+    h1: 'Import your Paprika recipes into Matlyst',
+    lead: 'You do not need to rebuild your recipe collection by hand. Export it from Paprika, open the file in Matlyst and choose the recipes you want to bring with you.',
+    forst: 'Keep a copy of your original export until you have checked the imported recipes. Matlyst reads the file you select and shows the recipes before they are saved to your collection.',
+    stegTittel: 'How to move recipes from Paprika',
+    steg: [
+      ['Export from Paprika', 'Select the recipes you want to move and export them in Paprika format. This normally creates a <code>.paprikarecipes</code> file.'],
+      ['Open the file in Matlyst', 'In Matlyst, open <strong>Settings</strong>, find the import section and choose the option for moving recipes from another app. Select the exported file.'],
+      ['Choose and import', 'Matlyst analyses the file and shows the recipes it found. Select the recipes you want, import them and review the result.'],
+    ],
+    alternativ: 'Matlyst accepts <code>.paprikarecipe</code>, <code>.paprikarecipes</code> and compatible <code>.zip</code> files. You can also open a supported export file from the Files app and share it with Matlyst.',
+    grense: 'A file can contain up to 300 recipes and must be no larger than 25 MB. Split a larger collection into smaller exports. File imports use your available import allowance; Matlyst shows the current limit before an upgrade is required.',
+    seksjoner: [
+      ['What Matlyst can bring across', avsnitt('Matlyst preserves recognised recipe titles, descriptions, ingredients, instructions, servings, cooking times, tags, source links, ratings, images and Paprika categories. Categories become folders when they can be read. Check the result because damaged or unusual export data may be skipped.')],
+      ['After the move', avsnitt('Your imported recipes become part of the same searchable collection as recipes from Instagram, TikTok, YouTube, websites, photos and text. You can organise them, add them to your meal plan and send ingredients to your shopping list.')],
+      ['An independent file import', avsnitt(
+        'The transfer uses an export file you choose. Matlyst does not ask for your Paprika login and is not affiliated with Paprika. Paprika and related names belong to their respective owners.',
+        'See the <a href="/en/import-recipes/">complete recipe import guide</a> for other supported sources.',
+      )],
+    ],
+    faqTittel: 'Paprika import questions',
+    faq: [
+      ['Can I import my recipes from Paprika?', 'Yes. Export the recipes from Paprika, select the file in Matlyst and choose which recognised recipes to import.'],
+      ['Which Paprika files does Matlyst support?', 'Matlyst accepts .paprikarecipe, .paprikarecipes and compatible .zip files up to 25 MB. A single import can contain up to 300 recipes.'],
+      ['Do my Paprika folders come across?', 'Paprika categories are recreated as Matlyst folders when they can be read from the export. Review the imported collection afterwards because unusual or damaged data may be skipped.'],
+      ['Are recipe images imported from Paprika?', 'Matlyst imports valid images included in supported Paprika exports. If an image is missing or invalid, the recipe can still be imported without it.'],
+      ['Does Matlyst need my Paprika password?', 'No. The import uses the export file you choose. Matlyst does not connect to your Paprika account or ask for your Paprika login.'],
+    ],
+    cta: 'Bring your recipes to Matlyst',
   }],
 };
 
@@ -688,6 +831,13 @@ for (const gruppe of SIDEGRUPPER) {
 
 // Ett sitemap per språk. Sider med noindex (støttesidene) tas ikke med.
 const sistEndret = { en: '2026-10-20' };
+const sistEndretSide = {
+  'https://matlyst-app.no/en/import-recipes/': '2026-10-27',
+  'https://matlyst-app.no/en/import-recipes-from-photos/': '2026-10-27',
+  'https://matlyst-app.no/en/import-recipes-from-instagram/': '2026-10-27',
+  'https://matlyst-app.no/en/import-recipes-from-paprika/': '2026-10-27',
+  'https://matlyst-app.no/en/import-recipes-from-tiktok/': '2026-10-27',
+};
 for (const lang of SPRAK) {
   const urls = lokaleSider
     .filter((html) => html.includes(`<html lang="${lang}">`) && !html.includes('content="noindex'))
@@ -695,7 +845,7 @@ for (const lang of SPRAK) {
       const loc = html.match(/<link rel="canonical" href="([^"]+)">/u)[1];
       const alternativer = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/gu)]
         .map(([, kode, href]) => `    <xhtml:link rel="alternate" hreflang="${kode}" href="${href}"/>`);
-      return [`  <url>`, `    <loc>${loc}</loc>`, `    <lastmod>${sistEndret[lang] ?? '2026-10-05'}</lastmod>`, ...alternativer, `  </url>`].join('\n');
+      return [`  <url>`, `    <loc>${loc}</loc>`, `    <lastmod>${sistEndretSide[loc] ?? sistEndret[lang] ?? '2026-10-05'}</lastmod>`, ...alternativer, `  </url>`].join('\n');
     })
     .sort();
   write(`../sitemap-${lang}.xml`, ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">', ...urls, '</urlset>'].join('\n') + '\n');
