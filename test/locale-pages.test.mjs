@@ -26,7 +26,11 @@ const urlTilFil = (href) => {
 const regexEsc = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 test('alle lokale sider har språk, canonical, hreflang og gyldig strukturert data', () => {
-  assert.equal(filer.length, 57);
+  const tabellforte = new Set(SIDEGRUPPER.flatMap(({ sider }) => Object.values(sider))
+    .filter((sti) => /^\/(?:sv|da|en)\//u.test(sti))
+    .map((sti) => join(root, filForSti(sti))));
+  for (const fil of tabellforte) assert.equal(existsSync(fil), true, relative(root, fil));
+  assert.ok(filer.length >= tabellforte.size, `${filer.length} filer, ${tabellforte.size} tabellført`);
   for (const fil of filer) {
     const html = les(fil);
     const rel = relative(root, fil);
@@ -81,7 +85,7 @@ test('lokale sider bruker engelske butikkmerker og kundespråk', () => {
       assert.match(html, /\/images\/googleplay-badge-en\.png/u, rel);
       assert.doesNotMatch(html, /badge-(?:sv|da)\./u, rel);
     }
-    const lang = rel.startsWith('sv/') ? 'sv' : 'da';
+    const lang = rel.split('/')[0];
     assert.doesNotMatch(html, /abonnemangs?gate|abonnementsgate/iu, rel);
     if (lang === 'da') assert.doesNotMatch(html, /\bugemenu(?:en)?\b/iu, rel);
   }
@@ -145,7 +149,7 @@ test('alle sider som laster site.js har samtykkebanner og mulighet for å trekke
 test('produktbevis har språktilpassede kildesider og riktige funksjonsreferanser', () => {
   const qa = les(join(root, 'qa/sv-da/produktpaastander.md'));
   const rader = [...qa.matchAll(/^\| (\/(?:sv|da)\/[^ ]+\/) \| (.+?) \| `/gmu)];
-  assert.equal(rader.length, 34);
+  assert.ok(rader.length >= 40, `${rader.length} dokumenterte påstander`);
   for (const [, side, sitat] of rader) {
     assert.ok(les(join(root, side, 'index.html')).includes(sitat), `${side}: påstanden er ikke sitert ordrett`);
   }
@@ -198,7 +202,7 @@ test('språkvelgeren lager ingen tomme plassholdere', () => {
 });
 
 test('alle TikTok-retursidene viser og kan kopiere autorisasjonskoden', () => {
-  for (const sti of ['/tiktok-auth/', '/sv/tiktok-auth/', '/da/tiktok-auth/']) {
+  for (const sti of ['/tiktok-auth/', '/sv/tiktok-auth/', '/da/tiktok-auth/', '/en/tiktok-auth/']) {
     const html = les(join(root, filForSti(sti)));
     assert.match(html, /id="kode"/u, sti);
     assert.match(html, /id="kopier"/u, sti);
@@ -211,7 +215,7 @@ test('alle TikTok-retursidene viser og kan kopiere autorisasjonskoden', () => {
 test('tokenbærende tekniske sider laster aldri nettstedsanalyse', () => {
   for (const sti of [
     '/avmeld/', '/sv/avregistrera/', '/da/afmeld/', '/en/unsubscribe/',
-    '/tiktok-auth/', '/sv/tiktok-auth/', '/da/tiktok-auth/',
+    '/tiktok-auth/', '/sv/tiktok-auth/', '/da/tiktok-auth/', '/en/tiktok-auth/',
   ]) {
     const html = les(join(root, filForSti(sti)));
     assert.doesNotMatch(html, /site\.js|posthog|googletagmanager/iu, sti);
