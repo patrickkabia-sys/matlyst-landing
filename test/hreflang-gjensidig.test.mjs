@@ -23,13 +23,12 @@ function hreflang(html) {
     .map(([, kode, href]) => [kode, href]));
 }
 
-test('sidetabellen har alle ekte trioer, par og enkeltstående sider', () => {
-  const trioer = SIDEGRUPPER.filter(({ sider }) => sider.nb && sider.sv && sider.da);
-  const par = SIDEGRUPPER.filter(({ sider }) => !sider.nb && sider.sv && sider.da);
-  const enkelt = SIDEGRUPPER.filter(({ sider }) => Object.keys(sider).length === 1);
-  assert.equal(trioer.length, 18);
-  assert.equal(par.length, 4);
-  assert.equal(enkelt.length, 7);
+test('alle offentlige sidegrupper finnes på alle fire språk', () => {
+  const unntak = SIDEGRUPPER.filter(({ sider }) => Object.keys(sider).length !== 4);
+  assert.deepEqual(unntak.map(({ id }) => id), ['christine', 'sara']);
+  for (const gruppe of SIDEGRUPPER.filter(({ id }) => !['christine', 'sara'].includes(id))) {
+    assert.deepEqual(Object.keys(gruppe.sider).sort(), ['da', 'en', 'nb', 'sv'], gruppe.id);
+  }
 });
 
 test('alle tabellførte sider har eksisterende, gjensidig hreflang fra samme tabell', () => {
@@ -84,10 +83,13 @@ test('LOCALE_PAGE_MAP bygges direkte fra sidetabellen', () => {
   assert.deepEqual(faktisk, byggLocalePageMap());
 });
 
-test('lokale kildesider har ingen falske språk-motstykker', () => {
-  for (const sti of ['/sv/koket/', '/sv/landleys-kok/', '/da/alletiders-kogebog/', '/da/dr-mad/']) {
-    const språklenker = alternativerFor(sti).filter(([kode]) => kode !== 'x-default');
-    assert.deepEqual(språklenker, [[sti.startsWith('/sv/') ? 'sv-SE' : 'da-DK', sti]]);
+test('kildeguidene har fire ekte språkversjoner', () => {
+  for (const id of ['matprat', 'koket', 'landleys-kok', 'alletiders-kogebog', 'dr-mad']) {
+    const gruppe = SIDEGRUPPER.find((rad) => rad.id === id);
+    assert.deepEqual(Object.keys(gruppe.sider).sort(), ['da', 'en', 'nb', 'sv'], id);
+    for (const sti of Object.values(gruppe.sider)) {
+      assert.equal(alternativerFor(sti).length, 5, sti);
+    }
   }
 });
 

@@ -11,15 +11,21 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/da/alletiders-kogebog/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/importer-fra-alletiders-kokebok/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/alletiders-kogebog/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/alletiders-kogebog/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/da/alletiders-kogebog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/alletiders-cookbook/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/alletiders-cookbook/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/dr-mad/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/importer-fra-dr-mat/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/dr-mad/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/dr-mad/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/da/dr-mad/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/dr-food/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/dr-food/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/find-opskrifter/</loc>
@@ -27,7 +33,8 @@
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/finn-oppskrifter/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hitta-recept/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/find-opskrifter/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/finn-oppskrifter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/find-recipes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/find-recipes/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/gem-opskrifter-fra-instagram/</loc>
@@ -71,7 +78,26 @@
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/handleliste/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/inkopslista/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/indkoebsliste-app/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/handleliste/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/shopping-list/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/shopping-list/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/da/koket/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/importer-fra-koket/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/koket/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/koket/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/koket/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/koket/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/da/landleys-kok/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/importer-fra-landleys-kok/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/landleys-kok/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/landleys-kok/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/landleys-kok/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/landleys-kok/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/madplan-app/</loc>
@@ -79,7 +105,17 @@
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/ukemeny/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/veckomeny-app/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/madplan-app/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/ukemeny/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/meal-plan-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/meal-plan-app/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/da/matprat/</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/importer-fra-matprat/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/matprat/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/matprat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/matprat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/matprat/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/middagsforslag/</loc>
@@ -87,14 +123,17 @@
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/middagsforslag/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/vad-ska-jag-laga/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/middagsforslag/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/middagsforslag/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/dinner-ideas/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/dinner-ideas/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/nem-mad/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/enkel-middag/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/enkel-middag/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/nem-mad/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/enkel-middag/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/easy-dinner/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/easy-dinner/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/</loc>
@@ -102,14 +141,17 @@
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/hva-kan-jeg-lage/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/opskrifts-app/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/oppskriftsbok-app/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/receptbok-app/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifts-app/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/receptbok-app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipe-book-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipe-book-app/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/opskriftsskabere/</loc>
@@ -117,7 +159,8 @@
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/skapere/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/receptskapare/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskriftsskabere/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/skapere/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipe-creators/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipe-creators/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/privatliv/</loc>
@@ -143,21 +186,26 @@
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/slett-konto.html"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/radera-konto/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/slet-konto/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/slett-konto.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/delete-account/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/delete-account/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/spisekammer-app/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/spiskammer-app/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/skafferi-app/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/spisekammer-app/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/skafferi-app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/pantry-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/pantry-app/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/toem-koeleskabet/</loc>
     <lastmod>2026-10-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/tom-kjoleskapet/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/tom-kylskapet/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/toem-koeleskabet/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/tom-kylskapet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/empty-the-fridge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/empty-the-fridge/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/da/vilkaar/</loc>

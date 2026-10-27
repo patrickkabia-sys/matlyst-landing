@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { legal, liste } from './juridisk-tekster.mjs';
 import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, byggLocalePageMap, filForSti, gruppeForSti } from './locale-sider.mjs';
 import { lokaleImportGuider } from './import-guider-lokale.mjs';
+import { engelskeFunksjonssider, kildesider } from './undersider-alle-sprak.mjs';
 
 const base = 'https://matlyst-app.no';
 const common = {
@@ -204,9 +205,9 @@ const hjem = {
     ],
     cards: [
       ['Import recipes', 'A link, a video or a photo becomes a recipe you can cook from.', 'import-recipes/'],
-      ['Meal plan', 'Put your own recipes on the days that suit you.'],
-      ['Shopping list', 'The ingredients from your recipes and everything else you need, on one list.'],
-      ['Ask Matlyst', 'Ask about a recipe or get help adapting a dish.'],
+      ['Meal plan', 'Put your own recipes on the days that suit you.', 'meal-plan-app/'],
+      ['Shopping list', 'The ingredients from your recipes and everything else you need, on one list.', 'shopping-list/'],
+      ['Ask Matlyst', 'Ask about a recipe or get help adapting a dish.', 'dinner-ideas/'],
     ],
     houseAlt: 'Two people planning meals together',
     houseEyebrow: 'Cooking for more than one',
@@ -301,6 +302,7 @@ const featurePages = {
     ['nem-mad/','Nem mad til hverdagen','Planlæg nem mad med egne opskrifter, Spisekammeret, Madplanen og Indkøbslisten.','Nem aftensmad med overblik','Vælg en hurtig ret, du allerede kan lide, læg den på den rigtige dag, og send det, du mangler, til listen.','Frikadeller med kartofler, en pastaret eller ovnbagt laks er eksempler, ikke færdige opskrifter på siden.','Hvad er nem mad til hverdag?','En ret med tydelige trin, rimelig tid og råvarer, du har eller let kan købe.'],
     ['opskriftsskabere/','Matlyst for opskriftsskabere','Sådan viser Matlyst kilden, håndterer import og modtager henvendelser fra rettighedshavere.','Kilden skal være tydelig','Importerede opskrifter beholder kildelinket, når det findes. Matlyst gør ikke krav på skaberens tekst eller billeder.','En skaber kan skrive til hei@matlyst-app.no om spørgsmål, rettelser eller blokering af import fra en kilde.','Kan en skaber stoppe import?','Ja. Kontakt os med kilde og dokumentation, så behandler vi henvendelsen.'],
   ],
+  en: engelskeFunksjonssider,
 };
 
 const featureOverrides = {
@@ -348,37 +350,36 @@ function featurePage(lang, row) {
     {'@type':'ListItem',position:1,name:common[lang].home,item:`${base}/${lang}/`},
     {'@type':'ListItem',position:2,name:values.h1,item:`${base}/${lang}/${path}`},
   ]};
-  const sectionLabel = lang === 'sv' ? 'Bra att veta' : 'Godt at vide';
+  const labels = {
+    sv: { know: 'Bra att veta', faq: 'Vanliga frågor', cta: 'Få ordning på vardagsmaten med Matlyst' },
+    da: { know: 'Godt at vide', faq: 'Ofte stillede spørgsmål', cta: 'Få styr på hverdagen med Matlyst' },
+    en: { know: 'Good to know', faq: 'Frequently asked questions', cta: 'Make everyday cooking easier with Matlyst' },
+  }[lang];
   return `${head({lang,path,title:`${values.title} | Matlyst`,description:values.description,schema:[crumbs,faq]})}<body data-locale="${lang}">
 ${nav(lang,path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">Matlyst</p><h1 class="disp">${values.h1}</h1><p class="lead">${values.description}</p></header>
-<section class="prose locale-prose"><h2>${values.h2}</h2><p>${values.p1}</p><h2>${sectionLabel}</h2><p>${values.p2}</p></section>
-<section class="faq"><h2>${lang === 'sv' ? 'Vanliga frågor' : 'Ofte stillede spørgsmål'}</h2><details open><summary>${values.q}</summary><p>${values.a}</p></details></section>
-<section class="page-cta"><h2 class="disp">${lang === 'sv' ? 'Få ordning på vardagsmaten med Matlyst' : 'Få styr på hverdagen med Matlyst'}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
+<section class="prose locale-prose"><h2>${values.h2}</h2><p>${values.p1}</p><h2>${labels.know}</h2><p>${values.p2}</p></section>
+<section class="faq"><h2>${labels.faq}</h2><details open><summary>${values.q}</summary><p>${values.a}</p></details></section>
+<section class="page-cta"><h2 class="disp">${labels.cta}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
-const sourcePages = {
-  sv: [
-    ['koket/','Spara recept från Köket.se','Så sparar du ett recept från Köket.se i Matlyst, med källan kvar.','Köket.se','https://www.koket.se/'],
-    ['landleys-kok/','Spara recept från Landleys Kök','Så sparar du ett recept från Landleys Kök i Matlyst, med källan kvar.','Landleys Kök','https://www.landleyskok.se/'],
-  ],
-  da: [
-    ['alletiders-kogebog/','Gem opskrifter fra Alletiders Kogebog','Sådan gemmer du en opskrift fra Alletiders Kogebog i Matlyst med kilden bevaret.','Alletiders Kogebog','https://www.dk-kogebogen.dk/'],
-    ['dr-mad/','Gem opskrifter fra DR Mad','Sådan gemmer du en opskrift fra DR Mad i Matlyst med kilden bevaret.','DR Mad','https://www.dr.dk/mad'],
-  ],
-};
+const sourcePages = kildesider;
 
 function sourcePage(lang, row) {
   const [path,title,description,source,sourceUrl] = row;
-  const sv = lang === 'sv';
+  const labels = {
+    sv: { eyebrow: 'Spara med källan kvar', how: 'Så gör du', open: `Öppna ett recept från ${source}.`, share: 'Öppna delningsmenyn och välj Matlyst, eller klistra in länken i importen.', check: 'Kontrollera ingredienser, mängder och steg innan du sparar.', source: 'Källa och ansvar', body: `Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med ${source} och gör inte anspråk på deras texter eller bilder.`, visit: `Besök ${source}`, cta: 'Spara recepten där du lagar maten' },
+    da: { eyebrow: 'Gem med kilden bevaret', how: 'Sådan gør du', open: `Åbn en opskrift fra ${source}.`, share: 'Åbn menuen Del, og vælg Matlyst, eller indsæt linket i importen.', check: 'Kontrollér ingredienser, mængder og trin, før du gemmer den.', source: 'Kilde og ansvar', body: `Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med ${source} og gør ikke krav på deres tekster eller billeder.`, visit: `Besøg ${source}`, cta: 'Gem dine yndlingsopskrifter ét sted' },
+    en: { eyebrow: 'Save it with the source', how: 'How to save the recipe', open: `Open a recipe on ${source}.`, share: 'Open the share menu and choose Matlyst, or paste the link into recipe import.', check: 'Review the ingredients, quantities and instructions before saving.', source: 'Source and ownership', body: `Matlyst keeps the source link when it is available. Matlyst is not affiliated with ${source} and does not claim ownership of its text or images.`, visit: `Visit ${source}`, cta: 'Keep the recipes where you cook' },
+  }[lang];
   const crumbs = {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:common[lang].home,item:`${base}/${lang}/`},
     {'@type':'ListItem',position:2,name:title,item:`${base}/${lang}/${path}`},
   ]};
   return `${head({lang,path,title:`${title} | Matlyst`,description,schema:crumbs})}<body data-locale="${lang}">
-${nav(lang,path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${sv ? 'Spara med källan kvar' : 'Gem med kilden bevaret'}</p><h1 class="disp">${title}</h1><p class="lead">${description}</p></header>
-<section class="prose locale-prose"><h2>${sv ? 'Så gör du' : 'Sådan gør du'}</h2><ol><li>${sv ? `Öppna ett recept från ${source}.` : `Åbn en opskrift fra ${source}.`}</li><li>${sv ? 'Dela länken med Matlyst eller klistra in den i importen.' : 'Del linket med Matlyst, eller indsæt det i importen.'}</li><li>${sv ? 'Kontrollera ingredienser, mängder och steg innan du sparar.' : 'Kontrollér ingredienser, mængder og trin, før du gemmer den.'}</li></ol>
-<h2>${sv ? 'Källa och ansvar' : 'Kilde og ansvar'}</h2><p>${sv ? `Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med ${source} och gör inte anspråk på deras texter eller bilder.` : `Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med ${source} og gør ikke krav på deres tekster eller billeder.`}</p><p><a href="${sourceUrl}" rel="noopener">${sv ? `Besök ${source}` : `Besøg ${source}`}</a></p></section>
-<section class="page-cta"><h2 class="disp">${sv ? 'Spara recepten där du lagar maten' : 'Gem dine yndlingsopskrifter ét sted'}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
+${nav(lang,path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${labels.eyebrow}</p><h1 class="disp">${title}</h1><p class="lead">${description}</p></header>
+<section class="prose locale-prose"><h2>${labels.how}</h2><ol><li>${labels.open}</li><li>${labels.share}</li><li>${labels.check}</li></ol>
+<h2>${labels.source}</h2><p>${labels.body}</p><p><a href="${sourceUrl}" rel="noopener">${labels.visit}</a></p></section>
+<section class="page-cta"><h2 class="disp">${labels.cta}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
 const supportPages = {
@@ -398,6 +399,19 @@ function supportPage(lang, row) {
   const [path,title,text] = row;
   const schema = {'@context':'https://schema.org','@type':'WebPage',name:title,url:`${base}/${lang}/${path}`};
   return `${head({lang,path,title:`${title} | Matlyst`,description:text,noindex:true,schema})}<body data-locale="${lang}">${nav(lang,path)}<main id="hovedinnhold" class="legal-doc"><header><p class="eyebrow">Matlyst</p><h1 class="disp">${title}</h1><p class="lead">${text}</p></header></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
+}
+
+function deleteAccountPageEn() {
+  const lang = 'en';
+  const path = 'delete-account/';
+  const title = 'Delete your Matlyst account';
+  const description = 'Delete your Matlyst account and personal data in the app, or contact us if you no longer have access.';
+  const schema = {'@context':'https://schema.org','@type':'WebPage',name:title,url:`${base}/en/${path}`};
+  return `${head({lang,path,title:`${title} | Matlyst`,description,schema})}<body data-locale="en">${nav(lang,path)}
+<main id="hovedinnhold" class="legal-doc"><header><p class="eyebrow">Account and privacy</p><h1 class="disp">${title}</h1><p class="lead">${description}</p></header>
+<section><h2>Delete the account in the app</h2><ol><li>Open <strong>Profile</strong> in Matlyst.</li><li>Open <strong>Settings</strong>.</li><li>Choose <strong>Delete account</strong> and confirm.</li></ol><p>Your recipes, folders, meal plan, shopping list, Pantry data and profile are scheduled for deletion.</p></section>
+<section><h2>If you cannot access the app</h2><p>Email <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a> from the address connected to your account. We may ask for information needed to verify that the account belongs to you.</p></section>
+<section><h2>What may be retained</h2><p>Limited records may be retained when required by law, for security, or to document purchases and legal claims. Read the <a href="/en/privacy/">privacy policy</a> for details.</p></section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
 const tiktokAuthTekst = {
@@ -684,7 +698,16 @@ ${v.seksjoner.map(([h,body]) => `<h2>${h}</h2>${body}`).join('\n')}</section>
 
 supportPages.en = [
   ['unsubscribe/', 'Unsubscribe from the newsletter', 'Unsubscribe with the link at the bottom of any Matlyst newsletter, or email hei@matlyst-app.no.'],
+  ['tiktok/', 'TikTok and Matlyst', 'This page is used when you share a public TikTok link with Matlyst. Private, deleted or unavailable content may not be readable.'],
+  ['tiktok-auth/', 'TikTok connection', 'Technical return page for connecting TikTok to Matlyst.'],
 ];
+
+tiktokAuthTekst.en = {
+  kobler: 'Connecting to TikTok…',
+  hjelp: 'Copy the code below and paste it into the terminal.',
+  etikett: 'Authorisation code',
+  kopier: 'Copy code',
+};
 
 avmeldTekst.en = {
   kicker: 'Newsletter',
@@ -788,6 +811,7 @@ for (const lang of SPRAK) {
         : supportPage(lang,row);
     write(`../${lang}/${row[0]}index.html`, innhold);
   }
+  if (lang === 'en') write('../en/delete-account/index.html', deleteAccountPageEn());
 }
 
 // Norske og lokale sider får hreflang fra den samme tabellen som språkredirecten.
@@ -841,6 +865,9 @@ const sistEndretSide = {
   'https://matlyst-app.no/en/import-recipes-from-tiktok/': '2026-10-27',
   ...Object.fromEntries(['importera-recept', 'spara-recept-fran-instagram', 'spara-recept-fran-tiktok', 'byt-fran-paprika', 'handskrivna-recept'].map((sti) => [`https://matlyst-app.no/sv/${sti}/`, '2026-10-27'])),
   ...Object.fromEntries(['importer-opskrifter', 'gem-opskrifter-fra-instagram', 'gem-opskrifter-fra-tiktok', 'skift-fra-paprika', 'haandskrevne-opskrifter'].map((sti) => [`https://matlyst-app.no/da/${sti}/`, '2026-10-27'])),
+  ...Object.fromEntries(engelskeFunksjonssider.map(([sti]) => [`https://matlyst-app.no/en/${sti}`, '2026-10-27'])),
+  ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => kildesider[lang].map(([sti]) => [`https://matlyst-app.no/${lang}/${sti}`, '2026-10-27']))),
+  'https://matlyst-app.no/en/delete-account/': '2026-10-27',
 };
 for (const lang of SPRAK) {
   const unikeSider = [...new Map(lokaleSider.map((html) => [html.match(/<link rel="canonical" href="([^"]+)">/u)?.[1], html])).values()];

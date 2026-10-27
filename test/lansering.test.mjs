@@ -27,7 +27,7 @@ test('robots.txt tillater alt og peker på norsk, svensk og dansk sitemap', () =
   }
 });
 
-for (const lang of ['sv', 'da']) {
+for (const lang of ['sv', 'da', 'en']) {
   test(`sitemap-${lang}.xml har alle indekserbare ${lang}-sider med lastmod og gjensidige alternativer`, () => {
     const xml = les(`sitemap-${lang}.xml`);
     assert.match(xml, /^<\?xml version="1\.0" encoding="UTF-8"\?>\n<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9" xmlns:xhtml="http:\/\/www\.w3\.org\/1999\/xhtml">/u);
@@ -38,12 +38,12 @@ for (const lang of ['sv', 'da']) {
       .filter((html) => !html.includes('content="noindex'))
       .map((html) => html.match(/<link rel="canonical" href="([^"]+)">/u)[1])
       .sort();
-    assert.equal(forventet.length, 21);
+    assert.ok(forventet.length >= 24, `${lang}: ${forventet.length} indekserbare sider`);
     assert.deepEqual([...loc].sort(), forventet);
     for (const blokk of blokker) {
       const side = blokk.match(/<loc>([^<]+)<\/loc>/u)[1];
-      const oppdatertGuide = /\/(?:sv\/(?:importera-recept|spara-recept-fran-instagram|spara-recept-fran-tiktok|byt-fran-paprika|handskrivna-recept)|da\/(?:importer-opskrifter|gem-opskrifter-fra-instagram|gem-opskrifter-fra-tiktok|skift-fra-paprika|haandskrevne-opskrifter))\/$/u.test(side);
-      const forventetDato = oppdatertGuide ? '2026-10-27' : '2026-10-05';
+      const oppdatertGuide = /\/(?:sv\/(?:importera-recept|spara-recept-fran-instagram|spara-recept-fran-tiktok|byt-fran-paprika|handskrivna-recept|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|da\/(?:importer-opskrifter|gem-opskrifter-fra-instagram|gem-opskrifter-fra-tiktok|skift-fra-paprika|haandskrevne-opskrifter|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|en\/(?:import-recipes|import-recipes-from-photos|import-recipes-from-instagram|import-recipes-from-paprika|import-recipes-from-tiktok|find-recipes|shopping-list|recipes-by-ingredients|dinner-ideas|meal-plan-app|recipe-book-app|pantry-app|empty-the-fridge|easy-dinner|recipe-creators|matprat|koket|landleys-kok|alletiders-cookbook|dr-food|delete-account))\/$/u.test(side);
+      const forventetDato = oppdatertGuide ? '2026-10-27' : lang === 'en' ? '2026-10-20' : '2026-10-05';
       assert.match(blokk, new RegExp(`<loc>[^<]+<\\/loc>\\s*<lastmod>${forventetDato}<\\/lastmod>`, 'u'), side);
       const html = readFileSync(urlTilFil(side), 'utf8');
       assert.doesNotMatch(html, /content="noindex/u, side);
@@ -56,7 +56,10 @@ for (const lang of ['sv', 'da']) {
 }
 
 test('det norske sitemapet er fortsatt bare norske sider', () => {
-  assert.doesNotMatch(les('sitemap.xml'), /matlyst-app\.no\/(?:sv|da)\//u);
+  const sitemap = les('sitemap.xml');
+  assert.doesNotMatch(sitemap, /matlyst-app\.no\/(?:sv|da|en)\//u);
+  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 24);
+  assert.match(sitemap, /<loc>https:\/\/matlyst-app\.no\/slett-konto\.html<\/loc>/u);
 });
 
 

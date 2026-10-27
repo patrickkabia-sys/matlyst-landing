@@ -34,8 +34,14 @@ Kontrollert mot appens `origin/master` `2613d17d3173676a0eb6229a16b3e534a670a946
 | /da/toem-koeleskabet/ | Matlyst kan ikke afgøre, om en vare er sikker at spise. Kontrollér selv lugt, udseende, dato og opbevaring. | `hooks/usePantry.ts:247-276`, `hooks/usePantryRecipes.ts` |
 | /da/nem-mad/ | Det kan være frikadeller med kartofler, en hurtig pastaret eller laks i ovnen – retter, du allerede kender. | `hooks/useRecipes.ts:169-199`, `hooks/useRecipeSearch.ts:53-94` |
 | /da/opskriftsskabere/ | En skaber kan skrive til hei@matlyst-app.no om spørgsmål, rettelser eller blokering af import fra en kilde. | `lib/source.ts:20-74`, `lib/source.ts:84-107` |
+| /sv/matprat/ | Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med Matprat och gör inte anspråk på deras texter eller bilder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
 | /sv/koket/ | Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med Köket.se och gör inte anspråk på deras texter eller bilder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
 | /sv/landleys-kok/ | Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med Landleys Kök och gör inte anspråk på deras texter eller bilder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
+| /sv/alletiders-kogebog/ | Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med Alletiders Kogebog och gör inte anspråk på deras texter eller bilder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
+| /sv/dr-mad/ | Matlyst visar källänken när den kan läsas. Matlyst samarbetar inte med DR Mad och gör inte anspråk på deras texter eller bilder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
+| /da/matprat/ | Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med Matprat og gør ikke krav på deres tekster eller billeder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
+| /da/koket/ | Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med Köket.se og gør ikke krav på deres tekster eller billeder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
+| /da/landleys-kok/ | Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med Landleys Kök og gør ikke krav på deres tekster eller billeder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
 | /da/alletiders-kogebog/ | Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med Alletiders Kogebog og gør ikke krav på deres tekster eller billeder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
 | /da/dr-mad/ | Matlyst viser kildelinket, når det kan læses. Matlyst samarbejder ikke med DR Mad og gør ikke krav på deres tekster eller billeder. | `lib/importEngine.ts:201-229`, `lib/source.ts:20-74` |
 
