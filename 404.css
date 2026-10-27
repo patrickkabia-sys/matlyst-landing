@@ -1,0 +1,32 @@
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.not-found-main {
+  flex: 1;
+  width: min(100% - 40px, 1100px);
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  padding: clamp(72px, 12vw, 150px) 0;
+}
+
+.not-found-card { width: min(100%, 760px); text-align: center; }
+.not-found-code { display: block; margin-bottom: 22px; color: var(--orange); font: 600 12px/1 'DM Sans', sans-serif; letter-spacing: .24em; }
+.not-found-card h1 { max-width: 12ch; margin: 0 auto; }
+.not-found-lead { max-width: 50ch; margin: 28px auto 0; color: var(--ink-soft); font-size: clamp(17px, 2.2vw, 21px); line-height: 1.6; }
+.not-found-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+.not-found-action { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 12px 22px; background: var(--ink); color: var(--cream); text-decoration: none; font-weight: 500; }
+.not-found-action.secondary { border: 1px solid var(--line); background: transparent; color: var(--ink); }
+.not-found-help { margin-top: 58px; padding-top: 26px; border-top: 1px solid var(--line); }
+.not-found-help p { margin: 0 0 15px; color: var(--ink-soft); }
+.not-found-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 22px; }
+.not-found-links a { color: var(--ink); text-underline-offset: 4px; }
+
+@media (max-width: 520px) {
+  .not-found-main { width: min(100% - 32px, 1100px); padding-top: 52px; }
+  .not-found-actions { flex-direction: column; }
+  .not-found-action { width: 100%; }
+}

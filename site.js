@@ -24,11 +24,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
   function hide() { if (banner) { banner.classList.add('hide'); setTimeout(function () { banner.hidden = true; }, 520); } }
-  // Kampanjesiden /sara/ skal aldri laste Google Analytics, heller ikke etter
-  // samtykke (vedtak 09.09, bekreftet 19.10). PostHog måler kampanjen der.
-  var utenGA = /^\/sara(?:\/|$)/.test(location.pathname);
   function loadGA() {
-    if (utenGA || window.gtag) return;
+    if (window.gtag) return;
     var s = document.createElement('script');
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-X3J7DVSH2R';

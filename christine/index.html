@@ -109,7 +109,7 @@
 
   // Besøket telles så snart det er lov. Alle som kommer fra en story er
   // førstegangsbesøkende med banner, så uten den andre grenen mister vi hele
-  // trafikken. Samme lærdom som Sara-sida.
+  // trafikken.
   if (hasConsent()) {
     cap('creator_link_click', { kilde: KILDE });
   } else {
