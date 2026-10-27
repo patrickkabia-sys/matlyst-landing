@@ -26,7 +26,7 @@ const urlTilFil = (href) => {
 const regexEsc = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 test('alle lokale sider har språk, canonical, hreflang og gyldig strukturert data', () => {
-  assert.equal(filer.length, 53);
+  assert.equal(filer.length, 57);
   for (const fil of filer) {
     const html = les(fil);
     const rel = relative(root, fil);

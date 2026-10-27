@@ -6,6 +6,7 @@ import vm from 'node:vm';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const les = (sti) => readFileSync(join(ROOT, sti.endsWith('/') ? `${sti}index.html` : sti), 'utf8');
+const regexEsc = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 // Stiene appen og e-postene allerede lenker til (matlyst-master:
 // supabase/functions/_shared/juridiskeLenker.ts og lib/sprak/en/epost.ts).
@@ -48,10 +49,83 @@ test('engelsk personvern og vilkår har ingen USA- eller UK-avsnitt (bølge 2), 
 test('engelske sider har engelsk sitemap i robots.txt', () => {
   assert.match(les('robots.txt'), /^Sitemap: https:\/\/matlyst-app\.no\/sitemap-en\.xml$/mu);
   const xml = les('sitemap-en.xml');
-  for (const sti of ['en/', 'en/import-recipes/', 'en/privacy/', 'en/terms/']) {
+  for (const sti of ['en/', 'en/import-recipes/', 'en/import-recipes-from-photos/', 'en/import-recipes-from-instagram/', 'en/import-recipes-from-paprika/', 'en/import-recipes-from-tiktok/', 'en/privacy/', 'en/terms/']) {
     assert.match(xml, new RegExp(`<loc>https://matlyst-app\\.no/${sti}</loc>`, 'u'), sti);
   }
   assert.doesNotMatch(xml, /en\/unsubscribe/u);
+});
+
+test('engelsk importoversikt dekker de støttede kildene og avgrenser Pinterest', () => {
+  const html = les('en/import-recipes/');
+  for (const kilde of ['Instagram', 'TikTok', 'YouTube', 'Recipe websites', 'Pinterest', 'Paprika']) {
+    assert.match(html, new RegExp(kilde, 'u'));
+  }
+  assert.match(html, /open the original recipe website linked by the Pinterest pin/iu);
+  assert.match(html, /href="\/en\/import-recipes-from-instagram\/"/u);
+  assert.match(html, /href="\/en\/import-recipes-from-photos\/"/u);
+  assert.match(html, /href="\/en\/import-recipes-from-paprika\/"/u);
+});
+
+test('engelsk bildeguide dekker kokebøker, flere bilder og Ask Matlyst uten å love perfekt avlesning', () => {
+  const html = les('en/import-recipes-from-photos/');
+  for (const innhold of ['cookbook', 'handwritten', 'screenshot', 'Matlyst Pro', 'more than one photo', 'Ask Matlyst']) {
+    assert.match(html, new RegExp(innhold, 'iu'));
+  }
+  assert.match(html, /always compare the imported recipe with the original/iu);
+  assert.match(html, /href="\/en\/import-recipes\/"/u);
+
+  const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gu)]
+    .flatMap(([, raw]) => {
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [parsed];
+    });
+  const faq = schemas.find((schema) => schema['@type'] === 'FAQPage');
+  assert.equal(faq.mainEntity.length, 8);
+  for (const item of faq.mainEntity) {
+    assert.match(html, new RegExp(`<summary>${regexEsc(item.name)}</summary>`, 'u'));
+    assert.match(html, new RegExp(`<p>${regexEsc(item.acceptedAnswer.text)}</p>`, 'u'));
+  }
+});
+
+test('engelske Instagram- og Paprika-guider er presise og har synlig FAQ', () => {
+  const instagram = les('en/import-recipes-from-instagram/');
+  assert.match(instagram, /It does not transcribe speech or text shown only inside a reel\./u);
+  assert.match(instagram, /It does not download the reel as a video file\./u);
+
+  const paprika = les('en/import-recipes-from-paprika/');
+  assert.match(paprika, /\.paprikarecipe/u);
+  assert.match(paprika, /up to 300 recipes/u);
+  assert.match(paprika, /does not connect to your Paprika account/u);
+
+  for (const html of [instagram, paprika]) {
+    const schemas = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/u)[1]);
+    const faq = schemas.find((schema) => schema['@type'] === 'FAQPage');
+    assert.ok(faq.mainEntity.length >= 5);
+    for (const item of faq.mainEntity) {
+      assert.match(html, new RegExp(`<summary>${regexEsc(item.name)}</summary>`, 'u'));
+      assert.match(html, new RegExp(`<p>${regexEsc(item.acceptedAnswer.text)}</p>`, 'u'));
+    }
+  }
+});
+
+test('engelsk TikTok-side svarer på søkeintensjonen uten å love videotranskripsjon', () => {
+  const html = les('en/import-recipes-from-tiktok/');
+  assert.match(html, /<h1 class="disp">Turn a TikTok into a recipe you can actually cook<\/h1>/u);
+  assert.match(html, /It does not transcribe speech or text shown only inside the video\./u);
+  assert.match(html, /href="\/en\/import-recipes\/"/u);
+  assert.doesNotMatch(html, /best recipe app|number one recipe app/iu);
+
+  const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gu)]
+    .flatMap(([, raw]) => {
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [parsed];
+    });
+  const faq = schemas.find((schema) => schema['@type'] === 'FAQPage');
+  assert.equal(faq.mainEntity.length, 8);
+  for (const item of faq.mainEntity) {
+    assert.match(html, new RegExp(`<summary>${regexEsc(item.name)}</summary>`, 'u'));
+    assert.match(html, new RegExp(`<p>${regexEsc(item.acceptedAnswer.text)}</p>`, 'u'));
+  }
 });
 
 function besok(url, { sprak = ['en-US'], lagret = null, agent = 'Mozilla/5.0' } = {}) {
