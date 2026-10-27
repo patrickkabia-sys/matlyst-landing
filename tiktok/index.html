@@ -43,8 +43,8 @@
   .step{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--ink-soft);line-height:1.45}
   .step b{display:flex;align-items:center;justify-content:center;flex:none;width:22px;height:22px;border-radius:50%;background:var(--sand-2);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;margin-top:1px}
 
-  /* Samme visuelle vekt på begge butikkvalg, som på /sara: bommer en
-     OS-gjetning, klikker brukeren den høyeste og havner i en blindvei. */
+  /* Samme visuelle vekt på begge butikkvalg: bommer en OS-gjetning,
+     klikker brukeren den høyeste og havner i en blindvei. */
   .stores{display:flex;flex-direction:column;gap:14px;width:100%;max-width:360px;margin-top:2px}
   .store{display:block;text-decoration:none;background:var(--ink);color:var(--cream);border-radius:14px;padding:15px 20px;font-family:'DM Sans',sans-serif;transition:transform .2s,opacity .2s}
   .store:hover{transform:translateY(-2px);opacity:.92}
@@ -109,7 +109,7 @@
 
 <!-- site.js eier banneret og all lasting av PostHog, og MÅ ligge før skriptet
      under — ellers rekker ikke «Godta»-lytteren i site.js å sette samtykket og
-     starte PostHog før vårt eget event fyrer. Samme rekkefølge som /sara/. -->
+     starte PostHog før vårt eget event fyrer. -->
 <script src="/site.js"></script>
 <script>
 (function () {
@@ -134,8 +134,7 @@
 
   // ⚠️ Besøket MÅ også telles når noen trykker «Godta», ikke bare ved page load.
   // Alle som kommer fra TikTok-bioen er førstegangsbesøkende og møter banneret,
-  // så uten dette ville vi mistet hele trafikken. Dette er nøyaktig fella
-  // /sara/ gikk i før den ble rettet.
+  // så uten dette ville vi mistet hele trafikken.
   if (hasConsent()) {
     cap('tiktok_link_view');
   } else {

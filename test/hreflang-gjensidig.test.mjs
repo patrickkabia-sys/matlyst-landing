@@ -25,8 +25,8 @@ function hreflang(html) {
 
 test('alle offentlige sidegrupper finnes på alle fire språk', () => {
   const unntak = SIDEGRUPPER.filter(({ sider }) => Object.keys(sider).length !== 4);
-  assert.deepEqual(unntak.map(({ id }) => id), ['christine', 'sara']);
-  for (const gruppe of SIDEGRUPPER.filter(({ id }) => !['christine', 'sara'].includes(id))) {
+  assert.deepEqual(unntak.map(({ id }) => id), ['christine']);
+  for (const gruppe of SIDEGRUPPER.filter(({ id }) => id !== 'christine')) {
     assert.deepEqual(Object.keys(gruppe.sider).sort(), ['da', 'en', 'nb', 'sv'], gruppe.id);
   }
 });

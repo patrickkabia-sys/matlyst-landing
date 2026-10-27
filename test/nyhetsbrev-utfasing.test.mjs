@@ -1,12 +1,11 @@
 // EmailOctopus fases ut (vedtak 19.10): nettskjemaet på forsida fjernes sammen med
 // Google reCAPTCHA, forsida har bare nedlastingsknapper, og nyhetsbrevet er for
-// appbrukere og sendes via Resend. /sara/ laster aldri Google Analytics (09.09).
+// appbrukere og sendes via Resend.
 // Erstatter test/nyhetsbrevLast.test.mjs, som voktet det utsatte skjemaet.
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
-import vm from 'node:vm';
 
 import { lesSide } from './hjelp/side.mjs';
 
@@ -84,43 +83,4 @@ test('nyhetsbrevet beskrives som for appbrukere og sendt via Resend, på alle sp
     const html = lesSide(PERSONVERN[kode]);
     for (const m of mønstre) assert.match(html, m, `${kode}: ${m}`);
   }
-});
-
-// Kjører site.js mot en minimal DOM og ser hvilke skript som legges til.
-function kjorSiteJs(pathname) {
-  const lagtTil = [];
-  const element = () => ({ classList: { add() {}, toggle() {}, contains: () => false }, setAttribute() {}, querySelector: () => null, addEventListener() {} });
-  const document = {
-    getElementById: () => null,
-    querySelectorAll: () => [],
-    createElement: () => ({}),
-    getElementsByTagName: () => [{ parentNode: { insertBefore: (s) => lagtTil.push(s.src) } }],
-    head: { appendChild: (s) => lagtTil.push(s.src) },
-    addEventListener() {},
-    body: element(),
-  };
-  const sandkasse = {
-    document,
-    location: { pathname, reload() {} },
-    navigator: { userAgent: 'test' },
-    localStorage: { getItem: () => 'granted', setItem() {}, removeItem() {} },
-    IntersectionObserver: class { observe() {} unobserve() {} },
-    addEventListener() {},
-    scrollY: 0,
-    setTimeout() {},
-  };
-  sandkasse.window = sandkasse;
-  vm.runInNewContext(les('site.js'), sandkasse);
-  return lagtTil;
-}
-
-test('/sara/ laster aldri Google Analytics, heller ikke etter samtykke', () => {
-  for (const sti of ['/sara/', '/sara', '/sara/index.html']) {
-    const skript = kjorSiteJs(sti);
-    assert.ok(skript.some((s) => /posthog/u.test(s)), `${sti}: PostHog skal fortsatt lastes etter samtykke`);
-    assert.ok(!skript.some((s) => /googletagmanager/u.test(s)), `${sti}: GA ble lastet`);
-  }
-  // Vakten kan bli rød: forsida laster GA etter samtykke.
-  assert.ok(kjorSiteJs('/').some((s) => /googletagmanager/u.test(s)));
-  assert.ok(kjorSiteJs('/sarah-sin-side/').some((s) => /googletagmanager/u.test(s)));
 });
