@@ -801,9 +801,15 @@ function medSprakvelgere(html, gruppe, aktivtSprak) {
 
 for (const lang of SPRAK) {
   write(`../${lang}/index.html`, home(lang));
+  // Juridiske sider: HTML-en er fasit etter juss-PR-ene, som retter direkte i fila.
+  // legalPage() lager bare en side som ikke finnes ennå; en eksisterende side skrives
+  // aldri over (det rullet tilbake juss-rettelser 2026-10-28), men tas med i sitemapen.
   for (const key of Object.keys(legal[lang])) {
     const d = legal[lang][key];
-    write(`../${lang}/${d.path}index.html`, legalPage(lang,key));
+    const sti = `../${lang}/${d.path}index.html`;
+    const fil = fileURLToPath(new URL(sti, import.meta.url));
+    if (existsSync(fil)) lokaleSider.push(readFileSync(fil, 'utf8'));
+    else write(sti, legalPage(lang,key));
   }
   for (const row of featurePages[lang] ?? []) if (!appsideStier[lang]?.has(row[0])) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
   for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
