@@ -6,6 +6,8 @@ import { legal, liste } from './juridisk-tekster.mjs';
 import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, byggLocalePageMap, filForSti, gruppeForSti } from './locale-sider.mjs';
 import { lokaleImportGuider } from './import-guider-lokale.mjs';
 import { engelskeFunksjonssider, kildesider } from './undersider-alle-sprak.mjs';
+import { amerikanskeAppsider } from './en-appsider.mjs';
+const appsideStier = new Set(amerikanskeAppsider.map((v) => v.path));
 
 const base = 'https://matlyst-app.no';
 const common = {
@@ -302,7 +304,7 @@ const featurePages = {
     ['nem-mad/','Nem mad til hverdagen','Planlæg nem mad med egne opskrifter, Spisekammeret, Madplanen og Indkøbslisten.','Nem aftensmad med overblik','Vælg en hurtig ret, du allerede kan lide, læg den på den rigtige dag, og send det, du mangler, til listen.','Frikadeller med kartofler, en pastaret eller ovnbagt laks er eksempler, ikke færdige opskrifter på siden.','Hvad er nem mad til hverdag?','En ret med tydelige trin, rimelig tid og råvarer, du har eller let kan købe.'],
     ['opskriftsskabere/','Matlyst for opskriftsskabere','Sådan viser Matlyst kilden, håndterer import og modtager henvendelser fra rettighedshavere.','Kilden skal være tydelig','Importerede opskrifter beholder kildelinket, når det findes. Matlyst gør ikke krav på skaberens tekst eller billeder.','En skaber kan skrive til hei@matlyst-app.no om spørgsmål, rettelser eller blokering af import fra en kilde.','Kan en skaber stoppe import?','Ja. Kontakt os med kilde og dokumentation, så behandler vi henvendelsen.'],
   ],
-  en: engelskeFunksjonssider,
+  en: engelskeFunksjonssider.filter(([sti]) => !appsideStier.has(sti)),
 };
 
 const featureOverrides = {
@@ -801,6 +803,7 @@ for (const lang of SPRAK) {
   for (const row of featurePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
   for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
   for (const v of lokaleImportGuider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
+  if (lang === 'en') for (const v of amerikanskeAppsider) write(`../en/${v.path}index.html`, guidePage(lang,v));
   for (const row of sourcePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
   for (const row of supportPages[lang] ?? []) {
     const gruppeId = gruppeForSti(`/${lang}/${row[0]}`)?.id;
@@ -868,6 +871,7 @@ const sistEndretSide = {
   ...Object.fromEntries(engelskeFunksjonssider.map(([sti]) => [`https://matlyst-app.no/en/${sti}`, '2026-10-27'])),
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => kildesider[lang].map(([sti]) => [`https://matlyst-app.no/${lang}/${sti}`, '2026-10-27']))),
   'https://matlyst-app.no/en/delete-account/': '2026-10-27',
+  ...Object.fromEntries(amerikanskeAppsider.map((v) => [`https://matlyst-app.no/en/${v.path}`, '2026-10-28'])),
 };
 for (const lang of SPRAK) {
   const unikeSider = [...new Map(lokaleSider.map((html) => [html.match(/<link rel="canonical" href="([^"]+)">/u)?.[1], html])).values()];
