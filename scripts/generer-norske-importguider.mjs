@@ -7,6 +7,7 @@ import { norskeImportGuider } from './import-guider-lokale.mjs';
 import { kildesider, norskeFunksjonssider } from './undersider-alle-sprak.mjs';
 import { norskeAppsider } from './nordiske-appsider.mjs';
 import { appCta } from './app-cta.mjs';
+import { middagssider } from './middagssider.mjs';
 
 const butikkKnapper = '<div class="store-badges"><a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" rel="noopener"><img src="/images/appstore-badge.svg" alt="Last ned i App Store"></a><a class="btn-store" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;hl=no&amp;gl=NO" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Last ned fra Google Play"></a></div>';
 
@@ -68,7 +69,7 @@ function side(v) {
 <a class="skip-link" href="#hovedinnhold">Hopp til innholdet</a>
 <nav aria-label="Hovednavigasjon"><a href="/" class="brand">Mat<em>lyst</em></a><div class="nav-right"><a class="link" href="/#funksjoner">Funksjoner</a></div></nav>
 <main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p></header>
-<section class="prose locale-prose"><h2>${v.stegTittel}</h2>${v.forst ? `<p>${v.forst}</p>` : ''}<ol>${v.steg.map(([tittel, tekst]) => `<li><strong>${tittel}.</strong> ${tekst}</li>`).join('')}</ol>${v.alternativ ? `<p>${v.alternativ}</p>` : ''}${v.grense ? `<p>${v.grense}</p>` : ''}
+<section class="prose locale-prose">${(v.ideer ?? []).map(([h, liste]) => `<h2>${h}</h2><ul class="ide-liste">${liste.map(([navn, tekst]) => `<li><strong>${navn}.</strong> ${tekst}</li>`).join('')}</ul>`).join('\n')}<h2>${v.stegTittel}</h2>${v.forst ? `<p>${v.forst}</p>` : ''}<ol>${v.steg.map(([tittel, tekst]) => `<li><strong>${tittel}.</strong> ${tekst}</li>`).join('')}</ol>${v.alternativ ? `<p>${v.alternativ}</p>` : ''}${v.grense ? `<p>${v.grense}</p>` : ''}
 ${v.seksjoner.map(([tittel, innhold]) => `<h2>${tittel}</h2>${innhold}`).join('\n')}</section>
 ${v.bilde ? appCta('nb', v, butikkKnapper) : ''}<section class="faq"><h2>${v.faqTittel}</h2>${v.faq.map(([sporsmal, svar], index) => `<details${index === 0 ? ' open' : ''}><summary>${sporsmal}</summary><p>${svar}</p></details>`).join('')}</section>
 <section class="page-cta"><h2 class="disp">${v.cta}</h2>${butikkKnapper}</section></main>
@@ -76,7 +77,8 @@ ${v.bilde ? appCta('nb', v, butikkKnapper) : ''}<section class="faq"><h2>${v.faq
 <div class="cookie" id="cookie" hidden><div class="cookie-inner" id="samtykke"><p>Vi bruker nødvendig lagring for at siden skal virke. Sier du ja, bruker vi også analyse (PostHog og Google Analytics) til å forbedre Matlyst. Les mer i <a href="/personvern.html">personvernerklæringen</a>.</p><div class="cookie-actions"><button class="ck-btn ck-accept" id="ck-accept" type="button">Godta</button><button class="ck-btn ck-reject" id="ck-reject" type="button">Bare nødvendige</button></div></div></div><script src="/site.js" defer></script></body></html>`;
 }
 
-const appsideStier = new Set(norskeAppsider.map((v) => v.path));
+const produktsider = [...norskeAppsider, ...middagssider.nb];
+const appsideStier = new Set(produktsider.map((v) => v.path));
 const funksjonsguider = norskeFunksjonssider.filter(([path]) => !appsideStier.has(path)).map(([path,title,description,h1,p1,p2,q,a]) => ({
   path, title, description, eyebrow: 'Matlyst', h1, lead: description,
   stegTittel: 'Slik fungerer det', forst: '',
@@ -101,7 +103,7 @@ const kildeguider = kildesider.nb.slice(1).map(([path,title,description,source,s
   cta: 'Samle oppskriftene der du lager maten',
 }));
 
-const alleNorskeGuider = [...norskeImportGuider, ...funksjonsguider, ...kildeguider, ...norskeAppsider.map((v) => ({...v, lastmod: '2026-10-28'}))];
+const alleNorskeGuider = [...norskeImportGuider, ...funksjonsguider, ...kildeguider, ...produktsider.map((v) => ({...v, lastmod: '2026-10-28'}))];
 const ekstraNorskeSitemapSider = [{ path: 'slett-konto.html', priority: '0.3', changefreq: 'yearly' }];
 
 for (const v of alleNorskeGuider) {

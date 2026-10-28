@@ -178,6 +178,10 @@ footer .c{font-size:12px;color:var(--ink-faint)}
 .prose a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
 .page-cta{text-align:center;padding:48px 24px 8px}
 .page-cta .store-badges{justify-content:center}
+/* Idélister på middagssidene (scripts/middagssider.mjs). */
+.ide-liste{list-style:none;padding:0;margin:0 0 8px}
+.ide-liste li{padding:12px 0;border-top:1px solid var(--line-soft)}
+.ide-liste li:first-child{border-top:0}
 /* CTA med skjermbilde fra App Store midt på produktsidene (scripts/app-cta.mjs). */
 .app-cta{max-width:720px;margin:56px auto 0;padding:32px 24px;display:grid;grid-template-columns:minmax(0,240px) 1fr;gap:clamp(24px,5vw,48px);align-items:center;background:var(--sand);border-radius:28px}
 .app-cta-bilde{margin:0}

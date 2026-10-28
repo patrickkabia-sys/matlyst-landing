@@ -4,7 +4,7 @@
 const UNDERTEKST = {
   nb: 'Gratis å laste ned for iPhone og Android.',
   sv: 'Gratis att ladda ner för iPhone och Android.',
-  da: 'Gratis at hente til iPhone og Android.',
+  da: 'Hent appen gratis til iPhone og Android.',
   en: 'Free to download for iPhone and Android.',
 };
 
