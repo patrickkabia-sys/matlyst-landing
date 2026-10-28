@@ -5,6 +5,10 @@ import { fileURLToPath } from 'node:url';
 import { alternativerFor } from './locale-sider.mjs';
 import { norskeImportGuider } from './import-guider-lokale.mjs';
 import { kildesider, norskeFunksjonssider } from './undersider-alle-sprak.mjs';
+import { norskeAppsider } from './nordiske-appsider.mjs';
+import { appCta } from './app-cta.mjs';
+
+const butikkKnapper = '<div class="store-badges"><a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" rel="noopener"><img src="/images/appstore-badge.svg" alt="Last ned i App Store"></a><a class="btn-store" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;hl=no&amp;gl=NO" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Last ned fra Google Play"></a></div>';
 
 const base = 'https://matlyst-app.no';
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -66,13 +70,14 @@ function side(v) {
 <main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p></header>
 <section class="prose locale-prose"><h2>${v.stegTittel}</h2>${v.forst ? `<p>${v.forst}</p>` : ''}<ol>${v.steg.map(([tittel, tekst]) => `<li><strong>${tittel}.</strong> ${tekst}</li>`).join('')}</ol>${v.alternativ ? `<p>${v.alternativ}</p>` : ''}${v.grense ? `<p>${v.grense}</p>` : ''}
 ${v.seksjoner.map(([tittel, innhold]) => `<h2>${tittel}</h2>${innhold}`).join('\n')}</section>
-<section class="faq"><h2>${v.faqTittel}</h2>${v.faq.map(([sporsmal, svar], index) => `<details${index === 0 ? ' open' : ''}><summary>${sporsmal}</summary><p>${svar}</p></details>`).join('')}</section>
-<section class="page-cta"><h2 class="disp">${v.cta}</h2><div class="store-badges"><a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" rel="noopener"><img src="/images/appstore-badge.svg" alt="Last ned i App Store"></a><a class="btn-store" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;hl=no&amp;gl=NO" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Last ned fra Google Play"></a></div></section></main>
+${v.bilde ? appCta('nb', v, butikkKnapper) : ''}<section class="faq"><h2>${v.faqTittel}</h2>${v.faq.map(([sporsmal, svar], index) => `<details${index === 0 ? ' open' : ''}><summary>${sporsmal}</summary><p>${svar}</p></details>`).join('')}</section>
+<section class="page-cta"><h2 class="disp">${v.cta}</h2>${butikkKnapper}</section></main>
 <footer><a href="/" class="brand">Mat<em>lyst</em></a><div class="f-l"><a href="/vilkar.html">Vilkår</a><a href="/personvern.html">Personvern</a><a href="#samtykke" data-consent-withdraw>Endre samtykke</a><a href="mailto:hei@matlyst-app.no">Kontakt</a></div><span class="c">© 2026 Matlyst · Oppskrifter, ukemeny og handleliste.</span></footer>
 <div class="cookie" id="cookie" hidden><div class="cookie-inner" id="samtykke"><p>Vi bruker nødvendig lagring for at siden skal virke. Sier du ja, bruker vi også analyse (PostHog og Google Analytics) til å forbedre Matlyst. Les mer i <a href="/personvern.html">personvernerklæringen</a>.</p><div class="cookie-actions"><button class="ck-btn ck-accept" id="ck-accept" type="button">Godta</button><button class="ck-btn ck-reject" id="ck-reject" type="button">Bare nødvendige</button></div></div></div><script src="/site.js" defer></script></body></html>`;
 }
 
-const funksjonsguider = norskeFunksjonssider.map(([path,title,description,h1,p1,p2,q,a]) => ({
+const appsideStier = new Set(norskeAppsider.map((v) => v.path));
+const funksjonsguider = norskeFunksjonssider.filter(([path]) => !appsideStier.has(path)).map(([path,title,description,h1,p1,p2,q,a]) => ({
   path, title, description, eyebrow: 'Matlyst', h1, lead: description,
   stegTittel: 'Slik fungerer det', forst: '',
   steg: [['Begynn med samlingen din', p1], ['Bruk resultatet i hverdagen', p2]],
@@ -96,7 +101,7 @@ const kildeguider = kildesider.nb.slice(1).map(([path,title,description,source,s
   cta: 'Samle oppskriftene der du lager maten',
 }));
 
-const alleNorskeGuider = [...norskeImportGuider, ...funksjonsguider, ...kildeguider];
+const alleNorskeGuider = [...norskeImportGuider, ...funksjonsguider, ...kildeguider, ...norskeAppsider.map((v) => ({...v, lastmod: '2026-10-28'}))];
 const ekstraNorskeSitemapSider = [{ path: 'slett-konto.html', priority: '0.3', changefreq: 'yearly' }];
 
 for (const v of alleNorskeGuider) {
@@ -109,7 +114,7 @@ const sitemapFil = `${root}/sitemap.xml`;
 let sitemap = readFileSync(sitemapFil, 'utf8');
 for (const v of alleNorskeGuider) {
   const loc = `${base}/${v.path}`;
-  const blokk = `  <url>\n    <loc>${loc}</loc>\n    <lastmod>2026-10-27</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
+  const blokk = `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${v.lastmod ?? '2026-10-27'}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>`;
   const monster = new RegExp(`  <url>\\s*<loc>${regexEsc(loc)}<\\/loc>[\\s\\S]*?<\\/url>`, 'u');
   sitemap = monster.test(sitemap) ? sitemap.replace(monster, blokk) : sitemap.replace('</urlset>', `${blokk}\n</urlset>`);
 }

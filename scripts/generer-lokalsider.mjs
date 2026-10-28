@@ -7,7 +7,12 @@ import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, byggLocalePageMap, filFo
 import { lokaleImportGuider } from './import-guider-lokale.mjs';
 import { engelskeFunksjonssider, kildesider } from './undersider-alle-sprak.mjs';
 import { amerikanskeAppsider } from './en-appsider.mjs';
-const appsideStier = new Set(amerikanskeAppsider.map((v) => v.path));
+import { svenskeAppsider, danskeAppsider } from './nordiske-appsider.mjs';
+import { appCta } from './app-cta.mjs';
+
+// Produktsidene med skjermbilde-CTA erstatter de tynne funksjonssidene på samme sti.
+const appsider = { sv: svenskeAppsider, da: danskeAppsider, en: amerikanskeAppsider };
+const appsideStier = Object.fromEntries(Object.entries(appsider).map(([lang, sider]) => [lang, new Set(sider.map((v) => v.path))]));
 
 const base = 'https://matlyst-app.no';
 const common = {
@@ -304,7 +309,7 @@ const featurePages = {
     ['nem-mad/','Nem mad til hverdagen','Planlæg nem mad med egne opskrifter, Spisekammeret, Madplanen og Indkøbslisten.','Nem aftensmad med overblik','Vælg en hurtig ret, du allerede kan lide, læg den på den rigtige dag, og send det, du mangler, til listen.','Frikadeller med kartofler, en pastaret eller ovnbagt laks er eksempler, ikke færdige opskrifter på siden.','Hvad er nem mad til hverdag?','En ret med tydelige trin, rimelig tid og råvarer, du har eller let kan købe.'],
     ['opskriftsskabere/','Matlyst for opskriftsskabere','Sådan viser Matlyst kilden, håndterer import og modtager henvendelser fra rettighedshavere.','Kilden skal være tydelig','Importerede opskrifter beholder kildelinket, når det findes. Matlyst gør ikke krav på skaberens tekst eller billeder.','En skaber kan skrive til hei@matlyst-app.no om spørgsmål, rettelser eller blokering af import fra en kilde.','Kan en skaber stoppe import?','Ja. Kontakt os med kilde og dokumentation, så behandler vi henvendelsen.'],
   ],
-  en: engelskeFunksjonssider.filter(([sti]) => !appsideStier.has(sti)),
+  en: engelskeFunksjonssider,
 };
 
 const featureOverrides = {
@@ -694,7 +699,7 @@ function guidePage(lang, v) {
 ${nav(lang,v.path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p></header>
 <section class="prose locale-prose"><h2>${v.stegTittel}</h2><p>${v.forst}</p><ol>${v.steg.map(([h,p]) => `<li><strong>${h}.</strong> ${p}</li>`).join('')}</ol><p>${v.alternativ}</p><p>${v.grense}</p>
 ${v.seksjoner.map(([h,body]) => `<h2>${h}</h2>${body}`).join('\n')}</section>
-<section class="faq"><h2>${v.faqTittel}</h2>${v.faq.map(([q,a],i) => `<details${i === 0 ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</section>
+${v.bilde ? appCta(lang, v, storeButtons(lang)) : ''}<section class="faq"><h2>${v.faqTittel}</h2>${v.faq.map(([q,a],i) => `<details${i === 0 ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</section>
 <section class="page-cta"><h2 class="disp">${v.cta}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
 
@@ -800,10 +805,10 @@ for (const lang of SPRAK) {
     const d = legal[lang][key];
     write(`../${lang}/${d.path}index.html`, legalPage(lang,key));
   }
-  for (const row of featurePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
+  for (const row of featurePages[lang] ?? []) if (!appsideStier[lang]?.has(row[0])) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
   for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
   for (const v of lokaleImportGuider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
-  if (lang === 'en') for (const v of amerikanskeAppsider) write(`../en/${v.path}index.html`, guidePage(lang,v));
+  for (const v of appsider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
   for (const row of sourcePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
   for (const row of supportPages[lang] ?? []) {
     const gruppeId = gruppeForSti(`/${lang}/${row[0]}`)?.id;
@@ -871,7 +876,7 @@ const sistEndretSide = {
   ...Object.fromEntries(engelskeFunksjonssider.map(([sti]) => [`https://matlyst-app.no/en/${sti}`, '2026-10-27'])),
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => kildesider[lang].map(([sti]) => [`https://matlyst-app.no/${lang}/${sti}`, '2026-10-27']))),
   'https://matlyst-app.no/en/delete-account/': '2026-10-27',
-  ...Object.fromEntries(amerikanskeAppsider.map((v) => [`https://matlyst-app.no/en/${v.path}`, '2026-10-28'])),
+  ...Object.fromEntries(Object.entries(appsider).flatMap(([lang, sider]) => sider.map((v) => [`https://matlyst-app.no/${lang}/${v.path}`, '2026-10-28']))),
 };
 for (const lang of SPRAK) {
   const unikeSider = [...new Map(lokaleSider.map((html) => [html.match(/<link rel="canonical" href="([^"]+)">/u)?.[1], html])).values()];
@@ -928,6 +933,7 @@ for (const sv of featurePages.sv) {
 write('../qa/sv-da/funksjoner-side-for-side.md', sammenheng.join('\n') + '\n');
 
 function bevis(path) {
+  if (/receptbok-app|opskrifts-app/.test(path)) return '`constants/limits.ts:5` (`FREE_IMPORT_LIMIT`), `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx`';
   if (/import|instagram|tiktok|handskriv|haandskrev/.test(path)) return '`lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx`';
   if (/hitta|find|recept-pa|opskrifter-ud/.test(path)) return '`hooks/useRecipeSearch.ts:53-94`, `hooks/usePantryRecipes.ts`';
   if (/inkop|indkoeb/.test(path)) return '`app/(tabs)/grocery.tsx:285-367`, `hooks/useGrocery.ts`';
@@ -940,7 +946,9 @@ function bevis(path) {
 }
 const paastander = ['# Produktpåstander per side', '', 'Kontrollert mot appens `origin/master` `2613d17d3173676a0eb6229a16b3e534a670a946`, lest 2026-10-05. Påstanden er sitert ordrett fra sidens avsnitt «Bra att veta» / «Godt at vide» (kildesider: «Källa och ansvar» / «Kilde og ansvar»).', '', '| Side | Påstand som må holde (ordrett sitat) | Kodebevis |', '|---|---|---|'];
 for (const lang of ['sv','da']) for (const row of featurePages[lang]) {
-  const claim = featureValues(lang, row).p2;
+  // Produktsidene har ikke p2; påstanden er grense-avsnittet rett over skjermbilde-CTA-en.
+  const appside = appsider[lang].find((v) => v.path === row[0]);
+  const claim = appside ? appside.grense : featureValues(lang, row).p2;
   paastander.push(`| /${lang}/${row[0]} | ${claim} | ${bevis(row[0])} |`);
 }
 for (const lang of ['sv','da']) for (const row of sourcePages[lang]) {

@@ -6,13 +6,13 @@ Kontrollert mot appens `origin/master` `2613d17d3173676a0eb6229a16b3e534a670a946
 |---|---|---|
 | /sv/importera-recept/ | Utan Pro kan du importera fem recept via länk per månad. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /sv/hitta-recept/ | Mappar och favoriter ger fler vägar tillbaka till rätter du vill laga igen. | `hooks/useRecipeSearch.ts:53-94`, `hooks/usePantryRecipes.ts` |
-| /sv/inkopslista/ | När en vara bockas av kan den flyttas till Skafferi. Hushållsdelning kräver Matlyst Pro. | `app/(tabs)/grocery.tsx:285-367`, `hooks/useGrocery.ts` |
+| /sv/inkopslista/ | Inköpslistan är gratis. Vill du dela en gemensam lista med hushållet krävs Matlyst Pro. Du kan alltid skicka listan som text med delningsknappen. | `app/(tabs)/grocery.tsx:285-367`, `hooks/useGrocery.ts` |
 | /sv/handskrivna-recept/ | Fotoimport kräver Matlyst Pro. Du kan skriva in var receptet kommer ifrån, till exempel ”Mormors receptbok”. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /sv/recept-pa-ingredienser/ | Förslagen är ett hjälpmedel. Kontrollera alltid mängderna, hållbarheten och att varorna fortfarande går att äta. | `hooks/useRecipeSearch.ts:53-94`, `hooks/usePantryRecipes.ts` |
 | /sv/vad-ska-jag-laga/ | Det är gratis att ställa frågor om ett recept. När Fråga Matlyst ska skapa eller ändra recept krävs Matlyst Pro. | `hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221`, `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` (gratis: bare spørsmål i en oppskrift) |
-| /sv/veckomeny-app/ | Veckomenyn och den vanliga inköpslistan kan användas utan Pro. Hushållsdelning kräver Pro. | `app/(tabs)/ukemeny.tsx:371-433`, `app/recipe-picker.tsx` |
+| /sv/veckomeny-app/ | Veckomenyn och inköpslistan är gratis. Vill du skapa eller gå med i ett hushåll och dela dem krävs Matlyst Pro. | `app/(tabs)/ukemeny.tsx:371-433`, `app/recipe-picker.tsx` |
 | /sv/byt-fran-paprika/ | Matlyst har ingen koppling till Paprika och garanterar inte att alla fält kan flyttas automatiskt. | `components/RecipeFileImport.tsx`, `lib/importEngine.ts:248-270` |
-| /sv/receptbok-app/ | Du bestämmer över innehållet. Källan visas på importerade recept när den finns. | `hooks/useRecipes.ts:169-199`, `hooks/useRecipeSearch.ts:53-94` |
+| /sv/receptbok-app/ | Gratisversionen har ett visst antal importer per månad, och appen visar hur många du har använt. Med Matlyst Pro får du ett obegränsat antal importer och fotoimport. | `constants/limits.ts:5` (`FREE_IMPORT_LIMIT`), `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /sv/spara-recept-fran-instagram/ | Källan följer med. Privat eller otillgängligt innehåll kan inte alltid importeras. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /sv/spara-recept-fran-tiktok/ | Privat, borttaget eller geografiskt spärrat innehåll kan inte alltid läsas. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /sv/skafferi-app/ | I gratisversionen rymmer Skafferi ett begränsat antal varor. Med Pro får du plats med fler. | `hooks/usePantry.ts:247-276`, `hooks/usePantryRecipes.ts` |
@@ -21,13 +21,13 @@ Kontrollert mot appens `origin/master` `2613d17d3173676a0eb6229a16b3e534a670a946
 | /sv/receptskapare/ | En skapare kan kontakta hei@matlyst-app.no om frågor, rättelse eller blockering av import från en källa. Matlyst gör inte anspråk på skaparens text eller bilder. | `lib/source.ts:20-74`, `lib/source.ts:84-107` |
 | /da/importer-opskrifter/ | Uden Pro kan du importere fem links om måneden. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /da/find-opskrifter/ | Mapper og favoritter giver flere veje tilbage til de retter, du vil lave igen. | `hooks/useRecipeSearch.ts:53-94`, `hooks/usePantryRecipes.ts` |
-| /da/indkoebsliste-app/ | Når en vare krydses af, kan den flyttes til Spisekammeret. Deling i en husstand kræver Matlyst Pro. | `app/(tabs)/grocery.tsx:285-367`, `hooks/useGrocery.ts` |
+| /da/indkoebsliste-app/ | Indkøbslisten er gratis. Det kræver Matlyst Pro at dele en fælles liste med husstanden. Du kan altid sende listen som tekst med del-knappen. | `app/(tabs)/grocery.tsx:285-367`, `hooks/useGrocery.ts` |
 | /da/haandskrevne-opskrifter/ | Fotoimport kræver Matlyst Pro. Du kan selv notere, hvor opskriften stammer fra. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /da/opskrifter-ud-fra-ingredienser/ | Forslagene er kun vejledende. Tjek mængder, holdbarhed, og om varerne stadig kan bruges. | `hooks/useRecipeSearch.ts:53-94`, `hooks/usePantryRecipes.ts` |
 | /da/middagsforslag/ | Det er gratis at stille spørgsmål om en opskrift. Når Spørg Matlyst skal lave eller ændre opskrifter, kræver det Matlyst Pro. | `hooks/useRecommendations.ts:76-131`, `hooks/useSporMatlyst.ts:118-221`, `supabase/functions/_shared/sporMatlyst/skjema.ts:390-391` (gratis: bare spørsmål i en oppskrift) |
-| /da/madplan-app/ | Deling af Madplan og Indkøbsliste i en husstand kræver Matlyst Pro. | `app/(tabs)/ukemeny.tsx:371-433`, `app/recipe-picker.tsx` |
+| /da/madplan-app/ | Madplanen og indkøbslisten er gratis. Det kræver Matlyst Pro at oprette eller deltage i en husstand og dele dem. | `app/(tabs)/ukemeny.tsx:371-433`, `app/recipe-picker.tsx` |
 | /da/skift-fra-paprika/ | Matlyst har ingen tilknytning til Paprika og garanterer ikke, at alle felter kan flyttes automatisk. | `components/RecipeFileImport.tsx`, `lib/importEngine.ts:248-270` |
-| /da/opskrifts-app/ | Du bestemmer over indholdet. Kilden vises på importerede opskrifter, når den findes. | `hooks/useRecipes.ts:169-199`, `hooks/useRecipeSearch.ts:53-94` |
+| /da/opskrifts-app/ | Gratisversionen har et begrænset antal importer om måneden, og appen viser, hvor mange du har brugt. Med Matlyst Pro får du ubegrænsede importer og fotoimport. | `constants/limits.ts:5` (`FREE_IMPORT_LIMIT`), `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /da/gem-opskrifter-fra-instagram/ | Kilden følger med. Privat eller utilgængeligt indhold kan ikke altid importeres. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /da/gem-opskrifter-fra-tiktok/ | Privat, slettet eller geografisk blokeret indhold kan ikke altid læses. | `lib/importEngine.ts:201-229`, `app/(tabs)/legg-til.tsx` |
 | /da/spisekammer-app/ | I gratisversionen er der plads til et begrænset antal varer. Med Pro er der plads til flere. | `hooks/usePantry.ts:247-276`, `hooks/usePantryRecipes.ts` |

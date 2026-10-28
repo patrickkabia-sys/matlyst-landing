@@ -37,6 +37,9 @@ export const amerikanskeAppsider = [{
     ['Can I bring my recipes over from Paprika?', 'Yes. Export your recipes from Paprika and open the file in Matlyst. The Paprika import guide on this site walks you through it.'],
   ],
   cta: 'Start your recipe collection',
+  bilde: '04-mapper',
+  bildeAlt: 'Matlyst with recipes sorted into folders',
+  appCtaTittel: 'All your recipes in one app',
 }, {
   path: 'meal-plan-app/',
   title: 'Meal planner app with a grocery list',
@@ -61,13 +64,16 @@ export const amerikanskeAppsider = [{
   ],
   faqTittel: 'Meal planner questions',
   faq: [
-    ['Is there a free meal planner app with a grocery list?', 'Yes. Matlyst\'s meal plan and grocery list are free. You plan with recipes you\'ve saved yourself, from TikTok, Instagram, websites, or your own recipe cards.'],
+    ['Is there a free meal planner app with a grocery list?', 'Yes. Matlyst\'s meal plan and grocery list are free. You plan with recipes you\'ve saved yourself, from TikTok, Instagram, websites, or recipes you\'ve typed in yourself.'],
     ['Can a meal planner make my grocery list?', 'Yes. Add a recipe or a whole day from your meal plan to the grocery list, and Matlyst combines matching ingredients into one line.'],
     ['Does Matlyst make meal plans for me?', 'No. You choose the recipes. When you need ideas, the Home screen suggests dinners from your saved recipes.'],
     ['Can I share my meal plan with my partner?', 'Yes, with Matlyst Pro. Invite your household, and you share the meal plan and the grocery list.'],
     ['Is there a weekly meal planner for iPhone and Android?', 'Matlyst works on both. Get it on the App Store or Google Play.'],
   ],
   cta: 'Plan this week\'s dinners',
+  bilde: '02-ukemeny',
+  bildeAlt: 'The Matlyst meal plan with a dinner for each day',
+  appCtaTittel: 'This week\'s dinners in one place',
 }, {
   path: 'shopping-list/',
   title: 'Grocery list app for your recipes',
@@ -99,4 +105,7 @@ export const amerikanskeAppsider = [{
     ['Can I add items that aren\'t in a recipe?', 'Yes. Tap + and type what you need.'],
   ],
   cta: 'Make your next grocery run easier',
+  bilde: '03-handleliste',
+  bildeAlt: 'The Matlyst grocery list grouped by aisle',
+  appCtaTittel: 'Your grocery list, in your pocket',
 }];
