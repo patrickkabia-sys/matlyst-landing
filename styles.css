@@ -133,6 +133,8 @@ footer{border-top:1px solid var(--line);padding:36px var(--pad);display:flex;ali
 .f-l{display:flex;gap:26px}
 footer a{font-size:13px;color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--ink)}
 footer .c{font-size:12px;color:var(--ink-faint)}
+.f-guider{flex-basis:100%;display:flex;flex-wrap:wrap;gap:4px 22px;padding-top:16px;border-top:1px solid var(--line)}
+.f-guider a{display:inline-flex;align-items:center;min-height:24px}
 
 .js .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .js .reveal.in{opacity:1;transform:none}
