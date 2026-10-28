@@ -19,6 +19,76 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/alletiders-cookbook/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/en/blog/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/blog/boiling-times/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/koketider/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/boiling-times/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/boiling-times/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/blog/double-a-recipe/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/doble-oppskrift/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/dubbla-recept/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/fordoble-opskrift/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/double-a-recipe/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/double-a-recipe/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/blog/egg-float-test/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/er-egget-ferskt/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/ar-agget-farskt/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/er-aegget-friskt/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/egg-float-test/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/egg-float-test/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/blog/freezer-storage-times/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/mat-i-fryseren/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/mat-i-frysen/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/mad-i-fryseren/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/freezer-storage-times/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/freezer-storage-times/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/blog/leftovers-in-the-fridge/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/rester-i-kjoleskapet/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/rester-i-kylen/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/rester-i-koeleskabet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/leftovers-in-the-fridge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/leftovers-in-the-fridge/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/blog/oven-to-air-fryer/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/ovnsoppskrift-i-airfryer/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/ugnsrecept-i-airfryer/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/ovnopskrift-i-airfryer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/oven-to-air-fryer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/oven-to-air-fryer/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/blog/safe-internal-temperatures/</loc>
+    <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/kjernetemperatur/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/innertemperatur/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/kernetemperatur/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/safe-internal-temperatures/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/safe-internal-temperatures/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/en/delete-account/</loc>
     <lastmod>2026-10-27</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/slett-konto.html"/>

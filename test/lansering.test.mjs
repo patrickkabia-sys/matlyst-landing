@@ -43,7 +43,7 @@ for (const lang of ['sv', 'da', 'en']) {
     for (const blokk of blokker) {
       const side = blokk.match(/<loc>([^<]+)<\/loc>/u)[1];
       const oppdatertGuide = /\/(?:sv\/(?:importera-recept|spara-recept-fran-instagram|spara-recept-fran-tiktok|byt-fran-paprika|handskrivna-recept|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|da\/(?:importer-opskrifter|gem-opskrifter-fra-instagram|gem-opskrifter-fra-tiktok|skift-fra-paprika|haandskrevne-opskrifter|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|en\/(?:import-recipes|import-recipes-from-photos|import-recipes-from-instagram|import-recipes-from-paprika|import-recipes-from-tiktok|find-recipes|recipes-by-ingredients|dinner-ideas|pantry-app|empty-the-fridge|easy-dinner|recipe-creators|matprat|koket|landleys-kok|alletiders-cookbook|dr-food|delete-account))\/$/u.test(side);
-      const appside = /\/(?:en\/(?:shopping-list|meal-plan-app|recipe-book-app|dinner-ideas|easy-dinner)|sv\/(?:receptbok-app|veckomeny-app|inkopslista|vad-ska-jag-laga|enkel-middag)|da\/(?:opskrifts-app|madplan-app|indkoebsliste-app|middagsforslag|nem-mad))\/$/u.test(side);
+      const appside = /\/(?:(?:sv|da|en)\/blogg?(?:\/[^/]+)?|en\/(?:shopping-list|meal-plan-app|recipe-book-app|dinner-ideas|easy-dinner)|sv\/(?:receptbok-app|veckomeny-app|inkopslista|vad-ska-jag-laga|enkel-middag)|da\/(?:opskrifts-app|madplan-app|indkoebsliste-app|middagsforslag|nem-mad))\/$/u.test(side);
       const forventetDato = appside ? '2026-10-28' : oppdatertGuide ? '2026-10-27' : lang === 'en' ? '2026-10-20' : '2026-10-05';
       assert.match(blokk, new RegExp(`<loc>[^<]+<\\/loc>\\s*<lastmod>${forventetDato}<\\/lastmod>`, 'u'), side);
       const html = readFileSync(urlTilFil(side), 'utf8');
@@ -59,7 +59,8 @@ for (const lang of ['sv', 'da', 'en']) {
 test('det norske sitemapet er fortsatt bare norske sider', () => {
   const sitemap = les('sitemap.xml');
   assert.doesNotMatch(sitemap, /matlyst-app\.no\/(?:sv|da|en)\//u);
-  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 24);
+  // 24 sider + bloggforsiden og 8 bloggartikler (28.10.2026).
+  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 33);
   assert.match(sitemap, /<loc>https:\/\/matlyst-app\.no\/slett-konto\.html<\/loc>/u);
 });
 
