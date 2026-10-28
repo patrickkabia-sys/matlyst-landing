@@ -1,4 +1,6 @@
 // Engelsk er internasjonalt (ingen region), derfor bare «en».
+import { bloggGrupper } from './blogg.mjs';
+
 export const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en' });
 export const SPRAKREKKEFOLGE = Object.freeze(Object.keys(SPRAKKODER));
 
@@ -36,6 +38,7 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'landleys-kok', sider: { nb: '/importer-fra-landleys-kok/', sv: '/sv/landleys-kok/', da: '/da/landleys-kok/', en: '/en/landleys-kok/' } },
   { id: 'alletiders-kogebog', sider: { nb: '/importer-fra-alletiders-kokebok/', sv: '/sv/alletiders-kogebog/', da: '/da/alletiders-kogebog/', en: '/en/alletiders-cookbook/' } },
   { id: 'dr-mad', sider: { nb: '/importer-fra-dr-mat/', sv: '/sv/dr-mad/', da: '/da/dr-mad/', en: '/en/dr-food/' } },
+  ...bloggGrupper(),
 ]);
 
 const GRUPPE_FOR_STI = new Map(SIDEGRUPPER.flatMap((gruppe) =>

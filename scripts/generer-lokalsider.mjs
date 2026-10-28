@@ -10,6 +10,7 @@ import { amerikanskeAppsider } from './en-appsider.mjs';
 import { svenskeAppsider, danskeAppsider } from './nordiske-appsider.mjs';
 import { appCta } from './app-cta.mjs';
 import { middagssider } from './middagssider.mjs';
+import { bloggArtikler, artikkelMain, artikkelSchema, indeksMain, indeksMeta, BLOGGROT } from './blogg.mjs';
 
 // Produktsidene med skjermbilde-CTA erstatter de tynne funksjonssidene på samme sti.
 const appsider = {
@@ -831,6 +832,15 @@ for (const lang of SPRAK) {
     write(`../${lang}/${row[0]}index.html`, innhold);
   }
   if (lang === 'en') write('../en/delete-account/index.html', deleteAccountPageEn());
+  // Bloggen: karusellene som artikler (scripts/blogg.mjs).
+  const rel = (sti) => sti.slice(`/${lang}/`.length);
+  const indeks = indeksMeta(lang);
+  write(`../${lang}/${rel(BLOGGROT[lang])}index.html`, `${head({lang,path:rel(indeks.path),title:`${indeks.title} | Matlyst`,description:indeks.description,schema:indeks.schema})}<body data-locale="${lang}">
+${nav(lang,rel(indeks.path))}${indeksMain(lang)}${footer(lang)}<script src="/site.js" defer></script></body></html>`);
+  for (const a of bloggArtikler(lang)) {
+    write(`../${lang}/${rel(a.path)}index.html`, `${head({lang,path:rel(a.path),title:`${a.title} | Matlyst`,description:a.description,image:`/images/blogg/${lang}/${a.tema}/${a.karusell.bilder[0]}`,schema:artikkelSchema(a)})}<body data-locale="${lang}">
+${nav(lang,rel(a.path))}${artikkelMain(a, storeButtons(lang))}${footer(lang)}<script src="/site.js" defer></script></body></html>`);
+  }
 }
 
 // Norske og lokale sider får hreflang fra den samme tabellen som språkredirecten.
@@ -888,6 +898,7 @@ const sistEndretSide = {
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => kildesider[lang].map(([sti]) => [`https://matlyst-app.no/${lang}/${sti}`, '2026-10-27']))),
   'https://matlyst-app.no/en/delete-account/': '2026-10-27',
   ...Object.fromEntries(Object.entries(appsider).flatMap(([lang, sider]) => sider.map((v) => [`https://matlyst-app.no/${lang}/${v.path}`, '2026-10-28']))),
+  ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => [BLOGGROT[lang], ...bloggArtikler(lang).map((a) => a.path)].map((sti) => [`https://matlyst-app.no${sti}`, '2026-10-28']))),
 };
 for (const lang of SPRAK) {
   const unikeSider = [...new Map(lokaleSider.map((html) => [html.match(/<link rel="canonical" href="([^"]+)">/u)?.[1], html])).values()];

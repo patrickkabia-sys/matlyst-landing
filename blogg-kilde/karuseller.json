@@ -1,0 +1,2486 @@
+{
+  "nb": {
+    "koketid": {
+      "etikett": "Koketider",
+      "ingress": "Smilende egg tar 8 minutter. Her er koketidene for egg, ris, pasta, poteter og grønnsaker, regnet fra vannet koker.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Hvor lenge skal det <em>koke</em>?",
+          "under": "Egg, ris, pasta og grønnsaker. Tiden regnes fra vannet koker.",
+          "fra": "smilende egg",
+          "til": "<b>8</b> min"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Egget",
+          "rader": [
+            [
+              "bløtkokt",
+              "<b>6</b> min"
+            ],
+            [
+              "smilende",
+              "<b>8</b> min"
+            ],
+            [
+              "hardkokt",
+              "<b>10</b> min"
+            ]
+          ],
+          "notis": "Store egg rett fra kjøleskapet, lagt i kokende vann. Avkjøl i kaldt vann etterpå."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Ris, pasta og poteter",
+          "rader": [
+            [
+              "pasta",
+              "<b>8–12</b> min"
+            ],
+            [
+              "jasminris",
+              "<b>10–12</b> min"
+            ],
+            [
+              "fullkornsris",
+              "<b>25–30</b> min"
+            ],
+            [
+              "quinoa",
+              "<b>12–15</b> min"
+            ],
+            [
+              "poteter",
+              "<b>18–22</b> min"
+            ]
+          ],
+          "notis": "Pasta: se pakken. Ris: la den stå under lokk i 10 minutter etter koking."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Grønnsaker",
+          "rader": [
+            [
+              "brokkoli",
+              "<b>3–4</b> min"
+            ],
+            [
+              "grønne bønner",
+              "<b>4–5</b> min"
+            ],
+            [
+              "blomkål",
+              "<b>5–7</b> min"
+            ],
+            [
+              "gulrot i skiver",
+              "<b>6–8</b> min"
+            ],
+            [
+              "frosne erter",
+              "<b>2–3</b> min"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "klokke",
+          "tittel": "Eller følg <em>steget</em>.",
+          "under": "Kokemodus i Matlyst viser ett steg om gangen, så du ser hva som skjer nå."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "kjernetemp": {
+      "etikett": "Steketermometer",
+      "ingress": "Kylling er ferdig på 75 grader, laks på 50. Her er kjernetemperaturene for storfe, lam, svin, kylling og fisk, så du slipper å skjære i kjøttet for å sjekke.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Når er det <em>ferdig</em>?",
+          "under": "Kjernetemperaturen sier det sikrere enn klokka.",
+          "fra": "kylling",
+          "til": "<b>75</b> °C"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Storfe og lam",
+          "rader": [
+            [
+              "storfe, rødt",
+              "<b>52</b> °C"
+            ],
+            [
+              "storfe, medium",
+              "<b>58</b> °C"
+            ],
+            [
+              "storfe, gjennomstekt",
+              "<b>70</b> °C"
+            ],
+            [
+              "lam, rosa",
+              "<b>60</b> °C"
+            ],
+            [
+              "lam, gjennomstekt",
+              "<b>70</b> °C"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Svin, kylling og fisk",
+          "rader": [
+            [
+              "svinekjøtt",
+              "<b>65–70</b> °C"
+            ],
+            [
+              "kylling",
+              "<b>75</b> °C"
+            ],
+            [
+              "kjøttdeig og farse",
+              "<b>75</b> °C"
+            ],
+            [
+              "laks",
+              "<b>50</b> °C"
+            ],
+            [
+              "torsk og hvit fisk",
+              "<b>50</b> °C"
+            ]
+          ],
+          "notis": "La kjøttet hvile i 10 minutter. Temperaturen stiger et par grader mens det hviler, så ta det ut litt før."
+        },
+        {
+          "type": "logo",
+          "prikk": "termometer",
+          "grader": [
+            20,
+            75
+          ],
+          "tittel": "Eller følg <em>steget</em>.",
+          "under": "Kokemodus i Matlyst viser ett steg om gangen, i stor skrift."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "egg": {
+      "etikett": "Tom for egg?",
+      "ingress": "Tom for egg midt i baksten? Banan, eplemos, linfrø eller kikertvann kan ta jobben, men ikke i alt. Her er hva som passer hvor, og når du bør velge en annen oppskrift.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Tom for egg? <em>Bak likevel.</em>",
+          "under": "Dette kan erstatte ett egg i kaker, muffins og pannekaker.",
+          "fra": "1 egg",
+          "til": "<b>½</b> banan"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Bytt ut <em>1 egg</em>",
+          "rader": [
+            [
+              "moset banan",
+              "<b>½</b> banan<small>ca. 60 g</small>"
+            ],
+            [
+              "eplemos",
+              "<b>60</b> g"
+            ],
+            [
+              "naturell yoghurt",
+              "<b>60</b> g"
+            ],
+            [
+              "malt linfrø",
+              "<b>1</b> ss + <b>3</b> ss vann"
+            ],
+            [
+              "chiafrø",
+              "<b>1</b> ss + <b>3</b> ss vann"
+            ],
+            [
+              "kikertvann (akvafaba)",
+              "<b>3</b> ss"
+            ],
+            [
+              "natron og eddik",
+              "<b>1</b> ts + <b>1</b> ss"
+            ]
+          ],
+          "notis": "Linfrø og chiafrø skal stå i vannet i 5 minutter til det tykner."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Hva passer <em>hvor</em>?",
+          "rader": [
+            [
+              "brownies",
+              "banan"
+            ],
+            [
+              "muffins",
+              "eplemos"
+            ],
+            [
+              "pannekaker",
+              "yoghurt"
+            ],
+            [
+              "kjeks",
+              "linfrø"
+            ],
+            [
+              "luftige kaker",
+              "natron og eddik"
+            ],
+            [
+              "marengs",
+              "kikertvann"
+            ]
+          ],
+          "notis": "Banan smaker igjen. Vil du ikke kjenne den, ta eplemos."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Grensen",
+          "rader": [
+            [
+              "1 egg",
+              "bytt fritt"
+            ],
+            [
+              "2 egg",
+              "går som regel"
+            ],
+            [
+              "3 eller flere",
+              "velg ny oppskrift"
+            ]
+          ],
+          "notis": "Egg holder kaken sammen. Jo flere egg oppskriften har, jo mer av strukturen må erstatningen bære."
+        },
+        {
+          "type": "logo",
+          "prikk": "egg",
+          "tittel": "Eller spør <em>Matlyst</em>.",
+          "under": "Spør i oppskriften hva du kan bytte ut, så svarer appen ut fra den oppskriften."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "rester": {
+      "etikett": "Rester",
+      "ingress": "Kokt ris holder ett døgn. Kylling, pasta og gryte to til tre. Her er hvor lenge restene holder i kjøleskapet, og hvordan du får dem til å holde lenger.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Hvor lenge holder <em>restene</em>?",
+          "under": "Det du har laget selv og satt i kjøleskapet, ikke det med dato på.",
+          "fra": "kokt ris",
+          "til": "<b>1</b> døgn"
+        },
+        {
+          "type": "tabell",
+          "tittel": "I kjøleskapet",
+          "rader": [
+            [
+              "kokt ris",
+              "<b>1</b> døgn"
+            ],
+            [
+              "kokt fisk",
+              "<b>1–2</b> dager"
+            ],
+            [
+              "kokt kylling",
+              "<b>2–3</b> dager"
+            ],
+            [
+              "kokt pasta",
+              "<b>2–3</b> dager"
+            ],
+            [
+              "kokte poteter",
+              "<b>2–3</b> dager"
+            ],
+            [
+              "suppe og gryte",
+              "<b>2–3</b> dager"
+            ]
+          ],
+          "notis": "Veiledende tider. Lukter eller ser det feil ut, kast det."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Slik holder de <em>lenger</em>",
+          "rader": [
+            [
+              "kjøleskapet",
+              "<b>4</b> °C"
+            ],
+            [
+              "inn i kjøleskapet innen",
+              "<b>2</b> timer"
+            ],
+            [
+              "varm opp til",
+              "rykende varmt"
+            ],
+            [
+              "varm opp",
+              "<b>én</b> gang"
+            ]
+          ],
+          "notis": "Ris skal kjøles raskt. Del store porsjoner i mindre bokser, så blir de kalde fortere."
+        },
+        {
+          "type": "logo",
+          "prikk": "klokke",
+          "tittel": "Eller planlegg <em>restene</em>.",
+          "under": "Legg middagene i ukemenyen i Matlyst, så ser du hva som skal brukes opp først."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "fryser": {
+      "etikett": "Fryseren",
+      "ingress": "Kjøttdeig holder tre måneder i fryseren, storfe et helt år. Her er tidene for kjøtt, fisk, bakst og rester, og hva du aldri bør fryse.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Hvor lenge i <em>fryseren</em>?",
+          "under": "Og hva som aldri bør fryses.",
+          "fra": "kjøttdeig",
+          "til": "<b>3</b> mnd"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Kjøtt og fisk",
+          "rader": [
+            [
+              "storfe",
+              "<b>12</b> mnd"
+            ],
+            [
+              "kylling",
+              "<b>12</b> mnd"
+            ],
+            [
+              "svin",
+              "<b>6</b> mnd"
+            ],
+            [
+              "kjøttdeig",
+              "<b>3</b> mnd"
+            ],
+            [
+              "mager fisk",
+              "<b>6</b> mnd"
+            ],
+            [
+              "laks og annen fet fisk",
+              "<b>3</b> mnd"
+            ]
+          ],
+          "notis": "Tidene er veiledende for best kvalitet ved -18 °C."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Bakst og middagsrester",
+          "rader": [
+            [
+              "brød og boller",
+              "<b>3</b> mnd"
+            ],
+            [
+              "kaker og småkaker",
+              "<b>3</b> mnd"
+            ],
+            [
+              "suppe og gryte",
+              "<b>3</b> mnd"
+            ],
+            [
+              "kokt ris",
+              "<b>1</b> mnd"
+            ]
+          ],
+          "notis": "Tin i kjøleskapet, ikke på benken."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Frys det, eller la være",
+          "rader": [
+            [
+              "revet ost",
+              "frys"
+            ],
+            [
+              "moden banan",
+              "frys, til bakst"
+            ],
+            [
+              "frisk ingefær",
+              "frys, riv frossen"
+            ],
+            [
+              "agurk og salat",
+              "blir bløtt"
+            ],
+            [
+              "kokte poteter",
+              "blir melne"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "sno",
+          "tittel": "Eller planlegg <em>uka</em>.",
+          "under": "Legg middagene i ukemenyen i Matlyst, så ser du hva som skal tines i morgen."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "airfryer": {
+      "etikett": "Airfryer",
+      "ingress": "Ovnsoppskrift i airfryeren? Ta 20 grader ned og 20 prosent av tiden. Her er regelen og noen eksempler.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Ovnsoppskrift i <em>airfryeren</em>?",
+          "under": "Regelen som gjør om tid og temperatur.",
+          "fra": "200 °C ovn",
+          "til": "<b>180</b> °C"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Regelen",
+          "rader": [
+            [
+              "temperatur",
+              "<b>20</b> °C lavere"
+            ],
+            [
+              "tid",
+              "<b>20</b> % kortere"
+            ],
+            [
+              "halvveis",
+              "rist kurven"
+            ],
+            [
+              "kurven",
+              "ett lag"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Eksempler",
+          "rader": [
+            [
+              "200 °C, 25 min",
+              "<b>180</b> °C, <b>20</b> min"
+            ],
+            [
+              "220 °C, 30 min",
+              "<b>200</b> °C, <b>24</b> min"
+            ],
+            [
+              "kyllinglår",
+              "til <b>75</b> °C inni"
+            ]
+          ],
+          "notis": "Airfryere er ulike. Sjekk første gang litt før tiden er ute."
+        },
+        {
+          "type": "logo",
+          "prikk": "termometer",
+          "grader": [
+            20,
+            180
+          ],
+          "tittel": "Eller følg <em>steget</em>.",
+          "under": "Kokemodus i Matlyst viser ett steg om gangen, i stor skrift."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "doble": {
+      "etikett": "Dobbel porsjon",
+      "ingress": "Skal du lage dobbel porsjon? Mel og smør ganger du med to, men salt, krydder og steketid gjør du ikke. Her er hva du må passe på.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Ikke alt skal <em>dobles</em>.",
+          "under": "Hva du ganger med to, og hva du må passe på.",
+          "fra": "2 × deig",
+          "til": "ikke 2 × tid"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Gang med to",
+          "rader": [
+            [
+              "mel, sukker og smør",
+              "× 2"
+            ],
+            [
+              "melk og vann",
+              "× 2"
+            ],
+            [
+              "egg",
+              "× 2, rund opp"
+            ],
+            [
+              "kjøtt og grønnsaker",
+              "× 2"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Pass på",
+          "rader": [
+            [
+              "salt og krydder",
+              "× 1,5, så smak"
+            ],
+            [
+              "chili",
+              "× 1,5, så smak"
+            ],
+            [
+              "væske i gryte",
+              "litt mindre"
+            ],
+            [
+              "steketid",
+              "sjekk tidligere"
+            ],
+            [
+              "formen",
+              "bruk to former"
+            ]
+          ],
+          "notis": "En dobbel gryte koker inn saktere, så den trenger mindre væske enn du tror."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Halv <em>porsjon</em>",
+          "rader": [
+            [
+              "½ egg",
+              "<b>25</b> g pisket egg"
+            ],
+            [
+              "½ ts",
+              "<b>2,5</b> ml"
+            ],
+            [
+              "½ ss",
+              "<b>1½</b> ts"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "drys",
+          "tittel": "Eller skaler <em>oppskriften</em>.",
+          "under": "Velg antall porsjoner i Matlyst, så regner appen om alle mengdene."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "eggtest": {
+      "etikett": "Egg",
+      "ingress": "Legg egget i et glass vann. Synker det, er det ferskt. Flyter det, er det gammelt. Her er testen, og hvordan egg holder seg best.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Er egget <em>ferskt</em>?",
+          "under": "Et glass vann gir svaret.",
+          "fra": "egget flyter",
+          "til": "gammelt"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Vannglasset",
+          "rader": [
+            [
+              "synker og ligger",
+              "ferskt"
+            ],
+            [
+              "står på høykant",
+              "bruk snart"
+            ],
+            [
+              "flyter",
+              "gammelt, kast det"
+            ]
+          ],
+          "notis": "Egget får mer luft inni seg jo eldre det blir. Derfor flyter gamle egg."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Oppbevaring",
+          "rader": [
+            [
+              "hvor",
+              "i kjøleskapet"
+            ],
+            [
+              "vask",
+              "nei, ikke før bruk"
+            ],
+            [
+              "datoen",
+              "best før"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "egg",
+          "tittel": "Eller planlegg <em>uka</em>.",
+          "under": "Legg middagene i ukemenyen i Matlyst, så ser du hva som skal brukes opp først."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    }
+  },
+  "en": {
+    "koketid": {
+      "etikett": "Boiling",
+      "ingress": "Broccoli florets need 3 to 6 minutes in boiling water. Large eggs need 12 minutes in the hot water after you turn off the heat. Here are the times for everyday vegetables and hard-boiled eggs, from University of Maine and Oregon State University Extension.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "How long do you <em>boil</em> it?",
+          "under": "Everyday vegetables and hard-boiled eggs.",
+          "fra": "broccoli florets",
+          "til": "<b>3 to 6</b> min"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Vegetables in the <em>pot</em>",
+          "rader": [
+            [
+              "broccoli florets",
+              "<b>3 to 6</b> min"
+            ],
+            [
+              "green beans",
+              "up to <b>10</b> min"
+            ],
+            [
+              "corn on the cob",
+              "about <b>4</b> min"
+            ],
+            [
+              "fresh shelled peas",
+              "<b>5 to 10</b> min"
+            ],
+            [
+              "medium potatoes, whole",
+              "about <b>30 to 40</b> min"
+            ]
+          ],
+          "notis": "A gentle boil cooks as fast as a rolling one. The water is just as hot."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Hard-boiled eggs, <em>off</em> the heat",
+          "rader": [
+            [
+              "cold water over eggs",
+              "at least <b>1</b> inch"
+            ],
+            [
+              "bring to a full boil",
+              "lid on, heat off"
+            ],
+            [
+              "medium eggs",
+              "<b>9</b> min"
+            ],
+            [
+              "large eggs",
+              "<b>12</b> min"
+            ],
+            [
+              "extra-large eggs",
+              "<b>15</b> min"
+            ]
+          ],
+          "notis": "Then cool them in ice water. In the fridge: 2 days if peeled, up to a week in the shell."
+        },
+        {
+          "type": "logo",
+          "tittel": "Tap the time for a <em>timer</em>.",
+          "under": "Step says 3 to 6 minutes? In Matlyst's cook mode, tap it, and the timer opens at 3. Slide it up to 6.",
+          "prikk": "klokke"
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "kjernetemp": {
+      "etikett": "Thermometer",
+      "ingress": "Cook chicken and turkey to 165°F, ground beef to 160°F, and fish to 145°F. Steaks, roasts, and pork chops need 145°F plus a 3-minute rest. Here are the USDA safe minimums and how to get a reading you can count on.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Is it <em>done</em> yet?",
+          "under": "USDA safe minimums for meat, poultry, and fish.",
+          "fra": "chicken breast",
+          "til": "<b>165</b>°F"
+        },
+        {
+          "type": "tabell",
+          "tittel": "The <em>safe</em> minimums",
+          "rader": [
+            [
+              "chicken and turkey",
+              "<b>165</b>°F"
+            ],
+            [
+              "ground beef",
+              "<b>160</b>°F"
+            ],
+            [
+              "steaks and roasts",
+              "<b>145</b>°F"
+            ],
+            [
+              "pork chops",
+              "<b>145</b>°F"
+            ],
+            [
+              "fish",
+              "<b>145</b>°F"
+            ]
+          ],
+          "notis": "Steaks, roasts, and chops: let them rest 3 minutes before you cut into them."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Read it <em>right</em>",
+          "rader": [
+            [
+              "aim for",
+              "the thickest part"
+            ],
+            [
+              "stay clear of",
+              "bone and fat"
+            ],
+            [
+              "wait until",
+              "the number settles"
+            ],
+            [
+              "thermometer in ice water",
+              "should read <b>32</b>°F"
+            ]
+          ],
+          "notis": "A thermometer is the only sure way to know it's hot enough to be safe."
+        },
+        {
+          "type": "logo",
+          "tittel": "Time the <em>rest</em>, too.",
+          "under": "In Matlyst's cook mode, tap the time in a step, like 3 minutes, to set a timer.",
+          "prikk": "termometer"
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "rester": {
+      "etikett": "Leftovers",
+      "ingress": "Most leftovers last 3 to 4 days in the fridge. Here's how long the usual ones last, plus how to store and reheat them safely, based on USDA guidelines.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "How long do <em>leftovers</em> last?",
+          "under": "Cooked food in the fridge.",
+          "fra": "cooked chicken",
+          "til": "<b>3 to 4</b> days"
+        },
+        {
+          "type": "tabell",
+          "tittel": "In the fridge",
+          "rader": [
+            [
+              "cooked chicken",
+              "<b>3 to 4</b> days"
+            ],
+            [
+              "cooked fish",
+              "<b>3 to 4</b> days"
+            ],
+            [
+              "soup and stew",
+              "<b>3 to 4</b> days"
+            ],
+            [
+              "pizza",
+              "<b>3 to 4</b> days"
+            ],
+            [
+              "hard-boiled eggs",
+              "<b>1</b> week"
+            ]
+          ],
+          "notis": "Based on USDA guidelines. If it smells or looks off, throw it out."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Keep them <em>safe</em>",
+          "rader": [
+            [
+              "fridge",
+              "<b>40</b>°F or colder"
+            ],
+            [
+              "into the fridge within",
+              "<b>2</b> hours"
+            ],
+            [
+              "hot day, over 90°F",
+              "<b>1</b> hour"
+            ],
+            [
+              "reheat to",
+              "<b>165</b>°F"
+            ],
+            [
+              "won't eat it in time?",
+              "freeze it"
+            ]
+          ],
+          "notis": "Split big batches into shallow containers so they cool faster."
+        },
+        {
+          "type": "logo",
+          "tittel": "Know what to eat <em>first</em>.",
+          "under": "Add leftovers to your pantry in Matlyst with an expiration date, and get a reminder before they go bad.",
+          "prikk": "klokke"
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "fryser": {
+      "etikett": "Freezer",
+      "ingress": "For best quality, use frozen ground beef within 3 to 4 months and a whole chicken within a year. After that, it's still safe at 0°F. It just won't taste as good. Here are the USDA freezer times for meat, fish, and leftovers, plus what to keep out of the freezer.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "How long can you <em>freeze</em> it?",
+          "under": "Meat, fish, and leftovers at 0°F.",
+          "fra": "ground beef",
+          "til": "<b>3 to 4</b> months"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Meat and <em>poultry</em>",
+          "rader": [
+            [
+              "ground beef or turkey",
+              "<b>3 to 4</b> months"
+            ],
+            [
+              "steaks and roasts",
+              "<b>4 to 12</b> months"
+            ],
+            [
+              "whole chicken or turkey",
+              "<b>1</b> year"
+            ],
+            [
+              "chicken pieces",
+              "<b>9</b> months"
+            ],
+            [
+              "bacon",
+              "<b>1</b> month"
+            ]
+          ],
+          "notis": "Past these times, food at 0°F is still safe. It just won't taste as good."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Fish and <em>leftovers</em>",
+          "rader": [
+            [
+              "salmon or tuna",
+              "<b>2 to 3</b> months"
+            ],
+            [
+              "cod or halibut",
+              "<b>6 to 8</b> months"
+            ],
+            [
+              "soup and stew",
+              "<b>2 to 3</b> months"
+            ],
+            [
+              "cooked meat",
+              "<b>2 to 3</b> months"
+            ],
+            [
+              "pizza",
+              "<b>1 to 2</b> months"
+            ]
+          ],
+          "notis": "Thaw in the fridge, not on the counter. Even a pound of ground beef takes a full day."
+        },
+        {
+          "type": "tabell",
+          "tittel": "These <em>hate</em> the freezer",
+          "rader": [
+            [
+              "lettuce and cucumbers",
+              "go limp"
+            ],
+            [
+              "boiled potatoes",
+              "turn mealy"
+            ],
+            [
+              "hard-boiled eggs",
+              "turn rubbery"
+            ],
+            [
+              "mayo and sour cream",
+              "separate"
+            ],
+            [
+              "raw eggs in the shell",
+              "crack and beat"
+            ]
+          ],
+          "notis": "Freezing a casserole? Season it lightly and add more when you reheat it."
+        },
+        {
+          "type": "logo",
+          "tittel": "Thaw it a day <em>ahead</em>.",
+          "under": "Add the week's dinners to your Matlyst meal plan, so you know what's for dinner tomorrow.",
+          "prikk": "sno"
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "airfryer": {
+      "etikett": "Air fryer",
+      "ingress": "Air frying a recipe written for the oven? Turn the heat down 25 to 30°F and cut the time by 20%, then shake or flip halfway through. Here's the rule of thumb with a few examples, based on University of Illinois Extension guidelines.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Air frying an <em>oven</em> recipe?",
+          "under": "Turn down the heat. Cut the time.",
+          "fra": "400°F, 20 min",
+          "til": "<b>375</b>°F, <b>16</b> min"
+        },
+        {
+          "type": "tabell",
+          "tittel": "The <em>rule</em> of thumb",
+          "rader": [
+            [
+              "oven temperature",
+              "<b>25 to 30</b>°F lower"
+            ],
+            [
+              "cooking time",
+              "<b>20</b>% shorter"
+            ],
+            [
+              "preheat",
+              "about <b>3</b> minutes"
+            ],
+            [
+              "halfway through",
+              "shake or flip"
+            ],
+            [
+              "the basket",
+              "don't overfill"
+            ]
+          ],
+          "notis": "Based on University of Illinois Extension. Check your air fryer's manual first."
+        },
+        {
+          "type": "tabell",
+          "tittel": "A few <em>examples</em>",
+          "rader": [
+            [
+              "400°F for 20 min",
+              "<b>375</b>°F, <b>16</b> min"
+            ],
+            [
+              "425°F for 30 min",
+              "<b>400</b>°F, <b>24</b> min"
+            ],
+            [
+              "375°F for 15 min",
+              "<b>350</b>°F, <b>12</b> min"
+            ],
+            [
+              "350°F for 45 min",
+              "<b>325</b>°F, <b>36</b> min"
+            ]
+          ],
+          "notis": "Cooking chicken? It's done at 165°F inside. A thermometer is the only way to be sure."
+        },
+        {
+          "type": "logo",
+          "tittel": "<em>Timers</em> built into the steps.",
+          "under": "Air frying it? In Matlyst's cook mode, tap a time in a step, adjust the timer, and tap Start.",
+          "prikk": "termometer"
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "doble": {
+      "etikett": "Recipe math",
+      "ingress": "Doubling a recipe? Salt, spices, oil for the pan, and cooking time don't just double. Here's how much to use, plus how to cut a recipe in half, based on university extension guidelines.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Double the recipe, not the <em>salt</em>.",
+          "under": "What doubles, what doesn't, and how to halve.",
+          "fra": "2 tsp salt",
+          "til": "<b>3</b> tsp, not 4"
+        },
+        {
+          "type": "tabell",
+          "tittel": "When you <em>double</em> it",
+          "rader": [
+            [
+              "salt and spices",
+              "<b>1½</b>x, then taste"
+            ],
+            [
+              "oil or butter to sauté",
+              "no need to double"
+            ],
+            [
+              "check for doneness at",
+              "the original time"
+            ],
+            [
+              "baking pan",
+              "<b>2</b> of the original"
+            ],
+            [
+              "don't scale past",
+              "<b>4</b>x the recipe"
+            ]
+          ],
+          "notis": "Yeast breads, cakes, pies, and custards are the exception. They don't scale well."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Cutting a recipe in <em>half</em>",
+          "rader": [
+            [
+              "¾ cup",
+              "<b>6</b> tbsp"
+            ],
+            [
+              "⅓ cup",
+              "<b>2</b> tbsp + <b>2</b> tsp"
+            ],
+            [
+              "¼ cup",
+              "<b>2</b> tbsp"
+            ],
+            [
+              "1 tbsp",
+              "<b>1½</b> tsp"
+            ],
+            [
+              "1 large egg",
+              "<b>2</b> tbsp, beaten"
+            ]
+          ],
+          "notis": "Refrigerate the leftover beaten egg and use it within 2 to 4 days."
+        },
+        {
+          "type": "logo",
+          "tittel": "Cooking for a <em>crowd</em>?",
+          "under": "Change the servings in Matlyst, and every ingredient amount updates. The salt is still up to you.",
+          "prikk": "drys"
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "eggtest": {
+      "etikett": "Eggs",
+      "ingress": "Not sure how old those eggs are? Put one in a bowl of water. If it sinks and lies flat, it's fresh. If it stands on end, it's getting old. If it floats, it's old, but it might still be fine: crack it into a bowl and give it a sniff and a look. Here's the whole test, plus how to store eggs so they last.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "How <em>old</em> is that egg?",
+          "under": "Drop it in a bowl of water.",
+          "fra": "it floats",
+          "til": "it's <b>old</b>"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Sink or <em>float</em>?",
+          "rader": [
+            [
+              "sinks and lies flat",
+              "fresh"
+            ],
+            [
+              "sinks, stands on end",
+              "older"
+            ],
+            [
+              "floats",
+              "old"
+            ],
+            [
+              "smells off when cracked",
+              "toss it"
+            ]
+          ],
+          "notis": "An egg that floats can still be fine. Crack it into a bowl and give it a sniff and a look."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Store them <em>right</em>",
+          "rader": [
+            [
+              "fridge",
+              "<b>40</b>°F or colder"
+            ],
+            [
+              "store in the carton",
+              "not the door"
+            ],
+            [
+              "raw, in the shell",
+              "<b>3 to 5</b> weeks"
+            ],
+            [
+              "hard-boiled",
+              "<b>1</b> week"
+            ],
+            [
+              "out of the fridge",
+              "<b>2</b> hours, tops"
+            ]
+          ],
+          "notis": "Store-bought US eggs are washed, which strips their natural coating. Keep them cold."
+        },
+        {
+          "type": "logo",
+          "tittel": "Before they <em>expire</em>.",
+          "under": "Add eggs to your pantry in Matlyst with the days they have left, and get a reminder before they expire.",
+          "prikk": "egg"
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    }
+  },
+  "sv": {
+    "kjernetemp": {
+      "etikett": "Stektermometer",
+      "ingress": "Kyckling är klar vid 75 grader, lax vid 50. Här är innertemperaturerna för nöt, lamm, fläsk, kyckling och fisk, så slipper du skära i köttet för att kolla.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "När är det <em>klart</em>?",
+          "under": "Innertemperaturen säger det säkrare än klockan.",
+          "fra": "kyckling",
+          "til": "<b>75</b> °C"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Nöt och lamm",
+          "rader": [
+            [
+              "nöt, blodigt",
+              "<b>52</b> °C"
+            ],
+            [
+              "nöt, medium",
+              "<b>58</b> °C"
+            ],
+            [
+              "nöt, genomstekt",
+              "<b>70</b> °C"
+            ],
+            [
+              "lamm, rosa",
+              "<b>60</b> °C"
+            ],
+            [
+              "lamm, genomstekt",
+              "<b>70</b> °C"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Fläsk, kyckling och fisk",
+          "rader": [
+            [
+              "fläskkött",
+              "<b>65–70</b> °C"
+            ],
+            [
+              "kyckling",
+              "<b>75</b> °C"
+            ],
+            [
+              "köttfärs",
+              "<b>75</b> °C"
+            ],
+            [
+              "lax",
+              "<b>50</b> °C"
+            ],
+            [
+              "torsk och vit fisk",
+              "<b>50</b> °C"
+            ]
+          ],
+          "notis": "Låt köttet vila i 10 minuter. Temperaturen stiger ett par grader medan det vilar, så ta ut det lite tidigare."
+        },
+        {
+          "type": "logo",
+          "prikk": "termometer",
+          "grader": [
+            20,
+            75
+          ],
+          "tittel": "Eller följ <em>steget</em>.",
+          "under": "Matlagningsläget i Matlyst visar ett steg i taget, i stor text."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "egg": {
+      "etikett": "Slut på ägg?",
+      "ingress": "Slut på ägg mitt i bakningen? Banan, äppelmos, linfrön eller kikärtsspad kan ta över, men inte i allt. Här ser du vad som passar var, och när du hellre ska välja ett annat recept.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Slut på ägg? <em>Baka ändå.</em>",
+          "under": "Det här kan ersätta ett ägg i kakor, muffins och pannkakor.",
+          "fra": "1 ägg",
+          "til": "<b>½</b> banan"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Ersätt <em>1 ägg</em>",
+          "rader": [
+            [
+              "mosad banan",
+              "<b>½</b> banan<small>ca 60 g</small>"
+            ],
+            [
+              "äppelmos",
+              "<b>60</b> g"
+            ],
+            [
+              "naturell yoghurt",
+              "<b>60</b> g"
+            ],
+            [
+              "malda linfrön",
+              "<b>1</b> msk + vatten"
+            ],
+            [
+              "chiafrön",
+              "<b>1</b> msk + vatten"
+            ],
+            [
+              "kikärtsspad (aquafaba)",
+              "<b>3</b> msk"
+            ],
+            [
+              "bikarbonat + vinäger",
+              "<b>1</b> tsk + <b>1</b> msk"
+            ]
+          ],
+          "notis": "Rör ner fröna i 3 msk vatten och låt dem svälla i 5 minuter tills det tjocknar."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Vad passar <em>var</em>?",
+          "rader": [
+            [
+              "brownies",
+              "banan"
+            ],
+            [
+              "muffins",
+              "äppelmos"
+            ],
+            [
+              "pannkakor",
+              "yoghurt"
+            ],
+            [
+              "småkakor",
+              "linfrön"
+            ],
+            [
+              "luftiga kakor",
+              "bikarbonat + vinäger"
+            ],
+            [
+              "maränger",
+              "kikärtsspad"
+            ]
+          ],
+          "notis": "Bananen smakar igenom. Vill du inte känna den, ta äppelmos."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Gränsen",
+          "rader": [
+            [
+              "1 ägg",
+              "byt fritt"
+            ],
+            [
+              "2 ägg",
+              "brukar gå bra"
+            ],
+            [
+              "3 eller fler",
+              "välj ett annat recept"
+            ]
+          ],
+          "notis": "Äggen håller ihop kakan. Ju fler ägg receptet har, desto mer av strukturen måste ersättningen bära."
+        },
+        {
+          "type": "logo",
+          "prikk": "egg",
+          "tittel": "Eller fråga <em>Matlyst</em>.",
+          "under": "Fråga i receptet vad du kan byta ut, så svarar appen utifrån just det receptet."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "rester": {
+      "etikett": "Rester",
+      "ingress": "Kokt ris håller ett dygn. Kyckling, pasta och gryta två till tre. Här ser du hur länge resterna håller i kylen, och hur du får dem att hålla längre.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Hur länge håller <em>resterna</em>?",
+          "under": "Det du har lagat själv och ställt i kylen, inte det som har datum.",
+          "fra": "kokt ris",
+          "til": "<b>1</b> dygn"
+        },
+        {
+          "type": "tabell",
+          "tittel": "I kylskåpet",
+          "rader": [
+            [
+              "kokt ris",
+              "<b>1</b> dygn"
+            ],
+            [
+              "kokt fisk",
+              "<b>1–2</b> dagar"
+            ],
+            [
+              "kokt kyckling",
+              "<b>2–3</b> dagar"
+            ],
+            [
+              "kokt pasta",
+              "<b>2–3</b> dagar"
+            ],
+            [
+              "kokt potatis",
+              "<b>2–3</b> dagar"
+            ],
+            [
+              "soppa och gryta",
+              "<b>2–3</b> dagar"
+            ]
+          ],
+          "notis": "Ungefärliga tider. Luktar eller ser det konstigt ut, släng det."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Så håller de <em>längre</em>",
+          "rader": [
+            [
+              "kylskåpet",
+              "<b>4</b> °C"
+            ],
+            [
+              "in i kylen inom",
+              "<b>2</b> timmar"
+            ],
+            [
+              "värm tills det är",
+              "rykande hett"
+            ],
+            [
+              "värm upp",
+              "bara <b>en</b> gång"
+            ]
+          ],
+          "notis": "Ris ska kylas snabbt. Dela stora portioner i mindre burkar, så kallnar de fortare."
+        },
+        {
+          "type": "logo",
+          "prikk": "klokke",
+          "tittel": "Eller planera <em>resterna</em>.",
+          "under": "Lägg middagarna i veckomenyn i Matlyst, så ser du vad som ska ätas upp först."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "fryser": {
+      "etikett": "Frysen",
+      "ingress": "Köttfärs håller tre månader i frysen, nötkött ett helt år. Här är tiderna för kött, fisk, bakverk och rester, och vad du aldrig ska frysa.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Hur länge i <em>frysen</em>?",
+          "under": "Och vad som aldrig bör frysas.",
+          "fra": "köttfärs",
+          "til": "<b>3</b> mån"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Kött och fisk",
+          "rader": [
+            [
+              "nötkött",
+              "<b>12</b> mån"
+            ],
+            [
+              "kyckling",
+              "<b>12</b> mån"
+            ],
+            [
+              "fläsk",
+              "<b>6</b> mån"
+            ],
+            [
+              "köttfärs",
+              "<b>3</b> mån"
+            ],
+            [
+              "mager fisk",
+              "<b>6</b> mån"
+            ],
+            [
+              "lax och annan fet fisk",
+              "<b>3</b> mån"
+            ]
+          ],
+          "notis": "Tiderna gäller bästa kvalitet vid -18 °C."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Bakverk och rester",
+          "rader": [
+            [
+              "bröd och bullar",
+              "<b>3</b> mån"
+            ],
+            [
+              "kakor och småkakor",
+              "<b>3</b> mån"
+            ],
+            [
+              "soppa och gryta",
+              "<b>3</b> mån"
+            ],
+            [
+              "kokt ris",
+              "<b>1</b> mån"
+            ]
+          ],
+          "notis": "Tina i kylskåpet, inte på bänken."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Frys det, eller låt bli",
+          "rader": [
+            [
+              "riven ost",
+              "frys"
+            ],
+            [
+              "mogen banan",
+              "frys, till bakning"
+            ],
+            [
+              "färsk ingefära",
+              "frys, riv den fryst"
+            ],
+            [
+              "gurka och sallad",
+              "blir sladdrigt"
+            ],
+            [
+              "kokt potatis",
+              "blir vattnig"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "sno",
+          "tittel": "Eller planera <em>veckan</em>.",
+          "under": "Lägg middagarna i veckomenyn i Matlyst, så ser du vad som ska tinas till i morgon."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "airfryer": {
+      "etikett": "Airfryer",
+      "ingress": "Ugnsrecept i airfryern? Sänk värmen med 20 grader och korta tiden med 20 procent. Här är regeln och några exempel.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Ugnsrecept i <em>airfryern</em>?",
+          "under": "Regeln som räknar om tid och temperatur.",
+          "fra": "200 °C ugn",
+          "til": "<b>180</b> °C"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Regeln",
+          "rader": [
+            [
+              "temperatur",
+              "<b>20</b> °C lägre"
+            ],
+            [
+              "tid",
+              "<b>20</b> % kortare"
+            ],
+            [
+              "halvvägs",
+              "skaka korgen"
+            ],
+            [
+              "korgen",
+              "ett lager"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Exempel",
+          "rader": [
+            [
+              "200 °C, 25 min",
+              "<b>180</b> °C, <b>20</b> min"
+            ],
+            [
+              "220 °C, 30 min",
+              "<b>200</b> °C, <b>24</b> min"
+            ],
+            [
+              "kycklinglår",
+              "till <b>75</b> °C inuti"
+            ]
+          ],
+          "notis": "Ingen airfryer är den andra lik. Kolla lite före tiden första gången."
+        },
+        {
+          "type": "logo",
+          "prikk": "termometer",
+          "grader": [
+            20,
+            180
+          ],
+          "tittel": "Eller följ <em>steget</em>.",
+          "under": "Matlagningsläget i Matlyst visar ett steg i taget, i stor text."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "doble": {
+      "etikett": "Dubbel sats",
+      "ingress": "Ska du laga dubbel sats? Mjöl och smör tar du gånger två, men salt, kryddor och tid gör du inte. Här ser du vad du ska se upp med.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Inte allt ska <em>dubblas</em>.",
+          "under": "Vad du tar gånger två, och vad du ska se upp med.",
+          "fra": "2 × deg",
+          "til": "inte 2 × tid"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Gånger två",
+          "rader": [
+            [
+              "mjöl, socker och smör",
+              "× 2"
+            ],
+            [
+              "mjölk och vatten",
+              "× 2"
+            ],
+            [
+              "ägg",
+              "× 2, avrunda uppåt"
+            ],
+            [
+              "kött och grönsaker",
+              "× 2"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Se upp med",
+          "rader": [
+            [
+              "salt och kryddor",
+              "× 1,5, smaka av"
+            ],
+            [
+              "chili",
+              "× 1,5, smaka av"
+            ],
+            [
+              "vätska i grytan",
+              "lite mindre"
+            ],
+            [
+              "tillagningstid",
+              "kolla tidigare"
+            ],
+            [
+              "formen",
+              "använd två formar"
+            ]
+          ],
+          "notis": "En dubbel gryta kokar ihop långsammare, så den behöver mindre vätska än du tror."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Halv <em>sats</em>",
+          "rader": [
+            [
+              "½ ägg",
+              "<b>25</b> g vispat ägg"
+            ],
+            [
+              "½ tsk",
+              "<b>2,5</b> ml"
+            ],
+            [
+              "½ msk",
+              "<b>1½</b> tsk"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "drys",
+          "tittel": "Eller skala om <em>receptet</em>.",
+          "under": "Välj antal portioner i Matlyst, så räknar appen om alla mängder."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "eggtest": {
+      "etikett": "Ägg",
+      "ingress": "Lägg ägget i ett glas vatten. Sjunker det är det färskt. Flyter det är det gammalt. Här är testet, och hur ägg håller sig bäst.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Är ägget <em>färskt</em>?",
+          "under": "Ett glas vatten ger svaret.",
+          "fra": "ägget flyter",
+          "til": "gammalt"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Vattenglaset",
+          "rader": [
+            [
+              "lägger sig på botten",
+              "färskt"
+            ],
+            [
+              "står på högkant",
+              "använd snart"
+            ],
+            [
+              "flyter",
+              "gammalt, släng det"
+            ]
+          ],
+          "notis": "Ju äldre ägget blir, desto mer luft får det inuti. Därför flyter gamla ägg."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Förvaring",
+          "rader": [
+            [
+              "var",
+              "i kylskåpet"
+            ],
+            [
+              "tvätta",
+              "inte i förväg"
+            ],
+            [
+              "datumet",
+              "bäst före"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "egg",
+          "tittel": "Eller planera <em>veckan</em>.",
+          "under": "Lägg middagarna i veckomenyn i Matlyst, så ser du vad som ska ätas upp först."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    }
+  },
+  "da": {
+    "kjernetemp": {
+      "etikett": "Stegetermometer",
+      "ingress": "Kylling er færdig ved 75 grader, laks ved 50. Her er kernetemperaturerne for okse, lam, svin, kylling og fisk, så du slipper for at skære i kødet for at tjekke.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Hvornår er det <em>færdigt</em>?",
+          "under": "Kernetemperaturen siger det mere sikkert end uret.",
+          "fra": "kylling",
+          "til": "<b>75</b> °C"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Okse og lam",
+          "rader": [
+            [
+              "okse, rød",
+              "<b>52</b> °C"
+            ],
+            [
+              "okse, medium",
+              "<b>58</b> °C"
+            ],
+            [
+              "okse, gennemstegt",
+              "<b>70</b> °C"
+            ],
+            [
+              "lam, rosa",
+              "<b>60</b> °C"
+            ],
+            [
+              "lam, gennemstegt",
+              "<b>70</b> °C"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Svin, kylling og fisk",
+          "rader": [
+            [
+              "svinekød",
+              "<b>65–70</b> °C"
+            ],
+            [
+              "kylling",
+              "<b>75</b> °C"
+            ],
+            [
+              "hakket kød og fars",
+              "<b>75</b> °C"
+            ],
+            [
+              "laks",
+              "<b>50</b> °C"
+            ],
+            [
+              "torsk og hvid fisk",
+              "<b>50</b> °C"
+            ]
+          ],
+          "notis": "Lad kødet hvile i 10 minutter. Temperaturen stiger et par grader, mens det hviler, så tag det ud lidt før."
+        },
+        {
+          "type": "logo",
+          "prikk": "termometer",
+          "grader": [
+            20,
+            75
+          ],
+          "tittel": "Eller følg <em>trinnet</em>.",
+          "under": "Madlavningstilstanden i Matlyst viser ét trin ad gangen, med stor skrift."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "egg": {
+      "etikett": "Ingen æg?",
+      "ingress": "Løbet tør for æg midt i bagningen? Banan, æblemos, hørfrø eller kikærtevand kan tage over, men ikke i alt. Her kan du se, hvad der passer hvor, og hvornår du hellere skal vælge en anden opskrift.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Ingen æg? <em>Bag alligevel.</em>",
+          "under": "Det her kan erstatte ét æg i kager, muffins og pandekager.",
+          "fra": "1 æg",
+          "til": "<b>½</b> banan"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Erstat <em>1 æg</em>",
+          "rader": [
+            [
+              "moset banan",
+              "<b>½</b> banan<small>ca. 60 g</small>"
+            ],
+            [
+              "æblemos",
+              "<b>60</b> g"
+            ],
+            [
+              "yoghurt naturel",
+              "<b>60</b> g"
+            ],
+            [
+              "knuste hørfrø",
+              "<b>1</b> spsk + <b>3</b> spsk vand"
+            ],
+            [
+              "chiafrø",
+              "<b>1</b> spsk + <b>3</b> spsk vand"
+            ],
+            [
+              "kikærtevand (aquafaba)",
+              "<b>3</b> spsk"
+            ],
+            [
+              "natron og eddike",
+              "<b>1</b> tsk + <b>1</b> spsk"
+            ]
+          ],
+          "notis": "Hørfrø og chiafrø skal trække i vandet i 5 minutter, til det tykner."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Hvad passer <em>hvor</em>?",
+          "rader": [
+            [
+              "brownies",
+              "banan"
+            ],
+            [
+              "muffins",
+              "æblemos"
+            ],
+            [
+              "pandekager",
+              "yoghurt"
+            ],
+            [
+              "småkager",
+              "hørfrø"
+            ],
+            [
+              "luftige kager",
+              "natron og eddike"
+            ],
+            [
+              "marengs",
+              "kikærtevand"
+            ]
+          ],
+          "notis": "Bananen smager igennem. Vil du undgå det, så tag æblemos."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Grænsen",
+          "rader": [
+            [
+              "1 æg",
+              "byt frit"
+            ],
+            [
+              "2 æg",
+              "går som regel"
+            ],
+            [
+              "3 eller flere",
+              "skift opskrift"
+            ]
+          ],
+          "notis": "Æg holder kagen sammen. Jo flere æg opskriften har, desto mere af strukturen skal erstatningen bære."
+        },
+        {
+          "type": "logo",
+          "prikk": "egg",
+          "tittel": "Eller spørg <em>Matlyst</em>.",
+          "under": "Spørg i opskriften, hvad du kan skifte ud, så svarer appen ud fra netop den opskrift."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "rester": {
+      "etikett": "Rester",
+      "ingress": "Kogte ris holder et døgn. Kylling, pasta og gryderet to til tre dage. Her kan du se, hvor længe resterne holder i køleskabet, og hvordan de holder længere.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Hvor længe holder <em>resterne</em>?",
+          "under": "Det, du selv har lavet og sat i køleskabet, ikke det med dato på.",
+          "fra": "kogte ris",
+          "til": "<b>1</b> døgn"
+        },
+        {
+          "type": "tabell",
+          "tittel": "I køleskabet",
+          "rader": [
+            [
+              "kogte ris",
+              "<b>1</b> døgn"
+            ],
+            [
+              "kogt fisk",
+              "<b>1–2</b> dage"
+            ],
+            [
+              "kogt kylling",
+              "<b>2–3</b> dage"
+            ],
+            [
+              "kogt pasta",
+              "<b>2–3</b> dage"
+            ],
+            [
+              "kogte kartofler",
+              "<b>2–3</b> dage"
+            ],
+            [
+              "suppe og gryderet",
+              "<b>2–3</b> dage"
+            ]
+          ],
+          "notis": "Vejledende tider. Lugter eller ser det forkert ud, så smid det ud."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Sådan holder de <em>længere</em>",
+          "rader": [
+            [
+              "køleskabet",
+              "højst <b>5</b> °C"
+            ],
+            [
+              "i køleskabet inden for",
+              "<b>2</b> timer"
+            ],
+            [
+              "varm op, til det er",
+              "rygende varmt"
+            ],
+            [
+              "varm op",
+              "kun <b>én</b> gang"
+            ]
+          ],
+          "notis": "Ris skal køles hurtigt ned. Del store portioner i mindre bøtter, så bliver de hurtigere kolde."
+        },
+        {
+          "type": "logo",
+          "prikk": "klokke",
+          "tittel": "Eller planlæg <em>resterne</em>.",
+          "under": "Læg aftensmaden i madplanen i Matlyst, så kan du se, hvad der skal spises først."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "fryser": {
+      "etikett": "Fryseren",
+      "ingress": "Hakket kød holder tre måneder i fryseren, oksekød et helt år. Her er tiderne for kød, fisk, bagværk og rester, og hvad du aldrig bør fryse.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Hvor længe i <em>fryseren</em>?",
+          "under": "Og hvad du aldrig bør fryse.",
+          "fra": "hakket kød",
+          "til": "<b>3</b> mdr."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Kød og fisk",
+          "rader": [
+            [
+              "oksekød",
+              "<b>12</b> mdr."
+            ],
+            [
+              "kylling",
+              "<b>12</b> mdr."
+            ],
+            [
+              "svinekød",
+              "<b>6</b> mdr."
+            ],
+            [
+              "hakket kød",
+              "<b>3</b> mdr."
+            ],
+            [
+              "mager fisk",
+              "<b>6</b> mdr."
+            ],
+            [
+              "laks og anden fed fisk",
+              "<b>3</b> mdr."
+            ]
+          ],
+          "notis": "Tiderne er vejledende for bedste kvalitet ved -18 °C."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Bagværk og rester",
+          "rader": [
+            [
+              "brød og boller",
+              "<b>3</b> mdr."
+            ],
+            [
+              "kager og småkager",
+              "<b>3</b> mdr."
+            ],
+            [
+              "suppe og gryderet",
+              "<b>3</b> mdr."
+            ],
+            [
+              "kogte ris",
+              "<b>1</b> md."
+            ]
+          ],
+          "notis": "Tø op i køleskabet, ikke på køkkenbordet."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Frys det, eller lad være",
+          "rader": [
+            [
+              "revet ost",
+              "frys"
+            ],
+            [
+              "moden banan",
+              "frys, til bagning"
+            ],
+            [
+              "frisk ingefær",
+              "frys, riv den frossen"
+            ],
+            [
+              "agurk og salat",
+              "bliver slatten"
+            ],
+            [
+              "kogte kartofler",
+              "bliver vandede"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "sno",
+          "tittel": "Eller planlæg <em>ugen</em>.",
+          "under": "Læg aftensmaden i madplanen i Matlyst, så kan du se, hvad der skal tages op af fryseren i morgen."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "airfryer": {
+      "etikett": "Airfryer",
+      "ingress": "Ovnopskrift i airfryeren? Skru 20 grader ned, og skær 20 procent af tiden. Her er reglen og et par eksempler.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Ovnopskrift i <em>airfryeren</em>?",
+          "under": "Reglen, der omregner tid og temperatur.",
+          "fra": "200 °C ovn",
+          "til": "<b>180</b> °C"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Reglen",
+          "rader": [
+            [
+              "temperatur",
+              "<b>20</b> °C lavere"
+            ],
+            [
+              "tid",
+              "<b>20</b> % kortere"
+            ],
+            [
+              "halvvejs",
+              "ryst kurven"
+            ],
+            [
+              "kurven",
+              "ét lag"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Eksempler",
+          "rader": [
+            [
+              "200 °C, 25 min.",
+              "<b>180</b> °C, <b>20</b> min."
+            ],
+            [
+              "220 °C, 30 min.",
+              "<b>200</b> °C, <b>24</b> min."
+            ],
+            [
+              "kyllingelår",
+              "<b>75</b> °C inderst"
+            ]
+          ],
+          "notis": "Airfryere er forskellige. Tjek maden lidt før tid første gang."
+        },
+        {
+          "type": "logo",
+          "prikk": "termometer",
+          "grader": [
+            20,
+            180
+          ],
+          "tittel": "Eller følg <em>trinnet</em>.",
+          "under": "Madlavningstilstanden i Matlyst viser ét trin ad gangen, med stor skrift."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    },
+    "doble": {
+      "etikett": "Dobbelt portion",
+      "ingress": "Skal du lave dobbelt portion? Mel og smør ganger du med to, men salt, krydderier og tid gør du ikke. Her kan du se, hvad du skal passe på.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Ikke alt skal <em>fordobles</em>.",
+          "under": "Hvad du ganger med to, og hvad du skal passe på.",
+          "fra": "2 × dej",
+          "til": "ikke 2 × tid"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Gang med to",
+          "rader": [
+            [
+              "mel, sukker og smør",
+              "× 2"
+            ],
+            [
+              "mælk og vand",
+              "× 2"
+            ],
+            [
+              "æg",
+              "× 2, rund op"
+            ],
+            [
+              "kød og grøntsager",
+              "× 2"
+            ]
+          ]
+        },
+        {
+          "type": "tabell",
+          "tittel": "Pas på",
+          "rader": [
+            [
+              "salt og krydderier",
+              "× 1,5, smag til"
+            ],
+            [
+              "chili",
+              "× 1,5, smag til"
+            ],
+            [
+              "væske i gryden",
+              "lidt mindre"
+            ],
+            [
+              "tilberedningstid",
+              "tjek tidligere"
+            ],
+            [
+              "formen",
+              "brug to forme"
+            ]
+          ],
+          "notis": "En dobbelt gryde koger langsommere ind, så den skal have mindre væske, end du tror."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Halv <em>portion</em>",
+          "rader": [
+            [
+              "½ æg",
+              "<b>25</b> g pisket æg"
+            ],
+            [
+              "½ tsk",
+              "<b>2,5</b> ml"
+            ],
+            [
+              "½ spsk",
+              "<b>1½</b> tsk"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "drys",
+          "tittel": "Eller skaler <em>opskriften</em>.",
+          "under": "Vælg antal portioner i Matlyst, så omregner appen alle mængder."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp",
+        "05.webp"
+      ]
+    },
+    "eggtest": {
+      "etikett": "Æg",
+      "ingress": "Læg ægget i et glas vand. Synker det, er det friskt. Flyder det, er det gammelt. Her er testen, og hvordan æg holder sig bedst.",
+      "sider": [
+        {
+          "type": "forside",
+          "tittel": "Er ægget <em>friskt</em>?",
+          "under": "Et glas vand giver svaret.",
+          "fra": "ægget flyder",
+          "til": "gammelt"
+        },
+        {
+          "type": "tabell",
+          "tittel": "Vandglasset",
+          "rader": [
+            [
+              "synker og ligger ned",
+              "friskt"
+            ],
+            [
+              "står på højkant",
+              "brug det snart"
+            ],
+            [
+              "flyder",
+              "gammelt, smid det ud"
+            ]
+          ],
+          "notis": "Jo ældre ægget bliver, desto mere luft kommer der i det. Derfor flyder gamle æg."
+        },
+        {
+          "type": "tabell",
+          "tittel": "Opbevaring",
+          "rader": [
+            [
+              "hvor",
+              "i køleskabet"
+            ],
+            [
+              "vask",
+              "først lige før brug"
+            ],
+            [
+              "datoen",
+              "mindst holdbar til"
+            ]
+          ]
+        },
+        {
+          "type": "logo",
+          "prikk": "egg",
+          "tittel": "Eller planlæg <em>ugen</em>.",
+          "under": "Læg aftensmaden i madplanen i Matlyst, så kan du se, hvad der skal spises først."
+        }
+      ],
+      "bilder": [
+        "01.webp",
+        "02.webp",
+        "03.webp",
+        "04.webp"
+      ]
+    }
+  }
+}

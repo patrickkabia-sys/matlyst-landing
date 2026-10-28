@@ -11,5 +11,5 @@ const UNDERTEKST = {
 // Bildene er 800 × 1738 (App Store 6,9 tommer, nedskalert).
 export function appCta(lang, v, knapper) {
   const mappe = `/images/app/${lang}`;
-  return `<section class="app-cta"><figure class="app-cta-bilde"><img src="${mappe}/${v.bilde}-400.webp" srcset="${mappe}/${v.bilde}-400.webp 400w, ${mappe}/${v.bilde}-800.webp 800w" sizes="(min-width: 760px) 280px, 70vw" width="400" height="869" loading="lazy" decoding="async" alt="${v.bildeAlt}"></figure><div class="app-cta-tekst"><h2 class="disp">${v.appCtaTittel}</h2><p>${UNDERTEKST[lang]}</p>${knapper}</div></section>`;
+  return `<section class="app-cta"><figure class="app-cta-bilde"><img src="${mappe}/${v.bilde}-400.webp" srcset="${mappe}/${v.bilde}-400.webp 400w, ${mappe}/${v.bilde}-800.webp 800w" sizes="(min-width: 760px) 280px, 70vw" width="400" height="869" loading="lazy" decoding="async" alt="${v.bildeAlt}"></figure><div class="app-cta-tekst"><h2 class="disp">${v.appCtaTittel}</h2><p>${v.appCtaTekst ? `${v.appCtaTekst} ${UNDERTEKST[lang]}` : UNDERTEKST[lang]}</p>${knapper}</div></section>`;
 }

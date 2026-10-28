@@ -46,6 +46,8 @@ function lenketekst(html) {
 export function guider(lang) {
   return stierFraSitemap(SITEMAPER[lang])
     .filter((sti) => !UTELATT.has(sti))
+    // Bloggartiklene lenkes fra bloggforsiden og fra hverandre, ikke fra hver bunntekst.
+    .filter((sti) => !/^\/(?:[a-z]{2}\/)?blogg?\/[^/]+\/$/u.test(sti))
     .map((sti) => ({ sti, tekst: lenketekst(readFileSync(filFor(sti), 'utf8')) }));
 }
 

@@ -24,9 +24,13 @@ function hreflang(html) {
 }
 
 test('alle offentlige sidegrupper finnes på alle fire språk', () => {
-  const unntak = SIDEGRUPPER.filter(({ sider }) => Object.keys(sider).length !== 4);
+  // Bloggartiklene finnes bare der karusellen er laget (koketid: nb og en; egg: nb, sv og da),
+  // men alltid på norsk. Alle andre grupper skal ha alle fire språk.
+  const blogg = SIDEGRUPPER.filter(({ id }) => id.startsWith('blogg-'));
+  for (const gruppe of blogg) assert.ok(gruppe.sider.nb, `${gruppe.id} mangler norsk`);
+  const unntak = SIDEGRUPPER.filter(({ id, sider }) => Object.keys(sider).length !== 4 && !id.startsWith('blogg-'));
   assert.deepEqual(unntak.map(({ id }) => id), ['christine']);
-  for (const gruppe of SIDEGRUPPER.filter(({ id }) => id !== 'christine')) {
+  for (const gruppe of SIDEGRUPPER.filter(({ id }) => id !== 'christine' && !id.startsWith('blogg-'))) {
     assert.deepEqual(Object.keys(gruppe.sider).sort(), ['da', 'en', 'nb', 'sv'], gruppe.id);
   }
 });

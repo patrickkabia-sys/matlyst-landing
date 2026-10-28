@@ -178,6 +178,28 @@ footer .c{font-size:12px;color:var(--ink-faint)}
 .prose a{color:var(--ink);text-decoration:underline;text-underline-offset:2px}
 .page-cta{text-align:center;padding:48px 24px 8px}
 .page-cta .store-badges{justify-content:center}
+/* Bloggen: karusellene som artikler (scripts/blogg.mjs). */
+.blogg-artikkel .eyebrow a{color:inherit;text-decoration:none}
+.blogg-forside{max-width:480px;margin:8px auto 0;padding:0 24px}
+.blogg-forside img,.blogg-galleri img,.blogg-kort img{display:block;width:100%;height:auto;border-radius:18px}
+.blogg-tabell{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:16px}
+.blogg-tabell th,.blogg-tabell td{padding:12px 0;border-top:1px solid var(--line-soft);text-align:left;vertical-align:top}
+.blogg-tabell th{font-weight:400;color:var(--ink-soft);padding-right:16px}
+.blogg-tabell td{text-align:right;white-space:nowrap}
+.blogg-tabell b{font-weight:600;color:var(--ink)}
+.blogg-tabell .merknad{display:block;font-size:13px;color:var(--ink-soft)}
+.blogg-galleri{max-width:960px;margin:48px auto 0;padding:0 24px}
+.blogg-galleri h2,.blogg-flere h2{font-size:22px;margin-bottom:14px}
+.blogg-galleri-rad{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+.blogg-galleri-rad img{flex:0 0 min(72vw,300px);scroll-snap-align:start}
+.blogg-flere{max-width:720px;margin:48px auto 0;padding:0 24px}
+.blogg-flere ul{list-style:none;padding:0;margin:0}
+.blogg-flere li{border-top:1px solid var(--line-soft)}
+.blogg-flere a{display:block;padding:12px 0;color:var(--ink);text-decoration:none}
+.blogg-kort{list-style:none;max-width:960px;margin:24px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:24px}
+.blogg-kort a{display:block;color:var(--ink);text-decoration:none}
+.blogg-kort span{display:block;margin-top:10px;font-size:16px;line-height:1.35}
+@media (max-width:640px){.blogg-tabell td{white-space:normal}}
 /* Idélister på middagssidene (scripts/middagssider.mjs). */
 .ide-liste{list-style:none;padding:0;margin:0 0 8px}
 .ide-liste li{padding:12px 0;border-top:1px solid var(--line-soft)}
