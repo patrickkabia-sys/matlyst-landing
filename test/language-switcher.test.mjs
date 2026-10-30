@@ -5,13 +5,13 @@ import vm from 'node:vm';
 
 const source = readFileSync(new URL('../language-switcher.js', import.meta.url), 'utf8');
 
-function kjor({ search = '', hash = '', href = '/sv/avregistrera/?sprak=sv' } = {}) {
+function kjor({ search = '', hash = '', href = '/sv/avregistrera/', hreflang = 'sv' } = {}) {
   const lager = new Map();
   let cookie = '';
   let klikk = null;
   const lenke = {
     href,
-    getAttribute: (navn) => (navn === 'href' ? lenke.href : null),
+    getAttribute: (navn) => (navn === 'href' ? lenke.href : navn === 'hreflang' ? hreflang : null),
     setAttribute: (navn, verdi) => { if (navn === 'href') lenke.href = verdi; },
     addEventListener: (navn, handler) => { if (navn === 'click') klikk = handler; },
   };
@@ -34,8 +34,15 @@ test('språkbytte bevarer signerte parametere og anker', () => {
   assert.equal(side.lenke.href, '/sv/avregistrera/?u=bruker&s=signatur&sprak=sv#status');
 });
 
+test('vanlige sider beholder den rene adressen i lenka', () => {
+  const side = kjor({ href: '/da/', hreflang: 'da', hash: '#funksjoner' });
+  assert.equal(side.lenke.href, '/da/');
+  side.klikk();
+  assert.equal(side.lager.get('matlyst-sprak'), 'da');
+});
+
 test('valg lagres før nettleseren følger lenken', () => {
-  const side = kjor({ href: '/?sprak=nb' });
+  const side = kjor({ href: '/', hreflang: 'nb' });
   side.klikk();
   assert.equal(side.lager.get('matlyst-sprak'), 'nb');
   assert.equal(side.lager.get('matlyst-sprak-vurdert'), '1');
@@ -43,7 +50,7 @@ test('valg lagres før nettleseren følger lenken', () => {
 });
 
 test('direkte språkparameter lagres også på tekniske sider', () => {
-  const side = kjor({ search: '?code=abc&sprak=da', href: '/da/tiktok-auth/?sprak=da' });
+  const side = kjor({ search: '?code=abc&sprak=da', href: '/da/tiktok-auth/', hreflang: 'da' });
   assert.equal(side.lager.get('matlyst-sprak'), 'da');
   assert.equal(side.lager.get('matlyst-sprak-vurdert'), '1');
   assert.equal(side.lenke.href, '/da/tiktok-auth/?code=abc&sprak=da');

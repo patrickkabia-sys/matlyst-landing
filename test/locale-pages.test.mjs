@@ -184,10 +184,11 @@ test('språkvelgeren peker på samme sides motstykker', () => {
       assert.equal((html.match(/role="navigation" aria-label="(?:Språk|Sprog|Language)"/gu) ?? []).length, 2, relative(root, fil));
       assert.equal((html.match(/aria-current="page"/gu) ?? []).length, 2, relative(root, fil));
       for (const [sprak, href] of Object.entries(gruppe.sider)) {
-        const lenke = `href="${href}?sprak=${sprak}"`;
+        const lenke = `href="${href}" lang="${sprak}"`;
         assert.equal(html.split(lenke).length - 1, 2, `${relative(root, fil)}: ${sprak}`);
       }
-      assert.match(html, new RegExp(`href="${regexEsc(sti)}\\?sprak=${aktivtSprak}"[^>]*aria-current="page"`), relative(root, fil));
+      assert.match(html, new RegExp(`href="${regexEsc(sti)}" lang="${aktivtSprak}"[^>]*aria-current="page"`), relative(root, fil));
+      assert.doesNotMatch(html, /href="[^"]*\?sprak=/u, `${relative(root, fil)}: lenke med ?sprak=`);
     }
   }
 });

@@ -60,13 +60,13 @@ test('toppvelgeren og bunnvelgeren virker med tastatur', async ({ browser, baseU
   await dansk.focus();
   await expect(dansk).toBeFocused();
   await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(`${baseURL}/da/?sprak=da`);
+  await expect(page).toHaveURL(`${baseURL}/da/`);
 
   const norsk = page.locator('.language-switcher-bottom a[aria-label="Norsk"]');
   await norsk.focus();
   await expect(norsk).toBeFocused();
   await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(`${baseURL}/?sprak=nb`);
+  await expect(page).toHaveURL(`${baseURL}/`);
   await context.close();
 });
 
@@ -74,7 +74,7 @@ test('velgeren bruker riktig motstykke på personvernsiden', async ({ browser, b
   const { context, page } = await nySide(browser, 'en-US');
   await page.goto('/personvern.html');
   await page.locator('.language-switcher-bottom a[aria-label="Svenska"]').click();
-  await expect(page).toHaveURL(`${baseURL}/sv/integritet/?sprak=sv`);
+  await expect(page).toHaveURL(`${baseURL}/sv/integritet/`);
   await context.close();
 });
 
