@@ -12,7 +12,11 @@
     } catch (e) {}
   }
 
+  // Lenkene peker på de rene adressene (som canonical), så Google ikke finner
+  // en ?sprak=-variant av hver side. Språket står i hreflang.
   function sprakFraLenke(lenke) {
+    var sprak = lenke.getAttribute('hreflang');
+    if (sprak) return sprak;
     try {
       return new URL(lenke.getAttribute('href'), global.location.origin).searchParams.get('sprak');
     } catch (e) {
@@ -20,11 +24,14 @@
     }
   }
 
+  // Bare sider med egne parametere (avmeldingstoken, TikTok-kode) trenger dem
+  // med videre. Da følger ?sprak= med, slik at valget overlever omlastingen.
   function medGjeldendeParametere(lenke, sprak) {
     try {
       var maal = new URL(lenke.getAttribute('href'), global.location.origin);
       var parametere = new URLSearchParams(global.location.search);
       parametere.delete('sprak');
+      if (!parametere.toString()) return;
       maal.search = parametere.toString();
       maal.searchParams.set('sprak', sprak);
       maal.hash = global.location.hash || '';

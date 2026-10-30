@@ -757,7 +757,7 @@ function sprakvelger(gruppe, aktivtSprak, plassering) {
   const lenker = Object.entries(gruppe.sider).map(([sprak, href]) => {
     const meta = sprakvelgerMeta[sprak];
     const aktiv = sprak === aktivtSprak ? ' aria-current="page"' : '';
-    return `<a href="${href}?sprak=${sprak}" lang="${sprak}" hreflang="${sprak}" aria-label="${meta.navn}"${aktiv}>${meta.etikett}</a>`;
+    return `<a href="${href}" lang="${sprak}" hreflang="${sprak}" aria-label="${meta.navn}"${aktiv}>${meta.etikett}</a>`;
   }).join('');
   return `<span class="language-switcher language-switcher-${plassering}" role="navigation" aria-label="${sprakvelgerMeta[aktivtSprak].gruppe}">${lenker}</span>`;
 }
