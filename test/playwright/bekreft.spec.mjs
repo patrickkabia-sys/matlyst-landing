@@ -19,9 +19,10 @@ const ERSTATNING = process.env.BEKREFT_FIL ? readFileSync(process.env.BEKREFT_FI
 
 async function åpne(browser, query, locale = 'nb-NO') {
   const ctx = await browser.newContext({ locale })
-  const side = await ctx.newPage()
   const eksterne = []
-  await side.route('**/*', (rute) => {
+  // context.route og ikke page.route: page.route dekker ikke første forespørsel
+  // fra en popup (playwright-core types.d.ts, «route»), så window.open(u) slapp før.
+  await ctx.route('**/*', (rute) => {
     const url = rute.request().url()
     if (ERSTATNING && new URL(url).pathname === '/bekreft/') {
       return rute.fulfill({ status: 200, contentType: 'text/html; charset=utf-8', body: ERSTATNING })
@@ -30,10 +31,34 @@ async function åpne(browser, query, locale = 'nb-NO') {
     eksterne.push(url)
     return rute.abort()
   })
+  const side = await ctx.newPage()
+  // Alle sider som åpnes etter denne er popuper eller nye faner. Sida skal aldri åpne noen.
+  const nyeSider = []
+  ctx.on('page', (p) => nyeSider.push(p.url() || 'about:blank'))
   await side.goto(`/bekreft/${query}`)
   await side.waitForLoadState('networkidle')
-  await side.waitForTimeout(300)
-  return { ctx, side, eksterne }
+  // Lenge nok til at forsinkede triks (setTimeout, requestIdleCallback) slår til.
+  await side.waitForTimeout(1000)
+  return { ctx, side, eksterne, nyeSider }
+}
+
+// Brukeren bytter app eller lukker fanen. En lytter på visibilitychange eller
+// pagehide som gjør fetch(u, { keepalive: true }) skal også fanges.
+async function skjul(side) {
+  await side.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' })
+    Object.defineProperty(document, 'hidden', { configurable: true, get: () => true })
+    document.dispatchEvent(new Event('visibilitychange'))
+    window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: false }))
+  })
+  await side.waitForTimeout(500)
+}
+
+// Siste sjekk i hver test: skjul sida, og krev null forespørsler og null nye sider.
+async function ingentingHentet(side, eksterne, nyeSider) {
+  await skjul(side)
+  expect(rørerSupabase(eksterne)).toEqual([])
+  expect(nyeSider).toEqual([])
 }
 
 // Alt i DOM-en som peker ut av sida, bortsett fra selve knappen.
@@ -72,13 +97,13 @@ const GYLDIGE = [
 
 for (const [navn, query, locale, knappetekst] of GYLDIGE) {
   test(`gyldig lenke (${navn}): knappen har nøyaktig lenka, og ingenting hentes før trykket`, async ({ browser, baseURL }) => {
-    const { ctx, side, eksterne } = await åpne(browser, query, locale)
+    const { ctx, side, eksterne, nyeSider } = await åpne(browser, query, locale)
     const knapp = side.locator('#knapp')
     await expect(knapp).toBeVisible()
     await expect(knapp).toHaveText(knappetekst)
     expect(await knapp.getAttribute('href')).toBe(GOD)
     expect(await knapp.getAttribute('rel')).toBe('noreferrer noopener')
-    expect(rørerSupabase(eksterne)).toEqual([])
+    await ingentingHentet(side, eksterne, nyeSider)
     expect(await utpekere(side)).toEqual([])
     expect(side.url().startsWith(`${baseURL}/bekreft/`)).toBe(true)
     await ctx.close()
@@ -101,28 +126,29 @@ const UGYLDIGE = [
 
 for (const [navn, u] of UGYLDIGE) {
   test(`ugyldig lenke (${navn}): ingen knapp, feilmelding`, async ({ browser }) => {
-    const { ctx, side, eksterne } = await åpne(browser, `?u=${encodeURIComponent(u)}`)
+    const { ctx, side, eksterne, nyeSider } = await åpne(browser, `?u=${encodeURIComponent(u)}`)
     expect(await side.locator('#knapp').getAttribute('href')).toBeNull()
     await expect(side.locator('#knapp')).toBeHidden()
     await expect(side.locator('#feil')).toBeVisible()
     await expect(side.locator('#feilTittel')).toHaveText('Denne lenken virker ikke')
-    expect(rørerSupabase(eksterne)).toEqual([])
+    await ingentingHentet(side, eksterne, nyeSider)
     expect(await utpekere(side)).toEqual([])
     await ctx.close()
   })
 }
 
 test('ukodet u (kuttet ved første &): ingen knapp, feilmelding', async ({ browser }) => {
-  const { ctx, side, eksterne } = await åpne(browser, `?u=${GOD}`)
+  const { ctx, side, eksterne, nyeSider } = await åpne(browser, `?u=${GOD}`)
   expect(await side.locator('#knapp').getAttribute('href')).toBeNull()
   await expect(side.locator('#feil')).toBeVisible()
-  expect(rørerSupabase(eksterne)).toEqual([])
+  await ingentingHentet(side, eksterne, nyeSider)
   await ctx.close()
 })
 
 test('manglende u: ingen knapp, feilmelding', async ({ browser }) => {
-  const { ctx, side } = await åpne(browser, '')
+  const { ctx, side, eksterne, nyeSider } = await åpne(browser, '')
   expect(await side.locator('#knapp').getAttribute('href')).toBeNull()
   await expect(side.locator('#feil')).toBeVisible()
+  await ingentingHentet(side, eksterne, nyeSider)
   await ctx.close()
 })
