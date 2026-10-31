@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bekreft e-postadressen | Matlyst</title>
+  <meta name="description" content="Bekreft e-postadressen til Matlyst-kontoen din.">
+  <!-- ⚠️ Denne sida skal ALDRI indekseres: adressen bærer et engangstoken. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#F7F3EC">
+  <link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="stylesheet" href="/avmeld.css">
+  <style>
+    /* .avmeld-rot a vinner over .avmeld-knapp på spesifisitet, og terrakotta
+       bak krem gir bare 4,06:1. Knappen bruker sidens --accent-text-tone. */
+    .avmeld-rot a.avmeld-knapp { color:var(--cream); background:#B34824; text-decoration:none; }
+    .bekreft-fot { max-width:600px; margin:0 auto; padding:0 32px 48px; font-size:14px; color:var(--ink-soft); }
+    .bekreft-fot p + p { margin-top:6px; }
+    .avmeld-rot .bekreft-fot a { color:#B34824; }
+    .bekreft-fot a { display:inline-block; padding:12px 0; margin:-12px 0; }
+    @media (max-width:640px) { .bekreft-fot { padding:0 22px 40px; } }
+  </style>
+</head>
+<!--
+  Mellomlanding for bekreftelseslenken i e-posten (oppgave 5d).
+
+  Hvorfor: Supabase-lenken (/auth/v1/verify?token=…) er et engangstoken.
+  Lenkeskannere og forhåndshentere i e-postklienter åpner lenka før brukeren
+  trykker, og da er den brukt opp når mennesket kommer. E-posten peker derfor
+  hit med den ekte lenka i ?u=, og først et trykk på knappen åpner den.
+
+  ⚠️ Sida får ALDRI åpne lenka selv: ingen meta refresh, ingen location-
+  tilordning, ingen fetch, ingen prefetch. Knappen er en vanlig <a> uten href i
+  HTML-en; href settes bare når u peker til prosjektets /auth/v1/verify.
+  Vokter: test/bekreftLanding.test.ts i app-repoet.
+-->
+<body class="avmeld-rot">
+  <nav>
+    <a class="nav-brand" href="/">Mat<em>lyst</em></a>
+  </nav>
+
+  <main class="avmeld-doc">
+    <section id="klar" hidden>
+      <h1 class="avmeld-title" id="tittel"></h1>
+      <p class="avmeld-intro" id="tekst"></p>
+      <div class="avmeld-kort">
+        <a class="avmeld-knapp" id="knapp" rel="noreferrer noopener"></a>
+      </div>
+    </section>
+    <section id="feil" hidden>
+      <h1 class="avmeld-title" id="feilTittel"></h1>
+      <p class="avmeld-intro" id="feilTekst"></p>
+    </section>
+    <noscript>
+      <h1 class="avmeld-title">Nettleseren kjører ikke JavaScript</h1>
+      <p class="avmeld-intro">Åpne lenken fra e-posten i en vanlig nettleser, så får du knappen som bekrefter e-postadressen.</p>
+    </noscript>
+  </main>
+
+  <footer class="bekreft-fot">
+    <p><span id="sporsmal"></span> <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a></p>
+    <p>© Matlyst</p>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var VERT = 'https://uaryzmqvoqljjwqvgzoi.supabase.co';
+    var PREFIKS = 'https://uaryzmqvoqljjwqvgzoi.supabase.co/auth/v1/verify';
+
+    var TEKSTER = {
+      nb: {
+        side: 'Bekreft e-postadressen | Matlyst',
+        tittel: 'Nesten ferdig',
+        tekst: 'Trykk på knappen for å bekrefte e-postadressen din, så kommer du tilbake til Matlyst.',
+        knapp: 'Bekreft e-postadressen',
+        feilTittel: 'Denne lenken virker ikke',
+        feilTekst: 'En bit av lenken kan ha falt bort på veien. Åpne den på nytt fra e-posten, eller be om en ny bekreftelse i appen.',
+        sporsmal: 'Spørsmål? Skriv til'
+      },
+      sv: {
+        side: 'Bekräfta e-postadressen | Matlyst',
+        tittel: 'Nästan klart',
+        tekst: 'Tryck på knappen för att bekräfta din e-postadress, så kommer du tillbaka till Matlyst.',
+        knapp: 'Bekräfta e-postadressen',
+        feilTittel: 'Länken fungerar inte',
+        feilTekst: 'En del av länken kan ha fallit bort på vägen. Öppna den igen från e-postmeddelandet, eller be om en ny bekräftelse i appen.',
+        sporsmal: 'Frågor? Skriv till'
+      },
+      da: {
+        side: 'Bekræft e-mailadressen | Matlyst',
+        tittel: 'Næsten færdig',
+        tekst: 'Tryk på knappen for at bekræfte din e-mailadresse, så kommer du tilbage til Matlyst.',
+        knapp: 'Bekræft e-mailadressen',
+        feilTittel: 'Linket virker ikke',
+        feilTekst: 'En del af linket kan være faldet af undervejs. Åbn det igen fra e-mailen, eller bed om en ny bekræftelse i appen.',
+        sporsmal: 'Spørgsmål? Skriv til'
+      },
+      en: {
+        side: 'Confirm your email address | Matlyst',
+        tittel: 'Almost there',
+        tekst: 'Tap the button to confirm your email address and head back to Matlyst.',
+        knapp: 'Confirm email address',
+        feilTittel: 'This link doesn’t work',
+        feilTekst: 'Part of the link may have gotten lost along the way. Open it again from the email, or request a new confirmation in the app.',
+        sporsmal: 'Questions? Email'
+      }
+    };
+
+    function sprakFra(kode) {
+      var k = String(kode || '').toLowerCase().split(/[-_]/)[0];
+      if (k === 'nb' || k === 'no' || k === 'nn') return 'nb';
+      if (k === 'sv' || k === 'da' || k === 'en') return k;
+      return null;
+    }
+
+    function velgSprak(q) {
+      var fraAdresse = sprakFra(q.get('lang'));
+      if (fraAdresse) return fraAdresse;
+      var liste = (navigator.languages && navigator.languages.length)
+        ? navigator.languages : [navigator.language];
+      for (var i = 0; i < liste.length; i++) {
+        var s = sprakFra(liste[i]);
+        if (s) return s;
+      }
+      return 'nb';
+    }
+
+    // Bare prosjektets egen verify-lenke slipper gjennom. Prefikset sjekkes på
+    // strengen, og URL-parseren bekrefter vert og sti, så verken
+    // «…supabase.co.annen.no» eller «…/verifyX» passerer.
+    function gyldigLenke(u) {
+      if (typeof u !== 'string' || u.indexOf(PREFIKS + '?') !== 0) return false;
+      if (/[\s"'<>\\]/.test(u)) return false;
+      try {
+        var p = new URL(u);
+        // token og type må være med. Mangler de, ble lenka kuttet ved første
+        // «&» fordi e-postmalen ikke kodet den, og da hjelper ikke knappen.
+        return p.protocol === 'https:' && p.origin === VERT && p.pathname === '/auth/v1/verify'
+          && Boolean(p.searchParams.get('token')) && Boolean(p.searchParams.get('type'));
+      } catch (e) {
+        return false;
+      }
+    }
+
+    // URLSearchParams.get dekoder én gang. Lenka dekodes ikke en gang til.
+    var q = new URLSearchParams(window.location.search);
+    var sprak = velgSprak(q);
+    var t = TEKSTER[sprak];
+    document.documentElement.lang = sprak;
+    document.title = t.side;
+    document.getElementById('sporsmal').textContent = t.sporsmal;
+
+    var u = q.get('u');
+    if (gyldigLenke(u)) {
+      document.getElementById('tittel').textContent = t.tittel;
+      document.getElementById('tekst').textContent = t.tekst;
+      var knapp = document.getElementById('knapp');
+      knapp.textContent = t.knapp;
+      knapp.setAttribute('href', u);
+      document.getElementById('klar').hidden = false;
+    } else {
+      document.getElementById('feilTittel').textContent = t.feilTittel;
+      document.getElementById('feilTekst').textContent = t.feilTekst;
+      document.getElementById('feil').hidden = false;
+    }
+  }());
+  </script>
+</body>
+</html>
