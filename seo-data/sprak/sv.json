@@ -45,5 +45,13 @@
     "bruk-det-jeg-har": "/sv/recept-pa-ingredienser/",
     "kokemodus": "/sv/"
   },
+  "autoBlogg": {
+    "faqTittel": "Frågor och svar",
+    "kilderTittel": "Källor",
+    "lesOgsåTittel": "Läs också",
+    "indeksTittel": "Nya artiklar",
+    "llmsTittel": "Automatiska artiklar",
+    "llmsSprak": "Svenska"
+  },
   "stoppord": ["och", "inte", "att", "är", "finns", "många", "sedan", "gärna", "några", "därför", "också", "vara", "vill", "hur", "vilka", "varje", "dessa", "innan", "efteråt", "medan", "över", "ungefär", "ändå", "ofta", "lättare", "behöver", "använder", "mycket", "något", "kommer"]
 }

@@ -45,5 +45,13 @@
     "bruk-det-jeg-har": "/hva-kan-jeg-lage/",
     "kokemodus": "/"
   },
+  "autoBlogg": {
+    "faqTittel": "Spørsmål og svar",
+    "kilderTittel": "Kilder",
+    "lesOgsåTittel": "Les også",
+    "indeksTittel": "Nye artikler",
+    "llmsTittel": "Auto-artikler",
+    "llmsSprak": "Norsk"
+  },
   "stoppord": ["hva", "etter", "også", "være", "noen", "noe", "nå", "mye", "hvordan", "bruker", "bruk", "gjør", "trenger", "fortsatt", "hver", "rundt", "gjennom", "mellom", "omtrent", "likevel", "underveis", "senere", "begynner", "vanligvis", "først", "gjerne", "ellers", "isteden", "samtidig", "dersom"]
 }

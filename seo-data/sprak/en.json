@@ -46,5 +46,13 @@
     "bruk-det-jeg-har": "/en/recipes-by-ingredients/",
     "kokemodus": "/en/"
   },
+  "autoBlogg": {
+    "faqTittel": "Questions and answers",
+    "kilderTittel": "Sources",
+    "lesOgsåTittel": "Related articles",
+    "indeksTittel": "New articles",
+    "llmsTittel": "Auto articles",
+    "llmsSprak": "English"
+  },
   "stoppord": ["the", "and", "with", "before", "into", "use", "them", "your", "what", "first", "when", "which", "should", "some", "can", "you", "have", "already", "then", "after", "while", "than", "where", "from", "that", "this", "will", "would", "could", "more", "most", "less", "each", "other", "around"]
 }
