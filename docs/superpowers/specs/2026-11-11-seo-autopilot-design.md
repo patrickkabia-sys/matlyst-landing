@@ -47,7 +47,7 @@ Den inneholder aldri søkeord, klikk, visninger, score eller andre måledata.
 1. Offisielle kilder angitt i bestillingen hentes og knyttes til artikkelens `kilder`; deretter kjøres `vern.mjs`/`sjekkFast` mot nettstedet.
 2. En gransking med `beslutning`, `grunner` og `artikkel_sha256` må være godkjent. Hashen er SHA-256 av artikkelfilens eksakte byteinnhold da den ble gransket. Endres filen, blir grunnkoden `gransking-gjelder-annen-versjon`.
 
-Godkjent levering skriver `blogg-kilde/auto/<sprak>/<slug>.json` med publiseringsdato, oppdaterer `publisert.json` og dagens logg, oppdaterer den private køen og sletter bestillingen. Avvist levering skriver utkastet under `seo-data/avvist/`, oppdaterer logg og sperrer etter tre avvisninger på rad. Exit-koder er 0 levert, 1 avvist og 2 ugyldig inndata.
+Godkjent levering skriver `blogg-kilde/auto/<sprak>/<slug>.json` med publiseringsdato, oppdaterer `publisert.json` og dagens logg, oppdaterer den private køen og sletter bestillingen. Avvist levering skriver utkastet og bare grunnkoder under `seo-data/avvist/`; detaljerte, rensede grunner vises bare lokalt i terminalen. En egen offentlig driftsstatus teller avvisninger på tvers av kjøringer og sperrer etter tre på rad, også samme dag. Exit-koder er 0 levert, 1 avvist og 2 ugyldig inndata.
 
 ## Offentlig og privat tilstand
 
@@ -63,7 +63,7 @@ Stdout/stderr viser bare antall, slug/bestillings-id og statuskoder. De viser al
 
 ## Workflow og drift
 
-Workflowen beholder cron, manuell start, concurrency, moduslesing og `contents: write`/`issues: write`. `av` avslutter før Node-oppsett. Aktiv kjøring krever `GSC_SERVICE_ACCOUNT_JSON` og `SEO_DATA_NOKKEL`, kjører motoren, committer bare `seo-data` til `main`, gjør én `git pull --rebase` før push og rapporterer i issuen. Den bygger, tester, publiserer eller oppretter ikke PR-er.
+Workflowen beholder cron, manuell start, concurrency, moduslesing og `contents: write`/`issues: write`. `av` avslutter før Node-oppsett. Aktiv kjøring krever `GSC_SERVICE_ACCOUNT_JSON` og `SEO_DATA_NOKKEL`, kjører motoren, committer bare `seo-data` til `main`, gjør én `git pull --rebase` før push og rapporterer i issuen. Den bygger, tester, publiserer eller oppretter ikke PR-er. Etter lokal levering kjører hovedøkta de eksisterende statiske generatorene og `npm test` før PR eller commit.
 
 Task 12 består av GSC-tjenestekontoen, `SEO_DATA_NOKKEL` som GitHub-hemmelighet og lokalt nøkkelringselement, samt `gh variable set SEO_AUTOPILOT --body utkast`.
 

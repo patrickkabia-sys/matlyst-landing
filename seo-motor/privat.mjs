@@ -101,6 +101,7 @@ function filsti(fil) {
 }
 
 export function lesPrivat(fil, nokkel) {
+  dekodNokkel(nokkel);
   if (!existsSync(fil)) return tomPrivatTilstand();
   try {
     const konvolutt = JSON.parse(readFileSync(fil, 'utf8'));

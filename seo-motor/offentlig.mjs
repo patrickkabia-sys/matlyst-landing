@@ -84,7 +84,6 @@ const former = {
     slug: SKALAR,
     emne_id: SKALAR,
     grunnkoder: [SKALAR],
-    granskingsgrunner: [SKALAR],
     artikkel,
   },
   sperre: {

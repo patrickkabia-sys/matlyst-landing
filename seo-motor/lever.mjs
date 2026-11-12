@@ -8,23 +8,23 @@ import {
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-import { datafil, lesJson, lesLogg, skrivJson } from './filer.mjs';
+import { datafil, lesJson, skrivJson } from './filer.mjs';
 import { hentBestillingskilder } from './kilder.mjs';
 import { byggLenker } from './lenker.mjs';
 import {
   kanPublisereDenneUken,
   osloDato,
   skalSperre,
-  tellAvvisningerPåRad,
 } from './modus.mjs';
-import { lesNettsted, slugify } from './nettsted.mjs';
-import { skrivOffentlig } from './offentlig.mjs';
+import { lesNettsted } from './nettsted.mjs';
+import { lesOffentlig, skrivOffentlig } from './offentlig.mjs';
 import {
   lesPrivat,
   lesSeoDataNokkel,
   skrivPrivat,
 } from './privat.mjs';
 import {
+  ArtikkelInndataSkjema,
   ArtikkelSkjema,
   BestillingSkjema,
   GranskSkjema,
@@ -40,8 +40,20 @@ export function artikkelSha256(fil) {
   return createHash('sha256').update(readFileSync(fil)).digest('hex');
 }
 
+function sha256Buffer(buffer) {
+  return createHash('sha256').update(buffer).digest('hex');
+}
+
 function lesJsonKrevd(fil) {
   return JSON.parse(readFileSync(fil, 'utf8'));
+}
+
+function lesArtikkelSnapshot(fil) {
+  const buffer = readFileSync(fil);
+  return {
+    artikkel: JSON.parse(buffer.toString('utf8')),
+    hash: sha256Buffer(buffer),
+  };
 }
 
 function lesSpråkfiler(rot) {
@@ -87,14 +99,73 @@ function rensArtikkel(artikkel) {
 }
 
 function vernkode(grunn) {
-  return `vern-${slugify(grunn) || 'avvist'}`;
+  const regler = [
+    ['skjema:', 'vern-skjema'],
+    ['unikhet:', 'vern-unikhet'],
+    ['forbudt:', 'vern-forbudt'],
+    ['slug:', 'vern-slug'],
+    ['overlapp:', 'vern-overlapp'],
+    ['intern lenke finnes ikke:', 'vern-intern-lenke'],
+    ['ukjent kilde_id:', 'vern-ukjent-kilde-id'],
+    ['tall:', 'vern-tall'],
+    ['språk:', 'vern-sprak'],
+    ['britisk ord', 'vern-britisk-ord'],
+    ['helseord:', 'vern-helseord'],
+  ];
+  return regler.find(([prefiks]) => grunn.startsWith(prefiks))?.[1] ?? 'vern-avvist';
 }
 
 function skrivLeveringslogg(rot, logg) {
   skrivOffentlig(rot, 'logg', `${logg.dato}.json`, logg);
 }
 
-function avvisLevering(rot, { bestilling, artikkel, dato, statuskode, grunnkoder, grunner }) {
+function rensSokedata(verdi, privat) {
+  const sokeord = privat.emneko
+    .map((emne) => emne.sokeord)
+    .filter((verdi) => typeof verdi === 'string' && verdi.length > 0);
+  const rensTekst = (tekst) => {
+    let renset = tekst;
+    for (const verdi of sokeord) {
+      const escaped = verdi.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
+      renset = renset.replace(new RegExp(escaped, 'giu'), 'sokedata-skjult');
+    }
+    return renset;
+  };
+  if (typeof verdi === 'string') return rensTekst(verdi);
+  if (Array.isArray(verdi)) return verdi.map((element) => rensSokedata(element, privat));
+  if (verdi && typeof verdi === 'object') {
+    return Object.fromEntries(
+      Object.entries(verdi).map(([nokkel, innhold]) => [nokkel, rensSokedata(innhold, privat)]),
+    );
+  }
+  return verdi;
+}
+
+function oppdaterAvvisningsrekke(rot, dato) {
+  const forrige = lesOffentlig(datafil(rot, 'logg/avvisningsrekke.json'), null);
+  const antall = forrige?.resultat === 'avvist-rekke'
+    ? (forrige.antall?.avvist ?? 0) + 1
+    : 1;
+  skrivOffentlig(rot, 'logg', 'avvisningsrekke.json', {
+    dato,
+    modus: 'lokal',
+    resultat: 'avvist-rekke',
+    statuskode: 'avvisning-registrert',
+    grunnkoder: [],
+    antall: { avvist: antall },
+  });
+  return antall;
+}
+
+function avvisLevering(rot, {
+  bestilling,
+  artikkel,
+  dato,
+  statuskode,
+  grunnkoder,
+  grunner,
+  privat,
+}) {
   const filnavn = `${dato}-${bestilling.slug}.json`;
   skrivOffentlig(rot, 'avvist', filnavn, {
     dato,
@@ -102,8 +173,7 @@ function avvisLevering(rot, { bestilling, artikkel, dato, statuskode, grunnkoder
     slug: bestilling.slug,
     emne_id: bestilling.emne_id,
     grunnkoder,
-    granskingsgrunner: grunner,
-    artikkel: rensArtikkel(artikkel),
+    artikkel: rensSokedata(rensArtikkel(artikkel), privat),
   });
   const logg = {
     dato,
@@ -117,7 +187,7 @@ function avvisLevering(rot, { bestilling, artikkel, dato, statuskode, grunnkoder
     antall: { avvist: 1 },
   };
   skrivLeveringslogg(rot, logg);
-  if (skalSperre(tellAvvisningerPåRad(lesLogg(rot)))) {
+  if (skalSperre(oppdaterAvvisningsrekke(rot, dato))) {
     const sperrekode = 'tre-avvisninger-pa-rad';
     skrivOffentlig(rot, 'sperre', 'sperre.json', { dato, grunnkode: sperrekode });
     logg.resultat = 'sperret';
@@ -125,11 +195,16 @@ function avvisLevering(rot, { bestilling, artikkel, dato, statuskode, grunnkoder
     logg.grunnkoder = [...grunnkoder, sperrekode];
     skrivLeveringslogg(rot, logg);
   }
-  return { exitCode: 1, statuskode, slug: bestilling.slug, grunner };
+  return {
+    exitCode: 1,
+    statuskode,
+    slug: bestilling.slug,
+    grunner: rensSokedata(grunner, privat),
+  };
 }
 
-function ugyldigInndata() {
-  return { exitCode: 2, statuskode: 'ugyldig-inndata' };
+function ugyldigInndata(statuskode = 'ugyldig-inndata') {
+  return { exitCode: 2, statuskode };
 }
 
 export async function lever({
@@ -145,20 +220,29 @@ export async function lever({
 }) {
   let bestilling;
   let artikkel;
+  let artikkelHash;
   try {
     bestilling = BestillingSkjema.parse(lesJsonKrevd(bestillingFil));
-    artikkel = lesJsonKrevd(artikkelFil);
-    if (!artikkel || typeof artikkel !== 'object' || Array.isArray(artikkel)) return ugyldigInndata();
+    const snapshot = lesArtikkelSnapshot(artikkelFil);
+    artikkel = ArtikkelInndataSkjema.parse(snapshot.artikkel);
+    artikkelHash = snapshot.hash;
   } catch {
     return ugyldigInndata();
   }
+  let privat;
+  try {
+    privat = lesPrivat(datafil(rot, 'privat.enc'), nokkel);
+  } catch (feil) {
+    return ugyldigInndata(feil.kode ?? 'privat-tilstand-ugyldig');
+  }
+  const avvis = (data) => avvisLevering(rot, { ...data, privat });
   const dato = osloDato(tid);
   const identitetStemmer = artikkel.sprak === bestilling.sprak
     && artikkel.emne_id === bestilling.emne_id
     && artikkel.slug === bestilling.slug
     && bestilling.appkoblinger.includes(artikkel.appkobling);
   if (!identitetStemmer) {
-    return avvisLevering(rot, {
+    return avvis({
       bestilling,
       artikkel,
       dato,
@@ -172,7 +256,7 @@ export async function lever({
   const publisertFil = datafil(rot, 'publisert.json');
   const publisert = lesJson(publisertFil, []);
   if (!kanPublisereDenneUken(publisert, tid, grenser.artiklerMaksPerUke)) {
-    return avvisLevering(rot, {
+    return avvis({
       bestilling,
       artikkel,
       dato,
@@ -190,7 +274,7 @@ export async function lever({
     kildeutdrag = [];
   }
   if (kildeutdrag.length !== bestilling.kilde_ider.length) {
-    return avvisLevering(rot, {
+    return avvis({
       bestilling,
       artikkel,
       dato,
@@ -209,18 +293,18 @@ export async function lever({
   });
   if (!fast.ok) {
     const grunnkoder = fast.grunner.map(vernkode);
-    return avvisLevering(rot, {
+    return avvis({
       bestilling,
       artikkel: artikkelMedKilder,
       dato,
       statuskode: grunnkoder[0],
       grunnkoder,
-      grunner: fast.grunner,
+      grunner: grunnkoder,
     });
   }
 
   if (!granskingFil || !existsSync(granskingFil)) {
-    return avvisLevering(rot, {
+    return avvis({
       bestilling,
       artikkel: artikkelMedKilder,
       dato,
@@ -235,8 +319,9 @@ export async function lever({
   } catch {
     return ugyldigInndata();
   }
-  if (gransking.artikkel_sha256 !== artikkelSha256(artikkelFil)) {
-    return avvisLevering(rot, {
+  if (gransking.artikkel_sha256 !== artikkelHash
+    || artikkelSha256(artikkelFil) !== artikkelHash) {
+    return avvis({
       bestilling,
       artikkel: artikkelMedKilder,
       dato,
@@ -246,7 +331,7 @@ export async function lever({
     });
   }
   if (gransking.beslutning !== 'GODKJENT') {
-    return avvisLevering(rot, {
+    return avvis({
       bestilling,
       artikkel: artikkelMedKilder,
       dato,
@@ -260,11 +345,16 @@ export async function lever({
   const eksisterende = lesAutoArtikler(rot);
   const sprakfil = språkfiler[artikkel.sprak];
   const lenker = byggLenker(eksisterende, { ...artikkelMedKilder, sti, sprakfil });
-  const levert = ArtikkelSkjema.parse({
-    ...artikkelMedKilder,
-    lenker: lenker.nyLenker,
-    publisert: dato,
-  });
+  let levert;
+  try {
+    levert = ArtikkelSkjema.parse({
+      ...artikkelMedKilder,
+      lenker: lenker.nyLenker,
+      publisert: dato,
+    });
+  } catch {
+    return ugyldigInndata();
+  }
   for (const gammel of eksisterende) {
     const nyLenke = lenker.lesOgså.get(gammel.slug);
     if (!nyLenke) continue;
@@ -284,7 +374,6 @@ export async function lever({
     sti,
   });
   skrivOffentlig(rot, 'publisert', 'publisert.json', publisert);
-  const privat = lesPrivat(datafil(rot, 'privat.enc'), nokkel);
   privat.emneko = privat.emneko.filter((emne) => emne.id !== levert.emne_id);
   skrivPrivat(datafil(rot, 'privat.enc'), privat, nokkel);
   skrivLeveringslogg(rot, {
@@ -297,6 +386,14 @@ export async function lever({
     slug: levert.slug,
     bestilling_id: `${bestilling.dato}-${bestilling.sprak}-${bestilling.slug}`,
     antall: { levert: 1 },
+  });
+  skrivOffentlig(rot, 'logg', 'avvisningsrekke.json', {
+    dato,
+    modus: 'lokal',
+    resultat: 'levert',
+    statuskode: 'avvisningsrekke-nullstilt',
+    grunnkoder: [],
+    antall: { avvist: 0 },
   });
   if (!beholdBestilling) rmSync(bestillingFil);
   return { exitCode: 0, statuskode: 'levert', slug: levert.slug };

@@ -48,6 +48,20 @@ export const ArtikkelSkjema = z.object({
   publisert: z.string().regex(/^\d{4}-\d{2}-\d{2}$/u).optional(),
 }).strict();
 
+export const ArtikkelInndataSkjema = z.object({
+  sprak: z.string(),
+  emne_id: z.string(),
+  slug: z.string(),
+  tittel: z.string(),
+  meta: z.string(),
+  ingress: z.string(),
+  seksjoner: z.array(z.object({ type: z.string() }).passthrough()),
+  faq: z.array(z.object({ sporsmal: z.string(), svar: z.string() }).passthrough()),
+  pastander: z.array(z.object({ tekst: z.string(), kilde_id: z.string() }).passthrough()),
+  appkobling: z.string(),
+  tagger: z.array(z.string()),
+}).passthrough();
+
 export const GranskSkjema = z.object({
   beslutning: z.enum(['GODKJENT', 'AVVIST']),
   grunner: z.array(z.string()),

@@ -54,10 +54,12 @@ function erForbudt(sokeord, sprak, forbudt) {
 
 export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt }) {
   const perTema = new Map();
-  const styrkEksisterende = [];
   const brukteIder = new Set(brukt.map((emne) => (
     typeof emne === 'string' ? emne : emne.emne_id ?? emne.id
   )));
+  const brukteSlugs = new Set(brukt.map((emne) => (
+    typeof emne === 'object' ? emne.slug : null
+  )).filter(Boolean));
 
   for (const kandidat of kandidater) {
     if (kandidat.plassering !== undefined
@@ -66,10 +68,8 @@ export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt }) {
     if (!sprak || !språkfiler[sprak]) continue;
     const frø = kandidat.frø ?? finnFrø(kandidat.sokeord, språkfiler[sprak]);
     if (!frø || erForbudt(kandidat.sokeord, sprak, forbudt)) continue;
-    if (nettsted.sider.some((side) => ordOverlapp(kandidat.sokeord, side.tittel) > 0.5)) {
-      styrkEksisterende.push(kandidat.sokeord);
-      continue;
-    }
+    if (brukteSlugs.has(frø.slug)) continue;
+    if (nettsted.sider.some((side) => ordOverlapp(kandidat.sokeord, side.tittel) > 0.5)) continue;
     const id = emneId(sprak, kandidat.sokeord);
     if (brukteIder.has(id)) continue;
     const proxy = kandidat.kilde === 'gsc' || kandidat.visninger !== undefined
@@ -96,7 +96,7 @@ export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt }) {
   }
 
   const ko = [...perTema.values()].sort((a, b) => b.score - a.score);
-  return { ko, styrkEksisterende };
+  return { ko };
 }
 
 function fyllMal(mal, navn, verdi) {

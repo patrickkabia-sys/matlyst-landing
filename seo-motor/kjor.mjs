@@ -1,6 +1,5 @@
 import {
   existsSync,
-  readFileSync,
   readdirSync,
   writeFileSync,
 } from 'node:fs';
@@ -116,7 +115,10 @@ async function oppdaterMandag({ tid, dato, avh, rot, nokkel, privat, språkfiler
     ...privat.emneko.map((emne) => [emne.id, emne]),
     ...ko.map((emne) => [emne.id, emne]),
   ]);
-  privat.emneko = [...perId.values()].sort((a, b) => b.score - a.score);
+  const brukteSlugs = new Set(brukt.map(({ slug }) => slug).filter(Boolean));
+  privat.emneko = [...perId.values()]
+    .filter((emne) => !brukteSlugs.has(emne.slug))
+    .sort((a, b) => b.score - a.score);
   privat.gsc = [{ dato, rader: gsc }];
   privat.forslag = [{ dato, svar: forslagRå }];
   privat.ytelse = [{

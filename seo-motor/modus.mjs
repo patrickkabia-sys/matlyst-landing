@@ -28,15 +28,6 @@ export function kanPublisereDenneUken(publisert, tid, maks) {
   return antall < maks;
 }
 
-export function tellAvvisningerPåRad(logg) {
-  let antall = 0;
-  for (let indeks = logg.length - 1; indeks >= 0; indeks -= 1) {
-    if (logg[indeks].resultat !== 'avvist') break;
-    antall += 1;
-  }
-  return antall;
-}
-
 export function skalSperre(antall) {
   return antall >= 3;
 }

@@ -123,5 +123,10 @@ async function cli() {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  await cli();
+  try {
+    await cli();
+  } catch {
+    process.stdout.write(`${JSON.stringify({ statuskode: 'rapport-feil' })}\n`);
+    process.exitCode = 1;
+  }
 }

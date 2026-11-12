@@ -69,6 +69,16 @@ function lagRot(t, {
       antall: { avvist: 1 },
     });
   }
+  if (tidligereAvvisninger.length > 0) {
+    skrivJson(join(mappe, 'seo-data', 'logg', 'avvisningsrekke.json'), {
+      dato: tidligereAvvisninger.at(-1),
+      modus: 'lokal',
+      resultat: 'avvist-rekke',
+      statuskode: 'avvisning-registrert',
+      grunnkoder: [],
+      antall: { avvist: tidligereAvvisninger.length },
+    });
+  }
   const bestillingFil = join(mappe, 'seo-data', 'bestillinger', '2026-11-12-nb-bruk-rester-i-middag.json');
   const artikkelFil = join(mappe, 'artikkel.json');
   const granskingFil = join(mappe, 'gransking.json');
@@ -207,8 +217,61 @@ test('AVVIST gransking lagrer grunnene lokalt og gir exit 1', async (t) => {
   assert.equal(resultat.exitCode, 1);
   assert.equal(resultat.statuskode, 'gransking-avvist');
   const avvist = JSON.parse(readFileSync(join(mappe, 'seo-data', 'avvist', '2026-11-12-bruk-rester-i-middag.json')));
-  assert.deepEqual(avvist.granskingsgrunner, ['Teksten høres oversatt ut.']);
+  assert.equal(Object.hasOwn(avvist, 'granskingsgrunner'), false);
   assert.doesNotMatch(JSON.stringify(avvist), /HEMMELIG RÅSØK/u);
+});
+
+test('granskingsgrunn med råsøk blir ikke offentlig eller skrevet rått til terminalresultatet', async (t) => {
+  const { mappe, rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t, {
+    beslutning: 'AVVIST',
+    grunner: ['Artikkelen gjentar HEMMELIG RÅSØK ordrett.'],
+  });
+
+  const resultat = await lever({
+    bestillingFil,
+    artikkelFil,
+    granskingFil,
+    rot,
+    nokkel: TESTNOKKEL,
+    hent: async () => hentKilde(),
+    tid: new Date('2026-11-12T10:00:00Z'),
+  });
+
+  assert.doesNotMatch(JSON.stringify(resultat), /HEMMELIG RÅSØK/u);
+  assert.doesNotMatch(
+    readFileSync(join(mappe, 'seo-data', 'avvist', '2026-11-12-bruk-rester-i-middag.json'), 'utf8'),
+    /HEMMELIG RÅSØK/u,
+  );
+});
+
+test('vernkode inneholder aldri dynamisk kilde-id', async (t) => {
+  const { mappe, rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t);
+  const artikkel = JSON.parse(readFileSync(artikkelFil, 'utf8'));
+  artikkel.pastander[0].kilde_id = 'HEMMELIG RÅSØK';
+  skrivJson(artikkelFil, artikkel);
+  skrivJson(granskingFil, {
+    beslutning: 'GODKJENT',
+    grunner: [],
+    artikkel_sha256: sha256(artikkelFil),
+  });
+
+  const resultat = await lever({
+    bestillingFil,
+    artikkelFil,
+    granskingFil,
+    rot,
+    nokkel: TESTNOKKEL,
+    hent: async () => hentKilde(),
+    tid: new Date('2026-11-12T10:00:00Z'),
+  });
+
+  assert.equal(resultat.statuskode, 'vern-ukjent-kilde-id');
+  assert.doesNotMatch(JSON.stringify(resultat), /HEMMELIG RÅSØK/u);
+  assert.doesNotMatch(readFileSync(join(mappe, 'seo-data', 'logg', '2026-11-12.json'), 'utf8'), /HEMMELIG RÅSØK/u);
+  assert.doesNotMatch(
+    readFileSync(join(mappe, 'seo-data', 'avvist', '2026-11-12-bruk-rester-i-middag.json'), 'utf8'),
+    /HEMMELIG RÅSØK/u,
+  );
 });
 
 test('tredje avvisning på rad skriver offentlig sperre', async (t) => {
@@ -238,6 +301,29 @@ test('tredje avvisning på rad skriver offentlig sperre', async (t) => {
   assert.equal(logg.statuskode, 'tre-avvisninger-pa-rad');
 });
 
+test('tre avvisninger samme dag skriver sperre', async (t) => {
+  const { mappe, rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t, {
+    beslutning: 'AVVIST',
+    grunner: ['Vinkelen er ikke tydelig nok.'],
+  });
+
+  for (let forsøk = 0; forsøk < 3; forsøk += 1) {
+    await lever({
+      bestillingFil,
+      artikkelFil,
+      granskingFil,
+      rot,
+      nokkel: TESTNOKKEL,
+      hent: async () => hentKilde(),
+      tid: new Date('2026-11-12T10:00:00Z'),
+    });
+  }
+
+  assert.equal(existsSync(join(mappe, 'seo-data', 'sperre.json')), true);
+  const rekke = JSON.parse(readFileSync(join(mappe, 'seo-data', 'logg', 'avvisningsrekke.json')));
+  assert.equal(rekke.antall.avvist, 3);
+});
+
 test('ett endret tegn etter gransking gir gransking-gjelder-annen-versjon', async (t) => {
   const { rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t);
   const artikkel = JSON.parse(readFileSync(artikkelFil, 'utf8'));
@@ -256,6 +342,58 @@ test('ett endret tegn etter gransking gir gransking-gjelder-annen-versjon', asyn
 
   assert.equal(resultat.exitCode, 1);
   assert.equal(resultat.statuskode, 'gransking-gjelder-annen-versjon');
+});
+
+test('leverer aldri et annet minneutkast ved filbytte under kildehenting', async (t) => {
+  const { mappe, rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t);
+  const opprinnelig = readFileSync(artikkelFil, 'utf8');
+  const endret = JSON.parse(opprinnelig);
+  endret.ingress = endret.ingress.replace('en enkel', 'en ryddig');
+  skrivJson(artikkelFil, endret);
+  const endretTekst = readFileSync(artikkelFil, 'utf8');
+  skrivJson(granskingFil, {
+    beslutning: 'GODKJENT',
+    grunner: [],
+    artikkel_sha256: sha256(artikkelFil),
+  });
+  writeFileSync(artikkelFil, opprinnelig);
+
+  const resultat = await lever({
+    bestillingFil,
+    artikkelFil,
+    granskingFil,
+    rot,
+    nokkel: TESTNOKKEL,
+    hent: async () => {
+      writeFileSync(artikkelFil, endretTekst);
+      return hentKilde();
+    },
+    tid: new Date('2026-11-12T10:00:00Z'),
+  });
+
+  assert.equal(resultat.exitCode, 1);
+  assert.equal(resultat.statuskode, 'gransking-gjelder-annen-versjon');
+  assert.equal(existsSync(join(mappe, 'blogg-kilde', 'auto', 'nb', 'bruk-rester-i-middag.json')), false);
+});
+
+test('feil privat nøkkel stopper før offentlige leveringsfiler skrives', async (t) => {
+  const { mappe, rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t);
+
+  const resultat = await lever({
+    bestillingFil,
+    artikkelFil,
+    granskingFil,
+    rot,
+    nokkel: Buffer.alloc(32, 9).toString('base64'),
+    hent: async () => hentKilde(),
+    tid: new Date('2026-11-12T10:00:00Z'),
+  });
+
+  assert.deepEqual(resultat, { exitCode: 2, statuskode: 'privat-tilstand-ugyldig' });
+  assert.deepEqual(JSON.parse(readFileSync(join(mappe, 'seo-data', 'publisert.json'))), []);
+  assert.equal(existsSync(join(mappe, 'blogg-kilde')), false);
+  assert.equal(existsSync(join(mappe, 'seo-data', 'logg')), false);
+  assert.equal(existsSync(bestillingFil), true);
 });
 
 test('fast vern avviser før lag 2', async (t) => {
@@ -299,5 +437,25 @@ test('ugyldig artikkel-JSON gir exit 2 uten avvist utkast', async (t) => {
 
   assert.equal(resultat.exitCode, 2);
   assert.equal(resultat.statuskode, 'ugyldig-inndata');
+  assert.equal(existsSync(join(mappe, 'seo-data', 'avvist')), false);
+});
+
+test('ugyldig nested artikkelform gir exit 2 uten stackkrasj', async (t) => {
+  const { mappe, rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t);
+  const artikkel = JSON.parse(readFileSync(artikkelFil, 'utf8'));
+  artikkel.seksjoner = 1;
+  skrivJson(artikkelFil, artikkel);
+
+  const resultat = await lever({
+    bestillingFil,
+    artikkelFil,
+    granskingFil,
+    rot,
+    nokkel: TESTNOKKEL,
+    hent: async () => hentKilde(),
+    tid: new Date('2026-11-12T10:00:00Z'),
+  });
+
+  assert.deepEqual(resultat, { exitCode: 2, statuskode: 'ugyldig-inndata' });
   assert.equal(existsSync(join(mappe, 'seo-data', 'avvist')), false);
 });

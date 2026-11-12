@@ -82,7 +82,7 @@ test('GSC-plassering utenfor 8–30 og forbudt innhold forkastes', () => {
   assert.deepEqual(resultat.ko, []);
 });
 
-test('overlapp med eksisterende side går bare til privat styrkeliste', () => {
+test('overlapp med eksisterende side går ikke i kø', () => {
   const kandidat = {
     sokeord: 'middag med rester',
     sprak: 'nb',
@@ -100,7 +100,6 @@ test('overlapp med eksisterende side går bare til privat styrkeliste', () => {
   });
 
   assert.deepEqual(resultat.ko, []);
-  assert.deepEqual(resultat.styrkEksisterende, ['middag med rester']);
 });
 
 test('bestillingen generaliserer emnet uten råsøk eller måledata', () => {
@@ -148,6 +147,23 @@ test('bestillingen generaliserer emnet uten råsøk eller måledata', () => {
     },
   });
   assert.doesNotMatch(offentlig, /SÆRPREGET|råsøk|forslagAntall|visninger|score/u);
+});
+
+test('publisert generalisert slug sperrer nye råsøk fra samme tema', () => {
+  const resultat = byggKo({
+    kandidater: [{
+      sokeord: 'middag med rester på ny måte',
+      sprak: 'nb',
+      kilde: 'forslag',
+      forslagAntall: 5,
+    }],
+    språkfiler,
+    nettsted: tomtNettsted,
+    forbudt,
+    brukt: [{ emne_id: 'e-annen-sporring', sprak: 'nb', slug: 'bruk-rester-i-middag' }],
+  });
+
+  assert.deepEqual(resultat.ko, []);
 });
 
 test('alle språk har 8–12 innfødte frø med deterministisk metadata', () => {

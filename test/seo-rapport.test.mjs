@@ -1,4 +1,14 @@
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
+import {
+  chmodSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import test from 'node:test';
 
 import {
@@ -74,4 +84,31 @@ test('postRapport lager issue når den mangler', async () => {
   assert.deepEqual(kall[0], ['issue', 'list', '--search', 'SEO-autopilot in:title', '--json', 'number']);
   assert.deepEqual(kall[1], ['issue', 'create', '--title', 'SEO-autopilot', '--body', 'Samlet rapporttråd for SEO-autopiloten.']);
   assert.deepEqual(kall[2], ['issue', 'comment', '17', '--body', 'Nattlig rapport']);
+});
+
+test('rapport-CLI skjuler rå feil fra gh', (t) => {
+  const mappe = mkdtempSync(join(tmpdir(), 'matlyst-seo-rapport-'));
+  t.after(() => rmSync(mappe, { recursive: true, force: true }));
+  const gh = join(mappe, 'gh');
+  writeFileSync(gh, '#!/bin/sh\necho "SÆRPREGET RÅ GH-FEIL" >&2\nexit 1\n');
+  chmodSync(gh, 0o755);
+  const nokkel = readFileSync(
+    new URL('../seo-motor/test/fixtures/seo-data-nokkel.txt', import.meta.url),
+    'utf8',
+  ).trim();
+
+  const resultat = spawnSync(process.execPath, ['seo-motor/rapport.mjs'], {
+    cwd: new URL('../', import.meta.url),
+    env: {
+      ...process.env,
+      DATO: '2026-11-09',
+      SEO_DATA_NOKKEL: nokkel,
+      PATH: `${mappe}:${process.env.PATH}`,
+    },
+    encoding: 'utf8',
+  });
+
+  assert.equal(resultat.status, 1);
+  assert.match(resultat.stdout, /rapport-feil/u);
+  assert.doesNotMatch(`${resultat.stdout}\n${resultat.stderr}`, /SÆRPREGET RÅ GH-FEIL/u);
 });

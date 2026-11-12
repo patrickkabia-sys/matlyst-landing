@@ -60,7 +60,6 @@ const dokumenter = {
     slug: 'bruk-rester-i-middag',
     emne_id: 'e-a1b2c3d4e5f6',
     grunnkoder: ['gransking-avvist'],
-    granskingsgrunner: ['Ingressen svarer ikke tydelig nok.'],
     artikkel: {
       sprak: 'nb',
       emne_id: 'e-a1b2c3d4e5f6',

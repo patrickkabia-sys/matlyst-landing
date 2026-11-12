@@ -31,6 +31,27 @@ test('hopper over brukt emne', () => {
   assert.equal(velgEmne([nbEmne, svEmne], publisert), svEmne);
 });
 
+test('hopper over brukt generalisert slug selv med ny emne-id', () => {
+  const ko = [{ id: 'ny-id', slug: 'samme-tema', sprak: 'sv', score: 9 }];
+  assert.equal(velgEmne(ko, [{ emne_id: 'gammel-id', slug: 'samme-tema', sprak: 'sv', dato: '2026-11-12' }]), null);
+});
+
+test('språkbalanse bruker kronologi når eldre bestillinger står sist', () => {
+  const historikk = [
+    { emne_id: '1', sprak: 'nb', dato: '2026-11-06' },
+    { emne_id: '2', sprak: 'nb', dato: '2026-11-07' },
+    { emne_id: '3', sprak: 'nb', dato: '2026-11-08' },
+    { emne_id: '4', sprak: 'nb', dato: '2026-11-09' },
+    { emne_id: '5', sprak: 'sv', dato: '2026-11-10' },
+    { emne_id: '6', sprak: 'da', dato: '2026-11-11' },
+    { emne_id: '7', sprak: 'en', dato: '2026-11-12' },
+    { emne_id: 'gammel-bestilling', sprak: 'sv', dato: '2026-11-01' },
+  ];
+  const ko = [{ id: 'ny', slug: 'ny-norsk', sprak: 'nb', score: 10 }];
+
+  assert.equal(velgEmne(ko, historikk), null);
+});
+
 test('femte nb på sju dager hoppes over', () => {
   const publisert = [
     { emne_id: 'eldre-nb-1', sprak: 'nb', dato: '2026-11-01' },
