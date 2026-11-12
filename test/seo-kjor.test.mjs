@@ -138,8 +138,13 @@ test('motoren skriver generalisert bestilling og offentlig driftslogg', async (t
   const bestillingFil = join(mappe, 'seo-data', 'bestillinger', '2026-11-12-nb-bruk-rester-i-middag.json');
   assert.equal(existsSync(bestillingFil), true);
   const bestilling = JSON.parse(readFileSync(bestillingFil, 'utf8'));
+  assert.equal(bestilling.emne_id, 'e-7a6f6917bf04a140');
   assert.equal(bestilling.emne, 'En praktisk veiledning om rester i nye måltider.');
   assert.equal(bestilling.vinkel, 'Vis hvordan leseren kan bruke det som finnes hjemme før nye varer kjøpes.');
+  assert.equal(
+    lesPrivat(new URL('seo-data/privat.enc', rot), TESTNOKKEL).emneko[0].id,
+    'e-7a6f6917bf04a140',
+  );
   for (const [navn, innhold] of offentligeJson(mappe)) {
     assert.doesNotMatch(innhold, new RegExp(SÆRPREGET, 'u'), navn);
     assert.doesNotMatch(innhold, /"(?:sokeord|visninger|klikk|score|poeng|volum)"/u, navn);

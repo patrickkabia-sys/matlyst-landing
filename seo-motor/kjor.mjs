@@ -20,9 +20,10 @@ import {
   lesPrivat,
   lesSeoDataNokkel,
   skrivPrivat,
+  utledEmneIdNokkel,
 } from './privat.mjs';
 import { lesData } from './skjema.mjs';
-import { byggKo, lagBestilling } from './sokeord.mjs';
+import { byggKo, emneId, lagBestilling } from './sokeord.mjs';
 import { velgEmne } from './velg.mjs';
 
 const REPO_ROT = new URL('../', import.meta.url);
@@ -67,7 +68,27 @@ function logggrunnlag(dato, modus) {
   };
 }
 
-async function oppdaterMandag({ tid, dato, avh, rot, nokkel, privat, språkfiler }) {
+function nøklePrivatEmneko(privat, emneIdNokkel) {
+  let endret = false;
+  const emneko = privat.emneko.map((emne) => {
+    const id = emneId(emneIdNokkel, emne.sprak, emne.sokeord);
+    if (id === emne.id) return emne;
+    endret = true;
+    return { ...emne, id };
+  });
+  return endret ? { ...privat, emneko } : privat;
+}
+
+async function oppdaterMandag({
+  tid,
+  dato,
+  avh,
+  rot,
+  nokkel,
+  emneIdNokkel,
+  privat,
+  språkfiler,
+}) {
   if (privat.forslagKjoringer[dato]) return privat;
   privat.forslagKjoringer[dato] = { status: 'startet', antallFrø: 0 };
   skrivPrivat(datafil(rot, 'privat.enc'), privat, nokkel);
@@ -110,6 +131,7 @@ async function oppdaterMandag({ tid, dato, avh, rot, nokkel, privat, språkfiler
     nettsted,
     forbudt,
     brukt,
+    emneIdNokkel,
   });
   const perId = new Map([
     ...privat.emneko.map((emne) => [emne.id, emne]),
@@ -150,13 +172,25 @@ export async function kjor({ tid, modus, tørt, avh }) {
       tillatNokkelring: false,
       miljø: avh.miljø ?? process.env,
     });
+    const emneIdNokkel = utledEmneIdNokkel(nokkel);
     const sperre = lesOffentlig(datafil(rot, 'sperre.json'), null);
     aktivModus = lesModus({ variabel: modus, sperre });
     logg.modus = aktivModus;
     const språkfiler = lesSpråkfiler(rot);
-    let privat = lesPrivat(datafil(rot, 'privat.enc'), nokkel);
+    const lestPrivat = lesPrivat(datafil(rot, 'privat.enc'), nokkel);
+    let privat = nøklePrivatEmneko(lestPrivat, emneIdNokkel);
+    if (privat !== lestPrivat) skrivPrivat(datafil(rot, 'privat.enc'), privat, nokkel);
     if (MANDAG.format(tid) === 'Mon') {
-      privat = await oppdaterMandag({ tid, dato, avh, rot, nokkel, privat, språkfiler });
+      privat = await oppdaterMandag({
+        tid,
+        dato,
+        avh,
+        rot,
+        nokkel,
+        emneIdNokkel,
+        privat,
+        språkfiler,
+      });
     }
 
     const publisert = lesOffentlig(datafil(rot, 'publisert.json'), []);

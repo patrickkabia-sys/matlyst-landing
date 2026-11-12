@@ -1,4 +1,4 @@
-import { createHash } from 'node:crypto';
+import { createHmac } from 'node:crypto';
 
 import { ordOverlapp } from './nettsted.mjs';
 
@@ -27,8 +27,8 @@ function finnFrø(sokeord, språkfil) {
   return beste;
 }
 
-function emneId(sprak, sokeord) {
-  const hash = createHash('sha256')
+export function emneId(emneIdNokkel, sprak, sokeord) {
+  const hash = createHmac('sha256', emneIdNokkel)
     .update(`${sprak}\0${sokeord.trim().toLocaleLowerCase()}`, 'utf8')
     .digest('hex')
     .slice(0, 16);
@@ -52,7 +52,7 @@ function erForbudt(sokeord, sprak, forbudt) {
   });
 }
 
-export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt }) {
+export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt, emneIdNokkel }) {
   const perTema = new Map();
   const brukteIder = new Set(brukt.map((emne) => (
     typeof emne === 'string' ? emne : emne.emne_id ?? emne.id
@@ -70,7 +70,7 @@ export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt }) {
     if (!frø || erForbudt(kandidat.sokeord, sprak, forbudt)) continue;
     if (brukteSlugs.has(frø.slug)) continue;
     if (nettsted.sider.some((side) => ordOverlapp(kandidat.sokeord, side.tittel) > 0.5)) continue;
-    const id = emneId(sprak, kandidat.sokeord);
+    const id = emneId(emneIdNokkel, sprak, kandidat.sokeord);
     if (brukteIder.has(id)) continue;
     const proxy = kandidat.kilde === 'gsc' || kandidat.visninger !== undefined
       ? kandidat.visninger ?? 0

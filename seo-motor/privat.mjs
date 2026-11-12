@@ -2,6 +2,7 @@ import { execFileSync } from 'node:child_process';
 import {
   createCipheriv,
   createDecipheriv,
+  hkdfSync,
   randomBytes,
 } from 'node:crypto';
 import {
@@ -15,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 
 const VERSJON = 1;
 const AAD = Buffer.from('matlyst-seo-data:v1', 'utf8');
+const EMNE_ID_INFO = Buffer.from('matlyst-seo-emne-id', 'utf8');
 const TESTNOKKEL_FIL = new URL('./test/fixtures/seo-data-nokkel.txt', import.meta.url);
 
 export class PrivatTilstandFeil extends Error {
@@ -52,6 +54,16 @@ function dekodNokkel(nokkel) {
     throw new SeoDataNokkelFeil('seo-data-nokkel-ugyldig');
   }
   return dekodet;
+}
+
+export function utledEmneIdNokkel(nokkel) {
+  return Buffer.from(hkdfSync(
+    'sha256',
+    dekodNokkel(nokkel),
+    Buffer.alloc(0),
+    EMNE_ID_INFO,
+    32,
+  ));
 }
 
 export function krypterPrivat(data, nokkel, tilfeldig = randomBytes) {

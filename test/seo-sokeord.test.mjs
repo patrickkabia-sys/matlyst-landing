@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import test from 'node:test';
 
 import { lesData } from '../seo-motor/skjema.mjs';
@@ -29,6 +30,49 @@ const språkfiler = {
     },
   },
 };
+const EMNE_ID_NOKKEL = Buffer.alloc(32, 7);
+
+function byggEmne(sokeord, emneIdNokkel = EMNE_ID_NOKKEL) {
+  return byggKo({
+    kandidater: [{
+      sokeord,
+      sprak: 'nb',
+      frø,
+      forslagAntall: 1,
+      kilde: 'forslag',
+    }],
+    språkfiler,
+    nettsted: tomtNettsted,
+    forbudt,
+    brukt: [],
+    emneIdNokkel,
+  }).ko[0];
+}
+
+test('emne-id er ikke den forutsigbare sha256-avledningen av råsøket', () => {
+  const sokeord = 'middag med rester';
+  const gammelId = `e-${createHash('sha256')
+    .update(`nb\0${sokeord}`, 'utf8')
+    .digest('hex')
+    .slice(0, 16)}`;
+
+  assert.equal(byggEmne(sokeord).id, 'e-3a615ba50043beb5');
+  assert.notEqual(byggEmne(sokeord).id, gammelId);
+});
+
+test('samme emne-id-nøkkel og samme normaliserte søk gir samme id', () => {
+  assert.equal(
+    byggEmne('  MIDDAG MED RESTER  ').id,
+    byggEmne('middag med rester').id,
+  );
+});
+
+test('en annen emne-id-nøkkel gir en annen id', () => {
+  assert.notEqual(
+    byggEmne('middag med rester', EMNE_ID_NOKKEL).id,
+    byggEmne('middag med rester', Buffer.alloc(32, 8)).id,
+  );
+});
 
 test('score er passform ganger forslagantall eller GSC-visninger', () => {
   const kandidater = [
@@ -54,6 +98,7 @@ test('score er passform ganger forslagantall eller GSC-visninger', () => {
     nettsted: tomtNettsted,
     forbudt,
     brukt: [],
+    emneIdNokkel: EMNE_ID_NOKKEL,
   });
 
   assert.equal(resultat.ko.length, 1);
@@ -77,6 +122,7 @@ test('GSC-plassering utenfor 8–30 og forbudt innhold forkastes', () => {
     nettsted: tomtNettsted,
     forbudt,
     brukt: [],
+    emneIdNokkel: EMNE_ID_NOKKEL,
   });
 
   assert.deepEqual(resultat.ko, []);
@@ -97,6 +143,7 @@ test('overlapp med eksisterende side går ikke i kø', () => {
     nettsted: { sider: [{ tittel: 'Middag med rester' }] },
     forbudt,
     brukt: [],
+    emneIdNokkel: EMNE_ID_NOKKEL,
   });
 
   assert.deepEqual(resultat.ko, []);
@@ -115,6 +162,7 @@ test('bestillingen generaliserer emnet uten råsøk eller måledata', () => {
     nettsted: tomtNettsted,
     forbudt,
     brukt: [],
+    emneIdNokkel: EMNE_ID_NOKKEL,
   }).ko[0];
 
   const bestilling = lagBestilling(emne, språkfiler.nb, {
@@ -161,6 +209,7 @@ test('publisert generalisert slug sperrer nye råsøk fra samme tema', () => {
     nettsted: tomtNettsted,
     forbudt,
     brukt: [{ emne_id: 'e-annen-sporring', sprak: 'nb', slug: 'bruk-rester-i-middag' }],
+    emneIdNokkel: EMNE_ID_NOKKEL,
   });
 
   assert.deepEqual(resultat.ko, []);
