@@ -1,9 +1,9 @@
-import test from 'node:test'
-import assert from 'node:assert/strict'
+import test from 'node:test';
+import assert from 'node:assert/strict';
 
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
+import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 
-import { ArtikkelSkjema, lesData } from '../seo-motor/skjema.mjs'
+import { ArtikkelSkjema, lesData } from '../seo-motor/skjema.mjs';
 
 const gyldigArtikkel = {
   sprak: 'nb',
@@ -25,38 +25,38 @@ const gyldigArtikkel = {
   pastander: [{ tekst: 'Kjøl restene raskt ned.', kilde_id: 'K1' }],
   appkobling: 'bruk-det-jeg-har',
   tagger: ['rester', 'ukemeny'],
-}
+};
 
 test('ArtikkelSkjema godtar gyldig artikkel', () => {
-  assert.equal(ArtikkelSkjema.safeParse(gyldigArtikkel).success, true)
-})
+  assert.equal(ArtikkelSkjema.safeParse(gyldigArtikkel).success, true);
+});
 
 test('ArtikkelSkjema kan brukes som strukturert Anthropic-format', () => {
-  assert.doesNotThrow(() => zodOutputFormat(ArtikkelSkjema))
-})
+  assert.doesNotThrow(() => zodOutputFormat(ArtikkelSkjema));
+});
 
 test('ArtikkelSkjema avviser ukjent appkobling', () => {
-  const artikkel = { ...gyldigArtikkel, appkobling: 'måltidsplan' }
+  const artikkel = { ...gyldigArtikkel, appkobling: 'måltidsplan' };
 
-  assert.equal(ArtikkelSkjema.safeParse(artikkel).success, false)
-})
+  assert.equal(ArtikkelSkjema.safeParse(artikkel).success, false);
+});
 
 test('alle fire språkfiler har samme nøkler i appCta', () => {
   const nokler = ['nb', 'sv', 'da', 'en'].map((sprak) =>
     Object.keys(lesData(`sprak/${sprak}.json`).appCta).sort(),
-  )
+  );
 
-  assert.deepEqual(nokler, nokler.map(() => nokler[0]))
-})
+  assert.deepEqual(nokler, nokler.map(() => nokler[0]));
+});
 
 test('en.json har britiskeOrd med minst tick, the shop, expiry', () => {
-  const { britiskeOrd } = lesData('sprak/en.json')
+  const { britiskeOrd } = lesData('sprak/en.json');
 
-  assert.ok(['tick', 'the shop', 'expiry'].every((ord) => britiskeOrd.includes(ord)))
-})
+  assert.ok(['tick', 'the shop', 'expiry'].every((ord) => britiskeOrd.includes(ord)));
+});
 
 test('forbudt.json inneholder matprat.no, godt.no, nom.no', () => {
-  const forbudt = JSON.stringify(lesData('forbudt.json'))
+  const forbudt = JSON.stringify(lesData('forbudt.json'));
 
-  assert.ok(['matprat.no', 'godt.no', 'nom.no'].every((domene) => forbudt.includes(domene)))
-})
+  assert.ok(['matprat.no', 'godt.no', 'nom.no'].every((domene) => forbudt.includes(domene)));
+});

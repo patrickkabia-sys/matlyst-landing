@@ -1,16 +1,16 @@
-import Anthropic from '@anthropic-ai/sdk'
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod'
+import Anthropic from '@anthropic-ai/sdk';
+import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
 
 export class KallFeil extends Error {
   constructor(grunn) {
-    super(grunn)
-    this.name = 'KallFeil'
-    this.grunn = grunn
+    super(grunn);
+    this.name = 'KallFeil';
+    this.grunn = grunn;
   }
 }
 
 export function lagKlient({ apiKey }) {
-  return new Anthropic({ apiKey, maxRetries: 0 })
+  return new Anthropic({ apiKey, maxRetries: 0 });
 }
 
 export async function kallStrukturert(
@@ -30,34 +30,36 @@ export async function kallStrukturert(
       effort,
       format: zodOutputFormat(skjema),
     },
-  })
+  });
 
   if (svar.stop_reason === 'refusal' || svar.stop_reason === 'max_tokens') {
-    throw new KallFeil(svar.stop_reason)
+    throw new KallFeil(svar.stop_reason);
   }
   if (svar.parsed_output === null) {
-    throw new KallFeil('mangler strukturert svar')
+    throw new KallFeil('mangler strukturert svar');
   }
 
   const usage = {
     input: svar.usage.input_tokens,
     output: svar.usage.output_tokens,
     cacheLes: svar.usage.cache_read_input_tokens ?? 0,
-  }
+    cacheSkriv: svar.usage.cache_creation_input_tokens ?? 0,
+  };
   const kostnadUsd = (
     usage.input * 0.10
     + usage.output * 0.50
     + usage.cacheLes * 0.01
-  ) / 1_000_000
+    + usage.cacheSkriv * 0.125
+  ) / 1_000_000;
 
-  return { data: svar.parsed_output, usage, kostnadUsd }
+  return { data: svar.parsed_output, usage, kostnadUsd };
 }
 
 export function fyllMal(mal, verdier) {
   return mal.replace(/\{\{([^{}]+)\}\}/gu, (plassholder, navn) => {
     if (!Object.hasOwn(verdier, navn)) {
-      throw new Error(`Mangler verdi for ${plassholder}`)
+      throw new Error(`Mangler verdi for ${plassholder}`);
     }
-    return verdier[navn]
-  })
+    return verdier[navn];
+  });
 }
