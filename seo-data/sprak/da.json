@@ -1,0 +1,73 @@
+{
+  "stemme": [
+    "Skriv direkte og jordnært til læseren i du-form.",
+    "Svar på søgningen i indledningen, og brug korte, konkrete sætninger.",
+    "Brug «Inviter din husstand», «Angiv» og «Kom i gang med» i de sammenhænge, hvor de er naturlige.",
+    "Brug flertal, når teksten handler om flere opskrifter, varer eller personer."
+  ],
+  "unngå": [
+    "norske ord og norsk ordstilling",
+    "særskrevne sammensætninger",
+    "engelske kalker og reklamesprog",
+    "råd, der lover et bestemt helbredsresultat"
+  ],
+  "typografi": [
+    "Skriv sammensatte ord som ét ord.",
+    "Brug komma som decimaltegn og punktum eller mellemrum som tusindtalsseparator.",
+    "Skriv datoer som DD-MM-ÅÅÅÅ, og brug 24-timersformat."
+  ],
+  "helseord": ["allergi", "allergier", "allergiker", "allergikere", "allergen", "allergener", "kalorie", "kalorier", "slankekur", "slankekure", "vægttab", "diæt", "diæter"],
+  "appCta": {
+    "import": {
+      "tittel": "Saml de opskrifter, du faktisk bruger",
+      "tekst": "Kom i gang med at gemme opskrifter fra nettet, sociale medier eller billeder, og find dem igen, når du skal lave mad."
+    },
+    "ukemeny": {
+      "tittel": "Få styr på ugens aftensmad",
+      "tekst": "Læg opskrifterne på de dage, der passer, og planlæg kun så meget af ugen, du har brug for."
+    },
+    "handleliste": {
+      "tittel": "Én indkøbsliste til hele husstanden",
+      "tekst": "Inviter din husstand, og del madplanen og indkøbslisten, så alle kan følge med."
+    },
+    "bruk-det-jeg-har": {
+      "tittel": "Begynd med det, du har derhjemme",
+      "tekst": "Se, hvilke gemte opskrifter der passer til varerne i spisekammeret."
+    },
+    "kokemodus": {
+      "tittel": "Lav maden ét trin ad gangen",
+      "tekst": "Angiv antallet af portioner, og hav ingredienserne og fremgangsmåden på skærmen, mens du laver mad."
+    }
+  },
+  "appkoblingSti": {
+    "import": "/da/importer-opskrifter/",
+    "ukemeny": "/da/madplan-app/",
+    "handleliste": "/da/indkoebsliste-app/",
+    "bruk-det-jeg-har": "/da/opskrifter-ud-fra-ingredienser/",
+    "kokemodus": "/da/"
+  },
+  "forslagslokale": { "hl": "da", "gl": "dk" },
+  "bestillingsmal": {
+    "emne": "En praktisk guide til {{tema}}.",
+    "vinkel": "Vis, hvordan læseren kan {{vinkel}}."
+  },
+  "forslagsfrø": [
+    { "tekst": "aftensmad med rester", "passform": 3, "tagger": ["rester", "aftensmad"], "appkobling": "bruk-det-jeg-har", "tema": "rester, der bliver til nye måltider", "vinkel": "bruge det, der allerede er hjemme, før der købes nye varer", "slug": "aftensmad-med-rester", "kilde_ider": ["foedevarestyrelsen"] },
+    { "tekst": "nem madplan", "passform": 3, "tagger": ["madplan", "aftensmad"], "appkobling": "ukemeny", "tema": "en enkel og fleksibel madplan", "vinkel": "planlægge nogle få middage uden at låse hele ugen", "slug": "enkel-fleksibel-madplan", "kilde_ider": [] },
+    { "tekst": "aftensmad af det jeg har", "passform": 3, "tagger": ["råvarer", "aftensmad"], "appkobling": "bruk-det-jeg-har", "tema": "aftensmad ud fra råvarerne, der allerede er hjemme", "vinkel": "gå fra et hurtigt råvareoverblik til konkrete middagsvalg", "slug": "aftensmad-af-det-du-har", "kilde_ider": [] },
+    { "tekst": "opbevaring af mad", "passform": 2, "tagger": ["opbevaring", "fødevaresikkerhed"], "appkobling": "import", "tema": "overskuelig opbevaring af almindelige fødevarer", "vinkel": "samle kildebaserede opbevaringsråd i et enkelt hverdagstjek", "slug": "opbevaring-af-mad", "kilde_ider": ["foedevarestyrelsen"] },
+    { "tekst": "kogetid æg ris pasta", "passform": 2, "tagger": ["kogetid", "omregning"], "appkobling": "kokemodus", "tema": "kogetider for almindelige råvarer", "vinkel": "forklare, hvad der påvirker tiden, og hvordan resultatet kontrolleres", "slug": "kogetider-for-almindelige-ravarer", "kilde_ider": [] },
+    { "tekst": "airfryer tid temperatur", "passform": 2, "tagger": ["airfryer", "omregning"], "appkobling": "kokemodus", "tema": "praktisk tilpasning af tid og temperatur i airfryer", "vinkel": "tilpasse en opskrift trin for trin", "slug": "tid-og-temperatur-i-airfryer", "kilde_ider": [] },
+    { "tekst": "indkøbsliste aftensmad", "passform": 3, "tagger": ["indkøbsliste", "aftensmad"], "appkobling": "handleliste", "tema": "indkøbslister bygget på planlagte middage", "vinkel": "samle de nødvendige varer uden at købe det, der allerede er hjemme", "slug": "indkobsliste-fra-middage", "kilde_ider": [] },
+    { "tekst": "gem opskrifter", "passform": 3, "tagger": ["opskrifter", "organisering"], "appkobling": "import", "tema": "at samle og organisere opskrifter fra forskellige steder", "vinkel": "lave et system, der gør opskrifterne nemme at finde igen", "slug": "saml-og-organiser-opskrifter", "kilde_ider": [] }
+  ],
+  "autoBlogg": {
+    "faqTittel": "Spørgsmål og svar",
+    "kilderTittel": "Kilder",
+    "lesOgsåTittel": "Læs også",
+    "indeksTittel": "Nye artikler",
+    "llmsTittel": "Automatiske artikler",
+    "llmsSprak": "Dansk"
+  },
+  "stoppord": ["hvad", "af", "nogle", "meget", "bliver", "efter", "sådan", "gerne", "bruger", "gøre", "uden", "igennem", "omkring", "alligevel", "hvert", "noget", "stadig", "hvor", "fordi", "derefter", "bagefter", "endnu", "kun", "disse", "hos", "dig", "nemt", "afhænger", "foretrækker", "måske"]
+}

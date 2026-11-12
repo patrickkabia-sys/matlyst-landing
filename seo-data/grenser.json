@@ -1,0 +1,13 @@
+{
+  "tittelMaksTegn": 60,
+  "metaMinTegn": 120,
+  "metaMaksTegn": 160,
+  "brodtekstMinOrd": 600,
+  "brodtekstMaksOrd": 1200,
+  "seksjonerMin": 3,
+  "seksjonerMaks": 6,
+  "faqMin": 3,
+  "faqMaks": 5,
+  "overlappMaks": 0.5,
+  "artiklerMaksPerUke": 7
+}

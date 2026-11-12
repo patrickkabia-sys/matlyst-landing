@@ -3,9 +3,14 @@
   "private": true,
   "scripts": {
     "test": "node --test test/*.test.mjs",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "seo": "node seo-motor/kjor.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0"
+  },
+  "dependencies": {
+    "google-auth-library": "^11.3.4",
+    "zod": "^4.6.7"
   }
 }

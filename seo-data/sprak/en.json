@@ -1,0 +1,73 @@
+{
+  "stemme": [
+    "Write in friendly, down-to-earth American English and speak directly to the reader.",
+    "Answer the search query in the opening paragraph, then use short, concrete sentences.",
+    "Use contractions in ordinary prose and keep the tone practical rather than promotional."
+  ],
+  "unngå": [
+    "British spelling and British food terms",
+    "hype, superlatives, and marketing verbs",
+    "translated Norwegian expressions",
+    "advice that promises a specific health outcome"
+  ],
+  "typografi": [
+    "Use °F first with °C in parentheses.",
+    "Use cups for household cooking measurements.",
+    "Use a period for decimals, a comma for thousands, and the serial comma."
+  ],
+  "britiskeOrd": ["tick", "the shop", "expiry", "method", "aubergine", "courgette", "favourite", "colour", "organise", "litre"],
+  "helseord": ["allergy", "allergies", "allergen", "allergens", "calorie", "calories", "weight loss", "slimming", "diet", "diets"],
+  "appCta": {
+    "import": {
+      "tittel": "Keep the recipes you actually use",
+      "tekst": "Save recipes from the web, social media, or photos and find them when you're ready to cook."
+    },
+    "ukemeny": {
+      "tittel": "Get this week's dinners in one place",
+      "tekst": "Add recipes to the days that work and plan as much or as little of the week as you want."
+    },
+    "handleliste": {
+      "tittel": "Build your grocery list from recipes",
+      "tekst": "Send the ingredients to one list and add your own groceries before you head to the store."
+    },
+    "bruk-det-jeg-har": {
+      "tittel": "Start with what you have",
+      "tekst": "See which saved recipes match what's already in your pantry."
+    },
+    "kokemodus": {
+      "tittel": "Cook one step at a time",
+      "tekst": "Keep the ingredients and directions on screen while you cook."
+    }
+  },
+  "appkoblingSti": {
+    "import": "/en/import-recipes/",
+    "ukemeny": "/en/meal-plan-app/",
+    "handleliste": "/en/shopping-list/",
+    "bruk-det-jeg-har": "/en/recipes-by-ingredients/",
+    "kokemodus": "/en/"
+  },
+  "forslagslokale": { "hl": "en", "gl": "us" },
+  "bestillingsmal": {
+    "emne": "A practical guide to {{tema}}.",
+    "vinkel": "Show the reader how to {{vinkel}}."
+  },
+  "forslagsfrø": [
+    { "tekst": "dinner with leftovers", "passform": 3, "tagger": ["leftovers", "dinner"], "appkobling": "bruk-det-jeg-har", "tema": "turning leftovers into new meals", "vinkel": "use what is already at home before buying more groceries", "slug": "dinner-with-leftovers", "kilde_ider": ["usda-fsis"] },
+    { "tekst": "easy meal plan", "passform": 3, "tagger": ["meal plan", "dinner"], "appkobling": "ukemeny", "tema": "a simple and flexible meal plan", "vinkel": "plan a few dinners without locking in the entire week", "slug": "simple-flexible-meal-plan", "kilde_ider": [] },
+    { "tekst": "dinner with what I have", "passform": 3, "tagger": ["ingredients", "dinner"], "appkobling": "bruk-det-jeg-har", "tema": "dinners based on ingredients already at home", "vinkel": "turn a quick ingredient check into specific dinner options", "slug": "dinner-with-what-you-have", "kilde_ider": [] },
+    { "tekst": "how to store food", "passform": 2, "tagger": ["storage", "food safety"], "appkobling": "import", "tema": "organized storage for common foods", "vinkel": "turn source-based storage guidance into a simple kitchen check", "slug": "how-to-store-common-foods", "kilde_ider": ["usda-fsis", "fda"] },
+    { "tekst": "cooking times eggs rice pasta", "passform": 2, "tagger": ["cooking time", "conversions"], "appkobling": "kokemodus", "tema": "cooking times for common ingredients", "vinkel": "explain what changes the timing and how to check the result", "slug": "cooking-times-for-common-ingredients", "kilde_ider": [] },
+    { "tekst": "air fryer time temperature", "passform": 2, "tagger": ["air fryer", "conversions"], "appkobling": "kokemodus", "tema": "practical air fryer time and temperature adjustments", "vinkel": "adapt a recipe one step at a time", "slug": "air-fryer-time-and-temperature", "kilde_ider": [] },
+    { "tekst": "grocery list for dinners", "passform": 3, "tagger": ["grocery list", "dinner"], "appkobling": "handleliste", "tema": "grocery lists built from planned dinners", "vinkel": "collect what is needed without buying items already at home", "slug": "grocery-list-from-dinners", "kilde_ider": [] },
+    { "tekst": "save recipes", "passform": 3, "tagger": ["recipes", "organization"], "appkobling": "import", "tema": "collecting and organizing recipes from different places", "vinkel": "build a system that makes useful recipes easy to find again", "slug": "collect-and-organize-recipes", "kilde_ider": [] }
+  ],
+  "autoBlogg": {
+    "faqTittel": "Questions and answers",
+    "kilderTittel": "Sources",
+    "lesOgsåTittel": "Related articles",
+    "indeksTittel": "New articles",
+    "llmsTittel": "Auto articles",
+    "llmsSprak": "English"
+  },
+  "stoppord": ["the", "and", "with", "before", "into", "use", "them", "your", "what", "first", "when", "which", "should", "some", "can", "you", "have", "already", "then", "after", "while", "than", "where", "from", "that", "this", "will", "would", "could", "more", "most", "less", "each", "other", "around"]
+}

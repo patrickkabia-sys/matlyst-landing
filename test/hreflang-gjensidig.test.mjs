@@ -25,12 +25,14 @@ function hreflang(html) {
 
 test('alle offentlige sidegrupper finnes på alle fire språk', () => {
   // Bloggartiklene finnes bare der karusellen er laget (koketid: nb og en; egg: nb, sv og da),
-  // men alltid på norsk. Alle andre grupper skal ha alle fire språk.
+  // men alltid på norsk. Auto-artikler finnes bare på språkene som er publisert for emnet.
+  // Alle andre grupper skal ha alle fire språk.
   const blogg = SIDEGRUPPER.filter(({ id }) => id.startsWith('blogg-'));
   for (const gruppe of blogg) assert.ok(gruppe.sider.nb, `${gruppe.id} mangler norsk`);
-  const unntak = SIDEGRUPPER.filter(({ id, sider }) => Object.keys(sider).length !== 4 && !id.startsWith('blogg-'));
+  const harVariabelSprakdekning = (id) => id.startsWith('blogg-') || id.startsWith('auto-');
+  const unntak = SIDEGRUPPER.filter(({ id, sider }) => Object.keys(sider).length !== 4 && !harVariabelSprakdekning(id));
   assert.deepEqual(unntak.map(({ id }) => id), ['christine']);
-  for (const gruppe of SIDEGRUPPER.filter(({ id }) => id !== 'christine' && !id.startsWith('blogg-'))) {
+  for (const gruppe of SIDEGRUPPER.filter(({ id }) => id !== 'christine' && !harVariabelSprakdekning(id))) {
     assert.deepEqual(Object.keys(gruppe.sider).sort(), ['da', 'en', 'nb', 'sv'], gruppe.id);
   }
 });

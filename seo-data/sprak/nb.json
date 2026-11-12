@@ -1,0 +1,98 @@
+{
+  "stemme": [
+    "Skriv direkte og jordnært til leseren i du-form.",
+    "Svar på søket i ingressen, og bruk korte, konkrete setninger.",
+    "Bruk norske matord og naturlig bokmål uten reklamespråk."
+  ],
+  "unngå": [
+    "superlativer og hype",
+    "fyllprosa",
+    "unødvendige engelske ord",
+    "råd som lover et bestemt helseutfall"
+  ],
+  "typografi": [
+    "Bruk komma som desimalskilletegn og mellomrom som tusenskilletegn.",
+    "Skriv datoer som DD.MM.ÅÅÅÅ i vanlig tekst.",
+    "Bruk ellipsetegnet …, ikke tre punktum."
+  ],
+  "helseord": ["allergi", "allergier", "allergiker", "allergikere", "allergen", "allergener", "kalori", "kalorier", "slanking", "vektnedgang", "diett", "dietter"],
+  "appCta": {
+    "import": {
+      "tittel": "Samle oppskriftene du faktisk bruker",
+      "tekst": "Lagre oppskrifter fra nettet, sosiale medier eller bilder, og finn dem igjen når du skal lage mat."
+    },
+    "ukemeny": {
+      "tittel": "Få oversikt over ukas middager",
+      "tekst": "Legg oppskriftene på dagene som passer, og planlegg bare så mye av uka du vil."
+    },
+    "handleliste": {
+      "tittel": "Lag handlelista fra oppskriftene",
+      "tekst": "Send ingrediensene til én liste, og legg til egne varer før du handler."
+    },
+    "bruk-det-jeg-har": {
+      "tittel": "Begynn med det du har hjemme",
+      "tekst": "Se hvilke lagrede oppskrifter som passer til varene i spiskammeret."
+    },
+    "kokemodus": {
+      "tittel": "Lag maten ett steg om gangen",
+      "tekst": "Ha ingrediensene og framgangsmåten på skjermen mens du lager maten."
+    }
+  },
+  "appkoblingSti": {
+    "import": "/importer-oppskrifter/",
+    "ukemeny": "/ukemeny/",
+    "handleliste": "/handleliste/",
+    "bruk-det-jeg-har": "/hva-kan-jeg-lage/",
+    "kokemodus": "/"
+  },
+  "forslagslokale": { "hl": "no", "gl": "no" },
+  "bestillingsmal": {
+    "emne": "En praktisk veiledning om {{tema}}.",
+    "vinkel": "Vis hvordan leseren kan {{vinkel}}."
+  },
+  "forslagsfrø": [
+    { "tekst": "middag med rester", "passform": 3, "tagger": ["rester", "middag"], "appkobling": "bruk-det-jeg-har", "tema": "rester i nye måltider", "vinkel": "bruke det som finnes hjemme før nye varer kjøpes", "slug": "bruk-rester-i-middag", "kilde_ider": ["mattilsynet"] },
+    { "tekst": "enkel ukemeny", "passform": 3, "tagger": ["ukemeny", "middag"], "appkobling": "ukemeny", "tema": "en enkel og fleksibel ukemeny", "vinkel": "planlegge noen få middager uten å låse hele uka", "slug": "enkel-fleksibel-ukemeny", "kilde_ider": [] },
+    { "tekst": "middag av det jeg har", "passform": 3, "tagger": ["råvarer", "middag"], "appkobling": "bruk-det-jeg-har", "tema": "middager basert på råvarene som allerede finnes hjemme", "vinkel": "gå fra en liten råvareoversikt til konkrete middagsvalg", "slug": "middag-av-det-du-har", "kilde_ider": ["matvaretabellen"] },
+    { "tekst": "oppbevaring av mat", "passform": 2, "tagger": ["oppbevaring", "mattrygghet"], "appkobling": "import", "tema": "ryddig oppbevaring av vanlige matvarer", "vinkel": "samle kildebaserte oppbevaringsråd i en oversiktlig hverdagssjekk", "slug": "oppbevaring-av-mat", "kilde_ider": ["mattilsynet"] },
+    { "tekst": "koketid egg ris pasta", "passform": 2, "tagger": ["koketid", "omregning"], "appkobling": "kokemodus", "tema": "koketider for vanlige råvarer", "vinkel": "forklare hva som påvirker tiden og hvordan resultatet kontrolleres", "slug": "koketider-for-vanlige-ravarer", "kilde_ider": ["matvaretabellen"] },
+    { "tekst": "airfryer tid og temperatur", "passform": 2, "tagger": ["airfryer", "omregning"], "appkobling": "kokemodus", "tema": "praktisk tilpasning av tid og temperatur i airfryer", "vinkel": "hjelpe leseren å tilpasse en oppskrift steg for steg", "slug": "tid-og-temperatur-i-airfryer", "kilde_ider": [] },
+    { "tekst": "handleliste til middag", "passform": 3, "tagger": ["handleliste", "middag"], "appkobling": "handleliste", "tema": "handlelister bygget fra planlagte middager", "vinkel": "samle nødvendige varer uten å kjøpe det som allerede finnes hjemme", "slug": "handleliste-fra-middager", "kilde_ider": [] },
+    { "tekst": "lagre oppskrifter", "passform": 3, "tagger": ["oppskrifter", "organisering"], "appkobling": "import", "tema": "å samle og organisere oppskrifter fra ulike steder", "vinkel": "lage et system som gjør oppskriftene enkle å finne igjen", "slug": "samle-og-organisere-oppskrifter", "kilde_ider": [] }
+  ],
+  "autoBlogg": {
+    "faqTittel": "Spørsmål og svar",
+    "kilderTittel": "Kilder",
+    "lesOgsåTittel": "Les også",
+    "indeksTittel": "Nye artikler",
+    "llmsTittel": "Auto-artikler",
+    "llmsSprak": "Norsk"
+  },
+  "rapport": {
+    "issueTittel": "SEO-autopilot",
+    "nattTittel": "SEO-autopilot – nattlig rapport",
+    "ukeTittel": "SEO-autopilot – ukesrapport",
+    "dato": "Dato",
+    "modus": "Modus",
+    "resultat": "Resultat",
+    "statuskode": "Statuskode",
+    "bestillingId": "Bestilling",
+    "slug": "Slug",
+    "pr": "PR",
+    "grunnkoder": "Grunnkoder",
+    "statuskoder": "Statuskoder",
+    "antall": "Antall",
+    "antallEtiketter": {
+      "gsc": "GSC-rader",
+      "forslag": "Forslag",
+      "ko": "Køemner",
+    "bestillinger": "Bestillinger",
+    "levert": "Levert",
+    "avvist": "Avvist",
+    "ytelsesrader": "Ytelsesrader"
+    },
+    "ingen": "Ingen",
+    "issueBody": "Samlet rapporttråd for SEO-autopiloten."
+  },
+  "stoppord": ["hva", "etter", "også", "være", "noen", "noe", "nå", "mye", "hvordan", "bruker", "bruk", "gjør", "trenger", "fortsatt", "hver", "rundt", "gjennom", "mellom", "omtrent", "likevel", "underveis", "senere", "begynner", "vanligvis", "først", "gjerne", "ellers", "isteden", "samtidig", "dersom"]
+}
