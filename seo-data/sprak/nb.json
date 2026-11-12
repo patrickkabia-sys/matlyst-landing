@@ -1,0 +1,42 @@
+{
+  "stemme": [
+    "Skriv direkte og jordnært til leseren i du-form.",
+    "Svar på søket i ingressen, og bruk korte, konkrete setninger.",
+    "Bruk norske matord og naturlig bokmål uten reklamespråk."
+  ],
+  "unngå": [
+    "superlativer og hype",
+    "fyllprosa",
+    "unødvendige engelske ord",
+    "råd som lover et bestemt helseutfall"
+  ],
+  "typografi": [
+    "Bruk komma som desimalskilletegn og mellomrom som tusenskilletegn.",
+    "Skriv datoer som DD.MM.ÅÅÅÅ i vanlig tekst.",
+    "Bruk ellipsetegnet …, ikke tre punktum."
+  ],
+  "helseord": ["allergi", "allergier", "allergiker", "allergikere", "allergen", "allergener", "kalori", "kalorier", "slanking", "vektnedgang", "diett", "dietter"],
+  "appCta": {
+    "import": {
+      "tittel": "Samle oppskriftene du faktisk bruker",
+      "tekst": "Lagre oppskrifter fra nettet, sosiale medier eller bilder, og finn dem igjen når du skal lage mat."
+    },
+    "ukemeny": {
+      "tittel": "Få oversikt over ukas middager",
+      "tekst": "Legg oppskriftene på dagene som passer, og planlegg bare så mye av uka du vil."
+    },
+    "handleliste": {
+      "tittel": "Lag handlelista fra oppskriftene",
+      "tekst": "Send ingrediensene til én liste, og legg til egne varer før du handler."
+    },
+    "bruk-det-jeg-har": {
+      "tittel": "Begynn med det du har hjemme",
+      "tekst": "Se hvilke lagrede oppskrifter som passer til varene i spiskammeret."
+    },
+    "kokemodus": {
+      "tittel": "Lag maten ett steg om gangen",
+      "tekst": "Ha ingrediensene og framgangsmåten på skjermen mens du lager maten."
+    }
+  },
+  "stoppord": ["og", "ikke", "at", "er", "for", "med", "som", "det", "du", "har", "kan", "skal", "hva", "jeg", "meg", "deg", "gjøre", "blir", "best", "av", "nå", "noe", "dette"]
+}

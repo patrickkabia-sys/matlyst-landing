@@ -1,0 +1,43 @@
+{
+  "stemme": [
+    "Write in friendly, down-to-earth American English and speak directly to the reader.",
+    "Answer the search query in the opening paragraph, then use short, concrete sentences.",
+    "Use contractions in ordinary prose and keep the tone practical rather than promotional."
+  ],
+  "unngå": [
+    "British spelling and British food terms",
+    "hype, superlatives, and marketing verbs",
+    "translated Norwegian expressions",
+    "advice that promises a specific health outcome"
+  ],
+  "typografi": [
+    "Use °F first with °C in parentheses.",
+    "Use cups for household cooking measurements.",
+    "Use a period for decimals, a comma for thousands, and the serial comma."
+  ],
+  "britiskeOrd": ["tick", "the shop", "expiry", "method", "aubergine", "courgette", "favourite", "colour", "organise", "litre"],
+  "helseord": ["allergy", "allergies", "allergen", "allergens", "calorie", "calories", "weight loss", "slimming", "diet", "diets"],
+  "appCta": {
+    "import": {
+      "tittel": "Keep the recipes you actually use",
+      "tekst": "Save recipes from the web, social media, or photos and find them when you're ready to cook."
+    },
+    "ukemeny": {
+      "tittel": "Get this week's dinners in one place",
+      "tekst": "Add recipes to the days that work and plan as much or as little of the week as you want."
+    },
+    "handleliste": {
+      "tittel": "Build your grocery list from recipes",
+      "tekst": "Send the ingredients to one list and add your own groceries before you head to the store."
+    },
+    "bruk-det-jeg-har": {
+      "tittel": "Start with what you have",
+      "tekst": "See which saved recipes match what's already in your pantry."
+    },
+    "kokemodus": {
+      "tittel": "Cook one step at a time",
+      "tekst": "Keep the ingredients and directions on screen while you cook."
+    }
+  },
+  "stoppord": ["the", "and", "is", "are", "to", "of", "in", "for", "you", "your", "with", "can", "what", "i", "me", "do", "will", "be", "best", "from", "now", "something", "this"]
+}

@@ -1,0 +1,43 @@
+{
+  "stemme": [
+    "Skriv direkte og jordnært til læseren i du-form.",
+    "Svar på søgningen i indledningen, og brug korte, konkrete sætninger.",
+    "Brug «Inviter din husstand», «Angiv» og «Kom i gang med» i de sammenhænge, hvor de er naturlige.",
+    "Brug flertal, når teksten handler om flere opskrifter, varer eller personer."
+  ],
+  "unngå": [
+    "norske ord og norsk ordstilling",
+    "særskrevne sammensætninger",
+    "engelske kalker og reklamesprog",
+    "råd, der lover et bestemt helbredsresultat"
+  ],
+  "typografi": [
+    "Skriv sammensatte ord som ét ord.",
+    "Brug komma som decimaltegn og punktum eller mellemrum som tusindtalsseparator.",
+    "Skriv datoer som DD-MM-ÅÅÅÅ, og brug 24-timersformat."
+  ],
+  "helseord": ["allergi", "allergier", "allergiker", "allergikere", "allergen", "allergener", "kalorie", "kalorier", "slankekur", "slankekure", "vægttab", "diæt", "diæter"],
+  "appCta": {
+    "import": {
+      "tittel": "Saml de opskrifter, du faktisk bruger",
+      "tekst": "Kom i gang med at gemme opskrifter fra nettet, sociale medier eller billeder, og find dem igen, når du skal lave mad."
+    },
+    "ukemeny": {
+      "tittel": "Få styr på ugens aftensmad",
+      "tekst": "Læg opskrifterne på de dage, der passer, og planlæg kun så meget af ugen, du har brug for."
+    },
+    "handleliste": {
+      "tittel": "Én indkøbsliste til hele husstanden",
+      "tekst": "Inviter din husstand, og del madplanen og indkøbslisten, så alle kan følge med."
+    },
+    "bruk-det-jeg-har": {
+      "tittel": "Begynd med det, du har derhjemme",
+      "tekst": "Se, hvilke gemte opskrifter der passer til varerne i spisekammeret."
+    },
+    "kokemodus": {
+      "tittel": "Lav maden ét trin ad gangen",
+      "tekst": "Angiv antallet af portioner, og hav ingredienserne og fremgangsmåden på skærmen, mens du laver mad."
+    }
+  },
+  "stoppord": ["og", "ikke", "at", "er", "for", "med", "som", "det", "du", "har", "kan", "skal", "hvad", "jeg", "mig", "dig", "gøre", "bliver", "bedst", "af", "nu", "noget", "dette"]
+}
