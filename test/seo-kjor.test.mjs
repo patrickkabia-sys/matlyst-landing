@@ -13,10 +13,11 @@ import {
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import test from 'node:test';
 
 import { kjor } from '../seo-motor/kjor.mjs';
+import { lagRapporttekst } from '../seo-motor/etterbehandle.mjs';
 import { nattrapport } from '../seo-motor/rapport.mjs';
 
 const REPO = new URL('../', import.meta.url);
@@ -97,6 +98,16 @@ function lagAvh(rot, { artikkel = FIXTURE.artikkel, hent, dataforseo, gsc } = {}
 
 function filer(rot) {
   return readdirSync(rot, { recursive: true }).map(String).sort();
+}
+
+function statusShell(workflow) {
+  const stegstart = workflow.indexOf('      - name: Lagre driftsstatus');
+  const blokkstart = workflow.indexOf('        run: |\n', stegstart) + '        run: |\n'.length;
+  const blokkslutt = workflow.indexOf('\n      - name:', blokkstart);
+  return workflow.slice(blokkstart, blokkslutt)
+    .split('\n')
+    .map((linje) => linje.slice(10))
+    .join('\n');
 }
 
 test('av gjør ingenting', async (t) => {
@@ -240,31 +251,104 @@ test('workflow har tidsplan, manuell start og av-vakt', () => {
   assert.match(workflow, /if: steps\.motor\.outputs\.modus == 'utkast'/u);
   assert.doesNotMatch(workflow, /echo "dato=\$\(date \+%F\)"/u);
   assert.match(workflow, /- name: Bygg nettstedet\n\s+if:[^\n]+\n\s+id: bygg\n\s+continue-on-error: true/u);
-  assert.match(workflow, /ukerapport/u);
+  assert.doesNotMatch(workflow, /node --input-type=module/u);
+  assert.doesNotMatch(workflow, /<<'NODE'/u);
+  assert.equal(workflow.match(/node seo-motor\/etterbehandle\.mjs avvis/gu)?.length, 1);
+  assert.equal(workflow.match(/node seo-motor\/etterbehandle\.mjs levering/gu)?.length, 1);
+  assert.equal(workflow.match(/node seo-motor\/etterbehandle\.mjs pushfeil/gu)?.length, 1);
+  assert.equal(workflow.match(/node seo-motor\/etterbehandle\.mjs rapport/gu)?.length, 1);
   assert.match(workflow, /uses: actions\/checkout@v4\n\s+with:\n\s+ref: main/u);
   assert.match(workflow, /echo "basis=\$\(git rev-parse HEAD\)"/u);
   assert.equal(workflow.match(/git reset -- seo-resultat\.json seo-data/gu)?.length, 2);
   assert.equal(workflow.match(/git push origin HEAD:main/gu)?.length, 1);
+  assert.equal(workflow.match(/git pull --rebase origin main/gu)?.length, 1);
+  assert.match(workflow, /if ! git pull --rebase origin main \|\| ! git push origin HEAD:main; then/u);
   assert.ok(workflow.indexOf('git push origin HEAD:main') > workflow.indexOf('- name: Lagre driftsstatus'));
   assert.match(workflow, /git switch -C seo-autopilot-status "\$BASIS"/u);
   assert.doesNotMatch(workflow, /git switch main/u);
-  assert.match(workflow, /'push av artikkel og driftsstatus feilet'/u);
-  assert.match(workflow, /logg\.resultat = 'utkast'/u);
-  assert.match(workflow, /skalSperre\(tellAvvisningerPåRad\(historikk\)\)/u);
-  assert.match(workflow, /rad\.dato >= startdato && rad\.dato <= sluttdato/u);
+  assert.doesNotMatch(workflow, /push av artikkel og driftsstatus feilet/u);
+  assert.doesNotMatch(workflow, /logg\.resultat = 'utkast'/u);
+  assert.doesNotMatch(workflow, /skalSperre\(tellAvvisningerPåRad\(historikk\)\)/u);
+  assert.doesNotMatch(workflow, /rad\.dato >= startdato && rad\.dato <= sluttdato/u);
 });
 
 test('workflowens statussteg er gyldig shell', () => {
   const workflow = readFileSync(new URL('../.github/workflows/seo-autopilot.yml', import.meta.url), 'utf8');
-  const stegstart = workflow.indexOf('      - name: Lagre driftsstatus');
-  const blokkstart = workflow.indexOf('        run: |\n', stegstart) + '        run: |\n'.length;
-  const blokkslutt = workflow.indexOf('\n      - name:', blokkstart);
-  const shell = workflow.slice(blokkstart, blokkslutt)
-    .split('\n')
-    .map((linje) => linje.slice(10))
-    .join('\n');
+  const shell = statusShell(workflow);
 
   execFileSync('bash', ['-n'], { input: shell, stdio: ['pipe', 'pipe', 'pipe'] });
+});
+
+test('rebasekonflikt avbrytes før pushfeilen logges og rapporteres', (t) => {
+  const mappe = mkdtempSync(join(tmpdir(), 'matlyst-seo-rebase-'));
+  t.after(() => rmSync(mappe, { recursive: true, force: true }));
+  const remote = join(mappe, 'remote.git');
+  const kilde = join(mappe, 'kilde');
+  const kjører = join(mappe, 'kjører');
+  const git = (cwd, args) => execFileSync('git', args, { cwd, stdio: 'pipe' }).toString().trim();
+
+  execFileSync('git', ['init', '--bare', remote], { stdio: 'pipe' });
+  mkdirSync(kilde);
+  git(kilde, ['init', '-b', 'main']);
+  git(kilde, ['config', 'user.name', 'Test']);
+  git(kilde, ['config', 'user.email', 'test@example.com']);
+  cpSync(new URL('../seo-motor/filer.mjs', import.meta.url), join(kilde, 'seo-motor', 'filer.mjs'));
+  cpSync(new URL('../seo-motor/modus.mjs', import.meta.url), join(kilde, 'seo-motor', 'modus.mjs'));
+  cpSync(new URL('../seo-motor/rapport.mjs', import.meta.url), join(kilde, 'seo-motor', 'rapport.mjs'));
+  cpSync(new URL('../seo-motor/etterbehandle.mjs', import.meta.url), join(kilde, 'seo-motor', 'etterbehandle.mjs'));
+  cpSync(new URL('../seo-data/sprak/nb.json', import.meta.url), join(kilde, 'seo-data', 'sprak', 'nb.json'));
+  skrivJson(join(kilde, 'seo-data', 'logg', '2026-11-12.json'), {
+    dato: '2026-11-12',
+    modus: 'på',
+    resultat: 'publisert',
+    kostnadUsd: 0.01,
+  });
+  git(kilde, ['add', '.']);
+  git(kilde, ['commit', '-m', 'basis']);
+  git(kilde, ['remote', 'add', 'origin', remote]);
+  git(kilde, ['push', '-u', 'origin', 'main']);
+  execFileSync('git', ['clone', remote, kjører], { stdio: 'pipe' });
+
+  skrivJson(join(kjører, 'seo-data', 'logg', '2026-11-12.json'), {
+    dato: '2026-11-12',
+    modus: 'på',
+    resultat: 'publisert',
+    kostnadUsd: 0.02,
+  });
+  skrivJson(join(kilde, 'seo-data', 'logg', '2026-11-12.json'), {
+    dato: '2026-11-12',
+    modus: 'på',
+    resultat: 'publisert',
+    kostnadUsd: 0.03,
+  });
+  git(kilde, ['add', 'seo-data']);
+  git(kilde, ['commit', '-m', 'ekstern status']);
+  git(kilde, ['push', 'origin', 'main']);
+  const fjernHode = git(kilde, ['rev-parse', 'HEAD']);
+
+  const workflow = readFileSync(new URL('../.github/workflows/seo-autopilot.yml', import.meta.url), 'utf8');
+  const resultat = spawnSync('bash', ['-e'], {
+    cwd: kjører,
+    env: {
+      ...process.env,
+      BASIS: git(kjører, ['rev-parse', 'HEAD']),
+      DATO: '2026-11-12',
+      MODUS: 'på',
+      MOTORRESULTAT: 'publisert',
+      PUBLISERINGSUTFALL: 'success',
+    },
+    input: statusShell(workflow),
+    encoding: 'utf8',
+  });
+
+  assert.equal(resultat.status, 1);
+  assert.equal(existsSync(join(kjører, '.git', 'rebase-merge')), false);
+  assert.equal(existsSync(join(kjører, '.git', 'rebase-apply')), false);
+  assert.equal(git(remote, ['rev-parse', 'refs/heads/main']), fjernHode);
+  const logg = JSON.parse(readFileSync(join(kjører, 'seo-data', 'logg', '2026-11-12.json')));
+  assert.equal(logg.resultat, 'feil');
+  assert.deepEqual(logg.grunner, ['push av artikkel og driftsstatus feilet']);
+  assert.match(lagRapporttekst(pathToFileURL(`${kjører}/`), '2026-11-12'), /push av artikkel og driftsstatus feilet/u);
 });
 
 test('CLI-tørrkjøring uten miljø går gjennom hele løpet', (t) => {

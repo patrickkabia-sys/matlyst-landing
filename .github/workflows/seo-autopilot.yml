@@ -80,42 +80,7 @@ jobs:
           BYGGUTFALL: ${{ steps.bygg.outcome }}
           DATO: ${{ steps.motor.outputs.dato }}
           SLUG: ${{ steps.motor.outputs.slug }}
-        run: |
-          node --input-type=module <<'NODE'
-          import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
-          import { dirname } from 'node:path';
-          import { skalSperre, tellAvvisningerPåRad } from './seo-motor/modus.mjs';
-          const grunn = process.env.BYGGUTFALL === 'failure' ? 'nettstedbygget feilet' : 'npm test feilet';
-          const språk = ['nb', 'sv', 'da', 'en'];
-          const fil = språk.map((kode) => `blogg-kilde/auto/${kode}/${process.env.SLUG}.json`).find(existsSync);
-          if (fil) {
-            const artikkel = JSON.parse(readFileSync(fil, 'utf8'));
-            const avvist = `seo-data/avvist/${process.env.DATO}-${process.env.SLUG}.json`;
-            mkdirSync(dirname(avvist), { recursive: true });
-            writeFileSync(avvist, `${JSON.stringify({ artikkel, grunner: [grunn] }, null, 2)}\n`);
-            rmSync(fil);
-          }
-          const publisertFil = 'seo-data/publisert.json';
-          const publisert = JSON.parse(readFileSync(publisertFil, 'utf8')).filter(({ slug }) => slug !== process.env.SLUG);
-          writeFileSync(publisertFil, `${JSON.stringify(publisert, null, 2)}\n`);
-          const loggfil = `seo-data/logg/${process.env.DATO}.json`;
-          const logg = JSON.parse(readFileSync(loggfil, 'utf8'));
-          logg.resultat = 'avvist';
-          logg.grunner = [grunn];
-          delete logg.sti;
-          writeFileSync(loggfil, `${JSON.stringify(logg, null, 2)}\n`);
-          const historikk = readdirSync('seo-data/logg')
-            .filter((navn) => /^\d{4}-\d{2}-\d{2}\.json$/u.test(navn))
-            .sort()
-            .map((navn) => JSON.parse(readFileSync(`seo-data/logg/${navn}`, 'utf8')));
-          if (skalSperre(tellAvvisningerPåRad(historikk))) {
-            const meldinger = JSON.parse(readFileSync('seo-data/sprak/nb.json', 'utf8')).motor;
-            writeFileSync('seo-data/sperre.json', `${JSON.stringify({ dato: process.env.DATO, grunn: meldinger.sperre }, null, 2)}\n`);
-            logg.resultat = 'sperret';
-            logg.grunner.push(meldinger.sperre);
-            writeFileSync(loggfil, `${JSON.stringify(logg, null, 2)}\n`);
-          }
-          NODE
+        run: node seo-motor/etterbehandle.mjs avvis
 
       - name: Forbered publisering til main
         if: steps.motor.outputs.modus == 'på' && steps.motor.outputs.resultat == 'publisert' && steps.bygg.outcome == 'success' && steps.tester.outcome == 'success'
@@ -161,28 +126,7 @@ jobs:
           PR_URL: ${{ steps.pr.outputs.url }}
           PUBLISERINGSUTFALL: ${{ steps.publisering.outcome }}
           SLUG: ${{ steps.motor.outputs.slug }}
-        run: |
-          node --input-type=module <<'NODE'
-          import { readFileSync, writeFileSync } from 'node:fs';
-          const loggfil = `seo-data/logg/${process.env.DATO}.json`;
-          const logg = JSON.parse(readFileSync(loggfil, 'utf8'));
-          if (logg.resultat === 'publisert' && process.env.MODUS === 'på' && process.env.PUBLISERINGSUTFALL !== 'success') {
-            logg.resultat = 'feil';
-            logg.grunner = ['push til main feilet'];
-          }
-          if (logg.resultat === 'publisert' && process.env.MODUS === 'utkast' && process.env.PRUTFALL !== 'success') {
-            logg.resultat = 'feil';
-            logg.grunner = ['oppretting av utkast-PR feilet'];
-            const publisertFil = 'seo-data/publisert.json';
-            const publisert = JSON.parse(readFileSync(publisertFil, 'utf8')).filter(({ slug }) => slug !== process.env.SLUG);
-            writeFileSync(publisertFil, `${JSON.stringify(publisert, null, 2)}\n`);
-          }
-          if (process.env.PR_URL) {
-            logg.resultat = 'utkast';
-            logg.prUrl = process.env.PR_URL;
-          }
-          writeFileSync(loggfil, `${JSON.stringify(logg, null, 2)}\n`);
-          NODE
+        run: node seo-motor/etterbehandle.mjs levering
 
       - name: Lagre driftsstatus
         if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outcome == 'success'
@@ -202,16 +146,9 @@ jobs:
           git add seo-data
           if ! git diff --cached --quiet; then
             git commit -m "seo: lagre status fra autopiloten"
-            if ! git push origin HEAD:main; then
-          node --input-type=module <<'NODE'
-          import { readFileSync, writeFileSync } from 'node:fs';
-          const loggfil = `seo-data/logg/${process.env.DATO}.json`;
-          const logg = JSON.parse(readFileSync(loggfil, 'utf8'));
-          const publisering = process.env.MODUS === 'på' && process.env.MOTORRESULTAT === 'publisert';
-          logg.resultat = 'feil';
-          logg.grunner = [publisering ? 'push av artikkel og driftsstatus feilet' : 'push av driftsstatus feilet'];
-          writeFileSync(loggfil, `${JSON.stringify(logg, null, 2)}\n`);
-          NODE
+            if ! git pull --rebase origin main || ! git push origin HEAD:main; then
+              git rebase --abort 2>/dev/null || true
+              node seo-motor/etterbehandle.mjs pushfeil
               exit 1
             fi
           fi
@@ -221,29 +158,4 @@ jobs:
         env:
           DATO: ${{ steps.motor.outputs.dato }}
           GH_TOKEN: ${{ github.token }}
-        run: |
-          node --input-type=module <<'NODE'
-          import { execFile } from 'node:child_process';
-          import { readFileSync, readdirSync } from 'node:fs';
-          import { promisify } from 'node:util';
-          import { nattrapport, postRapport, ukerapport } from './seo-motor/rapport.mjs';
-          const kjør = promisify(execFile);
-          const logg = JSON.parse(readFileSync(`seo-data/logg/${process.env.DATO}.json`, 'utf8'));
-          let tekst = nattrapport(logg);
-          const sluttdato = process.env.DATO;
-          const dato = new Date(`${sluttdato}T12:00:00Z`);
-          if (new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Oslo', weekday: 'short' }).format(dato) === 'Mon') {
-            const ko = JSON.parse(readFileSync('seo-data/emnekø.json', 'utf8'));
-            const start = new Date(dato);
-            start.setUTCDate(start.getUTCDate() - 6);
-            const startdato = start.toISOString().slice(0, 10);
-            const kostnadUke = readdirSync('seo-data/logg')
-              .filter((navn) => /^\d{4}-\d{2}-\d{2}\.json$/u.test(navn))
-              .map((navn) => JSON.parse(readFileSync(`seo-data/logg/${navn}`, 'utf8')))
-              .filter((rad) => rad.dato >= startdato && rad.dato <= sluttdato)
-              .reduce((sum, rad) => sum + (rad.kostnadUsd ?? 0), 0);
-            tekst += `\n${ukerapport({ ytelse: logg.ytelse ?? [], ko, kostnadUke })}`;
-          }
-          const gh = async (args) => (await kjør('gh', args)).stdout.trim();
-          await postRapport(tekst, { issueTittel: 'SEO-autopilot', gh });
-          NODE
+        run: node seo-motor/etterbehandle.mjs rapport

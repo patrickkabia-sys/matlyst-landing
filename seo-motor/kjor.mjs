@@ -1,15 +1,19 @@
 import {
   existsSync,
-  mkdirSync,
   readFileSync,
   readdirSync,
   writeFileSync,
 } from 'node:fs';
-import { dirname } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
 
 import { lagKlient } from './claude.mjs';
 import { hentDataForSeo } from './dataforseo.mjs';
+import {
+  datafil,
+  lesJson,
+  lesLogg,
+  skrivJson,
+} from './filer.mjs';
 import { granskArtikkel } from './gransk.mjs';
 import { hentGsc } from './gsc.mjs';
 import { hentUtdrag } from './kilder.mjs';
@@ -36,31 +40,8 @@ const MANDAG = new Intl.DateTimeFormat('en-US', {
   weekday: 'short',
 });
 
-function lesJson(fil, reserve) {
-  return existsSync(fil) ? JSON.parse(readFileSync(fil, 'utf8')) : reserve;
-}
-
-function skrivJson(fil, data) {
-  mkdirSync(dirname(fileURLToPath(fil)), { recursive: true });
-  writeFileSync(fil, `${JSON.stringify(data, null, 2)}\n`);
-}
-
-function datafil(rot, navn) {
-  return new URL(`seo-data/${navn}`, rot);
-}
-
 function lesSprakfiler(rot) {
   return Object.fromEntries(SPRAK.map((sprak) => [sprak, lesData(`sprak/${sprak}.json`, rot)]));
-}
-
-function lesLogg(rot) {
-  const mappe = datafil(rot, 'logg/');
-  if (!existsSync(mappe)) return [];
-  return readdirSync(mappe)
-    .filter((navn) => /^\d{4}-\d{2}-\d{2}\.json$/u.test(navn))
-    .sort()
-    .map((navn) => lesJson(new URL(navn, mappe), null))
-    .filter(Boolean);
 }
 
 function lesAutoArtikler(rot) {

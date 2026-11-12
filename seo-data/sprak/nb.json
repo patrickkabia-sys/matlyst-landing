@@ -54,6 +54,7 @@
     "llmsSprak": "Norsk"
   },
   "rapport": {
+    "issueTittel": "SEO-autopilot",
     "nattTittel": "SEO-autopilot – nattlig rapport",
     "ukeTittel": "SEO-autopilot – ukesrapport",
     "dato": "Dato",
@@ -79,7 +80,13 @@
     "alleredePublisert": "én publisering er allerede registrert dette døgnet",
     "tomKo": "emnekøen er tom",
     "ingenKilder": "kilder: ingen utdrag",
-    "sperre": "tre avvisninger på rad"
+    "sperre": "tre avvisninger på rad",
+    "nettstedbyggFeilet": "nettstedbygget feilet",
+    "npmTestFeilet": "npm test feilet",
+    "pushMainFeilet": "push til main feilet",
+    "utkastPrFeilet": "oppretting av utkast-PR feilet",
+    "pushArtikkelOgStatusFeilet": "push av artikkel og driftsstatus feilet",
+    "pushStatusFeilet": "push av driftsstatus feilet"
   },
   "stoppord": ["hva", "etter", "også", "være", "noen", "noe", "nå", "mye", "hvordan", "bruker", "bruk", "gjør", "trenger", "fortsatt", "hver", "rundt", "gjennom", "mellom", "omtrent", "likevel", "underveis", "senere", "begynner", "vanligvis", "først", "gjerne", "ellers", "isteden", "samtidig", "dersom"]
 }
