@@ -3,92 +3,46 @@ import test from 'node:test';
 
 import { nattrapport, postRapport, ukerapport } from '../seo-motor/rapport.mjs';
 
-test('natt med publisering viser lenke og kostnad', () => {
-  const tekst = nattrapport({
-    dato: '2026-11-12',
-    modus: 'på',
-    resultat: 'publisert',
-    emne: 'koketid for egg',
-    sti: '/blogg/koketid-for-egg/',
-    prUrl: 'https://github.com/matlyst/landing/pull/42',
-    kostnadUsd: 0.037,
-  });
+const HEMMELIG = 'SÆRPREGET-SØKEORD-ALDRI-OFFENTLIG';
 
-  assert.match(tekst, /\[\/blogg\/koketid-for-egg\/\]\(https:\/\/matlyst-app\.no\/blogg\/koketid-for-egg\/\)/u);
-  assert.match(tekst, /\[PR #42\]\(https:\/\/github\.com\/matlyst\/landing\/pull\/42\)/u);
-  assert.match(tekst, /\$0\.037/u);
-});
-
-test('avvisning viser grunnene', () => {
+test('nattrapport viser bare drift, bestilling, slug, koder og antall', () => {
   const tekst = nattrapport({
     dato: '2026-11-12',
     modus: 'utkast',
-    resultat: 'avvist',
-    grunner: ['Tittelen er for lang', 'Ukjent kilde K9'],
-    kostnadUsd: 0.021,
+    resultat: 'bestilling',
+    statuskode: 'bestilling-opprettet',
+    bestilling_id: '2026-11-12-nb-restemiddag',
+    slug: 'restemiddag',
+    grunnkoder: ['ingen-kilder'],
+    antall: { gsc: 4, forslag: 8, ko: 2, bestillinger: 1 },
+    sokeord: HEMMELIG,
+    visninger: 987654,
+    klikk: 12345,
+    score: 777,
   });
 
-  assert.match(tekst, /Tittelen er for lang/u);
-  assert.match(tekst, /Ukjent kilde K9/u);
+  assert.match(tekst, /bestilling-opprettet/u);
+  assert.match(tekst, /2026-11-12-nb-restemiddag/u);
+  assert.match(tekst, /restemiddag/u);
+  assert.match(tekst, /ingen-kilder/u);
+  assert.match(tekst, /GSC[^\n]*4/u);
+  assert.doesNotMatch(tekst, new RegExp(HEMMELIG, 'u'));
+  assert.doesNotMatch(tekst, /987654|12345|777/u);
 });
 
-test('utkast viser PR uten offentlig artikkellenke', () => {
-  const tekst = nattrapport({
-    dato: '2026-11-12',
-    modus: 'utkast',
-    resultat: 'utkast',
-    sti: '/blogg/koketid-for-egg/',
-    prUrl: 'https://github.com/matlyst/landing/pull/42',
-    kostnadUsd: 0.037,
-  });
-
-  assert.match(tekst, /\[PR #42\]/u);
-  assert.doesNotMatch(tekst, /matlyst-app\.no\/blogg/u);
-});
-
-test('avvist rapport viser ikke offentlig artikkellenke', () => {
-  const tekst = nattrapport({
-    dato: '2026-11-12',
-    modus: 'på',
-    resultat: 'avvist',
-    sti: '/blogg/koketid-for-egg/',
-    grunner: ['npm test feilet'],
-    kostnadUsd: 0.037,
-  });
-
-  assert.doesNotMatch(tekst, /matlyst-app\.no\/blogg/u);
-});
-
-test('sperre nevnes tydelig', () => {
-  const tekst = nattrapport({
-    dato: '2026-11-12',
-    modus: 'utkast',
-    resultat: 'sperret',
-    grunner: ['Tre avvisninger på rad'],
-    kostnadUsd: 0,
-  });
-
-  assert.match(tekst, /SPERRE/u);
-  assert.match(tekst, /Tre avvisninger på rad/u);
-});
-
-test('ukerapport viser topp 10', () => {
-  const ko = Array.from({ length: 12 }, (_, indeks) => ({
-    id: `emne-${indeks + 1}`,
-    sokeord: `søkeord ${indeks + 1}`,
-    sprak: 'nb',
-    poeng: 120 - indeks,
-  }));
+test('ukerapport viser bare offentlige antall og statuskoder', () => {
   const tekst = ukerapport({
-    ytelse: [{ sti: '/blogg/egg/', visninger: 200, klikk: 18, plassering: 9.4 }],
-    ko,
-    kostnadUke: 0.142,
+    statuskoder: ['bestilling-opprettet', 'ko-tom'],
+    antall: { levert: 2, avvist: 1, bestillinger: 3 },
+    ytelse: [{ sokeord: HEMMELIG, visninger: 999, klikk: 88 }],
+    ko: [{ sokeord: HEMMELIG, score: 500 }],
   });
 
-  assert.match(tekst, /\/blogg\/egg\//u);
-  assert.match(tekst, /søkeord 10/u);
-  assert.doesNotMatch(tekst, /søkeord 11/u);
-  assert.match(tekst, /\$0\.142/u);
+  assert.match(tekst, /bestilling-opprettet/u);
+  assert.match(tekst, /ko-tom/u);
+  assert.match(tekst, /2/u);
+  assert.doesNotMatch(tekst, new RegExp(HEMMELIG, 'u'));
+  assert.doesNotMatch(tekst, /999|88|500/u);
 });
 
 test('postRapport lager issue når den mangler', async () => {

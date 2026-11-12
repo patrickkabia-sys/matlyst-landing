@@ -155,7 +155,8 @@ test('tredje avvisning skriver sperre', async (t) => {
 
   assert.ok(existsSync(join(mappe, 'seo-data', 'sperre.json')));
   assert.equal(resultat.resultat, 'sperret');
-  assert.match(nattrapport(resultat), /SPERRE/u);
+  assert.match(nattrapport(resultat), /sperret/u);
+  assert.doesNotMatch(nattrapport(resultat), /tre avvisninger på rad/u);
 });
 
 test('aktiv sperre gjør på-modus til utkast i hele kjøringen', async (t) => {
@@ -348,7 +349,8 @@ test('rebasekonflikt avbrytes før pushfeilen logges og rapporteres', (t) => {
   const logg = JSON.parse(readFileSync(join(kjører, 'seo-data', 'logg', '2026-11-12.json')));
   assert.equal(logg.resultat, 'feil');
   assert.deepEqual(logg.grunner, ['push av artikkel og driftsstatus feilet']);
-  assert.match(lagRapporttekst(pathToFileURL(`${kjører}/`), '2026-11-12'), /push av artikkel og driftsstatus feilet/u);
+  assert.match(lagRapporttekst(pathToFileURL(`${kjører}/`), '2026-11-12'), /Resultat:\*\* feil/u);
+  assert.doesNotMatch(lagRapporttekst(pathToFileURL(`${kjører}/`), '2026-11-12'), /push av artikkel/u);
 });
 
 test('CLI-tørrkjøring uten miljø går gjennom hele løpet', (t) => {

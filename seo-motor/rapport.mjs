@@ -5,7 +5,11 @@ const { rapport: tekst } = JSON.parse(readFileSync(
   'utf8',
 ));
 
-const usd = (belop) => `$${Number(belop ?? 0).toFixed(3)}`;
+function antallslinjer(antall = {}) {
+  return Object.entries(tekst.antallEtiketter)
+    .filter(([nokkel]) => Number.isFinite(antall[nokkel]))
+    .map(([nokkel, etikett]) => `- **${etikett}:** ${antall[nokkel]}`);
+}
 
 export function nattrapport(logg) {
   const linjer = [
@@ -15,44 +19,36 @@ export function nattrapport(logg) {
     `- **${tekst.modus}:** ${logg.modus}`,
     `- **${tekst.resultat}:** ${logg.resultat}`,
   ];
-  if (logg.emne) linjer.push(`- **${tekst.emne}:** ${logg.emne}`);
-  if (logg.sprak) linjer.push(`- **${tekst.sprak}:** ${logg.sprak}`);
-  if (logg.sti && logg.resultat === 'publisert') {
-    linjer.push(`- **${tekst.artikkel}:** [${logg.sti}](https://matlyst-app.no${logg.sti})`);
+  if (logg.statuskode) linjer.push(`- **${tekst.statuskode}:** ${logg.statuskode}`);
+  if (logg.bestilling_id) linjer.push(`- **${tekst.bestillingId}:** ${logg.bestilling_id}`);
+  if (logg.slug) linjer.push(`- **${tekst.slug}:** ${logg.slug}`);
+  if (logg.pr_url) {
+    const nummer = logg.pr_url.match(/\/pull\/(\d+)\/?$/u)?.[1];
+    linjer.push(`- **${tekst.pr}:** [${tekst.pr}${nummer ? ` #${nummer}` : ''}](${logg.pr_url})`);
   }
-  if (logg.prUrl) {
-    const nummer = logg.prUrl.match(/\/pull\/(\d+)\/?$/u)?.[1];
-    linjer.push(`- **${tekst.pr}:** [${tekst.pr}${nummer ? ` #${nummer}` : ''}](${logg.prUrl})`);
-  }
-  linjer.push(`- **${tekst.kostnad}:** ${usd(logg.kostnadUsd)}`);
-  if (logg.resultat === 'sperret') {
-    linjer.push('', `> **${tekst.sperre}:** ${(logg.grunner ?? []).join('; ') || tekst.ingen}`);
-  } else if (logg.grunner?.length) {
-    linjer.push('', `### ${tekst.grunner}`, '', ...logg.grunner.map((grunn) => `- ${grunn}`));
+  const antall = antallslinjer(logg.antall);
+  if (antall.length) linjer.push('', `### ${tekst.antall}`, '', ...antall);
+  if (logg.grunnkoder?.length) {
+    linjer.push('', `### ${tekst.grunnkoder}`, '', ...logg.grunnkoder.map((kode) => `- ${kode}`));
   }
   return `${linjer.join('\n')}\n`;
 }
 
-export function ukerapport({ ytelse, ko, kostnadUke }) {
-  const ytelseslinjer = ytelse.length
-    ? ytelse.map((rad) => `- ${rad.sti}: ${rad.visninger} ${tekst.visninger}, ${rad.klikk} ${tekst.klikk}, ${tekst.plassering} ${rad.plassering}`)
+export function ukerapport({ statuskoder = [], antall = {} }) {
+  const kodelinjer = statuskoder.length
+    ? statuskoder.map((kode) => `- ${kode}`)
     : [`- ${tekst.ingen}`];
-  const kolinjer = [...ko]
-    .sort((a, b) => (b.poeng ?? 0) - (a.poeng ?? 0))
-    .slice(0, 10)
-    .map((emne, indeks) => `${indeks + 1}. ${emne.sokeord} (${emne.sprak}, ${emne.poeng} ${tekst.poeng})`);
+  const antallLinjer = antallslinjer(antall);
   return [
     `## ${tekst.ukeTittel}`,
     '',
-    `### ${tekst.ytelse}`,
+    `### ${tekst.statuskoder}`,
     '',
-    ...ytelseslinjer,
+    ...kodelinjer,
     '',
-    `### ${tekst.ko}`,
+    `### ${tekst.antall}`,
     '',
-    ...(kolinjer.length ? kolinjer : [`1. ${tekst.ingen}`]),
-    '',
-    `- **${tekst.kostnad}:** ${usd(kostnadUke)}`,
+    ...(antallLinjer.length ? antallLinjer : [`- ${tekst.ingen}`]),
     '',
   ].join('\n');
 }

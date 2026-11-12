@@ -193,7 +193,7 @@ test('ukekostnad summerer bare de siste sju dagene til og med sluttdatoen', (t) 
   assert.equal(ukekostnad(rot, '2026-11-12'), 0.07);
 });
 
-test('mandagsrapport bruker ukekostnaden og poster gjennom rapporthjelperen', async (t) => {
+test('mandagsrapport poster uten kostnad eller privat køinnhold', async (t) => {
   const { mappe, rot } = lagRot(t);
   skrivJson(join(mappe, 'seo-data', 'emnekø.json'), []);
   skrivJson(join(mappe, 'seo-data', 'logg', '2026-11-02.json'), {
@@ -228,6 +228,6 @@ test('mandagsrapport bruker ukekostnaden og poster gjennom rapporthjelperen', as
   assert.equal(kall[1][1], 'comment');
   assert.equal(kall[1][2], '17');
   assert.match(kall[1][4], /SEO-autopilot – ukesrapport/u);
-  assert.match(kall[1][4], /\$0\.070/u);
-  assert.doesNotMatch(kall[1][4], /\$10\.070/u);
+  assert.doesNotMatch(kall[1][4], /\$/u);
+  assert.doesNotMatch(kall[1][4], /Topp 10 i køen/u);
 });
