@@ -38,20 +38,41 @@ export const ArtikkelSkjema = z.object({
   })),
   appkobling: z.enum(['import', 'ukemeny', 'handleliste', 'bruk-det-jeg-har', 'kokemodus']),
   tagger: z.array(z.string().min(1)),
-});
+  kilder: z.array(z.object({
+    id: z.string().min(1),
+    url: z.string().url(),
+    tekst: z.string().min(1).optional(),
+  }).strict()).optional(),
+  lenker: z.array(z.object({ sti: z.string().min(1), tittel: z.string().min(1) }).strict()).optional(),
+  lesOgså: z.array(z.object({ sti: z.string().min(1), tittel: z.string().min(1) }).strict()).optional(),
+  publisert: z.string().regex(/^\d{4}-\d{2}-\d{2}$/u).optional(),
+}).strict();
 
 export const GranskSkjema = z.object({
   beslutning: z.enum(['GODKJENT', 'AVVIST']),
-  grunn: z.string(),
-});
+  grunner: z.array(z.string()),
+  artikkel_sha256: z.string().regex(/^[a-f0-9]{64}$/u),
+}).strict();
 
-export const PassformSkjema = z.object({
-  vurderinger: z.array(z.object({
-    sokeord: z.string(),
-    passform: z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3)]),
-    tagger: z.array(z.string()),
-  })),
-});
+export const BestillingSkjema = z.object({
+  dato: z.string().regex(/^\d{4}-\d{2}-\d{2}$/u),
+  sprak: z.enum(['nb', 'sv', 'da', 'en']),
+  emne_id: z.string().regex(/^e-[a-f0-9]{16}$/u),
+  slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/u),
+  emne: z.string().min(1),
+  vinkel: z.string().min(1),
+  appkoblinger: z.array(z.enum(['import', 'ukemeny', 'handleliste', 'bruk-det-jeg-har', 'kokemodus'])).min(1),
+  kilde_ider: z.array(z.string().min(1)),
+  krav: z.object({
+    ord_min: z.number().int().nonnegative(),
+    ord_maks: z.number().int().positive(),
+    seksjoner_min: z.number().int().positive(),
+    seksjoner_maks: z.number().int().positive(),
+    faq_min: z.number().int().nonnegative(),
+    faq_maks: z.number().int().nonnegative(),
+    sprakregler_ref: z.string().min(1),
+  }).strict(),
+}).strict();
 
 export function lesData(navn, rot) {
   const dataRot = rot ? new URL('seo-data/', rot) : new URL('../seo-data/', import.meta.url);

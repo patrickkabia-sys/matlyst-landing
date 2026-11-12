@@ -1,197 +1,169 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
-import { hentDataForSeo, TakNådd } from '../seo-motor/dataforseo.mjs';
 import { lesData } from '../seo-motor/skjema.mjs';
-import { byggKo } from '../seo-motor/sokeord.mjs';
+import { byggKo, lagBestilling } from '../seo-motor/sokeord.mjs';
 
-const fixtureRot = new URL('../seo-motor/test/fixtures/', import.meta.url);
-const gscKandidater = JSON.parse(readFileSync(new URL('gsc.json', fixtureRot), 'utf8'));
-const dataforseoSvar = JSON.parse(readFileSync(new URL('dataforseo.json', fixtureRot), 'utf8'));
 const tomtNettsted = { sider: [] };
 const forbudt = {
   domener: ['matprat.no', 'godt.no', 'nom.no'],
   navn: ['Matprat', 'Godt.no', 'Nom'],
-  helseord: [],
+  helseord: { nb: ['kalorier'] },
 };
-const grenser = { vanskelighetMaks: 35 };
+const frø = {
+  tekst: 'middag med rester',
+  passform: 3,
+  tagger: ['rester', 'middag'],
+  appkobling: 'bruk-det-jeg-har',
+  tema: 'rester i nye måltider',
+  vinkel: 'bruke det som finnes hjemme før nye varer kjøpes',
+  slug: 'bruk-rester-i-middag',
+  kilde_ider: ['mattilsynet'],
+};
+const språkfiler = {
+  nb: {
+    'forslagsfrø': [frø],
+    bestillingsmal: {
+      emne: 'En praktisk veiledning om {{tema}}.',
+      vinkel: 'Vis hvordan leseren kan {{vinkel}}.',
+    },
+  },
+};
 
-test('poeng sorterer køen', () => {
+test('score er passform ganger forslagantall eller GSC-visninger', () => {
   const kandidater = [
-    { sokeord: 'rolig middag', land: 'nor', volum: 100, vanskelighet: 10 },
-    { sokeord: 'rask middag', land: 'nor', volum: 80, vanskelighet: 0 },
+    {
+      sokeord: 'middag av rester',
+      sprak: 'nb',
+      frø,
+      forslagAntall: 7,
+      kilde: 'forslag',
+    },
+    {
+      sokeord: 'rester til middag',
+      land: 'nor',
+      visninger: 11,
+      plassering: 12,
+      kilde: 'gsc',
+    },
   ];
-  const passform = new Map([
-    ['rolig middag', { passform: 1, tagger: ['middag'] }],
-    ['rask middag', { passform: 2, tagger: ['middag'] }],
-  ]);
 
   const resultat = byggKo({
     kandidater,
-    passform,
+    språkfiler,
     nettsted: tomtNettsted,
     forbudt,
-    grenser,
     brukt: [],
   });
 
-  assert.deepEqual(resultat.ko.map(({ sokeord }) => sokeord), ['rask middag', 'rolig middag']);
-  assert.deepEqual(resultat.ko.map(({ poeng }) => poeng), [160, 90]);
+  assert.equal(resultat.ko.length, 1);
+  assert.equal(resultat.ko[0].sokeord, 'rester til middag');
+  assert.equal(resultat.ko[0].passform, 3);
+  assert.equal(resultat.ko[0].proxy, 11);
+  assert.equal(resultat.ko[0].score, 33);
+  assert.match(resultat.ko[0].id, /^e-[a-f0-9]{16}$/u);
 });
 
-test('forbudt merkenavn forkastes', () => {
-  const resultat = byggKo({
-    kandidater: [{ sokeord: 'Matprat rester', land: 'nor', volum: 100, vanskelighet: 10 }],
-    passform: new Map([['Matprat rester', { passform: 3, tagger: ['rester'] }]]),
-    nettsted: tomtNettsted,
-    forbudt,
-    grenser,
-    brukt: [],
-  });
-
-  assert.deepEqual(resultat, { ko: [], styrkEksisterende: [] });
-});
-
-test('for vanskelig forkastes', () => {
-  const resultat = byggKo({
-    kandidater: [{ sokeord: 'vanskelig middag', land: 'nor', volum: 1000, vanskelighet: 36 }],
-    passform: new Map([['vanskelig middag', { passform: 3, tagger: ['middag'] }]]),
-    nettsted: tomtNettsted,
-    forbudt,
-    grenser,
-    brukt: [],
-  });
-
-  assert.deepEqual(resultat.ko, []);
-});
-
-test('overlapp går til styrkEksisterende', () => {
-  const kandidat = { sokeord: 'koketider for ris og pasta', land: 'nor', volum: 200, vanskelighet: 10 };
-  const resultat = byggKo({
-    kandidater: [kandidat],
-    passform: new Map([[kandidat.sokeord, { passform: 3, tagger: ['koketider'] }]]),
-    nettsted: { sider: [{ tittel: 'Koketider for pasta og ris' }] },
-    forbudt,
-    grenser,
-    brukt: [],
-  });
-
-  assert.deepEqual(resultat.ko, []);
-  assert.deepEqual(resultat.styrkEksisterende, [kandidat.sokeord]);
-});
-
-test('GSC-plassering 8–30 tas med, 1–7 ikke', () => {
-  const passform = new Map(gscKandidater.map(({ sokeord }) => [
-    sokeord,
-    { passform: 2, tagger: ['rester'] },
-  ]));
-
-  const resultat = byggKo({
-    kandidater: gscKandidater,
-    passform,
-    nettsted: tomtNettsted,
-    forbudt,
-    grenser,
-    brukt: [],
-  });
-
-  assert.deepEqual(resultat.ko.map(({ sokeord }) => sokeord), ['middag av rester']);
-});
-
-test('GSC-kandidater fra land uten støttet språk forkastes', () => {
+test('GSC-plassering utenfor 8–30 og forbudt innhold forkastes', () => {
   const kandidater = [
-    { sokeord: 'rask middag', land: 'nor', visninger: 100, plassering: 12 },
-    { sokeord: 'schnelles abendessen', land: 'deu', visninger: 500, plassering: 12 },
+    { sokeord: 'middag med rester', land: 'nor', visninger: 20, plassering: 7, kilde: 'gsc' },
+    { sokeord: 'Matprat middag med rester', land: 'nor', visninger: 20, plassering: 12, kilde: 'gsc' },
+    { sokeord: 'kalorier i middag med rester', land: 'nor', visninger: 20, plassering: 12, kilde: 'gsc' },
   ];
-  const passform = new Map(kandidater.map(({ sokeord }) => [
-    sokeord,
-    { passform: 3, tagger: ['middag'] },
-  ]));
 
   const resultat = byggKo({
     kandidater,
-    passform,
+    språkfiler,
     nettsted: tomtNettsted,
     forbudt,
-    grenser,
-    brukt: [],
-  });
-
-  assert.deepEqual(resultat.ko.map(({ id }) => id), ['rask-middag-nb']);
-});
-
-test('helseord fra forbudt.json forkastes fra køen', () => {
-  const sokeord = 'kalorier middag';
-  const resultat = byggKo({
-    kandidater: [{ sokeord, land: 'nor', volum: 100, vanskelighet: 10 }],
-    passform: new Map([[sokeord, { passform: 3, tagger: ['middag'] }]]),
-    nettsted: tomtNettsted,
-    forbudt: lesData('forbudt.json'),
-    grenser,
     brukt: [],
   });
 
   assert.deepEqual(resultat.ko, []);
 });
 
-test('taket stopper før neste forespørsel', async () => {
-  const opprinneligFetch = globalThis.fetch;
-  const kall = [];
-  globalThis.fetch = async (url, valg) => {
-    kall.push({ url, valg });
-    return {
-      ok: true,
-      status: 200,
-      json: async () => dataforseoSvar,
-    };
+test('overlapp med eksisterende side går bare til privat styrkeliste', () => {
+  const kandidat = {
+    sokeord: 'middag med rester',
+    sprak: 'nb',
+    frø,
+    forslagAntall: 9,
+    kilde: 'forslag',
   };
 
-  try {
-    await assert.rejects(
-      hentDataForSeo({
-        login: 'bruker',
-        passord: 'hemmelig',
-        frø: ['rester', 'ukemeny'],
-        land: 'nor',
-        tak: 1,
-      }),
-      (feil) => feil instanceof TakNådd,
-    );
-    assert.equal(kall.length, 1);
-  } finally {
-    globalThis.fetch = opprinneligFetch;
-  }
-});
-
-test('DataForSEO-applikasjonsfeil kaster i stedet for å gi tomt resultat', async () => {
-  const opprinneligFetch = globalThis.fetch;
-  globalThis.fetch = async () => ({
-    ok: true,
-    status: 200,
-    json: async () => ({
-      status_code: 20_000,
-      status_message: 'Ok.',
-      tasks: [{
-        status_code: 40_200,
-        status_message: 'Payment Required.',
-        result: null,
-      }],
-    }),
+  const resultat = byggKo({
+    kandidater: [kandidat],
+    språkfiler,
+    nettsted: { sider: [{ tittel: 'Middag med rester' }] },
+    forbudt,
+    brukt: [],
   });
 
-  try {
-    await assert.rejects(
-      hentDataForSeo({
-        login: 'bruker',
-        passord: 'hemmelig',
-        frø: ['rester'],
-        land: 'nor',
-        tak: 1,
-      }),
-      /Payment Required/u,
-    );
-  } finally {
-    globalThis.fetch = opprinneligFetch;
+  assert.deepEqual(resultat.ko, []);
+  assert.deepEqual(resultat.styrkEksisterende, ['middag med rester']);
+});
+
+test('bestillingen generaliserer emnet uten råsøk eller måledata', () => {
+  const emne = byggKo({
+    kandidater: [{
+      sokeord: 'SÆRPREGET råsøk om gårsdagens ris',
+      sprak: 'nb',
+      frø,
+      forslagAntall: 10,
+      kilde: 'forslag',
+    }],
+    språkfiler,
+    nettsted: tomtNettsted,
+    forbudt,
+    brukt: [],
+  }).ko[0];
+
+  const bestilling = lagBestilling(emne, språkfiler.nb, {
+    brodtekstMinOrd: 600,
+    brodtekstMaksOrd: 1200,
+    seksjonerMin: 3,
+    seksjonerMaks: 6,
+    faqMin: 3,
+    faqMaks: 5,
+  }, '2026-11-12');
+  const offentlig = JSON.stringify(bestilling);
+
+  assert.deepEqual(bestilling, {
+    dato: '2026-11-12',
+    sprak: 'nb',
+    emne_id: emne.id,
+    slug: 'bruk-rester-i-middag',
+    emne: 'En praktisk veiledning om rester i nye måltider.',
+    vinkel: 'Vis hvordan leseren kan bruke det som finnes hjemme før nye varer kjøpes.',
+    appkoblinger: ['bruk-det-jeg-har'],
+    kilde_ider: ['mattilsynet'],
+    krav: {
+      ord_min: 600,
+      ord_maks: 1200,
+      seksjoner_min: 3,
+      seksjoner_maks: 6,
+      faq_min: 3,
+      faq_maks: 5,
+      sprakregler_ref: 'seo-data/sprak/nb.json',
+    },
+  });
+  assert.doesNotMatch(offentlig, /SÆRPREGET|råsøk|forslagAntall|visninger|score/u);
+});
+
+test('alle språk har 8–12 innfødte frø med deterministisk metadata', () => {
+  for (const sprak of ['nb', 'sv', 'da', 'en']) {
+    const språkfil = lesData(`sprak/${sprak}.json`);
+    const forslagFrø = språkfil['forslagsfrø'];
+    assert.ok(forslagFrø.length >= 8 && forslagFrø.length <= 12, sprak);
+    assert.ok(språkfil.forslagslokale.hl, sprak);
+    assert.ok(språkfil.forslagslokale.gl, sprak);
+    assert.ok(språkfil.bestillingsmal.emne.includes('{{tema}}'), sprak);
+    assert.ok(språkfil.bestillingsmal.vinkel.includes('{{vinkel}}'), sprak);
+    for (const metadata of forslagFrø) {
+      assert.ok(metadata.tekst && metadata.tema && metadata.vinkel && metadata.slug, sprak);
+      assert.ok([1, 2, 3].includes(metadata.passform), sprak);
+      assert.ok(metadata.tagger.length > 0 && metadata.appkobling, sprak);
+      assert.ok(Array.isArray(metadata.kilde_ider), sprak);
+    }
   }
 });

@@ -25,6 +25,7 @@ export async function hentGsc({ tjenestekonto, nettsted, fra, til }) {
     .map((rad) => ({
       sokeord: rad.keys[0],
       land: rad.keys[1],
+      klikk: rad.clicks,
       visninger: rad.impressions,
       plassering: rad.position,
     }));

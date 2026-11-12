@@ -1,0 +1,35 @@
+{
+  "sprak": "nb",
+  "emne_id": "e-a1b2c3d4e5f60708",
+  "slug": "bruk-rester-i-middag",
+  "tittel": "Bruk restene i en ny middag",
+  "meta": "Praktiske råd som hjelper deg å bruke middagsrester i nye måltider, planlegge det du trenger og få bedre oversikt over maten hjemme.",
+  "ingress": "Begynn med restene du har, og planlegg en enkel middag rundt råvarene som bør brukes først.",
+  "seksjoner": [
+    {
+      "type": "avsnitt",
+      "overskrift": "Se hva du har",
+      "tekst": "Når du åpner kjøleskapet, kan du først se hva som bør brukes. Noen rester passer sammen, mens andre kan vente til senere. Bruk oversikten før du bestemmer middagen."
+    },
+    {
+      "type": "avsnitt",
+      "overskrift": "Velg en enkel middag",
+      "tekst": "Planlegg måltidet med det du allerede har. Bruk restene som utgangspunkt, og legg bare til det som mangler. Da blir planen konkret og lettere å følge."
+    },
+    {
+      "type": "avsnitt",
+      "overskrift": "Oppdater oversikten",
+      "tekst": "Etter maten kan du se hva som fortsatt finnes. Skriv det ned, og bruk det i planen for neste måltid. Slik vet du hva som bør komme først."
+    }
+  ],
+  "faq": [
+    { "sporsmal": "Hva starter jeg med?", "svar": "Se hvilke rester og råvarer du allerede har hjemme." },
+    { "sporsmal": "Må hele uka planlegges?", "svar": "Nei, planlegg det neste måltidet og juster senere." },
+    { "sporsmal": "Hva skriver jeg på handlelista?", "svar": "Skriv bare opp det som mangler til middagen du har valgt." }
+  ],
+  "pastander": [
+    { "tekst": "Følg de offisielle rådene når du vurderer oppbevarte rester.", "kilde_id": "mattilsynet" }
+  ],
+  "appkobling": "bruk-det-jeg-har",
+  "tagger": ["rester", "middag"]
+}

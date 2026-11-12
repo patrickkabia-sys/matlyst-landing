@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
   issues: write
 
 concurrency: seo-autopilot
@@ -44,118 +43,68 @@ jobs:
         if: steps.modus.outputs.modus != 'av'
         run: npm ci
 
+      - name: Kontroller hemmeligheter
+        if: steps.modus.outputs.modus != 'av'
+        id: hemmeligheter
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          SEO_DATA_NOKKEL: ${{ secrets.SEO_DATA_NOKKEL }}
+        run: |
+          if [ -z "$GSC_SERVICE_ACCOUNT_JSON" ] || [ -z "$SEO_DATA_NOKKEL" ]; then
+            exit 1
+          fi
+
       - name: Kjør SEO-motoren
         if: steps.modus.outputs.modus != 'av'
         id: motor
         env:
           SEO_AUTOPILOT: ${{ vars.SEO_AUTOPILOT }}
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
-          DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
-          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
-          ANTHROPIC_API_KEY_LANDING: ${{ secrets.ANTHROPIC_API_KEY_LANDING }}
+          SEO_DATA_NOKKEL: ${{ secrets.SEO_DATA_NOKKEL }}
         run: |
+          set +e
           node seo-motor/kjor.mjs
-          echo "resultat=$(node -p "require('./seo-resultat.json').resultat")" >> "$GITHUB_OUTPUT"
-          echo "modus=$(node -p "require('./seo-resultat.json').modus")" >> "$GITHUB_OUTPUT"
-          echo "slug=$(node -p "require('./seo-resultat.json').slug || ''")" >> "$GITHUB_OUTPUT"
-          echo "basis=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-          DATO=$(node -e 'const fs=require("node:fs"); const f=fs.readdirSync("seo-data/logg").filter((n)=>/^\d{4}-\d{2}-\d{2}\.json$/.test(n)).sort().at(-1); process.stdout.write(f.slice(0,-5));')
-          echo "dato=$DATO" >> "$GITHUB_OUTPUT"
-
-      - name: Bygg nettstedet
-        if: steps.modus.outputs.modus != 'av'
-        id: bygg
-        continue-on-error: true
-        run: node scripts/generer-norske-importguider.mjs && node scripts/generer-lokalsider.mjs
-
-      - name: Kjør testene
-        if: steps.modus.outputs.modus != 'av' && steps.bygg.outcome == 'success'
-        id: tester
-        continue-on-error: true
-        run: npm test
-
-      - name: Avvis artikkelen ved bygg- eller testfeil
-        if: steps.modus.outputs.modus != 'av' && steps.motor.outputs.resultat == 'publisert' && (steps.bygg.outcome == 'failure' || steps.tester.outcome == 'failure')
-        env:
-          BYGGUTFALL: ${{ steps.bygg.outcome }}
-          DATO: ${{ steps.motor.outputs.dato }}
-          SLUG: ${{ steps.motor.outputs.slug }}
-        run: node seo-motor/etterbehandle.mjs avvis
-
-      - name: Forbered publisering til main
-        if: steps.motor.outputs.modus == 'på' && steps.motor.outputs.resultat == 'publisert' && steps.bygg.outcome == 'success' && steps.tester.outcome == 'success'
-        id: publisering
-        continue-on-error: true
-        env:
-          SLUG: ${{ steps.motor.outputs.slug }}
-        run: |
-          TITTEL=$(find blogg-kilde/auto -name "$SLUG.json" -print -quit | xargs jq -r .tittel)
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git reset -- seo-resultat.json seo-data
-          git commit -m "seo: $TITTEL (autopilot)"
-
-      - name: Lag utkast-PR
-        if: steps.motor.outputs.modus == 'utkast' && steps.motor.outputs.resultat == 'publisert' && steps.bygg.outcome == 'success' && steps.tester.outcome == 'success'
-        id: pr
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ github.token }}
-          DATO: ${{ steps.motor.outputs.dato }}
-          SLUG: ${{ steps.motor.outputs.slug }}
-        run: |
-          TITTEL=$(find blogg-kilde/auto -name "$SLUG.json" -print -quit | xargs jq -r .tittel)
-          GREN="seo-autopilot/$DATO"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git switch -c "$GREN"
-          git add -A
-          git reset -- seo-resultat.json seo-data
-          git commit -m "seo: $TITTEL (autopilot)"
-          git push --set-upstream origin "$GREN"
-          PR_URL=$(gh pr create --base main --head "$GREN" --title "seo: $TITTEL (autopilot)" --body "Automatisk utkast fra SEO-autopiloten.")
-          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
-
-      - name: Oppdater leveringsstatus
-        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outcome == 'success'
-        env:
-          DATO: ${{ steps.motor.outputs.dato }}
-          MODUS: ${{ steps.motor.outputs.modus }}
-          PRUTFALL: ${{ steps.pr.outcome }}
-          PR_URL: ${{ steps.pr.outputs.url }}
-          PUBLISERINGSUTFALL: ${{ steps.publisering.outcome }}
-          SLUG: ${{ steps.motor.outputs.slug }}
-        run: node seo-motor/etterbehandle.mjs levering
+          motor_exit=$?
+          set -e
+          echo "dato=$(node -p "require('./seo-resultat.json').dato || ''")" >> "$GITHUB_OUTPUT"
+          echo "resultat=$(node -p "require('./seo-resultat.json').resultat || ''")" >> "$GITHUB_OUTPUT"
+          echo "exit_code=$motor_exit" >> "$GITHUB_OUTPUT"
 
       - name: Lagre driftsstatus
-        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outcome == 'success'
+        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outputs.dato != ''
+        id: status
         continue-on-error: true
-        env:
-          BASIS: ${{ steps.motor.outputs.basis }}
-          DATO: ${{ steps.motor.outputs.dato }}
-          MODUS: ${{ steps.motor.outputs.modus }}
-          MOTORRESULTAT: ${{ steps.motor.outputs.resultat }}
-          PUBLISERINGSUTFALL: ${{ steps.publisering.outcome }}
         run: |
-          if [ "$MODUS" != "på" ] || [ "$MOTORRESULTAT" != "publisert" ] || [ "$PUBLISERINGSUTFALL" != "success" ]; then
-            git switch -C seo-autopilot-status "$BASIS"
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add seo-data
           if ! git diff --cached --quiet; then
             git commit -m "seo: lagre status fra autopiloten"
-            if ! git pull --rebase origin main || ! git push origin HEAD:main; then
+            if ! git pull --rebase origin main; then
               git rebase --abort 2>/dev/null || true
-              node seo-motor/etterbehandle.mjs pushfeil
               exit 1
             fi
+            git push origin HEAD:main
           fi
 
       - name: Rapporter
-        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outcome == 'success'
+        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outputs.dato != ''
+        id: rapport
+        continue-on-error: true
         env:
           DATO: ${{ steps.motor.outputs.dato }}
           GH_TOKEN: ${{ github.token }}
-        run: node seo-motor/etterbehandle.mjs rapport
+          SEO_DATA_NOKKEL: ${{ secrets.SEO_DATA_NOKKEL }}
+        run: node seo-motor/rapport.mjs
+
+      - name: Marker driftsfeil
+        if: always() && steps.modus.outputs.modus != 'av'
+        env:
+          HEMMELIGHETER: ${{ steps.hemmeligheter.outcome }}
+          MOTOR_EXIT: ${{ steps.motor.outputs.exit_code }}
+          STATUS: ${{ steps.status.outcome }}
+          RAPPORT: ${{ steps.rapport.outcome }}
+        run: |
+          if [ "$HEMMELIGHETER" != "success" ] || [ "$MOTOR_EXIT" != "0" ] || [ "$STATUS" = "failure" ] || [ "$RAPPORT" = "failure" ]; then
+            exit 1
+          fi

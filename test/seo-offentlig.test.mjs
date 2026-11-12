@@ -104,11 +104,11 @@ test('søkeord og måledata avvises rekursivt i offentlig tilstand', () => {
 
 test('ukjente nøkler avvises i bestilling og krav', () => {
   const medRåttSøk = { ...dokumenter.bestilling, raw_query: 'hemmelig' };
-  const medPris = structuredClone(dokumenter.bestilling);
-  medPris.krav.kostnadstak = 10;
+  const medUkjentKrav = structuredClone(dokumenter.bestilling);
+  medUkjentKrav.krav.ukjent_felt = 10;
 
   assert.throws(() => validerOffentlig('bestilling', medRåttSøk), OffentligTilstandFeil);
-  assert.throws(() => validerOffentlig('bestilling', medPris), OffentligTilstandFeil);
+  assert.throws(() => validerOffentlig('bestilling', medUkjentKrav), OffentligTilstandFeil);
 });
 
 test('offentlig skriveport validerer og skriver riktig mappe', (t) => {

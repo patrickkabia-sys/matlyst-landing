@@ -16,6 +16,18 @@ export function kanPublisere(publisert, tid) {
   return !publisert.some((innlegg) => innlegg.dato === dato);
 }
 
+export function kanPublisereDenneUken(publisert, tid, maks) {
+  const dato = osloDato(tid);
+  const kalenderdato = new Date(`${dato}T12:00:00Z`);
+  const dagerSidenMandag = (kalenderdato.getUTCDay() + 6) % 7;
+  kalenderdato.setUTCDate(kalenderdato.getUTCDate() - dagerSidenMandag);
+  const mandag = kalenderdato.toISOString().slice(0, 10);
+  const antall = publisert.filter((innlegg) => (
+    innlegg.dato >= mandag && innlegg.dato <= dato
+  )).length;
+  return antall < maks;
+}
+
 export function tellAvvisningerPåRad(logg) {
   let antall = 0;
   for (let indeks = logg.length - 1; indeks >= 0; indeks -= 1) {

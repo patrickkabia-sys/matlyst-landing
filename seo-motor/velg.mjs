@@ -3,7 +3,7 @@ export function velgEmne(ko, publisert) {
   const sisteSyv = publisert.slice(-7);
 
   return [...ko]
-    .sort((a, b) => b.poeng - a.poeng)
+    .sort((a, b) => b.score - a.score)
     .find((emne) => (
       !brukteIder.has(emne.id)
       && sisteSyv.filter(({ sprak }) => sprak === emne.sprak).length < 4

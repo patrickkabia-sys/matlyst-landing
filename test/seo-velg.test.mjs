@@ -6,8 +6,8 @@ import { lesNettsted } from '../seo-motor/nettsted.mjs';
 import { lesData } from '../seo-motor/skjema.mjs';
 import { velgEmne } from '../seo-motor/velg.mjs';
 
-const nbEmne = { id: 'rester-nb', sprak: 'nb', sokeord: 'rester', poeng: 200 };
-const svEmne = { id: 'rester-sv', sprak: 'sv', sokeord: 'rester', poeng: 100 };
+const nbEmne = { id: 'rester-nb', sprak: 'nb', sokeord: 'rester', score: 200 };
+const svEmne = { id: 'rester-sv', sprak: 'sv', sokeord: 'rester', score: 100 };
 const ny = {
   slug: 'ny-restemiddag',
   sprak: 'nb',

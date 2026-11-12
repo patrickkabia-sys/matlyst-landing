@@ -1,76 +1,18 @@
 {
-  "kilde": {
-    "status": 200,
-    "tekst": "<p>Oppbevaring av rester begynner med at maten kjøles ned og settes bort på en ryddig måte. Se over restene før du bruker dem igjen, og følg alltid rådene fra den offentlige kilden.</p>"
-  },
   "tid": "2026-11-09T04:00:00Z",
-  "passform": {
-    "vurderinger": [
-      {
-        "sokeord": "oppbevaring av ukens rester hjemme",
-        "passform": 3,
-        "tagger": ["oppbevaring", "rester"]
-      }
-    ]
-  },
-  "artikkel": {
-    "sprak": "nb",
-    "emne_id": "oppbevaring-av-ukens-rester-hjemme-nb",
-    "slug": "slik-oppbevarer-du-rester-hjemme",
-    "tittel": "Slik oppbevarer du rester hjemme",
-    "meta": "Slik oppbevarer du rester hjemme med en ryddig metode, god oversikt underveis og en enkel plan for det du vil bruke senere.",
-    "ingress": "Oppbevar restene ryddig, få oversikt over det du har, og planlegg hvordan du vil bruke dem senere i uka.",
-    "seksjoner": [
-      {
-        "type": "avsnitt",
-        "overskrift": "Begynn med god oversikt",
-        "tekst": "Begynn med å se over restene mens du fortsatt husker hva som ble laget og hvordan det ble servert. Finn fram beholdere som passer, og fordel innholdet slik at det blir enkelt å se hva du har senere. Skriv gjerne ned hva beholderen inneholder dersom det ellers er vanskelig å kjenne det igjen. Når du samler like rester på samme sted, blir det også enklere å planlegge neste måltid. Tenk gjennom hva du vil bruke først, og legg det lett tilgjengelig. Det som skal vente lenger, kan stå bak eller under det andre. På den måten trenger du ikke flytte rundt på alt hver gang du åpner døra. Bruk beholdere som er hele og rene, og pass på at lokket sitter slik det skal. Dersom en rest består av flere deler, kan du holde dem adskilt fram til de skal brukes. Da beholder du bedre oversikt over hver del, og du kan velge bare det du trenger. Gjør gjerne den samme lille gjennomgangen hver gang. Etter hvert blir det en vanlig vane som tar kort tid, samtidig som du vet mer om hva som finnes hjemme. Når oversikten er tydelig, er det lettere å bruke restene i stedet for å glemme dem."
-      },
-      {
-        "type": "avsnitt",
-        "overskrift": "Lag en enkel plan",
-        "tekst": "Se på dagene som kommer, og bestem når det passer å bruke de ulike restene. Du trenger ikke planlegge hele uka på én gang. Det holder å velge det neste måltidet og notere hva som kan passe sammen. Kanskje én rest kan bli en del av en ny middag, mens en annen passer bedre til lunsj. Bruk det du allerede har som utgangspunkt før du legger til noe nytt. Da blir handlelista kortere og mer konkret. Hvis planene endrer seg, kan du flytte måltidet til en annen dag uten å begynne helt på nytt. Det viktigste er at oversikten fortsatt viser hva som finnes. Gå gjerne gjennom beholdere og plan samtidig, slik at de to stemmer med hverandre. Når noe blir brukt, fjerner du det fra planen. Når en ny rest kommer til, legger du den inn med én gang. Slik unngår du at gamle notater blir stående og skaper tvil. En enkel plan skal hjelpe, ikke være enda en oppgave. Hold derfor teksten kort og bruk ord du kjenner igjen med en gang. Etter noen runder ser du hvilken metode som fungerer best hjemme hos deg. Fortsett med den, og juster bare når det faktisk gjør oversikten bedre."
-      },
-      {
-        "type": "avsnitt",
-        "overskrift": "Bruk restene i tide",
-        "tekst": "Når du skal lage mat igjen, begynner du med resten som allerede står klar. Se over innholdet og bruk rådene fra kilden før du bestemmer hvordan det skal inngå i måltidet. Finn deretter fram andre varer som passer til, men unngå å gjøre planen mer komplisert enn nødvendig. En rest kan ofte brukes som én del av et større måltid, og den trenger ikke bli en helt ny rett alene. Hvis du har flere små beholdere, kan du samle dem på benken og vurdere dem samtidig. Da ser du lettere hvilke smaker og mengder som kan fungere sammen. Hold fortsatt oversikt over hva som blir igjen etterpå. Dersom du ikke bruker alt, oppdaterer du notatet og setter beholderen tilbake på riktig sted. Det gjør neste vurdering enklere. Fortsett å arbeide rolig og systematisk, særlig når flere i huset flytter på beholdere eller lager mat på ulike tider. En fast plass og tydelige navn gjør at alle kan forstå systemet. Etter hvert kan du se hvilke typer rester som ofte blir glemt. Bruk den erfaringen når du planlegger senere måltider. Da kan du velge en enklere mengde, bruke resten tidligere eller legge den mer synlig. Målet er en praktisk rytme som fungerer i hverdagen, uten mye ekstra arbeid."
-      }
-    ],
-    "faq": [
-      {
-        "sporsmal": "Hvordan får jeg oversikt over restene?",
-        "svar": "Samle dem på faste steder, merk beholderne tydelig, og oppdater planen når noe blir brukt."
-      },
-      {
-        "sporsmal": "Må hele uka planlegges samtidig?",
-        "svar": "Nei, begynn med det neste måltidet og juster senere dersom planene endrer seg."
-      },
-      {
-        "sporsmal": "Hva gjør jeg når det kommer nye rester?",
-        "svar": "Legg dem inn i oversikten med én gang, og plasser det som bør brukes først lett tilgjengelig."
-      }
-    ],
-    "pastander": [
-      {
-        "tekst": "Oppbevaring av rester begynner med at maten kjøles ned og settes bort på en ryddig måte.",
-        "kilde_id": "K1"
-      }
-    ],
-    "appkobling": "bruk-det-jeg-har",
-    "tagger": ["oppbevaring", "rester"]
-  },
-  "gransk": {
-    "beslutning": "GODKJENT",
-    "grunn": ""
-  },
   "gsc": [
     {
-      "sokeord": "oppbevaring av ukens rester hjemme",
+      "sokeord": "middag med rester fra kjøleskapet",
       "land": "nor",
+      "klikk": 4,
       "visninger": 90,
       "plassering": 14
     }
   ],
-  "dataforseo": []
+  "forslag": {
+    "middag med rester": [
+      "middag med rester i kjøleskapet",
+      "middag med rester fra i går"
+    ]
+  }
 }

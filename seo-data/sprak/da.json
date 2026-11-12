@@ -46,6 +46,21 @@
     "bruk-det-jeg-har": "/da/opskrifter-ud-fra-ingredienser/",
     "kokemodus": "/da/"
   },
+  "forslagslokale": { "hl": "da", "gl": "dk" },
+  "bestillingsmal": {
+    "emne": "En praktisk guide til {{tema}}.",
+    "vinkel": "Vis, hvordan læseren kan {{vinkel}}."
+  },
+  "forslagsfrø": [
+    { "tekst": "aftensmad med rester", "passform": 3, "tagger": ["rester", "aftensmad"], "appkobling": "bruk-det-jeg-har", "tema": "rester, der bliver til nye måltider", "vinkel": "bruge det, der allerede er hjemme, før der købes nye varer", "slug": "aftensmad-med-rester", "kilde_ider": ["foedevarestyrelsen"] },
+    { "tekst": "nem madplan", "passform": 3, "tagger": ["madplan", "aftensmad"], "appkobling": "ukemeny", "tema": "en enkel og fleksibel madplan", "vinkel": "planlægge nogle få middage uden at låse hele ugen", "slug": "enkel-fleksibel-madplan", "kilde_ider": [] },
+    { "tekst": "aftensmad af det jeg har", "passform": 3, "tagger": ["råvarer", "aftensmad"], "appkobling": "bruk-det-jeg-har", "tema": "aftensmad ud fra råvarerne, der allerede er hjemme", "vinkel": "gå fra et hurtigt råvareoverblik til konkrete middagsvalg", "slug": "aftensmad-af-det-du-har", "kilde_ider": [] },
+    { "tekst": "opbevaring af mad", "passform": 2, "tagger": ["opbevaring", "fødevaresikkerhed"], "appkobling": "import", "tema": "overskuelig opbevaring af almindelige fødevarer", "vinkel": "samle kildebaserede opbevaringsråd i et enkelt hverdagstjek", "slug": "opbevaring-af-mad", "kilde_ider": ["foedevarestyrelsen"] },
+    { "tekst": "kogetid æg ris pasta", "passform": 2, "tagger": ["kogetid", "omregning"], "appkobling": "kokemodus", "tema": "kogetider for almindelige råvarer", "vinkel": "forklare, hvad der påvirker tiden, og hvordan resultatet kontrolleres", "slug": "kogetider-for-almindelige-ravarer", "kilde_ider": [] },
+    { "tekst": "airfryer tid temperatur", "passform": 2, "tagger": ["airfryer", "omregning"], "appkobling": "kokemodus", "tema": "praktisk tilpasning af tid og temperatur i airfryer", "vinkel": "tilpasse en opskrift trin for trin", "slug": "tid-og-temperatur-i-airfryer", "kilde_ider": [] },
+    { "tekst": "indkøbsliste aftensmad", "passform": 3, "tagger": ["indkøbsliste", "aftensmad"], "appkobling": "handleliste", "tema": "indkøbslister bygget på planlagte middage", "vinkel": "samle de nødvendige varer uden at købe det, der allerede er hjemme", "slug": "indkobsliste-fra-middage", "kilde_ider": [] },
+    { "tekst": "gem opskrifter", "passform": 3, "tagger": ["opskrifter", "organisering"], "appkobling": "import", "tema": "at samle og organisere opskrifter fra forskellige steder", "vinkel": "lave et system, der gør opskrifterne nemme at finde igen", "slug": "saml-og-organiser-opskrifter", "kilde_ider": [] }
+  ],
   "autoBlogg": {
     "faqTittel": "Spørgsmål og svar",
     "kilderTittel": "Kilder",

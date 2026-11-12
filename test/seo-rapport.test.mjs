@@ -1,7 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { nattrapport, postRapport, ukerapport } from '../seo-motor/rapport.mjs';
+import {
+  lagRapporttekst,
+  nattrapport,
+  postRapport,
+  ukerapport,
+} from '../seo-motor/rapport.mjs';
 
 const HEMMELIG = 'SÆRPREGET-SØKEORD-ALDRI-OFFENTLIG';
 
@@ -33,7 +38,7 @@ test('nattrapport viser bare drift, bestilling, slug, koder og antall', () => {
 test('ukerapport viser bare offentlige antall og statuskoder', () => {
   const tekst = ukerapport({
     statuskoder: ['bestilling-opprettet', 'ko-tom'],
-    antall: { levert: 2, avvist: 1, bestillinger: 3 },
+    antall: { levert: 2, avvist: 1, bestillinger: 3, ytelsesrader: 4 },
     ytelse: [{ sokeord: HEMMELIG, visninger: 999, klikk: 88 }],
     ko: [{ sokeord: HEMMELIG, score: 500 }],
   });
@@ -41,8 +46,18 @@ test('ukerapport viser bare offentlige antall og statuskoder', () => {
   assert.match(tekst, /bestilling-opprettet/u);
   assert.match(tekst, /ko-tom/u);
   assert.match(tekst, /2/u);
+  assert.match(tekst, /Ytelsesrader[^\n]*4/u);
   assert.doesNotMatch(tekst, new RegExp(HEMMELIG, 'u'));
   assert.doesNotMatch(tekst, /999|88|500/u);
+});
+
+test('mandagsrapport bruker bare radantallet fra privat ytelse', () => {
+  const tekst = lagRapporttekst(new URL('../', import.meta.url), '2026-11-09', {
+    ytelse: [{ dato: '2026-11-09', antall: 4, klikk: 7654321, visninger: 9876543 }],
+  });
+
+  assert.match(tekst, /Ytelsesrader[^\n]*4/u);
+  assert.doesNotMatch(tekst, /7654321|9876543/u);
 });
 
 test('postRapport lager issue når den mangler', async () => {

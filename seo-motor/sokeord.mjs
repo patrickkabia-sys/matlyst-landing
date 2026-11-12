@@ -1,6 +1,6 @@
-import { fyllMal, kallStrukturert } from './claude.mjs';
-import { ordOverlapp, slugify } from './nettsted.mjs';
-import { PassformSkjema } from './skjema.mjs';
+import { createHash } from 'node:crypto';
+
+import { ordOverlapp } from './nettsted.mjs';
 
 const LAND_TIL_SPRAK = {
   nor: 'nb',
@@ -9,8 +9,51 @@ const LAND_TIL_SPRAK = {
   usa: 'en',
 };
 
-export function byggKo({ kandidater, passform, nettsted, forbudt, grenser, brukt }) {
-  const ko = [];
+function ord(tekst) {
+  return new Set(tekst.toLocaleLowerCase().match(/\p{L}[\p{L}\p{N}-]{1,}/gu) ?? []);
+}
+
+function finnFrø(sokeord, språkfil) {
+  const sokeordOrd = ord(sokeord);
+  let beste = null;
+  let besteTreff = 0;
+  for (const frø of språkfil?.['forslagsfrø'] ?? []) {
+    const treff = [...ord(frø.tekst)].filter((verdi) => sokeordOrd.has(verdi)).length;
+    if (treff > besteTreff) {
+      beste = frø;
+      besteTreff = treff;
+    }
+  }
+  return beste;
+}
+
+function emneId(sprak, sokeord) {
+  const hash = createHash('sha256')
+    .update(`${sprak}\0${sokeord.trim().toLocaleLowerCase()}`, 'utf8')
+    .digest('hex')
+    .slice(0, 16);
+  return `e-${hash}`;
+}
+
+function erForbudt(sokeord, sprak, forbudt) {
+  const helseord = Array.isArray(forbudt.helseord)
+    ? forbudt.helseord
+    : forbudt.helseord?.[sprak] ?? [];
+  const forbudteOrd = [
+    ...(forbudt.domener ?? []),
+    ...(forbudt.navn ?? []),
+    ...helseord,
+  ];
+  const normalisert = sokeord.toLocaleLowerCase();
+  return forbudteOrd.some((verdi) => {
+    const escaped = verdi.toLocaleLowerCase().replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
+    return new RegExp(`(^|[^\\p{L}\\p{N}])${escaped}($|[^\\p{L}\\p{N}])`, 'u')
+      .test(normalisert);
+  });
+}
+
+export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt }) {
+  const perTema = new Map();
   const styrkEksisterende = [];
   const brukteIder = new Set(brukt.map((emne) => (
     typeof emne === 'string' ? emne : emne.emne_id ?? emne.id
@@ -19,72 +62,65 @@ export function byggKo({ kandidater, passform, nettsted, forbudt, grenser, brukt
   for (const kandidat of kandidater) {
     if (kandidat.plassering !== undefined
       && (kandidat.plassering < 8 || kandidat.plassering > 30)) continue;
-
     const sprak = kandidat.sprak ?? LAND_TIL_SPRAK[kandidat.land];
-    if (!sprak) continue;
-    const vurdering = passform.get(kandidat.sokeord);
-    const vanskelighet = kandidat.vanskelighet ?? 0;
-    if (!vurdering || vurdering.passform === 0) continue;
-    if (vanskelighet > grenser.vanskelighetMaks) continue;
-
-    const helseord = Array.isArray(forbudt.helseord)
-      ? forbudt.helseord
-      : forbudt.helseord?.[sprak] ?? [];
-    const forbudteOrd = [
-      ...(forbudt.domener ?? []),
-      ...(forbudt.navn ?? []),
-      ...helseord,
-    ];
-    const normalisertSokeord = kandidat.sokeord.toLocaleLowerCase();
-    const erForbudt = forbudteOrd.some((ord) => {
-      const escaped = ord.toLocaleLowerCase().replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
-      return new RegExp(`(^|[^\\p{L}\\p{N}])${escaped}($|[^\\p{L}\\p{N}])`, 'u')
-        .test(normalisertSokeord);
-    });
-    if (erForbudt) continue;
-
-    if (nettsted.sider.some((side) =>
-      ordOverlapp(kandidat.sokeord, side.tittel) > 0.5)) {
+    if (!sprak || !språkfiler[sprak]) continue;
+    const frø = kandidat.frø ?? finnFrø(kandidat.sokeord, språkfiler[sprak]);
+    if (!frø || erForbudt(kandidat.sokeord, sprak, forbudt)) continue;
+    if (nettsted.sider.some((side) => ordOverlapp(kandidat.sokeord, side.tittel) > 0.5)) {
       styrkEksisterende.push(kandidat.sokeord);
       continue;
     }
-
-    const id = `${slugify(kandidat.sokeord)}-${sprak}`;
+    const id = emneId(sprak, kandidat.sokeord);
     if (brukteIder.has(id)) continue;
-    const volum = kandidat.volum ?? kandidat.visninger ?? 0;
-    ko.push({
+    const proxy = kandidat.kilde === 'gsc' || kandidat.visninger !== undefined
+      ? kandidat.visninger ?? 0
+      : kandidat.forslagAntall ?? 0;
+    const emne = {
       id,
       sprak,
       sokeord: kandidat.sokeord,
-      volum,
-      vanskelighet,
-      passform: vurdering.passform,
-      tagger: vurdering.tagger,
-      poeng: volum * vurdering.passform * (1 - vanskelighet / 100),
-    });
+      score: frø.passform * proxy,
+      passform: frø.passform,
+      proxy,
+      tagger: frø.tagger,
+      appkobling: frø.appkobling,
+      tema: frø.tema,
+      vinkel: frø.vinkel,
+      slug: frø.slug,
+      kilde_ider: frø.kilde_ider,
+    };
+    const temaid = `${sprak}:${frø.slug}`;
+    if (!perTema.has(temaid) || perTema.get(temaid).score < emne.score) {
+      perTema.set(temaid, emne);
+    }
   }
 
-  ko.sort((a, b) => b.poeng - a.poeng);
+  const ko = [...perTema.values()].sort((a, b) => b.score - a.score);
   return { ko, styrkEksisterende };
 }
 
-export async function vurderPassform(klient, kandidater, mal) {
-  const innhold = JSON.stringify(kandidater);
-  const instruks = fyllMal(mal, {
-    sprakregler: '[]',
-    emne: innhold,
-    utdrag: '[]',
-    appkoblinger: '[]',
-  });
-  const { data } = await kallStrukturert(klient, {
-    instruks,
-    innhold,
-    skjema: PassformSkjema,
-    effort: 'low',
-  });
+function fyllMal(mal, navn, verdi) {
+  return mal.replaceAll(`{{${navn}}}`, verdi);
+}
 
-  return new Map(data.vurderinger.map(({ sokeord, passform, tagger }) => [
-    sokeord,
-    { passform, tagger },
-  ]));
+export function lagBestilling(emne, språkfil, grenser, dato) {
+  return {
+    dato,
+    sprak: emne.sprak,
+    emne_id: emne.id,
+    slug: emne.slug,
+    emne: fyllMal(språkfil.bestillingsmal.emne, 'tema', emne.tema),
+    vinkel: fyllMal(språkfil.bestillingsmal.vinkel, 'vinkel', emne.vinkel),
+    appkoblinger: [emne.appkobling],
+    kilde_ider: emne.kilde_ider,
+    krav: {
+      ord_min: grenser.brodtekstMinOrd,
+      ord_maks: grenser.brodtekstMaksOrd,
+      seksjoner_min: grenser.seksjonerMin,
+      seksjoner_maks: grenser.seksjonerMaks,
+      faq_min: grenser.faqMin,
+      faq_maks: grenser.faqMaks,
+      sprakregler_ref: `seo-data/sprak/${emne.sprak}.json`,
+    },
+  };
 }

@@ -1,8 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { zodOutputFormat } from '@anthropic-ai/sdk/helpers/zod';
-
 import { ArtikkelSkjema, lesData } from '../seo-motor/skjema.mjs';
 
 const gyldigArtikkel = {
@@ -29,10 +27,6 @@ const gyldigArtikkel = {
 
 test('ArtikkelSkjema godtar gyldig artikkel', () => {
   assert.equal(ArtikkelSkjema.safeParse(gyldigArtikkel).success, true);
-});
-
-test('ArtikkelSkjema kan brukes som strukturert Anthropic-format', () => {
-  assert.doesNotThrow(() => zodOutputFormat(ArtikkelSkjema));
 });
 
 test('ArtikkelSkjema avviser ukjent appkobling', () => {

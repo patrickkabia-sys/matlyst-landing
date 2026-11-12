@@ -6,32 +6,25 @@ import {
 } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 
-import { lagKlient } from './claude.mjs';
-import { hentDataForSeo } from './dataforseo.mjs';
-import {
-  datafil,
-  lesJson,
-  lesLogg,
-  skrivJson,
-} from './filer.mjs';
-import { granskArtikkel } from './gransk.mjs';
+import { hentForslag } from './forslag.mjs';
+import { datafil, lesJson } from './filer.mjs';
 import { hentGsc } from './gsc.mjs';
-import { hentUtdrag } from './kilder.mjs';
-import { byggLenker } from './lenker.mjs';
 import {
+  kanPublisereDenneUken,
   kanPublisere,
   lesModus,
   osloDato,
-  skalSperre,
-  tellAvvisningerPåRad,
 } from './modus.mjs';
-import { lesNettsted, slugify } from './nettsted.mjs';
+import { lesNettsted } from './nettsted.mjs';
+import { lesOffentlig, skrivOffentlig } from './offentlig.mjs';
+import {
+  lesPrivat,
+  lesSeoDataNokkel,
+  skrivPrivat,
+} from './privat.mjs';
 import { lesData } from './skjema.mjs';
-import { skrivArtikkel } from './skriv.mjs';
-import { byggKo, vurderPassform } from './sokeord.mjs';
+import { byggKo, lagBestilling } from './sokeord.mjs';
 import { velgEmne } from './velg.mjs';
-import { sjekkFast } from './vern.mjs';
-import { BLOGGROT } from '../scripts/blogg.mjs';
 
 const REPO_ROT = new URL('../', import.meta.url);
 const SPRAK = ['nb', 'sv', 'da', 'en'];
@@ -40,27 +33,8 @@ const MANDAG = new Intl.DateTimeFormat('en-US', {
   weekday: 'short',
 });
 
-function lesSprakfiler(rot) {
+function lesSpråkfiler(rot) {
   return Object.fromEntries(SPRAK.map((sprak) => [sprak, lesData(`sprak/${sprak}.json`, rot)]));
-}
-
-function lesAutoArtikler(rot) {
-  const artikler = [];
-  for (const sprak of SPRAK) {
-    const mappe = new URL(`blogg-kilde/auto/${sprak}/`, rot);
-    if (!existsSync(mappe)) continue;
-    for (const navn of readdirSync(mappe).filter((fil) => fil.endsWith('.json')).sort()) {
-      const fil = new URL(navn, mappe);
-      const artikkel = lesJson(fil, null);
-      if (!artikkel) continue;
-      artikler.push({
-        ...artikkel,
-        sti: `${BLOGGROT[sprak]}${artikkel.slug}/`,
-        fil,
-      });
-    }
-  }
-  return artikler;
 }
 
 function periodedato(tid, dagerTilbake) {
@@ -69,265 +43,240 @@ function periodedato(tid, dagerTilbake) {
   return dato.toISOString().slice(0, 10);
 }
 
-async function oppdaterKo({ tid, avh, rot, klient, grenser, publisert, nettsted, forbudt }) {
-  const dato = osloDato(tid);
-  const tellerFil = datafil(rot, `logg/dataforseo-${dato}.json`);
-  const teller = lesJson(tellerFil, { uke: dato, foresporsler: 0 });
-  const gscKandidater = await avh.gsc({
-    tjenestekonto: process.env.GSC_SERVICE_ACCOUNT_JSON,
-    nettsted: 'sc-domain:matlyst-app.no',
-    fra: periodedato(tid, 28),
-    til: periodedato(tid, 1),
+function lesBestillinger(rot) {
+  const mappe = datafil(rot, 'bestillinger/');
+  if (!existsSync(mappe)) return [];
+  return readdirSync(mappe)
+    .filter((navn) => navn.endsWith('.json'))
+    .sort()
+    .map((navn) => lesOffentlig(new URL(navn, mappe), null))
+    .filter(Boolean);
+}
+
+function skrivLogg(rot, logg) {
+  return skrivOffentlig(rot, 'logg', `${logg.dato}.json`, logg);
+}
+
+function logggrunnlag(dato, modus) {
+  return {
+    dato,
+    modus,
+    resultat: 'feil',
+    statuskode: 'motor-feil',
+    grunnkoder: [],
+    antall: { gsc: 0, forslag: 0, ko: 0, bestillinger: 0 },
+  };
+}
+
+async function oppdaterMandag({ tid, dato, avh, rot, nokkel, privat, språkfiler }) {
+  if (privat.forslagKjoringer[dato]) return privat;
+  privat.forslagKjoringer[dato] = { status: 'startet', antallFrø: 0 };
+  skrivPrivat(datafil(rot, 'privat.enc'), privat, nokkel);
+
+  let gsc;
+  try {
+    gsc = await avh.gsc({
+      tjenestekonto: avh.miljø?.GSC_SERVICE_ACCOUNT_JSON
+        ?? process.env.GSC_SERVICE_ACCOUNT_JSON,
+      nettsted: 'sc-domain:matlyst-app.no',
+      fra: periodedato(tid, 28),
+      til: periodedato(tid, 1),
+    });
+  } catch (feil) {
+    const trygg = new Error('gsc-feil');
+    trygg.kode = 'gsc-feil';
+    trygg.httpStatus = feil?.response?.status ?? feil?.status ?? null;
+    throw trygg;
+  }
+
+  const forslagRå = [];
+  const forslagKandidater = [];
+  let antallFrø = 0;
+  for (const sprak of SPRAK) {
+    const resultat = await avh.forslag({ sprak, språkfil: språkfiler[sprak] });
+    forslagRå.push({ sprak, svar: resultat.rå });
+    forslagKandidater.push(...resultat.kandidater);
+    antallFrø += språkfiler[sprak]['forslagsfrø'].length;
+  }
+
+  const nettsted = lesNettsted(rot);
+  const forbudt = lesData('forbudt.json', rot);
+  const publisert = lesOffentlig(datafil(rot, 'publisert.json'), []);
+  const bestillinger = lesBestillinger(rot);
+  const brukt = [...publisert, ...bestillinger];
+  const gscKandidater = gsc.map((rad) => ({ ...rad, kilde: 'gsc' }));
+  const { ko } = byggKo({
+    kandidater: [...gscKandidater, ...forslagKandidater],
+    språkfiler,
+    nettsted,
+    forbudt,
+    brukt,
   });
-  const fro = lesData('frø.json', rot);
-  const dataforseoKandidater = [];
-  for (const [sprak, ord] of Object.entries(fro)) {
-    const igjen = grenser.dataforseoMaksForesporslerPerUke - teller.foresporsler;
-    if (igjen <= 0) break;
-    const valgte = ord.slice(0, igjen);
-    if (valgte.length === 0) continue;
-    teller.foresporsler += valgte.length;
-    skrivJson(tellerFil, teller);
-    const land = { nb: 'nor', sv: 'swe', da: 'dnk', en: 'usa' }[sprak];
-    dataforseoKandidater.push(...await avh.dataforseo({
-      login: process.env.DATAFORSEO_LOGIN,
-      passord: process.env.DATAFORSEO_PASSWORD,
-      frø: valgte,
-      land,
-      tak: valgte.length,
-    }));
-  }
-  const kandidater = [...gscKandidater, ...dataforseoKandidater];
-  let ko = [];
-  if (kandidater.length > 0) {
-    const mal = readFileSync(datafil(rot, 'instrukser/passform.md'), 'utf8');
-    const passform = await vurderPassform(klient, kandidater, mal);
-    ({ ko } = byggKo({
-      kandidater,
-      passform,
-      nettsted,
-      forbudt,
-      grenser,
-      brukt: publisert,
-    }));
-  }
-  skrivJson(datafil(rot, 'emnekø.json'), ko);
-  return ko;
+  const perId = new Map([
+    ...privat.emneko.map((emne) => [emne.id, emne]),
+    ...ko.map((emne) => [emne.id, emne]),
+  ]);
+  privat.emneko = [...perId.values()].sort((a, b) => b.score - a.score);
+  privat.gsc = [{ dato, rader: gsc }];
+  privat.forslag = [{ dato, svar: forslagRå }];
+  privat.ytelse = [{
+    dato,
+    antall: gsc.length,
+    klikk: gsc.reduce((sum, rad) => sum + (rad.klikk ?? 0), 0),
+    visninger: gsc.reduce((sum, rad) => sum + (rad.visninger ?? 0), 0),
+  }];
+  privat.forslagKjoringer[dato] = { status: 'fullfort', antallFrø };
+  skrivPrivat(datafil(rot, 'privat.enc'), privat, nokkel);
+  return privat;
 }
 
-function lagreAvvist(rot, dato, slug, innhold) {
-  skrivJson(datafil(rot, `avvist/${dato}-${slug}.json`), innhold);
-}
-
-function avsluttMedLogg(rot, logg, meldinger) {
-  skrivJson(datafil(rot, `logg/${logg.dato}.json`), logg);
-  if (logg.resultat === 'avvist') {
-    const historikk = lesLogg(rot);
-    if (skalSperre(tellAvvisningerPåRad(historikk))) {
-      skrivJson(datafil(rot, 'sperre.json'), {
-        dato: logg.dato,
-        grunn: meldinger.sperre,
-      });
-      logg.resultat = 'sperret';
-      logg.grunner = [...(logg.grunner ?? []), meldinger.sperre];
-      skrivJson(datafil(rot, `logg/${logg.dato}.json`), logg);
-    }
-  }
-  return logg;
+function tryggFeilkode(feil) {
+  return typeof feil?.kode === 'string' ? feil.kode : 'motor-feil';
 }
 
 export async function kjor({ tid, modus, tørt, avh }) {
   const rot = avh.rot ?? REPO_ROT;
   const dato = osloDato(tid);
   const grunnmodus = lesModus({ variabel: modus, sperre: null });
-  if (grunnmodus === 'av') {
-    return { dato, modus: 'av', resultat: 'av', kostnadUsd: 0 };
-  }
+  if (grunnmodus === 'av') return { dato, modus: 'av', resultat: 'av', statuskode: 'modus-av' };
 
-  const logg = {
-    dato,
-    modus: grunnmodus,
-    resultat: 'feil',
-    kostnadUsd: 0,
-  };
-  let meldinger;
+  let aktivModus = grunnmodus;
+  const logg = logggrunnlag(dato, aktivModus);
   try {
-    meldinger = lesData('sprak/nb.json', rot).motor;
-    const sperre = lesJson(datafil(rot, 'sperre.json'), null);
-    logg.modus = lesModus({ variabel: modus, sperre });
-    const publisert = lesJson(datafil(rot, 'publisert.json'), []);
-    const grenser = lesData('grenser.json', rot);
-    const forbudt = lesData('forbudt.json', rot);
-    const nettsted = lesNettsted(rot);
-    let ko = lesJson(datafil(rot, 'emnekø.json'), []);
+    const nokkel = avh.nokkel ?? lesSeoDataNokkel({
+      tørt,
+      tillatNokkelring: false,
+      miljø: avh.miljø ?? process.env,
+    });
+    const sperre = lesOffentlig(datafil(rot, 'sperre.json'), null);
+    aktivModus = lesModus({ variabel: modus, sperre });
+    logg.modus = aktivModus;
+    const språkfiler = lesSpråkfiler(rot);
+    let privat = lesPrivat(datafil(rot, 'privat.enc'), nokkel);
     if (MANDAG.format(tid) === 'Mon') {
-      ko = await oppdaterKo({
-        tid,
-        avh,
-        rot,
-        klient: avh.klient,
-        grenser,
-        publisert,
-        nettsted,
-        forbudt,
-      });
-    }
-    if (!kanPublisere(publisert, tid)) {
-      logg.resultat = 'tom';
-      logg.grunner = [meldinger.alleredePublisert];
-      return avsluttMedLogg(rot, logg, meldinger);
+      privat = await oppdaterMandag({ tid, dato, avh, rot, nokkel, privat, språkfiler });
     }
 
-    const emne = velgEmne(ko, publisert);
+    const publisert = lesOffentlig(datafil(rot, 'publisert.json'), []);
+    const bestillinger = lesBestillinger(rot);
+    const grenser = lesData('grenser.json', rot);
+    logg.antall = {
+      gsc: privat.gsc.at(-1)?.rader?.length ?? 0,
+      forslag: privat.forslag.at(-1)?.svar?.reduce((sum, rad) => (
+        sum + rad.svar.reduce((språksum, frø) => språksum + frø.forslag.length, 0)
+      ), 0) ?? 0,
+      ko: privat.emneko.length,
+      bestillinger: bestillinger.length,
+    };
+    if (!kanPublisere(publisert, tid) || bestillinger.some((rad) => rad.dato === dato)) {
+      logg.resultat = 'tom';
+      logg.statuskode = 'daglig-grense';
+      skrivLogg(rot, logg);
+      return logg;
+    }
+    if (!kanPublisereDenneUken(publisert, tid, grenser.artiklerMaksPerUke)) {
+      logg.resultat = 'tom';
+      logg.statuskode = 'ukentlig-grense';
+      skrivLogg(rot, logg);
+      return logg;
+    }
+
+    const emne = velgEmne(privat.emneko, [...publisert, ...bestillinger]);
     if (!emne) {
       logg.resultat = 'tom';
-      logg.grunner = [meldinger.tomKo];
-      return avsluttMedLogg(rot, logg, meldinger);
+      logg.statuskode = 'ko-tom';
+      skrivLogg(rot, logg);
+      return logg;
     }
-    logg.emne = emne.sokeord;
+    const bestilling = lagBestilling(emne, språkfiler[emne.sprak], grenser, dato);
+    const bestillingId = `${dato}-${emne.sprak}-${bestilling.slug}`;
+    skrivOffentlig(rot, 'bestilling', `${bestillingId}.json`, bestilling);
+    logg.resultat = 'bestilling';
+    logg.statuskode = 'bestilling-opprettet';
     logg.sprak = emne.sprak;
-
-    const kilder = lesData('kilder.json', rot);
-    const utdrag = await hentUtdrag(emne, kilder, avh.hent);
-    if (utdrag.length === 0) {
-      const slug = slugify(emne.sokeord);
-      logg.resultat = 'avvist';
-      logg.slug = slug;
-      logg.grunner = [meldinger.ingenKilder];
-      lagreAvvist(rot, dato, slug, { emne, grunner: logg.grunner });
-      return avsluttMedLogg(rot, logg, meldinger);
-    }
-
-    const sprakfiler = lesSprakfiler(rot);
-    const sprakfil = sprakfiler[emne.sprak];
-    const skrivMal = readFileSync(datafil(rot, 'instrukser/skriv.md'), 'utf8');
-    const skrevet = await skrivArtikkel(avh.klient, { emne, utdrag, sprakfil, mal: skrivMal });
-    logg.kostnadUsd += skrevet.kostnadUsd;
-    const artikkel = {
-      ...skrevet.artikkel,
-      publisert: dato,
-      kilder: utdrag.map(({ id, url }) => ({ id, url })),
-    };
-    logg.slug = artikkel.slug;
-    logg.tittel = artikkel.tittel;
-
-    const fast = sjekkFast(artikkel, { nettsted, forbudt, sprakfiler, grenser });
-    if (!fast.ok) {
-      logg.resultat = 'avvist';
-      logg.grunner = fast.grunner;
-      lagreAvvist(rot, dato, artikkel.slug, { artikkel, utdrag, grunner: fast.grunner });
-      return avsluttMedLogg(rot, logg, meldinger);
-    }
-
-    const granskMal = readFileSync(datafil(rot, 'instrukser/gransk.md'), 'utf8');
-    const gransket = await granskArtikkel(avh.klient, {
-      artikkel,
-      utdrag,
-      sprakfil,
-      mal: granskMal,
-    });
-    logg.kostnadUsd += gransket.kostnadUsd;
-    if (!gransket.godkjent) {
-      logg.resultat = 'avvist';
-      logg.grunner = [gransket.grunn];
-      lagreAvvist(rot, dato, artikkel.slug, { artikkel, utdrag, grunner: logg.grunner });
-      return avsluttMedLogg(rot, logg, meldinger);
-    }
-
-    const sti = `${BLOGGROT[artikkel.sprak]}${artikkel.slug}/`;
-    const eksisterende = lesAutoArtikler(rot);
-    const lenker = byggLenker(eksisterende, { ...artikkel, sti, sprakfil });
-    artikkel.lenker = lenker.nyLenker;
-    for (const gammel of eksisterende) {
-      const nyLenke = lenker.lesOgså.get(gammel.slug);
-      if (!nyLenke) continue;
-      const { fil, sti: _sti, ...lagret } = gammel;
-      lagret.lesOgså = [...(lagret.lesOgså ?? []).filter((lenke) => lenke.sti !== nyLenke.sti), nyLenke];
-      skrivJson(fil, lagret);
-    }
-    skrivJson(new URL(`blogg-kilde/auto/${artikkel.sprak}/${artikkel.slug}.json`, rot), artikkel);
-    publisert.push({
-      dato,
-      emne_id: emne.id,
-      sprak: artikkel.sprak,
-      slug: artikkel.slug,
-      sti,
-      tittel: artikkel.tittel,
-    });
-    skrivJson(datafil(rot, 'publisert.json'), publisert);
-    logg.resultat = 'publisert';
-    logg.sti = sti;
-    return avsluttMedLogg(rot, logg, meldinger);
+    logg.slug = bestilling.slug;
+    logg.bestilling_id = bestillingId;
+    logg.antall.bestillinger += 1;
+    skrivLogg(rot, logg);
+    return logg;
   } catch (feil) {
+    logg.modus = aktivModus;
     logg.resultat = 'feil';
-    logg.grunner = [feil instanceof Error ? feil.message : String(feil)];
-    meldinger ??= lesData('sprak/nb.json', rot).motor;
-    return avsluttMedLogg(rot, logg, meldinger);
+    logg.statuskode = tryggFeilkode(feil);
+    if (Number.isInteger(feil?.httpStatus)) logg.http_status = feil.httpStatus;
+    skrivLogg(rot, logg);
+    return logg;
   }
 }
 
 function torrAvhengigheter(rot) {
   const fixture = lesJson(new URL('seo-motor/test/fixtures/tørt/api.json', rot), {});
-  let klientKall = 0;
   return {
-    gsc: async () => fixture.gsc ?? [],
-    dataforseo: async () => fixture.dataforseo ?? [],
-    hent: async () => fixture.kilde,
-    klient: {
-      messages: {
-        parse: async () => {
-          klientKall += 1;
-          const data = klientKall === 1
-            ? fixture.passform
-            : klientKall === 2
-              ? fixture.artikkel
-              : fixture.gransk;
-          return {
-            parsed_output: data,
-            stop_reason: 'end_turn',
-            usage: { input_tokens: 0, output_tokens: 0 },
-          };
-        },
-      },
-    },
-    gh: async () => '',
     rot,
+    gsc: async () => fixture.gsc ?? [],
+    forslag: async ({ språkfil, sprak }) => {
+      const rå = [];
+      const kandidater = [];
+      for (const frø of språkfil['forslagsfrø']) {
+        const verdier = fixture.forslag?.[frø.tekst] ?? [];
+        rå.push({ frø: frø.tekst, forslag: verdier });
+        for (const sokeord of verdier) {
+          kandidater.push({
+            sokeord,
+            sprak,
+            frø,
+            forslagAntall: verdier.length,
+            kilde: 'forslag',
+          });
+        }
+      }
+      return { rå, kandidater };
+    },
   };
 }
 
 function ekteAvhengigheter(rot) {
   return {
-    gsc: hentGsc,
-    dataforseo: hentDataForSeo,
-    hent: async (url) => {
-      const svar = await fetch(url);
-      return { status: svar.status, tekst: await svar.text() };
-    },
-    klient: lagKlient({ apiKey: process.env.ANTHROPIC_API_KEY_LANDING }),
-    gh: null,
     rot,
+    miljø: process.env,
+    gsc: hentGsc,
+    forslag: ({ sprak, språkfil }) => hentForslag({
+      sprak,
+      språkfil,
+      hent: async (url) => {
+        const svar = await fetch(url);
+        return { status: svar.status, data: await svar.json() };
+      },
+    }),
   };
 }
 
 async function cli() {
   const tørt = process.argv.includes('--tørt');
   const modus = tørt ? (process.env.SEO_AUTOPILOT ?? 'utkast') : process.env.SEO_AUTOPILOT;
-  const avh = tørt
-    ? torrAvhengigheter(REPO_ROT)
-    : modus
-      ? ekteAvhengigheter(REPO_ROT)
-      : { rot: REPO_ROT };
   const fixtureTid = tørt
     ? lesJson(new URL('seo-motor/test/fixtures/tørt/api.json', REPO_ROT), {}).tid
     : null;
-  const logg = await kjor({ tid: fixtureTid ? new Date(fixtureTid) : new Date(), modus, tørt, avh });
+  const avh = tørt ? torrAvhengigheter(REPO_ROT) : ekteAvhengigheter(REPO_ROT);
+  const logg = await kjor({
+    tid: fixtureTid ? new Date(fixtureTid) : new Date(),
+    modus,
+    tørt,
+    avh,
+  });
   const resultat = {
+    dato: logg.dato,
     resultat: logg.resultat,
     modus: logg.modus,
+    statuskode: logg.statuskode,
+    ...(logg.bestilling_id ? { bestilling_id: logg.bestilling_id } : {}),
     ...(logg.slug ? { slug: logg.slug } : {}),
+    ...(logg.http_status ? { http_status: logg.http_status } : {}),
+    ...(logg.antall ? { antall: logg.antall } : {}),
   };
   writeFileSync(new URL('../seo-resultat.json', import.meta.url), `${JSON.stringify(resultat, null, 2)}\n`);
   process.stdout.write(`${JSON.stringify(resultat)}\n`);
+  if (logg.resultat === 'feil') process.exitCode = 1;
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {

@@ -9,6 +9,5 @@
   "faqMin": 3,
   "faqMaks": 5,
   "overlappMaks": 0.5,
-  "vanskelighetMaks": 35,
-  "dataforseoMaksForesporslerPerUke": 40
+  "artiklerMaksPerUke": 7
 }
