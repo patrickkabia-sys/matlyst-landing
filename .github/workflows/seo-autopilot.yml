@@ -1,0 +1,249 @@
+name: SEO-autopilot
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency: seo-autopilot
+
+jobs:
+  seo-autopilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Hent kildekoden
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Les stoppbryteren
+        id: modus
+        env:
+          SEO_AUTOPILOT: ${{ vars.SEO_AUTOPILOT }}
+        run: |
+          case "$SEO_AUTOPILOT" in
+            utkast|på) modus="$SEO_AUTOPILOT" ;;
+            *) modus="av" ;;
+          esac
+          echo "modus=$modus" >> "$GITHUB_OUTPUT"
+
+      - name: Sett opp Node.js
+        if: steps.modus.outputs.modus != 'av'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer avhengigheter
+        if: steps.modus.outputs.modus != 'av'
+        run: npm ci
+
+      - name: Kjør SEO-motoren
+        if: steps.modus.outputs.modus != 'av'
+        id: motor
+        env:
+          SEO_AUTOPILOT: ${{ vars.SEO_AUTOPILOT }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          DATAFORSEO_LOGIN: ${{ secrets.DATAFORSEO_LOGIN }}
+          DATAFORSEO_PASSWORD: ${{ secrets.DATAFORSEO_PASSWORD }}
+          ANTHROPIC_API_KEY_LANDING: ${{ secrets.ANTHROPIC_API_KEY_LANDING }}
+        run: |
+          node seo-motor/kjor.mjs
+          echo "resultat=$(node -p "require('./seo-resultat.json').resultat")" >> "$GITHUB_OUTPUT"
+          echo "modus=$(node -p "require('./seo-resultat.json').modus")" >> "$GITHUB_OUTPUT"
+          echo "slug=$(node -p "require('./seo-resultat.json').slug || ''")" >> "$GITHUB_OUTPUT"
+          echo "basis=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          DATO=$(node -e 'const fs=require("node:fs"); const f=fs.readdirSync("seo-data/logg").filter((n)=>/^\d{4}-\d{2}-\d{2}\.json$/.test(n)).sort().at(-1); process.stdout.write(f.slice(0,-5));')
+          echo "dato=$DATO" >> "$GITHUB_OUTPUT"
+
+      - name: Bygg nettstedet
+        if: steps.modus.outputs.modus != 'av'
+        id: bygg
+        continue-on-error: true
+        run: node scripts/generer-norske-importguider.mjs && node scripts/generer-lokalsider.mjs
+
+      - name: Kjør testene
+        if: steps.modus.outputs.modus != 'av' && steps.bygg.outcome == 'success'
+        id: tester
+        continue-on-error: true
+        run: npm test
+
+      - name: Avvis artikkelen ved bygg- eller testfeil
+        if: steps.modus.outputs.modus != 'av' && steps.motor.outputs.resultat == 'publisert' && (steps.bygg.outcome == 'failure' || steps.tester.outcome == 'failure')
+        env:
+          BYGGUTFALL: ${{ steps.bygg.outcome }}
+          DATO: ${{ steps.motor.outputs.dato }}
+          SLUG: ${{ steps.motor.outputs.slug }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+          import { dirname } from 'node:path';
+          import { skalSperre, tellAvvisningerPåRad } from './seo-motor/modus.mjs';
+          const grunn = process.env.BYGGUTFALL === 'failure' ? 'nettstedbygget feilet' : 'npm test feilet';
+          const språk = ['nb', 'sv', 'da', 'en'];
+          const fil = språk.map((kode) => `blogg-kilde/auto/${kode}/${process.env.SLUG}.json`).find(existsSync);
+          if (fil) {
+            const artikkel = JSON.parse(readFileSync(fil, 'utf8'));
+            const avvist = `seo-data/avvist/${process.env.DATO}-${process.env.SLUG}.json`;
+            mkdirSync(dirname(avvist), { recursive: true });
+            writeFileSync(avvist, `${JSON.stringify({ artikkel, grunner: [grunn] }, null, 2)}\n`);
+            rmSync(fil);
+          }
+          const publisertFil = 'seo-data/publisert.json';
+          const publisert = JSON.parse(readFileSync(publisertFil, 'utf8')).filter(({ slug }) => slug !== process.env.SLUG);
+          writeFileSync(publisertFil, `${JSON.stringify(publisert, null, 2)}\n`);
+          const loggfil = `seo-data/logg/${process.env.DATO}.json`;
+          const logg = JSON.parse(readFileSync(loggfil, 'utf8'));
+          logg.resultat = 'avvist';
+          logg.grunner = [grunn];
+          delete logg.sti;
+          writeFileSync(loggfil, `${JSON.stringify(logg, null, 2)}\n`);
+          const historikk = readdirSync('seo-data/logg')
+            .filter((navn) => /^\d{4}-\d{2}-\d{2}\.json$/u.test(navn))
+            .sort()
+            .map((navn) => JSON.parse(readFileSync(`seo-data/logg/${navn}`, 'utf8')));
+          if (skalSperre(tellAvvisningerPåRad(historikk))) {
+            const meldinger = JSON.parse(readFileSync('seo-data/sprak/nb.json', 'utf8')).motor;
+            writeFileSync('seo-data/sperre.json', `${JSON.stringify({ dato: process.env.DATO, grunn: meldinger.sperre }, null, 2)}\n`);
+            logg.resultat = 'sperret';
+            logg.grunner.push(meldinger.sperre);
+            writeFileSync(loggfil, `${JSON.stringify(logg, null, 2)}\n`);
+          }
+          NODE
+
+      - name: Forbered publisering til main
+        if: steps.motor.outputs.modus == 'på' && steps.motor.outputs.resultat == 'publisert' && steps.bygg.outcome == 'success' && steps.tester.outcome == 'success'
+        id: publisering
+        continue-on-error: true
+        env:
+          SLUG: ${{ steps.motor.outputs.slug }}
+        run: |
+          TITTEL=$(find blogg-kilde/auto -name "$SLUG.json" -print -quit | xargs jq -r .tittel)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git reset -- seo-resultat.json seo-data
+          git commit -m "seo: $TITTEL (autopilot)"
+
+      - name: Lag utkast-PR
+        if: steps.motor.outputs.modus == 'utkast' && steps.motor.outputs.resultat == 'publisert' && steps.bygg.outcome == 'success' && steps.tester.outcome == 'success'
+        id: pr
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DATO: ${{ steps.motor.outputs.dato }}
+          SLUG: ${{ steps.motor.outputs.slug }}
+        run: |
+          TITTEL=$(find blogg-kilde/auto -name "$SLUG.json" -print -quit | xargs jq -r .tittel)
+          GREN="seo-autopilot/$DATO"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$GREN"
+          git add -A
+          git reset -- seo-resultat.json seo-data
+          git commit -m "seo: $TITTEL (autopilot)"
+          git push --set-upstream origin "$GREN"
+          PR_URL=$(gh pr create --base main --head "$GREN" --title "seo: $TITTEL (autopilot)" --body "Automatisk utkast fra SEO-autopiloten.")
+          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Oppdater leveringsstatus
+        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outcome == 'success'
+        env:
+          DATO: ${{ steps.motor.outputs.dato }}
+          MODUS: ${{ steps.motor.outputs.modus }}
+          PRUTFALL: ${{ steps.pr.outcome }}
+          PR_URL: ${{ steps.pr.outputs.url }}
+          PUBLISERINGSUTFALL: ${{ steps.publisering.outcome }}
+          SLUG: ${{ steps.motor.outputs.slug }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const loggfil = `seo-data/logg/${process.env.DATO}.json`;
+          const logg = JSON.parse(readFileSync(loggfil, 'utf8'));
+          if (logg.resultat === 'publisert' && process.env.MODUS === 'på' && process.env.PUBLISERINGSUTFALL !== 'success') {
+            logg.resultat = 'feil';
+            logg.grunner = ['push til main feilet'];
+          }
+          if (logg.resultat === 'publisert' && process.env.MODUS === 'utkast' && process.env.PRUTFALL !== 'success') {
+            logg.resultat = 'feil';
+            logg.grunner = ['oppretting av utkast-PR feilet'];
+            const publisertFil = 'seo-data/publisert.json';
+            const publisert = JSON.parse(readFileSync(publisertFil, 'utf8')).filter(({ slug }) => slug !== process.env.SLUG);
+            writeFileSync(publisertFil, `${JSON.stringify(publisert, null, 2)}\n`);
+          }
+          if (process.env.PR_URL) {
+            logg.resultat = 'utkast';
+            logg.prUrl = process.env.PR_URL;
+          }
+          writeFileSync(loggfil, `${JSON.stringify(logg, null, 2)}\n`);
+          NODE
+
+      - name: Lagre driftsstatus
+        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outcome == 'success'
+        continue-on-error: true
+        env:
+          BASIS: ${{ steps.motor.outputs.basis }}
+          DATO: ${{ steps.motor.outputs.dato }}
+          MODUS: ${{ steps.motor.outputs.modus }}
+          MOTORRESULTAT: ${{ steps.motor.outputs.resultat }}
+          PUBLISERINGSUTFALL: ${{ steps.publisering.outcome }}
+        run: |
+          if [ "$MODUS" != "på" ] || [ "$MOTORRESULTAT" != "publisert" ] || [ "$PUBLISERINGSUTFALL" != "success" ]; then
+            git switch -C seo-autopilot-status "$BASIS"
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add seo-data
+          if ! git diff --cached --quiet; then
+            git commit -m "seo: lagre status fra autopiloten"
+            if ! git push origin HEAD:main; then
+          node --input-type=module <<'NODE'
+          import { readFileSync, writeFileSync } from 'node:fs';
+          const loggfil = `seo-data/logg/${process.env.DATO}.json`;
+          const logg = JSON.parse(readFileSync(loggfil, 'utf8'));
+          const publisering = process.env.MODUS === 'på' && process.env.MOTORRESULTAT === 'publisert';
+          logg.resultat = 'feil';
+          logg.grunner = [publisering ? 'push av artikkel og driftsstatus feilet' : 'push av driftsstatus feilet'];
+          writeFileSync(loggfil, `${JSON.stringify(logg, null, 2)}\n`);
+          NODE
+              exit 1
+            fi
+          fi
+
+      - name: Rapporter
+        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outcome == 'success'
+        env:
+          DATO: ${{ steps.motor.outputs.dato }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { execFile } from 'node:child_process';
+          import { readFileSync, readdirSync } from 'node:fs';
+          import { promisify } from 'node:util';
+          import { nattrapport, postRapport, ukerapport } from './seo-motor/rapport.mjs';
+          const kjør = promisify(execFile);
+          const logg = JSON.parse(readFileSync(`seo-data/logg/${process.env.DATO}.json`, 'utf8'));
+          let tekst = nattrapport(logg);
+          const sluttdato = process.env.DATO;
+          const dato = new Date(`${sluttdato}T12:00:00Z`);
+          if (new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Oslo', weekday: 'short' }).format(dato) === 'Mon') {
+            const ko = JSON.parse(readFileSync('seo-data/emnekø.json', 'utf8'));
+            const start = new Date(dato);
+            start.setUTCDate(start.getUTCDate() - 6);
+            const startdato = start.toISOString().slice(0, 10);
+            const kostnadUke = readdirSync('seo-data/logg')
+              .filter((navn) => /^\d{4}-\d{2}-\d{2}\.json$/u.test(navn))
+              .map((navn) => JSON.parse(readFileSync(`seo-data/logg/${navn}`, 'utf8')))
+              .filter((rad) => rad.dato >= startdato && rad.dato <= sluttdato)
+              .reduce((sum, rad) => sum + (rad.kostnadUsd ?? 0), 0);
+            tekst += `\n${ukerapport({ ytelse: logg.ytelse ?? [], ko, kostnadUke })}`;
+          }
+          const gh = async (args) => (await kjør('gh', args)).stdout.trim();
+          await postRapport(tekst, { issueTittel: 'SEO-autopilot', gh });
+          NODE

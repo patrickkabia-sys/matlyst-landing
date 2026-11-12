@@ -71,8 +71,15 @@
     "klikk": "klikk",
     "plassering": "plassering",
     "poeng": "poeng",
+    "sprak": "Språk",
     "ingen": "Ingen",
     "issueBody": "Samlet rapporttråd for SEO-autopiloten."
+  },
+  "motor": {
+    "alleredePublisert": "én publisering er allerede registrert dette døgnet",
+    "tomKo": "emnekøen er tom",
+    "ingenKilder": "kilder: ingen utdrag",
+    "sperre": "tre avvisninger på rad"
   },
   "stoppord": ["hva", "etter", "også", "være", "noen", "noe", "nå", "mye", "hvordan", "bruker", "bruk", "gjør", "trenger", "fortsatt", "hver", "rundt", "gjennom", "mellom", "omtrent", "likevel", "underveis", "senere", "begynner", "vanligvis", "først", "gjerne", "ellers", "isteden", "samtidig", "dersom"]
 }
