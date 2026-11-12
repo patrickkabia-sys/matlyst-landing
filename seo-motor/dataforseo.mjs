@@ -40,6 +40,14 @@ export async function hentDataForSeo({ login, passord, frø, land, tak }) {
     if (!svar.ok) throw new Error(`dataforseo: http ${svar.status}`);
 
     const data = await svar.json();
+    if (data.status_code !== 20_000) {
+      throw new Error(`dataforseo: ${data.status_message ?? data.status_code}`);
+    }
+    for (const oppgave of data.tasks ?? []) {
+      if (oppgave.status_code !== 20_000) {
+        throw new Error(`dataforseo: ${oppgave.status_message ?? oppgave.status_code}`);
+      }
+    }
     const elementer = data.tasks?.flatMap((oppgave) =>
       oppgave.result?.flatMap((resultat) => resultat.items ?? []) ?? []) ?? [];
     for (const element of elementer) {

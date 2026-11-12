@@ -96,6 +96,18 @@ test('slugify gir ascii og vern avviser kollisjon', () => {
   assert.match(sjekk('slug-kollisjon').grunner.join(' '), /slug/i);
 });
 
+test('slug i forbudt.json avvises', () => {
+  const artikkel = lesFixture();
+  const resultat = sjekkFast(artikkel, {
+    nettsted,
+    forbudt: { ...forbudt, slugs: [`/${artikkel.slug}/`] },
+    sprakfiler,
+    grenser,
+  });
+
+  assert.match(resultat.grunner.join(' '), /forbudt.*slug/i);
+});
+
 test('nesten-duplikat avvises', () => {
   assert.ok(ordOverlapp(
     'Koketider for ris, pasta, egg og grønnsaker',

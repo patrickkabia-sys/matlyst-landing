@@ -38,5 +38,12 @@
       "tekst": "Ha ingrediensene og framgangsmåten på skjermen mens du lager maten."
     }
   },
+  "appkoblingSti": {
+    "import": "/importer-oppskrifter/",
+    "ukemeny": "/ukemeny/",
+    "handleliste": "/handleliste/",
+    "bruk-det-jeg-har": "/hva-kan-jeg-lage/",
+    "kokemodus": "/"
+  },
   "stoppord": ["hva", "hvis", "eller", "etter", "også", "være", "noen", "nå", "bare", "mye", "kjøleskapet", "planlegg", "måltidet", "råvarene", "bruk", "først"]
 }

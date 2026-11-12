@@ -2,6 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import { byggLenker } from '../seo-motor/lenker.mjs';
+import { lesNettsted } from '../seo-motor/nettsted.mjs';
+import { lesData } from '../seo-motor/skjema.mjs';
 import { velgEmne } from '../seo-motor/velg.mjs';
 
 const nbEmne = { id: 'rester-nb', sprak: 'nb', sokeord: 'rester', poeng: 200 };
@@ -93,4 +95,19 @@ test('maks fire lenker', () => {
     sti: '/ukemeny/',
     tittel: 'Planlegg middagen i ukemenyen',
   });
+});
+
+test('reelle språkfiler har gyldige appkoblingSti', () => {
+  const nettsted = lesNettsted(new URL('../', import.meta.url));
+
+  for (const sprak of ['nb', 'sv', 'da', 'en']) {
+    const sprakfil = lesData(`sprak/${sprak}.json`);
+    for (const appkobling of Object.keys(sprakfil.appCta)) {
+      const resultat = byggLenker([], { ...ny, sprak, sprakfil, appkobling });
+      const appLenke = resultat.nyLenker.at(-1);
+
+      assert.equal(appLenke.sti, sprakfil.appkoblingSti[appkobling]);
+      assert.equal(nettsted.stier.has(appLenke.sti), true, `${sprak}:${appkobling}`);
+    }
+  }
 });

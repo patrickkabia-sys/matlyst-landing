@@ -39,5 +39,12 @@
       "tekst": "Angiv antallet af portioner, og hav ingredienserne og fremgangsmåden på skærmen, mens du laver mad."
     }
   },
+  "appkoblingSti": {
+    "import": "/da/importer-opskrifter/",
+    "ukemeny": "/da/madplan-app/",
+    "handleliste": "/da/indkoebsliste-app/",
+    "bruk-det-jeg-har": "/da/opskrifter-ud-fra-ingredienser/",
+    "kokemodus": "/da/"
+  },
   "stoppord": ["hvad", "af", "nogle", "meget", "bliver", "køleskabet", "derfor", "efter", "sådan", "gerne", "madrester", "aftensmad", "madpakken", "kogt", "planlæg", "beholdere"]
 }

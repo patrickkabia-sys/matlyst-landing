@@ -21,6 +21,7 @@ export function byggKo({ kandidater, passform, nettsted, forbudt, grenser, brukt
       && (kandidat.plassering < 8 || kandidat.plassering > 30)) continue;
 
     const sprak = kandidat.sprak ?? LAND_TIL_SPRAK[kandidat.land];
+    if (!sprak) continue;
     const vurdering = passform.get(kandidat.sokeord);
     const vanskelighet = kandidat.vanskelighet ?? 0;
     if (!vurdering || vurdering.passform === 0) continue;

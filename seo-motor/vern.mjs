@@ -1,5 +1,5 @@
 import { ArtikkelSkjema } from './skjema.mjs';
-import { ordOverlapp } from './nettsted.mjs';
+import { ordOverlapp, slugify } from './nettsted.mjs';
 import { gjenkjennSprak } from './sprakgjenkjenning.mjs';
 
 export function sjekkFast(artikkel, { nettsted, forbudt, sprakfiler, grenser }) {
@@ -34,6 +34,11 @@ export function sjekkFast(artikkel, { nettsted, forbudt, sprakfiler, grenser }) 
   }
   if (nettsted.sider.some((side) => side.meta.trim().toLocaleLowerCase() === meta)) {
     grunner.push('unikhet: meta finnes fra før');
+  }
+
+  const normalisertSlug = slugify(artikkel.slug ?? '');
+  if ((forbudt.slugs ?? []).some((slug) => slugify(slug) === normalisertSlug)) {
+    grunner.push('forbudt: slug');
   }
 
   const slugKollisjon = [...nettsted.stier].some((sti) => {

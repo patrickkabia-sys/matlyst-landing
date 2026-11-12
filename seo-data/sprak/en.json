@@ -39,5 +39,12 @@
       "tekst": "Keep the ingredients and directions on screen while you cook."
     }
   },
+  "appkoblingSti": {
+    "import": "/en/import-recipes/",
+    "ukemeny": "/en/meal-plan-app/",
+    "handleliste": "/en/shopping-list/",
+    "bruk-det-jeg-har": "/en/recipes-by-ingredients/",
+    "kokemodus": "/en/"
+  },
   "stoppord": ["the", "and", "with", "leftovers", "refrigerator", "meal", "vegetables", "before", "into", "use", "them", "your", "what", "plan", "first"]
 }

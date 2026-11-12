@@ -38,5 +38,12 @@
       "tekst": "Ha ingredienserna och instruktionerna på skärmen medan du lagar maten."
     }
   },
+  "appkoblingSti": {
+    "import": "/sv/importera-recept/",
+    "ukemeny": "/sv/veckomeny-app/",
+    "handleliste": "/sv/inkopslista/",
+    "bruk-det-jeg-har": "/sv/recept-pa-ingredienser/",
+    "kokemodus": "/sv/"
+  },
   "stoppord": ["och", "inte", "att", "är", "som", "finns", "kylskåpet", "många", "sedan", "gärna", "några", "planera", "måltiden", "råvarorna", "använd", "resterna", "först"]
 }
