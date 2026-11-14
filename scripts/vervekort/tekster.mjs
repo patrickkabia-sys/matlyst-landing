@@ -11,6 +11,8 @@
 // - Vennen får BONUS_IMPORTER = 5 bonusimporter (lib/vervebonus.ts), oppå
 //   månedskvoten (bonusPott legges til, tilgjengeligeImporter). Ververen får ingenting.
 //
+// sv og da har nøytral tittel («Matlyst: receptappen/opskriftsappen», CEO 2026-11-14)
+// til Henriette har lest; nb og en beholder «Du er invitert …».
 // ⚠️ Ingen tekst her taler på vegne av den som deler lenka, og ingen er en ferdig
 // delingstekst. Kortet beskriver hvor lenka går (PR 20b, docs/vervekort-jus.md).
 
@@ -45,9 +47,9 @@ export const TEKSTER = {
     ogLocale: 'sv_SE',
     sti: '/sv/v/',
     hjem: '/sv/',
-    tittel: 'Du är inbjuden till Matlyst',
-    beskrivelse: 'Receptappen som sparar recept från webben, Instagram och TikTok. Länken öppnar App Store eller Google Play.',
-    bildeAlt: 'Matlysts logotyp och texten ”Du är inbjuden till Matlyst” bredvid en tallrik pasta i tomatsås med basilika.',
+    tittel: 'Matlyst: receptappen',
+    beskrivelse: 'Matlyst sparar recept från webben, Instagram och TikTok. Länken öppnar App Store eller Google Play.',
+    bildeAlt: 'Matlysts logotyp och texten ”Matlyst: receptappen” bredvid en tallrik pasta i tomatsås med basilika.',
     intro: 'Med Matlyst sparar du recept från webben, Instagram och TikTok och använder dem i veckomenyn och inköpslistan.',
     stegTittel: 'Så kommer du igång',
     steg1: 'Hämta Matlyst i App Store eller Google Play.',
@@ -66,9 +68,9 @@ export const TEKSTER = {
     ogLocale: 'da_DK',
     sti: '/da/v/',
     hjem: '/da/',
-    tittel: 'Du er inviteret til Matlyst',
-    beskrivelse: 'Opskriftsappen, der gemmer opskrifter fra nettet, Instagram og TikTok. Linket åbner App Store eller Google Play.',
-    bildeAlt: 'Matlysts logo og teksten »Du er inviteret til Matlyst« ved siden af en tallerken pasta i tomatsauce med basilikum.',
+    tittel: 'Matlyst: opskriftsappen',
+    beskrivelse: 'Matlyst gemmer opskrifter fra nettet, Instagram og TikTok. Linket åbner App Store eller Google Play.',
+    bildeAlt: 'Matlysts logo og teksten »Matlyst: opskriftsappen« ved siden af en tallerken pasta i tomatsauce med basilikum.',
     intro: 'Med Matlyst gemmer du opskrifter fra nettet, Instagram og TikTok og bruger dem til madplanen og indkøbslisten.',
     stegTittel: 'Sådan kommer du i gang',
     steg1: 'Hent Matlyst i App Store eller Google Play.',

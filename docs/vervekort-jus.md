@@ -44,6 +44,8 @@ Konklusjon: Kortet bryter ikke ordlyden i vedtaket («OS-delearket uten forhånd
 
 ## Slik er kortet holdt nøytralt nå
 
+- 2026-11-14 (CEO): nøytral tittel i DK og SE («Matlyst: receptappen» / «Matlyst: opskriftsappen») til Henriette har lest; nb og en beholder «Du er invitert …».
+
 - Beskrivelsen beskriver lenkens mål, ikke avsenderen: «Oppskriftsappen som lagrer oppskrifter fra nettet, Instagram og TikTok. Lenken åpner App Store eller Google Play.» Ingen superlativer, ingen pris, ingen bonus.
 - Kortet nevner verken bonusen eller koden. Bonusen (5 gratisimporter til vennen) står bare på sida, som Matlysts egen opplysning til den som åpner lenka.
 - Ingen persondata: ingen navn, ingen kode i taggene. Kortet er likt for alle koder og alle avsendere.

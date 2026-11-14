@@ -17,9 +17,9 @@ Mottakeren har fått en melding fra en venn med lenke og kode. Meldingsappen vis
 
 | nøkkel | nb | sv | da | en |
 |---|---|---|---|---|
-| tittel (kort og side) | Du er invitert til Matlyst | Du är inbjuden till Matlyst | Du er inviteret til Matlyst | You’re invited to try Matlyst |
-| beskrivelse (kort) | Oppskriftsappen som lagrer oppskrifter fra nettet, Instagram og TikTok. Lenken åpner App Store eller Google Play. | Receptappen som sparar recept från webben, Instagram och TikTok. Länken öppnar App Store eller Google Play. | Opskriftsappen, der gemmer opskrifter fra nettet, Instagram og TikTok. Linket åbner App Store eller Google Play. | The recipe app that saves recipes from websites, Instagram, and TikTok. This link opens the App Store or Google Play. |
-| bildeAlt | Matlyst-logoen og teksten «Du er invitert til Matlyst» ved siden av en tallerken pasta i tomatsaus med basilikum. | Matlysts logotyp och texten ”Du är inbjuden till Matlyst” bredvid en tallrik pasta i tomatsås med basilika. | Matlysts logo og teksten »Du er inviteret til Matlyst« ved siden af en tallerken pasta i tomatsauce med basilikum. | The Matlyst logo and the words “You’re invited to try Matlyst” next to a bowl of pasta in tomato sauce with basil. |
+| tittel (kort og side) | Du er invitert til Matlyst | Matlyst: receptappen | Matlyst: opskriftsappen | You’re invited to try Matlyst |
+| beskrivelse (kort) | Oppskriftsappen som lagrer oppskrifter fra nettet, Instagram og TikTok. Lenken åpner App Store eller Google Play. | Matlyst sparar recept från webben, Instagram och TikTok. Länken öppnar App Store eller Google Play. | Matlyst gemmer opskrifter fra nettet, Instagram og TikTok. Linket åbner App Store eller Google Play. | The recipe app that saves recipes from websites, Instagram, and TikTok. This link opens the App Store or Google Play. |
+| bildeAlt | Matlyst-logoen og teksten «Du er invitert til Matlyst» ved siden av en tallerken pasta i tomatsaus med basilikum. | Matlysts logotyp och texten ”Matlyst: receptappen” bredvid en tallrik pasta i tomatsås med basilika. | Matlysts logo og teksten »Matlyst: opskriftsappen« ved siden af en tallerken pasta i tomatsauce med basilikum. | The Matlyst logo and the words “You’re invited to try Matlyst” next to a bowl of pasta in tomato sauce with basil. |
 | intro | Med Matlyst lagrer du oppskrifter fra nettet, Instagram og TikTok, og bruker dem til ukemeny og handleliste. | Med Matlyst sparar du recept från webben, Instagram och TikTok och använder dem i veckomenyn och inköpslistan. | Med Matlyst gemmer du opskrifter fra nettet, Instagram og TikTok og bruger dem til madplanen og indkøbslisten. | Matlyst saves recipes from websites, Instagram, and TikTok so you can plan your meals and build your grocery list. |
 | stegTittel | Slik kommer du i gang | Så kommer du igång | Sådan kommer du i gang | How to get started |
 | steg1 | Last ned Matlyst fra App Store eller Google Play. | Hämta Matlyst i App Store eller Google Play. | Hent Matlyst i App Store eller Google Play. | Get Matlyst from the App Store or Google Play. |
@@ -30,6 +30,12 @@ Mottakeren har fått en melding fra en venn med lenke og kode. Meldingsappen vis
 | utenKode | Fikk du en vervekode i meldingen? Skriv den inn når du lager en konto med e-post. | Fick du en värvningskod i meddelandet? Skriv in den när du skapar ett konto med e-post. | Fik du en henvisningskode i beskeden? Skriv den, når du opretter en konto med e-mail. | Got a referral code in the message? Enter it when you sign up with email. |
 | butikker (aria) | Last ned Matlyst | Hämta Matlyst | Hent Matlyst | Get Matlyst |
 | lesMer | Les mer om Matlyst | Läs mer om Matlyst | Læs mere om Matlyst | Learn more about Matlyst |
+
+## Endring 2026-11-14 (CEO): nøytral tittel i sv og da
+
+Meningen er «Matlyst: oppskriftsappen»: kortet sier hva lenka er, ikke at noen inviterer. sv «Matlyst: receptappen» og da «Matlyst: opskriftsappen» bruker appens egne ord (`tekstMerkelinje` i `lib/sprak/sv/epost.ts` «Receptapp», `lib/sprak/da/epost.ts` «Opskriftsapp», og nettstedets egen sv-forside «Receptappen som …»). Bestemt form fordi tittelen navngir appen, liten forbokstav etter kolon som i svensk og dansk løpende tekst. Beskrivelsen begynte før med «Receptappen/Opskriftsappen som …»; for ikke å gjenta tittelen har den nå Matlyst som subjekt. Alt-teksten følger tittelen. Ingressen («Med Matlyst sparar du …») taler til leseren, ikke på vegne av avsenderen, og er uendret. nb og en beholder «Du er invitert …» / «You’re invited to try …». Bonusteksten i steg 2 er ikke rørt (avklares med CEO).
+
+Før: sv «Du är inbjuden till Matlyst», da «Du er inviteret til Matlyst».
 
 ## Ordvalg som kan diskuteres
 

@@ -10,6 +10,16 @@ import { side } from '../scripts/vervekort/generer.mjs';
 import { BASE, SPRAK, TEKSTER, bildeSti, bildeUrl } from '../scripts/vervekort/tekster.mjs';
 
 const ROT = new URL('..', import.meta.url).pathname;
+
+// Tittelen per språk, skrevet ut her og ikke lest fra tekster.mjs, så en endring
+// i tekstene må gjøres bevisst begge steder. sv og da er nøytrale (CEO 2026-11-14):
+// kortet beskriver appen og taler ikke som en invitasjon fra noen.
+const TITLER = {
+  nb: 'Du er invitert til Matlyst',
+  sv: 'Matlyst: receptappen',
+  da: 'Matlyst: opskriftsappen',
+  en: 'You’re invited to try Matlyst',
+};
 const fil = (lang) => join(ROT, TEKSTER[lang].sti.slice(1), 'index.html');
 const les = (lang) => readFileSync(fil(lang), 'utf8');
 
@@ -29,7 +39,16 @@ for (const lang of SPRAK) {
     const html = les(lang);
     const t = TEKSTER[lang];
     assert.match(html, new RegExp(`^<!DOCTYPE html>\\n<html lang="${t.htmlLang}">`, 'u'));
-    assert.equal(avEsc(meta(html, 'og:title')), t.tittel);
+    assert.equal(t.tittel, TITLER[lang]);
+    assert.equal(avEsc(meta(html, 'og:title')), TITLER[lang]);
+    assert.match(html, new RegExp(`<title>${TITLER[lang]}</title>`, 'u'));
+    assert.match(html, new RegExp(`<h1 class="avmeld-title">${TITLER[lang]}</h1>`, 'u'));
+    if (lang === 'sv' || lang === 'da') {
+      // Ingen invitasjon i kortet i SE og DK: verken tittel, beskrivelse eller alt-tekst.
+      for (const felt of ['og:title', 'og:description', 'og:image:alt', 'twitter:title', 'twitter:description']) {
+        assert.doesNotMatch(avEsc(meta(html, felt)), /inbjud|inviter/iu, `${lang} ${felt}`);
+      }
+    }
     assert.equal(avEsc(meta(html, 'og:description')), t.beskrivelse);
     assert.equal(meta(html, 'og:type'), 'website');
     assert.equal(meta(html, 'og:url'), `${BASE}${t.sti}`);
