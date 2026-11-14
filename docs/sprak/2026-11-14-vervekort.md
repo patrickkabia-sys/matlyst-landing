@@ -60,4 +60,4 @@ Ikke tatt: da «Indtast» (begrepslista), «fem» for «5» (appens praksis), sv
 ## Usikkert
 
 - Ingen ord er slått opp i SO, DDO eller Merriam-Webster i denne økta. URL-ene over er der oppslaget bør gjøres.
-- Ingen innfødt har lest tekstene. Dansk bør leses av Henriette før DK-lansering.
+- Dansk sikres med matlyst-sprak-skillen (Patrick 14.11).
