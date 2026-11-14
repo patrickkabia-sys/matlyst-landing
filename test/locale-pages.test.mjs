@@ -23,6 +23,7 @@ const urlTilFil = (href) => {
   if (path.endsWith('/')) return join(root, path, 'index.html');
   return join(root, path);
 };
+const erVervekort = (fil) => /\/(?:sv|da|en)\/v\/index\.html$/u.test(fil);
 const regexEsc = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 test('alle lokale sider har språk, canonical, hreflang og gyldig strukturert data', () => {
@@ -36,6 +37,9 @@ test('alle lokale sider har språk, canonical, hreflang og gyldig strukturert da
     const rel = relative(root, fil);
     const lang = rel.split('/')[0];
     assert.match(html, new RegExp(`<html lang="${lang}">`), rel);
+    // Vervekortet (/xx/v/) er en noindex-mellomlanding uten motstykker i SIDEGRUPPER:
+    // ingen canonical, hreflang eller JSON-LD. Egne vakter: test/vervekort.test.mjs.
+    if (erVervekort(fil)) continue;
     assert.match(html, new RegExp(`<link rel="canonical" href="https://matlyst-app\\.no/${lang}/[^"]*">`, 'u'), rel);
     const canonicalSti = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
     for (const [kode, href] of alternativerFor(canonicalSti)) {
@@ -136,7 +140,8 @@ test('alle sider som laster site.js har samtykkebanner og mulighet for å trekke
   for (const fil of filer) {
     const html = les(fil);
     const rel = relative(root, fil);
-    if (/\/(?:avregistrera|afmeld|unsubscribe|tiktok-auth)\/index\.html$/u.test(fil)) {
+    // Vervekortet laster heller aldri analyse (CSP 'self', ingen site.js).
+    if (/\/(?:avregistrera|afmeld|unsubscribe|tiktok-auth|v)\/index\.html$/u.test(fil)) {
       assert.doesNotMatch(html, /site\.js|id="cookie"|data-consent-withdraw/u, rel);
       continue;
     }

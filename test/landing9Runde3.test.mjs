@@ -73,6 +73,8 @@ test('ingen «del/dele/deler/dela/delar … til Matlyst»', () => {
 test('nb-NO og x-default følger den felles sidetabellen', () => {
   for (const fil of sider) {
     const rel = relative(ROOT, fil);
+    // Vervekortet (/xx/v/) er noindex og står ikke i sidetabellen. Se test/vervekort.test.mjs.
+    if (/\/(?:sv|da|en)\/v\/index\.html$/u.test(fil)) continue;
     const html = readFileSync(fil, 'utf8');
     const sti = new URL(html.match(/<link rel="canonical" href="([^"]+)">/u)[1]).pathname;
     const forventet = Object.fromEntries(alternativerFor(sti));

@@ -1,0 +1,27 @@
+/* Vervekortet (/v/ på fire språk). Bygger på /avmeld.css (fonter og avmeld-rot-fargene).
+   Kontrast (WCAG, regnet 2026-11-14): blekk #1E1813 mot krem #F7F3EC 15,9:1 og mot
+   sand #F1EADD 14,7:1; ink-soft #6E6155 mot krem 5,4:1 og mot sand 5,0:1; krem tekst
+   på knappen #B34824 4,9:1, og lenka #B34824 mot krem 4,9:1. */
+.vervekort .avmeld-intro { margin-bottom: 8px; }
+
+.vk-kodekort { margin-top: 28px; }
+.vk-etikett { font-size: 13px; font-weight: 500; color: var(--ink-soft); margin-bottom: 8px; }
+.vk-koderad { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.vk-kode { font-family: 'DM Sans', sans-serif; font-size: 30px; font-weight: 600; letter-spacing: .14em;
+  color: var(--ink); user-select: all; -webkit-user-select: all; }
+.avmeld-rot .vk-kopier { background: #B34824; min-height: 44px; padding: 0 22px; }
+.vk-status { margin-top: 10px; font-size: 14px; color: var(--ink-soft); min-height: 1.7em; }
+
+.vk-h2 { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 400; line-height: 1.2;
+  margin-top: 36px; margin-bottom: 12px; }
+.vk-steg { padding-left: 22px !important; color: var(--ink); font-size: 16px; }
+.vk-steg li + li { margin-top: 8px; }
+.vk-utenkode { margin-top: 14px; font-size: 15px; color: var(--ink-soft); }
+.vervekort.har-kode .vk-utenkode { display: none; }
+
+.vk-butikker { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+.vk-butikk { display: inline-flex; align-items: center; min-height: 44px; }
+.vk-butikk img { display: block; width: auto; height: 40px; }
+
+.vk-lesmer { margin-top: 28px; font-size: 15px; }
+.avmeld-rot .vk-lesmer a { color: #B34824; text-decoration: underline; display: inline-block; padding: 12px 0; margin: -12px 0; }
