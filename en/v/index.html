@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>You’re invited to try Matlyst</title>
+  <meta name="description" content="The recipe app that saves recipes from websites, Instagram, and TikTok. This link opens the App Store or Google Play.">
+  <!-- Vervekortet skal aldri indekseres. Ikke Disallow i robots.txt: da henter
+       ikke forhåndsviserne (Twitterbot, facebookexternalhit) kortet. -->
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#F7F3EC">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Matlyst">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://matlyst-app.no/en/v/">
+  <meta property="og:title" content="You’re invited to try Matlyst">
+  <meta property="og:description" content="The recipe app that saves recipes from websites, Instagram, and TikTok. This link opens the App Store or Google Play.">
+  <meta property="og:image" content="https://matlyst-app.no/images/v/vervekort-en.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Matlyst logo and the words “You’re invited to try Matlyst” next to a bowl of pasta in tomato sauce with basil.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="You’re invited to try Matlyst">
+  <meta name="twitter:description" content="The recipe app that saves recipes from websites, Instagram, and TikTok. This link opens the App Store or Google Play.">
+  <meta name="twitter:image" content="https://matlyst-app.no/images/v/vervekort-en.png">
+  <meta name="twitter:image:alt" content="The Matlyst logo and the words “You’re invited to try Matlyst” next to a bowl of pasta in tomato sauce with basil.">
+  <link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="stylesheet" href="/avmeld.css">
+  <link rel="stylesheet" href="/v/vervekort.css">
+  <script src="/v/vervekort.js" defer></script>
+</head>
+<!--
+  Vervekortet. Generert av scripts/vervekort/generer.mjs, ikke rediger for hånd.
+  Appen deler https://matlyst-app.no/en/v/ med koden i parameteren k. Forhåndsvisningen bygges av OG-taggene over,
+  som er like for alle koder. vervekort.js sender iPhone og iPad til App Store og
+  Android til Google Play; alle andre ser sida. Tester: test/vervekort.test.mjs og
+  test/playwright/vervekort.spec.mjs.
+-->
+<body class="avmeld-rot">
+  <nav>
+    <a class="nav-brand" href="/en/">Mat<em>lyst</em></a>
+  </nav>
+
+  <main class="avmeld-doc vervekort">
+    <h1 class="avmeld-title">You’re invited to try Matlyst</h1>
+    <p class="avmeld-intro">Matlyst saves recipes from websites, Instagram, and TikTok so you can plan your meals and build your grocery list.</p>
+
+    <section class="avmeld-kort vk-kodekort" id="medKode" hidden>
+      <p class="vk-etikett" id="kodeEtikett">Referral code</p>
+      <div class="vk-koderad">
+        <output class="vk-kode" id="kode" aria-labelledby="kodeEtikett"></output>
+        <button class="avmeld-knapp vk-kopier" id="kopier" type="button" data-kopiert="Copied" data-feil="Select the code and copy it.">Copy</button>
+      </div>
+      <p class="vk-status" id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <h2 class="vk-h2">How to get started</h2>
+    <ol class="vk-steg">
+      <li>Get Matlyst from the App Store or Google Play.</li>
+      <li>Sign up with email and enter the code in the “Referral code” field. You’ll get 5 extra free imports.</li>
+    </ol>
+    <p class="vk-utenkode" id="utenKode">Got a referral code in the message? Enter it when you sign up with email.</p>
+
+    <div class="vk-butikker" role="group" aria-label="Get Matlyst">
+      <a class="vk-butikk" id="appStore" href="https://apps.apple.com/app/matlyst/id6762563515" rel="noreferrer noopener"><img src="/images/appstore-badge.svg" width="120" height="40" alt="Download on the App Store"></a>
+      <a class="vk-butikk" id="play" href="https://play.google.com/store/apps/details?id=app.matlyst" rel="noreferrer noopener"><img src="/images/googleplay-badge-en.png" width="104" height="40" alt="Get it on Google Play"></a>
+    </div>
+
+    <p class="vk-lesmer"><a href="/en/" rel="noreferrer">Learn more about Matlyst</a></p>
+  </main>
+</body>
+</html>
