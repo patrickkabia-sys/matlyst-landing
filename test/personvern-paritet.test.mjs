@@ -60,9 +60,9 @@ test('restopplysninger under sletting har art. 6.1 c som grunnlag på alle språ
 
 // Hvert dokument har samme dato på alle språk. Personvernet kan få ny dato uten at vilkårene
 // endres (alderssignalet 22.10), så dokumentene sammenlignes hver for seg.
-const DATO = /(?:Sist oppdatert|Senast uppdaterad|Senest opdateret|Last updated) (\d{1,2})\.? (oktober|October) 2026/u;
+const DATO = /(?:Sist oppdatert|Senast uppdaterad|Senest opdateret|Last updated) (\d{1,2})\.? (oktober|October|november|November) 2026/u;
 const DOKUMENTER = {
-  personvern: [['personvern.html', 'sv/integritet/index.html', 'da/privatliv/index.html', 'en/privacy/index.html'], '22'],
+  personvern: [['personvern.html', 'sv/integritet/index.html', 'da/privatliv/index.html', 'en/privacy/index.html'], '14'],
   vilkar: [['vilkar.html', 'sv/villkor/index.html', 'da/vilkaar/index.html', 'en/terms/index.html'], '22'],
   slettKonto: [['slett-konto.html', 'sv/radera-konto/index.html', 'da/slet-konto/index.html'], '20'],
 };
