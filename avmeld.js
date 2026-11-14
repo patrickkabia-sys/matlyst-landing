@@ -12,6 +12,11 @@
   var q = new URLSearchParams(location.search);
   var u = q.get('u') || '';
   var s = q.get('s') || '';
+  // Hjelpemailen (tips om å komme i gang) har t=hjelp i lenka. Den velger bare
+  // hvilken av de ferdige tekstvariantene i HTML-en som vises; ingenting fra
+  // adressen settes inn i sida. Hvilken liste som meldes av, avgjør serveren av
+  // signaturen (avmeldLenke.ts, avmeldTokenType), aldri av t.
+  var ende = q.get('t') === 'hjelp' ? '-hjelp' : '';
   // Tokenet skal ikke bli stående i adresselinja, historikken eller et
   // skjermbilde. Det er lest over; fjern u og s og behold resten.
   if (q.has('u') || q.has('s')) {
@@ -30,7 +35,10 @@
 
   function vis(id) {
     ['bekreft', 'ferdig', 'mangler'].forEach(function (navn) {
-      document.getElementById(navn).hidden = navn !== id;
+      [navn, navn + '-hjelp'].forEach(function (variant) {
+        var el = document.getElementById(variant);
+        if (el) el.hidden = variant !== id + ende;
+      });
     });
   }
 
@@ -44,9 +52,9 @@
   var reserve = document.getElementById('reserve');
   if (reserve) reserve.action = url;
 
-  var knapp = document.getElementById('meldAv');
-  var status = document.getElementById('status');
-  var feil = document.getElementById('feilmelding');
+  var knapp = document.getElementById('meldAv' + ende);
+  var status = document.getElementById('status' + ende);
+  var feil = document.getElementById('feilmelding' + ende);
   knapp.addEventListener('click', function () {
     knapp.disabled = true;
     status.className = 'avmeld-status';

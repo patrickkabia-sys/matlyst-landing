@@ -53,6 +53,13 @@
         <a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20nyhetsbrevet">hei@matlyst-app.no</a>,
         så ordner vi det for deg.</p>
     </section>
+    <!-- Hjelpemailen (aktiveringssekvensen): lenka har t=hjelp. Teksten står her og byttes
+         bare synlig av avmeld.js; den bygges aldri fra adressen. Hvilken liste som meldes av,
+         avgjør serveren av signaturen, ikke av t. -->
+    <section id="bekreft-hjelp" hidden><p class="avmeld-kicker">Tips om å komme i gang</p><h1 class="avmeld-title">Vil du melde deg <em>av</em>?</h1><p class="avmeld-intro">Da slutter vi å sende deg e-post med tips om hvordan du lagrer de første oppskriftene dine. Nyhetsbrevet og kontoen din påvirkes ikke.</p><div class="avmeld-kort"><button class="avmeld-knapp" id="meldAv-hjelp" type="button">Meld meg av</button><p class="avmeld-status" id="status-hjelp" data-venter="Melder deg av …" role="status" aria-live="polite"></p></div></section>
+    <section id="ferdig-hjelp" hidden><p class="avmeld-kicker">Tips om å komme i gang</p><h1 class="avmeld-title">Du er meldt <em>av</em></h1><p class="avmeld-intro">Vi sender deg ikke flere tips om å komme i gang.</p></section>
+    <section id="mangler-hjelp" hidden><p class="avmeld-kicker">Tips om å komme i gang</p><h1 class="avmeld-title">Denne lenken mangler <em>noe</em></h1><p class="avmeld-intro">Adressen ser ut til å ha mistet en bit på veien, for noen e-postklienter klipper lange lenker. Åpne den fra e-posten på nytt, eller send oss en linje på <a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20tipsene">hei@matlyst-app.no</a>, så ordner vi det for deg.</p></section>
+
 
     <noscript>
       <!-- Uten JavaScript: samme handling, men skjemaet går rett til funksjonen,
@@ -69,6 +76,7 @@
     </noscript>
   </main>
   <template id="feilmelding">Det gikk ikke akkurat nå. Prøv en gang til, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20nyhetsbrevet">hei@matlyst-app.no</a>.</template>
+  <template id="feilmelding-hjelp">Det gikk ikke akkurat nå. Prøv en gang til, eller skriv til <a href="mailto:hei@matlyst-app.no?subject=Meld%20meg%20av%20tipsene">hei@matlyst-app.no</a>.</template>
   <script src="/avmeld.js" defer></script>
 <div class="language-switcher-standalone language-switcher-standalone-bottom"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Språk"><a href="/avmeld/" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a><a href="/sv/avregistrera/" lang="sv" hreflang="sv" aria-label="Svenska">SV</a><a href="/da/afmeld/" lang="da" hreflang="da" aria-label="Dansk">DA</a><a href="/en/unsubscribe/" lang="en" hreflang="en" aria-label="English">EN</a></span><!-- /språkvelger:bunn --></div>
 </body>
