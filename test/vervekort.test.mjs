@@ -132,3 +132,28 @@ test('vervekorttekstene har ingen tankestrek og ingen ferdig delingstekst', () =
     assert.doesNotMatch(kort, /\b(?:jeg|meg|min|jag|mig|mitt|I|I'm|I’m|my)\b/u, lang);
   }
 });
+
+// ── 1.13.0: knappen «Har du en vervekode?» ───────────────────────────────────
+
+test('steg 2 viser til knappen med appens ord, og koden er ikke lenger bare for e-post', () => {
+  assert.match(TEKSTER.nb.steg2, /^Trykk «Har du en vervekode\?» når du lager kontoen/u);
+  for (const lang of SPRAK) {
+    for (const nokkel of ['steg2', 'utenKode']) {
+      assert.doesNotMatch(TEKSTER[lang][nokkel], /e-post|e-mail|email/iu, `${lang}.${nokkel}`);
+    }
+  }
+});
+
+// ⚠️ Denne er RØD med vilje så lenge knappeteksten for sv, da eller en ikke er
+// kjent. Erstatt TODO_KNAPP_* i scripts/vervekort/tekster.mjs med appens ord
+// ordrett (lib/sprak/<kode>/tekster.json i app-repoet) og kjør generer.mjs.
+test('ingen TODO_KNAPP-plassholder står igjen i tekstene eller sidene', () => {
+  const igjen = [];
+  for (const lang of SPRAK) {
+    for (const [nokkel, verdi] of Object.entries(TEKSTER[lang])) {
+      if (/TODO_KNAPP/u.test(verdi)) igjen.push(`tekster ${lang}.${nokkel}`);
+    }
+    if (/TODO_KNAPP/u.test(les(lang))) igjen.push(`side ${TEKSTER[lang].sti}`);
+  }
+  assert.deepEqual(igjen, []);
+});

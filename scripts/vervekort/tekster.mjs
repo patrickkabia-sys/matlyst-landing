@@ -5,9 +5,12 @@
 // Jusvurderingen av forhåndsvisningskortet: docs/vervekort-jus.md.
 //
 // Fakta sidene lover, slått opp i app-repoet 2026-11-14 (origin/master e25ea0ffd):
-// - Koden skrives i feltet auth.vervKode i registreringsskjemaet for e-post
-//   (components/onboarding2/Registrering.tsx og app/auth/register.tsx). Apple- og
-//   Google-registreringen har ikke feltet, derfor «med e-post».
+// - Fra 1.13.0 åpner knappen «Har du en vervekode?» kodefeltet når kontoen lages,
+//   og koden virker også med Apple og Google (koordinator 2026-11-14; knappen finnes
+//   ikke i app-katalogen på master ennå). Derfor ikke lenger «med e-post».
+// - ⚠️ KNAPP-plassholdere: knappeteksten i sv, da og en er ikke kjent. Den MÅ være
+//   appens ord ordrett. test/vervekort.test.mjs er rød så lenge TODO_KNAPP_ står
+//   igjen, så grenen kan ikke merges ved en feil.
 // - Vennen får BONUS_IMPORTER = 5 bonusimporter (lib/vervebonus.ts), oppå
 //   månedskvoten (bonusPott legges til, tilgjengeligeImporter). Ververen får ingenting.
 //
@@ -32,12 +35,12 @@ export const TEKSTER = {
     intro: 'Med Matlyst lagrer du oppskrifter fra nettet, Instagram og TikTok, og bruker dem til ukemeny og handleliste.',
     stegTittel: 'Slik kommer du i gang',
     steg1: 'Last ned Matlyst fra App Store eller Google Play.',
-    steg2: 'Lag en konto med e-post, og skriv koden i feltet «Vervekode». Da får du 5 ekstra gratisimporter.',
+    steg2: 'Trykk «Har du en vervekode?» når du lager kontoen, og skriv inn koden. Da får du 5 ekstra gratisimporter.',
     kodeEtikett: 'Vervekode',
     kopier: 'Kopier',
     kopiert: 'Kopiert',
     kopierFeil: 'Marker koden og kopier den selv.',
-    utenKode: 'Fikk du en vervekode i meldingen? Skriv den inn når du lager en konto med e-post.',
+    utenKode: 'Fikk du en vervekode i meldingen? Skriv den inn når du lager kontoen.',
     butikker: 'Last ned Matlyst',
     lesMer: 'Les mer om Matlyst',
     domene: 'matlyst-app.no',
@@ -53,12 +56,12 @@ export const TEKSTER = {
     intro: 'Med Matlyst sparar du recept från webben, Instagram och TikTok och använder dem i veckomenyn och inköpslistan.',
     stegTittel: 'Så kommer du igång',
     steg1: 'Hämta Matlyst i App Store eller Google Play.',
-    steg2: 'Skapa ett konto med e-post och skriv in koden i fältet ”Värvningskod”. Då får du 5 extra gratisimporter.',
+    steg2: 'Tryck på ”TODO_KNAPP_SV” när du skapar kontot och skriv in koden. Då får du 5 extra gratisimporter.',
     kodeEtikett: 'Värvningskod',
     kopier: 'Kopiera',
     kopiert: 'Kopierad',
     kopierFeil: 'Markera koden och kopiera den själv.',
-    utenKode: 'Fick du en värvningskod i meddelandet? Skriv in den när du skapar ett konto med e-post.',
+    utenKode: 'Fick du en värvningskod i meddelandet? Skriv in den när du skapar kontot.',
     butikker: 'Hämta Matlyst',
     lesMer: 'Läs mer om Matlyst',
     domene: 'matlyst-app.no',
@@ -74,12 +77,12 @@ export const TEKSTER = {
     intro: 'Med Matlyst gemmer du opskrifter fra nettet, Instagram og TikTok og bruger dem til madplanen og indkøbslisten.',
     stegTittel: 'Sådan kommer du i gang',
     steg1: 'Hent Matlyst i App Store eller Google Play.',
-    steg2: 'Opret en konto med e-mail, og skriv koden i feltet »Henvisningskode«. Så får du 5 ekstra gratisimporter.',
+    steg2: 'Tryk på »TODO_KNAPP_DA«, når du opretter kontoen, og skriv koden. Så får du 5 ekstra gratisimporter.',
     kodeEtikett: 'Henvisningskode',
     kopier: 'Kopier',
     kopiert: 'Kopieret',
     kopierFeil: 'Marker koden, og kopier den selv.',
-    utenKode: 'Fik du en henvisningskode i beskeden? Skriv den, når du opretter en konto med e-mail.',
+    utenKode: 'Fik du en henvisningskode i beskeden? Skriv den, når du opretter kontoen.',
     butikker: 'Hent Matlyst',
     lesMer: 'Læs mere om Matlyst',
     domene: 'matlyst-app.no',
@@ -95,12 +98,12 @@ export const TEKSTER = {
     intro: 'Matlyst saves recipes from websites, Instagram, and TikTok so you can plan your meals and build your grocery list.',
     stegTittel: 'How to get started',
     steg1: 'Get Matlyst from the App Store or Google Play.',
-    steg2: 'Sign up with email and enter the code in the “Referral code” field. You’ll get 5 extra free imports.',
+    steg2: 'Tap “TODO_KNAPP_EN” when you sign up, then enter the code. You’ll get 5 extra free imports.',
     kodeEtikett: 'Referral code',
     kopier: 'Copy',
     kopiert: 'Copied',
     kopierFeil: 'Select the code and copy it.',
-    utenKode: 'Got a referral code in the message? Enter it when you sign up with email.',
+    utenKode: 'Got a referral code in the message? Enter it when you sign up.',
     butikker: 'Get Matlyst',
     lesMer: 'Learn more about Matlyst',
     domene: 'matlyst-app.no',
