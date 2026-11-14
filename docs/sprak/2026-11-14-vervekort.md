@@ -37,6 +37,10 @@ Meningen er «Matlyst: oppskriftsappen»: kortet sier hva lenka er, ikke at noen
 
 Før: sv «Du är inbjuden till Matlyst», da «Du er inviteret til Matlyst».
 
+## Endring for 1.13.0 (gren feat/vervekort-1-13, ikke merget)
+
+Fra 1.13.0 åpner knappen «Har du en vervekode?» kodefeltet, og koden virker også med Apple og Google. Steg 2 sier derfor «Trykk «Har du en vervekode?» når du lager kontoen, og skriv inn koden.», og «med e-post» er fjernet fra steg 2 og fra teksten uten kode på alle språk. Knappeteksten må være appens ord ordrett; bare nb er kjent. sv, da og en har plassholderne `TODO_KNAPP_SV`, `TODO_KNAPP_DA` og `TODO_KNAPP_EN` i `scripts/vervekort/tekster.mjs` (steg2), og testen «ingen TODO_KNAPP-plassholder står igjen» er rød til de er byttet. nb-knappen finnes ikke i app-katalogen på master per 2026-11-14; den er oppgitt av koordinatoren.
+
 ## Ordvalg som kan diskuteres
 
 | valg | begrunnelse | kilde |
