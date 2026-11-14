@@ -12,7 +12,7 @@
 //   månedskvoten (bonusPott legges til, tilgjengeligeImporter). Ververen får ingenting.
 //
 // sv og da har nøytral tittel («Matlyst: receptappen/opskriftsappen», CEO 2026-11-14)
-// til Henriette har lest; nb og en beholder «Du er invitert …».
+// nb og en beholder «Du er invitert …».
 // ⚠️ Ingen tekst her taler på vegne av den som deler lenka, og ingen er en ferdig
 // delingstekst. Kortet beskriver hvor lenka går (PR 20b, docs/vervekort-jus.md).
 
