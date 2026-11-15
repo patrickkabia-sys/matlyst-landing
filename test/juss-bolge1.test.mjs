@@ -65,10 +65,17 @@ test('B1: ingen side kaller Matlyst et hobbyprosjekt eller et personlig prosjekt
   }
 });
 
+// Unntaket: setningen om at helsefilteret (matlyst #824) holder allergi, helse og tro UTE av
+// smaksprofilen. Den sier at vi ikke tar dem med, så den fjernes før kontrollen. Alt annet
+// som nevner allergier, er fortsatt forbudt.
+const IKKE_MED = /(Opplysninger om allergi, helse og tro tas ikke med|Uppgifter om allergier, hälsa och tro tas inte med|Oplysninger om allergi, helbred og tro kommer ikke med|Information about allergies, health or religious beliefs isn’t included) (?:i|in the) (?:smaksprofilen|smakprofilen|smagsprofilen|taste profile)\./gu;
+
 test('B1: personvern og sletting nevner ikke allergier eller kostholdsvalg som noe vi behandler', () => {
   for (const s of Object.values(SPRAK)) {
-    assert.doesNotMatch(les(s.personvern), KOSTHOLD, s.personvern);
-    assert.doesNotMatch(les(s.sletting), KOSTHOLD, s.sletting);
+    const personvern = les(s.personvern);
+    assert.equal((personvern.match(IKKE_MED) ?? []).length, 1, `${s.personvern}: setningen om helsefilteret skal stå én gang`);
+    assert.doesNotMatch(personvern.replace(IKKE_MED, ''), KOSTHOLD, s.personvern);
+    assert.doesNotMatch(les(s.sletting).replace(IKKE_MED, ''), KOSTHOLD, s.sletting); // en har sletting i personvernsiden
   }
   // Vi lagrer ikke fødselsdato (profiles.birthdate er tom med vilje).
   assert.doesNotMatch(les('slett-konto.html'), /fødselsdato|kaloriemål/u);
