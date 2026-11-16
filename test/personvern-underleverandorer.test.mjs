@@ -55,7 +55,7 @@ test('Resend og Expo står under Data Privacy Framework på alle språk', () => 
 });
 
 test('sist oppdatert er 14. november 2026 på sv, da og en', () => {
-  assert.match(les(SIDER.sv), /Senast uppdaterad 14 november 2026/u);
-  assert.match(les(SIDER.da), /Senest opdateret 14\. november 2026/u);
-  assert.match(les(SIDER.en), /Last updated 14 November 2026/u);
+  assert.match(les(SIDER.sv), /Senast uppdaterad 16 november 2026/u);
+  assert.match(les(SIDER.da), /Senest opdateret 16\. november 2026/u);
+  assert.match(les(SIDER.en), /Last updated 16 November 2026/u);
 });
