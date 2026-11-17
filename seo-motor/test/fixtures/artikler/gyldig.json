@@ -1,0 +1,34 @@
+{
+  "sprak": "nb",
+  "emne_id": "gronnsaksrester-nb",
+  "slug": "bruk-gronnsaksrester-hjemme",
+  "tittel": "Bruk grønnsaksrestene i nye middager",
+  "meta": "Praktiske råd for å bruke grønnsaksrester i nye middager, planlegge måltidene og få bedre oversikt over maten hjemme hele uka.",
+  "ingress": "Grønnsaksrester kan bli utgangspunktet for en ny middag når du planlegger måltidet rundt det du allerede har.",
+  "sprakTekst": "Planlegg måltidet med råvarene du har og bruk restene først.",
+  "seksjoner": [
+    { "type": "avsnitt", "overskrift": "Se hva du har", "tekst": "" },
+    { "type": "avsnitt", "overskrift": "Velg en enkel rett", "tekst": "" },
+    { "type": "avsnitt", "overskrift": "Planlegg neste middag", "tekst": "" }
+  ],
+  "faq": [
+    { "sporsmal": "Hva kan jeg lage av grønnsaksrester?", "svar": "Velg en enkel rett som suppe, gryte eller stekte grønnsaker." },
+    { "sporsmal": "Hvordan husker jeg å bruke restene?", "svar": "Legg retten i ukemenyen før du setter varene tilbake i kjøleskapet." },
+    { "sporsmal": "Hva bør stå på handlelista?", "svar": "Skriv bare opp det som mangler for å gjøre restene til et helt måltid." }
+  ],
+  "kilder": [
+    {
+      "id": "K1",
+      "url": "https://www.mattilsynet.no/mat-og-drikke",
+      "tekst": "Planlegg måltidene og bruk maten du allerede har."
+    }
+  ],
+  "pastander": [
+    { "tekst": "Planlegg måltidene og bruk maten du allerede har.", "kilde_id": "K1" }
+  ],
+  "lenker": [
+    { "sti": "/ukemeny/", "tittel": "Planlegg ukas middager" }
+  ],
+  "appkobling": "bruk-det-jeg-har",
+  "tagger": ["rester", "ukemeny"]
+}

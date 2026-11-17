@@ -1,0 +1,46 @@
+{
+  "nb": [
+    {
+      "id": "mattilsynet",
+      "domene": "mattilsynet.no",
+      "url": "https://www.mattilsynet.no/mat-og-drikke",
+      "tagger": ["mattrygghet", "oppbevaring", "rester"]
+    },
+    {
+      "id": "matvaretabellen",
+      "domene": "matvaretabellen.no",
+      "url": "https://www.matvaretabellen.no/",
+      "tagger": ["råvarer", "næringsinnhold", "omregning"]
+    }
+  ],
+  "sv": [
+    {
+      "id": "livsmedelsverket",
+      "domene": "livsmedelsverket.se",
+      "url": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn",
+      "tagger": ["livsmedelssäkerhet", "förvaring", "rester"]
+    }
+  ],
+  "da": [
+    {
+      "id": "foedevarestyrelsen",
+      "domene": "foedevarestyrelsen.dk",
+      "url": "https://foedevarestyrelsen.dk/kost-og-foedevarer/madspild",
+      "tagger": ["fødevaresikkerhed", "opbevaring", "rester"]
+    }
+  ],
+  "en": [
+    {
+      "id": "usda-fsis",
+      "domene": "fsis.usda.gov",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation",
+      "tagger": ["food safety", "storage", "leftovers"]
+    },
+    {
+      "id": "fda",
+      "domene": "fda.gov",
+      "url": "https://www.fda.gov/consumers/consumer-updates/food",
+      "tagger": ["food safety", "storage", "ingredients"]
+    }
+  ]
+}

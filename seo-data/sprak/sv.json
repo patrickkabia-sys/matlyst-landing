@@ -1,0 +1,72 @@
+{
+  "stemme": [
+    "Skriv direkt och sakligt till läsaren i du-form.",
+    "Svara på sökningen i ingressen och använd korta, konkreta meningar.",
+    "Skriv som en svensk matapp: lugnt, praktiskt och utan överdrifter."
+  ],
+  "unngå": [
+    "särskrivna sammansättningar",
+    "norska ord och norsk ordföljd",
+    "engelska kalker och marknadsföringsspråk",
+    "råd som lovar ett visst hälsoresultat"
+  ],
+  "typografi": [
+    "Skriv sammansatta ord som ett ord.",
+    "Använd komma som decimaltecken och mellanslag som tusentalsavgränsare.",
+    "Skriv datum som ÅÅÅÅ-MM-DD och använd 24-timmarsformat."
+  ],
+  "helseord": ["allergi", "allergier", "allergiker", "allergen", "allergener", "kalori", "kalorier", "bantning", "viktnedgång", "diet", "dieter"],
+  "appCta": {
+    "import": {
+      "tittel": "Samla recepten du faktiskt använder",
+      "tekst": "Spara recept från webben, sociala medier eller bilder och hitta dem när det är dags att laga mat."
+    },
+    "ukemeny": {
+      "tittel": "Få koll på veckans middagar",
+      "tekst": "Lägg recepten på de dagar som passar och planera bara så mycket av veckan du vill."
+    },
+    "handleliste": {
+      "tittel": "Gör inköpslistan från recepten",
+      "tekst": "Skicka ingredienserna till en gemensam lista och lägg till egna varor före butiksrundan."
+    },
+    "bruk-det-jeg-har": {
+      "tittel": "Börja med det du har hemma",
+      "tekst": "Se vilka sparade recept som passar till det som redan finns i skafferiet."
+    },
+    "kokemodus": {
+      "tittel": "Laga maten ett steg i taget",
+      "tekst": "Ha ingredienserna och instruktionerna på skärmen medan du lagar maten."
+    }
+  },
+  "appkoblingSti": {
+    "import": "/sv/importera-recept/",
+    "ukemeny": "/sv/veckomeny-app/",
+    "handleliste": "/sv/inkopslista/",
+    "bruk-det-jeg-har": "/sv/recept-pa-ingredienser/",
+    "kokemodus": "/sv/"
+  },
+  "forslagslokale": { "hl": "sv", "gl": "se" },
+  "bestillingsmal": {
+    "emne": "En praktisk guide om {{tema}}.",
+    "vinkel": "Visa hur läsaren kan {{vinkel}}."
+  },
+  "forslagsfrø": [
+    { "tekst": "middag på rester", "passform": 3, "tagger": ["rester", "middag"], "appkobling": "bruk-det-jeg-har", "tema": "rester som blir nya måltider", "vinkel": "använda det som redan finns hemma innan nya varor köps", "slug": "middag-pa-rester", "kilde_ider": ["livsmedelsverket"] },
+    { "tekst": "enkel veckomeny", "passform": 3, "tagger": ["veckomeny", "middag"], "appkobling": "ukemeny", "tema": "en enkel och flexibel veckomeny", "vinkel": "planera några middagar utan att låsa hela veckan", "slug": "enkel-flexibel-veckomeny", "kilde_ider": [] },
+    { "tekst": "middag av det jag har hemma", "passform": 3, "tagger": ["råvaror", "middag"], "appkobling": "bruk-det-jeg-har", "tema": "middagar utifrån råvarorna som redan finns hemma", "vinkel": "gå från en snabb råvaruöversikt till konkreta middagsval", "slug": "middag-av-det-du-har-hemma", "kilde_ider": [] },
+    { "tekst": "förvara mat rätt", "passform": 2, "tagger": ["förvaring", "livsmedelssäkerhet"], "appkobling": "import", "tema": "tydlig förvaring av vanliga livsmedel", "vinkel": "samla källbaserade förvaringsråd i en enkel vardagskontroll", "slug": "forvara-mat-ratt", "kilde_ider": ["livsmedelsverket"] },
+    { "tekst": "koktid ägg ris pasta", "passform": 2, "tagger": ["koktid", "måttomvandling"], "appkobling": "kokemodus", "tema": "koktider för vanliga råvaror", "vinkel": "förklara vad som påverkar tiden och hur resultatet kontrolleras", "slug": "koktider-for-vanliga-ravaror", "kilde_ider": [] },
+    { "tekst": "airfryer tid temperatur", "passform": 2, "tagger": ["airfryer", "måttomvandling"], "appkobling": "kokemodus", "tema": "praktisk anpassning av tid och temperatur i airfryer", "vinkel": "anpassa ett recept steg för steg", "slug": "tid-och-temperatur-i-airfryer", "kilde_ider": [] },
+    { "tekst": "inköpslista middag", "passform": 3, "tagger": ["inköpslista", "middag"], "appkobling": "handleliste", "tema": "inköpslistor byggda från planerade middagar", "vinkel": "samla det som behövs utan att köpa det som redan finns hemma", "slug": "inkopslista-fran-middagar", "kilde_ider": [] },
+    { "tekst": "spara recept", "passform": 3, "tagger": ["recept", "organisering"], "appkobling": "import", "tema": "att samla och ordna recept från olika ställen", "vinkel": "skapa ett system som gör recepten lätta att hitta igen", "slug": "samla-och-ordna-recept", "kilde_ider": [] }
+  ],
+  "autoBlogg": {
+    "faqTittel": "Frågor och svar",
+    "kilderTittel": "Källor",
+    "lesOgsåTittel": "Läs också",
+    "indeksTittel": "Nya artiklar",
+    "llmsTittel": "Automatiska artiklar",
+    "llmsSprak": "Svenska"
+  },
+  "stoppord": ["och", "inte", "att", "är", "finns", "många", "sedan", "gärna", "några", "därför", "också", "vara", "vill", "hur", "vilka", "varje", "dessa", "innan", "efteråt", "medan", "över", "ungefär", "ändå", "ofta", "lättare", "behöver", "använder", "mycket", "något", "kommer"]
+}

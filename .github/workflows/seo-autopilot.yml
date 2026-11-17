@@ -1,0 +1,110 @@
+name: SEO-autopilot
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency: seo-autopilot
+
+jobs:
+  seo-autopilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Hent kildekoden
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Les stoppbryteren
+        id: modus
+        env:
+          SEO_AUTOPILOT: ${{ vars.SEO_AUTOPILOT }}
+        run: |
+          case "$SEO_AUTOPILOT" in
+            utkast|på) modus="$SEO_AUTOPILOT" ;;
+            *) modus="av" ;;
+          esac
+          echo "modus=$modus" >> "$GITHUB_OUTPUT"
+
+      - name: Sett opp Node.js
+        if: steps.modus.outputs.modus != 'av'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer avhengigheter
+        if: steps.modus.outputs.modus != 'av'
+        run: npm ci
+
+      - name: Kontroller hemmeligheter
+        if: steps.modus.outputs.modus != 'av'
+        id: hemmeligheter
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          SEO_DATA_NOKKEL: ${{ secrets.SEO_DATA_NOKKEL }}
+        run: |
+          if [ -z "$GSC_SERVICE_ACCOUNT_JSON" ] || [ -z "$SEO_DATA_NOKKEL" ]; then
+            exit 1
+          fi
+
+      - name: Kjør SEO-motoren
+        if: steps.modus.outputs.modus != 'av'
+        id: motor
+        env:
+          SEO_AUTOPILOT: ${{ vars.SEO_AUTOPILOT }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          SEO_DATA_NOKKEL: ${{ secrets.SEO_DATA_NOKKEL }}
+        run: |
+          set +e
+          node seo-motor/kjor.mjs
+          motor_exit=$?
+          set -e
+          echo "dato=$(node -p "require('./seo-resultat.json').dato || ''")" >> "$GITHUB_OUTPUT"
+          echo "resultat=$(node -p "require('./seo-resultat.json').resultat || ''")" >> "$GITHUB_OUTPUT"
+          echo "exit_code=$motor_exit" >> "$GITHUB_OUTPUT"
+
+      - name: Lagre driftsstatus
+        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outputs.dato != ''
+        id: status
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add seo-data
+          if ! git diff --cached --quiet; then
+            git commit -m "seo: lagre status fra autopiloten"
+            if ! git pull --rebase origin main; then
+              git rebase --abort 2>/dev/null || true
+              exit 1
+            fi
+            git push origin HEAD:main
+          fi
+
+      - name: Rapporter
+        if: always() && steps.modus.outputs.modus != 'av' && steps.motor.outputs.dato != ''
+        id: rapport
+        continue-on-error: true
+        env:
+          DATO: ${{ steps.motor.outputs.dato }}
+          GH_TOKEN: ${{ github.token }}
+          SEO_DATA_NOKKEL: ${{ secrets.SEO_DATA_NOKKEL }}
+        run: node seo-motor/rapport.mjs
+
+      - name: Marker driftsfeil
+        if: always() && steps.modus.outputs.modus != 'av'
+        env:
+          HEMMELIGHETER: ${{ steps.hemmeligheter.outcome }}
+          MOTOR_EXIT: ${{ steps.motor.outputs.exit_code }}
+          STATUS: ${{ steps.status.outcome }}
+          RAPPORT: ${{ steps.rapport.outcome }}
+        run: |
+          if [ "$HEMMELIGHETER" != "success" ] || [ "$MOTOR_EXIT" != "0" ] || [ "$STATUS" = "failure" ] || [ "$RAPPORT" = "failure" ]; then
+            exit 1
+          fi

@@ -3,7 +3,7 @@
 // ekte HTML-tabeller, lysbildene vises som bilder, og sluttsiden blir app-CTA-en.
 // Ingen fyllprosa: artikkelen sier det karusellen sier, verken mer eller mindre.
 // Her står bare det som ikke finnes i karusellen: adresse, sidetittel og CTA-bilde.
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { appCta } from './app-cta.mjs';
 
 const base = 'https://matlyst-app.no';
@@ -11,6 +11,14 @@ export const PUBLISERT = '2026-10-28';
 
 export const BLOGGROT = { nb: '/blogg/', sv: '/sv/blogg/', da: '/da/blog/', en: '/en/blog/' };
 const SPRAKKODE = { nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en-US' };
+const REPO_ROT = new URL('../', import.meta.url);
+const AUTO_CTA_BILDE = {
+  import: '01-import',
+  ukemeny: '02-ukemeny',
+  handleliste: '03-handleliste',
+  'bruk-det-jeg-har': '02-ukemeny',
+  kokemodus: '05-kokemodus',
+};
 
 // tema → språk → [slug, sidetittel]. Sidetittelen er skrevet for søket, ikke for karusellen.
 export const BLOGGTEMAER = {
@@ -73,6 +81,16 @@ const TEKST = {
 
 const ren = (html) => String(html ?? '').replace(/<[^>]+>/gu, '').replace(/\s+/gu, ' ').trim();
 const celle = (html) => String(html).replace(/<small>(.*?)<\/small>/gu, ' <span class="merknad">($1)</span>');
+const esc = (tekst) => String(tekst ?? '')
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#39;');
+
+function autoSprakfil(lang) {
+  return JSON.parse(readFileSync(new URL(`seo-data/sprak/${lang}.json`, REPO_ROT), 'utf8'));
+}
 
 let kilde = null;
 function lastKilde() {
@@ -104,12 +122,38 @@ export function bloggArtikler(lang) {
     });
 }
 
+export function autoArtikler(lang, rot = REPO_ROT) {
+  const mappe = new URL(`blogg-kilde/auto/${lang}/`, rot);
+  if (!existsSync(mappe)) return [];
+  return readdirSync(mappe, { withFileTypes: true })
+    .filter((fil) => fil.isFile() && fil.name.endsWith('.json'))
+    .map((fil) => JSON.parse(readFileSync(new URL(fil.name, mappe), 'utf8')))
+    .map((auto) => ({
+      lang,
+      path: `${BLOGGROT[lang]}${auto.slug}/`,
+      title: auto.tittel,
+      description: auto.meta,
+      auto,
+    }))
+    .sort((a, b) => String(b.auto.publisert).localeCompare(String(a.auto.publisert)));
+}
+
 // Språkgruppene til hreflang og språkvelgeren (locale-sider.mjs sprer dem inn i SIDEGRUPPER).
-export function bloggGrupper() {
+export function bloggGrupper(rot = REPO_ROT) {
   const grupper = [{ id: 'blogg', sider: { ...BLOGGROT } }];
   for (const [tema, sprak] of Object.entries(BLOGGTEMAER)) {
     grupper.push({ id: `blogg-${tema}`, sider: Object.fromEntries(Object.entries(sprak).map(([lang, [slug]]) => [lang, `${BLOGGROT[lang]}${slug}/`])) });
   }
+  const autoGrupper = new Map();
+  for (const lang of Object.keys(BLOGGROT)) {
+    for (const artikkel of autoArtikler(lang, rot)) {
+      const id = `auto-${artikkel.auto.emne_id}`;
+      const gruppe = autoGrupper.get(id) ?? { id, sider: {} };
+      gruppe.sider[lang] = artikkel.path;
+      autoGrupper.set(id, gruppe);
+    }
+  }
+  grupper.push(...autoGrupper.values());
   return grupper;
 }
 
@@ -155,11 +199,74 @@ ${cta}
 <div class="blogg-flere" role="navigation" aria-label="${t.flere}"><h2>${t.flere}</h2><ul>${flere}</ul></div></article></main>`;
 }
 
-export function indeksMain(lang) {
+export function autoArtikkelSchema(a) {
+  const t = TEKST[a.lang];
+  const artikkel = a.auto;
+  return [{
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t.hjem, item: `${base}${a.lang === 'nb' ? '/' : `/${a.lang}/`}` },
+      { '@type': 'ListItem', position: 2, name: t.blogg, item: `${base}${BLOGGROT[a.lang]}` },
+      { '@type': 'ListItem', position: 3, name: artikkel.tittel, item: `${base}${a.path}` },
+    ],
+  }, {
+    '@context': 'https://schema.org', '@type': 'Article', headline: artikkel.tittel,
+    description: artikkel.meta, image: [`${base}/images/og.jpg`], inLanguage: SPRAKKODE[a.lang],
+    datePublished: artikkel.publisert, dateModified: artikkel.publisert,
+    mainEntityOfPage: `${base}${a.path}`, citation: (artikkel.kilder ?? []).map(({ url }) => url),
+    author: { '@type': 'Organization', name: 'Matlyst', url: base },
+    publisher: { '@type': 'Organization', name: 'Matlyst', url: base },
+  }, {
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: (artikkel.faq ?? []).map(({ sporsmal, svar }) => ({
+      '@type': 'Question', name: sporsmal,
+      acceptedAnswer: { '@type': 'Answer', text: svar },
+    })),
+  }];
+}
+
+export function autoArtikkelMain(a, knapper) {
+  const artikkel = a.auto;
+  const sprakfil = autoSprakfil(a.lang);
+  const autoTekst = sprakfil.autoBlogg;
+  const seksjoner = (artikkel.seksjoner ?? []).map((seksjon) => {
+    const overskrift = `<h2>${esc(seksjon.overskrift)}</h2>`;
+    if (seksjon.type === 'avsnitt') return `${overskrift}<p>${esc(seksjon.tekst)}</p>`;
+    if (seksjon.type === 'tabell') {
+      const rader = seksjon.rader.map(([venstre, hoyre]) => `<tr><th scope="row">${esc(venstre)}</th><td>${esc(hoyre)}</td></tr>`).join('');
+      return `${overskrift}<table class="blogg-tabell"><tbody>${rader}</tbody></table>`;
+    }
+    const punkter = seksjon.punkter.map((punkt) => `<li>${esc(punkt)}</li>`).join('');
+    return `${overskrift}<ul>${punkter}</ul>`;
+  }).join('\n');
+  const faq = (artikkel.faq ?? []).map(({ sporsmal, svar }, indeks) =>
+    `<details${indeks === 0 ? ' open' : ''}><summary>${esc(sporsmal)}</summary><p>${esc(svar)}</p></details>`).join('');
+  const kilder = (artikkel.kilder ?? []).map(({ id, url }) =>
+    `<li><a href="${esc(url)}" rel="noopener">${esc(id)}</a></li>`).join('');
+  const relaterte = [...(artikkel.lenker ?? []), ...(artikkel.lesOgså ?? [])]
+    .map(({ sti, tittel }) => `<li><a href="${esc(sti)}">${esc(tittel)}</a></li>`).join('');
+  const ctaTekst = sprakfil.appCta[artikkel.appkobling];
+  const cta = appCta(a.lang, {
+    bilde: AUTO_CTA_BILDE[artikkel.appkobling],
+    bildeAlt: ctaTekst.tittel,
+    appCtaTittel: ctaTekst.tittel,
+    appCtaTekst: ctaTekst.tekst,
+  }, knapper);
+  return `<main id="hovedinnhold"><article class="blogg-artikkel"><header class="locale-page-hero"><p class="eyebrow"><a href="${BLOGGROT[a.lang]}">${TEKST[a.lang].blogg}</a></p><h1 class="disp">${esc(artikkel.tittel)}</h1><p class="lead">${esc(artikkel.ingress)}</p></header>
+<section class="prose locale-prose">${seksjoner}</section>
+<section class="faq"><h2>${esc(autoTekst.faqTittel)}</h2>${faq}</section>
+<section class="prose locale-prose"><h2>${esc(autoTekst.kilderTittel)}</h2><ol class="blogg-kilder">${kilder}</ol></section>
+${cta}
+${relaterte ? `<div class="blogg-flere" role="navigation" aria-label="${esc(autoTekst.lesOgsåTittel)}"><h2>${esc(autoTekst.lesOgsåTittel)}</h2><ul>${relaterte}</ul></div>` : ''}</article></main>`;
+}
+
+export function indeksMain(lang, rot = REPO_ROT) {
   const t = TEKST[lang];
   const kort = bloggArtikler(lang).map((a) => `<li><a href="${a.path}"><img src="${bilde(lang, a.tema, a.karusell.bilder[0])}" width="800" height="1000" loading="lazy" decoding="async" alt=""><span>${a.title}</span></a></li>`).join('');
+  const autoTekst = autoSprakfil(lang).autoBlogg;
+  const autoKort = autoArtikler(lang, rot)
+    .map((a) => `<li><a href="${a.path}"><span>${esc(a.title)}</span></a></li>`).join('');
   return `<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${t.blogg}</p><h1 class="disp">${t.indeksTittel}</h1><p class="lead">${t.indeksIngress}</p></header>
-<ul class="blogg-kort">${kort}</ul></main>`;
+<ul class="blogg-kort">${kort}</ul>${autoKort ? `<section class="blogg-flere"><h2>${esc(autoTekst.indeksTittel)}</h2><ul>${autoKort}</ul></section>` : ''}</main>`;
 }
 
 export function indeksMeta(lang) {

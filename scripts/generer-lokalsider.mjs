@@ -10,7 +10,24 @@ import { amerikanskeAppsider } from './en-appsider.mjs';
 import { svenskeAppsider, danskeAppsider } from './nordiske-appsider.mjs';
 import { appCta } from './app-cta.mjs';
 import { middagssider } from './middagssider.mjs';
-import { bloggArtikler, artikkelMain, artikkelSchema, indeksMain, indeksMeta, BLOGGROT } from './blogg.mjs';
+import {
+  SITEMAPER as GUIDE_SITEMAPER,
+  blokk as guideBlokk,
+  filFor as guideFilFor,
+  guider,
+  settInn as settInnGuidelenker,
+} from './guidelenker.mjs';
+import {
+  autoArtikkelMain,
+  autoArtikkelSchema,
+  autoArtikler,
+  bloggArtikler,
+  artikkelMain,
+  artikkelSchema,
+  indeksMain,
+  indeksMeta,
+  BLOGGROT,
+} from './blogg.mjs';
 
 // Produktsidene med skjermbilde-CTA erstatter de tynne funksjonssidene på samme sti.
 const appsider = {
@@ -841,6 +858,10 @@ ${nav(lang,rel(indeks.path))}${indeksMain(lang)}${footer(lang)}<script src="/sit
     write(`../${lang}/${rel(a.path)}index.html`, `${head({lang,path:rel(a.path),title:`${a.title} | Matlyst`,description:a.description,image:`/images/blogg/${lang}/${a.tema}/${a.karusell.bilder[0]}`,schema:artikkelSchema(a)})}<body data-locale="${lang}">
 ${nav(lang,rel(a.path))}${artikkelMain(a, storeButtons(lang))}${footer(lang)}<script src="/site.js" defer></script></body></html>`);
   }
+  for (const a of autoArtikler(lang)) {
+    write(`../${lang}/${rel(a.path)}index.html`, `${head({lang,path:rel(a.path),title:`${a.title} | Matlyst`,description:a.description,schema:autoArtikkelSchema(a)})}<body data-locale="${lang}">
+${nav(lang,rel(a.path))}${autoArtikkelMain(a, storeButtons(lang))}${footer(lang)}<script src="/site.js" defer></script></body></html>`);
+  }
 }
 
 // Norske og lokale sider får hreflang fra den samme tabellen som språkredirecten.
@@ -899,6 +920,7 @@ const sistEndretSide = {
   'https://matlyst-app.no/en/delete-account/': '2026-10-27',
   ...Object.fromEntries(Object.entries(appsider).flatMap(([lang, sider]) => sider.map((v) => [`https://matlyst-app.no/${lang}/${v.path}`, '2026-10-28']))),
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => [BLOGGROT[lang], ...bloggArtikler(lang).map((a) => a.path)].map((sti) => [`https://matlyst-app.no${sti}`, '2026-10-28']))),
+  ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => autoArtikler(lang).map((a) => [`https://matlyst-app.no${a.path}`, a.auto.publisert]))),
 };
 for (const lang of SPRAK) {
   const unikeSider = [...new Map(lokaleSider.map((html) => [html.match(/<link rel="canonical" href="([^"]+)">/u)?.[1], html])).values()];
@@ -912,6 +934,33 @@ for (const lang of SPRAK) {
     })
     .sort();
   write(`../sitemap-${lang}.xml`, ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">', ...urls, '</urlset>'].join('\n') + '\n');
+}
+
+const alleAutoArtikler = ['nb', 'sv', 'da', 'en'].flatMap((lang) => autoArtikler(lang));
+if (alleAutoArtikler.length > 0) {
+  const språkfiler = Object.fromEntries(['nb', 'sv', 'da', 'en'].map((lang) => [
+    lang,
+    JSON.parse(readFileSync(new URL(`../seo-data/sprak/${lang}.json`, import.meta.url), 'utf8')),
+  ]));
+  const tittel = språkfiler.nb.autoBlogg.llmsTittel;
+  const linjer = ['nb', 'sv', 'da', 'en'].flatMap((lang) => {
+    const artikler = alleAutoArtikler.filter((artikkel) => artikkel.lang === lang);
+    if (artikler.length === 0) return [];
+    return [
+      `### ${språkfiler[lang].autoBlogg.llmsSprak}`,
+      '',
+      ...artikler.map((artikkel) => `- [${artikkel.title}](${base}${artikkel.path}): ${artikkel.description}`),
+      '',
+    ];
+  });
+  const seksjon = `## ${tittel}\n\n${linjer.join('\n').trim()}\n`;
+  const llmsFil = fileURLToPath(new URL('../llms.txt', import.meta.url));
+  const llms = readFileSync(llmsFil, 'utf8');
+  const monster = new RegExp(`\\n## ${tittel.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&')}\\n[\\s\\S]*?(?=\\n## |$)`, 'u');
+  const nesteLlms = monster.test(llms)
+    ? llms.replace(monster, `\n${seksjon.trimEnd()}\n`)
+    : llms.replace('\n## Personvern / Privacy\n', `\n${seksjon}\n## Personvern / Privacy\n`);
+  writeFileSync(llmsFil, nesteLlms);
 }
 
 // Automatisk språk bygges direkte fra den samme sidetabellen som hreflang.
@@ -998,6 +1047,22 @@ paastander.push("| Bildeimport krever Pro | `app/(tabs)/legg-til.tsx:879` (`kild
 paastander.push('| Ingen reklame, ingen annonsenettverk | `package.json` har ingen annonse-SDK (bare RevenueCat, PostHog, Sentry og Expo) |');
 paastander.push('| 5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026) | Ikke i koden: tallet er oppgitt av Patrick 2026-10-05 og bekreftet med iTunes-oppslag (id 6762563515, country=no: snitt 5, 12 vurderinger) 2026-10-05. Står på `sv/index.html`, `da/index.html` og i JSON-LD på `index.html` (`ratingCount` 12) |');
 write('../qa/sv-da/produktpaastander.md', paastander.join('\n') + '\n');
+
+for (const [lang, sitemapNavn] of Object.entries(GUIDE_SITEMAPER)) {
+  const liste = guider(lang);
+  const autoStier = new Set(autoArtikler(lang).map((artikkel) => artikkel.path));
+  const sitemap = readFileSync(new URL(`../${sitemapNavn}`, import.meta.url), 'utf8');
+  const stier = [...sitemap.matchAll(/<loc>https:\/\/matlyst-app\.no([^<]+)<\/loc>/gu)]
+    .map((treff) => treff[1]);
+  for (const sti of stier) {
+    if (autoStier.has(sti)) continue;
+    const fil = guideFilFor(sti);
+    if (!existsSync(fil)) continue;
+    const html = readFileSync(fil, 'utf8');
+    if (!html.includes('</footer>')) continue;
+    writeFileSync(fil, settInnGuidelenker(html, guideBlokk(lang, liste)));
+  }
+}
 
 write('../qa/sv-da/juridiske-kilder.md', [
   '# Juridiske kilder for sv/da', '',

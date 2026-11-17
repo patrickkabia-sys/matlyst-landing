@@ -8,7 +8,17 @@ import { kildesider, norskeFunksjonssider } from './undersider-alle-sprak.mjs';
 import { norskeAppsider } from './nordiske-appsider.mjs';
 import { appCta } from './app-cta.mjs';
 import { middagssider } from './middagssider.mjs';
-import { bloggArtikler, artikkelMain, artikkelSchema, indeksMain, indeksMeta, PUBLISERT } from './blogg.mjs';
+import {
+  autoArtikkelMain,
+  autoArtikkelSchema,
+  autoArtikler,
+  bloggArtikler,
+  artikkelMain,
+  artikkelSchema,
+  indeksMain,
+  indeksMeta,
+  PUBLISERT,
+} from './blogg.mjs';
 
 const butikkKnapper = '<div class="store-badges"><a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" rel="noopener"><img src="/images/appstore-badge.svg" alt="Last ned i App Store"></a><a class="btn-store" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;hl=no&amp;gl=NO" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Last ned fra Google Play"></a></div>';
 
@@ -122,6 +132,7 @@ const nbIndeks = indeksMeta('nb');
 const nbBlogg = [
   { path: nbIndeks.path.slice(1), title: nbIndeks.title, description: nbIndeks.description, schemas: nbIndeks.schema, lastmod: PUBLISERT, main: indeksMain('nb') },
   ...bloggArtikler('nb').map((a) => ({ path: a.path.slice(1), title: a.title, description: a.description, schemas: artikkelSchema(a), lastmod: PUBLISERT, main: artikkelMain(a, butikkKnapper) })),
+  ...autoArtikler('nb').map((a) => ({ path: a.path.slice(1), title: a.title, description: a.description, schemas: autoArtikkelSchema(a), lastmod: a.auto.publisert, main: autoArtikkelMain(a, butikkKnapper) })),
 ];
 for (const v of nbBlogg) {
   const fil = `${root}/${v.path}index.html`;

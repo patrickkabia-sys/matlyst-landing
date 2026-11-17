@@ -1,0 +1,19 @@
+{
+  "domener": [
+    "matprat.no",
+    "godt.no",
+    "nom.no"
+  ],
+  "navn": [
+    "Matprat",
+    "Godt.no",
+    "Nom"
+  ],
+  "helseord": {
+    "nb": ["allergi", "allergier", "allergiker", "allergikere", "allergen", "allergener", "kalori", "kalorier", "slanking", "vektnedgang", "diett", "dietter"],
+    "sv": ["allergi", "allergier", "allergiker", "allergen", "allergener", "kalori", "kalorier", "bantning", "viktnedgång", "diet", "dieter"],
+    "da": ["allergi", "allergier", "allergiker", "allergikere", "allergen", "allergener", "kalorie", "kalorier", "slankekur", "slankekure", "vægttab", "diæt", "diæter"],
+    "en": ["allergy", "allergies", "allergen", "allergens", "calorie", "calories", "weight loss", "slimming", "diet", "diets"]
+  },
+  "slugs": []
+}
