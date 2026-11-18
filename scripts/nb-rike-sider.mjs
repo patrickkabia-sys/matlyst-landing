@@ -225,7 +225,7 @@ const spiskammer = byggRik({
       + '<h3>Det finner oppskrifter du allerede har lagret</h3>'
       + p('Søk i dine egne oppskrifter på en ingrediens fra kjøleskapet, for eksempel «miso», og se hva du kan lage. Det er vanlig søk, så det fungerer uten KI. Se <a href="/hva-kan-jeg-lage/">hva kan jeg lage</a> og <a href="/tom-kjoleskapet/">tøm kjøleskapet</a>.')
       + '<h3>Det foreslår middager fra det du har (Pro)</h3>'
-      + p('I Spør Matlyst lager <strong>Bruk det jeg har</strong> middagsforslag fra varene i spiskammeret ditt, med tilberedningstid. Det bruker KI og har en månedlig kvote, så les resultatet før du lager maten.')
+      + p('I Spør Matlyst lager <strong>Lag noe av det jeg har</strong> middagsforslag fra varene i spiskammeret ditt, med tilberedningstid. Det bruker KI og har en månedlig kvote, så les resultatet før du lager maten.')
       + '<h3>Det bytter ut det du mangler</h3>'
       + p('Er du tom for kefir? Åpne oppskriften og be Spør Matlyst om en erstatning som bruker det du har i spiskammeret. Du ser endringene som en liste og kan angre dem.')
       + '<h3>Det holder dubletter unna handlelista</h3>'
@@ -456,7 +456,7 @@ export const rikeSider = {
     faq: [
       ['Skanner Matlyst strekkoder?', 'Nei. Du legger inn varer i spiskammeret for hånd.'],
       ['Er spiskammeret gratis?', 'I gratisversjonen viser spiskammeret 5 varer. Matlyst Pro gir mer, sammen med Spør Matlyst og deling med husstanden.'],
-      ['Kan Matlyst foreslå middag fra det jeg har?', 'Ja, med Matlyst Pro. I Spør Matlyst lager «Bruk det jeg har» middagsforslag fra spiskammeret ditt. Det bruker KI og har en månedlig kvote, så sjekk resultatet før du lager maten.'],
+      ['Kan Matlyst foreslå middag fra det jeg har?', 'Ja, med Matlyst Pro. I Spør Matlyst lager «Lag noe av det jeg har» middagsforslag fra spiskammeret ditt. Det bruker KI og har en månedlig kvote, så sjekk resultatet før du lager maten.'],
       ['Hindrer spiskammeret at jeg kjøper dubletter?', 'Varer du har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift på handlelista, så du ser hva du allerede har før du handler.'],
       ['Kan jeg finne oppskrifter fra en ingrediens i kjøleskapet?', 'Ja. Søk i de lagrede oppskriftene dine på ingrediensen. Det er vanlig søk og fungerer uten KI.'],
       ['Kan jeg dele spiskammeret med husstanden?', 'Ja. Et Pro-medlem oppretter en husstand for opptil 6 personer, og det er gratis å bli med. Spiskammeret, handlelista og ukemenyen oppdateres direkte hos alle.'],

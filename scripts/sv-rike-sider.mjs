@@ -246,7 +246,7 @@ const skafferi = byggRik({
       + '<h3>Det hittar recept du redan sparat</h3>'
       + p('Sök bland dina egna recept på en ingrediens från kylskåpet, som ”miso”, och se vad du kan laga. Det är vanlig sökning, så den fungerar utan AI. Se <a href="/sv/recept-pa-ingredienser/">recept på ingredienser</a> och <a href="/sv/tom-kylskapet/">att tömma kylskåpet</a>.')
       + '<h3>Det föreslår middagar av det du har (Pro)</h3>'
-      + p('I <strong>Fråga Matlyst</strong> bygger <strong>Använd det jag har</strong> middagsförslag av varorna i ditt skafferi, med tillagningstider. Det använder AI och har en månadskvot, så läs resultatet innan du lagar.')
+      + p('I <strong>Fråga Matlyst</strong> bygger <strong>Laga något av det jag har</strong> middagsförslag av varorna i ditt skafferi, med tillagningstider. Det använder AI och har en månadskvot, så läs resultatet innan du lagar.')
       + '<h3>Det byter ut det du saknar</h3>'
       + p('Saknar du filmjölk? Öppna receptet och be om en ersättning i <strong>Fråga Matlyst</strong> som utgår från ditt skafferi. Du ser ändringarna som en lista och kan ångra dem.')
       + '<h3>Det håller dubbletter borta från inköpslistan</h3>'
@@ -487,7 +487,7 @@ export const rikeSider = {
     faq: [
       ['Skannar Matlyst streckkoder?', 'Nej. Du lägger till skafferivaror för hand.'],
       ['Är skafferiet gratis?', 'I den gratis planen visar skafferiet 5 varor. Matlyst Pro ger fler, tillsammans med Fråga Matlyst och delning med hushållet.'],
-      ['Kan Matlyst föreslå middag av det jag har?', 'Ja, med Matlyst Pro. I Fråga Matlyst bygger Använd det jag har middagsidéer av ditt skafferi. Det använder AI och har en månadskvot, så kontrollera resultatet innan du lagar.'],
+      ['Kan Matlyst föreslå middag av det jag har?', 'Ja, med Matlyst Pro. I Fråga Matlyst bygger Laga något av det jag har middagsidéer av ditt skafferi. Det använder AI och har en månadskvot, så kontrollera resultatet innan du lagar.'],
       ['Hindrar skafferiet mig från att köpa dubbletter?', 'Varor som finns i ditt skafferi är bortvalda och märkta «I skafferiet» när du lägger till ett recept i inköpslistan, så du ser vad du redan har innan du handlar.'],
       ['Fungerar det offline?', 'Du kan läsa dina recept och din inköpslista offline i upp till 30 dagar efter senaste synkningen. Redigering kräver anslutning.'],
       ['Hur länge håller rester i kylskåpet?', 'Det beror på maten, och vi anger inga egna siffror. Livsmedelsverket har råd om förvaring och matsvinn på livsmedelsverket.se.'],
