@@ -249,7 +249,7 @@ const spisekammer = byggRik({
       + '<h3>Det finder opskrifter, du allerede har gemt</h3>'
       + p('Søg i dine egne opskrifter på en ingrediens fra køleskabet, for eksempel ”miso”, og se, hvad du kan lave. Det er helt almindelig søgning, så den virker uden AI. Se <a href="/da/opskrifter-ud-fra-ingredienser/">opskrifter ud fra ingredienser</a> og <a href="/da/toem-koeleskabet/">sådan bruger du det, der er i køleskabet</a>.')
       + '<h3>Det foreslår aftensmad ud fra det, du har (Pro)</h3>'
-      + p('I Spørg Matlyst laver <strong>Brug det, jeg har</strong> forslag til aftensmad ud fra varerne i dit spisekammer, med tilberedningstider. Det bruger AI og har en månedlig kvote, så læs resultatet, før du går i gang med at lave maden.')
+      + p('I Spørg Matlyst laver <strong>Lav noget af det, jeg har</strong> forslag til aftensmad ud fra varerne i dit spisekammer, med tilberedningstider. Det bruger AI og har en månedlig kvote, så læs resultatet, før du går i gang med at lave maden.')
       + '<h3>Det finder en erstatning for det, du mangler</h3>'
       + p('Mangler du kærnemælk? Åbn opskriften, og bed Spørg Matlyst om en erstatning, der bruger det, du har i spisekammeret. Du ser ændringerne som en liste og kan fortryde dem.')
       + '<h3>Det holder dubletter væk fra din indkøbsliste</h3>'
@@ -478,7 +478,7 @@ export const rikeSider = {
     faq: [
       ['Scanner Matlyst stregkoder?', 'Nej. Du tilføjer varer til spisekammeret i hånden.'],
       ['Er spisekammeret gratis?', 'I den gratis version viser spisekammeret 5 varer. Matlyst Pro giver flere, sammen med Spørg Matlyst og deling i en husstand.'],
-      ['Kan Matlyst foreslå aftensmad ud fra det, jeg har?', 'Ja, med Matlyst Pro. I Spørg Matlyst laver ”Brug det, jeg har” forslag til aftensmad ud fra dit spisekammer. Det bruger AI og har en månedlig kvote, så tjek resultatet, før du laver maden.'],
+      ['Kan Matlyst foreslå aftensmad ud fra det, jeg har?', 'Ja, med Matlyst Pro. I Spørg Matlyst laver ”Lav noget af det, jeg har” forslag til aftensmad ud fra dit spisekammer. Det bruger AI og har en månedlig kvote, så tjek resultatet, før du laver maden.'],
       ['Forhindrer spisekammeret, at jeg køber dubletter?', 'Varer, du har i spisekammeret, er fravalgt og mærket «På lager», når du lægger en opskrift på listen på din indkøbsliste, så du kan se, hvad du allerede har, før du handler.'],
       ['Virker det uden net?', 'Du kan læse dine opskrifter og din indkøbsliste uden net i op til 30 dage efter sidste synkronisering. Redigering kræver forbindelse.'],
       ['Hvor længe kan rester holde sig i køleskabet?', 'Det afhænger af, hvad det er. Matlyst giver ikke egne tal. Fødevarestyrelsen har råd om rester og madspild i hjemmet på foedevarestyrelsen.dk. Brug også dit eget skøn.'],

@@ -32,8 +32,8 @@ const recipeBookApp = (() => {
         + '<h3>It makes saved recipes findable</h3>'
         + p('A collection you can’t search is just a bigger pile. Search should work on ingredients, because that’s how you decide what to cook on a Tuesday night.')
         + '<h3>It turns recipes into a plan</h3>'
-        + p('Add recipes to a weekly menu, and the ingredients go to one grocery list, combined and sorted by store section. Read more about the <a href="/en/meal-plan-app/">meal plan</a> and the <a href="/en/shopping-list/">grocery list from recipes</a>.')
-        + animasjon({ fil: 'matlyst-meal-plan-to-grocery-list.mp4', plakat: 'matlyst-meal-plan-to-grocery-list-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Recipes added to the weekly meal plan, then their ingredients sent to the grocery list.', bildetekst: 'From the weekly menu to one grocery list.' })
+        + p('Add recipes to a meal plan, and the ingredients go to one grocery list, combined and sorted by store section. Read more about the <a href="/en/meal-plan-app/">meal plan</a> and the <a href="/en/shopping-list/">grocery list from recipes</a>.')
+        + animasjon({ fil: 'matlyst-meal-plan-to-grocery-list.mp4', plakat: 'matlyst-meal-plan-to-grocery-list-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Recipes added to the weekly meal plan, then their ingredients sent to the grocery list.', bildetekst: 'From the meal plan to one grocery list.' })
         + '<h3>It helps while you cook</h3>'
         + p('Cook mode shows the recipe as one checklist you can tick off as you go. When a step mentions a time, Matlyst suggests a timer, it keeps running in the background, and the screen stays awake. Cook mode needs an internet connection.')
         + animasjon({ fil: 'matlyst-cook-mode-timer-from-step.mp4', plakat: 'matlyst-cook-mode-timer-from-step-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Cook mode suggesting a 25 minute timer from the step text, then the timer counting down.', bildetekst: 'A timer suggested from the step text.' })],
@@ -61,7 +61,7 @@ const recipeBookApp = (() => {
           situasjon: 'Five dinners, one budget, one trip to the store.',
           galt: 'Two recipes both need one onion, and you buy three.',
           gjor: 'Plan the week first, then shop from one merged list.',
-          matlyst: 'Add the recipes to the weekly menu and open the grocery list. Matching items are combined on one line, with different units shown together like “1 cup · 200 g,” and items already in your pantry are unselected when you add a recipe to the list.' })],
+          matlyst: 'Add the recipes to the meal plan and open the grocery list. Matching items are combined on one line, with different units shown together like “1 cup · 200 g,” and items already in your pantry are unselected when you add a recipe to the list.' })],
       ['Swap an ingredient or make your own version', p('Out of buttermilk, or missing the fresh herb? Open the recipe and ask Ask Matlyst for a swap. “Use what I have” suggests replacements from the items in your pantry. You can also ask for a vegetarian, vegan, quicker, or smaller version, or type your own request, like “make it more exciting.”')
         + p('The changes appear as a list you can undo. When you save, choose <strong>Save a copy</strong>, which keeps the original and links back to its source marked “adapted,” or <strong>Replace</strong>, which overwrites your own recipe. Ask Matlyst is a Pro feature, it uses AI, and it has a monthly allowance. Check the result before you cook from it.')
         + telefoner(skjerm('matlyst-ask-matlyst-vegan-swap-changes', 'A vegan version shown as a list of changed ingredients, with Undo.'), skjerm('matlyst-ask-matlyst-save-copy-or-replace', 'The choice between Save a copy and Replace.'))],
@@ -93,7 +93,7 @@ const recipeBookApp = (() => {
         + p('You can read your recipes and grocery list offline for up to 30 days after the last sync. Editing and cook mode need a connection.')
         + telefoner(skjerm('matlyst-settings-export-recipes', 'Settings with free export of all recipes as a Matlyst file or HTML.'))],
       ['Plans, limits, and sharing', p('Matlyst is free to start: 5 imports per calendar month, and the pantry shows 5 items. Saving recipes, folders, search, the meal plan, and the grocery list all work on the free plan. Matlyst Pro adds more imports, photo import, Ask Matlyst, and creating a household.')
-        + p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the weekly menu, and the pantry are shared and update live for everyone. See the <a href="/en/shopping-list/">grocery list</a> page for how sharing works.')],
+        + p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the meal plan, and the pantry are shared and update live for everyone. See the <a href="/en/shopping-list/">grocery list</a> page for how sharing works.')],
     ],
   });
   return html;
@@ -137,7 +137,7 @@ const instagram = byggRik({
       + p('Matlyst uses AI to read and translate recipes, and AI can make mistakes. That is why the draft comes first and saving comes second.')],
     ['After you save: what you can do with the recipe', p('A saved recipe is a normal Matlyst recipe, which means you get everything else too.')
       + '<ul><li><strong>Scale it</strong> from 1 to 20 servings.</li>'
-      + '<li><strong>Plan it.</strong> Add it to the weekly menu, and send the ingredients to one grocery list, combined and sorted by store section.</li>'
+      + '<li><strong>Plan it.</strong> Add it to the meal plan, and send the ingredients to one grocery list, combined and sorted by store section.</li>'
       + '<li><strong>Cook from it.</strong> Cook mode shows the steps as a checklist and suggests timers from the step text. It needs an internet connection.</li>'
       + '<li><strong>Adapt it.</strong> With Ask Matlyst, a Pro feature, you can ask for a vegan, quicker, or smaller version and save it as a copy.</li>'
       + '<li><strong>Take it with you.</strong> Export every recipe for free as a Matlyst file or HTML.</li></ul>'
@@ -234,7 +234,7 @@ const pantry = byggRik({
       + '<h3>It finds recipes you already saved</h3>'
       + p('Search your own recipes by an ingredient from the fridge, like “miso,” and see what you can cook. This is plain search, so it works without AI. See <a href="/en/recipes-by-ingredients/">recipes by ingredients</a> and <a href="/en/empty-the-fridge/">using up what’s in the fridge</a>.')
       + '<h3>It suggests dinners from what you have (Pro)</h3>'
-      + p('In Ask Matlyst, “Use what I have” builds dinner ideas from the items in your pantry, with cooking times. It uses AI and has a monthly allowance, so read the result before you cook.')
+      + p('In Ask Matlyst, “Cook with what I have” builds dinner ideas from the items in your pantry, with cooking times. It uses AI and has a monthly allowance, so read the result before you cook.')
       + telefoner(skjerm('matlyst-ask-matlyst-use-what-i-have', 'Ask Matlyst offering Use what I have, listing the pantry items.'), skjerm('matlyst-ask-matlyst-pantry-recipe-ideas', 'Three dinner ideas built from the pantry.'))
       + '<h3>It swaps what you’re missing</h3>'
       + p('Out of buttermilk? Open the recipe and ask Ask Matlyst for a swap that uses what is in your pantry. You see the changes as a list and can undo them.')
@@ -253,7 +253,7 @@ const pantry = byggRik({
       + '<li>Send the ingredients to the grocery list. Items already in your pantry are unselected and marked “In your pantry,” so you shop for the gaps.</li>'
       + '<li>Cook, and update the pantry.</li></ol>'
       + p('You still decide what goes on the plan. Matlyst doesn’t fill the week for you.')],
-    ['Sharing a pantry with your household', p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the weekly menu, and the pantry are shared and update live for everyone. The person who just used the last eggs can take them off the list, and the person at the store sees it.')],
+    ['Sharing a pantry with your household', p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the meal plan, and the pantry are shared and update live for everyone. The person who just used the last eggs can take them off the list, and the person at the store sees it.')],
     ['What Matlyst doesn’t do', '<ul><li><strong>It doesn’t scan barcodes.</strong> You add items by hand.</li>'
       + '<li><strong>It doesn’t know what is really in your fridge.</strong> The list is only as good as the last time you updated it.</li>'
       + '<li><strong>It doesn’t decide food safety for you.</strong> An expiry date is a guide. Use the storage rules below and your own judgment.</li></ul>'],
@@ -298,7 +298,7 @@ const pantry = byggRik({
 const shopping = byggRik({
   svarTekst: 'Add a recipe, or a whole planned week, to your Matlyst grocery list and the ingredients land on one list. Matching items are combined on one line, the list is sorted by store section, and items already in your pantry are unselected when you add a recipe.',
   seksjoner: [
-    ['How to make a grocery list from recipes', animasjon({ fil: 'matlyst-meal-plan-to-grocery-list.mp4', plakat: 'matlyst-meal-plan-to-grocery-list-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Recipes planned for the week, then their ingredients sent to one grocery list.', bildetekst: 'From the weekly menu to one grocery list.' })
+    ['How to make a grocery list from recipes', animasjon({ fil: 'matlyst-meal-plan-to-grocery-list.mp4', plakat: 'matlyst-meal-plan-to-grocery-list-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Recipes planned for the week, then their ingredients sent to one grocery list.', bildetekst: 'From the meal plan to one grocery list.' })
       + '<ol><li><strong>Open a recipe or your meal plan.</strong> Pick one recipe, or a day or week you have planned.</li>'
       + '<li><strong>Add it to the grocery list.</strong> The ingredients go on the list, with the amounts the recipe calls for.</li>'
       + '<li><strong>Shop by section.</strong> Items are grouped by store section, like produce, dairy, and spices. Check them off as you go.</li></ol>'
@@ -307,13 +307,13 @@ const shopping = byggRik({
       + p('The list is sorted by store section, so you walk the store once instead of crossing it twice for the one thing you forgot.')],
     ['Plan first, shop once', p('A grocery list is only as good as the plan behind it. Put the week’s dinners on the <a href="/en/meal-plan-app/">meal plan</a>, add the whole week to the grocery list, and do one trip instead of three. If you want the bigger picture of saving, organizing, and cooking recipes, see the <a href="/en/recipe-book-app/">recipe organizer app</a>.')],
     ['Skip what you already have', p('Items already in your <a href="/en/pantry-app/">pantry</a> are unselected when you add a recipe to the list, and marked “In your pantry.” That’s a reminder, not a rule: you see what you already have before you buy a second jar. Check the pantry before you shop, and update it when you cook.')],
-    ['Share the list with your household', p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the weekly menu, and the pantry are shared and update live for everyone. One person plans, another shops, and the person at the store checks things off for everyone.')],
+    ['Share the list with your household', p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the meal plan, and the pantry are shared and update live for everyone. One person plans, another shops, and the person at the store checks things off for everyone.')],
     ['Three situations, and what to do', scenarioNotat()
       + scenario('Say you’re planning five dinners for a family of four', {
         situasjon: 'One budget, one trip to the store.',
         galt: 'Two recipes both need an onion and you buy three.',
         gjor: 'Plan the week first, then shop from one merged list.',
-        matlyst: 'Add the recipes to the weekly menu, add the week to the grocery list, and shop by section.' })
+        matlyst: 'Add the recipes to the meal plan, add the week to the grocery list, and shop by section.' })
       + scenario('Say your partner shops on the way home', {
         situasjon: 'You planned the week, and they are at the store.',
         galt: 'You text a list and half of it gets lost in the thread.',
@@ -386,7 +386,7 @@ const kjoperguide = byggRik({
         situasjon: 'One of you plans, the other shops.',
         galt: 'You text lists and lose half the items.',
         gjor: 'Look for a shared list that updates live.',
-        matlyst: 'A Pro member creates a household for up to 6 people. The grocery list, weekly menu, and pantry update live, and joining is free.' })],
+        matlyst: 'A Pro member creates a household for up to 6 people. The grocery list, meal plan, and pantry update live, and joining is free.' })],
     ['Where Matlyst fits, and where it doesn’t', p('We built Matlyst to solve the problem described at the top of this guide. Here is the honest summary.')
       + '<div class="table-wrap"><table><thead><tr><th>Matlyst is a good fit if you…</th><th>It is probably not for you if you…</th></tr></thead><tbody>'
       + '<tr><td>save recipes from Instagram, TikTok, websites, or photos</td><td>need the app to transcribe what is said in videos</td></tr>'
@@ -413,7 +413,7 @@ export const rikeSider = {
       ['Can I save recipes from Instagram and TikTok?', 'Yes, by sharing the post to Matlyst. It reads the recipe from the caption. It doesn’t transcribe what’s said in the video, so if the amounts are only spoken, add them by hand after importing.'],
       ['Can I scale a recipe to more servings?', 'Yes, from 1 to 20 servings. Scaling is linear, so check eggs and leavening yourself when you bake.'],
       ['Does it work offline?', 'You can read your recipes and shopping list offline for up to 30 days after the last sync. Cook mode and editing need a connection.'],
-      ['Can I share recipes and a grocery list with my household?', 'Yes. A Pro member creates the household, up to 6 people can join, and joining is free. The grocery list, weekly menu, and pantry update live for everyone.'],
+      ['Can I share recipes and a grocery list with my household?', 'Yes. A Pro member creates the household, up to 6 people can join, and joining is free. The grocery list, meal plan, and pantry update live for everyone.'],
       ['Which units does it use?', 'Amounts are metric by default. Switch to Units: US in Settings and Matlyst keeps the cups, ounces, and degrees Fahrenheit the source used. Recipes in other languages are translated to English.'],
       ['Can I export my recipes?', 'Yes, for free, as a Matlyst file (a zip with folders and photos) or as HTML.'],
       ['Does Matlyst work on iPhone and Android?', 'Yes. Matlyst is on the App Store and Google Play.'],
@@ -452,7 +452,7 @@ export const rikeSider = {
     faq: [
       ['Does Matlyst scan barcodes?', 'No. You add pantry items by hand.'],
       ['Is the pantry free?', 'On the free plan, the pantry shows 5 items. Matlyst Pro adds more, along with Ask Matlyst and household sharing.'],
-      ['Can Matlyst suggest dinner from what I have?', 'Yes, with Matlyst Pro. In Ask Matlyst, Use what I have builds dinner ideas from your pantry. It uses AI and has a monthly allowance, so check the result before you cook.'],
+      ['Can Matlyst suggest dinner from what I have?', 'Yes, with Matlyst Pro. In Ask Matlyst, Cook with what I have builds dinner ideas from your pantry. It uses AI and has a monthly allowance, so check the result before you cook.'],
       ['Does the pantry stop me from buying duplicates?', 'When you add a recipe to your grocery list, items in your pantry are unselected and marked “In your pantry,” so you can see what you already have before you shop.'],
       ['Does it work offline?', 'You can read your recipes and grocery list offline for up to 30 days after the last sync. Editing needs a connection.'],
       ['How long do leftovers keep in the fridge?', 'According to FoodSafety.gov, leftover cooked meat or poultry keeps 3 to 4 days in a refrigerator at 40°F (4°C) or below.'],
@@ -467,7 +467,7 @@ export const rikeSider = {
     faq: [
       ['Is there a grocery list app that adds ingredients from recipes?', 'Yes. In Matlyst, you add a recipe or a planned day to the grocery list, and the ingredients go on the list with matching items combined.'],
       ['Is the Matlyst grocery list free?', 'Yes, the grocery list is free. Creating a household to share a live list takes Matlyst Pro, and joining one is free.'],
-      ['Can I share my grocery list with my partner?', 'Yes. A Pro member creates a household for up to 6 people. The grocery list, weekly menu, and pantry update live for everyone, and joining is free.'],
+      ['Can I share my grocery list with my partner?', 'Yes. A Pro member creates a household for up to 6 people. The grocery list, meal plan, and pantry update live for everyone, and joining is free.'],
       ['Does the list sort items by store section?', 'Yes. Items are grouped by store section, like produce, meat, and dairy.'],
       ['What happens when two recipes need the same ingredient?', 'Matlyst puts items with the same name on one line. When the units differ, the amounts are shown together on that line, like “1 cup · 200 g.”'],
       ['Can I add items that aren’t in a recipe?', 'Yes. Tap + and type what you need.'],
