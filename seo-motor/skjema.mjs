@@ -2,6 +2,65 @@ import { readFileSync } from 'node:fs';
 
 import { z } from 'zod';
 
+const standardGrenser = lesData('grenser.json');
+export const ABSOLUTTE_GRENSER = Object.freeze(standardGrenser.absolutt);
+
+function innenforTak(skjema, tak, navn) {
+  return skjema.refine((verdi) => verdi <= tak, {
+    message: `${navn} kan ikke være større enn ${tak}.`,
+  });
+}
+
+function sjekkIntervaller(krav, kontekst) {
+  for (const [min, maks, navn] of [
+    ['ord_min', 'ord_maks', 'Ord'],
+    ['seksjoner_min', 'seksjoner_maks', 'Seksjons'],
+    ['faq_min', 'faq_maks', 'FAQ-'],
+  ]) {
+    if (krav[min] > krav[maks]) {
+      kontekst.addIssue({
+        code: 'custom', path: [min],
+        message: `${navn}minimum kan ikke være større enn maksimum.`,
+      });
+    }
+  }
+}
+
+const OrdMinSkjema = innenforTak(z.number().int().nonnegative(), ABSOLUTTE_GRENSER.brodtekstMaksOrd, 'Ordminimum');
+const OrdMaksSkjema = innenforTak(z.number().int().positive(), ABSOLUTTE_GRENSER.brodtekstMaksOrd, 'Ordmaksimum');
+const SeksjonerMaksSkjema = innenforTak(z.number().int().positive(), ABSOLUTTE_GRENSER.seksjonerMaks, 'Seksjonsmaksimum');
+const FaqMaksSkjema = innenforTak(z.number().int().nonnegative(), ABSOLUTTE_GRENSER.faqMaks, 'FAQ-maksimum');
+
+const LengdemaalSkjema = z.object({
+  ord_min: OrdMinSkjema.optional(),
+  ord_maks: OrdMaksSkjema.optional(),
+  seksjoner_maks: SeksjonerMaksSkjema.optional(),
+  faq_maks: FaqMaksSkjema.optional(),
+}).strict().superRefine((maal, kontekst) => sjekkIntervaller({
+  ord_min: maal.ord_min ?? standardGrenser.brodtekstMinOrd,
+  ord_maks: maal.ord_maks ?? standardGrenser.brodtekstMaksOrd,
+  seksjoner_min: standardGrenser.seksjonerMin,
+  seksjoner_maks: maal.seksjoner_maks ?? standardGrenser.seksjonerMaks,
+  faq_min: standardGrenser.faqMin,
+  faq_maks: maal.faq_maks ?? standardGrenser.faqMaks,
+}, kontekst));
+
+export const EmneSkjema = z.object({
+  id: z.string().regex(/^e-[a-f0-9]{16}$/u),
+  sprak: z.enum(['nb', 'sv', 'da', 'en']),
+  sokeord: z.string().min(1),
+  score: z.number(),
+  passform: z.number(),
+  proxy: z.number(),
+  tagger: z.array(z.string()),
+  appkobling: z.enum(['import', 'ukemeny', 'handleliste', 'bruk-det-jeg-har', 'kokemodus']),
+  tema: z.string().min(1),
+  vinkel: z.string().min(1),
+  slug: z.string().min(1),
+  kilde_ider: z.array(z.string()),
+  lengdemaal: LengdemaalSkjema.optional(),
+}).strict();
+
 const AvsnittSkjema = z.object({
   type: z.literal('avsnitt'),
   overskrift: z.string().min(1),
@@ -27,11 +86,11 @@ export const ArtikkelSkjema = z.object({
   tittel: z.string().min(1).max(60),
   meta: z.string().min(120).max(160),
   ingress: z.string().min(1),
-  seksjoner: z.array(z.discriminatedUnion('type', [AvsnittSkjema, TabellSkjema, ListeSkjema])).min(3).max(6),
+  seksjoner: z.array(z.discriminatedUnion('type', [AvsnittSkjema, TabellSkjema, ListeSkjema])).min(1).max(ABSOLUTTE_GRENSER.seksjonerMaks),
   faq: z.array(z.object({
     sporsmal: z.string().min(1),
     svar: z.string().min(1),
-  })).min(3).max(5),
+  })).max(ABSOLUTTE_GRENSER.faqMaks),
   pastander: z.array(z.object({
     tekst: z.string().min(1),
     kilde_id: z.string().min(1),
@@ -78,14 +137,14 @@ export const BestillingSkjema = z.object({
   appkoblinger: z.array(z.enum(['import', 'ukemeny', 'handleliste', 'bruk-det-jeg-har', 'kokemodus'])).min(1),
   kilde_ider: z.array(z.string().min(1)),
   krav: z.object({
-    ord_min: z.number().int().nonnegative(),
-    ord_maks: z.number().int().positive(),
+    ord_min: OrdMinSkjema,
+    ord_maks: OrdMaksSkjema,
     seksjoner_min: z.number().int().positive(),
-    seksjoner_maks: z.number().int().positive(),
+    seksjoner_maks: SeksjonerMaksSkjema,
     faq_min: z.number().int().nonnegative(),
-    faq_maks: z.number().int().nonnegative(),
+    faq_maks: FaqMaksSkjema,
     sprakregler_ref: z.string().min(1),
-  }).strict(),
+  }).strict().superRefine(sjekkIntervaller),
 }).strict();
 
 export function lesData(navn, rot) {

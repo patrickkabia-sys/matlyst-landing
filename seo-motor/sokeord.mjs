@@ -1,6 +1,7 @@
 import { createHmac } from 'node:crypto';
 
 import { ordOverlapp } from './nettsted.mjs';
+import { BestillingSkjema, EmneSkjema } from './skjema.mjs';
 
 const LAND_TIL_SPRAK = {
   nor: 'nb',
@@ -75,7 +76,8 @@ export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt, emne
     const proxy = kandidat.kilde === 'gsc' || kandidat.visninger !== undefined
       ? kandidat.visninger ?? 0
       : kandidat.forslagAntall ?? 0;
-    const emne = {
+    const lengdemaal = kandidat.lengdemaal ?? frø.lengdemaal;
+    const emne = EmneSkjema.parse({
       id,
       sprak,
       sokeord: kandidat.sokeord,
@@ -88,7 +90,8 @@ export function byggKo({ kandidater, språkfiler, nettsted, forbudt, brukt, emne
       vinkel: frø.vinkel,
       slug: frø.slug,
       kilde_ider: frø.kilde_ider,
-    };
+      ...(lengdemaal === undefined ? {} : { lengdemaal }),
+    });
     const temaid = `${sprak}:${frø.slug}`;
     if (!perTema.has(temaid) || perTema.get(temaid).score < emne.score) {
       perTema.set(temaid, emne);
@@ -104,7 +107,8 @@ function fyllMal(mal, navn, verdi) {
 }
 
 export function lagBestilling(emne, språkfil, grenser, dato) {
-  return {
+  const { lengdemaal = {} } = EmneSkjema.parse(emne);
+  return BestillingSkjema.parse({
     dato,
     sprak: emne.sprak,
     emne_id: emne.id,
@@ -114,13 +118,13 @@ export function lagBestilling(emne, språkfil, grenser, dato) {
     appkoblinger: [emne.appkobling],
     kilde_ider: emne.kilde_ider,
     krav: {
-      ord_min: grenser.brodtekstMinOrd,
-      ord_maks: grenser.brodtekstMaksOrd,
+      ord_min: lengdemaal.ord_min ?? grenser.brodtekstMinOrd,
+      ord_maks: lengdemaal.ord_maks ?? grenser.brodtekstMaksOrd,
       seksjoner_min: grenser.seksjonerMin,
-      seksjoner_maks: grenser.seksjonerMaks,
+      seksjoner_maks: lengdemaal.seksjoner_maks ?? grenser.seksjonerMaks,
       faq_min: grenser.faqMin,
-      faq_maks: grenser.faqMaks,
+      faq_maks: lengdemaal.faq_maks ?? grenser.faqMaks,
       sprakregler_ref: `seo-data/sprak/${emne.sprak}.json`,
     },
-  };
+  });
 }

@@ -1,9 +1,17 @@
-import { ArtikkelSkjema } from './skjema.mjs';
+import { ABSOLUTTE_GRENSER, ArtikkelSkjema } from './skjema.mjs';
 import { ordOverlapp, slugify } from './nettsted.mjs';
 import { gjenkjennSprak } from './sprakgjenkjenning.mjs';
 
-export function sjekkFast(artikkel, { nettsted, forbudt, sprakfiler, grenser }) {
+export function sjekkFast(artikkel, { nettsted, forbudt, sprakfiler, grenser, bestilling }) {
   const grunner = [];
+  const krav = bestilling?.krav ?? {
+    ord_min: grenser.brodtekstMinOrd,
+    ord_maks: grenser.brodtekstMaksOrd,
+    seksjoner_min: grenser.seksjonerMin,
+    seksjoner_maks: grenser.seksjonerMaks,
+    faq_min: grenser.faqMin,
+    faq_maks: grenser.faqMaks,
+  };
   const skjemaresultat = ArtikkelSkjema.safeParse(artikkel);
   if (!skjemaresultat.success) {
     for (const problem of skjemaresultat.error.issues) {
@@ -23,8 +31,15 @@ export function sjekkFast(artikkel, { nettsted, forbudt, sprakfiler, grenser }) 
   const faqTekster = (artikkel.faq ?? []).flatMap(({ sporsmal, svar }) => [sporsmal, svar]);
   const brodtekst = seksjonTekster.join(' ');
   const antallOrd = brodtekst.match(/[\p{L}\p{N}]+/gu)?.length ?? 0;
-  if (antallOrd < grenser.brodtekstMinOrd || antallOrd > grenser.brodtekstMaksOrd) {
-    grunner.push('skjema: brødtekst');
+  for (const [felt, antall, min, maks, tak] of [
+    ['brødtekst', antallOrd, krav.ord_min, krav.ord_maks, ABSOLUTTE_GRENSER.brodtekstMaksOrd],
+    ['seksjoner', artikkel.seksjoner?.length ?? 0, krav.seksjoner_min, krav.seksjoner_maks, ABSOLUTTE_GRENSER.seksjonerMaks],
+    ['faq', artikkel.faq?.length ?? 0, krav.faq_min, krav.faq_maks, ABSOLUTTE_GRENSER.faqMaks],
+  ]) {
+    if (antall < min || antall > maks || antall > tak) {
+      const grunn = `skjema: ${felt}`;
+      if (!grunner.includes(grunn)) grunner.push(grunn);
+    }
   }
 
   const tittel = artikkel.tittel?.trim().toLocaleLowerCase() ?? '';

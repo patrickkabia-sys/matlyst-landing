@@ -151,6 +151,65 @@ test('motoren skriver generalisert bestilling og offentlig driftslogg', async (t
   }
 });
 
+test('lagret lengdemål overlever mandagsoppdatering og brukes i bestillingen', async (t) => {
+  const { mappe, rot } = lagRot(t);
+  const privatFil = new URL('seo-data/privat.enc', rot);
+  const privat = lesPrivat(privatFil, TESTNOKKEL);
+  privat.emneko[0].lengdemaal = { ord_min: 1800, ord_maks: 3200, seksjoner_maks: 10, faq_maks: 8 };
+  skrivPrivat(privatFil, privat, TESTNOKKEL);
+
+  const resultat = await kjor({
+    tid: new Date('2026-11-16T04:00:00Z'), modus: 'utkast', tørt: true,
+    avh: avhengigheter(rot, {
+      forslag: async ({ sprak }) => ({
+        rå: [], kandidater: sprak === 'nb' ? [{
+          sokeord: SÆRPREGET, sprak, frø: { ...privatEmne(), tekst: SÆRPREGET }, forslagAntall: 40,
+        }] : [],
+      }),
+    }),
+  });
+
+  assert.equal(resultat.resultat, 'bestilling');
+  const bestilling = JSON.parse(readFileSync(join(
+    mappe, 'seo-data', 'bestillinger', '2026-11-16-nb-bruk-rester-i-middag.json',
+  ), 'utf8'));
+  assert.deepEqual(bestilling.krav, {
+    ord_min: 1800, ord_maks: 3200, seksjoner_min: 3, seksjoner_maks: 10,
+    faq_min: 3, faq_maks: 8, sprakregler_ref: 'seo-data/sprak/nb.json',
+  });
+  const lagret = lesPrivat(privatFil, TESTNOKKEL).emneko[0];
+  assert.deepEqual(lagret.lengdemaal, privat.emneko[0].lengdemaal);
+  assert.equal(lagret.score, 120);
+});
+
+test('delvis lengdemål fra frøet overskriver bare sine egne felt', async (t) => {
+  const { mappe, rot } = lagRot(t);
+  const privatFil = new URL('seo-data/privat.enc', rot);
+  const privat = lesPrivat(privatFil, TESTNOKKEL);
+  privat.emneko[0].lengdemaal = { ord_min: 1800, ord_maks: 3200, seksjoner_maks: 10, faq_maks: 8 };
+  skrivPrivat(privatFil, privat, TESTNOKKEL);
+
+  await kjor({
+    tid: new Date('2026-11-16T04:00:00Z'), modus: 'utkast', tørt: true,
+    avh: avhengigheter(rot, {
+      forslag: async ({ sprak }) => ({
+        rå: [], kandidater: sprak === 'nb' ? [{
+          sokeord: SÆRPREGET, sprak,
+          frø: { ...privatEmne(), tekst: SÆRPREGET, lengdemaal: { ord_maks: 3500 } }, forslagAntall: 40,
+        }] : [],
+      }),
+    }),
+  });
+
+  const bestilling = JSON.parse(readFileSync(join(
+    mappe, 'seo-data', 'bestillinger', '2026-11-16-nb-bruk-rester-i-middag.json',
+  ), 'utf8'));
+  assert.equal(bestilling.krav.ord_min, 1800);
+  assert.equal(bestilling.krav.ord_maks, 3500);
+  assert.equal(bestilling.krav.seksjoner_maks, 10);
+  assert.equal(bestilling.krav.faq_maks, 8);
+});
+
 test('andre kjøring samme Oslo-døgn lager ikke ny bestilling', async (t) => {
   const { mappe, rot } = lagRot(t);
   const avh = avhengigheter(rot);
