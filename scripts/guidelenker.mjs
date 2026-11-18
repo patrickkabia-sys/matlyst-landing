@@ -22,6 +22,8 @@ export const UTELATT = new Set([
   '/en/privacy/', '/en/terms/', '/en/delete-account/',
 ]);
 
+export const UNDER_HUB = /^\/(?:[a-z]{2}\/)?(?:tools|verktoy|verktyg|vaerktoejer|holidays)\/(?!unit-converter\/$|enhetsomregner\/$|enhetsomvandlare\/$|enhedsomregner\/$)[^/]+\/$/u;
+
 export const MONSTER = /<!-- guider:bunn -->[\s\S]*?<!-- \/guider:bunn -->/u;
 
 export function filFor(sti) {
@@ -48,6 +50,9 @@ export function guider(lang) {
     .filter((sti) => !UTELATT.has(sti))
     // Bloggartiklene lenkes fra bloggforsiden og fra hverandre, ikke fra hver bunntekst.
     .filter((sti) => !/^\/(?:[a-z]{2}\/)?blogg?\/[^/]+\/$/u.test(sti))
+    // Enkeltsider under en hub (enhetsomregnere, høytider) lenkes fra huben og fra hverandre.
+    // Uten dette fikk hver bunntekst over 200 omregnerlenker (designgjennomgang 18.11.2026).
+    .filter((sti) => !UNDER_HUB.test(sti))
     .map((sti) => ({ sti, tekst: lenketekst(readFileSync(filFor(sti), 'utf8')) }));
 }
 
