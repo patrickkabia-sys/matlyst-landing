@@ -449,3 +449,13 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .prose .maskot-galleri figcaption{margin-top:10px;font-size:14px;line-height:1.45;color:var(--ink-soft)}
 .prose .bilde-figur{margin:var(--s-4) 0;text-align:left}
 .prose .bilde-figur img{width:100%;max-width:560px;height:auto;margin:0;border-radius:22px;box-shadow:none}
+
+/* Maskotbånd på forsidene: prikken som blir til alt mulig */
+.maskot-band{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,72px);align-items:center;max-width:1180px;margin:0 auto;padding:clamp(56px,9vh,110px) var(--pad)}
+.maskot-tekst h2{font-size:clamp(34px,4.6vw,64px);line-height:1.04;margin:14px 0 16px}
+.maskot-tekst p:not(.eyebrow){font-size:clamp(16px,1.3vw,19px);line-height:1.7;color:var(--ink-soft);max-width:30em;margin-bottom:18px}
+.maskot-tekst .more{display:inline-flex;color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:4px}
+.maskot-klipp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.maskot-klipp figure{margin:0}
+.maskot-klipp video{display:block;width:100%;height:auto;aspect-ratio:2/1;border-radius:20px;background:#E6DAC3}
+@media(max-width:820px){.maskot-band{grid-template-columns:1fr}}

@@ -42,7 +42,7 @@ const butikk = (html) => ({
 
 export function nedlastingsKnapp(lang, urler) {
   const t = TEKSTER[lang];
-  return `<a class="nav-dl" href="${urler.ios}" data-dl="ios" rel="noopener">${t.last}</a>`;
+  return `${MERKE}<a class="nav-dl" href="${urler.ios}" data-dl="ios" rel="noopener">${t.last}</a>${MERKE_SLUTT}`;
 }
 
 export function nedlastingsLinje(lang, urler) {
@@ -80,7 +80,7 @@ export function rader(lang, kort) {
     '',
   ];
   const kortHtml = kort.map(([h, p, href, mer], i) => `<article class="step-card sc-${KORTFARGE[i] ?? 'terra'} si-${i}"><div class="sc-tekst"><span class="sc-nr">${i < 3 ? `0${i + 1}` : k.pro}</span><h3 class="disp">${h}</h3><p>${p}</p>${i === 0 ? `<ul class="sc-chips" aria-label="Instagram, TikTok">${k.chips.map((c) => `<li>${c}</li>`).join('')}</ul>` : ''}${href ? `<a class="more" href="${href}">${mer}</a>` : ''}</div><div class="sc-scene">${telefon[i] ?? ''}${(mat[i] ?? mat[0]).map((m, j) => m.replace('class="mat ', `class="mat m${j + 1} `)).join('')}</div></article>`).join('');
-  return `${MERKE}<section class="step-cards" aria-labelledby="slik"><div class="step-cards-hode"><p class="eyebrow">${k.eyebrow}</p><h2 class="disp" id="slik">${k.h2}</h2></div>${kortHtml}</section>${MERKE_SLUTT}`;
+  return `<!-- app-uttrykk:kort --><section class="step-cards" aria-labelledby="slik"><div class="step-cards-hode"><p class="eyebrow">${k.eyebrow}</p><h2 class="disp" id="slik">${k.h2}</h2></div>${kortHtml}</section>${'<!-- app-uttrykk:kort-slutt -->'}`;
 }
 
 
@@ -113,7 +113,7 @@ export function bunnKolonner(lang) {
   return `${MERKE}<div class="f-kolonner">${kol(e.produkt, ['oppskrifts-app', 'importer-oppskrifter', 'ukemeny', 'handleliste', 'spiskammer'].map(lenke).join(''))}${kol(e.laer, `<li><a href="${BLOGGROT[lang]}">${e.blogg}</a></li>${['auto-velg-oppskriftsapp', 'instagram-oppskrifter', 'tiktok-oppskrifter'].map(lenke).join('')}`)}${kol(e.selskap, `${lenke('skapere')}${lenke('auto-logo')}${lenke('vilkar')}${lenke('personvern')}<li><a href="mailto:hei@matlyst-app.no">${e.kontakt}</a></li>`)}<div class="f-kol"><p class="f-kol-tittel">${e.folg}</p>${sosialeIkoner()}</div></div>${MERKE_SLUTT}`;
 }
 
-export const organisasjonSkjema = (lang, urler) => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Matlyst', url: 'https://matlyst-app.no/', logo: 'https://matlyst-app.no/images/icon.png', email: 'hei@matlyst-app.no', sameAs: [...SOSIALE.map((s) => s.url), urler.ios, urler.play] })}</script>`;
+export const organisasjonSkjema = (lang, urler) => `${MERKE}<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Matlyst', url: 'https://matlyst-app.no/', logo: 'https://matlyst-app.no/images/icon.png', email: 'hei@matlyst-app.no', sameAs: [...SOSIALE.map((s) => s.url), urler.ios, urler.play] })}</script>${MERKE_SLUTT}`;
 
 export function navMeny(lang) {
   const e = ETIKETT[lang];
@@ -124,29 +124,54 @@ export function navMeny(lang) {
   return `${MERKE}<div class="nav-meny"><button type="button" class="nav-meny-knapp" aria-expanded="false" aria-controls="nav-panel">${tittel}</button><div class="nav-panel" id="nav-panel" hidden><div><p class="f-kol-tittel">${e.produkt}</p><ul>${a}</ul></div><div><p class="f-kol-tittel">${e.laer}</p><ul>${b}</ul></div></div></div>${MERKE_SLUTT}`;
 }
 
+const MASKOT = {
+  nb: { eyebrow: 'Maskoten', h2: 'Møt prikken.', tekst: 'Den oransje prikken i logoen blir til alt som hører hjemme på kjøkkenet: en målestav, et termometer, et egg, en julekule.', lenke: 'Historien bak logoen' },
+  sv: { eyebrow: 'Maskoten', h2: 'Möt pricken.', tekst: 'Den orangea pricken i loggan blir till allt som hör hemma i köket: en måttstock, en termometer, ett ägg, en julgranskula.', lenke: null },
+  da: { eyebrow: 'Maskotten', h2: 'Mød prikken.', tekst: 'Den orange prik i logoet bliver til alt, der hører hjemme i køkkenet: en målestok, et termometer, et æg, en julekugle.', lenke: null },
+  en: { eyebrow: 'The mascot', h2: 'Meet the dot.', tekst: 'The orange dot in our logo turns into whatever belongs in a kitchen: a measuring scale, a thermometer, an egg, a Christmas ornament.', lenke: 'The story behind our logo' },
+};
+const MASKOT_KLIPP = [
+  ['ml-skala', 'ml. with the dot as a milliliter scale'], ['termometer-180', 'ml. with the dot as a thermometer'], ['egg', 'ml. with the dot as an egg'], ['julekule', 'ml. with the dot as a Christmas ornament'],
+];
+const MASKOT_ALT = {
+  nb: ['ml. med prikken som milliliter-skala', 'ml. med prikken som termometer', 'ml. med prikken som egg', 'ml. med prikken som julekule'],
+  sv: ['ml. med pricken som milliliterskala', 'ml. med pricken som termometer', 'ml. med pricken som ägg', 'ml. med pricken som julgranskula'],
+  da: ['ml. med prikken som milliliterskala', 'ml. med prikken som termometer', 'ml. med prikken som æg', 'ml. med prikken som julekugle'],
+  en: MASKOT_KLIPP.map(([, a]) => a),
+};
+export function maskotBand(lang) {
+  const t = MASKOT[lang];
+  const lenkeSti = t.lenke ? stiFor('auto-logo', lang) : null;
+  const klipp = MASKOT_KLIPP.map(([fil], i) => `<figure><video muted loop playsinline preload="none" poster="/images/maskot/ml-${fil}-poster.webp" width="720" height="360" aria-label="${MASKOT_ALT[lang][i]}" data-autoplay><source src="/images/maskot/ml-${fil}.mp4" type="video/mp4"></video></figure>`).join('');
+  return `${MERKE}<section class="maskot-band" aria-labelledby="maskot"><div class="maskot-tekst"><p class="eyebrow">${t.eyebrow}</p><h2 class="disp" id="maskot">${t.h2}</h2><p>${t.tekst}</p>${lenkeSti ? `<a class="more" href="${lenkeSti}">${t.lenke}</a>` : ''}</div><div class="maskot-klipp">${klipp}</div></section>${MERKE_SLUTT}`;
+}
+
+const STRIPP = new RegExp(`${MERKE}[\\s\\S]*?${MERKE_SLUTT}`, 'gu');
+
 export function behandle(html, sti) {
-  if (html.includes('data-app-uttrykk') || erNoindex(html)) return html;
+  if (erNoindex(html)) return html;
   const lang = sprakFra(html);
   if (!TEKSTER[lang]) return html;
-  const hjemsprak = HJEM[sti];
   const urler = butikk(html);
   if (!urler.ios || !urler.play) return html;
-  let ut = html;
+  const hjemsprak = HJEM[sti];
+  // Alle merkede blokker (meny, knapp, bunntekst, maskotbånd, nedlastingslinje, skjema) skrives på nytt hver gang.
+  let ut = html.replace(STRIPP, '').replace(/ data-app-uttrykk="1"/u, '');
   ut = ut.replace(/(<div class="nav-right">)([\s\S]*?)(<\/div>)/u, (m, a, mid, b) => `${a}${navMeny(lang)}${mid}${nedlastingsKnapp(lang, urler)}${b}`);
   if (hjemsprak) {
-    ut = ut.replace(/<header class="hero([^"]*)"([^>]*)>([\s\S]*?)<\/header>/u, (m, k, rest, inn) => `<header class="hero${k} has-stage"${rest}>${inn}${scene(lang)}</header>`);
+    if (!/<header class="hero[^"]*has-stage/u.test(ut)) ut = ut.replace(/<header class="hero([^"]*)"([^>]*)>([\s\S]*?)<\/header>/u, (m, k, rest, inn) => `<header class="hero${k} has-stage"${rest}>${inn}${scene(lang)}</header>`);
     ut = ut.replace(/<section class="locale-grid"[^>]*>([\s\S]*?)<\/section>/u, (m, inn) => {
       const kort = [...inn.matchAll(kortRegex)].map(([, h, p, href, mer]) => [h, p, href, mer]);
       return kort.length ? rader(lang, kort) : m;
     });
+    ut = ut.replace(/<section class="house"/u, `${maskotBand(lang)}<section class="house"`);
+    ut = ut.replace('</head>', `${organisasjonSkjema(lang, urler)}\n</head>`);
   }
-  // Logo (ml.) foran ordmerket, apple-touch-icon, bunntekst med kolonner og sosiale lenker.
   ut = ut.replace(/(<a [^>]*class="brand"[^>]*>)(?!<img)/gu, '$1<img class="brand-ml" src="/images/icon-64.png" width="28" height="28" alt="">');
   if (!ut.includes('apple-touch-icon')) ut = ut.replace(/(<link rel="icon"[^>]*>)/u, '$1\n<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">');
   ut = ut.replace(/<footer>/u, `<footer>${bunnKolonner(lang)}`);
-  if (hjemsprak) ut = ut.replace('</head>', `${organisasjonSkjema(lang, urler)}\n</head>`);
   ut = ut.replace('</body>', `${nedlastingsLinje(lang, urler)}</body>`);
-  return ut.replace('<body', '<body data-app-uttrykk="1"');
+  return ut;
 }
 
 function htmlFiler(mappe) {
