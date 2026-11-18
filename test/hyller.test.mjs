@@ -1,11 +1,31 @@
 import assert from 'node:assert/strict';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { HYLLER, synligeLenker } from '../scripts/hyller.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
+const SKJULTE = ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'];
+
+// Leser de seks hyllene ut av menyen i det godkjente prototypet. Kaster hvis noe mangler.
+function hyllerFraPrototyp() {
+  const html = readFileSync(join(rot, 'docs/superpowers/prototyper/2026-11-18-forside.html'), 'utf8');
+  const start = html.indexOf('<nav class="panel" id="panel"');
+  assert.ok(start > -1, 'fant ikke nav.panel i prototypet');
+  const slutt = html.indexOf('</nav>', start);
+  assert.ok(slutt > start, 'fant ikke slutten på nav.panel');
+  const blokker = html.slice(start, slutt).split('<div class="fag">').slice(1);
+  assert.equal(blokker.length, 6, 'prototypet skal ha seks hyller');
+  return blokker.map((b) => {
+    const navn = /<button[^>]*class="fagknapp"[^>]*>.*?<span>([^<]+)<\/span>/s.exec(b)?.[1];
+    const src = /<img class="flis" src="([^"]+)"/.exec(b)?.[1];
+    assert.ok(navn && src, 'hylle uten navn eller flis i prototypet');
+    const lenker = [...b.matchAll(/<li><a href="[^"]*"><span>([^<]+)<\/span><\/a><\/li>/g)].map((m) => m[1]);
+    assert.ok(lenker.length > 0, `${navn}: ingen lenker i prototypet`);
+    return { navn, flis: src.split('/').pop(), lenker };
+  });
+}
 
 test('bokmål har de seks hyllene i specens rekkefølge', () => {
   assert.deepEqual(HYLLER.nb.map((h) => h.navn), ['Appen', 'Lagre oppskrifter', 'Middag', 'Verktøy', 'Kjøkkentips', 'Matlyst']);
@@ -22,7 +42,7 @@ test('hver synlige lenke peker på en side som finnes', () => {
 test('de seks kalkulatorene som ikke finnes, vises ikke', () => {
   const verktoy = HYLLER.nb.find((h) => h.id === 'verktoy');
   const manglerSider = verktoy.lenker.filter((l) => l.finnes === false).map((l) => l.tekst);
-  for (const tekst of ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær']) assert.ok(manglerSider.includes(tekst), tekst);
+  assert.deepEqual(manglerSider.slice(0, 6), ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær']);
   assert.ok(!synligeLenker(verktoy).some((l) => l.finnes === false));
 });
 
@@ -34,4 +54,25 @@ test('ingen hylle sier kopper i synlig tekst', () => {
 test('hver hylle har en flis og unike id-er', () => {
   assert.equal(new Set(HYLLER.nb.map((h) => h.id)).size, 6);
   for (const h of HYLLER.nb) assert.match(h.flis, /^[\w-]+\.webp$/);
+});
+
+test('hyllene er identiske med prototypet: navn, flis og lenketekster i rekkefølge', () => {
+  const proto = hyllerFraPrototyp();
+  assert.deepEqual(
+    HYLLER.nb.map((h) => ({ navn: h.navn, flis: h.flis, lenker: h.lenker.map((l) => l.tekst) })),
+    proto,
+  );
+});
+
+test('nøyaktig disse syv lenkene er skjult', () => {
+  const skjulte = HYLLER.nb.flatMap((h) => h.lenker.filter((l) => l.finnes === false).map((l) => l.tekst));
+  assert.deepEqual(skjulte, SKJULTE);
+});
+
+test('synligeLenker beholder alt unntatt de skjulte, 33 totalt', () => {
+  const proto = hyllerFraPrototyp();
+  HYLLER.nb.forEach((h, i) => {
+    assert.deepEqual(synligeLenker(h).map((l) => l.tekst), proto[i].lenker.filter((t) => !SKJULTE.includes(t)), h.navn);
+  });
+  assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 33);
 });
