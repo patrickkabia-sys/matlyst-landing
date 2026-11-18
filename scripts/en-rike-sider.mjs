@@ -2,6 +2,12 @@
 // tynne siden i en-appsider.mjs med samme path: `rik` (ferdig HTML med svar, innholdsfortegnelse
 // og seksjoner), nye FAQ-svar og en ny tittel. Fakta kommer fra funksjonssjekken 18.11.2026;
 // alt som ikke er bekreftet står ikke her.
+import { side as thanksgiving } from './en-hoytider/thanksgiving.mjs';
+import { side as thanksgivingLeftovers } from './en-hoytider/thanksgiving-leftovers.mjs';
+import { side as christmasDinner } from './en-hoytider/christmas-dinner.mjs';
+import { side as hanukkah } from './en-hoytider/hanukkah.mjs';
+import { side as newYearsEve } from './en-hoytider/new-years-eve.mjs';
+import { side as friendsgiving } from './en-hoytider/friendsgiving.mjs';
 import { animasjon, byggRik, founder, scenario, scenarioNotat, skjerm, telefoner } from './rik-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
@@ -501,4 +507,5 @@ export const rikeSider = {
     ],
     cta: 'Try it with your own recipes',
   },
+  ...Object.fromEntries(Object.entries({ thanksgiving, 'thanksgiving-leftovers': thanksgivingLeftovers, 'christmas-dinner': christmasDinner, hanukkah, 'new-years-eve': newYearsEve, friendsgiving }).filter(([, v]) => v).map(([k, v]) => [`holidays/${k}/`, v])),
 };
