@@ -1,2 +1,16 @@
 exclude:
   - test-results
+  - docs
+  - qa
+  - seo
+  - seo-data
+  - seo-motor
+  - scripts
+  - test
+  - blogg-kilde
+  - LOCALE-READINESS.md
+  - SEO-SEARCH-CONSOLE.md
+  - locale-readiness.json
+  - package.json
+  - package-lock.json
+  - playwright.config.mjs
