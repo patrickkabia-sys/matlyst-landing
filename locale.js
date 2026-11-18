@@ -77,6 +77,7 @@
     "/en/landleys-kok/": {"nb": "/importer-fra-landleys-kok/", "sv": "/sv/landleys-kok/", "da": "/da/landleys-kok/", "en": "/en/landleys-kok/"},
     "/en/matprat/": {"nb": "/importer-fra-matprat/", "sv": "/sv/matprat/", "da": "/da/matprat/", "en": "/en/matprat/"},
     "/en/meal-plan-app/": {"nb": "/ukemeny/", "sv": "/sv/veckomeny-app/", "da": "/da/madplan-app/", "en": "/en/meal-plan-app/"},
+    "/en/our-logo/": {"nb": "/var-logo/", "en": "/en/our-logo/"},
     "/en/pantry-app/": {"nb": "/spiskammer-app/", "sv": "/sv/skafferi-app/", "da": "/da/spisekammer-app/", "en": "/en/pantry-app/"},
     "/en/privacy/": {"nb": "/personvern.html", "sv": "/sv/integritet/", "da": "/da/privatliv/", "en": "/en/privacy/"},
     "/en/recipe-book-app/": {"nb": "/oppskriftsbok-app/", "sv": "/sv/receptbok-app/", "da": "/da/opskrifts-app/", "en": "/en/recipe-book-app/"},
@@ -144,6 +145,7 @@
     "/tiktok/": {"nb": "/tiktok/", "sv": "/sv/tiktok/", "da": "/da/tiktok/", "en": "/en/tiktok/"},
     "/tom-kjoleskapet/": {"nb": "/tom-kjoleskapet/", "sv": "/sv/tom-kylskapet/", "da": "/da/toem-koeleskabet/", "en": "/en/empty-the-fridge/"},
     "/ukemeny/": {"nb": "/ukemeny/", "sv": "/sv/veckomeny-app/", "da": "/da/madplan-app/", "en": "/en/meal-plan-app/"},
+    "/var-logo/": {"nb": "/var-logo/", "en": "/en/our-logo/"},
     "/vilkar": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/", "en": "/en/terms/"},
     "/vilkar.html": {"nb": "/vilkar.html", "sv": "/sv/villkor/", "da": "/da/vilkaar/", "en": "/en/terms/"},
   });

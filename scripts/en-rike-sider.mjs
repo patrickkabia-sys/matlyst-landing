@@ -2,6 +2,7 @@
 // tynne siden i en-appsider.mjs med samme path: `rik` (ferdig HTML med svar, innholdsfortegnelse
 // og seksjoner), nye FAQ-svar og en ny tittel. Fakta kommer fra funksjonssjekken 18.11.2026;
 // alt som ikke er bekreftet står ikke her.
+import { bildeFigur, maskotGalleri } from './rik-sider.mjs';
 import { animasjon, byggRik, founder, scenario, scenarioNotat, skjerm, telefoner } from './rik-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
@@ -402,6 +403,32 @@ const kjoperguide = byggRik({
   ],
 }).html;
 
+const ourLogo = byggRik({
+  svarTekst: 'Our logo is ml., written by hand like an item on a grocery list. ml stands for milliliter, the unit that shows up in almost every recipe. The orange dot is a small mascot that can turn into whatever the recipe needs: a measuring scale, a thermometer, an egg, a Christmas ornament, a snowflake.',
+  seksjoner: [
+    ['Why we changed the logo', p('Our first logo was a terracotta M. When my brother-in-law saw it, he said it looked like a Teams logo. I wanted a logo that belonged to food, and an M could belong to anything.')
+      + bildeFigur('/images/maskot/logo-for-etter.webp', 1100, 520, 'The old terracotta M app icon next to the new beige ml. icon with an orange dot', 'The old M on the left, the new ml. on the right.')
+      + p('We switched to the new logo in October 2026. It is the one you see in the app icon, in the header of this site, and at the end of every carousel we publish.')],
+    ['What ml. means', p('Almost every recipe measures something in milliliters: milk, stock, oil, vanilla. So ml. is a small piece of kitchen language that anyone who cooks already reads without thinking. We wrote it by hand, the way you would jot something on a shopping list, so it looks like it belongs on a kitchen counter and not on a corporate slide.')
+      + p('The name Matlyst is Norwegian for appetite. The logo is the other half of the idea: the measuring, planning side of cooking, next to the wanting.')],
+    ['The dot that turns into anything', p('The orange dot is the part that moves. In our carousels, the last slide shows ml. and the dot changes into something that fits the topic. Here are some of them.')
+      + maskotGalleri([
+        { fil: 'ml-skala', tekst: 'The orange dot turns into a milliliter scale marked 1 ml, 2 ml, and 3 ml.', bildetekst: 'A milliliter scale, for baking and small measures.' },
+        { fil: 'dl-skala', tekst: 'The orange dot turns into a deciliter scale marked 1 dl, 2 dl, and 3 dl.', bildetekst: 'A deciliter scale, for the bigger amounts.' },
+        { fil: 'termometer-180', tekst: 'The orange dot turns into a thermometer reading 180 degrees Celsius.', bildetekst: 'A thermometer, for oven and core temperatures.' },
+        { fil: 'egg', tekst: 'The orange dot turns into an egg with a zigzag crack.', bildetekst: 'An egg, for everything baked and boiled.' },
+        { fil: 'julekule', tekst: 'The orange dot turns into a Christmas ornament hanging from a thread.', bildetekst: 'A Christmas ornament, for the holidays.' },
+        { fil: 'snoflak', tekst: 'The orange dot turns into a snowflake.', bildetekst: 'A snowflake, for freezer and thawing tips.' },
+        { fil: 'krydder', tekst: 'The orange dot breaks into a trail of sprinkles, like spices.', bildetekst: 'A scatter of spices.' },
+        { fil: 'snakkeboble-en', tekst: 'The orange dot turns into a speech bubble that says EN.', bildetekst: 'A speech bubble, for translation and questions.' },
+      ])
+      + p('Each clip is the same character in a different costume. It is the dot at the end of ml. that stays orange while everything else is ink.')],
+    ['The variants', p('The logo comes in four colorways: ink on beige, cream on ink, ink on orange with a white dot, and ink on sage. The orange dot stays the one bright spot, except on orange where it turns white.')
+      + bildeFigur('/images/maskot/logo-varianter.webp', 660, 900, 'Four ml. logo variants: ink on beige, cream on black, ink on orange with a white dot, and ink on sage green, plus the ml. mark next to the word matlyst', 'The four colorways, and the mark next to the wordmark.')],
+    ['Common questions', p('Short answers to the things people ask about the logo are in the questions below.')],
+  ],
+}).html;
+
 export const rikeSider = {
   'recipe-book-app/': {
     title: 'Recipe organizer app: one home for every recipe',
@@ -500,5 +527,32 @@ export const rikeSider = {
       ['How do I move my recipes between apps?', 'Look for export in a format other apps can open, and for an import that reads other apps’ export files. Test both before you move everything.'],
     ],
     cta: 'Try it with your own recipes',
+  },
+  'our-logo/': {
+    title: 'The story behind the Matlyst logo',
+    description: 'Why Matlyst changed its logo to ml., short for milliliter, and how the orange dot became a mascot that turns into an egg, an ornament, a thermometer and more.',
+    eyebrow: 'Our logo',
+    h1: 'Why our logo is ml., and why the dot keeps changing',
+    lead: 'A hand-written ml. for milliliter, and an orange dot that turns into whatever the recipe needs.',
+    forst: 'The short version: food-related, hand-written, and a little playful.',
+    stegTittel: 'What the logo is made of',
+    steg: [
+      ['Two letters', 'ml., short for milliliter, the unit in almost every recipe.'],
+      ['Written by hand', 'Drawn the way you would write on a grocery list.'],
+      ['One orange dot', 'A mascot that turns into a scale, a thermometer, an egg, or an ornament.'],
+    ],
+    alternativ: '',
+    grense: '',
+    seksjoner: [],
+    faqTittel: 'Questions about the logo',
+    rik: ourLogo,
+    faq: [
+      ['What does ml. stand for?', 'Milliliter, the unit that appears in almost every recipe.'],
+      ['Why did Matlyst change its logo?', 'The first logo was a terracotta M that could belong to any app. The new logo is about food, which is what the app is about.'],
+      ['When did the logo change?', 'In October 2026.'],
+      ['Why is the dot orange?', 'The dot is the mascot. It stays orange while the rest of the logo is ink, and it turns into things like a thermometer, an egg, or a Christmas ornament in our carousels.'],
+      ['What does Matlyst mean?', 'Matlyst is Norwegian for appetite.'],
+    ],
+    cta: 'Meet the dot in the app',
   },
 };

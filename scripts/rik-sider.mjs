@@ -78,3 +78,13 @@ export function illustrasjon(lang, fil, tekst) {
   const mappe = lang === 'en' ? '' : `${lang}/`;
   return animasjon({ fil: `${mappe}matlyst-${fil}.mp4`, plakat: `${mappe}matlyst-${fil}-poster.webp`, bredde: 540, hoyde: 960, tekst, bildetekst: `${tekst} ${ETIKETTER[lang].illustrasjon}` });
 }
+
+// Maskot: prikken i logoen som blir til noe annet. Korte stumme løkker, 720 x 360, med plakat.
+export function maskotGalleri(klipp) {
+  const fig = ({ fil, tekst, bildetekst }) => `<figure><video controls muted loop playsinline preload="none" poster="/images/maskot/ml-${fil}-poster.webp" width="720" height="360" aria-label="${esc(tekst)}" data-autoplay><source src="/images/maskot/ml-${fil}.mp4" type="video/mp4"></video><figcaption>${bildetekst}</figcaption></figure>`;
+  return `<div class="maskot-galleri">${klipp.map(fig).join('')}</div>`;
+}
+
+export function bildeFigur(src, w, h, alt, bildetekst) {
+  return `<figure class="bilde-figur"><img src="${src}" width="${w}" height="${h}" loading="lazy" decoding="async" alt="${esc(alt)}">${bildetekst ? `<figcaption>${bildetekst}</figcaption>` : ''}</figure>`;
+}
