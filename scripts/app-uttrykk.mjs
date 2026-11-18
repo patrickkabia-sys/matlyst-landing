@@ -116,13 +116,25 @@ export function bunnKolonner(lang) {
 
 export const organisasjonSkjema = (lang, urler) => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Matlyst', url: 'https://matlyst-app.no/', logo: 'https://matlyst-app.no/images/icon.png', email: 'hei@matlyst-app.no', sameAs: [...SOSIALE.map((s) => s.url), urler.ios, urler.play] })}</script>`;
 
+const HYLLE = {
+  nb: { verktoy: 'Verktøy', meny: 'Meny', enh: 'Enhetsomregner' },
+  sv: { verktoy: 'Verktyg', meny: 'Meny', enh: 'Enhetsomvandlare' },
+  da: { verktoy: 'Værktøjer', meny: 'Menu', enh: 'Enhedsomregner' },
+  en: { verktoy: 'Tools', meny: 'Menu', enh: 'Unit converter' },
+};
+
+// Kjøkkenhylle: hver gruppe er en krukke på en trehylle, lenkene er små etiketter under.
 export function navMeny(lang) {
   const e = ETIKETT[lang];
-  const lenke = (id) => { const sti = stiFor(id, lang); return sti ? `<li><a href="${sti}">${e.id[id]}</a></li>` : ''; };
+  const h = HYLLE[lang];
+  const lenke = (id, tekst) => { const sti = stiFor(id, lang); return sti ? `<li><a href="${sti}">${tekst ?? e.id[id]}</a></li>` : ''; };
+  const krukke = (farge, tittel, innhold) => innhold ? `<div class="hylle-gruppe hylle-${farge}"><p class="hylle-krukke"><span class="hylle-lokk" aria-hidden="true"></span><span class="hylle-glass" aria-hidden="true"></span><span class="hylle-tittel">${tittel}</span></p><ul>${innhold}</ul></div>` : '';
+  const a = ['oppskrifts-app', 'importer-oppskrifter', 'ukemeny', 'handleliste', 'spiskammer'].map((id) => lenke(id)).join('');
+  const verktoy = lenke('auto-enhetsomregner', h.enh);
+  const b = `<li><a href="${BLOGGROT[lang]}">${e.blogg}</a></li>${['auto-velg-oppskriftsapp', 'instagram-oppskrifter', 'tiktok-oppskrifter'].map((id) => lenke(id)).join('')}`;
+  const sosial = SOSIALE.map((x) => `<li><a href="${x.url}" rel="noopener me">${x.navn}</a></li>`).join('');
   const tittel = { nb: 'Guider', sv: 'Guider', da: 'Guider', en: 'Guides' }[lang];
-  const a = ['oppskrifts-app', 'importer-oppskrifter', 'ukemeny', 'handleliste', 'spiskammer'].map(lenke).join('');
-  const b = `<li><a href="${BLOGGROT[lang]}">${e.blogg}</a></li>${['auto-velg-oppskriftsapp', 'instagram-oppskrifter', 'tiktok-oppskrifter'].map(lenke).join('')}`;
-  return `${MERKE}<div class="nav-meny"><button type="button" class="nav-meny-knapp" aria-expanded="false" aria-controls="nav-panel">${tittel}</button><div class="nav-panel" id="nav-panel" hidden><div><p class="f-kol-tittel">${e.produkt}</p><ul>${a}</ul></div><div><p class="f-kol-tittel">${e.laer}</p><ul>${b}</ul></div></div></div>${MERKE_SLUTT}`;
+  return `${MERKE}<div class="nav-meny"><button type="button" class="nav-meny-knapp" aria-expanded="false" aria-controls="nav-panel" aria-label="${h.meny}"><span class="nav-meny-tekst">${tittel}</span></button><div class="nav-panel" id="nav-panel" hidden>${krukke('terracotta', e.produkt, a)}${krukke('honning', h.verktoy, verktoy)}${krukke('salvie', e.laer, b)}${krukke('plomme', e.folg, sosial)}</div></div>${MERKE_SLUTT}`;
 }
 
 export function behandle(html, sti) {
