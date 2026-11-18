@@ -39,7 +39,7 @@ const recipeBookApp = (() => {
         + animasjon({ fil: 'matlyst-cook-mode-timer-from-step.mp4', plakat: 'matlyst-cook-mode-timer-from-step-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Cook mode suggesting a 25 minute timer from the step text, then the timer counting down.', bildetekst: 'A timer suggested from the step text.' })],
       ['Scale a recipe for more or fewer people', p('Change the number of servings from 1 to 20 and every amount scales with it. Scaling is linear, so check eggs, salt, and leavening yourself when you bake, because they don’t always scale in a straight line.')
         + animasjon({ fil: 'matlyst-recipe-servings-scale-4-to-6.mp4', plakat: 'matlyst-recipe-servings-scale-4-to-6-poster.webp', bredde: 540, hoyde: 1174, tekst: 'A recipe scaled from 4 servings to 6, with all ingredient amounts increasing.', bildetekst: 'The same recipe, 4 servings to 6.' })],
-      ['Four situations, and what to do', scenarioNotat
+      ['Four situations, and what to do', scenarioNotat()
         + scenario('Say you saw a TikTok where the amounts are only spoken', {
           situasjon: 'A creator says “a good splash of soy and about two tablespoons of honey,” and the caption is just emojis.',
           galt: 'You screenshot the video, never rewatch it, and lose the recipe.',
@@ -142,7 +142,7 @@ const instagram = byggRik({
       + '<li><strong>Adapt it.</strong> With Ask Matlyst, a Pro feature, you can ask for a vegan, quicker, or smaller version and save it as a copy.</li>'
       + '<li><strong>Take it with you.</strong> Export every recipe for free as a Matlyst file or HTML.</li></ul>'
       + p('Matlyst is free to start, with 5 imports per calendar month. Matlyst Pro adds more imports and photo import.')],
-    ['Four situations, and what to do', scenarioNotat
+    ['Four situations, and what to do', scenarioNotat()
       + scenario('Say the caption ends with “… more”', {
         situasjon: 'You see a pasta bake, tap, and the caption is cut off after the ingredients.',
         galt: 'You save the post and later find half a recipe.',
@@ -194,7 +194,7 @@ const tiktok = byggRik({
       + '<li><strong>Translated names.</strong> If the caption was in another language, the recipe is translated to English. Check ingredient names you don’t recognize.</li></ul>'
       + p('Matlyst uses AI to read and translate recipes, and AI can make mistakes. Read before you cook.')],
     ['After you save', p('The recipe is now a normal Matlyst recipe. Scale it from 1 to 20 servings, add it to your <a href="/en/meal-plan-app/">meal plan</a>, and send the ingredients to your <a href="/en/shopping-list/">grocery list</a>. Open it in cook mode for a checklist and timers suggested from the steps. The free plan includes 5 imports per calendar month, and Matlyst Pro adds more.')],
-    ['Four situations, and what to do', scenarioNotat
+    ['Four situations, and what to do', scenarioNotat()
       + scenario('Say a 30 second video shows the amounts only on screen', {
         situasjon: 'The amounts flash by and are not in the caption.',
         galt: 'You squint, miss one, and guess.',
@@ -265,7 +265,7 @@ const pantry = byggRik({
       + '</tbody></table></div>'
       + p('Source: <a href="https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts">FoodSafety.gov, cold food storage chart</a>, last reviewed September 19, 2023. Freezer times are for quality only. Food kept continuously at 0°F (−18°C) stays safe.')
       + p('One more habit from professional kitchens: raw meat goes on the lowest shelf, below food that won’t be cooked again, so nothing can drip onto it. As a refrigeration technician I saw it done on purpose, every day. It costs nothing, and it works.')],
-    ['Four situations, and what to do', scenarioNotat
+    ['Four situations, and what to do', scenarioNotat()
       + scenario('Say you have half a grilled chicken, spinach, and rice', {
         situasjon: 'It’s 6 p.m. and nothing seems to “add up.”',
         galt: 'You order takeout and the chicken goes to the bin on Friday.',
@@ -308,7 +308,7 @@ const shopping = byggRik({
     ['Plan first, shop once', p('A grocery list is only as good as the plan behind it. Put the week’s dinners on the <a href="/en/meal-plan-app/">meal plan</a>, add the whole week to the grocery list, and do one trip instead of three. If you want the bigger picture of saving, organizing, and cooking recipes, see the <a href="/en/recipe-book-app/">recipe organizer app</a>.')],
     ['Skip what you already have', p('Items already in your <a href="/en/pantry-app/">pantry</a> start unchecked on the list. That’s a reminder, not a rule: you see what you already have before you buy a second jar. Check the pantry before you shop, and update it when you cook.')],
     ['Share the list with your household', p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the weekly menu, and the pantry are shared and update live for everyone. One person plans, another shops, and the person at the store checks things off for everyone.')],
-    ['Three situations, and what to do', scenarioNotat
+    ['Three situations, and what to do', scenarioNotat()
       + scenario('Say you’re planning five dinners for a family of four', {
         situasjon: 'One budget, one trip to the store.',
         galt: 'Two recipes both need an onion and you buy three.',
@@ -366,7 +366,7 @@ const kjoperguide = byggRik({
       + '<li><strong>Pretending to read video.</strong> Many creators only say the amounts out loud. An app should tell you when it can’t read them.</li>'
       + '<li><strong>Unit surprises.</strong> Some apps convert silently and round amounts in ways that wreck a recipe.</li>'
       + '<li><strong>No way out.</strong> Your recipe collection is years of work. Make sure you can take it with you.</li></ul>'],
-    ['Four situations, and what to look for', scenarioNotat
+    ['Four situations, and what to look for', scenarioNotat()
       + scenario('Say you save recipes mostly from Instagram and TikTok', {
         situasjon: 'Your Saved tabs are full and you can’t find anything.',
         galt: 'You choose an app that only saves website links.',

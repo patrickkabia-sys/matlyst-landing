@@ -15,6 +15,21 @@ for (const verdi of Object.values(manifest)) {
   }
 }
 
+export const ETIKETTER = {
+  en: { toc: 'On this page', rader: ['Situation', 'What goes wrong', 'What to do', 'The numbers', 'In Matlyst'],
+    notat: 'Scenarios marked “Say you …” are examples we made up to show how it works. They are not customer stories.',
+    illustrasjon: 'A simplified illustration, not a screen recording.' },
+  nb: { toc: 'På denne siden', rader: ['Situasjon', 'Hva som går galt', 'Hva du gjør', 'Tallene', 'I Matlyst'],
+    notat: 'Scenarioer som begynner med «Tenk deg at du …» er eksempler vi har laget for å vise hvordan det fungerer. De er ikke kundehistorier.',
+    illustrasjon: 'En forenklet illustrasjon, ikke et skjermopptak.' },
+  sv: { toc: 'På den här sidan', rader: ['Situation', 'Vad som går fel', 'Vad du gör', 'Siffrorna', 'I Matlyst'],
+    notat: 'Scenarier som börjar med ”Säg att du …” är exempel vi har hittat på för att visa hur det fungerar. De är inte kundberättelser.',
+    illustrasjon: 'En förenklad illustration, inte en skärminspelning.' },
+  da: { toc: 'På denne side', rader: ['Situation', 'Hvad der går galt', 'Hvad du gør', 'Tallene', 'I Matlyst'],
+    notat: 'Scenarier, der begynder med ”Sig, at du …”, er eksempler, vi selv har fundet på for at vise, hvordan det fungerer. De er ikke kundehistorier.',
+    illustrasjon: 'En forenklet illustration, ikke en skærmoptagelse.' },
+};
+
 const esc = (s) => s.replace(/&/gu, '&amp;').replace(/"/gu, '&quot;').replace(/</gu, '&lt;');
 
 export function skjerm(base, bildetekst) {
@@ -35,23 +50,31 @@ export function animasjon({ fil, plakat, bredde, hoyde, tekst, bildetekst }) {
 
 export const svar = (tekst) => `<div class="answer"><p>${tekst}</p></div>`;
 
-export function scenario(tittel, { situasjon, galt, gjor, tall, matlyst }) {
-  const rader = [['Situation', situasjon], ['What goes wrong', galt], ['What to do', gjor], tall ? ['The numbers', tall] : null, ['In Matlyst', matlyst]].filter(Boolean);
+export function scenario(tittel, { situasjon, galt, gjor, tall, matlyst }, lang = 'en') {
+  const [a, b, c, d, e] = ETIKETTER[lang].rader;
+  const rader = [[a, situasjon], [b, galt], [c, gjor], tall ? [d, tall] : null, [e, matlyst]].filter(Boolean);
   return `<div class="scenario"><h3>${tittel}</h3><dl>${rader.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div>`;
 }
 
-export const scenarioNotat = '<p class="scenario-note">Scenarios marked “Say you …” are examples we made up to show how it works. They are not customer stories.</p>';
+export const scenarioNotat = (lang = 'en') => `<p class="scenario-note">${ETIKETTER[lang].notat}</p>`;
 
 export function founder(avsnitt, signatur) {
   return `<div class="founder">${avsnitt.map((p) => `<p>${p}</p>`).join('')}<p class="by">${signatur}</p></div>`;
 }
 
-const slugg = (tekst) => tekst.toLowerCase().replace(/&[a-z]+;/gu, '').replace(/[^a-z0-9]+/gu, '-').replace(/^-|-$/gu, '');
+const TEGN = { å: 'a', ä: 'a', æ: 'ae', ø: 'o', ö: 'o', é: 'e', è: 'e' };
+const slugg = (tekst) => tekst.toLowerCase().replace(/&[a-z]+;/gu, '').replace(/[åäæøöéè]/gu, (c) => TEGN[c]).replace(/[^a-z0-9]+/gu, '-').replace(/^-|-$/gu, '');
 
 // rik: [[h2, html], ...]. Gir prose-HTML med id på hver H2 og en innholdsfortegnelse.
-export function byggRik({ svarTekst, seksjoner }) {
+export function byggRik({ svarTekst, seksjoner, lang = 'en' }) {
   const med = seksjoner.map(([h, body]) => ({ h, id: slugg(h), body }));
-  const toc = `<div class="toc" role="navigation" aria-label="On this page"><div class="toc-title">On this page</div><ol>${med.map(({ h, id }) => `<li><a href="#${id}">${h}</a></li>`).join('')}</ol></div>`;
+  const toc = `<div class="toc" role="navigation" aria-label="${ETIKETTER[lang].toc}"><div class="toc-title">${ETIKETTER[lang].toc}</div><ol>${med.map(({ h, id }) => `<li><a href="#${id}">${h}</a></li>`).join('')}</ol></div>`;
   const innhold = med.map(({ h, id, body }) => `<h2 id="${id}">${h}</h2>${body}`).join('\n');
   return { toc, html: `${svar(svarTekst)}\n${toc}\n${innhold}` };
+}
+
+// Veiledningsillustrasjon (egen grafikk, fiktivt eksempel) med lokal video og plakat. Filene ligger i /images/en-guide/<lang>/ for nordiske språk.
+export function illustrasjon(lang, fil, tekst) {
+  const mappe = lang === 'en' ? '' : `${lang}/`;
+  return animasjon({ fil: `${mappe}matlyst-${fil}.mp4`, plakat: `${mappe}matlyst-${fil}-poster.webp`, bredde: 540, hoyde: 960, tekst, bildetekst: `${tekst} ${ETIKETTER[lang].illustrasjon}` });
 }

@@ -7,12 +7,9 @@ import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, byggLocalePageMap, filFo
 import { lokaleImportGuider } from './import-guider-lokale.mjs';
 import { engelskeFunksjonssider, kildesider } from './undersider-alle-sprak.mjs';
 import { amerikanskeAppsider as tynneAmerikanskeAppsider } from './en-appsider.mjs';
-import { rikeSider, RIK_DATO } from './en-rike-sider.mjs';
-const tynneStier = new Set(tynneAmerikanskeAppsider.map((side) => side.path));
-const amerikanskeAppsider = [
-  ...tynneAmerikanskeAppsider.map((side) => ({ ...side, ...(rikeSider[side.path] ?? {}) })),
-  ...Object.entries(rikeSider).filter(([sti, side]) => !tynneStier.has(sti) && side.eyebrow && side.steg).map(([path, side]) => ({ path, ...side })),
-];
+import { RIK_DATO, RIKE, medRik, rikeAdresser, utvid } from './rike-sider-register.mjs';
+const amerikanskeAppsider = utvid('en', tynneAmerikanskeAppsider);
+const rikeSider = RIKE.en;
 import { svenskeAppsider, danskeAppsider } from './nordiske-appsider.mjs';
 import { appCta } from './app-cta.mjs';
 import { middagssider } from './middagssider.mjs';
@@ -37,8 +34,8 @@ import {
 
 // Produktsidene med skjermbilde-CTA erstatter de tynne funksjonssidene på samme sti.
 const appsider = {
-  sv: [...svenskeAppsider, ...middagssider.sv],
-  da: [...danskeAppsider, ...middagssider.da],
+  sv: utvid('sv', [...svenskeAppsider, ...middagssider.sv]),
+  da: utvid('da', [...danskeAppsider, ...middagssider.da]),
   en: [...amerikanskeAppsider, ...middagssider.en],
 };
 const appsideStier = Object.fromEntries(Object.entries(appsider).map(([lang, sider]) => [lang, new Set(sider.map((v) => v.path))]));
@@ -841,9 +838,8 @@ for (const lang of SPRAK) {
     else write(sti, legalPage(lang,key));
   }
   for (const row of featurePages[lang] ?? []) if (!appsideStier[lang]?.has(row[0])) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
-  const medRik = (v) => (lang === 'en' ? { ...v, ...(rikeSider[v.path] ?? {}) } : v);
-  for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang, medRik(v)));
-  for (const v of lokaleImportGuider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
+  for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang, medRik(lang, v)));
+  for (const v of lokaleImportGuider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang, medRik(lang, v)));
   for (const v of appsider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
   for (const row of sourcePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
   for (const row of supportPages[lang] ?? []) {
@@ -927,7 +923,7 @@ const sistEndretSide = {
   'https://matlyst-app.no/en/delete-account/': '2026-10-27',
   ...Object.fromEntries(Object.entries(appsider).flatMap(([lang, sider]) => sider.map((v) => [`https://matlyst-app.no/${lang}/${v.path}`, '2026-10-28']))),
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => [BLOGGROT[lang], ...bloggArtikler(lang).map((a) => a.path)].map((sti) => [`https://matlyst-app.no${sti}`, '2026-10-28']))),
-  ...Object.fromEntries(Object.keys(rikeSider).map((sti) => [`https://matlyst-app.no/en/${sti}`, RIK_DATO])),
+  ...Object.fromEntries(rikeAdresser().map((sti) => [`https://matlyst-app.no${sti}`, RIK_DATO])),
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => autoArtikler(lang).map((a) => [`https://matlyst-app.no${a.path}`, a.auto.publisert]))),
 };
 for (const lang of SPRAK) {
