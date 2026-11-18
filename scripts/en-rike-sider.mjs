@@ -2,6 +2,12 @@
 // tynne siden i en-appsider.mjs med samme path: `rik` (ferdig HTML med svar, innholdsfortegnelse
 // og seksjoner), nye FAQ-svar og en ny tittel. Fakta kommer fra funksjonssjekken 18.11.2026;
 // alt som ikke er bekreftet står ikke her.
+import { ekstra as ekstraBok } from './en-ekstra/recipe-book-app.mjs';
+import { ekstra as ekstraInstagram } from './en-ekstra/instagram.mjs';
+import { ekstra as ekstraTiktok } from './en-ekstra/tiktok.mjs';
+import { ekstra as ekstraPantry } from './en-ekstra/pantry.mjs';
+import { ekstra as ekstraShopping } from './en-ekstra/shopping-list.mjs';
+import { ekstra as ekstraGuide } from './en-ekstra/kjoperguide.mjs';
 import { animasjon, byggRik, founder, scenario, scenarioNotat, skjerm, telefoner } from './rik-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
@@ -9,7 +15,7 @@ export const RIK_DATO = '2026-11-18';
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
 
 const recipeBookApp = (() => {
-  const { html } = byggRik({
+  const { html } = byggRik({ ekstra: ekstraBok,
     svarTekst: 'Matlyst is a recipe organizer app. Share a recipe from a website, an Instagram post, or a TikTok, or take a photo of one, and it becomes a clean list of ingredients and steps you can search, scale, plan, and shop from. It’s free to start.',
     seksjoner: [
       ['Why I built it', founder([
@@ -102,7 +108,7 @@ const recipeBookApp = (() => {
 
 const ill = (fil, tekst) => animasjon({ fil: `matlyst-${fil}.mp4`, plakat: `matlyst-${fil}-poster.webp`, bredde: 540, hoyde: 960, tekst, bildetekst: `${tekst} A simplified illustration, not a screen recording.` });
 
-const instagram = byggRik({
+const instagram = byggRik({ ekstra: ekstraInstagram,
   svarTekst: 'Open the post or reel, tap Share, choose Matlyst, and check the draft recipe it builds from the caption. Save it, and it becomes a searchable recipe with ingredients and steps, not a bookmark you will never find again. This works when the recipe is written in the caption.',
   seksjoner: [
     ['Three ways people save Instagram recipes, and where each breaks', p('Most people use one of these. All three work for a while, and then you need the recipe.')
@@ -175,7 +181,7 @@ const instagram = byggRik({
   ],
 }).html;
 
-const tiktok = byggRik({
+const tiktok = byggRik({ ekstra: ekstraTiktok,
   svarTekst: 'Open the TikTok, tap Share, choose Matlyst, and review the draft recipe built from the video’s caption. Save it, and you can search it, scale it, and shop from it. This works when the recipe is written in the caption. Short links like vm.tiktok.com work too.',
   seksjoner: [
     ['Why TikTok’s own Favorites are not enough', p('Favorites keep the video, not the recipe. You rewatch 40 seconds every time you cook, you can’t search by ingredient, and if the creator deletes the video, your recipe is gone.')],
@@ -223,7 +229,7 @@ const tiktok = byggRik({
   ],
 }).html;
 
-const pantry = byggRik({
+const pantry = byggRik({ ekstra: ekstraPantry,
   svarTekst: 'Add what is in your kitchen, and Matlyst shows what you have, how many days are left on each item, and which of your saved recipes use it. When you add a recipe to your grocery list, items you already have in the pantry are unselected and marked “In your pantry,” so you don’t buy a second jar.',
   seksjoner: [
     ['Why a pantry list helps', p('Throwing food away is usually a memory problem, not a cooking problem. You forget the spinach exists, the leftovers get pushed to the back, and a week later it’s the bin. Writing it down once means you remember it.')
@@ -295,7 +301,7 @@ const pantry = byggRik({
   ],
 }).html;
 
-const shopping = byggRik({
+const shopping = byggRik({ ekstra: ekstraShopping,
   svarTekst: 'Add a recipe, or a whole planned week, to your Matlyst grocery list and the ingredients land on one list. Matching items are combined on one line, the list is sorted by store section, and items already in your pantry are unselected when you add a recipe.',
   seksjoner: [
     ['How to make a grocery list from recipes', animasjon({ fil: 'matlyst-meal-plan-to-grocery-list.mp4', plakat: 'matlyst-meal-plan-to-grocery-list-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Recipes planned for the week, then their ingredients sent to one grocery list.', bildetekst: 'From the weekly menu to one grocery list.' })
@@ -330,7 +336,7 @@ const shopping = byggRik({
   ],
 }).html;
 
-const kjoperguide = byggRik({
+const kjoperguide = byggRik({ ekstra: ekstraGuide,
   svarTekst: 'A good recipe organizer app saves recipes from the places you actually find them, makes them searchable by ingredient, scales the amounts, and connects to a meal plan and a grocery list. Test any app with five recipes from your own life before you commit. We make Matlyst, so we say where it fits and where it doesn’t.',
   seksjoner: [
     ['Who this guide is for', p('You have recipes in too many places: screenshots, bookmarks, saved reels, a notes app, a stack of printed cards. You want one place for them. This guide lists what to look for, how to test an app in ten minutes, and the mistakes people make when they choose.')
