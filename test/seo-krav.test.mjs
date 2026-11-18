@@ -84,14 +84,14 @@ test('bestilling kan senke seksjonsminimum og be om ingen FAQ', () => {
 });
 
 test('bestilling og artikkel godtas på de absolutte takene', () => {
-  const ordre = bestilling({ ord_maks: 4500, seksjoner_maks: 14, faq_maks: 10 });
+  const ordre = bestilling({ ord_maks: 8000, seksjoner_maks: 30, faq_maks: 20 });
   assert.equal(skjema.BestillingSkjema.safeParse(ordre).success, true);
-  assert.deepEqual(sjekkFast(artikkel(4500, 14, 10), { ...kontekst, bestilling: ordre }), {
+  assert.deepEqual(sjekkFast(artikkel(8000, 30, 20), { ...kontekst, bestilling: ordre }), {
     ok: true, grunner: [],
   });
 });
 
-for (const [felt, verdi, tak] of [['ord_maks', 4501, 4500], ['seksjoner_maks', 15, 14], ['faq_maks', 11, 10]]) {
+for (const [felt, verdi, tak] of [['ord_maks', 8001, 8000], ['seksjoner_maks', 31, 30], ['faq_maks', 21, 20]]) {
   test(`bestillingsskjema avviser ${felt} over absolutt tak med norsk feil`, () => {
     const resultat = skjema.BestillingSkjema.safeParse(bestilling({ [felt]: verdi }));
     assert.equal(resultat.success, false);
@@ -100,7 +100,7 @@ for (const [felt, verdi, tak] of [['ord_maks', 4501, 4500], ['seksjoner_maks', 1
   });
 }
 
-for (const [ord, seksjoner, faq, felt] of [[4501, 3, 3, 'brødtekst'], [700, 15, 3, 'seksjoner'], [700, 3, 11, 'faq']]) {
+for (const [ord, seksjoner, faq, felt] of [[8001, 3, 3, 'brødtekst'], [700, 31, 3, 'seksjoner'], [700, 3, 21, 'faq']]) {
   test(`vern avviser ${felt} over absolutt tak selv med feil bestilling`, () => {
     const romsligeGrenser = { ...grenser, brodtekstMaksOrd: 9000, seksjonerMaks: 30, faqMaks: 30 };
     const ordre = bestilling({ ord_maks: 9000, seksjoner_maks: 30, faq_maks: 30 });
@@ -161,10 +161,10 @@ test('delvis lengdemål bruker globale verdier for manglende felt', () => {
 
 test('køskjema beholder lengdemål og avviser ugyldige grenser', () => {
   const emne = ko()[0];
-  const lengdemaal = { ord_min: 4500, ord_maks: 4500, seksjoner_maks: 14, faq_maks: 10 };
+  const lengdemaal = { ord_min: 8000, ord_maks: 8000, seksjoner_maks: 30, faq_maks: 20 };
   assert.deepEqual(skjema.EmneSkjema.parse({ ...emne, lengdemaal }).lengdemaal, lengdemaal);
   for (const ugyldig of [
-    { ord_min: 4501 }, { ord_maks: 4501 }, { seksjoner_maks: 15 }, { faq_maks: 11 },
+    { ord_min: 8001 }, { ord_maks: 8001 }, { seksjoner_maks: 31 }, { faq_maks: 21 },
     { ord_min: 2000, ord_maks: 1900 }, { ord_min: 1300 }, { ord_maks: 599 },
     { seksjoner_maks: 2 }, { faq_maks: 2 }, { ord_min: -1 }, { ord_maks: 1.5 },
   ]) {
