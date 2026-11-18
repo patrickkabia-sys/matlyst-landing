@@ -49,3 +49,9 @@ test('Guider-panelet er skjult til det åpnes (hidden vinner over display)', () 
   const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
   assert.match(css, /\.nav-panel\[hidden\]\s*\{\s*display:\s*none/u);
 });
+
+test('toppen får bakgrunn ved rulling også på genererte sider (nav uten id)', () => {
+  const js = readFileSync(new URL('../site.js', import.meta.url), 'utf8');
+  const forste = js.split('\n')[0];
+  assert.match(forste, /querySelector\('body > nav'\)/u, 'site.js må finne <nav> uten id="nav", ellers renner teksten gjennom toppen');
+});

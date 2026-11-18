@@ -33,3 +33,13 @@ for (const lang of Object.keys(SITEMAPER)) {
     }
   });
 }
+
+test('bunnteksten lenker ikke til enkeltsider under en hub (ingen lenkefarm)', () => {
+  for (const lang of Object.keys(SITEMAPER)) {
+    const liste = guider(lang);
+    assert.ok(liste.length <= 40, `${lang}: ${liste.length} lenker i bunnteksten`);
+    assert.ok(!liste.some(({ sti }) => /\/(tools|verktoy|verktyg|vaerktoejer)\/[a-z-]+-(to|til|till)-/u.test(sti)), `${lang}: omregner i bunnteksten`);
+  }
+  assert.ok(guider('en').some(({ sti }) => sti === '/en/tools/unit-converter/'), 'huben skal stå i bunnteksten');
+  assert.ok(guider('en').some(({ sti }) => sti === '/en/holidays/'), 'høytidshuben skal stå i bunnteksten');
+});

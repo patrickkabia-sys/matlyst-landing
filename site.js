@@ -1,4 +1,4 @@
-const nav = document.getElementById('nav');
+const nav = document.getElementById('nav') || document.querySelector('body > nav');
 if (nav) { const tilstand = () => nav.classList.toggle('scrolled', scrollY > 20); tilstand(); addEventListener('scroll', tilstand, { passive: true }); }
 
 const io = new IntersectionObserver((es) => {
