@@ -437,6 +437,15 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .nav-meny-knapp:focus-visible{outline:2px solid var(--terracotta);outline-offset:2px}
 .nav-panel{position:absolute;right:0;top:calc(100% + 10px);z-index:120;display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:28px;padding:24px 28px;min-width:440px;background:var(--cream);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 60px rgba(20,14,9,.16)}
 .nav-panel ul{list-style:none;margin:0;padding:0}
+.nav-panel[hidden]{display:none}
 .nav-panel a{display:flex;align-items:center;min-height:34px;font-size:15px;color:var(--ink-soft);text-decoration:none}
 .nav-panel a:hover,.nav-panel a:focus-visible{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){.nav-meny{display:none}}
+
+/* Maskot-galleri og bildefigurer (18.11.2026) */
+.prose .maskot-galleri{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:var(--s-3);margin:var(--s-4) 0}
+.prose .maskot-galleri figure{margin:0;text-align:left}
+.prose .maskot-galleri video{display:block;width:100%;max-width:none;height:auto;aspect-ratio:2/1;margin:0;border-radius:20px;box-shadow:none;background:#E6DAC3}
+.prose .maskot-galleri figcaption{margin-top:10px;font-size:14px;line-height:1.45;color:var(--ink-soft)}
+.prose .bilde-figur{margin:var(--s-4) 0;text-align:left}
+.prose .bilde-figur img{width:100%;max-width:560px;height:auto;margin:0;border-radius:22px;box-shadow:none}

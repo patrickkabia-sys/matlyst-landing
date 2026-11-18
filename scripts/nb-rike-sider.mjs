@@ -2,7 +2,7 @@
 // felt per path som legges oppå den tynne siden, eller en ny side når path ikke finnes fra før.
 // Skrevet fra meningen etter matlyst-sprak, ikke oversatt. Fakta følger de engelske sidene (funksjonssjekken 18.11.2026).
 // Matsikkerhetstall er utelatt med vilje: Mattilsynets sider kunne ikke leses (HTTP 429), og vi bruker ingen tall vi ikke har hentet derfra.
-import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
+import { bildeFigur, byggRik, founder, illustrasjon, maskotGalleri, scenario, scenarioNotat } from './rik-sider.mjs';
 
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
 const sn = () => scenarioNotat('nb');
@@ -385,6 +385,33 @@ const kjoperguide = byggRik({
   ],
 }).html;
 
+const varLogo = byggRik({
+  lang: 'nb',
+  svarTekst: 'Logoen vår er ml., skrevet for hånd som en vare på en handleliste. ml står for milliliter, enheten som står i nesten alle oppskrifter. Den oransje prikken er en liten maskot som kan bli til det oppskriften trenger: en målestav, et termometer, et egg, en julekule, et snøfnugg.',
+  seksjoner: [
+    ['Hvorfor vi byttet logo', p('Den første logoen vår var en terrakotta M. Da svogeren min så den, sa han at den lignet en Teams-logo. Jeg ville ha en logo som hørte til mat, og en M kan høre til hva som helst.')
+      + bildeFigur('/images/maskot/logo-for-etter.webp', 1100, 520, 'Det gamle terrakotta M-ikonet ved siden av det nye beige ml.-ikonet med oransje prikk', 'Gamle M til venstre, nye ml. til høyre.')
+      + p('Vi byttet til den nye logoen i oktober 2026. Det er den du ser i appikonet, i toppen av denne nettsiden og på slutten av hver karusell vi publiserer.')],
+    ['Hva ml. betyr', p('Nesten alle oppskrifter måler noe i milliliter: melk, kraft, olje, vanilje. ml. er altså litt kjøkkenspråk som alle som lager mat allerede leser uten å tenke over det. Vi skrev den for hånd, slik du ville notert noe på en handleliste, så den ser ut som den hører hjemme på kjøkkenbenken og ikke på et firmalysbilde.')
+      + p('Navnet Matlyst er et norsk ord for appetitt. Logoen er den andre halvdelen av ideen: det målende og planleggende i matlaging, ved siden av lysten.')],
+    ['Prikken som blir til alt mulig', p('Den oransje prikken er delen som beveger seg. I karusellene våre viser siste lysbilde ml., og prikken forandrer seg til noe som passer temaet. Her er noen av dem.')
+      + maskotGalleri([
+        { fil: 'ml-skala', tekst: 'Den oransje prikken blir til en milliliter-skala med 1 ml, 2 ml og 3 ml.', bildetekst: 'En milliliter-skala, for bakst og små mål.' },
+        { fil: 'dl-skala', tekst: 'Den oransje prikken blir til en desiliter-skala med 1 dl, 2 dl og 3 dl.', bildetekst: 'En desiliter-skala, for de større mengdene.' },
+        { fil: 'termometer-180', tekst: 'Den oransje prikken blir til et termometer som viser 180 grader celsius.', bildetekst: 'Et termometer, for ovn og kjernetemperatur.' },
+        { fil: 'egg', tekst: 'Den oransje prikken blir til et egg med en sikksakk-sprekk.', bildetekst: 'Et egg, for alt som bakes og kokes.' },
+        { fil: 'julekule', tekst: 'Den oransje prikken blir til en julekule som henger i en tråd.', bildetekst: 'En julekule, for høytidene.' },
+        { fil: 'snoflak', tekst: 'Den oransje prikken blir til et snøfnugg.', bildetekst: 'Et snøfnugg, for fryser og tining.' },
+        { fil: 'krydder', tekst: 'Den oransje prikken blir til en strøm av små prikker, som krydder.', bildetekst: 'En spredning av krydder.' },
+        { fil: 'snakkeboble', tekst: 'Den oransje prikken blir til en snakkeboble.', bildetekst: 'En snakkeboble, for oversettelse og spørsmål.' },
+      ])
+      + p('Hver film er den samme figuren i ny drakt. Det er prikken på slutten av ml. som holder seg oransje mens alt annet er blekk.')],
+    ['Variantene', p('Logoen finnes i fire fargevarianter: blekk på beige, krem på blekk, blekk på oransje med hvit prikk, og blekk på salvie. Den oransje prikken er det eneste lyse punktet, bortsett fra på oransje bakgrunn, der den blir hvit.')
+      + bildeFigur('/images/maskot/logo-varianter.webp', 660, 900, 'Fire ml.-logoer: blekk på beige, krem på svart, blekk på oransje med hvit prikk og blekk på salvie, og ml. ved siden av ordet matlyst', 'De fire fargevariantene, og merket ved siden av ordmerket.')],
+    ['Vanlige spørsmål', p('Korte svar på det folk spør om logoen står i spørsmålene under.')],
+  ],
+}).html;
+
 export const rikeSider = {
   'oppskriftsbok-app/': {
     title: 'Oppskriftsapp: ett sted for alle oppskriftene',
@@ -505,5 +532,32 @@ export const rikeSider = {
       ['Hvordan flytter jeg oppskriftene mellom apper?', 'Se etter eksport i et format andre apper kan åpne, og etter import som leser andre appers eksportfiler. Test begge før du flytter alt.'],
     ],
     cta: 'Prøv med dine egne oppskrifter',
+  },
+  'var-logo/': {
+    title: 'Historien bak Matlyst-logoen',
+    description: 'Hvorfor Matlyst byttet logo til ml., kort for milliliter, og hvordan den oransje prikken ble en maskot som blir til egg, julekule, termometer og mer.',
+    eyebrow: 'Vår logo',
+    h1: 'Hvorfor logoen vår er ml., og hvorfor prikken stadig forandrer seg',
+    lead: 'Et håndskrevet ml. for milliliter, og en oransje prikk som blir til det oppskriften trenger.',
+    forst: 'Kort fortalt: matrelatert, håndskrevet og litt leken.',
+    stegTittel: 'Hva logoen består av',
+    steg: [
+      ['To bokstaver', 'ml., kort for milliliter, enheten i nesten alle oppskrifter.'],
+      ['Skrevet for hånd', 'Tegnet slik du ville skrevet på en handleliste.'],
+      ['Én oransje prikk', 'En maskot som blir til en skala, et termometer, et egg eller en julekule.'],
+    ],
+    alternativ: '',
+    grense: '',
+    seksjoner: [],
+    faqTittel: 'Spørsmål om logoen',
+    rik: varLogo,
+    faq: [
+      ['Hva står ml. for?', 'Milliliter, enheten som står i nesten alle oppskrifter.'],
+      ['Hvorfor byttet Matlyst logo?', 'Den første logoen var en terrakotta M som kunne tilhøre hvilken som helst app. Den nye logoen handler om mat, som appen også gjør.'],
+      ['Når ble logoen byttet?', 'I oktober 2026.'],
+      ['Hvorfor er prikken oransje?', 'Prikken er maskoten. Den holder seg oransje mens resten av logoen er blekk, og den blir til ting som termometer, egg eller julekule i karusellene våre.'],
+      ['Hva betyr Matlyst?', 'Matlyst er et norsk ord for appetitt.'],
+    ],
+    cta: 'Møt prikken i appen',
   },
 };
