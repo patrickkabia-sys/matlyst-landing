@@ -3,7 +3,9 @@
     "hubber": {
       "lagre": {
         "hub": "/en/recipe-book-app/",
-        "tilleggshubber": ["/en/import-recipes/"],
+        "tilleggshubber": [
+          "/en/import-recipes/"
+        ],
         "eiker": [
           "/en/import-recipes-from-instagram/",
           "/en/import-recipes-from-tiktok/",
@@ -16,13 +18,16 @@
           "/en/alletiders-cookbook/"
         ],
         "planlagt": [
-          "/en/blog/choose-recipe-organizer-app/",
-          "/en/grocery-list-from-recipes/"
+          "/en/blog/choose-recipe-organizer-app/"
         ]
       },
       "planlegge": {
         "hub": "/en/meal-plan-app/",
-        "eiker": ["/en/shopping-list/", "/en/easy-dinner/", "/en/dinner-ideas/"],
+        "eiker": [
+          "/en/shopping-list/",
+          "/en/easy-dinner/",
+          "/en/dinner-ideas/"
+        ],
         "planlagt": []
       },
       "spiskammer": {
@@ -45,7 +50,9 @@
           "/en/blog/safe-internal-temperatures/",
           "/en/blog/egg-float-test/"
         ],
-        "planlagt": ["/en/tools/recipe-scaler/"]
+        "planlagt": [
+          "/en/tools/recipe-scaler/"
+        ]
       }
     }
   }
