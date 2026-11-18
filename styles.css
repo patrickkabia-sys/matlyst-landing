@@ -441,3 +441,16 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .nav-panel a{display:flex;align-items:center;min-height:34px;font-size:15px;color:var(--ink-soft);text-decoration:none}
 .nav-panel a:hover,.nav-panel a:focus-visible{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){.nav-meny{display:none}}
+
+/* App-bevis: skjermbilde eller animasjon der teksten beskriver en funksjon (Patrick 18.11.2026) */
+.prose .i-appen{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:clamp(16px,3vw,32px);align-items:center;margin:var(--s-4) 0;padding:clamp(18px,2.6vw,28px);border-radius:26px;background:var(--sand);max-width:720px}
+.prose .i-appen.i-liste{background:#EBD9A0}
+.prose .i-appen.i-plan,.prose .i-appen.i-skalering{background:#F2C9B8}
+.prose .i-appen.i-kokemodus,.prose .i-appen.i-ask{background:#CBD8C4}
+.prose .i-appen-tittel{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:14px;font-weight:600;color:var(--ink)}
+.prose .i-appen-tittel img{width:22px;height:22px;border-radius:6px;box-shadow:none;margin:0}
+.prose .i-appen-tekst p:not(.i-appen-tittel){font-size:17px;line-height:1.55;color:var(--ink);margin:0 0 12px;max-width:26em}
+.prose .i-appen .more{color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:4px}
+.prose .i-appen-media{display:flex;justify-content:center}
+.prose .i-appen .tel{display:block;width:100%;max-width:150px;height:auto;margin:0;border-radius:24px;box-shadow:0 18px 40px rgba(20,14,9,.26);background:#111}
+@media(max-width:640px){.prose .i-appen{grid-template-columns:1fr;padding:22px}.prose .i-appen-media{order:-1}.prose .i-appen .tel{max-width:170px}}
