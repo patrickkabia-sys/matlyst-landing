@@ -78,7 +78,7 @@ export function rader(lang, kort) {
     `<img class="tel" src="/images/app/${lang}/tel-03.webp" width="536" height="1108" alt="${a.handle}" loading="lazy" decoding="async">`,
     '',
   ];
-  const kortHtml = kort.map(([h, p, href, mer], i) => `<article class="step-card sc-${KORTFARGE[i] ?? 'terra'}"><div class="sc-tekst"><span class="sc-nr">${i < 3 ? `0${i + 1}` : k.pro}</span><h3 class="disp">${h}</h3><p>${p}</p>${i === 0 ? `<ul class="sc-chips" aria-label="Instagram, TikTok">${k.chips.map((c) => `<li>${c}</li>`).join('')}</ul>` : ''}${href ? `<a class="more" href="${href}">${mer}</a>` : ''}</div><div class="sc-scene">${telefon[i] ?? ''}${(mat[i] ?? mat[0]).map((m, j) => m.replace('class="mat ', `class="mat m${j + 1} `)).join('')}</div></article>`).join('');
+  const kortHtml = kort.map(([h, p, href, mer], i) => `<article class="step-card sc-${KORTFARGE[i] ?? 'terra'}" style="--i:${i}"><div class="sc-tekst"><span class="sc-nr">${i < 3 ? `0${i + 1}` : k.pro}</span><h3 class="disp">${h}</h3><p>${p}</p>${i === 0 ? `<ul class="sc-chips" aria-label="Instagram, TikTok">${k.chips.map((c) => `<li>${c}</li>`).join('')}</ul>` : ''}${href ? `<a class="more" href="${href}">${mer}</a>` : ''}</div><div class="sc-scene">${telefon[i] ?? ''}${(mat[i] ?? mat[0]).map((m, j) => m.replace('class="mat ', `class="mat m${j + 1} `)).join('')}</div></article>`).join('');
   return `${MERKE}<section class="step-cards" aria-labelledby="slik"><div class="step-cards-hode"><p class="eyebrow">${k.eyebrow}</p><h2 class="disp" id="slik">${k.h2}</h2></div>${kortHtml}</section>${MERKE_SLUTT}`;
 }
 
