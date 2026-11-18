@@ -1,5 +1,6 @@
 // Engelsk er internasjonalt (ingen region), derfor bare «en».
 import { bloggGrupper } from './blogg.mjs';
+import { allePar, parSti } from './enheter.mjs';
 
 export const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en' });
 export const SPRAKREKKEFOLGE = Object.freeze(Object.keys(SPRAKKODER));
@@ -7,6 +8,21 @@ export const SPRAKREKKEFOLGE = Object.freeze(Object.keys(SPRAKKODER));
 // Én kilde for sider som faktisk dekker samme funksjon eller hensikt.
 // x-default peker på engelsk når det finnes (besøkende med andre språk), ellers på
 // bokmål, ellers på gruppens første språk.
+// Én sidegruppe per enhetspar på tvers av språk (samme innhold, ulike adresser).
+function enhetsGrupper() {
+  const prefiks = { en: '/en/', nb: '/', sv: '/sv/', da: '/da/' };
+  const kart = new Map();
+  for (const lang of ['en', 'nb', 'sv', 'da']) {
+    for (const [fra, til] of allePar(lang)) {
+      const nokkel = `${fra}>${til}`;
+      const g = kart.get(nokkel) ?? { id: `auto-enhet-${fra}-${til}`, sider: {} };
+      g.sider[lang] = `${prefiks[lang]}${parSti(fra, til, lang)}`;
+      kart.set(nokkel, g);
+    }
+  }
+  return [...kart.values()];
+}
+
 export const SIDEGRUPPER = Object.freeze([
   { id: 'forside', sider: { nb: '/', sv: '/sv/', da: '/da/', en: '/en/' } },
   { id: 'importer-oppskrifter', sider: { nb: '/importer-oppskrifter/', sv: '/sv/importera-recept/', da: '/da/importer-opskrifter/', en: '/en/import-recipes/' } },
@@ -39,6 +55,8 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'landleys-kok', sider: { nb: '/importer-fra-landleys-kok/', sv: '/sv/landleys-kok/', da: '/da/landleys-kok/', en: '/en/landleys-kok/' } },
   { id: 'alletiders-kogebog', sider: { nb: '/importer-fra-alletiders-kokebok/', sv: '/sv/alletiders-kogebog/', da: '/da/alletiders-kogebog/', en: '/en/alletiders-cookbook/' } },
   { id: 'dr-mad', sider: { nb: '/importer-fra-dr-mat/', sv: '/sv/dr-mad/', da: '/da/dr-mad/', en: '/en/dr-food/' } },
+  { id: 'auto-enhetsomregner', sider: { en: '/en/tools/unit-converter/', nb: '/verktoy/enhetsomregner/', sv: '/sv/verktyg/enhetsomvandlare/', da: '/da/vaerktoejer/enhedsomregner/' } },
+  ...enhetsGrupper(),
   ...bloggGrupper(),
 ]);
 

@@ -2,6 +2,7 @@
 // tynne siden i en-appsider.mjs med samme path: `rik` (ferdig HTML med svar, innholdsfortegnelse
 // og seksjoner), nye FAQ-svar og en ny tittel. Fakta kommer fra funksjonssjekken 18.11.2026;
 // alt som ikke er bekreftet står ikke her.
+import { enhetsSider } from './en-enhetssider.mjs';
 import { animasjon, byggRik, founder, scenario, scenarioNotat, skjerm, telefoner } from './rik-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
@@ -402,6 +403,28 @@ const kjoperguide = byggRik({
   ],
 }).html;
 
+import { ENHETER as ENH, enheterFor as enhFor, parSti as parStiH } from './enheter.mjs';
+const enhetsHub = (() => {
+  const navnH = (id) => ENH[id].en;
+  const gruppe = (g, tittel) => {
+    const ids = enhFor('en').filter((id) => ENH[id].gruppe === g);
+    const rader = ids.map((a) => `<li><strong>${navnH(a).fl}</strong>: ${ids.filter((b) => b !== a).map((b) => `<a href="/en/${parStiH(a, b)}">to ${navnH(b).kort}</a>`).join(', ')}</li>`).join('');
+    return [tittel, `<ul>${rader}</ul>`];
+  };
+  return byggRik({
+    svarTekst: 'A free cooking unit converter for every combination: milliliters, deciliters, liters, US cups, tablespoons, teaspoons, fluid ounces, pints, quarts, gallons, grams, kilograms, ounces, pounds, centimeters, inches, and °C to °F. Pick a conversion below, or use the calculator.',
+    seksjoner: [
+      ['Convert any cooking unit', (() => { const ids = enhFor('en').filter((id) => ENH[id].gruppe === 'volum'); return `<form class="omregner" data-gruppe="volum" onsubmit="return false"><div class="omregner-rad"><label>Amount<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label><label>From<select data-felt="fra">${ids.map((id) => `<option value="${id}"${id === 'cups' ? ' selected' : ''}>${navnH(id).fl} (${navnH(id).kort})</option>`).join('')}</select></label><button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Swap units">⇄</button><label>To<select data-felt="til">${ids.map((id) => `<option value="${id}"${id === 'ml' ? ' selected' : ''}>${navnH(id).fl} (${navnH(id).kort})</option>`).join('')}</select></label></div><p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">1 cup = 236.6 ml</p><script type="application/json" class="omregner-data">${JSON.stringify({ f: Object.fromEntries(ids.map((id) => [id, ENH[id].f])), t: false })}</script></form>`; })() + p('This calculator converts volume. For weight, length, and temperature, use the lists below.')],
+      gruppe('volum', 'Volume conversions: ml, dl, cups, tablespoons, and more'),
+      gruppe('vekt', 'Weight conversions: grams, ounces, and pounds'),
+      gruppe('lengde', 'Length conversions: cm, mm, and inches for pans and dough'),
+      gruppe('temperatur', 'Temperature conversions: Celsius and Fahrenheit'),
+      ['Why recipes use different units', p('Most of the world cooks by weight and in metric units. The United States cooks mostly by volume, in cups and spoons, and measures weight in ounces and pounds. Nordic recipes add the deciliter. A recipe found online can be written in any of them, which is why a good converter saves time.')],
+      ['Stop converting by hand', p('Matlyst imports a recipe from a link, a post, or a photo, and shows the amounts in metric or keeps the source units, depending on the Units setting. With <strong>Metric</strong>, cups, ounces, and pounds are converted to milliliters and grams on import. The setting applies to new imports. Change the servings from 1 to 20 and every amount follows.') + p('Read more about the <a href="/en/recipe-book-app/">recipe organizer app</a> and the <a href="/en/shopping-list/">grocery list</a>.')],
+    ],
+  }).html;
+})();
+
 export const rikeSider = {
   'recipe-book-app/': {
     title: 'Recipe organizer app: one home for every recipe',
@@ -500,5 +523,25 @@ export const rikeSider = {
       ['How do I move my recipes between apps?', 'Look for export in a format other apps can open, and for an import that reads other apps’ export files. Test both before you move everything.'],
     ],
     cta: 'Try it with your own recipes',
+  },
+  ...enhetsSider,
+  'tools/unit-converter/': {
+    title: 'Cooking unit converter: cups, ml, oz, grams, °F',
+    description: 'Free cooking unit converter for every combination: ml to dl, cups to ml, oz to g, lb to kg, °F to °C and more, with charts and kitchen tips.',
+    eyebrow: 'Unit converter',
+    h1: 'Cooking unit converter',
+    lead: 'Every kitchen conversion in one place, with a chart and a calculator for each.',
+    forst: 'Pick two units and read the answer.',
+    stegTittel: 'How to use the converter',
+    steg: [['Pick the units', 'Choose the unit your recipe uses and the unit you want.'], ['Type the amount', 'The answer appears as you type.'], ['Use the chart', 'Each page has a chart of common amounts.']],
+    alternativ: '', grense: '', seksjoner: [], faqTittel: 'Unit converter questions', rik: enhetsHub,
+    faq: [
+      ['How many ml are in a US cup?', 'A US cup is 236.6 ml. Many recipes round it to 240 ml, and a metric cup in some countries is 250 ml.'],
+      ['How many ml are in a US tablespoon?', 'A US tablespoon is 14.8 ml, usually rounded to 15 ml. In Australia a tablespoon is 20 ml.'],
+      ['How many grams are in an ounce?', 'An ounce of weight is 28.35 grams. Fluid ounces measure volume instead: 1 US fluid ounce is 29.57 ml.'],
+      ['How do I convert Fahrenheit to Celsius?', 'Subtract 32, then multiply by 5/9. For example, 350°F is about 177°C.'],
+      ['Does Matlyst convert recipe units?', 'With the Units setting on Metric, cups, ounces, and pounds from a recipe are converted to milliliters and grams on import. The setting applies to new imports.'],
+    ],
+    cta: 'Convert recipes in Matlyst',
   },
 };
