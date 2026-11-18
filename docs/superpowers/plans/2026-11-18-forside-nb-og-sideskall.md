@@ -12,11 +12,11 @@
 
 Dette er steg 1 av 7 i specens punkt 13. Steg 2 til 7 får egne planer.
 
-## Beslutninger Patrick må bekrefte
+## Beslutninger (bekreftet av Patrick 18.11.2026)
 
-Prototypen er godkjent, men fem steder kolliderer den med regler som alt er låst i repoet. Planen bygger på standardvalget under. Si fra før bygging hvis noe skal være annerledes.
+Prototypen er godkjent, men fem steder kolliderte den med regler som alt er låst i repoet. Patrick bekreftet alle fem valgene under, og valgte at agenter bygger én oppgave om gangen. Prototypen og specen er rettet etter dem.
 
-| # | Kollisjon | Standardvalg i planen |
+| # | Kollisjon | Valgt |
 |---|---|---|
 | A | `test/lansering.test.mjs` krever at ingressen (`<p class="lead">`) begynner med «Oppskriftsappen som oversetter og tilpasser oppskriftene dine.» Prototypens ingress er «Fra en Reel, en nettside eller et bilde av bestemors kort. Matlyst gjør dem om til ingredienser og steg.» | Prototypens ingress vinner. Posisjoneringen blir stående i tittel, metabeskrivelse og JSON-LD, og testen endres til å kreve den der for bokmål. |
 | B | `test/seo-pages.test.mjs` forbyr «ubegrenset import» på importsiden: Pro-løftet skal ikke love et grenseløst system. Prototypen sier «Så mange importer du vil.» | Pro-kortet får «Uten grensen på fem importer.» Ordet «ubegrenset» brukes ikke. |
@@ -373,7 +373,7 @@ git commit -m "sideskall: topp, hyllemeny, bunn i tre lag og nedlasting"
 - Test: `test/forside-tekst.test.mjs`
 
 **Interfaces:**
-- Produces: `export const TEKST = { nb: { ... } }` med disse nøklene: `h1`, `ingress`, `knapp`, `vurdering`, `steg` (6 strenger), `stegtider` (6 tall), `kildetittel`, `kilder` (8 objekter `{ navn, ikon }`), `kokebok` (`{ tittel, ingress, kimerke, retter: { fil, tittel, tid }[] }`), `spor`, `middag`, `pris` (`{ tittel, ingress, gratis, pro, vern }`), `svar` (`{ tittel, sporsmal: { q, a }[] }`), `bunnlinje`, `folg`.
+- Produces: `export const TEKST = { nb: { ... } }` med disse nøklene: `h1`, `ingress`, `knapp`, `vurdering`, `steg` (6 strenger), `stegtider` (6 tall), `kildetittel`, `kilder` (8 objekter `{ navn, ikon }`), `kokebok` (`{ tittel, ingress, kimerke, retter: { fil, tittel, tid }[] }`), `spor`, `middag`, `pris` (`{ tittel, ingress, gratis, pro, vernord, vern, vernlenke }`), `svar` (`{ tittel, sporsmal: { q, a }[] }`), `bunnlinje`, `folg`.
 
 - [ ] **Step 1: Skriv testen som feiler**
 
@@ -394,6 +394,8 @@ test('pris: gratis og Pro følger llms.txt, uten kroner og uten «ubegrenset»',
   assert.equal(t.pris.pro.linje, 'Uten grensen på fem importer.');
   assert.deepEqual(t.pris.pro.punkter, ['Lagre fra bilder og kokebøker', 'Spør Matlyst', 'Næringsinnhold per porsjon', 'Del med husstanden, opptil 6']);
   assert.equal(t.pris.pro.fot, 'Prisen ser du i appen før du kjøper.');
+  assert.equal(t.pris.vernord, 'Vi har bedre ting å gjøre enn å spore deg. Nyt maten din.');
+  assert.equal(t.pris.vern, 'Matlyst sporer deg ikke for reklame. Ingen annonser, ingen salg av data.');
   assert.doesNotMatch(alt, /ubegrenset|\d\s?kr\b|kroner/i);
 });
 
@@ -418,7 +420,7 @@ Expected: FAIL, modulen finnes ikke.
 
 - [ ] **Step 3: Skriv `scripts/forside-tekst.mjs`**
 
-Teksten kopieres ordrett fra prototypen. To unntak: Pro-linja er «Uten grensen på fem importer.» (beslutning B), og antallet vurderinger er ikke med (beslutning D).
+Teksten kopieres ordrett fra prototypen (versjon 42), som alt følger beslutning B og D.
 
 - [ ] **Step 4: Kjør testen og se den bestå**
 
@@ -638,6 +640,7 @@ test('pris: to kort, personvernlinje, og ingen kroner på siden', () => {
   assert.match(del, /<h2[^>]*>Hva koster det\?<\/h2>/);
   assert.match(del, /5 importer i måneden\./);
   assert.match(del, /Uten grensen på fem importer\./);
+  assert.match(del, /<p class="vernord">Vi har bedre ting å gjøre enn å spore deg\. Nyt maten din\.<\/p>/);
   assert.match(del, /Matlyst sporer deg ikke for reklame\. Ingen annonser, ingen salg av data\./);
   assert.match(del, /<a href="\/personvern\.html">/);
   const synlig = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<[^>]+>/g, ' ');
@@ -762,7 +765,7 @@ git commit -m "forsiden: nettlesertester og måling av nedlastingsklikk"
 
 ## Etter siste oppgave
 
-- [ ] Åpne PR mot `main` med skjermbildene, Lighthouse-tallene og lista over de fem beslutningene (A til E).
+- [ ] Åpne PR mot `main` med skjermbildene og Lighthouse-tallene.
 - [ ] Ikke merge. Patrick ser forsiden på en ekte iPhone og en ekte Android-telefon først, og skanner QR-koden.
 - [ ] Etter merge: kontroller at `https://matlyst-app.no/` svarer 200, at `/tokens.css`, `/skall.css` og `/forside.css` svarer 200, og at en underside (`/handleliste/`) ser ut som før.
 - [ ] Før og etter: noter klikk og visninger for forsiden i Search Console, og se på dem igjen etter to uker (specens punkt 11).

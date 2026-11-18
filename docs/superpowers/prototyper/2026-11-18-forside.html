@@ -447,7 +447,9 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .plan li svg{flex:none;width:20px;height:20px;margin-top:3px}
 .planfot{margin:auto 0 0;padding-top:26px;font-size:15px;color:var(--dempet)}
 .plan.pro .planfot{color:#B9B2A8}
-.vern{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;margin:28px auto 0;font-size:16px;color:var(--dempet)}
+.vernblokk{margin-top:64px}
+.pris .vernord{margin:0 auto;max-width:22ch;font-size:clamp(24px,2.6vw,32px);line-height:1.15;font-weight:700;letter-spacing:-.025em;color:var(--blekk);text-wrap:balance}
+.vern{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;margin:10px auto 0;font-size:16px;color:var(--dempet)}
 .vern a{display:inline-flex;align-items:center;min-height:44px;color:var(--blekk);text-decoration:underline;text-underline-offset:4px}
 /* Spørsmål og svar */
 .svarliste{max-width:760px;margin:44px auto 0;border-top:1px solid var(--linje);text-align:left}
@@ -535,6 +537,7 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
   .bunn{margin-top:-32px;padding-top:32px}
   .blad{padding-bottom:84px;border-radius:0 0 32px 32px}
   .pris,.ofte{padding-block:88px 0}
+  .vernblokk{margin-top:44px}
   .kokebok{padding-block:44px 0}
   .retterom{margin-top:36px}
   .rett{width:220px}
@@ -753,12 +756,12 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
       </article>
       <article class="plan pro" data-inn="h">
         <h3>Pro</h3>
-        <p class="planlinje">Så mange importer du vil.</p>
+        <p class="planlinje">Uten grensen på fem importer.</p>
         <ul><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Lagre fra bilder og kokebøker</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Spør Matlyst</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Næringsinnhold per porsjon</li><li><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Del med husstanden, opptil 6</li></ul>
         <p class="planfot">Prisen ser du i appen før du kjøper.</p>
       </article>
     </div>
-    <div class="vern"><span>Matlyst sporer deg ikke for reklame. Ingen annonser, ingen salg av data.</span><a href="#">Slik behandler vi data</a></div>
+    <div class="vernblokk" data-inn><p class="vernord">Vi har bedre ting å gjøre enn å spore deg. Nyt maten din.</p><div class="vern"><span>Matlyst sporer deg ikke for reklame. Ingen annonser, ingen salg av data.</span><a href="#">Slik behandler vi data</a></div></div>
   </section>
 
   <section class="ofte ramme" id="svar">
