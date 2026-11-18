@@ -31,9 +31,6 @@ test('hver lang side på de fire språkene har minst to app-bevis', () => {
       if (!/class="prose locale-prose has-toc"/u.test(html) || /<meta name="robots" content="[^"]*noindex/iu.test(html)) continue;
       // Logohistorien har sine egne animasjoner og regnes som app-bevis.
       if (/class="maskot-galleri"/u.test(html)) continue;
-      // Svenske og danske enhetsomregnere venter på nye skjermbilder av skalering og Enheter (bestilt fra utvikling 18.11).
-      // Norske omregnere har allerede to treff. Fjern unntaket når bildene er inne.
-      if (/\/(verktyg|vaerktoejer)\/|\/verktoy\/enhetsomregner\//u.test(`${mappe}/${d.name}`)) continue;
       const n = (html.match(/class="i-appen i-/gu) ?? []).length;
       if (n < 2) mangler.push(`${mappe.replace(rot, '')}/${d.name} (${n})`);
     }
