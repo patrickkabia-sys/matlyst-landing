@@ -15,13 +15,18 @@ function hyllerFraPrototyp() {
   assert.ok(start > -1, 'fant ikke nav.panel i prototypet');
   const slutt = html.indexOf('</nav>', start);
   assert.ok(slutt > start, 'fant ikke slutten på nav.panel');
-  const blokker = html.slice(start, slutt).split('<div class="fag">').slice(1);
+  const panel = html.slice(start, slutt).replace(/<!--[\s\S]*?-->/g, '');
+  const forventetAntallHyller = (panel.match(/class="fag(?=["\s])/g) ?? []).length;
+  const blokker = panel.split(/<div\b[^>]*class="fag["\s][^>]*>/).slice(1);
+  assert.equal(blokker.length, forventetAntallHyller, 'leste ikke alle hyllene i prototypet');
   assert.equal(blokker.length, 6, 'prototypet skal ha seks hyller');
   return blokker.map((b) => {
-    const navn = /<button[^>]*class="fagknapp"[^>]*>.*?<span>([^<]+)<\/span>/s.exec(b)?.[1];
-    const src = /<img class="flis" src="([^"]+)"/.exec(b)?.[1];
+    const navn = /<button\b[^>]*class="fagknapp[^"]*"[^>]*>[\s\S]*?<span\b[^>]*>([^<]+)<\/span>/.exec(b)?.[1];
+    const src = /<img\b[^>]*class="flis[^"]*"[^>]*\bsrc="([^"]+)"/.exec(b)?.[1] ?? /<img\b[^>]*\bsrc="([^"]+)"[^>]*class="flis/.exec(b)?.[1];
     assert.ok(navn && src, 'hylle uten navn eller flis i prototypet');
-    const lenker = [...b.matchAll(/<li><a href="[^"]*"><span>([^<]+)<\/span><\/a><\/li>/g)].map((m) => m[1]);
+    const lenker = [...b.matchAll(/<li\b[^>]*>\s*<a\b[^>]*>\s*<span\b[^>]*>([^<]+)<\/span>/g)].map((m) => m[1]);
+    const antallLi = (b.match(/<li\b/g) ?? []).length;
+    assert.equal(lenker.length, antallLi, `${navn}: leste ${lenker.length} av ${antallLi} lenker i prototypet`);
     assert.ok(lenker.length > 0, `${navn}: ingen lenker i prototypet`);
     return { navn, flis: src.split('/').pop(), lenker };
   });
