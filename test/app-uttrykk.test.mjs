@@ -44,3 +44,8 @@ test('hver indekserbar side har nedlastingsknapp og fast linje', () => {
   gaa(rot.replace(/\/$/u, ''));
   assert.deepEqual(mangler, []);
 });
+
+test('Guider-panelet er skjult til det åpnes (hidden vinner over display)', () => {
+  const css = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
+  assert.match(css, /\.nav-panel\[hidden\]\s*\{\s*display:\s*none/u);
+});
