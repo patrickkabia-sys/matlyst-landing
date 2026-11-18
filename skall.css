@@ -109,12 +109,12 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .panel .language-switcher{margin:32px 0 0}
 .panel .language-switcher a,.under .language-switcher a{min-width:44px;min-height:44px;box-shadow:none}
 .panel .language-switcher a{padding:0 16px;border:1px solid var(--linje);border-radius:999px;background:var(--flate);color:var(--blekk)}
-.panel .language-switcher a:hover{border-color:var(--blekk)}
-.panel .language-switcher a[aria-current="page"]{background:var(--blekk);border-color:var(--blekk);color:var(--flate)}
+.panel .language-switcher a:hover,.panel .language-switcher a:focus-visible{color:var(--blekk);background:var(--flate);border-color:var(--blekk)}
+.panel .language-switcher a[aria-current="page"]{box-shadow:none;background:var(--blekk);border-color:var(--blekk);color:var(--flate)}
 .under .language-switcher{gap:0 4px;margin:0 -10px}
 .under .language-switcher a{padding:0 10px;border-radius:10px;color:#E9E5DE;background:none}
 .under .language-switcher a[aria-current="page"]{color:#E9E5DE;box-shadow:none}
-.under .language-switcher a:hover{text-decoration:underline}
+.under .language-switcher a:hover,.under .language-switcher a:focus-visible{color:#E9E5DE;background:var(--blekk);text-decoration:underline}
 .panel .language-switcher a:focus-visible{outline-color:var(--blekk);outline-offset:4px}
 .under .language-switcher a:focus-visible{outline-color:#E9E5DE;outline-offset:4px}
 /* Samtykke bruker samme uttrykk og samme vekt for begge valg. */

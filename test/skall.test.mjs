@@ -98,7 +98,7 @@ let nettleser;
 after(async () => nettleser?.close());
 const sideHtml = (innhold = '<main style="height:1400px"><a class="knapp" href="/app" data-hent="innhold">Last ned gratis</a></main>') => {
   const sider = { nb: '/', sv: '/sv/', da: '/da/', en: '/en/' };
-  return `<!doctype html><html lang="nb"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/language-switcher.css"><body><div class="side"><div class="kort"><div class="blad">${topp('nb', { sprakvelger: sprakvelger('nb', 'topp', sider) })}${innhold}</div>${hylledel('nb')}</div>${morkBunn('nb', { sprakvelger: sprakvelger('nb', 'bunn', sider) })}${nedlasting('nb')}${samtykke('nb')}</div><script src="/skall.js"></script></body></html>`;
+  return `<!doctype html><html lang="nb"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/language-switcher.css"><body><div class="side"><div class="kort"><div class="blad">${topp('nb', { sprakvelger: sprakvelger('nb', 'topp', sider) })}${innhold}</div>${hylledel('nb')}</div>${morkBunn('nb', { sprakvelger: sprakvelger('nb', 'bunn', sider) })}${nedlasting('nb')}${samtykke('nb')}</div><script src="/skall.js"></script></body></html>`;
 };
 async function prove(t, { html = sideHtml(), ...valg } = {}) {
   nettleser ??= await chromium.launch();
@@ -131,13 +131,13 @@ test('menyen lukkes med Escape og mobilhyllene virker etter breddebytte', async 
   assert.equal(await side.locator('#panel .fagknapp').nth(0).getAttribute('aria-expanded'), 'true');
   await side.locator('#panel .fagknapp').nth(1).click();
   assert.equal(await side.locator('#panel .fagknapp').nth(0).getAttribute('aria-expanded'), 'false');
+  await side.locator('#panel .fag').nth(1).locator('a').first().focus();
   await side.keyboard.press('Escape');
   assert.equal(await side.locator('#panel').isVisible(), false);
+  assert.equal(await side.locator('#menyknapp').evaluate((e) => e === document.activeElement), true);
   await side.locator('#menyknapp').click();
   await side.locator('main').click({ position: { x: 5, y: 700 } });
   assert.equal(await side.locator('#panel').isVisible(), false);
-  await side.locator('#menyknapp').focus();
-  assert.equal(await side.locator('#menyknapp').evaluate((e) => e === document.activeElement), true);
   const bunn = side.locator('#bunnreol .fagknapp').first();
   assert.equal(await bunn.getAttribute('aria-expanded'), 'false');
   await bunn.click();
@@ -236,3 +236,122 @@ test('skallet har ingen sideveis rulling, små trykkflater eller konsollfeil', a
   }
   assert.deepEqual(feil, []);
 });
+
+
+test('ingen h3 i skallets HTML inneholder div', () => {
+  const html = topp('nb') + hylledel('nb') + morkBunn('nb') + nedlasting('nb') + samtykke('nb');
+  const overskrifter = [...html.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/g)];
+  assert.ok(overskrifter.length >= 12);
+  for (const [, innhold] of overskrifter) assert.doesNotMatch(innhold, /<div\b/i);
+});
+
+test('juridiske lenker ligger i navigasjonen Juridisk', async (t) => {
+  const { side } = await prove(t);
+  assert.deepEqual(await side.getByRole('navigation', { name: 'Juridisk', exact: true }).locator('a').allTextContents(), ['Personvern', 'Vilkår', 'Informasjonskapsler']);
+});
+
+test('Tab går fra menyknappen til panelet før Last ned', async (t) => {
+  for (const width of [390, 1280]) {
+    const { side } = await prove(t, { viewport: { width, height: 800 }, reducedMotion: 'reduce' });
+    await side.locator('#menyknapp').focus();
+    await side.keyboard.press('Enter');
+    await side.keyboard.press('Tab');
+    assert.equal(await side.locator('#panel').evaluate((e) => e.contains(document.activeElement)), true);
+    assert.equal(await side.locator('#panel').isVisible(), true);
+  }
+});
+
+test('menyen lukkes når fokus forlater knappen og panelet', async (t) => {
+  const { side } = await prove(t, { reducedMotion: 'reduce' });
+  await side.locator('#menyknapp').focus();
+  await side.keyboard.press('Enter');
+  await side.locator('#panel a').first().focus();
+  await side.keyboard.press('Shift+Tab');
+  assert.equal(await side.locator('#menyknapp').evaluate((e) => e === document.activeElement), true);
+  assert.equal(await side.locator('#panel').isVisible(), true);
+  await side.keyboard.press('Shift+Tab');
+  assert.equal(await side.locator('#panel').isVisible(), false);
+  await side.locator('#menyknapp').click();
+  await side.locator('#panel a').last().focus();
+  await side.keyboard.press('Tab');
+  assert.equal(await side.locator('[data-hent="topp"]').evaluate((e) => e === document.activeElement), true);
+  assert.equal(await side.locator('#panel').isVisible(), false);
+});
+
+test('klikk utenfor lukker menyen også når fokus blir på menyknappen', async (t) => {
+  const { side } = await prove(t, { reducedMotion: 'reduce' });
+  // Hindrer bare nettleserens fokusflytting, slik at klikkvakten prøves alene.
+  await side.locator('main').evaluate((e) => e.addEventListener('mousedown', (hendelse) => hendelse.preventDefault()));
+  await side.locator('#menyknapp').focus();
+  await side.keyboard.press('Enter');
+  await side.locator('main').click({ position: { x: 5, y: 700 } });
+  assert.equal(await side.locator('#menyknapp').evaluate((e) => e === document.activeElement), true);
+  assert.equal(await side.locator('#panel').isVisible(), false);
+});
+
+test('hylleoverskriften beholder fokus begge veier over 721 px', async (t) => {
+  for (const velger of ['#panel', '#bunnreol']) {
+    const { side } = await prove(t, { viewport: { width: 720, height: 800 }, reducedMotion: 'reduce' });
+    if (velger === '#panel') await side.locator('#menyknapp').click();
+    const hode = side.locator(`${velger} .fagknapp`).first();
+    await hode.focus();
+    for (const width of [721, 720]) {
+      await side.setViewportSize({ width, height: 800 });
+      await side.waitForFunction(({ velger, tagg }) => (document.querySelector(`${velger} .fagknapp`).tagName === 'BUTTON') === (tagg === 'BUTTON'), { velger, tagg: width === 721 ? 'SPAN' : 'BUTTON' });
+      assert.equal(await hode.evaluate((e) => e === document.activeElement), true, `${velger}, ${width} px`);
+      assert.equal(await side.locator(`${velger} h3 div`).count(), 0);
+      if (velger === '#panel') assert.equal(await side.locator('#panel').isVisible(), true);
+    }
+  }
+});
+
+// WCAG-kontrast mot den faktiske flaten, også når lenkebakgrunnen er gjennomsiktig.
+async function sprakstil(lenke) {
+  return lenke.evaluate((e) => {
+    const stil = getComputedStyle(e);
+    const rgb = (farge) => farge.match(/[\d.]+/g).map(Number);
+    let flate = [255, 255, 255];
+    const forfedre = [];
+    for (let node = e; node; node = node.parentElement) forfedre.unshift(node);
+    for (const node of forfedre) {
+      const [r, g, b, alfa = 1] = rgb(getComputedStyle(node).backgroundColor);
+      flate = [r, g, b].map((kanal, i) => kanal * alfa + flate[i] * (1 - alfa));
+    }
+    const luminans = (farge) => farge.map((v) => v / 255).map((v) => v <= .04045 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4).reduce((sum, v, i) => sum + v * [.2126, .7152, .0722][i], 0);
+    const tekstLys = luminans(rgb(stil.color)), flateLys = luminans(flate);
+    return { farge: stil.color, bakgrunn: stil.backgroundColor, skygge: stil.boxShadow, omriss: stil.outlineColor, kontrast: (Math.max(tekstLys, flateLys) + .05) / (Math.min(tekstLys, flateLys) + .05) };
+  });
+}
+
+for (const [sted, velger] of [['menyen', '#panel'], ['bunnen', '.under']]) {
+  test(`språkvelgeren i ${sted} har skallfarger og lesbar kontrast i alle tilstander`, async (t) => {
+    for (const width of [390, 1280]) for (const omvendt of [false, true]) {
+      const html = omvendt ? sideHtml().replace('<link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/language-switcher.css">', '<link rel="stylesheet" href="/language-switcher.css"><link rel="stylesheet" href="/skall.css">') : sideHtml();
+      const { side } = await prove(t, { html, viewport: { width, height: 800 }, reducedMotion: 'reduce' });
+      if (sted === 'menyen') await side.locator('#menyknapp').click();
+      for (const sprak of ['sv', 'nb']) for (const tilstand of ['vanlig', 'hover', 'focus-visible']) {
+        const lenke = side.locator(`${velger} .language-switcher a[lang="${sprak}"]`);
+        await side.mouse.move(0, 0);
+        if (sted === 'menyen') await side.locator('#menyknapp').focus();
+        else await side.evaluate(() => document.activeElement?.blur());
+        if (tilstand === 'hover') await lenke.hover();
+        if (tilstand === 'focus-visible') {
+          await side.keyboard.press('Tab');
+          if (sted === 'menyen' && !await side.locator('#panel').isVisible()) await side.locator('#menyknapp').press('Enter');
+          await lenke.focus();
+          assert.equal(await lenke.evaluate((e) => e.matches(':focus-visible')), true);
+        }
+        const stil = await sprakstil(lenke);
+        const aktiv = sprak === 'nb', meny = sted === 'menyen';
+        const farge = meny ? (aktiv ? 'rgb(255, 255, 255)' : 'rgb(20, 18, 16)') : 'rgb(233, 229, 222)';
+        const bakgrunn = meny ? (aktiv ? 'rgb(20, 18, 16)' : 'rgb(255, 255, 255)') : (tilstand === 'vanlig' ? 'rgba(0, 0, 0, 0)' : 'rgb(20, 18, 16)');
+        const melding = `${sted}, ${width} px, omvendt=${omvendt}, ${sprak}, ${tilstand}`;
+        assert.ok(stil.kontrast >= 4.5, `${melding}: kontrast ${stil.kontrast}`);
+        assert.equal(stil.farge, farge, melding);
+        assert.equal(stil.bakgrunn, bakgrunn, melding);
+        assert.equal(stil.skygge, 'none', melding);
+        if (tilstand === 'focus-visible') assert.equal(stil.omriss, meny ? 'rgb(20, 18, 16)' : 'rgb(233, 229, 222)', melding);
+      }
+    }
+  });
+}

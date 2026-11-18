@@ -18,7 +18,7 @@ function sjekkSprak(sprak) {
 }
 
 function hyller(sprak) {
-  return HYLLER[sprak].map((hylle) => `<div class="fag aapen"><h3 class="faghode"><div class="fagknapp"><img class="flis" src="/images/forside/logo/${skjerm(hylle.flis)}" width="52" height="52" alt="" loading="lazy"><span>${skjerm(hylle.navn)}</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></div></h3><ul>${synligeLenker(hylle).map((lenke) => `<li><a href="${skjerm(lenke.href)}"><span>${skjerm(lenke.tekst)}</span></a></li>`).join('')}</ul></div>`).join('');
+  return HYLLER[sprak].map((hylle) => `<div class="fag aapen"><h3 class="faghode"><span class="fagknapp"><img class="flis" src="/images/forside/logo/${skjerm(hylle.flis)}" width="52" height="52" alt="" loading="lazy"><span>${skjerm(hylle.navn)}</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span></h3><ul>${synligeLenker(hylle).map((lenke) => `<li><a href="${skjerm(lenke.href)}"><span>${skjerm(lenke.tekst)}</span></a></li>`).join('')}</ul></div>`).join('');
 }
 
 export function topp(sprak, valg = {}) {
@@ -32,12 +32,11 @@ export function topp(sprak, valg = {}) {
       <span class="ikonbytte" aria-hidden="true"><svg class="linjer" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"></path></svg><svg class="kryss" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></span>
       <span>Meny</span>
     </button>
-    <a class="knapp liten" href="/app" data-hent="topp">Last ned</a>
-
     <nav class="panel" id="panel" data-meny="c" aria-label="Hovedmeny" hidden>
       <div class="reol">${hyller(sprak)}</div>
       ${valg.sprakvelger || ''}
     </nav>
+    <a class="knapp liten" href="/app" data-hent="topp">Last ned</a>
   </div>
 </header>`;
 }
@@ -58,7 +57,7 @@ export function morkBunn(sprak, valg = {}) {
   <div class="ramme">
     <div class="stormerke ordmerke" aria-hidden="true">mat<em>lyst</em></div>
     <div class="underlinje">
-      <nav aria-label="Vilkår"><a href="/personvern.html">Personvern</a><a href="/vilkar.html">Vilkår</a><a href="#" data-consent-withdraw>Informasjonskapsler</a></nav>
+      <nav aria-label="Juridisk"><a href="/personvern.html">Personvern</a><a href="/vilkar.html">Vilkår</a><a href="#" data-consent-withdraw>Informasjonskapsler</a></nav>
       ${valg.sprakvelger || ''}
     </div>
     <div class="underlinje">

@@ -20,6 +20,11 @@
     document.addEventListener('click', (e) => {
       if (!panel.hidden && !panel.contains(e.target) && !knapp.contains(e.target)) settMeny(false);
     });
+    const lukkVedFokusUt = (e) => {
+      if (!panel.contains(e.relatedTarget) && !knapp.contains(e.relatedTarget)) settMeny(false);
+    };
+    knapp.addEventListener('focusout', lukkVedFokusUt);
+    panel.addEventListener('focusout', lukkVedFokusUt);
     panel.addEventListener('click', (e) => { if (e.target.closest('a')) settMeny(false); });
   }
 
@@ -30,7 +35,9 @@
     const oppdater = () => fag.forEach((f) => {
       const gammel = f.querySelector('.fagknapp');
       if (!gammel) return;
-      const hode = document.createElement(bred.matches ? 'div' : 'button');
+      const haddeFokus = gammel === document.activeElement;
+      const hode = document.createElement(bred.matches ? 'span' : 'button');
+      if (bred.matches) hode.tabIndex = -1;
       hode.className = 'fagknapp';
       hode.append(...gammel.childNodes);
       f.classList.toggle('aapen', bred.matches);
@@ -48,7 +55,10 @@
           hode.setAttribute('aria-expanded', String(aapen));
         });
       }
-      gammel.replaceWith(hode);
+      // Flytt fokus mens begge hodene er i DOM, så fokusvakten ser målet i panelet.
+      gammel.before(hode);
+      if (haddeFokus) hode.focus();
+      gammel.remove();
     });
     oppdater();
     bred.addEventListener('change', oppdater);
