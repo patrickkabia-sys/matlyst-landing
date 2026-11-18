@@ -20,7 +20,7 @@ export const ETIKETTER = {
     notat: 'Scenarios marked “Say you …” are examples we made up to show how it works. They are not customer stories.',
     illustrasjon: 'A simplified illustration, not a screen recording.' },
   nb: { toc: 'På denne siden', rader: ['Situasjon', 'Hva som går galt', 'Hva du gjør', 'Tallene', 'I Matlyst'],
-    notat: 'Scenarioer som begynner med «Si at du …» er eksempler vi har laget for å vise hvordan det fungerer. De er ikke kundehistorier.',
+    notat: 'Scenarioer som begynner med «Tenk deg at du …» er eksempler vi har laget for å vise hvordan det fungerer. De er ikke kundehistorier.',
     illustrasjon: 'En forenklet illustrasjon, ikke et skjermopptak.' },
   sv: { toc: 'På den här sidan', rader: ['Situation', 'Vad som går fel', 'Vad du gör', 'Siffrorna', 'I Matlyst'],
     notat: 'Scenarier som börjar med ”Säg att du …” är exempel vi har hittat på för att visa hur det fungerar. De är inte kundberättelser.',

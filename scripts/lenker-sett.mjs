@@ -20,7 +20,7 @@ export function filFraSti(rot, sti) {
 
 export function tittel(html) {
   const t = html.match(/<title>([^<]*)<\/title>/iu)?.[1] ?? '';
-  return t.replace(/\s*\|\s*Matlyst\s*$/iu, '').trim();
+  return t.replace(/\s*\|\s*Matlyst\s*$/iu, '').replace(/\s+[—–]\s+/gu, ': ').trim();
 }
 
 /** Beregner relaterte mål per side fra kartet. Rekkefølge og innhold er deterministisk. */

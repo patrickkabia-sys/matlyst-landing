@@ -37,6 +37,9 @@
   <url>
     <loc>https://matlyst-app.no/en/blog/choose-recipe-organizer-app/</loc>
     <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/velg-oppskriftsapp/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/valj-receptapp/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/vaelg-opskriftsapp/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/choose-recipe-organizer-app/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/choose-recipe-organizer-app/"/>
   </url>

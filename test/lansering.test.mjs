@@ -5,9 +5,9 @@ import { pathToFileURL } from 'node:url';
 import test from 'node:test';
 
 import { autoArtikler } from '../scripts/blogg.mjs';
-import { RIK_DATO, rikeSider } from '../scripts/en-rike-sider.mjs';
+import { RIK_DATO, rikeAdresser } from '../scripts/rike-sider-register.mjs';
 
-const rikeStier = new Set(Object.keys(rikeSider).map((sti) => `/en/${sti}`));
+const rikeStier = new Set(rikeAdresser());
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const les = (path) => readFileSync(join(ROOT, path), 'utf8');
@@ -53,7 +53,7 @@ for (const lang of ['sv', 'da', 'en']) {
       const oppdatertGuide = /\/(?:sv\/(?:importera-recept|spara-recept-fran-instagram|spara-recept-fran-tiktok|byt-fran-paprika|handskrivna-recept|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|da\/(?:importer-opskrifter|gem-opskrifter-fra-instagram|gem-opskrifter-fra-tiktok|skift-fra-paprika|haandskrevne-opskrifter|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|en\/(?:import-recipes|import-recipes-from-photos|import-recipes-from-instagram|import-recipes-from-paprika|import-recipes-from-tiktok|find-recipes|recipes-by-ingredients|dinner-ideas|pantry-app|empty-the-fridge|easy-dinner|recipe-creators|matprat|koket|landleys-kok|alletiders-cookbook|dr-food|delete-account))\/$/u.test(side);
       const appside = /\/(?:(?:sv|da|en)\/blogg?(?:\/[^/]+)?|en\/(?:shopping-list|meal-plan-app|recipe-book-app|dinner-ideas|easy-dinner)|sv\/(?:receptbok-app|veckomeny-app|inkopslista|vad-ska-jag-laga|enkel-middag)|da\/(?:opskrifts-app|madplan-app|indkoebsliste-app|middagsforslag|nem-mad))\/$/u.test(side);
       const forventetDato = autoDato.get(new URL(side).pathname)
-        ?? (lang === 'en' && rikeStier.has(new URL(side).pathname) ? RIK_DATO : null)
+        ?? (rikeStier.has(new URL(side).pathname) ? RIK_DATO : null)
         ?? (appside ? '2026-10-28' : oppdatertGuide ? '2026-10-27' : lang === 'en' ? '2026-10-20' : '2026-10-05');
       assert.match(blokk, new RegExp(`<loc>[^<]+<\\/loc>\\s*<lastmod>${forventetDato}<\\/lastmod>`, 'u'), side);
       const html = readFileSync(urlTilFil(side), 'utf8');
@@ -69,9 +69,9 @@ for (const lang of ['sv', 'da', 'en']) {
 test('det norske sitemapet er fortsatt bare norske sider', () => {
   const sitemap = les('sitemap.xml');
   assert.doesNotMatch(sitemap, /matlyst-app\.no\/(?:sv|da|en)\//u);
-  // 24 sider + bloggforsiden, 8 håndskrevne bloggartikler og autoartiklene.
+  // 24 sider + bloggforsiden, 8 håndskrevne bloggartikler, kjøperguiden og autoartiklene.
   const auto = autoArtikler('nb', pathToFileURL(`${ROOT}/`));
-  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 33 + auto.length);
+  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 34 + auto.length);
   assert.match(sitemap, /<loc>https:\/\/matlyst-app\.no\/slett-konto\.html<\/loc>/u);
 });
 
