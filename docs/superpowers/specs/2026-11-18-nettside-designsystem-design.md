@@ -1,12 +1,12 @@
 # Designspec for matlyst-app.no: lett, levende og bygget rundt appen
 
-Status: versjon 3, 18.11.2026 sent. Venter på Patricks lesing. Erstatter versjon 2 («Lekeboks møter Standby»).
+Status: versjon 3, godkjent av Patrick 18.11.2026. Erstatter versjon 2 («Lekeboks møter Standby»).
 
 Prototype: https://claude.ai/artifact/C9caMSz3tjdQNizGLDnB27 (versjon 39). Den er fasit for forsiden og for sideskallet.
 Kildefila ligger i `docs/superpowers/prototyper/2026-11-18-forside.html`. Bilder, film og logoer ligger i `~/matlyst-privat/seo-matlyst/2026-11-18/nettfilm/` og i artefaktet.
 Produktgrunnlag: `PRODUCT.md` i roten av repoet.
 
-Det som er merket **(mitt valg)** har Patrick ikke tatt stilling til. Alt annet er valgt eller bekreftet av ham 18.11, enten i valgkort eller i kommentarer på prototypen.
+Det som er merket **(mitt valg)** er mine forslag. Patrick godkjente specen som helhet 18.11, men tok ikke stilling til hvert av dem for seg. Alt annet er valgt eller bekreftet av ham 18.11, enten i valgkort eller i kommentarer på prototypen.
 
 ## 1. Hvorfor
 
