@@ -7,6 +7,7 @@ import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { matformer, tomat, sitron, chili, blad, egg } from './illustrasjon.mjs';
+import { SIDEGRUPPER } from './locale-sider.mjs';
 
 const TEKSTER = {
   nb: { last: 'Få appen', tittel: 'Last ned Matlyst', under: 'Gratis for iPhone og Android', regionnavn: 'Last ned appen' },
@@ -82,6 +83,38 @@ export function rader(lang, kort) {
   return `${MERKE}<section class="step-cards" aria-labelledby="slik"><div class="step-cards-hode"><p class="eyebrow">${k.eyebrow}</p><h2 class="disp" id="slik">${k.h2}</h2></div>${kortHtml}</section>${MERKE_SLUTT}`;
 }
 
+
+// ---- Logo, bunntekst med kolonner og sosiale lenker ----
+export const SOSIALE = [
+  { id: 'instagram', navn: 'Instagram', url: 'https://www.instagram.com/matlyst_app/', ikon: '<path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM17.3 5.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/>' },
+  { id: 'tiktok', navn: 'TikTok', url: 'https://www.tiktok.com/@matlyst.appen', ikon: '<path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.1 6.1 0 1 0 5.2 6.1V8.6a7.6 7.6 0 0 0 4.4 1.4V6.8a4.5 4.5 0 0 1-4.4-4.8z"/>' },
+  { id: 'pinterest', navn: 'Pinterest', url: 'https://www.pinterest.com/matlystapp/', ikon: '<path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.800-2.4.8 0 1.200.6 1.200 1.400 0 .9-.5 2.200-.8 3.400-.2 1 .5 1.800 1.500 1.800 1.800 0 3.200-1.900 3.200-4.600 0-2.400-1.700-4.100-4.200-4.100-2.900 0-4.600 2.200-4.600 4.400 0 .9.300 1.800.8 2.300.1.100.1.200.1.300l-.3 1.200c0 .2-.2.200-.4.100-1.300-.6-2.100-2.500-2.100-4 0-3.300 2.400-6.300 6.900-6.300 3.600 0 6.400 2.600 6.400 6 0 3.600-2.300 6.500-5.400 6.500-1.100 0-2.100-.6-2.400-1.200l-.7 2.500c-.2.900-.9 2-1.300 2.700A10 10 0 1 0 12 2z"/>' },
+];
+const GRUPPER = ['oppskrifts-app', 'importer-oppskrifter', 'ukemeny', 'handleliste', 'spiskammer', 'instagram-oppskrifter', 'tiktok-oppskrifter', 'auto-velg-oppskriftsapp', 'skapere', 'vilkar', 'personvern'];
+const ETIKETT = {
+  nb: { produkt: 'Produkt', laer: 'Lær mer', selskap: 'Om Matlyst', folg: 'Følg oss', blogg: 'Kjøkkentips', kontakt: 'Kontakt',
+    id: { 'oppskrifts-app': 'Oppskriftsbok-app', 'importer-oppskrifter': 'Importer oppskrifter', ukemeny: 'Ukemeny', handleliste: 'Handleliste', spiskammer: 'Spiskammer', 'instagram-oppskrifter': 'Lagre fra Instagram', 'tiktok-oppskrifter': 'Lagre fra TikTok', 'auto-velg-oppskriftsapp': 'Velg oppskriftsapp', skapere: 'For skapere', vilkar: 'Vilkår', personvern: 'Personvern' } },
+  sv: { produkt: 'Produkt', laer: 'Läs mer', selskap: 'Om Matlyst', folg: 'Följ oss', blogg: 'Köksråd', kontakt: 'Kontakt',
+    id: { 'oppskrifts-app': 'Receptbok-app', 'importer-oppskrifter': 'Importera recept', ukemeny: 'Veckomeny', handleliste: 'Inköpslista', spiskammer: 'Skafferi', 'instagram-oppskrifter': 'Spara från Instagram', 'tiktok-oppskrifter': 'Spara från TikTok', 'auto-velg-oppskriftsapp': 'Välj receptapp', skapere: 'För skapare', vilkar: 'Villkor', personvern: 'Integritet' } },
+  da: { produkt: 'Produkt', laer: 'Læs mere', selskap: 'Om Matlyst', folg: 'Følg os', blogg: 'Køkkentips', kontakt: 'Kontakt',
+    id: { 'oppskrifts-app': 'Opskrifts-app', 'importer-oppskrifter': 'Importér opskrifter', ukemeny: 'Madplan', handleliste: 'Indkøbsliste', spiskammer: 'Spisekammer', 'instagram-oppskrifter': 'Gem fra Instagram', 'tiktok-oppskrifter': 'Gem fra TikTok', 'auto-velg-oppskriftsapp': 'Vælg opskriftsapp', skapere: 'For skabere', vilkar: 'Vilkår', personvern: 'Privatliv' } },
+  en: { produkt: 'Product', laer: 'Learn', selskap: 'About Matlyst', folg: 'Follow us', blogg: 'Kitchen tips', kontakt: 'Contact',
+    id: { 'oppskrifts-app': 'Recipe organizer app', 'importer-oppskrifter': 'Import recipes', ukemeny: 'Meal plan', handleliste: 'Grocery list', spiskammer: 'Pantry', 'instagram-oppskrifter': 'Save from Instagram', 'tiktok-oppskrifter': 'Save from TikTok', 'auto-velg-oppskriftsapp': 'Choose a recipe app', skapere: 'For creators', vilkar: 'Terms', personvern: 'Privacy' } },
+};
+const BLOGGROT = { nb: '/blogg/', sv: '/sv/blogg/', da: '/da/blog/', en: '/en/blog/' };
+const stiFor = (id, lang) => SIDEGRUPPER.find((g) => g.id === id)?.sider[lang === 'nb' ? 'nb' : lang] ?? null;
+
+export const sosialeIkoner = () => `<ul class="f-sosial">${SOSIALE.map((s) => `<li><a href="${s.url}" rel="noopener me" aria-label="${s.navn}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor">${s.ikon}</svg></a></li>`).join('')}</ul>`;
+
+export function bunnKolonner(lang) {
+  const e = ETIKETT[lang];
+  const lenke = (id) => { const sti = stiFor(id, lang); return sti ? `<li><a href="${sti}">${e.id[id]}</a></li>` : ''; };
+  const kol = (tittel, innhold) => `<div class="f-kol"><p class="f-kol-tittel">${tittel}</p><ul>${innhold}</ul></div>`;
+  return `${MERKE}<div class="f-kolonner">${kol(e.produkt, ['oppskrifts-app', 'importer-oppskrifter', 'ukemeny', 'handleliste', 'spiskammer'].map(lenke).join(''))}${kol(e.laer, `<li><a href="${BLOGGROT[lang]}">${e.blogg}</a></li>${['auto-velg-oppskriftsapp', 'instagram-oppskrifter', 'tiktok-oppskrifter'].map(lenke).join('')}`)}${kol(e.selskap, `${lenke('skapere')}${lenke('vilkar')}${lenke('personvern')}<li><a href="mailto:hei@matlyst-app.no">${e.kontakt}</a></li>`)}<div class="f-kol"><p class="f-kol-tittel">${e.folg}</p>${sosialeIkoner()}</div></div>${MERKE_SLUTT}`;
+}
+
+export const organisasjonSkjema = (lang, urler) => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Matlyst', url: 'https://matlyst-app.no/', logo: 'https://matlyst-app.no/images/icon.png', email: 'hei@matlyst-app.no', sameAs: [...SOSIALE.map((s) => s.url), urler.ios, urler.play] })}</script>`;
+
 export function behandle(html, sti) {
   if (html.includes('data-app-uttrykk') || erNoindex(html)) return html;
   const lang = sprakFra(html);
@@ -98,6 +131,11 @@ export function behandle(html, sti) {
       return kort.length ? rader(lang, kort) : m;
     });
   }
+  // Logo (ml.) foran ordmerket, apple-touch-icon, bunntekst med kolonner og sosiale lenker.
+  ut = ut.replace(/(<a [^>]*class="brand"[^>]*>)(?!<img)/gu, '$1<img class="brand-ml" src="/images/icon-64.png" width="28" height="28" alt="">');
+  if (!ut.includes('apple-touch-icon')) ut = ut.replace(/(<link rel="icon"[^>]*>)/u, '$1\n<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">');
+  ut = ut.replace(/<footer>/u, `<footer>${bunnKolonner(lang)}`);
+  if (hjemsprak) ut = ut.replace('</head>', `${organisasjonSkjema(lang, urler)}\n</head>`);
   ut = ut.replace('</body>', `${nedlastingsLinje(lang, urler)}</body>`);
   return ut.replace('<body', '<body data-app-uttrykk="1"');
 }
