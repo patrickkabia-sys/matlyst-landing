@@ -1,4 +1,18 @@
 exclude:
   - test-results
+  - docs
+  - qa
+  - seo
+  - seo-data
+  - seo-motor
+  - scripts
+  - test
+  - blogg-kilde
   - PRODUCT.md
-  - docs/superpowers
+  - LOCALE-READINESS.md
+  - SEO-SEARCH-CONSOLE.md
+  - locale-readiness.json
+  - package.json
+  - package-lock.json
+  - playwright.config.mjs
+  - images/en-guide/bilder.json
