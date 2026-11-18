@@ -7,10 +7,12 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SIDEGRUPPER } from './locale-sider.mjs';
 
 const START = '<!-- relatert:start -->';
 const SLUTT = '<!-- relatert:slutt -->';
-const OVERSKRIFT = { en: 'Related guides' };
+const OVERSKRIFT = { en: 'Related guides', nb: 'Relaterte guider', sv: 'Relaterade guider', da: 'Relaterede guider' };
+const FORSIDE = { en: '/en/', nb: '/', sv: '/sv/', da: '/da/' };
 
 export function filFraSti(rot, sti) {
   return join(rot, sti.endsWith('/') ? `${sti.slice(1)}index.html` : sti.slice(1));
@@ -60,9 +62,24 @@ export function settInn(html, blokkTekst) {
   return uten;
 }
 
+/** Oversetter det engelske kartet til et annet språk via sidegruppene. Sider uten motstykke hoppes over. */
+export function kartForSprak(enKart, lang) {
+  if (lang === 'en') return enKart;
+  const tilSprak = (sti) => SIDEGRUPPER.find((g) => g.sider.en === sti)?.sider[lang] ?? null;
+  const lista = (l) => (l ?? []).map(tilSprak).filter(Boolean);
+  const hubber = {};
+  for (const [navn, g] of Object.entries(enKart.hubber)) {
+    const hub = tilSprak(g.hub);
+    if (!hub) continue;
+    hubber[navn] = { hub, tilleggshubber: lista(g.tilleggshubber), eiker: lista(g.eiker), planlagt: lista(g.planlagt) };
+  }
+  return { hubber };
+}
+
 export function kjor(rot, lang = 'en') {
-  const kart = JSON.parse(readFileSync(join(rot, 'seo-data/lenkekart.json'), 'utf8'))[lang];
-  const per = beregn(kart, `/${lang}/`);
+  const enKart = JSON.parse(readFileSync(join(rot, 'seo-data/lenkekart.json'), 'utf8')).en;
+  const kart = kartForSprak(enKart, lang);
+  const per = beregn(kart, FORSIDE[lang]);
   const endret = [];
   for (const [side, maal] of per) {
     const fil = filFraSti(rot, side);
@@ -77,6 +94,6 @@ export function kjor(rot, lang = 'en') {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const endret = kjor(fileURLToPath(new URL('..', import.meta.url)));
-  console.log(`lenker-sett: ${endret.length} sider oppdatert`);
+  const rot = fileURLToPath(new URL('..', import.meta.url));
+  for (const lang of ['en', 'nb', 'sv', 'da']) console.log(`lenker-sett ${lang}: ${kjor(rot, lang).length} sider oppdatert`);
 }

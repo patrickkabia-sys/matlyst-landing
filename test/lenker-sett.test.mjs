@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { beregn, blokk, settInn, tittel } from '../scripts/lenker-sett.mjs';
+import { beregn, blokk, kartForSprak, settInn, tittel } from '../scripts/lenker-sett.mjs';
 
 const kart = { hubber: { a: { hub: '/en/h/', tilleggshubber: ['/en/h2/'], eiker: ['/en/e1/', '/en/e2/', '/en/e3/'], planlagt: ['/en/p/'] } } };
 
@@ -30,4 +30,11 @@ test('settInn er idempotent og legger blokken før FAQ', () => {
 
 test('tittel fjerner merkenavnet', () => {
   assert.equal(tittel('<title>Pantry app | Matlyst</title>'), 'Pantry app');
+});
+
+test('kartet oversettes til nordiske språk via sidegruppene, og hubbene finnes i alle språk', () => {
+  const en = { hubber: { l: { hub: '/en/recipe-book-app/', eiker: ['/en/import-recipes-from-instagram/', '/en/import-recipes-from-tiktok/'], planlagt: [] } } };
+  assert.deepEqual(kartForSprak(en, 'nb').hubber.l.hub, '/oppskriftsbok-app/');
+  assert.deepEqual(kartForSprak(en, 'sv').hubber.l.eiker, ['/sv/spara-recept-fran-instagram/', '/sv/spara-recept-fran-tiktok/']);
+  assert.deepEqual(kartForSprak(en, 'da').hubber.l.hub, '/da/opskrifts-app/');
 });
