@@ -110,3 +110,21 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     a.href = PLAY;
   });
 })();
+
+// Korte animasjoner: spill når de er synlige, aldri ved redusert bevegelse (da vises plakat og kontroller).
+(() => {
+  const filmer = document.querySelectorAll('video[data-autoplay]');
+  if (!filmer.length) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+  const obs = new IntersectionObserver((poster) => {
+    for (const p of poster) {
+      if (p.isIntersecting) p.target.play().catch(() => {});
+      else p.target.pause();
+    }
+  }, { threshold: 0.4 });
+  for (const film of filmer) {
+    film.removeAttribute('controls');
+    film.preload = 'metadata';
+    obs.observe(film);
+  }
+})();

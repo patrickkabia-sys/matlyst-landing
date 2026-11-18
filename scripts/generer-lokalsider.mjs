@@ -6,7 +6,13 @@ import { legal, liste } from './juridisk-tekster.mjs';
 import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, byggLocalePageMap, filForSti, gruppeForSti } from './locale-sider.mjs';
 import { lokaleImportGuider } from './import-guider-lokale.mjs';
 import { engelskeFunksjonssider, kildesider } from './undersider-alle-sprak.mjs';
-import { amerikanskeAppsider } from './en-appsider.mjs';
+import { amerikanskeAppsider as tynneAmerikanskeAppsider } from './en-appsider.mjs';
+import { rikeSider, RIK_DATO } from './en-rike-sider.mjs';
+const tynneStier = new Set(tynneAmerikanskeAppsider.map((side) => side.path));
+const amerikanskeAppsider = [
+  ...tynneAmerikanskeAppsider.map((side) => ({ ...side, ...(rikeSider[side.path] ?? {}) })),
+  ...Object.entries(rikeSider).filter(([sti, side]) => !tynneStier.has(sti) && side.eyebrow && side.steg).map(([path, side]) => ({ path, ...side })),
+];
 import { svenskeAppsider, danskeAppsider } from './nordiske-appsider.mjs';
 import { appCta } from './app-cta.mjs';
 import { middagssider } from './middagssider.mjs';
@@ -720,8 +726,8 @@ function guidePage(lang, v) {
   ]};
   return `${head({lang,path:v.path,title:`${v.title} | Matlyst`,description:v.description,schema:[crumbs,howTo,faq]})}<body data-locale="${lang}">
 ${nav(lang,v.path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p></header>
-<section class="prose locale-prose">${(v.ideer ?? []).map(([h, liste]) => `<h2>${h}</h2><ul class="ide-liste">${liste.map(([navn, tekst]) => `<li><strong>${navn}.</strong> ${tekst}</li>`).join('')}</ul>`).join('\n')}<h2>${v.stegTittel}</h2><p>${v.forst}</p><ol>${v.steg.map(([h,p]) => `<li><strong>${h}.</strong> ${p}</li>`).join('')}</ol><p>${v.alternativ}</p><p>${v.grense}</p>
-${v.seksjoner.map(([h,body]) => `<h2>${h}</h2>${body}`).join('\n')}</section>
+<section class="${v.rik ? 'prose locale-prose has-toc' : 'prose locale-prose'}">${v.rik ? v.rik : `${(v.ideer ?? []).map(([h, liste]) => `<h2>${h}</h2><ul class="ide-liste">${liste.map(([navn, tekst]) => `<li><strong>${navn}.</strong> ${tekst}</li>`).join('')}</ul>`).join('\n')}<h2>${v.stegTittel}</h2><p>${v.forst}</p><ol>${v.steg.map(([h,p]) => `<li><strong>${h}.</strong> ${p}</li>`).join('')}</ol><p>${v.alternativ}</p><p>${v.grense}</p>
+${v.seksjoner.map(([h,body]) => `<h2>${h}</h2>${body}`).join('\n')}`}</section>
 ${v.bilde ? appCta(lang, v, storeButtons(lang)) : ''}<section class="faq"><h2>${v.faqTittel}</h2>${v.faq.map(([q,a],i) => `<details${i === 0 ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</section>
 <section class="page-cta"><h2 class="disp">${v.cta}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;
 }
@@ -835,7 +841,8 @@ for (const lang of SPRAK) {
     else write(sti, legalPage(lang,key));
   }
   for (const row of featurePages[lang] ?? []) if (!appsideStier[lang]?.has(row[0])) write(`../${lang}/${row[0]}index.html`, featurePage(lang,row));
-  for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
+  const medRik = (v) => (lang === 'en' ? { ...v, ...(rikeSider[v.path] ?? {}) } : v);
+  for (const v of veiledninger[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang, medRik(v)));
   for (const v of lokaleImportGuider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
   for (const v of appsider[lang] ?? []) write(`../${lang}/${v.path}index.html`, guidePage(lang,v));
   for (const row of sourcePages[lang] ?? []) write(`../${lang}/${row[0]}index.html`, sourcePage(lang,row));
@@ -920,6 +927,7 @@ const sistEndretSide = {
   'https://matlyst-app.no/en/delete-account/': '2026-10-27',
   ...Object.fromEntries(Object.entries(appsider).flatMap(([lang, sider]) => sider.map((v) => [`https://matlyst-app.no/${lang}/${v.path}`, '2026-10-28']))),
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => [BLOGGROT[lang], ...bloggArtikler(lang).map((a) => a.path)].map((sti) => [`https://matlyst-app.no${sti}`, '2026-10-28']))),
+  ...Object.fromEntries(Object.keys(rikeSider).map((sti) => [`https://matlyst-app.no/en/${sti}`, RIK_DATO])),
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => autoArtikler(lang).map((a) => [`https://matlyst-app.no${a.path}`, a.auto.publisert]))),
 };
 for (const lang of SPRAK) {
