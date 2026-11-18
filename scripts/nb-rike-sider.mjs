@@ -58,7 +58,7 @@ const oppskriftsbokApp = byggRik({
         situasjon: 'Fem middager, ett budsjett og én tur til butikken.',
         galt: 'To oppskrifter trenger hver sin løk, og du kjøper tre.',
         gjor: 'Planlegg uka først, og handle fra én samlet liste.',
-        matlyst: 'Legg oppskriftene i ukemenyen og åpne handlelista. Like varer med samme enhet legges sammen, og varer du allerede har i spiskammeret, står uten avkrysning.' })],
+        matlyst: 'Legg oppskriftene i ukemenyen og åpne handlelista. Like varer med samme enhet legges sammen, og varer du allerede har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift.' })],
     ['Bytt ut en ingrediens eller lag din egen versjon', p('Mangler du kefir eller de friske urtene? Åpne oppskriften og be Spør Matlyst om en erstatning. <strong>Bruk det jeg har</strong> foreslår erstatninger fra varene i spiskammeret ditt. Du kan også be om en vegetarisk, vegansk, raskere eller mindre utgave, eller skrive hva du selv vil ha, for eksempel «gjør den mer spennende».')
       + p('Endringene vises som en liste du kan angre. Når du lagrer, velger du <strong>Lag en kopi</strong>, som beholder originalen og lenker tilbake til kilden merket «tilpasset», eller <strong>Overskriv</strong>, som skriver over din egen oppskrift. Spør Matlyst er en Pro-funksjon, bruker KI og har en månedlig kvote. Sjekk resultatet før du lager maten.')],
     ['Spiskammeret ditt, og oppskriftene du glemte', p('Matlyst kan holde styr på hva du har hjemme. Søk i de lagrede oppskriftene dine på en ingrediens fra kjøleskapet og se hvilke som bruker den. I gratisversjonen viser spiskammeret 5 varer. Les mer om <a href="/spiskammer-app/">spiskammer-appen</a>.')
@@ -216,7 +216,7 @@ const tiktok = byggRik({
 
 const spiskammer = byggRik({
   lang: 'nb',
-  svarTekst: 'Legg inn det du har på kjøkkenet, så viser Matlyst hva du har, hvor mange dager det er igjen på hver vare, og hvilke av de lagrede oppskriftene dine som bruker den. Varer du allerede har i spiskammeret, står uten avkrysning på handlelista, så du ikke kjøper en ny boks.',
+  svarTekst: 'Legg inn det du har på kjøkkenet, så viser Matlyst hva du har, hvor mange dager det er igjen på hver vare, og hvilke av de lagrede oppskriftene dine som bruker den. Varer du allerede har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift på handlelista, så du ikke kjøper en ny boks.',
   seksjoner: [
     ['Hvorfor en liste over spiskammeret hjelper', p('Matsvinn handler som regel om hukommelse, ikke matlaging. Du glemmer at spinaten finnes, restene havner bakerst, og en uke senere havner det i søpla. Skriver du det ned én gang, husker du det.')
       + founder(['Nå søker jeg på det jeg har i spiskammeret, finner misokyllingen jeg hadde lagret, og middagen er avgjort på et par sekunder.'], 'Patrick, grunnlegger av Matlyst. Vi spiser oss gjennom kjøleskapet i stedet for å kaste maten.')],
@@ -229,7 +229,7 @@ const spiskammer = byggRik({
       + '<h3>Det bytter ut det du mangler</h3>'
       + p('Er du tom for kefir? Åpne oppskriften og be Spør Matlyst om en erstatning som bruker det du har i spiskammeret. Du ser endringene som en liste og kan angre dem.')
       + '<h3>Det holder dubletter unna handlelista</h3>'
-      + p('Varer du allerede har i spiskammeret, står uten avkrysning på <a href="/handleliste/">handlelista</a>, så du ikke kjøper enda en boks av det du har. Har du en husstand, deles spiskammeret med den og oppdateres direkte.')],
+      + p('Varer du allerede har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift på <a href="/handleliste/">handlelista</a>, så du ikke kjøper enda en boks av det du har. Har du en husstand, deles spiskammeret med den og oppdateres direkte.')],
     ['Slik setter du opp spiskammeret på ti minutter', p('Du trenger ikke føre opp hele kjøkkenet. En kort liste du holder oppdatert, slår en perfekt liste du gir opp.')
       + '<ol><li><strong>Begynn med det som blir dårlig først.</strong> Ferske grønnsaker, meieriprodukter, åpnede glass og alt du kjøpte til én oppskrift og har igjen.</li>'
       + '<li><strong>Legg inn utløpsdato der pakken har en.</strong> For fersk mat uten dato legger du inn dagen du kjøpte den og bruker skjønn.</li>'
@@ -240,7 +240,7 @@ const spiskammer = byggRik({
     ['Bruk spiskammeret og ukemenyen sammen', p('Spiskammeret gjør mest nytte når du planlegger ut fra det. Slik fungerer det i en vanlig uke.')
       + '<ol><li>Åpne spiskammeret og se hva som går ut først.</li>'
       + '<li>Søk i de lagrede oppskriftene dine på de ingrediensene, og sett to eller tre i <a href="/ukemeny/">ukemenyen</a>.</li>'
-      + '<li>Send ingrediensene til handlelista. Varer du har i spiskammeret, står uten avkrysning, så du handler det som mangler.</li>'
+      + '<li>Send ingrediensene til handlelista. Varer du har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift, så du handler det som mangler.</li>'
       + '<li>Lag maten, og oppdater spiskammeret.</li></ol>'
       + p('Det er fortsatt du som bestemmer hva som kommer på planen. Matlyst fyller ikke uka for deg.')],
     ['Del spiskammeret med husstanden', p('Et Pro-medlem kan opprette en husstand for opptil 6 personer, og det er gratis å bli med. Handlelista, ukemenyen og spiskammeret deles og oppdateres direkte hos alle. Den som nettopp brukte de siste eggene, kan ta dem av lista, og den som står i butikken, ser det med en gang.')],
@@ -279,16 +279,16 @@ const spiskammer = byggRik({
 
 const handleliste = byggRik({
   lang: 'nb',
-  svarTekst: 'Legg til en oppskrift, eller en hel planlagt uke, på handlelista i Matlyst, så havner ingrediensene på én liste. Like varer med samme enhet legges sammen, lista er sortert etter hylle i butikken, og varer du allerede har i spiskammeret, står uten avkrysning.',
+  svarTekst: 'Legg til en oppskrift, eller en hel planlagt uke, på handlelista i Matlyst, så havner ingrediensene på én liste. Like varer med samme enhet legges sammen, lista er sortert etter hylle i butikken, og varer du allerede har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift.',
   seksjoner: [
     ['Slik lager du en handleliste fra oppskrifter', '<ol><li><strong>Åpne en oppskrift eller ukemenyen.</strong> Velg én oppskrift, eller en dag eller uke du har planlagt.</li>'
       + '<li><strong>Legg den til på handlelista.</strong> Ingrediensene havner på lista med mengdene oppskriften har.</li>'
       + '<li><strong>Handle etter hylle.</strong> Varene er gruppert etter hylle i butikken, for eksempel frukt og grønt, meieri og krydder. Kryss av underveis.</li></ol>'
       + p('Det fungerer med alle oppskrifter i Matlyst, enten du har lagret dem fra en nettside, TikTok eller Instagram, eller skrevet dem inn selv. Du kan også legge til ting som ikke står i en oppskrift, som kaffe og tørkepapir.')],
-    ['Hva skjer når to oppskrifter trenger det samme', p('Tenk deg at to oppskrifter trenger hver sin løk. Da får du én linje for løk, ikke to. Matlyst legger like varer sammen når de har samme enhet. Er enhetene forskjellige, som 2 dl av én ting og 200 g av en annen, får de hver sin linje, så du kan avgjøre selv. Matlyst gjetter ikke hvordan de skal regnes om.')
+    ['Hva skjer når to oppskrifter trenger det samme', p('Tenk deg at to oppskrifter trenger hver sin løk. Da får du én linje for løk, ikke to. Matlyst legger varer med samme navn på én linje. Er enhetene forskjellige, som 2 dl i én oppskrift og 200 g i en annen, står begge mengdene på samme linje, for eksempel «2 dl · 200 g». Matlyst gjetter ikke hvordan de skal regnes om. Vil du ha én mengde, trykker du på mengden og skriver inn én mengde og enhet.')
       + p('Lista er sortert etter hylle i butikken, så du går gjennom butikken én gang i stedet for å krysse den to ganger for den ene tingen du glemte.')],
     ['Planlegg først, handle én gang', p('En handleliste er bare så god som planen bak. Sett ukas middager i <a href="/ukemeny/">ukemenyen</a>, legg hele uka på handlelista, og ta én tur i stedet for tre. Vil du se hvordan lagring, rydding og matlaging henger sammen, finner du det på siden om <a href="/oppskriftsbok-app/">oppskriftsappen</a>.')],
-    ['Hopp over det du allerede har', p('Varer du allerede har i <a href="/spiskammer-app/">spiskammeret</a>, står uten avkrysning på lista. Det er en påminnelse, ikke en regel: du ser hva du har før du kjøper en ny boks. Sjekk spiskammeret før du handler, og oppdater det når du har laget mat.')],
+    ['Hopp over det du allerede har', p('Varer du allerede har i <a href="/spiskammer-app/">spiskammeret</a>, er fravalgt og merket «Har hjemme» når du legger til en oppskrift på lista. Det er en påminnelse, ikke en regel: du ser hva du har før du kjøper en ny boks. Sjekk spiskammeret før du handler, og oppdater det når du har laget mat.')],
     ['Del lista med husstanden', p('Et Pro-medlem kan opprette en husstand for opptil 6 personer, og det er gratis å bli med. Handlelista, ukemenyen og spiskammeret deles og oppdateres direkte hos alle. Én planlegger, en annen handler, og den som står i butikken, krysser av for alle.')],
     ['Tre situasjoner, og hva du gjør', sn()
       + sc('Tenk deg at du planlegger fem middager for en familie på fire', {
@@ -457,7 +457,7 @@ export const rikeSider = {
       ['Skanner Matlyst strekkoder?', 'Nei. Du legger inn varer i spiskammeret for hånd.'],
       ['Er spiskammeret gratis?', 'I gratisversjonen viser spiskammeret 5 varer. Matlyst Pro gir mer, sammen med Spør Matlyst og deling med husstanden.'],
       ['Kan Matlyst foreslå middag fra det jeg har?', 'Ja, med Matlyst Pro. I Spør Matlyst lager «Bruk det jeg har» middagsforslag fra spiskammeret ditt. Det bruker KI og har en månedlig kvote, så sjekk resultatet før du lager maten.'],
-      ['Hindrer spiskammeret at jeg kjøper dubletter?', 'Varer du har i spiskammeret, står uten avkrysning på handlelista, så du ser hva du allerede har før du handler.'],
+      ['Hindrer spiskammeret at jeg kjøper dubletter?', 'Varer du har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift på handlelista, så du ser hva du allerede har før du handler.'],
       ['Kan jeg finne oppskrifter fra en ingrediens i kjøleskapet?', 'Ja. Søk i de lagrede oppskriftene dine på ingrediensen. Det er vanlig søk og fungerer uten KI.'],
       ['Kan jeg dele spiskammeret med husstanden?', 'Ja. Et Pro-medlem oppretter en husstand for opptil 6 personer, og det er gratis å bli med. Spiskammeret, handlelista og ukemenyen oppdateres direkte hos alle.'],
       ['Fungerer det uten nett?', 'Du kan lese oppskriftene og handlelista uten nett i opptil 30 dager etter siste synkronisering. Redigering krever forbindelse.'],
@@ -474,9 +474,9 @@ export const rikeSider = {
       ['Er handlelista i Matlyst gratis?', 'Ja, handlelista er gratis. Å opprette en husstand for å dele lista krever Matlyst Pro, og det er gratis å bli med i en.'],
       ['Kan jeg dele handlelista med partneren min?', 'Ja. Et Pro-medlem oppretter en husstand for opptil 6 personer. Handlelista, ukemenyen og spiskammeret oppdateres direkte hos alle, og det er gratis å bli med.'],
       ['Sorterer lista varene etter hylle i butikken?', 'Ja. Varene er gruppert etter hylle, for eksempel frukt og grønt, kjøtt og meieri.'],
-      ['Hva skjer når to oppskrifter trenger den samme ingrediensen?', 'Matlyst legger like varer sammen når de har samme enhet. Er enhetene forskjellige, får de hver sin linje.'],
+      ['Hva skjer når to oppskrifter trenger den samme ingrediensen?', 'Matlyst legger varer med samme navn på én linje. Er enhetene forskjellige, står mengdene sammen på linja, for eksempel «2 dl · 200 g».'],
       ['Kan jeg legge til ting som ikke står i en oppskrift?', 'Ja. Trykk på + og skriv det du trenger.'],
-      ['Vet lista hva jeg allerede har hjemme?', 'Varer du har i spiskammeret, står uten avkrysning på lista, så du ser hva du har før du kjøper det.'],
+      ['Vet lista hva jeg allerede har hjemme?', 'Varer du har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift på lista, så du ser hva du har før du kjøper det.'],
     ],
   },
   'blogg/velg-oppskriftsapp/': {
