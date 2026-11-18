@@ -107,6 +107,46 @@ function hentKilde() {
   };
 }
 
+test('levering bruker bestillingens lengde og struktur helt frem til lagret artikkel', async (t) => {
+  const { mappe, rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t);
+  const bestilling = JSON.parse(readFileSync(bestillingFil, 'utf8'));
+  bestilling.krav = { ...bestilling.krav, ord_min: 1800, ord_maks: 3200, seksjoner_maks: 8, faq_maks: 7 };
+  skrivJson(bestillingFil, bestilling);
+  const artikkel = JSON.parse(readFileSync(artikkelFil, 'utf8'));
+  artikkel.seksjoner = Array.from({ length: 8 }, () => ({
+    type: 'avsnitt', overskrift: 'Middag', tekst: 'du '.repeat(374).trim(),
+  }));
+  artikkel.faq = Array.from({ length: 7 }, () => artikkel.faq[0]);
+  skrivJson(artikkelFil, artikkel);
+  skrivJson(granskingFil, { beslutning: 'GODKJENT', grunner: [], artikkel_sha256: sha256(artikkelFil) });
+
+  const resultat = await lever({
+    bestillingFil, artikkelFil, granskingFil, rot, nokkel: TESTNOKKEL,
+    hent: async () => hentKilde(), tid: new Date('2026-11-12T10:00:00Z'),
+  });
+
+  assert.equal(resultat.statuskode, 'levert');
+  const lagret = JSON.parse(readFileSync(join(mappe, 'blogg-kilde', 'auto', 'nb', 'bruk-rester-i-middag.json')));
+  assert.equal(lagret.seksjoner.length, 8);
+  assert.equal(lagret.faq.length, 7);
+});
+
+test('bare tørrkjøring senker bestillingens ordminimum til 20', async (t) => {
+  for (const tørt of [false, true]) {
+    const { rot, bestillingFil, artikkelFil, granskingFil } = lagRot(t);
+    const bestilling = JSON.parse(readFileSync(bestillingFil, 'utf8'));
+    bestilling.krav.ord_min = 600;
+    skrivJson(bestillingFil, bestilling);
+
+    const resultat = await lever({
+      bestillingFil, artikkelFil, granskingFil, rot, nokkel: TESTNOKKEL, tørt,
+      hent: async () => hentKilde(), tid: new Date('2026-11-12T10:00:00Z'),
+    });
+
+    assert.equal(resultat.statuskode, tørt ? 'levert' : 'vern-skjema');
+  }
+});
+
 test('artikkelSha256 hasher de eksakte filbytene', (t) => {
   const { artikkelFil } = lagRot(t);
 

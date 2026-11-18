@@ -216,6 +216,7 @@ export async function lever({
   hent,
   tid = new Date(),
   grenser: grenserOverstyring,
+  tørt = false,
   beholdBestilling = false,
 }) {
   let bestilling;
@@ -290,6 +291,9 @@ export async function lever({
     forbudt: lesData('forbudt.json', rot),
     sprakfiler: språkfiler,
     grenser,
+    bestilling: tørt
+      ? { ...bestilling, krav: { ...bestilling.krav, ord_min: Math.min(bestilling.krav.ord_min, 20) } }
+      : bestilling,
   });
   if (!fast.ok) {
     const grunnkoder = fast.grunner.map(vernkode);
@@ -442,7 +446,7 @@ async function cli() {
         const svar = await fetch(url);
         return { status: svar.status, tekst: await svar.text() };
       },
-    grenser: tørt ? { ...lesData('grenser.json', REPO_ROT), brodtekstMinOrd: 20 } : undefined,
+    tørt,
     beholdBestilling: tørt,
   });
   process.stdout.write(`${JSON.stringify({

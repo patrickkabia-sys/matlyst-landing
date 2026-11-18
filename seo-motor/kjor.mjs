@@ -133,10 +133,17 @@ async function oppdaterMandag({
     brukt,
     emneIdNokkel,
   });
-  const perId = new Map([
-    ...privat.emneko.map((emne) => [emne.id, emne]),
-    ...ko.map((emne) => [emne.id, emne]),
-  ]);
+  const perId = new Map(privat.emneko.map((emne) => [emne.id, emne]));
+  const malPerSlug = new Map();
+  for (const emne of privat.emneko) {
+    if (emne.slug && emne.lengdemaal) malPerSlug.set(emne.slug, emne.lengdemaal);
+  }
+  for (const emne of ko) {
+    // Feltvis flett: lagret mål (samme id, ellers samme slug) overstyres bare av feltene frøet selv setter.
+    const lagret = perId.get(emne.id)?.lengdemaal ?? malPerSlug.get(emne.slug);
+    const lengdemaal = lagret || emne.lengdemaal ? { ...lagret, ...emne.lengdemaal } : undefined;
+    perId.set(emne.id, { ...emne, ...(lengdemaal === undefined ? {} : { lengdemaal }) });
+  }
   const brukteSlugs = new Set(brukt.map(({ slug }) => slug).filter(Boolean));
   privat.emneko = [...perId.values()]
     .filter((emne) => !brukteSlugs.has(emne.slug))
