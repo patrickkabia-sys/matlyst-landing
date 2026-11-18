@@ -126,7 +126,10 @@ test('hver fontfil holder seg innenfor sitt eget unicode-range', () => {
     // Ordmerke-delsettet har med vilje bare noen få bokstaver. Da er kravet at fila
     // dekker hele sitt eget unicode-range, ikke at den har hundre tegn.
     const iRange = f.omrader.reduce((n, [a, b]) => n + (b - a + 1), 0);
+    assert.ok(iRange > 0, `${f.fil} har ikke noe unicode-range, da sjekkes ingenting`);
     if (iRange < 100) {
+      const utenforSmaa = dekket.filter((cp) => !iOmrade(cp, f.omrader));
+      assert.deepEqual(utenforSmaa, [], `${f.fil} har tegn utenfor sitt eget unicode-range`);
       const mangler = f.omrader.flatMap(([a, b]) => Array.from({ length: b - a + 1 }, (_, i) => a + i)).filter((cp) => !dekket.includes(cp));
       assert.deepEqual(mangler, [], `${f.fil} mangler tegn fra sitt eget unicode-range`);
       continue;
