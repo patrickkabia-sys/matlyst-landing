@@ -1,0 +1,52 @@
+{
+  "en": {
+    "hubber": {
+      "lagre": {
+        "hub": "/en/recipe-book-app/",
+        "tilleggshubber": ["/en/import-recipes/"],
+        "eiker": [
+          "/en/import-recipes-from-instagram/",
+          "/en/import-recipes-from-tiktok/",
+          "/en/import-recipes-from-photos/",
+          "/en/import-recipes-from-paprika/",
+          "/en/matprat/",
+          "/en/koket/",
+          "/en/dr-food/",
+          "/en/landleys-kok/",
+          "/en/alletiders-cookbook/"
+        ],
+        "planlagt": [
+          "/en/blog/choose-recipe-organizer-app/",
+          "/en/grocery-list-from-recipes/"
+        ]
+      },
+      "planlegge": {
+        "hub": "/en/meal-plan-app/",
+        "eiker": ["/en/shopping-list/", "/en/easy-dinner/", "/en/dinner-ideas/"],
+        "planlagt": []
+      },
+      "spiskammer": {
+        "hub": "/en/pantry-app/",
+        "eiker": [
+          "/en/empty-the-fridge/",
+          "/en/recipes-by-ingredients/",
+          "/en/find-recipes/",
+          "/en/blog/leftovers-in-the-fridge/",
+          "/en/blog/freezer-storage-times/"
+        ],
+        "planlagt": []
+      },
+      "referanse": {
+        "hub": "/en/blog/",
+        "eiker": [
+          "/en/blog/boiling-times/",
+          "/en/blog/oven-to-air-fryer/",
+          "/en/blog/double-a-recipe/",
+          "/en/blog/safe-internal-temperatures/",
+          "/en/blog/egg-float-test/"
+        ],
+        "planlagt": ["/en/tools/recipe-scaler/"]
+      }
+    }
+  }
+}

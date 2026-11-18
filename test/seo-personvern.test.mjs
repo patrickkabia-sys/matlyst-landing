@@ -81,7 +81,7 @@ test('tørr motor og levering lekker ingen søkedata i output eller offentlig JS
   assert.doesNotMatch(offentligOutput, /"(?:sokeord|klikk|visninger|score|poeng|volum)"/iu);
 
   const dataRot = join(mappe, 'seo-data');
-  const konfigurasjon = new Set(['grenser.json', 'forbudt.json', 'kilder.json']);
+  const konfigurasjon = new Set(['grenser.json', 'forbudt.json', 'kilder.json', 'lenkekart.json']);
   const jsonfiler = readdirSync(dataRot, { recursive: true })
     .map(String)
     .filter((navn) => navn.endsWith('.json'))
