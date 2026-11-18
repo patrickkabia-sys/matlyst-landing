@@ -150,6 +150,13 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   const knapp = document.querySelector('.nav-meny-knapp');
   const panel = document.getElementById('nav-panel');
   if (!knapp || !panel) return;
+  // Mobil: én språkvelger, inne i menyen (toppen har ikke plass til den).
+  const velger = document.querySelector('.language-switcher-top');
+  if (velger && !panel.querySelector('.hylle-sprak')) {
+    const kopi = velger.cloneNode(true);
+    kopi.className = 'hylle-sprak';
+    panel.prepend(kopi);
+  }
   const sett = (apen) => { knapp.setAttribute('aria-expanded', String(apen)); panel.hidden = !apen; };
   knapp.addEventListener('click', () => sett(panel.hidden));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { sett(false); knapp.focus(); } });
