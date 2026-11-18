@@ -14,3 +14,4 @@ exclude:
   - package.json
   - package-lock.json
   - playwright.config.mjs
+  - images/en-guide/bilder.json

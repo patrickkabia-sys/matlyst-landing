@@ -40,6 +40,17 @@ test('hver oppføring i exclude-lista treffer noe i repoet', () => {
   assert.deepEqual(døde, []);
 });
 
+test('hver fil i repoet er enten en offentlig filtype eller utelatt', () => {
+  // Exclude-lista stopper bare det noen har husket å føre opp. Denne testen snur
+  // det: en fil som verken er utelatt eller av en type nettstedet faktisk bruker,
+  // feiler her. Da må den som legger til en ny slags fil ta stilling til den.
+  // Jekyll publiserer aldri stier som begynner med punktum eller understrek.
+  const offentlig = /\.(html|css|js|xml|txt|webp|jpg|png|svg|mp4|woff2)$/u;
+  const skjultAvJekyll = (sti) => sti.split('/').some((ledd) => /^[._]/u.test(ledd));
+  const uavklart = filer.filter((sti) => !erUtelatt(sti) && !skjultAvJekyll(sti) && !offentlig.test(sti) && sti !== 'CNAME');
+  assert.deepEqual(uavklart, []);
+});
+
 test('ingen Markdown-filer publiseres', () => {
   assert.ok(filer.some((sti) => /\.md$/u.test(sti)), 'fant ingen Markdown-filer, så testen vokter ingenting');
   assert.deepEqual(publiserte(/\.md$/u), []);
