@@ -87,7 +87,7 @@
           "type": "logo",
           "prikk": "klokke",
           "tittel": "Eller følg <em>steget</em>.",
-          "under": "Kokemodus i Matlyst viser ett steg om gangen, så du ser hva som skjer nå."
+          "under": "Kokemodus i Matlyst viser stegene som en sjekkliste, så du ser hva som skjer nå."
         }
       ],
       "bilder": [
@@ -170,7 +170,7 @@
             75
           ],
           "tittel": "Eller følg <em>steget</em>.",
-          "under": "Kokemodus i Matlyst viser ett steg om gangen, i stor skrift."
+          "under": "Kokemodus i Matlyst viser stegene som en sjekkliste, i stor skrift."
         }
       ],
       "bilder": [
@@ -536,7 +536,7 @@
             180
           ],
           "tittel": "Eller følg <em>steget</em>.",
-          "under": "Kokemodus i Matlyst viser ett steg om gangen, i stor skrift."
+          "under": "Kokemodus i Matlyst viser stegene som en sjekkliste, i stor skrift."
         }
       ],
       "bilder": [
@@ -1346,7 +1346,7 @@
             75
           ],
           "tittel": "Eller följ <em>steget</em>.",
-          "under": "Matlagningsläget i Matlyst visar ett steg i taget, i stor text."
+          "under": "Matlagningsläget i Matlyst visar stegen som en checklista, i stor text."
         }
       ],
       "bilder": [
@@ -1712,7 +1712,7 @@
             180
           ],
           "tittel": "Eller följ <em>steget</em>.",
-          "under": "Matlagningsläget i Matlyst visar ett steg i taget, i stor text."
+          "under": "Matlagningsläget i Matlyst visar stegen som en checklista, i stor text."
         }
       ],
       "bilder": [
@@ -1951,7 +1951,7 @@
             75
           ],
           "tittel": "Eller følg <em>trinnet</em>.",
-          "under": "Madlavningstilstanden i Matlyst viser ét trin ad gangen, med stor skrift."
+          "under": "Madlavningstilstanden i Matlyst viser trinnene som en tjekliste, med stor skrift."
         }
       ],
       "bilder": [
@@ -2317,7 +2317,7 @@
             180
           ],
           "tittel": "Eller følg <em>trinnet</em>.",
-          "under": "Madlavningstilstanden i Matlyst viser ét trin ad gangen, med stor skrift."
+          "under": "Madlavningstilstanden i Matlyst viser trinnene som en tjekliste, med stor skrift."
         }
       ],
       "bilder": [

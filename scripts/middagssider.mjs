@@ -105,7 +105,7 @@ export const middagssider = {
     steg: [
       ['Ha faste favoritter', 'Velg ti middager familien liker, og lagre dem i Matlyst. Da slipper du å lete når du er sulten.'],
       ['Planlegg før du handler', 'Legg middagene i ukemenyen og send ingrediensene til handlelista, så har du det du trenger.'],
-      ['Lag maten i kokemodus', 'Ett steg om gangen, med ingrediensene til steget rett på skjermen og tidtaker der oppskriften oppgir minutter.'],
+      ['Lag maten i kokemodus', 'Stegene er en sjekkliste du krysser av, og tidtaker foreslås der et steg nevner minutter.'],
     ],
     alternativ: 'Mangler du idéer? Se <a href="/middagsforslag/">22 middagsforslag til hverdagen</a>.',
     grense: 'Matlyst lagrer oppskriftene du velger, og kokemodus fungerer på alle av dem. Retteksemplene på denne siden er idéer, ikke oppskrifter som ligger i appen.',
@@ -121,8 +121,8 @@ export const middagssider = {
     ],
     cta: 'Gjør hverdagsmiddagen enklere',
     bilde: '05-kokemodus',
-    bildeAlt: 'Kokemodus i Matlyst med ett steg om gangen',
-    appCtaTittel: 'Ett steg om gangen i kokemodus',
+    bildeAlt: 'Kokemodus i Matlyst',
+    appCtaTittel: 'Sjekkliste for stegene i kokemodus',
   }],
 
   sv: [{
@@ -224,7 +224,7 @@ export const middagssider = {
     steg: [
       ['Ha fasta favoriter', 'Välj tio middagar som familjen gillar och spara dem i Matlyst. Då slipper du leta när du är hungrig.'],
       ['Planera innan du handlar', 'Lägg middagarna i veckomenyn och lägg till ingredienserna i inköpslistan, så har du det du behöver.'],
-      ['Laga maten i matlagningsläget', 'Ett steg i taget, med ingredienserna för steget direkt på skärmen och en timer där receptet anger minuter.'],
+      ['Laga maten i matlagningsläget', 'Stegen är en checklista du bockar av, och en timer föreslås där ett steg nämner minuter.'],
     ],
     alternativ: 'Saknar du idéer? Se <a href="/sv/vad-ska-jag-laga/">22 middagsförslag till vardagen</a>.',
     grense: 'Matlyst sparar recepten du väljer, och matlagningsläget fungerar för alla. Rätterna på den här sidan är idéer, inte recept som finns i appen.',
@@ -240,8 +240,8 @@ export const middagssider = {
     ],
     cta: 'Gör vardagsmiddagen enklare',
     bilde: '05-kokemodus',
-    bildeAlt: 'Matlagningsläget i Matlyst med ett steg i taget',
-    appCtaTittel: 'Ett steg i taget när du lagar mat',
+    bildeAlt: 'Matlagningsläget i Matlyst',
+    appCtaTittel: 'Checklista för stegen när du lagar mat',
   }],
 
   da: [{
@@ -343,7 +343,7 @@ export const middagssider = {
     steg: [
       ['Hav faste favoritter', 'Vælg ti retter, familien kan lide, og gem dem i Matlyst. Så slipper du for at lede, når du er sulten.'],
       ['Planlæg, før du handler', 'Læg retterne på madplanen, og send ingredienserne til indkøbslisten, så har du det, du skal bruge.'],
-      ['Brug madlavningstilstand', 'Ét trin ad gangen med ingredienserne til trinnet lige på skærmen og en timer, hvor opskriften angiver minutter.'],
+      ['Brug madlavningstilstand', 'Trinnene er en tjekliste, du krydser af, og en timer foreslås, hvor et trin nævner minutter.'],
     ],
     alternativ: 'Mangler du idéer? Se <a href="/da/middagsforslag/">22 forslag til aftensmad</a>.',
     grense: 'Matlyst gemmer de opskrifter, du vælger, og madlavningstilstand virker med dem alle. Retterne på denne side er idéer, ikke opskrifter, der ligger i appen.',
@@ -359,8 +359,8 @@ export const middagssider = {
     ],
     cta: 'Gør hverdagens aftensmad nemmere',
     bilde: '05-kokemodus',
-    bildeAlt: 'Madlavningstilstand i Matlyst med ét trin ad gangen',
-    appCtaTittel: 'Ét trin ad gangen, når du laver mad',
+    bildeAlt: 'Madlavningstilstand i Matlyst',
+    appCtaTittel: 'Tjekliste til trinnene, når du laver mad',
   }],
 
   en: [{
@@ -462,7 +462,7 @@ export const middagssider = {
     steg: [
       ['Keep go-to recipes', 'Pick ten dinners your family likes and save them in Matlyst. No more searching when you\'re already hungry.'],
       ['Plan before you shop', 'Put dinners in your meal plan and send the ingredients to your grocery list, so you have what you need.'],
-      ['Use cook mode', 'One step at a time, with the ingredients for that step on screen and a timer for any step with a cooking time.'],
+      ['Use cook mode', 'The steps are a checklist you tick off, and a timer is suggested for any step that mentions a time.'],
     ],
     alternativ: 'Out of ideas? See <a href="/en/dinner-ideas/">22 weeknight dinner ideas</a>.',
     grense: 'Matlyst saves the recipes you choose, and cook mode works with all of them. The dishes on this page are ideas, not recipes that come with the app.',
@@ -478,7 +478,7 @@ export const middagssider = {
     ],
     cta: 'Make weeknight dinners easier',
     bilde: '05-kokemodus',
-    bildeAlt: 'Cook mode in Matlyst with one step at a time',
-    appCtaTittel: 'One step at a time in cook mode',
+    bildeAlt: 'Cook mode in Matlyst',
+    appCtaTittel: 'A checklist for every step in cook mode',
   }],
 };
