@@ -144,3 +144,14 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   vis();
   window.addEventListener('scroll', vis, { passive: true });
 })();
+
+// Guider-menyen i toppmenyen: åpne og lukke med knapp, Escape og klikk utenfor.
+(() => {
+  const knapp = document.querySelector('.nav-meny-knapp');
+  const panel = document.getElementById('nav-panel');
+  if (!knapp || !panel) return;
+  const sett = (apen) => { knapp.setAttribute('aria-expanded', String(apen)); panel.hidden = !apen; };
+  knapp.addEventListener('click', () => sett(panel.hidden));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { sett(false); knapp.focus(); } });
+  document.addEventListener('click', (e) => { if (!panel.hidden && !e.target.closest('.nav-meny')) sett(false); });
+})();
