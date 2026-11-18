@@ -66,3 +66,7 @@ test('lisensene følger de nye skriftene', () => {
 test('tokens.css har ingen velgere utenom :root og @font-face', () => {
   assert.deepEqual([...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/(^|\})\s*([^{}@]+)\{/g)].map((m) => m[2].trim()).filter((v) => v !== ':root'), []);
 });
+
+test('skallet bruker prototypens skyggefarge', () => {
+  assert.equal(verdi('skygge'), '40 30 18');
+});
