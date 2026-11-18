@@ -459,7 +459,11 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
   .nav-meny-tekst{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .nav-panel{position:fixed;left:12px;right:12px;top:68px;min-width:0;grid-template-columns:1fr 1fr;gap:26px 18px;padding:24px 18px 28px;max-height:calc(100vh - 150px)}
   .hylle-krukke{font-size:18px}
+  .nav-right:has(.nav-meny) > .language-switcher-top{display:none}
+  .nav-panel .hylle-sprak{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;margin:0 0 -6px}
+  .nav-panel .hylle-sprak a{min-width:52px;justify-content:center}
 }
+@media(min-width:761px){.nav-panel .hylle-sprak{display:none}}
 @media(prefers-reduced-motion:reduce){.nav-panel a{transition:none}}
 
 /* App-bevis: skjermbilde eller animasjon der teksten beskriver en funksjon (Patrick 18.11.2026) */
