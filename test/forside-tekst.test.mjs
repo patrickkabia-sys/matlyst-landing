@@ -55,6 +55,9 @@ test('fyll() fyller plassholdere og kaster ved manglende eller ukjent plassholde
   assert.equal(fyll('uten plassholder'), 'uten plassholder');
   assert.throws(() => fyll(t.spor.kort.byttet, { fra: 'a' }), /Mangler plassholder \{til\}/);
   assert.throws(() => fyll(t.spor.kort.endringer, { antall: 3, feil: 1 }), /Ukjent plassholder \{feil\}/);
+  assert.throws(() => fyll('{antall}', { antall: undefined }), /ingen verdi/);
+  assert.throws(() => fyll('{antall}', { antall: null }), /ingen verdi/);
+  assert.throws(() => fyll('{feil-navn}', {}), /Ugyldig plassholder/);
 });
 
 test('plassholdere finnes bare i de dokumenterte tekstene', () => {
@@ -83,16 +86,21 @@ test('alle eksempelstier peker på en verdi som finnes', () => {
 
 // ---------- Gullmønsteret: forventningen utledes fra prototypen ----------
 
-const html = readFileSync(`${root}docs/superpowers/prototyper/2026-11-18-forside.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+const html = readFileSync(`${root}docs/superpowers/prototyper/2026-11-18-forside.html`, 'utf8')
+  .replace(/<!--[\s\S]*?-->/g, '')
+  // Ordmerket «matlyst» er satt i to deler i markupen. Det er en logo, ikke tekst.
+  .replace(/mat<em>lyst<\/em>/g, '');
 
-function region(navn, re, fjern = []) {
+function region(navn, re, endre = (h) => h) {
   const m = html.match(re);
   if (!m) throw new Error(`Fant ikke «${navn}» i prototypen`);
-  return fjern.reduce((h, r) => h.replace(r, ''), m[0]);
+  return endre(m[0]);
 }
+const seksjon = (klasse) => region(`section.${klasse}`, new RegExp(`<section class="${klasse}[ "][\\s\\S]*?<\\/section>`));
 const regioner = {
   main: region('main', /<main[\s>][\s\S]*?<\/main>/),
-  topp: region('header.topp', /<header class="topp">[\s\S]*?<\/header>/, [/<nav class="panel"[\s\S]*?<\/nav>/]),
+  // Menypanelet: bare åpningstaggen (med sin egen aria-label) beholdes. Hyllene bor i scripts/hyller.mjs.
+  topp: region('header.topp', /<header class="topp">[\s\S]*?<\/header>/, (h) => h.replace(/(<nav class="panel"[^>]*>)[\s\S]*?<\/nav>/, '$1</nav>')),
   bunn: region('section.bunn', /<section class="bunn"[\s\S]*?<\/section>/),
   under: region('footer.under', /<footer class="under">[\s\S]*?<\/footer>/),
   fast: region('div.fast', /<div class="fast"[^>]*>[\s\S]*?<\/div>/),
@@ -101,6 +109,8 @@ const regioner = {
 
 const avkod = (s) => s.replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
 const rens = (s) => avkod(s).replace(/\s+/g, ' ').trim();
+// Tekster uten bokstaver (rene tall, klokkeslett, tegn som − og +) hoppes over.
+const harBokstav = (s) => /\p{L}/u.test(s);
 
 // Alt en besøkende (eller en skjermleser) kan lese i en region: tekstnoder og aria-label/alt.
 // Attributtene hentes FØR svg fjernes, for QR-koden og flagget har aria-label på selve svg-en.
@@ -114,58 +124,101 @@ function lesbare(h) {
     .replace(/<\/?(?:b|u)(?:\s[^>]*)?>/g, '')
     .split(/<[^>]*>/)
     .map(rens);
-  return [...attributter, ...noder];
-}
-// Tekster uten bokstaver (rene tall, klokkeslett, tegn som − og +) hoppes over.
-const harBokstav = (s) => /\p{L}/u.test(s);
-
-// Bladene i TEKST.nb, pluss maler fylt med eksempelverdiene fra `eksempler`.
-const bladene = new Set();
-(function samle(v) {
-  if (typeof v === 'string') bladene.add(rens(v));
-  else if (Array.isArray(v)) v.forEach(samle);
-  else if (v && typeof v === 'object') Object.values(v).forEach(samle);
-})(t);
-for (const svar of t.eksempler.svar) {
-  bladene.add(fyll(t.spor.kort.endringer, { antall: svar.antall }));
-  for (const e of svar.endringer) {
-    if (e.byttet) bladene.add(fyll(t.spor.kort.byttet, e.byttet));
-    if (e.fjernet) bladene.add(fyll(t.spor.kort.fjernet, { vare: e.fjernet }));
-    if (e.omskrevet) bladene.add(fyll(t.spor.kort.omskrevet, { steg: e.omskrevet }));
-  }
-}
-for (const h of t.eksempler.husstander) bladene.add(fyll(t.middag.husstand.telling, { n: h.folk.length, ledige: 6 - h.folk.length }));
-
-// 2 til 4 blad etter hverandre, skilt av ett mellomrom eller ingenting.
-function sammensatt(tekst, igjen = 4) {
-  if (igjen === 0) return false;
-  for (let i = 1; i < tekst.length; i++) {
-    if (!bladene.has(tekst.slice(0, i))) continue;
-    const rest = tekst.slice(i).replace(/^ /, '');
-    if (bladene.has(rest) || sammensatt(rest, igjen - 1)) return true;
-  }
-  return false;
+  return [...attributter, ...noder].filter(harBokstav);
 }
 
-// Kort og eksplisitt: tekster som ikke er et blad og ikke settes sammen av blad.
-const unntak = new Map([
-  ['mat', 'ordmerket «matlyst» er satt i to deler (mat + lyst); et varemerke som ikke oversettes'],
-  ['lyst', 'ordmerket «matlyst» er satt i to deler (mat + lyst); et varemerke som ikke oversettes'],
-]);
+// Bladene i TEKST.nb med sti, for eksempel ['middag.skaler.tittel', 'Skaler'].
+function blader(v, sti = '', ut = []) {
+  if (typeof v === 'string') ut.push([sti, v]);
+  else if (Array.isArray(v)) v.forEach((x, i) => blader(x, sti ? `${sti}.${i}` : String(i), ut));
+  else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) blader(x, sti ? `${sti}.${k}` : k, ut);
+  return ut;
+}
+const hent = (sti) => sti.split('.').reduce((v, k) => v[k], t);
 
-test('hver tekst en besøkende kan lese finnes ordrett i TEKST.nb', () => {
-  const funnet = new Set();
-  const mangler = [];
-  for (const [navn, h] of Object.entries(regioner)) {
-    for (const tekst of new Set(lesbare(h))) {
-      if (!harBokstav(tekst)) continue;
-      if (unntak.has(tekst)) { funnet.add(tekst); continue; }
-      if (!bladene.has(tekst) && !sammensatt(tekst)) mangler.push(`${navn}: ${tekst}`);
-    }
+// Strenger i modulen som aldri vises som tekst: ankre, ikon-id-er, filnavn, språkkoder,
+// og tidsuttrykket som allerede står inne i stegteksten.
+const IKKE_TEKST = /(^|\.)(mal|ikon|fil|kode|tidsuttrykk)$/;
+
+// Det første svaret i Spør Matlyst (alle endringene og forklaringen) står ferdig i markupen;
+// de tre andre tegnes av scriptet.
+const forsteSvar = t.eksempler.svar[0];
+
+// Regiontabellen: hvilken del av prototypen hører til hvilke nøkler i TEKST.nb.
+//   nokler  nøkkelgruppene på øverste nivå som vises i regionen
+//   utelatt stier (regex) som finnes i modulen men tegnes bare av scriptet, ikke i markupen
+//   fylt    maler med plassholdere, fylt med eksempelverdiene som står i markupen
+//   ekstra  enkeltstier utenfor nøklene (eksempeltekster som markupen viser ferdig)
+//   teller  hvor mange ganger en sti (prefiks) vises i regionen når den er lagret én gang
+const REGIONER = [
+  { navn: 'header', html: regioner.topp, nokler: ['topp', 'folg'] },
+  {
+    navn: 'hero', html: seksjon('hero'),
+    nokler: ['h1', 'ingress', 'knapp', 'vurdering', 'stegAria', 'steg', 'filmAria', 'kildetittel', 'kilderAria', 'kilder'],
+    teller: { kilder: 4 }, // båndet står i fire kopier så det kan rulle sømløst; tre er skjult for skjermlesere
+  },
+  { navn: 'kokebok', html: seksjon('kokebok'), nokler: ['kokebok'] },
+  {
+    navn: 'spor', html: seksjon('spor'), nokler: ['spor'],
+    utelatt: [/^spor\.kort\.endrer$/], // vises bare mens scriptet bytter svar
+    fylt: [['spor.kort.endringer', { antall: forsteSvar.antall }], ...forsteSvar.endringer.map((e) => ['spor.kort.byttet', e.byttet])],
+    ekstra: ['eksempler.svar.0.forklaring'],
+    teller: { 'spor.forslag.0': 2 }, // første forslag står også som ferdig skrevet tekst i feltet
+  },
+  {
+    navn: 'middag', html: seksjon('del'), nokler: ['middag'],
+    utelatt: [
+      /^middag\.skaler\.ingredienser\.\d+\.mengder\.[12]$/, // mengdene ved 5 og 6 porsjoner tegnes av scriptet
+      /^middag\.handle\.varer\.\d+\.mengder\.1$/, // mengden ved 6 porsjoner tegnes av scriptet
+      /^middag\.husstand\.(listehode|maltid)$/, // husstandskortet tegnes helt av scriptet
+    ],
+    teller: { 'middag.ukemeny.maltid': 2 }, // «Middag» står på begge de planlagte rettene
+  },
+  { navn: 'pris', html: seksjon('pris'), nokler: ['pris'] },
+  { navn: 'ofte', html: seksjon('ofte'), nokler: ['svar'] },
+  { navn: 'bunn', html: regioner.bunn, nokler: ['bunn', 'bunnlinje', 'knapp'] },
+  { navn: 'footer', html: regioner.under, nokler: ['under', 'sprak'] },
+  { navn: 'fast', html: regioner.fast, nokler: ['fast'] },
+  { navn: 'dialog', html: regioner.hent, nokler: ['hent'] },
+];
+// Nøkkelgrupper som ikke har noen region: eksempeltekster tegnet av scriptet (bortsett fra
+// forklaringen over). Kontrollert for hånd, ikke maskinelt.
+const UREGIONERT = ['eksempler', 'stegtider'];
+
+function modulTekster(r) {
+  const ut = [];
+  const legg = (tekst, antall = 1) => { for (let i = 0; i < antall; i++) ut.push(tekst); };
+  for (const [sti, v] of blader(t)) {
+    if (!r.nokler.includes(sti.split('.')[0])) continue;
+    if (IKKE_TEKST.test(sti)) continue;
+    if ((r.utelatt ?? []).some((re) => re.test(sti))) continue;
+    if (v.includes('{')) continue; // maler tas bare med via `fylt`
+    const tellerSti = Object.keys(r.teller ?? {}).find((k) => sti === k || sti.startsWith(`${k}.`));
+    legg(rens(v), tellerSti ? r.teller[tellerSti] : 1);
   }
-  assert.deepEqual(mangler, [], 'tekster i prototypen som ikke finnes ordrett i TEKST.nb');
-  for (const [tekst] of unntak) assert.ok(funnet.has(tekst), `unntaket «${tekst}» finnes ikke lenger i prototypen`);
+  for (const [sti, verdier] of r.fylt ?? []) legg(rens(fyll(hent(sti), verdier)));
+  for (const sti of r.ekstra ?? []) legg(rens(hent(sti)));
+  return ut.filter(harBokstav).sort();
+}
+
+test('hver nøkkelgruppe i TEKST.nb hører til en region eller er et kjent unntak', () => {
+  const kartlagt = new Set([...REGIONER.flatMap((r) => r.nokler), ...UREGIONERT]);
+  assert.deepEqual(Object.keys(t).filter((k) => !kartlagt.has(k)), [], 'nøkkelgrupper uten region');
+  for (const k of kartlagt) assert.ok(k in t, `regiontabellen nevner «${k}» som ikke finnes i TEKST.nb`);
 });
+
+for (const r of REGIONER) {
+  test(`region ${r.navn}: tekstene i prototypen og i TEKST.nb er de samme, like mange ganger`, () => {
+    const prototype = lesbare(r.html).sort();
+    const modul = modulTekster(r);
+    assert.ok(prototype.length > 0, `leste ingen tekst fra «${r.navn}» i prototypen`);
+    assert.ok(modul.length > 0, `ingen tekst i TEKST.nb for «${r.navn}»`);
+    // Multimengder: forskjellen i hver retning, så en dobbel eller manglende tekst vises.
+    const trekkFra = (a, b) => { const rest = [...b]; return a.filter((x) => { const i = rest.indexOf(x); if (i < 0) return true; rest.splice(i, 1); return false; }); };
+    assert.deepEqual({ kunPrototype: trekkFra(prototype, modul), kunModul: trekkFra(modul, prototype) }, { kunPrototype: [], kunModul: [] }, `region ${r.navn}`);
+    assert.deepEqual(modul, prototype);
+  });
+}
 
 // Rekkefølge: hver liste en besøkende leser i rekkefølge følger prototypen.
 const alle = (re, h) => [...h.matchAll(re)].map((m) => rens(m[1]));

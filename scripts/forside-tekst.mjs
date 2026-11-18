@@ -13,15 +13,19 @@
 //   middag.husstand.telling     {n} {ledige}  medlemmer og ledige plasser (av seks)
 // Verdiene kommer fra `eksempler` og er håndskrevne.
 
-// Fyller plassholdere i en mal. Kaster ved manglende eller ukjent plassholder,
+// Fyller plassholdere i en mal. Kaster ved manglende, ukjent eller tom (undefined/null) verdi
+// og ved klammer som ikke er en gyldig plassholder,
 // slik at en skrivefeil i en nøkkel aldri havner på siden som «{navn}».
 export function fyll(mal, verdier = {}) {
   const brukt = new Set();
   const ut = mal.replace(/\{(\w+)\}/g, (_, navn) => {
     if (!Object.hasOwn(verdier, navn)) throw new Error(`Mangler plassholder {${navn}} i «${mal}»`);
+    if (verdier[navn] === undefined || verdier[navn] === null) throw new Error(`Plassholder {${navn}} har ingen verdi i «${mal}»`);
     brukt.add(navn);
     return String(verdier[navn]);
   });
+  // En klammer som blir igjen (for eksempel {feil-navn}) er en skrivefeil i malen.
+  if (/[{}]/.test(mal.replace(/\{\w+\}/g, ''))) throw new Error(`Ugyldig plassholder i «${mal}»`);
   for (const navn of Object.keys(verdier)) {
     if (!brukt.has(navn)) throw new Error(`Ukjent plassholder {${navn}} for «${mal}»`);
   }
