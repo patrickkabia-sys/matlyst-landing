@@ -115,6 +115,15 @@ export function bunnKolonner(lang) {
 
 export const organisasjonSkjema = (lang, urler) => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Matlyst', url: 'https://matlyst-app.no/', logo: 'https://matlyst-app.no/images/icon.png', email: 'hei@matlyst-app.no', sameAs: [...SOSIALE.map((s) => s.url), urler.ios, urler.play] })}</script>`;
 
+export function navMeny(lang) {
+  const e = ETIKETT[lang];
+  const lenke = (id) => { const sti = stiFor(id, lang); return sti ? `<li><a href="${sti}">${e.id[id]}</a></li>` : ''; };
+  const tittel = { nb: 'Guider', sv: 'Guider', da: 'Guider', en: 'Guides' }[lang];
+  const a = ['oppskrifts-app', 'importer-oppskrifter', 'ukemeny', 'handleliste', 'spiskammer'].map(lenke).join('');
+  const b = `<li><a href="${BLOGGROT[lang]}">${e.blogg}</a></li>${['auto-velg-oppskriftsapp', 'instagram-oppskrifter', 'tiktok-oppskrifter'].map(lenke).join('')}`;
+  return `${MERKE}<div class="nav-meny"><button type="button" class="nav-meny-knapp" aria-expanded="false" aria-controls="nav-panel">${tittel}</button><div class="nav-panel" id="nav-panel" hidden><div><p class="f-kol-tittel">${e.produkt}</p><ul>${a}</ul></div><div><p class="f-kol-tittel">${e.laer}</p><ul>${b}</ul></div></div></div>${MERKE_SLUTT}`;
+}
+
 export function behandle(html, sti) {
   if (html.includes('data-app-uttrykk') || erNoindex(html)) return html;
   const lang = sprakFra(html);
@@ -123,7 +132,7 @@ export function behandle(html, sti) {
   const urler = butikk(html);
   if (!urler.ios || !urler.play) return html;
   let ut = html;
-  ut = ut.replace(/(<div class="nav-right">[\s\S]*?)(<\/div>)/u, (m, a, b) => `${a}${nedlastingsKnapp(lang, urler)}${b}`);
+  ut = ut.replace(/(<div class="nav-right">)([\s\S]*?)(<\/div>)/u, (m, a, mid, b) => `${a}${navMeny(lang)}${mid}${nedlastingsKnapp(lang, urler)}${b}`);
   if (hjemsprak) {
     ut = ut.replace(/<header class="hero([^"]*)"([^>]*)>([\s\S]*?)<\/header>/u, (m, k, rest, inn) => `<header class="hero${k} has-stage"${rest}>${inn}${scene(lang)}</header>`);
     ut = ut.replace(/<section class="locale-grid"[^>]*>([\s\S]*?)<\/section>/u, (m, inn) => {

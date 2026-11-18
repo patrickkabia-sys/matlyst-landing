@@ -428,3 +428,15 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .f-sosial a:focus-visible{outline:2px solid var(--terracotta);outline-offset:3px}
 @media(max-width:820px){.f-kolonner{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:480px){.f-kolonner{grid-template-columns:1fr}}
+
+/* Navigasjonsoversikt: Guider-meny i toppmenyen */
+.nav-meny{position:relative;margin-right:8px}
+.nav-meny-knapp{font:inherit;background:none;border:0;cursor:pointer;font-size:14px;color:var(--ink-soft);padding:8px 12px;border-radius:999px;transition:color .2s,background .2s}
+.nav-meny-knapp::after{content:'';display:inline-block;width:6px;height:6px;margin-left:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.nav-meny-knapp:hover,.nav-meny-knapp[aria-expanded=true]{color:var(--ink);background:var(--sand)}
+.nav-meny-knapp:focus-visible{outline:2px solid var(--terracotta);outline-offset:2px}
+.nav-panel{position:absolute;right:0;top:calc(100% + 10px);z-index:120;display:grid;grid-template-columns:repeat(2,minmax(180px,1fr));gap:28px;padding:24px 28px;min-width:440px;background:var(--cream);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 60px rgba(20,14,9,.16)}
+.nav-panel ul{list-style:none;margin:0;padding:0}
+.nav-panel a{display:flex;align-items:center;min-height:34px;font-size:15px;color:var(--ink-soft);text-decoration:none}
+.nav-panel a:hover,.nav-panel a:focus-visible{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){.nav-meny{display:none}}
