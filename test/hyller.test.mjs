@@ -20,11 +20,15 @@ function hyllerFraPrototyp() {
   const blokker = panel.split(/<div\b[^>]*class="fag["\s][^>]*>/).slice(1);
   assert.equal(blokker.length, forventetAntallHyller, 'leste ikke alle hyllene i prototypet');
   assert.equal(blokker.length, 6, 'prototypet skal ha seks hyller');
+  const tekstAv = (innerHtml) => innerHtml.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
   return blokker.map((b) => {
-    const navn = /<button\b[^>]*class="fagknapp[^"]*"[^>]*>[\s\S]*?<span\b[^>]*>([^<]+)<\/span>/.exec(b)?.[1];
-    const src = /<img\b[^>]*class="flis[^"]*"[^>]*\bsrc="([^"]+)"/.exec(b)?.[1] ?? /<img\b[^>]*\bsrc="([^"]+)"[^>]*class="flis/.exec(b)?.[1];
-    assert.ok(navn && src, 'hylle uten navn eller flis i prototypet');
-    const lenker = [...b.matchAll(/<li\b[^>]*>\s*<a\b[^>]*>\s*<span\b[^>]*>([^<]+)<\/span>/g)].map((m) => m[1]);
+    const knapp = /<button\b[^>]*class="fagknapp[^"]*"[^>]*>([\s\S]*?)<\/button>/.exec(b)?.[1];
+    assert.ok(knapp, 'hylle uten fagknapp i prototypet');
+    const navn = tekstAv(knapp);
+    const imgTag = /<img\b[^>]*?\sclass="flis"[^>]*?>/.exec(b)?.[0];
+    const src = imgTag && /(?:^|\s)src="([^"]+)"/.exec(imgTag)?.[1];
+    assert.ok(navn && src, `${navn}: hylle uten navn eller flis-src i prototypet`);
+    const lenker = [...b.matchAll(/<li\b[^>]*>([\s\S]*?)<\/li>/g)].map((m) => tekstAv(m[1]));
     const antallLi = (b.match(/<li\b/g) ?? []).length;
     assert.equal(lenker.length, antallLi, `${navn}: leste ${lenker.length} av ${antallLi} lenker i prototypet`);
     assert.ok(lenker.length > 0, `${navn}: ingen lenker i prototypet`);
