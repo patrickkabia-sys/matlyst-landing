@@ -57,9 +57,18 @@ export function scene(lang) {
 
 const kortRegex = /<article class="locale-card"><h2 class="disp">([\s\S]*?)<\/h2><p>([\s\S]*?)<\/p>(?:<a class="more" href="([^"]+)">([\s\S]*?)<\/a>)?<\/article>/gu;
 
+const KORTTEKST = {
+  nb: { eyebrow: 'Slik fungerer det', h2: 'Fra lagret oppskrift til middag på bordet.', chips: ['Instagram', 'TikTok', 'Nett', 'Bilde'], pro: 'Pro' },
+  sv: { eyebrow: 'Så fungerar det', h2: 'Från sparat recept till middag på bordet.', chips: ['Instagram', 'TikTok', 'Webben', 'Foto'], pro: 'Pro' },
+  da: { eyebrow: 'Sådan virker det', h2: 'Fra gemt opskrift til aftensmad på bordet.', chips: ['Instagram', 'TikTok', 'Nettet', 'Foto'], pro: 'Pro' },
+  en: { eyebrow: 'How it works', h2: 'From saved recipe to dinner on the table.', chips: ['Instagram', 'TikTok', 'Web', 'Photo'], pro: 'Pro' },
+};
+const KORTFARGE = ['terra', 'sennep', 'salvie', 'blekk'];
+
 export function rader(lang, kort) {
   const a = ALT[lang];
   const ib = IMPORT_BILDE[lang];
+  const k = KORTTEKST[lang];
   const mat = [[tomat, blad], [sitron, egg], [chili, tomat], [blad, sitron]];
   const telefon = [
     ib.srcset
@@ -69,7 +78,8 @@ export function rader(lang, kort) {
     `<img class="tel" src="/images/app/${lang}/tel-03.webp" width="536" height="1108" alt="${a.handle}" loading="lazy" decoding="async">`,
     '',
   ];
-  return `${MERKE}<section class="app-rows" aria-label="${TEKSTER[lang].last}">${kort.map(([h, p, href, mer], i) => `<div class="app-row"><div class="app-row-tekst"><h2 class="disp">${h}</h2><p>${p}</p>${href ? `<a class="more" href="${href}">${mer}</a>` : ''}</div><div class="app-row-scene"><span class="blob" aria-hidden="true"></span>${telefon[i] ?? ''}${(mat[i] ?? mat[0]).map((m, j) => m.replace('class="mat ', `class="mat m${j + 1} `)).join('')}</div></div>`).join('')}</section>${MERKE_SLUTT}`;
+  const kortHtml = kort.map(([h, p, href, mer], i) => `<article class="step-card sc-${KORTFARGE[i] ?? 'terra'}"><div class="sc-tekst"><span class="sc-nr">${i < 3 ? `0${i + 1}` : k.pro}</span><h3 class="disp">${h}</h3><p>${p}</p>${i === 0 ? `<ul class="sc-chips" aria-label="Instagram, TikTok">${k.chips.map((c) => `<li>${c}</li>`).join('')}</ul>` : ''}${href ? `<a class="more" href="${href}">${mer}</a>` : ''}</div><div class="sc-scene">${telefon[i] ?? ''}${(mat[i] ?? mat[0]).map((m, j) => m.replace('class="mat ', `class="mat m${j + 1} `)).join('')}</div></article>`).join('');
+  return `${MERKE}<section class="step-cards" aria-labelledby="slik"><div class="step-cards-hode"><p class="eyebrow">${k.eyebrow}</p><h2 class="disp" id="slik">${k.h2}</h2></div>${kortHtml}</section>${MERKE_SLUTT}`;
 }
 
 export function behandle(html, sti) {

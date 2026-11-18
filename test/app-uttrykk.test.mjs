@@ -26,7 +26,7 @@ test('forsidene får telefoner i heroen og rader med telefon', () => {
   const ut = behandle(side('en', hero), '/en/');
   assert.match(ut, /has-stage/u);
   assert.match(ut, /class="hero-stage"/u);
-  assert.equal((ut.match(/class="app-row"/gu) ?? []).length, 2);
+  assert.equal((ut.match(/class="step-card /gu) ?? []).length, 2);
 });
 
 test('hver indekserbar side har nedlastingsknapp og fast linje', () => {
