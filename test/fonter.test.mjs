@@ -8,7 +8,9 @@ const ROT = new URL('..', import.meta.url).pathname;
 
 function* html(dir) {
   for (const navn of readdirSync(dir)) {
-    if (navn === 'node_modules' || navn === '.git' || navn === 'fonts') continue;
+    // docs publiseres ikke (se _config.yml, låst av interneFiler.test.mjs). Der ligger
+    // prototyper som laster skrifter utenfra, og de når aldri en besøkende.
+    if (navn === 'node_modules' || navn === '.git' || navn === 'fonts' || navn === 'docs') continue;
     const sti = join(dir, navn);
     if (statSync(sti).isDirectory()) yield* html(sti);
     else if (navn.endsWith('.html')) yield sti;

@@ -8,6 +8,7 @@ exclude:
   - scripts
   - test
   - blogg-kilde
+  - PRODUCT.md
   - LOCALE-READINESS.md
   - SEO-SEARCH-CONSOLE.md
   - locale-readiness.json
