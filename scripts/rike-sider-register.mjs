@@ -5,7 +5,12 @@ import { rikeSider as sv } from './sv-rike-sider.mjs';
 import { rikeSider as da } from './da-rike-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
-export const RIKE = { en, nb, sv, da };
+// Enhetsomregnerne på nordiske språk lastes hvis filene finnes (de skrives av egne økter).
+const laster = async (fil, navn) => (await import(fil).catch(() => ({})))[navn] ?? {};
+const nbEnh = await laster('./nb-enhetssider.mjs', 'enhetsSiderNb');
+const svEnh = await laster('./sv-enhetssider.mjs', 'enhetsSiderSv');
+const daEnh = await laster('./da-enhetssider.mjs', 'enhetsSiderDa');
+export const RIKE = { en, nb: { ...nb, ...nbEnh }, sv: { ...sv, ...svEnh }, da: { ...da, ...daEnh } };
 
 /** Legger de lange feltene oppå sider med samme path, og tar med helt nye sider (må ha eyebrow og steg). */
 export function utvid(lang, basis) {

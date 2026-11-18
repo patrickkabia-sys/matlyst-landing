@@ -66,8 +66,9 @@ const TEGN = { å: 'a', ä: 'a', æ: 'ae', ø: 'o', ö: 'o', é: 'e', è: 'e' };
 const slugg = (tekst) => tekst.toLowerCase().replace(/&[a-z]+;/gu, '').replace(/[åäæøöéè]/gu, (c) => TEGN[c]).replace(/[^a-z0-9]+/gu, '-').replace(/^-|-$/gu, '');
 
 // rik: [[h2, html], ...]. Gir prose-HTML med id på hver H2 og en innholdsfortegnelse.
-export function byggRik({ svarTekst, seksjoner, lang = 'en' }) {
-  const med = seksjoner.map(([h, body]) => ({ h, id: slugg(h), body }));
+export function byggRik({ svarTekst, seksjoner, ekstra = [], lang = 'en' }) {
+  const alle = ekstra.length ? [...seksjoner.slice(0, -1), ...ekstra, seksjoner[seksjoner.length - 1]] : seksjoner;
+  const med = alle.map(([h, body]) => ({ h, id: slugg(h), body }));
   const toc = `<div class="toc" role="navigation" aria-label="${ETIKETTER[lang].toc}"><div class="toc-title">${ETIKETTER[lang].toc}</div><ol>${med.map(({ h, id }) => `<li><a href="#${id}">${h}</a></li>`).join('')}</ol></div>`;
   const innhold = med.map(({ h, id, body }) => `<h2 id="${id}">${h}</h2>${body}`).join('\n');
   return { toc, html: `${svar(svarTekst)}\n${toc}\n${innhold}` };

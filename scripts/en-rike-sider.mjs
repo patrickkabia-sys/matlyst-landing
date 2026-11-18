@@ -2,6 +2,19 @@
 // tynne siden i en-appsider.mjs med samme path: `rik` (ferdig HTML med svar, innholdsfortegnelse
 // og seksjoner), nye FAQ-svar og en ny tittel. Fakta kommer fra funksjonssjekken 18.11.2026;
 // alt som ikke er bekreftet står ikke her.
+import { ekstra as ekstraBok } from './en-ekstra/recipe-book-app.mjs';
+import { ekstra as ekstraInstagram } from './en-ekstra/instagram.mjs';
+import { ekstra as ekstraTiktok } from './en-ekstra/tiktok.mjs';
+import { ekstra as ekstraPantry } from './en-ekstra/pantry.mjs';
+import { ekstra as ekstraShopping } from './en-ekstra/shopping-list.mjs';
+import { ekstra as ekstraGuide } from './en-ekstra/kjoperguide.mjs';
+import { side as thanksgiving } from './en-hoytider/thanksgiving.mjs';
+import { side as thanksgivingLeftovers } from './en-hoytider/thanksgiving-leftovers.mjs';
+import { side as christmasDinner } from './en-hoytider/christmas-dinner.mjs';
+import { side as hanukkah } from './en-hoytider/hanukkah.mjs';
+import { side as newYearsEve } from './en-hoytider/new-years-eve.mjs';
+import { side as friendsgiving } from './en-hoytider/friendsgiving.mjs';
+import { enhetsSider } from './en-enhetssider.mjs';
 import { animasjon, byggRik, founder, scenario, scenarioNotat, skjerm, telefoner } from './rik-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
@@ -9,7 +22,7 @@ export const RIK_DATO = '2026-11-18';
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
 
 const recipeBookApp = (() => {
-  const { html } = byggRik({
+  const { html } = byggRik({ ekstra: ekstraBok,
     svarTekst: 'Matlyst is a recipe organizer app. Share a recipe from a website, an Instagram post, or a TikTok, or take a photo of one, and it becomes a clean list of ingredients and steps you can search, scale, plan, and shop from. It’s free to start.',
     seksjoner: [
       ['Why I built it', founder([
@@ -102,7 +115,7 @@ const recipeBookApp = (() => {
 
 const ill = (fil, tekst) => animasjon({ fil: `matlyst-${fil}.mp4`, plakat: `matlyst-${fil}-poster.webp`, bredde: 540, hoyde: 960, tekst, bildetekst: `${tekst} A simplified illustration, not a screen recording.` });
 
-const instagram = byggRik({
+const instagram = byggRik({ ekstra: ekstraInstagram,
   svarTekst: 'Open the post or reel, tap Share, choose Matlyst, and check the draft recipe it builds from the caption. Save it, and it becomes a searchable recipe with ingredients and steps, not a bookmark you will never find again. This works when the recipe is written in the caption.',
   seksjoner: [
     ['Three ways people save Instagram recipes, and where each breaks', p('Most people use one of these. All three work for a while, and then you need the recipe.')
@@ -175,7 +188,7 @@ const instagram = byggRik({
   ],
 }).html;
 
-const tiktok = byggRik({
+const tiktok = byggRik({ ekstra: ekstraTiktok,
   svarTekst: 'Open the TikTok, tap Share, choose Matlyst, and review the draft recipe built from the video’s caption. Save it, and you can search it, scale it, and shop from it. This works when the recipe is written in the caption. Short links like vm.tiktok.com work too.',
   seksjoner: [
     ['Why TikTok’s own Favorites are not enough', p('Favorites keep the video, not the recipe. You rewatch 40 seconds every time you cook, you can’t search by ingredient, and if the creator deletes the video, your recipe is gone.')],
@@ -223,7 +236,7 @@ const tiktok = byggRik({
   ],
 }).html;
 
-const pantry = byggRik({
+const pantry = byggRik({ ekstra: ekstraPantry,
   svarTekst: 'Add what is in your kitchen, and Matlyst shows what you have, how many days are left on each item, and which of your saved recipes use it. When you add a recipe to your grocery list, items you already have in the pantry are unselected and marked “In your pantry,” so you don’t buy a second jar.',
   seksjoner: [
     ['Why a pantry list helps', p('Throwing food away is usually a memory problem, not a cooking problem. You forget the spinach exists, the leftovers get pushed to the back, and a week later it’s the bin. Writing it down once means you remember it.')
@@ -295,7 +308,7 @@ const pantry = byggRik({
   ],
 }).html;
 
-const shopping = byggRik({
+const shopping = byggRik({ ekstra: ekstraShopping,
   svarTekst: 'Add a recipe, or a whole planned week, to your Matlyst grocery list and the ingredients land on one list. Matching items are combined on one line, the list is sorted by store section, and items already in your pantry are unselected when you add a recipe.',
   seksjoner: [
     ['How to make a grocery list from recipes', animasjon({ fil: 'matlyst-meal-plan-to-grocery-list.mp4', plakat: 'matlyst-meal-plan-to-grocery-list-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Recipes planned for the week, then their ingredients sent to one grocery list.', bildetekst: 'From the meal plan to one grocery list.' })
@@ -330,7 +343,7 @@ const shopping = byggRik({
   ],
 }).html;
 
-const kjoperguide = byggRik({
+const kjoperguide = byggRik({ ekstra: ekstraGuide,
   svarTekst: 'A good recipe organizer app saves recipes from the places you actually find them, makes them searchable by ingredient, scales the amounts, and connects to a meal plan and a grocery list. Test any app with five recipes from your own life before you commit. We make Matlyst, so we say where it fits and where it doesn’t.',
   seksjoner: [
     ['Who this guide is for', p('You have recipes in too many places: screenshots, bookmarks, saved reels, a notes app, a stack of printed cards. You want one place for them. This guide lists what to look for, how to test an app in ten minutes, and the mistakes people make when they choose.')
@@ -401,6 +414,67 @@ const kjoperguide = byggRik({
       + '<li><strong>Ignoring export.</strong> Test it before you rely on the app.</li></ul>'],
   ],
 }).html;
+
+const holidaysHub = byggRik({
+  svarTekst: 'Holiday cooking is mostly planning: what to buy, when to start, how much to make, and what to do with the leftovers. Pick your holiday below for a timeline, quantities, a grocery list structure, food safety numbers from FoodSafety.gov, and how to do each step in Matlyst.',
+  seksjoner: [
+    ['Pick your holiday', p('Each guide follows the same structure, so you can compare them and borrow from one for another.')
+      + '<ul><li><a href="/en/holidays/thanksgiving/">Thanksgiving</a>: a three week plan, quantities for 4 to 16 guests, the oven schedule, and the safe way to cook and store the turkey.</li>'
+      + '<li><a href="/en/holidays/friendsgiving/">Friendsgiving</a>: how to run a potluck without ten bowls of the same side.</li>'
+      + '<li><a href="/en/holidays/thanksgiving-leftovers/">Thanksgiving leftovers</a>: how to cool, store, and reheat, and a week of meals from what is left.</li>'
+      + '<li><a href="/en/holidays/hanukkah/">Hanukkah</a>: planning eight nights of cooking without burning out.</li>'
+      + '<li><a href="/en/holidays/christmas-dinner/">Christmas dinner</a>: a four week plan from the menu to the dishes.</li>'
+      + '<li><a href="/en/holidays/new-years-eve/">New Year’s Eve</a>: party food, make-ahead timing, and New Year’s Day.</li></ul>'
+      + p('More guides are on the way, including Easter, Passover, St. Patrick’s Day, Valentine’s Day, and summer cookouts.')],
+    ['What every holiday meal needs', p('The details change. The jobs do not.')
+      + '<ol><li><strong>A plan with dates.</strong> Work backward from the day you serve. Put every task on a day.</li>'
+      + '<li><strong>Quantities that fit your guests.</strong> Scale each recipe once, then shop from one list.</li>'
+      + '<li><strong>One grocery list, in two trips.</strong> Non-perishables early, fresh food late.</li>'
+      + '<li><strong>Make-ahead tasks.</strong> Anything that can be done two days before should be.</li>'
+      + '<li><strong>Safe temperatures.</strong> Cook to the right temperature, keep hot food hot and cold food cold, and chill leftovers fast.</li>'
+      + '<li><strong>A plan for leftovers.</strong> Decide on day one what happens on day two.</li></ol>'],
+    ['The food safety numbers worth remembering', p('These come from FoodSafety.gov, the U.S. government’s food safety site. Always check food with a food thermometer.')
+      + '<div class="table-wrap"><table><thead><tr><th>What</th><th>Number</th></tr></thead><tbody>'
+      + '<tr><td>Turkey and other poultry, stuffing, and leftovers</td><td>165°F (74°C)</td></tr>'
+      + '<tr><td>Beef, pork, and lamb roasts and chops</td><td>145°F (63°C), then rest 3 minutes</td></tr>'
+      + '<tr><td>Ground meat and sausage</td><td>160°F (71°C)</td></tr>'
+      + '<tr><td>Temperature danger zone</td><td>40°F (4°C) to 140°F (60°C)</td></tr>'
+      + '<tr><td>Perishable food left out</td><td>2 hours at most, 1 hour above 90°F (32°C)</td></tr>'
+      + '<tr><td>Refrigerator and freezer</td><td>40°F (4°C) or below, and 0°F (-18°C) or below</td></tr>'
+      + '<tr><td>Leftover cooked meat and poultry</td><td>3 to 4 days in the refrigerator</td></tr>'
+      + '</tbody></table></div>'
+      + p('Source: <a href="https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures">FoodSafety.gov, safe minimum internal temperatures</a> and <a href="https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety">4 steps to food safety</a>.')],
+    ['How Matlyst helps with holiday cooking', p('Matlyst is a recipe organizer app, so the work it takes off your plate is the organizing.')
+      + '<ul><li><strong>Save every recipe in one folder.</strong> From Instagram, TikTok, websites, or a photo of Grandma’s card (photo import is Pro).</li>'
+      + '<li><strong>Scale for your guest count.</strong> From 1 to 20 servings. Scaling is linear, so check baking and spices yourself.</li>'
+      + '<li><strong>Build one grocery list.</strong> Matching items are combined, and the list is sorted by store section.</li>'
+      + '<li><strong>Plan the days.</strong> Put the make-ahead dishes on the days you will cook them in the <a href="/en/meal-plan-app/">meal plan</a>.</li>'
+      + '<li><strong>Share the work.</strong> With a Pro household of up to 6, the grocery list, menu, and pantry update live for everyone.</li>'
+      + '<li><strong>Cook from a checklist.</strong> Cook mode suggests timers from the steps and keeps the screen awake.</li></ul>'
+      + p('Start with the <a href="/en/recipe-book-app/">recipe organizer app</a> page, or see how the <a href="/en/shopping-list/">grocery list</a> and the <a href="/en/pantry-app/">pantry</a> work.')],
+  ],
+}).html;
+import { ENHETER as ENH, enheterFor as enhFor, parSti as parStiH } from './enheter.mjs';
+const enhetsHub = (() => {
+  const navnH = (id) => ENH[id].en;
+  const gruppe = (g, tittel) => {
+    const ids = enhFor('en').filter((id) => ENH[id].gruppe === g);
+    const rader = ids.map((a) => `<li><strong>${navnH(a).fl}</strong>: ${ids.filter((b) => b !== a).map((b) => `<a href="/en/${parStiH(a, b)}">to ${navnH(b).kort}</a>`).join(', ')}</li>`).join('');
+    return [tittel, `<ul>${rader}</ul>`];
+  };
+  return byggRik({
+    svarTekst: 'A free cooking unit converter for every combination: milliliters, deciliters, liters, US cups, tablespoons, teaspoons, fluid ounces, pints, quarts, gallons, grams, kilograms, ounces, pounds, centimeters, inches, and °C to °F. Pick a conversion below, or use the calculator.',
+    seksjoner: [
+      ['Convert any cooking unit', (() => { const ids = enhFor('en').filter((id) => ENH[id].gruppe === 'volum'); return `<form class="omregner" data-gruppe="volum" onsubmit="return false"><div class="omregner-rad"><label>Amount<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label><label>From<select data-felt="fra">${ids.map((id) => `<option value="${id}"${id === 'cups' ? ' selected' : ''}>${navnH(id).fl} (${navnH(id).kort})</option>`).join('')}</select></label><button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Swap units">⇄</button><label>To<select data-felt="til">${ids.map((id) => `<option value="${id}"${id === 'ml' ? ' selected' : ''}>${navnH(id).fl} (${navnH(id).kort})</option>`).join('')}</select></label></div><p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">1 cup = 236.6 ml</p><script type="application/json" class="omregner-data">${JSON.stringify({ f: Object.fromEntries(ids.map((id) => [id, ENH[id].f])), t: false })}</script></form>`; })() + p('This calculator converts volume. For weight, length, and temperature, use the lists below.')],
+      gruppe('volum', 'Volume conversions: ml, dl, cups, tablespoons, and more'),
+      gruppe('vekt', 'Weight conversions: grams, ounces, and pounds'),
+      gruppe('lengde', 'Length conversions: cm, mm, and inches for pans and dough'),
+      gruppe('temperatur', 'Temperature conversions: Celsius and Fahrenheit'),
+      ['Why recipes use different units', p('Most of the world cooks by weight and in metric units. The United States cooks mostly by volume, in cups and spoons, and measures weight in ounces and pounds. Nordic recipes add the deciliter. A recipe found online can be written in any of them, which is why a good converter saves time.')],
+      ['Stop converting by hand', p('Matlyst imports a recipe from a link, a post, or a photo, and shows the amounts in metric or keeps the source units, depending on the Units setting. With <strong>Metric</strong>, cups, ounces, and pounds are converted to milliliters and grams on import. The setting applies to new imports. Change the servings from 1 to 20 and every amount follows.') + p('Read more about the <a href="/en/recipe-book-app/">recipe organizer app</a> and the <a href="/en/shopping-list/">grocery list</a>.')],
+    ],
+  }).html;
+})();
 
 export const rikeSider = {
   'recipe-book-app/': {
@@ -500,5 +574,53 @@ export const rikeSider = {
       ['How do I move my recipes between apps?', 'Look for export in a format other apps can open, and for an import that reads other apps’ export files. Test both before you move everything.'],
     ],
     cta: 'Try it with your own recipes',
+  },
+  ...Object.fromEntries(Object.entries({ thanksgiving, 'thanksgiving-leftovers': thanksgivingLeftovers, 'christmas-dinner': christmasDinner, hanukkah, 'new-years-eve': newYearsEve, friendsgiving }).filter(([, v]) => v).map(([k, v]) => [`holidays/${k}/`, v])),
+  'holidays/': {
+    title: 'Holiday cooking planner: timelines and quantities',
+    description: 'Plan Thanksgiving, Hanukkah, Christmas, New Year’s Eve and more with timelines, quantities, grocery lists, and food safety numbers from FoodSafety.gov.',
+    eyebrow: 'Holiday cooking',
+    h1: 'Holiday cooking, planned from the day you serve',
+    lead: 'Timelines, quantities, grocery lists, and safe temperatures for every holiday meal.',
+    forst: 'Start with the date you serve, then work backward.',
+    stegTittel: 'How to use these guides',
+    steg: [
+      ['Pick your holiday', 'Open the guide and read the timeline.'],
+      ['Save the recipes', 'Put every recipe in one folder, scaled for your guests.'],
+      ['Shop and cook', 'Build one grocery list and cook from the plan.'],
+    ],
+    alternativ: '',
+    grense: '',
+    seksjoner: [],
+    faqTittel: 'Holiday cooking questions',
+    rik: holidaysHub,
+    faq: [
+      ['How early should I start planning a holiday meal?', 'Three to four weeks before for a big holiday like Thanksgiving or Christmas, and one to two weeks for a smaller gathering. The guides give a timeline for each.'],
+      ['How do I scale recipes for a crowd?', 'Change the servings in Matlyst, from 1 to 20. Scaling is linear, so check eggs, leavening, and spices yourself when you bake.'],
+      ['What temperature should turkey and leftovers reach?', 'FoodSafety.gov says 165°F (74°C) for all poultry, stuffing, and leftovers, checked with a food thermometer.'],
+      ['How long can food sit out at a party?', 'No more than 2 hours, or 1 hour if it is above 90°F (32°C), according to FoodSafety.gov.'],
+      ['How long do holiday leftovers keep?', 'Leftover cooked meat and poultry keep 3 to 4 days in a refrigerator at 40°F (4°C) or below, according to FoodSafety.gov.'],
+    ],
+    cta: 'Plan your holiday in Matlyst',
+  },
+  ...enhetsSider,
+  'tools/unit-converter/': {
+    title: 'Cooking unit converter: cups, ml, oz, grams, °F',
+    description: 'Free cooking unit converter for every combination: ml to dl, cups to ml, oz to g, lb to kg, °F to °C and more, with charts and kitchen tips.',
+    eyebrow: 'Unit converter',
+    h1: 'Cooking unit converter',
+    lead: 'Every kitchen conversion in one place, with a chart and a calculator for each.',
+    forst: 'Pick two units and read the answer.',
+    stegTittel: 'How to use the converter',
+    steg: [['Pick the units', 'Choose the unit your recipe uses and the unit you want.'], ['Type the amount', 'The answer appears as you type.'], ['Use the chart', 'Each page has a chart of common amounts.']],
+    alternativ: '', grense: '', seksjoner: [], faqTittel: 'Unit converter questions', rik: enhetsHub,
+    faq: [
+      ['How many ml are in a US cup?', 'A US cup is 236.6 ml. Many recipes round it to 240 ml, and a metric cup in some countries is 250 ml.'],
+      ['How many ml are in a US tablespoon?', 'A US tablespoon is 14.8 ml, usually rounded to 15 ml. In Australia a tablespoon is 20 ml.'],
+      ['How many grams are in an ounce?', 'An ounce of weight is 28.35 grams. Fluid ounces measure volume instead: 1 US fluid ounce is 29.57 ml.'],
+      ['How do I convert Fahrenheit to Celsius?', 'Subtract 32, then multiply by 5/9. For example, 350°F is about 177°C.'],
+      ['Does Matlyst convert recipe units?', 'With the Units setting on Metric, cups, ounces, and pounds from a recipe are converted to milliliters and grams on import. The setting applies to new imports.'],
+    ],
+    cta: 'Convert recipes in Matlyst',
   },
 };

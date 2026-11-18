@@ -261,7 +261,7 @@ const prosjekt = fileURLToPath(new URL('../', import.meta.url));
 const skript = join(prosjekt, 'scripts/bilde-revisjon.mjs');
 test('CLI skriver JSON og tabell, exit 0 ved funn og feil, og overskriver ikke kildefiler', (t) => {
   const { rot, skriv } = oppsett(t);
-  const kjor = (...args) => spawnSync(process.execPath, [skript, ...args], { cwd: rot, encoding: 'utf8' });
+  const kjor = (...args) => spawnSync(process.execPath, [skript, ...args], { cwd: rot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
   const resultat = kjor('--sprak', 'en', '--json', '--ut', join(rot, 'rapport.json'));
   assert.equal(resultat.status, 0);
   const rapport = JSON.parse(resultat.stdout);
