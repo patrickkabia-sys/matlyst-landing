@@ -1,124 +1,220 @@
-# Designspec for matlyst-app.no: ett konsept på alle sider (UTKAST)
+# Designspec for matlyst-app.no: Lekeboks møter Standby
 
-Status: utkast 18.11.2026, venter på Patricks lesing. Ett åpent spørsmål står nederst.
+Status: versjon 2, 18.11.2026 kveld. Venter på Patricks lesing. Erstatter utkastet «siden er en oppskrift».
+
+Skisse: https://claude.ai/artifact/PEkJo7nDu8WXZEUHCbf5Eq (forside på PC og mobil, guide på PC og mobil, omregner på mobil).
+Produktgrunnlag: `PRODUCT.md` i roten av repoet.
+
+Det som er merket **(mitt valg)** har Patrick ikke tatt stilling til. Alt annet er valgt eller bekreftet av ham 18.11.
 
 ## 1. Hvorfor
 
-Nettsiden har gått fra 30 til 851 sider på kort tid (guider, høytider, enhetsomregnere på fire språk). Teksten er god. Sideopplevelsen er ikke like god: sidene er bygget av flere generatorer og håndlagde filer, og det synes. Patrick vil ha:
+Nettsiden har gått fra 30 til 851 sider på kort tid. Teksten er god. Sideopplevelsen er ikke like god: sidene er bygget av flere generatorer og håndlagde filer, og det synes. Dagens uttrykk (krem, Fraunces, terrakotta) er dessuten blitt det vanlige «varme KI-uttrykket», og guidene viser ikke appen.
 
-- **Ett konsept på tvers av alle sider.** Én meny, én språkvelger, samme rytme og samme komponenter.
-- **Seriøst og profesjonelt.** Kjøkkenhyllen var inspirasjon, ikke retningen.
-- **Mobil like bra som PC.** De fleste kommer fra Google på telefonen.
-- **Ingen artikkelvegg.** Lange sider skal være designet så godt at de ikke føles lange.
-- **Ingen overlapp eller tekst som renner ut**, på noen skjermbredde.
+Patrick vil ha:
 
-Fond og ReciMe er referansen: de har ett fast konsept og mange små kreative løsninger, og hver side føles som samme produkt.
+- Ett konsept på alle 851 sider på fire språk. Én meny, én språkvelger.
+- Seriøst og profesjonelt.
+- Mobil like bra som PC.
+- Sider som er lette å lese, og ingen artikkelvegg.
+- Ingen overlapp og ingen tekst som renner ut, på noen skjermbredde.
+
+Moodboardet hans var clocks.app, notbor.ing og supercute.io. Av tre konsepter valgte han en kombinasjon av to: Lekeboks (etter !Boring) og Standby (etter Clocks).
 
 ## 2. Mål, ikke-mål og feilmål
 
 **Mål**
-- Alle 851 sider bruker samme sideskall (topp, bunn, nedlastingslinje) og samme komponentbibliotek.
-- En lang guide på telefon har noe visuelt (skjermbilde, tabell, kort, kalkulator) minst hver tredje skjermhøyde.
-- Revisjonen (se punkt 8) går grønn på 360, 390, 768 og 1280 px for alle sider, og den kjører i CI.
+- Alle sider bruker samme sideskall, samme tokenfil og samme komponenter.
+- Svaret står øverst på hver guide og hver omregner. Appen kommer etterpå.
+- Revisjonen (punkt 9) går grønn på 360, 390, 768 og 1280 px for alle sider, og den kjører i CI.
+- Dagens 35 farger, 46 skriftstørrelser, 26 hjørneradier og 14 skygger erstattes av tokenene i punkt 5.
 
 **Ikke-mål**
-- Ny logo, nye farger eller nye skrifter. Merkevaren (ml.-logoen, krem og terrakotta, Fraunces og DM Sans) står.
-- Omskriving av tekst. Teksten er godkjent; vi endrer form, ikke innhold.
-- Nye adresser. Ingen URL endres (SEO).
+- Ny logo. ml.-logoen står.
+- Omskriving av tekst. Vi endrer form, ikke innhold.
+- Nye adresser. Ingen URL endres.
+- Mørk modus. Siden er lys **(mitt valg)**.
 
 **Feilmål** (dette ville vært en fiasko selv om det teknisk virker)
-- Sidene ser like ut, men like kjedelige: konsistens som gir en mal uten liv.
-- Pynt som gjør siden tregere (Core Web Vitals faller) eller dytter teksten ned.
-- Mobil som en krympet desktop i stedet for designet for tommelen.
+- Lekeboksen tar over. Fliser på hver side og i hver seksjon gjør siden barnslig og sliten.
+- Standby tar over. Alt blir hvitt og grått, og siden kunne tilhørt hvilken som helst app.
+- Pynt som gjør siden tregere eller dytter svaret ned.
+- Mobil som en krympet PC-side.
 
-## 3. Hva revisjonen fant (18.11, alle 130 hovedsider, senere alle 851)
+## 3. Tilnærminger
 
-| Funn | Omfang | Status |
+**A. Felles sideskall og komponenter i dagens uttrykk.** Minst risiko, men løser ikke at uttrykket er generisk. Det var anbefalingen i utkastet. Valgt bort da Patrick ba om nytt konsept.
+
+**B. Nytt visuelt konsept, side for side.** Raskt synlig på forsiden, men 851 sider kan ikke tegnes for hånd, og avvikene kommer tilbake ved neste generator.
+
+**C. Nytt visuelt konsept båret av felles skall og komponenter (valgt).** Utseendet byttes ett sted (tokenfil og komponenter), og alle generatorer bruker de samme byggeklossene. Mest arbeid nå, lavest vedlikehold, og revisjonen låser resultatet. Risikoen for søk holdes nede ved at adresser, tekst, overskriftsnivåer og strukturerte data står urørt.
+
+## 4. Konseptet: én verden, to lydnivåer
+
+Standby er rommet. Lekeboks er tingene i rommet.
+
+- **Standby gir roen:** hvit flate, smal lesekolonne, grå kort med myke hjørner, ekte skjermbilder av appen, mye luft.
+- **Lekeboks gir særpreget:** ml.-logoen i smør, mel, honning og glass som fysiske fliser, og små koder i skrivemaskinskrift («!IMPORT · ML·01»).
+
+Det som gjør kombinasjonen pen, er at de to deler alt unntatt lydnivået:
+
+1. **Én skrift.** Schibsted Grotesk i overskrifter og brødtekst.
+2. **Én form.** Flisene har appikonets myke hjørner, og kort og knapper følger samme form. Ingen harde kanter og ingen forskjøvet skygge.
+3. **Flisene er eneste farge.** Alt rundt er hvitt, varm grå og nesten svart. Flisene har varme bakgrunner, og en kald grå ville gjort dem skitne.
+4. **Svart knapp.** En oransje knapp ville konkurrert med smør og honning.
+5. **Hver flis har en fast rolle.** Samme flis står på forsiden og øverst i guiden om samme funksjon. Det binder sidene sammen.
+6. **Leken doseres etter sidetype** (punkt 6).
+
+## 5. Tokens
+
+Alt under ligger i én fil, `tokens.css`. Ingen andre verdier brukes.
+
+**Farger**
+
+| Token | Verdi | Bruk |
 |---|---|---|
-| 8 ulike varianter av toppmenyen | 130 sider | Generert topp samlet; fem håndlagde nb-sider fikk samme meny i #78 |
-| Menyknapp og «Get the app» utenfor skjermen på 390 px | 117 sider | Rettet i #78 |
-| Bred tabell gjorde siden bredere enn skjermen | 1 side | Rettet i #79 |
-| H1 varierer: 44 til 52 px på mobil, 76 til 107 px på desktop | alle sidetyper | Åpen: én typeskala |
-| Bloggoversikter og juridiske sider har en annen mal (ingen meny, annen rytme) | 18 sider | Åpen |
-| Forsiden på norsk er håndlaget og skiller seg fra sv, da og en | 1 side | Åpen |
-| Bildekaruseller i bloggen går utenfor spalten (tilsiktet sidelengs rulling) | 18 sider | Sjekkes for tommelvennlighet |
+| `--flate` | `#FFFFFF` | Sidebakgrunn |
+| `--hylle` | `#F3F1EC` | Kort, svarkort, scenen bak telefonen |
+| `--linje` | `#E4DFD6` | Skillelinjer og rammer |
+| `--blekk` | `#141210` | Tekst, knapper, stegtall |
+| `--dempet` | `#5B554D` | Støttetekst. 7:1 på hvitt, 6:1 på hylle |
+| `--prikk` | `#FF5500` | Punktumet i logoen og små merker. Aldri tekst |
+| `--oransje-tekst` | `#C2410C` | Lenker i løpende tekst, bare på hvit flate (5,2:1) **(mitt valg)** |
 
-## 4. Tilnærminger
+**Skrift**
 
-**A. Felles sideskall og komponentbibliotek (anbefalt).** Alle generatorer bruker de samme byggeklossene (topp, svar-kort, innholdsfortegnelse, scenario-kort, app-bevis, tabell, FAQ, nedlastingslinje). De håndlagde sidene flyttes inn i en generator. Fordel: ett sted å endre, konsistens blir automatisk, revisjonen låser det. Kost: mest arbeid nå (ca. 3 til 5 dager), men lavest vedlikehold.
+- Schibsted Grotesk 400, 500, 700 og 800. IBM Plex Mono 500 bare til koder og små etiketter.
+- Begge legges som woff2 i `fonts/` og lastes derfra, slik Fraunces og DM Sans gjør i dag. Ingen forespørsel til Google **(mitt valg)**.
+- Fraunces og DM Sans fjernes når siste side er flyttet.
 
-**B. Pusse side for side.** Raskt synlig, men 851 sider kan ikke pusses for hånd, og avvikene kommer tilbake ved neste generator.
+| Rolle | Mobil | PC | Vekt | Linjeavstand |
+|---|---|---|---|---|
+| H1 forside | 40 px | 68 px | 800 | 1,02 |
+| H1 guide og omregner | 34 px | 52 px | 800 | 1,06 |
+| H2 | 24 px | 30 px (44 px på forsiden) | 800 | 1,15 |
+| H3 | 22 px | 24 px (30 px i kort) | 800 | 1,2 |
+| Brødtekst | 18 px | 19 px | 400 | 1,6 |
+| Svarkort | 19 px | 21 px | 500 | 1,5 |
+| Støttetekst | 15 px | 15 px | 400 | 1,4 |
+| Kode (mono) | 12 px | 13 px | 500 | 1,4 |
 
-**C. Nytt visuelt konsept fra bunnen.** Gir mest «wow», men kaster et uttrykk Patrick er fornøyd med, og risikerer SEO (oppsett, ytelse) midt i indekseringen.
+Linjelengde maks 68 tegn. Overskrifter har negativ bokstavavstand (0,02 til 0,035 em), brødtekst har ingen. Koder står i store bokstaver med 0,06 em avstand og er aldri lengre enn fire ord.
 
-Anbefaling: **A**, med kreative komponenter som gir liv (punkt 6), slik at vi unngår feilmålet «konsistent men kjedelig».
+**Form**
 
-## 5. Konseptet: siden er en oppskrift
+| Token | Verdi | Bruk |
+|---|---|---|
+| `--r-flis` | 23 % av bredden | Fliser i alle størrelser |
+| `--r-liten` | 16 px | Felt og små flater |
+| `--r-kort` | 28 px | Kort på mobil og i lesekolonnen |
+| `--r-scene` | 36 til 40 px | Store kort og scenen på forsiden |
+| `--r-pille` | 999 px | Knapper og språkvelger |
 
-Matlyst gjør oppskrifter ryddige. Sidene bør se ut som det appen lager: en god oppskrift. Det gir et fast konsept som er seriøst, kjent for leseren og vårt eget.
+**Skygge.** To, og bare på fysiske ting. Gjenstandsskygge under fliser og telefoner. Trykk-kant (en lys kant under flisen) bare på fliser som er lenker. Kort har ingen skygge.
 
-| Del av oppskriften | På siden |
+**Avstand.** Én skala: 4, 8, 12, 16, 20, 24, 28, 40, 56, 64, 112 px. Seksjoner har 64 px luft på mobil og 112 px på PC.
+
+## 6. Fliser og dosering
+
+**Seks faste roller**
+
+| Kode | Flis | Funksjon |
+|---|---|---|
+| !IMPORT · ML·01 | Smør | Import fra Instagram, TikTok, nettsider og bilder |
+| !SKALER · ML·02 | Mel | Porsjoner og mengder |
+| !HANDLELISTE · ML·03 | Spaghetti | Handleliste |
+| !SPISKAMMER · ML·04 | Keramikk | Spiskammer |
+| !KOKEMODUS · ML·05 | Honning | Kokemodus og tidtaker |
+| !OMREGNER · ML·06 | Glass | Enhetsomregnere |
+
+Honningflisen er også logomerket i toppen. Ukemeny, Spør Matlyst, høytider og blogg har ingen egen flis i dag. De bruker flisen til funksjonen siden handler mest om, og logoflisen når ingen passer **(mitt valg)**. Nye fliser kan lages senere, men aldri mer enn én per funksjon. Juridiske sider har ingen flis.
+
+**Dosering**
+
+| Sidetype | Lek |
 |---|---|
-| Tittel og porsjoner | H1 og ingress, med lesetid og «oppdatert»-dato |
-| «Kort fortalt» | Svar-kortet øverst: svaret på to linjer |
-| «Du trenger» | Innholdsfortegnelsen, som en ingrediensliste med avkrysning |
-| Nummererte steg | H2-seksjonene, nummerert der innholdet er en rekkefølge |
-| Tips fra kokken | Scenario-kort og Patricks erfaring som eget kort |
-| Bilde av retten | Skjermbilde av appen i telefonramme ved hver funksjon |
-| Lagre oppskriften | Nedlastingslinjen og «Gjør dette i Matlyst»-kortet |
+| Forside | Full lekeboks: fire fliser rundt telefonen i scenen, rad med seks fliser som lenker, én flis ved avslutningen |
+| Hub (alle guider, alle omregnere) | Én rad med fliser som navigasjon. Resten er lister og kort |
+| Guide, høytid, omregner, blogg | Én liten flat flis med kode øverst. Én flis i app-kortet nederst. Ellers ingen |
+| Juridisk | Ingen |
 
-Konseptet gjelder alle sidetyper: pengesider, guider, høytider, blogg og verktøy. Juridiske sider bruker samme skall, men uten de kreative kortene.
+Fliser brukes aldri som pynt mellom avsnitt.
 
-## 6. Regler
+## 7. Sideskall og regler
 
-**Sideskall**
-- Topp: logo, «Få appen», meny. Desktop har språkvelgeren i toppen, mobil har den inne i menyen. Én variant, generert ett sted.
-- Bunn: samme kolonner, sosiale lenker og språkvelger på alle sider.
-- Nedlastingslinjen nederst på mobil på alle indekserbare sider.
+**Topp**
+- Logoflis og navn til venstre. Guider, Verktøy og Om oss. Språkvelger. Svart «Last ned»-pille.
+- På mobil: logo, «Last ned» og menyknapp. Språkvelgeren ligger i menyen og i bunnen.
+- Toppen ruller med siden. Den er ikke klebrig **(mitt valg)**.
+- Menyknappens tilgjengelige navn er det samme som den synlige teksten.
 
-**Typografi**
-- Én skala med `clamp()`: H1 40 til 72 px, H2 28 til 40 px, H3 20 til 24 px, brødtekst 17 til 19 px.
-- Linjelengde maks 68 tegn. Linjeavstand 1,6 på brødtekst og 1,1 på H1.
+**Ingen fast nedlastingslinje på mobil.** Utkastet hadde en. Den og den faste toppen tok 17 % av skjermen, og Patrick valgte «svar først, appen etterpå». Nedlasting ligger i toppen og i app-kortet nederst **(mitt valg, endrer utkastet)**.
 
-**Avstand**
-- Én skala (4, 8, 12, 16, 24, 32, 48, 72, 112 px). Ingen tilfeldige verdier.
-- Seksjoner har samme luft over og under. H2 har dobbel luft over og enkel under.
+**Bunn**
+- Én rad med få lenker (Guider, Omregnere, Høytider, Personvern, Vilkår), språkvelger og sosiale lenker. Ingen lenkelister per side.
+
+**Guide og omregner, ovenfra**
+1. Flis og kode.
+2. H1.
+3. Svarkortet («Kort svar») på grå hylle. På omregnere står tallet stort.
+4. Appen som nærbilde, eller selve kalkulatoren.
+5. Stegene, tabellen eller teksten.
+6. «Les også» som enkle rader.
+7. App-kortet med nedlastingsknapp.
+
+**Appen vises som nærbilde.** I guider beskjæres skjermbildet til den delen teksten handler om, bredt nok til at teksten i bildet kan leses. Hel telefon i ramme brukes bare på forsiden og i funksjonskortene. Skjermbildet er alltid på sidens språk.
 
 **Rytme mot artikkelvegg**
-- Maks tre tekstavsnitt etter hverandre før noe visuelt: skjermbilde, tabell, kort, sitat eller kalkulator.
+- Maks tre tekstavsnitt etter hverandre før noe visuelt: nærbilde, tabell, kort eller kalkulator.
 - Avsnitt på maks fire linjer på mobil.
-- Lange sider får «Du trenger» som klebrig sidekolonne på desktop og som klebrig knapp («På denne siden») på mobil.
+- Nummer bare der innholdet er en rekkefølge.
 - Lange FAQ-er er trekkspill.
 
 **Mobil først**
-- Designes på 390 px og skaleres opp, ikke omvendt.
-- Trykkflater minst 44 px. Brede tabeller ruller i spalten. Ingen sidelengs rulling av siden.
+- Tegnes på 390 px og skaleres opp.
+- Trykkflater minst 44 px. Brede tabeller ruller i spalten. Siden ruller aldri sidelengs.
 
 **Bevegelse**
-- Én tydelig bevegelse per side (for eksempel at telefonen i heroen glir inn). Ingen innflyging på hver seksjon. `prefers-reduced-motion` respekteres.
+- Flisene på forsiden kan vippe lett når man peker eller trykker på dem. Ingenting annet beveger seg av seg selv **(mitt valg)**.
+- Dagens filmer av appen beholdes der de står, og starter når de kommer til syne.
+- `prefers-reduced-motion` skrur av alt.
 
-## 7. Komponentbibliotek (alle sider, fire språk)
+**Trykk-kant og knappeform bare på ting som kan trykkes.**
 
-Svar-kort, innholdsfortegnelse, nummerert steg-seksjon, scenario-kort, kokkens tips (Patrick), app-bevis i telefonramme, tabell, sammenligningskort, kalkulator, FAQ-trekkspill, «Gjør dette i Matlyst»-kort, relaterte sider som kortgalleri, bloggkort med bilde, nedlastingslinje. Hver komponent får én HTML-funksjon og én CSS-blokk, og vises på en intern komponentside (`/design/`, noindex) slik at vi ser alle samlet.
+**Navnebytte på engelsk.** Navn, logoflis og flisbilder hentes fra én innstilling per språk. Blir engelsk til Smoop, byttes verdiene der, og flisene rendres på nytt for engelsk. Ingen side tegnes om.
 
-## 8. Låsing og måling
+## 8. Komponenter
 
-- Revisjonsskriptet (Playwright, i dag i scratchpad) flyttes inn i repoet som test: alle sider på 360, 390, 768 og 1280 px, feiler ved sidelengs rulling, elementer utenfor toppen, overlapp, H1 utenfor skalaen eller mer enn tre tekstavsnitt uten visuelt element.
-- Lighthouse på pengesidene: ytelse og tilgjengelighet minst 95 på mobil.
-- Skjermbilder av én side per sidetype på mobil og desktop før hver designendring merges.
+Topp, bunn, språkvelger, flis (lenke og flat), kodeetikett, svarkort, nærbilde av appen, telefon i ramme, funksjonskort, nummererte steg, tabell, kalkulator, FAQ-trekkspill, «Les også»-rader, app-kort, knapp (svart pille og tekstlenke), bloggkort.
 
-## 9. Inspirasjon som skal samles (neste steg)
+Hver komponent får én HTML-funksjon og én CSS-blokk. Alle vises samlet på en intern side (`/design/`, noindex).
 
-Referansetavle med skjermbilder på mobil og desktop, side om side. Ikke for å kopiere, men for å se hvordan andre løser lange sider på telefon:
-- Fond og ReciMe (fast konsept, kreative detaljer)
-- Lange matartikler som leses godt på telefon (store matmedier med oppskriftskort)
-- Produktsider med mye dokumentasjon som likevel føles lette (hjelpesider og guider hos kjente apper)
-- Verktøysider som rangerer (omregnere og kalkulatorer)
+## 9. Låsing og måling
 
-## 10. Det byggeren avgjør selv
+- Revisjonsskriptet (Playwright) inn i repoet som test: alle sider på 360, 390, 768 og 1280 px. Det feiler ved sidelengs rulling, overlapp, elementer utenfor toppen, H1 utenfor skalaen, farge eller skriftstørrelse utenfor tokenene, mer enn tre avsnitt uten noe visuelt, eller flis på en sidetype som ikke skal ha den.
+- Kontrast regnes fra tokenfila i en egen test.
+- Lighthouse på mobil for én side per sidetype: ytelse og tilgjengelighet minst 95.
+- Skjermbilder av én side per sidetype på mobil og PC før hver designendring merges.
+- Søk: klikk og visninger i Search Console sammenlignes to uker før og etter hver utrulling.
 
-Eksakte fargeverdier innenfor dagens tokens, rekkefølgen generatorene flyttes over i, og hvordan revisjonen deles opp i CI for å holde kjøretiden nede.
+## 10. Utrulling
 
-## 11. Åpent spørsmål til Patrick
+Én sidetype om gangen, hver med egen PR og egen måling **(mitt valg)**:
 
-Når noen kommer fra Google til en lang guide på telefonen, hva skal de føle og gjøre de første sekundene? Svaret avgjør hva som står øverst på siden (svaret, et skjermbilde av appen, eller en knapp til appen) og hvor hardt vi selger.
+1. Tokenfil, skrifter, sideskall og komponentside.
+2. Guider (flest sider, mest å vinne).
+3. Omregnere.
+4. Forsidene på fire språk.
+5. Hubber, høytider og blogg.
+6. Juridiske sider.
+
+Gamle stiler slettes når siste sidetype er flyttet.
+
+## 11. Det byggeren avgjør selv
+
+Rekkefølgen generatorene flyttes over i innenfor hver sidetype, eksakte mellomstørrelser i `clamp()`, bildeformater og størrelser for flisene, og hvordan revisjonen deles opp i CI.
+
+## 12. Åpent
+
+- Hvilken flis ukemeny og Spør Matlyst skal ha hvis de får egne. Ikke nødvendig for å starte.
+- Om flisene skal rendres på nytt med lik bakgrunn. I dag har de ulike underlag (grønn, sand, krem, mørk brun). Det ser ut som en lekeboks på forsiden, men kan vurderes når guidene er ute.

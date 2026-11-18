@@ -1,2 +1,4 @@
 exclude:
   - test-results
+  - PRODUCT.md
+  - docs/superpowers
