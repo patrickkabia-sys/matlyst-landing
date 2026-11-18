@@ -26,17 +26,19 @@ const rik = byggRik({
         'Keep your refrigerator at 40 °F (4 °C) or colder. If it was packed for days beforehand, make room before dinner by moving drinks to a cooler.')
       + h3('What counts as leftovers you should not keep')
       + p('If something sat out longer than 2 hours (or 1 hour in hot weather), the safe choice is to throw it away. That includes the pie that was out on the counter all afternoon, if it contains eggs or dairy. It is a hard rule to follow when the food looks fine, but you cannot see, smell, or taste whether bacteria have grown to a harmful level.',
-        'Food kept hot at 140 °F (60 °C) or above on a warming tray or in a slow cooker is not in the danger zone. If you held the food that way the whole time, the 2-hour clock does not apply in the same way, but it is still wise to refrigerate promptly once everyone has eaten.')],
+        'Food kept hot at 140 °F (60 °C) or above on a warming tray or in a slow cooker is not in the danger zone. If you held the food that way the whole time, it stayed out of the danger zone, but refrigerate it promptly once everyone has eaten, because it starts to cool the moment you switch the heat off.')],
     ['How long leftovers keep in the refrigerator, and in the freezer',
-      p('FoodSafety.gov gives 3 to 4 days in the refrigerator for cooked meat and poultry leftovers. That is your guide for the turkey, and it is a sensible target for the rest of the table: stuffing, gravy, potatoes, and casseroles that contain meat or poultry. Count from the day you cooked, not the day you opened the container.')
+      p('FoodSafety.gov gives 3 to 4 days in the refrigerator for cooked meat and poultry leftovers. That is your guide for the turkey. The same chart gives 3 to 4 days for soups and stews and for casseroles with eggs, so it is a sensible home rule for the rest of the table too: stuffing, gravy, potatoes, and casseroles. Where a row below says “home rule”, the chart does not list that exact dish. Count from the day you cooked, not the day you opened the container.')
       + tabell(['Leftover', 'Refrigerator (40 °F / 4 °C or colder)', 'Freezer (0 °F / -18 °C or colder)'], [
-        ['Cooked turkey and other cooked poultry or meat', '3 to 4 days', 'Freezer times are about quality, not safety, so the sooner you eat it the better it tastes.'],
-        ['Stuffing and casseroles containing meat or poultry', '3 to 4 days', 'Freezes well, in portions you can reheat one at a time.'],
-        ['Gravy', '3 to 4 days, and reheat it to 165 °F (74 °C) before serving', 'Freezes well in small containers or ice cube trays.'],
-        ['Mashed potatoes and cooked vegetables', 'Plan on 3 to 4 days, the same window as the rest of the meal', 'Freeze in portions. Texture changes, and potatoes can get grainy. They work best folded into soups.'],
-        ['Cranberry sauce, rolls, and pie', 'Plan to eat them within the same window', 'Rolls and pies freeze well. Cranberry sauce freezes in small containers.'],
+        ['Cooked turkey and other cooked poultry or meat', '3 to 4 days', '2 to 6 months for best quality. Freezer times are about quality, not safety.'],
+        ['Stuffing and casseroles', '3 to 4 days (home rule)', 'Freeze in portions you can reheat one at a time.'],
+        ['Gravy', '3 to 4 days (home rule), and reheat it to 165 °F (74 °C) before serving', 'Freeze in small containers or ice cube trays.'],
+        ['Mashed potatoes and cooked vegetables', '3 to 4 days (home rule), the same window as the rest of the meal', 'Freeze in portions. Texture changes, and potatoes can get grainy. They work best folded into soups.'],
+        ['Pumpkin or pecan pie', '3 to 4 days after baking', '1 to 2 months after baking'],
+        ['Custard and chiffon pies', '3 to 4 days after baking', 'Do not freeze'],
+        ['Cranberry sauce and rolls', 'Plan to eat them within the same window (home rule)', 'Rolls freeze well. Cranberry sauce freezes in small containers.'],
       ])
-      + p('The freezer column deserves a note. Food kept at 0 °F (-18 °C) stays safe, and freezer storage times are about quality, not safety. That is why we are not putting a hard number in the table for freezing. Older frozen food loses flavor and texture, and a turkey sandwich from a freezer-burned slice is a worse sandwich.')
+      + p('The freezer column deserves a note. FoodSafety.gov says food kept continuously at 0 °F (-18 °C) or below stays safe, and its freezer times are about quality, not safety. That is why the freezer column only has numbers where the chart gives them. Older frozen food loses flavor and texture, and a turkey sandwich from a freezer-burned slice is a worse sandwich.')
       + h3('Do not run out the clock')
       + p('The most useful habit is to decide on day one what you will eat in the next three days and what goes straight to the freezer. Do it that night, while you are packing the containers. A sticky label with the date on every container costs ten seconds and prevents most arguments about whether something is still good.')
       + p('If you are not sure about a leftover, throw it out. The cost of the food is smaller than the cost of being sick.')],
@@ -51,7 +53,7 @@ const rik = byggRik({
     ['Reheating safely: 165 °F every time',
       p('FoodSafety.gov’s guidance is the same for every kind of leftover: reheat them to 165 °F (74 °C). That covers leftovers of all kinds, and casseroles that contain meat or poultry. Use a food thermometer, and check the thickest part of the food, away from bone, fat, and the sides of the dish.')
       + ul('<strong>Reheat only what you will eat.</strong> Every time you cool and reheat food, you give bacteria another chance to grow. Take out a portion, and leave the rest cold.',
-        '<strong>Stir and cover.</strong> Stir sauces and soups while you heat them, and cover dishes in the microwave so heat spreads evenly. In a microwave, let the food rest a minute and check the temperature again, since microwaves heat unevenly.',
+        '<strong>Stir and cover.</strong> Stir sauces and soups while you heat them, and cover dishes in the microwave so heat spreads evenly. In a microwave, stir halfway, let the food stand for a few minutes, and check the temperature again, since microwaves heat unevenly.',
         '<strong>Heat gravy on the stove.</strong> Bring it to a simmer on the stove and check that it reaches 165 °F (74 °C).',
         '<strong>Do not reheat in a slow cooker from cold.</strong> A slow cooker is for keeping hot food hot, not for bringing cold leftovers up to temperature. Heat the food on the stove or in the oven first, then keep it warm.')
       + p('Be careful with a plate you assembled at the table. If it sat in front of someone for an hour, it is not a leftover, it is a plate that has been in the danger zone. Throw it away.')],
@@ -63,8 +65,8 @@ const rik = byggRik({
         ['Saturday', 'Turkey and gravy over toast, or a hot open-faced sandwich with mashed potatoes', 'Uses the gravy and potatoes while they are still good. Reheat to 165 °F (74 °C).'],
         ['Sunday', 'Turkey soup or turkey noodle soup, made from the carcass and leftover meat', 'Stretches the last of the meat, and the stock can go in the freezer.'],
         ['Monday', 'Turkey pot pie or turkey and vegetable casserole, with a crust from the freezer', 'Transforms the leftovers into something that does not taste like Thanksgiving.'],
-        ['Tuesday', 'Stuffing waffles, stuffing muffins, or a stuffing and egg breakfast bake', 'Takes the stuffing out of the 3-to-4-day window, in a new form that you reheat to 165 °F (74 °C), or 160 °F (71 °C) for the egg dish.'],
-        ['Wednesday', 'Turkey tacos, quesadillas, fried rice, or a grain bowl', 'A different flavor, using the last turkey, within the 3-to-4-day guidance for the first-cooked meat, or from the freezer.'],
+        ['Tuesday', 'Stuffing waffles, stuffing muffins, or a stuffing and egg breakfast bake', 'Make it with stuffing you froze on Friday. A new shape does not restart the 3-to-4-day clock. Bake until it reaches 165 °F (74 °C) in the center, which also covers the eggs.'],
+        ['Wednesday', 'Turkey tacos, quesadillas, fried rice, or a grain bowl', 'A different flavor, using turkey you froze on Friday and thawed in the refrigerator. Fresh leftovers are past the 3-to-4-day window by now.'],
       ])
       + p('If your turkey was cooked on Thursday, the 3 to 4 day window for the refrigerator ends around Sunday or Monday. That means the plan above should lean on the freezer. Anything you will not eat by Sunday should be frozen on Friday. The later days in the plan are best made with food you froze and thawed in the refrigerator.')
       + h3('More ideas that use up a specific leftover')
@@ -79,12 +81,12 @@ const rik = byggRik({
       p('Once you have decided on the week, the question is where to keep it. A note on your phone works until you want to find a recipe, a quantity, and a grocery item at the same time. Matlyst is a recipe organizer app, and it can hold the plan.')
       + h3('Save the leftover recipes in a folder')
       + p('Share a turkey soup, a pot pie, or a sandwich idea from a website, Instagram, or TikTok to Matlyst, and it becomes a recipe you can search. Put them in a folder called Leftovers, so Friday’s decision is a tap. See <a href="/en/import-recipes/">how importing works</a>. Matlyst is free to start, with 5 imports per calendar month.')
-      + h3('Put the dinners on the weekly menu')
-      + p('The <a href="/en/meal-plan-app/">weekly menu</a> shows a recipe on each day. Drop Friday through Wednesday into it, and the week has a shape. When plans change, move a recipe to another day instead of rewriting the whole list.')
+      + h3('Put the dinners on the meal plan')
+      + p('The <a href="/en/meal-plan-app/">meal plan</a> shows recipes on each day. Drop Friday through Wednesday into it, and the week has a shape. When plans change, take a recipe off one day and add it to another instead of rewriting the whole list. If a dinner needs something new, add that day’s recipes to the grocery list from the meal plan.')
       + h3('Share the plan with your household')
-      + p('A Pro member can create a household for up to 6 people, and joining is free. The weekly menu, the grocery list, and the pantry are shared and update live. When you cook a leftover meal, the person at home and the person at the store see the same plan. See the <a href="/en/shopping-list/">grocery list</a> page for how it works.')
-      + h3('Use what I have, in Ask Matlyst')
-      + p('If you are staring into the refrigerator and cannot decide, “Use what I have” in Ask Matlyst builds dinner ideas from the items in your <a href="/en/pantry-app/">pantry</a>. Add the turkey, the potatoes, the cranberry sauce, and the stuffing as pantry items, and you can ask for ideas that use them. It is a Pro feature, it uses AI, and it has a monthly allowance. Read each result before you cook from it. It does not know how long your leftovers have been in the refrigerator, so the 3-to-4-day rule is on you.')
+      + p('A Pro member can create a household for up to 6 people, and joining is free. The meal plan, the grocery list, and the pantry are shared and update live. When you cook a leftover meal, the person at home and the person at the store see the same plan. See the <a href="/en/shopping-list/">grocery list</a> page for how it works.')
+      + h3('Cook with what I have, in Ask Matlyst')
+      + p('If you are staring into the refrigerator and cannot decide, “Cook with what I have” in Ask Matlyst builds dinner ideas from the items in your <a href="/en/pantry-app/">pantry</a>. Add the turkey, the potatoes, the cranberry sauce, and the stuffing as pantry items, and you can ask for ideas that use them. On the free plan, the pantry shows the first 5 items. It is a Pro feature, it uses AI, and it has a monthly allowance. Read each result before you cook from it. It does not know how long your leftovers have been in the refrigerator, so the 3-to-4-day rule is on you.')
       + p('Related pages: <a href="/en/empty-the-fridge/">empty the fridge</a> for planning around what you already have, and <a href="/en/recipes-by-ingredients/">recipes by ingredients</a> for searching your own saved recipes by what is on hand.')],
     ['Two “Say you …” scenarios',
       scenarioNotat()
@@ -93,13 +95,13 @@ const rik = byggRik({
         galt: 'You put the turkey into one big container, leave it on the counter to cool, and go to bed. By morning it has been out for hours.',
         gjor: 'Carve it that night, put the meat in shallow containers, refrigerate within 2 hours, and freeze half on Friday. Simmer the carcass for stock.',
         tall: 'Cooked turkey keeps 3 to 4 days in the refrigerator, according to FoodSafety.gov.',
-        matlyst: 'Save a soup recipe and a pot pie recipe in a Leftovers folder, and put them on the weekly menu for Sunday and Monday.',
+        matlyst: 'Save a soup recipe and a pot pie recipe in a Leftovers folder, and put them on the meal plan for Sunday and Monday.',
       })
       + scenario('Say you only have a refrigerator full of sides and no more turkey', {
         situasjon: 'The bird is gone, but there is stuffing, potatoes, green beans, and cranberry sauce.',
         galt: 'You eat the same plate for four days and throw out the last container.',
         gjor: 'Change the shape: stuffing waffles, potato pancakes, and cranberry sauce in oatmeal. Freeze portions you will not reach.',
-        matlyst: 'Add the leftovers to your pantry, open Ask Matlyst, and choose “Use what I have.” Check the suggestions before you cook, and reheat anything with meat to 165 °F (74 °C).',
+        matlyst: 'Add the leftovers to your pantry, open Ask Matlyst, and choose “Cook with what I have.” Check the suggestions before you cook, and reheat anything with meat to 165 °F (74 °C).',
       })],
     ['A last check before you eat a leftover',
       p('Run through three questions. Was it in the refrigerator within 2 hours? Has it been 3 to 4 days or less? Will it reach 165 °F (74 °C) when you reheat it? If the answer to any is no, or you are not sure, throw it out. A small loss in the bin beats a bad weekend.',
@@ -136,7 +138,7 @@ export const side = {
     ['Is it safe to eat turkey on day five?', 'The 3 to 4 day guidance is for the refrigerator. If you are not sure how long it has been, or it is past that window, throw it out, or freeze it earlier next time.'],
     ['What can I make with Thanksgiving leftovers?', 'Turkey sandwiches, turkey soup from the carcass, pot pie, tacos, fried rice, stuffing waffles, and potato pancakes are all common ideas.'],
     ['Can I put leftovers in a slow cooker to reheat them?', 'A slow cooker is for keeping hot food hot, not for bringing cold food up to temperature. Reheat on the stove or in the oven first, to 165 °F (74 °C).'],
-    ['How does Matlyst help with leftovers?', 'You can save leftover recipes in a folder, put them on the weekly menu, and share the plan with a household. “Use what I have” in Ask Matlyst, a Pro feature that uses AI, suggests dinner ideas from your pantry.'],
+    ['How does Matlyst help with leftovers?', 'You can save leftover recipes in a folder, put them on the meal plan, and share the plan with a household. “Cook with what I have” in Ask Matlyst, a Pro feature that uses AI, suggests dinner ideas from your pantry.'],
     ['Is Ask Matlyst free?', 'Ask Matlyst is a Matlyst Pro feature. It uses AI and has a monthly allowance, so read the result before you cook from it.'],
   ],
   cta: 'Plan your leftovers in Matlyst',

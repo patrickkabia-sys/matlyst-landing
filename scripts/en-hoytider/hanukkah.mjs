@@ -13,10 +13,10 @@ const rik = byggRik({
       + p('Here is what is widely known, so the planning below makes sense.')
       + ul(
         'Hanukkah lasts eight nights. In 2026 it begins at sundown on Friday, December 4, and runs through December 12.',
-        'Many families light a menorah (also called a hanukkiah) each night, adding one more light as the nights go on.',
-        'Foods fried in oil are a well-known part of the holiday, and the oil is often explained as a reference to the story of the holiday. Latkes (potato pancakes) and sufganiyot (jelly doughnuts) are the best-known examples.',
+        'Many families light a menorah during the holiday, so the evening often has a set moment before or around dinner. How and when is a family matter, and we leave it there.',
+        'Foods fried in oil are a well-known part of the holiday for many families. Latkes (potato pancakes) and sufganiyot (jelly doughnuts) are the best-known examples.',
         'Many families also cook other dishes, and what is on the table differs from home to home.')
-      + p('Because the first night falls on a Friday evening this year, some households will want to check how their own tradition handles the timing that evening. We do not give guidance on that. We only suggest you look at the calendar early, so that the first night’s cooking does not collide with anything else you do.')
+      + p('The first night falls on a Friday evening this year. We only suggest you look at the calendar early, so that the first night’s cooking fits around whatever else your household has planned that evening.')
       + p('The word is also spelled Chanukah in English. Either spelling is in common use.')],
 
     ['Cooking for eight nights without burning out', p(
@@ -27,7 +27,7 @@ const rik = byggRik({
         '<strong>Make-ahead dishes.</strong> Braises, kugels, soups, salads, and baked dishes that can be made earlier and reheated, so most nights need only a short cooking job.',
         '<strong>Easy nights.</strong> A pot of soup, a baked dish, or a simple dinner with one fried item on the side. Not every night has to be a feast.')
       + p('You do not have to fry every night. Some families make latkes on one or two nights and do other dishes on the rest. That is your decision. Planning it on paper first is what keeps it manageable.')
-      + p('In Matlyst you can lay the eight nights out in the <a href="/en/meal-plan-app/">weekly menu</a>, put each recipe on the night you will make it, and keep all the recipes in a folder called Hanukkah. The <a href="/en/recipe-book-app/">recipe book</a> saves recipes from websites, Instagram, and TikTok, so a family recipe you type in and a recipe you find on a blog sit in the same place. The free plan includes 5 imports per calendar month.')],
+      + p('In Matlyst you can lay the eight nights out in the <a href="/en/meal-plan-app/">meal plan</a>, put each recipe on the night you will make it, and keep all the recipes in a folder called Hanukkah. The <a href="/en/recipe-book-app/">recipe book</a> saves recipes from websites, Instagram, and TikTok, so a family recipe you type in and a recipe you find on a blog sit in the same place. The free plan includes 5 imports per calendar month.')],
 
     ['An eight-night menu you can adapt', p(
       'This is a suggested plan, not a tradition. It is an example of how to spread the work so that no two heavy nights are next to each other. Swap anything for what your family makes.')
@@ -45,7 +45,7 @@ const rik = byggRik({
       + p('A second fried night, if you like: sufganiyot, or latkes made in a different style, such as with sweet potato or zucchini.')
       + '<h3>Night 7</h3>'
       + p('Leftovers night. Reheat what is in the refrigerator or freezer, and add something fresh.')
-      + '<h3>Night 8 (Saturday, December 12)</h3>'
+      + '<h3>Night 8</h3>'
       + p('A bigger gathering, if you are hosting one, built mostly from dishes made earlier in the week.')
       + p('You can see how the plan is built: two fried nights, a few make-ahead nights, and a leftovers night. If you want more fried nights, put an easy night on each side of them.')],
 
@@ -71,7 +71,7 @@ const rik = byggRik({
         '<strong>Roast chicken,</strong> simple and easy to make for a crowd.',
         '<strong>Soups,</strong> which can be made and reheated.',
         '<strong>Roasted vegetables and salads,</strong> to go with fried food.',
-        '<strong>Applesauce and sour cream,</strong> the usual toppings for latkes.',
+        '<strong>Applesauce and sour cream,</strong> common toppings for latkes.',
         '<strong>Cookies and other sweets,</strong> made ahead.')
       + p('If you are cooking for guests, ask about their dietary practices before you decide the menu. Some households keep kosher, and the rules they follow differ. Some guests are vegetarian, or have allergies. Asking is respectful, and it is much easier than fixing a menu later. If you are not sure what a guest needs, ask them what they would like you to know.')],
 
@@ -97,7 +97,7 @@ const rik = byggRik({
         '<strong>Keep a clear work area.</strong> Have your tray, your rack, and your tools ready before the oil is hot.')
       + p('Eight nights of frying has its own risk, which is tiredness. If you are worn out, make something else that night.')
       + '<h3>Managing the smell</h3>'
-      + p('Frying leaves a smell in the house and on your hands and clothes. Open a window, use the range hood fan, and wash your hands with soap. Many cooks keep a pair of clothes just for frying, and some put on an apron. Wash cloth towels and aprons after each fry night. Plan to air out the kitchen before guests arrive, not after.')],
+      + p('Frying leaves a smell in the house and on your hands and clothes. Open a window, use the range hood fan, and wash your hands with soap. Some cooks keep an old sweatshirt just for frying, and an apron helps. Wash cloth towels and aprons after each fry night. Plan to air out the kitchen before guests arrive, not after.')],
 
     ['Scaling recipes for the crowd', p(
       'Matlyst scales a recipe from 1 to 20 servings, and the scaling is linear. If you double the servings, every ingredient doubles. For latkes, that works well, because a latke recipe is mostly potatoes, onion, egg, and a small amount of binder. A few things are worth checking by hand.')
@@ -108,10 +108,10 @@ const rik = byggRik({
         '<strong>The pan and the oil.</strong> More batter means more batches, not a bigger pan. Plan the time for the batches.',
         '<strong>Fillings.</strong> A filling for doughnuts is often a jam or a custard. Check how much the scaled recipe makes, and whether you have enough.')
       + p('A rule of thumb from home cooking, not a tested number: for a few guests, count on each person eating several latkes, and plan on extra if they are the main part of the meal. If you serve latkes as a side with a heavier main, plan on fewer.')
-      + p('After you scale, read the amounts once. If you change a recipe, add a note to the recipe, so next year you can make it the same way.')],
+      + p('After you scale, read the amounts once. If you change a recipe, write it under My notes on the recipe, so next year you can make it the same way.')],
 
     ['One grocery list for eight nights', p(
-      'It is easier to shop once, or twice at most, than eight times. Put every recipe on the weekly menu, and use one list. Matlyst combines the same ingredient in the same unit across recipes, shows different units next to each other, and sorts the list by store department. Items that are in your pantry start unchecked, so you can look at them and decide whether you need them.')
+      'It is easier to shop once, or twice at most, than eight times. Put every recipe on the meal plan, then add the week’s recipes to the grocery list from there. The eight nights run across two calendar weeks, so do it once for each week. Matlyst puts the same ingredient from several recipes on one line, adds amounts in the same unit together, shows different units together on that line (for example “1 cup · 200 g”), and sorts the list by store department. When you add a recipe, items already in your pantry are left unselected and marked “In your pantry”, so you can decide whether you need them.')
       + p('Here is a starter list for a menu like the one above. Replace it with your own.')
       + '<h3>Produce</h3>'
       + ul('Potatoes, onions, and garlic, which make up most of a latke menu.', 'Apples, if you are making applesauce.', 'Salad greens, carrots, and the vegetables for roasting.', 'Lemons, which are useful for dressings, fish, and chicken.')
@@ -121,7 +121,7 @@ const rik = byggRik({
       + ul('The main for the big night, such as a brisket or chicken, ordered ahead if you want a specific cut.', 'Whatever your one-pan dinner needs.')
       + '<h3>Pantry</h3>'
       + ul('Oil for frying, enough for each fry night. Check the recipe for how much.', 'Flour or matzo meal, salt, sugar, baking powder, and yeast if you are making doughnuts.', 'Jam or custard for filling, powdered sugar, spices, and stock for soups.', 'Candles for the menorah, if you need them.')
-      + p('Shop for non-perishables in the first round, and for produce and dairy in the second. If your household shares a Matlyst account via a household, everyone sees the same list live, and one person can add an item while another is in the store. A Pro member can create a household for up to 6, and joining is free. See the <a href="/en/shopping-list/">shopping list page</a> and the <a href="/en/pantry-app/">pantry page</a>.')],
+      + p('Shop for non-perishables in the first round, and for produce and dairy in the second. If you are in a Matlyst household, everyone in it sees the same list live, and one person can add an item while another is in the store. A Pro member can create a household for up to 6, and joining is free. See the <a href="/en/shopping-list/">shopping list page</a> and the <a href="/en/pantry-app/">pantry page</a>.')],
 
     ['Hosting on the nights you have company', p(
       'Some nights you will cook for family, and some nights you will have guests. The same habits that keep the week manageable also keep a gathering calm.')
@@ -148,14 +148,14 @@ const rik = byggRik({
 
     ['Cook mode and a night-of plan', p(
       'On a fry night, write the plan backward from dinner time. A typical order is: set out the toppings and sides first, make the batter or prepare the dough, heat the oil, fry in batches while keeping finished ones on a rack, and serve.')
-      + p('Matlyst has a <a href="/en/recipe-book-app/">cook mode</a> that shows the ingredients as a checklist, suggests timers from the step text, and keeps the screen awake while you cook. It needs an internet connection, so open the recipe before you start if your signal is weak. Ask Matlyst, available with Pro, can help adapt a recipe with AI, for example to swap an ingredient for a guest. It has a monthly quota, you can choose Save a copy or Replace, and the result is marked adapted. AI can make mistakes, so check the amounts and steps before you cook.')],
+      + p('Matlyst has a <a href="/en/recipe-book-app/">cook mode</a> that shows the recipe as a checklist you tick off as you go, suggests timers from the step text, and keeps the screen awake while you cook. It needs an internet connection, so open the recipe before you start if your signal is weak. Ask Matlyst, available with Pro, can help adapt a recipe with AI, for example to swap an ingredient for a guest. It has a monthly quota, you can choose Save a copy or Replace, and the result is marked adapted. AI can make mistakes, so check the amounts and steps before you cook.')],
 
     ['Three scenarios', scenarioNotat('en')
       + scenario('Say you are cooking for your family of four for all eight nights', {
         situasjon: 'You want a special dinner each night, and you work during the day.',
         galt: 'You plan latkes for four nights, and by night three you are tired of frying.',
         gjor: 'You cut the fried nights to two, move a braise and a kugel to the weekend, and add a soup night and a leftovers night.',
-        matlyst: 'You put each recipe on the night you will make it in the weekly menu, and use one grocery list for the week.',
+        matlyst: 'You put each recipe on the night you will make it in the meal plan, and use one grocery list for the week.',
       })
       + scenario('Say you are hosting twelve on the eighth night', {
         situasjon: 'You are making latkes and a main for a larger gathering.',
@@ -185,7 +185,7 @@ const rik = byggRik({
       + ul(
         '<strong>It does not tell you how to observe Hanukkah.</strong> It is a cooking and planning tool, not a source for religious practice.',
         '<strong>It does not give you oil temperatures or frying times.</strong> Use your recipe and a thermometer.',
-        '<strong>It reads captions, not audio.</strong> If a creator only says the amounts in a video, type them in after you import.',
+        '<strong>It reads captions, not audio.</strong> From Instagram and TikTok, Matlyst reads the caption, one recipe per post, and not the slides of a carousel. If a creator only says the amounts in a video, type them in after you import.',
         '<strong>It does not read comments.</strong> If the recipe is in a comment or behind a link in the bio, copy it in or share the page link.',
         '<strong>AI can make mistakes.</strong> Check amounts and steps before you cook, especially from photos or family recipes you typed in.',
         '<strong>Cook mode needs an internet connection.</strong>',
@@ -233,7 +233,7 @@ export const side = {
     ['How long can leftovers stay in the refrigerator?', 'Cooked meat and poultry keep 3 to 4 days in a refrigerator set to 40 °F (4 °C) or colder. Refrigerate within 2 hours of cooking.'],
     ['How long can food sit out for a gathering?', 'No more than 2 hours, or 1 hour if the room is hotter than 90 °F (32 °C). Keep hot food at 140 °F (60 °C) or warmer.'],
     ['What should I ask guests before I plan the menu?', 'Ask about dietary practices, such as keeping kosher or being vegetarian, and about allergies. Asking early is respectful and makes planning easier.'],
-    ['Can my household share one list for all eight nights?', 'Yes. A Matlyst Pro member can create a household for up to 6 people. Joining is free, and the grocery list and weekly menu update live for everyone.'],
+    ['Can my household share one list for all eight nights?', 'Yes. A Matlyst Pro member can create a household for up to 6 people. Joining is free, and the grocery list, meal plan, and pantry update live for everyone.'],
     ['Does Matlyst tell me how to observe the holiday?', 'No. Matlyst is a cooking and planning tool. For how to observe Hanukkah, ask your family, your community, or your rabbi.'],
   ],
   cta: 'Start your Hanukkah folder',

@@ -16,7 +16,7 @@ const rik = byggRik({
         'A note on the numbers. The food safety temperatures and holding times on this page come from FoodSafety.gov, and we link to the charts below. The portion guidance, the timelines, and the oven schedule are home cooking experience and common sense. They are rules of thumb, not official figures, so adjust them to your family, your appetites, and your recipes.',
         'Every dated step is counted from Thursday, November 26. If you are reading this late, skip ahead to the week you are in. Nothing here needs to be done in a perfect order, and a plan you start at T-minus-one-week still beats no plan.')],
     ['The T-minus timeline, from three weeks out to the day',
-      p('Read the whole timeline once, then open a notes app or your Matlyst weekly menu and drop the dates in. The point of each step is to remove one decision from the final days.')
+      p('Read the whole timeline once, then put the dates in a calendar or a note. If you use Matlyst, place each dish in the meal plan on the day you will cook it. The point of each step is to remove one decision from the final days.')
       + h3('Three weeks out: decide the shape of the day')
       + p('Settle the headcount, the time you want to eat, and the menu. Write the guest list with any allergies, dietary rules, and kids who will only eat rolls. Pick the dishes, and be strict about a ceiling. A good Thanksgiving table has one turkey, one or two starches, one or two vegetables, one cranberry, gravy, rolls, and one or two desserts. Every dish beyond that is a dish you will not be able to heat, plate, or enjoy.')
       + p('Choose the recipes now, and save them where you can find them at the stove. If a recipe lives in a screenshot, a bookmark, or a video you half remember, this is the week to turn it into a real recipe. See the section on saving and scaling below.')
@@ -28,11 +28,11 @@ const rik = byggRik({
       + h3('One week out: shop round one')
       + p('The first grocery run is for everything that lasts: canned goods, broth, flour, sugar, spices, baking supplies, foil, bags, paper goods, drinks, and the frozen turkey if you are not buying fresh. Doing this early spreads out the cost and means you are not the person fighting for the last can of pumpkin on Tuesday. The list structure is in its own section below.')
       + p('If your turkey is frozen, check the thawing calculator today, and set a reminder on your phone for the day it must go into the refrigerator.')
-      + h3('Four to five days out: thaw and make the first ahead dishes')
-      + p('A frozen turkey thaws in the refrigerator, not on the counter. FoodSafety.gov is clear that the refrigerator is the safest way to thaw. Put the bird on a tray or in a pan so juices cannot reach other food, on the bottom shelf. Use the USDA’s Turkey Thawing Calculator for the schedule.')
-      + p('This is also the day to make cranberry sauce, which improves as it sits, and to bake any pie crust or shells you plan to freeze. Write down what is already done so you do not redo it on a tired Wednesday.')
+      + h3('Thaw day: start the turkey and the first ahead dishes')
+      + p('A frozen turkey thaws in the refrigerator, not on the counter. FoodSafety.gov is clear that the refrigerator is the safest way to thaw. Put the bird on a tray or in a pan so juices cannot reach other food, on the bottom shelf. The USDA’s Turkey Thawing Calculator tells you which day this is for your bird. For a large turkey it can be several days before Thursday, so do not leave it to the weekend before and hope.')
+      + p('Somewhere in this stretch, make cranberry sauce, which improves as it sits, and to bake any pie crust or shells you plan to freeze. Write down what is already done so you do not redo it on a tired Wednesday.')
       + h3('Two to three days out: shop round two')
-      + p('The second grocery run is for everything fresh: produce, dairy, bread, herbs, and the fresh turkey if you buy it this late. Shopping two or three days out beats shopping the day before, because the shelves are full and the lines are short. Buy a little extra butter, a little extra broth, and an extra onion. Those three are what people run out of.')
+      + p('The second grocery run is for everything fresh: produce, dairy, bread, and herbs. A fresh, unfrozen turkey is the exception. FoodSafety.gov’s cold storage chart gives a fresh whole turkey only 1 to 2 days in the refrigerator, so pick it up on Tuesday or Wednesday for a Thursday dinner. Shopping two or three days out beats shopping the day before, because the shelves are full and the lines are short. Buy a little extra butter, a little extra broth, and an extra onion. Those three are what people run out of.')
       + h3('Two days out: prep and make-ahead cooking')
       + p('Chop the onions, celery, and carrots for the stuffing and the gravy base. Cube the bread for stuffing and let it dry. Make the pies or the dessert that sets overnight. Assemble casseroles up to the point of baking, and keep them covered in the refrigerator. Make the make-ahead list below your project.')
       + h3('The day before: set the table and get the bird ready')
@@ -64,20 +64,20 @@ const rik = byggRik({
         '<strong>Frozen:</strong> the turkey if you are buying frozen, pie crusts, ice cream, frozen vegetables as a backup.',
         '<strong>Drinks:</strong> wine, sparkling water, juice, coffee, tea, ice.',
         '<strong>Household:</strong> foil, parchment, zip bags, containers for leftovers, paper towels, napkins, a disposable roasting pan if you need a second one.')
-      + h3('Round two: two to three days out')
+      + h3('Round two: 2 to 3 days out')
       + ul('<strong>Produce:</strong> potatoes, onions, celery, carrots, garlic, green beans, sweet potatoes, fresh herbs, lemons, apples, cranberries if fresh.',
-        '<strong>Meat:</strong> the fresh turkey if you are buying it this late, bacon if a recipe needs it.',
+        '<strong>Meat:</strong> bacon or sausage if a recipe needs it. Pick up a fresh turkey no more than 1 to 2 days before you cook it.',
         '<strong>Dairy and eggs:</strong> butter (more than you think), cream, milk, eggs, cheese.',
         '<strong>Bakery:</strong> rolls, bread for stuffing, if you are not baking your own.')
       + p('Check your cupboards against the list before you leave. The most common Thanksgiving shopping failure is not forgetting an ingredient, it is buying a third jar of cinnamon because you did not look.')
-      + p('In Matlyst, you add each recipe to the <a href="/en/shopping-list/">grocery list</a> and the ingredients land on one list. Items with the same unit are added together. When the units differ, the lines sit side by side, so you might see “2 cups” and “1 stick” of butter next to each other, and you decide. The list is sorted by store section, and items already in your <a href="/en/pantry-app/">pantry</a> start unchecked so you can see what you have. Add each recipe once you have scaled the servings, not before.')],
+      + p('In Matlyst, you add each recipe to the <a href="/en/shopping-list/">grocery list</a> and the ingredients land on one list. The same item from several recipes shares one line. Amounts in the same unit are added together, and amounts in different units are shown together on that line, for example “1 cup · 200 g”. Tap the amount to tidy it into one. When you add a recipe, items already in your <a href="/en/pantry-app/">pantry</a> are left unselected and marked “In your pantry”, so you only add what you need. The list is sorted by store section. Add each recipe once you have scaled the servings, not before.')],
     ['Fitting a whole dinner into one oven',
       p('The oven is the bottleneck of every Thanksgiving. The turkey wants it for a long stretch, and almost everything else also wants it at the end. The fix is to separate what truly needs the oven from what can be cooked another way, then schedule the oven in blocks.')
       + h3('Take the load off the oven')
       + ul('Mashed potatoes, cranberry sauce, gravy, green beans, and glazed carrots can all be made on the stove.',
         'Casseroles, stuffing, and rolls can be made ahead and reheated in a short window after the turkey comes out.',
         'A slow cooker keeps mashed potatoes, soup, or cider warm without a burner or the oven. A second small appliance, like an air fryer or toaster oven, can handle a small dish.',
-        'Pies can be baked the day before and served at room temperature, so they leave the oven schedule entirely.')
+        'Pies can be baked the day before, so they leave the oven schedule entirely. Keep pumpkin and other custard-style pies in the refrigerator until shortly before dessert.')
       + h3('A single-oven schedule')
       + p('Every home oven is different, and a turkey’s cooking time depends on its size and whether it is stuffed, so we are not going to put times on the turkey here. The USDA’s Turkey Cooking Calculator, mentioned on FoodSafety.gov, gives you the range, and your thermometer decides. Choose a target time to carve (call it T). Work like this:')
       + ol('<strong>The turkey goes in first,</strong> early enough that, by the calculator’s range, it is done with a cushion before T. A turkey can rest and stay hot under foil while you finish everything else. A turkey that is late is a problem, a turkey that is early is just resting.',
@@ -92,7 +92,7 @@ const rik = byggRik({
       + tabell(['When', 'What'], [
         ['Early morning', 'Follow your recipe for when the turkey leaves the refrigerator. Put the thermometer where you can find it. Preheat the oven to your recipe’s temperature. Wash hands, and keep raw turkey away from everything else.'],
         ['Turkey in', 'Set a timer for the first temperature check at the earliest time the calculator allows, not the latest. Check in the thickest part of the breast and the thigh, without touching bone, fat, or gristle.'],
-        ['Mid-morning', 'Cook the cranberry sauce if it is not already made. Put out the cold appetizers. Peel and cut the potatoes, and put them in cold water.'],
+        ['Mid-morning', 'Cook the cranberry sauce if it is not already made. Set out the platters for the appetizers, and keep the food itself cold until guests arrive. Peel and cut the potatoes, and put them in cold water.'],
         ['Midday', 'Start the stovetop work: gravy base, vegetables ready to cook. Put drinks on ice. Check on your guests who are bringing dishes, and clear refrigerator space.'],
         ['When the turkey reads 165 °F (74 °C)', 'Take it out, tent it with foil, and set it where it can rest. The oven is free. Reheat casseroles and stuffing, and bake the rolls.'],
         ['Turkey resting', 'Boil and mash the potatoes, finish the vegetables, make the gravy from the pan drippings, and plate sides into the dishes you labeled yesterday.'],
@@ -149,7 +149,7 @@ const rik = byggRik({
         '<strong>A dish that suits their own diet.</strong> This is the easiest way to make sure a vegetarian, vegan, or gluten-free guest has a full plate.',
         'Do not ask guests to bring anything that needs oven time at your house, unless you have planned it into the schedule.')
       + h3('How to ask')
-      + p('Be specific. “Could you bring a pie, any kind?” gets a pie. “Bring something!” gets three bags of chips. Write down who is bringing what in a shared place, so two people do not show up with the same green bean casserole. A group message or a shared note works. If you cook with a partner or housemates, a Matlyst household shares the grocery list, the weekly menu, and the pantry live.')
+      + p('Be specific. “Could you bring a pie, any kind?” gets a pie. “Bring something!” gets three bags of chips. Write down who is bringing what in a shared place, so two people do not show up with the same green bean casserole. A group message or a shared note works. If you cook with a partner or housemates, a Matlyst household shares the grocery list, the meal plan, and the pantry live.')
       + h3('Jobs that are not cooking')
       + ul('One person handles drinks.',
         'One person greets guests and takes coats.',
@@ -177,7 +177,7 @@ const rik = byggRik({
         situasjon: 'You have one oven, four small burners, and a tiny refrigerator.',
         galt: 'Everything is ready at once, and nothing fits in the refrigerator on Wednesday.',
         gjor: 'Choose dishes that cook in different ways: one oven dish, two stove dishes, one slow cooker dish. Ask guests to bring cold sides and desserts, and ask a neighbor or a friend to hold a cooler of drinks.',
-        matlyst: 'Use the weekly menu to put a task on each day, so Wednesday is prep and Thursday is only reheating and carving.',
+        matlyst: 'Put the make-ahead recipes on Tuesday and Wednesday in the meal plan and the turkey on Thursday, so Thursday is only roasting, reheating, and carving.',
       })],
     ['When something goes wrong',
       p('Something will go slightly wrong. A calm response is a skill, and it is mostly knowing the usual fixes in advance.')
@@ -188,33 +188,33 @@ const rik = byggRik({
       + h3('The gravy is lumpy')
       + p('Pour it through a fine strainer. If it is still not smooth, a few seconds with an immersion blender will fix it. Thin it with a little warm broth if it is too thick. If it is too thin, simmer it longer, or whisk a little cornstarch into cold water and stir it in while it simmers.')
       + h3('The gravy is too salty')
-      + p('Add unsalted broth, a splash of cream, or a peeled raw potato simmered for a few minutes. Next year, taste before you season.')
+      + p('Stretch it with unsalted broth or a splash of cream, or make a small second batch without salt and stir the two together. Next year, taste before you season.')
       + h3('The oven is full and a dish is not hot')
       + p('Move it to the stove or the slow cooker, or microwave it in a covered dish. Dishes with meat or poultry need to come to 165 °F (74 °C), so use the thermometer rather than guessing. If nothing works, serve the dish at the end, as a late second course. People will not mind.')
       + h3('You forgot an ingredient')
-      + p('Stores are closed on Thanksgiving in many places, so a plan B matters. Ask a neighbor, or ask a guest who is on the way to stop. Most ingredients have a reasonable swap: butter for oil, broth for water, dried herbs for fresh at about a third of the amount.')
+      + p('Stores are closed on Thanksgiving in many places, so a plan B matters. Ask a neighbor, or ask a guest who is on the way to stop. Most ingredients have a reasonable swap: butter for oil, broth for water, dried herbs for fresh. A common kitchen rule of thumb is about a third as much dried herb as fresh, so start low and taste.')
       + h3('Someone is a vegetarian and nobody told you')
       + p('Keep one dish that stands on its own, such as stuffing made with vegetable broth, a baked sweet potato, or a big roasted vegetable dish. A good rule is to make at least two sides that work for everyone at the table.')],
     ['How Matlyst helps you run Thanksgiving',
       p('Matlyst is a recipe organizer app for iPhone and Android. It does not cook the turkey, but it does take a large amount of paper-and-memory work off your plate. Here is how the pieces fit a holiday dinner, and where the limits are.')
       + h3('Save every recipe in one Thanksgiving folder')
-      + p('Share a recipe from a website, an Instagram post, or a TikTok to Matlyst, or paste a link in the import screen, and it becomes a recipe with ingredients and steps. See <a href="/en/import-recipes/">how importing works</a>, and the pages for <a href="/en/import-recipes-from-instagram/">Instagram</a> and <a href="/en/import-recipes-from-tiktok/">TikTok</a>. Put every recipe in a folder called Thanksgiving, so on the day you are not hunting through your phone. Read the draft before you save it, because a quick check is cheaper than a wrong amount of salt. If the creator only says the amounts out loud, Matlyst tells you it cannot read them, and you add them yourself. See the <a href="/en/recipe-book-app/">recipe organizer app</a> page for the full picture.')
+      + p('Share a recipe from a website, an Instagram post, or a TikTok to Matlyst, or paste a link in the import screen, and it becomes a recipe with ingredients and steps. See <a href="/en/import-recipes/">how importing works</a>, and the pages for <a href="/en/import-recipes-from-instagram/">Instagram</a> and <a href="/en/import-recipes-from-tiktok/">TikTok</a>. Put every recipe in a folder called Thanksgiving, so on the day you are not hunting through your phone. Look over each recipe after it is imported, because a quick check is cheaper than a wrong amount of salt. From Instagram and TikTok, Matlyst reads the caption, not the audio, the comments, or the slides, and it takes one recipe per post. If the creator only says the amounts out loud, you add them yourself with Edit recipe. See the <a href="/en/recipe-book-app/">recipe organizer app</a> page for the full picture.')
       + p('Matlyst is free to start, with 5 imports per calendar month. Matlyst Pro adds more imports, photo import, Ask Matlyst, and the ability to create a household.')
       + h3('Scale the servings from 1 to 20')
       + p('Change the number of servings and every amount follows. It is a straight line, which is what you want for gravy, cranberry sauce, and potatoes. For baking, check the baking powder, baking soda, yeast, and spices yourself, because they are not always linear.')
       + h3('One grocery list for the whole menu')
-      + p('Add each scaled recipe to the <a href="/en/shopping-list/">grocery list</a>. Matching items with the same unit are added together, and items with different units sit side by side, so you can decide. The list is sorted by store section, and anything already in your pantry starts unchecked. Do round one and round two from the same list by checking things off as you go.')
-      + h3('Plan the days with the weekly menu')
-      + p('The <a href="/en/meal-plan-app/">weekly menu</a> lets you put a recipe on each day. Use it for the week before Thanksgiving: Monday for cranberry sauce and pie crust, Tuesday for the second shop, Wednesday for prep, Thursday for the turkey. It is not a timer, but it is a visible plan.')
+      + p('Add each scaled recipe to the <a href="/en/shopping-list/">grocery list</a>. The same item from several recipes shares one line, amounts in the same unit are added together, and different units are shown together on the line until you tap the amount to tidy it. The list is sorted by store section, and when you add a recipe, anything already in your pantry is left unselected and marked “In your pantry”. Do round one and round two from the same list by checking things off as you go. Checked items move to your pantry by themselves after 15 seconds, with an undo button if you tapped the wrong one.')
+      + h3('Plan the days with the meal plan')
+      + p('The <a href="/en/meal-plan-app/">meal plan</a> lets you put recipes on each day. Use it for the week before Thanksgiving: cranberry sauce and pie crust on Monday, the pies on Wednesday, the turkey and sides on Thursday. You can then add a day’s recipes, or the whole week’s, to the grocery list in one go. It holds recipes, not chores or timers, so keep the shopping days and the prep list on paper.')
       + h3('Share it with the people you cook with')
-      + p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the weekly menu, and the pantry update live for everyone, so one person can shop while another checks what is still on the list. A household is not required for any of the steps above, it just makes the shopping and the planning easier with a partner, a roommate, or a parent.')
+      + p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the meal plan, and the pantry update live for everyone, so one person can shop while another checks what is still on the list. A household is not required for any of the steps above, it just makes the shopping and the planning easier with a partner, a roommate, or a parent.')
       + h3('Cook mode on the day')
       + p('Cook mode shows a recipe as a checklist you tick off as you go. When a step mentions a time, Matlyst suggests a timer, it keeps running in the background, and the screen stays awake. Cook mode needs an internet connection, so check your Wi-Fi in the kitchen before the day, and keep a printed copy of the one recipe you cannot afford to lose.')
-      + p('You can read your saved recipes and your grocery list offline for up to 30 days after the last sync. Editing and cook mode need a connection.')
+      + p('Without a connection, you can still read your saved recipes for up to 30 days. Changes, and cook mode, need the internet.')
       + h3('What Matlyst does not do')
       + ul('It does not know how long your turkey needs. Use the USDA’s calculators and your own thermometer.',
         'It does not time the whole dinner for you. Cook mode suggests timers from the steps in one recipe.',
-        'It does not convert metric recipes to cups. Switch to Units: US in Settings and it keeps the units the source used.',
+        'It does not convert metric recipes to cups. Set Units to US in Settings and new imports keep the US measurements the source used.',
         'Ask Matlyst, which can suggest swaps, is a Pro feature, uses AI, has a monthly allowance, and its answers should always be checked before you cook.')],
     ['A last word before you start',
       p('You do not need to cook like a restaurant to have a good Thanksgiving. You need a short menu, a thermometer, a plan that starts early, and help from the people at your table. The turkey will be fine. The most memorable thing on the table is the people.',
@@ -253,8 +253,8 @@ export const side = {
     ['How long can food sit out at Thanksgiving?', 'Do not leave perishable food out for more than 2 hours, or 1 hour if it is hotter than 90 °F (32 °C). Keep hot food at 140 °F (60 °C) or above.'],
     ['What should guests bring to Thanksgiving?', 'Desserts, cold sides, drinks, and a dish that fits their own diet are the easiest. Ask for something specific, and avoid dishes that need oven time at your house.'],
     ['Can Matlyst scale a recipe for a bigger Thanksgiving?', 'Yes, you can set the servings from 1 to 20 and every amount scales with it. Scaling is linear, so check baking powder, yeast, and spices yourself when you bake.'],
-    ['How does Matlyst help with the Thanksgiving grocery list?', 'You add each recipe to one grocery list. Matching items with the same unit are added together, items with different units sit side by side, and the list is sorted by store section.'],
-    ['Can I share my Thanksgiving plan with my family in Matlyst?', 'Yes. A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the weekly menu, and the pantry update live for everyone.'],
+    ['How does Matlyst help with the Thanksgiving grocery list?', 'You add each recipe to one grocery list. The same item shares one line, amounts in the same unit are added together, different units are shown together on that line, and the list is sorted by store section.'],
+    ['Can I share my Thanksgiving plan with my family in Matlyst?', 'Yes. A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the meal plan, and the pantry update live for everyone.'],
   ],
   cta: 'Plan your Thanksgiving in Matlyst',
 };

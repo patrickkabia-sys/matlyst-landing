@@ -54,16 +54,16 @@ const html = byggRik({
 
     ['Save every recipe in one place', p(
       'A potluck brings a lot of recipes. Some are from a grandmother’s index card, some are from a reel someone saw last week, some are from a blog. If each guest keeps theirs in a different place, nobody can find the one thing the host asked about the night before.',
-      'In Matlyst, you can <a href="/en/import-recipes/">import a recipe</a> from a website, share it straight from <a href="/en/import-recipes-from-instagram/">Instagram</a> or <a href="/en/import-recipes-from-tiktok/">TikTok</a>, or photograph a printed card (photo import is a Pro feature). Put them all in one folder called something like “Friendsgiving,” and you have the whole menu in one view. Each recipe is a real recipe with ingredients and steps, not a bookmark. You can search the folder by ingredient, which helps when you want to know who is already bringing something with cranberries.',
-      'Matlyst reads recipes from the caption or page text. It does not transcribe audio in videos and it does not read comments, so if a creator only says the amounts out loud, type them in after importing. Matlyst uses AI to read and translate recipes, which means it can make mistakes, so read the draft before you save it. The free plan includes 5 imports per calendar month, which is plenty for a host who is saving the main dish and a few sides.',
+      'In Matlyst, you can <a href="/en/import-recipes/">import a recipe</a> from a website, share it straight from <a href="/en/import-recipes-from-instagram/">Instagram</a> or <a href="/en/import-recipes-from-tiktok/">TikTok</a>, or photograph a printed card (photo import is a Pro feature). Put them all in one folder called something like “Friendsgiving,” and you have the whole menu in one view. Each recipe is a real recipe with ingredients and steps, not a bookmark. Search covers recipes, ingredients, tags, and sources, which helps when you want to know who is already bringing something with cranberries.',
+      'From Instagram and TikTok, Matlyst reads the caption. It does not transcribe audio, read comments, or read the slides of a carousel, and it takes one recipe per post, so if a creator only says the amounts out loud, type them in after importing. Matlyst uses AI to read and translate recipes, which means it can make mistakes, so look over each recipe after it is imported. The free plan includes 5 imports per calendar month, which is plenty for a host who is saving the main dish and a few sides.',
       'If you want a longer look at keeping a collection organized, the guide on <a href="/en/blog/choose-recipe-organizer-app/">how to choose a recipe organizer app</a> lists what matters. If you want a place to keep the whole collection, the <a href="/en/recipe-book-app/">recipe book app</a> page explains how folders and search work.'
     )],
 
     ['One shared grocery list for the household', p(
       'If you live with other people, Friendsgiving shopping is where duplicate purchases happen. Two roommates both buy butter. Nobody buys foil. The host realizes late in the evening that there are no onions.',
-      'Matlyst’s <a href="/en/shopping-list/">grocery list</a> merges ingredients from several recipes into one list. When two recipes call for the same item in the same unit, the amounts are added together. When they use different units, the two lines stay next to each other so you can decide, and Matlyst does not guess a conversion for you. The list is sorted by store section, so you walk the store once instead of crossing it three times.',
-      'Matlyst Pro lets one person create a household of up to 6 people. Joining a household is free. Once you are in, the grocery list, the weekly menu, and the pantry are shared and update live. One roommate adds the cranberries while another is standing in the produce aisle, and the second person sees it appear. When someone checks an item off, everyone sees it checked.',
-      'Pantry items you already have, such as flour, oil, salt, and spices, start unchecked on the list, so you do not have to delete them one at a time. You confirm what you really have by looking in the cupboard. The pantry on the free plan shows 5 items, and the <a href="/en/pantry-app/">pantry page</a> explains how it works in full.'
+      'Matlyst’s <a href="/en/shopping-list/">grocery list</a> merges ingredients from several recipes into one list. The same item shares one line. When two recipes use the same unit, the amounts are added together. When they use different units, both amounts are shown on that line, for example “1 cup · 200 g”, and Matlyst does not guess a conversion for you. Tap the amount to tidy it into one. The list is sorted by store section, so you walk the store once instead of crossing it three times.',
+      'Matlyst Pro lets one person create a household of up to 6 people. Joining a household is free. Once you are in, the grocery list, the meal plan, and the pantry are shared and update live. One roommate adds the cranberries while another is standing in the produce aisle, and the second person sees it appear. When someone checks an item off, everyone sees it checked.',
+      'When you add a recipe to the list, items already in your pantry, such as flour, oil, salt, and spices, are left unselected and marked “In your pantry”, so they do not land on the list unless you choose them. You still confirm what you really have by looking in the cupboard. Items you check off at the store move to the pantry by themselves after 15 seconds, with an undo button. The pantry on the free plan shows 5 items, and the <a href="/en/pantry-app/">pantry page</a> explains how it works in full.'
     )],
 
     ['Scaling a recipe to feed 12', p(
@@ -81,7 +81,7 @@ const html = byggRik({
     )],
 
     ['Cooking from the recipe on the day', p(
-      'If you are cooking at home before you leave, or cooking at the host’s place, cook mode helps. It shows one step at a time with a checklist of ingredients, and it can start timers directly from the step text. When a step gives a time, you can start the timer with a tap. Cook mode needs an internet connection, so if the host’s Wi-Fi is unreliable, read your recipe over before you go and screenshot what you need.',
+      'If you are cooking at home before you leave, or cooking at the host’s place, cook mode helps. It shows the steps as a checklist you tick off, with the ingredients a tap away, and the screen stays awake. When a step gives a time, Matlyst suggests a timer you start with a tap. Cook mode needs an internet connection, so if the host’s Wi-Fi is unreliable, read your recipe over before you go and screenshot what you need.',
       'If a question comes up in the middle of cooking, such as “can I use sour cream instead of yogurt,” Ask Matlyst can answer it about the recipe you have open. Ask Matlyst is a Pro feature, it uses AI, and it has a monthly quota. Treat its answer as a good suggestion, not a certainty, and use your own judgment.'
     )],
 
@@ -119,7 +119,7 @@ const html = byggRik({
       '<strong>Too many desserts, no vegetables.</strong> Fix it with categories and a sign-up message. If it has already happened, put out a simple salad or roast a pan of vegetables yourself, which takes little effort.',
       '<strong>The oven is overbooked.</strong> Ask guests to bring dishes that are ready to serve, and use slow cookers, a microwave, or a stovetop burner for reheating. Stagger the timing, and put the dishes that need a final bake in a clear order.',
       '<strong>The dish arrives cold.</strong> Reheat it to 165 °F (74 °C) before serving, using a thermometer. Do not leave it on the counter to “warm up.”',
-      '<strong>Food has been sitting out for hours.</strong> Perishable food should not stay out for more than 2 hours. Put out smaller amounts and refill from the kitchen. Keep the rest in the oven at a low setting, or in the fridge, until needed.',
+      '<strong>Food has been sitting out for hours.</strong> Perishable food should not stay out for more than 2 hours. Put out smaller amounts and refill from the kitchen. Keep the rest hot at 140 °F (60 °C) or warmer, or cold in the fridge, until needed.',
       '<strong>A guest cannot eat anything on the table.</strong> Ask early next time. For this one, find something you can quickly put together, and apologize without making it a scene.',
       '<strong>Too much food.</strong> It is a good problem. Set out containers and foil before dinner, and send people home with leftovers, with the safety notes below.',
       '<strong>Too little of the main dish.</strong> Have a backup, such as extra bread, a pot of soup, or pasta. Stretch the meal with sides.',
@@ -129,7 +129,7 @@ const html = byggRik({
 
     ['Leftovers and who takes what home', p(
       'This is the last step, and the one hosts most often get wrong at the end of the night because everyone is tired. Do it before dessert is finished if you can.',
-      'The safety side first. Get leftovers into the refrigerator within 2 hours. Move leftovers into shallow containers so they cool quickly, rather than leaving them in a deep pot. Your refrigerator should be at 40 °F (4 °C) or colder, and your freezer at 0 °F (-18 °C). Leftover cooked meat and poultry are good in the refrigerator for 3 to 4 days. When you reheat any leftovers or casseroles, bring them to 165 °F (74 °C). Never thaw food on the counter.',
+      'The safety side first. Get leftovers into the refrigerator within 2 hours. Move leftovers into shallow containers so they cool quickly, rather than leaving them in a deep pot. Your refrigerator should be at 40 °F (4 °C) or colder, and your freezer at 0 °F (-18 °C) or colder. Leftover cooked meat and poultry are good in the refrigerator for 3 to 4 days. When you reheat any leftovers or casseroles, bring them to 165 °F (74 °C). Never thaw food on the counter.',
       'The social side. Each guest takes home what they brought, unless they say otherwise. The host sets out containers and foil, and anyone who wants to take a plate home can make one. Ask who has room in the refrigerator for what, and who is hungry the next day. Leftover turkey sandwiches are a tradition, and people tend to be generous when you offer.',
       'For ideas on what to cook with what is left, the <a href="/en/holidays/thanksgiving-leftovers/">Thanksgiving leftovers</a> page has a plan, and the <a href="/en/empty-the-fridge/">empty the fridge</a> page and <a href="/en/recipes-by-ingredients/">recipes by ingredients</a> page help you search your saved recipes for whatever is in the container.'
     )],
@@ -148,27 +148,27 @@ const html = byggRik({
       situasjon: 'Say one of your guests tells you they have a food allergy, and you have not yet finalized the menu.',
       galt: 'If you guess, you might serve a dish that is not safe for them, or exclude them from the meal without asking.',
       gjor: 'You ask them directly what they are comfortable with. You label every dish, use separate spoons, and ask each cook to list main ingredients. If they prefer to bring their own dish, you make space for it.',
-      matlyst: 'Because each recipe is saved as a real recipe with an ingredient list, you can search your folder by ingredient and check what is in each dish.'
+      matlyst: 'Because each recipe is saved as a real recipe with an ingredient list, you can search your recipes by ingredient and check what is in each dish.'
     })],
 
     ['A plan you can follow, from invitation to dishes', p('Here is the whole thing as a short timeline. Adjust it to your own calendar.') + ol(
       '<strong>Two to three weeks before:</strong> pick a date, count seats, decide the main dish, and send the invitation with the categories.',
       '<strong>Two weeks before:</strong> ask about allergies and dietary needs. Collect the sign-ups. Save your own recipes to a folder.',
-      '<strong>One week before:</strong> confirm who is bringing what. Fill in gaps. Make a shared grocery list for your household and send out the equipment requests (slow cookers, serving spoons, ice).',
+      '<strong>One week before:</strong> confirm who is bringing what. Fill in gaps. If you are cooking a frozen turkey, check the USDA’s Turkey Thawing Calculator now, because the thaw can take days. Make a shared grocery list for your household and send out the equipment requests (slow cookers, serving spoons, ice).',
       '<strong>Two or three days before:</strong> shop, clear space in the refrigerator, and make anything that holds well, such as cranberry sauce.',
-      '<strong>The day before:</strong> set up the serving table, label the plates and utensils, and prep vegetables. Thaw the turkey in the refrigerator if you are cooking one, with enough time for it.',
+      '<strong>The day before:</strong> set up the serving table, label the plates and utensils, and prep vegetables. If you are cooking a turkey, it should already be thawing in the refrigerator.',
       '<strong>The day:</strong> cook the main, keep hot food at 140 °F (60 °C) or warmer, keep cold food at 40 °F (4 °C) or colder, and put food out in small batches.',
       '<strong>After dinner:</strong> put leftovers in shallow containers within 2 hours, hand out the containers, return borrowed gear, and run the dishwasher.'
     ) + p('The point of a plan is not control. It is that on the day you are able to enjoy your friends, because the part that usually goes wrong has already been handled.')],
 
     ['What Matlyst doesn’t do', p('A tool should say where it stops. Here is what to expect.') + ul(
-      'Matlyst reads recipes from captions and page text. It does not transcribe videos and it does not read comments.',
+      'From Instagram and TikTok, Matlyst reads the caption only. It does not transcribe audio, read comments, or read carousel slides, and it takes one recipe per post.',
       'It does not manage a guest list or send invitations. Use a group chat or a shared note for the sign-up.',
       'It does not know about your guests’ allergies. You ask them, and you check each recipe’s ingredient list.',
       'Scaling is linear. It does not adjust baking powder, yeast, or seasoning for you, so use your own judgment.',
-      'AI can make mistakes when it reads and translates recipes. Read the draft before you save it.',
+      'AI can make mistakes when it reads and translates recipes. Look over each recipe after it is imported.',
       'Cook mode needs an internet connection.'
-    ) + p('Matlyst is free to start, with 5 imports per calendar month. Matlyst Pro adds photo import, Ask Matlyst, and creating a household. If you are also planning your week around Friendsgiving, the <a href="/en/meal-plan-app/">meal plan</a> page shows how the weekly menu works, and the <a href="/en/holidays/christmas-dinner/">Christmas dinner</a> page picks up where this one leaves off.')],
+    ) + p('Matlyst is free to start, with 5 imports per calendar month. Matlyst Pro adds photo import, Ask Matlyst, and creating a household. If you are also planning your week around Friendsgiving, the <a href="/en/meal-plan-app/">meal plan</a> page shows how it works, and the <a href="/en/holidays/christmas-dinner/">Christmas dinner</a> page picks up where this one leaves off.')],
   ],
 }).html;
 
@@ -191,17 +191,17 @@ export const side = {
   faqTittel: 'Friendsgiving questions',
   rik: html,
   faq: [
-    ['What is Friendsgiving?', 'Friendsgiving is a Thanksgiving-style meal shared with friends instead of family, usually held in the week or two before Thanksgiving. It is almost always a potluck, where one person hosts and everyone brings a dish.'],
+    ['What is Friendsgiving?', 'Friendsgiving is a Thanksgiving-style meal shared with friends instead of family, often held in the week or two before Thanksgiving. It is usually a potluck, where one person hosts and everyone brings a dish.'],
     ['How do you organize a Friendsgiving potluck?', 'Pick a date, decide the main dish, and assign categories such as starch, vegetables, bread, dessert, drinks, and supplies. Let guests choose within a category, and keep the sign-up in one place so dishes do not double up.'],
     ['What should the host make at Friendsgiving?', 'Usually the main dish, because it needs the host’s oven and attention. Guests bring the sides, dessert, drinks, and supplies. A host who also brings sides and dessert tends to be cooking when the guests arrive.'],
     ['How do I ask guests about allergies without making it awkward?', 'Send one message to the whole group before the sign-up closes and ask if there is anything you should know about allergies or foods people avoid. Ask anyone with a serious allergy directly how they would like it handled, and label every dish with its main ingredients.'],
     ['How do I keep potluck food safe?', 'Keep hot food at 140 °F (60 °C) or warmer and cold food at 40 °F (4 °C) or colder. Do not leave perishable food out for more than 2 hours, or 1 hour if it is above 90 °F (32 °C). Reheat leftovers and casseroles to 165 °F (74 °C).'],
     ['How do I keep a dish hot while I transport it?', 'Wrap the covered dish in foil and towels and carry it in an insulated bag or a snug box. At the party, move it to a slow cooker on warm, a chafing dish, or a warming drawer so it stays at 140 °F (60 °C) or warmer.'],
     ['How do I scale a recipe to feed 12?', 'Matlyst scales a recipe from 1 to 20 servings in a straight line. Check baking powder, baking soda, yeast, salt, and strong spices by hand, and use more than one pan or pot if the volume is too big for one.'],
-    ['Can I share a grocery list with my roommates?', 'Yes. With Matlyst Pro, one person creates a household for up to 6 people, and joining is free. The grocery list, weekly menu, and pantry are shared and update live for everyone in it.'],
+    ['Can I share a grocery list with my roommates?', 'Yes. With Matlyst Pro, one person creates a household for up to 6 people, and joining is free. The grocery list, meal plan, and pantry are shared and update live for everyone in it.'],
     ['What do I do about leftovers?', 'Refrigerate them within 2 hours in shallow containers. Keep the refrigerator at 40 °F (4 °C) or colder, use cooked meat and poultry within 3 to 4 days, and reheat leftovers to 165 °F (74 °C). Let each guest take home what they brought, and set out containers for anyone who wants a plate.'],
     ['What if someone forgets to bring their dish?', 'Stay relaxed. Ask if they can pick something up on the way, or give them a job such as drinks, music, or cleanup. It is better to keep the evening friendly than to make it awkward.'],
-    ['How do I save the recipes everyone is bringing?', 'Import each recipe into a Matlyst folder from a website, from Instagram or TikTok, or with a photo if you have Pro. You get one folder with every recipe, searchable by ingredient. Read each draft before you save, because AI can make mistakes.'],
+    ['How do I save the recipes everyone is bringing?', 'Import each recipe into a Matlyst folder from a website, from Instagram or TikTok, or with a photo if you have Pro. You get one folder with every recipe, and search finds recipes by ingredient. Look over each recipe after import, because AI can make mistakes.'],
     ['Is Matlyst free to use for Friendsgiving?', 'Matlyst is free to start, with 5 imports per calendar month. Saving recipes, folders, search, the meal plan, and the grocery list work on the free plan. Creating a household, photo import, and Ask Matlyst are part of Matlyst Pro.'],
   ],
   cta: 'Plan your Friendsgiving in Matlyst',

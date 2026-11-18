@@ -408,6 +408,46 @@ const kjoperguide = byggRik({
   ],
 }).html;
 
+const holidaysHub = byggRik({
+  svarTekst: 'Holiday cooking is mostly planning: what to buy, when to start, how much to make, and what to do with the leftovers. Pick your holiday below for a timeline, quantities, a grocery list structure, food safety numbers from FoodSafety.gov, and how to do each step in Matlyst.',
+  seksjoner: [
+    ['Pick your holiday', p('Each guide follows the same structure, so you can compare them and borrow from one for another.')
+      + '<ul><li><a href="/en/holidays/thanksgiving/">Thanksgiving</a>: a three week plan, quantities for 4 to 16 guests, the oven schedule, and the safe way to cook and store the turkey.</li>'
+      + '<li><a href="/en/holidays/friendsgiving/">Friendsgiving</a>: how to run a potluck without ten bowls of the same side.</li>'
+      + '<li><a href="/en/holidays/thanksgiving-leftovers/">Thanksgiving leftovers</a>: how to cool, store, and reheat, and a week of meals from what is left.</li>'
+      + '<li><a href="/en/holidays/hanukkah/">Hanukkah</a>: planning eight nights of cooking without burning out.</li>'
+      + '<li><a href="/en/holidays/christmas-dinner/">Christmas dinner</a>: a four week plan from the menu to the dishes.</li>'
+      + '<li><a href="/en/holidays/new-years-eve/">New Year’s Eve</a>: party food, make-ahead timing, and New Year’s Day.</li></ul>'
+      + p('More guides are on the way, including Easter, Passover, St. Patrick’s Day, Valentine’s Day, and summer cookouts.')],
+    ['What every holiday meal needs', p('The details change. The jobs do not.')
+      + '<ol><li><strong>A plan with dates.</strong> Work backward from the day you serve. Put every task on a day.</li>'
+      + '<li><strong>Quantities that fit your guests.</strong> Scale each recipe once, then shop from one list.</li>'
+      + '<li><strong>One grocery list, in two trips.</strong> Non-perishables early, fresh food late.</li>'
+      + '<li><strong>Make-ahead tasks.</strong> Anything that can be done two days before should be.</li>'
+      + '<li><strong>Safe temperatures.</strong> Cook to the right temperature, keep hot food hot and cold food cold, and chill leftovers fast.</li>'
+      + '<li><strong>A plan for leftovers.</strong> Decide on day one what happens on day two.</li></ol>'],
+    ['The food safety numbers worth remembering', p('These come from FoodSafety.gov, the U.S. government’s food safety site. Always check food with a food thermometer.')
+      + '<div class="table-wrap"><table><thead><tr><th>What</th><th>Number</th></tr></thead><tbody>'
+      + '<tr><td>Turkey and other poultry, stuffing, and leftovers</td><td>165°F (74°C)</td></tr>'
+      + '<tr><td>Beef, pork, and lamb roasts and chops</td><td>145°F (63°C), then rest 3 minutes</td></tr>'
+      + '<tr><td>Ground meat and sausage</td><td>160°F (71°C)</td></tr>'
+      + '<tr><td>Temperature danger zone</td><td>40°F (4°C) to 140°F (60°C)</td></tr>'
+      + '<tr><td>Perishable food left out</td><td>2 hours at most, 1 hour above 90°F (32°C)</td></tr>'
+      + '<tr><td>Refrigerator and freezer</td><td>40°F (4°C) or below, and 0°F (-18°C) or below</td></tr>'
+      + '<tr><td>Leftover cooked meat and poultry</td><td>3 to 4 days in the refrigerator</td></tr>'
+      + '</tbody></table></div>'
+      + p('Source: <a href="https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures">FoodSafety.gov, safe minimum internal temperatures</a> and <a href="https://www.foodsafety.gov/keep-food-safe/4-steps-to-food-safety">4 steps to food safety</a>.')],
+    ['How Matlyst helps with holiday cooking', p('Matlyst is a recipe organizer app, so the work it takes off your plate is the organizing.')
+      + '<ul><li><strong>Save every recipe in one folder.</strong> From Instagram, TikTok, websites, or a photo of Grandma’s card (photo import is Pro).</li>'
+      + '<li><strong>Scale for your guest count.</strong> From 1 to 20 servings. Scaling is linear, so check baking and spices yourself.</li>'
+      + '<li><strong>Build one grocery list.</strong> Matching items are combined, and the list is sorted by store section.</li>'
+      + '<li><strong>Plan the days.</strong> Put the make-ahead dishes on the days you will cook them in the <a href="/en/meal-plan-app/">meal plan</a>.</li>'
+      + '<li><strong>Share the work.</strong> With a Pro household of up to 6, the grocery list, menu, and pantry update live for everyone.</li>'
+      + '<li><strong>Cook from a checklist.</strong> Cook mode suggests timers from the steps and keeps the screen awake.</li></ul>'
+      + p('Start with the <a href="/en/recipe-book-app/">recipe organizer app</a> page, or see how the <a href="/en/shopping-list/">grocery list</a> and the <a href="/en/pantry-app/">pantry</a> work.')],
+  ],
+}).html;
+
 export const rikeSider = {
   'recipe-book-app/': {
     title: 'Recipe organizer app: one home for every recipe',
@@ -508,4 +548,31 @@ export const rikeSider = {
     cta: 'Try it with your own recipes',
   },
   ...Object.fromEntries(Object.entries({ thanksgiving, 'thanksgiving-leftovers': thanksgivingLeftovers, 'christmas-dinner': christmasDinner, hanukkah, 'new-years-eve': newYearsEve, friendsgiving }).filter(([, v]) => v).map(([k, v]) => [`holidays/${k}/`, v])),
+  'holidays/': {
+    title: 'Holiday cooking planner: timelines and quantities',
+    description: 'Plan Thanksgiving, Hanukkah, Christmas, New Year’s Eve and more with timelines, quantities, grocery lists, and food safety numbers from FoodSafety.gov.',
+    eyebrow: 'Holiday cooking',
+    h1: 'Holiday cooking, planned from the day you serve',
+    lead: 'Timelines, quantities, grocery lists, and safe temperatures for every holiday meal.',
+    forst: 'Start with the date you serve, then work backward.',
+    stegTittel: 'How to use these guides',
+    steg: [
+      ['Pick your holiday', 'Open the guide and read the timeline.'],
+      ['Save the recipes', 'Put every recipe in one folder, scaled for your guests.'],
+      ['Shop and cook', 'Build one grocery list and cook from the plan.'],
+    ],
+    alternativ: '',
+    grense: '',
+    seksjoner: [],
+    faqTittel: 'Holiday cooking questions',
+    rik: holidaysHub,
+    faq: [
+      ['How early should I start planning a holiday meal?', 'Three to four weeks before for a big holiday like Thanksgiving or Christmas, and one to two weeks for a smaller gathering. The guides give a timeline for each.'],
+      ['How do I scale recipes for a crowd?', 'Change the servings in Matlyst, from 1 to 20. Scaling is linear, so check eggs, leavening, and spices yourself when you bake.'],
+      ['What temperature should turkey and leftovers reach?', 'FoodSafety.gov says 165°F (74°C) for all poultry, stuffing, and leftovers, checked with a food thermometer.'],
+      ['How long can food sit out at a party?', 'No more than 2 hours, or 1 hour if it is above 90°F (32°C), according to FoodSafety.gov.'],
+      ['How long do holiday leftovers keep?', 'Leftover cooked meat and poultry keep 3 to 4 days in a refrigerator at 40°F (4°C) or below, according to FoodSafety.gov.'],
+    ],
+    cta: 'Plan your holiday in Matlyst',
+  },
 };

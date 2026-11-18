@@ -22,7 +22,7 @@ const html = byggRik({
       '<strong>No dinner at all.</strong> Some people go out for the evening and plan only the day after. That is a perfectly good plan, and the New Year’s Day section is for you.'
     ) + p('Tell guests the format in the invitation. “Come hungry for a full dinner” and “come for drinks and bites” lead to very different evenings, and people plan their own meals around the answer.')],
 
-    ['Fingermat that holds up for hours', p(
+    ['Finger food that holds up for hours', p(
       'A good party bite is easy to eat with one hand, does not need a knife, tastes fine warm or at room temperature, and does not fall apart after sitting out a while. Most of the classics qualify for a reason.'
     ) + ul(
       '<strong>Things on a stick or skewer:</strong> meatballs, caprese skewers, shrimp, marinated vegetables. Skewers keep hands clean and portions obvious.',
@@ -41,7 +41,7 @@ const html = byggRik({
       '<strong>Several days before:</strong> choose the menu, save the recipes, make the grocery list, and order or buy anything that is hard to find. Buy drinks and non-alcoholic options at the same time.',
       '<strong>Two days before:</strong> shop for perishables. Make anything that keeps well, such as a spiced nut mix, a pickle, or a dip that improves overnight. Clear room in the refrigerator for the party food.',
       '<strong>The day before:</strong> make cold dishes, assemble anything that can be baked from cold the next day, chop vegetables, and set out serving dishes with sticky notes on them saying what goes where. Set up the drink station.',
-      '<strong>The morning of:</strong> pull things from the refrigerator that need to come up to temperature. Prepare the baking sheets. Set out napkins and plates.',
+      '<strong>The morning of:</strong> prepare the baking sheets and the platters. Leave perishable food in the refrigerator until shortly before it is used or served, so the 2-hour clock does not start in the morning. Set out napkins and plates.',
       '<strong>An hour or two before guests arrive:</strong> bake the first round. Put anything that will be held hot into a slow cooker, chafing dish, or warm oven set at or above 140 °F (60 °C).',
       '<strong>As guests arrive:</strong> put out the cold dishes and the first hot dishes. Keep the rest in the kitchen.',
       '<strong>During the party:</strong> refill small amounts rather than putting everything out at once. Check the clock: perishable food should not sit out for more than 2 hours.',
@@ -60,7 +60,7 @@ const html = byggRik({
       '<strong>Soups, stews, and chili</strong> are best made a day ahead and reheated to 165 °F (74 °C), then held at 140 °F (60 °C) or warmer.'
     ) + p(
       'What not to make ahead: anything that has to be crisp (fried things, fresh puff pastry straight from the oven) loses its texture if held too long. Salads with dressing go limp. Anything with raw seafood needs to be cold and fresh, and should be bought as close to the day as possible. Leave those for the last hour, or choose something else.',
-      'In Matlyst, put the party menu in one folder, then use <a href="/en/meal-plan-app/">meal plan</a> to place each recipe on the day you will make it. The day-before dishes go on the day before, the party dishes go on the party day, and the weekly menu shows you the plan at a glance. If you live with other people, a household makes the weekly menu and the grocery list shared and live. See <a href="/en/shopping-list/">the grocery list page</a> for how the list merges ingredients.'
+      'In Matlyst, put the party menu in one folder, then use <a href="/en/meal-plan-app/">meal plan</a> to place each recipe on the day you will make it. The day-before dishes go on the day before, the party dishes go on the party day, and the meal plan shows you the whole thing at a glance. If you live with other people, a household makes the meal plan, the grocery list, and the pantry shared and live. See <a href="/en/shopping-list/">the grocery list page</a> for how the list merges ingredients.'
     )],
 
     ['How much to make: rules of thumb, not rules', p(
@@ -84,7 +84,7 @@ const html = byggRik({
       '<strong>Cold food stays at 40 °F (4 °C) or colder.</strong> Put cold dishes over ice or swap in a fresh bowl from the refrigerator every so often.',
       '<strong>Two hours is the limit</strong> for perishable food at room temperature, and one hour if the room is above 90 °F (32 °C). A party that lasts all night should put out small amounts and refill them, not leave one big platter out.',
       '<strong>Wash your hands for 20 seconds</strong> before you handle food, and use a separate cutting board for raw meat.',
-      '<strong>Cook to the right temperature.</strong> Poultry and stuffing reach 165 °F (74 °C). Ground meat, such as meatballs, reaches 160 °F (71 °C). Use a food thermometer.',
+      '<strong>Cook to the right temperature.</strong> Poultry and stuffing reach 165 °F (74 °C), and that includes ground poultry. Ground beef or pork, such as most meatballs, reaches 160 °F (71 °C). Use a food thermometer.',
       '<strong>Refrigerate leftovers</strong> in shallow containers, and reheat them to 165 °F (74 °C). Cooked meat and poultry keep for 3 to 4 days in the refrigerator.'
     ) + p('The simplest habit: the party is a rolling buffet, so put out a modest amount, and refill from the kitchen.')],
 
@@ -100,8 +100,8 @@ const html = byggRik({
     ['A New Year’s Eve dinner for two', p(
       'Some of the best New Year’s Eves are quiet. A dinner for two is a good reason to cook something you would not make on a weeknight, without the pressure of a crowd.',
       'The idea is to choose a menu with a clear shape: a starter, a main, and something sweet, at an easy pace. Pick dishes where the hands-on work is front-loaded, so that you can sit down together. A pan-seared steak or fish with a sauce, a creamy pasta with something special on top, or a slow-cooked dish that fills the kitchen with its smell all afternoon all work. Choose a dessert that was made the day before.',
-      'If a recipe is written for more people, you can scale it down in Matlyst, which handles 1 to 20 servings. Check the seasoning and the pan size when you do. A recipe cut in half may need a smaller pan, and the cooking time can change. Use a thermometer when the dish includes meat: poultry reaches 165 °F (74 °C), and ground meat reaches 160 °F (71 °C).',
-      'In cook mode, the recipe shows one step at a time with a checklist for the ingredients, and a timer can start from the step text. It needs an internet connection, so check your Wi-Fi before the evening gets going. Keep the phone on the counter and out of the way of the sauce.'
+      'If a recipe is written for more people, you can scale it down in Matlyst, which handles 1 to 20 servings. Check the seasoning and the pan size when you do. A recipe cut in half may need a smaller pan, and the cooking time can change. Use a thermometer when the dish includes meat: poultry, including ground poultry, reaches 165 °F (74 °C), and other ground meat reaches 160 °F (71 °C).',
+      'In cook mode, the recipe is a checklist you tick off as you go, Matlyst suggests a timer when a step mentions a time, and the screen stays awake. It needs an internet connection, so check your Wi-Fi before the evening gets going. Keep the phone on the counter and out of the way of the sauce.'
     )],
 
     ['Vegetarian New Year’s Eve', p(
@@ -131,7 +131,7 @@ const html = byggRik({
     )],
 
     ['Leftovers from the party', p(
-      'The party is over, and the refrigerator is full of half-bowls. The safe routine is straightforward. Get perishable food into the refrigerator within 2 hours of being put out, which means the night of, not the morning after. Use shallow containers so food cools quickly, and keep the refrigerator at 40 °F (4 °C) or colder. If you plan to freeze something, the freezer should be at 0 °F (-18 °C). Cooked meat and poultry leftovers are good for 3 to 4 days in the refrigerator, so use them early, and reheat them to 165 °F (74 °C). If a dish was left out for more than 2 hours, do not keep it.',
+      'The party is over, and the refrigerator is full of half-bowls. The safe routine is straightforward. Get perishable food into the refrigerator within 2 hours of being put out, which means the night of, not the morning after. Use shallow containers so food cools quickly, and keep the refrigerator at 40 °F (4 °C) or colder. If you plan to freeze something, the freezer should be at 0 °F (-18 °C) or colder. Cooked meat and poultry leftovers are good for 3 to 4 days in the refrigerator, so use them early, and reheat them to 165 °F (74 °C). If a dish was left out for more than 2 hours, do not keep it.',
       'For ideas on what to cook, <a href="/en/holidays/thanksgiving-leftovers/">Thanksgiving leftovers</a> has techniques that apply to any holiday spread, and <a href="/en/recipes-by-ingredients/">recipes by ingredients</a> lets you search the recipes you have saved for the item you are trying to use up.'
     )],
 
@@ -141,40 +141,40 @@ const html = byggRik({
       'In Matlyst, the <a href="/en/pantry-app/">pantry</a> keeps a list of what you have at home. The free plan shows 5 items, and a household shares the list live. Combined with search by ingredient, you can ask a practical question: what can I make with what I have? The <a href="/en/recipes-by-ingredients/">recipes by ingredients</a> page explains how, and the <a href="/en/empty-the-fridge/">empty the fridge</a> page has a method for using up what is left before you shop.'
     ) + ol(
       '<strong>Look.</strong> Open the refrigerator, freezer, and pantry, and write down what needs to be used first.',
-      '<strong>Search.</strong> Search your saved recipes by the first ingredient on the list. Add a second ingredient to narrow the results.',
+      '<strong>Search.</strong> Search your saved recipes by the first ingredient on the list. If nothing fits, try the next one.',
       '<strong>Plan.</strong> Put two or three of those recipes on the meal plan for the coming days.',
-      '<strong>Shop for the gaps only.</strong> Add what is missing to the grocery list. Pantry items start unchecked, so confirm what you really have by looking.',
-      '<strong>Cook and mark.</strong> Check off what you use as you go.'
+      '<strong>Shop for the gaps only.</strong> Add the recipes to the grocery list. Items already in your pantry are left unselected and marked “In your pantry”, but confirm what you really have by looking.',
+      '<strong>Cook and update.</strong> When you finish a recipe in cook mode, tap Update pantry to take out what you used, so the pantry stays honest.'
     )],
 
     ['A simple plan for January', p(
       'After the holidays, most people want food that is plain, cheap, and fast, and a way to stop thinking about it. You do not need a program. You need a short plan.'
     ) + ul(
-      '<strong>Pick a few recipes you already love</strong> and put them on the weekly menu. Repetition is a feature.',
+      '<strong>Pick a few recipes you already love</strong> and put them on the meal plan. Repetition is a feature.',
       '<strong>Make one big batch</strong> on a day off, such as a soup, a sauce, or a pot of grains, and eat from it during the week.',
       '<strong>Keep a folder called “Weeknights”</strong> with the dishes that actually get cooked. Move anything you did not make out of it after a month.',
       '<strong>Use the pantry</strong> to avoid buying what you already have.',
       '<strong>Do not try to change everything at once.</strong> One small habit, such as planning the week on Sunday, is worth more than a complete overhaul.'
     ) + p(
-      'Matlyst’s weekly menu, grocery list, and pantry work together. Choose the recipes for the week, and the ingredients flow to the grocery list, sorted by store section. See the <a href="/en/meal-plan-app/">meal plan</a> page, and if you are choosing between apps, our guide on <a href="/en/blog/choose-recipe-organizer-app/">how to choose a recipe organizer app</a> is a place to start.'
+      'Matlyst’s meal plan, grocery list, and pantry work together. Choose the recipes for the week, add the whole week to the grocery list in one go, and the list is sorted by store section. Items you check off move to the pantry by themselves after 15 seconds, with an undo button. See the <a href="/en/meal-plan-app/">meal plan</a> page, and if you are choosing between apps, our guide on <a href="/en/blog/choose-recipe-organizer-app/">how to choose a recipe organizer app</a> is a place to start.'
     )],
 
     ['Save the recipes from the party', p(
       'Every party leaves you with a few recipes you want to make again. The cheese dip a friend brought, the cocktail snack from a reel, the dessert from a card. Do it while the memory is fresh.',
       'In Matlyst, you can <a href="/en/import-recipes/">import a recipe</a> from a website, share it from <a href="/en/import-recipes-from-instagram/">Instagram</a> or <a href="/en/import-recipes-from-tiktok/">TikTok</a> to Matlyst, or photograph a printed card (photo import is a Pro feature). Save it to a folder like “Party food.” The free plan includes 5 imports per calendar month.',
-      'Matlyst reads captions and page text. It does not transcribe audio, and it does not read comments, so if a creator only says the amounts out loud, add them yourself. It uses AI to read and translate, and AI can make mistakes, so read each draft before you save. Browse the <a href="/en/recipe-book-app/">recipe book app</a> page to see how folders work.'
+      'From Instagram and TikTok, Matlyst reads the caption, one recipe per post. It does not transcribe audio, read comments, or read carousel slides, so if a creator only says the amounts out loud, add them yourself. It uses AI to read and translate, and AI can make mistakes, so look over each recipe after it is imported. Browse the <a href="/en/recipe-book-app/">recipe book app</a> page to see how folders work.'
     )],
 
     ['Three scenarios', scenarioNotat() + scenario('Say you are hosting a grazing party', {
       situasjon: 'Say you are hosting a New Year’s Eve party for a mixed group in a small apartment, starting in the early evening.',
       galt: 'You plan a menu that needs the oven for every dish, so everything lands at the same time and the table is full of lukewarm food.',
       gjor: 'You pick a mix: two cold dishes, one dip in a slow cooker, one baked item, and one sweet. Everything but the baked item is made the day before. You put food out in small amounts and refill, and you keep the hot food at 140 °F (60 °C) or warmer.',
-      matlyst: 'You save the menu to a folder, place each dish on the day you will make it in the weekly menu, and use one grocery list sorted by store section.'
+      matlyst: 'You save the menu to a folder, place each dish on the day you will make it in the meal plan, and use one grocery list sorted by store section.'
     }) + scenario('Say you are cooking for two', {
       situasjon: 'Say it is just the two of you, and you want a nice dinner without a stressful evening.',
       galt: 'You pick a recipe written for a crowd and cut it in half by eye, and the timing and the pan size no longer work.',
       gjor: 'You scale the recipe down to a dinner for two, check the pan size, and make dessert the day before. You check the main with a thermometer.',
-      matlyst: 'Cook mode shows one step at a time with a checklist, and a timer starts from the step text.'
+      matlyst: 'Cook mode shows the recipe as a checklist, suggests a timer when a step mentions a time, and keeps the screen awake.'
     }) + scenario('Say the party is over and the refrigerator is full', {
       situasjon: 'Say it is January 1, and you have half a cheese board, some meatballs, a tub of dip, and a few vegetables.',
       galt: 'You put it all off until the weekend, and by then some of it is no longer safe to eat.',
@@ -186,8 +186,8 @@ const html = byggRik({
       'It does not plan a party for you. It holds your recipes, your lists, and your meal plan, and you make the choices.',
       'It does not tell you how much food to make. The quantities above are rules of thumb from home cooking.',
       'Scaling is linear, and it does not adjust baking powder, yeast, or seasoning on your behalf.',
-      'It reads captions and page text. It does not transcribe videos and does not read comments.',
-      'AI can make mistakes when it reads and translates recipes. Read the draft before you save it.',
+      'From Instagram and TikTok, it reads the caption only. It does not transcribe videos, read comments, or read carousel slides.',
+      'AI can make mistakes when it reads and translates recipes. Look over each recipe after it is imported.',
       'Cook mode needs an internet connection.',
       'Ask Matlyst is a Pro feature, uses AI, and has a monthly quota.'
     ) + p('Matlyst is free to start, with 5 imports per calendar month. Matlyst Pro adds photo import, Ask Matlyst, and creating a household for up to 6 people, which anyone can join for free. For another potluck-style gathering, see <a href="/en/holidays/friendsgiving/">Friendsgiving</a>, and for the holiday that comes before this one, see <a href="/en/holidays/thanksgiving/">Thanksgiving</a>.')],
@@ -223,7 +223,7 @@ export const side = {
     ['What should I cook for a New Year’s Eve dinner for two?', 'Choose a menu with a starter, a main, and something sweet, where the hands-on work comes early. Scale a recipe down to a dinner for two in Matlyst, check the pan size, make dessert the day before, and use a thermometer for meat.'],
     ['What are good vegetarian options for New Year’s Eve?', 'A baked pasta, a pot of beans or lentils, stuffed vegetables, a grain bowl bar, or a mushroom tart can each be a full meal. Ask guests about their dietary needs in the invitation and label the dishes.'],
     ['What should I eat on New Year’s Day?', 'Many families have their own traditions, so keep yours if you have one. If not, a slow cooker meal, a big breakfast, a soup from leftovers, or sandwiches from the party food are all easy.'],
-    ['How long do New Year’s Eve leftovers last?', 'Refrigerate them within 2 hours in shallow containers at 40 °F (4 °C) or colder. Cooked meat and poultry leftovers last 3 to 4 days in the refrigerator. Reheat to 165 °F (74 °C), and freeze at 0 °F (-18 °C) if you will not use them in time.'],
+    ['How long do New Year’s Eve leftovers last?', 'Refrigerate them within 2 hours in shallow containers at 40 °F (4 °C) or colder. Cooked meat and poultry leftovers last 3 to 4 days in the refrigerator. Reheat to 165 °F (74 °C), and freeze them at 0 °F (-18 °C) or colder if you will not use them in time.'],
     ['How do I empty the fridge before the new year?', 'List what needs to be used first, search your saved recipes by those ingredients, plan two or three meals, and add only the gaps to your grocery list. Matlyst’s pantry and search by ingredient help, and the free pantry shows 5 items.'],
     ['Can I scale a party recipe in Matlyst?', 'Yes, from 1 to 20 servings, in a straight line. Check baking powder, baking soda, yeast, salt, and strong spices by hand, and use more than one pan if the batch is large.'],
     ['Is Matlyst free?', 'Matlyst is free to start, with 5 imports per calendar month. Saving recipes, folders, search, the meal plan, and the grocery list work on the free plan. Photo import, Ask Matlyst, and creating a household are part of Matlyst Pro.'],

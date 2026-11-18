@@ -152,6 +152,48 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/find-recipes/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/en/holidays/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/holidays/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/holidays/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/holidays/christmas-dinner/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/holidays/christmas-dinner/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/holidays/christmas-dinner/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/holidays/friendsgiving/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/holidays/friendsgiving/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/holidays/friendsgiving/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/holidays/hanukkah/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/holidays/hanukkah/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/holidays/hanukkah/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/holidays/new-years-eve/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/holidays/new-years-eve/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/holidays/new-years-eve/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/holidays/thanksgiving-leftovers/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/holidays/thanksgiving-leftovers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/holidays/thanksgiving-leftovers/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/holidays/thanksgiving/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/holidays/thanksgiving/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/holidays/thanksgiving/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/en/import-recipes-from-instagram/</loc>
     <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/lagre-oppskrifter-fra-instagram/"/>

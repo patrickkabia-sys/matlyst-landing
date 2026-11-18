@@ -34,7 +34,7 @@ const rik = byggRik({
       + ul('Do the second shop.', 'Make the sides and desserts that keep well: cranberry sauce, soup, a pie, cookies, a make-ahead casserole.', 'Chop what you can. Store it in labeled containers.')
       + '<h3>The day before</h3>'
       + ul('Set the table, including serving spoons and the labels for each dish.', 'Prepare the roast for the oven if your recipe allows it, and keep it refrigerated.', 'Write the timeline for the day on paper and tape it where you can see it.')
-      + p('In Matlyst, you can put the shopping round in the <a href="/en/shopping-list/">shopping list</a> and the cooking days in the <a href="/en/meal-plan-app/">weekly menu</a>. Planning a Christmas dinner is a week of small meals that happen to build to one big one, and seeing the days laid out makes the big one feel smaller.')],
+      + p('In Matlyst, you can add the recipes to the <a href="/en/shopping-list/">grocery list</a> for the shopping rounds, and put each make-ahead recipe on the day you will cook it in the <a href="/en/meal-plan-app/">meal plan</a>. Planning a Christmas dinner is a week of small meals that happen to build to one big one, and seeing the days laid out makes the big one feel smaller.')],
 
     ['Build a menu that fits your oven', p(
       'Count your oven racks and your burners before you commit to a menu. A standard home kitchen has one oven and four burners. If your main roast needs the oven for hours, your sides have to come from the stovetop, a slow cooker, a microwave, or a make-ahead dish that can be reheated while the roast rests.')
@@ -62,7 +62,7 @@ const rik = byggRik({
         '<strong>Salt, spices, and strong flavors.</strong> Add less than the scaled amount, then taste and add more. It is easier to add than to remove.',
         '<strong>Pan size and cooking time.</strong> Twice the filling in the same pan is not the same dish. A bigger batch needs a bigger pan or a second pan, and the time can change.',
         '<strong>Whole items.</strong> One and a half eggs does not exist. Round sensibly and decide what the recipe can tolerate.')
-      + p('After you scale, read the amounts once. It takes a minute and it is the step that catches the odd result. <a href="/en/recipe-book-app/">Matlyst recipes</a> keep your changes with the recipe, so next year you do not have to work it out again.')],
+      + p('After you scale, read the amounts once. It takes a minute and it is the step that catches the odd result. Write what you changed under My notes on the recipe in <a href="/en/recipe-book-app/">Matlyst</a>, so next year you do not have to work it out again.')],
 
     ['The main roast: ham, turkey, beef, or something vegetarian', p(
       'We do not give roasting times on this page, because a time depends on the cut, the weight, your oven, and whether the meat is thawed. Use the time in your recipe or on the package as a guide, and use a thermometer as the judge. The temperatures below are the minimum safe internal temperatures from FoodSafety.gov.')
@@ -115,7 +115,7 @@ const rik = byggRik({
         'Bake in batches and cool completely before you stack or store them. Warm cookies soften the ones beneath them.',
         'Keep soft and crisp cookies apart, or the crisp ones lose their snap.')
       + p('When you scale a cookie recipe, look at the baking soda and the spices before you bake the whole batch, as covered above. If it is a recipe you have never made, bake one test cookie before you commit.')
-      + p('If you keep your holiday baking in one folder, you can come back next year and see what worked. Add a note in the recipe about what you changed. A saved note beats a memory.')],
+      + p('If you keep your holiday baking in one folder, you can come back next year and see what worked. Add a line under My notes on the recipe about what you changed. A saved note beats a memory.')],
 
     ['Drinks', p(
       'Plan drinks like a dish, not like an afterthought. A good rule is to have one option for everyone: something hot, something cold, something non-alcoholic that feels special, and water on the table.')
@@ -146,12 +146,12 @@ const rik = byggRik({
 
     ['Sharing the plan with your household', p(
       'If you cook with other people, the plan needs to live in a place everyone can see. A group chat full of screenshots does not work, because nobody can find anything.')
-      + p('In Matlyst, a member with Pro can create a household for up to 6 people, and it is free for the others to join. The grocery list, the weekly menu, and the pantry are shared and update live for everyone. That means one person can add oranges while another is in the store, and the list is always current. See the <a href="/en/shopping-list/">shopping list</a> page for how that works, and the <a href="/en/pantry-app/">pantry page</a> for the pantry.')
+      + p('In Matlyst, a member with Pro can create a household for up to 6 people, and it is free for the others to join. The grocery list, the meal plan, and the pantry are shared and update live for everyone. That means one person can add oranges while another is in the store, and the list is always current. See the <a href="/en/shopping-list/">shopping list</a> page for how that works, and the <a href="/en/pantry-app/">pantry page</a> for the pantry.')
       + ul(
-        '<strong>Split the shopping.</strong> One person takes the second shop for produce, another picks up the roast and the drinks. Everyone sees the same list, and checked items disappear from the to-do for everyone.',
-        '<strong>Split the cooking.</strong> Put a dish on the weekly menu for the day it will be made, and decide who is making it.',
-        '<strong>Keep the pantry honest.</strong> Items from your pantry start unchecked on the grocery list, so you can check what you already have and skip buying it twice.')
-      + p('The household is for the people in your home. If your sister is hosting and you are bringing a dish, simply share the recipe or the shopping list with her. You do not need to add her to your household for that.')],
+        '<strong>Split the shopping.</strong> One person takes the second shop for produce, another picks up the roast and the drinks. Everyone sees the same list, and an item one person checks off is checked for everyone. Checked items move to the pantry by themselves after 15 seconds, with an undo button.',
+        '<strong>Split the cooking.</strong> Put each recipe on the meal plan for the day it will be made, and decide who is making it.',
+        '<strong>Keep the pantry honest.</strong> When you add a recipe to the grocery list, items already in your pantry are left unselected and marked “In your pantry”, so you skip buying them twice. On the free plan, the pantry shows the first 5 items.')
+      + p('The household is for the people in your home. If your sister is hosting and you are bringing a dish, use Share recipe to send her a link to it, and keep your own grocery list. You do not need to add her to your household for that.')],
 
     ['Cook mode and the day-of timeline', p(
       'On the day, a written timeline is the single most useful thing in the kitchen. Count backward from the time you want to eat. Include the roast resting time from your recipe, the reheating of make-ahead dishes, and a few quiet minutes for you.')
@@ -164,10 +164,10 @@ const rik = byggRik({
         'Make the gravy, finish the vegetables, and warm the rolls.',
         'Carve, plate, and put the hot dishes on the table. Keep hot food at 140 °F (60 °C) or warmer if it will sit.',
         'Serve dessert later. While everyone is at the table, put leftovers in the refrigerator within 2 hours.')
-      + p('Matlyst has a <a href="/en/recipe-book-app/">cook mode</a> for recipes. It shows the ingredients as a checklist, suggests timers from the step text, and keeps the screen awake while you cook. It needs an internet connection, so if your kitchen has weak signal, open the recipe before you start, and keep a paper copy of the timeline. Ask Matlyst, available with Pro, can help you adapt a recipe with AI, for example when a guest cannot eat an ingredient. It has a monthly quota, you can choose Save a copy or Replace, and the result is marked adapted. AI can make mistakes, so check the amounts and the steps before you cook.')],
+      + p('Matlyst has a <a href="/en/recipe-book-app/">cook mode</a> for recipes. It shows the recipe as a checklist you tick off as you go, suggests timers from the step text, and keeps the screen awake while you cook. It needs an internet connection, so if your kitchen has weak signal, open the recipe before you start, and keep a paper copy of the timeline. Ask Matlyst, available with Pro, can help you adapt a recipe with AI, for example when a guest cannot eat an ingredient. It has a monthly quota, you can choose Save a copy or Replace, and the result is marked adapted. AI can make mistakes, so check the amounts and the steps before you cook.')],
 
     ['Leftovers', p(
-      'Leftovers are part of the plan, not an accident. Decide in advance whether you want them. Many hosts do, because a Boxing Day sandwich is one of the best parts of the holiday.')
+      'Leftovers are part of the plan, not an accident. Decide in advance whether you want them. Many hosts do, because a day-after sandwich is one of the best parts of the holiday.')
       + p('The rules are the same ones that apply to everything else.')
       + ul(
         'Refrigerate leftovers within 2 hours, or within 1 hour if the room is hotter than 90 °F (32 °C).',
@@ -184,7 +184,7 @@ const rik = byggRik({
         situasjon: 'You have one oven, and the menu has a ham, scalloped potatoes, a green bean casserole, rolls, and a pie.',
         galt: 'The potatoes and the casserole both need the oven, and the ham will be in it for most of the afternoon.',
         gjor: 'You move the casserole and the pie to the day before, reheat the casserole while the ham rests, and make the potatoes in a slow cooker. You check the ham label to see which kind it is and use the temperature that matches.',
-        matlyst: 'You save the five recipes to a Christmas folder, put each dish on the weekly menu for the day it will be made, and use one grocery list for all five.',
+        matlyst: 'You save the five recipes to a Christmas folder, put each one on the meal plan for the day it will be made, and use one grocery list for all five.',
       })
       + scenario('Say you are cooking for two, and your partner is vegetarian', {
         situasjon: 'It is the two of you, and you still want it to feel like Christmas.',
@@ -196,7 +196,7 @@ const rik = byggRik({
         situasjon: 'Four households are splitting the work, and one of them is hosting.',
         galt: 'Everyone is making plans in a group chat, two people are bringing the same side, and nobody knows who is buying the drinks.',
         gjor: 'You write the menu once, assign one dish per household, and assign drinks, ice, and dessert to named people. The host puts the oven map on paper.',
-        matlyst: 'If the four of you live together, you can share a household list. If not, you share the recipes and each person keeps their own list.',
+        matlyst: 'If the four of you live together, you can share a household list. If not, you send each other the recipes with Share recipe, and each person keeps their own list.',
       })],
 
     ['Troubleshooting on the day', ul(
@@ -205,7 +205,7 @@ const rik = byggRik({
         '<strong>The gravy is thin.</strong> Simmer it longer or whisk in a little flour or cornstarch mixed with cold water.',
         '<strong>The gravy is lumpy.</strong> Strain it.',
         '<strong>The potatoes are gluey.</strong> They were over-mixed. Serve them anyway, and use the leftovers for a pan of hash.',
-        '<strong>Everything is cooling.</strong> Hot food should be kept at 140 °F (60 °C) or warmer. Use the oven set low, a slow cooker, or chafing dishes to hold dishes, and do not hold anything for longer than 2 hours.',
+        '<strong>Everything is cooling.</strong> Hot food should be kept at 140 °F (60 °C) or warmer. Use a warm oven, a slow cooker, or chafing dishes to hold dishes at that temperature, and check with the thermometer. Anything that drops below 140 °F (60 °C) counts toward the 2-hour limit.',
         '<strong>A guest has an allergy you did not know about.</strong> Check the ingredients, and offer plain food you know is safe. Do not guess.',
         '<strong>You are out of oven space.</strong> A slow cooker, a covered dish on the stove, a toaster oven, or a microwave can finish some dishes.',
         '<strong>You are out of time.</strong> Drop a side. Nobody will remember a missing dish, and everyone will remember a host who looked calm.')],
@@ -213,7 +213,7 @@ const rik = byggRik({
     ['What Matlyst does not do', p('A good tool says where it stops. Here is what to expect.')
       + ul(
         '<strong>It does not give you a roasting time.</strong> Times depend on the cut, the weight, and your oven. Use your recipe and a thermometer.',
-        '<strong>It reads captions, not audio.</strong> If a creator only says the amounts in a video, type them in after you import.',
+        '<strong>It reads captions, not audio.</strong> From Instagram and TikTok, Matlyst reads the caption, one recipe per post, and not the slides of a carousel. If a creator only says the amounts in a video, type them in after you import.',
         '<strong>It does not read comments.</strong> If the recipe is in a comment or behind a link in the bio, copy it in or share the page link.',
         '<strong>AI can make mistakes.</strong> Matlyst uses AI to read and translate recipes. Check amounts and steps, especially from photos.',
         '<strong>Cook mode needs an internet connection.</strong> Open the recipe before you start if your connection is weak.',
@@ -261,7 +261,7 @@ export const side = {
     ['How do I thaw a frozen roast safely?', 'In the refrigerator, not on the counter. Follow the instructions on the package for how long it needs.'],
     ['How long do Christmas leftovers last?', 'Cooked meat and poultry keep 3 to 4 days in a refrigerator set to 40 °F (4 °C) or colder. Refrigerate within 2 hours and reheat to 165 °F (74 °C).'],
     ['What should I ask guests to bring?', 'A dish that travels well, a drink, ice, or a job such as pouring drinks and washing up. Ask which dishes need heating so you can fit them into your oven plan.'],
-    ['Can several people share one plan and shopping list?', 'Yes. A Matlyst Pro member can create a household for up to 6 people. Joining is free, and the list and weekly menu update live for everyone.'],
+    ['Can several people share one plan and shopping list?', 'Yes. A Matlyst Pro member can create a household for up to 6 people. Joining is free, and the grocery list, meal plan, and pantry update live for everyone.'],
     ['What do I do for a vegetarian guest?', 'Serve a real main, not only sides: a stuffed squash, a gratin, a baked pasta, or a nut roast. Make it ahead and label it on the table.'],
     ['Does Matlyst give roasting times?', 'No. Times depend on the cut, weight, and oven. Use your recipe as a guide and a thermometer as the judge.'],
   ],
