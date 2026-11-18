@@ -20,7 +20,7 @@ import {
   PUBLISERT,
 } from './blogg.mjs';
 
-const butikkKnapper = '<div class="store-badges"><a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" rel="noopener"><img src="/images/appstore-badge.svg" alt="Last ned i App Store"></a><a class="btn-store" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;hl=no&amp;gl=NO" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Last ned fra Google Play"></a></div>';
+const butikkKnapper = '<div class="store-badges"><a class="btn-store" href="https://apps.apple.com/no/app/matlyst/id6762563515" rel="noopener"><img src="/images/appstore-badge.svg" width="120" height="40" alt="Last ned i App Store"></a><a class="btn-store" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;hl=no&amp;gl=NO" rel="noopener"><img src="/images/googleplay-badge-en.png" width="134" height="40" alt="Last ned fra Google Play"></a></div>';
 
 const base = 'https://matlyst-app.no';
 const root = fileURLToPath(new URL('..', import.meta.url));

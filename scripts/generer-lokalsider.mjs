@@ -158,8 +158,8 @@ ${brukerSprakredirect ? '<script src="/locale.js" defer></script>' : ''}
 function storeButtons(lang) {
   const c = common[lang];
   return `<div class="store-badges">
-<a class="btn-store" href="${c.appStore}" rel="noopener"><img src="/images/appstore-badge.svg" alt="Download on the App Store"></a>
-<a class="btn-store" href="${c.play}" rel="noopener"><img src="/images/googleplay-badge-en.png" alt="Get it on Google Play"></a>
+<a class="btn-store" href="${c.appStore}" rel="noopener"><img src="/images/appstore-badge.svg" width="120" height="40" alt="Download on the App Store"></a>
+<a class="btn-store" href="${c.play}" rel="noopener"><img src="/images/googleplay-badge-en.png" width="134" height="40" alt="Get it on Google Play"></a>
 </div>`;
 }
 
