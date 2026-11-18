@@ -1,8 +1,53 @@
 // All synlig tekst på forsiden, ett språk per gren under TEKST.
 // Generatoren bygger siden av denne modulen. Oversettere jobber fra MENINGEN:
 // kommentaren over hver gruppe sier hvor teksten står og hva den gjør.
-// {klammer} i en tekst er plassholdere som generatoren fyller inn. Behold dem.
 // Hyllenavn og hyllelenker i menyen bor i scripts/hyller.mjs, ikke her.
+//
+// PLASSHOLDERE: {klammer} i en tekst fylles inn av generatoren med fyll() under.
+// Oversettere beholder plassholderne ordrett, men kan flytte dem i setningen.
+// Disse tekstene tar plassholdere, og ingen andre:
+//   spor.kort.endringer         {antall}      antall endringer i listen
+//   spor.kort.byttet            {fra} {til}   ingrediens som byttes, og erstatningen
+//   spor.kort.fjernet           {vare}        ingrediens som er fjernet
+//   spor.kort.omskrevet         {steg}        stegets navn, for eksempel «Steg 4»
+//   middag.husstand.telling     {n} {ledige}  medlemmer og ledige plasser (av seks)
+// Verdiene kommer fra `eksempler` og er håndskrevne.
+
+// Fyller plassholdere i en mal. Kaster ved manglende eller ukjent plassholder,
+// slik at en skrivefeil i en nøkkel aldri havner på siden som «{navn}».
+export function fyll(mal, verdier = {}) {
+  const brukt = new Set();
+  const ut = mal.replace(/\{(\w+)\}/g, (_, navn) => {
+    if (!Object.hasOwn(verdier, navn)) throw new Error(`Mangler plassholder {${navn}} i «${mal}»`);
+    brukt.add(navn);
+    return String(verdier[navn]);
+  });
+  for (const navn of Object.keys(verdier)) {
+    if (!brukt.has(navn)) throw new Error(`Ukjent plassholder {${navn}} for «${mal}»`);
+  }
+  return ut;
+}
+
+// Stiene (punktert, relativt til TEKST.<språk>) til alt som er håndskrevet eksempelinnhold.
+// Alt under disse stiene skal byttes ut med ekte utdata fra appen senere, og
+// oversettes som levende eksempler, ikke ord for ord.
+export const EKSEMPELSTIER = [
+  'kokebok.retter',
+  'spor.kort.oppskrift',
+  'middag.skaler.oppskrift',
+  'middag.skaler.tid',
+  'middag.skaler.lager',
+  'middag.skaler.ingredienser',
+  'middag.lag.steg',
+  'middag.lag.timerTekst',
+  'middag.ukemeny.uke',
+  'middag.ukemeny.maaned',
+  'middag.ukemeny.dager',
+  'middag.handle.retter',
+  'middag.handle.varer',
+  'middag.handle.ark.oppskrift',
+  'eksempler',
+];
 
 export const TEKST = {
   nb: {
@@ -92,7 +137,10 @@ export const TEKST = {
       ingress: 'Alt du lagrer, havner på ett sted. Med bilde, ingredienser og steg.',
       // Hver rett er et kort med bilde, rettens navn og tilberedningstid.
       // `fil` er bildefilen i images/forside/mat/ uten endelse og oversettes ikke.
-      // Rettnavn beholdes på originalspråk når det er en ekte rett; tidsformatet følger språket.
+      // Dette er eksempelretter (se EKSEMPELSTIER). Oversetter: bruk retter som er naturlige
+      // i målgruppens land, med navn på målspråket. Ikke oversett de norske navnene ord for ord.
+      // Tidsformatet følger språket. Filnavnet i `fil` må følge bildet, så bytter du rett, bytter du bilde.
+      // EKSEMPEL
       retter: [
         { fil: 'butterchicken', tittel: 'Butter chicken', tid: '50 min' },
         { fil: 'laks', tittel: 'Ovnsbakt laks med grønnsaker', tid: '30 min' },
@@ -135,10 +183,14 @@ export const TEKST = {
         spor: 'spør',
         pro: 'PRO',
         // Navnet på oppskriften som er skrevet om. Et eksempel, ikke en ekte oppskrift.
+        // EKSEMPEL
         oppskrift: 'Kremet kyllinggryte',
-        // Overskriften over listen med endringer. Antallet settes inn i parentes.
+        // Overskriften over listen med endringer. Antallet settes inn i parentes. Tar {antall}.
         endringer: 'Endringer ({antall})',
-        // Én rad i endringslisten, i tre varianter. Navnene i klammer settes i fet skrift.
+        // Én rad i endringslisten, i tre varianter. Verdiene som settes inn står i fet skrift:
+        // {fra}, {til} og {vare} er ingrediensnavn fra `eksempler.svar[].endringer`, og {steg}
+        // er stegets navn («Steg 4»). Raden har plass til én linje på en smal telefon,
+        // så hold malen kort, og la ingrediensnavn og steg stå sist eller først etter språkets rytme.
         byttet: 'Byttet {fra} med {til}',
         fjernet: 'Fjernet {vare}',
         omskrevet: '{steg} skrevet om',
@@ -149,7 +201,7 @@ export const TEKST = {
         angre: 'Angre',
         // Merknad nederst i kortet. Opplyser at svaret er KI-generert og må kontrolleres.
         ki: 'Matlyst bruker KI. Sjekk alltid oppskriften.',
-        // Vises mens svaret «tenkes ut». Tre skjelettlinjer og denne etiketten.
+        // Vises i stedet for «Endringer (n)» mens svaret «tenkes ut». Ledsages av tre grå skjelettlinjer.
         endrer: 'Endrer…',
       },
     },
@@ -166,11 +218,15 @@ export const TEKST = {
         tittel: 'Skaler',
         tekst: 'Fra 4 til 6 porsjoner, og alle mengdene følger med.',
         aria: 'Fra appen: porsjonstelleren står på 4 og økes til 6. Hvetemel går fra 4 til 6 dl, sukker fra 3 til 4,5 dl og kakao fra 1 til 1,5 dl.',
+        // EKSEMPEL
         oppskrift: 'Saftig sjokoladekake',
+        // EKSEMPEL
         tid: '60 min',
         // Lagerstatus: hvor mange av ingrediensene man har i spiskammeret.
+        // EKSEMPEL
         lager: '3 av 9 på lager',
         // Tre ingredienser. `mengder` er mengden ved 4, 5 og 6 porsjoner.
+        // EKSEMPEL
         ingredienser: [
           { navn: 'hvetemel', mengder: ['4 dl', '5 dl', '6 dl'] },
           { navn: 'sukker', mengder: ['3 dl', '3¾ dl', '4½ dl'] },
@@ -184,12 +240,17 @@ export const TEKST = {
         tekst: 'Stegene blir en sjekkliste. Står det en tid i steget, trykker du på den og får en tidtaker.',
         aria: 'Fra appen: i steg 2 trykkes det på tiden 10 minutter. En tidtaker kommer fram, startes og teller ned, og steget krysses av.',
         // Tre steg fra en ramenoppskrift. Steg 2 har tiden «10 minutter» som man trykker på.
+        // `tidsuttrykk` er ordene i `tekst` som blir en trykkbar tid, og må stå ordrett i teksten.
+        // EKSEMPEL
         steg: [
           { nr: 2, tekst: 'Varm buljongen og visp inn miso, soyasaus og sesamolje. La den trekke på lav varme i 10 minutter.', tidsuttrykk: '10 minutter' },
           { nr: 3, tekst: 'Kok nudlene etter anvisningen på pakken og fordel dem i fire dype boller.' },
           { nr: 4, tekst: 'Hell over buljongen og topp med egg, mais, strimlet vårløk og en skje chiliolje.' },
         ],
-        // Tidtakerkortet som kommer opp når man trykker på tiden: stegnummer, midtpunkt og hele stegteksten.
+        // Tidtakerkortet som kommer opp når man trykker på tiden: «Steg 2», midtpunkt og hele stegteksten.
+        // Teksten gjentar steg 2 i `steg` ovenfor. De to MÅ holdes like på hvert språk,
+        // også tidsuttrykket, ellers ser det ut som tidtakeren hører til et annet steg.
+        // EKSEMPEL
         timerTekst: 'Steg 2 · Varm buljongen og visp inn miso, soyasaus og sesamolje. La den trekke på lav varme i 10 minutter.',
         avbryt: 'Avbryt',
         start: 'Start',
@@ -201,11 +262,14 @@ export const TEKST = {
         tekst: 'Planlegg uka. Åpner du kalenderen, ser du hele måneden, og en prikk betyr at dagen er planlagt.',
         aria: 'Fra appen: ukemenyen for 16. til 22. november. Ukelinja åpnes til en kalender for hele november, der dagene med planlagte måltider har en prikk og dagen i dag har en ring.',
         // Ukelinja. Tallområdet bruker tankestrek mellom to tall.
+        // EKSEMPEL
         uke: '16–22. nov 2026',
         // Kalenderoverskriften og ukedagene i kalenderen (mandag først, forkortet).
+        // EKSEMPEL
         maaned: 'November 2026',
         ukedager: ['man', 'tir', 'ons', 'tor', 'fre', 'lør', 'søn'],
         // To planlagte dager under kalenderen. Rettene er de samme som i kokeboken.
+        // EKSEMPEL
         dager: [
           { dag: 'Torsdag 19. nov.', rett: 'Butter chicken', tid: '50 min' },
           { dag: 'Fredag 20. nov.', rett: 'Biff-taco med pico de gallo', tid: '30 min' },
@@ -221,10 +285,12 @@ export const TEKST = {
         tekst: 'Trenger flere retter det samme, står det på én linje. Hold inne på en rett for å endre porsjonene, så følger mengdene med.',
         aria: 'Fra appen: handlelista for fire retter. Hvitløk trengs i tre av dem og står på én linje. Det holdes inne på kyllingsuppa, Endre porsjoner velges, porsjonene økes fra 4 til 6, og hvitløk, gulrot og dill øker med.',
         // De fire rettene handlelisten er laget for (merkelapper øverst).
+        // EKSEMPEL
         retter: ['Ovnsbakt laks med grønnsaker', 'Kyllingsuppe med urter', 'Butter chicken', 'Biff-taco med pico de gallo'],
         // Butikkhyllen varene står under.
         hylle: 'FRUKT & GRØNT',
         // Varene. `mengder` er mengden ved 4 og 6 porsjoner av kyllingsuppa.
+        // EKSEMPEL
         varer: [
           { navn: 'hvitløk', mengder: ['6 fedd', '7 fedd'] },
           { navn: 'gulrot', mengder: ['4 stk', '5 stk'] },
@@ -235,6 +301,7 @@ export const TEKST = {
         meny: ['Endre porsjoner', 'Fjern fra handleliste'],
         // Arket for å endre porsjoner, med oppskriftsnavn, teller og en knapp.
         ark: {
+          // EKSEMPEL
           oppskrift: 'Kyllingsuppe med urter',
           antall: 'Antall porsjoner',
           oppdater: 'Oppdater handleliste',
@@ -308,8 +375,11 @@ export const TEKST = {
     under: {
       vilkarAria: 'Vilkår',
       lenker: ['Personvern', 'Vilkår', 'Informasjonskapsler'],
-      // Opphavslinje. Et lite norsk flagg eller hjerte vises etter teksten.
+      // Opphavslinje nederst. Flaggbildet vises rett etter teksten, med et mellomrom
+      // mellom (mellomrommet ligger i siden, ikke i strengen). Oversettes som en vanlig setning.
       laget: '© 2026 Matlyst. Laget i Norge',
+      // Skjermlesertekst for flaggbildet etter opphavslinjen.
+      flaggAlt: 'Norsk flagg',
       epost: 'hei@matlyst-app.no',
     },
     // Den faste knappen som glir inn nederst på skjermen når man har rullet forbi
@@ -321,10 +391,15 @@ export const TEKST = {
     // QR-vinduet som åpnes når man trykker på en nedlastingsknapp på stor skjerm.
     // På mobil går knappene rett til butikken.
     hent: {
+      // Skjermlesertekst for krysset øverst i vinduet som lukker det.
       lukkAria: 'Lukk',
+      // Skjermlesertekst for QR-koden (et bilde). Koden peker til nedlastingssiden.
+      qrAlt: 'QR-kode til matlyst-app.no/app',
+      // Overskriften i vinduet, rett under QR-koden. Oppfordrer til å skanne koden med telefonkameraet.
       tittel: 'Skann med telefonen',
+      // Forklaringen rett under overskriften, i én eller to korte linjer: hva som skjer når man skanner.
       ingress: 'Kameraet tar deg til riktig butikk, enten du har iPhone eller Android.',
-      // Navnene på de to butikkene. Egennavn, oversettes ikke.
+      // Navnene på de to knappene nederst i vinduet, som fører til hver sin butikk. Egennavn, oversettes ikke.
       butikker: ['App Store', 'Google Play'],
     },
 
@@ -332,6 +407,8 @@ export const TEKST = {
     // Håndskrevne eksempler som vises i appmockupene. De skal byttes ut med ekte
     // utdata fra appen senere. Oversett dem som levende eksempler, ikke ord for ord:
     // rettene og navnene skal virke naturlige for målgruppen.
+    // Flere eksempler står i selve seksjonene; alle stiene er samlet i EKSEMPELSTIER.
+    // EKSEMPEL
     eksempler: {
       // Svarene i Spør Matlyst-kortet, i samme rekkefølge som `spor.forslag`.
       // `endringer` bruker malene i `spor.kort` (byttet, fjernet, omskrevet).
@@ -372,11 +449,13 @@ export const TEKST = {
         },
       ],
 
-      // De tre husstandene i husstandskortet. `merke` er teksten på knappen, `navn` står
-      // over innholdet. `folk` er bildenumre (images/forside/folk/), ikke tekst, og
-      // `sist` er hvem som la inn det siste. Ett element i `innhold` er enten en
-      // planlagt dag med rett, eller en handleliste. `eier` er den som la det inn,
-      // `ansikt` er personens bildenummer. `ny: true` betyr at raden glir inn etter et øyeblikk.
+      // De tre husstandene i husstandskortet. `merke` er teksten på knappen i velgeren over
+      // kortet (kort, ett eller to ord), `navn` står i fet skrift øverst i kortet.
+      // `folk` er bildenumre (images/forside/folk/), ikke tekst, og `sist` er hvem som la inn det siste.
+      // En husstand har enten `dager` (planlagte middager, hver med dag, rett, minutter og eier)
+      // eller `varer` (en handleliste med `listetittel` som undertittel, og varer med mengde og eier).
+      // `eier` er navnet på den som la inn raden, `ansikt` er personens bildenummer.
+      // `ny: true` betyr at raden glir inn litt etter at husstanden er valgt.
       husstander: [
         {
           merke: 'Familien',

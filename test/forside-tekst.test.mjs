@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
-import { TEKST } from '../scripts/forside-tekst.mjs';
+import { TEKST, EKSEMPELSTIER, fyll } from '../scripts/forside-tekst.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const t = TEKST.nb, alt = JSON.stringify(t);
@@ -47,36 +47,154 @@ test('rettene og kildene peker på filer og ikoner som finnes i planen', () => {
   assert.equal(t.eksempler.husstander.length, 3);
 });
 
-// Gullmønsteret: forventningen utledes fra prototypen, ikke hardkodes her.
-test('hver tekst en besøkende kan lese i prototypens <main> finnes i TEKST.nb', () => {
-  const html = readFileSync(`${root}docs/superpowers/prototyper/2026-11-18-forside.html`, 'utf8');
-  const main = html.match(/<main[\s>][\s\S]*?<\/main>/);
-  if (!main) throw new Error('Fant ikke <main> i prototypen');
-  const avkodet = (s) => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ');
-  const tekster = [...new Set(
-    main[0]
-      .replace(/<script[\s\S]*?<\/script>/g, '')
-      .replace(/<style[\s\S]*?<\/style>/g, '')
-      .replace(/<svg[\s\S]*?<\/svg>/g, '')
-      .split(/<[^>]*>/)
-      .map((s) => avkodet(s).trim())
-      .filter((s) => /\p{L}/u.test(s)),
-  )];
-  assert.ok(tekster.length > 50, `for få tekster funnet i <main>: ${tekster.length}`);
+// ---------- Plassholdere og eksempelstier ----------
 
-  // Bladene i TEKST.nb, ett per linje, så en tekst må finnes hel i én verdi.
-  const blader = [];
-  (function samle(v) {
-    if (typeof v === 'string') blader.push(v);
-    else if (Array.isArray(v)) v.forEach(samle);
-    else if (v && typeof v === 'object') Object.values(v).forEach(samle);
-  })(t);
-  const lager = blader.join('\n');
+test('fyll() fyller plassholdere og kaster ved manglende eller ukjent plassholder', () => {
+  assert.equal(fyll(t.spor.kort.endringer, { antall: 3 }), 'Endringer (3)');
+  assert.equal(fyll(t.spor.kort.byttet, { fra: 'a', til: 'b' }), 'Byttet a med b');
+  assert.equal(fyll('uten plassholder'), 'uten plassholder');
+  assert.throws(() => fyll(t.spor.kort.byttet, { fra: 'a' }), /Mangler plassholder \{til\}/);
+  assert.throws(() => fyll(t.spor.kort.endringer, { antall: 3, feil: 1 }), /Ukjent plassholder \{feil\}/);
+});
 
-  const unntak = new Map([
-    ['Endringer (3)', 'settes sammen av etiketten «Endringer» og antallet i eksemplet'],
-  ]);
-  const mangler = tekster.filter((s) => !lager.includes(s) && !unntak.has(s));
-  assert.deepEqual(mangler, [], 'tekster i prototypen som ikke finnes i TEKST.nb');
-  for (const [s] of unntak) assert.ok(tekster.includes(s), `unntaket «${s}» finnes ikke lenger i prototypen`);
+test('plassholdere finnes bare i de dokumenterte tekstene', () => {
+  const funnet = {};
+  (function gaa(v, sti) {
+    if (typeof v === 'string') { const m = [...v.matchAll(/\{(\w+)\}/g)].map((x) => x[1]); if (m.length) funnet[sti] = m.sort(); }
+    else if (Array.isArray(v)) v.forEach((x, i) => gaa(x, `${sti}[${i}]`));
+    else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) gaa(x, sti ? `${sti}.${k}` : k);
+  })(t, '');
+  assert.deepEqual(funnet, {
+    'spor.kort.endringer': ['antall'],
+    'spor.kort.byttet': ['fra', 'til'],
+    'spor.kort.fjernet': ['vare'],
+    'spor.kort.omskrevet': ['steg'],
+    'middag.husstand.telling': ['ledige', 'n'],
+  });
+});
+
+test('alle eksempelstier peker på en verdi som finnes', () => {
+  assert.ok(EKSEMPELSTIER.length > 0);
+  for (const sti of EKSEMPELSTIER) {
+    const verdi = sti.split('.').reduce((v, k) => (v == null ? undefined : v[k]), t);
+    assert.notEqual(verdi, undefined, `eksempelsti «${sti}» finnes ikke i TEKST.nb`);
+  }
+});
+
+// ---------- Gullmønsteret: forventningen utledes fra prototypen ----------
+
+const html = readFileSync(`${root}docs/superpowers/prototyper/2026-11-18-forside.html`, 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+
+function region(navn, re, fjern = []) {
+  const m = html.match(re);
+  if (!m) throw new Error(`Fant ikke «${navn}» i prototypen`);
+  return fjern.reduce((h, r) => h.replace(r, ''), m[0]);
+}
+const regioner = {
+  main: region('main', /<main[\s>][\s\S]*?<\/main>/),
+  topp: region('header.topp', /<header class="topp">[\s\S]*?<\/header>/, [/<nav class="panel"[\s\S]*?<\/nav>/]),
+  bunn: region('section.bunn', /<section class="bunn"[\s\S]*?<\/section>/),
+  under: region('footer.under', /<footer class="under">[\s\S]*?<\/footer>/),
+  fast: region('div.fast', /<div class="fast"[^>]*>[\s\S]*?<\/div>/),
+  hent: region('dialog.hent', /<dialog class="hent"[\s\S]*?<\/dialog>/),
+};
+
+const avkod = (s) => s.replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+const rens = (s) => avkod(s).replace(/\s+/g, ' ').trim();
+
+// Alt en besøkende (eller en skjermleser) kan lese i en region: tekstnoder og aria-label/alt.
+// Attributtene hentes FØR svg fjernes, for QR-koden og flagget har aria-label på selve svg-en.
+// Fet skrift og understreking midt i en setning gir ingen skille («<b>5,0</b> av 5»).
+function lesbare(h) {
+  const attributter = [...h.matchAll(/\s(?:aria-label|alt)="([^"]+)"/g)].map((m) => rens(m[1]));
+  const noder = h
+    .replace(/<script[\s\S]*?<\/script>/g, '')
+    .replace(/<style[\s\S]*?<\/style>/g, '')
+    .replace(/<svg[\s\S]*?<\/svg>/g, '')
+    .replace(/<\/?(?:b|u)(?:\s[^>]*)?>/g, '')
+    .split(/<[^>]*>/)
+    .map(rens);
+  return [...attributter, ...noder];
+}
+// Tekster uten bokstaver (rene tall, klokkeslett, tegn som − og +) hoppes over.
+const harBokstav = (s) => /\p{L}/u.test(s);
+
+// Bladene i TEKST.nb, pluss maler fylt med eksempelverdiene fra `eksempler`.
+const bladene = new Set();
+(function samle(v) {
+  if (typeof v === 'string') bladene.add(rens(v));
+  else if (Array.isArray(v)) v.forEach(samle);
+  else if (v && typeof v === 'object') Object.values(v).forEach(samle);
+})(t);
+for (const svar of t.eksempler.svar) {
+  bladene.add(fyll(t.spor.kort.endringer, { antall: svar.antall }));
+  for (const e of svar.endringer) {
+    if (e.byttet) bladene.add(fyll(t.spor.kort.byttet, e.byttet));
+    if (e.fjernet) bladene.add(fyll(t.spor.kort.fjernet, { vare: e.fjernet }));
+    if (e.omskrevet) bladene.add(fyll(t.spor.kort.omskrevet, { steg: e.omskrevet }));
+  }
+}
+for (const h of t.eksempler.husstander) bladene.add(fyll(t.middag.husstand.telling, { n: h.folk.length, ledige: 6 - h.folk.length }));
+
+// 2 til 4 blad etter hverandre, skilt av ett mellomrom eller ingenting.
+function sammensatt(tekst, igjen = 4) {
+  if (igjen === 0) return false;
+  for (let i = 1; i < tekst.length; i++) {
+    if (!bladene.has(tekst.slice(0, i))) continue;
+    const rest = tekst.slice(i).replace(/^ /, '');
+    if (bladene.has(rest) || sammensatt(rest, igjen - 1)) return true;
+  }
+  return false;
+}
+
+// Kort og eksplisitt: tekster som ikke er et blad og ikke settes sammen av blad.
+const unntak = new Map([
+  ['mat', 'ordmerket «matlyst» er satt i to deler (mat + lyst); et varemerke som ikke oversettes'],
+  ['lyst', 'ordmerket «matlyst» er satt i to deler (mat + lyst); et varemerke som ikke oversettes'],
+]);
+
+test('hver tekst en besøkende kan lese finnes ordrett i TEKST.nb', () => {
+  const funnet = new Set();
+  const mangler = [];
+  for (const [navn, h] of Object.entries(regioner)) {
+    for (const tekst of new Set(lesbare(h))) {
+      if (!harBokstav(tekst)) continue;
+      if (unntak.has(tekst)) { funnet.add(tekst); continue; }
+      if (!bladene.has(tekst) && !sammensatt(tekst)) mangler.push(`${navn}: ${tekst}`);
+    }
+  }
+  assert.deepEqual(mangler, [], 'tekster i prototypen som ikke finnes ordrett i TEKST.nb');
+  for (const [tekst] of unntak) assert.ok(funnet.has(tekst), `unntaket «${tekst}» finnes ikke lenger i prototypen`);
+});
+
+// Rekkefølge: hver liste en besøkende leser i rekkefølge følger prototypen.
+const alle = (re, h) => [...h.matchAll(re)].map((m) => rens(m[1]));
+
+test('rekkefølgen på listene følger prototypen', () => {
+  // Ikoner (svg) står inne i mange elementer og tas bort først.
+  const utenSvg = (h) => h.replace(/<svg[\s\S]*?<\/svg>/g, '');
+  const main = utenSvg(regioner.main), topp = utenSvg(regioner.topp);
+  const bane = main.match(/<div class="bane">\s*(<ul>[\s\S]*?<\/ul>)/)[1];
+  const kort = [...main.matchAll(/<article class="rute[^"]*"[^>]*>[\s\S]*?<h3>([^<]*)<\/h3>/g)].map((m) => rens(m[1]));
+  const planer = [...main.matchAll(/<article class="plan[^"]*"[\s\S]*?<\/article>/g)].map((m) => [...m[0].matchAll(/<li>([^<]*)<\/li>/g)].map((x) => rens(x[1])));
+  const retter = main.match(/<ul class="retter">[\s\S]*?<\/ul>/)[0];
+  const sjekk = [
+    ['steg', alle(/<span>([^<]*)<\/span>/g, main.match(/<ol class="steg"[\s\S]*?<\/ol>/)[0]), t.steg],
+    ['stegtider', [...main.matchAll(/data-t="([\d.]+)"/g)].map((m) => Number(m[1])), t.stegtider],
+    ['kilder', alle(/<span>([^<]*)<\/span>/g, bane), t.kilder.map((k) => k.navn)],
+    ['rettenes titler', alle(/<h3>([^<]*)<\/h3>/g, retter), t.kokebok.retter.map((r) => r.tittel)],
+    ['rettenes tider', [...retter.matchAll(/<span>([^<]*)<\/span>/g)].map((m) => rens(m[1])), t.kokebok.retter.map((r) => r.tid)],
+    ['forslag', alle(/<button type="button" class="forslag"[^>]*>([^<]*)<\/button>/g, main), t.spor.forslag],
+    ['kortenes titler', kort, ['skaler', 'lag', 'ukemeny', 'handle', 'husstand'].map((k) => t.middag[k].tittel)],
+    ['gratispunkter', planer[0], t.pris.gratis.punkter],
+    ['Pro-punkter', planer[1], t.pris.pro.punkter],
+    ['spørsmål', alle(/<summary>([^<]*)<\/summary>/g, main), t.svar.sporsmal.map((x) => x.q)],
+    ['svar', [...main.matchAll(/<\/summary><p>([^<]*)<\/p>/g)].map((m) => rens(m[1])), t.svar.sporsmal.map((x) => x.a)],
+    ['følg-lenker', [...topp.match(/<nav class="folg"[\s\S]*?<\/nav>/)[0].matchAll(/<a href="#([^"]*)">([^<]*)<\/a>/g)].map((m) => `${m[1]}|${rens(m[2])}`), t.folg.lenker.map((l) => `${l.mal}|${l.tekst}`)],
+    ['ukedager', alle(/<span>([^<]*)<\/span>/g, main.match(/<div class="a-ukedager">[\s\S]*?<\/div>/)[0]), t.middag.ukemeny.ukedager],
+  ];
+  for (const [navn, fraPrototype, fraTekst] of sjekk) {
+    assert.ok(fraPrototype.length > 0, `fant ingen «${navn}» i prototypen`);
+    assert.deepEqual(fraTekst, fraPrototype, `rekkefølgen på «${navn}»`);
+  }
 });
