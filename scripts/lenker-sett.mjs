@@ -55,7 +55,7 @@ export function blokk(lang, lenker) {
 
 export function settInn(html, blokkTekst) {
   const uten = html.replace(new RegExp(`${START}[\\s\\S]*?${SLUTT}\\n?`, 'u'), '');
-  for (const anker of ['<section class="faq">', '<section class="page-cta">', '</main>']) {
+  for (const anker of ['<section class="faq">', '<section class="page-cta">', '<section class="cta">', '</main>']) {
     const i = uten.indexOf(anker);
     if (i > -1) return `${uten.slice(0, i)}${blokkTekst}\n${uten.slice(i)}`;
   }

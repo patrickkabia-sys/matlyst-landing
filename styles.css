@@ -350,3 +350,58 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .prose td{padding:12px 16px 12px 0;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);vertical-align:top}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ===== App-uttrykk: nedlasting overalt, telefoner og matformer (18.11.2026) ===== */
+:root{--sage:#7C9A74;--mustard:#EBB93B;--peach:#F6D8C6;--blob:#F0C9B0}
+/* Nedlasting: knapp i toppmenyen på alle sider og fast bunnlinje på mobil. */
+.nav-dl{display:inline-flex;align-items:center;gap:8px;margin-left:16px;padding:9px 18px;border-radius:999px;background:var(--orange-deep);color:#fff;font-size:14px;font-weight:500;text-decoration:none;letter-spacing:0;line-height:1;white-space:nowrap;transition:transform .2s,background .2s}
+.nav-dl:hover,.nav-dl:focus-visible{background:#9C3508;transform:translateY(-1px)}
+.nav-dl:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.dl-bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;align-items:center;gap:12px;padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));background:rgba(247,243,236,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.dl-bar.show{transform:none}
+.dl-bar img.dl-icon{width:40px;height:40px;border-radius:10px;flex:none}
+.dl-bar .dl-tekst{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.dl-bar .dl-tekst strong{font-weight:600;font-size:15px;color:var(--ink)}
+.dl-bar .dl-tekst span{font-size:12.5px;color:var(--ink-soft)}
+.dl-bar .dl-knapper{margin-left:auto;display:flex;gap:8px}
+.dl-bar .dl-knapper img{height:36px;width:auto}
+@media(max-width:760px){.dl-bar{display:flex}body{padding-bottom:64px}.nav-dl{margin-left:10px;padding:8px 14px;font-size:13px}.dl-bar .dl-knapper a:nth-child(2){display:none}}
+@media(min-width:761px){.dl-bar{display:none}}
+@media(prefers-reduced-motion:reduce){.dl-bar{transition:none}.nav-dl{transition:none}}
+
+/* Forsidehero: tekst til venstre, to telefoner på en fargeflate med matformer til høyre. */
+.hero.has-stage{min-height:0;align-items:center;padding-bottom:clamp(32px,6vh,72px);grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);grid-template-areas:"tittel scene" "side scene"}
+.hero.has-stage>div:first-child{grid-area:tittel}
+.hero.has-stage .hero-side{grid-area:side}
+.hero.has-stage .hero-stage{grid-area:scene}
+.hero-stage{position:relative;aspect-ratio:1/1.16;max-width:520px;width:100%;margin-left:auto;margin-bottom:clamp(8px,2vh,24px)}
+.hero-stage .blob{position:absolute;inset:6% 0 4% 6%;border-radius:46% 54% 50% 50%/52% 46% 54% 48%;background:var(--blob)}
+.hero-stage .blob::after{content:'';position:absolute;inset:14% 10% 10% 16%;border-radius:inherit;background:var(--mustard);opacity:.55}
+.hero-stage .tel{position:absolute;height:auto;border-radius:30px;box-shadow:0 24px 56px rgba(20,14,9,.28);background:#111}
+.hero-stage .tel.a{width:38%;left:16%;top:6%;transform:rotate(-5deg)}
+.hero-stage .tel.b{width:38%;right:6%;top:18%;transform:rotate(4deg)}
+.hero-stage .mat{position:absolute;width:20%;height:auto;filter:drop-shadow(0 8px 14px rgba(20,14,9,.18))}
+.hero-stage .mat-tomat{left:0;bottom:12%;transform:rotate(-12deg)}
+.hero-stage .mat-sitron{right:0;top:-2%;transform:rotate(14deg);width:17%}
+.hero-stage .mat-chili{right:6%;bottom:0;transform:rotate(-20deg);width:16%}
+.hero-stage .mat-blad{left:28%;bottom:-3%;width:14%;transform:rotate(10deg)}
+.hero-stage .mat-egg{left:2%;top:8%;width:15%;transform:rotate(-8deg)}
+@media(max-width:900px){.hero.has-stage{grid-template-columns:1fr;grid-template-areas:"tittel" "side" "scene"}.hero-stage{max-width:440px;margin:12px auto 0}}
+
+/* Funksjonsrader: tekst og en telefon på en farget flate, annenhver gang speilvendt. */
+.app-rows{padding:clamp(56px,9vh,110px) var(--pad);display:grid;gap:clamp(64px,10vh,120px)}
+.app-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,6vw,96px);align-items:center;max-width:1180px;margin:0 auto;width:100%}
+.app-row:nth-child(even) .app-row-scene{order:-1}
+.app-row-tekst h2{font-size:clamp(34px,4.6vw,64px);line-height:1.04;margin-bottom:18px}
+.app-row-tekst p{font-size:clamp(16px,1.3vw,19px);line-height:1.7;color:var(--ink-soft);max-width:34em;margin-bottom:22px}
+.app-row-tekst .more{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:500;text-decoration:underline;text-underline-offset:4px}
+.app-row-scene{position:relative;aspect-ratio:1/.95;max-width:520px;width:100%;margin:0 auto}
+.app-row-scene .blob{position:absolute;inset:4% 2%;border-radius:50% 50% 46% 54%/48% 52% 48% 52%;background:var(--blob)}
+.app-row:nth-child(2) .app-row-scene .blob{background:#EBD9A0}
+.app-row:nth-child(3) .app-row-scene .blob{background:#CBD8C4}
+.app-row:nth-child(4) .app-row-scene .blob{background:#F2C9B8}
+.app-row-scene .tel{position:absolute;left:50%;top:0;height:100%;width:auto;aspect-ratio:400/870;transform:translateX(-50%) rotate(-2deg);border-radius:26px;box-shadow:0 24px 56px rgba(20,14,9,.26)}
+.app-row-scene .mat{position:absolute;width:15%;height:auto;filter:drop-shadow(0 8px 14px rgba(20,14,9,.16))}
+.app-row-scene .m1{left:2%;bottom:6%;transform:rotate(-10deg)}
+.app-row-scene .m2{right:2%;top:4%;transform:rotate(12deg)}
+@media(max-width:820px){.app-row{grid-template-columns:1fr}.app-row:nth-child(even) .app-row-scene{order:0}.app-row-scene{max-width:380px}}

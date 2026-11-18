@@ -1,5 +1,5 @@
 const nav = document.getElementById('nav');
-if (nav) addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive: true });
+if (nav) { const tilstand = () => nav.classList.toggle('scrolled', scrollY > 20); tilstand(); addEventListener('scroll', tilstand, { passive: true }); }
 
 const io = new IntersectionObserver((es) => {
   es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -127,4 +127,20 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     film.preload = 'metadata';
     obs.observe(film);
   }
+})();
+
+// Nedlasting: vis den faste linja på mobil etter litt rulling, og send Android til Google Play.
+(() => {
+  const linje = document.getElementById('dl-bar');
+  const android = /android/i.test(navigator.userAgent);
+  if (android) {
+    for (const a of document.querySelectorAll('.nav-dl[data-dl]')) {
+      const play = document.querySelector('a[data-dl="play"], a[href*="play.google.com"]');
+      if (play) a.href = play.href;
+    }
+  }
+  if (!linje) return;
+  const vis = () => linje.classList.toggle('show', window.scrollY > 320);
+  vis();
+  window.addEventListener('scroll', vis, { passive: true });
 })();
