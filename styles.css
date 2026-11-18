@@ -393,6 +393,7 @@ a:focus-visible,button:focus-visible,.btn-store:focus-visible,.ck-btn:focus-visi
 .step-cards-hode{max-width:760px;margin-bottom:clamp(8px,2vh,20px)}
 .step-cards-hode h2{font-size:clamp(34px,5vw,68px);line-height:1.04;margin-top:14px}
 .step-card{position:sticky;top:calc(84px + var(--i,0)*20px);--tekst:var(--ink);--bg:var(--sand);display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(20px,4vw,56px);align-items:center;overflow:hidden;border-radius:clamp(26px,3.4vw,44px);padding:clamp(28px,4.6vw,64px);background:var(--bg);color:var(--tekst)}
+.step-card.si-1{--i:1}.step-card.si-2{--i:2}.step-card.si-3{--i:3}
 .step-card.sc-terra{--bg:var(--orange-deep);--tekst:#fff}
 .step-card.sc-sennep{--bg:var(--mustard);--tekst:var(--ink)}
 .step-card.sc-salvie{--bg:var(--sage);--tekst:var(--ink)}
