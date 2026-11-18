@@ -17,8 +17,10 @@ function sjekkSprak(sprak) {
   if (sprak !== 'nb') throw new RangeError(`Skalltekster mangler for ${sprak}`);
 }
 
-function hyller(sprak) {
-  return HYLLER[sprak].map((hylle) => `<div class="fag aapen"><h3 class="faghode"><span class="fagknapp"><img class="flis" src="/images/forside/logo/${skjerm(hylle.flis)}" width="52" height="52" alt="" loading="lazy"><span>${skjerm(hylle.navn)}</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span></h3><ul>${synligeLenker(hylle).map((lenke) => `<li><a href="${skjerm(lenke.href)}"><span>${skjerm(lenke.tekst)}</span></a></li>`).join('')}</ul></div>`).join('');
+function hyller(sprak, meny = false) {
+  const tagg = meny ? 'button' : 'span';
+  const attributter = meny ? 'type="button" class="fagknapp" aria-expanded="true"' : 'class="fagknapp"';
+  return HYLLER[sprak].map((hylle) => `<div class="fag aapen"><p class="faghode"><${tagg} ${attributter}><img class="flis" src="/images/forside/logo/${skjerm(hylle.flis)}" width="52" height="52" alt="" loading="lazy"><span>${skjerm(hylle.navn)}</span><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></${tagg}></p><ul aria-label="${skjerm(hylle.navn)}">${synligeLenker(hylle).map((lenke) => `<li><a href="${skjerm(lenke.href)}"><span>${skjerm(lenke.tekst)}</span></a></li>`).join('')}</ul></div>`).join('');
 }
 
 export function topp(sprak, valg = {}) {
@@ -33,7 +35,7 @@ export function topp(sprak, valg = {}) {
       <span>Meny</span>
     </button>
     <nav class="panel" id="panel" data-meny="c" aria-label="Hovedmeny" hidden>
-      <div class="reol">${hyller(sprak)}</div>
+      <div class="reol">${hyller(sprak, true)}</div>
       ${valg.sprakvelger || ''}
     </nav>
     <a class="knapp liten" href="/app" data-hent="topp">Last ned</a>
@@ -75,7 +77,7 @@ export function nedlasting(sprak) {
   <div class="hentinn">
     <button type="button" class="lukk" aria-label="Lukk"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
     <div class="qr"><img src="/images/forside/qr-app.svg" width="176" height="176" alt="QR-kode til matlyst-app.no/app" loading="lazy"></div>
-    <h2 id="hentTittel">Skann med telefonen</h2>
+    <p class="henttittel" id="hentTittel">Skann med telefonen</p>
     <p>Kameraet tar deg til riktig butikk, enten du har iPhone eller Android.</p>
     <div class="butikker"><a href="https://apps.apple.com/no/app/matlyst/id6762563515" target="_blank" rel="noopener">App Store</a><a href="https://play.google.com/store/apps/details?id=app.matlyst" target="_blank" rel="noopener">Google Play</a></div>
   </div>

@@ -185,6 +185,23 @@ const REGIONER = [
 // forklaringen over). Kontrollert for hånd, ikke maskinelt.
 const UREGIONERT = ['eksempler', 'stegtider'];
 
+const PROTOTYPEUNNTAK = [
+  // prototypen sier Vilkår; gruppa inneholder også Personvern og Informasjonskapsler, så navnet er Juridisk
+  { region: 'footer', attributt: /(<div class="underlinje">\s*<nav aria-label=")([^"]*)(")/g, fra: 'Vilkår', til: 'Juridisk', sti: 'under.vilkarAria' },
+];
+
+function medPrototypeunntak(r) {
+  let html = r.html;
+  for (const unntak of PROTOTYPEUNNTAK.filter((u) => u.region === r.navn)) {
+    const treff = [...html.matchAll(unntak.attributt)];
+    assert.equal(treff.length, 1, `${r.navn}: unntaket gjelder nøyaktig én nav-etikett`);
+    assert.equal(treff[0][2], unntak.fra, `${r.navn}: prototypens etikett er endret`);
+    assert.equal(hent(unntak.sti), unntak.til, `${unntak.sti}: tekstfilas etikett er endret`);
+    html = html.replace(unntak.attributt, (_, start, verdi, slutt) => start + unntak.til + slutt);
+  }
+  return html;
+}
+
 function modulTekster(r) {
   const ut = [];
   const legg = (tekst, antall = 1) => { for (let i = 0; i < antall; i++) ut.push(tekst); };
@@ -209,7 +226,7 @@ test('hver nøkkelgruppe i TEKST.nb hører til en region eller er et kjent unnta
 
 for (const r of REGIONER) {
   test(`region ${r.navn}: tekstene i prototypen og i TEKST.nb er de samme, like mange ganger`, () => {
-    const prototype = lesbare(r.html).sort();
+    const prototype = lesbare(medPrototypeunntak(r)).sort();
     const modul = modulTekster(r);
     assert.ok(prototype.length > 0, `leste ingen tekst fra «${r.navn}» i prototypen`);
     assert.ok(modul.length > 0, `ingen tekst i TEKST.nb for «${r.navn}»`);

@@ -78,8 +78,8 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .hentinn{position:relative;padding:44px 36px 28px}
 .qr{width:208px;margin:0 auto;padding:16px;border-radius:24px;background:var(--hylle)}
 .qr img{display:block;width:100%;height:auto}
-.hent h2{margin:24px 0 0;font-size:26px;line-height:1.15}
-.hent p{margin:8px auto 0;max-width:27ch;font-size:16px;line-height:1.45;color:var(--dempet)}
+.hent .henttittel{margin:24px 0 0;font-size:26px;line-height:1.15;font-weight:700;letter-spacing:-.028em;text-wrap:balance;color:var(--blekk)}
+.hent p:not(.henttittel){margin:8px auto 0;max-width:27ch;font-size:16px;line-height:1.45;color:var(--dempet)}
 .butikker{display:flex;justify-content:center;gap:8px;margin-top:18px}
 .butikker a{display:inline-flex;align-items:center;height:44px;padding:0 16px;border:1px solid var(--linje);border-radius:999px;font-weight:500;font-size:15px;transition:border-color .2s}
 .butikker a:hover{border-color:var(--blekk)}

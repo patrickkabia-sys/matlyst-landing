@@ -375,9 +375,9 @@ export const TEKST = {
       aria: 'Alt på Matlyst',
       menyAria: 'Bunnmeny',
     },
-    // Fotlinjen nederst. De tre lenkene fører til juridiske sider.
+    // Fotlinjen nederst. Gruppa heter Juridisk og samler personvern, vilkår og informasjonskapsler.
     under: {
-      vilkarAria: 'Vilkår',
+      vilkarAria: 'Juridisk',
       lenker: ['Personvern', 'Vilkår', 'Informasjonskapsler'],
       // Opphavslinje nederst. Flaggbildet vises rett etter teksten, med et mellomrom
       // mellom (mellomrommet ligger i siden, ikke i strengen). Oversettes som en vanlig setning.

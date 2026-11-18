@@ -238,11 +238,34 @@ test('skallet har ingen sideveis rulling, små trykkflater eller konsollfeil', a
 });
 
 
-test('ingen h3 i skallets HTML inneholder div', () => {
-  const html = topp('nb') + hylledel('nb') + morkBunn('nb') + nedlasting('nb') + samtykke('nb');
-  const overskrifter = [...html.matchAll(/<h3\b[^>]*>([\s\S]*?)<\/h3>/g)];
-  assert.ok(overskrifter.length >= 12);
-  for (const [, innhold] of overskrifter) assert.doesNotMatch(innhold, /<div\b/i);
+test('skallet uten samtykkebanner legger ikke til overskrifter', () => {
+  const html = topp('nb', { sprakvelger: '' }) + hylledel('nb') + morkBunn('nb', { sprakvelger: '' }) + nedlasting('nb');
+  assert.doesNotMatch(html, /<h[1-6]\b/i);
+});
+
+test('hyllene har avsnitt som navn og navngitte lenkelister i meny og bunn', () => {
+  const navn = ['Appen', 'Lagre oppskrifter', 'Middag', 'Verktøy', 'Kjøkkentips', 'Matlyst'];
+  for (const [html, meny] of [[topp('nb'), true], [hylledel('nb'), false]]) {
+    const hyller = [...html.matchAll(/<p class="faghode">([\s\S]*?)<\/p><ul aria-label="([^"]+)">/g)];
+    assert.deepEqual(hyller.map(([, , label]) => label), navn);
+    for (const [, hode, label] of hyller) {
+      assert.ok(hode.includes(`<span>${label}</span>`));
+      assert.doesNotMatch(hode, /<div\b/);
+      if (meny) assert.match(hode, /<button type="button" class="fagknapp" aria-expanded="true">/);
+    }
+  }
+});
+
+test('QR-tittelen navngir dialogen og beholder typografien som avsnitt', async (t) => {
+  const { side } = await prove(t, { reducedMotion: 'reduce' });
+  await side.locator('[data-hent="topp"]').click();
+  assert.equal(await side.getByRole('dialog', { name: 'Skann med telefonen', exact: true }).count(), 1);
+  assert.equal(await side.locator('p.henttittel#hentTittel').count(), 1);
+  const stil = await side.locator('#hentTittel').evaluate((e) => {
+    const s = getComputedStyle(e);
+    return [s.marginTop, s.marginBottom, s.fontSize, s.fontWeight, s.lineHeight, s.letterSpacing, s.textWrap, s.color];
+  });
+  assert.deepEqual(stil, ['24px', '0px', '26px', '700', '29.9px', '-0.728px', 'balance', 'rgb(20, 18, 16)']);
 });
 
 test('juridiske lenker ligger i navigasjonen Juridisk', async (t) => {
@@ -299,7 +322,8 @@ test('hylleoverskriften beholder fokus begge veier over 721 px', async (t) => {
       await side.setViewportSize({ width, height: 800 });
       await side.waitForFunction(({ velger, tagg }) => (document.querySelector(`${velger} .fagknapp`).tagName === 'BUTTON') === (tagg === 'BUTTON'), { velger, tagg: width === 721 ? 'SPAN' : 'BUTTON' });
       assert.equal(await hode.evaluate((e) => e === document.activeElement), true, `${velger}, ${width} px`);
-      assert.equal(await side.locator(`${velger} h3 div`).count(), 0);
+      assert.equal(await side.locator(`${velger} p.faghode > ${width === 721 ? 'span' : 'button'}.fagknapp`).count(), 6);
+      assert.equal(await side.locator(`${velger} .faghode div`).count(), 0);
       if (velger === '#panel') assert.equal(await side.locator('#panel').isVisible(), true);
     }
   }
