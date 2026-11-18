@@ -162,3 +162,33 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { sett(false); knapp.focus(); } });
   document.addEventListener('click', (e) => { if (!panel.hidden && !e.target.closest('.nav-meny')) sett(false); });
 })();
+
+// Enhetsomregner: regner ut mens du skriver (volum, vekt, lengde, temperatur).
+(() => {
+  const tall = (n) => {
+    if (!Number.isFinite(n)) return '';
+    const a = Math.abs(n);
+    const d = a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5;
+    return String(Number(n.toFixed(d)));
+  };
+  for (const skjema of document.querySelectorAll('form.omregner')) {
+    let data;
+    try { data = JSON.parse(skjema.querySelector('.omregner-data').textContent); } catch { continue; }
+    const verdi = skjema.querySelector('[data-felt=verdi]');
+    const fra = skjema.querySelector('[data-felt=fra]');
+    const til = skjema.querySelector('[data-felt=til]');
+    const svar = skjema.querySelector('[data-felt=svar]');
+    const kort = (sel) => sel.options[sel.selectedIndex].text.replace(/^.*\(([^)]+)\)$/u, '$1');
+    const reg = () => {
+      const v = parseFloat(String(verdi.value).replace(',', '.'));
+      if (!Number.isFinite(v)) { svar.textContent = ''; return; }
+      let ut;
+      if (data.t) ut = fra.value === til.value ? v : fra.value === 'c' ? v * 9 / 5 + 32 : (v - 32) * 5 / 9;
+      else ut = v * data.f[fra.value] / data.f[til.value];
+      svar.textContent = `${tall(v)} ${kort(fra)} = ${tall(ut)} ${kort(til)}`;
+    };
+    for (const el of [verdi, fra, til]) el.addEventListener('input', reg);
+    skjema.querySelector('[data-handling=bytt]').addEventListener('click', () => { const x = fra.value; fra.value = til.value; til.value = x; reg(); });
+    reg();
+  }
+})();

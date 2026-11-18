@@ -1,5 +1,6 @@
 // Engelsk er internasjonalt (ingen region), derfor bare «en».
 import { bloggGrupper } from './blogg.mjs';
+import { allePar, parSti } from './enheter.mjs';
 
 export const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en' });
 export const SPRAKREKKEFOLGE = Object.freeze(Object.keys(SPRAKKODER));
@@ -7,6 +8,21 @@ export const SPRAKREKKEFOLGE = Object.freeze(Object.keys(SPRAKKODER));
 // Én kilde for sider som faktisk dekker samme funksjon eller hensikt.
 // x-default peker på engelsk når det finnes (besøkende med andre språk), ellers på
 // bokmål, ellers på gruppens første språk.
+// Én sidegruppe per enhetspar på tvers av språk (samme innhold, ulike adresser).
+function enhetsGrupper() {
+  const prefiks = { en: '/en/', nb: '/', sv: '/sv/', da: '/da/' };
+  const kart = new Map();
+  for (const lang of ['en', 'nb', 'sv', 'da']) {
+    for (const [fra, til] of allePar(lang)) {
+      const nokkel = `${fra}>${til}`;
+      const g = kart.get(nokkel) ?? { id: `auto-enhet-${fra}-${til}`, sider: {} };
+      g.sider[lang] = `${prefiks[lang]}${parSti(fra, til, lang)}`;
+      kart.set(nokkel, g);
+    }
+  }
+  return [...kart.values()];
+}
+
 export const SIDEGRUPPER = Object.freeze([
   { id: 'forside', sider: { nb: '/', sv: '/sv/', da: '/da/', en: '/en/' } },
   { id: 'importer-oppskrifter', sider: { nb: '/importer-oppskrifter/', sv: '/sv/importera-recept/', da: '/da/importer-opskrifter/', en: '/en/import-recipes/' } },
@@ -31,6 +47,13 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'spiskammer', sider: { nb: '/spiskammer-app/', sv: '/sv/skafferi-app/', da: '/da/spisekammer-app/', en: '/en/pantry-app/' } },
   { id: 'tom-kjoleskapet', sider: { nb: '/tom-kjoleskapet/', sv: '/sv/tom-kylskapet/', da: '/da/toem-koeleskabet/', en: '/en/empty-the-fridge/' } },
   { id: 'auto-velg-oppskriftsapp', sider: { nb: '/blogg/velg-oppskriftsapp/', sv: '/sv/blogg/valj-receptapp/', da: '/da/blog/vaelg-opskriftsapp/', en: '/en/blog/choose-recipe-organizer-app/' } },
+  { id: 'auto-hoytid-thanksgiving', sider: { en: '/en/holidays/thanksgiving/' } },
+  { id: 'auto-hoytid-thanksgiving-leftovers', sider: { en: '/en/holidays/thanksgiving-leftovers/' } },
+  { id: 'auto-hoytid-christmas-dinner', sider: { en: '/en/holidays/christmas-dinner/' } },
+  { id: 'auto-hoytid-hanukkah', sider: { en: '/en/holidays/hanukkah/' } },
+  { id: 'auto-hoytid-new-years-eve', sider: { en: '/en/holidays/new-years-eve/' } },
+  { id: 'auto-hoytid-friendsgiving', sider: { en: '/en/holidays/friendsgiving/' } },
+  { id: 'auto-hoytider', sider: { en: '/en/holidays/' } },
   { id: 'enkel-middag', sider: { nb: '/enkel-middag/', sv: '/sv/enkel-middag/', da: '/da/nem-mad/', en: '/en/easy-dinner/' } },
 
   { id: 'matprat', sider: { nb: '/importer-fra-matprat/', sv: '/sv/matprat/', da: '/da/matprat/', en: '/en/matprat/' } },
@@ -39,6 +62,8 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'landleys-kok', sider: { nb: '/importer-fra-landleys-kok/', sv: '/sv/landleys-kok/', da: '/da/landleys-kok/', en: '/en/landleys-kok/' } },
   { id: 'alletiders-kogebog', sider: { nb: '/importer-fra-alletiders-kokebok/', sv: '/sv/alletiders-kogebog/', da: '/da/alletiders-kogebog/', en: '/en/alletiders-cookbook/' } },
   { id: 'dr-mad', sider: { nb: '/importer-fra-dr-mat/', sv: '/sv/dr-mad/', da: '/da/dr-mad/', en: '/en/dr-food/' } },
+  { id: 'auto-enhetsomregner', sider: { en: '/en/tools/unit-converter/', nb: '/verktoy/enhetsomregner/', sv: '/sv/verktyg/enhetsomvandlare/', da: '/da/vaerktoejer/enhedsomregner/' } },
+  ...enhetsGrupper(),
   ...bloggGrupper(),
 ]);
 
