@@ -30,6 +30,7 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'tiktok-oppskrifter', sider: { nb: '/lagre-oppskrifter-fra-tiktok/', sv: '/sv/spara-recept-fran-tiktok/', da: '/da/gem-opskrifter-fra-tiktok/', en: '/en/import-recipes-from-tiktok/' } },
   { id: 'spiskammer', sider: { nb: '/spiskammer-app/', sv: '/sv/skafferi-app/', da: '/da/spisekammer-app/', en: '/en/pantry-app/' } },
   { id: 'tom-kjoleskapet', sider: { nb: '/tom-kjoleskapet/', sv: '/sv/tom-kylskapet/', da: '/da/toem-koeleskabet/', en: '/en/empty-the-fridge/' } },
+  { id: 'auto-velg-oppskriftsapp', sider: { en: '/en/blog/choose-recipe-organizer-app/' } },
   { id: 'enkel-middag', sider: { nb: '/enkel-middag/', sv: '/sv/enkel-middag/', da: '/da/nem-mad/', en: '/en/easy-dinner/' } },
 
   { id: 'matprat', sider: { nb: '/importer-fra-matprat/', sv: '/sv/matprat/', da: '/da/matprat/', en: '/en/matprat/' } },

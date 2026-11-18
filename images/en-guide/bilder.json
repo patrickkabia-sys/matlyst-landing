@@ -1,0 +1,342 @@
+{
+ "ask-matlyst-use-what-i-have-en": {
+  "alt": "Ask Matlyst start screen with the Use what I have option listing pantry items",
+  "files": {
+   "400": {
+    "file": "matlyst-ask-matlyst-use-what-i-have-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 16
+   },
+   "800": {
+    "file": "matlyst-ask-matlyst-use-what-i-have-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 36
+   }
+  }
+ },
+ "ask-matlyst-use-what-i-have-results-en": {
+  "alt": "Three dinner ideas Ask Matlyst built from the pantry, with cooking times",
+  "files": {
+   "400": {
+    "file": "matlyst-ask-matlyst-pantry-recipe-ideas-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 22
+   },
+   "800": {
+    "file": "matlyst-ask-matlyst-pantry-recipe-ideas-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 51
+   }
+  }
+ },
+ "ask-matlyst-save-copy-replace-en": {
+  "alt": "Ask Matlyst offering Replace or Save a copy after changing a recipe",
+  "files": {
+   "400": {
+    "file": "matlyst-ask-matlyst-save-copy-or-replace-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 27
+   },
+   "800": {
+    "file": "matlyst-ask-matlyst-save-copy-or-replace-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 59
+   }
+  }
+ },
+ "ask-matlyst-vegan-swap-diff-en": {
+  "alt": "Ask Matlyst showing a vegan swap as a list of changed ingredients with an Undo button",
+  "files": {
+   "400": {
+    "file": "matlyst-ask-matlyst-vegan-swap-changes-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 26
+   },
+   "800": {
+    "file": "matlyst-ask-matlyst-vegan-swap-changes-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 60
+   }
+  }
+ },
+ "cook-mode-step-checklist-en": {
+  "alt": "Cook mode showing recipe steps as a checklist with finished steps crossed out",
+  "files": {
+   "400": {
+    "file": "matlyst-cook-mode-step-checklist-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 30
+   },
+   "800": {
+    "file": "matlyst-cook-mode-step-checklist-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 66
+   }
+  }
+ },
+ "cook-mode-timer-suggestion-en": {
+  "alt": "Cook mode timer suggested from the step text, set to 25 minutes",
+  "files": {
+   "400": {
+    "file": "matlyst-cook-mode-timer-suggestion-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 21
+   },
+   "800": {
+    "file": "matlyst-cook-mode-timer-suggestion-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 45
+   }
+  }
+ },
+ "cook-mode-timer-running-en": {
+  "alt": "Cook mode with a running timer showing 24:56 beside the steps",
+  "files": {
+   "400": {
+    "file": "matlyst-cook-mode-timer-running-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 30
+   },
+   "800": {
+    "file": "matlyst-cook-mode-timer-running-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 66
+   }
+  }
+ },
+ "folders-en": {
+  "alt": "Matlyst folders screen with All, Favorites, Meal plan and Imported recipes",
+  "files": {
+   "400": {
+    "file": "matlyst-recipe-folders-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 54
+   },
+   "800": {
+    "file": "matlyst-recipe-folders-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 153
+   }
+  }
+ },
+ "grocery-list-sorted-by-aisle-en": {
+  "alt": "Grocery list grouped by store section with amounts such as 1 bunch chives and 2 cloves garlic",
+  "files": {
+   "400": {
+    "file": "matlyst-grocery-list-sorted-by-aisle-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 19
+   },
+   "800": {
+    "file": "matlyst-grocery-list-sorted-by-aisle-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 45
+   }
+  }
+ },
+ "import-photo-attached-en": {
+  "alt": "Import screen with a photo of a recipe card attached and a Read recipe button",
+  "files": {
+   "400": {
+    "file": "matlyst-import-photo-attached-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 18
+   },
+   "800": {
+    "file": "matlyst-import-photo-attached-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 41
+   }
+  }
+ },
+ "import-photo-result-en": {
+  "alt": "Draft recipe called Grandma's Lemon Pancakes created from a photo, ready to review",
+  "files": {
+   "400": {
+    "file": "matlyst-import-photo-draft-recipe-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 14
+   },
+   "800": {
+    "file": "matlyst-import-photo-draft-recipe-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 33
+   }
+  }
+ },
+ "import-photo-result-ingredients-en": {
+  "alt": "Ingredient list from the photo import with flour, sugar, baking powder, salt and milk",
+  "files": {
+   "400": {
+    "file": "matlyst-import-photo-ingredients-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 14
+   },
+   "800": {
+    "file": "matlyst-import-photo-ingredients-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 31
+   }
+  }
+ },
+ "import-screen-en": {
+  "alt": "Import screen with a field to paste a link and options to take a photo or type it in",
+  "files": {
+   "400": {
+    "file": "matlyst-import-screen-paste-link-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 16
+   },
+   "800": {
+    "file": "matlyst-import-screen-paste-link-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 37
+   }
+  }
+ },
+ "meal-plan-week-en": {
+  "alt": "Weekly meal plan with dinners listed for Wednesday to Friday",
+  "files": {
+   "400": {
+    "file": "matlyst-meal-plan-week-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 25
+   },
+   "800": {
+    "file": "matlyst-meal-plan-week-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 61
+   }
+  }
+ },
+ "pantry-expiry-dates-en": {
+  "alt": "Pantry list showing items with days left until they expire, from 3 to 14 days",
+  "files": {
+   "400": {
+    "file": "matlyst-pantry-expiry-dates-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 13
+   },
+   "800": {
+    "file": "matlyst-pantry-expiry-dates-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 30
+   }
+  }
+ },
+ "recipe-ingredients-servings-4-en": {
+  "alt": "Recipe ingredient list set to 4 servings with amounts in teaspoons and tablespoons",
+  "files": {
+   "400": {
+    "file": "matlyst-recipe-ingredients-4-servings-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 17
+   },
+   "800": {
+    "file": "matlyst-recipe-ingredients-4-servings-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 39
+   }
+  }
+ },
+ "recipe-ingredients-servings-6-scaled-en": {
+  "alt": "Same recipe scaled to 6 servings with the ingredient amounts increased",
+  "files": {
+   "400": {
+    "file": "matlyst-recipe-ingredients-6-servings-scaled-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 17
+   },
+   "800": {
+    "file": "matlyst-recipe-ingredients-6-servings-scaled-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 39
+   }
+  }
+ },
+ "search-ingredient-garlic-en": {
+  "alt": "Search for garlic showing nine saved recipes that contain it",
+  "files": {
+   "400": {
+    "file": "matlyst-search-by-ingredient-garlic-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 27
+   },
+   "800": {
+    "file": "matlyst-search-by-ingredient-garlic-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 72
+   }
+  }
+ },
+ "settings-export-mlst-html-en": {
+  "alt": "Settings screen with free export of all recipes as a Matlyst file or HTML",
+  "files": {
+   "400": {
+    "file": "matlyst-settings-export-recipes-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 22
+   },
+   "800": {
+    "file": "matlyst-settings-export-recipes-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 51
+   }
+  }
+ },
+ "settings-units-language-en": {
+  "alt": "Settings screen with Units set to US and the language set to English",
+  "files": {
+   "400": {
+    "file": "matlyst-settings-units-language-400.webp",
+    "width": 400,
+    "height": 870,
+    "kB": 20
+   },
+   "800": {
+    "file": "matlyst-settings-units-language-800.webp",
+    "width": 800,
+    "height": 1739,
+    "kB": 47
+   }
+  }
+ }
+}
