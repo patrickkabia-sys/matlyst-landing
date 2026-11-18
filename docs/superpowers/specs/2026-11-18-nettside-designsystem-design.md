@@ -2,7 +2,7 @@
 
 Status: versjon 3, godkjent av Patrick 18.11.2026. Erstatter versjon 2 («Lekeboks møter Standby»).
 
-Prototype: https://claude.ai/artifact/C9caMSz3tjdQNizGLDnB27 (versjon 39). Den er fasit for forsiden og for sideskallet.
+Prototype: https://claude.ai/artifact/C9caMSz3tjdQNizGLDnB27 (versjon 42). Den er fasit for forsiden og for sideskallet.
 Kildefila ligger i `docs/superpowers/prototyper/2026-11-18-forside.html`. Bilder, film og logoer ligger i `~/matlyst-privat/seo-matlyst/2026-11-18/nettfilm/` og i artefaktet.
 Produktgrunnlag: `PRODUCT.md` i roten av repoet.
 
@@ -180,7 +180,7 @@ Blad og hylledel utgjør til sammen ett kort med avrundet bunn og kraftig skygge
    - Handle: varer der flere retter trenger det samme, og et langt trykk på en rett som åpner «Endre porsjoner».
    - Husstand: tre slags husstander (familien, hytteturen, 17. mai-frokosten) med profilbilder, og felles liste eller ukemeny.
    Kortene sveipes inn fra hver sin side når de kommer til syne.
-7. **Hva koster det?** To kort. Gratis: 5 importer i måneden, ukemeny og handleliste, skalering, lag maten steg for steg, ingen tidsgrense. Pro: så mange importer du vil, lagre fra bilder og kokebøker, Spør Matlyst, næringsinnhold per porsjon, del med husstanden (opptil 6). «Prisen ser du i appen før du kjøper.» Under kortene: «Matlyst sporer deg ikke for reklame. Ingen annonser, ingen salg av data.»
+7. **Hva koster det?** To kort. Gratis: 5 importer i måneden, ukemeny og handleliste, skalering, lag maten steg for steg, ingen tidsgrense. Pro: uten grensen på fem importer, lagre fra bilder og kokebøker, Spør Matlyst, næringsinnhold per porsjon, del med husstanden (opptil 6). «Prisen ser du i appen før du kjøper.» Pro lover aldri «ubegrenset». Under kortene står det stort «Vi har bedre ting å gjøre enn å spore deg. Nyt maten din.», og under det «Matlyst sporer deg ikke for reklame. Ingen annonser, ingen salg av data.» med lenke til personvernsiden.
 8. **Spørsmål og svar.** Seks spørsmål som trekkspill: pris, kilder, flytting fra Paprika, oversettelse, flere om ukemeny og handleliste, Android. Svarene følger de som alt står på `importer-oppskrifter`.
 9. **Bunnen i tre lag** (punkt 7).
 
@@ -196,7 +196,8 @@ Forsiden har ingen egen avslutningsseksjon. Den ble tatt ut fordi tre nedlasting
 
 ## 10. Regler for innhold
 
-- **Ingen påstand uten kilde.** Vurderingen hentes fra App Store når siden bygges, ikke skrives inn for hånd **(mitt valg)**. Kilder på samlebåndet må være målt. Gratis og Pro følger appens kode.
+- **Ingen påstand uten kilde.** Vurderingen er en fast verdi som er låst av `test/lansering.test.mjs`, og den rettes der når den endres. Kilder på samlebåndet må være målt. Gratis og Pro følger appens kode.
+- **En lenke vises først når siden finnes.** De seks nye kalkulatorene står ikke i hyllene før de er bygget.
 - **Ingen konkurrenter** nevnes, bortsett fra Paprika, og da bare om flytting.
 - **Tekst skrives fra meningen på hvert språk**, etter `matlyst-sprak`. Ingen side oversettes setning for setning.
 - **«Cups», ikke «kopper»**, i omregnere og menyer.
@@ -221,7 +222,7 @@ Forsiden har ingen egen avslutningsseksjon. Den ble tatt ut fordi tre nedlasting
 | Navn og profilbilder i Husstand | Oppdiktet, bildene er laget med KI | Kan stå, men merkes eller byttes |
 | Mengder, datoer og retter i kortene | Oppdiktet | Kontrolleres mot hvordan appen faktisk viser dem |
 | Matbildene i kokeboka | Laget med KI, merket | Patrick: behold og merk |
-| «5,0 av 5 i App Store» | Hentet 18.11.2026 (12 vurderinger, norsk butikk) | Hentes ved bygging |
+| «5,0 av 5 i App Store» | Hentet 18.11.2026 (12 vurderinger, norsk butikk) | Fast verdi, låst av test |
 | Facebook på samlebåndet | 10 forsøk fra delearket siden 04.09.2026, 9 lyktes | Patrick: inn nå. Kvaliteten på de ni er ikke sjekket |
 | Logoene til Instagram, TikTok, YouTube og Facebook | Fra simple-icons, vist i svart | Sjekkes mot selskapenes retningslinjer før siden går ut |
 | Importfilmen | Norsk, rendret fra mal | Rendres på svensk, dansk og engelsk |
@@ -245,7 +246,6 @@ Gamle stiler slettes når siste sidetype er flyttet.
 - Hvordan prototypens ene fil deles i `tokens.css`, komponent-CSS og skript, og hvordan generatorene tar dem i bruk.
 - Eksakte mellomstørrelser i `clamp()`.
 - Bildeformater og størrelser, og hvordan filmen lastes. Prototypen henter filmen som én fil før avspilling fordi hopp mellom stegene krevde det der. På GitHub Pages kan vanlig lasting holde, men hopp må virke i Safari.
-- Hvordan vurderingen hentes ved bygging, og hva som vises hvis hentingen feiler (ingenting, ikke et gammelt tall).
 - Hvordan revisjonen deles opp i CI.
 
 ## 15. Åpent
