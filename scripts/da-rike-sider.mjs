@@ -58,7 +58,7 @@ const opskriftsApp = byggRik({
         situasjon: 'Fem aftener, ét budget og én tur i butikken.',
         galt: 'To opskrifter skal begge bruge ét løg, og du køber tre.',
         gjor: 'Planlæg ugen først, og handl så ind fra én samlet liste.',
-        matlyst: 'Læg opskrifterne ind i den ugentlige madplan, og åbn indkøbslisten. Ens varer med samme enhed bliver lagt sammen, og varer, du allerede har i spisekammeret, starter uden flueben.' }, 'da')],
+        matlyst: 'Læg opskrifterne ind i den ugentlige madplan, og åbn indkøbslisten. Ens varer med samme enhed bliver lagt sammen, og varer, du allerede har i spisekammeret, er fravalgt og mærket «På lager», når du lægger en opskrift på listen.' }, 'da')],
     ['Byt en ingrediens, eller lav din egen version', p('Mangler du kærnemælk eller den friske krydderurt? Åbn opskriften, og bed Spørg Matlyst om et bud på en erstatning. <strong>Brug det, jeg har</strong> foreslår erstatninger ud fra det, du har i spisekammeret. Du kan også bede om en vegetarisk, vegansk, hurtigere eller mindre udgave, eller skrive dit eget ønske, for eksempel ”gør den mere spændende”.')
       + p('Ændringerne vises som en liste, du kan fortryde. Når du gemmer, vælger du <strong>Lav en kopi</strong>, som beholder originalen og linker tilbage til kilden med mærket ”tilpasset”, eller <strong>Overskriv</strong>, som erstatter din egen opskrift. Spørg Matlyst er en Pro-funktion, den bruger AI, og den har en månedlig kvote. Tjek resultatet, før du går i gang med at lave maden.')],
     ['Dit spisekammer, og opskrifterne du glemte', p('Matlyst kan holde styr på det, du har derhjemme. Søg i dine gemte opskrifter på en ingrediens fra køleskabet, og se, hvilke der bruger den. I den gratis version viser spisekammeret 5 varer. Læs mere om <a href="/da/spisekammer-app/">spisekammer-appen</a>.')
@@ -240,7 +240,7 @@ const tiktok = byggRik({
 // ---------------------------------------------------------------- 4. Spisekammer
 const spisekammer = byggRik({
   lang: 'da',
-  svarTekst: 'Tilføj det, du har i køkkenet, så viser Matlyst, hvad du har, hvor mange dage der er tilbage på hver vare, og hvilke af dine gemte opskrifter der bruger den. Varer, du allerede har i spisekammeret, starter uden flueben på din indkøbsliste, så du ikke køber endnu en krukke.',
+  svarTekst: 'Tilføj det, du har i køkkenet, så viser Matlyst, hvad du har, hvor mange dage der er tilbage på hver vare, og hvilke af dine gemte opskrifter der bruger den. Varer, du allerede har i spisekammeret, er fravalgt og mærket «På lager», når du lægger en opskrift på listen på din indkøbsliste, så du ikke køber endnu en krukke.',
   seksjoner: [
     ['Hvorfor en liste over spisekammeret hjælper', p('At smide mad ud handler som regel om hukommelse og ikke om madlavning. Du glemmer, at spinaten findes, resterne bliver skubbet bagerst, og en uge efter ender det i skraldespanden. Når du skriver det ned én gang, husker du det.')
       + founder(['Nu søger jeg i mit spisekammer, finder den misokylling, jeg havde gemt, og aftensmaden er afgjort på et par sekunder.'], 'Patrick, grundlægger af Matlyst. Vi spiser os ud af køleskabet i stedet for at smide mad ud.')],
@@ -253,7 +253,7 @@ const spisekammer = byggRik({
       + '<h3>Det finder en erstatning for det, du mangler</h3>'
       + p('Mangler du kærnemælk? Åbn opskriften, og bed Spørg Matlyst om en erstatning, der bruger det, du har i spisekammeret. Du ser ændringerne som en liste og kan fortryde dem.')
       + '<h3>Det holder dubletter væk fra din indkøbsliste</h3>'
-      + p('Varer, du allerede har i spisekammeret, starter uden flueben på <a href="/da/indkoebsliste-app/">indkøbslisten</a>, så du ikke køber endnu en krukke af det, du allerede har. Et spisekammer, der opdateres live, deles også med din husstand, hvis du har en.')
+      + p('Varer, du allerede har i spisekammeret, er fravalgt og mærket «På lager», når du lægger en opskrift på listen på <a href="/da/indkoebsliste-app/">indkøbslisten</a>, så du ikke køber endnu en krukke af det, du allerede har. Et spisekammer, der opdateres live, deles også med din husstand, hvis du har en.')
       + p('I gratisversionen er der plads til et begrænset antal varer. Med Pro er der plads til flere.')],
     ['Sådan sætter du spisekammeret op på ti minutter', p('Du behøver ikke skrive hele dit køkken ind. En kort liste, du holder ved lige, slår en perfekt liste, du opgiver.')
       + '<ol><li><strong>Start med det, der bliver dårligt først.</strong> Friske grøntsager, mejeriprodukter, åbnede glas og alt det, du købte til én opskrift og har tilbage.</li>'
@@ -265,7 +265,7 @@ const spisekammer = byggRik({
     ['Brug spisekammeret og madplanen sammen', p('Spisekammeret gør mest gavn, når du planlægger ud fra det. Sådan ser en løkke ud, der virker i en almindelig uge.')
       + '<ol><li>Åbn spisekammeret, og se, hvad der udløber først.</li>'
       + '<li>Søg i dine gemte opskrifter på de ingredienser, og læg to eller tre ind i <a href="/da/madplan-app/">madplanen</a>.</li>'
-      + '<li>Send ingredienserne til indkøbslisten. Varer, du allerede har i spisekammeret, starter uden flueben, så du handler ind til hullerne.</li>'
+      + '<li>Send ingredienserne til indkøbslisten. Varer, du allerede har i spisekammeret, er fravalgt og mærket «På lager», når du lægger en opskrift på listen, så du handler ind til hullerne.</li>'
       + '<li>Lav maden, og opdatér spisekammeret.</li></ol>'
       + p('Du bestemmer stadig selv, hvad der kommer på planen. Matlyst fylder ikke ugen ud for dig.')],
     ['Del et spisekammer med din husstand', p('Et Pro-medlem kan oprette en husstand for op til 6 personer, og det er gratis at blive medlem af den. Indkøbslisten, den ugentlige madplan og spisekammeret deles og opdateres live for alle. Den, der lige har brugt de sidste æg, kan tage dem af listen, og den, der står i butikken, kan se det.')],
@@ -310,16 +310,16 @@ const spisekammer = byggRik({
 // ---------------------------------------------------------------- 5. Indkøbsliste
 const indkoeb = byggRik({
   lang: 'da',
-  svarTekst: 'Læg en opskrift, eller en hel planlagt uge, ind på din Matlyst-indkøbsliste, så havner ingredienserne på én liste. Ens varer med samme enhed bliver lagt sammen, listen er sorteret efter afdeling i butikken, og varer, du allerede har i spisekammeret, starter uden flueben.',
+  svarTekst: 'Læg en opskrift, eller en hel planlagt uge, ind på din Matlyst-indkøbsliste, så havner ingredienserne på én liste. Ens varer med samme enhed bliver lagt sammen, listen er sorteret efter afdeling i butikken, og varer, du allerede har i spisekammeret, er fravalgt og mærket «På lager», når du lægger en opskrift på listen.',
   seksjoner: [
     ['Sådan laver du en indkøbsliste ud fra opskrifter', '<ol><li><strong>Åbn en opskrift eller din madplan.</strong> Vælg én opskrift eller en dag eller uge, du har planlagt.</li>'
       + '<li><strong>Læg den på indkøbslisten.</strong> Ingredienserne kommer på listen med de mængder, opskriften kræver.</li>'
       + '<li><strong>Handl efter afdeling.</strong> Varerne er grupperet efter afdeling i butikken, som frugt og grønt, mejeri og krydderier. Kryds dem af, mens du går.</li></ol>'
       + p('Det virker med alle opskrifter i Matlyst, uanset om du har gemt dem fra en hjemmeside, TikTok eller Instagram eller skrevet dem ind selv. Du kan også tilføje ting, der ikke står i en opskrift, som kaffe og køkkenrulle.')],
-    ['Hvad sker der, når to opskrifter skal bruge det samme', p('Sig, at to opskrifter begge skal bruge et løg. Så får du én linje med løg og ikke to. Matlyst lægger ens varer sammen, når de har samme enhed. Er enhederne forskellige, for eksempel 1 dl af den ene ting og 200 g af en anden, står de to linjer ved siden af hinanden, så du selv kan beslutte, for Matlyst gætter ikke på, hvordan de skal regnes om.')
+    ['Hvad sker der, når to opskrifter skal bruge det samme', p('Sig, at to opskrifter begge skal bruge et løg. Så får du én linje med løg og ikke to. Matlyst lægger varer med samme navn på én linje. Er enhederne forskellige, for eksempel 1 dl i den ene opskrift og 200 g i en anden, står begge mængder på samme linje, for eksempel «1 dl · 200 g», for Matlyst gætter ikke på, hvordan de skal regnes om. Vil du have én mængde, trykker du på mængden og skriver én mængde og enhed.')
       + p('Listen er sorteret efter afdeling i butikken, så du går butikken igennem én gang og ikke krydser den to gange for den ene ting, du glemte.')],
     ['Planlæg først, og handl én gang', p('En indkøbsliste er kun så god som den plan, der ligger bag. Læg ugens aftensmåltider ind i <a href="/da/madplan-app/">madplanen</a>, læg hele ugen over på indkøbslisten, og tag én tur i stedet for tre. Vil du se det store billede af at gemme, ordne og lave opskrifter, så læs siden om <a href="/da/opskrifts-app/">opskriftsappen</a>.')],
-    ['Spring over det, du allerede har', p('Varer, du allerede har i <a href="/da/spisekammer-app/">spisekammeret</a>, starter uden flueben på listen. Det er en påmindelse og ikke en regel: du ser, hvad du allerede har, før du køber endnu en krukke. Tjek spisekammeret, før du handler, og opdatér det, når du laver mad.')],
+    ['Spring over det, du allerede har', p('Varer, du allerede har i <a href="/da/spisekammer-app/">spisekammeret</a>, er fravalgt og mærket «På lager», når du lægger en opskrift på listen på listen. Det er en påmindelse og ikke en regel: du ser, hvad du allerede har, før du køber endnu en krukke. Tjek spisekammeret, før du handler, og opdatér det, når du laver mad.')],
     ['Del listen med din husstand', p('Et Pro-medlem kan oprette en husstand for op til 6 personer, og det er gratis at blive medlem af den. Indkøbslisten, den ugentlige madplan og spisekammeret deles og opdateres live for alle. Én planlægger, en anden handler, og den, der står i butikken, krydser af for alle.')],
     ['Tre situationer, og hvad du kan gøre', scenarioNotat('da')
       + scenario('Sig, at du planlægger fem aftensmåltider til en familie på fire', {
@@ -343,7 +343,7 @@ const indkoeb = byggRik({
       + '<li><strong>Skalér, før du lægger på listen.</strong> Er opskriften til fire, og I er to, så ændr portionerne først.</li>'
       + '<li><strong>Tilføj hverdagsvarerne sidst.</strong> Kaffe, køkkenrulle og lignende skriver du ind, når opskrifterne er lagt på.</li></ul>'
       + '<h3>En almindelig uge, fra plan til kurv</h3>'
-      + p('Søndag aften lægger du tre eller fire opskrifter ind i madplanen. Du åbner indkøbslisten, ser, hvilke varer der står uden flueben, og går butikken igennem efter afdeling. Du krydser varerne af undervejs, og hjemme tilføjer du det, der skal bruges først, til spisekammeret. Det er hele rutinen, og den tager få minutter.')],
+      + p('Søndag aften lægger du tre eller fire opskrifter ind i madplanen. Du åbner indkøbslisten, ser, hvilke varer der er mærket «På lager», og går butikken igennem efter afdeling. Du krydser varerne af undervejs, og hjemme tilføjer du det, der skal bruges først, til spisekammeret. Det er hele rutinen, og den tager få minutter.')],
     ['Hvad indkøbslisten ikke gør', '<ul><li><strong>Den bestiller ikke dagligvarer.</strong> Det er en liste og ikke en butik.</li>'
       + '<li><strong>Den regner ikke enheder om for dig.</strong> Ens enheder bliver lagt sammen, og forskellige enheder står som separate linjer.</li>'
       + '<li><strong>Den kan læse en opskrift forkert.</strong> Matlyst bruger AI til at læse opskrifter fra opslag og billeder, så tjek mængderne, før du stoler på listen.</li></ul>'],
@@ -479,7 +479,7 @@ export const rikeSider = {
       ['Scanner Matlyst stregkoder?', 'Nej. Du tilføjer varer til spisekammeret i hånden.'],
       ['Er spisekammeret gratis?', 'I den gratis version viser spisekammeret 5 varer. Matlyst Pro giver flere, sammen med Spørg Matlyst og deling i en husstand.'],
       ['Kan Matlyst foreslå aftensmad ud fra det, jeg har?', 'Ja, med Matlyst Pro. I Spørg Matlyst laver ”Brug det, jeg har” forslag til aftensmad ud fra dit spisekammer. Det bruger AI og har en månedlig kvote, så tjek resultatet, før du laver maden.'],
-      ['Forhindrer spisekammeret, at jeg køber dubletter?', 'Varer, du har i spisekammeret, starter uden flueben på din indkøbsliste, så du kan se, hvad du allerede har, før du handler.'],
+      ['Forhindrer spisekammeret, at jeg køber dubletter?', 'Varer, du har i spisekammeret, er fravalgt og mærket «På lager», når du lægger en opskrift på listen på din indkøbsliste, så du kan se, hvad du allerede har, før du handler.'],
       ['Virker det uden net?', 'Du kan læse dine opskrifter og din indkøbsliste uden net i op til 30 dage efter sidste synkronisering. Redigering kræver forbindelse.'],
       ['Hvor længe kan rester holde sig i køleskabet?', 'Det afhænger af, hvad det er. Matlyst giver ikke egne tal. Fødevarestyrelsen har råd om rester og madspild i hjemmet på foedevarestyrelsen.dk. Brug også dit eget skøn.'],
     ],
@@ -493,9 +493,9 @@ export const rikeSider = {
       ['Findes der en indkøbsliste-app, der tilføjer ingredienser fra opskrifter?', 'Ja. I Matlyst lægger du en opskrift eller en planlagt dag på indkøbslisten, og ingredienserne kommer på listen, hvor ens varer er lagt sammen.'],
       ['Kan jeg dele min indkøbsliste med min partner?', 'Ja. Et Pro-medlem opretter en husstand for op til 6 personer. Indkøbslisten, den ugentlige madplan og spisekammeret opdateres live for alle, og det er gratis at blive medlem.'],
       ['Sorterer listen varerne efter afdeling i butikken?', 'Ja. Varerne er grupperet efter afdeling, som frugt og grønt, kød og mejeri.'],
-      ['Hvad sker der, når to opskrifter skal bruge den samme ingrediens?', 'Matlyst lægger ens varer sammen, når de har samme enhed. Er enhederne forskellige, står linjerne ved siden af hinanden.'],
+      ['Hvad sker der, når to opskrifter skal bruge den samme ingrediens?', 'Matlyst lægger varer med samme navn på én linje. Er enhederne forskellige, står mængderne sammen på linjen, for eksempel «1 dl · 200 g».'],
       ['Kan jeg tilføje varer, der ikke står i en opskrift?', 'Ja. Tryk på + og skriv, hvad du har brug for.'],
-      ['Ved listen, hvad jeg allerede har derhjemme?', 'Varer, du allerede har i spisekammeret, starter uden flueben på listen, så du kan se, hvad du har, før du køber det.'],
+      ['Ved listen, hvad jeg allerede har derhjemme?', 'Varer, du allerede har i spisekammeret, er fravalgt og mærket «På lager», når du lægger en opskrift på listen på listen, så du kan se, hvad du har, før du køber det.'],
       ['Er indkøbslisten gratis?', 'Indkøbslisten er gratis. Det kræver Matlyst Pro at dele en fælles liste med husstanden. Du kan altid sende listen som tekst med del-knappen.'],
     ],
   },

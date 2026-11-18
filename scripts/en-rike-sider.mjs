@@ -61,7 +61,7 @@ const recipeBookApp = (() => {
           situasjon: 'Five dinners, one budget, one trip to the store.',
           galt: 'Two recipes both need one onion, and you buy three.',
           gjor: 'Plan the week first, then shop from one merged list.',
-          matlyst: 'Add the recipes to the weekly menu and open the grocery list. Matching items with the same unit are added together, and items already in your pantry start unchecked.' })],
+          matlyst: 'Add the recipes to the weekly menu and open the grocery list. Matching items are combined on one line, with different units shown together like “1 cup · 200 g,” and items already in your pantry are unselected when you add a recipe to the list.' })],
       ['Swap an ingredient or make your own version', p('Out of buttermilk, or missing the fresh herb? Open the recipe and ask Ask Matlyst for a swap. “Use what I have” suggests replacements from the items in your pantry. You can also ask for a vegetarian, vegan, quicker, or smaller version, or type your own request, like “make it more exciting.”')
         + p('The changes appear as a list you can undo. When you save, choose <strong>Save a copy</strong>, which keeps the original and links back to its source marked “adapted,” or <strong>Replace</strong>, which overwrites your own recipe. Ask Matlyst is a Pro feature, it uses AI, and it has a monthly allowance. Check the result before you cook from it.')
         + telefoner(skjerm('matlyst-ask-matlyst-vegan-swap-changes', 'A vegan version shown as a list of changed ingredients, with Undo.'), skjerm('matlyst-ask-matlyst-save-copy-or-replace', 'The choice between Save a copy and Replace.'))],
@@ -224,7 +224,7 @@ const tiktok = byggRik({
 }).html;
 
 const pantry = byggRik({
-  svarTekst: 'Add what is in your kitchen, and Matlyst shows what you have, how many days are left on each item, and which of your saved recipes use it. Items already in your pantry start unchecked on your grocery list, so you don’t buy a second jar.',
+  svarTekst: 'Add what is in your kitchen, and Matlyst shows what you have, how many days are left on each item, and which of your saved recipes use it. When you add a recipe to your grocery list, items you already have in the pantry are unselected and marked “In your pantry,” so you don’t buy a second jar.',
   seksjoner: [
     ['Why a pantry list helps', p('Throwing food away is usually a memory problem, not a cooking problem. You forget the spinach exists, the leftovers get pushed to the back, and a week later it’s the bin. Writing it down once means you remember it.')
       + founder(['Now I search what is in my pantry, find the miso chicken I had saved, and dinner is decided in a couple of seconds.'], 'Patrick, founder of Matlyst. We eat our way out of the fridge instead of throwing food away.')],
@@ -239,7 +239,7 @@ const pantry = byggRik({
       + '<h3>It swaps what you’re missing</h3>'
       + p('Out of buttermilk? Open the recipe and ask Ask Matlyst for a swap that uses what is in your pantry. You see the changes as a list and can undo them.')
       + '<h3>It keeps duplicates off your grocery list</h3>'
-      + p('Items already in your pantry start unchecked on the <a href="/en/shopping-list/">grocery list</a>, so you don’t buy another jar of what you already have. A pantry that updates live is also shared with your household if you have one.')],
+      + p('When you add a recipe to the <a href="/en/shopping-list/">grocery list</a>, items already in your pantry are unselected and marked “In your pantry,” so you don’t buy another jar of what you already have. A pantry that updates live is also shared with your household if you have one.')],
     ['How to set up your pantry in ten minutes', p('You don’t need to log your whole kitchen. A short list you keep up to date beats a perfect list you abandon.')
       + '<ol><li><strong>Start with what spoils first.</strong> Fresh produce, dairy, opened jars, and anything you bought for one recipe and have left over.</li>'
       + '<li><strong>Add an expiry date where the package has one.</strong> For fresh food without a date, add the day you bought it and use your judgment.</li>'
@@ -250,7 +250,7 @@ const pantry = byggRik({
     ['Use the pantry and the meal plan together', p('The pantry is most useful when it feeds the plan. Here is the loop that works in a normal week.')
       + '<ol><li>Open the pantry and see what expires first.</li>'
       + '<li>Search your saved recipes for those ingredients, and put two or three on the <a href="/en/meal-plan-app/">meal plan</a>.</li>'
-      + '<li>Send the ingredients to the grocery list. Items already in your pantry start unchecked, so you shop for the gaps.</li>'
+      + '<li>Send the ingredients to the grocery list. Items already in your pantry are unselected and marked “In your pantry,” so you shop for the gaps.</li>'
       + '<li>Cook, and update the pantry.</li></ol>'
       + p('You still decide what goes on the plan. Matlyst doesn’t fill the week for you.')],
     ['Sharing a pantry with your household', p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the weekly menu, and the pantry are shared and update live for everyone. The person who just used the last eggs can take them off the list, and the person at the store sees it.')],
@@ -296,17 +296,17 @@ const pantry = byggRik({
 }).html;
 
 const shopping = byggRik({
-  svarTekst: 'Add a recipe, or a whole planned week, to your Matlyst grocery list and the ingredients land on one list. Matching items with the same unit are added together, the list is sorted by store section, and items already in your pantry start unchecked.',
+  svarTekst: 'Add a recipe, or a whole planned week, to your Matlyst grocery list and the ingredients land on one list. Matching items are combined on one line, the list is sorted by store section, and items already in your pantry are unselected when you add a recipe.',
   seksjoner: [
     ['How to make a grocery list from recipes', animasjon({ fil: 'matlyst-meal-plan-to-grocery-list.mp4', plakat: 'matlyst-meal-plan-to-grocery-list-poster.webp', bredde: 540, hoyde: 1174, tekst: 'Recipes planned for the week, then their ingredients sent to one grocery list.', bildetekst: 'From the weekly menu to one grocery list.' })
       + '<ol><li><strong>Open a recipe or your meal plan.</strong> Pick one recipe, or a day or week you have planned.</li>'
       + '<li><strong>Add it to the grocery list.</strong> The ingredients go on the list, with the amounts the recipe calls for.</li>'
       + '<li><strong>Shop by section.</strong> Items are grouped by store section, like produce, dairy, and spices. Check them off as you go.</li></ol>'
       + p('It works with any recipe in Matlyst, whether you saved it from a website, TikTok, or Instagram, or typed it in yourself. You can also add things that aren’t in a recipe, like coffee and paper towels.')],
-    ['What happens when two recipes need the same thing', p('Say two recipes both need an onion. You get one line for onions, not two. Matlyst adds matching items together when they use the same unit. When the units differ, like 1 cup of one thing and 200 g of another, the two lines sit side by side so you can decide, because it does not guess how to convert them.')
+    ['What happens when two recipes need the same thing', p('Say two recipes both need an onion. You get one line for onions, not two. Matlyst puts items with the same name on one line. When the units differ, like 1 cup in one recipe and 200 g in another, the amounts are shown together on that line, such as “1 cup · 200 g,” because it does not guess how to convert them. To tidy it up, tap the amount and enter a single amount and unit.')
       + p('The list is sorted by store section, so you walk the store once instead of crossing it twice for the one thing you forgot.')],
     ['Plan first, shop once', p('A grocery list is only as good as the plan behind it. Put the week’s dinners on the <a href="/en/meal-plan-app/">meal plan</a>, add the whole week to the grocery list, and do one trip instead of three. If you want the bigger picture of saving, organizing, and cooking recipes, see the <a href="/en/recipe-book-app/">recipe organizer app</a>.')],
-    ['Skip what you already have', p('Items already in your <a href="/en/pantry-app/">pantry</a> start unchecked on the list. That’s a reminder, not a rule: you see what you already have before you buy a second jar. Check the pantry before you shop, and update it when you cook.')],
+    ['Skip what you already have', p('Items already in your <a href="/en/pantry-app/">pantry</a> are unselected when you add a recipe to the list, and marked “In your pantry.” That’s a reminder, not a rule: you see what you already have before you buy a second jar. Check the pantry before you shop, and update it when you cook.')],
     ['Share the list with your household', p('A Pro member can create a household for up to 6 people, and joining is free. The grocery list, the weekly menu, and the pantry are shared and update live for everyone. One person plans, another shops, and the person at the store checks things off for everyone.')],
     ['Three situations, and what to do', scenarioNotat()
       + scenario('Say you’re planning five dinners for a family of four', {
@@ -453,7 +453,7 @@ export const rikeSider = {
       ['Does Matlyst scan barcodes?', 'No. You add pantry items by hand.'],
       ['Is the pantry free?', 'On the free plan, the pantry shows 5 items. Matlyst Pro adds more, along with Ask Matlyst and household sharing.'],
       ['Can Matlyst suggest dinner from what I have?', 'Yes, with Matlyst Pro. In Ask Matlyst, Use what I have builds dinner ideas from your pantry. It uses AI and has a monthly allowance, so check the result before you cook.'],
-      ['Does the pantry stop me from buying duplicates?', 'Items in your pantry start unchecked on your grocery list, so you can see what you already have before you shop.'],
+      ['Does the pantry stop me from buying duplicates?', 'When you add a recipe to your grocery list, items in your pantry are unselected and marked “In your pantry,” so you can see what you already have before you shop.'],
       ['Does it work offline?', 'You can read your recipes and grocery list offline for up to 30 days after the last sync. Editing needs a connection.'],
       ['How long do leftovers keep in the fridge?', 'According to FoodSafety.gov, leftover cooked meat or poultry keeps 3 to 4 days in a refrigerator at 40°F (4°C) or below.'],
     ],
@@ -469,9 +469,9 @@ export const rikeSider = {
       ['Is the Matlyst grocery list free?', 'Yes, the grocery list is free. Creating a household to share a live list takes Matlyst Pro, and joining one is free.'],
       ['Can I share my grocery list with my partner?', 'Yes. A Pro member creates a household for up to 6 people. The grocery list, weekly menu, and pantry update live for everyone, and joining is free.'],
       ['Does the list sort items by store section?', 'Yes. Items are grouped by store section, like produce, meat, and dairy.'],
-      ['What happens when two recipes need the same ingredient?', 'Matlyst adds matching items together when they use the same unit. When the units differ, the lines sit side by side.'],
+      ['What happens when two recipes need the same ingredient?', 'Matlyst puts items with the same name on one line. When the units differ, the amounts are shown together on that line, like “1 cup · 200 g.”'],
       ['Can I add items that aren’t in a recipe?', 'Yes. Tap + and type what you need.'],
-      ['Does the list know what I already have at home?', 'Items already in your pantry start unchecked on the list, so you can see what you have before you buy it.'],
+      ['Does the list know what I already have at home?', 'When you add a recipe to the list, items already in your pantry are unselected and marked “In your pantry,” so you can see what you have before you buy it.'],
     ],
   },
   'blog/choose-recipe-organizer-app/': {

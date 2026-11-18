@@ -60,7 +60,7 @@ const receptbok = (() => {
           situasjon: 'Fem middagar, en budget och ett butiksbesök.',
           galt: 'Två recept behöver var sin lök och du köper tre.',
           gjor: 'Planera veckan först och handla sedan från en sammanslagen lista.',
-          matlyst: 'Lägg recepten i veckomenyn och öppna inköpslistan. Likadana varor med samma enhet läggs ihop, och varor som redan finns i ditt skafferi är obockade från start.' })],
+          matlyst: 'Lägg recepten i veckomenyn och öppna inköpslistan. Likadana varor med samma enhet läggs ihop, och varor som redan finns i ditt skafferi är bortvalda och märkta «I skafferiet» när du lägger till ett recept.' })],
       ['Byt ut en ingrediens eller gör din egen version', p('Har du ingen filmjölk, eller saknas den färska örten? Öppna receptet och be om en ersättning i <strong>Fråga Matlyst</strong>. <strong>Använd det jag har</strong> föreslår byten bland det som finns i ditt skafferi. Du kan också be om en vegetarisk, vegansk, snabbare eller mindre version, eller skriva en egen önskan, till exempel ”gör den mer spännande”.')
         + p('Ändringarna visas som en lista du kan ångra. När du sparar väljer du <strong>Skapa en kopia</strong>, som behåller originalet och länkar tillbaka till källan med markeringen ”anpassat”, eller <strong>Skriv över</strong>, som ersätter ditt eget recept. Fråga Matlyst är en Pro-funktion, använder AI och har en månadskvot. Kontrollera resultatet innan du lagar efter det.')],
       ['Ditt skafferi, och recepten du glömt', p('Matlyst kan hålla reda på vad du har hemma. Sök bland dina sparade recept på en ingrediens från kylskåpet och se vilka som använder den. I den gratis planen visar skafferiet 5 varor. Läs mer om <a href="/sv/skafferi-app/">skafferi-appen</a>.')
@@ -237,7 +237,7 @@ const tiktok = byggRik({
 
 const skafferi = byggRik({
   lang: 'sv',
-  svarTekst: 'Lägg in det som finns i ditt kök, så visar Matlyst vad du har, hur många dagar det är kvar på varje vara och vilka av dina sparade recept som använder den. Varor som redan finns i skafferiet är obockade på inköpslistan, så att du inte köper en burk till.',
+  svarTekst: 'Lägg in det som finns i ditt kök, så visar Matlyst vad du har, hur många dagar det är kvar på varje vara och vilka av dina sparade recept som använder den. Varor som redan finns i skafferiet är bortvalda och märkta «I skafferiet» när du lägger till ett recept i inköpslistan, så att du inte köper en burk till.',
   seksjoner: [
     ['Därför hjälper en skafferilista', p('Att slänga mat är oftast ett minnesproblem, inte ett matlagningsproblem. Du glömmer att spenaten finns, resterna skjuts längst in, och en vecka senare är det soptunnan. Skriver du ner det en gång kommer du ihåg det.')
       + founder(['Nu söker jag på det som finns i mitt skafferi, hittar misokycklingen jag sparat, och middagen är bestämd på ett par sekunder.'], 'Patrick, grundare av Matlyst. Vi äter oss ur kylskåpet i stället för att slänga mat.')],
@@ -250,7 +250,7 @@ const skafferi = byggRik({
       + '<h3>Det byter ut det du saknar</h3>'
       + p('Saknar du filmjölk? Öppna receptet och be om en ersättning i <strong>Fråga Matlyst</strong> som utgår från ditt skafferi. Du ser ändringarna som en lista och kan ångra dem.')
       + '<h3>Det håller dubbletter borta från inköpslistan</h3>'
-      + p('Varor som redan finns i skafferiet är obockade på <a href="/sv/inkopslista/">inköpslistan</a>, så du köper inte en burk till av det du redan har. Har du ett hushåll delas skafferiet dessutom och uppdateras direkt för alla.')
+      + p('Varor som redan finns i skafferiet är bortvalda och märkta «I skafferiet» när du lägger till ett recept i <a href="/sv/inkopslista/">inköpslistan</a>, så du köper inte en burk till av det du redan har. Har du ett hushåll delas skafferiet dessutom och uppdateras direkt för alla.')
       + p('I gratisversionen rymmer Skafferi ett begränsat antal varor. Med Pro får du plats med fler.')],
     ['Så sätter du upp skafferiet på tio minuter', p('Du behöver inte föra bok över hela köket. En kort lista som du håller aktuell slår en perfekt lista som du ger upp.')
       + '<ol><li><strong>Börja med det som blir dåligt först.</strong> Färska grönsaker, mejeriprodukter, öppnade burkar och sådant du köpte till ett recept och har kvar.</li>'
@@ -262,7 +262,7 @@ const skafferi = byggRik({
     ['Använd skafferiet och veckomenyn tillsammans', p('Skafferiet är mest användbart när det matar planen. Så här ser ett varv ut i en vanlig vecka.')
       + '<ol><li>Öppna skafferiet och se vad som går ut först.</li>'
       + '<li>Sök bland dina sparade recept på de ingredienserna och lägg två eller tre i <a href="/sv/veckomeny-app/">veckomenyn</a>.</li>'
-      + '<li>Skicka ingredienserna till inköpslistan. Varor som redan finns i skafferiet är obockade, så du handlar det som saknas.</li>'
+      + '<li>Skicka ingredienserna till inköpslistan. Varor som redan finns i skafferiet är bortvalda och märkta «I skafferiet», så du handlar det som saknas.</li>'
       + '<li>Laga maten och uppdatera skafferiet.</li></ol>'
       + p('Du bestämmer fortfarande vad som hamnar i planen. Matlyst fyller inte veckan åt dig.')],
     ['Dela skafferiet med hushållet', p('En Pro-medlem kan skapa ett hushåll för upp till 6 personer, och det är gratis att gå med. Inköpslistan, veckomenyn och skafferiet delas och uppdateras direkt för alla. Den som just använde de sista äggen kan ta bort dem från listan, och den som står i butiken ser det.')],
@@ -307,16 +307,16 @@ const skafferi = byggRik({
 
 const inkopslista = byggRik({
   lang: 'sv',
-  svarTekst: 'Lägg ett recept, eller en hel planerad vecka, på din inköpslista i Matlyst, så hamnar ingredienserna på en enda lista. Likadana varor med samma enhet läggs ihop, listan sorteras efter butikens avdelningar, och varor som redan finns i skafferiet är obockade från start.',
+  svarTekst: 'Lägg ett recept, eller en hel planerad vecka, på din inköpslista i Matlyst, så hamnar ingredienserna på en enda lista. Likadana varor med samma enhet läggs ihop, listan sorteras efter butikens avdelningar, och varor som redan finns i skafferiet är bortvalda och märkta «I skafferiet» när du lägger till ett recept.',
   seksjoner: [
     ['Så gör du en inköpslista av recept', '<ol><li><strong>Öppna ett recept eller din veckomeny.</strong> Välj ett recept, eller en dag eller vecka du planerat.</li>'
       + '<li><strong>Lägg det på inköpslistan.</strong> Ingredienserna hamnar på listan, med mängderna receptet anger.</li>'
       + '<li><strong>Handla efter avdelning.</strong> Varorna är grupperade efter butikens avdelningar, som frukt och grönt, mejeri och kryddor. Bocka av dem medan du handlar.</li></ol>'
       + p('Det fungerar med alla recept i Matlyst, oavsett om du sparat det från en webbsida, TikTok eller Instagram eller skrivit in det själv. Du kan också lägga till sådant som inte står i något recept, som kaffe och hushållspapper.')],
-    ['Vad händer när två recept behöver samma sak', p('Säg att två recept båda behöver en lök. Då får du en rad för lök, inte två. Matlyst lägger ihop likadana varor när de har samma enhet. När enheterna skiljer sig, som 1 dl av en sak och 200 g av en annan, står de två raderna bredvid varandra så att du avgör, för Matlyst gissar inte hur de ska räknas om.')
+    ['Vad händer när två recept behöver samma sak', p('Säg att två recept båda behöver en lök. Då får du en rad för lök, inte två. Matlyst lägger varor med samma namn på en rad. När enheterna skiljer sig, som 1 dl i ett recept och 200 g i ett annat, visas båda mängderna på samma rad, till exempel «1 dl · 200 g», för Matlyst gissar inte hur de ska räknas om. Vill du ha en enda mängd trycker du på mängden och anger en mängd och enhet.')
       + p('Listan är sorterad efter butikens avdelningar, så du går igenom butiken en gång i stället för att korsa den två gånger för den enda saken du glömde.')],
     ['Planera först, handla en gång', p('En inköpslista är bara så bra som planen bakom den. Lägg veckans middagar i <a href="/sv/veckomeny-app/">veckomenyn</a>, lägg hela veckan på inköpslistan och gör ett butiksbesök i stället för tre. Vill du ha helheten kring att spara, ordna och laga recept, se sidan om <a href="/sv/receptbok-app/">receptbok-appen</a>.')],
-    ['Hoppa över det du redan har', p('Varor som redan finns i ditt <a href="/sv/skafferi-app/">skafferi</a> är obockade på listan. Det är en påminnelse, inte en regel: du ser vad du redan har innan du köper en burk till. Kolla skafferiet innan du handlar och uppdatera det när du lagar mat.')],
+    ['Hoppa över det du redan har', p('Varor som redan finns i ditt <a href="/sv/skafferi-app/">skafferi</a> är bortvalda och märkta «I skafferiet» när du lägger till ett recept. Det är en påminnelse, inte en regel: du ser vad du redan har innan du köper en burk till. Kolla skafferiet innan du handlar och uppdatera det när du lagar mat.')],
     ['Dela listan med hushållet', p('En Pro-medlem kan skapa ett hushåll för upp till 6 personer, och det är gratis att gå med. Inköpslistan, veckomenyn och skafferiet delas och uppdateras direkt för alla. En planerar, en annan handlar, och den som står i butiken bockar av åt alla.')],
     ['Tre situationer, och vad du gör', notat()
       + sc('Säg att du planerar fem middagar för en familj på fyra', {
@@ -334,7 +334,7 @@ const inkopslista = byggRik({
         galt: 'Du räknar om receptet i huvudet och köper för lite.',
         gjor: 'Räkna om portionerna först och lägg sedan receptet på listan. Omräkningen är linjär, så kontrollera ägg och jäsmedel själv när du bakar.',
         matlyst: 'Ändra portionerna, mellan 1 och 20 totalt, och lägg sedan receptet på inköpslistan.' })],
-    ['Så ser en vanlig vecka ut', p('Ett upplägg som fungerar för många: en kväll i veckan, kanske söndag, väljer du middagarna och lägger dem i <a href="/sv/veckomeny-app/">veckomenyn</a>. Du lägger hela veckan på inköpslistan och tittar igenom den en gång. Det som redan finns hemma ser du direkt, eftersom varor från skafferiet är obockade.',
+    ['Så ser en vanlig vecka ut', p('Ett upplägg som fungerar för många: en kväll i veckan, kanske söndag, väljer du middagarna och lägger dem i <a href="/sv/veckomeny-app/">veckomenyn</a>. Du lägger hela veckan på inköpslistan och tittar igenom den en gång. Det som redan finns hemma ser du direkt, eftersom varor från skafferiet är bortvalda och märkta «I skafferiet».',
       'Sedan handlar du efter avdelning och bockar av medan du går. Kommer du på något som inte står i något recept, som kaffe eller disktabletter, skriver du in det på samma lista. Under veckan ändrar du planen om den inte håller, och listan följer med.')],
     ['Tips för en lista som verkligen används', '<ul><li><strong>Läs recepten innan du lägger dem på listan.</strong> En ingrediens som är fel i receptet blir fel på listan också.</li>'
       + '<li><strong>Räkna om portionerna först.</strong> Då blir mängderna på listan rätt från början.</li>'
@@ -488,7 +488,7 @@ export const rikeSider = {
       ['Skannar Matlyst streckkoder?', 'Nej. Du lägger till skafferivaror för hand.'],
       ['Är skafferiet gratis?', 'I den gratis planen visar skafferiet 5 varor. Matlyst Pro ger fler, tillsammans med Fråga Matlyst och delning med hushållet.'],
       ['Kan Matlyst föreslå middag av det jag har?', 'Ja, med Matlyst Pro. I Fråga Matlyst bygger Använd det jag har middagsidéer av ditt skafferi. Det använder AI och har en månadskvot, så kontrollera resultatet innan du lagar.'],
-      ['Hindrar skafferiet mig från att köpa dubbletter?', 'Varor som finns i ditt skafferi är obockade på inköpslistan, så du ser vad du redan har innan du handlar.'],
+      ['Hindrar skafferiet mig från att köpa dubbletter?', 'Varor som finns i ditt skafferi är bortvalda och märkta «I skafferiet» när du lägger till ett recept i inköpslistan, så du ser vad du redan har innan du handlar.'],
       ['Fungerar det offline?', 'Du kan läsa dina recept och din inköpslista offline i upp till 30 dagar efter senaste synkningen. Redigering kräver anslutning.'],
       ['Hur länge håller rester i kylskåpet?', 'Det beror på maten, och vi anger inga egna siffror. Livsmedelsverket har råd om förvaring och matsvinn på livsmedelsverket.se.'],
     ],
@@ -502,9 +502,9 @@ export const rikeSider = {
       ['Finns det en app för inköpslistor som lägger till ingredienser från recept?', 'Ja. I Matlyst lägger du ett recept eller en planerad dag på inköpslistan, och ingredienserna hamnar på listan med likadana varor ihopslagna.'],
       ['Kan jag dela inköpslistan med min partner?', 'Ja. En Pro-medlem skapar ett hushåll för upp till 6 personer. Inköpslistan, veckomenyn och skafferiet uppdateras direkt för alla, och det är gratis att gå med.'],
       ['Sorterar listan varorna efter avdelning?', 'Ja. Varorna är grupperade efter butikens avdelningar, som frukt och grönt, kött och mejeri.'],
-      ['Vad händer när två recept behöver samma ingrediens?', 'Matlyst lägger ihop likadana varor när de har samma enhet. När enheterna skiljer sig står raderna bredvid varandra.'],
+      ['Vad händer när två recept behöver samma ingrediens?', 'Matlyst lägger varor med samma namn på en rad. När enheterna skiljer sig visas mängderna tillsammans på raden, till exempel «1 dl · 200 g».'],
       ['Kan jag lägga till saker som inte står i ett recept?', 'Ja. Tryck på + och skriv vad du behöver.'],
-      ['Vet listan vad jag redan har hemma?', 'Varor som redan finns i ditt skafferi är obockade på listan, så du ser vad du har innan du köper det.'],
+      ['Vet listan vad jag redan har hemma?', 'Varor som redan finns i ditt skafferi är bortvalda och märkta «I skafferiet» när du lägger till ett recept, så du ser vad du har innan du köper det.'],
       ['Är inköpslistan gratis?', 'Inköpslistan är gratis. Vill du dela en gemensam lista med hushållet krävs Matlyst Pro. Du kan alltid skicka listan som text med delningsknappen.'],
     ],
   },
