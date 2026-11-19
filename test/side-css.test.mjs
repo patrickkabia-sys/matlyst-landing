@@ -124,9 +124,25 @@ test('korte guider: stegene, idelisten og kildepillen er avgrenset til guide-kor
   for (const nokkel of ['content:counter(list-item)', ':not([reversed]):not(:has(> li[value]))', 'ul.ide-liste{display:grid;grid-template-columns:repeat(2', 'a[rel~="noopener"]:only-child{display:inline-flex']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
 });
 
+test('de eldre sidene har stil for alle klassene i innholdet', () => {
+  assert.deepEqual(klasserUtenRegel('guide-gammel', { 'disp': 'skriftvalg på overskrifter, ingen egen regel' }), []);
+});
+
+test('de eldre sidene: alle regler i delen er avgrenset til guide-gammel, og tekst står i rem', () => {
+  const rå = les('side.css');
+  const start = rå.indexOf('/* == Eldre sider == */');
+  const slutt = rå.indexOf('/* == Blogg == */');
+  assert.ok(start > -1 && slutt > start);
+  const del = utenKommentarer(rå.slice(start, slutt));
+  assert.ok(regler(del).length >= 15);
+  for (const r of regler(del)) for (const v of r.velger.split(',')) assert.ok(v.trim().startsWith('body[data-sidetype="guide-gammel"] '), `ikke avgrenset: ${v.trim()}`);
+  assert.deepEqual(del.match(/font(?:-size)?:[^;}]*?\d+(?:\.\d+)?(?:px|vw)/gu) ?? [], []);
+  for (const nokkel of ['.hero h1{margin', '.feat{display:grid', '.feat-text h2{margin', 'main.prose a.more{', '.page-cta:not(main *){width:calc(']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
+});
+
 test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', () => {
   const typer = new Set([...css.matchAll(/data-sidetype="([^"]+)"/gu)].map((m) => m[1]));
-  assert.ok(typer.has('guide-lang') && typer.has('omregner') && typer.has('guide-kort'), 'forventet avgrensning mangler');
+  assert.ok(typer.has('guide-lang') && typer.has('omregner') && typer.has('guide-kort') && typer.has('guide-gammel'), 'forventet avgrensning mangler');
   const sider = alleSider(new URL('..', import.meta.url).pathname);
   for (const t of typer) {
     assert.ok(TYPER.includes(t), `ukjent sidetype i side.css: ${t}`);

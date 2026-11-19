@@ -239,5 +239,44 @@ body[data-sidetype="guide-kort"] .locale-prose > p > a[rel~="noopener"]:only-chi
 }
 @media (prefers-reduced-motion:reduce){body[data-sidetype="guide-kort"] .locale-prose > p > a[rel~="noopener"]:only-child{transition:none}}
 /* == Eldre sider == */
+/* De fire eldre norske sidene (Matprat, finn oppskrifter, hva kan jeg lage, skapere). Heltens, kortets og bunnradens innhold ligger rett i bladet, uten main, så hver flate henter sin egen gutter. Alt avgrenset til guide-gammel. Tekst i rem; størrelsene trappes opp på samme brytepunkter som Grunnstil. */
+body[data-sidetype="guide-gammel"] .hero{max-width:1184px;margin:0 auto;padding:56px max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));text-align:center}
+body[data-sidetype="guide-gammel"] .hero .hero-eyebrow{margin:0;font-size:.9375rem;font-weight:500;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .hero h1{margin:6px auto 0;font-size:2.375rem;line-height:1.25;overflow-wrap:break-word}
+body[data-sidetype="guide-gammel"] .hero h1 .a,body[data-sidetype="guide-gammel"] .hero h1 .it{display:contents;font-style:normal;font-weight:inherit}
+body[data-sidetype="guide-gammel"] .hero h1 br{display:none}
+body[data-sidetype="guide-gammel"] .hero h1 br + .a::before{content:" "}
+body[data-sidetype="guide-gammel"] .hero-side{min-width:0;margin:0}
+body[data-sidetype="guide-gammel"] .hero .lead{margin:18px auto 0;max-width:44ch;font-size:1.25rem;line-height:1.5;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .hero-actions{display:flex;justify-content:center;margin-top:26px}
+body[data-sidetype="guide-gammel"] .feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,200px);align-items:center;gap:28px 40px;max-width:1152px;margin:56px auto 0;padding:36px 40px;border-radius:40px;background:radial-gradient(90% 80% at 0% 0%,color-mix(in srgb,var(--kule1) 30%,transparent),transparent 62%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--kule3) 32%,transparent),transparent 62%),var(--hylle)}
+body[data-sidetype="guide-gammel"] .feat-text{grid-column:1;grid-row:1;min-width:0}
+body[data-sidetype="guide-gammel"] .feat-media{grid-column:2;grid-row:1;min-width:0}
+body[data-sidetype="guide-gammel"] .feat-text .eyebrow{margin:0;font-size:.9375rem;font-weight:500;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .feat-text h2{margin:4px 0 0;font-size:1.625rem;line-height:1.12}
+body[data-sidetype="guide-gammel"] .feat-text h2 em{font-style:normal}
+body[data-sidetype="guide-gammel"] .feat-text p:not(.eyebrow){margin:12px 0 0;max-width:40ch;font-size:1.0625rem;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .feat-media .num{display:block;margin-bottom:10px;font:500 .875rem/1.4 var(--mono);letter-spacing:.06em;text-align:center;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .feat-media img{display:block;width:100%;max-width:200px;height:auto;margin-inline:auto;border-radius:24px;box-shadow:0 0 0 1px var(--a-kant)}
+body[data-sidetype="guide-gammel"] main.prose a.more{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+body[data-sidetype="guide-gammel"] .faq:not(main *),body[data-sidetype="guide-gammel"] .related:not(main *),body[data-sidetype="guide-gammel"] .page-cta:not(main *){width:calc(100% - max(16px,env(safe-area-inset-left,0px)) - max(16px,env(safe-area-inset-right,0px)));font-size:1.125rem;line-height:1.55}
+body[data-sidetype="guide-gammel"] .page-cta{max-width:1152px}
+body[data-sidetype="guide-gammel"] .page-cta > a:only-child{margin-top:0}
+@media (max-width:720px){
+  body[data-sidetype="guide-gammel"] .hero{padding-top:28px}
+  body[data-sidetype="guide-gammel"] .hero .lead{font-size:1.125rem}
+  body[data-sidetype="guide-gammel"] .feat{grid-template-columns:minmax(0,1fr);margin-top:36px;padding:28px 20px;border-radius:32px}
+  body[data-sidetype="guide-gammel"] .feat-media{grid-column:1;grid-row:2}
+}
+@media (min-width:721px){
+  body[data-sidetype="guide-gammel"] .hero h1{font-size:2.875rem}
+  body[data-sidetype="guide-gammel"] .feat-text h2{font-size:1.875rem}
+  body[data-sidetype="guide-gammel"] .page-cta{padding-block:40px}
+}
+@media (min-width:1001px){
+  body[data-sidetype="guide-gammel"] .hero h1{font-size:3.375rem}
+  body[data-sidetype="guide-gammel"] .feat-text h2{font-size:2.125rem}
+}
+@media (min-width:1201px){body[data-sidetype="guide-gammel"] .hero h1{font-size:3.875rem}}
 /* == Blogg == */
 /* == Juss == */

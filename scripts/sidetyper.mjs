@@ -66,7 +66,7 @@ export function nokkel(rastisti, html) {
 }
 
 // Oppgave 10 til 18 legger til nøkler. 'tjeneste:verifisering' legges aldri til.
-export const UTRULLET = new Set(['omregner', 'guide-lang', 'guide-kort']);
+export const UTRULLET = new Set(['omregner', 'guide-lang', 'guide-kort', 'guide-gammel']);
 
 export function erUtrullet(sti, html, utrullet = UTRULLET) {
   const n = nokkel(sti, html);

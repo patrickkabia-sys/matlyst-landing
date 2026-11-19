@@ -298,3 +298,76 @@ for (const bredde of [390, 1280]) test(`korte guider: steg, ideliste og kildepil
   expect(ide.length).toBeGreaterThan(0);
   for (const u of ide) { expect(u.kol).toBe(bredde >= 721 ? 2 : 1); expect(u.bg).toBe('rgb(245, 243, 239)'); expect(u.radius).toBe('24px'); expect(u.ut).toBeLessThanOrEqual(0); }
 });
+
+// Eldre sider: beregnet stil på de fire ekte sidene. Hver velger må treffe, ellers beviser regelteksten ingenting.
+const GAMMEL = ['/importer-fra-matprat/', '/finn-oppskrifter/', '/hva-kan-jeg-lage/', '/skapere/'];
+for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${sti}: topp, kort, kolonne og knapper har ny stil på ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse(sti));
+  const m = await page.evaluate(() => {
+    const st = (e, p) => getComputedStyle(e)[p];
+    const hero = document.querySelector('.hero');
+    const h1 = hero.querySelector('h1');
+    const feat = document.querySelector('.feat');
+    const prose = document.querySelector('main.prose');
+    const faq = document.querySelector('.faq');
+    const cta = document.querySelector('.page-cta');
+    const knapp = document.querySelector('.hero-actions > a.knapp');
+    return {
+      heroAlign: st(hero, 'textAlign'), h1Italic: [...h1.querySelectorAll('.a,.it')].map((e) => st(e, 'fontStyle')), h1Rem: parseFloat(st(h1, 'fontSize')),
+      heroBredde: hero.getBoundingClientRect().width,
+      feat: feat && { r: st(feat, 'borderTopLeftRadius'), bg: st(feat, 'backgroundImage').includes('radial-gradient'), bg2: st(feat, 'backgroundColor'), kol: st(feat, 'gridTemplateColumns').split(' ').length, em: st(feat.querySelector('h2 em'), 'fontStyle') },
+      prose: { w: prose.getBoundingClientRect().width, max: st(prose, 'maxWidth') },
+      faqW: faq && faq.getBoundingClientRect().width, ctaR: cta && st(cta, 'borderTopLeftRadius'),
+      knapp: knapp && { h: knapp.getBoundingClientRect().height, bg: st(knapp, 'backgroundColor') },
+      vindu: innerWidth, kant: [faq, cta].filter(Boolean).map((e) => e.getBoundingClientRect()).map((r) => [r.left, innerWidth - r.right]),
+      br: getComputedStyle(h1.querySelector('br')).display,
+    };
+  });
+  expect(m.heroAlign).toBe('center');
+  expect(m.h1Italic.every((x) => x === 'normal')).toBe(true);
+  expect(m.br).toBe('none');
+  expect(m.h1Rem).toBeGreaterThanOrEqual(bredde >= 1201 ? 62 : bredde >= 721 ? 46 : 38);
+  expect(m.heroBredde).toBeLessThanOrEqual(m.vindu);
+  expect(m.prose.max).not.toBe('none');
+  expect(m.prose.w).toBeLessThanOrEqual(bredde);
+  for (const [v, h] of m.kant) { expect(v).toBeGreaterThanOrEqual(16); expect(h).toBeGreaterThanOrEqual(16); }
+  if (sti !== '/skapere/') {
+    expect(m.feat.r).toBe(bredde >= 721 ? '40px' : '32px');
+    expect(m.feat.bg).toBe(true);
+    expect(m.feat.bg2).toBe('rgb(245, 243, 239)');
+    expect(m.feat.kol).toBe(bredde >= 721 ? 2 : 1);
+    expect(m.feat.em).toBe('normal');
+    expect(m.ctaR).toBe(bredde >= 721 ? '40px' : '32px');
+    expect(m.knapp.h).toBeGreaterThanOrEqual(44);
+    expect(m.knapp.bg).toBe('rgb(20, 18, 16)');
+  } else {
+    expect(m.feat).toBeNull();
+  }
+});
+
+test('eldre side: kortet ser ut som appkortet på en guide', async ({ page }) => {
+  const kort = async (sti, velger) => { await page.goto(adresse(sti)); return page.evaluate((v) => { const e = document.querySelector(v); const c = getComputedStyle(e); return [c.backgroundImage, c.backgroundColor, c.borderTopLeftRadius]; }, velger); };
+  const gammel = await kort('/finn-oppskrifter/', '.feat');
+  const ny = await kort('/lagre-oppskrifter-fra-instagram/', '.i-appen');
+  expect(gammel).toEqual(ny);
+});
+
+for (const bredde of [390, 1280]) test(`eldre side: forstørret tekst vokser i overskrift og tekst på ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse('/finn-oppskrifter/'));
+  const mål = () => page.evaluate(() => ['.hero h1', '.hero .lead', '.feat-text h2', 'main.prose h2', 'main.prose p'].map((v) => parseFloat(getComputedStyle(document.querySelector(v)).fontSize)));
+  const for_ = await mål();
+  await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+  const etter = await mål();
+  etter.forEach((x, i) => expect(x / for_[i]).toBeGreaterThanOrEqual(1.9));
+});
+
+test('eldre side: banneret virker, og samtykket kan trekkes tilbake fra bunnen', async ({ page }) => {
+  await page.goto(adresse('/finn-oppskrifter/'));
+  await expect(page.locator('#cookie')).toBeVisible();
+  await page.locator('#ck-reject').click();
+  await expect(page.locator('#cookie')).toBeHidden();
+  await page.locator('footer.under [data-consent-withdraw]').click();
+  await expect(page.locator('#cookie')).toBeVisible();
+});
