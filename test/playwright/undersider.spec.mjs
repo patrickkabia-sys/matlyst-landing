@@ -110,3 +110,41 @@ test('fast knapp: en underside uten helt bruker header.topp som start, ikke 600 
   await page.evaluate((y) => scrollTo(0, y), topp + 40);
   await expect(page.locator('#fast')).toHaveClass(/\bvis\b/);
 });
+
+// Måling på en utrullet verktøyside: samme beacon-kontrakt som forsiden. Analyse stubbes ved nettverksgrensen.
+for (const [navn, valg, plass, visning] of [
+  ['side-cta', { width: 390, height: 844 }, 'side-cta', 'lenke'],
+  ['topp (QR-vindu)', { width: 1280, height: 800 }, 'topp', 'qr'],
+]) test(`omregner: ${navn} gir download_click med cta_location bare etter Godta`, async ({ browser }) => {
+  const sti = '/verktoy/kopp-til-dl/';
+  const context = await browser.newContext({ viewport: valg, hasTouch: valg.width < 600 });
+  const page = await context.newPage(), sendt = [], verter = [];
+  await context.route('**/*', async (route) => {
+    const url = new URL(route.request().url());
+    if (url.hostname === '127.0.0.1') return route.continue();
+    verter.push(url.hostname);
+    if (url.pathname === '/static/array.js') return route.fulfill({ contentType: 'application/javascript', body: `window.posthog.capture = (navn, egenskaper, valg) => fetch('https://eu.i.posthog.com/t9-stubb', {method:'POST', body:JSON.stringify({navn,egenskaper,valg})});` });
+    if (url.pathname === '/t9-stubb') sendt.push(route.request().postDataJSON());
+    return route.fulfill({ contentType: 'application/javascript', body: '', headers: { 'access-control-allow-origin': '*' } });
+  });
+  await page.goto(sti);
+  const hindreNavigering = () => page.evaluate(() => document.addEventListener('click', (e) => { if (e.target.closest('[data-hent]')) e.preventDefault(); }));
+  await hindreNavigering();
+  const klikk = async () => {
+    await page.locator(`[data-hent="${plass}"]`).first().scrollIntoViewIfNeeded();
+    await page.locator(`[data-hent="${plass}"]`).first().click();
+    if (visning === 'qr') { await expect(page.locator('#hent')).toBeVisible(); await page.keyboard.press('Escape'); await expect(page.locator('#hent')).not.toBeVisible(); }
+  };
+  // Uten samtykke: ingen kall og ingen eksterne verter.
+  await page.locator('#ck-reject').click();
+  await klikk();
+  expect(sendt).toEqual([]); expect(verter).toEqual([]);
+  await page.evaluate(() => localStorage.removeItem('matlyst-consent'));
+  await page.reload();
+  await hindreNavigering();
+  await page.locator('#ck-accept').click();
+  await page.waitForFunction(() => window.posthog?.capture.toString().includes('t9-stubb'));
+  await klikk();
+  await expect.poll(() => sendt).toEqual([{ navn: 'download_click', egenskaper: { page_path: sti, cta_location: plass, visning }, valg: { transport: 'sendBeacon' } }]);
+  await context.close();
+});

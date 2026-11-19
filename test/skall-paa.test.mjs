@@ -209,10 +209,14 @@ test('CLI skriver faktisk rendring ved utrulling og lar andre sider stå', (t) =
   mkdirSync(join(mappe, 'verktoy/kopp-til-dl'), { recursive: true });
   writeFileSync(fil, fiks('omregner-nb'));
   writeFileSync(join(mappe, 'vilkar.html'), fiks('juss-nb'));
+  // Kopien starter uten utrulling uansett hva repoet har rullet ut, så testen vokter CLI-en og ikke registerets stand.
+  const register = join(mappe, 'scripts/sidetyper.mjs');
+  const UTRULLET_REGEL = /export const UTRULLET = new Set\([^)]*\);/;
+  assert.match(readFileSync(register, 'utf8'), UTRULLET_REGEL);
+  writeFileSync(register, readFileSync(register, 'utf8').replace(UTRULLET_REGEL, 'export const UTRULLET = new Set();'));
   const kjorCli = () => execFileSync(process.execPath, [join(mappe, 'scripts/skall-paa.mjs')], { cwd: tmpdir(), encoding: 'utf8' });
   assert.equal(kjorCli(), 'skall-paa: 0 sider oppdatert\n');
   assert.equal(readFileSync(fil, 'utf8'), fiks('omregner-nb'));
-  const register = join(mappe, 'scripts/sidetyper.mjs');
   writeFileSync(register, readFileSync(register, 'utf8').replace('export const UTRULLET = new Set();', "export const UTRULLET = new Set(['omregner']);"));
   assert.equal(kjorCli(), 'skall-paa: 1 sider oppdatert\n');
   const ut = readFileSync(fil, 'utf8');

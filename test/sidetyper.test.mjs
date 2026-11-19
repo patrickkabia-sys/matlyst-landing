@@ -76,9 +76,9 @@ test('alleSider hopper over punktmapper og verktøymapper, også med HTML i dem'
     assert.deepEqual(alleSider(tmp).map((s) => s.sti), ['/ukemeny/']);
   } finally { rmSync(tmp, { recursive: true, force: true }); }
 });
-test('ingen side er rullet ut i denne oppgaven', () => {
-  // Utrullingsoppgavene (10 til 18) endrer denne testen med vilje når de legger til nøkler.
-  assert.equal(UTRULLET.size, 0);
+test('bare omregnerne er rullet ut så langt', () => {
+  // Utrullingsoppgavene (11 til 18) endrer denne testen med vilje når de legger til nøkler.
+  assert.deepEqual([...UTRULLET], ['omregner']);
 });
 test('stien normaliseres likt: med og uten skråstrek, index.html, spørring og anker', () => {
   assert.equal(normaliserSti('/personvern.html?x=1#a'), '/personvern.html');

@@ -49,7 +49,7 @@ test('CLI lager speilet forhåndsvisning med noindex uten locale.js og bevarer k
   execFileSync(process.execPath, [join(mappe, 'scripts/skall-paa.mjs'), '--forhandsvis', 'qa/forhandsvisning']);
   assert.equal(readFileSync(kartfil, 'utf8'), JSON.stringify(kart, null, 2) + '\n');
   assert.deepEqual(kart.map((s) => readFileSync(join(mappe, s.url, s.url.endsWith('/') ? 'index.html' : ''), 'utf8')), foer);
-  assert.equal(UTRULLET.size, 0);
+  assert.deepEqual([...UTRULLET], ['omregner']);
   assert.ok(les('side.css').startsWith('/* == Grunnstil == */'), 'grunnstilarket må finnes før forhåndsvisningen åpnes');
 });
 

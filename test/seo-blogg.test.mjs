@@ -77,8 +77,9 @@ function byggMidlertidigNettsted() {
   // faktisk legge skallet på de nygenererte omregnersidene.
   const sidetyper = join(generertRot, 'scripts/sidetyper.mjs');
   const kilde = readFileSync(sidetyper, 'utf8');
-  const lokal = kilde.replace('export const UTRULLET = new Set();', "export const UTRULLET = new Set(['omregner']);");
-  assert.notEqual(lokal, kilde, 'fant ikke UTRULLET i kopien');
+  const regel = /export const UTRULLET = new Set\([^)]*\);/u;
+  assert.match(kilde, regel, 'fant ikke UTRULLET i kopien');
+  const lokal = kilde.replace(regel, "export const UTRULLET = new Set(['omregner']);");
   writeFileSync(sidetyper, lokal);
   execFileSync(process.execPath, ['scripts/generer-norske-importguider.mjs'], { cwd: generertRot });
   execFileSync(process.execPath, ['scripts/generer-lokalsider.mjs'], { cwd: generertRot });

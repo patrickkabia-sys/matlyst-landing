@@ -9,7 +9,8 @@ import { kjor, forhandsvis } from '../scripts/skall-paa.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const fil = 'verktoy/kopp-til-dl/index.html';
-const original = readFileSync(join(rot, fil), 'utf8');
+// Utgangspunktet er sida slik generatoren lager den, ikke den utrullede sida i repoet.
+const original = readFileSync(join(rot, 'test/fixtures/skall-paa/omregner-nb-generert.html.fiks'), 'utf8');
 function oppsett(t) {
   const tmp = mkdtempSync(join(tmpdir(), 'skall-trygg-'));
   t.after(() => rmSync(tmp, { recursive: true, force: true }));

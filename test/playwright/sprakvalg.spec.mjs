@@ -153,8 +153,19 @@ test('Tab ut av menypanelet lukker menyen', async ({ browser }) => {
   await context.close();
 });
 
-// Verktøysidene får skallet i oppgave 10; da skal toppvelgeren testes på /verktoy/kopp-til-dl/ også.
-test.skip('toppvelgeren virker med tastatur på /verktoy/kopp-til-dl/', async () => {});
+test('toppvelgeren virker med tastatur på /verktoy/kopp-til-dl/', async ({ browser }) => {
+  const { context, page } = await nySide(browser, 'nb-NO');
+  await page.goto('/verktoy/kopp-til-dl/');
+  const meny = page.locator('#menyknapp');
+  await meny.focus();
+  await page.keyboard.press('Enter');
+  await expect(meny).toHaveAttribute('aria-expanded', 'true');
+  // På undersidene står språkene i rekkefølgen English, Norsk, Svenska, Dansk: Dansk er siste fokuserbare i panelet.
+  await page.locator('.language-switcher-top a').last().focus();
+  await page.keyboard.press('Tab');
+  await expect(meny).toHaveAttribute('aria-expanded', 'false');
+  await context.close();
+});
 
 test('velgeren bruker riktig motstykke på personvernsiden', async ({ browser, baseURL }) => {
   const { context, page } = await nySide(browser, 'en-US');

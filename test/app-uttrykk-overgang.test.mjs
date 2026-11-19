@@ -25,15 +25,16 @@ test('en side utenfor registeret behandles som før', () => {
   assert.match(behandle(side, '/x/', new Set(TYPER)), /class="nav-dl"/u);
 });
 
+// Siden ligger på en sti som ikke er utrullet, så den får fortsatt den gamle behandlingen.
 test('kjor skanner bare publiserbare sider', (t) => {
   const mappe = mkdtempSync(join(tmpdir(), 'app-overgang-'));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   const skjulte = ['docs', 'test', 'qa', 'scripts', '.arbeid'];
-  for (const del of ['verktoy/kopp-til-dl', ...skjulte]) {
+  for (const del of ['finn-oppskrifter', ...skjulte]) {
     mkdirSync(join(mappe, del), { recursive: true });
     writeFileSync(join(mappe, del, 'index.html'), generert);
   }
-  assert.deepEqual(kjor(mappe), ['verktoy/kopp-til-dl/index.html']);
+  assert.deepEqual(kjor(mappe), ['finn-oppskrifter/index.html']);
   for (const del of skjulte) assert.equal(readFileSync(join(mappe, del, 'index.html'), 'utf8'), generert, del);
   assert.deepEqual(kjor(mappe), []);
 });
