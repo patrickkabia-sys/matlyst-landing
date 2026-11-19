@@ -176,9 +176,13 @@ body[data-sidetype="omregner"] .btn-store{display:inline-flex;align-items:center
 }
 @media (min-width:1001px){
   /* Kalkulatorkortet står i lesekolonnen, med samme venstrekant som overskriften «Kalkulator: …» og teksten. Utbrytingen ga bare ca. 20 px mer per felt og et kort som ragnet ut over overskriften. */
-  /* Feltet er like bredt som lesekolonnen (ca. 190 px til tallet): 3rem gir plass til sju sifre */
-  body[data-sidetype="omregner"] .omregner-rad input{font-size:3rem}
+  /* Kortet er like bredt som lesekolonnen, så «Mengde» får en egen rad og «Fra» og «Til» deler den neste: navnene på enhetene (Amerikanske kopper (kopp)) blir ikke klippet. */
+  body[data-sidetype="omregner"] .omregner-rad{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+  body[data-sidetype="omregner"] .omregner-rad > label:first-child{grid-column:1 / -1}
   body[data-sidetype="omregner"] .omregner-svar{font-size:2.75rem}
+}
+@media (min-width:1201px){
+  body[data-sidetype="omregner"] .omregner-rad input{font-size:4.5rem}
 }
 @media (max-width:720px){
   body[data-sidetype="omregner"] form.omregner{padding:14px;border-radius:28px}

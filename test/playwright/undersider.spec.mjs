@@ -89,7 +89,9 @@ for (const bredde of [1001, 1280, 1600]) {
       expect(Math.abs(m.h - m.f), `${sti}: overskrift ${m.h} mot kort ${m.f}`).toBeLessThanOrEqual(1);
       expect(Math.abs(m.f - m.k), `${sti}: kort ${m.f} mot kolonne ${m.k}`).toBeLessThanOrEqual(1);
       expect(m.fb, 'kortet er ikke bredere enn kolonnen').toBeLessThanOrEqual(m.kb + 1);
-      // Sju sifre i feltet skal ikke klippes.
+      // Enhetsnavnene i Fra og Til klippes ikke (de får hver sin halvdel av raden under Mengde), og sju sifre i feltet klippes ikke.
+      const klippet = await page.evaluate(() => [...document.querySelectorAll('[data-felt=fra],[data-felt=til]')].map((e) => e.scrollWidth - e.clientWidth));
+      expect(klippet.every((k) => k <= 0), `${sti}: enhetsnavn klippes ${klippet}`).toBe(true);
       await page.locator('[data-felt=verdi]').fill('1234567');
       const klipp = await page.locator('[data-felt=verdi]').evaluate((e) => e.scrollWidth - e.clientWidth);
       expect(klipp, `${sti}: tallet klippes`).toBeLessThanOrEqual(0);
