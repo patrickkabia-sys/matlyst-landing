@@ -13,7 +13,8 @@ import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const KODER = { no: 'nb-NO', nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en-US' };
-const UTELATT_MAPPER = new Set(['node_modules', '.git', 'test-results', 'playwright-report']);
+// test (fikstursider), qa (skjermbilder og forhåndsvisning), docs og .superpowers er ikke publiserte sider og skal aldri omskrives.
+const UTELATT_MAPPER = new Set(['node_modules', '.git', 'test-results', 'playwright-report', 'test', 'qa', 'docs', '.superpowers']);
 const ROBOT_NAVN = new Set(['robots', 'googlebot', 'bingbot']);
 
 /** Kommentarer erstattes med like mange mellomrom, så posisjoner er like i begge tekstene. */

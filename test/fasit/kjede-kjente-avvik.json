@@ -1,0 +1,8 @@
+{
+  "årsak": "Byggekjeden (scripts/kjede.mjs) gir de publiserte sidene bortsett fra disse tre. Avmeldingssidene på sv, da og en er skrevet for hånd (commit acbd6f0d og 77e00296, hjelpemailens tekstvariant t=hjelp), og malen i scripts/generer-lokalsider.mjs mangler hjelpeseksjonene (mangler-hjelp, ferdig-hjelp, bekreft-hjelp og feilmelding-hjelp). Løses ved å flytte seksjonene inn i malen.",
+  "avvik": {
+    "/da/afmeld/": "avmeld-hjelp skrevet for hånd, mangler i malen",
+    "/en/unsubscribe/": "avmeld-hjelp skrevet for hånd, mangler i malen",
+    "/sv/avregistrera/": "avmeld-hjelp skrevet for hånd, mangler i malen"
+  }
+}

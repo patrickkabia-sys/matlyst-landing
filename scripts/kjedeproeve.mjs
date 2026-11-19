@@ -1,12 +1,13 @@
-// Prøv etterbehandlingen i en isolert kopi. Generatorene kjøres ikke her.
+// Prøv hele byggekjeden (generatorene og etterbehandlingen, scripts/kjede.mjs) i en isolert kopi, aldri mot arbeidskopien,
+// og sammenlign resultatet fil for fil med de publiserte sidene. Nøkkelen `alle` teller alle sider.
 import { cpSync, existsSync, lstatSync, mkdtempSync, readFileSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { alleSider, trygtUnderRot } from './sidetyper.mjs';
+import { EKSTRA_FILER, KJEDE } from './kjede.mjs';
 
-const KJEDE = ['guidelenker', 'lenker-sett', 'skall-paa', 'app-bevis', 'bilde-attributter', 'sprak-signaler'];
 const UTELATT = new Set(['.git', '.superpowers', 'node_modules', 'qa', 'test-results', 'playwright-report']);
 
 // Første linje som skiller de to filene, ellers null.
@@ -33,7 +34,7 @@ export function kopier(rot, mappe) {
 }
 
 export function kjor(rot, nokkel) {
-  const foer = alleSider(rot).filter((s) => s.nokkel === nokkel);
+  const foer = alleSider(rot).filter((s) => nokkel === 'alle' || s.nokkel === nokkel);
   if (!foer.length) throw new Error(`Ukjent eller tom nøkkel: ${nokkel ?? '(mangler)'}`);
   const mappe = mkdtempSync(join(tmpdir(), 'matlyst-kjedeproeve-'));
   try {
@@ -54,8 +55,13 @@ export function kjor(rot, nokkel) {
         if (!innA.equals(innB)) forskjell = foersteForskjell(innA, innB);
       }
       if (forskjell === null) continue;
-      if (side.nokkel === nokkel || a?.nokkel === nokkel || b?.nokkel === nokkel) avvik.push(side.sti);
+      if (nokkel === 'alle' || side.nokkel === nokkel || a?.nokkel === nokkel || b?.nokkel === nokkel) avvik.push(side.sti);
       else andre.push({ sti: side.sti, forskjell });
+    }
+    for (const fil of EKSTRA_FILER) {
+      if (!existsSync(join(rot, fil)) && !existsSync(join(mappe, fil))) continue;
+      const a = existsSync(join(rot, fil)) ? readFileSync(join(rot, fil)) : null, b = existsSync(join(mappe, fil)) ? readFileSync(join(mappe, fil)) : null;
+      if (!a || !b || !a.equals(b)) avvik.push(`/${fil}`);
     }
     return { avvik, andre };
   } finally {

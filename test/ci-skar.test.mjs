@@ -29,3 +29,14 @@ test('hver jobb som kjører enhetstester som starter Chromium, installerer Chrom
   assert.ok(jobber.length >= 1);
   for (const n of jobber) assert.match(jobb(n), /playwright install[^\n]*chromium/u, `jobben ${n} kjører ${medChromium.join(', ')} men installerer ikke Chromium`);
 });
+
+test('seo-autopilot publiserer ingen sider: den stager bare seo-data, og skulle den stage mer, må byggekjeden kjøres først', () => {
+  const auto = readFileSync(new URL('../.github/workflows/seo-autopilot.yml', import.meta.url), 'utf8');
+  const stages = [...auto.matchAll(/git add ([^\n]+)/gu)].map((m) => m[1].trim());
+  assert.ok(stages.length >= 1);
+  const bareData = stages.every((s) => s === 'seo-data');
+  const kjorerKjeden = /scripts\/kjede\.mjs|node scripts\/skall-paa\.mjs|npm run skall/u.test(auto);
+  assert.ok(bareData || kjorerKjeden, `autopiloten stager ${stages.join(', ')} uten å kjøre byggekjeden: sider kunne publiseres uten skall`);
+  // Autopiloten kjører SEO-motoren, som bare skriver kildedata (blogg-kilde/auto og seo-data), aldri HTML.
+  assert.match(auto, /node seo-motor\/kjor\.mjs/u);
+});
