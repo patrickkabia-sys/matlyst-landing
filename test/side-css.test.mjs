@@ -160,9 +160,17 @@ test('bloggen: reglene er avgrenset til blogg, tekst står i rem, og delen har a
 });
 
 test('bloggen: galleriraden er fokuserbar, ellers kan tastaturet ikke sveipe den', () => {
-  for (const s of alleSider(new URL('..', import.meta.url).pathname).filter((x) => x.type === 'blogg')) {
-    const html = readFileSync(new URL(`..${s.fil.startsWith('/') ? '' : '/'}${s.fil}`, import.meta.url), 'utf8');
-    for (const rad of html.match(/<div class="blogg-galleri-rad"[^>]*>/gu) ?? []) assert.match(rad, /tabindex="0"/u, s.sti);
+  const rot = new URL('..', import.meta.url).pathname;
+  let rader = 0, galleri = 0;
+  for (const s of alleSider(rot).filter((x) => x.type === 'blogg')) {
+    const html = readFileSync(new URL(`../${s.fil}`, import.meta.url), 'utf8');
+    const startTagger = [...html.matchAll(/<[a-z][^<>]*>/gu)].map((m) => m[0]);
+    const rad = startTagger.filter((t) => /\sclass="([^"]*\s)?blogg-galleri-rad(\s[^"]*)?"/u.test(t));
+    galleri += startTagger.filter((t) => /\sclass="([^"]*\s)?blogg-galleri(\s[^"]*)?"/u.test(t)).length;
+    rader += rad.length;
+    for (const t of rad) assert.equal(t.match(/\stabindex="[^"]*"/gu)?.length, 1, `${s.sti}: nøyaktig ett tabindex`), assert.match(t, /\stabindex="0"/u, s.sti);
   }
+  assert.ok(rader >= 29, `forventet minst 29 galleririder, fant ${rader}`);
+  assert.equal(rader, galleri, 'én rad per galleri');
   assert.match(les('scripts/blogg.mjs'), /<div class="blogg-galleri-rad" tabindex="0">/u);
 });

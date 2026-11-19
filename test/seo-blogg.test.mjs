@@ -190,7 +190,11 @@ test('den genererte autoartikkelen og bloggindeksene er det skall-paa lager', ()
     assert.equal(html, rendre(html, sti), `${sti}: rendre er ikke idempotent`);
   }
   const artikkel = readFileSync(join(rot, `blogg/${fixture.slug}/index.html`), 'utf8');
-  assert.match(artikkel, /<section class="app-cta">[\s\S]*?<a class="knapp" href="\/app" data-hent="app-cta">[\s\S]*?<\/section>/u, 'appkortet får skallets knapp');
+  const start = artikkel.indexOf('<section class="app-cta"');
+  assert.ok(start > -1, 'fant ikke appkortet');
+  const slutt = artikkel.indexOf('</section>', start);
+  assert.ok(slutt > start, 'appkortet lukkes ikke');
+  assert.ok(artikkel.slice(start, slutt).includes('<a class="knapp" href="/app" data-hent="app-cta">'), 'appkortet får skallets knapp');
 });
 
 test('generatorkjeden gir autoartikkelen meny, bilder med mål og språksignal', () => {
