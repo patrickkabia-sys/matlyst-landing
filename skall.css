@@ -26,9 +26,9 @@ button{font:inherit;color:inherit}
 .mono{font:500 13px/1.4 var(--mono);letter-spacing:.06em}
 h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .flis{display:block;border-radius:23%}
-/* Skiplenke: skjult til den får fokus, så øverst til venstre over alt */
-.hopp{position:absolute;left:8px;top:-64px;z-index:1000;display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:0 0 12px 12px;background:var(--blekk);color:var(--flate);font-weight:500;font-size:16px}
-.hopp:focus{top:0}
+/* Skiplenke: visuelt skjult (standardmønsteret) til den får fokus, så øverst til venstre over alt */
+.hopp{position:absolute;left:8px;top:0;z-index:1000;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;display:inline-flex;align-items:center;border-radius:0 0 12px 12px;background:var(--blekk);color:var(--flate);font-weight:500;font-size:16px}
+.hopp:focus{width:auto;height:auto;min-height:44px;padding:0 18px;overflow:visible;clip:auto;clip-path:none}
 .hopp:focus-visible{outline:2px solid var(--flate);outline-offset:-4px}
 /* Topp og hyllemeny */
 .topp{position:relative;z-index:20}

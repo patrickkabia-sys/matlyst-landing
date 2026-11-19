@@ -27,6 +27,9 @@ function geometri({ unntak, krom, tilsiktet }) {
       const r = e.getBoundingClientRect();
       if (cs.overflow !== 'visible' && (r.width <= 1 || r.height <= 1)) return true;
       if (/^rect\(\s*0(px)?[ ,]+0(px)?[ ,]+0(px)?[ ,]+0(px)?\s*\)$/.test(cs.clip)) return true;
+      // Standardmønsteret for visuelt skjult (skiplenke): klippet til høyst 1 x 1 px. Ved fokus er clip auto, og elementet telles igjen.
+      const klipp = /^rect\(\s*(-?[\d.]+)(?:px)?[ ,]+(-?[\d.]+)(?:px)?[ ,]+(-?[\d.]+)(?:px)?[ ,]+(-?[\d.]+)(?:px)?\s*\)$/.exec(cs.clip);
+      if (klipp && (parseFloat(klipp[2]) - parseFloat(klipp[4]) <= 1 || parseFloat(klipp[3]) - parseFloat(klipp[1]) <= 1)) return true;
       if (/inset\(\s*(50%|100%)/.test(cs.clipPath)) return true;
     }
     return false;

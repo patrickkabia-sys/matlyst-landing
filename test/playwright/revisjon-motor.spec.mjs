@@ -30,6 +30,17 @@ test.describe('revisjonsmotoren, røde fikstur', () => {
     expect(feil).toEqual({ konsoll: [], fremmede: [], mangler: [] });
   });
 
+  test('visuelt skjult skiplenke teller ikke; samme lenke synlig ved fokus og ut av boksen er rød', async ({ page }) => {
+    lokalt();
+    await page.setViewportSize({ width: 390, height: 600 });
+    await page.goto(F('hopp'));
+    expect(await revider(page)).toEqual(tomt);
+    await page.goto(`${F('hopp')}`);
+    await page.evaluate(() => { document.querySelector('.blad').classList.add('rod'); document.querySelector('.hopp').focus(); });
+    const r = await revider(page);
+    expect(r.utenforBoks.some((x) => x.includes('a.hopp'))).toBe(true);
+  });
+
   test('hidden-boks i rullbar forfar er fortsatt klippet', async ({ page }) => {
     lokalt();
     await page.goto(F('klipp'));
