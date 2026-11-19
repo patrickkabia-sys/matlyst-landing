@@ -99,3 +99,109 @@ html.js .hero h1:not(.klar){visibility:hidden}
   .folgmerke,.st,.st b{transition:none}
   .st{cursor:default}
 }
+
+/* Spør Matlyst: kula fra appen, eksempler på hva du kan be om, og et eksempelsvar */
+.spor{padding-block:136px 0}
+/* Flaten låner lyset fra kula, slik bakgrunnen i appen gjør */
+.sporflate{padding:72px 56px;border-radius:40px;background:radial-gradient(90% 80% at 0% 0%,rgb(249 200 179 / .34),rgb(249 200 179 / 0) 62%),radial-gradient(90% 80% at 100% 100%,rgb(190 180 223 / .36),rgb(190 180 223 / 0) 62%),var(--hylle)}
+.spor .to{display:grid;grid-template-columns:minmax(0,460px) minmax(0,400px);align-items:center;justify-content:center;gap:40px 72px}
+.kulerom{display:inline-block;width:116px}
+.kuleskygge{display:block;width:74%;height:16px;margin:12px auto 0;border-radius:50%;background:rgb(var(--kule-kant) / .42);filter:blur(8px)}
+/* Kula: lys oppe til venstre, mørkere mot kanten, gjenskinn nede til høyre og en skygge på flaten under */
+.kule{position:relative;width:116px;height:116px;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 31% 25%,var(--kule-topp) 0,var(--kule1) 19%,var(--kule2) 45%,var(--kule3) 74%,var(--kule-dyp) 100%);box-shadow:inset 0 -12px 20px rgb(var(--kule-kant) / .34),inset 0 2px 3px rgb(255 255 255 / .85)}
+.kule::before{content:"";position:absolute;inset:0;z-index:1;border-radius:50%;background:radial-gradient(circle at 72% 88%,rgb(255 238 247 / .62) 0,rgb(255 238 247 / 0) 32%),radial-gradient(circle at 46% 44%,rgb(var(--kule-kant) / 0) 56%,rgb(var(--kule-kant) / .42) 100%)}
+.kule i{z-index:2}
+.kule i{position:absolute;display:block;border-radius:50%}
+.kule .virvel{z-index:0;inset:-7.5%;border-radius:0;background:url(/images/forside/kule.png) center / cover;opacity:.36;animation:virvel 22s linear infinite}
+.kule .lys{left:13%;top:8%;width:48%;height:32%;background:radial-gradient(closest-side,rgb(var(--kule-lys) / .96),rgb(var(--kule-lys) / .5) 45%,rgb(var(--kule-lys) / 0));transform:rotate(-24deg)}
+.kule .refleks{right:8%;bottom:8%;width:46%;height:34%;background:radial-gradient(closest-side,rgb(var(--kule-refleks) / .76),rgb(var(--kule-refleks) / 0))}
+.kule .punkt{left:27%;top:16%;width:13%;height:8.5%;background:#FFFFFF;filter:blur(.6px);transform:rotate(-24deg)}
+.kule::after{content:"";position:absolute;inset:0;z-index:3;border-radius:50%;border:1.5px solid rgb(255 255 255 / .55)}
+@keyframes virvel{to{transform:rotate(360deg)}}
+.spor h2{margin-top:28px;font-size:clamp(30px,3.6vw,44px);line-height:1.08}
+.spor .inn{margin:12px 0 0;font-size:19px;color:var(--dempet)}
+.felt{display:flex;align-items:center;gap:12px;min-height:62px;margin:32px 0 0;box-shadow:0 14px 24px -18px rgb(var(--kule-refleks) / .9);padding:0 8px 0 24px;border:2px solid transparent;border-radius:999px;background:linear-gradient(var(--flate),var(--flate)) padding-box,linear-gradient(120deg,var(--kule1),var(--kule-rosa),var(--kule3)) border-box;font-size:18px;font-weight:500}
+.felt{transition:box-shadow .6s var(--ut)}
+.felt.ferdig{box-shadow:0 0 0 5px rgb(238 146 187 / .16),0 0 26px 6px rgb(249 200 179 / .7),0 0 54px 16px rgb(190 180 223 / .6);animation:feltglod 2.2s ease-in-out infinite}
+@keyframes feltglod{50%{box-shadow:0 0 0 7px rgb(238 146 187 / .22),0 0 34px 10px rgb(249 200 179 / .85),0 0 70px 22px rgb(190 180 223 / .75)}}
+.felt span{flex:1;min-width:0;text-align:left}
+.felt span::after{content:"";display:inline-block;width:2px;height:1.15em;margin-left:2px;vertical-align:-.2em;background:var(--blekk);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.felt b{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--hylle)}
+.forslagrad{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.forslag{height:44px;padding:0 16px;border:1px solid var(--linje);border-radius:999px;background:var(--flate);font-size:16px;font-weight:500;color:var(--dempet);cursor:pointer;transition:border-color .2s,color .2s}
+.forslag:hover,.forslag[aria-pressed="true"]{border-color:var(--blekk);color:var(--blekk)}
+.smaatt{margin:22px 0 0;font-size:15px;color:var(--dempet)}
+/* Svaret fra Spør Matlyst, satt opp som i appen: ordmerke, endringer, og valget mellom å overskrive og å lage en kopi */
+.a-svar{position:relative;padding:18px 22px 22px;border-radius:28px;background:rgb(255 255 255 / .86);box-shadow:0 30px 44px -28px rgb(var(--kule-refleks) / .95),0 0 0 1px rgb(255 255 255 / .8)}
+.a-ordmerke{position:relative;display:flex;justify-content:center;align-items:baseline;gap:7px;font-size:16px}
+.a-ordmerke .ordmerke{font-size:25px;line-height:1}
+.a-ordmerke small{position:absolute;right:0;top:6px;font-size:11px;letter-spacing:.12em;color:var(--a-dempet)}
+.a-innhold{transition:opacity .35s,filter .35s}
+.a-svar .a-tittel{margin-top:18px}
+.a-etikett{margin-top:12px;font-size:13px;letter-spacing:.05em;color:var(--a-dempet)}
+.a-liste{min-height:150px}
+.a-endr{display:flex;align-items:center;gap:12px;min-height:50px;border-bottom:1px solid var(--a-kant);font-size:17px;line-height:1.3}
+.a-endr:last-child{border-bottom:0}
+.a-endr > i{flex:none;display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgb(255 85 0 / .1);color:var(--a-oransje)}
+.a-endr b{font-weight:700}
+.a-valg{display:grid;gap:10px;margin-top:14px}
+.a-valg span{display:grid;place-items:center;height:52px;border-radius:15px;font-weight:500;font-size:17px}
+.a-valg .fyll{background:var(--a-knapp);color:#FFFFFF}
+.a-valg .ramme2{border:1.5px solid var(--a-tekst)}
+.a-forkl{display:flex;align-items:center;gap:18px;margin:16px 6px 0;font-size:15px;line-height:1.45;color:var(--a-dempet);transition:opacity .35s}
+.a-forkl span{flex:1;min-width:0;min-height:4.4em}
+.a-forkl b{flex:none;color:var(--a-oransje);font-weight:700;font-size:16px}
+.a-ki{margin:10px 0 0;text-align:center;font-size:13px;color:var(--a-dempet)}
+/* Mens svaret lages: skjeletter som pulserer i fargene fra kula */
+.sk > i,.sk > span,.skl{display:block;border-radius:999px;background:linear-gradient(100deg,var(--kule1),var(--kule-rosa) 42%,var(--kule3) 78%,var(--kule1)) 0 0 / 240% 100%;animation:glod 1.5s ease-in-out infinite}
+.sk > i{width:26px;height:26px}
+.sk > span{width:var(--b,70%);height:14px}
+.skl{width:100%;height:11px;margin:5px 0 9px}
+@keyframes glod{0%{background-position:100% 0;opacity:.5}50%{opacity:1}100%{background-position:-30% 0;opacity:.5}}
+.a-svar{transition:box-shadow .5s var(--ut)}
+.a-svar.endrer{box-shadow:0 30px 44px -28px rgb(var(--kule-refleks) / .95),0 0 0 1px rgb(255 255 255 / .8),0 0 46px 6px rgb(238 146 187 / .34)}
+.endrer .a-valg{opacity:.35}
+.a-valg{transition:opacity .4s}
+
+
+/* App-flater: de samme delene som i appen, satt opp hele og for seg selv. Appens egne farger og skrifter. */
+.app{position:relative;width:100%;max-width:440px;margin:auto;font-family:'DM Sans',system-ui,sans-serif;color:var(--a-tekst);font-size:17px;line-height:1.45}
+.app b{font-weight:inherit}
+.a-tittel{font:600 23px/1.2 'Fraunces',Georgia,serif;letter-spacing:-.01em}
+
+.kokebok{padding-block:72px 0;text-align:center}
+.kokebok h2{font-size:clamp(30px,3.6vw,44px);line-height:1.08}
+.kokebok p{margin:12px auto 0;max-width:46ch;font-size:19px;color:var(--dempet)}
+.retterom{margin-top:56px}
+.retter{display:flex;gap:20px;margin:0;padding:0 max(16px,calc(50vw - 576px)) 4px;list-style:none;text-align:left;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.retter::-webkit-scrollbar{display:none}
+.rett{flex:none;width:260px;scroll-snap-align:center}
+.rett img{display:block;width:100%;height:auto;aspect-ratio:26/34;object-fit:cover;border-radius:24px;background:var(--hylle)}
+.rett h3{margin:14px 2px 0;font:600 20px/1.2 'Fraunces',Georgia,serif;letter-spacing:-.01em}
+.rett span{display:flex;align-items:center;gap:6px;margin:6px 2px 0;font-size:15px;color:var(--dempet)}
+.rett span svg{flex:none;width:15px;height:15px}
+.kokebok .kimerke{margin:22px auto 0;font-size:14px;color:var(--dempet)}
+.retterom.koblet{overflow:hidden}
+.retterom.koblet .retter{width:max-content;padding-inline:0;overflow:visible;scroll-snap-type:none;will-change:transform}
+
+/* Hele seksjonen avgjør synlighet. Peker og trykk påvirker ikke animasjonene. */
+.spor:not(.i-bildet) .virvel,.spor:not(.i-bildet) .felt,.spor:not(.i-bildet) .felt span::after,.spor:not(.i-bildet) .sk > i,.spor:not(.i-bildet) .sk > span,.spor:not(.i-bildet) .skl{animation-play-state:paused}
+@media (max-width:900px){.spor .to{gap:40px 36px}}
+@media (max-width:720px){
+  .kokebok{padding-block:52px 0}
+  .retterom{margin-top:36px}
+  .rett{width:220px}
+  .spor{padding-block:88px 0}
+  .sporflate{padding:36px 20px;border-radius:28px}
+  .spor .to{grid-template-columns:minmax(0,1fr);justify-items:center;text-align:center}
+  .spor .app{text-align:left}
+  .spor .kulerom{margin:0 auto}
+  .forslagrad{justify-content:center}
+  .forslag{max-width:100%;height:auto;min-height:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  .spor *{transition:none!important}
+  .kule .virvel,.felt span::after,.felt.ferdig,.sk > i,.sk > span,.skl{animation:none}
+  .felt span::after{display:none}
+}

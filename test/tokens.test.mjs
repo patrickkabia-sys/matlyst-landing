@@ -70,3 +70,8 @@ test('tokens.css har ingen velgere utenom :root og @font-face', () => {
 test('skallet bruker prototypens skyggefarge', () => {
   assert.equal(verdi('skygge'), '40 30 18');
 });
+
+test('kulas lys og refleks og svarets kant har nøyaktig prototypens verdier', () => {
+  assert.deepEqual(['kule-topp', 'kule-dyp', 'kule-kant', 'kule-rosa', 'kule-lys', 'kule-refleks', 'a-kant'].map(verdi),
+    ['#FFF4EC', '#8A7CC2', '86 68 156', '#EE92BB', '255 249 238', '167 149 209', 'rgb(90 70 50 / .14)']);
+});

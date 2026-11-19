@@ -1,7 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { TEKST } from './forside-tekst.mjs';
+import { TEKST, fyll } from './forside-tekst.mjs';
 import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from './skall.mjs';
 import { organisasjonSkjema } from './app-uttrykk.mjs';
 
@@ -119,9 +119,65 @@ function kilder(t) {
   return `<div class="kilder"><p class="kildetittel">${skjerm(t.kildetittel)}</p><div class="band" id="band" role="group" aria-label="${skjerm(t.kilderAria)}"><div class="bane">${Array.from({ length: 4 }, (_, i) => `<ul${i ? ' aria-hidden="true"' : ''}>${liste}</ul>`).join('')}</div></div></div>`;
 }
 
-// Disse seksjonene fylles i oppgave 7 og 8.
-function kokebok() { return ''; }
-function spor() { return ''; }
+function kokebok(t) {
+  const k = t.kokebok;
+  return `<section class="kokebok" id="retterom" aria-labelledby="kokebokTittel">
+    <div class="ramme"><h2 id="kokebokTittel">${skjerm(k.tittel)}</h2><p>${skjerm(k.ingress)}</p></div>
+    <div class="retterom"><ul class="retter">${k.retter.map((rett) => `<li class="rett"><img src="/images/forside/mat/${skjerm(rett.fil)}.webp" alt="" width="520" height="680" loading="lazy" decoding="async"><h3>${skjerm(rett.tittel)}</h3><span><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5V12l3 2"></path></svg>${skjerm(rett.tid)}</span></li>`).join('')}</ul></div>
+    <p class="kimerke">${skjerm(k.kimerke)}</p>
+  </section>`;
+}
+
+function spor(t) {
+  const s = t.spor, k = s.kort;
+  const pil = '<i><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h14M14 4l4 4-4 4M20 16H6M10 12l-4 4 4 4"></path></svg></i>';
+  // Eksempelsvarene bygges én gang fra tekstkilden, også for rundene i nettleseren.
+  const svarene = t.eksempler.svar.map((svar) => ({
+    antall: fyll(k.endringer, { antall: svar.antall }),
+    forklaring: svar.forklaring,
+    liste: svar.endringer.map((endring) => {
+      let tekst;
+      if (Object.hasOwn(endring, 'byttet')) {
+        tekst = fyll(skjerm(k.byttet), { fra: `<b>${skjerm(endring.byttet.fra)}</b>`, til: `<b>${skjerm(endring.byttet.til)}</b>` });
+      } else if (Object.hasOwn(endring, 'fjernet')) {
+        tekst = fyll(skjerm(k.fjernet), { vare: `<b>${skjerm(endring.fjernet)}</b>` });
+      } else {
+        tekst = fyll(skjerm(k.omskrevet), { steg: `<b>${skjerm(endring.omskrevet)}</b>` });
+      }
+      return `<div class="a-endr">${pil}<span>${tekst}</span></div>`;
+    }).join(''),
+  }));
+  return `<section class="spor ramme" id="spor" data-endrer="${skjerm(k.endrer)}">
+    <div class="sporflate"><div class="to">
+      <div>
+        <div class="kulerom" aria-hidden="true"><div class="kule"><i class="virvel"></i><i class="lys"></i><i class="refleks"></i><i class="punkt"></i></div><i class="kuleskygge"></i></div>
+        <h2>${skjerm(s.tittel)}</h2>
+        <p class="inn">${skjerm(s.ingress)}</p>
+        <p class="felt" aria-label="${skjerm(s.feltAria)}"><span id="sporTekst">${skjerm(s.forslag[0])}</span><b aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></b></p>
+        <div class="forslagrad" role="group" aria-label="${skjerm(s.forslagAria)}">
+          ${s.forslag.map((tekst, i) => `<button type="button" class="forslag" aria-pressed="${i === 0}">${skjerm(tekst)}</button>`).join('\n          ')}
+        </div>
+        <p class="smaatt">${skjerm(s.smaatt)}</p>
+      </div>
+      <div class="app" id="sporSvar" role="img" aria-label="${skjerm(k.aria)}">
+        <div class="a-svar">
+          <div class="a-ordmerke"><span>${skjerm(k.spor)}</span><span class="ordmerke">${skjerm(k.merkeStart)}<em>${skjerm(k.merkeSlutt)}</em></span><small>${skjerm(k.pro)}</small></div>
+          <div class="a-innhold">
+            <div class="a-tittel">${skjerm(k.oppskrift)}</div>
+            <div class="a-etikett" id="sporAntall">${skjerm(svarene[0].antall)}</div>
+            <div class="a-liste" id="sporListe">${svarene[0].liste}</div>
+            <div class="a-valg"><span class="fyll">${skjerm(k.overskriv)}</span><span class="ramme2">${skjerm(k.kopi)}</span></div>
+          </div>
+        </div>
+        <div class="a-forkl"><span id="sporForkl">${skjerm(svarene[0].forklaring)}</span><b>${skjerm(k.angre)}</b></div>
+        <p class="a-ki">${skjerm(k.ki)}</p>
+      </div>
+    </div></div>
+    ${svarene.map((svar) => `<template class="spor-eksempel" data-antall="${skjerm(svar.antall)}" data-forklaring="${skjerm(svar.forklaring)}">${svar.liste}</template>`).join('')}
+  </section>`;
+}
+
+// Disse seksjonene fylles i oppgave 8.
 function middag() { return ''; }
 function pris() { return ''; }
 function svar() { return ''; }

@@ -112,4 +112,111 @@
   }
   bevegelse.addEventListener('change', settBevegelse);
   settBevegelse();
+  // Kokeboka følger rullingen på PC. På mobil sveipes raden direkte.
+  {
+    const seksjon = document.querySelector('.kokebok');
+    const rom = seksjon.querySelector('.retterom'), rad = rom.querySelector('.retter');
+    const stor = matchMedia('(min-width:1001px) and (hover:hover)');
+    let synlig = !('IntersectionObserver' in window), venter = false;
+    const les = () => {
+      venter = false;
+      const koblet = stor.matches && !bevegelse.matches;
+      rom.classList.toggle('koblet', koblet);
+      if (!koblet) { rad.style.transform = ''; return; }
+      const seksjonsmaal = seksjon.getBoundingClientRect();
+      if (!synlig || seksjonsmaal.bottom <= 0 || seksjonsmaal.top >= innerHeight) return;
+      const r = rom.getBoundingClientRect();
+      const andel = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
+      const start = Math.max(24, (innerWidth - 1152) / 2), slutt = innerWidth - rad.offsetWidth - start;
+      rad.style.transform = 'translateX(' + (start + (slutt - start) * andel).toFixed(1) + 'px)';
+    };
+    addEventListener('scroll', () => {
+      if (synlig && !venter && !bevegelse.matches) { venter = true; requestAnimationFrame(les); }
+    }, { passive: true });
+    addEventListener('resize', les);
+    bevegelse.addEventListener('change', les);
+    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => {
+      synlig = rader[0].isIntersecting;
+      if (synlig) les();
+    }).observe(seksjon);
+    les();
+  }
+
+  // Svarene er håndskrevne eksempler fra TEKST, ferdig fylt og skjermet av generatoren.
+  // Én klokke styrer skriving, venting og svar. Den går bare mens seksjonen er i bildet.
+  {
+    const seksjon = document.getElementById('spor');
+    const tekst = seksjon.querySelector('#sporTekst'), felt = tekst.parentElement;
+    const forslag = [...seksjon.querySelectorAll('.forslag')];
+    const svarene = [...seksjon.querySelectorAll('.spor-eksempel')];
+    const kort = seksjon.querySelector('.a-svar'), liste = seksjon.querySelector('#sporListe');
+    const antall = seksjon.querySelector('#sporAntall'), forklaring = seksjon.querySelector('#sporForkl');
+    const skjelett = [74, 58, 66].map((bredde) => '<div class="a-endr sk" style="--b:' + bredde + '%"><i></i><span></span></div>').join('');
+    let synlig = !('IntersectionObserver' in window), ramme = 0, sist = 0, tid = 0;
+    let nr = 0, vist = 0, tegn = 0, fase = 'skriver';
+    const settSvar = () => {
+      liste.replaceChildren(svarene[nr].content.cloneNode(true));
+      antall.textContent = svarene[nr].dataset.antall;
+      forklaring.textContent = svarene[nr].dataset.forklaring;
+      kort.classList.remove('endrer');
+      vist = nr;
+    };
+    const velg = (valgt) => {
+      nr = valgt; tegn = 0; tid = 0; fase = 'skriver';
+      forslag.forEach((knapp, i) => knapp.setAttribute('aria-pressed', String(i === nr)));
+      felt.classList.remove('ferdig');
+      // Et nytt valg erstatter også et påbegynt svar, uten å stoppe neste runde.
+      if (bevegelse.matches) {
+        tekst.textContent = forslag[nr].textContent;
+        settSvar();
+      } else {
+        tekst.textContent = '';
+      }
+    };
+    const tikk = (naa) => {
+      ramme = 0;
+      if (!synlig || bevegelse.matches) return;
+      tid += naa - sist; sist = naa;
+      if (fase === 'skriver') {
+        const onsket = forslag[nr].textContent;
+        if (tid >= 46) {
+          tegn = Math.min(onsket.length, tegn + Math.floor(tid / 46)); tid %= 46;
+          tekst.textContent = onsket.slice(0, tegn);
+          if (tegn === onsket.length) {
+            felt.classList.add('ferdig'); tid = 0;
+            if (nr === vist && !kort.classList.contains('endrer')) { fase = 'viser'; }
+            else {
+              fase = 'venter'; kort.classList.add('endrer');
+              liste.innerHTML = skjelett; antall.textContent = seksjon.dataset.endrer;
+              forklaring.innerHTML = '<i class="skl"></i><i class="skl" style="width:84%"></i><i class="skl" style="width:48%"></i>';
+            }
+          }
+        }
+      } else if (fase === 'venter' && tid >= 1900) {
+        settSvar(); fase = 'viser';
+        // De 1900 millisekundene inngår i prototypens sju sekunder mellom ønsker.
+      } else if (fase === 'viser' && tid >= 7000) {
+        velg((nr + 1) % forslag.length);
+      }
+      ramme = requestAnimationFrame(tikk);
+    };
+    const start = () => {
+      if (synlig && !bevegelse.matches && !ramme) { sist = performance.now(); ramme = requestAnimationFrame(tikk); }
+    };
+    forslag.forEach((knapp, i) => knapp.addEventListener('click', () => { velg(i); start(); }));
+    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => {
+      synlig = rader[0].isIntersecting;
+      seksjon.classList.toggle('i-bildet', synlig);
+      if (synlig) start();
+      else { cancelAnimationFrame(ramme); ramme = 0; }
+    }).observe(seksjon);
+    const settRolig = () => {
+      cancelAnimationFrame(ramme); ramme = 0;
+      if (bevegelse.matches) velg(0);
+      else start();
+    };
+    bevegelse.addEventListener('change', settRolig);
+    seksjon.classList.toggle('i-bildet', synlig);
+    settRolig();
+  }
 })();

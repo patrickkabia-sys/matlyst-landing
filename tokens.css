@@ -18,6 +18,9 @@
 :root{
   --flate:#FFFFFF; --hylle:#F5F3EF; --linje:#E6E2DB; --blekk:#141210; --blekk-lys:#2B2723; --dempet:#5F5952;
   --a-flate:#FFFFFF; --a-tekst:#1A1714; --a-dempet:#69645E; --a-oransje:#B03B00; --a-knapp:#B34600; --a-merke:#FF5500; --a-gronn:#146B3A;
+  --a-kant:rgb(90 70 50 / .14);
+  --kule-topp:#FFF4EC; --kule-dyp:#8A7CC2; --kule-kant:86 68 156;
+  --kule-rosa:#EE92BB; --kule-lys:255 249 238; --kule-refleks:167 149 209;
   --kule1:#F9C8B3; --kule2:#EFC5D4; --kule3:#BEB4DF;
   --f:'Schibsted Grotesk',system-ui,-apple-system,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;

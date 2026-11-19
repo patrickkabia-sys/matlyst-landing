@@ -160,7 +160,8 @@ const REGIONER = [
   { navn: 'kokebok', html: seksjon('kokebok'), nokler: ['kokebok'] },
   {
     navn: 'spor', html: seksjon('spor'), nokler: ['spor'],
-    utelatt: [/^spor\.kort\.endrer$/], // vises bare mens scriptet bytter svar
+    // Ordmerket fjernes også fra prototypen over; endrer vises bare under bytte.
+    utelatt: [/^spor\.kort\.(endrer|merkeStart|merkeSlutt)$/],
     fylt: [['spor.kort.endringer', { antall: forsteSvar.antall }], ...forsteSvar.endringer.map((e) => ['spor.kort.byttet', e.byttet])],
     ekstra: ['eksempler.svar.0.forklaring'],
     teller: { 'spor.forslag.0': 2 }, // første forslag står også som ferdig skrevet tekst i feltet

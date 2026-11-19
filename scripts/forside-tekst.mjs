@@ -185,6 +185,8 @@ export const TEKST = {
         aria: 'Eksempel fra appen: Spør Matlyst har skrevet om en kremet kyllinggryte etter ønsket ved siden av, og viser hvilke ingredienser som er byttet, med valgene Overskriv og Lag en kopi.',
         // Toppen av kortet: ordet «spør» foran ordmerket «matlyst», og Pro-merket.
         spor: 'spør',
+        merkeStart: 'mat',
+        merkeSlutt: 'lyst',
         pro: 'PRO',
         // Navnet på oppskriften som er skrevet om. Et eksempel, ikke en ekte oppskrift.
         // EKSEMPEL
@@ -414,6 +416,7 @@ export const TEKST = {
     // Flere eksempler står i selve seksjonene; alle stiene er samlet i EKSEMPELSTIER.
     // EKSEMPEL
     eksempler: {
+      // Håndskrevne eksempelsvar. Byttes mot ekte svar fra appen senere (EKSEMPELSTIER).
       // Svarene i Spør Matlyst-kortet, i samme rekkefølge som `spor.forslag`.
       // `endringer` bruker malene i `spor.kort` (byttet, fjernet, omskrevet).
       // `forklaring` er den korte teksten under listen.

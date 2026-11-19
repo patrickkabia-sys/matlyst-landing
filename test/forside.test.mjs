@@ -144,3 +144,37 @@ for (const fil of ['forside.js', 'skall.js']) {
 test('forside.css: hover, trykk og fokus kan ikke pause', () => {
   krevIngenCssPause(les('forside.css'));
 });
+
+test('kokeboka har åtte retter med mål, tom alt-tekst, sen lasting og KI-merke', () => {
+  const del = html.match(/<section class="kokebok"[\s\S]*?<\/section>/)?.[0] ?? '';
+  const bilder = [...del.matchAll(/<img [^>]+>/g)].map((m) => m[0]);
+  assert.equal(bilder.length, 8);
+  for (const b of bilder) assert.match(b, /src="\/images\/forside\/mat\/[\w-]+\.webp" alt="" width="520" height="680" loading="lazy" decoding="async"/);
+  assert.match(del, /<p class="kimerke">Bildene er laget med KI\.<\/p>/);
+  assert.match(del, /<h2[^>]*>Din egen kokebok<\/h2>/);
+  assert.match(del, /id="retterom"/);
+});
+
+test('Spør Matlyst har fire forslag og sier hva som er gratis', () => {
+  const del = html.match(/<section class="spor[^"]*" id="spor"[\s\S]*?<\/section>/)?.[0] ?? '';
+  assert.deepEqual([...del.matchAll(/class="forslag"[^>]*>([^<]+)</g)].map((m) => m[1]), ['Gjør denne vegansk', 'Jeg ønsker en lavkarbo-versjon', 'Bytt ut fløten', 'Bruk det jeg har i spiskammeret']);
+  assert.match(del, /Spørsmål om en oppskrift er gratis\. Å skrive den om krever Matlyst Pro\./);
+  assert.match(del, /Matlyst bruker KI\. Sjekk alltid oppskriften\./);
+});
+
+test('kokebok og svar leser nøstede tekstnøkler og validerer plassholderne', () => {
+  for (const [objekt, nokkel, sti] of [[TEKST.nb.kokebok.retter[0], 'tittel', 'nb.kokebok.retter.0.tittel'], [TEKST.nb.spor.kort, 'kopi', 'nb.spor.kort.kopi'], [TEKST.nb.spor.kort, 'merkeStart', 'nb.spor.kort.merkeStart'], [TEKST.nb.spor.kort, 'merkeSlutt', 'nb.spor.kort.merkeSlutt'], [TEKST.nb.eksempler.svar[0].endringer[0].byttet, 'fra', 'nb.eksempler.svar.0.endringer.0.byttet.fra']]) {
+    const gammel = objekt[nokkel];
+    try { delete objekt[nokkel]; assert.throws(() => forside('nb'), (feil) => feil.message.includes(sti)); }
+    finally { objekt[nokkel] = gammel; }
+  }
+  const gammel = TEKST.nb.spor.kort.byttet;
+  try {
+    TEKST.nb.spor.kort.byttet = '{ukjent}';
+    assert.throws(() => forside('nb'), /Mangler plassholder/);
+    TEKST.nb.spor.kort.byttet = '{fra}';
+    assert.throws(() => forside('nb'), /Ukjent plassholder/);
+    TEKST.nb.spor.kort.byttet = 'Erstatt {fra} med {til}';
+    assert.match(forside('nb'), /Erstatt <b>kyllingfilet<\/b> med <b>kikerter<\/b>/);
+  } finally { TEKST.nb.spor.kort.byttet = gammel; }
+});
