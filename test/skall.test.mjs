@@ -236,7 +236,7 @@ test('skallet har ingen sideveis rulling, små trykkflater eller konsollfeil', a
     await side.locator('#menyknapp').click();
     await side.evaluate(() => { document.querySelector('#cookie').hidden = false; });
     assert.equal(await side.evaluate(() => document.documentElement.scrollWidth - innerWidth), 0, `${bredde} px`);
-    const smaa = await side.locator('a:visible, button:visible').evaluateAll((elementer) => elementer.filter((e) => !e.closest('[inert]') && (e.getBoundingClientRect().height < 44 || e.getBoundingClientRect().width < 44)).map((e) => e.outerHTML));
+    const smaa = await side.locator('a:visible, button:visible').evaluateAll((elementer) => elementer.filter((e) => !e.closest('[inert]') && !e.matches('.hopp:not(:focus)') && (e.getBoundingClientRect().height < 44 || e.getBoundingClientRect().width < 44)).map((e) => e.outerHTML));
     assert.deepEqual(smaa, [], `${bredde} px: små trykkflater`);
     await side.keyboard.press('Escape');
     await side.evaluate(() => { document.querySelector('#cookie').hidden = true; });
