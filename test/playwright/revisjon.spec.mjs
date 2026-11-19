@@ -108,13 +108,16 @@ for (const side of rader) {
   });
 
   test(`forstørret tekst, faktor minst 1,9: ${navn}`, async ({ page }) => {
-    await page.setViewportSize({ width: 390, height: 900 });
-    await page.goto(side.url);
-    const utenSkall = `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`;
-    const faktorer = await skalering(page, utenSkall);
-    expect(faktorer.length, 'ingen tekst å måle').toBeGreaterThan(0);
-    const feilFaktor = forstorrelseFeil(faktorer, side);
-    expect(feilFaktor).toEqual([]);
+    // Både mobil og PC: titler med vw i clamp() skalerer bare på mobil, så 1280 px må måles også.
+    for (const bredde of [390, 1280]) {
+      await page.setViewportSize({ width: bredde, height: 900 });
+      await page.goto(side.url);
+      const utenSkall = `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`;
+      const faktorer = await skalering(page, utenSkall);
+      expect(faktorer.length, `ingen tekst å måle på ${bredde} px`).toBeGreaterThan(0);
+      const feilFaktor = forstorrelseFeil(faktorer, side);
+      expect(feilFaktor, `forstørret tekst på ${bredde} px`).toEqual([]);
+    }
   });
 
   for (const faktor of [2, 4]) {

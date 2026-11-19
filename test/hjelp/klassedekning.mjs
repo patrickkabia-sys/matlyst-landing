@@ -11,9 +11,28 @@ export function utenKommentarer(css) {
   return css.replace(/\/\*[\s\S]*?\*\//gu, '');
 }
 
-function klasserIVelgere(css) {
+/** Alle regler som { velger, kropp }, også de inne i @media. At-regler selv (@media, @font-face) hoppes over. */
+export function regler(css) {
+  const ut = [];
+  // At-regler (@media, @font-face) åpnes og hoppes over, så regelen rett etter blir med.
+  for (const m of utenKommentarer(css).matchAll(/@[^{};]*\{|([^{}@][^{}]*)\{([^{}]*)\}/gu)) {
+    if (m[1] === undefined) continue;
+    ut.push({ velger: m[1].trim(), kropp: m[2] });
+  }
+  return ut;
+}
+
+/** Enkeltvelgerne (kommaseparert) fra alle regler. */
+export function velgerliste(css) {
+  return regler(css).flatMap((r) => r.velger.split(',').map((v) => v.trim()));
+}
+
+/** Klasser som står i velgere. Verdier i deklarasjoner (url(a.webp), 1.5rem) og attributtverdier telles ikke. */
+export function klasserIVelgere(css) {
   const ut = new Set();
-  for (const m of utenKommentarer(css).matchAll(/\.(-?[_a-zA-Z][\w-]*)/gu)) ut.add(m[1]);
+  for (const v of velgerliste(css)) {
+    for (const m of v.replace(/\[[^\]]*\]/gu, '').matchAll(/\.(-?[_a-zA-Z][\w-]*)/gu)) ut.add(m[1]);
+  }
   return ut;
 }
 

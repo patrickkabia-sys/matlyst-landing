@@ -48,10 +48,10 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .ikonbytte .kryss{opacity:0;transform:rotate(-45deg)}
 .menyknapp[aria-expanded="true"] .ikonbytte .linjer{opacity:0;transform:rotate(45deg)}
 .menyknapp[aria-expanded="true"] .ikonbytte .kryss{opacity:1;transform:none}
-.knapp{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 28px;border-radius:999px;background:var(--blekk);color:var(--flate);font-weight:700;font-size:18px;transition:background-color .2s,transform .15s}
+.knapp{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 28px;border-radius:999px;background:var(--blekk);color:var(--flate);font-weight:700;font-size:1.125rem;transition:background-color .2s,transform .15s}
 .knapp:hover{background:var(--blekk-lys)}
 .knapp:active{transform:scale(.98)}
-.knapp.liten{height:44px;padding:0 20px;font-size:16px}
+.knapp.liten{height:44px;padding:0 20px;font-size:1rem}
 
 .panel{position:absolute;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));top:calc(100% - 2px);max-height:calc(100vh - 150px);overflow-y:auto;padding:40px 40px 28px;border:1px solid var(--linje);border-radius:28px;background:var(--flate);box-shadow:0 28px 50px -30px rgb(var(--skygge) / .35)}
 /* Reolen: hvert fag er en kategori. Flisen står på en hylleplate, lenkene henger under. */

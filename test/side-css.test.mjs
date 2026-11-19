@@ -1,13 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { utenKommentarer, klasserUtenRegel } from './hjelp/klassedekning.mjs';
+import { utenKommentarer, klasserUtenRegel, klasserIVelgere, velgerliste, regler } from './hjelp/klassedekning.mjs';
 
 const les = (f) => readFileSync(new URL(`../${f}`, import.meta.url), 'utf8');
 const css = utenKommentarer(les('side.css'));
 const tokens = utenKommentarer(les('tokens.css'));
 const skall = utenKommentarer(les('skall.css'));
-const velgere = [...css.matchAll(/(?:^|\})\s*([^{}@]+)\{/gu)].flatMap((m) => m[1].split(',').map((v) => v.trim()));
+const velgere = velgerliste(css);
 
 test('side.css har delene i rekkefølge', () => {
   const rå = les('side.css');
@@ -22,6 +22,8 @@ test('side.css bruker bare tokens fra tokens.css, uten heksverdier', () => {
   const brukt = [...css.matchAll(/var\((--[\w-]+)/gu)].map((m) => m[1]);
   assert.deepEqual(brukt.filter((t) => !definert.has(t)), []);
   assert.deepEqual(css.match(/#[0-9a-fA-F]{3,8}\b/gu) ?? [], []);
+  assert.deepEqual(css.match(/\b(?:hsla?|hwb|lab|lch|oklab|oklch|color)\(/gu) ?? [], [], 'bare tokens; color-mix(var(...)) er lov');
+  assert.deepEqual([...css.matchAll(/(?:color|background(?:-color)?|border(?:-[a-z]+)*|fill|stroke|outline(?:-color)?)\s*:[^;}]*\b(white|black|red|green|blue|gray|grey|orange|purple|pink|brown|yellow)\b/gu)].map((m) => m[0]), []);
   assert.deepEqual([...css.matchAll(/rgba?\(\s*(?!var\()[^)]*\)/gu)].map((m) => m[0]), []);
 });
 
@@ -51,10 +53,39 @@ test('grunnstilen dekker kjernen i hver byggekloss', () => {
   }
 });
 
-test('bannerstilen i skall.css er på plass og knappene er like', () => {
-  const regel = (v) => new RegExp(`${v.replace(/[.\[\]]/gu, '\\$&')}[^{}]*\\{[^}]*\\}`, 'u').exec(skall)?.[0] ?? '';
+test('bannerstilen i skall.css er på plass', () => {
   assert.ok(/\.cookie\b[^{}]*\{[^}]*border-radius:\s*28px/u.test(skall));
-  assert.ok(regel('.ck-btn').length > 0);
-  assert.ok(!/\.ck-reject[^{}]*\{[^}]*(background:\s*none|background:\s*transparent|opacity)/u.test(skall), 'avvis skal ha lik vekt som godta');
+  assert.ok(regler(skall).some((r) => /\.ck-btn\b/u.test(r.velger)));
   assert.match(skall, /\.cookie h3/u);
+});
+
+test('godta og avvis har nøyaktig samme stil i skall.css', () => {
+  const normalisert = (navn) => regler(skall)
+    .filter((r) => r.velger.split(',').some((v) => new RegExp(`\\.${navn}(?![\\w-])`, 'u').test(v)))
+    .map((r) => JSON.stringify([r.velger.split(',').map((v) => v.trim().replace(/\.ck-(accept|reject)(?![\w-])/gu, '.ck-X')).sort(), r.kropp.replace(/\s+/gu, '')]))
+    .sort();
+  const godta = normalisert('ck-accept');
+  assert.ok(godta.length > 0, 'ingen regel for .ck-accept');
+  assert.deepEqual(normalisert('ck-reject'), godta);
+});
+
+test('klasseleseren leser bare velgere', () => {
+  assert.deepEqual([...klasserIVelgere('.a,.b > .c[href$=".pdf"]{background:url(x.webp);margin:1.5rem}@media (min-width:1px){.d{color:red}}')].sort(), ['a', 'b', 'c', 'd']);
+});
+
+test('velgerlisten tar med den første regelen inne i @media', () => {
+  assert.deepEqual(velgerliste('@media (min-width:1px){.a{x:y}.b{x:y}}'), ['.a', '.b']);
+});
+
+test('skriftstørrelser bruker ikke vw (følger ikke tekststørrelsen)', () => {
+  assert.deepEqual([...css.matchAll(/font-size:[^;}]*\dvw/gu)].map((m) => m[0]), []);
+});
+
+test('lenker i brødtekst er understreket, også .more', () => {
+  assert.doesNotMatch(css, /:not\(\.more\)/u);
+});
+
+test('steg med eget tall får ikke et ekstra generert tall', () => {
+  assert.match(css, /\.steps > :not\(:has\(> \.n,> b:first-child\)\)::before/u);
+  assert.match(css, /\.steps > \.step > \.n/u);
 });
