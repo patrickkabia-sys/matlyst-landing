@@ -476,3 +476,13 @@ html.js .hero h1:not(.klar){visibility:hidden}
 @media (max-width:380px){
   .a-husflate .a-eier{font-size:0;gap:0;padding:2px}
 }
+
+/* Patrick 19.11: kortstabling på mobil, av som standard. Slås på med klassen `stabel` på #trio (de fem rutene; Spør Matlyst-flisene stables ikke, se rapporten).
+   Hver flis står fast (sticky) under toppen, og den neste glir opp over den forrige. Bare ren CSS; ingen overgangseffekter. */
+@media (max-width:720px){
+  #trio.stabel > .rute{position:sticky;top:calc(var(--topp-hoyde) + 8px);scroll-margin-top:calc(var(--topp-hoyde) + 8px);box-shadow:0 -10px 24px -16px rgb(var(--skygge) / .3),0 0 0 1px color-mix(in srgb, var(--blekk) 4%, transparent)}
+  #trio.stabel > .rute:nth-child(2){top:calc(var(--topp-hoyde) + 14px);scroll-margin-top:calc(var(--topp-hoyde) + 14px)}
+  #trio.stabel > .rute:nth-child(3){top:calc(var(--topp-hoyde) + 20px);scroll-margin-top:calc(var(--topp-hoyde) + 20px)}
+  #trio.stabel > .rute:nth-child(4){top:calc(var(--topp-hoyde) + 26px);scroll-margin-top:calc(var(--topp-hoyde) + 26px)}
+  #trio.stabel > .rute:nth-child(5){top:calc(var(--topp-hoyde) + 32px);scroll-margin-top:calc(var(--topp-hoyde) + 32px)}
+}

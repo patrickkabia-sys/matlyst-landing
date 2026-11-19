@@ -243,9 +243,41 @@
     });
   }
   // Hvert kort har en egen tidslinje. Klokka går bare mens kortet er i bildet.
+  // Kortstabling på mobil (klassen `stabel` på #trio, av som standard): en rute som den neste har dekket, står stille på samme måte som en rute utenfor bildet.
+  const trio = document.getElementById('trio');
+  const smalSkjerm = matchMedia('(max-width:720px)');
+  const stabler = () => trio.classList.contains('stabel') && smalSkjerm.matches;
+  const kortRegister = [];
+  const mal = (rute) => { const r = rute.getBoundingClientRect(), n = rute.nextElementSibling?.getBoundingClientRect(); return { r, n }; };
+  // Det som sees av ruta er det den neste ikke dekker (bare noen piksler av stabelkanten).
+  const dekkes = (rute) => {
+    if (!stabler() || !rute.nextElementSibling?.classList.contains('rute')) return false;
+    const { r, n } = mal(rute);
+    const over = Math.max(0, Math.min(r.bottom, n.top) - r.top), under = Math.max(0, r.bottom - Math.max(n.bottom, r.top));
+    return over + under < 16;
+  };
+  {
+    let venter = false;
+    const les = () => { venter = false; kortRegister.forEach((k) => k.sett(dekkes(k.rute))); };
+    const ko = () => { if (!venter) { venter = true; requestAnimationFrame(les); } };
+    addEventListener('scroll', ko, { passive: true });
+    addEventListener('resize', ko);
+    smalSkjerm.addEventListener('change', ko);
+    if (trio) new MutationObserver(ko).observe(trio, { attributes: true, attributeFilter: ['class'] });
+    // Fokus på et element i en dekket rute ruller ruta fram: den settes til sitt eget plassnivå i stabelen.
+    trio?.addEventListener('focusin', (e) => {
+      const rute = e.target.closest('.rute');
+      if (!rute || !stabler() || !dekkes(rute)) return;
+      const ruter = [...trio.children], i = ruter.indexOf(rute);
+      const gap = parseFloat(getComputedStyle(trio).rowGap) || 0;
+      const naturlig = trio.getBoundingClientRect().top + scrollY + ruter.slice(0, i).reduce((sum, el) => sum + el.offsetHeight + gap, 0);
+      scrollTo({ top: naturlig - parseFloat(getComputedStyle(rute).top), behavior: bevegelse.matches ? 'auto' : 'smooth' });
+    });
+    ko();
+  }
   const kortloep = (id, bygg) => {
     const app = document.getElementById(id), rute = app.closest('.rute');
-    let synlig = !('IntersectionObserver' in window), ramme = 0, sist = 0, tid = 0, neste = 0, innkommet = false, inngang = null;
+    let synlig = !('IntersectionObserver' in window), ioSynlig = synlig, dekket = false, ramme = 0, sist = 0, tid = 0, neste = 0, innkommet = false, inngang = null;
     const animer = (el, rammer, valg) => {
       if (!bevegelse.matches && synlig) return el.animate(rammer, valg);
     };
@@ -275,8 +307,11 @@
     const start = () => {
       if (synlig && !bevegelse.matches && !ramme) { sist = performance.now(); ramme = requestAnimationFrame(tikk); }
     };
-    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => {
-      synlig = rader[0].isIntersecting;
+    // Ruta går bare mens den er i bildet og ikke dekket av den neste.
+    const bruk = (tvang) => {
+      const ny = ioSynlig && !dekket;
+      if (ny === synlig && !tvang) return;
+      synlig = ny;
       rute.classList.toggle('i-bildet', synlig);
       if (synlig) {
         rute.getAnimations({ subtree: true }).forEach((a) => { if (a.playState === 'paused') a.play(); });
@@ -291,7 +326,9 @@
         if (inngang) { inngang.finish(); inngang = null; }
         rute.getAnimations({ subtree: true }).forEach((a) => a.pause());
       }
-    }, { threshold: .08 }).observe(rute);
+    };
+    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => { ioSynlig = rader[0].isIntersecting; bruk(true); }, { threshold: .08 }).observe(rute);
+    kortRegister.push({ rute, sett: (d) => { if (d === dekket) return; dekket = d; rute.classList.toggle('dekket', d); if ('IntersectionObserver' in window) bruk(false); } });
     const roligKort = () => {
       cancelAnimationFrame(ramme); ramme = 0;
       rute.getAnimations({ subtree: true }).forEach((a) => a.cancel());
