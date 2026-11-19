@@ -24,16 +24,11 @@ test('alle tre forsidene får nedlastingsknapp og fast linje, og behandlingen er
 
 test('bare de tre forsidene behandles', () => {
   const rot = fileURLToPath(new URL('..', import.meta.url));
-  // Dagens forsider har markør og app-uttrykk-blokker; fjern dem så behandle() har noe å gjøre.
+  // Forsidene bygges nå av scripts/forside.mjs og har markøren fra start: behandle() skal la dem stå urørt.
   for (const [sti] of FORSIDER) {
-    const fil = alleSider(rot).find((s) => s.sti === sti).fil;
-    const ren = readFileSync(join(rot, fil), 'utf8')
-      .replace(/<!-- app-uttrykk:start -->[\s\S]*?<!-- app-uttrykk:slutt -->/gu, '')
-      .replace(/<a class="nav-dl"[^>]*>[\s\S]*?<\/a>/gu, '')
-      .replace(' data-app-uttrykk="1"', '');
-    const ut = behandle(ren, sti);
-    assert.match(ut, /class="nav-dl"/u, sti);
-    assert.match(ut, /id="dl-bar"/u, sti);
+    const html = readFileSync(join(rot, alleSider(rot).find((s) => s.sti === sti).fil), 'utf8');
+    assert.match(html, /data-app-uttrykk="1"/u, sti);
+    assert.equal(behandle(html, sti), html, sti);
   }
   const generert = readFileSync(join(rot, 'test/fixtures/skall-paa/omregner-nb-generert.html.fiks'), 'utf8');
   assert.equal(behandle(generert, '/verktoy/kopp-til-dl/'), generert);

@@ -1,4 +1,7 @@
 import { test, expect } from '@playwright/test';
+import { STI, SPRAK } from './hjelp/sprak.mjs';
+import { TEKST, fyll } from '../../scripts/forside-tekst.mjs';
+const T = TEKST[SPRAK];
 
 const rullTil = async (page, velger) => {
   await page.locator(velger).evaluate((el) => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
@@ -12,7 +15,7 @@ const tilstand = (page) => page.locator('.spor').evaluate((el) => ({
 test.use({ viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('matlyst-consent', 'denied'));
-  await page.goto('/');
+  await page.goto(STI);
 });
 
 test('kokeboka har 72 og 52 pikslers luft etter samlebåndet', async ({ page }) => {
@@ -51,14 +54,13 @@ test('kokebokraden følger rullingen bare på PC mens seksjonen er synlig', asyn
 test('skriving, glød og skjeletter gir valgt svar og fortsetter i loop etter trykk og hover', async ({ page }) => {
   await rullTil(page, '.sporflate');
   await page.locator('.forslag').nth(2).click();
-  await expect(page.locator('#sporTekst')).toHaveText('Bytt ut fløten');
+  await expect(page.locator('#sporTekst')).toHaveText(T.spor.forslag[2]);
   await expect(page.locator('.felt')).toHaveClass(/ferdig/);
   await expect(page.locator('.sk')).toHaveCount(3);
-  await expect(page.locator('#sporListe')).toContainText('kokosmelk');
-  await expect(page.locator('#sporListe')).toContainText('Steg 4');
+  await expect(page.locator('#sporListe .a-endr')).toHaveCount(T.eksempler.svar[2].endringer.length);
   await page.locator('.forslag').nth(2).hover();
   await expect(page.locator('.forslag').nth(3)).toHaveAttribute('aria-pressed', 'true', { timeout: 10000 });
-  await expect(page.locator('#sporListe')).toContainText('gul løk');
+  await expect(page.locator('#sporListe .a-endr')).toHaveCount(T.eksempler.svar[3].endringer.length);
   await expect(page.locator('.forslag').first()).toHaveAttribute('aria-pressed', 'true', { timeout: 10000 });
 });
 
@@ -68,7 +70,7 @@ test('skriving og svar fryses utenfor bildet og fortsetter ved retur', async ({ 
   await page.waitForTimeout(250);
   const delvis = await page.locator('#sporTekst').textContent();
   expect(delvis.length).toBeGreaterThan(0);
-  expect(delvis.length).toBeLessThan('Jeg ønsker en lavkarbo-versjon'.length);
+  expect(delvis.length).toBeLessThan(T.spor.forslag[1].length);
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   await page.waitForTimeout(150);
   const skrift = await tilstand(page);
@@ -82,14 +84,14 @@ test('skriving og svar fryses utenfor bildet og fortsetter ved retur', async ({ 
   await page.waitForTimeout(2200);
   expect(await tilstand(page)).toEqual(skjelett);
   await rullTil(page, '.sporflate');
-  await expect(page.locator('#sporListe')).toContainText('blomkålris');
+  await expect(page.locator('#sporListe .a-endr')).toHaveCount(T.eksempler.svar[1].endringer.length);
 });
 
 test('redusert bevegelse viser første svar ferdig og kobler fra rulling også ved endring', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await rullTil(page, '.sporflate');
-  await expect(page.locator('#sporTekst')).toHaveText('Gjør denne vegansk');
-  await expect(page.locator('#sporListe')).toContainText('kikerter');
+  await expect(page.locator('#sporTekst')).toHaveText(T.spor.forslag[0]);
+  await expect(page.locator('#sporListe .a-endr')).toHaveCount(T.eksempler.svar[0].endringer.length);
   await expect(page.locator('.sk')).toHaveCount(0);
   const stille = await tilstand(page);
   await page.waitForTimeout(1500);
@@ -99,7 +101,7 @@ test('redusert bevegelse viser første svar ferdig og kobler fra rulling også v
   await expect(page.locator('.felt')).toHaveCSS('animation-name', 'none');
   expect(await page.locator('#sporTekst').evaluate((el) => getComputedStyle(el, '::after').animationName)).toBe('none');
   await page.locator('.forslag').nth(3).click();
-  await expect(page.locator('#sporListe')).toContainText('gul løk');
+  await expect(page.locator('#sporListe .a-endr')).toHaveCount(T.eksempler.svar[3].endringer.length);
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await expect(page.locator('.forslag').first()).toHaveAttribute('aria-pressed', 'true', { timeout: 10000 });
 });

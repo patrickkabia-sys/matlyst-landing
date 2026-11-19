@@ -1,10 +1,11 @@
 import { test, expect } from '@playwright/test';
+import { STI, SPRAK } from './hjelp/sprak.mjs';
 
 test.use({ viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('matlyst-consent', 'denied'));
-  await page.goto('/');
+  await page.goto(STI);
 });
 
 async function rullTil(page, velger) {

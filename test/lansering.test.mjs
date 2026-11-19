@@ -86,7 +86,7 @@ test('forsidene har posisjoneringen i ingress og meta description, uten superlat
   for (const [fil, posisjonering, ingress = posisjonering] of forsider) {
     const html = les(fil);
     assert.ok(html.match(/<meta name="description" content="([^"]+)"/u)[1].startsWith(posisjonering), `${fil}: meta description`);
-    if (fil !== 'index.html') assert.ok(html.match(/<p class="lead">([^<]+)<\/p>/u)[1].startsWith(ingress), `${fil}: ingress`);
+    // Ingressen på forsidene er den godkjente teksten fra scripts/forside-tekst.mjs, ikke posisjoneringen.
     const synlig = html.replace(/<script[\s\S]*?<\/script>/gu, ' ').replace(/<[^>]+>/gu, ' ');
     assert.doesNotMatch(synlig, superlativ, fil);
     assert.doesNotMatch(html.match(/<head>[\s\S]*?<\/head>/u)[0], superlativ, `${fil}: head`);
@@ -157,8 +157,8 @@ test('#9 merges ikke før #536 er merget og deployet', () => {
 
 test('alle vurderingstall sier 5,0 og 12 vurderinger', () => {
   assert.match(les('index.html'), /"ratingValue": "5\.0", "ratingCount": "12"/u);
-  assert.match(les('sv/index.html'), /5,0 i norska App Store den 5 oktober 2026, baserat på 12 betyg\./u);
-  assert.match(les('da/index.html'), /5,0 i den norske App Store den 5\. oktober 2026, baseret på 12 vurderinger\./u);
+  assert.match(les('sv/index.html'), /<b>5,0<\/b> av 5 i norska App Store/u);
+  assert.match(les('da/index.html'), /<b>5,0<\/b> af 5 i den norske App Store/u);
   assert.ok(les('llms.txt').includes('5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026)'));
   for (const fil of ['index.html', 'sv/index.html', 'da/index.html', 'llms.txt']) {
     assert.doesNotMatch(les(fil), /"ratingCount": "(?!12")|\b(?!12\b)\d+ (?:vurderinger|betyg|ratings)\b/u, fil);
@@ -175,11 +175,9 @@ test('nb-forsiden: grammatisk importsetning, presis handleliste og ny posisjoner
   assert.doesNotMatch(html, /skrive seg selv|også håndskrevne,|\buken\b/u);
 });
 
-test('sv/da-forsiden gjentar ikke posisjoneringen i overlinje og ingress', () => {
+test('sv/da-forsiden bruker ikke posisjoneringen som ingress', () => {
   for (const [fil, ord] of [['sv/index.html', 'Receptappen'], ['da/index.html', 'Opskriftsappen']]) {
-    const html = les(fil);
-    assert.ok(html.match(/<p class="eyebrow hero-eyebrow">([^<]+)<\/p>/u)[1].startsWith(ord), fil);
-    assert.ok(!html.match(/<p class="lead">([^<]+)<\/p>/u)[1].startsWith(ord), fil);
+    assert.ok(!les(fil).match(/<p class="lead">([^<]+)<\/p>/u)[1].startsWith(ord), fil);
   }
 });
 

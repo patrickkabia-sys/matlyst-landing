@@ -80,7 +80,7 @@ test('kildene på båndet er de godkjente, og lista står fire ganger', () => {
 });
 
 test('ukjent språk gir en tydelig feil', () => {
-  assert.throws(() => forside('sv'), /Mangler.*sv/);
+  assert.throws(() => forside('fr'), /Mangler.*fr/);
 });
 
 test('manglende tekst kaster med nøkkelstien, også i lister', () => {

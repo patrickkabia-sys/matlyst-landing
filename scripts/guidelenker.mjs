@@ -67,8 +67,8 @@ export function blokk(lang, liste) {
 }
 
 export function settInn(html, ny, sti) {
-  // /sv/, /da/ og /en/ trenger samme unntak når scripts/forside.mjs genererer dem.
-  if (sti === '/') return html;
+  // Forsidene på alle fire språk bygges av scripts/forside.mjs med eget skall.
+  if (['/', '/sv/', '/da/', '/en/'].includes(sti)) return html;
   if (MONSTER.test(html)) return html.replace(MONSTER, () => ny);
   // Det nye skallet har en plass i hylledelen (<details class="alle-guider">).
   if (html.includes(PLASS)) return html.replace(PLASS, () => ny);

@@ -168,7 +168,7 @@ html.js .hero h1:not(.klar){visibility:hidden}
 /* App-flater: de samme delene som i appen, satt opp hele og for seg selv. Appens egne farger og skrifter. */
 .app{position:relative;width:100%;max-width:440px;margin:auto;font-family:'DM Sans',system-ui,sans-serif;color:var(--a-tekst);font-size:17px;line-height:1.45}
 .app b{font-weight:inherit}
-.a-tittel{font:600 23px/1.2 'Fraunces',Georgia,serif;letter-spacing:-.01em}
+.a-tittel{font:600 23px/1.2 'Fraunces',Georgia,serif;letter-spacing:-.01em;overflow-wrap:anywhere}
 
 .kokebok{padding-block:72px 0;text-align:center}
 .kokebok h2{font-size:clamp(30px,3.6vw,44px);line-height:1.08}
