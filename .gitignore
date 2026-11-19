@@ -5,3 +5,5 @@
 test-results/
 node_modules/
 playwright-report/
+qa/skjermbilder/
+qa/forhandsvisning/

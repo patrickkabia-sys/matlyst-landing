@@ -1,0 +1,50 @@
+name: Revisjon
+
+# Kjører på alle pull requests, uten stifilter: endringer i revisjonstestene, sidetyper.mjs,
+# hyller.mjs, skallfilene og stilarkene skal alltid utløse den. Typer som ikke er rullet ut,
+# gir 0 sider og grønt. test.yml kjører fortsatt standardutvalget.
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  revisjon:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { type: omregner, sprak: nb }
+          - { type: omregner, sprak: sv }
+          - { type: omregner, sprak: da }
+          - { type: omregner, sprak: en }
+          - { type: guide-lang, sprak: '' }
+          - { type: guide-kort, sprak: '' }
+          - { type: guide-gammel, sprak: '' }
+          - { type: blogg, sprak: '' }
+          - { type: juss, sprak: '' }
+          - { type: tjeneste, sprak: '' }
+    steps:
+      - name: Hent kildekoden
+        uses: actions/checkout@v4
+
+      - name: Sett opp Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer avhengigheter
+        run: npm ci
+
+      - name: Installer Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Revider ${{ matrix.type }} ${{ matrix.sprak }}
+        run: npx playwright test revisjon.spec --workers=4 --pass-with-no-tests
+        env:
+          REVISJON: ${{ matrix.type }}
+          REVISJON_SPRAK: ${{ matrix.sprak }}
