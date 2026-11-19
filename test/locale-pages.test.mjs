@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
 import { SIDEGRUPPER, alternativerFor, filForSti } from '../scripts/locale-sider.mjs';
+import { NORSKE_RESTORD } from './hjelp/restord.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url)) + '/..';
 
@@ -69,14 +70,13 @@ test('alle hreflang-mål finnes og peker gjensidig tilbake', () => {
 });
 
 test('synlig lokal tekst inneholder ikke sentrale norske restord', () => {
-  const stop = /\b(?:oppskrift|oppskrifter|handleliste|ukemeny|spiskammer|slett konto|hverdagsmiddag)\b/iu;
   for (const fil of filer) {
     const synlig = les(fil)
       .replace(/<script[\s\S]*?<\/script>/gu, ' ')
       .replace(/<style[\s\S]*?<\/style>/gu, ' ')
       .replace(/<[^>]+>/gu, ' ')
       .replace(/\s+/gu, ' ');
-    assert.doesNotMatch(synlig, stop, relative(root, fil));
+    assert.doesNotMatch(synlig, NORSKE_RESTORD, relative(root, fil));
   }
 });
 

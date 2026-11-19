@@ -8,6 +8,8 @@ import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from '../
 import { SKALLTEKST, SPRAKVALG, BUTIKK } from '../scripts/skall-tekst.mjs';
 import { TEKST } from '../scripts/forside-tekst.mjs';
 import { lesCommon } from './hjelp/lokalsider-kilde.mjs';
+import { SIDEGRUPPER } from '../scripts/locale-sider.mjs';
+import { NORSKE_RESTORD } from './hjelp/restord.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const les = (sti) => readFileSync(join(rot, sti), 'utf8');
@@ -467,3 +469,36 @@ test('språkvelgeren viser fulle navn, beholder etikettene og eier ett kommentar
 test('butikklenkene på sv, da og en er de L bruker', () => {
   for (const s of ['sv', 'da', 'en']) assert.deepEqual(BUTIKK[s], { apple: lesCommon(s).appStore, google: lesCommon(s).play });
 });
+
+// ---------- svensk, dansk og amerikansk engelsk ----------
+
+for (const s of ['sv', 'da', 'en']) {
+  test(`${s}: menyen og bunnen har de samme hyllene og lenkene`, () => {
+    assert.ok(lenker(hylledel(s)).length > 15);
+    assert.deepEqual(lenker(hylledel(s)), lenker(topp(s, {}).match(/<nav class="panel"[\s\S]*?<\/nav>/)[0]));
+  });
+  test(`${s}: skallet uten banner legger ikke til overskrifter`, () => { assert.doesNotMatch(skallUtenBanner(s), /<h[1-6]\b/i); });
+  test(`${s}: samtykkebanneret til sider uten banner er ordrett L sitt`, () => {
+    const c = lesCommon(s), html = samtykke(s);
+    for (const del of [c.consent, `>${c.accept}<`, `>${c.reject}<`]) assert.ok(html.includes(del), del);
+    assert.doesNotMatch(html, /<h[1-6]\b/i);
+  });
+  test(`${s}: logo, personvern og vilkår lenker til sidene på språket`, () => {
+    const g = (id) => SIDEGRUPPER.find((x) => x.id === id).sider[s];
+    assert.match(topp(s, {}), new RegExp(`class="merke" href="${g('forside')}"`));
+    for (const id of ['personvern', 'vilkar']) assert.match(morkBunn(s, {}), new RegExp(`href="${g(id)}"`));
+  });
+  test(`${s}: personvern og vilkår har samme ord som L`, () => {
+    const c = lesCommon(s);
+    assert.deepEqual(SKALLTEKST[s].under.lenker.slice(0, 2), [c.privacy, c.terms]);
+    assert.deepEqual(BUTIKK[s], { apple: c.appStore, google: c.play });
+  });
+  test(`${s}: skalltekstene følger skrivereglene og plassen`, () => {
+    const synlig = alleDeler(s).replace(/<[^>]+>/g, ' ');
+    assert.doesNotMatch(synlig, /[–—]/);
+    assert.doesNotMatch(synlig, /\b(kopp|kopper|kop|koppar)\b/i);
+    assert.doesNotMatch(synlig, NORSKE_RESTORD);
+    const t = SKALLTEKST[s];
+    for (const [verdi, maks] of [[t.topp.meny, 8], [t.topp.lastNed, 10], [t.bunn.knapp, 18], [t.fast.knapp, 18], [t.innhold.knapp, 18], [t.bunn.guider, 20], [t.bunnlinje, 50], [t.hent.tittel, 28], [t.hent.ingress, 90]]) assert.ok(verdi.length <= maks, verdi);
+  });
+}

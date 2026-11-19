@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
-import { HYLLER, LOKALE_KILDER, lokaliserHyller, synligeLenker } from '../scripts/hyller.mjs';
+import { HYLLER, HYLLETEKST, LOKALE_KILDER, lokaliserHyller, synligeLenker } from '../scripts/hyller.mjs';
 import { alleSider } from '../scripts/sidetyper.mjs';
 import { gruppeForSti } from '../scripts/locale-sider.mjs';
 
@@ -194,3 +194,25 @@ test('en lenke vises ikke når fila på språket mangler, og vises når den finn
   assert.equal(funn({ 'sv/inkopslista/index.html': '' }).finnes, true);
   assert.equal(funn({ 'sv/index.html': '' }).finnes, false);
 });
+
+for (const s of ['sv', 'da', 'en']) {
+  test(`${s}: hver hylle og lenke har tekst, og hver synlige lenke finnes`, () => {
+    const hyller = lokaliserHyller(s, HYLLETEKST[s]);
+    assert.equal(hyller.length, 6);
+    for (const h of hyller) {
+      assert.ok(h.navn && h.navn.length <= 18, h.navn);
+      for (const l of h.lenker) {
+        assert.ok(l.tekst && l.tekst.length <= 24, `${h.id}: ${l.tekst}`);
+        assert.doesNotMatch(l.tekst, /[–—]|\b(kopp|kopper|kop|koppar)\b/i);
+        if (l.finnes && !/^https?:/.test(l.href)) {
+          const sti = l.href.split('#')[0];
+          assert.ok(existsSync(join(rot, sti.endsWith('/') ? `${sti}index.html` : sti)), `${s} ${l.href}`);
+        }
+      }
+    }
+  });
+  test(`${s}: tekstfila har ingen nøkler koden ikke kjenner`, () => {
+    const kjente = new Set([...HYLLER.nb.flatMap((h) => h.lenker.map((l) => l.href)), ...LOKALE_KILDER[s].map((k) => k.href)]);
+    for (const nokkel of Object.keys(HYLLETEKST[s].lenker)) if (!kjente.has(nokkel) && !Object.values(LOKALE_KILDER).flat().some((k) => k.href === nokkel)) assert.fail(nokkel);
+  });
+}
