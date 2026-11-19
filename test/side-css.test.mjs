@@ -45,7 +45,7 @@ test('bevegelse står stille ved redusert bevegelse', () => {
 });
 
 test('klassedekningen ser en klasse uten regel', () => {
-  assert.ok(klasserUtenRegel('guide-kort', {}).length > 0);
+  assert.ok(klasserUtenRegel('guide-kort', {}).includes('disp'));
 });
 
 test('grunnstilen dekker kjernen i hver byggekloss', () => {
@@ -108,9 +108,24 @@ test('lange guider: filmer og bilder i lesekolonnen har en regel som tvinger dem
   assert.match(del, /\.locale-prose :is\(video,\.tel\)\{[^}]*width:100%[^}]*max-width:300px/u);
 });
 
+test('korte guider har stil for alle klassene i innholdet', () => {
+  assert.deepEqual(klasserUtenRegel('guide-kort', { 'disp': 'skriftvalg på overskrifter, ingen egen regel' }), []);
+});
+
+test('korte guider: stegene, idelisten og kildepillen er avgrenset til guide-kort', () => {
+  const rå = les('side.css');
+  const start = rå.indexOf('/* == Kort guide == */');
+  const slutt = rå.indexOf('/* == Eldre sider == */');
+  assert.ok(start > -1 && slutt > start);
+  const del = utenKommentarer(rå.slice(start, slutt));
+  assert.ok(regler(del).length >= 6);
+  for (const r of regler(del)) for (const v of r.velger.split(',')) assert.ok(v.trim().startsWith('body[data-sidetype="guide-kort"] '), `ikke avgrenset: ${v.trim()}`);
+  for (const nokkel of ['counter-increment:steg', 'ul.ide-liste{display:grid;grid-template-columns:repeat(2', 'a[rel~="noopener"]:only-child{display:inline-flex']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
+});
+
 test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', () => {
   const typer = new Set([...css.matchAll(/data-sidetype="([^"]+)"/gu)].map((m) => m[1]));
-  assert.ok(typer.has('guide-lang') && typer.has('omregner'), 'forventet avgrensning mangler');
+  assert.ok(typer.has('guide-lang') && typer.has('omregner') && typer.has('guide-kort'), 'forventet avgrensning mangler');
   const sider = alleSider(new URL('..', import.meta.url).pathname);
   for (const t of typer) {
     assert.ok(TYPER.includes(t), `ukjent sidetype i side.css: ${t}`);

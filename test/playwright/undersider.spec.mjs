@@ -240,3 +240,23 @@ test('redusert bevegelse: ingen film spiller', async ({ page }) => {
   expect(r.antall).toBeGreaterThan(0);
   expect(r.spilt.filter(Boolean)).toEqual([]);
 });
+
+// Korte guider: beregnet stil på ekte sider beviser at velgerne treffer (regelteksten alene beviser ingenting).
+const KORT = { steg: '/importer-fra-koket/', middag: '/middagsforslag/' };
+for (const bredde of [390, 1280]) test(`korte guider: steg, ideliste og kildepille treffer ekte sider på ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse(KORT.steg));
+  const steg = await page.evaluate(() => [...document.querySelectorAll('.locale-prose > ol > li')].map((li) => {
+    const b = getComputedStyle(li, '::before');
+    return { liste: getComputedStyle(li.parentElement).listStyleType, innhold: b.content, bg: b.backgroundColor, radius: b.borderTopLeftRadius, w: b.width };
+  }));
+  expect(steg.length).toBeGreaterThan(0);
+  steg.forEach((s, i) => { expect(s.liste).toBe('none'); expect(s.innhold).toBe("counter(steg)"); expect(s.bg).toBe('rgb(20, 18, 16)'); expect(s.radius).toBe('50%'); expect(s.w).toBe('32px'); });
+  const pille = await page.evaluate(() => { const a = document.querySelector('.locale-prose > p > a[rel~="noopener"]:only-child'); if (!a) return null; const c = getComputedStyle(a); return { r: c.borderTopLeftRadius, d: c.display, h: a.getBoundingClientRect().height, u: c.textDecorationLine }; });
+  expect(pille).not.toBeNull();
+  expect(pille.r).toBe('999px'); expect(pille.d).toBe('inline-flex'); expect(pille.h).toBeGreaterThanOrEqual(48); expect(pille.u).toBe('none');
+  await page.goto(adresse(KORT.middag));
+  const ide = await page.evaluate(() => [...document.querySelectorAll('ul.ide-liste')].map((u) => ({ kol: getComputedStyle(u).gridTemplateColumns.split(' ').length, bg: getComputedStyle(u.firstElementChild).backgroundColor, radius: getComputedStyle(u.firstElementChild).borderTopLeftRadius, ut: u.scrollWidth - u.clientWidth })));
+  expect(ide.length).toBeGreaterThan(0);
+  for (const u of ide) { expect(u.kol).toBe(bredde >= 721 ? 2 : 1); expect(u.bg).toBe('rgb(245, 243, 239)'); expect(u.radius).toBe('24px'); expect(u.ut).toBeLessThanOrEqual(0); }
+});

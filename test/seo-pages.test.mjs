@@ -39,7 +39,8 @@ test('importsiden opplyser at bildeimport krever Pro', () => {
 
 test('skip-lenken peker på et hovedlandemerke som omslutter sideinnholdet', () => {
   assert.match(importerSide, /<main id="hovedinnhold">\s*<header class="locale-page-hero">/u);
-  assert.match(importerSide, /<section class="page-cta">[\s\S]*<\/section><\/main>\s*<footer>/u);
+  assert.match(importerSide, /<section class="page-cta">[\s\S]*<\/section><\/main>\s*<!-- skall:bunn -->/u);
+  assert.match(importerSide, /<section class="page-cta">[^]*?data-hent="side-cta"[^]*?<\/section><\/main>/u, 'B1: nedlastingsboksen bevares inne i section.page-cta');
 });
 
 test('delingsbildet har alternativtekst i Open Graph og Twitter', () => {
