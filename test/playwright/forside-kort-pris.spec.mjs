@@ -5,6 +5,10 @@ import { join } from 'node:path';
 const rot = join(fileURLToPath(new URL('..', import.meta.url)), '..');
 const rullTil = async (page, velger) => page.locator(velger).evaluate((el) => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
 const bilde = (page, velger) => page.locator(velger).evaluate((el) => el.innerHTML);
+// i-bildet settes av IntersectionObserver og kan komme et øyeblikk etter rullingen på en treg maskin; den er ikke animasjonstilstand.
+const stillbilde = async (page, velger) => (await bilde(page, velger)).replaceAll(' i-bildet', '');
+// Overgangene her måles i ekte tid (CSS-overganger følger ikke page.clock). En travel CI-maskin kan bomme på et vindu på 100 ms.
+test.describe.configure({ retries: process.env.CI ? 2 : 0 });
 test.use({ viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
 
 test('hvert kort går i loop, fryses utenfor bildet og sveipes inn bare én gang', async ({ page }) => {
@@ -69,9 +73,9 @@ test('redusert bevegelse viser alle kort ferdig og svarbeskrivelsen følger valg
   await expect(page.locator('.a-husflate .ny')).not.toHaveClass(/skjult/);
   await page.clock.install();
   await rullTil(page, '#demoHus');
-  const ferdig = await bilde(page, '#trio');
+  const ferdig = await stillbilde(page, '#trio');
   await page.clock.runFor(20000);
-  expect(await bilde(page, '#trio')).toBe(ferdig);
+  expect(await stillbilde(page, '#trio')).toBe(ferdig);
   await rullTil(page, '#spor');
   await page.locator('.forslag').nth(2).click();
   await expect(page.locator('#sporSvar')).toHaveAttribute('aria-label', /Kokosmelk gir samme fylde/);

@@ -418,3 +418,56 @@ for (const bredde of [390, 1280]) for (const sti of ['/lagre-oppskrifter-fra-ins
   expect(r.kol).toBe(bredde >= 721 ? 2 : 1);
   expect(r.venstre).toBeLessThan(2);
 });
+
+// Bloggen: beregnet stil på ekte sider beviser at velgerne treffer.
+const BLOGG = { indeks: '/blogg/', artikkel: '/blogg/koketider/', merknad: '/blogg/erstatte-egg/' };
+for (const bredde of [390, 1280]) test(`bloggen: kort, forsidebilde, tabell, galleri, appkort og flere-rad treffer ekte sider på ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse(BLOGG.indeks));
+  const kort = await page.evaluate(() => {
+    const ul = document.querySelector('ul.blogg-kort');
+    const li = [...ul.children];
+    const a = li[0].querySelector('a');
+    return { antall: li.length, kol: getComputedStyle(ul).gridTemplateColumns.split(' ').length, bg: getComputedStyle(li[0]).backgroundColor, radius: getComputedStyle(li[0]).borderTopLeftRadius, klipp: getComputedStyle(li[0]).overflow, hoyde: a.getBoundingClientRect().height, bildeRadiusUte: getComputedStyle(li[0].querySelector('img')).borderTopLeftRadius, ut: document.documentElement.scrollWidth - document.documentElement.clientWidth };
+  });
+  expect(kort.antall).toBeGreaterThanOrEqual(8);
+  expect(kort.kol).toBe(bredde >= 1001 ? 3 : 1);
+  expect(kort.bg).toBe('rgb(245, 243, 239)'); expect(kort.radius).toBe('24px'); expect(kort.klipp).toBe('hidden');
+  expect(kort.hoyde).toBeGreaterThanOrEqual(44); expect(kort.ut).toBeLessThanOrEqual(0);
+
+  await page.goto(adresse(BLOGG.artikkel));
+  const m = await page.evaluate(() => {
+    const boks = (el) => { const r = el.getBoundingClientRect(); return { x: Math.round(r.left), w: Math.round(r.width) }; };
+    const prose = document.querySelector('article.blogg-artikkel .locale-prose');
+    const fig = document.querySelector('figure.blogg-forside');
+    const tabell = prose.querySelector('table.blogg-tabell');
+    const rad = document.querySelector('.blogg-galleri-rad');
+    const cta = document.querySelector('.app-cta');
+    const knapp = cta.querySelector('a[data-hent="app-cta"]');
+    const flere = document.querySelector('.blogg-flere li a');
+    const tdSist = tabell.querySelector('tr td:last-child');
+    return {
+      prose: boks(prose), fig: boks(fig), tabell: boks(tabell),
+      figRadius: getComputedStyle(fig.querySelector('img')).borderTopLeftRadius,
+      tabellStrek: getComputedStyle(tabell.querySelector('tbody th')).borderBottomStyle, tdAlign: getComputedStyle(tdSist).textAlign, tdVekt: getComputedStyle(tdSist).fontWeight,
+      radOverflow: getComputedStyle(rad).overflowX, radSnap: getComputedStyle(rad).scrollSnapType, radBredere: rad.scrollWidth > rad.clientWidth, radFokus: rad.tabIndex, radBilde: getComputedStyle(rad.querySelector('img')).borderTopLeftRadius,
+      ctaKol: getComputedStyle(cta).gridTemplateColumns.split(' ').length, ctaRadius: getComputedStyle(cta).borderTopLeftRadius,
+      bildeX: cta.querySelector('.app-cta-bilde').getBoundingClientRect().left > cta.querySelector('.app-cta-tekst').getBoundingClientRect().left + 100,
+      knappH: knapp.getBoundingClientRect().height, knappKlasse: knapp.className,
+      flereRadius: getComputedStyle(flere).borderTopLeftRadius, flereDisplay: getComputedStyle(flere).display, flereKant: getComputedStyle(flere).borderBottomWidth,
+      ut: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    };
+  });
+  expect(m.fig).toEqual(m.prose); expect(m.tabell).toEqual(m.prose);
+  expect(m.figRadius).toBe('24px'); expect(m.tabellStrek).toBe('solid'); expect(m.tdAlign).toBe('right'); expect(m.tdVekt).toBe('700');
+  expect(m.radOverflow).toBe('auto'); expect(m.radSnap).toContain('mandatory'); expect(m.radFokus).toBe(0); expect(m.radBilde).toBe('24px');
+  expect(m.radBredere).toBe(bredde < 721);
+  expect(m.ctaKol).toBe(bredde >= 721 ? 2 : 1); expect(m.ctaRadius).toBe(bredde >= 721 ? '40px' : '32px'); expect(m.bildeX).toBe(bredde >= 721);
+  expect(m.knappH).toBeGreaterThanOrEqual(44); expect(m.knappKlasse).toContain('knapp');
+  if (bredde >= 721) { expect(m.flereRadius).toBe('999px'); expect(m.flereKant).toBe('1px'); } else { expect(m.flereRadius).toBe('0px'); expect(m.flereDisplay).toBe('flex'); }
+  expect(m.ut).toBeLessThanOrEqual(0);
+
+  await page.goto(adresse(BLOGG.merknad));
+  const merknad = await page.evaluate(() => { const s = document.querySelector('.locale-prose td .merknad'); const c = getComputedStyle(s); return { s: c.fontSize, v: c.fontWeight, f: c.color }; });
+  expect(merknad).toEqual({ s: '15px', v: '400', f: 'rgb(95, 89, 82)' });
+});
