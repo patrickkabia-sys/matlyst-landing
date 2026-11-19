@@ -89,7 +89,7 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .butikker a:hover{border-color:var(--blekk)}
 .lukk{position:absolute;right:12px;top:12px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:none;color:var(--dempet);cursor:pointer;transition:background-color .2s,color .2s}
 .lukk:hover{background:var(--hylle);color:var(--blekk)}
-.fast{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid rgb(20 18 16 / .08);background:rgb(255 255 255 / .94);transform:translateY(115%);transition:transform .5s var(--ut)}
+.fast{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid rgb(20 18 16 / .08);background:var(--flate);transform:translateY(115%);transition:transform .5s var(--ut)}
 .fast.vis{transform:none}
 .fast .knapp{display:flex}
 @media (max-width:1000px){.fast{display:block}}

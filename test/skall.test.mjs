@@ -556,6 +556,14 @@ test('guider-panelet er skjult til det åpnes: markupen har hidden og skall.css 
   assert.deepEqual(medDisplay.map((m) => m[1].trim()), [], '.panel kan ikke sette display uten [hidden]-unntak');
 });
 
+test('den faste nedlastingsknappen (.fast) har ugjennomsiktig bakgrunn: revisjonsmotoren regner bare alfa 1 (eller 0,8 med blur) som dekkende, og teksten under den er uleselig', () => {
+  const css = utenKommentarer(les('skall.css'));
+  const fast = css.match(/\.fast\{([^}]*)\}/u);
+  assert.ok(fast, 'mangler .fast');
+  assert.match(fast[1], /background:\s*var\(--flate\)/u);
+  assert.doesNotMatch(fast[1], /background:\s*rgb\([^)]*\/ \./u, 'halvgjennomsiktig .fast gir falske overlappfunn i revisjonen');
+});
+
 test('toppen er sticky fra 1001 px med tett bakgrunn og uten backdrop-filter (ga doble bilderuter), og har en reserve ved redusert gjennomsiktighet', () => {
   const css = utenKommentarer(les('skall.css'));
   const blokk = css.match(/@media \(min-width:1001px\)\s*\{([\s\S]*?)\n\}/u);
