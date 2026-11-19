@@ -3,9 +3,15 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { TEKST, EKSEMPELSTIER, fyll } from '../scripts/forside-tekst.mjs';
+import { SKALLTEKST } from '../scripts/skall-tekst.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
-const t = TEKST.nb, alt = JSON.stringify(t);
+// Forsidens egne tekster og skalltekstene har hver sin eier, men siden leses som én.
+const t = { ...TEKST.nb, ...SKALLTEKST.nb }, alt = JSON.stringify(t);
+
+test('forsidens tekster og skalltekstene har ingen felles nøkler', () => {
+  assert.deepEqual(Object.keys(TEKST.nb).filter((k) => k in SKALLTEKST.nb), []);
+});
 
 test('overskrift, steg og kilder er de som er godkjent', () => {
   assert.equal(t.h1, 'Oppskrifter du faktisk lager.');
@@ -152,7 +158,9 @@ const forsteSvar = t.eksempler.svar[0];
 //   ekstra  enkeltstier utenfor nøklene (eksempeltekster som markupen viser ferdig)
 //   teller  hvor mange ganger en sti (prefiks) vises i regionen når den er lagret én gang
 const REGIONER = [
-  { navn: 'header', html: regioner.topp, nokler: ['topp', 'folg'] },
+  { navn: 'header', html: regioner.topp, nokler: ['topp', 'folg'],
+    utelatt: [/^topp\.hopp$/], // skiplenken står ikke i prototypen; låst i skall.test.mjs
+  },
   {
     navn: 'hero', html: seksjon('hero'),
     nokler: ['h1', 'ingress', 'knapp', 'vurdering', 'stegAria', 'steg', 'filmAria', 'kildetittel', 'kilderAria', 'kilder'],
@@ -178,14 +186,22 @@ const REGIONER = [
   },
   { navn: 'pris', html: seksjon('pris'), nokler: ['pris'] },
   { navn: 'ofte', html: seksjon('ofte'), nokler: ['svar'] },
-  { navn: 'bunn', html: regioner.bunn, nokler: ['bunn', 'bunnlinje', 'knapp'] },
+  {
+    navn: 'bunn', html: regioner.bunn, nokler: ['bunn', 'bunnlinje'],
+    // «bunn.guider» finnes ikke i prototypen; låst i skall.test.mjs.
+    utelatt: [/^bunn\.guider$/],
+  },
   { navn: 'footer', html: regioner.under, nokler: ['under', 'sprak'] },
   { navn: 'fast', html: regioner.fast, nokler: ['fast'] },
   { navn: 'dialog', html: regioner.hent, nokler: ['hent'] },
 ];
 // Nøkkelgrupper som ikke har noen region: eksempeltekster tegnet av scriptet (bortsett fra
 // forklaringen over). Kontrollert for hånd, ikke maskinelt.
-const UREGIONERT = ['eksempler', 'stegtider'];
+const UREGIONERT = [
+  'eksempler', 'stegtider',
+  'innhold', // vises ikke på forsiden; låst i skall.test.mjs
+  'samtykke', // banneret står ikke i prototypen; teksten er låst i skall.test.mjs mot dagens index.html
+];
 
 const PROTOTYPEUNNTAK = [
   // prototypen sier Vilkår; gruppa inneholder også Personvern og Informasjonskapsler, så navnet er Juridisk

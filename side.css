@@ -1,0 +1,188 @@
+/* == Grunnstil == */
+/* Undersidenes felles utseende. Verdiene er hentet fra omregner-prototypen
+   (docs/superpowers/prototyper/2026-11-18-omregner.html, delen «Omregnersiden»):
+   .ohelt og .sti (topp), .lese og .punkter (lesetekst), .kortsvar, .otabell,
+   .oappkort, .svarliste og .kjede. Lesbar tekst står i rem så den følger
+   brukerens tekststørrelse. Bare tokens fra tokens.css. Skallet (topp, bunn,
+   knapp, banner) hører hjemme i skall.css og røres ikke her. */
+
+/* Innholdsrammen: samme gutter og bredde som skallet */
+main{font-size:1.125rem;line-height:1.55;max-width:1184px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Toppen: midtstilt, overlinje, tittel og ingress */
+.locale-page-hero{padding-block:56px 0;text-align:center}
+.locale-page-hero .eyebrow{margin:0;font-size:.9375rem;font-weight:500;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--dempet)}
+.locale-page-hero .eyebrow a{display:inline-flex;align-items:center;min-height:44px;color:var(--dempet);transition:color .2s}
+.locale-page-hero .eyebrow a:hover,.locale-page-hero .eyebrow a:focus-visible{color:var(--blekk)}
+.locale-page-hero h1{margin:6px auto 0;font-size:2.375rem;line-height:1.05;overflow-wrap:break-word}
+.locale-page-hero .lead{margin:18px auto 0;max-width:44ch;font-size:1.25rem;line-height:1.5;color:var(--dempet)}
+
+/* Lesekolonnen */
+.locale-prose,main.prose{max-width:68ch;margin-inline:auto;font-size:1.1875rem;line-height:1.6;overflow-wrap:break-word}
+.locale-prose{margin-top:28px}
+main.prose{padding-block:72px 0}
+.locale-prose h2,main.prose h2{margin:64px 0 0;font-size:1.625rem;line-height:1.12}
+.locale-prose h2:first-child,main.prose h2:first-child{margin-top:0}
+.locale-prose h3,main.prose h3{margin:40px 0 0;font-size:1.3125rem;line-height:1.25;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+.locale-prose h2 + p,.locale-prose h2 + ul,.locale-prose h2 + ol,main.prose h2 + p,main.prose h2 + ul{margin-top:14px}
+.locale-prose p,main.prose p{margin:14px 0 0}
+.locale-prose > ul:not([class]),main.prose > ul:not([class]){display:grid;gap:12px;margin:14px 0 0;padding:0;list-style:none;line-height:1.55}
+.locale-prose > ul:not([class]) li,main.prose > ul:not([class]) li{position:relative;padding-left:28px}
+.locale-prose > ul:not([class]) li::before,main.prose > ul:not([class]) li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--blekk)}
+.locale-prose > ol:not([class]),main.prose > ol:not([class]){display:grid;gap:12px;margin:14px 0 0;padding-left:1.5em}
+.locale-prose strong,main.prose strong{font-weight:700}
+.locale-prose a:not([data-hent]),main.prose a:not([data-hent]){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+.locale-prose a:not([data-hent]):hover,main.prose a:not([data-hent]):hover{text-decoration-thickness:2px}
+.locale-prose figure,main.prose figure{margin:32px 0 0}
+.locale-prose figure img,main.prose figure img{display:block;max-width:100%;height:auto;border-radius:24px}
+.locale-prose figcaption,main.prose figcaption{margin-top:10px;font-size:.9375rem;color:var(--dempet)}
+/* Ankerhopp lander under den klebrige toppen (72 px høy på PC, ikke klebrig under 1001 px) */
+h2[id],h3[id]{scroll-margin-top:16px}
+@media (min-width:1001px){h2[id],h3[id]{scroll-margin-top:88px}}
+
+/* Kort svar */
+.answer{max-width:52ch;margin:0 auto;font-size:1.1875rem;line-height:1.5;text-align:center}
+.answer p{margin:0}
+.answer b,.answer strong{font-weight:700}
+
+/* Tabeller: tynn svart strek under hodet, lyse linjer mellom radene, siste kolonne høyrestilt og fet */
+.table-wrap{margin-top:22px;max-width:100%;overflow-x:auto}
+.table-wrap:focus-visible{outline:2px solid var(--blekk);outline-offset:2px}
+.table-wrap > table,.locale-prose table{width:100%;border-collapse:collapse;font-size:1.125rem}
+.table-wrap > table{margin:0}
+.locale-prose table{margin-top:22px;line-height:1.55}
+.table-wrap table{margin-top:0}
+.locale-prose th{padding:0 0 10px;font-size:.875rem;font-weight:500;letter-spacing:.04em;text-align:left;color:var(--dempet);border-bottom:1px solid var(--blekk)}
+.locale-prose tbody th{padding:13px 0;font-size:inherit;font-weight:500;letter-spacing:normal;color:var(--blekk);border-bottom:1px solid var(--linje)}
+.locale-prose td{padding:13px 0;border-bottom:1px solid var(--linje)}
+.locale-prose th:last-child:not(:first-child),.locale-prose td:last-child:not(:first-child){text-align:right}
+.locale-prose td:last-child:not(:first-child){font-weight:700}
+.locale-prose tbody tr:last-child th,.locale-prose tbody tr:last-child td{border-bottom:0}
+
+/* Appkortet: svak toning i hjørnene, bildet til høyre på PC og under på mobil */
+.i-appen,.app-cta,.page-cta{border-radius:40px;background:radial-gradient(90% 80% at 0% 0%,color-mix(in srgb,var(--kule1) 30%,transparent),transparent 62%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--kule3) 32%,transparent),transparent 62%),var(--hylle)}
+.i-appen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,200px);align-items:center;gap:28px 40px;margin:40px 0 0;padding:36px 40px}
+.i-appen-tekst p{margin:12px 0 0;max-width:40ch;font-size:1.0625rem;color:var(--dempet)}
+.i-appen-tekst p.i-appen-tittel{display:flex;align-items:center;gap:10px;margin:0;font-size:1.25rem;font-weight:700;letter-spacing:-.015em;line-height:1.25;color:var(--blekk)}
+.i-appen-tittel img{flex:none;border-radius:6px}
+.i-appen .more{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+.i-appen-media{min-width:0}
+.i-appen-media img{display:block;width:100%;max-width:200px;height:auto;margin-inline:auto;border-radius:24px;box-shadow:0 0 0 1px var(--a-kant)}
+.app-cta,.page-cta{margin:112px auto 0}
+.app-cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);align-items:center;gap:40px 72px;padding:56px}
+.app-cta-tekst{grid-column:1;grid-row:1}
+.app-cta-bilde{grid-column:2;grid-row:1;margin:0}
+.app-cta-bilde img{display:block;width:100%;max-width:280px;height:auto;margin-inline:auto;border-radius:28px;box-shadow:0 0 0 1px var(--a-kant)}
+.app-cta h2,.page-cta h2{margin:0;font-size:1.625rem;line-height:1.12}
+.app-cta-tekst p{margin:12px 0 0;max-width:40ch;font-size:1.1875rem;color:var(--dempet)}
+.app-cta-tekst > a,.page-cta > a{margin-top:26px}
+.page-cta{padding:56px;text-align:center}
+
+/* Spørsmål og svar: linje mellom spørsmålene, pluss som blir kryss */
+.faq{max-width:760px;margin:112px auto 0}
+.faq h2{margin:0 0 44px;font-size:1.625rem;line-height:1.12;text-align:center}
+.faq details{border-bottom:1px solid var(--linje)}
+.faq details:first-of-type{border-top:1px solid var(--linje)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px;padding:14px 0;font-size:1.1875rem;font-weight:700;letter-spacing:-.01em;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:22px;height:22px;background:linear-gradient(currentColor,currentColor) center / 100% 2px no-repeat,linear-gradient(currentColor,currentColor) center / 2px 100% no-repeat;transition:transform .35s var(--ut)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0;padding:0 44px 22px 0;max-width:62ch;color:var(--dempet)}
+.faq a{text-decoration:underline;text-underline-offset:.2em}
+
+/* Rader med piller: relaterte sider og omregnerlister */
+.related{max-width:880px;margin:112px auto 0;text-align:center}
+.related h2{margin:0;font-size:1.625rem;line-height:1.12}
+.related ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:28px auto 0;padding:0;list-style:none}
+.related li a{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:1px solid var(--linje);border-radius:999px;font-size:1.0625rem;font-weight:500;text-align:left;transition:border-color .2s}
+.related li a:hover,.related li a:focus-visible{border-color:var(--blekk)}
+/* Beslektede omregninger: en rolig liste, ikke piller. Lenken brytes aldri, forklaringen flyter etter den. */
+.omregner-liste{display:grid;margin:20px 0 0;padding:0;list-style:none;border-top:1px solid var(--linje)}
+.omregner-liste li{padding:12px 0;border-bottom:1px solid var(--linje);font-size:1.0625rem;line-height:1.45;color:var(--dempet)}
+.omregner-liste li a{padding-block:.7em;font-weight:700;color:var(--blekk);white-space:nowrap;text-decoration:underline;text-underline-offset:.2em}
+@media (min-width:721px){.omregner-liste{grid-template-columns:1fr 1fr;column-gap:40px}}
+
+/* Nummererte steg med svart sirkel. Dagens sider har enten et eget tall (.n eller b først i steget) eller ingen.
+   Eget tall blir sirkelen; en teller genereres bare når steget mangler tall. */
+.steps{display:grid;gap:18px;margin:22px 0 0;padding:0;list-style:none;counter-reset:steg}
+.steps > li,.steps > .step{position:relative;min-height:2rem;padding-left:52px}
+.steps > :not(:has(> .n,> b:first-child)){counter-increment:steg}
+.steps > :not(:has(> .n,> b:first-child))::before,.steps > .step > .n,.steps > .step > b:first-child{position:absolute;left:0;top:0;display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--blekk);color:var(--flate);font:500 .875rem/1 var(--mono);font-style:normal}
+.steps > :not(:has(> .n,> b:first-child))::before{content:counter(steg)}
+
+@media (max-width:720px){
+  .locale-page-hero{padding-block:28px 0}
+  .locale-page-hero .lead{font-size:1.125rem}
+  .locale-prose h2,main.prose h2{margin-top:48px}
+  .answer{font-size:1.125rem}
+  main.prose{padding-block:48px 0}
+  .i-appen{grid-template-columns:minmax(0,1fr);padding:28px 20px;border-radius:32px}
+  .app-cta{grid-template-columns:minmax(0,1fr);gap:28px;padding:28px 20px;border-radius:32px}
+  .app-cta-bilde{grid-column:1;grid-row:2}
+  .app-cta-tekst > a{display:flex}
+  .page-cta{padding:28px 20px;border-radius:32px}
+  .app-cta,.page-cta,.faq,.related{margin-top:72px}
+  .faq summary{font-size:1.125rem}
+  .faq details p{padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){.faq summary::after,.related li a,.locale-page-hero .eyebrow a{transition:none}}
+
+/* Overskriftene vokser i trinn på rem. Prototypen gir kortenes H2 (.okort, .oapptekst) samme skala som lesetekstens H2, så trinnene står SIST i Grunnstil og vinner over de enkeltstående reglene over. clamp() med vw skalerer ikke med brukerens tekststørrelse (revisjonen krever faktor 1,9). */
+@media (min-width:721px){
+  .locale-page-hero h1{font-size:2.875rem}
+  .locale-prose h2,main.prose h2,.app-cta h2,.page-cta h2,.faq h2,.related h2{font-size:1.875rem}
+}
+@media (min-width:1001px){
+  .locale-page-hero h1{font-size:3.375rem}
+  .locale-prose h2,main.prose h2,.app-cta h2,.page-cta h2,.faq h2,.related h2{font-size:2.125rem}
+}
+@media (min-width:1201px){.locale-page-hero h1{font-size:3.875rem}}
+
+/* == Omregner == */
+/* Kalkulatoren på omregnersidene (skjemaet står i lesekolonnen og bryter litt ut av den på PC).
+   Verdiene er hentet fra omregner-prototypen: .kalk, .kalkrad, .kalkside, .kalktall, .bytt.
+   Alt lesbart er rem. Innholdsfortegnelsen skjules, siden kalkulatoren er svaret. */
+body[data-sidetype="omregner"] .toc{display:none}
+body[data-sidetype="omregner"] form.omregner{margin:28px 0 0;padding:28px;border-radius:32px;background:var(--hylle)}
+body[data-sidetype="omregner"] .omregner-rad{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto minmax(0,1fr);align-items:stretch;gap:16px}
+body[data-sidetype="omregner"] .omregner-rad label{display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0;padding:18px 22px;border-radius:24px;background:var(--flate);font-size:.9375rem;font-weight:500;line-height:1.3;color:var(--dempet);transition:box-shadow .3s}
+body[data-sidetype="omregner"] .omregner-rad label:focus-within{box-shadow:0 0 0 2px var(--blekk)}
+body[data-sidetype="omregner"] .omregner-rad input,body[data-sidetype="omregner"] .omregner-rad select{display:block;width:100%;min-width:0;min-height:44px;margin:0;padding:0;border:0;border-radius:0;background:none;font:inherit;color:var(--blekk);outline:0}
+body[data-sidetype="omregner"] .omregner-rad input{font-size:2.75rem;font-weight:700;line-height:1.1;letter-spacing:-.04em;-moz-appearance:textfield;appearance:textfield}
+body[data-sidetype="omregner"] .omregner-rad input::-webkit-inner-spin-button,body[data-sidetype="omregner"] .omregner-rad input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+body[data-sidetype="omregner"] .omregner-rad select{appearance:none;-webkit-appearance:none;padding-right:28px;font-size:1.0625rem;font-weight:500;text-overflow:ellipsis;cursor:pointer;background:linear-gradient(45deg,transparent 50%,currentColor 50%) calc(100% - 13px) 55% / 7px 7px no-repeat,linear-gradient(135deg,currentColor 50%,transparent 50%) calc(100% - 7px) 55% / 7px 7px no-repeat}
+body[data-sidetype="omregner"] .omregner-bytt{align-self:center;display:grid;place-items:center;width:52px;height:52px;padding:0;border:1px solid var(--linje);border-radius:50%;background:var(--flate);font-size:1.375rem;line-height:1;color:var(--blekk);cursor:pointer;transition:border-color .2s}
+body[data-sidetype="omregner"] .omregner-bytt:hover,body[data-sidetype="omregner"] .omregner-bytt:focus-visible{border-color:var(--blekk)}
+body[data-sidetype="omregner"] .omregner-svar{margin:16px 0 0;padding:22px 28px;border-radius:24px;background:var(--blekk);color:var(--pro-tekst);font-size:1.75rem;font-weight:700;line-height:1.2;letter-spacing:-.02em;overflow-wrap:anywhere}
+/* Appkort og nedlasting i omregnerinnholdet: telefonvideo/-bilde, og butikkmerkene i bunnkortet */
+body[data-sidetype="omregner"] .phones{margin:32px 0 0}
+body[data-sidetype="omregner"] .phones figure{max-width:300px;margin:0 auto}
+body[data-sidetype="omregner"] .phones video,body[data-sidetype="omregner"] .tel{display:block;width:100%;height:auto;border-radius:24px;box-shadow:0 0 0 1px var(--a-kant)}
+body[data-sidetype="omregner"] .i-appen-media .tel{max-width:200px;margin-inline:auto}
+body[data-sidetype="omregner"] .store-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
+body[data-sidetype="omregner"] .btn-store{display:inline-flex;align-items:center;min-height:48px}
+@media (min-width:721px){
+  body[data-sidetype="omregner"] .omregner-rad input{font-size:3.5rem}
+  body[data-sidetype="omregner"] .omregner-svar{font-size:2.25rem}
+}
+@media (min-width:1001px){
+  /* Bryter ut av lesekolonnen bare så langt det er plass: aldri forbi mainrammen eller skjermkanten (forstørret tekst gjør kolonnen like bred som rammen) */
+  body[data-sidetype="omregner"] form.omregner{margin-inline:calc(-1 * max(0px, min(150px, (100vw - 100%) / 2 - 24px, (1184px - 100%) / 2)))}
+  body[data-sidetype="omregner"] .omregner-svar{font-size:2.75rem}
+}
+@media (min-width:1201px){
+  body[data-sidetype="omregner"] .omregner-rad input{font-size:4.5rem}
+}
+@media (max-width:720px){
+  body[data-sidetype="omregner"] form.omregner{padding:14px;border-radius:28px}
+  body[data-sidetype="omregner"] .omregner-rad{grid-template-columns:minmax(0,1fr);gap:10px}
+  body[data-sidetype="omregner"] .omregner-rad label{padding:16px 20px;border-radius:20px}
+  body[data-sidetype="omregner"] .omregner-bytt{justify-self:center;margin-block:-4px;transform:rotate(90deg)}
+  body[data-sidetype="omregner"] .omregner-svar{padding:18px 20px;border-radius:20px}
+}
+@media (prefers-reduced-motion:reduce){body[data-sidetype="omregner"] .omregner-bytt,body[data-sidetype="omregner"] .omregner-rad label{transition:none}}
+/* == Lang guide == */
+/* == Kort guide == */
+/* == Eldre sider == */
+/* == Blogg == */
+/* == Juss == */

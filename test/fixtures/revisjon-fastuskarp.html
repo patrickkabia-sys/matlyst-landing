@@ -1,0 +1,6 @@
+<!doctype html><html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fikstur</title>
+<style>body{margin:0;font:16px/1.5 sans-serif}p{position:absolute;margin:0;left:10px}#a{top:20px}#b{top:28px}
+.fast{position:fixed;left:0;top:0;width:400px;height:100px;z-index:5;background:rgb(255 255 255 / .8);backdrop-filter:blur(18px)}
+.fast.klar{backdrop-filter:none}</style></head><body>
+<p id="a">Første tekst under knappen</p><p id="b">Andre tekst under knappen</p><div class="fast"></div>
+<script>const f=document.querySelector('.fast'),q=new URLSearchParams(location.search);if(q.has('klar'))f.className='fast klar';if(q.has('blur'))f.style.backdropFilter='blur('+q.get('blur')+'px)'</script></body></html>

@@ -273,7 +273,6 @@ const unntak = [
   // Spec 10: kalkulatorer som ennå ikke finnes, får ingen lenke. Heller ikke oversikten finnes.
   { seksjon: '.bunn', fra: ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'], til: [] },
   // Det vedtatte sideskallet bruker korte språkkoder i begge velgerne.
-  { seksjon: 'footer.under', fra: ['Norsk', 'Svenska', 'Dansk', 'English'], til: ['NO', 'SV', 'DA', 'EN'] },
 ];
 // Prototypens prøvestripe ligger utenfor de åtte seksjonene. «Juridisk» er en aria-label,
 // ikke innerText; den kontrolleres allerede eksplisitt i test/forside-tekst.test.mjs.

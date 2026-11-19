@@ -1,10 +1,13 @@
 import assert from 'node:assert/strict';
-import { cpSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
+import { kopier } from '../scripts/kjedeproeve.mjs';
+import { rendre, trekkUt } from '../scripts/skall-paa.mjs';
+import { alleSider, erUtrullet } from '../scripts/sidetyper.mjs';
 
 import {
   autoArtikkelMain,
@@ -68,13 +71,21 @@ let generertRot;
 function byggMidlertidigNettsted() {
   if (generertRot) return generertRot;
   generertRot = mkdtempSync(join(tmpdir(), 'matlyst-seo-nettsted-'));
-  cpSync(repoRot, generertRot, {
-    recursive: true,
-    filter: (kilde) => !['.git', '.superpowers', 'node_modules'].includes(kilde.split('/').at(-1)),
-  });
+  kopier(repoRot, generertRot);
   skrivFixture(generertRot, true);
+  // Lokal utrulling bare i kopien: repoets UTRULLET røres ikke. Da må generatorkjeden
+  // faktisk legge skallet på de nygenererte omregnersidene.
+  const sidetyper = join(generertRot, 'scripts/sidetyper.mjs');
+  const kilde = readFileSync(sidetyper, 'utf8');
+  const regel = /export const UTRULLET = new Set\([^)]*\);/u;
+  assert.match(kilde, regel, 'fant ikke UTRULLET i kopien');
+  const lokal = kilde.replace(regel, "export const UTRULLET = new Set(['omregner']);");
+  writeFileSync(sidetyper, lokal);
   execFileSync(process.execPath, ['scripts/generer-norske-importguider.mjs'], { cwd: generertRot });
   execFileSync(process.execPath, ['scripts/generer-lokalsider.mjs'], { cwd: generertRot });
+  for (const skript of ['guidelenker', 'lenker-sett', 'skall-paa', 'app-uttrykk', 'app-bevis', 'bilde-attributter', 'sprak-signaler']) {
+    execFileSync(process.execPath, [`scripts/${skript}.mjs`], { cwd: generertRot });
+  }
   return generertRot;
 }
 
@@ -132,6 +143,18 @@ test('bloggforsiden lenker til auto-artikkelen', () => {
   assert.match(html, new RegExp(`href="/blogg/${fixture.slug}/"`, 'u'));
 });
 
+test('den genererte autoartikkelen og bloggforsiden har hver språkvelger nøyaktig én gang, med ett kommentarpar', () => {
+  const rot = byggMidlertidigNettsted();
+  for (const fil of [`blogg/${fixture.slug}/index.html`, 'blogg/index.html']) {
+    const html = readFileSync(join(rot, fil), 'utf8');
+    for (const plass of ['topp', 'bunn']) {
+      assert.equal(html.split(`<!-- språkvelger:${plass} -->`).length, 2, `${fil} ${plass} åpner`);
+      assert.equal(html.split(`<!-- /språkvelger:${plass} -->`).length, 2, `${fil} ${plass} lukker`);
+    }
+    assert.equal(html.split('class="language-switcher ').length, 3, `${fil} språkvelgere`);
+  }
+});
+
 test('sidekartet for språket har auto-artikkelen', () => {
   const rot = byggMidlertidigNettsted();
   const sitemap = readFileSync(join(rot, 'sitemap.xml'), 'utf8');
@@ -151,5 +174,36 @@ test('lanseringstestene godtar auto-artikler og deres publiseringsdato', () => {
 test('auto-artikkel får ikke forbudte merkenavn fra guidebunnteksten', () => {
   const html = readFileSync(join(byggMidlertidigNettsted(), `blogg/${fixture.slug}/index.html`), 'utf8');
 
-  assert.doesNotMatch(html, /Matprat|Godt\.no|\bNom\b/iu);
+  assert.doesNotMatch(trekkUt(html, `/blogg/${fixture.slug}/`).innhold, /Matprat|Godt\.no|\bNom\b/iu);
+});
+
+test('den genererte autoartikkelen er det skall-paa lager', (t) => {
+  const sti = `/blogg/${fixture.slug}/`;
+  const html = readFileSync(join(byggMidlertidigNettsted(), `blogg/${fixture.slug}/index.html`), 'utf8');
+  if (!erUtrullet(sti, html)) return t.skip('Blogg er ikke rullet ut ennå');
+  assert.equal(html, rendre(html, sti));
+});
+
+test('generatorkjeden gir autoartikkelen meny, bilder med mål og språksignal', () => {
+  const html = readFileSync(join(byggMidlertidigNettsted(), `blogg/${fixture.slug}/index.html`), 'utf8');
+  assert.match(html, /class="(?:nav-meny|topp)"/u);
+  assert.match(html, /http-equiv="content-language" content="nb-NO"/u);
+  for (const bilde of html.matchAll(/<img[^>]*src="\/images\/(?:appstore-badge\.svg|googleplay-badge-en\.png)"[^>]*>/gu)) {
+    assert.match(bilde[0], /width="\d+"/u);
+    assert.match(bilde[0], /height="\d+"/u);
+  }
+});
+
+test('generatorkjeden legger det nye skallet på regenererte omregnersider (og ingen gammel meny)', () => {
+  const rot = byggMidlertidigNettsted();
+  const sider = alleSider(rot).filter((s) => s.nokkel === 'omregner');
+  assert.ok(sider.length > 0, 'L skal ha generert omregnersider');
+  for (const s of sider) {
+    const html = readFileSync(join(rot, s.fil), 'utf8');
+    assert.ok(html.includes('<!-- skall:topp -->'), `${s.sti}: mangler skall:topp`);
+    assert.ok(html.includes('<link rel="stylesheet" href="/side.css">'), `${s.sti}: mangler side.css`);
+    assert.match(html, /<header class="topp"/u, `${s.sti}: mangler topp()`);
+    assert.ok(!html.includes('class="nav-meny"') && !html.includes('class="nav-dl"') && !html.includes('data-app-uttrykk'), `${s.sti}: gammel nav fra app-uttrykk`);
+    assert.equal(html, rendre(html, s.sti, new Set(['omregner'])), `${s.sti}: rendre er ikke idempotent`);
+  }
 });

@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 const rot = fileURLToPath(new URL('..', import.meta.url));
 import { SITEMAPER, UTELATT, MONSTER, filFor, guider, settInn } from '../scripts/guidelenker.mjs';
+import { hylledel, morkBunn } from '../scripts/skall.mjs';
 
 const VIA_HUB = {
   // Landleys Kök nås gjennom importhubbens kuraterte relatert-blokk.
@@ -66,4 +67,49 @@ test('bunnteksten lenker ikke til enkeltsider under en hub (ingen lenkefarm)', (
 test('guidelenkegeneratoren lar rotsiden stå urørt', () => {
   const html = readFileSync(join(rot, 'index.html'), 'utf8');
   assert.equal(settInn(html, '<p>Uønsket guideblokk</p>', '/'), html);
+});
+
+test('settInn bruker plassen i hylledelen når blokka mangler, og er idempotent', () => {
+  const html = `${hylledel('nb')}<footer></footer>`;
+  const ny = '<!-- guider:bunn --><div class="f-guider">x</div><!-- /guider:bunn -->';
+  const ut = settInn(html, ny);
+  assert.ok(ut.indexOf(ny) > ut.indexOf('<summary>') && ut.indexOf(ny) < ut.indexOf('</details>'));
+  assert.equal(settInn(ut, ny), ut);
+  assert.ok(!ut.includes('<!-- guider:plass -->'));
+  assert.ok(!ut.includes('</footer>') || ut.indexOf(ny) < ut.indexOf('<footer>'), 'blokka står ikke i bunnteksten');
+});
+
+test('settInn faller tilbake til bunnteksten uten plass, og tåler $ i blokka', () => {
+  const ny = '<!-- guider:bunn --><a>$& $1</a><!-- /guider:bunn -->';
+  assert.ok(settInn('<footer></footer>', ny).includes(ny));
+});
+
+test('settInn erstatter en eksisterende guideblokk med nytt innhold, og plassen ligger i hylledelen før .bunnrad', () => {
+  const gammel = '<!-- guider:bunn --><div class="f-guider">gammel</div><!-- /guider:bunn -->';
+  const ny = '<!-- guider:bunn --><div class="f-guider">ny</div><!-- /guider:bunn -->';
+  const side = (guider) => hylledel('nb', { guider }) + morkBunn('nb', {});
+  const ut = settInn(side(gammel), ny);
+  assert.equal(ut, side(ny));
+  assert.ok(!ut.includes('gammel'));
+  assert.equal(ut.split('<!-- guider:bunn -->').length - 1, 1, 'nøyaktig én blokk');
+  // Fra plassmerket: blokka står i hylledelen, før .bunnrad, og aldri etter bunnteksten.
+  const fraPlass = settInn(side(''), ny);
+  assert.ok(fraPlass.indexOf('<section class="bunn"') < fraPlass.indexOf(ny));
+  assert.ok(fraPlass.indexOf(ny) < fraPlass.indexOf('<div class="bunnrad">'));
+  assert.ok(fraPlass.indexOf(ny) < fraPlass.indexOf('<footer'));
+  assert.ok(fraPlass.indexOf(ny) < fraPlass.indexOf('</section>'));
+});
+
+test('settInn uten plassmerke: blokka står i hylledelen foran .bunnrad, ikke i eller etter bunnteksten', () => {
+  const ny = '<!-- guider:bunn --><div class="f-guider">ny</div><!-- /guider:bunn -->';
+  const utenPlass = (hylledel('nb') + morkBunn('nb', {})).replace('<!-- guider:plass -->', '');
+  assert.ok(!utenPlass.includes('guider:plass'));
+  const ut = settInn(utenPlass, ny);
+  assert.equal(ut.split(ny).length - 1, 1);
+  const pos = (m) => { const i = ut.indexOf(m); assert.ok(i > -1, m); return i; };
+  assert.ok(pos('<section class="bunn"') < pos(ny));
+  assert.ok(pos(ny) < pos('<div class="bunnrad">'));
+  assert.ok(pos(ny) < pos('</section>'));
+  assert.ok(pos(ny) < pos('<footer'));
+  assert.equal(settInn(ut, ny), ut, 'idempotent');
 });

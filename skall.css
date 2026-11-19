@@ -26,6 +26,10 @@ button{font:inherit;color:inherit}
 .mono{font:500 13px/1.4 var(--mono);letter-spacing:.06em}
 h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .flis{display:block;border-radius:23%}
+/* Skiplenke: visuelt skjult (standardmønsteret) til den får fokus, så øverst til venstre over alt */
+.hopp{position:absolute;left:8px;top:0;z-index:1000;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;display:inline-flex;align-items:center;border-radius:0 0 12px 12px;background:var(--blekk);color:var(--flate);font-weight:500;font-size:16px}
+.hopp:focus{width:auto;height:auto;min-height:44px;padding:0 18px;overflow:visible;clip:auto;clip-path:none}
+.hopp:focus-visible{outline:2px solid var(--flate);outline-offset:-4px}
 /* Topp og hyllemeny */
 .topp{position:relative;z-index:20}
 .topp .ramme{position:relative;display:flex;align-items:center;gap:8px 12px;padding-block:14px}
@@ -44,10 +48,10 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .ikonbytte .kryss{opacity:0;transform:rotate(-45deg)}
 .menyknapp[aria-expanded="true"] .ikonbytte .linjer{opacity:0;transform:rotate(45deg)}
 .menyknapp[aria-expanded="true"] .ikonbytte .kryss{opacity:1;transform:none}
-.knapp{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 28px;border-radius:999px;background:var(--blekk);color:var(--flate);font-weight:700;font-size:18px;transition:background-color .2s,transform .15s}
+.knapp{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 28px;border-radius:999px;background:var(--blekk);color:var(--flate);font-weight:700;font-size:1.125rem;transition:background-color .2s,transform .15s}
 .knapp:hover{background:var(--blekk-lys)}
 .knapp:active{transform:scale(.98)}
-.knapp.liten{height:44px;padding:0 20px;font-size:16px}
+.knapp.liten{height:44px;padding:0 20px;font-size:1rem}
 
 .panel{position:absolute;left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));top:calc(100% - 2px);max-height:calc(100vh - 150px);overflow-y:auto;padding:40px 40px 28px;border:1px solid var(--linje);border-radius:28px;background:var(--flate);box-shadow:0 28px 50px -30px rgb(var(--skygge) / .35)}
 /* Reolen: hvert fag er en kategori. Flisen står på en hylleplate, lenkene henger under. */
@@ -97,6 +101,13 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .bunn .fag li a{min-height:44px;font-size:16px}
 .bunnrad{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;margin-top:72px}
 .bunnrad p{margin:0;font-size:clamp(24px,2.6vw,32px);line-height:1.15;font-weight:700;letter-spacing:-.025em}
+/* Alle guider: sammenfoldet som standard. En tom detaljboks (bare plassmerket) skjules. */
+.alle-guider{margin-top:56px;border-top:1px solid var(--linje)}
+.alle-guider:not(:has(.f-guider)){display:none}
+.alle-guider summary{display:flex;align-items:center;min-height:44px;padding-block:8px;cursor:pointer;font-size:16px;font-weight:600;color:var(--dempet)}
+.alle-guider .f-guider{display:flex;flex-wrap:wrap;gap:0 24px;padding-bottom:8px}
+.alle-guider .f-guider a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:var(--dempet);text-decoration:none}
+.alle-guider .f-guider a:hover{color:var(--blekk);text-decoration:underline}
 @media (max-width:1000px){.bunn .reol{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 .merke{min-height:44px}
@@ -117,13 +128,18 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .under .language-switcher a:hover,.under .language-switcher a:focus-visible{color:#E9E5DE;background:var(--blekk);text-decoration:underline}
 .panel .language-switcher a:focus-visible{outline-color:var(--blekk);outline-offset:4px}
 .under .language-switcher a:focus-visible{outline-color:#E9E5DE;outline-offset:4px}
-/* Samtykke bruker samme uttrykk og samme vekt for begge valg. */
+/* Samtykkebanneret er sidens eget, i begge familier, og står likt på forsiden og undersidene.
+   Begge valg har samme uttrykk og samme vekt (samtykkeVekt): ingen skjult avvis-knapp. */
 .cookie{position:fixed;z-index:40;right:16px;bottom:16px;width:min(100% - 32px,380px);max-height:calc(100dvh - 32px);overflow:auto;padding:28px;border:1px solid var(--linje);border-radius:28px;background:var(--flate);color:var(--blekk)}
-.cookie h3{margin:0;font-size:20px;line-height:1.4}
-.cookie p{margin:12px 0 20px;font-size:15px;line-height:1.4;color:var(--dempet)}
+.cookie[hidden]{display:none}
+/* Den eldre familien har en h3 som tittel, den nyere en .cookie-inner med bare tekst. Begge får forsidens titteluttrykk. */
+.cookie h3{margin:0;font-size:1.25rem;line-height:1.4;font-weight:700;letter-spacing:-.01em;color:var(--blekk)}
+.cookie-inner{margin:0;padding:0}
+.cookie p{margin:12px 0 20px;font-size:.9375rem;line-height:1.4;color:var(--dempet)}
+.cookie-inner p{margin-top:0}
 .cookie p a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline}
 .cookie-actions{display:flex;flex-wrap:wrap;gap:8px}
-.ck-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;flex:1;padding:10px 16px;border:1px solid var(--blekk);border-radius:999px;background:var(--blekk);color:var(--flate);font:500 15px/1.4 var(--f);cursor:pointer}
+.ck-btn,.ck-accept,.ck-reject{display:inline-flex;align-items:center;justify-content:center;min-height:44px;flex:1;padding:10px 16px;border:1px solid var(--blekk);border-radius:999px;background:var(--blekk);color:var(--flate);font:500 .9375rem/1.4 var(--f);white-space:normal;cursor:pointer}
 .ck-btn:hover{background:var(--blekk-lys)}
 .ck-btn:focus-visible{outline:2px solid var(--blekk);outline-offset:4px}
 @media (max-width:720px){
@@ -139,7 +155,9 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
   .fag ul{margin-top:8px;padding-bottom:6px}
   .fag:not(.aapen) ul{display:none}
   .fag li a{min-height:44px}
-  .panel .language-switcher{margin-top:24px}
+  /* Fire fulle navn som et bevisst 2 x 2-rutenett; fra 721 px står de på én rad. */
+  .panel .language-switcher{margin-top:24px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .panel .language-switcher a{justify-content:flex-start;white-space:nowrap}
   .bunn{margin-top:-32px;padding-top:32px}
   .blad{padding-bottom:84px;border-radius:0 0 32px 32px}
   .bunn .ramme{padding-block:56px 60px}

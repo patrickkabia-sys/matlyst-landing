@@ -1,0 +1,6 @@
+<!doctype html><html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fikstur</title><style>body{margin:0;font:16px/1.5 sans-serif}p{margin:0;position:absolute;left:10px;top:50px}
+#kort{position:absolute;left:0;top:0;width:300px;height:200px;z-index:1}
+#kort.ugj{background:#fff}#kort.op{background:#fff;opacity:.5}#kort.alfa{background:rgba(255,255,255,.5)}</style></head><body>
+<p id="under">Bunntekst under kortet</p>
+<div id="kort"><p id="over">Tekst på kortet</p></div>
+<script>document.getElementById('kort').className=new URLSearchParams(location.search).get('dekke')||''</script></body></html>

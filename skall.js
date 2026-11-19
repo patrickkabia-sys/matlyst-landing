@@ -90,10 +90,14 @@
     hent.addEventListener('close', () => fra?.focus());
   }
 
-  // Fast knapp vises mellom innholdets første knapp og nedlastingen i bunnen.
+  // Fast knapp vises når startpunktet er forbi og skjules før nedlastingen i bunnen.
+  // Undersidene (data-sidetype) starter ved sidens egen topp; forsiden beholder første knapp i main.
   const fast = document.getElementById('fast');
   if (fast) {
-    const forste = document.querySelector('main [data-hent]');
+    const underside = 'sidetype' in document.body.dataset;
+    const forste = underside
+      ? document.querySelector('.blad :is(header.locale-page-hero, header.hero, div.hero, main.doc .doc-title, main.legal-doc > header, main h1)') ?? document.querySelector('header.topp')
+      : document.querySelector('main [data-hent]');
     const neste = document.querySelector('.bunn [data-hent]');
     let venter = false;
     const les = () => {

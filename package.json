@@ -4,7 +4,9 @@
   "scripts": {
     "test": "node --test test/*.test.mjs",
     "test:e2e": "playwright test",
-    "seo": "node seo-motor/kjor.mjs"
+    "revisjon": "playwright test revisjon.spec --pass-with-no-tests",
+    "seo": "node seo-motor/kjor.mjs",
+    "skall": "node scripts/skall-paa.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0"

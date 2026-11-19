@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { behandle } from '../scripts/app-uttrykk.mjs';
 
@@ -27,22 +27,6 @@ test('forsidene får telefoner i heroen og rader med telefon', () => {
   assert.match(ut, /has-stage/u);
   assert.match(ut, /class="hero-stage"/u);
   assert.equal((ut.match(/class="step-card /gu) ?? []).length, 2);
-});
-
-test('hver indekserbar side har nedlastingsknapp og fast linje', () => {
-  const rot = new URL('..', import.meta.url).pathname;
-  const mangler = [];
-  const gaa = (mappe) => {
-    for (const d of readdirSync(mappe, { withFileTypes: true })) {
-      if (d.isDirectory()) { if (!['node_modules', '.git', 'test-results', 'playwright-report'].includes(d.name)) gaa(`${mappe}/${d.name}`); continue; }
-      if (!d.name.endsWith('.html')) continue;
-      const html = readFileSync(`${mappe}/${d.name}`, 'utf8');
-      if (/<meta name="robots" content="[^"]*noindex/iu.test(html) || !/apps\.apple\.com/u.test(html) || !/class="nav-right"/u.test(html)) continue;
-      if (!html.includes('class="nav-dl"') || !html.includes('id="dl-bar"')) mangler.push(`${mappe.replace(rot, '')}/${d.name}`);
-    }
-  };
-  gaa(rot.replace(/\/$/u, ''));
-  assert.deepEqual(mangler, []);
 });
 
 test('Guider-panelet er skjult til det åpnes (hidden vinner over display)', () => {

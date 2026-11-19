@@ -12,6 +12,7 @@ const amerikanskeAppsider = utvid('en', tynneAmerikanskeAppsider);
 const rikeSider = RIKE.en;
 import { svenskeAppsider, danskeAppsider } from './nordiske-appsider.mjs';
 import { appCta } from './app-cta.mjs';
+import { sprakvelger as skallSprakvelger } from './skall.mjs';
 import { middagssider } from './middagssider.mjs';
 import {
   SITEMAPER as GUIDE_SITEMAPER,
@@ -766,21 +767,7 @@ function write(path, content) {
   if (SPRAK.some((sprak) => path.startsWith(`../${sprak}/`)) && path.endsWith('index.html')) lokaleSider.push(content);
 }
 
-const sprakvelgerMeta = Object.freeze({
-  nb: { etikett: 'NO', navn: 'Norsk', gruppe: 'Språk' },
-  sv: { etikett: 'SV', navn: 'Svenska', gruppe: 'Språk' },
-  da: { etikett: 'DA', navn: 'Dansk', gruppe: 'Sprog' },
-  en: { etikett: 'EN', navn: 'English', gruppe: 'Language' },
-});
-
-function sprakvelger(gruppe, aktivtSprak, plassering) {
-  const lenker = Object.entries(gruppe.sider).map(([sprak, href]) => {
-    const meta = sprakvelgerMeta[sprak];
-    const aktiv = sprak === aktivtSprak ? ' aria-current="page"' : '';
-    return `<a href="${href}" lang="${sprak}" hreflang="${sprak}" aria-label="${meta.navn}"${aktiv}>${meta.etikett}</a>`;
-  }).join('');
-  return `<span class="language-switcher language-switcher-${plassering}" role="navigation" aria-label="${sprakvelgerMeta[aktivtSprak].gruppe}">${lenker}</span>`;
-}
+const sprakvelger = (gruppe, aktivtSprak, plassering) => skallSprakvelger(aktivtSprak, plassering === 'top' ? 'topp' : 'bunn', gruppe.sider);
 
 function medSprakvelgere(html, gruppe, aktivtSprak) {
   let neste = html.replace(/\s*<div class="language-switcher-standalone language-switcher-standalone-(?:top|bottom)">\s*<\/div>/gu, '');
@@ -797,7 +784,7 @@ function medSprakvelgere(html, gruppe, aktivtSprak) {
     neste = neste.replace('</head>', '<script src="/language-switcher.js" defer></script>\n</head>');
   }
 
-  const topp = `<!-- språkvelger:topp -->${sprakvelger(gruppe, aktivtSprak, 'top')}<!-- /språkvelger:topp -->`;
+  const topp = sprakvelger(gruppe, aktivtSprak, 'top');
   const toppMonster = /<!-- språkvelger:topp -->[\s\S]*?<!-- \/språkvelger:topp -->/u;
   if (toppMonster.test(neste)) {
     neste = neste.replace(toppMonster, topp);
@@ -809,7 +796,7 @@ function medSprakvelgere(html, gruppe, aktivtSprak) {
     neste = neste.replace(/<body([^>]*)>/u, `<body$1>\n<div class="language-switcher-standalone language-switcher-standalone-top">${topp}</div>`);
   }
 
-  const bunn = `<!-- språkvelger:bunn -->${sprakvelger(gruppe, aktivtSprak, 'bottom')}<!-- /språkvelger:bunn -->`;
+  const bunn = sprakvelger(gruppe, aktivtSprak, 'bottom');
   const bunnMonster = /<!-- språkvelger:bunn -->[\s\S]*?<!-- \/språkvelger:bunn -->/u;
   if (bunnMonster.test(neste)) {
     neste = neste.replace(bunnMonster, bunn);

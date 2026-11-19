@@ -5,8 +5,15 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { effektiv } from './hjelp/knappevekt.mjs';
 import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from '../scripts/skall.mjs';
+import { SKALLTEKST, SPRAKVALG, BUTIKK } from '../scripts/skall-tekst.mjs';
+import { TEKST } from '../scripts/forside-tekst.mjs';
+import { lesCommon } from './hjelp/lokalsider-kilde.mjs';
+import { HYLLETEKST, LOKALE_KILDER } from '../scripts/hyller.mjs';
+import { SIDEGRUPPER } from '../scripts/locale-sider.mjs';
+import { NORSKE_RESTORD } from './hjelp/restord.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
+const les = (sti) => readFileSync(join(rot, sti), 'utf8');
 const lenker = (html) => [...html.matchAll(/<a href="([^"]+)"[^>]*><span>([^<]+)<\/span><\/a>/g)].map(([, href, tekst]) => `${tekst}|${href}`);
 
 test('menyen og bunnen har nøyaktig de samme hyllene og lenkene', () => {
@@ -229,7 +236,7 @@ test('skallet har ingen sideveis rulling, små trykkflater eller konsollfeil', a
     await side.locator('#menyknapp').click();
     await side.evaluate(() => { document.querySelector('#cookie').hidden = false; });
     assert.equal(await side.evaluate(() => document.documentElement.scrollWidth - innerWidth), 0, `${bredde} px`);
-    const smaa = await side.locator('a:visible, button:visible').evaluateAll((elementer) => elementer.filter((e) => !e.closest('[inert]') && (e.getBoundingClientRect().height < 44 || e.getBoundingClientRect().width < 44)).map((e) => e.outerHTML));
+    const smaa = await side.locator('a:visible, button:visible').evaluateAll((elementer) => elementer.filter((e) => !e.closest('[inert]') && !e.matches('.hopp:not(:focus)') && (e.getBoundingClientRect().height < 44 || e.getBoundingClientRect().width < 44)).map((e) => e.outerHTML));
     assert.deepEqual(smaa, [], `${bredde} px: små trykkflater`);
     await side.keyboard.press('Escape');
     await side.evaluate(() => { document.querySelector('#cookie').hidden = true; });
@@ -238,9 +245,52 @@ test('skallet har ingen sideveis rulling, små trykkflater eller konsollfeil', a
 });
 
 
+// Banneret er sidens eget innhold (B4) og kan ha en overskrift, så det holdes utenfor.
+const skallUtenBanner = (s) => topp(s, {}) + hylledel(s) + morkBunn(s, {}) + nedlasting(s);
+const alleDeler = (s) => skallUtenBanner(s) + samtykke(s);
+
 test('skallet uten samtykkebanner legger ikke til overskrifter', () => {
-  const html = topp('nb', { sprakvelger: '' }) + hylledel('nb') + morkBunn('nb', { sprakvelger: '' }) + nedlasting('nb');
-  assert.doesNotMatch(html, /<h[1-6]\b/i);
+  assert.doesNotMatch(skallUtenBanner('nb'), /<h[1-6]\b/i);
+  for (const ul of skallUtenBanner('nb').match(/<ul\b[^>]*>/g)) assert.match(ul, /aria-label="[^"]+"/);
+});
+
+test('ingen tekst i skallet står i forside-tekst.mjs', () => {
+  for (const k of ['topp', 'sprak', 'bunn', 'bunnlinje', 'under', 'fast', 'hent']) assert.ok(!(k in TEKST.nb), k);
+});
+
+test('morkBunn: samtykkelenka kan slås av', () => {
+  assert.match(morkBunn('nb', {}), /data-consent-withdraw/);
+  assert.doesNotMatch(morkBunn('nb', { samtykkelenke: false }), /data-consent-withdraw/);
+  assert.equal(morkBunn('nb', { samtykkelenke: true }), morkBunn('nb', {}));
+});
+
+// Fiksturen er skallet slik det så ut før tekstene ble flyttet og guideplassen kom til.
+const DETALJER = (summary) => `<details class="alle-guider"><summary>${summary}</summary><!-- guider:plass --></details>`;
+test('bokmålsskallet er øyeblikksbildet pluss guideplassen, og ingenting annet', () => {
+  const før = les('test/fixtures/skall-nb.html.fiks');
+  assert.equal(før.split('<div class="bunnrad">').length, 2, 'øyeblikksbildet har nøyaktig én .bunnrad');
+  assert.equal(alleDeler('nb'), før.replace('<div class="bunnrad">', `${DETALJER(SKALLTEKST.nb.bunn.guider)}<div class="bunnrad">`));
+});
+
+test('en ferdig guideblokk står i detaljene', () => {
+  const blokk = '<!-- guider:bunn --><div class="f-guider">x</div><!-- /guider:bunn -->';
+  assert.ok(hylledel('nb', { guider: blokk }).includes(`<summary>${SKALLTEKST.nb.bunn.guider}</summary>${blokk}</details>`));
+  assert.ok(!hylledel('nb', { guider: blokk }).includes('guider:plass'));
+});
+
+test('«Alle guider» er den nye teksten i hylledelen', () => {
+  assert.equal(SKALLTEKST.nb.bunn.guider, 'Alle guider');
+  assert.equal(SKALLTEKST.nb.bunn.knapp, 'Last ned gratis');
+  assert.equal(SKALLTEKST.nb.innhold.knapp, 'Last ned gratis');
+});
+
+test('språkvalg og butikklenker er data for alle fire språk', () => {
+  for (const kode of ['nb', 'sv', 'da', 'en']) {
+    assert.ok(SPRAKVALG.aria[kode] && SPRAKVALG.navn[kode], kode);
+    assert.match(BUTIKK[kode].apple, /^https:\/\/apps\.apple\.com\/(?:(?:no|se|dk)\/)?app\/matlyst\/id6762563515$/);
+    assert.match(BUTIKK[kode].google, /^https:\/\/play\.google\.com\/store\/apps\/details\?id=app\.matlyst/);
+  }
+  assert.deepEqual(SKALLTEKST.nb.sprak, { aria: 'Språk', valg: Object.entries(SPRAKVALG.navn).map(([kode, navn]) => ({ kode, navn })) });
 });
 
 test('hyllene har avsnitt som navn og navngitte lenkelister i meny og bunn', () => {
@@ -408,3 +458,79 @@ for (const [sted, velger] of [['menyen', '#panel'], ['bunnen', '.under']]) {
     }
   });
 }
+
+test('språkvelgeren viser fulle navn, beholder etikettene og eier ett kommentarpar', () => {
+  const html = sprakvelger('da', 'topp', { nb: '/', sv: '/sv/', da: '/da/', en: '/en/' });
+  assert.match(html, /^<!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Sprog">/);
+  assert.match(html, /<!-- \/språkvelger:topp -->$/);
+  assert.equal(html.split('<!-- språkvelger:topp -->').length - 1, 1);
+  for (const [kode, navn] of Object.entries(SPRAKVALG.navn)) assert.match(html, new RegExp(`lang="${kode}"[^>]*aria-label="${navn}"[^>]*>${navn}</a>`));
+});
+
+test('butikklenkene på sv, da og en er de L bruker', () => {
+  for (const s of ['sv', 'da', 'en']) assert.deepEqual(BUTIKK[s], { apple: lesCommon(s).appStore, google: lesCommon(s).play });
+});
+
+// ---------- svensk, dansk og amerikansk engelsk ----------
+
+for (const s of ['sv', 'da', 'en']) {
+  test(`${s}: menyen og bunnen har de samme hyllene og lenkene`, () => {
+    assert.ok(lenker(hylledel(s)).length > 15);
+    assert.deepEqual(lenker(hylledel(s)), lenker(topp(s, {}).match(/<nav class="panel"[\s\S]*?<\/nav>/)[0]));
+  });
+  test(`${s}: skallet uten banner legger ikke til overskrifter`, () => { assert.doesNotMatch(skallUtenBanner(s), /<h[1-6]\b/i); });
+  test(`${s}: samtykkebanneret til sider uten banner er ordrett L sitt`, () => {
+    const c = lesCommon(s), html = samtykke(s);
+    for (const del of [c.consent, `>${c.accept}<`, `>${c.reject}<`]) assert.ok(html.includes(del), del);
+    assert.doesNotMatch(html, /<h[1-6]\b/i);
+  });
+  test(`${s}: logo, personvern og vilkår lenker til sidene på språket`, () => {
+    const g = (id) => SIDEGRUPPER.find((x) => x.id === id).sider[s];
+    assert.match(topp(s, {}), new RegExp(`class="merke" href="${g('forside')}"`));
+    for (const id of ['personvern', 'vilkar']) assert.match(morkBunn(s, {}), new RegExp(`href="${g(id)}"`));
+  });
+  test(`${s}: personvern og vilkår har samme ord som L`, () => {
+    const c = lesCommon(s);
+    assert.deepEqual(SKALLTEKST[s].under.lenker.slice(0, 2), [c.privacy, c.terms]);
+    assert.deepEqual(BUTIKK[s], { apple: c.appStore, google: c.play });
+  });
+  test(`${s}: skalltekstene følger skrivereglene og plassen`, () => {
+    const html = alleDeler(s) + topp(s, { folg: [{ href: '#a', tekst: 'Navn' }] });
+    // Synlig tekst og attributtverdiene som skjermlesere og nettlesere viser.
+    const synlig = [html.replace(/<[^>]+>/g, ' '), ...[...html.matchAll(/\b(?:aria-label|alt|title)="([^"]*)"/g)].map((m) => m[1])].join(' ');
+    assert.doesNotMatch(synlig, /[–—]/);
+    assert.doesNotMatch(synlig, /\b(kopp|kopper|kop|koppar)\b/i);
+    assert.doesNotMatch(synlig, NORSKE_RESTORD);
+    const t = SKALLTEKST[s];
+    for (const [verdi, maks] of [[t.topp.folgAria, 24], [t.topp.meny, 8], [t.topp.lastNed, 10], [t.bunn.knapp, 18], [t.fast.knapp, 18], [t.innhold.knapp, 18], [t.bunn.guider, 20], [t.bunnlinje, 50], [t.hent.tittel, 28], [t.hent.ingress, 90]]) assert.ok(verdi.length <= maks, verdi);
+  });
+}
+
+// Låser de leverte tekstene mot fasiten (generert én gang fra språkfilene). Koden kan ha flere nøkler enn fasiten.
+const delmengde = (forventet, faktisk, sti = '') => {
+  if (forventet !== null && typeof forventet === 'object') {
+    for (const [k, v] of Object.entries(forventet)) delmengde(v, faktisk?.[k], `${sti}.${k}`);
+  } else assert.equal(faktisk, forventet, sti);
+};
+for (const s of ['sv', 'da', 'en']) {
+  test(`${s}: skall- og hylletekstene er de leverte`, () => {
+    const fasit = JSON.parse(les(`test/fasit/skalltekst-${s}.json`));
+    delmengde(fasit.skall, SKALLTEKST[s], 'skall');
+    delmengde(fasit.hyller, HYLLETEKST[s], 'hyller');
+    assert.equal(Object.keys(HYLLETEKST[s].lenker).length - Object.keys(fasit.hyller.lenker).length, LOKALE_KILDER[s].length);
+  });
+}
+test('følgemenyen har sitt eget navn på hvert språk', () => {
+  for (const [s, navn] of [['nb', 'På denne siden'], ['sv', 'På den här sidan'], ['da', 'På denne side'], ['en', 'On this page']]) {
+    assert.match(topp(s, { folg: [{ href: '#a', tekst: 'A' }] }), new RegExp(`<nav class="folg" id="folg" aria-label="${navn}">`));
+  }
+});
+
+test('topp() har skiplenken som første element i hvert språk, med teksten fra dagens undersider', () => {
+  const forventet = { nb: 'Hopp til innholdet', sv: 'Hoppa till innehållet', da: 'Spring til indholdet', en: 'Skip to content' };
+  for (const [sprak, tekst] of Object.entries(forventet)) {
+    const html = topp(sprak, { sprakvelger: '' });
+    assert.ok(html.startsWith(`<a class="hopp" href="#hovedinnhold">${tekst}</a>`), `${sprak}: skiplenken må stå først`);
+    assert.equal(SKALLTEKST[sprak].topp.hopp, tekst);
+  }
+});

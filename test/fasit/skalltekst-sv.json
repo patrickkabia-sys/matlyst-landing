@@ -1,0 +1,93 @@
+{
+  "skall": {
+    "topp": {
+      "hopp": "Hoppa till innehållet",
+      "merkeAria": "Matlyst, till startsidan",
+      "meny": "Meny",
+      "menyAria": "Meny",
+      "panelAria": "Huvudmeny",
+      "lastNed": "Hämta"
+    },
+    "bunn": {
+      "aria": "Allt om Matlyst",
+      "menyAria": "Sidfotsmeny",
+      "knapp": "Hämta gratis",
+      "guider": "Alla guider"
+    },
+    "bunnlinje": "Det där receptet du sparade? Laga det i kväll.",
+    "under": {
+      "vilkarAria": "Integritet och villkor",
+      "lenker": [
+        "Integritet",
+        "Villkor",
+        "Kakor"
+      ],
+      "laget": "© 2026 Matlyst. Gjord i Norge",
+      "flaggAlt": "Norsk flagga"
+    },
+    "fast": {
+      "knapp": "Hämta gratis"
+    },
+    "hent": {
+      "lukkAria": "Stäng",
+      "qrAlt": "QR-kod till matlyst-app.no/app",
+      "tittel": "Skanna med mobilen",
+      "ingress": "Kameran tar dig till rätt butik, oavsett om du har iPhone eller Android."
+    },
+    "innhold": {
+      "knapp": "Hämta gratis"
+    }
+  },
+  "hyller": {
+    "navn": {
+      "appen": "Appen",
+      "lagre": "Spara recept",
+      "middag": "Middag",
+      "verktoy": "Verktyg",
+      "tips": "Kökstips",
+      "matlyst": "Matlyst"
+    },
+    "lenker": {
+      "/oppskriftsbok-app/": "Receptapp",
+      "/importer-oppskrifter/": "Importera recept",
+      "/ukemeny/": "Veckomeny",
+      "/handleliste/": "Inköpslista",
+      "/spiskammer-app/": "Skafferi",
+      "/#spor": "Fråga Matlyst",
+      "/finn-oppskrifter/": "Hitta dina recept",
+      "/lagre-oppskrifter-fra-instagram/": "Instagram",
+      "/lagre-oppskrifter-fra-tiktok/": "TikTok",
+      "/importer-fra-matprat/": "Matprat",
+      "/importer-fra-koket/": "Köket.se",
+      "/handskrevne-oppskrifter/": "Foton och kokböcker",
+      "/bytt-fra-paprika/": "Paprika",
+      "/middagsforslag/": "Middagstips",
+      "/enkel-middag/": "Enkel middag",
+      "/tom-kjoleskapet/": "Töm kylskåpet",
+      "/hva-kan-jeg-lage/": "Vad kan jag laga?",
+      "/verktoy/enhetsomregner/": "Enhetsomvandlare",
+      "/verktoy/kopp-til-dl/": "Cups till dl",
+      "/verktoy/dl-til-kopp/": "Dl till cups",
+      "/verktoy/celsius-til-fahrenheit/": "Celsius till Fahrenheit",
+      "/verktoy/dl-til-gram/": "Dl till gram",
+      "/verktoy/porsjoner/": "Räkna om portioner",
+      "/verktoy/kakeform/": "Räkna om kakform",
+      "/verktoy/steketid/": "Stektider",
+      "/verktoy/pizzadeig/": "Pizzadeg",
+      "/verktoy/gjaer/": "Räkna om jäst",
+      "/verktoy/": "Alla räknare",
+      "/blogg/doble-oppskrift/": "Dubbla ett recept",
+      "/blogg/er-egget-ferskt/": "Är ägget färskt?",
+      "/blogg/erstatte-egg/": "Ersätta ägg i bakning",
+      "/blogg/kjernetemperatur/": "Innertemperatur",
+      "/blogg/koketider/": "Koktider",
+      "/blogg/": "Alla kökstips",
+      "/skapere/": "För receptskapare",
+      "https://www.instagram.com/matlyst_app/": "Instagram",
+      "https://www.tiktok.com/@matlyst.appen": "TikTok",
+      "https://www.youtube.com/@matlyst": "YouTube",
+      "https://www.pinterest.com/matlystapp/": "Pinterest",
+      "/personvern.html": "Integritet"
+    }
+  }
+}
