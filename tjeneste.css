@@ -6,6 +6,7 @@
    (alle sidene som går gjennom skall-paa). */
 body.avmeld-rot,body[data-tjeneste]{margin:0;background:var(--flate);color:var(--blekk);font-family:var(--f);font-weight:400;font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased}
 :where(body[data-tjeneste]) *,:where(body[data-tjeneste]) *::before,:where(body[data-tjeneste]) *::after{margin:0;padding:0;box-sizing:border-box}
+:where(body[data-tjeneste]) a{color:inherit;text-decoration:none}
 body.avmeld-rot ::selection,body[data-tjeneste] ::selection{background:var(--blekk);color:var(--flate)}
 body.avmeld-rot :focus-visible,body[data-tjeneste] :focus-visible{outline:2px solid var(--blekk);outline-offset:4px;border-radius:10px}
 /* Ordmerket: Fraunces kursiv, bare bokstavene i «matlyst» (skriften har ikke stor M) */
@@ -19,7 +20,7 @@ body.avmeld-rot .avmeld-knapp:disabled,body[data-tjeneste] .avmeld-knapp:disable
 /* Butikkmerkene er ferdig tegnet svart kunst: de får bare 44 px flate */
 body.avmeld-rot .vk-butikker a,body[data-tjeneste] .vk-butikker a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;border-radius:8px}
 /* Toppen som de lokale sidene før hentet fra styles.css: ordmerke, valgfri lenke og språkvelger */
-body.avmeld-rot nav,body[data-tjeneste] nav{position:static;display:flex;align-items:center;gap:4px 12px;max-width:1184px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
+body.avmeld-rot nav,body[data-tjeneste] nav{position:static;display:flex;align-items:center;gap:4px 12px;width:100%;max-width:1184px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));background:none;border:0;-webkit-backdrop-filter:none;backdrop-filter:none}
 body.avmeld-rot nav .nav-brand,body[data-tjeneste] nav .nav-brand,body.avmeld-rot nav .brand,body[data-tjeneste] nav .brand{display:inline-flex;align-items:center;min-height:44px;margin-right:auto}
 body.avmeld-rot .nav-right,body[data-tjeneste] .nav-right{display:flex;align-items:center;gap:4px 12px;margin-left:auto}
 body.avmeld-rot nav .nav-back,body[data-tjeneste] nav .nav-back,body.avmeld-rot .nav-right a.link,body[data-tjeneste] .nav-right a.link{display:inline-flex;align-items:center;min-height:44px;padding:0 8px;font-size:.9375rem;font-weight:500;color:var(--dempet);text-decoration:none}
@@ -57,6 +58,52 @@ body[data-tjeneste="auth"] .language-switcher-standalone-top .nav-brand{display:
 body[data-tjeneste="auth"] .language-switcher-standalone-bottom{margin-top:0}
 @media (max-width:700px){
   body[data-tjeneste="auth"] .language-switcher-standalone-top{flex-wrap:wrap}
-  body[data-tjeneste="auth"] .language-switcher-standalone-top .language-switcher{flex-basis:100%}
 }
 /* /app/ (videresendingen til butikkene) har sin egen oppsetning i en innebygd stil, med farger og skrift fra tokens. Resten kommer fra Felles. */
+
+/* == Kampanje og feil == */
+/* Kampanjesidene (/christine/, /tiktok/ og de lokale TikTok-sidene) og 404. De lokale TikTok-sidene beholder nav, footer
+   og samtykkebanner og laster site.js; her ligger det de før hentet fra styles.css. */
+body[data-tjeneste="kampanje"]:has(> main.legal-doc){display:flex;flex-direction:column;min-height:100vh}
+body[data-tjeneste="kampanje"] .language-switcher-standalone-top{position:static;display:flex;align-items:center;max-width:1184px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));background:none}
+body[data-tjeneste="kampanje"] .language-switcher-standalone-top .nav-brand{display:inline-flex;align-items:center;min-height:44px;margin-right:auto}
+body[data-tjeneste="kampanje"] .language-switcher-standalone-bottom{margin-top:0}
+body[data-tjeneste="kampanje"] .disp,body[data-tjeneste="feil"] .disp{font-weight:700;letter-spacing:-.028em;line-height:1.05;text-wrap:balance;overflow-wrap:break-word}
+/* Lesekolonnen */
+body[data-tjeneste="kampanje"] main.legal-doc{flex:1 0 auto;width:100%;max-width:calc(68ch + 2 * max(16px,env(safe-area-inset-left,0px)));margin-inline:auto;padding:56px max(16px,env(safe-area-inset-left,0px)) 72px;font-size:1.1875rem;line-height:1.6;overflow-wrap:break-word}
+body[data-tjeneste="kampanje"] main.legal-doc > header .eyebrow{margin:0;font-size:.9375rem;font-weight:500;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--dempet)}
+body[data-tjeneste="kampanje"] main.legal-doc > header h1{margin:6px 0 0;font-size:2.375rem}
+body[data-tjeneste="kampanje"] main.legal-doc > header .lead{margin:18px 0 0;font-size:1.25rem;line-height:1.5;color:var(--dempet)}
+/* Bunnen med lenker (de lokale TikTok-sidene og 404) */
+body[data-tjeneste="kampanje"] footer,body[data-tjeneste="feil"] footer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:20px max(16px,calc((100% - 1184px) / 2 + 16px));border-top:1px solid var(--linje)}
+body[data-tjeneste="kampanje"] footer .brand,body[data-tjeneste="feil"] footer .brand{display:inline-flex;align-items:center;min-height:44px}
+body[data-tjeneste="kampanje"] footer .f-l,body[data-tjeneste="feil"] footer .f-l{display:flex;flex-wrap:wrap;align-items:center;gap:0 4px}
+body[data-tjeneste="kampanje"] footer .f-l a,body[data-tjeneste="feil"] footer .f-l a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;font-size:.9375rem;color:var(--dempet);text-decoration:none}
+body[data-tjeneste="kampanje"] footer .f-l a:hover,body[data-tjeneste="feil"] footer .f-l a:hover{color:var(--blekk);text-decoration:underline}
+body[data-tjeneste="kampanje"] footer .f-l .language-switcher a,body[data-tjeneste="feil"] footer .f-l .language-switcher a{padding:0 12px}
+body[data-tjeneste="kampanje"] footer .f-l .language-switcher a:hover,body[data-tjeneste="feil"] footer .f-l .language-switcher a:hover{text-decoration:none}
+body[data-tjeneste="kampanje"] footer .c,body[data-tjeneste="feil"] footer .c{flex-basis:100%;font-size:.875rem;color:var(--dempet)}
+/* Stegene på /tiktok/: samme tall og linjer som grunnstilen (side.css), avgrenset til kampanjesidene */
+body[data-tjeneste="kampanje"] .steps{display:grid;gap:18px;margin:0;padding:0;list-style:none}
+body[data-tjeneste="kampanje"] .steps > .step{position:relative;min-height:2rem;padding-left:52px}
+body[data-tjeneste="kampanje"] .steps > .step > b:first-child{position:absolute;left:0;top:0;display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--blekk);color:var(--flate);font:500 .875rem/1 var(--mono);font-style:normal}
+/* Samtykkebanneret: samme regler som .cookie i skall.css. Begge valg veier likt (samtykkeVekt): ingen skjult avvis-knapp. */
+body[data-tjeneste="kampanje"] .cookie{position:fixed;z-index:40;right:16px;bottom:16px;width:min(100% - 32px,380px);max-height:calc(100dvh - 32px);overflow:auto;padding:28px;border:1px solid var(--linje);border-radius:28px;background:var(--flate);color:var(--blekk)}
+body[data-tjeneste="kampanje"] .cookie[hidden]{display:none}
+/* Den eldre familien har en h3 som tittel, den nyere en .cookie-inner med bare tekst. Begge får forsidens titteluttrykk. */
+body[data-tjeneste="kampanje"] .cookie h3{margin:0;font-size:1.25rem;line-height:1.4;font-weight:700;letter-spacing:-.01em;color:var(--blekk)}
+body[data-tjeneste="kampanje"] .cookie-inner{margin:0;padding:0}
+body[data-tjeneste="kampanje"] .cookie p{margin:12px 0 20px;font-size:.9375rem;line-height:1.4;color:var(--dempet)}
+body[data-tjeneste="kampanje"] .cookie-inner p{margin-top:0}
+body[data-tjeneste="kampanje"] .cookie p a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline}
+body[data-tjeneste="kampanje"] .cookie-actions{display:flex;flex-wrap:wrap;gap:8px}
+body[data-tjeneste="kampanje"] .ck-btn,body[data-tjeneste="kampanje"] .ck-accept,body[data-tjeneste="kampanje"] .ck-reject{display:inline-flex;align-items:center;justify-content:center;min-height:44px;flex:1;padding:10px 16px;border:1px solid var(--blekk);border-radius:999px;background:var(--blekk);color:var(--flate);font:500 .9375rem/1.4 var(--f);white-space:normal;cursor:pointer}
+body[data-tjeneste="kampanje"] .ck-btn:hover{background:var(--blekk-lys)}
+body[data-tjeneste="kampanje"] .ck-btn:focus-visible{outline:2px solid var(--blekk);outline-offset:4px}
+@media (max-width:700px){
+  body[data-tjeneste="kampanje"] .language-switcher-standalone-top{flex-wrap:wrap}
+  body[data-tjeneste="kampanje"] main.legal-doc{padding-top:40px}
+  body[data-tjeneste="kampanje"] main.legal-doc > header h1{font-size:2rem}
+  body[data-tjeneste="kampanje"] footer .f-l,body[data-tjeneste="feil"] footer .f-l{flex-basis:100%}
+  body[data-tjeneste="kampanje"] footer .f-l .language-switcher,body[data-tjeneste="feil"] footer .f-l .language-switcher{flex-basis:100%;margin:0}
+}

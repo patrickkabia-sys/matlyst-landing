@@ -171,3 +171,105 @@ for (const bredde of BREDDER) {
     expect(await page.locator('h1').evaluate((e) => getComputedStyle(e).fontWeight)).toBe('700');
   });
 }
+
+// Kampanjesidene og 404
+const LOKALE_TIKTOK = [['sv', '/sv/tiktok/'], ['da', '/da/tiktok/'], ['en', '/en/tiktok/']];
+
+for (const bredde of BREDDER) {
+  for (const [navn, sti] of [['christine', '/christine/'], ['tiktok', '/tiktok/']]) {
+    test(`kampanje ${navn} ${bredde}: Schibsted, ordmerket og svarte pillemerker`, async ({ page }) => {
+      await page.setViewportSize({ width: bredde, height: 900 });
+      await page.goto(sti);
+      await expect(page.locator('.nav-brand')).toHaveCount(1);
+      const g = await grunnstil(page);
+      expect(g.skrift).toContain('Schibsted Grotesk');
+      expect(g.bakgrunn).toBe(FLATE);
+      expect(g.merke.skrift).toContain('Fraunces Ordmerke');
+      expect(g.overflow).toBeLessThanOrEqual(0);
+      const h1 = await page.locator('main h1').evaluate((e) => ({ vekt: getComputedStyle(e).fontWeight, skrift: getComputedStyle(e).fontFamily, str: parseFloat(getComputedStyle(e).fontSize) }));
+      expect(h1.vekt).toBe('700');
+      expect(h1.skrift).toContain('Schibsted Grotesk');
+      expect(h1.str).toBe(bredde <= 640 ? 36 : 48);
+      const butikker = page.locator('a.store');
+      await expect(butikker).toHaveCount(2);
+      for (const b of await butikker.all()) {
+        expect((await b.boundingBox()).height).toBeGreaterThanOrEqual(44);
+        expect(await b.evaluate((e) => ({ bg: getComputedStyle(e).backgroundColor, farge: getComputedStyle(e).color }))).toEqual({ bg: BLEKK, farge: FLATE });
+        expect(await b.evaluate((e) => parseFloat(getComputedStyle(e).borderTopLeftRadius))).toBeGreaterThan(40);
+      }
+      const ios = await butikker.nth(0).boundingBox();
+      const android = await butikker.nth(1).boundingBox();
+      expect(Math.abs(ios.width - android.width)).toBeLessThan(1);
+    });
+  }
+}
+
+test('kampanje /tiktok/: tre steg med svarte tallsirkler fra grunnstilen', async ({ page }) => {
+  await page.goto('/tiktok/');
+  const steg = page.locator('.steps > .step');
+  await expect(steg).toHaveCount(3);
+  for (const s of await steg.all()) {
+    const b = await s.locator('> b').evaluate((e) => ({ bg: getComputedStyle(e).backgroundColor, w: e.getBoundingClientRect().width, r: getComputedStyle(e).borderTopLeftRadius, pos: getComputedStyle(e).position }));
+    expect(b).toMatchObject({ bg: BLEKK, w: 32, pos: 'absolute' });
+    expect(parseFloat(b.r)).toBeGreaterThan(10);
+    expect(await s.evaluate((e) => getComputedStyle(e).paddingLeft)).toBe('52px');
+  }
+});
+
+for (const bredde of BREDDER) {
+  for (const [sprak, sti] of LOKALE_TIKTOK) {
+    test(`kampanje ${sprak} ${bredde}: lesekolonne, topp, bunn og et banner der begge valg veier likt`, async ({ page }) => {
+      await page.setViewportSize({ width: bredde, height: 900 });
+      await page.goto(sti);
+      await expect(page.locator('main.legal-doc')).toHaveCount(1);
+      await expect(page.locator('nav .brand')).toHaveCount(1);
+      await expect(page.locator('footer')).toHaveCount(1);
+      const g = await grunnstil(page);
+      expect(g.skrift).toContain('Schibsted Grotesk');
+      expect(g.merke.skrift).toContain('Fraunces Ordmerke');
+      expect(g.overflow).toBeLessThanOrEqual(0);
+      const kol = await page.locator('main.legal-doc').evaluate((e) => ({ b: e.getBoundingClientRect().width, str: getComputedStyle(e).fontSize }));
+      expect(kol.str).toBe('19px');
+      // Lesekolonne: 68ch pluss gutter på PC, hele bredden på mobil.
+      if (bredde > 900) { expect(kol.b).toBeLessThan(900); expect(kol.b).toBeGreaterThan(600); } else expect(kol.b).toBe(bredde);
+      const h1 = await page.locator('main.legal-doc h1').evaluate((e) => ({ vekt: getComputedStyle(e).fontWeight, str: parseFloat(getComputedStyle(e).fontSize), skrift: getComputedStyle(e).fontFamily }));
+      expect(h1).toMatchObject({ vekt: '700', str: bredde <= 700 ? 32 : 38 });
+      expect(h1.skrift).toContain('Schibsted Grotesk');
+      const lenker = await page.locator('footer .f-l a:not([aria-label])').evaluateAll((es) => es.map((e) => e.getBoundingClientRect().height));
+      expect(lenker.length).toBeGreaterThan(2);
+      for (const h of lenker) expect(h).toBeGreaterThanOrEqual(44);
+      const banner = page.locator('#cookie');
+      await expect(banner).toBeVisible();
+      const stil = (sel) => page.locator(sel).evaluate((e) => { const s = getComputedStyle(e); return { bg: s.backgroundColor, farge: s.color, kant: s.borderTopColor, vekt: s.fontWeight, str: s.fontSize, rad: s.borderTopLeftRadius, h: e.getBoundingClientRect().height }; });
+      const godta = await stil('#cookie .ck-accept');
+      const avvis = await stil('#cookie .ck-reject');
+      expect(godta.bg).toBe(BLEKK);
+      expect(avvis).toEqual(godta);
+      expect(godta.h).toBeGreaterThanOrEqual(44);
+    });
+  }
+}
+
+test('404: Schibsted, svart pille, 44 px lenker og en bunn med ordmerket', async ({ page }) => {
+  for (const bredde of BREDDER) {
+    await page.setViewportSize({ width: bredde, height: 900 });
+    await page.goto('/404.html');
+    await expect(page.locator('nav .brand')).toHaveCount(1);
+    await expect(page.locator('footer .brand')).toHaveCount(1);
+    const g = await grunnstil(page);
+    expect(g.skrift).toContain('Schibsted Grotesk');
+    expect(g.bakgrunn).toBe(FLATE);
+    expect(g.merke.skrift).toContain('Fraunces Ordmerke');
+    expect(g.overflow).toBeLessThanOrEqual(0);
+    expect(await page.locator('.not-found-card h1').evaluate((e) => ({ vekt: getComputedStyle(e).fontWeight, str: parseFloat(getComputedStyle(e).fontSize) }))).toEqual({ vekt: '700', str: bredde <= 520 ? 36 : 48 });
+    const handling = page.locator('.not-found-action:not(.secondary)');
+    expect(await handling.evaluate((e) => getComputedStyle(e).backgroundColor)).toBe(BLEKK);
+    expect((await handling.boundingBox()).height).toBeGreaterThanOrEqual(44);
+    await handling.hover();
+    await expect.poll(() => handling.evaluate((e) => getComputedStyle(e).backgroundColor)).toBe(BLEKK_LYS);
+    const sekundaer = await page.locator('.not-found-action.secondary').evaluate((e) => ({ bg: getComputedStyle(e).backgroundColor, kant: getComputedStyle(e).borderTopColor, farge: getComputedStyle(e).color }));
+    expect(sekundaer).toEqual({ bg: 'rgba(0, 0, 0, 0)', kant: 'rgb(230, 226, 219)', farge: BLEKK });
+    for (const l of await page.locator('.not-found-links a').all()) expect((await l.boundingBox()).height).toBeGreaterThanOrEqual(44);
+    expect(await page.locator('.not-found-code').evaluate((e) => getComputedStyle(e).color)).toBe('rgb(176, 59, 0)');
+  }
+});

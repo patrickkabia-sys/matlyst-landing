@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { alleSider, tjenestefamilie, erUtrullet } from '../scripts/sidetyper.mjs';
 import { utenKommentarer } from './hjelp/klassedekning.mjs';
+import { effektiv } from './hjelp/knappevekt.mjs';
 
 const rot = new URL('..', import.meta.url).pathname;
 const les = (f) => readFileSync(new URL(`../${f}`, import.meta.url), 'utf8');
@@ -47,7 +48,7 @@ test('de utrullede tjenestefamiliene har nøklene sine', () => {
 
 test('tjeneste.css har delene i rekkefølge', () => {
   const rå = les('tjeneste.css');
-  const navn = ['Felles', 'Avmeld', 'Auth og app'];
+  const navn = ['Felles', 'Avmeld', 'Auth og app', 'Kampanje og feil'];
   const pos = navn.map((n) => rå.indexOf(`/* == ${n} == */`));
   assert.ok(pos.every((p) => p > -1), `mangler del: ${pos}`);
   assert.deepEqual([...pos].sort((a, b) => a - b), pos);
@@ -55,7 +56,7 @@ test('tjeneste.css har delene i rekkefølge', () => {
 
 test('tjeneste.css, avmeld.css og vervekort.css bruker bare tokens eller egne variabler', () => {
   const tokens = utenKommentarer(les('tokens.css'));
-  for (const fil of ['tjeneste.css', 'avmeld.css', 'v/vervekort.css', 'tiktok-auth.css']) {
+  for (const fil of ['tjeneste.css', 'avmeld.css', 'v/vervekort.css', 'tiktok-auth.css', '404.css']) {
     const css = utenKommentarer(les(fil));
     const definert = new Set([...tokens.matchAll(/(--[\w-]+)\s*:/gu), ...css.matchAll(/(--[\w-]+)\s*:/gu)].map((m) => m[1]));
     const brukt = [...css.matchAll(/var\((--[\w-]+)/gu)].map((m) => m[1]);
@@ -104,4 +105,60 @@ test('/app/ har ingen egne fargevariabler, ingen mørk modus og ingen sporing', 
   assert.doesNotMatch(stil, /--cream|--ink|prefers-color-scheme|#[0-9a-fA-F]{3,8}\b|font-family|font-size:\s*[\d.]+px/u);
   assert.deepEqual([...stil.matchAll(/var\((--[\w-]+)/gu)].map((m) => m[1]).filter((v) => !les('tokens.css').includes(`${v}:`)), []);
   for (const f of ['/site.js', '/skall.js', 'id="cookie"', '/locale.js', 'posthog', 'googletagmanager']) assert.ok(!h.includes(f), f);
+});
+
+test('kampanjesidene og 404 laster tokens og tjeneste.css', () => {
+  assert.equal(familie('kampanje').length, 5);
+  assert.equal(familie('feil').length, 1);
+  for (const s of [...familie('kampanje'), ...familie('feil')]) {
+    const h = les(s.fil);
+    assert.match(h, /href="\/tokens\.css"[\s\S]*href="\/tjeneste\.css"/u, s.sti);
+    assert.doesNotMatch(h, /href="\/styles\.css"/u, s.sti);
+    assert.match(h, /data-tjeneste="(kampanje|feil)"/u, s.sti);
+  }
+  const f404 = les('404.html');
+  assert.ok(f404.indexOf('href="/tjeneste.css"') < f404.indexOf('href="/404.css"'), '404.css må komme etter tjeneste.css');
+});
+
+test('kampanjesidene beholder site.js og samtykkebanner, og de innebygde stilene bruker tokens', () => {
+  for (const s of familie('kampanje')) {
+    const h = les(s.fil);
+    assert.match(h, /<script src="\/site\.js"/u, s.sti);
+    assert.match(h, /id="cookie"/u, s.sti);
+    for (const [, stil] of h.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gu)) {
+      assert.doesNotMatch(stil, /var\(--(?:ink|ink-soft|cream|sand|sand-2|line|orange|pad)\b/u, s.sti);
+      assert.doesNotMatch(stil, /font-family|#[0-9a-fA-F]{3,8}\b|font-size:\s*[\d.]+px/u, s.sti);
+      const definert = new Set([...les('tokens.css').matchAll(/(--[\w-]+)\s*:/gu)].map((m) => m[1]));
+      assert.deepEqual([...stil.matchAll(/var\((--[\w-]+)/gu)].map((m) => m[1]).filter((v) => !definert.has(v)), [], s.sti);
+    }
+  }
+});
+
+test('samtykkeknappene på kampanjesidene veier likt', () => {
+  const rå = utenKommentarer(les('tjeneste.css'));
+  // Reglene er avgrenset med body[data-tjeneste="kampanje"]; effektiv() leser de blanke klassevelgerne.
+  const css = rå.replaceAll('body[data-tjeneste="kampanje"] ', '');
+  const godta = effektiv(css, 'ck-accept');
+  const avvis = effektiv(css, 'ck-reject');
+  assert.ok(Object.keys(godta).length > 4, 'fant ingen stil for «Godta»');
+  assert.deepEqual(avvis, godta);
+  assert.deepEqual(effektiv(css, 'ck-reject', 'hover'), effektiv(css, 'ck-accept', 'hover'));
+  assert.deepEqual(effektiv(css, 'ck-reject', 'focus-visible'), effektiv(css, 'ck-accept', 'focus-visible'));
+  assert.match(godta.background, /var\(--blekk\)/u);
+  assert.equal(rå.includes('body[data-tjeneste="kampanje"] .ck-reject'), true, 'avvisknappen har en regel under kampanje');
+  for (const s of familie('kampanje')) {
+    const h = les(s.fil);
+    assert.match(h, /class="ck-btn ck-accept"/u, s.sti);
+    assert.match(h, /class="ck-btn ck-reject"/u, s.sti);
+  }
+});
+
+test('de kopierte banner- og stegreglene følger kildene i skall.css og side.css', () => {
+  const kamp = utenKommentarer(les('tjeneste.css')).replaceAll('body[data-tjeneste="kampanje"] ', '');
+  const skall = utenKommentarer(les('skall.css'));
+  for (const velger of ['.cookie{', '.cookie[hidden]{', '.ck-btn,.ck-accept,.ck-reject{', '.cookie-actions{', '.cookie p{']) {
+    const linje = (css) => css.split('\n').find((l) => l.startsWith(velger));
+    assert.ok(linje(skall), `skall.css mangler ${velger}`);
+    assert.equal(linje(kamp), linje(skall), velger);
+  }
 });

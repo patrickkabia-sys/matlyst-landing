@@ -1,3 +1,4 @@
+/* 404. Farger og skrift kommer fra tokens.css; toppen, bunnen og ordmerket fra tjeneste.css. */
 .not-found-page {
   min-height: 100vh;
   display: flex;
@@ -10,23 +11,26 @@
   margin: 0 auto;
   display: grid;
   place-items: center;
-  padding: clamp(72px, 12vw, 150px) 0;
+  padding: clamp(40px, 8vw, 96px) 0;
 }
 
 .not-found-card { width: min(100%, 760px); text-align: center; }
-.not-found-code { display: block; margin-bottom: 22px; color: var(--orange); font: 600 12px/1 'DM Sans', sans-serif; letter-spacing: .24em; }
-.not-found-card h1 { max-width: 12ch; margin: 0 auto; }
-.not-found-lead { max-width: 50ch; margin: 28px auto 0; color: var(--ink-soft); font-size: clamp(17px, 2.2vw, 21px); line-height: 1.6; }
+.not-found-code { display: block; margin-bottom: 18px; color: var(--a-oransje); font: 500 .9375rem/1 var(--mono); letter-spacing: .12em; }
+.not-found-card h1 { max-width: 12ch; margin: 0 auto; font-size: 3rem; }
+.not-found-lead { max-width: 50ch; margin: 24px auto 0; color: var(--dempet); font-size: 1.25rem; line-height: 1.5; }
 .not-found-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
-.not-found-action { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 12px 22px; background: var(--ink); color: var(--cream); text-decoration: none; font-weight: 500; }
-.not-found-action.secondary { border: 1px solid var(--line); background: transparent; color: var(--ink); }
-.not-found-help { margin-top: 58px; padding-top: 26px; border-top: 1px solid var(--line); }
-.not-found-help p { margin: 0 0 15px; color: var(--ink-soft); }
-.not-found-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 22px; }
-.not-found-links a { color: var(--ink); text-underline-offset: 4px; }
+.not-found-action { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--blekk); border-radius: 999px; padding: 0 28px; background: var(--blekk); color: var(--flate); text-decoration: none; font-weight: 700; transition: background-color .2s; }
+.not-found-action:hover { background: var(--blekk-lys); }
+.not-found-action.secondary { border-color: var(--linje); background: transparent; color: var(--blekk); transition: border-color .2s; }
+.not-found-action.secondary:hover { border-color: var(--blekk); background: transparent; }
+.not-found-help { margin-top: 56px; padding-top: 26px; border-top: 1px solid var(--linje); }
+.not-found-help p { margin: 0 0 8px; color: var(--dempet); }
+.not-found-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 0 22px; }
+.not-found-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--blekk); text-decoration: underline; text-underline-offset: .2em; }
 
 @media (max-width: 520px) {
-  .not-found-main { width: min(100% - 32px, 1100px); padding-top: 52px; }
+  .not-found-main { width: min(100% - 32px, 1100px); padding-top: 40px; }
+  .not-found-card h1 { font-size: 2.25rem; }
   .not-found-actions { flex-direction: column; }
   .not-found-action { width: 100%; }
 }
