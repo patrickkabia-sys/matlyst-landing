@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { readFileSync, mkdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 const rot = join(fileURLToPath(new URL('..', import.meta.url)), '..');
@@ -117,9 +117,7 @@ async function visPrototype(page) {
   await page.goto('/t8-prototype');
 }
 
-test('pris og spørsmål er like prototypen linje for linje etter skript, og kontrollbilder lagres', async ({ page }) => {
-  const mappe = join(rot, '.superpowers/sdd/2026-11-18-forside-nb-og-sideskall/skjerm');
-  mkdirSync(mappe, { recursive: true });
+test('pris og spørsmål er like prototypen linje for linje etter skript', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const tekster = {};
   for (const type of ['t8', 'proto8']) {
@@ -130,11 +128,6 @@ test('pris og spørsmål er like prototypen linje for linje etter skript, og kon
     await page.locator('.ofte details').evaluateAll((els) => els.forEach((el) => { el.open = true; }));
     tekster[type] = await page.locator('.pris,.ofte').allInnerTexts();
     await page.locator('.ofte details').evaluateAll((els) => els.forEach((el) => { el.open = false; }));
-    for (const [navn, bredde, velger] of [['pc-kort', 1280, '.del'], ['pc-pris', 1280, '.pris'], ['pc-svar', 1280, '.ofte'], ['mob-kort', 390, '.del'], ['mob-pris', 390, '.pris']]) {
-      await page.setViewportSize({ width: bredde, height: 844 });
-      await rullTil(page, velger);
-      await page.locator(velger).screenshot({ style: '.topp,.fast{opacity:0!important}', path: join(mappe, `${type}-${navn}.png`) });
-    }
   }
   expect(tekster.t8.map((t) => t.split('\n').filter(Boolean))).toEqual(tekster.proto8.map((t) => t.split('\n').filter(Boolean)));
 });

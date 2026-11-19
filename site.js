@@ -88,6 +88,14 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   if (reject) reject.addEventListener('click', function () { set('denied'); hide(); });
 
   document.addEventListener('click', function (e) {
+    var hent = e.target.closest('[data-hent]');
+    if (hent) {
+      capture('download_click', {
+        page_path: location.pathname,
+        cta_location: hent.dataset.hent,
+        visning: document.getElementById('hent')?.open ? 'qr' : 'lenke'
+      });
+    }
     var a = e.target.closest('a');
     if (!a) return;
     if (a.href && a.href.indexOf('apps.apple.com') > -1) {

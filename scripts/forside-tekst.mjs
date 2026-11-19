@@ -308,13 +308,13 @@ export const TEKST = {
         retter: ['Ovnsbakt laks med grønnsaker', 'Kyllingsuppe med urter', 'Butter chicken', 'Biff-taco med pico de gallo'],
         // Butikkhyllen varene står under.
         hylle: 'FRUKT & GRØNT',
-        // Varene. `mengder` er mengden ved 4 og 6 porsjoner av kyllingsuppa.
+        // Varene. `mengder` gjelder 4 og 6 porsjoner av kyllingsuppa. `prikker` viser rettene som bruker varen.
         // EKSEMPEL
         varer: [
-          { navn: 'hvitløk', mengder: ['6 fedd', '7 fedd'] },
-          { navn: 'gulrot', mengder: ['4 stk', '5 stk'] },
-          { navn: 'dill', mengder: ['0,5 bunt', '0,75 bunt'] },
-          { navn: 'brokkoli', mengder: ['1 stk', '1 stk'] },
+          { navn: 'hvitløk', prikker: [1, 2, 3], mengder: ['6 fedd', '7 fedd'] },
+          { navn: 'gulrot', prikker: [2, 4], mengder: ['4 stk', '5 stk'] },
+          { navn: 'dill', prikker: [2], mengder: ['0,5 bunt', '0,75 bunt'] },
+          { navn: 'brokkoli', prikker: [1], mengder: ['1 stk', '1 stk'] },
         ],
         // Menyen som kommer opp når man holder inne på en rett.
         meny: ['Endre porsjoner', 'Fjern fra handleliste'],

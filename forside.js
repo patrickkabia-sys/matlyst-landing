@@ -220,6 +220,22 @@
     seksjon.classList.toggle('i-bildet', synlig);
     settRolig();
   }
+  // Pris, personvern og svar glir inn én gang, som i prototypen.
+  if ('IntersectionObserver' in window) {
+    const inn = new IntersectionObserver((rader) => rader.forEach((rad) => {
+      if (!rad.isIntersecting) return;
+      inn.unobserve(rad.target);
+      if (bevegelse.matches) return;
+      const fra = rad.target.dataset.inn;
+      const start = fra === 'v' ? 'translateX(-96px)' : fra === 'h' ? 'translateX(96px)' : 'translateY(28px)';
+      rad.target.animate([{ opacity: 0, transform: start }, { opacity: 1, transform: 'none' }], { duration: 950, delay: fra === 'h' ? 130 : 0, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
+    }), { threshold: 0.18 });
+    const flater = document.querySelectorAll('.plan[data-inn], .vernblokk[data-inn], .svarliste[data-inn]');
+    flater.forEach((el) => inn.observe(el));
+    bevegelse.addEventListener('change', () => {
+      if (bevegelse.matches) flater.forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
+    });
+  }
   // Hvert kort har en egen tidslinje. Klokka går bare mens kortet er i bildet.
   const kortloep = (id, bygg) => {
     const app = document.getElementById(id), rute = app.closest('.rute');

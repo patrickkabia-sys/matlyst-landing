@@ -215,7 +215,7 @@ function middag(t, oppsett) {
           ${m.skaler.ingredienser.map((vare) => `<div class="a-ing"><span>${skjerm(vare.navn)}</span><b data-m="${vare.mengder.map(skjerm).join('|')}">${skjerm(vare.mengder[0])}</b></div>`).join('')}
         </div>
       </article>
-<article class="rute" data-inn="h" data-forsink="90">
+<article class="rute" data-inn="h">
         <div class="rutetekst"><h3>${skjerm(m.lag.tittel)}</h3><p>${skjerm(m.lag.tekst)}</p></div>
         <div class="app" id="demoLag" data-tider="${m.lag.tider.map(skjerm).join('|')}" role="img" aria-label="${skjerm(m.lag.aria)}">
           <div class="a-lagscene">
@@ -252,13 +252,13 @@ function middag(t, oppsett) {
         <div class="app" id="demoHandle" role="img" aria-label="${skjerm(m.handle.aria)}">
           <div class="a-merker">${m.handle.retter.map((rett, i) => `<span class="m${i + 1}${i === 1 ? ' handle-rett' : ''}">${skjerm(rett)}</span>`).join('')}</div>
           <div class="a-hylle">${skjerm(m.handle.hylle)}</div>
-          ${m.handle.varer.map((vare, i) => `<div class="a-vare"><i>${hake}</i><span>${skjerm(vare.navn)}</span><b>${[[1, 2, 3], [2, 4], [2], [1]][i].map((n) => `<i style="--p:var(--a-prikk${n})"></i>`).join('')}<em data-m="${vare.mengder.map(skjerm).join('|')}">${skjerm(vare.mengder[0])}</em></b></div>`).join('')}
+          ${m.handle.varer.map((vare) => `<div class="a-vare"><i>${hake}</i><span>${skjerm(vare.navn)}</span><b>${vare.prikker.map((n) => `<i style="--p:var(--a-prikk${n})"></i>`).join('')}<em data-m="${vare.mengder.map(skjerm).join('|')}">${skjerm(vare.mengder[0])}</em></b></div>`).join('')}
           <div class="a-meny">${m.handle.meny.map((valg) => `<span>${skjerm(valg)}</span>`).join('')}</div>
           <div class="a-ark"><div class="a-tittel">${skjerm(m.handle.ark.oppskrift)}</div><small>${skjerm(m.handle.ark.antall)}</small><div class="a-teller"><i>${skjerm(m.demo.minus)}</i><b class="antall" data-antall="${m.demo.porsjoner.map(skjerm).join('|')}">${skjerm(m.demo.porsjoner[0])}</b><i class="pluss">${skjerm(m.demo.pluss)}</i></div><div class="a-oppdater">${skjerm(m.handle.ark.oppdater)}</div></div>
           <span class="a-tapp"><i></i><b></b></span>
         </div>
       </article>
-<article class="rute" data-inn="h" data-forsink="90">
+<article class="rute" data-inn="h">
         <div class="rutetekst"><h3>${skjerm(m.husstand.tittel)}</h3><p>${skjerm(m.husstand.tekst)}</p></div>
         <div class="app" id="demoHus">
           <div class="a-husvelg" role="group" aria-label="${skjerm(m.husstand.velgAria)}">${husstander.map((h, i) => `<button type="button" aria-pressed="${i === 0}"><span>${h.folk.slice(0, 3).map((n) => ansikt(n, 24)).join('')}</span>${skjerm(h.merke)}</button>`).join('')}</div>
@@ -271,13 +271,13 @@ function middag(t, oppsett) {
 function pris(t) {
   const p = t.pris;
   const prishake = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>';
-  return `<section class="pris ramme" id="pris"><h2>${skjerm(p.tittel)}</h2><p>${skjerm(p.ingress)}</p><div class="prisvalg">${[p.gratis, p.pro].map((plan, i) => `<article class="plan${i ? ' pro' : ''}"><h3>${skjerm(plan.tittel)}</h3><p class="planlinje">${skjerm(plan.linje)}</p><ul>${plan.punkter.map((punkt) => `<li>${prishake}${skjerm(punkt)}</li>`).join('')}</ul><p class="planfot">${skjerm(plan.fot)}</p></article>`).join('')}</div><div class="vernblokk"><p class="vernord">${skjerm(p.vernord)}</p><p class="vern"><span>${skjerm(p.vern)}</span><a href="/personvern.html">${skjerm(p.vernlenke)}</a></p></div></section>`;
+  return `<section class="pris ramme" id="pris"><h2>${skjerm(p.tittel)}</h2><p>${skjerm(p.ingress)}</p><div class="prisvalg">${[p.gratis, p.pro].map((plan, i) => `<article class="plan${i ? ' pro' : ''}" data-inn="${i ? 'h' : 'v'}"><h3>${skjerm(plan.tittel)}</h3><p class="planlinje">${skjerm(plan.linje)}</p><ul>${plan.punkter.map((punkt) => `<li>${prishake}${skjerm(punkt)}</li>`).join('')}</ul><p class="planfot">${skjerm(plan.fot)}</p></article>`).join('')}</div><div class="vernblokk" data-inn><p class="vernord">${skjerm(p.vernord)}</p><p class="vern"><span>${skjerm(p.vern)}</span><a href="/personvern.html">${skjerm(p.vernlenke)}</a></p></div></section>`;
 }
 function svar(t) {
   const s = t.svar;
   const par = s.sporsmal.map(({ q, a }) => ({ q, a }));
   return {
-    html: `<section class="ofte ramme" id="svar"><h2>${skjerm(s.tittel)}</h2><div class="svarliste">${par.map(({ q, a }) => `<details><summary>${skjerm(q)}<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></summary><p>${skjerm(a)}</p></details>`).join('')}</div></section>`,
+    html: `<section class="ofte ramme" id="svar"><h2>${skjerm(s.tittel)}</h2><div class="svarliste" data-inn>${par.map(({ q, a }) => `<details><summary>${skjerm(q)}<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></summary><p>${skjerm(a)}</p></details>`).join('')}</div></section>`,
     skjema: `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: par.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }).replaceAll('<', '\\u003c')}</script>`,
   };
 }

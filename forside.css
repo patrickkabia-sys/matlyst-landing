@@ -26,7 +26,7 @@
   .hero .steg{grid-column:1;grid-row:6;max-width:420px;margin-top:34px}
   .hero .st{gap:14px;min-height:44px;font-size:17px}
   .hero .st b{width:26px;height:26px;font-size:12px}
-  .hero .film{grid-column:2;grid-row:1 / 8;align-self:center;width:clamp(250px,calc((100vh - 200px) * .483),330px);max-width:none;margin-right:clamp(0px,5vw,72px)}
+  .hero .film{grid-column:2;grid-row:1 / 8;align-self:end;width:clamp(250px,calc((100vh - 200px) * .483),330px);max-width:none;margin-right:clamp(0px,5vw,72px)}
   .hero .kilder{grid-column:1 / -1;grid-row:8;text-align:center}
 }
 .bevis{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;margin-top:18px;font-size:15px;color:var(--dempet)}
@@ -178,7 +178,7 @@ html.js .hero h1:not(.klar){visibility:hidden}
 .retter::-webkit-scrollbar{display:none}
 .rett{flex:none;width:260px;scroll-snap-align:center}
 .rett img{display:block;width:100%;height:auto;aspect-ratio:26/34;object-fit:cover;border-radius:24px;background:var(--hylle)}
-.rett h3{margin:14px 2px 0;font:600 20px/1.2 'Fraunces',Georgia,serif;letter-spacing:-.01em}
+.rett h3{overflow-wrap:anywhere;margin:14px 2px 0;font:600 20px/1.2 'Fraunces',Georgia,serif;letter-spacing:-.01em}
 .rett span{display:flex;align-items:center;gap:6px;margin:6px 2px 0;font-size:15px;color:var(--dempet)}
 .rett span svg{flex:none;width:15px;height:15px}
 .kokebok .kimerke{margin:22px auto 0;font-size:14px;color:var(--dempet)}
