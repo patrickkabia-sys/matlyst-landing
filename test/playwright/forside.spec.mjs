@@ -130,12 +130,7 @@ test('200 prosent tekst på 390 px holder kortenes tekst innenfor boksene', asyn
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(STI);
   await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
-  // Siden bruker px. Dobling av rotstørrelsen alene forstørrer derfor ikke teksten.
-  await page.evaluate(() => {
-    const alle = [...document.querySelectorAll('body *')];
-    const storrelser = alle.map((el) => parseFloat(getComputedStyle(el).fontSize));
-    alle.forEach((el, i) => { el.style.fontSize = `${storrelser[i] * 2}px`; });
-  });
+  // Teksten står i rem, så dobling av rotstørrelsen alene forstørrer den (ingen omregning per element).
   const utenfor = await page.locator('.rett, .rute, .plan, .svarliste, .sporflate').evaluateAll((kort) => kort.flatMap((el) => {
     const b = el.getBoundingClientRect(), feil = [];
     const vandrer = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);

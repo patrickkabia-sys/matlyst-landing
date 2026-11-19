@@ -54,6 +54,8 @@
   --fast-hoyde:75px;
   --luft:16px;
   --ledig-hoyde:calc(100svh - var(--topp-hoyde) - var(--fast-hoyde) - var(--luft));
+  /* Nettleserens tekststørrelse delt på 16 px (1 ved standard). Gjør vw-leddet i clamp() følgsomt, ellers vokser ikke titler på PC ved 200 % tekst. */
+  --skala:tan(atan2(1rem,16px));
 }
 /* Appkort på mobil: tekst til venstre (minst 168 px), telefon til høyre (72 til 124 px). Telefonen krymper først. */
 @media (max-width:720px){:root{--kort-kolonner:minmax(min(168px,60%),1fr) minmax(72px,124px)}}
