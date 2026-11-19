@@ -477,3 +477,69 @@ export async function zoom(browser, sti, faktor, fraBredde = 1280, { opphav } = 
   await page.goto(sti);
   return page;
 }
+
+/**
+ * Regel: alt skal få plass på en mobilskjerm. En telefon eller et mediekort skal kunne ses hel
+ * mellom den klebrige toppen (72 px) og den faste nedlastingsknappen (75 px), med 16 px luft.
+ * Rene tekstkort (.scenario, .callout, .toc, .answer) er lesestoff og er ikke med.
+ */
+export const MOBIL_TOPP = 72;
+export const MOBIL_FAST = 75;
+export const MOBIL_LUFT = 16;
+export const MOBIL_MEDIA = [
+  '.tel', '.phones video', '.phones img', '.shot', '.shot img', '.film', '#lagre video',
+  '.locale-prose figure img', 'main.prose figure img', '.locale-prose video', 'main.prose video',
+  'aside.i-appen', 'section.app-cta', 'section.feat', '.blogg-artikkel figure img',
+];
+// Forsidens fliser: den faste knappen er skjult mens de er i bildet (skall.js), så bare toppen og luften trekkes fra.
+export const MOBIL_FLISER = ['#trio article.rute', '.spor .to > *'];
+// Valgene som bytter innhold i en flis (husstander, Spør Matlyst-forslag): alle varianter må få plass.
+export const MOBIL_VALG = ['.a-husvelg button', '.forslag'];
+
+/** Elementer i `velg` som er høyere enn ledig høyde ved nåværende visningsstørrelse. Lazy bilder rulles inn først. */
+export async function forHoyePaaMobil(page, velg = MOBIL_MEDIA, unntak = [], { fast = true, topp = MOBIL_TOPP } = {}) {
+  await page.evaluate(async () => {
+    for (let y = 0; y < document.documentElement.scrollHeight; y += 400) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 25));
+    }
+    window.scrollTo(0, 0);
+  });
+  await page.waitForLoadState('load');
+  return page.evaluate(({ velg, unntak, topp, fast, luft, medFast }) => {
+    const ledig = window.innerHeight - topp - (medFast ? fast : 0) - luft;
+    const ut = [];
+    const sett = new Set();
+    for (const v of velg) {
+      for (const el of document.querySelectorAll(v)) {
+        if (sett.has(el) || unntak.some((u) => el.matches(u))) continue;
+        sett.add(el);
+        const r = el.getBoundingClientRect();
+        if (r.height === 0 && r.width === 0) continue;
+        if (r.height > ledig + 0.5) ut.push({ velger: v, hoyde: Math.round(r.height), ledig });
+      }
+    }
+    return ut;
+  }, { velg, unntak, topp, fast: MOBIL_FAST, luft: MOBIL_LUFT, medFast: fast });
+}
+
+/** Forsidens fliser ved nåværende visningsstørrelse, i alle varianter (hver husstand og hvert forslag). Funn har med hvilket valg som var aktivt. */
+export async function forHoyeFliserPaaMobil(page) {
+  const funn = [];
+  // Stablede ruter (klassen stabel på #trio, standard) festes 12 px fra kanten og har tak 600 px; ellers gjelder toppen på 72 px.
+  const stablet = await page.evaluate(() => document.getElementById('trio')?.classList.contains('stabel') && matchMedia('(max-width:720px)').matches);
+  const mal = async (valg) => {
+    for (const f of await forHoyePaaMobil(page, ['#trio article.rute'], [], { fast: false, topp: stablet ? 12 : MOBIL_TOPP })) funn.push({ ...f, valg });
+    for (const f of await forHoyePaaMobil(page, ['.spor .to > *'], [], { fast: false })) funn.push({ ...f, valg });
+  };
+  await mal('start');
+  for (const velger of MOBIL_VALG) {
+    const antall = await page.locator(velger).count();
+    for (let i = 0; i < antall; i++) {
+      await page.locator(velger).nth(i).evaluate((el) => el.click());
+      await page.waitForTimeout(120);
+      await mal(`${velger} #${i}`);
+    }
+  }
+  return funn;
+}

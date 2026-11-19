@@ -118,9 +118,16 @@ h2[id],h3[id]{scroll-margin-top:16px}
   .locale-prose h2,main.prose h2{margin-top:48px}
   .answer{font-size:1.125rem}
   main.prose{padding-block:48px 0}
-  .i-appen{grid-template-columns:minmax(0,1fr);padding:28px 20px;border-radius:32px}
-  .app-cta{grid-template-columns:minmax(0,1fr);gap:28px;padding:28px 20px;border-radius:32px}
-  .app-cta-bilde{grid-column:1;grid-row:2}
+  /* Teksten til venstre, telefonen til høyre: kortet skal få plass på en mobilskjerm. Telefonen krymper før teksten gjør det. */
+  .i-appen{grid-template-columns:var(--kort-kolonner);gap:16px;padding:24px 20px;border-radius:32px}
+  .app-cta{grid-template-columns:var(--kort-kolonner);gap:0 16px;padding:24px 20px;border-radius:32px}
+  .i-appen-media img{max-width:124px}
+  .app-cta-tekst{display:contents}
+  .app-cta-tekst p{font-size:1rem;line-height:1.45}
+  .app-cta-tekst h2{grid-column:1;grid-row:1;align-self:end}
+  .app-cta-tekst p{grid-column:1;grid-row:2;align-self:start}
+  .app-cta-bilde{grid-column:2;grid-row:1 / 3;align-self:center}
+  .app-cta-tekst > a{grid-column:1 / -1;grid-row:3;margin-top:20px}
   .app-cta-tekst > a{display:flex}
   .page-cta{padding:28px 20px;border-radius:32px}
   .app-cta,.page-cta,.faq,.related{margin-top:72px}
@@ -168,8 +175,10 @@ body[data-sidetype="omregner"] .btn-store{display:inline-flex;align-items:center
   body[data-sidetype="omregner"] .omregner-svar{font-size:2.25rem}
 }
 @media (min-width:1001px){
-  /* Bryter ut av lesekolonnen bare så langt det er plass: aldri forbi mainrammen eller skjermkanten (forstørret tekst gjør kolonnen like bred som rammen) */
-  body[data-sidetype="omregner"] form.omregner{margin-inline:calc(-1 * max(0px, min(150px, (100vw - 100%) / 2 - 24px, (1184px - 100%) / 2)))}
+  /* Kalkulatorkortet står i lesekolonnen, med samme venstrekant som overskriften «Kalkulator: …» og teksten. Utbrytingen ga bare ca. 20 px mer per felt og et kort som ragnet ut over overskriften. */
+  /* Kortet er like bredt som lesekolonnen, så «Mengde» får en egen rad og «Fra» og «Til» deler den neste: navnene på enhetene (Amerikanske kopper (kopp)) blir ikke klippet. */
+  body[data-sidetype="omregner"] .omregner-rad{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+  body[data-sidetype="omregner"] .omregner-rad > label:first-child{grid-column:1 / -1}
   body[data-sidetype="omregner"] .omregner-svar{font-size:2.75rem}
 }
 @media (min-width:1201px){
@@ -183,6 +192,14 @@ body[data-sidetype="omregner"] .btn-store{display:inline-flex;align-items:center
   body[data-sidetype="omregner"] .omregner-svar{padding:18px 20px;border-radius:20px}
 }
 @media (prefers-reduced-motion:reduce){body[data-sidetype="omregner"] .omregner-bytt,body[data-sidetype="omregner"] .omregner-rad label{transition:none}}
+/* Alt skal få plass på en mobilskjerm: telefonbilder og -filmer begrenses i høyden (--ledig-hoyde) og beholder formatet; i appkort legges telefonen ved siden av teksten. */
+@media (max-width:1000px){
+  body[data-sidetype="omregner"] :is(.locale-prose,main.prose) :is(video,.tel,figure img){width:auto;max-width:min(100%,300px);max-height:var(--ledig-hoyde);margin-inline:auto}
+}
+@media (max-width:720px){
+  body[data-sidetype="omregner"] :is(.i-appen-media,.feat-media) :is(video,.tel,img){width:100%;max-width:124px}
+  body[data-sidetype="omregner"] .locale-prose .i-appen-media :is(video,.tel,img){width:100%;max-width:124px}
+}
 /* == Lang guide == */
 /* Innholdsfortegnelse, kortsvar, scenarioer, grunnleggerkort og medier i lange guider. Alle kort er grå (--hylle) med 28 px radius; bilder og filmer 24 px. */
 body[data-sidetype="guide-lang"] .toc{margin:20px 0 0;padding:24px 28px;border-radius:28px;background:var(--hylle);font-size:1.0625rem;line-height:1.45}
@@ -195,6 +212,11 @@ body[data-sidetype="guide-lang"] .toc-knapp{display:flex;align-items:center;just
 body[data-sidetype="guide-lang"] .toc-knapp::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .25s var(--ut)}
 body[data-sidetype="guide-lang"] .toc-knapp[aria-expanded="true"]::after{transform:rotate(-135deg)}
 body[data-sidetype="guide-lang"] .toc-knapp[aria-expanded="true"]{margin-bottom:6px}
+/* Fra 1000 px står innholdsfortegnelsen i to kolonner, og ingen post deles mellom dem (lange guider har opptil 14 poster). */
+@media (min-width:1000px){
+  body[data-sidetype="guide-lang"] .toc ol{display:block;column-count:2;column-gap:40px}
+  body[data-sidetype="guide-lang"] .toc li{break-inside:avoid}
+}
 body[data-sidetype="guide-lang"] .locale-prose .answer{max-width:none;margin:0;padding:28px 32px;border-radius:28px;background:var(--hylle);text-align:left}
 
 body[data-sidetype="guide-lang"] .locale-prose .scenario{margin:20px 0 0;padding:28px 32px;border-radius:28px;background:var(--hylle)}
@@ -225,6 +247,14 @@ body[data-sidetype="guide-lang"] .locale-prose .i-appen-media :is(video,.tel){ma
   body[data-sidetype="guide-lang"] .locale-prose .founder:has(> img){grid-template-columns:minmax(0,1fr)}
 }
 @media (prefers-reduced-motion:reduce){body[data-sidetype="guide-lang"] .toc-knapp::after{transition:none}}
+/* Alt skal få plass på en mobilskjerm: telefonbilder og -filmer begrenses i høyden (--ledig-hoyde) og beholder formatet; i appkort legges telefonen ved siden av teksten. */
+@media (max-width:1000px){
+  body[data-sidetype="guide-lang"] :is(.locale-prose,main.prose) :is(video,.tel,figure img){width:auto;max-width:min(100%,300px);max-height:var(--ledig-hoyde);margin-inline:auto}
+}
+@media (max-width:720px){
+  body[data-sidetype="guide-lang"] :is(.i-appen-media,.feat-media) :is(video,.tel,img){width:100%;max-width:124px}
+  body[data-sidetype="guide-lang"] .locale-prose .i-appen-media :is(video,.tel,img){width:100%;max-width:124px}
+}
 /* == Kort guide == */
 /* Korte guider: nummererte steg (list-item-telleren følger ol[start]; en liste med reversed eller li[value] får ikke stegstilen, for nettleseren teller ikke dem inn i den) (svart sirkel), ideliste som grå kort og kildelenka som pille. Alt avgrenset til guide-kort. */
 body[data-sidetype="guide-kort"] .locale-prose > ol:not([class]):not([reversed]):not(:has(> li[value])){display:grid;gap:14px;margin:16px 0 0;padding:0;list-style:none}
@@ -240,6 +270,23 @@ body[data-sidetype="guide-kort"] .locale-prose > p > a[rel~="noopener"]:only-chi
   body[data-sidetype="guide-kort"] .locale-prose ul.ide-liste li{padding:18px 20px}
 }
 @media (prefers-reduced-motion:reduce){body[data-sidetype="guide-kort"] .locale-prose > p > a[rel~="noopener"]:only-child{transition:none}}
+/* Alt skal få plass på en mobilskjerm: telefonbilder og -filmer begrenses i høyden (--ledig-hoyde) og beholder formatet; i appkort legges telefonen ved siden av teksten. */
+@media (max-width:1000px){
+  body[data-sidetype="guide-kort"] .locale-prose video,
+  body[data-sidetype="guide-kort"] .locale-prose .tel,
+  body[data-sidetype="guide-kort"] .locale-prose figure img,
+  body[data-sidetype="guide-kort"] main.prose video,
+  body[data-sidetype="guide-kort"] main.prose .tel,
+  body[data-sidetype="guide-kort"] main.prose figure img{width:auto;max-width:min(100%,300px);max-height:var(--ledig-hoyde);margin-inline:auto}
+}
+@media (max-width:720px){
+  body[data-sidetype="guide-kort"] .i-appen-media video,
+  body[data-sidetype="guide-kort"] .i-appen-media .tel,
+  body[data-sidetype="guide-kort"] .i-appen-media img,
+  body[data-sidetype="guide-kort"] .feat-media video,
+  body[data-sidetype="guide-kort"] .feat-media .tel,
+  body[data-sidetype="guide-kort"] .feat-media img{width:100%;max-width:124px}
+}
 /* == Eldre sider == */
 /* De fire eldre norske sidene (Matprat, finn oppskrifter, hva kan jeg lage, skapere). Heltens, kortets og bunnradens innhold ligger rett i bladet, uten main, så hver flate henter sin egen gutter. Alt avgrenset til guide-gammel. Tekst i rem; størrelsene trappes opp på samme brytepunkter som Grunnstil. */
 body[data-sidetype="guide-gammel"] .hero{max-width:1184px;margin:0 auto;padding:56px max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));text-align:center}
@@ -266,8 +313,8 @@ body[data-sidetype="guide-gammel"] .page-cta > a:only-child{margin-top:0}
 @media (max-width:720px){
   body[data-sidetype="guide-gammel"] .hero{padding-top:28px}
   body[data-sidetype="guide-gammel"] .hero .lead{font-size:1.125rem}
-  body[data-sidetype="guide-gammel"] .feat{grid-template-columns:minmax(0,1fr);margin-top:36px;padding:28px 20px;border-radius:32px}
-  body[data-sidetype="guide-gammel"] .feat-media{grid-column:1;grid-row:2}
+  body[data-sidetype="guide-gammel"] .feat{grid-template-columns:var(--kort-kolonner);gap:0 16px;margin-top:36px;padding:24px 20px;border-radius:32px}
+  body[data-sidetype="guide-gammel"] .feat-media{grid-column:2;grid-row:1}
 }
 @media (min-width:721px){
   body[data-sidetype="guide-gammel"] .hero h1{font-size:2.875rem}
@@ -278,6 +325,23 @@ body[data-sidetype="guide-gammel"] .page-cta > a:only-child{margin-top:0}
   body[data-sidetype="guide-gammel"] .feat-text h2{font-size:2.125rem}
 }
 @media (min-width:1201px){body[data-sidetype="guide-gammel"] .hero h1{font-size:3.875rem}}
+/* Alt skal få plass på en mobilskjerm: telefonbilder og -filmer begrenses i høyden (--ledig-hoyde) og beholder formatet; i appkort legges telefonen ved siden av teksten. */
+@media (max-width:1000px){
+  body[data-sidetype="guide-gammel"] .locale-prose video,
+  body[data-sidetype="guide-gammel"] .locale-prose .tel,
+  body[data-sidetype="guide-gammel"] .locale-prose figure img,
+  body[data-sidetype="guide-gammel"] main.prose video,
+  body[data-sidetype="guide-gammel"] main.prose .tel,
+  body[data-sidetype="guide-gammel"] main.prose figure img{width:auto;max-width:min(100%,300px);max-height:var(--ledig-hoyde);margin-inline:auto}
+}
+@media (max-width:720px){
+  body[data-sidetype="guide-gammel"] .i-appen-media video,
+  body[data-sidetype="guide-gammel"] .i-appen-media .tel,
+  body[data-sidetype="guide-gammel"] .i-appen-media img,
+  body[data-sidetype="guide-gammel"] .feat-media video,
+  body[data-sidetype="guide-gammel"] .feat-media .tel,
+  body[data-sidetype="guide-gammel"] .feat-media img{width:100%;max-width:124px}
+}
 /* == Blogg == */
 /* Bloggindeks og artikler (scripts/blogg.mjs). Alt avgrenset til blogg. Kortene er grå (--hylle) med 24 px radius; bildene følger. Tekst i rem. */
 body[data-sidetype="blogg"] ul.blogg-kort{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:48px 0 0;padding:0;list-style:none}
@@ -325,6 +389,23 @@ body[data-sidetype="blogg"] section.blogg-flere{margin-top:72px}
   body[data-sidetype="blogg"] .blogg-flere li a{display:flex;min-height:48px;padding:12px 0;border:0;border-bottom:1px solid var(--linje);border-radius:0;font-weight:700}
 }
 @media (prefers-reduced-motion:reduce){body[data-sidetype="blogg"] .blogg-flere li a{transition:none}}
+/* Alt skal få plass på en mobilskjerm: telefonbilder og -filmer begrenses i høyden (--ledig-hoyde) og beholder formatet; i appkort legges telefonen ved siden av teksten. */
+@media (max-width:1000px){
+  body[data-sidetype="blogg"] .locale-prose video,
+  body[data-sidetype="blogg"] .locale-prose .tel,
+  body[data-sidetype="blogg"] .locale-prose figure img,
+  body[data-sidetype="blogg"] main.prose video,
+  body[data-sidetype="blogg"] main.prose .tel,
+  body[data-sidetype="blogg"] main.prose figure img{width:auto;max-width:min(100%,300px);max-height:var(--ledig-hoyde);margin-inline:auto}
+}
+@media (max-width:720px){
+  body[data-sidetype="blogg"] .i-appen-media video,
+  body[data-sidetype="blogg"] .i-appen-media .tel,
+  body[data-sidetype="blogg"] .i-appen-media img,
+  body[data-sidetype="blogg"] .feat-media video,
+  body[data-sidetype="blogg"] .feat-media .tel,
+  body[data-sidetype="blogg"] .feat-media img{width:100%;max-width:124px}
+}
 /* == Juss == */
 /* Juss: bare lesekolonnen og kortet. Teksten i dokumentene røres aldri; her styles bare det som finnes (main.doc med .doc-*, main.legal-doc med header og section). Det eneste kortet er .callout / .legal-callout. */
 body[data-sidetype="juss"] main.doc,body[data-sidetype="juss"] main.legal-doc{max-width:68ch;margin-inline:auto;padding-block:72px 0;font-size:1.1875rem;line-height:1.6;overflow-wrap:break-word}

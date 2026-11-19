@@ -9,7 +9,8 @@ permissions:
   contents: read
 
 jobs:
-  test:
+  # Enhetstestene kjøres én gang, ikke per skår.
+  enhet:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -25,11 +26,36 @@ jobs:
       - name: Installer avhengigheter
         run: npm ci
 
+      # Noen enhetstester (side-css-beregnet, skall) starter Chromium.
       - name: Installer Chromium
         run: npx playwright install --with-deps chromium
 
       - name: Kjør enhetstester
         run: npm test
 
-      - name: Kjør Playwright
-        run: npm run test:e2e
+  # Playwright er delt i to skår som kjører samtidig.
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        skar: [1, 2]
+    steps:
+      - name: Hent kildekoden
+        uses: actions/checkout@v4
+
+      - name: Sett opp Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer avhengigheter
+        run: npm ci
+
+      - name: Installer Chromium
+        run: npx playwright install --with-deps chromium webkit
+
+      - name: Kjør Playwright, skår ${{ matrix.skar }} av 2
+        run: npx playwright test --shard=${{ matrix.skar }}/2

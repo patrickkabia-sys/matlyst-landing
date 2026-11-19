@@ -1,6 +1,6 @@
 // Enhetsomvandlare på svenska: en sida per enhetspar (ml till dl, koppar till ml, °F till °C osv.) plus en hubbsida.
 // Samma motor och samma kalkylator (site.js) som de engelska sidorna; texten är skriven för svenska recept och svenska hushållsmått.
-import { ENHETER, allePar, enheterFor, konverter, parSti, tall } from './enheter.mjs';
+import { ENHETER, allePar, enheterFor, konverter, omregnerData, ordFor, parSti, tall } from './enheter.mjs';
 import { byggRik } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
@@ -186,14 +186,14 @@ function skjema(fra, til) {
   const ids = gruppeIds(g);
   const data = Object.fromEntries(ids.map((id) => [id, g === 'temperatur' ? 0 : ENHETER[id].f]));
   const opt = (valgt) => ids.map((id) => `<option value="${id}"${id === valgt ? ' selected' : ''}>${esc(N(id).fl)} (${esc(N(id).kort)})</option>`).join('');
-  const svar = `1 ${N(fra).kort} = ${sv(konverter(1, fra, til))} ${N(til).kort}`;
+  const svar = `1 ${ordFor('sv', fra, 1)} = ${sv(konverter(1, fra, til))} ${ordFor('sv', til, konverter(1, fra, til))}`;
   return `<form class="omregner" data-gruppe="${g}" onsubmit="return false"><div class="omregner-rad">`
     + `<label>Mängd<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label>`
     + `<label>Från<select data-felt="fra">${opt(fra)}</select></label>`
     + `<button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Byt enheter">⇄</button>`
     + `<label>Till<select data-felt="til">${opt(til)}</select></label></div>`
     + `<p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">${esc(svar)}</p>`
-    + `<script type="application/json" class="omregner-data">${JSON.stringify({ f: data, t: g === 'temperatur' })}</script></form>`;
+    + `<script type="application/json" class="omregner-data">${JSON.stringify(omregnerData('sv', data, g === 'temperatur'))}</script></form>`;
 }
 
 function tabell(fra, til) {
@@ -288,7 +288,7 @@ const enhetsHub = (() => {
     return [tittel, `<ul>${rader}</ul>`];
   };
   const ids = gruppeIds('volum');
-  const kalkylator = `<form class="omregner" data-gruppe="volum" onsubmit="return false"><div class="omregner-rad"><label>Mängd<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label><label>Från<select data-felt="fra">${ids.map((id) => `<option value="${id}"${id === 'cups' ? ' selected' : ''}>${esc(N(id).fl)} (${esc(N(id).kort)})</option>`).join('')}</select></label><button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Byt enheter">⇄</button><label>Till<select data-felt="til">${ids.map((id) => `<option value="${id}"${id === 'ml' ? ' selected' : ''}>${esc(N(id).fl)} (${esc(N(id).kort)})</option>`).join('')}</select></label></div><p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">1 kopp = ${sv(konverter(1, 'cups', 'ml'))} ml</p><script type="application/json" class="omregner-data">${JSON.stringify({ f: Object.fromEntries(ids.map((id) => [id, ENHETER[id].f])), t: false })}</script></form>`;
+  const kalkylator = `<form class="omregner" data-gruppe="volum" onsubmit="return false"><div class="omregner-rad"><label>Mängd<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label><label>Från<select data-felt="fra">${ids.map((id) => `<option value="${id}"${id === 'cups' ? ' selected' : ''}>${esc(N(id).fl)} (${esc(N(id).kort)})</option>`).join('')}</select></label><button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Byt enheter">⇄</button><label>Till<select data-felt="til">${ids.map((id) => `<option value="${id}"${id === 'ml' ? ' selected' : ''}>${esc(N(id).fl)} (${esc(N(id).kort)})</option>`).join('')}</select></label></div><p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">1 kopp = ${sv(konverter(1, 'cups', 'ml'))} ml</p><script type="application/json" class="omregner-data">${JSON.stringify(omregnerData('sv', Object.fromEntries(ids.map((id) => [id, ENHETER[id].f])), false))}</script></form>`;
   return byggRik({
     lang: 'sv',
     svarTekst: 'En gratis omvandlare för matlagning med alla kombinationer: milliliter, centiliter, deciliter, liter, kryddmått, teskedar, matskedar, amerikanska koppar, flytande uns, pints, quarts, gallon, gram, kilogram, uns, pund, millimeter, centimeter, tum och grader Celsius till Fahrenheit. Välj en omräkning nedan eller använd omvandlaren.',

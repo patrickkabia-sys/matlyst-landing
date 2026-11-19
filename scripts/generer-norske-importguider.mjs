@@ -70,7 +70,8 @@ ${hreflang}
 <meta name="twitter:description" content="${esc(v.description)}">
 <meta name="twitter:image" content="${base}/images/og.jpg">
 <meta name="twitter:image:alt" content="${esc(v.description)}">
-<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 ${STIL}
 <script type="application/ld+json">${json(schemas)}</script>
 <script src="/locale.js" defer></script>

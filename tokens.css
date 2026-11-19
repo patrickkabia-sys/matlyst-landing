@@ -48,4 +48,20 @@
   --svart:#000000;
   --kule-gjenskinn:#FFEEF7;
   --ut:cubic-bezier(.16,1,.3,1);
+
+  /* Alt skal få plass på en mobilskjerm: en flis eller telefon kan ses hel mellom den klebrige toppen og den faste nedlastingsknappen. */
+  --topp-hoyde:72px;
+  --fast-hoyde:75px;
+  --luft:16px;
+  --ledig-hoyde:calc(100svh - var(--topp-hoyde) - var(--fast-hoyde) - var(--luft));
+  /* Forsidens fliser: den faste knappen er skjult mens de er i bildet, så bare toppen og luften trekkes fra. */
+  /* Stabelen: toppen er ikke klebrig på mobil, så rutene festes 12 px fra kanten, 6 px forskjøvet per kort, og alle har samme høyde. */
+  --stabel-topp:12px;
+  --stabel-skritt:6px;
+  --stabel-hoyde:min(600px, calc(100svh - var(--stabel-topp) - var(--luft)));
+  --flis-hoyde:calc(100svh - var(--topp-hoyde) - var(--luft));
+  /* Nettleserens tekststørrelse delt på 16 px (1 ved standard). Gjør vw-leddet i clamp() følgsomt, ellers vokser ikke titler på PC ved 200 % tekst. */
+  --skala:tan(atan2(1rem,16px));
 }
+/* Appkort på mobil: tekst til venstre (minst 168 px), telefon til høyre (72 til 124 px). Telefonen krymper først. */
+@media (max-width:720px){:root{--kort-kolonner:minmax(min(168px,60%),1fr) minmax(72px,124px)}}

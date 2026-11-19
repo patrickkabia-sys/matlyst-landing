@@ -454,7 +454,7 @@ const holidaysHub = byggRik({
       + p('Start with the <a href="/en/recipe-book-app/">recipe organizer app</a> page, or see how the <a href="/en/shopping-list/">grocery list</a> and the <a href="/en/pantry-app/">pantry</a> work.')],
   ],
 }).html;
-import { ENHETER as ENH, enheterFor as enhFor, parSti as parStiH } from './enheter.mjs';
+import { ENHETER as ENH, enheterFor as enhFor, omregnerData as omregnerDataH, parSti as parStiH } from './enheter.mjs';
 const enhetsHub = (() => {
   const navnH = (id) => ENH[id].en;
   const gruppe = (g, tittel) => {
@@ -465,7 +465,7 @@ const enhetsHub = (() => {
   return byggRik({
     svarTekst: 'A free cooking unit converter for every combination: milliliters, deciliters, liters, US cups, tablespoons, teaspoons, fluid ounces, pints, quarts, gallons, grams, kilograms, ounces, pounds, centimeters, inches, and °C to °F. Pick a conversion below, or use the calculator.',
     seksjoner: [
-      ['Convert any cooking unit', (() => { const ids = enhFor('en').filter((id) => ENH[id].gruppe === 'volum'); return `<form class="omregner" data-gruppe="volum" onsubmit="return false"><div class="omregner-rad"><label>Amount<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label><label>From<select data-felt="fra">${ids.map((id) => `<option value="${id}"${id === 'cups' ? ' selected' : ''}>${navnH(id).fl} (${navnH(id).kort})</option>`).join('')}</select></label><button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Swap units">⇄</button><label>To<select data-felt="til">${ids.map((id) => `<option value="${id}"${id === 'ml' ? ' selected' : ''}>${navnH(id).fl} (${navnH(id).kort})</option>`).join('')}</select></label></div><p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">1 cup = 236.6 ml</p><script type="application/json" class="omregner-data">${JSON.stringify({ f: Object.fromEntries(ids.map((id) => [id, ENH[id].f])), t: false })}</script></form>`; })() + p('This calculator converts volume. For weight, length, and temperature, use the lists below.')],
+      ['Convert any cooking unit', (() => { const ids = enhFor('en').filter((id) => ENH[id].gruppe === 'volum'); return `<form class="omregner" data-gruppe="volum" onsubmit="return false"><div class="omregner-rad"><label>Amount<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label><label>From<select data-felt="fra">${ids.map((id) => `<option value="${id}"${id === 'cups' ? ' selected' : ''}>${navnH(id).fl} (${navnH(id).kort})</option>`).join('')}</select></label><button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Swap units">⇄</button><label>To<select data-felt="til">${ids.map((id) => `<option value="${id}"${id === 'ml' ? ' selected' : ''}>${navnH(id).fl} (${navnH(id).kort})</option>`).join('')}</select></label></div><p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">1 cup = 236.6 ml</p><script type="application/json" class="omregner-data">${JSON.stringify(omregnerDataH('en', Object.fromEntries(ids.map((id) => [id, ENH[id].f])), false))}</script></form>`; })() + p('This calculator converts volume. For weight, length, and temperature, use the lists below.')],
       gruppe('volum', 'Volume conversions: ml, dl, cups, tablespoons, and more'),
       gruppe('vekt', 'Weight conversions: grams, ounces, and pounds'),
       gruppe('lengde', 'Length conversions: cm, mm, and inches for pans and dough'),

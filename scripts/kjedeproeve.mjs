@@ -1,12 +1,14 @@
-// Prøv etterbehandlingen i en isolert kopi. Generatorene kjøres ikke her.
+// Prøv hele byggekjeden (generatorene og etterbehandlingen, scripts/kjede.mjs) i en isolert kopi, aldri mot arbeidskopien,
+// og sammenlign resultatet fil for fil med de publiserte sidene. Nøkkelen `alle` teller alle sider.
 import { cpSync, existsSync, lstatSync, mkdtempSync, readFileSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { alleSider, trygtUnderRot } from './sidetyper.mjs';
+import { EKSTRA_FILER, KJEDE } from './kjede.mjs';
 
-const KJEDE = ['guidelenker', 'lenker-sett', 'skall-paa', 'app-bevis', 'bilde-attributter', 'sprak-signaler'];
 const UTELATT = new Set(['.git', '.superpowers', 'node_modules', 'qa', 'test-results', 'playwright-report']);
 
 // Første linje som skiller de to filene, ellers null.
@@ -33,7 +35,7 @@ export function kopier(rot, mappe) {
 }
 
 export function kjor(rot, nokkel) {
-  const foer = alleSider(rot).filter((s) => s.nokkel === nokkel);
+  const foer = alleSider(rot).filter((s) => nokkel === 'alle' || s.nokkel === nokkel);
   if (!foer.length) throw new Error(`Ukjent eller tom nøkkel: ${nokkel ?? '(mangler)'}`);
   const mappe = mkdtempSync(join(tmpdir(), 'matlyst-kjedeproeve-'));
   try {
@@ -42,7 +44,8 @@ export function kjor(rot, nokkel) {
     for (const skript of KJEDE) execFileSync(process.execPath, [`scripts/${skript}.mjs`], { cwd: mappe, stdio: 'pipe' });
     const hent = (rotmappe) => new Map(alleSider(rotmappe).map((s) => [s.fil, s]));
     const alleFoer = hent(rot), alleEtter = hent(mappe);
-    const avvik = [], andre = [];
+    const avvik = [], andre = [], hasher = {};
+    const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex');
     for (const fil of [...new Set([...alleFoer.keys(), ...alleEtter.keys()])].sort()) {
       const a = alleFoer.get(fil), b = alleEtter.get(fil);
       const side = a ?? b;
@@ -54,10 +57,15 @@ export function kjor(rot, nokkel) {
         if (!innA.equals(innB)) forskjell = foersteForskjell(innA, innB);
       }
       if (forskjell === null) continue;
-      if (side.nokkel === nokkel || a?.nokkel === nokkel || b?.nokkel === nokkel) avvik.push(side.sti);
+      if (nokkel === 'alle' || side.nokkel === nokkel || a?.nokkel === nokkel || b?.nokkel === nokkel) { avvik.push(side.sti); hasher[side.sti] = { publisert: a ? sha(join(rot, fil)) : null, generert: b ? sha(join(mappe, fil)) : null }; }
       else andre.push({ sti: side.sti, forskjell });
     }
-    return { avvik, andre };
+    for (const fil of EKSTRA_FILER) {
+      if (!existsSync(join(rot, fil)) && !existsSync(join(mappe, fil))) continue;
+      const a = existsSync(join(rot, fil)) ? readFileSync(join(rot, fil)) : null, b = existsSync(join(mappe, fil)) ? readFileSync(join(mappe, fil)) : null;
+      if (!a || !b || !a.equals(b)) avvik.push(`/${fil}`);
+    }
+    return { avvik, andre, hasher };
   } finally {
     rmSync(mappe, { recursive: true, force: true });
   }

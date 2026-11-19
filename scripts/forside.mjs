@@ -51,7 +51,8 @@ const SPRAK = {
 <meta name="twitter:title" content="Matlyst: oppskriftsappen for iPhone og Android">
 <meta name="twitter:description" content="Oppskriftsappen som oversetter og tilpasser oppskriftene dine. Importer fra en lenke, en video eller et bilde, også av håndskrevne oppskrifter. Planlegg uka og send ukas ingredienser til handlelista.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
-<link rel="icon" type="image/png" href="images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -98,7 +99,8 @@ ${FELLES_HODE}` },
 <meta name="twitter:description" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
 <meta name="twitter:image:alt" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
-<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.","url":"https://matlyst-app.no/sv/"}</script>
 <script src="/locale.js" defer></script>
 ${FELLES_HODE}` },
@@ -129,7 +131,8 @@ ${FELLES_HODE}` },
 <meta name="twitter:description" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
 <meta name="twitter:image:alt" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
-<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.","url":"https://matlyst-app.no/da/"}</script>
 <script src="/locale.js" defer></script>
 ${FELLES_HODE}` },
@@ -160,7 +163,8 @@ ${FELLES_HODE}` },
 <meta name="twitter:description" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
 <meta name="twitter:image:alt" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
-<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.","url":"https://matlyst-app.no/en/"}</script>
 <script src="/locale.js" defer></script>
 ${FELLES_HODE}` },
@@ -280,7 +284,7 @@ function spor(t) {
 
 const klokkeikon = (maal = 14, strek = 1.8) => `<svg aria-hidden="true" width="${maal}" height="${maal}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${strek}" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>`;
 const ansikt = (n, maal, folk) => `<img data-n="${n}" src="/images/forside/${folk.egne.includes(n) ? folk.mappe : 'folk'}/${String(n).padStart(2, '0')}.webp" alt="" width="${maal}" height="${maal}" loading="lazy">`;
-const eier = (rad, folk) => `<span class="a-eier">${ansikt(rad.ansikt, 20, folk)}${skjerm(rad.eier)}</span>`;
+const eier = (rad, folk) => `<span class="a-eier">${ansikt(rad.ansikt, 20, folk)}<span class="a-navn">${skjerm(rad.eier)}</span></span>`;
 function maltid(dag, merke, folk, medEier = false) {
   return `<div class="a-maltid${medEier ? ` a-innrad${Object.hasOwn(dag, 'ny') && dag.ny ? ' ny skjult' : ''}` : ''}"><img src="/images/forside/mat/${skjerm(dag.fil)}.webp" alt="" width="92" height="92" loading="lazy"><div><div class="a-tittel">${skjerm(dag.rett)}</div><div class="a-meta"><span>${skjerm(merke)}</span><em>${klokkeikon()}${skjerm(dag.tid)}</em>${medEier ? eier(dag, folk) : ''}</div></div></div>`;
 }
@@ -305,7 +309,7 @@ function middag(t, oppsett) {
       : `<div class="a-listehode">${skjerm(m.husstand.listehode)}<small>${skjerm(h.listetittel)}</small></div>${h.varer.map((vare) => `<div class="a-vare a-innrad${Object.hasOwn(vare, 'ny') && vare.ny ? ' ny skjult' : ''}"><i></i><span>${skjerm(vare.navn)}</span><b><em>${skjerm(vare.mengde)}</em>${eier(vare, oppsett.folk)}</b></div>`).join('')}`;
     return `<div class="a-hus"><span class="a-folk">${h.folk.map((n) => ansikt(n, 46, oppsett.folk)).join('')}</span><span><b>${skjerm(h.navn)}</b><small>${skjerm(fyll(m.husstand.telling, { n: h.folk.length, ledige: 6 - h.folk.length }))}</small></span></div>${innhold}`;
   });
-  return `<div id="funksjoner"><section class="del ramme" id="middag"><h2>${skjerm(m.tittel)}</h2><p>${skjerm(m.ingress)}</p><div class="bento" id="trio">
+  return `<div id="funksjoner"><section class="del ramme" id="middag"><h2>${skjerm(m.tittel)}</h2><p>${skjerm(m.ingress)}</p><div class="bento stabel" id="trio">
 <article class="rute" data-inn="v">
         <div class="rutetekst"><h3>${skjerm(m.skaler.tittel)}</h3><p>${skjerm(m.skaler.tekst)}</p></div>
         <div class="app" id="demoSkaler" role="img" aria-label="${skjerm(m.skaler.aria)}">

@@ -29,7 +29,8 @@ test('hvert kort går i loop, fryses utenfor bildet og sveipes inn bare én gang
     const kort = page.locator(velger).locator('..');
     await expect(kort).toHaveClass(/i-bildet/);
     const innflyging = await kort.evaluate((el) => el.getAnimations().map((a) => a.effect.getKeyframes()[0].transform));
-    expect(innflyging).toEqual([velger === '#demoLag' ? 'translateX(96px)' : 'translateX(-96px)']);
+    // Patrick 19.11: inn-sveipet er opacity og høyst 12 px translateY.
+    expect(innflyging).toEqual(['translateY(12px)']);
     await page.clock.runFor(1100);
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await expect(kort).not.toHaveClass(/i-bildet/);
@@ -109,6 +110,8 @@ test('hele siden har lokal trafikk, feilfri konsoll, fungerende mål og plass p�
     for (const knapp of await page.locator('.a-husvelg button, .svarliste summary, .vern a').all()) {
       const b = await knapp.boundingBox();
       expect(b.height).toBeGreaterThanOrEqual(44); expect(b.width).toBeGreaterThanOrEqual(44);
+      // Patrick 19.11: husstandsvalgene står på én sveipbar linje på mobil; raden selv må være innenfor skjermen.
+      if (await knapp.evaluate((el) => { const r = el.parentElement; return getComputedStyle(r).overflowX === 'auto' && r.scrollWidth > r.clientWidth; })) { const r = await knapp.evaluate((el) => { const q = el.parentElement.getBoundingClientRect(); return { x: q.x, h: q.right }; }); expect(r.x).toBeGreaterThanOrEqual(0); expect(r.h).toBeLessThanOrEqual(bredde); continue; }
       expect(b.x).toBeGreaterThanOrEqual(0); expect(b.x + b.width, `${bredde} px: ${(await knapp.textContent()).trim()}`).toBeLessThanOrEqual(bredde);
     }
     await page.emulateMedia({ reducedMotion: 'no-preference' });
@@ -141,34 +144,37 @@ async function visPrototype(page) {
   expect(tekster.t8.map((t) => t.split('\n').filter(Boolean))).toEqual(tekster.proto8.map((t) => t.split('\n').filter(Boolean)));
 });
 
-test('pågående kalenderovergang fryses uten å hoppe til slutten utenfor bildet', async ({ page }) => {
+test('kalenderen nullstilles til startbildet utenfor bildet og starter forfra ved retur', async ({ page }) => {
+  // Patrick 19.11: et kort spiller bare mens minst 60 % er i bildet; forlates det, nullstilles det (ingen pause midt i).
   await page.goto(STI);
   await rullTil(page, '#demoPlan');
   await expect(page.locator('#demoPlan')).toHaveClass(/aapen/);
-  await page.waitForTimeout(100);
-  const les = () => page.locator('#demoPlan .a-kal').evaluate((el) => Number(getComputedStyle(el).opacity));
-  const foer = await les();
-  expect(foer).toBeLessThan(.85);
+  const les = () => page.locator('#demoPlan .a-kal').evaluate((el) => ({ opacity: Number(getComputedStyle(el).opacity), animasjoner: el.getAnimations().length }));
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   await expect(page.locator('#demoPlan').locator('..')).not.toHaveClass(/i-bildet/);
-  // pause() fullføres ved neste bilderamme; mål først når nettleseren har bekreftet pausen.
-  await page.locator('#demoPlan').evaluate((el) => Promise.all(el.getAnimations({ subtree: true }).map((a) => a.ready)));
+  await expect(page.locator('#demoPlan')).not.toHaveClass(/aapen/);
+  await page.waitForTimeout(1200);
   const ute = await les();
-  expect(ute - foer).toBeLessThan(.15);
+  expect(ute.opacity, 'lukket startbilde').toBeLessThan(.05);
+  expect(await page.locator('#demoPlan').evaluate((el) => el.getAnimations({ subtree: true }).filter((a) => a.playState === 'running').length)).toBe(0);
   await page.waitForTimeout(1000);
-  expect(await les()).toBeCloseTo(ute, 2);
+  expect((await les()).opacity).toBeLessThan(.05);
   await rullTil(page, '#demoPlan');
-  await expect.poll(les).toBeGreaterThan(ute);
+  await expect(page.locator('#demoPlan')).not.toHaveClass(/aapen/);
+  await expect(page.locator('#demoPlan')).toHaveClass(/aapen/, { timeout: 6000 });
 });
 
 test('endring av bevegelsesvalg starter ikke overgangene i kort utenfor bildet', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(STI);
   const les = () => page.locator('#demoPlan .a-kal').evaluate((el) => ({ opacity: getComputedStyle(el).opacity, hoyde: el.getBoundingClientRect().height, animasjoner: el.getAnimations().filter((a) => a.playState === 'running').length }));
-  const foer = await les();
   await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await page.waitForTimeout(200);
-  expect(await les()).toEqual(foer);
+  await page.waitForTimeout(1300);
+  // Patrick 19.11: uten redusert bevegelse står kort utenfor bildet i startbildet (lukket) og kjører ingenting.
+  const etter = await les();
+  expect(etter.animasjoner).toBe(0);
+  await page.waitForTimeout(800);
+  expect(await les()).toEqual(etter);
   await rullTil(page, '#demoPlan');
   await expect(page.locator('#demoPlan')).not.toHaveClass(/aapen/);
   await expect(page.locator('#demoPlan')).toHaveClass(/aapen/, { timeout: 5000 });

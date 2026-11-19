@@ -142,11 +142,14 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
 // Enhetsomregner: regner ut mens du skriver (volum, vekt, lengde, temperatur).
 (() => {
+  const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
   const tall = (n) => {
     if (!Number.isFinite(n)) return '';
     const a = Math.abs(n);
     const d = a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5;
-    return String(Number(n.toFixed(d)));
+    const t = String(Number(n.toFixed(d)));
+    // Språkets desimaltegn (sidens lang): komma på nb, sv og da, punktum på en. Ingen tusenskille, slik sidene ellers skriver tall.
+    return KOMMA ? t.replace('.', ',') : t;
   };
   for (const skjema of document.querySelectorAll('form.omregner')) {
     let data;
@@ -156,16 +159,88 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     const til = skjema.querySelector('[data-felt=til]');
     const svar = skjema.querySelector('[data-felt=svar]');
     const kort = (sel) => sel.options[sel.selectedIndex].text.replace(/^.*\(([^)]+)\)$/u, '$1');
+    // Enheter som skrives som ord har entall og flertall i sidens data (data.o): entall bare for nøyaktig 1, målt på tallet som vises.
+    const ord = (sel, n) => { const o = data.o && data.o[sel.value]; return o ? o[Math.abs(Number(tall(n))) === 1 ? 0 : 1] : kort(sel); };
+    // Inntastingen tåler både komma og punktum: feltet er tekst med desimaltastatur (type=number avviser komma i engelske nettlesere).
+    if (verdi.type === 'number') verdi.type = 'text';
+    // Hele inntastingen valideres. Gyldig: valgfritt fortegn, sifre, valgfritt tusenskille og høyst ett desimaltegn.
+    // Mellomrom (også hardt og smalt) mellom sifre er tusenskille. Språkets tusenskille er punktum på nb, sv og da og komma på en:
+    // «1.500» er 1500 på norsk og «1,500» er 1500 på engelsk (nøyaktig tre sifre etter, og ett til tre foran). Ellers er komma og punktum desimaltegn.
+    const TUSEN = KOMMA ? '.' : ',';
+    const tolk = (tekst) => {
+      const t = String(tekst).trim().replace(/(?<=\d)[ \u00a0\u202f](?=\d)/gu, '');
+      const m = /^([+-]?)(\d*(?:[.,]\d*)*)$/u.exec(t);
+      if (!m || !/\d/u.test(m[2])) return NaN;
+      const grupper = m[2].split(/[.,]/u), skilletegn = m[2].match(/[.,]/gu) || [];
+      // En tusengruppe krever ett til tre sifre foran som ikke begynner med 0 («0.125» og «0,125» er desimaltall på alle språk).
+      const tusen = (g) => g.length > 0 && g[0].length >= 1 && g[0].length <= 3 && g[0][0] !== '0' && g.slice(1).every((x) => x.length === 3);
+      let tall = '';
+      if (skilletegn.length === 0) tall = grupper[0];
+      else if (skilletegn.every((c) => c === skilletegn[0])) {
+        if (skilletegn.length >= 2) { if (skilletegn[0] !== TUSEN || !tusen(grupper)) return NaN; tall = grupper.join(''); }
+        else if (skilletegn[0] === TUSEN && tusen(grupper)) tall = grupper.join('');
+        else tall = `${grupper[0] || '0'}.${grupper[1] || '0'}`;
+      } else {
+        const siste = skilletegn[skilletegn.length - 1];
+        const foran = grupper.slice(0, -1);
+        if (siste === TUSEN || skilletegn.slice(0, -1).some((c) => c !== TUSEN) || !tusen(foran)) return NaN;
+        tall = `${foran.join('')}.${grupper[grupper.length - 1] || '0'}`;
+      }
+      return Number(`${m[1] === '-' ? '-' : ''}${tall}`);
+    };
     const reg = () => {
-      const v = parseFloat(String(verdi.value).replace(',', '.'));
+      const v = tolk(verdi.value);
+      const tomt = String(verdi.value).trim() === '';
+      verdi.removeAttribute('aria-invalid');
+      if (!tomt && !Number.isFinite(v)) verdi.setAttribute('aria-invalid', 'true');
       if (!Number.isFinite(v)) { svar.textContent = ''; return; }
       let ut;
       if (data.t) ut = fra.value === til.value ? v : fra.value === 'c' ? v * 9 / 5 + 32 : (v - 32) * 5 / 9;
       else ut = v * data.f[fra.value] / data.f[til.value];
-      svar.textContent = `${tall(v)} ${kort(fra)} = ${tall(ut)} ${kort(til)}`;
+      svar.textContent = `${tall(v)} ${ord(fra, v)} = ${tall(ut)} ${ord(til, ut)}`;
     };
     for (const el of [verdi, fra, til]) el.addEventListener('input', reg);
-    skjema.querySelector('[data-handling=bytt]').addEventListener('click', () => { const x = fra.value; fra.value = til.value; til.value = x; reg(); });
+    // Bytteknappen: verdiene byttes med en gang i DOM (skjermleser og tastatur får riktig tilstand straks), og bevegelsen er bare visuell (FLIP):
+    // valget i «Fra» glir til «Til» sin plass og omvendt, vannrett på PC og loddrett på mobil, med en liten bue. Bare transform og opacity.
+    // Et nytt trykk midt i bevegelsen starter fra der feltene står. Ved redusert bevegelse skjer ingenting.
+    const bytt = skjema.querySelector('[data-handling=bytt]');
+    const rolig = matchMedia('(prefers-reduced-motion: reduce)');
+    const VARIGHET = 320, EASING = 'cubic-bezier(.2,.8,.2,1)';
+    const avbryt = () => [fra, til, bytt, svar].forEach((el) => el.getAnimations().forEach((an) => an.cancel()));
+    // Slås redusert bevegelse på mens byttet pågår, stopper bevegelsen straks. Et nytt trykk avbryter også pågående bevegelse.
+    rolig.addEventListener('change', () => { if (rolig.matches) avbryt(); });
+    bytt.addEventListener('click', () => {
+      if (rolig.matches) avbryt();
+      // Etikettene («Fra», «Til») og boksene står stille; bare selve valget i feltet beveger seg.
+      const a = fra, b = til;
+      const beveger = !rolig.matches && a && b && typeof a.animate === 'function';
+      let va, vb, a0, b0, vinkel = 0;
+      if (beveger) {
+        // Gjeldende utseende (med pågående transform) leses før noe avbrytes.
+        va = a.getBoundingClientRect(); vb = b.getBoundingClientRect();
+        vinkel = parseFloat(getComputedStyle(bytt).rotate) || 0;
+        avbryt();
+        a0 = a.getBoundingClientRect(); b0 = b.getBoundingClientRect();
+      }
+      const x = fra.value; fra.value = til.value; til.value = x; reg();
+      if (!beveger) return;
+      const vannrett = Math.abs(b0.left - a0.left) > Math.abs(b0.top - a0.top);
+      const flytt = (el, fraPos, tilPos, retning) => {
+        const dx = fraPos.left - tilPos.left, dy = fraPos.top - tilPos.top;
+        const bueX = vannrett ? 0 : 6 * retning, bueY = vannrett ? -6 * retning : 0;
+        el.animate([
+          { transform: `translate(${dx}px, ${dy}px)` },
+          { transform: `translate(${dx / 2 + bueX}px, ${dy / 2 + bueY}px)`, offset: 0.5 },
+          { transform: 'none' },
+        ], { duration: VARIGHET, easing: EASING });
+      };
+      // Innholdet i «Fra» kom fra «Til» og omvendt: hvert felt starter der innholdet stod.
+      flytt(a, vb, a0, 1); flytt(b, va, b0, -1);
+      bytt.animate([{ rotate: `${vinkel}deg` }, { rotate: '180deg' }], { duration: VARIGHET, easing: EASING });
+      // Bare teksten toner (farge), bakgrunnen står uendret.
+      const [r, g, bl] = (getComputedStyle(svar).color.match(/[\d.]+/gu) || [243, 239, 232]).slice(0, 3);
+      svar.animate([{ color: `rgb(${r} ${g} ${bl} / 0.25)` }, { color: `rgb(${r} ${g} ${bl} / 1)` }], { duration: 200, easing: 'ease-out' });
+    });
     reg();
   }
 })();

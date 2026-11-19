@@ -1,7 +1,7 @@
 // Enhetsomregnere på norsk (bokmål): én side per enhetspar (ml til dl, kopp til ml, °F til °C osv.) pluss en hub.
 // Samme struktur som den engelske (en-enhetssider.mjs), men skrevet for norske kjøkken: dl, ss, ts og krm er førsteklasses enheter.
 // Statisk tekst bruker desimalkomma og mellomrom som tusenskille; kalkulatoren (site.js) tar seg av tallene i nettleseren.
-import { ENHETER, allePar, enheterFor, konverter, parSti, tall } from './enheter.mjs';
+import { ENHETER, FLERTALL, allePar, enheterFor, konverter, omregnerData, parSti, tall } from './enheter.mjs';
 import { byggRik } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
@@ -19,8 +19,7 @@ const k = (n) => {
 };
 const er1 = (v) => Math.abs(v - 1) < 1e-9;
 /** Ordet for en enhet ved en gitt mengde (kort skrivemåte, men «1 kopp» og «2 kopper»). */
-const ORD = { cups: ['kopp', 'kopper'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] };
-const label = (v, id) => (ORD[id] ? ORD[id][er1(v) ? 0 : 1] : N(id).kort);
+const label = (v, id) => (FLERTALL.nb[id] ? FLERTALL.nb[id][er1(v) ? 0 : 1] : N(id).kort);
 const val = (v, id) => `${k(v)} ${label(v, id)}`;
 const enhetOrd = (v, id) => (er1(v) ? N(id).en : N(id).fl);
 
@@ -187,7 +186,7 @@ function skjema(fra, til, ids = gruppeIds(ENHETER[fra].gruppe)) {
     + `<button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Bytt enheter">⇄</button>`
     + `<label>Til<select data-felt="til">${opt(til)}</select></label></div>`
     + `<p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">${esc(svar)}</p>`
-    + `<script type="application/json" class="omregner-data">${JSON.stringify({ f: data, t: g === 'temperatur' })}</script></form>`;
+    + `<script type="application/json" class="omregner-data">${JSON.stringify(omregnerData('nb', data, g === 'temperatur'))}</script></form>`;
 }
 
 function tabell(fra, til) {

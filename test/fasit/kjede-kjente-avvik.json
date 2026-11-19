@@ -1,0 +1,20 @@
+{
+  "årsak": "Byggekjeden (scripts/kjede.mjs) gir de publiserte sidene bortsett fra disse tre. Avmeldingssidene på sv, da og en er skrevet for hånd (commit acbd6f0d og 77e00296, hjelpemailens tekstvariant t=hjelp), og malen i scripts/generer-lokalsider.mjs mangler hjelpeseksjonene (mangler-hjelp, ferdig-hjelp, bekreft-hjelp og feilmelding-hjelp). Løses ved å flytte seksjonene inn i malen. Unntaket er bundet til innholdet: sha256 av den publiserte og den genererte fila står i fasiten, så en NY forskjell i disse filene gir rødt.",
+  "avvik": {
+    "/da/afmeld/": {
+      "årsak": "avmeld-hjelp skrevet for hånd, mangler i malen",
+      "sha256_publisert": "b5f0dfbc91ee7b1759ef68b50a6335d9859cda37c8059882167c2bd72ac6e688",
+      "sha256_generert": "8a2bb4b87aa3ae25e5727c177d52cae7d7b5ebaa2aedcea2def217f78ba0209e"
+    },
+    "/en/unsubscribe/": {
+      "årsak": "avmeld-hjelp skrevet for hånd, mangler i malen",
+      "sha256_publisert": "c987fca8feab5fe06667e0c85af820c9f2fcc8046b86f9b75bf9b7c5e83b8051",
+      "sha256_generert": "880dbefabe3acd12a7fb00e9834e1deba6ae1b0ff94564eb1695f7a23deffbb4"
+    },
+    "/sv/avregistrera/": {
+      "årsak": "avmeld-hjelp skrevet for hånd, mangler i malen",
+      "sha256_publisert": "9e32aa1031c9d80ae2e12a55f55f327fcfd1740c146c498512386b94f5944b75",
+      "sha256_generert": "18a940e920cc9cdc5cef2a3b70dc2c99a589927ea0eb4e8b22686e274e371cf8"
+    }
+  }
+}

@@ -53,7 +53,7 @@ test('mobil: vanlig app-lenke og fast knapp som kommer og går', async ({ browse
   await page.goto(STI);
   await page.locator('#ck-reject').click();
   await expect(page.locator('#fast')).not.toHaveClass(/vis/);
-  await rullTil(page, '.kokebok');
+  await rullTil(page, '.kilder');
   await expect(page.locator('#fast')).toHaveClass(/vis/);
   await expect(page.locator('#fast')).not.toHaveAttribute('inert');
   await page.route('**/app', (r) => r.fulfill({ contentType: 'text/html', body: 'Appmålet' }));
@@ -130,12 +130,7 @@ test('200 prosent tekst på 390 px holder kortenes tekst innenfor boksene', asyn
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(STI);
   await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
-  // Siden bruker px. Dobling av rotstørrelsen alene forstørrer derfor ikke teksten.
-  await page.evaluate(() => {
-    const alle = [...document.querySelectorAll('body *')];
-    const storrelser = alle.map((el) => parseFloat(getComputedStyle(el).fontSize));
-    alle.forEach((el, i) => { el.style.fontSize = `${storrelser[i] * 2}px`; });
-  });
+  // Teksten står i rem, så dobling av rotstørrelsen alene forstørrer den (ingen omregning per element).
   const utenfor = await page.locator('.rett, .rute, .plan, .svarliste, .sporflate').evaluateAll((kort) => kort.flatMap((el) => {
     const b = el.getBoundingClientRect(), feil = [];
     const vandrer = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
@@ -146,6 +141,8 @@ test('200 prosent tekst på 390 px holder kortenes tekst innenfor boksene', asyn
       for (let forelder = node.parentElement; forelder && forelder !== el; forelder = forelder.parentElement) {
         const stil = getComputedStyle(forelder);
         if (stil.opacity === '0' || stil.visibility === 'hidden') skjult = true;
+        // Patrick 19.11: valg og retter står på sveipbare linjer på mobil; teksten der nås med sveip og er ikke «utenfor».
+        if (stil.overflowX === 'auto' && forelder.scrollWidth > forelder.clientWidth) skjult = true;
       }
       if (skjult) continue;
       const range = document.createRange(); range.selectNodeContents(node);
@@ -234,7 +231,7 @@ for (const [navn, valg, plasser, visning] of [
   // Behold dokumentet ved mobilklikk slik at samtykket kan gis i samme økt.
   await page.evaluate(() => document.addEventListener('click', (e) => { if (e.target.closest('[data-hent]')) e.preventDefault(); }));
   const klikk = async (plass) => {
-    if (plass === 'fast') await rullTil(page, '.kokebok');
+    if (plass === 'fast') await rullTil(page, '.kilder');
     await page.locator(`[data-hent="${plass}"]`).click();
     if (visning === 'qr') { await expect(page.locator('#hent')).toBeVisible(); await page.keyboard.press('Escape'); await expect(page.locator('#hent')).not.toBeVisible(); }
   };
@@ -257,7 +254,7 @@ for (const [navn, valg, plasser, visning] of [
 
 test('prisplaner, personvern og svar glir inn én gang og står stille ved redusert bevegelse', async ({ page }) => {
   await page.goto(STI);
-  for (const [velger, fra] of [['.plan:not(.pro)', 'translateX(-96px)'], ['.plan.pro', 'translateX(96px)'], ['.vernblokk', 'translateY(28px)'], ['.svarliste', 'translateY(28px)']]) {
+  for (const [velger, fra] of [['.plan:not(.pro)', 'translateY(12px)'], ['.plan.pro', 'translateY(12px)'], ['.vernblokk', 'translateY(12px)'], ['.svarliste', 'translateY(12px)']]) {
     await page.reload(); await rullTil(page, velger);
     await expect.poll(() => page.locator(velger).evaluate((el) => el.getAnimations().map((a) => a.effect.getKeyframes()[0].transform))).toEqual([fra]);
     await page.waitForTimeout(1200); await rullTil(page, '.hero'); await rullTil(page, velger);

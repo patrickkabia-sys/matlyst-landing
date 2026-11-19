@@ -11,7 +11,7 @@ const adresse = (sti) => kart.find((s) => s.sti === sti)?.url ?? sti;
 test('omregneren regner fortsatt, med samme tallformat som før', async ({ page }) => {
   await page.goto(adresse('/verktoy/kopp-til-dl/'));
   await page.locator('[data-felt=verdi]').fill('2');
-  await expect(page.locator('[data-felt=svar]')).toContainText('4.732');
+  await expect(page.locator('[data-felt=svar]')).toContainText('4,732');
 });
 
 test('omregneren bytter enheter og regner det omvendte; svaret brytes i stedet for å kuttes', async ({ page }) => {
@@ -24,18 +24,142 @@ test('omregneren bytter enheter og regner det omvendte; svaret brytes i stedet f
   const fra = await fraFelt.inputValue();
   const til = await tilFelt.inputValue();
   const f = JSON.parse(await page.locator('.omregner-data').textContent()).f;
-  const tall = (n) => { const a = Math.abs(n); return String(Number(n.toFixed(a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5))); };
+  const tall = (n) => { const a = Math.abs(n); return String(Number(n.toFixed(a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5))).replace('.', ','); }; // norsk desimalkomma
   const kort = async (felt) => felt.evaluate((e) => e.options[e.selectedIndex].text.replace(/^.*\(([^)]+)\)$/u, '$1'));
   await page.locator('[data-handling=bytt]').click();
   expect(await fraFelt.inputValue()).toBe(til);
   expect(await tilFelt.inputValue()).toBe(fra);
   const ut = 1500 * f[til] / f[fra];
-  await expect(svar).toHaveText(`1500 ${await kort(fraFelt)} = ${tall(ut)} ${await kort(tilFelt)}`);
+  // Enheter som skrives som ord har flertall i sidens data (omregner-data, o): «1500 dl = 6,34 kopper», ikke «kopp».
+  const o = JSON.parse(await page.locator('.omregner-data').textContent()).o ?? {};
+  const ord = async (felt, n) => { const id = await felt.inputValue(); return o[id] ? o[id][Number(tall(n)) === 1 ? 0 : 1] : kort(felt); };
+  await expect(svar).toHaveText(`1500 ${await ord(fraFelt, 1500)} = ${tall(ut)} ${await ord(tilFelt, ut)}`);
   const boks = await svar.evaluate((e) => ({ s: e.scrollWidth, b: e.clientWidth }));
   expect(boks.s).toBeLessThanOrEqual(boks.b);
   const knapp = await page.locator('[data-handling=bytt]').boundingBox();
   expect(knapp.width).toBeGreaterThanOrEqual(44);
   expect(knapp.height).toBeGreaterThanOrEqual(44);
+});
+
+// Flertall i svaret, per språk, med formene fra sidens data (omregner-data.o) og aldri fra JS.
+const FLERTALL_SIDER = [
+  { sprak: 'nb', sti: '/verktoy/kopp-til-dl/', entall: 'kopp', flertall: 'kopper', pint: ['pint', 'pints'] },
+  { sprak: 'sv', sti: '/sv/verktyg/kopp-till-dl/', entall: 'kopp', flertall: 'koppar', pint: ['pint', 'pints'] },
+  { sprak: 'da', sti: '/da/vaerktoejer/kop-til-dl/', entall: 'kop', flertall: 'kopper', pint: ['pint', 'pints'] },
+  { sprak: 'en', sti: '/en/tools/cups-to-dl/', entall: 'cup', flertall: 'cups', pint: ['pt', 'pt'] },
+];
+for (const { sprak, sti, entall, flertall, pint } of FLERTALL_SIDER) {
+  test(`omregneren (${sprak}): entall for 1 og flertall ellers, med formene fra sidens data`, async ({ page }) => {
+    await page.goto(sti);
+    const data = JSON.parse(await page.locator('.omregner-data').textContent());
+    expect(data.o.cups, 'formene står i sidens data').toEqual([entall, flertall]);
+    const svar = page.locator('[data-felt=svar]');
+    const verdi = page.locator('[data-felt=verdi]');
+    await expect(svar).toHaveText(new RegExp(`^1 ${entall} = `, 'u'));
+    await verdi.fill('1500');
+    await expect(svar).toHaveText(new RegExp(`^1500 ${flertall} = `, 'u'));
+    await verdi.fill('2');
+    await expect(svar).toHaveText(new RegExp(`^2 ${flertall} = `, 'u'));
+    await verdi.fill('0.5');
+    const d = sprak === 'en' ? '.' : ',';
+    await expect(svar).toHaveText(new RegExp(`^0${d}5 ${flertall} = `, 'u'));
+    // Svarsiden: to kopper er én pint (entall på høyre side), og symboler står uendret.
+    await page.locator('[data-felt=fra]').selectOption('cups');
+    await page.locator('[data-felt=til]').selectOption('pints');
+    await verdi.fill('2');
+    await expect(svar).toHaveText(new RegExp(`^2 ${flertall} = 1 ${pint[0]}$`, 'u'));
+    await verdi.fill('4');
+    await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 2 ${pint[1]}$`, 'u'));
+    await page.locator('[data-felt=til]').selectOption('ml');
+    await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 946${d}4 ml$`, 'u'));
+  });
+}
+
+// Valg: kortet står i lesekolonnen (ikke bredere), så overskriften «Kalkulator: …», kortet og teksten har samme venstrekant.
+for (const bredde of [1001, 1280, 1600]) {
+  test(`omregneren på ${bredde} px: «Kalkulator»-overskriften og kortet har samme venstrekant, og tallet får plass`, async ({ page }) => {
+    await page.setViewportSize({ width: bredde, height: 900 });
+    for (const sti of ['/verktoy/kopp-til-ml/', '/sv/verktyg/kopp-till-ml/', '/da/vaerktoejer/kop-til-ml/', '/en/tools/cups-to-ml/']) {
+      await page.goto(sti);
+      const m = await page.evaluate(() => {
+        const h = [...document.querySelectorAll('h2')].find((e) => e.nextElementSibling?.matches('form.omregner'));
+        const f = document.querySelector('form.omregner'), k = document.querySelector('.locale-prose');
+        const x = (e) => e.getBoundingClientRect();
+        return { h: x(h).left, hb: x(h).right, f: x(f).left, fb: x(f).right, k: x(k).left, kb: x(k).right };
+      });
+      expect(Math.abs(m.h - m.f), `${sti}: overskrift ${m.h} mot kort ${m.f}`).toBeLessThanOrEqual(1);
+      expect(Math.abs(m.f - m.k), `${sti}: kort ${m.f} mot kolonne ${m.k}`).toBeLessThanOrEqual(1);
+      expect(m.fb, 'kortet er ikke bredere enn kolonnen').toBeLessThanOrEqual(m.kb + 1);
+      // Enhetsnavnene i Fra og Til klippes ikke (de får hver sin halvdel av raden under Mengde), og sju sifre i feltet klippes ikke.
+      const klippet = await page.evaluate(() => [...document.querySelectorAll('[data-felt=fra],[data-felt=til]')].map((e) => e.scrollWidth - e.clientWidth));
+      expect(klippet.every((k) => k <= 0), `${sti}: enhetsnavn klippes ${klippet}`).toBe(true);
+      await page.locator('[data-felt=verdi]').fill('1234567');
+      const klipp = await page.locator('[data-felt=verdi]').evaluate((e) => e.scrollWidth - e.clientWidth);
+      expect(klipp, `${sti}: tallet klippes`).toBeLessThanOrEqual(0);
+    }
+  });
+}
+
+// Tallformatet i svaret følger sidens språk (lang), og inntastingen tåler både komma og punktum.
+for (const [sti, d, ut] of [['/verktoy/kopp-til-ml/', ',', '354,9'], ['/sv/verktyg/kopp-till-ml/', ',', '354,9'], ['/da/vaerktoejer/kop-til-ml/', ',', '354,9'], ['/en/tools/cups-to-ml/', '.', '354.9']]) {
+  test(`omregneren ${sti}: desimaltegnet i svaret er «${d}», og både komma og punktum kan skrives inn`, async ({ page }) => {
+    await page.goto(sti);
+    const verdi = page.locator('[data-felt=verdi]'), svar = page.locator('[data-felt=svar]');
+    for (const innskrevet of ['1,5', '1.5']) {
+      await verdi.fill(innskrevet);
+      await expect(svar).toHaveText(new RegExp(`^1${d}5 \\S+ = ${ut.replace('.', '\\.')} ml$`, 'u'));
+    }
+    await verdi.fill('1500');
+    const tekst = await svar.textContent();
+    expect(tekst, 'ingen tusenskille som kan forveksles').toMatch(/^1500 \S+ = 354\d{3}(?:[.,]\d+)? ml$/u);
+    expect(await page.evaluate(() => document.documentElement.lang)).toMatch(/^(nb|sv|da|en)/u);
+    // Serverens HTML (hentet uten skript) og skriptets svar for samme verdi (1) skal være identiske.
+    const html = await (await page.request.get(sti)).text();
+    const server = /data-felt="svar">([^<]*)</u.exec(html)[1].replace(/&amp;/gu, '&');
+    await verdi.fill('1');
+    expect(await svar.textContent(), 'server og skript har ulikt svar for 1').toBe(server);
+  });
+}
+
+// Hele inntastingen valideres (testtabell for alle fire språk). Forventet: tallet som svaret starter med, eller null = ugyldig (svaret tomt, aria-invalid).
+const NORDISK = [['1,5', '1,5'], ['1.5', '1,5'], ['1.500', '1500'], ['1 500', '1500'], ['1\u00a0500', '1500'], ['1\u202f500', '1500'], ['1.500,25', '1500'], ['1,500', '1,5'], ['12.345', '12345'], ['1234.567', '1235'], ['1.500.000', '1500000'], ['12.34', '12,34'], ['-1', '-1'], ['+2', '2'], ['0,5', '0,5'], ['1,5,2', null], ['1.5.2', null], ['1,5.2', null], ['2cups', null], ['abc', null], ['1 5 0', '150'], ['--1', null], ['1,.5', null], ['1,500.5', null], ['1.0500', '1,05'], ['0.125', '0,125'], ['0,125', '0,125'], ['0.5', '0,5'], ['00.125', '0,125'], ['.125', '0,125']];
+const ENGELSK = [['1.5', '1.5'], ['1,5', '1.5'], ['1,500', '1500'], ['1 500', '1500'], ['1\u00a0500', '1500'], ['1\u202f500', '1500'], ['1,500.25', '1500'], ['1.500', '1.5'], ['12,345', '12345'], ['1234,567', '1235'], ['1,500,000', '1500000'], ['12.34', '12.34'], ['-1', '-1'], ['0.5', '0.5'], ['1,5,2', null], ['1.5.2', null], ['1.500,5', null], ['2cups', null], ['abc', null], ['--1', null], ['0.125', '0.125'], ['0,125', '0.125'], ['0.5', '0.5'], ['00.125', '0.125'], ['.125', '0.125']];
+for (const [sprak, sti, tabell] of [['nb', '/verktoy/kopp-til-ml/', NORDISK], ['sv', '/sv/verktyg/kopp-till-ml/', NORDISK], ['da', '/da/vaerktoejer/kop-til-ml/', NORDISK], ['en', '/en/tools/cups-to-ml/', ENGELSK]]) {
+  test(`omregneren (${sprak}): hele inntastingen valideres, delsvar finnes ikke`, async ({ page }) => {
+    await page.goto(sti);
+    const verdi = page.locator('[data-felt=verdi]'), svar = page.locator('[data-felt=svar]');
+    for (const [inn, forventet] of tabell) {
+      await verdi.fill(inn);
+      const tekst = await svar.textContent(), ugyldig = await verdi.getAttribute('aria-invalid');
+      if (forventet === null) { expect(tekst, `«${inn}» skal gi tomt svar`).toBe(''); expect(ugyldig, `«${inn}» aria-invalid`).toBe('true'); }
+      else { expect(tekst.startsWith(`${forventet} `), `«${inn}» skal gi ${forventet}, ga «${tekst}»`).toBe(true); expect(ugyldig, `«${inn}» er gyldig`).toBeNull(); }
+    }
+    await verdi.fill('');
+    expect(await svar.textContent()).toBe(''); expect(await verdi.getAttribute('aria-invalid')).toBeNull();
+    // Flertall for negative tall: −1 er entall (som generatoren).
+    await verdi.fill('-1');
+    expect(await svar.textContent()).toMatch(new RegExp(`^-1 ${{ nb: 'kopp', sv: 'kopp', da: 'kop', en: 'cup' }[sprak]} = `, 'u'));
+    await verdi.fill('-2');
+    expect(await svar.textContent()).toMatch(new RegExp(`^-2 ${{ nb: 'kopper', sv: 'koppar', da: 'kopper', en: 'cups' }[sprak]} = `, 'u'));
+  });
+}
+
+test('bytteanimasjon: redusert bevegelse som slås på midt i byttet stopper animasjonene straks, og nytt trykk avbryter pågående', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const antall = () => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]', '[data-handling=bytt]', '[data-felt=svar]'].reduce((n, s) => n + document.querySelector(s).getAnimations().length, 0));
+  await page.locator('[data-handling=bytt]').click();
+  expect(await antall()).toBeGreaterThan(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect.poll(antall, { timeout: 500 }).toBe(0);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.locator('[data-handling=bytt]').click();
+  expect(await antall()).toBeGreaterThan(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.locator('[data-handling=bytt]').click();
+  expect(await antall(), 'trykk ved redusert bevegelse avbryter også pågående').toBe(0);
+  await ctx.close();
 });
 
 test('omregneren: tab-rekkefølge, tilgjengelige navn og synlig fokus', async ({ page }) => {
@@ -172,6 +296,29 @@ test('innholdsfortegnelsen foldes på mobil og står åpen på PC', async ({ pag
   await expect(liste).toBeVisible();
 });
 
+// Beregnet: to kolonner fra 1000 px (ikke under), og ingen post krysser en kolonnekant.
+for (const [bredde, kolonner] of [[999, 1], [1000, 2], [1280, 2]]) {
+  test(`innholdsfortegnelsen har ${kolonner} kolonne(r) på ${bredde} px, og ingen post deles`, async ({ page }) => {
+    await page.setViewportSize({ width: bredde, height: 900 });
+    await page.goto(GUIDE);
+    const m = await page.evaluate(() => {
+      const ol = document.querySelector('.toc ol'), r = ol.getBoundingClientRect(), st = getComputedStyle(ol);
+      const li = [...ol.children].map((e) => { const b = e.getBoundingClientRect(); return { x: Math.round(b.left), y: Math.round(b.top), b: Math.round(b.width), h: Math.round(b.height), avoid: getComputedStyle(e).breakInside }; });
+      return { antall: li.length, bredde: r.width, kolonner: st.columnCount === 'auto' ? 1 : Number(st.columnCount), li };
+    });
+    expect(m.antall).toBeGreaterThanOrEqual(4);
+    expect(m.kolonner).toBe(kolonner);
+    expect(new Set(m.li.map((l) => l.x)).size, 'antall x-posisjoner').toBe(kolonner);
+    if (kolonner === 2) {
+      for (const l of m.li) { expect(l.avoid).toBe('avoid'); expect(l.b, 'en post er smalere enn halve listen').toBeLessThanOrEqual(m.bredde / 2); expect(l.h).toBeGreaterThanOrEqual(44); }
+      // Radene fordeles: begge kolonner har poster, og første kolonne er minst like lang som den andre.
+      const venstre = m.li.filter((l) => l.x === Math.min(...m.li.map((q) => q.x))).length;
+      expect(venstre).toBeGreaterThanOrEqual(m.antall - venstre);
+      expect(venstre).toBeLessThan(m.antall);
+    }
+  });
+}
+
 test('innholdsfortegnelsen er åpen uten JavaScript', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
@@ -216,7 +363,7 @@ for (const bredde of [390, 1280]) test(`lange guider: figurer, filmer og bilder 
   // Beregnet stil beviser at guide-lang-reglene treffer en ekte guide (en feil sidetype i avgrensningen gir 540 px her).
   const filmer = await page.evaluate(() => [...document.querySelectorAll('.locale-prose video')].map((v) => ({ maks: getComputedStyle(v).maxWidth, radius: getComputedStyle(v).borderTopLeftRadius, bredde: v.getBoundingClientRect().width })));
   expect(filmer.length).toBeGreaterThan(0);
-  for (const f of filmer) { expect(f.maks).toMatch(/^(300|200)px$/); expect(f.radius).toBe('24px'); expect(f.bredde).toBeLessThanOrEqual(300); }
+  for (const f of filmer) { expect(f.maks).toMatch(/^(300|200|124)px$|^min\(100%, 300px\)$/); expect(f.radius).toBe('24px'); expect(f.bredde).toBeLessThanOrEqual(300); }
   expect(r.ut).toEqual([]);
   expect(r.kort.length).toBeGreaterThan(0);
   for (const k of r.kort) { expect(k.bredde).toBeGreaterThan(100); expect(k.bredde).toBeLessThanOrEqual(200); expect(k.kortHoyde).toBeLessThan(k.hoyde + 200 + 400); }
@@ -361,7 +508,8 @@ for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${s
     expect(m.feat.r).toBe(bredde >= 721 ? '40px' : '32px');
     expect(m.feat.bg).toBe(true);
     expect(m.feat.bg2).toBe('rgb(245, 243, 239)');
-    expect(m.feat.kol).toBe(bredde >= 721 ? 2 : 1);
+    // Regelen «alt får plass på en mobilskjerm»: teksten til venstre og telefonen til høyre også på mobil.
+    expect(m.feat.kol).toBe(2);
     expect(m.feat.em).toBe('normal');
     expect(m.knapp.h).toBeGreaterThanOrEqual(44);
     expect(m.knapp.bg).toBe('rgb(20, 18, 16)');
@@ -463,7 +611,7 @@ for (const bredde of [390, 1280]) test(`bloggen: kort, forsidebilde, tabell, gal
       tabellStrek: getComputedStyle(tabell.querySelector('tbody th')).borderBottomStyle, tdAlign: getComputedStyle(tdSist).textAlign, tdVekt: getComputedStyle(tdSist).fontWeight,
       radOverflow: getComputedStyle(rad).overflowX, radSnap: getComputedStyle(rad).scrollSnapType, radBredere: rad.scrollWidth > rad.clientWidth, radFokus: rad.tabIndex, radBilde: getComputedStyle(rad.querySelector('img')).borderTopLeftRadius,
       ctaKol: getComputedStyle(cta).gridTemplateColumns.split(' ').length, ctaRadius: getComputedStyle(cta).borderTopLeftRadius,
-      bildeX: cta.querySelector('.app-cta-bilde').getBoundingClientRect().left > cta.querySelector('.app-cta-tekst').getBoundingClientRect().left + 100,
+      bildeX: cta.querySelector('.app-cta-bilde').getBoundingClientRect().left > cta.querySelector('.app-cta-tekst h2').getBoundingClientRect().left + 100,
       knappH: knapp.getBoundingClientRect().height, knappKlasse: knapp.className,
       flereRadius: getComputedStyle(flere).borderTopLeftRadius, flereDisplay: getComputedStyle(flere).display, flereKant: getComputedStyle(flere).borderBottomWidth,
       ut: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -473,7 +621,7 @@ for (const bredde of [390, 1280]) test(`bloggen: kort, forsidebilde, tabell, gal
   expect(m.figRadius).toBe('24px'); expect(m.tabellStrek).toBe('solid'); expect(m.tdAlign).toBe('right'); expect(m.tdVekt).toBe('700');
   expect(m.radOverflow).toBe('auto'); expect(m.radSnap).toContain('mandatory'); expect(m.radFokus).toBe(0); expect(m.radBilde).toBe('24px');
   expect(m.radBredere).toBe(bredde < 721);
-  expect(m.ctaKol).toBe(bredde >= 721 ? 2 : 1); expect(m.ctaRadius).toBe(bredde >= 721 ? '40px' : '32px'); expect(m.bildeX).toBe(bredde >= 721);
+  expect(m.ctaKol).toBe(2); expect(m.ctaRadius).toBe(bredde >= 721 ? '40px' : '32px'); expect(m.bildeX).toBe(true);
   expect(m.knappH).toBeGreaterThanOrEqual(44); expect(m.knappKlasse).toContain('knapp');
   if (bredde >= 721) { expect(m.flereRadius).toBe('999px'); expect(m.flereKant).toBe('1px'); } else { expect(m.flereRadius).toBe('0px'); expect(m.flereDisplay).toBe('flex'); }
   expect(m.ut).toBeLessThanOrEqual(0);
@@ -538,4 +686,128 @@ for (const bredde of [390, 1280]) for (const j of JUSS) test(`juss: ${j.sti} har
   expect(m.kortH2).toBe('0px'); expect(m.h2).toBe('26px'); expect(m.punkt).toBe('50%'); expect(m.listeStil).toBe('none');
   expect(m.piller).toBe(0); expect(m.andreKort).toBe(0); expect(m.lenkeStrek).toContain('underline');
   expect(m.ut).toBeLessThanOrEqual(0);
+});
+
+// Bytteanimasjonen i omregneren (felles site.js): verdiene byttes straks, bevegelsen er bare visuell (FLIP).
+const BYTT = '/verktoy/kopp-til-ml/';
+const etiketter = (page) => page.evaluate(() => { const f = document.querySelector('[data-felt=fra]'), t = document.querySelector('[data-felt=til]'); return [f, t].map((e) => e.getAnimations().length); });
+const transformer = (page) => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => getComputedStyle(document.querySelector(s)).transform));
+const sidelengs = (page) => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+
+test('bytteknappen: verdiene og svaret er byttet med en gang, og knappen har trykkflate og navn', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const fra0 = await page.locator('[data-felt=fra]').inputValue(), til0 = await page.locator('[data-felt=til]').inputValue();
+  const svar0 = await page.locator('[data-felt=svar]').textContent();
+  await page.locator('[data-handling=bytt]').click();
+  // Ingen venting: DOM-tilstanden er allerede riktig mens bevegelsen pågår.
+  const na = await page.evaluate(() => ({ fra: document.querySelector('[data-felt=fra]').value, til: document.querySelector('[data-felt=til]').value, svar: document.querySelector('[data-felt=svar]').textContent, live: document.querySelector('[data-felt=svar]').getAttribute('aria-live'), animasjoner: document.querySelector('[data-felt=fra]').getAnimations().length }));
+  expect(na.fra).toBe(til0); expect(na.til).toBe(fra0); expect(na.svar).not.toBe(svar0); expect(na.live).toBe('polite');
+  expect(na.animasjoner, 'bevegelsen pågår').toBeGreaterThan(0);
+  const knapp = await page.locator('[data-handling=bytt]').boundingBox();
+  expect(knapp.width).toBeGreaterThanOrEqual(44); expect(knapp.height).toBeGreaterThanOrEqual(44);
+  expect((await page.locator('[data-handling=bytt]').getAttribute('aria-label') || '').length).toBeGreaterThan(2);
+  await ctx.close();
+});
+
+for (const [navn, vp, vannrett] of [['PC', { width: 1280, height: 800 }, true], ['mobil 360', { width: 360, height: 700 }, false]]) {
+  test(`bytteanimasjon (${navn}): begge valgene beveger seg (etikettene og boksene står stille) ${vannrett ? 'vannrett' : 'loddrett'}, uten sidelengs rulling, og ender uten transform`, async ({ browser, baseURL }) => {
+    const ctx = await browser.newContext({ baseURL, viewport: vp, reducedMotion: 'no-preference' });
+    const page = await ctx.newPage();
+    await page.goto(BYTT);
+    await page.locator('[data-handling=bytt]').click();
+    const [a, b] = await etiketter(page);
+    expect(a).toBeGreaterThan(0); expect(b).toBeGreaterThan(0);
+    const nok = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const an = document.querySelector(s).getAnimations()[0]; const k = an.effect.getKeyframes(); const m = /translate\((-?[\d.]+)px, (-?[\d.]+)px\)/u.exec(k[0].transform); return { dx: Number(m[1]), dy: Number(m[2]), props: Object.keys(k[0]).filter((p) => !['offset', 'easing', 'composite', 'computedOffset'].includes(p)), varighet: an.effect.getTiming().duration, easing: an.effect.getTiming().easing }; }));
+    for (const f of nok) {
+      expect(f.props, 'bare transform animeres på feltene').toEqual(['transform']);
+      expect(f.varighet).toBeGreaterThanOrEqual(280); expect(f.varighet).toBeLessThanOrEqual(340);
+      expect(f.easing).toBe('cubic-bezier(0.2, 0.8, 0.2, 1)');
+      if (vannrett) expect(Math.abs(f.dx)).toBeGreaterThan(Math.abs(f.dy)); else expect(Math.abs(f.dy)).toBeGreaterThan(Math.abs(f.dx));
+    }
+    // De to feltene bytter plass: motsatt retning.
+    expect(Math.sign(nok[0].dx || nok[0].dy)).toBe(-Math.sign(nok[1].dx || nok[1].dy));
+    for (let i = 0; i < 6; i++) { expect(await sidelengs(page)).toBeLessThanOrEqual(0); await page.waitForTimeout(60); }
+    await page.waitForTimeout(500);
+    expect(await transformer(page)).toEqual(['none', 'none']);
+    expect(await etiketter(page)).toEqual([0, 0]);
+    await ctx.close();
+  });
+}
+
+test('bytteanimasjon: dobbeltrykk raskt ender i opprinnelig tilstand uten forskjøvne felt', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 360, height: 700 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const fra0 = await page.locator('[data-felt=fra]').inputValue(), til0 = await page.locator('[data-felt=til]').inputValue();
+  await page.locator('[data-handling=bytt]').dispatchEvent('click');
+  await page.waitForTimeout(40);
+  await page.locator('[data-handling=bytt]').dispatchEvent('click');
+  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(fra0);
+  expect(await page.locator('[data-felt=til]').inputValue()).toBe(til0);
+  await page.waitForTimeout(600);
+  expect(await transformer(page)).toEqual(['none', 'none']);
+  expect(await etiketter(page)).toEqual([0, 0]);
+  const rot = await page.evaluate(() => getComputedStyle(document.querySelector('[data-handling=bytt]')).rotate);
+  expect(rot).toBe('none');
+  // Trykk mange ganger: ingen låsing, og feltene står rett til slutt.
+  for (let i = 0; i < 7; i++) await page.locator('[data-handling=bytt]').dispatchEvent('click');
+  await page.waitForTimeout(700);
+  expect(await transformer(page)).toEqual(['none', 'none']);
+  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(til0);
+  await ctx.close();
+});
+
+test('bytteanimasjon: et nytt trykk midt i bevegelsen starter der feltene står (innholdet hopper ikke)', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  await page.locator('[data-handling=bytt]').dispatchEvent('click');
+  await page.waitForTimeout(110);
+  // Innholdet som nå står i «Til» (det gamle «Fra») er på vei mot høyre; mål dets posisjon rett før og rett etter neste trykk.
+  const m = await page.evaluate(() => {
+    const f = document.querySelector('[data-felt=fra]'), t = document.querySelector('[data-felt=til]');
+    const fFor = f.getBoundingClientRect().left, tFor = t.getBoundingClientRect().left;
+    document.querySelector('[data-handling=bytt]').click();
+    // Etter trykket: innholdet i «Fra» er det som var i «Til» og skal stå omtrent der det stod.
+    return { tFor, fEtter: f.getBoundingClientRect().left, fFor, tEtter: t.getBoundingClientRect().left };
+  });
+  expect(Math.abs(m.fEtter - m.tFor), 'innholdet i Fra hoppet').toBeLessThanOrEqual(2);
+  expect(Math.abs(m.tEtter - m.fFor), 'innholdet i Til hoppet').toBeLessThanOrEqual(2);
+  await ctx.close();
+});
+
+test('bytteanimasjon: ved redusert bevegelse kjører ingen animasjon, men verdiene byttes', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const til0 = await page.locator('[data-felt=til]').inputValue();
+  await page.locator('[data-handling=bytt]').click();
+  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(til0);
+  const antall = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]', '[data-handling=bytt]', '[data-felt=svar]'].map((s) => { const e = document.querySelector(s); return (e || e).getAnimations().length; }));
+  expect(antall).toEqual([0, 0, 0, 0]);
+  await ctx.close();
+});
+
+test('bytteanimasjon: etikettene og boksene står stille, og svarlinja toner bare teksten (bakgrunnen er svart hele veien)', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const boks = () => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const r = document.querySelector(s).closest('label').getBoundingClientRect(); return [r.left, r.top + scrollY]; }));
+  const foerBoks = await boks();
+  const for_ = await page.evaluate(() => getComputedStyle(document.querySelector('[data-felt=svar]')).backgroundColor);
+  await page.locator('[data-handling=bytt]').click();
+  const m = await page.evaluate(() => {
+    const lab = ['[data-felt=fra]', '[data-felt=til]'].map((s) => document.querySelector(s).closest('label'));
+    const svar = document.querySelector('[data-felt=svar]');
+    const k = svar.getAnimations().flatMap((a) => a.effect.getKeyframes().flatMap((f) => Object.keys(f))).filter((p) => !['offset', 'easing', 'composite', 'computedOffset'].includes(p));
+    return { etiketter: lab.map((l) => l.getAnimations({ subtree: false }).length), etikettTekst: lab.map((l) => l.firstChild.textContent.trim()), svarProps: [...new Set(k)], bakgrunn: getComputedStyle(svar).backgroundColor, opacity: getComputedStyle(svar).opacity };
+  });
+  expect(m.etiketter).toEqual([0, 0]);
+  expect(m.svarProps).toEqual(['color']);
+  expect(m.bakgrunn).toBe(for_); expect(m.opacity).toBe('1');
+  await page.waitForTimeout(100);
+  expect(await boks(), 'etikettboksene beveger seg ikke').toEqual(foerBoks);
+  await ctx.close();
 });

@@ -64,7 +64,9 @@ export function side(lang) {
   <meta name="twitter:description" content="${esc(t.beskrivelse)}">
   <meta name="twitter:image" content="${bildeUrl(lang)}">
   <meta name="twitter:image:alt" content="${esc(t.bildeAlt)}">
-  <link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <link rel="stylesheet" href="/tokens.css">
   <link rel="stylesheet" href="/tjeneste.css">
   <link rel="stylesheet" href="/avmeld.css">

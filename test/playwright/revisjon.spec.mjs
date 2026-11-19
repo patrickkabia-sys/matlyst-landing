@@ -4,15 +4,15 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test, expect } from '@playwright/test';
-import { revider, samleFeil, skalering, zoom } from './hjelp/revisjon.mjs';
+import { revider, samleFeil, skalering, zoom, forHoyePaaMobil, forHoyeFliserPaaMobil, MOBIL_MEDIA, MOBIL_FLISER } from './hjelp/revisjon.mjs';
 import { utvalg, utrulledeTyper, eksempelStier } from './hjelp/utvalg.mjs';
 import { EKSEMPEL, TYPER } from '../../scripts/sidetyper.mjs';
 
 const BREDDER = [360, 390, 768, 1280];
-// Skallets tekst står i px i skall.css og følger ikke nettleserens tekststørrelse.
-// Den er unntatt fra forstørret tekst (a), men dekket av zoomtesten (b).
-const SKALL_PX = ['header.topp', '#panel', 'section.bunn', 'footer.under', '#fast', '#hent', '#cookie', '.knapp'];
+// Skallet (topp, meny, bunn, hentark, samtykke) måles på lik linje med innholdet: også det må vokse med faktor 1,9.
+const SKALL = ':is(header.topp, #panel, section.bunn, footer.under, #fast, #hent, #cookie) :is(a, button, span, p, li, h2, h3, summary)';
 const TEKST = '.blad :is(p, li, td, th, dt, dd, summary, h1, h2, h3, h4, figcaption, .lead, .eyebrow)';
+const TEKST_OG_SKALL = `${TEKST}, ${SKALL}`;
 // Tjenestesidene har ikke skallet (.blad). Teksten ligger i main; bekreftelsen har en bunn utenfor, og /app/ har ingen main.
 const TJENESTE_TEKST = ':is(main, .bekreft-fot, body[data-tjeneste="app"]) :is(p, li, h1, h2, h3, .lead, .eyebrow, a.store), :is(.nav-back, .nav-right a.link, .language-switcher a)';
 const LOVLIGE_HENT = ['topp', 'bunn', 'fast', 'app-cta', 'side-cta', 'helt'];
@@ -21,13 +21,8 @@ const EKSEMPELSTIER = eksempelStier();
 // Sidene er uavhengige av hverandre, så testene kjøres parallelt (antall prosesser settes med --workers).
 test.describe.configure({ mode: 'parallel' });
 
-// Forsiden setter innholdet i px (forside.css, tidligere designvalg) og følger derfor ikke
-// nettleserens tekststørrelse. Bare forsiden er unntatt; omskriving til rem er et poleringspunkt.
-// Alle andre sidetyper må nå faktor 1,9.
-const FORSIDE_PX = (side) => side.type === 'forside';
-/** Elementer som ikke forstørres nok når nettleserens tekststørrelse er 200 %. */
-const forstorrelseFeil = (faktorer, side) =>
-  faktorer.filter((f) => !(f.faktor >= 1.9 || (FORSIDE_PX(side) && f.faktor === 1)));
+/** Elementer som ikke forstørres nok når nettleserens tekststørrelse er 200 %. Ingen sidetype er unntatt. */
+const forstorrelseFeil = (faktorer) => faktorer.filter((f) => !(f.faktor >= 1.9));
 
 // Revisjonen kjøres med redusert bevegelse: alt står i sluttilstand og kildebåndet står stille.
 test.use({ reducedMotion: 'reduce' });
@@ -60,13 +55,26 @@ test('utvalget har sider for hver utrullet type', () => {
   }
 });
 
-test('forstørret tekst: px-tekst utenfor skallet feiler, bortsett fra på forsiden', async ({ page }) => {
+test('forstørret tekst: px-tekst feiler på alle sidetyper, også i skallet og på forsiden', async ({ page }) => {
   test.skip(!!process.env.BASE_URL, 'fiksturen finnes bare lokalt');
   await page.goto('/test/fixtures/revisjon-px-tekst.html');
-  const faktorer = await skalering(page, `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`);
+  const faktorer = await skalering(page, TEKST_OG_SKALL);
   expect(faktorer.length).toBeGreaterThan(0);
-  expect(forstorrelseFeil(faktorer, { type: 'omregner' }).length).toBeGreaterThan(0);
-  expect(forstorrelseFeil(faktorer, { type: 'forside' })).toEqual([]);
+  expect(forstorrelseFeil(faktorer).map((f) => f.faktor)).toEqual([1]);
+});
+
+test('alt på en mobilskjerm: for høye telefoner, kort og fliser oppdages', async ({ page }) => {
+  test.skip(!!process.env.BASE_URL, 'fiksturen finnes bare lokalt');
+  await page.setViewportSize({ width: 390, height: 664 });
+  await page.goto('/test/fixtures/revisjon-for-hoy-telefon.html');
+  const funn = await forHoyePaaMobil(page);
+  expect(funn.map((f) => f.velger).sort()).toEqual(['.tel', 'aside.i-appen']);
+  expect(funn.every((f) => f.ledig === 664 - 72 - 75 - 16)).toBe(true);
+  // Fliser: ingen unntaksliste. Den faste knappen er skjult der, så ledig høyde er 664 - 72 - 16.
+  const fliser = await forHoyePaaMobil(page, MOBIL_FLISER, [], { fast: false });
+  expect(fliser.map((f) => f.velger)).toEqual(['#trio article.rute']);
+  expect(fliser[0].ledig).toBe(664 - 72 - 16);
+  expect(MOBIL_MEDIA).not.toContain('#trio article.rute');
 });
 
 test('utvalget følger predikatet: en utrullet type får sine sider, andre ingen', () => {
@@ -116,11 +124,23 @@ for (const side of rader) {
     for (const bredde of [390, 1280]) {
       await page.setViewportSize({ width: bredde, height: 900 });
       await page.goto(side.url);
-      const utenSkall = side.fulltSkall === false ? TJENESTE_TEKST : `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`;
+      const utenSkall = side.fulltSkall === false ? TJENESTE_TEKST : TEKST_OG_SKALL;
       const faktorer = await skalering(page, utenSkall);
       expect(faktorer.length, `ingen tekst å måle på ${bredde} px`).toBeGreaterThan(0);
-      const feilFaktor = forstorrelseFeil(faktorer, side);
+      const feilFaktor = forstorrelseFeil(faktorer);
       expect(feilFaktor, `forstørret tekst på ${bredde} px`).toEqual([]);
+    }
+  });
+
+  // Mobilskjermen er omtrent 390 x 664 (mobil-Safari) og 360 x 640. Telefoner og mediekort skal ses hele.
+  test(`alt får plass på en mobilskjerm: ${navn}`, async ({ page }) => {
+    test.skip(side.fulltSkall === false, 'tjenestesidene har ingen telefonmockuper');
+    for (const [bredde, hoyde] of [[390, 664], [360, 640]]) {
+      await page.setViewportSize({ width: bredde, height: hoyde });
+      await page.goto(side.url);
+      expect(await forHoyePaaMobil(page), `for høye elementer på ${bredde} x ${hoyde}`).toEqual([]);
+      // Forsidens fliser (alle fem rutene og begge Spør Matlyst-flisene), i alle varianter.
+      if (side.type === 'forside') expect(await forHoyeFliserPaaMobil(page), `for høye fliser på ${bredde} x ${hoyde}`).toEqual([]);
     }
   });
 
