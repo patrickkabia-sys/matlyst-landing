@@ -300,7 +300,7 @@
     };
     // Reserven virker bare på rulling som startet med berøring inne i stabelen, og bare kort tid etter at fingeren er løftet (treghetsrullingen).
     // Aldri mens fingeren er nede, og aldri etter tastatur, fokus, ankerlenke, søk eller programmatisk rulling. Redusert bevegelse: av.
-    const TREGHET = 2500;
+    const TREGHET = 5000;
     let fraY = null, nede = false, sluppet = 0, egen = false, venter = 0;
     const iStabel = () => stabler() && berøring.matches;
     const glem = () => { fraY = null; nede = false; sluppet = 0; };
