@@ -142,11 +142,14 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
 // Enhetsomregner: regner ut mens du skriver (volum, vekt, lengde, temperatur).
 (() => {
+  const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
   const tall = (n) => {
     if (!Number.isFinite(n)) return '';
     const a = Math.abs(n);
     const d = a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5;
-    return String(Number(n.toFixed(d)));
+    const t = String(Number(n.toFixed(d)));
+    // Språkets desimaltegn (sidens lang): komma på nb, sv og da, punktum på en. Ingen tusenskille, slik sidene ellers skriver tall.
+    return KOMMA ? t.replace('.', ',') : t;
   };
   for (const skjema of document.querySelectorAll('form.omregner')) {
     let data;
@@ -158,6 +161,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     const kort = (sel) => sel.options[sel.selectedIndex].text.replace(/^.*\(([^)]+)\)$/u, '$1');
     // Enheter som skrives som ord har entall og flertall i sidens data (data.o): entall bare for nøyaktig 1, målt på tallet som vises.
     const ord = (sel, n) => { const o = data.o && data.o[sel.value]; return o ? o[Number(tall(n)) === 1 ? 0 : 1] : kort(sel); };
+    // Inntastingen tåler både komma og punktum: feltet er tekst med desimaltastatur (type=number avviser komma i engelske nettlesere).
+    if (verdi.type === 'number') verdi.type = 'text';
     const reg = () => {
       const v = parseFloat(String(verdi.value).replace(',', '.'));
       if (!Number.isFinite(v)) { svar.textContent = ''; return; }

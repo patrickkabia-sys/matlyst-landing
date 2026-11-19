@@ -11,7 +11,7 @@ const adresse = (sti) => kart.find((s) => s.sti === sti)?.url ?? sti;
 test('omregneren regner fortsatt, med samme tallformat som før', async ({ page }) => {
   await page.goto(adresse('/verktoy/kopp-til-dl/'));
   await page.locator('[data-felt=verdi]').fill('2');
-  await expect(page.locator('[data-felt=svar]')).toContainText('4.732');
+  await expect(page.locator('[data-felt=svar]')).toContainText('4,732');
 });
 
 test('omregneren bytter enheter og regner det omvendte; svaret brytes i stedet for å kuttes', async ({ page }) => {
@@ -24,7 +24,7 @@ test('omregneren bytter enheter og regner det omvendte; svaret brytes i stedet f
   const fra = await fraFelt.inputValue();
   const til = await tilFelt.inputValue();
   const f = JSON.parse(await page.locator('.omregner-data').textContent()).f;
-  const tall = (n) => { const a = Math.abs(n); return String(Number(n.toFixed(a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5))); };
+  const tall = (n) => { const a = Math.abs(n); return String(Number(n.toFixed(a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5))).replace('.', ','); }; // norsk desimalkomma
   const kort = async (felt) => felt.evaluate((e) => e.options[e.selectedIndex].text.replace(/^.*\(([^)]+)\)$/u, '$1'));
   await page.locator('[data-handling=bytt]').click();
   expect(await fraFelt.inputValue()).toBe(til);
@@ -61,7 +61,8 @@ for (const { sprak, sti, entall, flertall, pint } of FLERTALL_SIDER) {
     await verdi.fill('2');
     await expect(svar).toHaveText(new RegExp(`^2 ${flertall} = `, 'u'));
     await verdi.fill('0.5');
-    await expect(svar).toHaveText(new RegExp(`^0.5 ${flertall} = `, 'u'));
+    const d = sprak === 'en' ? '.' : ',';
+    await expect(svar).toHaveText(new RegExp(`^0${d}5 ${flertall} = `, 'u'));
     // Svarsiden: to kopper er én pint (entall på høyre side), og symboler står uendret.
     await page.locator('[data-felt=fra]').selectOption('cups');
     await page.locator('[data-felt=til]').selectOption('pints');
@@ -70,7 +71,7 @@ for (const { sprak, sti, entall, flertall, pint } of FLERTALL_SIDER) {
     await verdi.fill('4');
     await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 2 ${pint[1]}$`, 'u'));
     await page.locator('[data-felt=til]').selectOption('ml');
-    await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 946.4 ml$`, 'u'));
+    await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 946${d}4 ml$`, 'u'));
   });
 }
 
@@ -96,6 +97,25 @@ for (const bredde of [1001, 1280, 1600]) {
       const klipp = await page.locator('[data-felt=verdi]').evaluate((e) => e.scrollWidth - e.clientWidth);
       expect(klipp, `${sti}: tallet klippes`).toBeLessThanOrEqual(0);
     }
+  });
+}
+
+// Tallformatet i svaret følger sidens språk (lang), og inntastingen tåler både komma og punktum.
+for (const [sti, d, ut] of [['/verktoy/kopp-til-ml/', ',', '354,9'], ['/sv/verktyg/kopp-till-ml/', ',', '354,9'], ['/da/vaerktoejer/kop-til-ml/', ',', '354,9'], ['/en/tools/cups-to-ml/', '.', '354.9']]) {
+  test(`omregneren ${sti}: desimaltegnet i svaret er «${d}», og både komma og punktum kan skrives inn`, async ({ page }) => {
+    await page.goto(sti);
+    const verdi = page.locator('[data-felt=verdi]'), svar = page.locator('[data-felt=svar]');
+    for (const innskrevet of ['1,5', '1.5']) {
+      await verdi.fill(innskrevet);
+      await expect(svar).toHaveText(new RegExp(`^1${d}5 \\S+ = ${ut.replace('.', '\\.')} ml$`, 'u'));
+    }
+    await verdi.fill('1500');
+    const tekst = await svar.textContent();
+    expect(tekst, 'ingen tusenskille som kan forveksles').toMatch(/^1500 \S+ = 354\d{3}(?:[.,]\d+)? ml$/u);
+    expect(await page.evaluate(() => document.documentElement.lang)).toMatch(/^(nb|sv|da|en)/u);
+    // Svaret på siden (server) og i skriptet bruker samme tegn.
+    await page.reload();
+    expect(await svar.textContent()).toContain(d === ',' ? ',' : '.');
   });
 }
 
