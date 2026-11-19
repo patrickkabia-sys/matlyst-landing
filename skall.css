@@ -97,6 +97,13 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .bunn .fag li a{min-height:44px;font-size:16px}
 .bunnrad{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px;margin-top:72px}
 .bunnrad p{margin:0;font-size:clamp(24px,2.6vw,32px);line-height:1.15;font-weight:700;letter-spacing:-.025em}
+/* Alle guider: sammenfoldet som standard. En tom detaljboks (bare plassmerket) skjules. */
+.alle-guider{margin-top:56px;border-top:1px solid var(--linje)}
+.alle-guider:not(:has(.f-guider)){display:none}
+.alle-guider summary{display:flex;align-items:center;min-height:44px;padding-block:8px;cursor:pointer;font-size:16px;font-weight:600;color:var(--dempet)}
+.alle-guider .f-guider{display:flex;flex-wrap:wrap;gap:0 24px;padding-bottom:8px}
+.alle-guider .f-guider a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:var(--dempet);text-decoration:none}
+.alle-guider .f-guider a:hover{color:var(--blekk);text-decoration:underline}
 @media (max-width:1000px){.bunn .reol{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 .merke{min-height:44px}

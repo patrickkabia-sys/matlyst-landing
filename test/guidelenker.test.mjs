@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 const rot = fileURLToPath(new URL('..', import.meta.url));
 import { SITEMAPER, UTELATT, MONSTER, filFor, guider, settInn } from '../scripts/guidelenker.mjs';
+import { hylledel } from '../scripts/skall.mjs';
 
 const VIA_HUB = {
   // Landleys Kök nås gjennom importhubbens kuraterte relatert-blokk.
@@ -66,4 +67,19 @@ test('bunnteksten lenker ikke til enkeltsider under en hub (ingen lenkefarm)', (
 test('guidelenkegeneratoren lar rotsiden stå urørt', () => {
   const html = readFileSync(join(rot, 'index.html'), 'utf8');
   assert.equal(settInn(html, '<p>Uønsket guideblokk</p>', '/'), html);
+});
+
+test('settInn bruker plassen i hylledelen når blokka mangler, og er idempotent', () => {
+  const html = `${hylledel('nb')}<footer></footer>`;
+  const ny = '<!-- guider:bunn --><div class="f-guider">x</div><!-- /guider:bunn -->';
+  const ut = settInn(html, ny);
+  assert.ok(ut.indexOf(ny) > ut.indexOf('<summary>') && ut.indexOf(ny) < ut.indexOf('</details>'));
+  assert.equal(settInn(ut, ny), ut);
+  assert.ok(!ut.includes('<!-- guider:plass -->'));
+  assert.ok(!ut.includes('</footer>') || ut.indexOf(ny) < ut.indexOf('<footer>'), 'blokka står ikke i bunnteksten');
+});
+
+test('settInn faller tilbake til bunnteksten uten plass, og tåler $ i blokka', () => {
+  const ny = '<!-- guider:bunn --><a>$& $1</a><!-- /guider:bunn -->';
+  assert.ok(settInn('<footer></footer>', ny).includes(ny));
 });

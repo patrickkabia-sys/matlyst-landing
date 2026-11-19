@@ -1,7 +1,8 @@
 // All synlig tekst på forsiden, ett språk per gren under TEKST.
 // Generatoren bygger siden av denne modulen. Oversettere jobber fra MENINGEN:
 // kommentaren over hver gruppe sier hvor teksten står og hva den gjør.
-// Hyllenavn og hyllelenker i menyen bor i scripts/hyller.mjs, ikke her.
+// Hyllenavn og hyllelenker i menyen bor i scripts/hyller.mjs, og skalltekstene (meny, bunn,
+// QR-vindu, samtykke) i scripts/skall-tekst.mjs, ikke her.
 //
 // PLASSHOLDERE: {klammer} i en tekst fylles inn av generatoren med fyll() under.
 // Oversettere beholder plassholderne ordrett, men kan flytte dem i setningen.
@@ -61,18 +62,7 @@ export const EKSEMPELSTIER = [
 export const TEKST = {
   nb: {
     // ---------- Toppen av siden ----------
-    topp: {
-      // Logoen øverst til venstre. Skjermleserlabel for lenken til forsiden.
-      merkeAria: 'Matlyst, til forsiden',
-      // Knappen som åpner hovedmenyen på små skjermer og ved siden av nedlastingsknappen.
-      meny: 'Meny',
-      menyAria: 'Meny',
-      // Navnet på selve menypanelet, for skjermlesere.
-      panelAria: 'Hovedmeny',
-      // Den lille knappen øverst til høyre. Åpner nedlasting.
-      lastNed: 'Last ned',
-    },
-
+    // Menyen, språkvelgeren, bunnen og QR-vinduet bor i scripts/skall-tekst.mjs.
     // Lenkene i toppfeltet som følger deg nedover siden. Hver lenke hopper til en seksjon.
     // `mal` er seksjonens anker, `tekst` er det som vises.
     folg: {
@@ -83,17 +73,6 @@ export const TEKST = {
         { mal: 'middag', tekst: 'Lag maten' },
         { mal: 'pris', tekst: 'Pris' },
         { mal: 'svar', tekst: 'Spørsmål' },
-      ],
-    },
-
-    // Språkvelgeren, i menyen og i bunnen. Språkene står alltid på sitt eget språk.
-    sprak: {
-      aria: 'Språk',
-      valg: [
-        { kode: 'nb', navn: 'Norsk' },
-        { kode: 'sv', navn: 'Svenska' },
-        { kode: 'da', navn: 'Dansk' },
-        { kode: 'en', navn: 'English' },
       ],
     },
 
@@ -380,46 +359,6 @@ export const TEKST = {
         { q: 'Kan vi være flere om ukemeny og handleliste?', a: 'Ja. Med Pro inviterer du husstanden, opptil 6 personer. Det er gratis for dem du inviterer.' },
         { q: 'Finnes Matlyst for Android?', a: 'Ja. Matlyst finnes for iPhone, iPad og Android.' },
       ],
-    },
-
-    // ---------- Bunnen av siden ----------
-    // Siste oppfordring rett over bunnmenyen, ved siden av nedlastingsknappen.
-    bunnlinje: 'Den oppskriften du lagret? Lag den i kveld.',
-    // Skjermlesernavn på bunnseksjonen og på menyen i den.
-    bunn: {
-      aria: 'Alt på Matlyst',
-      menyAria: 'Bunnmeny',
-    },
-    // Fotlinjen nederst. Gruppa heter Juridisk og samler personvern, vilkår og informasjonskapsler.
-    under: {
-      vilkarAria: 'Juridisk',
-      lenker: ['Personvern', 'Vilkår', 'Informasjonskapsler'],
-      // Opphavslinje nederst. Flaggbildet vises rett etter teksten, med et mellomrom
-      // mellom (mellomrommet ligger i siden, ikke i strengen). Oversettes som en vanlig setning.
-      laget: '© 2026 Matlyst. Laget i Norge',
-      // Skjermlesertekst for flaggbildet etter opphavslinjen.
-      flaggAlt: 'Norsk flagg',
-      epost: 'hei@matlyst-app.no',
-    },
-    // Den faste knappen som glir inn nederst på skjermen når man har rullet forbi
-    // den første knappen og ennå ikke nådd den siste.
-    fast: {
-      knapp: 'Last ned gratis',
-    },
-
-    // QR-vinduet som åpnes når man trykker på en nedlastingsknapp på stor skjerm.
-    // På mobil går knappene rett til butikken.
-    hent: {
-      // Skjermlesertekst for krysset øverst i vinduet som lukker det.
-      lukkAria: 'Lukk',
-      // Skjermlesertekst for QR-koden (et bilde). Koden peker til nedlastingssiden.
-      qrAlt: 'QR-kode til matlyst-app.no/app',
-      // Overskriften i vinduet, rett under QR-koden. Oppfordrer til å skanne koden med telefonkameraet.
-      tittel: 'Skann med telefonen',
-      // Forklaringen rett under overskriften, i én eller to korte linjer: hva som skjer når man skanner.
-      ingress: 'Kameraet tar deg til riktig butikk, enten du har iPhone eller Android.',
-      // Navnene på de to knappene nederst i vinduet, som fører til hver sin butikk. Egennavn, oversettes ikke.
-      butikker: ['App Store', 'Google Play'],
     },
 
     // ---------- Eksempler ----------

@@ -5,8 +5,11 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { effektiv } from './hjelp/knappevekt.mjs';
 import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from '../scripts/skall.mjs';
+import { SKALLTEKST, SPRAKVALG, BUTIKK } from '../scripts/skall-tekst.mjs';
+import { TEKST } from '../scripts/forside-tekst.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
+const les = (sti) => readFileSync(join(rot, sti), 'utf8');
 const lenker = (html) => [...html.matchAll(/<a href="([^"]+)"[^>]*><span>([^<]+)<\/span><\/a>/g)].map(([, href, tekst]) => `${tekst}|${href}`);
 
 test('menyen og bunnen har nøyaktig de samme hyllene og lenkene', () => {
@@ -238,9 +241,52 @@ test('skallet har ingen sideveis rulling, små trykkflater eller konsollfeil', a
 });
 
 
+// Banneret er sidens eget innhold (B4) og kan ha en overskrift, så det holdes utenfor.
+const skallUtenBanner = (s) => topp(s, {}) + hylledel(s) + morkBunn(s, {}) + nedlasting(s);
+const alleDeler = (s) => skallUtenBanner(s) + samtykke(s);
+
 test('skallet uten samtykkebanner legger ikke til overskrifter', () => {
-  const html = topp('nb', { sprakvelger: '' }) + hylledel('nb') + morkBunn('nb', { sprakvelger: '' }) + nedlasting('nb');
-  assert.doesNotMatch(html, /<h[1-6]\b/i);
+  assert.doesNotMatch(skallUtenBanner('nb'), /<h[1-6]\b/i);
+  for (const ul of skallUtenBanner('nb').match(/<ul\b[^>]*>/g)) assert.match(ul, /aria-label="[^"]+"/);
+});
+
+test('ingen tekst i skallet står i forside-tekst.mjs', () => {
+  for (const k of ['topp', 'sprak', 'bunn', 'bunnlinje', 'under', 'fast', 'hent']) assert.ok(!(k in TEKST.nb), k);
+});
+
+test('morkBunn: samtykkelenka kan slås av', () => {
+  assert.match(morkBunn('nb', {}), /data-consent-withdraw/);
+  assert.doesNotMatch(morkBunn('nb', { samtykkelenke: false }), /data-consent-withdraw/);
+  assert.equal(morkBunn('nb', { samtykkelenke: true }), morkBunn('nb', {}));
+});
+
+// Fiksturen er skallet slik det så ut før tekstene ble flyttet og guideplassen kom til.
+const DETALJER = (summary) => `<details class="alle-guider"><summary>${summary}</summary><!-- guider:plass --></details>`;
+test('bokmålsskallet er øyeblikksbildet pluss guideplassen, og ingenting annet', () => {
+  const før = les('test/fixtures/skall-nb.html.fiks');
+  assert.equal(før.split('<div class="bunnrad">').length, 2, 'øyeblikksbildet har nøyaktig én .bunnrad');
+  assert.equal(alleDeler('nb'), før.replace('<div class="bunnrad">', `${DETALJER(SKALLTEKST.nb.bunn.guider)}<div class="bunnrad">`));
+});
+
+test('en ferdig guideblokk står i detaljene', () => {
+  const blokk = '<!-- guider:bunn --><div class="f-guider">x</div><!-- /guider:bunn -->';
+  assert.ok(hylledel('nb', { guider: blokk }).includes(`<summary>${SKALLTEKST.nb.bunn.guider}</summary>${blokk}</details>`));
+  assert.ok(!hylledel('nb', { guider: blokk }).includes('guider:plass'));
+});
+
+test('«Alle guider» er den nye teksten i hylledelen', () => {
+  assert.equal(SKALLTEKST.nb.bunn.guider, 'Alle guider');
+  assert.equal(SKALLTEKST.nb.bunn.knapp, 'Last ned gratis');
+  assert.equal(SKALLTEKST.nb.innhold.knapp, 'Last ned gratis');
+});
+
+test('språkvalg og butikklenker er data for alle fire språk', () => {
+  for (const kode of ['nb', 'sv', 'da', 'en']) {
+    assert.ok(SPRAKVALG.aria[kode] && SPRAKVALG.navn[kode], kode);
+    assert.match(BUTIKK[kode].apple, /^https:\/\/apps\.apple\.com\/(?:(?:no|se|dk)\/)?app\/matlyst\/id6762563515$/);
+    assert.match(BUTIKK[kode].google, /^https:\/\/play\.google\.com\/store\/apps\/details\?id=app\.matlyst/);
+  }
+  assert.deepEqual(SKALLTEKST.nb.sprak, { aria: 'Språk', valg: Object.entries(SPRAKVALG.navn).map(([kode, navn]) => ({ kode, navn })) });
 });
 
 test('hyllene har avsnitt som navn og navngitte lenkelister i meny og bunn', () => {

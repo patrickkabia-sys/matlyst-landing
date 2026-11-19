@@ -24,6 +24,9 @@ export const UTELATT = new Set([
 
 export const UNDER_HUB = /^\/(?:[a-z]{2}\/)?(?:tools|verktoy|verktyg|vaerktoejer|holidays)\/(?!unit-converter\/$|enhetsomregner\/$|enhetsomvandlare\/$|enhedsomregner\/$)[^/]+\/$/u;
 
+// Plassmerket scripts/skall.mjs skriver i hylledelen til guideblokka.
+export const PLASS = '<!-- guider:plass -->';
+
 export const MONSTER = /<!-- guider:bunn -->[\s\S]*?<!-- \/guider:bunn -->/u;
 
 export function filFor(sti) {
@@ -64,8 +67,10 @@ export function blokk(lang, liste) {
 export function settInn(html, ny, sti) {
   // /sv/, /da/ og /en/ trenger samme unntak når scripts/forside.mjs genererer dem.
   if (sti === '/') return html;
-  if (MONSTER.test(html)) return html.replace(MONSTER, ny);
-  return html.replace('</footer>', `  ${ny}\n</footer>`);
+  if (MONSTER.test(html)) return html.replace(MONSTER, () => ny);
+  // Det nye skallet har en plass i hylledelen (<details class="alle-guider">).
+  if (html.includes(PLASS)) return html.replace(PLASS, () => ny);
+  return html.replace('</footer>', () => `  ${ny}\n</footer>`);
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
