@@ -120,7 +120,8 @@ test('korte guider: stegene, idelisten og kildepillen er avgrenset til guide-kor
   const del = utenKommentarer(rå.slice(start, slutt));
   assert.ok(regler(del).length >= 6);
   for (const r of regler(del)) for (const v of r.velger.split(',')) assert.ok(v.trim().startsWith('body[data-sidetype="guide-kort"] '), `ikke avgrenset: ${v.trim()}`);
-  for (const nokkel of ['counter-increment:steg', 'ul.ide-liste{display:grid;grid-template-columns:repeat(2', 'a[rel~="noopener"]:only-child{display:inline-flex']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
+  assert.ok(!/counter-(reset|increment)/u.test(del), 'stegtelleren er list-item-telleren, som følger start, reversed og li[value]');
+  for (const nokkel of ['content:counter(list-item)', ':not([reversed]):not(:has(> li[value]))', 'ul.ide-liste{display:grid;grid-template-columns:repeat(2', 'a[rel~="noopener"]:only-child{display:inline-flex']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
 });
 
 test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', () => {
