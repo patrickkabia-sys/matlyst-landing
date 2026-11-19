@@ -258,6 +258,38 @@
       if (bevegelse.matches) flater.forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
     });
   }
+  // Patrick 19.11: ett sveip er ett kort (mobil med berøring, stabelen er på). CSS-snappunktene på ankrene (.snap) tar de korte sveipene; her er reserven:
+  // etter at rullingen har stoppet (scrollend), glir siden mykt til neste kortstart, og et kraftig sveip som ville passert flere kort stoppes på neste.
+  // Ut av stabelen (nedover fra siste kort, oppover fra første) og inn i den ovenfra går fritt. Ingen preventDefault; ved redusert bevegelse hopper siden direkte.
+  {
+    const ankre = [...document.querySelectorAll('#trio > .snap')];
+    const berøring = matchMedia('(max-width:720px) and (hover:none) and (pointer:coarse)');
+    const rulleMal = (i) => ankre[i].getBoundingClientRect().top + scrollY - (parseFloat(getComputedStyle(ankre[i]).scrollMarginTop) || 0);
+    let fraY = null, egen = false, venter = 0;
+    const iStabel = () => ankre.length === 5 && stabler() && berøring.matches;
+    addEventListener('touchstart', () => { fraY = iStabel() ? scrollY : null; }, { passive: true });
+    const lander = () => {
+      venter = 0;
+      if (egen) { egen = false; fraY = null; return; }
+      if (fraY === null || !iStabel()) return;
+      const start = fraY, y = scrollY, d = y - start;
+      fraY = null;
+      const kort = ankre.map((_, i) => rulleMal(i));
+      // Inn i stabelen ovenfra og ut av den nedenfra går fritt: bare sveip som starter fra første kort til siste kort låses.
+      if (start < kort[0] - 24 || start > kort[kort.length - 1] + 24) return;
+      let mal;
+      if (Math.abs(d) < 24) mal = kort.reduce((b, k) => (Math.abs(k - y) < Math.abs(b - y) ? k : b), kort[0]);
+      else if (d > 0) { mal = kort.find((k) => k > start + 24); if (mal === undefined) return; }
+      else { mal = [...kort].reverse().find((k) => k < start - 24); if (mal === undefined) return; }
+      if (Math.abs(mal - y) < 2) return;
+      egen = true;
+      scrollTo({ top: mal, behavior: bevegelse.matches ? 'auto' : 'smooth' });
+      // Står siden allerede på målet, kommer ingen ny scrollend.
+      setTimeout(() => { egen = false; }, 1200);
+    };
+    if ('onscrollend' in window) addEventListener('scrollend', lander);
+    else addEventListener('scroll', () => { clearTimeout(venter); venter = setTimeout(lander, 140); }, { passive: true });
+  }
   // Hvert kort har en egen tidslinje. Klokka går bare mens kortet er i bildet.
   // Kortstabling på mobil (klassen `stabel` på #trio, av som standard): en rute som den neste har dekket, står stille på samme måte som en rute utenfor bildet.
   const trio = document.getElementById('trio');

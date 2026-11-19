@@ -366,6 +366,7 @@ function middag(t, oppsett) {
           ${husinnhold.map((innhold, i) => `<template class="hus-eksempel" data-sist="${husstander[i].sist}">${innhold}</template>`).join('')}
         </div>
       </article>
+<i class="snap s1" aria-hidden="true"></i><i class="snap s2" aria-hidden="true"></i><i class="snap s3" aria-hidden="true"></i><i class="snap s4" aria-hidden="true"></i><i class="snap s5" aria-hidden="true"></i>
 </div></section></div>`;
 }
 function pris(t) {
