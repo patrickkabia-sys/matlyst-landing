@@ -1,6 +1,8 @@
 # Designspec for matlyst-app.no: lett, levende og bygget rundt appen
 
-Status: versjon 3, godkjent av Patrick 18.11.2026. Erstatter versjon 2 («Lekeboks møter Standby»).
+Status: versjon 4, 19.11.2026. Versjon 3 ble godkjent av Patrick 18.11.2026 og erstattet versjon 2 («Lekeboks møter Standby»). Versjon 4 legger til punkt 16 (reglene fra utrullingen og polishen 19.11) og retter punkt 7, 9, 13 og 15 etter dem. Der punkt 16 og eldre tekst er uenige, gjelder punkt 16.
+
+Denne specen gjelder for alt arbeid med nettsiden fremover (Patrick 19.11). Reglene i punkt 16 er låst av tester; en endring som bryter dem, er en spec-endring og tas opp først.
 
 Prototype: https://claude.ai/artifact/C9caMSz3tjdQNizGLDnB27 (versjon 42). Den er fasit for forsiden og for sideskallet.
 Kildefila ligger i `docs/superpowers/prototyper/2026-11-18-forside.html`. Bilder, film og logoer ligger i `~/matlyst-privat/seo-matlyst/2026-11-18/nettfilm/` og i artefaktet.
@@ -142,7 +144,7 @@ Overskrifter har bokstavavstand −0,028 em og `text-wrap: balance`.
 
 **Topp**
 - Logoflis og ordmerke til venstre. Menyknapp og svart «Last ned» til høyre.
-- På PC (over 1000 px) er toppen klebrig og halvt gjennomsiktig med uskarp bakgrunn. På mobil ruller den med siden.
+- På PC (over 1000 px) er toppen klebrig med tett, nesten hvit bakgrunn (94 %) og en hårlinje under når siden er rullet. Ingen uskarp bakgrunn (punkt 16.3). På mobil ruller den med siden.
 - På forsiden har toppen en følgemeny i midten på PC: Lagre, Spør Matlyst, Lag maten, Pris, Spørsmål. Et merke glir til den delen man er i. Undersider har ikke følgemeny **(mitt valg)**.
 - **Påskeegg:** logoflisen bytter mellom alle de 40 logoformene, én ny hvert tredje sekund. Peker over gir raskt bytte, trykk gir neste.
 
@@ -162,7 +164,7 @@ Blad og hylledel utgjør til sammen ett kort med avrundet bunn og kraftig skygge
 **Nedlasting**
 - På PC åpner alle nedlastingsknapper et vindu med QR-kode til `matlyst-app.no/app`, som sender telefonen til riktig butikk. Under koden står lenker til App Store og Google Play.
 - På mobil går knappene rett til `matlyst-app.no/app`.
-- På mobil dukker en fast nedlastingsknapp opp nederst når knappen i toppen er rullet bort. Den forsvinner før knappen i hylledelen kommer til syne. Den står på et lyst, halvt gjennomsiktig felt så den synes over både lyse og mørke flater.
+- På mobil dukker en fast nedlastingsknapp opp nederst når knappen i toppen er rullet bort. Den forsvinner før knappen i hylledelen kommer til syne. Den står på et tett, lyst felt så den synes over både lyse og mørke flater. På forsiden er den skjult mens flisene og Spør Matlyst er i bildet (punkt 16.2).
 
 ## 8. Forsiden, ovenfra
 
@@ -189,7 +191,7 @@ Forsiden har ingen egen avslutningsseksjon. Den ble tatt ut fordi tre nedlasting
 ## 9. Bevegelse
 
 - **Alt går i loop, og ingenting kan stoppes.** Patricks ord: «Alt skal gå i loop. Det skal ikke være mulig å stoppe noen av dem.» Film, kort og samlebånd har verken pauseknapp eller pause ved trykk.
-- Det som ikke er i bildet, står stille. Det sparer strøm og gjør at eksemplene starter når man kommer til dem.
+- Det som ikke er i bildet, står stille. Kortene spiller bare når de er aktive, og starter forfra hver gang (punkt 16.2). Film og samlebånd går når de er i bildet.
 - **Redusert bevegelse** (`prefers-reduced-motion`): alt står stille. Filmen viser plakatbildet, kortene viser sluttilstanden, samlebåndet står som en midtstilt rad, og overskriften står ferdig skrevet.
 - **Kjent avvik fra WCAG 2.2.2.** Kravet sier at bevegelse som starter av seg selv og varer over fem sekunder skal kunne stoppes. Systemets innstilling for redusert bevegelse er eneste stopp. Patrick har valgt dette med åpne øyne. Det bør tas opp igjen i tilgjengelighetskontrollen før siden går ut.
 - Ingenting svever eller flyter fritt. Bevegelse har alltid en retning og en grunn.
@@ -241,6 +243,8 @@ Hver del får egen PR og egen måling **(mitt valg)**:
 
 Gamle stiler slettes når siste sidetype er flyttet.
 
+**Status 19.11.2026:** steg 1, 2, 3, 4, 6 og 7 er publisert, og tjenestesidene (avmelding, bekreftelse, vervekort, innlogging, 404) har samme identitet. Alle 876 sider bruker `tokens.css`, `skall.css` og `side.css` eller `tjeneste.css`; `styles.css` er slettet. Av steg 5 er omregnerne flyttet til ny mal. Det som gjenstår av steg 5 (kalkulatoren øverst, «cups» i teksten og de seks nye kalkulatorene) er en egen runde som Patrick starter senere.
+
 ## 14. Det byggeren avgjør selv
 
 - Hvordan prototypens ene fil deles i `tokens.css`, komponent-CSS og skript, og hvordan generatorene tar dem i bruk.
@@ -250,7 +254,75 @@ Gamle stiler slettes når siste sidetype er flyttet.
 
 ## 15. Åpent
 
-- Guide og omregner er ikke tegnet. Ingenting i denne specen bestemmer hvordan de ser ut under toppen.
+- Guide og omregner bygger på grunnstilen i `side.css` (designnotatet `2026-11-19-undersider-designnotat.md`). Omregnerens neste steg (kalkulatoren øverst, seks nye kalkulatorer) er ikke tegnet.
 - Avviket fra WCAG 2.2.2 (punkt 9).
 - Om engelsk skal hete Smoop. Navn, logoflis og ordmerke hentes fra én innstilling per språk, så et bytte ikke krever at noe tegnes om.
-- Om undersidene skal ha følgemeny eller fast nedlastingsknapp.
+- Avgjort 19.11: undersidene har fast nedlastingsknapp på mobil og ingen følgemeny.
+- Tre avmeldingssider (`/sv/avregistrera/`, `/da/afmeld/`, `/en/unsubscribe/`) er håndskrevet og avviker fra generatoren. De står som kjente avvik i `test/fasit/kjede-kjente-avvik.json`.
+- Innfødt lesing av forsidene på svensk, dansk og engelsk er anbefalt før de markedsføres.
+
+## 16. Regler fra utrullingen og polishen (19.11.2026)
+
+Alle punktene er valgt eller bekreftet av Patrick 19.11, i valgkort eller etter test i forhåndsvisning på PC og telefon. Hver regel har en test som feiler når den brytes.
+
+### 16.1 Alt får plass på en mobilskjerm
+
+- Synlig skjerm i mobil-Safari er omtrent 390 x 664. En flis eller en telefonmockup skal kunne ses hel.
+- Telefonbilder og film begrenses med `svh` og beholder formatet.
+- Appkortene på undersidene har teksten til venstre og telefonen til høyre på mobil.
+- Rene tekstkort (kortsvar, scenario, innholdsfortegnelse, utheving i juridisk tekst) er lesestoff og er unntatt.
+- Ingenting ruller siden sidelengs. Rader som er for brede, sveipes i sin egen boks.
+- Vokter: revisjonen, «alt får plass på en mobilskjerm», ved 390 x 664 og 360 x 640 på alle sidetyper.
+
+### 16.2 Forsidens fliser på mobil
+
+- **Husstand** viser én rett, og husstandene ligger på én linje som sveipes.
+- **Handle** har rettene på én linje som sveipes, og lista viser tre varer. Før «hold inne» ruller raden retten fram, og menyen holder seg innenfor flisen.
+- **Spør Matlyst** er to fliser: spørsmål og forslag i den første, svarkortet med to endringer i den andre.
+- **Stabling:** hver flis fester seg øverst, og den neste glir opp over den. Alle stablede fliser er like høye. **Ett sveip er ett kort**, også et kraftig sveip. Inn i stabelen ovenfra og ut nedenfra går fritt.
+- Stabling og låsing er bare på når hvert kort får plass i høyden. På liggende telefon og med stor tekst ligger kortene vanlig under hverandre.
+- Låsingen virker bare rett etter et sveip med finger inne i stabelen. Den er av ved redusert bevegelse, og den rører aldri tastatur, lenker eller søk på siden. Rullingen stoppes aldri med `preventDefault`.
+- **Kortene spiller bare når de er aktive:** minst 60 % synlig (av det minste av kortet og skjermen), og i stabelen det øverste, udekkede kortet. De starter forfra hver gang og står i startbildet ellers.
+- Den faste nedlastingsknappen er skjult mens flisene eller Spør Matlyst er i bildet.
+- PC er uendret: rutenett, ingen stabling, ingen låsing.
+
+### 16.3 Rulling
+
+- Rullingen er nettleserens egen. Ingen rullebiblioteker og ingen lytter som tar over hjul eller berøring. Slik gjør apple.com det.
+- Elementer som følger rullingen (kokebokraden på PC), glir mot målet i stedet for å følge hakk for hakk, og bare med `transform` og `opacity`.
+- Ingen `backdrop-filter` på flater som ligger fast over innhold som ruller (toppen, den faste knappen). Det ga doble bilderuter på PC. Dialogens bakteppe er unntatt.
+- Faste flater over innhold har helt tett bakgrunn, eller minst 94 % uten uskarphet for toppen.
+- Null layoutskift mens man ruller. Inn-sveip er bare `opacity` og høyst 12 px forskyvning.
+
+### 16.4 Omregneren
+
+- Når enhetene byttes, bytter de to valgene plass med en kort animasjon (rundt 0,3 sekunder, uten sprett). Etikettene «Fra» og «Til» står stille. Verdiene er byttet i siden med en gang, og et nytt trykk avbryter animasjonen. Ingenting beveger seg ved redusert bevegelse.
+- Svaret bruker språkets desimaltegn: komma på norsk, svensk og dansk, punktum på engelsk. Ingen tusenskille i svaret.
+- Entall for 1 og −1, flertall ellers («1 kopp», «1500 kopper»). Formene kommer fra sidens egne data.
+- Inntastingen leses som en helhet. Komma og punktum er desimaltegn, og språkets tusenskille godtas («1.500» er 1500 på norsk). Ugyldig tekst gir tomt svar, aldri et delsvar.
+- Kalkulatorkortet står i lesekolonnen og flukter med overskriften sin.
+
+### 16.5 Tekst og typografi
+
+- All tekst står i `rem`, også i skallet og på forsiden, så den følger tekststørrelsen i nettleseren. Tekst skal vokse med minst faktor 1,9 når brukeren dobler størrelsen.
+- Lister med lenke og forklaring er rolige rader med hårlinjer, ikke piller som bryter teksten («Beslektede omregninger», «Relaterte guider»).
+- Innholdsfortegnelsen i lange guider står i to kolonner fra 1000 px og er foldet sammen på mobil.
+- Lesetekst og spørsmål og svar har samme kolonne. Kort bryter ut og flukter med toppen av siden.
+- Hver skriftvekt og stil som brukes, har et `@font-face` i `tokens.css`.
+
+### 16.6 Merke
+
+- Nettsideikonet er honning-logoen (den som står øverst på siden): `favicon.ico`, `images/favicon-192.png` og `images/apple-touch-icon.png`.
+- Appikonet (flat «ml.» på beige, `images/icon.png`) brukes der noe viser til selve appen: appkortene, nedlastingssiden og organisasjonslogoen i strukturerte data.
+- Vurderingslinja vises likt på alle språk. Engelsk har egne portretter i husstandseksemplet. Importfilmen er rendret per språk.
+
+### 16.7 Slik holdes malen ved like
+
+- **Én mal:** en side får skallet gjennom `scripts/skall-paa.mjs`, og `scripts/sidetyper.mjs` sier hvilken type en side er. En ny sidetype legges i registeret før den får stil.
+- **Byggekjeden:** `scripts/kjede.mjs` kjører generatorene og etterbehandlingen i riktig rekkefølge. `node scripts/kjedeproeve.mjs alle` kjører den i en kopi og sammenligner med de publiserte sidene. En generator kjøres aldri alene mot arbeidskopien.
+- **Revisjonen** (`REVISJON=alle npx playwright test revisjon.spec`) går gjennom hver side på fire bredder, med 200 og 400 % zoom, uten JavaScript, med forstørret tekst og på mobilskjerm. Null røde før publisering.
+- **Sider med koder og lenker** (avmelding, bekreftelse, vervekort, innlogging) får aldri skall, måling eller nye skript. Skriptene deres er låst i en hviteliste.
+- **Juridisk tekst** er låst med kontrollsum og endres bare med vilje.
+- **En test som aldri er sett rød, vokter ingenting.** Hver ny test bevises rød ved et bevisst brudd før den regnes.
+- Publisering skjer steg for steg når testene er grønne, med kontroll av den publiserte siden etterpå.
+
