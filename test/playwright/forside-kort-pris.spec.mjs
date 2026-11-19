@@ -29,7 +29,8 @@ test('hvert kort går i loop, fryses utenfor bildet og sveipes inn bare én gang
     const kort = page.locator(velger).locator('..');
     await expect(kort).toHaveClass(/i-bildet/);
     const innflyging = await kort.evaluate((el) => el.getAnimations().map((a) => a.effect.getKeyframes()[0].transform));
-    expect(innflyging).toEqual([velger === '#demoLag' ? 'translateX(96px)' : 'translateX(-96px)']);
+    // Patrick 19.11: inn-sveipet er opacity og høyst 12 px translateY.
+    expect(innflyging).toEqual(['translateY(12px)']);
     await page.clock.runFor(1100);
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await expect(kort).not.toHaveClass(/i-bildet/);

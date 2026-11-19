@@ -254,7 +254,7 @@ for (const [navn, valg, plasser, visning] of [
 
 test('prisplaner, personvern og svar glir inn én gang og står stille ved redusert bevegelse', async ({ page }) => {
   await page.goto(STI);
-  for (const [velger, fra] of [['.plan:not(.pro)', 'translateX(-96px)'], ['.plan.pro', 'translateX(96px)'], ['.vernblokk', 'translateY(28px)'], ['.svarliste', 'translateY(28px)']]) {
+  for (const [velger, fra] of [['.plan:not(.pro)', 'translateY(12px)'], ['.plan.pro', 'translateY(12px)'], ['.vernblokk', 'translateY(12px)'], ['.svarliste', 'translateY(12px)']]) {
     await page.reload(); await rullTil(page, velger);
     await expect.poll(() => page.locator(velger).evaluate((el) => el.getAnimations().map((a) => a.effect.getKeyframes()[0].transform))).toEqual([fra]);
     await page.waitForTimeout(1200); await rullTil(page, '.hero'); await rullTil(page, velger);

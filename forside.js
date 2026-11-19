@@ -118,17 +118,32 @@
     const rom = seksjon.querySelector('.retterom'), rad = rom.querySelector('.retter');
     const stor = matchMedia('(min-width:1001px) and (hover:hover)');
     let synlig = !('IntersectionObserver' in window), venter = false;
+    // Patrick 19.11 (slik Apple gjør): siden ruller som nettleseren vil; det som følger rullingen glir mot målet, bare med transform.
+    // x += (maal - x) * 0,14 per bilderute (tidsbasert), og løkka stopper når avviket er under 0,1 px.
+    let x = null, maal = 0, ramme = 0, sist = 0;
+    const sett = () => { rad.style.transform = 'translateX(' + x.toFixed(1) + 'px)'; };
+    const glid = (naa) => {
+      ramme = 0;
+      if (!synlig || x === null) return;
+      const dt = Math.min(64, naa - sist); sist = naa;
+      x += (maal - x) * (1 - Math.pow(1 - 0.14, dt / 16.667));
+      if (Math.abs(maal - x) < 0.1) { x = maal; sett(); return; }
+      sett();
+      ramme = requestAnimationFrame(glid);
+    };
     const les = () => {
       venter = false;
       const koblet = stor.matches && !bevegelse.matches;
       rom.classList.toggle('koblet', koblet);
-      if (!koblet) { rad.style.transform = ''; return; }
+      if (!koblet) { cancelAnimationFrame(ramme); ramme = 0; x = null; rad.style.transform = ''; return; }
       const seksjonsmaal = seksjon.getBoundingClientRect();
       if (!synlig || seksjonsmaal.bottom <= 0 || seksjonsmaal.top >= innerHeight) return;
       const r = rom.getBoundingClientRect();
       const andel = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
       const start = Math.max(24, (innerWidth - 1152) / 2), slutt = innerWidth - rad.offsetWidth - start;
-      rad.style.transform = 'translateX(' + (start + (slutt - start) * andel).toFixed(1) + 'px)';
+      maal = start + (slutt - start) * andel;
+      if (x === null) { x = maal; sett(); return; }
+      if (!ramme) { sist = performance.now(); ramme = requestAnimationFrame(glid); }
     };
     addEventListener('scroll', () => {
       if (synlig && !venter && !bevegelse.matches) { venter = true; requestAnimationFrame(les); }
@@ -137,7 +152,7 @@
     bevegelse.addEventListener('change', les);
     if ('IntersectionObserver' in window) new IntersectionObserver((rader) => {
       synlig = rader[0].isIntersecting;
-      if (synlig) les();
+      if (synlig) les(); else { cancelAnimationFrame(ramme); ramme = 0; }
     }).observe(seksjon);
     les();
   }
@@ -233,8 +248,9 @@
       inn.unobserve(rad.target);
       if (bevegelse.matches) return;
       const fra = rad.target.dataset.inn;
-      const start = fra === 'v' ? 'translateX(-96px)' : fra === 'h' ? 'translateX(96px)' : 'translateY(28px)';
-      rad.target.animate([{ opacity: 0, transform: start }, { opacity: 1, transform: 'none' }], { duration: 950, delay: fra === 'h' ? 130 : 0, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
+      // Patrick 19.11: inn-sveipet er bare opacity og en liten translateY (12 px), ferdig før brukeren når flaten; stort sideveis sveip ser ut som risting.
+      const start = 'translateY(12px)';
+      rad.target.animate([{ opacity: 0, transform: start }, { opacity: 1, transform: 'none' }], { duration: 600, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
     }), { threshold: 0.18 });
     const flater = document.querySelectorAll('.plan[data-inn], .vernblokk[data-inn], .svarliste[data-inn]');
     flater.forEach((el) => inn.observe(el));
@@ -317,7 +333,7 @@
         rute.getAnimations({ subtree: true }).forEach((a) => { if (a.playState === 'paused') a.play(); });
         if (!innkommet && !bevegelse.matches) {
           innkommet = true;
-          inngang = animer(rute, [{ opacity: 0, transform: rute.dataset.inn === 'h' ? 'translateX(96px)' : 'translateX(-96px)' }, { opacity: 1, transform: 'none' }], { duration: 950, delay: rute.dataset.inn === 'h' ? 130 : 0, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
+          inngang = animer(rute, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 600, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
         }
         start();
       } else {
