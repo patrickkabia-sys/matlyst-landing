@@ -2,8 +2,8 @@
 // hva som er rullet ut til nytt skall og ny grunnstil. Rendereren, testvaktene,
 // app-uttrykk og revisjonen bruker bare erUtrullet(), aldri UTRULLET direkte.
 // Reglene ser aldri på rammen (nav/footer), bare på stien og på innholdsklassene.
-import { readdirSync, readFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { readdirSync, readFileSync, realpathSync } from 'node:fs';
+import { join, relative, sep } from 'node:path';
 import { SIDEGRUPPER, gruppeForSti } from './locale-sider.mjs';
 
 export const TYPER = Object.freeze(['forside', 'omregner', 'guide-lang', 'guide-kort', 'guide-gammel', 'blogg', 'juss', 'tjeneste']);
@@ -77,10 +77,21 @@ export function erUtrullet(sti, html, utrullet = UTRULLET) {
 const HOPP_OVER = new Set(['node_modules', 'docs', 'test', 'scripts', 'seo-motor', 'seo-data', 'seo',
     'blogg-kilde', 'qa', 'test-results', 'playwright-report']);
 
+// Sant bare når fila (etter at symlenker er løst) ligger inne i rota. Mangler fila, er svaret nei.
+export function trygtUnderRot(rot, fil) {
+  try {
+    return realpathSync(fil).startsWith(realpathSync(rot) + sep);
+  } catch {
+    return false;
+  }
+}
+
 function htmlFiler(mappe) {
   const ut = [];
   for (const oppforing of readdirSync(mappe, { withFileTypes: true })) {
     if (oppforing.name.startsWith('.') || HOPP_OVER.has(oppforing.name)) continue;
+    // Symlenker følges aldri: de kan peke ut av rota.
+    if (oppforing.isSymbolicLink()) continue;
     const full = join(mappe, oppforing.name);
     if (oppforing.isDirectory()) ut.push(...htmlFiler(full));
     else if (oppforing.name.endsWith('.html')) ut.push(full);

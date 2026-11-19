@@ -96,3 +96,28 @@ test('stien normaliseres likt: med og uten skråstrek, index.html, spørring og 
     }
   }
 });
+
+test('alleSider hopper over symlenkede HTML-filer og mapper, og trygtUnderRot avviser stier utenfor rota', async () => {
+  const { symlinkSync } = await import('node:fs');
+  const { alleSider, trygtUnderRot } = await import('../scripts/sidetyper.mjs');
+  const tmp = mkdtempSync(join(tmpdir(), 'symlenke-'));
+  try {
+    const rot = join(tmp, 'rot'), ute = join(tmp, 'ute');
+    mkdirSync(rot); mkdirSync(ute);
+    const html = '<html><body><main id="hovedinnhold"><div class="locale-page-hero"></div></main></body></html>';
+    writeFileSync(join(ute, 'hemmelig.html'), html);
+    writeFileSync(join(rot, 'ekte.html'), html);
+    mkdirSync(join(ute, 'mappe'));
+    writeFileSync(join(ute, 'mappe', 'inne.html'), html);
+    symlinkSync(join(ute, 'hemmelig.html'), join(rot, 'lenke.html'));
+    symlinkSync(join(ute, 'mappe'), join(rot, 'lenkemappe'));
+    assert.deepEqual(alleSider(rot).map((s) => s.fil), ['ekte.html']);
+    assert.equal(trygtUnderRot(rot, join(rot, 'ekte.html')), true);
+    assert.equal(trygtUnderRot(rot, join(rot, 'lenke.html')), false);
+    assert.equal(trygtUnderRot(rot, join(rot, 'lenkemappe', 'inne.html')), false);
+    assert.equal(trygtUnderRot(rot, join(rot, 'finnes-ikke.html')), false);
+    assert.equal(trygtUnderRot(rot, rot), false);
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+});

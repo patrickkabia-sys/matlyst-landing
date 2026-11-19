@@ -525,3 +525,12 @@ test('følgemenyen har sitt eget navn på hvert språk', () => {
     assert.match(topp(s, { folg: [{ href: '#a', tekst: 'A' }] }), new RegExp(`<nav class="folg" id="folg" aria-label="${navn}">`));
   }
 });
+
+test('topp() har skiplenken som første element i hvert språk, med teksten fra dagens undersider', () => {
+  const forventet = { nb: 'Hopp til innholdet', sv: 'Hoppa till innehållet', da: 'Spring til indholdet', en: 'Skip to content' };
+  for (const [sprak, tekst] of Object.entries(forventet)) {
+    const html = topp(sprak, { sprakvelger: '' });
+    assert.ok(html.startsWith(`<a class="hopp" href="#hovedinnhold">${tekst}</a>`), `${sprak}: skiplenken må stå først`);
+    assert.equal(SKALLTEKST[sprak].topp.hopp, tekst);
+  }
+});

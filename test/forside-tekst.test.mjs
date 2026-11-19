@@ -158,7 +158,9 @@ const forsteSvar = t.eksempler.svar[0];
 //   ekstra  enkeltstier utenfor nøklene (eksempeltekster som markupen viser ferdig)
 //   teller  hvor mange ganger en sti (prefiks) vises i regionen når den er lagret én gang
 const REGIONER = [
-  { navn: 'header', html: regioner.topp, nokler: ['topp', 'folg'] },
+  { navn: 'header', html: regioner.topp, nokler: ['topp', 'folg'],
+    utelatt: [/^topp\.hopp$/], // skiplenken står ikke i prototypen; låst i skall.test.mjs
+  },
   {
     navn: 'hero', html: seksjon('hero'),
     nokler: ['h1', 'ingress', 'knapp', 'vurdering', 'stegAria', 'steg', 'filmAria', 'kildetittel', 'kilderAria', 'kilder'],
