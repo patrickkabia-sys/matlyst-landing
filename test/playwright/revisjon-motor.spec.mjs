@@ -73,6 +73,37 @@ test.describe('revisjonsmotoren, røde fikstur', () => {
     expect((await revider(page, { tilsiktetKlipp: ['.band'] })).utenforBoks).toEqual([]);
   });
 
+  test('tekst i legitim vannrett rullboks flagges ikke mot sidebredden', async ({ page }) => {
+    lokalt();
+    await page.setViewportSize({ width: 390, height: 600 });
+    await page.goto(F('rullboks'));
+    expect(await revider(page)).toEqual(tomt);
+  });
+
+  test('tekst som stikker ut under sidekortet (.blad) er rød, kort som rommer innholdet er grønt', async ({ page }) => {
+    lokalt();
+    await page.goto(F('blad-ut'));
+    const r = await revider(page);
+    expect(r.utenforBoks.some((x) => x.includes('#ut'))).toBe(true);
+    await page.goto(F('blad-ok'));
+    expect(await revider(page)).toEqual(tomt);
+  });
+
+  test('overlapp på 100 x 1 px er rød', async ({ page }) => {
+    lokalt();
+    await page.goto(F('tynt'));
+    const r = await revider(page);
+    expect(r.overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(true);
+  });
+
+  test('klippet tekst i samlebånd overlapper ikke naboen den ikke dekker', async ({ page }) => {
+    lokalt();
+    await page.goto(F('klippnabo'));
+    const r = await revider(page, { tilsiktetKlipp: ['.band'] });
+    expect(r.overlapp).toEqual([]);
+    expect(r.utenforBoks).toEqual([]);
+  });
+
   test('iframe som sprenger bredden rapporteres, men revideres ikke innvendig', async ({ page }) => {
     lokalt();
     await page.setViewportSize({ width: 390, height: 600 });

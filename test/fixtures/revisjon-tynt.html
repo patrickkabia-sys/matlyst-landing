@@ -1,0 +1,8 @@
+<!doctype html><html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fikstur</title><style>body{margin:0;font:16px/1.5 sans-serif}p{position:absolute;left:10px;margin:0;top:0}</style></head><body>
+<p id="a">Første tynne overlapp</p><p id="b">Andre tynne overlapp</p>
+<script>
+var a=document.getElementById('a'),b=document.getElementById('b');
+function r(e){var x=document.createRange();x.selectNodeContents(e);return x.getBoundingClientRect()}
+var ra=r(a),rb=r(b);
+b.style.top=(ra.bottom-1-(rb.top-0))+'px';
+</script></body></html>

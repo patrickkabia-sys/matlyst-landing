@@ -69,19 +69,51 @@ function geometri({ unntak, krom, tilsiktet }) {
       }
     }
     if (!tilsiktetKlipp) {
+      // Reservekontroll mot sidekortet (.blad/body). Tekst som har en klippende eller rullende
+      // forfar på aksen er allerede vurdert mot den boksen, og hoppes over her.
+      let xBoks = false;
+      let yBoks = false;
+      let fast = false;
+      for (let e = el; e && e !== blad && e !== document.body && e !== document.documentElement; e = e.parentElement) {
+        const cs = getComputedStyle(e);
+        if (cs.overflowX !== 'visible') xBoks = true;
+        if (cs.overflowY !== 'visible') yBoks = true;
+        if (cs.position === 'fixed') fast = true;
+      }
+      const iKortet = blad !== document.body && blad.contains(el);
       for (const r of rekter) {
-        if (r.left < bladBoks.left - 1 || r.right > bladBoks.right + 1) ute = true;
+        if (!xBoks && (r.left < bladBoks.left - 1 || r.right > bladBoks.right + 1)) ute = true;
+        // Loddrett bare mot kortet: selve siden ruller loddrett. Fast tekst følger ikke kortet.
+        if (iKortet && !yBoks && !fast && (r.top < bladBoks.top - 1 || r.bottom > bladBoks.bottom + 1)) ute = true;
       }
     }
     if (ute) utenforBoks.push(beskriv(el, n.nodeValue));
   }
 
-  // Overlapp: ingen krymping utover 1 px avrundingstoleranse. Bare par der nøyaktig
+  // Overlapp: en overlapp er reell når bredde og høyde begge er over 0,5 px etter avrunding. Bare par der nøyaktig
   // én side ligger i sidens egen flytende kromflate (krom) er unntatt.
   const iKrom = (el) => krom.length > 0 && !!el.closest(krom.join(','));
+  // Hver tekstrekt kuttes mot klippende forfar (overflow ulik visible): det som ikke vises,
+  // deltar ikke. Kantene rundes til enhetspiksler så avrundingsstøy ikke gir falske treff.
+  const dpr = window.devicePixelRatio || 1;
+  const rund = (v) => Math.round(v * dpr) / dpr;
+  const synlig = (el, r) => {
+    let l = r.left, h = r.right, t = r.top, b = r.bottom;
+    for (let e = el; e && e !== document.body && e !== document.documentElement; e = e.parentElement) {
+      const cs = getComputedStyle(e);
+      if (cs.overflowX === 'visible' && cs.overflowY === 'visible') continue;
+      const bx = e.getBoundingClientRect();
+      if (cs.overflowX !== 'visible') { l = Math.max(l, bx.left); h = Math.min(h, bx.right); }
+      if (cs.overflowY !== 'visible') { t = Math.max(t, bx.top); b = Math.min(b, bx.bottom); }
+    }
+    return h > l && b > t ? { l: rund(l), r: rund(h), t: rund(t), b: rund(b) } : null;
+  };
   const linjer = [];
   tekst.forEach((t, i) => {
-    for (const r of t.rekter) linjer.push({ i, krom: iKrom(t.el), el: t.el, n: t.n, l: r.left, r: r.right, t: r.top, b: r.bottom });
+    for (const r of t.rekter) {
+      const v = synlig(t.el, r);
+      if (v) linjer.push({ i, krom: iKrom(t.el), el: t.el, n: t.n, ...v });
+    }
   });
   linjer.sort((a, b) => a.t - b.t);
   const overlapp = [];
@@ -94,9 +126,9 @@ function geometri({ unntak, krom, tilsiktet }) {
       if (a.i === b.i || a.el === b.el) continue;
       if (a.krom !== b.krom) continue;
       if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
-      const w = Math.min(a.r, b.r) - Math.max(a.l, b.l) - 1;
-      const h = Math.min(a.b, b.b) - Math.max(a.t, b.t) - 1;
-      if (w > 0 && h > 0 && w * h > 4) {
+      const w = Math.min(a.r, b.r) - Math.max(a.l, b.l);
+      const h = Math.min(a.b, b.b) - Math.max(a.t, b.t);
+      if (w > 0.5 && h > 0.5) {
         const nokkel = a.i + ':' + b.i;
         if (sett.has(nokkel)) continue;
         sett.add(nokkel);
