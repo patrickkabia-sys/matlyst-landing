@@ -170,7 +170,12 @@ test('toppvelgeren virker med tastatur på /verktoy/kopp-til-dl/', async ({ brow
 test('velgeren bruker riktig motstykke på personvernsiden', async ({ browser, baseURL }) => {
   const { context, page } = await nySide(browser, 'en-US');
   await page.goto('/personvern.html');
-  await page.locator('.language-switcher-bottom a[aria-label="Svenska"]').click();
+  // Den mørke bunnen er klebrig bak arket og avdekkes først når siden er rullet helt ned. Den lange
+  // personvernsiden ligger «i bildet» uten å være det, så testen ruller som en leser gjør.
+  const sv = page.locator('.under .language-switcher-bottom a[aria-label="Svenska"]');
+  await expect(sv).toHaveCount(1);
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await sv.click();
   await expect(page).toHaveURL(`${baseURL}/sv/integritet/`);
   await context.close();
 });

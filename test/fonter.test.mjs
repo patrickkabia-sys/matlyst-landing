@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { kodepunkter } from './hjelp/woff2.mjs';
+import { alleSider } from '../scripts/sidetyper.mjs';
 
 const ROT = new URL('..', import.meta.url).pathname;
 
@@ -168,24 +169,24 @@ test('alle vektene sidene bruker er dekket av de lokale fontene', () => {
   for (const vekt of [300, 400, 500, 600]) assert.ok(dekker('DM Sans', 'normal', vekt), `DM Sans ${vekt} mangler`);
 });
 
-// Fire sider har egne, fullstendige stilark i markupen og lenker ikke
-// /styles.css. De trenger derfor sine egne @font-face. Testen sammenligner dem
-// mot styles.css i stedet for å gjenta mønsteret, slik at et par som driver fra
-// hverandre blir rødt.
-const SIDER_MED_EGET_STILARK = ['personvern.html', 'slett-konto.html', 'vilkar.html'];
-
 function fontFaces(tekst) {
   return [...tekst.matchAll(/@font-face\s*\{[^}]*\}/gu)].map((m) => m[0].replace(/\s+/gu, ''));
 }
 
-test('sidene med eget stilark har nøyaktig de samme @font-face som styles.css', () => {
-  const fasit = fontFaces(css());
-  assert.ok(fasit.length >= 6, `styles.css har bare ${fasit.length} @font-face`);
-  for (const side of SIDER_MED_EGET_STILARK) {
-    const tekst = readFileSync(join(ROT, side), 'utf8');
-    assert.ok(!/href="\/?styles\.css"/u.test(tekst), `${side} lenker nå styles.css, oppdater lista i testen`);
-    assert.deepEqual(fontFaces(tekst), fasit, `${side} har andre @font-face enn styles.css`);
-  }
+// Ingen publisert side har eget stilark i markupen lenger: de tre norske juridiske
+// sidene var de siste, og lenker nå tokens.css via skallet. @font-face hører
+// hjemme i styles.css og tokens.css, så skrifter kan ikke drive fra hverandre.
+test('ingen publisert side har @font-face i en <style>-blokk', () => {
+  const sider = alleSider(ROT);
+  assert.ok(sider.length >= 800, `alleSider ga bare ${sider.length} sider`);
+  const brudd = sider.filter((s) => [...readFileSync(join(ROT, s.fil), 'utf8').matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/giu)].some((m) => /@font-face/u.test(m[1]))).map((s) => s.sti);
+  assert.deepEqual(brudd, []);
+});
+
+test('vakten ser en @font-face i en <style>-blokk', () => {
+  const fiks = (h) => [...h.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/giu)].some((m) => /@font-face/u.test(m[1]));
+  assert.equal(fiks('<head><style>@font-face{font-family:x}</style></head>'), true);
+  assert.equal(fiks('<head><style>a{b:c}</style><p>@font-face</p></head>'), false);
 });
 
 test('avmeld.css har de samme lokale fontene som styles.css', () => {

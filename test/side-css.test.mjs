@@ -174,3 +174,45 @@ test('bloggen: galleriraden er fokuserbar, ellers kan tastaturet ikke sveipe den
   assert.equal(rader, galleri, 'én rad per galleri');
   assert.match(les('scripts/blogg.mjs'), /<div class="blogg-galleri-rad" tabindex="0">/u);
 });
+
+test('de juridiske sidene har stil for alle klassene i innholdet', () => {
+  assert.deepEqual(klasserUtenRegel('juss', {
+    'disp': 'skriftvalg på overskrifter, ingen egen regel',
+  }), []);
+});
+
+test('juss: reglene er avgrenset til juss, tekst står i rem, og delen har alle sine deler', () => {
+  const rå = les('side.css');
+  const start = rå.indexOf('/* == Juss == */');
+  assert.ok(start > -1);
+  const del = utenKommentarer(rå.slice(start));
+  assert.ok(regler(del).length >= 18, `forventet minst 18 regler, fant ${regler(del).length}`);
+  // :is(a,b) har komma inni parentesen; bare komma på øverste nivå skiller velgere.
+  const toppnivaa = (v) => { const ut = []; let dybde = 0, ny = ''; for (const c of v) { if (c === '(') dybde++; if (c === ')') dybde--; if (c === ',' && dybde === 0) { ut.push(ny.trim()); ny = ''; } else ny += c; } return [...ut, ny.trim()]; };
+  for (const r of regler(del)) for (const v of toppnivaa(r.velger)) assert.ok(v.startsWith('body[data-sidetype="juss"] '), `ikke avgrenset: ${v}`);
+  assert.deepEqual([...del.matchAll(/font(?:-size)?:[^;}]*px/gu)].map((m) => m[0]), [], 'tekststørrelser i rem, ikke px');
+  assert.ok(!/(^|[\s>+~])(nav|footer)(?![\w-])/u.test(del), 'juss rører ikke skallet');
+  for (const nokkel of ['main.legal-doc{max-width:68ch', '.doc-kicker', '.doc-updated', '.legal-updated', '.legal-callout', 'border-radius:28px', 'background:var(--hylle)', 'ul:not([class])']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
+});
+
+test('juss: bare kortet har bakgrunn, og lister med lenke blir aldri piller', () => {
+  const del = utenKommentarer(les('side.css').slice(les('side.css').indexOf('/* == Juss == */')));
+  const medBakgrunn = regler(del).filter((r) => /background(?:-color)?:/u.test(r.kropp) && !/::(?:before|after)/u.test(r.velger)).map((r) => r.velger);
+  for (const v of medBakgrunn) assert.match(v, /callout/u, `bare kortet skal ha bakgrunn, men: ${v}`);
+  assert.ok(medBakgrunn.length >= 1, 'kortet har ingen bakgrunn');
+  assert.ok(!/border-radius:999px/u.test(del), 'ingen piller i juss');
+});
+
+test('juss: de tolv sidene har nøyaktig den kjente lesekolonnen, uten innsatt wrapper', () => {
+  const rot = new URL('..', import.meta.url).pathname;
+  const sider = alleSider(rot).filter((s) => s.type === 'juss');
+  assert.equal(sider.length, 12);
+  for (const s of sider) {
+    const html = les(s.fil);
+    const mains = [...html.matchAll(/<main\b[^>]*>/gu)].map((m) => m[0]);
+    assert.equal(mains.length, 1, s.sti);
+    assert.match(mains[0], /\sclass="(doc|legal-doc)"/u, s.sti);
+    assert.ok(html.includes('data-sidetype="juss"'), `${s.sti} er ikke rendret med juss`);
+    assert.ok(html.includes('<link rel="stylesheet" href="/side.css">'), s.sti);
+  }
+});
