@@ -1,10 +1,20 @@
+import { krevGuidemeny } from './hjelp/guidemeny.mjs';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 const rot = fileURLToPath(new URL('..', import.meta.url));
 import { SITEMAPER, UTELATT, MONSTER, filFor, guider, settInn } from '../scripts/guidelenker.mjs';
+
+const VIA_HUB = {
+  // Landleys Kök nås gjennom importhubbens kuraterte relatert-blokk.
+  '/importer-fra-landleys-kok/': '/importer-oppskrifter/',
+  // Alletiders Kogebog nås gjennom importhubbens kuraterte relatert-blokk.
+  '/importer-fra-alletiders-kokebok/': '/importer-oppskrifter/',
+  // DR Mad nås gjennom importhubbens kuraterte relatert-blokk.
+  '/importer-fra-dr-mat/': '/importer-oppskrifter/',
+};
 
 // Låser at ingen guide er foreldreløs: hver side i en sitemap med bunntekst skal
 // lenke til guidene på sitt språk. Rotsiden bruker det nye sideskallet og kan
@@ -31,12 +41,7 @@ for (const lang of Object.keys(SITEMAPER)) {
       // Det nye sideskallet lenker til guider direkte eller gjennom en synlig hub.
       // Ingen guide får forsvinne fra navigasjonen når den gamle lenkelista fjernes.
       if (side === '/') {
-        const nav = html.match(/<section class="bunn"[\s\S]*?<\/section>/u)?.[0];
-        assert.ok(nav, 'forsiden mangler hyllemenyen');
-        const neste = [...nav.matchAll(/href="(\/[^"#]*)"/gu)].map((m) => m[1])
-          .map((sti) => join(rot, sti.endsWith('/') ? sti + 'index.html' : sti))
-          .filter((fil) => existsSync(fil) && statSync(fil).isFile()).map((fil) => readFileSync(fil, 'utf8')).join('');
-        for (const { sti } of liste) assert.ok(nav.includes(`href="${sti}"`) || neste.includes(`href="${sti}"`), `forsiden når ikke ${sti} gjennom hyllemenyen`);
+        krevGuidemeny(html, liste, VIA_HUB, (sti) => readFileSync(filFor(sti), 'utf8'));
         continue;
       }
       const blokk = html.match(MONSTER)?.[0];

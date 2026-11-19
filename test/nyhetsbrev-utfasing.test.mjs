@@ -6,10 +6,11 @@ import assert from 'node:assert/strict';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
+import { fileURLToPath } from 'node:url';
 
 import { lesSide } from './hjelp/side.mjs';
 
-const ROT = new URL('..', import.meta.url).pathname;
+const ROT = fileURLToPath(new URL('..', import.meta.url));
 const les = (sti) => readFileSync(join(ROT, sti), 'utf8');
 const utenKommentarer = (kilde) => kilde.replace(/\/\*[\s\S]*?\*\//gu, '').replace(/(^|[^:])\/\/.*$/gmu, '$1').replace(/<!--[\s\S]*?-->/gu, '');
 
@@ -58,8 +59,14 @@ test('forsida har nedlastingsknapper der skjemaet sto, og ingen e-postfelt', () 
   assert.ok(seksjon, 'fant ikke nedlastingsseksjonen');
   assert.match(seksjon, /<a class="knapp" href="\/app" data-hent="bunn">/u);
   // Nedlasting står i hylledelen etter hovedinnholdet, før den mørke bunnen.
-  assert.ok(index.indexOf('</main>') < index.indexOf('id="last-ned"'));
-  assert.ok(index.indexOf('id="last-ned"') < index.indexOf('<footer class="under"'));
+  const hovedslutt = index.indexOf('</main>');
+  const nedlasting = index.indexOf('id="last-ned"');
+  const bunn = index.indexOf('<footer class="under"');
+  assert.ok(hovedslutt > -1, 'mangler </main>');
+  assert.ok(nedlasting > -1, 'mangler nedlastingsmarkøren');
+  assert.ok(bunn > -1, 'mangler den mørke bunnen');
+  assert.ok(hovedslutt < nedlasting);
+  assert.ok(nedlasting < bunn);
 
 });
 

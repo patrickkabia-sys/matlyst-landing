@@ -49,10 +49,13 @@
     les();
   }
 
-  // Samlebåndets CSS-animasjon går i loop uten klikk- eller hoverpause.
+  // Film og samlebånd går i loop mens de er i bildet, uten brukerstyrt pause.
   // Ved redusert bevegelse fjernes videokilden, slik at plakaten vises.
   const video = document.querySelector('.film video');
   const kilde = video.getAttribute('src');
+  const band = document.querySelector('.band');
+  const bane = band.querySelector('.bane');
+  let filmSynlig = !('IntersectionObserver' in window);
   const steg = [...document.querySelectorAll('.st')];
   const tider = steg.map((knapp) => Number(knapp.dataset.t));
   const markerSteg = () => {
@@ -68,10 +71,14 @@
   video.addEventListener('loadedmetadata', fart);
   video.addEventListener('play', fart);
   video.addEventListener('timeupdate', markerSteg);
-  const spill = () => { if (!bevegelse.matches) video.play().catch(() => {}); };
+  const spill = () => { if (filmSynlig && !bevegelse.matches) video.play().catch(() => {}); };
   const settBevegelse = () => {
+    steg.forEach((knapp) => {
+      if (bevegelse.matches) knapp.setAttribute('aria-disabled', 'true');
+      else knapp.removeAttribute('aria-disabled');
+    });
     if (bevegelse.matches) {
-      video.pause();
+      // load() uten kilde stopper filmen og viser plakaten.
       video.removeAttribute('src');
       video.load();
       document.querySelector('.hero h1')?.classList.add('klar');
@@ -88,6 +95,21 @@
     markerSteg();
     spill();
   }));
+  if ('IntersectionObserver' in window) {
+    const synlighet = new IntersectionObserver((rader) => {
+      rader.forEach((rad) => {
+        if (rad.target === video) {
+          filmSynlig = rad.isIntersecting;
+          if (filmSynlig) spill();
+          else video.pause();
+        } else {
+          bane.style.animationPlayState = rad.isIntersecting ? 'running' : 'paused';
+        }
+      });
+    });
+    synlighet.observe(video);
+    synlighet.observe(band);
+  }
   bevegelse.addEventListener('change', settBevegelse);
   settBevegelse();
 })();

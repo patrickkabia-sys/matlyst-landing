@@ -1,3 +1,4 @@
+import { krevIngenBrukerpause, krevIngenCssPause } from './hjelp/bevegelsesvern.mjs';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, mkdtempSync, rmSync } from 'node:fs';
@@ -132,4 +133,14 @@ test('kjor skriver samme dokument i valgt rot og tåler mellomrom i stien', () =
     kjor(mappe);
     assert.equal(readFileSync(join(mappe, 'index.html'), 'utf8'), forside('nb'));
   } finally { rmSync(mappe, { recursive: true, force: true }); }
+});
+
+for (const fil of ['forside.js', 'skall.js']) {
+  test(`${fil}: brukerhåndterere og hjelperne deres kan ikke pause`, () => {
+    krevIngenBrukerpause(les(fil), fil);
+  });
+}
+
+test('forside.css: hover, trykk og fokus kan ikke pause', () => {
+  krevIngenCssPause(les('forside.css'));
 });

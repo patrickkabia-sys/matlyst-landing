@@ -54,6 +54,7 @@ export function blokk(lang, lenker) {
 }
 
 export function settInn(html, blokkTekst, sti) {
+  // /sv/, /da/ og /en/ trenger samme unntak når scripts/forside.mjs genererer dem.
   if (sti === '/') return html;
   const uten = html.replace(new RegExp(`${START}[\\s\\S]*?${SLUTT}\\n?`, 'u'), '');
   for (const anker of ['<section class="faq">', '<section class="page-cta">', '<section class="cta">', '</main>']) {

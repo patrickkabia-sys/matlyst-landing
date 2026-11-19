@@ -62,6 +62,7 @@ export function blokk(lang, liste) {
 }
 
 export function settInn(html, ny, sti) {
+  // /sv/, /da/ og /en/ trenger samme unntak når scripts/forside.mjs genererer dem.
   if (sti === '/') return html;
   if (MONSTER.test(html)) return html.replace(MONSTER, ny);
   return html.replace('</footer>', `  ${ny}\n</footer>`);

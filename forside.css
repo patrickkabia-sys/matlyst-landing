@@ -97,4 +97,5 @@ html.js .hero h1:not(.klar){visibility:hidden}
   .hero h1 .tegn{opacity:1}
   .skrivestrek{display:none}
   .folgmerke,.st,.st b{transition:none}
+  .st{cursor:default}
 }
