@@ -167,7 +167,40 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       svar.textContent = `${tall(v)} ${ord(fra, v)} = ${tall(ut)} ${ord(til, ut)}`;
     };
     for (const el of [verdi, fra, til]) el.addEventListener('input', reg);
-    skjema.querySelector('[data-handling=bytt]').addEventListener('click', () => { const x = fra.value; fra.value = til.value; til.value = x; reg(); });
+    // Bytteknappen: verdiene byttes med en gang i DOM (skjermleser og tastatur får riktig tilstand straks), og bevegelsen er bare visuell (FLIP):
+    // «Fra» glir til «Til» sin plass og omvendt, vannrett på PC og loddrett på mobil, med en liten bue. Bare transform og opacity.
+    // Et nytt trykk midt i bevegelsen starter fra der feltene står. Ved redusert bevegelse skjer ingenting.
+    const bytt = skjema.querySelector('[data-handling=bytt]');
+    const rolig = matchMedia('(prefers-reduced-motion: reduce)');
+    const VARIGHET = 320, EASING = 'cubic-bezier(.2,.8,.2,1)';
+    bytt.addEventListener('click', () => {
+      const a = fra.closest('label'), b = til.closest('label');
+      const beveger = !rolig.matches && a && b && typeof a.animate === 'function';
+      let va, vb, a0, b0, vinkel = 0;
+      if (beveger) {
+        // Gjeldende utseende (med pågående transform) leses før noe avbrytes.
+        va = a.getBoundingClientRect(); vb = b.getBoundingClientRect();
+        vinkel = parseFloat(getComputedStyle(bytt).rotate) || 0;
+        [a, b, bytt, svar].forEach((el) => el.getAnimations().forEach((an) => an.cancel()));
+        a0 = a.getBoundingClientRect(); b0 = b.getBoundingClientRect();
+      }
+      const x = fra.value; fra.value = til.value; til.value = x; reg();
+      if (!beveger) return;
+      const vannrett = Math.abs(b0.left - a0.left) > Math.abs(b0.top - a0.top);
+      const flytt = (el, fraPos, tilPos, retning) => {
+        const dx = fraPos.left - tilPos.left, dy = fraPos.top - tilPos.top;
+        const bueX = vannrett ? 0 : 6 * retning, bueY = vannrett ? -6 * retning : 0;
+        el.animate([
+          { transform: `translate(${dx}px, ${dy}px)` },
+          { transform: `translate(${dx / 2 + bueX}px, ${dy / 2 + bueY}px)`, offset: 0.5 },
+          { transform: 'none' },
+        ], { duration: VARIGHET, easing: EASING });
+      };
+      // Innholdet i «Fra» kom fra «Til» og omvendt: hvert felt starter der innholdet stod.
+      flytt(a, vb, a0, 1); flytt(b, va, b0, -1);
+      bytt.animate([{ rotate: `${vinkel}deg` }, { rotate: '180deg' }], { duration: VARIGHET, easing: EASING });
+      svar.animate([{ opacity: 0.25 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
+    });
     reg();
   }
 })();

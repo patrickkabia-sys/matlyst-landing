@@ -622,3 +622,105 @@ for (const bredde of [390, 1280]) for (const j of JUSS) test(`juss: ${j.sti} har
   expect(m.piller).toBe(0); expect(m.andreKort).toBe(0); expect(m.lenkeStrek).toContain('underline');
   expect(m.ut).toBeLessThanOrEqual(0);
 });
+
+// Bytteanimasjonen i omregneren (felles site.js): verdiene byttes straks, bevegelsen er bare visuell (FLIP).
+const BYTT = '/verktoy/kopp-til-ml/';
+const etiketter = (page) => page.evaluate(() => { const f = document.querySelector('[data-felt=fra]').closest('label'), t = document.querySelector('[data-felt=til]').closest('label'); return [f, t].map((e) => e.getAnimations().length); });
+const transformer = (page) => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => getComputedStyle(document.querySelector(s).closest('label')).transform));
+const sidelengs = (page) => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+
+test('bytteknappen: verdiene og svaret er byttet med en gang, og knappen har trykkflate og navn', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const fra0 = await page.locator('[data-felt=fra]').inputValue(), til0 = await page.locator('[data-felt=til]').inputValue();
+  const svar0 = await page.locator('[data-felt=svar]').textContent();
+  await page.locator('[data-handling=bytt]').click();
+  // Ingen venting: DOM-tilstanden er allerede riktig mens bevegelsen pågår.
+  const na = await page.evaluate(() => ({ fra: document.querySelector('[data-felt=fra]').value, til: document.querySelector('[data-felt=til]').value, svar: document.querySelector('[data-felt=svar]').textContent, live: document.querySelector('[data-felt=svar]').getAttribute('aria-live'), animasjoner: document.querySelector('[data-felt=fra]').closest('label').getAnimations().length }));
+  expect(na.fra).toBe(til0); expect(na.til).toBe(fra0); expect(na.svar).not.toBe(svar0); expect(na.live).toBe('polite');
+  expect(na.animasjoner, 'bevegelsen pågår').toBeGreaterThan(0);
+  const knapp = await page.locator('[data-handling=bytt]').boundingBox();
+  expect(knapp.width).toBeGreaterThanOrEqual(44); expect(knapp.height).toBeGreaterThanOrEqual(44);
+  expect((await page.locator('[data-handling=bytt]').getAttribute('aria-label') || '').length).toBeGreaterThan(2);
+  await ctx.close();
+});
+
+for (const [navn, vp, vannrett] of [['PC', { width: 1280, height: 800 }, true], ['mobil 360', { width: 360, height: 700 }, false]]) {
+  test(`bytteanimasjon (${navn}): begge feltene beveger seg ${vannrett ? 'vannrett' : 'loddrett'}, uten sidelengs rulling, og ender uten transform`, async ({ browser, baseURL }) => {
+    const ctx = await browser.newContext({ baseURL, viewport: vp, reducedMotion: 'no-preference' });
+    const page = await ctx.newPage();
+    await page.goto(BYTT);
+    await page.locator('[data-handling=bytt]').click();
+    const [a, b] = await etiketter(page);
+    expect(a).toBeGreaterThan(0); expect(b).toBeGreaterThan(0);
+    const nok = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const an = document.querySelector(s).closest('label').getAnimations()[0]; const k = an.effect.getKeyframes(); const m = /translate\((-?[\d.]+)px, (-?[\d.]+)px\)/u.exec(k[0].transform); return { dx: Number(m[1]), dy: Number(m[2]), props: Object.keys(k[0]).filter((p) => !['offset', 'easing', 'composite', 'computedOffset'].includes(p)), varighet: an.effect.getTiming().duration, easing: an.effect.getTiming().easing }; }));
+    for (const f of nok) {
+      expect(f.props, 'bare transform animeres på feltene').toEqual(['transform']);
+      expect(f.varighet).toBeGreaterThanOrEqual(280); expect(f.varighet).toBeLessThanOrEqual(340);
+      expect(f.easing).toBe('cubic-bezier(0.2, 0.8, 0.2, 1)');
+      if (vannrett) expect(Math.abs(f.dx)).toBeGreaterThan(Math.abs(f.dy)); else expect(Math.abs(f.dy)).toBeGreaterThan(Math.abs(f.dx));
+    }
+    // De to feltene bytter plass: motsatt retning.
+    expect(Math.sign(nok[0].dx || nok[0].dy)).toBe(-Math.sign(nok[1].dx || nok[1].dy));
+    for (let i = 0; i < 6; i++) { expect(await sidelengs(page)).toBeLessThanOrEqual(0); await page.waitForTimeout(60); }
+    await page.waitForTimeout(500);
+    expect(await transformer(page)).toEqual(['none', 'none']);
+    expect(await etiketter(page)).toEqual([0, 0]);
+    await ctx.close();
+  });
+}
+
+test('bytteanimasjon: dobbeltrykk raskt ender i opprinnelig tilstand uten forskjøvne felt', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 360, height: 700 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const fra0 = await page.locator('[data-felt=fra]').inputValue(), til0 = await page.locator('[data-felt=til]').inputValue();
+  await page.locator('[data-handling=bytt]').dispatchEvent('click');
+  await page.waitForTimeout(40);
+  await page.locator('[data-handling=bytt]').dispatchEvent('click');
+  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(fra0);
+  expect(await page.locator('[data-felt=til]').inputValue()).toBe(til0);
+  await page.waitForTimeout(600);
+  expect(await transformer(page)).toEqual(['none', 'none']);
+  expect(await etiketter(page)).toEqual([0, 0]);
+  const rot = await page.evaluate(() => getComputedStyle(document.querySelector('[data-handling=bytt]')).rotate);
+  expect(rot).toBe('none');
+  // Trykk mange ganger: ingen låsing, og feltene står rett til slutt.
+  for (let i = 0; i < 7; i++) await page.locator('[data-handling=bytt]').dispatchEvent('click');
+  await page.waitForTimeout(700);
+  expect(await transformer(page)).toEqual(['none', 'none']);
+  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(til0);
+  await ctx.close();
+});
+
+test('bytteanimasjon: et nytt trykk midt i bevegelsen starter der feltene står (innholdet hopper ikke)', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  await page.locator('[data-handling=bytt]').dispatchEvent('click');
+  await page.waitForTimeout(110);
+  // Innholdet som nå står i «Til» (det gamle «Fra») er på vei mot høyre; mål dets posisjon rett før og rett etter neste trykk.
+  const m = await page.evaluate(() => {
+    const f = document.querySelector('[data-felt=fra]').closest('label'), t = document.querySelector('[data-felt=til]').closest('label');
+    const fFor = f.getBoundingClientRect().left, tFor = t.getBoundingClientRect().left;
+    document.querySelector('[data-handling=bytt]').click();
+    // Etter trykket: innholdet i «Fra» er det som var i «Til» og skal stå omtrent der det stod.
+    return { tFor, fEtter: f.getBoundingClientRect().left, fFor, tEtter: t.getBoundingClientRect().left };
+  });
+  expect(Math.abs(m.fEtter - m.tFor), 'innholdet i Fra hoppet').toBeLessThanOrEqual(2);
+  expect(Math.abs(m.tEtter - m.fFor), 'innholdet i Til hoppet').toBeLessThanOrEqual(2);
+  await ctx.close();
+});
+
+test('bytteanimasjon: ved redusert bevegelse kjører ingen animasjon, men verdiene byttes', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const til0 = await page.locator('[data-felt=til]').inputValue();
+  await page.locator('[data-handling=bytt]').click();
+  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(til0);
+  const antall = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]', '[data-handling=bytt]', '[data-felt=svar]'].map((s) => { const e = document.querySelector(s); return (e.closest('label') || e).getAnimations().length; }));
+  expect(antall).toEqual([0, 0, 0, 0]);
+  await ctx.close();
+});
