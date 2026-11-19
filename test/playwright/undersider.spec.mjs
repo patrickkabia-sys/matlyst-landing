@@ -731,7 +731,7 @@ test('bytteanimasjon: etikettene og boksene står stille, og svarlinja toner bar
   const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
   const page = await ctx.newPage();
   await page.goto(BYTT);
-  const boks = () => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const r = document.querySelector(s).closest('label').getBoundingClientRect(); return [r.left, r.top]; }));
+  const boks = () => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const r = document.querySelector(s).closest('label').getBoundingClientRect(); return [r.left, r.top + scrollY]; }));
   const foerBoks = await boks();
   const for_ = await page.evaluate(() => getComputedStyle(document.querySelector('[data-felt=svar]')).backgroundColor);
   await page.locator('[data-handling=bytt]').click();
