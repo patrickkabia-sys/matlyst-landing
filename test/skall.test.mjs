@@ -534,3 +534,28 @@ test('topp() har skiplenken som første element i hvert språk, med teksten fra 
     assert.equal(SKALLTEKST[sprak].topp.hopp, tekst);
   }
 });
+
+const utenKommentarer = (kilde) => kilde.replace(/\/\*[\s\S]*?\*\//gu, '');
+
+test('guider-panelet er skjult til det åpnes: markupen har hidden og skall.css setter ikke display på .panel', () => {
+  assert.match(topp('nb', { sprakvelger: '' }), /<nav class="panel"[^>]*\shidden[\s>]/u);
+  const css = utenKommentarer(les('skall.css'));
+  const panelregler = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/gu)].filter(([, v]) => v.split(',').some((d) => /(^|[\s>+~])\.panel(?![\w-])(?:\[[^\]]*\]|:[\w-]+)*\s*$/u.test(d)));
+  assert.ok(panelregler.length > 0, 'fant ingen regler for .panel selv');
+  const medDisplay = panelregler.filter(([, v, kropp]) => /(^|[;\s])display\s*:/u.test(kropp) && !v.split(',').every((d) => /\[hidden\]/u.test(d)));
+  assert.deepEqual(medDisplay.map((m) => m[1].trim()), [], '.panel kan ikke sette display uten [hidden]-unntak');
+});
+
+test('toppen får bakgrunn ved rulling: sticky og backdrop-filter fra 1001 px, og en reserve ved redusert gjennomsiktighet', () => {
+  const css = utenKommentarer(les('skall.css'));
+  const blokk = css.match(/@media \(min-width:1001px\)\s*\{([\s\S]*?)\n\}/u);
+  assert.ok(blokk, 'mangler @media (min-width:1001px)');
+  const topp1001 = blokk[1].match(/\.topp\s*\{([^}]*)\}/u);
+  assert.ok(topp1001, 'mangler .topp i bredskjermsblokken');
+  assert.match(topp1001[1], /position:\s*sticky/u);
+  assert.match(topp1001[1], /(?<![-\w])backdrop-filter:\s*blur/u);
+  const reserve = css.match(/@media \(prefers-reduced-transparency:\s*reduce\)\s*\{([^{}]*\{[^}]*\})\s*\}/u);
+  assert.ok(reserve, 'mangler reserve for redusert gjennomsiktighet');
+  assert.match(reserve[1], /\.topp/u);
+  assert.match(reserve[1], /(?<![-\w])backdrop-filter:\s*none/u);
+});

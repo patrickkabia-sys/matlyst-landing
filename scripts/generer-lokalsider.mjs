@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { legal, liste } from './juridisk-tekster.mjs';
+import { STIL } from './skall-paa.mjs';
 import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, byggLocalePageMap, filForSti, gruppeForSti } from './locale-sider.mjs';
 import { lokaleImportGuider } from './import-guider-lokale.mjs';
 import { engelskeFunksjonssider, kildesider } from './undersider-alle-sprak.mjs';
@@ -153,7 +154,7 @@ ${alternateLinks(sti)}
 <meta name="twitter:image" content="${base}${image}">
 <meta name="twitter:image:alt" content="${esc(description)}">
 <link rel="icon" type="image/png" href="/images/icon.png">
-<link rel="stylesheet" href="/styles.css">
+${STIL}
 ${schema ? `<script type="application/ld+json">${json(schema)}</script>` : ''}
 ${brukerSprakredirect ? '<script src="/locale.js" defer></script>' : ''}
 </head>`;

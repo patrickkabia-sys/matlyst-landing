@@ -193,6 +193,16 @@ test('et trykk i innholdsfortegnelsen legger ikke overskriften under toppen', as
   expect(h2.y + h2.height).toBeGreaterThan(0);
 });
 
+test('lange guider på 1280 px: kortene følger heltens venstrekant, og lesekolonnene deler midtlinje', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/handleliste/');
+  const boks = await page.evaluate(() => Object.fromEntries(['.locale-page-hero', '.locale-prose', '.faq', '.app-cta', '.page-cta'].map((v) => { const e = document.querySelector(v); const b = e?.getBoundingClientRect(); return [v, b ? { venstre: b.left, midt: b.left + b.width / 2 } : null]; })));
+  for (const [velger, b] of Object.entries(boks)) expect(b, `${velger} finnes ikke på guiden`).not.toBeNull();
+  for (const kort of ['.app-cta', '.page-cta']) expect(Math.abs(boks[kort].venstre - boks['.locale-page-hero'].venstre), `${kort} har ikke heltens venstrekant`).toBeLessThanOrEqual(1);
+  // Brødtekst (68ch) og FAQ (760 px) er sentrerte kolonner med ulik bredde: samme midtlinje, ikke samme venstrekant.
+  expect(Math.abs(boks['.faq'].midt - boks['.locale-prose'].midt), 'FAQ og brødtekst har ulik midtlinje').toBeLessThanOrEqual(1);
+});
+
 for (const bredde of [390, 1280]) test(`lange guider: figurer, filmer og bilder holder seg i lesekolonnen på ${bredde} px, og appkortene har innhold`, async ({ page }) => {
   await page.setViewportSize({ width: bredde, height: 900 });
   await page.goto(GUIDE);

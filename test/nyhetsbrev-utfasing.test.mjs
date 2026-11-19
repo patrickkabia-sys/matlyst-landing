@@ -70,12 +70,13 @@ test('forsida har nedlastingsknapper der skjemaet sto, og ingen e-postfelt', () 
 
 });
 
-test('site.js og styles.css har ingen rester av skjemaet', () => {
-  const site = utenKommentarer(les('site.js'));
-  assert.doesNotMatch(site, /lastNyhetsbrev|nyhetsbrev|newsletter/iu);
-  const css = les('styles.css');
-  assert.doesNotMatch(css, /\.newsletter|\.nl-|emailoctopus/iu);
-  assert.match(css, /\.last-ned \.store-badges\{justify-content:center\}/u);
+test('site.js og stilarkene har ingen rester av skjemaet', () => {
+  assert.doesNotMatch(utenKommentarer(les('site.js')), /lastNyhetsbrev|nyhetsbrev|newsletter/iu);
+  for (const fil of ['site.js', 'tokens.css', 'skall.css', 'side.css', 'tjeneste.css']) {
+    const tekst = utenKommentarer(les(fil));
+    assert.ok(tekst.length > 0, `${fil} er tom`);
+    assert.doesNotMatch(tekst, /\.newsletter|\.nl-|emailoctopus/iu, fil);
+  }
 });
 
 test('nyhetsbrevet beskrives som for appbrukere og sendt via Resend, på alle språk', () => {
