@@ -240,4 +240,50 @@ body[data-sidetype="guide-kort"] .locale-prose > p > a[rel~="noopener"]:only-chi
 @media (prefers-reduced-motion:reduce){body[data-sidetype="guide-kort"] .locale-prose > p > a[rel~="noopener"]:only-child{transition:none}}
 /* == Eldre sider == */
 /* == Blogg == */
+/* Bloggindeks og artikler (scripts/blogg.mjs). Alt avgrenset til blogg. Kortene er grå (--hylle) med 24 px radius; bildene følger. Tekst i rem. */
+body[data-sidetype="blogg"] ul.blogg-kort{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:48px 0 0;padding:0;list-style:none}
+body[data-sidetype="blogg"] ul.blogg-kort li{min-width:0;border-radius:24px;overflow:hidden;background:var(--hylle)}
+body[data-sidetype="blogg"] ul.blogg-kort li:has(a:focus-visible){outline:2px solid var(--blekk);outline-offset:4px}
+body[data-sidetype="blogg"] ul.blogg-kort a{display:flex;flex-direction:column;height:100%;color:var(--blekk);text-decoration:none;outline:0}
+body[data-sidetype="blogg"] ul.blogg-kort img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+body[data-sidetype="blogg"] ul.blogg-kort span{display:block;padding:20px 24px 26px;font-size:1.1875rem;font-weight:700;line-height:1.3;letter-spacing:-.01em;overflow-wrap:break-word}
+body[data-sidetype="blogg"] ul.blogg-kort a:hover span,body[data-sidetype="blogg"] ul.blogg-kort a:focus-visible span{text-decoration:underline;text-underline-offset:.2em}
+/* Forsidebildet har lesekolonnens bredde: samme 68ch og samme skriftstørrelse som .locale-prose */
+body[data-sidetype="blogg"] figure.blogg-forside{max-width:68ch;margin:28px auto 0;font-size:1.1875rem}
+body[data-sidetype="blogg"] figure.blogg-forside img{display:block;width:100%;height:auto;border-radius:24px;background:var(--hylle);box-shadow:0 0 0 1px var(--a-kant)}
+/* Tabellen er grunnstilens; her bare at nøkkelen og verdien står på samme grunnlinje og at nøkkelen ikke presses av en lang verdi */
+body[data-sidetype="blogg"] .locale-prose table.blogg-tabell th,body[data-sidetype="blogg"] .locale-prose table.blogg-tabell td{vertical-align:baseline}
+body[data-sidetype="blogg"] .locale-prose table.blogg-tabell tbody th{padding-right:16px}
+body[data-sidetype="blogg"] .locale-prose table.blogg-tabell td{overflow-wrap:break-word}
+body[data-sidetype="blogg"] .merknad{font-size:.9375rem;font-weight:400;color:var(--dempet)}
+/* Kilder i autoartikler: nummerert, rolige lenker med trykkflate */
+body[data-sidetype="blogg"] .locale-prose ol.blogg-kilder{display:grid;gap:2px;margin:14px 0 0;padding-left:1.5em;line-height:1.5}
+body[data-sidetype="blogg"] .locale-prose ol.blogg-kilder a{display:inline-flex;align-items:center;min-height:44px}
+/* Galleriet: en rad bilder som sveipes sidelengs i egen boks. På PC står bildene side om side så langt det er plass. */
+body[data-sidetype="blogg"] .blogg-galleri{max-width:880px;margin:112px auto 0}
+body[data-sidetype="blogg"] .blogg-galleri h2{margin:0 0 28px;font-size:1.625rem;line-height:1.12;text-align:center}
+body[data-sidetype="blogg"] .blogg-galleri-rad{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(180px,1fr);gap:12px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:6px}
+body[data-sidetype="blogg"] .blogg-galleri-rad img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:24px;background:var(--hylle);scroll-snap-align:start}
+body[data-sidetype="blogg"] .blogg-galleri-rad:focus-visible{outline:2px solid var(--blekk);outline-offset:4px;border-radius:24px}
+/* Flere artikler: rad med piller, som .related */
+body[data-sidetype="blogg"] .blogg-flere{max-width:880px;margin:112px auto 0;text-align:center}
+body[data-sidetype="blogg"] .blogg-flere h2{margin:0;font-size:1.625rem;line-height:1.12}
+body[data-sidetype="blogg"] .blogg-flere ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:28px auto 0;padding:0;list-style:none}
+body[data-sidetype="blogg"] .blogg-flere li a{display:inline-flex;align-items:center;min-height:48px;padding:8px 20px;border:1px solid var(--linje);border-radius:999px;font-size:1.0625rem;font-weight:500;text-align:left;transition:border-color .2s}
+body[data-sidetype="blogg"] .blogg-flere li a:hover,body[data-sidetype="blogg"] .blogg-flere li a:focus-visible{border-color:var(--blekk)}
+body[data-sidetype="blogg"] section.blogg-flere{margin-top:72px}
+@media (min-width:721px) and (max-width:1000px){
+  body[data-sidetype="blogg"] ul.blogg-kort{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:720px){
+  body[data-sidetype="blogg"] ul.blogg-kort{grid-template-columns:minmax(0,1fr);gap:16px;margin-top:36px}
+  body[data-sidetype="blogg"] ul.blogg-kort span{padding:16px 20px 22px}
+  body[data-sidetype="blogg"] .blogg-galleri{margin-top:72px}
+  body[data-sidetype="blogg"] .blogg-galleri-rad{grid-auto-columns:72%}
+  /* Lange titler brytes i en pille og ser ut som en feil; på mobil er de rolige rader i stedet */
+  body[data-sidetype="blogg"] .blogg-flere{margin-top:72px;text-align:left}
+  body[data-sidetype="blogg"] .blogg-flere ul{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--linje)}
+  body[data-sidetype="blogg"] .blogg-flere li a{display:flex;min-height:48px;padding:12px 0;border:0;border-bottom:1px solid var(--linje);border-radius:0;font-weight:700}
+}
+@media (prefers-reduced-motion:reduce){body[data-sidetype="blogg"] .blogg-flere li a{transition:none}}
 /* == Juss == */
