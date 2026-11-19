@@ -17,7 +17,9 @@ test('alle avmeldingssider bruker det samme skriptet og omdirigeres ikke', () =>
 });
 
 test('alle sidene bruker klassene fra det felles stilarket', () => {
-  const css = readFileSync(join(ROOT, 'avmeld.css'), 'utf8');
+  const avmeldCss = readFileSync(join(ROOT, 'avmeld.css'), 'utf8');
+  // Knappen bor i tjeneste.css (felles knappestil); resten av klassene i avmeld.css.
+  const css = `${avmeldCss}\n${readFileSync(join(ROOT, 'tjeneste.css'), 'utf8')}`;
   for (const klasse of ['avmeld-doc', 'avmeld-kort', 'avmeld-knapp', 'avmeld-status']) {
     assert.match(css, new RegExp(`\\.${klasse}\\b`, 'u'), klasse);
     for (const fil of SIDER) {
@@ -30,11 +32,12 @@ test('alle sidene bruker klassene fra det felles stilarket', () => {
   for (const velger of [':root', '*', 'body', 'a']) {
     assert.doesNotMatch(css, new RegExp(`(?:^|\\n)\\s*${velger.replace('*', '\\*')}(?:[\\s,{])`, 'u'), velger);
   }
-  assert.match(css, /\.avmeld-rot\s*\{/u);
-  assert.match(css, /\.avmeld-rot \*, \.avmeld-rot \*::before, \.avmeld-rot \*::after/u);
+  assert.doesNotMatch(avmeldCss, /--[\w-]+\s*:/u, 'fargene og skriften kommer fra tokens.css');
+  assert.match(avmeldCss, /\.avmeld-rot \*, \.avmeld-rot \*::before, \.avmeld-rot \*::after,\n\[data-tjeneste="avmeld"\] \*/u);
   assert.match(css, /body\.avmeld-rot/u);
-  assert.match(css, /\.avmeld-rot a\s*\{/u);
+  assert.match(avmeldCss, /\.avmeld-rot a, \[data-tjeneste="avmeld"\] a\s*\{/u);
   assert.doesNotMatch(readFileSync(join(ROOT, 'avmeld/index.html'), 'utf8'), /<style>/u);
+  for (const fil of SIDER) assert.doesNotMatch(readFileSync(join(ROOT, fil), 'utf8'), /href="\/styles\.css"/u, `${fil}: laster ikke styles.css`);
 });
 
 test('det delte skriptet sender u og s til avmeld-endepunktet', () => {

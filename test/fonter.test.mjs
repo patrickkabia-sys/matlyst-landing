@@ -189,8 +189,15 @@ test('vakten ser en @font-face i en <style>-blokk', () => {
   assert.equal(fiks('<head><style>a{b:c}</style><p>@font-face</p></head>'), false);
 });
 
-test('avmeld.css har de samme lokale fontene som styles.css', () => {
-  assert.deepEqual(fontFaces(readFileSync(join(ROT, 'avmeld.css'), 'utf8')), fontFaces(css()));
+test('avmeld.css har ingen @font-face, og hver side som laster avmeld.css, laster tokens.css før den', () => {
+  assert.deepEqual(fontFaces(readFileSync(join(ROT, 'avmeld.css'), 'utf8')), []);
+  const sider = alleSider(ROT).filter((s) => readFileSync(join(ROT, s.fil), 'utf8').includes('href="/avmeld.css"'));
+  assert.equal(sider.length, 9, 'fire avmeldingssider, bekreftelsen og fire vervekort');
+  for (const s of sider) {
+    const h = readFileSync(join(ROT, s.fil), 'utf8');
+    const tokens = h.indexOf('href="/tokens.css"');
+    assert.ok(tokens > -1 && tokens < h.indexOf('href="/avmeld.css"'), `${s.sti}: tokens.css må komme før avmeld.css`);
+  }
 });
 
 test('personvernerklæringen sier ikke lenger at nettstedet henter skriftene fra Google', () => {

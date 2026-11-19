@@ -10,7 +10,9 @@ test('404-siden er noindex, tilgjengelig og bruker nettstedets design', () => {
   assert.match(html, /<meta name="robots" content="noindex, follow">/u);
   assert.match(html, /<main id="hovedinnhold"/u);
   assert.match(html, /aria-labelledby="not-found-title"/u);
-  assert.match(html, /href="\/styles\.css"/u);
+  assert.match(html, /href="\/tokens\.css"/u);
+  assert.match(html, /href="\/tjeneste\.css"/u);
+  assert.doesNotMatch(html, /href="\/styles\.css"/u);
   assert.match(html, /href="\/404\.css"/u);
   assert.doesNotMatch(html, /site\.js|posthog|googletagmanager/iu);
 });

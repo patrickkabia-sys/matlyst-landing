@@ -15,35 +15,35 @@
 <meta property="og:title" content="Matlyst">
 <meta property="og:description" content="Del en oppskrift inn i appen, så står den ferdig med ingredienser, steg og norske mål.">
 <meta property="og:image" content="https://matlyst-app.no/images/og-importer-oppskrifter.jpg">
-<link rel="stylesheet" href="/styles.css">
+<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><!-- /skall:stil -->
 <link rel="icon" type="image/png" href="/images/icon.png">
 <style>
-  .skaperside{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(28px,7vw,64px) var(--pad);gap:22px}
-  .appicon{width:62px;height:62px;border-radius:14px;box-shadow:0 6px 22px rgba(30,24,19,.12)}
-  .skaperside .k{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
-  .skaperside h1{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(32px,7vw,52px);line-height:1.05;letter-spacing:-.02em;max-width:14ch}
-  .skaperside h1 em{font-style:italic;color:var(--orange)}
-  .skaperside .lead{font-size:clamp(15px,2.4vw,17px);color:var(--ink-soft);max-width:38ch}
-
+  .skaperside{min-height:calc(100vh - 160px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(28px,7vw,64px) max(16px,env(safe-area-inset-left,0px));gap:22px}
+  .appicon{width:62px;height:62px;border-radius:14px;box-shadow:0 6px 22px rgb(var(--skygge) / .14)}
+  .skaperside .k{font-size:.9375rem;font-weight:500;color:var(--dempet)}
+  .skaperside h1{font-weight:700;font-size:3rem;line-height:1.05;letter-spacing:-.028em;max-width:14ch;text-wrap:balance}
+  .skaperside h1 em{font-style:normal}
+  .skaperside .lead{font-size:1.1875rem;color:var(--dempet);max-width:38ch;line-height:1.55}
   /* Butikkvalg. BEGGE knappene har med vilje nøyaktig samme visuelle vekt:
      bommer en OS-gjetning og feil knapp fremheves, klikker brukeren den
      høyeste og havner i en blindvei. Å ikke gjette er tryggere enn å gjette feil. */
   .stores{display:flex;flex-direction:column;gap:14px;width:100%;max-width:360px;margin-top:4px}
-  .store{display:block;text-decoration:none;background:var(--ink);color:var(--cream);border-radius:14px;padding:15px 20px;font-family:'DM Sans',sans-serif;transition:transform .2s,opacity .2s}
-  .store:hover{transform:translateY(-2px);opacity:.92}
+  .store{display:block;text-decoration:none;background:var(--blekk);color:var(--flate);border-radius:999px;padding:14px 28px;transition:background-color .2s}
+  .store:hover{background:var(--blekk-lys)}
   .store .row{display:flex;align-items:center;justify-content:center;gap:10px}
   .store .glyph{width:19px;height:19px;flex:none;fill:currentColor}
-  .store .name{font-size:16px;font-weight:500}
-  .store .hint{display:block;font-size:12.5px;font-weight:300;opacity:.78;margin-top:5px;line-height:1.35}
+  .store .name{font-size:1rem;font-weight:700}
+  .store .hint{display:block;font-size:.875rem;font-weight:400;margin-top:4px;line-height:1.35}
 
-  .foot{font-size:12.5px;color:var(--ink-soft);max-width:34ch;line-height:1.5}
-  .foot a{color:var(--ink-soft)}
+  .foot{font-size:.9375rem;color:var(--dempet);max-width:34ch;line-height:1.5}
+  .foot a{color:var(--dempet);text-decoration:underline;text-underline-offset:.2em}
+  @media (max-width:640px){.skaperside h1{font-size:2.25rem}}
 </style>
 <link rel="stylesheet" href="/language-switcher.css">
 <script src="/language-switcher.js" defer></script>
 </head>
-<body>
-<div class="language-switcher-standalone language-switcher-standalone-top"><!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/christine/" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a></span><!-- /språkvelger:topp --></div>
+<body data-sidetype="tjeneste" data-tjeneste="kampanje">
+<div class="language-switcher-standalone language-switcher-standalone-top"><a class="nav-brand" href="/">Mat<em>lyst</em></a><!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/christine/" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">Norsk</a></span><!-- /språkvelger:topp --></div>
 <main class="skaperside">
   <img class="appicon" src="/images/icon.png" width="62" height="62" alt="">
   <p class="k">Matlyst</p>
@@ -120,6 +120,6 @@
   }
 })();
 </script>
-<div class="language-switcher-standalone language-switcher-standalone-bottom"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Språk"><a href="/christine/" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">NO</a></span><!-- /språkvelger:bunn --></div>
+<div class="language-switcher-standalone language-switcher-standalone-bottom"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Språk"><a href="/christine/" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">Norsk</a></span><!-- /språkvelger:bunn --></div>
 </body>
 </html>
