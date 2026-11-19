@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
-import { cpSync, readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync, symlinkSync, existsSync, lstatSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync, symlinkSync, existsSync, lstatSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { execFileSync, spawnSync } from 'node:child_process';
 import test from 'node:test';
+import { kopier } from '../scripts/kjedeproeve.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const node = process.execPath;
@@ -14,7 +15,7 @@ test('kjedeprøven kjører i kopi, avgrenser nøkkelen og gir feilkode ved avvik
   assert.ok(existsSync(join(rot, 'scripts/kjedeproeve.mjs')), 'kjedeprøven må finnes');
   const mappe = mkdtempSync(join(tmpdir(), 'kjedeproeve-test-'));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
-  cpSync(rot, mappe, { recursive: true, filter: (k) => !['.git', '.superpowers', 'node_modules', 'qa', 'test-results', 'playwright-report'].includes(k.split('/').at(-1)) });
+  kopier(rot, mappe);
   symlinkSync(join(rot, 'node_modules'), join(mappe, 'node_modules'), 'dir');
   for (const skript of kjede) execFileSync(node, [`scripts/${skript}.mjs`], { cwd: mappe });
   const kjor = (nokkel) => spawnSync(node, ['scripts/kjedeproeve.mjs', nokkel], { cwd: mappe, encoding: 'utf8' });
@@ -32,8 +33,7 @@ test('kjedeprøven kjører i kopi, avgrenser nøkkelen og gir feilkode ved avvik
   assert.equal(kjor('ukjent').status, 1, 'ukjent nøkkel skal ikke gi falskt null avvik');
 });
 
-test('kjedeprøvens kopi hopper over symlenker, så ingen skriving kan gå ut av kopien', async (t) => {
-  const { kopier } = await import('../scripts/kjedeproeve.mjs');
+test('kjedeprøvens kopi hopper over symlenker, så ingen skriving kan gå ut av kopien', (t) => {
   const utenfor = mkdtempSync(join(tmpdir(), 'kjedeproeve-utenfor-'));
   const kilde = mkdtempSync(join(tmpdir(), 'kjedeproeve-kilde-'));
   const mal = join(mkdtempSync(join(tmpdir(), 'kjedeproeve-mal-')), 'kopi');
@@ -47,6 +47,7 @@ test('kjedeprøvens kopi hopper over symlenker, så ingen skriving kan gå ut av
   kopier(kilde, mal);
   assert.ok(existsSync(join(mal, 'ekte/index.html')), 'vanlige filer kopieres');
   const alle = (mappe) => readdirSync(mappe, { withFileTypes: true, recursive: true });
+  for (const navn of ['lenket-mappe', 'lenket-fil.html', 'brutt']) assert.equal(lstatSync(join(mal, navn), { throwIfNoEntry: false }), undefined, `${navn} skal ikke finnes i kopien`);
   assert.deepEqual(alle(mal).filter((e) => lstatSync(join(e.parentPath, e.name)).isSymbolicLink()), [], 'ingen symlenker i kopien');
   assert.deepEqual(readdirSync(utenfor), ['hemmelig.html'], 'ingenting skrevet utenfor kopien');
 });
@@ -54,7 +55,7 @@ test('kjedeprøvens kopi hopper over symlenker, så ingen skriving kan gå ut av
 test('kjedeprøven skriver ut avvik på andre sider med sti og første avvikende linje, uten å endre koden', (t) => {
   const mappe = mkdtempSync(join(tmpdir(), 'kjedeproeve-andre-'));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
-  cpSync(rot, mappe, { recursive: true, filter: (k) => !['.git', '.superpowers', 'node_modules', 'qa', 'test-results', 'playwright-report'].includes(k.split('/').at(-1)) });
+  kopier(rot, mappe);
   symlinkSync(join(rot, 'node_modules'), join(mappe, 'node_modules'), 'dir');
   for (const skript of kjede) execFileSync(process.execPath, [`scripts/${skript}.mjs`], { cwd: mappe });
   const fil = join(mappe, 'personvern.html');

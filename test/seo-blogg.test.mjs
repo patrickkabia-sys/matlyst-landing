@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
-import { cpSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
+import { kopier } from '../scripts/kjedeproeve.mjs';
 import { rendre, trekkUt } from '../scripts/skall-paa.mjs';
 import { alleSider, erUtrullet } from '../scripts/sidetyper.mjs';
 
@@ -70,10 +71,7 @@ let generertRot;
 function byggMidlertidigNettsted() {
   if (generertRot) return generertRot;
   generertRot = mkdtempSync(join(tmpdir(), 'matlyst-seo-nettsted-'));
-  cpSync(repoRot, generertRot, {
-    recursive: true,
-    filter: (kilde) => !['.git', '.superpowers', 'node_modules'].includes(kilde.split('/').at(-1)),
-  });
+  kopier(repoRot, generertRot);
   skrivFixture(generertRot, true);
   // Lokal utrulling bare i kopien: repoets UTRULLET røres ikke. Da må generatorkjeden
   // faktisk legge skallet på de nygenererte omregnersidene.
