@@ -83,3 +83,15 @@ test('Spør Matlyst spiller bare når en flate er minst 60 % i bildet, og starte
   expect(await page.locator('#sporTekst').textContent()).toBe(T.spor.forslag[0]);
   await ctx.close();
 });
+
+test('lav skjerm (1280 x 320): Husstand-demoen starter likevel (60 % av det minste av kortets og skjermens høyde)', async ({ browser, baseURL }) => {
+  const { ctx, page } = await klar(browser, baseURL, { bredde: 1280, hoyde: 320 });
+  expect(await page.locator('#demoHus').evaluate((e) => e.closest('.rute').offsetHeight), 'kortet er høyere enn skjermen').toBeGreaterThan(320);
+  await midt(page, '#demoHus');
+  await page.waitForTimeout(500);
+  await expect(page.locator('#demoHus').locator('..')).toHaveClass(/i-bildet/);
+  // Demoen går: etter 4,8 sekunder er den ferdig lagt inn (steg 3), og ny husstand etter 7,8 sekunder.
+  await kjor(page, 3000);
+  expect(await page.locator('#demoHus .a-folk img.la-inn, #demoHus .a-innrad:not(.skjult)').count()).toBeGreaterThan(0);
+  await ctx.close();
+});

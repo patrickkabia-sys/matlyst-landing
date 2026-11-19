@@ -1,6 +1,9 @@
 (() => {
   const bevegelse = matchMedia('(prefers-reduced-motion: reduce)');
   const rolig = bevegelse.matches;
+  // Aktiv: synlig høyde er minst 60 % av det minste av kortets høyde og skjermens høyde (da kan ingen demo bli stående inaktiv for alltid på lave skjermer).
+  const TERSKLER = Array.from({ length: 21 }, (_, i) => i / 20);
+  const aktivAndel = (rad) => rad.intersectionRect.height >= 0.6 * Math.min(rad.boundingClientRect.height, innerHeight) - 0.5;
   // Overskriften skrives inn, tegn for tegn
   {
     const h1 = document.querySelector('.hero h1');
@@ -234,15 +237,15 @@
     };
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((rader) => {
-      rader.forEach((rad) => andel.set(rad.target, rad.isIntersecting ? rad.intersectionRatio : 0));
-      const ny = flater.some((f) => (andel.get(f) || 0) >= 0.6);
+      rader.forEach((rad) => andel.set(rad.target, rad.isIntersecting && aktivAndel(rad)));
+      const ny = flater.some((f) => andel.get(f));
       if (ny === synlig) return;
       synlig = ny;
       seksjon.classList.toggle('i-bildet', synlig);
       cancelAnimationFrame(ramme); ramme = 0;
       if (bevegelse.matches) return;
       if (synlig) { velg(0); start(); } else startbilde();
-      }, { threshold: [0, 0.6] });
+      }, { threshold: TERSKLER });
       flater.forEach((f) => io.observe(f));
     }
     const settRolig = () => {
@@ -438,7 +441,7 @@
         start();
       }
     };
-    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => { const rad = rader[rader.length - 1]; ioSynlig = rad.isIntersecting && rad.intersectionRatio >= 0.6; bruk(false); }, { threshold: [0, 0.6] }).observe(rute);
+    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => { const rad = rader[rader.length - 1]; ioSynlig = rad.isIntersecting && aktivAndel(rad); bruk(false); }, { threshold: TERSKLER }).observe(rute);
     kortRegister.push({ rute, sett: (d) => { if (d === dekket) return; dekket = d; rute.classList.toggle('dekket', d); if ('IntersectionObserver' in window) bruk(false); } });
     const roligKort = () => {
       cancelAnimationFrame(ramme); ramme = 0;
