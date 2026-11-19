@@ -172,7 +172,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       const m = /^([+-]?)(\d*(?:[.,]\d*)*)$/u.exec(t);
       if (!m || !/\d/u.test(m[2])) return NaN;
       const grupper = m[2].split(/[.,]/u), skilletegn = m[2].match(/[.,]/gu) || [];
-      const tusen = (g) => g.length > 0 && g[0].length >= 1 && g[0].length <= 3 && g.slice(1).every((x) => x.length === 3);
+      // En tusengruppe krever ett til tre sifre foran som ikke begynner med 0 («0.125» og «0,125» er desimaltall på alle språk).
+      const tusen = (g) => g.length > 0 && g[0].length >= 1 && g[0].length <= 3 && g[0][0] !== '0' && g.slice(1).every((x) => x.length === 3);
       let tall = '';
       if (skilletegn.length === 0) tall = grupper[0];
       else if (skilletegn.every((c) => c === skilletegn[0])) {
