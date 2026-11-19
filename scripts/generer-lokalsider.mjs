@@ -153,7 +153,8 @@ ${alternateLinks(sti)}
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${base}${image}">
 <meta name="twitter:image:alt" content="${esc(description)}">
-<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 ${STIL}
 ${schema ? `<script type="application/ld+json">${json(schema)}</script>` : ''}
 ${brukerSprakredirect ? '<script src="/locale.js" defer></script>' : ''}

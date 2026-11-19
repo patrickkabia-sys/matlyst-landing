@@ -21,7 +21,7 @@ const ALLE = new Set(sider.map((s) => s.nokkel).filter((n) => n !== 'tjeneste:ve
 const STI = { 'omregner-nb': '/verktoy/kopp-til-dl/', 'juss-nb': '/vilkar.html', 'gammel-nb': '/finn-oppskrifter/', 'lang-sv': '/sv/spara-recept-fran-instagram/', 'uten-guider': '/verktoy/kopp-til-dl/' };
 const rendre = (...args) => { assert.equal(typeof skall.rendre, 'function', 'rendre må eksporteres'); return skall.rendre(...args); };
 const STIL = '<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/side.css"><script src="/skall.js" defer></script><link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- /skall:stil -->';
-const TJENESTESTIL = '<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><!-- /skall:stil -->';
+const TJENESTESTIL = '<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- /skall:stil -->';
 
 // Taggstabelen beholder bare klassene som beskriver rammen.
 function strukturtre(html, klasser) {

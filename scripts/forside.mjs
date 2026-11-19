@@ -51,7 +51,8 @@ const SPRAK = {
 <meta name="twitter:title" content="Matlyst: oppskriftsappen for iPhone og Android">
 <meta name="twitter:description" content="Oppskriftsappen som oversetter og tilpasser oppskriftene dine. Importer fra en lenke, en video eller et bilde, også av håndskrevne oppskrifter. Planlegg uka og send ukas ingredienser til handlelista.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
-<link rel="icon" type="image/png" href="images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -98,7 +99,8 @@ ${FELLES_HODE}` },
 <meta name="twitter:description" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
 <meta name="twitter:image:alt" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
-<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.","url":"https://matlyst-app.no/sv/"}</script>
 <script src="/locale.js" defer></script>
 ${FELLES_HODE}` },
@@ -129,7 +131,8 @@ ${FELLES_HODE}` },
 <meta name="twitter:description" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
 <meta name="twitter:image:alt" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
-<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.","url":"https://matlyst-app.no/da/"}</script>
 <script src="/locale.js" defer></script>
 ${FELLES_HODE}` },
@@ -160,7 +163,8 @@ ${FELLES_HODE}` },
 <meta name="twitter:description" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
 <meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
 <meta name="twitter:image:alt" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
-<link rel="icon" type="image/png" href="/images/icon.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.","url":"https://matlyst-app.no/en/"}</script>
 <script src="/locale.js" defer></script>
 ${FELLES_HODE}` },
