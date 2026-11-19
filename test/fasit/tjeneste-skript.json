@@ -1,0 +1,136 @@
+{
+  "/avmeld/": [
+    {
+      "attributter": "src=\"/language-switcher.js\" defer",
+      "src": "/language-switcher.js"
+    },
+    {
+      "attributter": "src=\"/avmeld.js\" defer",
+      "src": "/avmeld.js"
+    }
+  ],
+  "/bekreft/": [
+    {
+      "attributter": "",
+      "sha256": "e4d23cae1741f9bc12d7ed1a61851117ffcfb68b70e9602d7556476dec6acfe2"
+    }
+  ],
+  "/da/afmeld/": [
+    {
+      "attributter": "type=\"application/ld+json\"",
+      "sha256": "a6795dfec9d4102df891d7aadbbc2bd8cef430127c361b6f9c7f307dc3e91701"
+    },
+    {
+      "attributter": "src=\"/language-switcher.js\" defer",
+      "src": "/language-switcher.js"
+    },
+    {
+      "attributter": "src=\"/avmeld.js\" defer",
+      "src": "/avmeld.js"
+    }
+  ],
+  "/da/tiktok-auth/": [
+    {
+      "attributter": "type=\"application/ld+json\"",
+      "sha256": "ebb47490b479a4b44cfc977dcd098131689881fcac626dfb6ecd30a40efa2d39"
+    },
+    {
+      "attributter": "src=\"/language-switcher.js\" defer",
+      "src": "/language-switcher.js"
+    },
+    {
+      "attributter": "src=\"/tiktok-auth.js\" defer",
+      "src": "/tiktok-auth.js"
+    }
+  ],
+  "/da/v/": [
+    {
+      "attributter": "src=\"/v/vervekort.js\" defer",
+      "src": "/v/vervekort.js"
+    }
+  ],
+  "/en/tiktok-auth/": [
+    {
+      "attributter": "type=\"application/ld+json\"",
+      "sha256": "5f6ce1bdf8ff4336f88f62eb9daa4d30087a8586d609b436bdfb1c3bc900aa65"
+    },
+    {
+      "attributter": "src=\"/language-switcher.js\" defer",
+      "src": "/language-switcher.js"
+    },
+    {
+      "attributter": "src=\"/tiktok-auth.js\" defer",
+      "src": "/tiktok-auth.js"
+    }
+  ],
+  "/en/unsubscribe/": [
+    {
+      "attributter": "type=\"application/ld+json\"",
+      "sha256": "fec73f704d16d6e0622de264e4bb1fc98c46a1453aca6c1fb5595422c2323314"
+    },
+    {
+      "attributter": "src=\"/language-switcher.js\" defer",
+      "src": "/language-switcher.js"
+    },
+    {
+      "attributter": "src=\"/avmeld.js\" defer",
+      "src": "/avmeld.js"
+    }
+  ],
+  "/en/v/": [
+    {
+      "attributter": "src=\"/v/vervekort.js\" defer",
+      "src": "/v/vervekort.js"
+    }
+  ],
+  "/sv/avregistrera/": [
+    {
+      "attributter": "type=\"application/ld+json\"",
+      "sha256": "972a62d7dcb834223630276f3b9747567f149149be5f885e978f1a40b0498589"
+    },
+    {
+      "attributter": "src=\"/language-switcher.js\" defer",
+      "src": "/language-switcher.js"
+    },
+    {
+      "attributter": "src=\"/avmeld.js\" defer",
+      "src": "/avmeld.js"
+    }
+  ],
+  "/sv/tiktok-auth/": [
+    {
+      "attributter": "type=\"application/ld+json\"",
+      "sha256": "9a0e3b0a9879e340dc3622ccd1fe67ecacf1328fdea623f2e87050c059d35715"
+    },
+    {
+      "attributter": "src=\"/language-switcher.js\" defer",
+      "src": "/language-switcher.js"
+    },
+    {
+      "attributter": "src=\"/tiktok-auth.js\" defer",
+      "src": "/tiktok-auth.js"
+    }
+  ],
+  "/sv/v/": [
+    {
+      "attributter": "src=\"/v/vervekort.js\" defer",
+      "src": "/v/vervekort.js"
+    }
+  ],
+  "/tiktok-auth/": [
+    {
+      "attributter": "src=\"/language-switcher.js\" defer",
+      "src": "/language-switcher.js"
+    },
+    {
+      "attributter": "src=\"/tiktok-auth.js\" defer",
+      "src": "/tiktok-auth.js"
+    }
+  ],
+  "/v/": [
+    {
+      "attributter": "src=\"/v/vervekort.js\" defer",
+      "src": "/v/vervekort.js"
+    }
+  ]
+}

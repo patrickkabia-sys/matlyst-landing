@@ -273,3 +273,23 @@ test('404: Schibsted, svart pille, 44 px lenker og en bunn med ordmerket', async
     expect(await page.locator('.not-found-code').evaluate((e) => getComputedStyle(e).color)).toBe('rgb(176, 59, 0)');
   }
 });
+
+test('390 px: språkvelgeren står på egen rad, venstrejustert under ordmerket, likt på alle tjenestesider med velger', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 800 });
+  const sider = ['/avmeld/', '/sv/avregistrera/', '/da/afmeld/', '/en/unsubscribe/', '/tiktok-auth/', '/sv/tiktok-auth/', '/da/tiktok-auth/', '/en/tiktok-auth/', '/christine/', '/tiktok/', '/sv/tiktok/', '/da/tiktok/', '/en/tiktok/'];
+  expect(sider.length).toBe(13);
+  for (const sti of sider) {
+    await page.goto(`${sti}?code=x`);
+    await expect(page.locator('.language-switcher-top')).toHaveCount(1);
+    const m = await page.evaluate(() => {
+      const v = document.querySelector('.language-switcher-top').getBoundingClientRect();
+      const a = document.querySelector('.language-switcher-top a').getBoundingClientRect();
+      const b = document.querySelector('.nav-brand, .brand').getBoundingClientRect();
+      return { vx: v.left, ax: a.left, vy: v.top, bx: b.left, bb: b.bottom };
+    });
+    expect(m.vx, sti).toBe(16);
+    expect(m.ax, sti).toBe(16);
+    expect(m.bx, sti).toBe(16);
+    expect(m.vy, `${sti}: egen rad rett under ordmerket`).toBe(m.bb);
+  }
+});

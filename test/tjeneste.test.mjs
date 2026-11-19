@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { alleSider, tjenestefamilie, erUtrullet } from '../scripts/sidetyper.mjs';
 import { utenKommentarer } from './hjelp/klassedekning.mjs';
+import { createHash } from 'node:crypto';
 import { effektiv } from './hjelp/knappevekt.mjs';
 
 const rot = new URL('..', import.meta.url).pathname;
@@ -36,6 +37,27 @@ test('tokenbærende sider får aldri skall, site.js, banner eller måling', () =
     const h = les(s.fil);
     for (const f of ['/site.js', '/skall.js', 'id="cookie"', 'skall:topp', 'data-hent', 'posthog', 'googletagmanager']) assert.ok(!h.includes(f), `${s.sti}: ${f}`);
   }
+});
+
+// Hviteliste: eksakt sett av <script>-tagger per tokenbærende side (src, eller sha256 av innholdet).
+// Fasiten er hentet fra innholdet før utrullingen (f9d84958); et nytt eller endret skript gir rødt.
+export function skriptene(h) {
+  return [...h.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/giu)].map((m) => {
+    const a = m[1].replace(/\s+/gu, ' ').trim();
+    const src = /\bsrc="([^"]*)"/u.exec(a)?.[1];
+    return src ? { attributter: a, src } : { attributter: a, sha256: createHash('sha256').update(m[2]).digest('hex') };
+  });
+}
+test('tokenbærende sider har nøyaktig de skriptene fasiten låser', () => {
+  const fasit = JSON.parse(les('test/fasit/tjeneste-skript.json'));
+  const sider = [...familie('avmeld'), ...familie('bekreft'), ...familie('vervekort'), ...familie('auth')];
+  assert.deepEqual(Object.keys(fasit).sort(), sider.map((s) => s.sti).sort());
+  assert.ok(Object.values(fasit).some((l) => l.some((x) => x.sha256)), 'fasiten har inline-skript');
+  for (const s of sider) assert.deepEqual(skriptene(les(s.fil)), fasit[s.sti], s.sti);
+  // Vakten ser et injisert inline-skript og et endret
+  const h = les(sider[0].fil);
+  assert.notDeepEqual(skriptene(h.replace('</body>', '<script>fetch("//x")</script></body>')), fasit[sider[0].sti]);
+  assert.notDeepEqual(skriptene(h.replace('<script src="/avmeld.js"', '<script src="/avmeld2.js"')), fasit[sider[0].sti]);
 });
 
 test('de utrullede tjenestefamiliene har nøklene sine', () => {
@@ -153,12 +175,12 @@ test('samtykkeknappene på kampanjesidene veier likt', () => {
   }
 });
 
-test('de kopierte banner- og stegreglene følger kildene i skall.css og side.css', () => {
+test('alle .cookie- og .ck-reglene i tjeneste.css er skall.css sine, linje for linje (hover og fokus med)', () => {
   const kamp = utenKommentarer(les('tjeneste.css')).replaceAll('body[data-tjeneste="kampanje"] ', '');
   const skall = utenKommentarer(les('skall.css'));
-  for (const velger of ['.cookie{', '.cookie[hidden]{', '.ck-btn,.ck-accept,.ck-reject{', '.cookie-actions{', '.cookie p{']) {
-    const linje = (css) => css.split('\n').find((l) => l.startsWith(velger));
-    assert.ok(linje(skall), `skall.css mangler ${velger}`);
-    assert.equal(linje(kamp), linje(skall), velger);
-  }
+  const banner = (css) => css.split('\n').filter((l) => /^\.(cookie|ck-)/u.test(l));
+  const kilde = banner(skall);
+  assert.ok(kilde.length >= 10, `fant bare ${kilde.length} bannerregler i skall.css`);
+  assert.ok(kilde.some((l) => l.startsWith('.ck-btn:hover')) && kilde.some((l) => l.startsWith('.ck-btn:focus-visible')));
+  assert.deepEqual(banner(kamp), kilde);
 });

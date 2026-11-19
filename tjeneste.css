@@ -32,13 +32,14 @@ body.avmeld-rot .language-switcher a:hover,body[data-tjeneste] .language-switche
 body.avmeld-rot .language-switcher a:focus-visible,body[data-tjeneste] .language-switcher a:focus-visible{outline:2px solid var(--blekk);outline-offset:2px}
 body.avmeld-rot .language-switcher a[aria-current="page"],body[data-tjeneste] .language-switcher a[aria-current="page"]{background:var(--blekk);color:var(--flate);box-shadow:none}
 body.avmeld-rot nav > .language-switcher-top,body[data-tjeneste] nav > .language-switcher-top{margin-left:auto}
+body.avmeld-rot .nav-right > .language-switcher-top,body[data-tjeneste] .nav-right > .language-switcher-top{margin:0}
 body.avmeld-rot .language-switcher-standalone,body[data-tjeneste] .language-switcher-standalone{justify-content:center;padding:12px max(16px,env(safe-area-inset-right,0px));background:var(--flate)}
 body.avmeld-rot .language-switcher-standalone-bottom,body[data-tjeneste] .language-switcher-standalone-bottom{border-top:1px solid var(--linje)}
 /* Hopp-lenka (sv, da, en): skjult til den får fokus */
 body.avmeld-rot .skip-link,body[data-tjeneste] .skip-link{position:absolute;left:8px;top:0;z-index:1000;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;display:inline-flex;align-items:center;border-radius:0 0 12px 12px;background:var(--blekk);color:var(--flate);font-weight:500;font-size:1rem;text-decoration:none}
 body.avmeld-rot .skip-link:focus,body[data-tjeneste] .skip-link:focus{width:auto;height:auto;min-height:44px;padding:0 18px;overflow:visible;clip:auto;clip-path:none}
 @media (max-width:700px){
-  body.avmeld-rot nav,body[data-tjeneste] nav{flex-wrap:wrap}
+  body.avmeld-rot nav,body[data-tjeneste] nav{flex-wrap:wrap;row-gap:0}
   body.avmeld-rot nav .nav-back,body[data-tjeneste] nav .nav-back,body.avmeld-rot .nav-right a.link,body[data-tjeneste] .nav-right a.link{display:none}
   body.avmeld-rot nav > .language-switcher-top,body[data-tjeneste] nav > .language-switcher-top,body.avmeld-rot .nav-right,body[data-tjeneste] .nav-right{flex-basis:100%;margin-left:0}
   body.avmeld-rot .language-switcher,body[data-tjeneste] .language-switcher{gap:0}
@@ -57,7 +58,8 @@ body[data-tjeneste="auth"] .language-switcher-standalone-top{position:static;dis
 body[data-tjeneste="auth"] .language-switcher-standalone-top .nav-brand{display:inline-flex;align-items:center;min-height:44px;margin-right:auto}
 body[data-tjeneste="auth"] .language-switcher-standalone-bottom{margin-top:0}
 @media (max-width:700px){
-  body[data-tjeneste="auth"] .language-switcher-standalone-top{flex-wrap:wrap}
+  body[data-tjeneste="auth"] .language-switcher-standalone-top,body[data-tjeneste="kampanje"] .language-switcher-standalone-top{flex-wrap:wrap;row-gap:0}
+  body[data-tjeneste="auth"] .language-switcher-standalone-top .language-switcher,body[data-tjeneste="kampanje"] .language-switcher-standalone-top .language-switcher{flex-basis:100%;margin-left:0}
 }
 /* /app/ (videresendingen til butikkene) har sin egen oppsetning i en innebygd stil, med farger og skrift fra tokens. Resten kommer fra Felles. */
 
@@ -101,7 +103,6 @@ body[data-tjeneste="kampanje"] .ck-btn,body[data-tjeneste="kampanje"] .ck-accept
 body[data-tjeneste="kampanje"] .ck-btn:hover{background:var(--blekk-lys)}
 body[data-tjeneste="kampanje"] .ck-btn:focus-visible{outline:2px solid var(--blekk);outline-offset:4px}
 @media (max-width:700px){
-  body[data-tjeneste="kampanje"] .language-switcher-standalone-top{flex-wrap:wrap}
   body[data-tjeneste="kampanje"] main.legal-doc{padding-top:40px}
   body[data-tjeneste="kampanje"] main.legal-doc > header h1{font-size:2rem}
   body[data-tjeneste="kampanje"] footer .f-l,body[data-tjeneste="feil"] footer .f-l{flex-basis:100%}
