@@ -74,6 +74,29 @@ for (const { sprak, sti, entall, flertall, pint } of FLERTALL_SIDER) {
   });
 }
 
+// Valg: kortet står i lesekolonnen (ikke bredere), så overskriften «Kalkulator: …», kortet og teksten har samme venstrekant.
+for (const bredde of [1001, 1280, 1600]) {
+  test(`omregneren på ${bredde} px: «Kalkulator»-overskriften og kortet har samme venstrekant, og tallet får plass`, async ({ page }) => {
+    await page.setViewportSize({ width: bredde, height: 900 });
+    for (const sti of ['/verktoy/kopp-til-ml/', '/sv/verktyg/kopp-till-ml/', '/da/vaerktoejer/kop-til-ml/', '/en/tools/cups-to-ml/']) {
+      await page.goto(sti);
+      const m = await page.evaluate(() => {
+        const h = [...document.querySelectorAll('h2')].find((e) => e.nextElementSibling?.matches('form.omregner'));
+        const f = document.querySelector('form.omregner'), k = document.querySelector('.locale-prose');
+        const x = (e) => e.getBoundingClientRect();
+        return { h: x(h).left, hb: x(h).right, f: x(f).left, fb: x(f).right, k: x(k).left, kb: x(k).right };
+      });
+      expect(Math.abs(m.h - m.f), `${sti}: overskrift ${m.h} mot kort ${m.f}`).toBeLessThanOrEqual(1);
+      expect(Math.abs(m.f - m.k), `${sti}: kort ${m.f} mot kolonne ${m.k}`).toBeLessThanOrEqual(1);
+      expect(m.fb, 'kortet er ikke bredere enn kolonnen').toBeLessThanOrEqual(m.kb + 1);
+      // Sju sifre i feltet skal ikke klippes.
+      await page.locator('[data-felt=verdi]').fill('1234567');
+      const klipp = await page.locator('[data-felt=verdi]').evaluate((e) => e.scrollWidth - e.clientWidth);
+      expect(klipp, `${sti}: tallet klippes`).toBeLessThanOrEqual(0);
+    }
+  });
+}
+
 test('omregneren: tab-rekkefølge, tilgjengelige navn og synlig fokus', async ({ page }) => {
   await page.goto(adresse('/verktoy/kopp-til-dl/'));
   await page.locator('[data-felt=verdi]').focus();
