@@ -27,17 +27,20 @@ test('en side utenfor registeret behandles som før', () => {
 
 // Siden ligger på en sti som ikke er utrullet, så den får fortsatt den gamle behandlingen.
 test('kjor skanner bare publiserbare sider', (t) => {
+  // En gammel side med butikkmerker: behandle() endrer den, så et urørt resultat i de skjulte mappene betyr noe.
+  const gammel = '<html lang="nb"><head></head><body><nav><div class="nav-right"></div></nav><main><a href="https://apps.apple.com/app/matlyst/id1">a</a><a href="https://play.google.com/store/apps/details?id=app.matlyst">p</a></main><footer></footer></body></html>';
   const mappe = mkdtempSync(join(tmpdir(), 'app-overgang-'));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   const skjulte = ['docs', 'test', 'qa', 'scripts', '.arbeid'];
-  // Juss er ikke rullet ut ennå; personvern.html er et ekte sidetype-treff uten index-mappe.
-  writeFileSync(join(mappe, 'personvern.html'), generert);
+  // En side utenfor registeret får alltid den gamle behandlingen, uansett hvor langt utrullingen har kommet.
+  mkdirSync(join(mappe, 'utenfor-registeret'), { recursive: true });
+  writeFileSync(join(mappe, 'utenfor-registeret', 'index.html'), gammel);
   for (const del of skjulte) {
     mkdirSync(join(mappe, del), { recursive: true });
-    writeFileSync(join(mappe, del, 'index.html'), generert);
+    writeFileSync(join(mappe, del, 'index.html'), gammel);
   }
-  assert.deepEqual(kjor(mappe), ['personvern.html']);
-  for (const del of skjulte) assert.equal(readFileSync(join(mappe, del, 'index.html'), 'utf8'), generert, del);
+  assert.deepEqual(kjor(mappe), ['utenfor-registeret/index.html']);
+  for (const del of skjulte) assert.equal(readFileSync(join(mappe, del, 'index.html'), 'utf8'), gammel, del);
   assert.deepEqual(kjor(mappe), []);
 });
 

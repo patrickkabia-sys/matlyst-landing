@@ -326,3 +326,31 @@ body[data-sidetype="blogg"] section.blogg-flere{margin-top:72px}
 }
 @media (prefers-reduced-motion:reduce){body[data-sidetype="blogg"] .blogg-flere li a{transition:none}}
 /* == Juss == */
+/* Juss: bare lesekolonnen og kortet. Teksten i dokumentene røres aldri; her styles bare det som finnes (main.doc med .doc-*, main.legal-doc med header og section). Det eneste kortet er .callout / .legal-callout. */
+body[data-sidetype="juss"] main.doc,body[data-sidetype="juss"] main.legal-doc{max-width:68ch;margin-inline:auto;padding-block:72px 0;font-size:1.1875rem;line-height:1.6;overflow-wrap:break-word}
+body[data-sidetype="juss"] .doc-kicker,body[data-sidetype="juss"] main.legal-doc > header .eyebrow{margin:0;font-size:.9375rem;font-weight:500;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--dempet)}
+body[data-sidetype="juss"] .doc-title,body[data-sidetype="juss"] main.legal-doc > header h1{margin:6px 0 0;font-size:2.375rem;line-height:1.05;overflow-wrap:break-word}
+body[data-sidetype="juss"] .doc-updated,body[data-sidetype="juss"] .legal-updated{margin:14px 0 0;font-size:.9375rem;line-height:1.5;color:var(--dempet)}
+body[data-sidetype="juss"] .doc-intro,body[data-sidetype="juss"] main.legal-doc > header .lead{margin:18px 0 0;font-size:1.25rem;line-height:1.5;color:var(--dempet)}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) h2{margin:56px 0 0;font-size:1.625rem;line-height:1.12}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) h3{margin:36px 0 0;font-size:1.3125rem;line-height:1.25;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+/* :where gir avsnittsregelen null spesifisitet, så .doc-kicker og .doc-intro får sine egne marginer */
+body[data-sidetype="juss"] :where(main.doc,main.legal-doc) p{margin:14px 0 0}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) strong{font-weight:700}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) ul:not([class]){display:grid;gap:10px;margin:14px 0 0;padding:0;list-style:none}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) ul:not([class]) li{position:relative;padding-left:28px}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) ul:not([class]) li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--blekk)}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) ol:not([class]){display:grid;gap:10px;margin:14px 0 0;padding-left:1.5em}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) a:hover{text-decoration-thickness:2px}
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) .steps{margin-top:14px}
+body[data-sidetype="juss"] .callout,body[data-sidetype="juss"] .legal-callout{margin:56px 0 0;padding:28px 32px;border-radius:28px;background:var(--hylle)}
+body[data-sidetype="juss"] .callout:first-of-type{margin-top:32px}
+/* Kortets overskrift må veie tyngre enn lesekolonnens h2 (56 px over) */
+body[data-sidetype="juss"] :is(main.doc,main.legal-doc) :is(.callout,.legal-callout) h2{margin:0}
+body[data-sidetype="juss"] :is(.callout,.legal-callout) > :last-child{margin-bottom:0}
+@media (max-width:720px){
+  body[data-sidetype="juss"] main.doc,body[data-sidetype="juss"] main.legal-doc{padding-block:48px 0}
+  body[data-sidetype="juss"] .doc-title,body[data-sidetype="juss"] main.legal-doc > header h1{font-size:2rem}
+  body[data-sidetype="juss"] .callout,body[data-sidetype="juss"] .legal-callout{padding:22px 20px}
+}

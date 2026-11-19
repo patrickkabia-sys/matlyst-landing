@@ -471,3 +471,60 @@ for (const bredde of [390, 1280]) test(`bloggen: kort, forsidebilde, tabell, gal
   const merknad = await page.evaluate(() => { const s = document.querySelector('.locale-prose td .merknad'); const c = getComputedStyle(s); return { s: c.fontSize, v: c.fontWeight, f: c.color }; });
   expect(merknad).toEqual({ s: '15px', v: '400', f: 'rgb(95, 89, 82)' });
 });
+
+// Juridiske sider: beregnet stil på ekte sider beviser at velgerne treffer. Tallene i forventningene er
+// antall elementer i selve dokumentene; et manglende element gir rødt før stilen sjekkes.
+const JUSS = [
+  { sti: '/personvern.html', main: 'main.doc', kicker: '.doc-kicker', tittel: 'h1.doc-title', dato: '.doc-updated', ingress: '.doc-intro', kort: '.callout', kortAntall: 2, lister: 14 },
+  { sti: '/vilkar.html', main: 'main.doc', kicker: '.doc-kicker', tittel: 'h1.doc-title', dato: '.doc-updated', ingress: '.doc-intro', kort: '.callout', kortAntall: 1, lister: 2 },
+  { sti: '/slett-konto.html', main: 'main.doc', kicker: '.doc-kicker', tittel: 'h1.doc-title', dato: '.doc-updated', ingress: '.doc-intro', kort: '.callout', kortAntall: 1, lister: 1 },
+  { sti: '/sv/integritet/', main: 'main.legal-doc', kicker: 'header .eyebrow', tittel: 'header h1', dato: '.legal-updated', ingress: 'header .lead', kort: '.legal-callout', kortAntall: 1, lister: 3 },
+  { sti: '/da/privatliv/', main: 'main.legal-doc', kicker: 'header .eyebrow', tittel: 'header h1', dato: '.legal-updated', ingress: 'header .lead', kort: '.legal-callout', kortAntall: 1, lister: 3 },
+  { sti: '/en/privacy/', main: 'main.legal-doc', kicker: 'header .eyebrow', tittel: 'header h1', dato: '.legal-updated', ingress: 'header .lead', kort: '.legal-callout', kortAntall: 1, lister: 7 },
+];
+for (const bredde of [390, 1280]) for (const j of JUSS) test(`juss: ${j.sti} har lesekolonne, dempet overlinje og dato, ett kort og rolige lister på ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse(j.sti));
+  const antall = await page.evaluate((j) => ({
+    main: document.querySelectorAll(j.main).length, kicker: document.querySelectorAll(j.main + ' ' + j.kicker).length, tittel: document.querySelectorAll(j.main + ' ' + j.tittel).length,
+    dato: document.querySelectorAll(j.main + ' ' + j.dato).length, ingress: document.querySelectorAll(j.main + ' ' + j.ingress).length,
+    kort: document.querySelectorAll(j.main + ' ' + j.kort).length, lister: document.querySelectorAll(j.main + ' ul:not([class])').length,
+  }), j);
+  expect(antall).toEqual({ main: 1, kicker: 1, tittel: 1, dato: 1, ingress: 1, kort: j.kortAntall, lister: j.lister });
+  const m = await page.evaluate((j) => {
+    const h = (sel) => document.querySelector(j.main + ' ' + sel);
+    const c = (el) => getComputedStyle(el);
+    const main = document.querySelector(j.main);
+    const r = main.getBoundingClientRect();
+    const kort = h(j.kort);
+    const li = h('ul:not([class]) li');
+    const piller = [...document.querySelectorAll(j.main + ' li a, ' + j.main + ' ul a')].filter((a) => c(a).borderTopLeftRadius === '999px' || c(a).borderTopWidth !== '0px');
+    const h2 = document.querySelector(j.main + ' > h2, ' + j.main + ' > section > h2');
+    return {
+      sidetype: document.body.dataset.sidetype, bredde: Math.round(r.width), venstre: Math.round(r.left), hoyre: Math.round(document.documentElement.clientWidth - r.right),
+      fontMain: c(main).fontSize, linjeMain: c(main).lineHeight,
+      margKicker: c(h(j.kicker)).marginTop, margIngress: c(h(j.ingress)).marginTop, margDato: c(h(j.dato)).marginTop,
+      kicker: { f: c(h(j.kicker)).color, s: c(h(j.kicker)).fontSize, v: c(h(j.kicker)).fontWeight }, dato: { f: c(h(j.dato)).color, s: c(h(j.dato)).fontSize },
+      ingress: { f: c(h(j.ingress)).color, s: c(h(j.ingress)).fontSize }, tittel: c(h(j.tittel)).fontSize, tittelLinje: c(h(j.tittel)).lineHeight, tittelMarg: c(h(j.tittel)).marginTop,
+      kort: { bg: c(kort).backgroundColor, radius: c(kort).borderTopLeftRadius },
+      kortH2: kort.querySelector('h2') ? c(kort.querySelector('h2')).marginTop : '0px', h2: c(h2).fontSize, punkt: getComputedStyle(li, '::before').borderTopLeftRadius, listeStil: c(li.parentElement).listStyleType,
+      piller: piller.length, ut: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      lenkeStrek: c(h('p a')).textDecorationLine,
+      andreKort: [...document.querySelectorAll(j.main + ' *')].filter((e) => !e.matches(j.kort) && c(e).backgroundColor !== 'rgba(0, 0, 0, 0)' && !e.closest(j.kort)).length,
+    };
+  }, j);
+  expect(m.sidetype).toBe('juss');
+  expect(m.bredde).toBeLessThanOrEqual(bredde >= 1001 ? 860 : bredde);
+  if (bredde >= 1001) expect(Math.abs(m.venstre - m.hoyre)).toBeLessThanOrEqual(1);
+  expect(m.fontMain).toBe('19px');
+  expect([m.margKicker, m.margIngress, m.margDato]).toEqual(['0px', '18px', '14px']);
+  expect(m.kicker).toEqual({ f: 'rgb(95, 89, 82)', s: '15px', v: '500' });
+  expect(m.dato).toEqual({ f: 'rgb(95, 89, 82)', s: '15px' });
+  expect(m.ingress).toEqual({ f: 'rgb(95, 89, 82)', s: '20px' });
+  expect(m.tittel).toBe(bredde >= 721 ? '38px' : '32px');
+  expect(m.tittelLinje).toBe(bredde >= 721 ? '39.9px' : '33.6px'); expect(m.tittelMarg).toBe('6px');
+  expect(m.kort).toEqual({ bg: 'rgb(245, 243, 239)', radius: '28px' });
+  expect(m.kortH2).toBe('0px'); expect(m.h2).toBe('26px'); expect(m.punkt).toBe('50%'); expect(m.listeStil).toBe('none');
+  expect(m.piller).toBe(0); expect(m.andreKort).toBe(0); expect(m.lenkeStrek).toContain('underline');
+  expect(m.ut).toBeLessThanOrEqual(0);
+});

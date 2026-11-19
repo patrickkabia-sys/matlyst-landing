@@ -170,7 +170,46 @@ test('toppvelgeren virker med tastatur på /verktoy/kopp-til-dl/', async ({ brow
 test('velgeren bruker riktig motstykke på personvernsiden', async ({ browser, baseURL }) => {
   const { context, page } = await nySide(browser, 'en-US');
   await page.goto('/personvern.html');
-  await page.locator('.language-switcher-bottom a[aria-label="Svenska"]').click();
+  // Den mørke bunnen er klebrig bak arket og avdekkes først når siden er rullet helt ned. Den lange
+  // personvernsiden ligger «i bildet» uten å være det, så testen ruller som en leser gjør.
+  const sv = page.locator('.under .language-switcher-bottom a[aria-label="Svenska"]');
+  await expect(sv).toHaveCount(1);
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await sv.click();
+  await expect(page).toHaveURL(`${baseURL}/sv/integritet/`);
+  await context.close();
+});
+
+// Den klebrige mørke bunnen må nås slik en bruker gjør: med musehjul og med tastatur.
+test('personvernsiden: bunnvelgeren nås med musehjul og vanlig klikk, uten scrollIntoView', async ({ browser, baseURL }) => {
+  const { context, page } = await nySide(browser, 'en-US');
+  await page.goto('/personvern.html');
+  const sv = page.locator('.under .language-switcher-bottom a[aria-label="Svenska"]');
+  await expect(sv).toHaveCount(1);
+  await page.mouse.move(640, 400);
+  for (let i = 0; i < 80 && !(await page.evaluate(() => window.scrollY + innerHeight >= document.documentElement.scrollHeight - 1)); i++) await page.mouse.wheel(0, 3000);
+  await expect.poll(() => page.evaluate(() => window.scrollY + innerHeight >= document.documentElement.scrollHeight - 1)).toBe(true);
+  const boks = await sv.boundingBox();
+  const treff = await page.evaluate(({ x, y }) => document.elementFromPoint(x, y)?.closest('a')?.getAttribute('aria-label'), { x: boks.x + boks.width / 2, y: boks.y + boks.height / 2 });
+  expect(treff).toBe('Svenska');
+  await page.mouse.click(boks.x + boks.width / 2, boks.y + boks.height / 2);
+  await expect(page).toHaveURL(`${baseURL}/sv/integritet/`);
+  await context.close();
+});
+
+test('personvernsiden: bunnvelgeren nås med Tab og Enter', async ({ browser, baseURL }) => {
+  const { context, page } = await nySide(browser, 'en-US');
+  await page.goto('/personvern.html');
+  let fokus = null;
+  for (let i = 0; i < 400; i++) {
+    await page.keyboard.press('Tab');
+    fokus = await page.evaluate(() => { const a = document.activeElement; return a?.closest?.('.under .language-switcher-bottom') ? a.getAttribute('aria-label') : null; });
+    if (fokus === 'Svenska') break;
+  }
+  expect(fokus).toBe('Svenska');
+  const synlig = await page.evaluate(() => { const r = document.activeElement.getBoundingClientRect(); const e = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2); return e?.closest('a') === document.activeElement; });
+  expect(synlig, 'lenken med fokus er ikke dekket av arket').toBe(true);
+  await page.keyboard.press('Enter');
   await expect(page).toHaveURL(`${baseURL}/sv/integritet/`);
   await context.close();
 });
