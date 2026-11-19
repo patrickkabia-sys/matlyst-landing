@@ -96,7 +96,7 @@
   if (fast) {
     const underside = 'sidetype' in document.body.dataset;
     const forste = underside
-      ? document.querySelector('.blad :is(header.locale-page-hero, header.hero, div.hero, main.doc .doc-title, main.legal-doc > header, main h1)')
+      ? document.querySelector('.blad :is(header.locale-page-hero, header.hero, div.hero, main.doc .doc-title, main.legal-doc > header, main h1)') ?? document.querySelector('header.topp')
       : document.querySelector('main [data-hent]');
     const neste = document.querySelector('.bunn [data-hent]');
     let venter = false;

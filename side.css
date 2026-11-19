@@ -162,11 +162,11 @@ body[data-sidetype="omregner"] .btn-store{display:inline-flex;align-items:center
   body[data-sidetype="omregner"] .omregner-svar{font-size:2.25rem}
 }
 @media (min-width:1001px){
-  body[data-sidetype="omregner"] form.omregner{margin-inline:-50px}
+  /* Bryter ut av lesekolonnen bare så langt det er plass: aldri forbi mainrammen eller skjermkanten (forstørret tekst gjør kolonnen like bred som rammen) */
+  body[data-sidetype="omregner"] form.omregner{margin-inline:calc(-1 * max(0px, min(150px, (100vw - 100%) / 2 - 24px, (1184px - 100%) / 2)))}
   body[data-sidetype="omregner"] .omregner-svar{font-size:2.75rem}
 }
 @media (min-width:1201px){
-  body[data-sidetype="omregner"] form.omregner{margin-inline:-150px}
   body[data-sidetype="omregner"] .omregner-rad input{font-size:4.5rem}
 }
 @media (max-width:720px){
