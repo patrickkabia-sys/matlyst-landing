@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { alleSider, erUtrullet, tjenestefamilie, EKSEMPEL, BLOGGINDEKS, TYPER, UTRULLET } from '../../../scripts/sidetyper.mjs';
 
 const ROT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
-const KART = join(ROT, 'qa', 'forhandsvisning', 'kart.json');
+const KART_STANDARD = join(ROT, 'qa', 'forhandsvisning', 'kart.json');
 
 // Forsiden har nytt skall fra før (forside-løpet) og står ikke i UTRULLET. Bare «/» er klar.
 const FORSIDE_KLAR = '/';
@@ -34,7 +34,7 @@ export function eksempelStier() {
 }
 
 /** Rader fra qa/forhandsvisning/kart.json (lages av skall-paa --forhandsvis). */
-function forhandsvisning(utrullet) {
+function forhandsvisning(utrullet, KART = KART_STANDARD) {
   // En manglende eller tom kart.json må aldri gi en grønn revisjon uten sider.
   if (!existsSync(KART)) throw new Error(`REVISJON=forhandsvisning, men ${KART} mangler. Kjør skall-paa --forhandsvis først.`);
   const kart = JSON.parse(readFileSync(KART, 'utf8'));
@@ -45,16 +45,18 @@ function forhandsvisning(utrullet) {
 }
 
 /**
- * @param {{ revisjon?: string, sprak?: string, utrullet?: Set<string> }} valg
+ * @param {{ revisjon?: string, sprak?: string, utrullet?: Set<string>, kart?: string }} valg
+ *   kart: sti til forhåndsvisningskartet (standard qa/forhandsvisning/kart.json; tester bruker en midlertidig).
  * @returns {{ sti: string, url: string, type: string, sprak: string, fulltSkall: boolean }[]}
  */
 export function utvalg({
   revisjon = process.env.REVISJON,
   sprak = process.env.REVISJON_SPRAK,
   utrullet = UTRULLET,
+  kart = KART_STANDARD,
 } = {}) {
   const medSprak = (rader) => (sprak ? rader.filter((r) => r.sprak === sprak) : rader);
-  if (revisjon === 'forhandsvisning') return medSprak(forhandsvisning(utrullet));
+  if (revisjon === 'forhandsvisning') return medSprak(forhandsvisning(utrullet, kart));
   const klare = sider().filter((s) => klar(s, utrullet));
   if (revisjon === 'alle') return medSprak(klare.map(rad));
   if (revisjon && TYPER.includes(revisjon)) return medSprak(klare.filter((s) => s.type === revisjon).map(rad));

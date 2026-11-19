@@ -1,7 +1,8 @@
 // Revisjon per sidetype: hver side i utvalget() åpnes på fire bredder, med forstørret tekst
 // og zoom, og skallet sjekkes uten JavaScript. Typer som ikke er rullet ut, gir ingen rader.
-import { existsSync, mkdirSync, readFileSync, rmSync, rmdirSync, writeFileSync } from 'node:fs';
-import { dirname, join } from 'node:path';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { test, expect } from '@playwright/test';
 import { revider, samleFeil, skalering, zoom } from './hjelp/revisjon.mjs';
 import { utvalg, utrulledeTyper, eksempelStier } from './hjelp/utvalg.mjs';
@@ -77,19 +78,15 @@ test('utvalget følger predikatet: en utrullet type får sine sider, andre ingen
 });
 
 test('forhåndsvisning uten kart.json eller med tom kart.json feiler tydelig', () => {
-  const kart = join(process.cwd(), 'qa', 'forhandsvisning', 'kart.json');
-  const fantes = existsSync(kart);
-  const original = fantes ? readFileSync(kart, 'utf8') : null;
+  // Egen midlertidig mappe: den ekte kart.json røres aldri, så parallelle prosesser ikke forstyrres.
+  const mappe = mkdtempSync(join(tmpdir(), 'revisjon-kart-'));
+  const kart = join(mappe, 'kart.json');
   try {
-    if (fantes) rmSync(kart);
-    expect(() => utvalg({ revisjon: 'forhandsvisning', sprak: '' })).toThrow(/mangler/);
-    mkdirSync(dirname(kart), { recursive: true });
+    expect(() => utvalg({ revisjon: 'forhandsvisning', sprak: '', kart })).toThrow(/mangler/);
     writeFileSync(kart, '[]');
-    expect(() => utvalg({ revisjon: 'forhandsvisning', sprak: '' })).toThrow(/tom/);
+    expect(() => utvalg({ revisjon: 'forhandsvisning', sprak: '', kart })).toThrow(/tom/);
   } finally {
-    if (original !== null) writeFileSync(kart, original);
-    else rmSync(kart, { force: true });
-    try { rmdirSync(dirname(kart)); } catch { /* ikke tom */ }
+    rmSync(mappe, { recursive: true, force: true });
   }
 });
 
