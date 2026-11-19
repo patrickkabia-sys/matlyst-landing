@@ -68,6 +68,7 @@ test('plassholdere finnes bare i de dokumenterte tekstene', () => {
     else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) gaa(x, sti ? `${sti}.${k}` : k);
   })(t, '');
   assert.deepEqual(funnet, {
+    'spor.kort.svarAria': ['forklaring', 'oppskrift'],
     'spor.kort.endringer': ['antall'],
     'spor.kort.byttet': ['fra', 'til'],
     'spor.kort.fjernet': ['vare'],

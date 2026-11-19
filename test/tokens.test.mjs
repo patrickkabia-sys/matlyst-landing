@@ -75,3 +75,15 @@ test('kulas lys og refleks og svarets kant har nøyaktig prototypens verdier', (
   assert.deepEqual(['kule-topp', 'kule-dyp', 'kule-kant', 'kule-rosa', 'kule-lys', 'kule-refleks', 'a-kant'].map(verdi),
     ['#FFF4EC', '#8A7CC2', '86 68 156', '#EE92BB', '255 249 238', '167 149 209', 'rgb(90 70 50 / .14)']);
 });
+
+test('kortene og prisplanene bruker nøyaktig prototypens farger', () => {
+  const forventet = {
+    'a-natt': '#2B2926', 'a-natt-tekst': '#EDE8DF', 'a-natt-dempet': '#B5ADA4',
+    'a-skyver': '#E6E0D8', 'a-merke1': '#FBE3D6', 'a-merke2': '#DDEFE0',
+    'a-merke3': '#E4E1F3', 'a-merke4': '#F1E4CE', 'a-blaa': '#3D4AB5', 'a-brun': '#6E4A00',
+    'a-fjern': '#C43434', 'a-meta': '#EEEBE6', 'a-prikk1': '#C4551C', 'a-prikk2': '#2E8B57',
+    'a-prikk3': '#5A64C8', 'a-prikk4': '#A07A1E', 'pro-tekst': '#F3EFE8', 'pro-dempet': '#B9B2A8',
+    'svart': '#000000', 'kule-gjenskinn': '#FFEEF7',
+  };
+  for (const [navn, farge] of Object.entries(forventet)) assert.equal(verdi(navn), farge, navn);
+});

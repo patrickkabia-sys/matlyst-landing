@@ -69,7 +69,7 @@ test('følgemenyen har fem lenker, og hver peker på en del som finnes', () => {
   const lenker = [...meny.matchAll(/<a href="#([\w-]+)">([^<]+)<\/a>/g)].map(([, id, tekst]) => [id, tekst]);
   assert.deepEqual(lenker.map((l) => l[1]), ['Lagre', 'Spør Matlyst', 'Lag maten', 'Pris', 'Spørsmål']);
   assert.deepEqual(lenker.map((l) => l[0]), ['lagre', 'spor', 'middag', 'pris', 'svar']);
-  assert.match(html, /id="lagre"/);
+  for (const [id] of lenker) assert.match(html, new RegExp(`id="${id}"`));
 });
 
 test('kildene på båndet er de godkjente, og lista står fire ganger', () => {
@@ -177,4 +177,73 @@ test('kokebok og svar leser nøstede tekstnøkler og validerer plassholderne', (
     TEKST.nb.spor.kort.byttet = 'Erstatt {fra} med {til}';
     assert.match(forside('nb'), /Erstatt <b>kyllingfilet<\/b> med <b>kikerter<\/b>/);
   } finally { TEKST.nb.spor.kort.byttet = gammel; }
+});
+
+const seksjon = (klasse) => html.match(new RegExp(`<section class="${klasse}[^\"]*"[\\s\\S]*?</section>`))?.[0] ?? '';
+const renTekst = (s) => s.replace(/<[^>]+>/g, '').replaceAll('&amp;', '&').trim();
+
+test('fem kort i godkjent rekkefølge', () => {
+  assert.match(seksjon('del'), /id="middag"/);
+  assert.match(seksjon('del'), /id="trio"/);
+  assert.deepEqual([...seksjon('del').matchAll(/<h3[^>]*>([^<]+)<\/h3>/g)].map((m) => m[1]), ['Skaler', 'Lag maten', 'Ukemeny', 'Handle', 'Husstand']);
+  assert.deepEqual([...seksjon('del').matchAll(/data-inn="([vh])"/g)].map((m) => m[1]), ['v', 'h', 'v', 'v', 'h']);
+});
+
+test('pris: to kort, personvernlinje, og ingen kroner på siden', () => {
+  const del = seksjon('pris');
+  assert.equal((del.match(/class="plan(?: pro)?"/g) ?? []).length, 2);
+  for (const tekst of ['Hva koster det?', '5 importer i måneden.', 'Uten grensen på fem importer.', 'Skriv om oppskrifter med Spør Matlyst', 'Matlyst sporer deg ikke for reklame. Ingen annonser, ingen salg av data.']) assert.ok(del.includes(tekst), tekst);
+  assert.match(del, /<p class="vernord">Vi har bedre ting å gjøre enn å spore deg\. Nyt maten din\.<\/p>/);
+  assert.match(del, /<a href="\/personvern\.html">/);
+  assert.match(del, /M5 12\.5l4\.5 4\.5L19 7\.5/);
+  const synlig = renTekst(html.replace(/<script[\s\S]*?<\/script>/g, ' '));
+  assert.doesNotMatch(synlig, /\d\s?kr\b|kroner|ubegrenset|kopper/i);
+  assert.doesNotMatch(synlig.replace(/(?<=\d)[–—](?=\d)/g, ''), /[–—]/);
+});
+
+test('synlige spørsmål og svar er identiske med ett FAQPage-skjema i hodet', () => {
+  const synlig = [...seksjon('ofte').matchAll(/<details[^>]*>\s*<summary>([\s\S]*?)<\/summary>\s*<p>([\s\S]*?)<\/p>/g)].map(([, q, a]) => ({ q: renTekst(q), a: renTekst(a) }));
+  const skjemaer = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => JSON.parse(m[1])).filter((s) => s['@type'] === 'FAQPage');
+  assert.equal(synlig.length, 6);
+  assert.equal(skjemaer.length, 1);
+  assert.ok(html.indexOf('"FAQPage"') < html.indexOf('</head>'));
+  assert.deepEqual(skjemaer[0].mainEntity.map((e) => ({ q: e.name, a: e.acceptedAnswer.text })), synlig);
+});
+
+test('ingen H2 ligner H1, og ingen overskrift gjentar et ord', () => {
+  const ord = (s) => renTekst(s).toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+  const a = new Set(ord(html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1]));
+  for (const [, tekst] of html.matchAll(/<h2[^>]*>([\s\S]*?)<\/h2>/g)) {
+    const b = new Set(ord(tekst));
+    assert.ok([...a].filter((o) => b.has(o)).length / new Set([...a, ...b]).size < .75, tekst);
+  }
+  for (const [, tekst] of html.matchAll(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/g)) {
+    const ordene = ord(tekst);
+    for (let i = 1; i < ordene.length; i++) assert.notEqual(ordene[i], ordene[i - 1], tekst);
+  }
+});
+
+test('kort, pris og spørsmål bruker den kastende tekstleseren og fyll', () => {
+  for (const [objekt, nokkel, sti] of [[TEKST.nb.middag.skaler.ingredienser[0], 'navn', 'middag.skaler.ingredienser.0.navn'], [TEKST.nb.middag.lag, 'start', 'middag.lag.start'], [TEKST.nb.middag.ukemeny, 'uke', 'middag.ukemeny.uke'], [TEKST.nb.middag.handle.ark, 'oppdater', 'middag.handle.ark.oppdater'], [TEKST.nb.eksempler.husstander[1].varer[0], 'eier', 'eksempler.husstander.1.varer.0.eier'], [TEKST.nb.pris.pro, 'linje', 'pris.pro.linje'], [TEKST.nb.svar.sporsmal[0], 'a', 'svar.sporsmal.0.a']]) {
+    const gammel = objekt[nokkel];
+    try { delete objekt[nokkel]; assert.throws(() => forside('nb'), (e) => e.message.includes(sti)); }
+    finally { objekt[nokkel] = gammel; }
+  }
+  const gammel = TEKST.nb.middag.husstand.telling;
+  try { TEKST.nb.middag.husstand.telling = '{ukjent}'; assert.throws(() => forside('nb'), /Mangler plassholder/); }
+  finally { TEKST.nb.middag.husstand.telling = gammel; }
+  for (const h of TEKST.nb.eksempler.husstander) assert.notEqual(6 - h.folk.length, 1);
+  assert.equal((seksjon('del').match(/<template class="hus-eksempel"/g) ?? []).length, 3);
+});
+
+test('Spør Matlyst har tilgjengelig forspann og svarbeskrivelse fra hver mal', () => {
+  assert.match(seksjon('spor'), /<p class="felt"><span class="kun-skjermleser">Eksempel på hva du kan be om/);
+  assert.doesNotMatch(seksjon('spor'), /<p class="felt" aria-label/);
+  const maler = [...seksjon('spor').matchAll(/<template class="spor-eksempel"[^>]*data-aria="([^"]+)"/g)];
+  assert.equal(maler.length, 4);
+  assert.equal(new Set(maler.map((m) => m[1])).size, 4);
+});
+
+test('forsidens fargeliteraler er erstattet med tokens også når de har alfa', () => {
+  assert.doesNotMatch(les('forside.css'), /#[\da-f]{3,8}\b|rgba?\(\s*\d/gi);
 });

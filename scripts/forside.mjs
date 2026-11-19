@@ -77,9 +77,9 @@ function lesTekst(verdi, sti) {
   } });
 }
 
-function hode(sprak, oppsett) {
+function hode(sprak, oppsett, faq) {
   const butikklenker = JSON.parse(oppsett.hode.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]).downloadUrl;
-  return `<head>${oppsett.hode}${organisasjonSkjema(sprak, { ios: butikklenker[0], play: butikklenker[1] })}
+  return `<head>${oppsett.hode}${faq}${organisasjonSkjema(sprak, { ios: butikklenker[0], play: butikklenker[1] })}
 </head>`;
 }
 
@@ -134,6 +134,7 @@ function spor(t) {
   // Eksempelsvarene bygges én gang fra tekstkilden, også for rundene i nettleseren.
   const svarene = t.eksempler.svar.map((svar) => ({
     antall: fyll(k.endringer, { antall: svar.antall }),
+    aria: fyll(k.svarAria, { oppskrift: k.oppskrift, forklaring: svar.forklaring }),
     forklaring: svar.forklaring,
     liste: svar.endringer.map((endring) => {
       let tekst;
@@ -153,13 +154,13 @@ function spor(t) {
         <div class="kulerom" aria-hidden="true"><div class="kule"><i class="virvel"></i><i class="lys"></i><i class="refleks"></i><i class="punkt"></i></div><i class="kuleskygge"></i></div>
         <h2>${skjerm(s.tittel)}</h2>
         <p class="inn">${skjerm(s.ingress)}</p>
-        <p class="felt" aria-label="${skjerm(s.feltAria)}"><span id="sporTekst">${skjerm(s.forslag[0])}</span><b aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></b></p>
+        <p class="felt"><span class="kun-skjermleser">${skjerm(s.feltAria)}: </span><span id="sporTekst">${skjerm(s.forslag[0])}</span><b aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M6 11l6-6 6 6"></path></svg></b></p>
         <div class="forslagrad" role="group" aria-label="${skjerm(s.forslagAria)}">
           ${s.forslag.map((tekst, i) => `<button type="button" class="forslag" aria-pressed="${i === 0}">${skjerm(tekst)}</button>`).join('\n          ')}
         </div>
         <p class="smaatt">${skjerm(s.smaatt)}</p>
       </div>
-      <div class="app" id="sporSvar" role="img" aria-label="${skjerm(k.aria)}">
+      <div class="app" id="sporSvar" role="img" aria-label="${skjerm(svarene[0].aria)}">
         <div class="a-svar">
           <div class="a-ordmerke"><span>${skjerm(k.spor)}</span><span class="ordmerke">${skjerm(k.merkeStart)}<em>${skjerm(k.merkeSlutt)}</em></span><small>${skjerm(k.pro)}</small></div>
           <div class="a-innhold">
@@ -173,27 +174,128 @@ function spor(t) {
         <p class="a-ki">${skjerm(k.ki)}</p>
       </div>
     </div></div>
-    ${svarene.map((svar) => `<template class="spor-eksempel" data-antall="${skjerm(svar.antall)}" data-forklaring="${skjerm(svar.forklaring)}">${svar.liste}</template>`).join('')}
+    ${svarene.map((svar) => `<template class="spor-eksempel" data-aria="${skjerm(svar.aria)}" data-antall="${skjerm(svar.antall)}" data-forklaring="${skjerm(svar.forklaring)}">${svar.liste}</template>`).join('')}
   </section>`;
 }
 
-// Disse seksjonene fylles i oppgave 8.
-function middag() { return ''; }
-function pris() { return ''; }
-function svar() { return ''; }
+const klokkeikon = (maal = 14, strek = 1.8) => `<svg aria-hidden="true" width="${maal}" height="${maal}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${strek}" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>`;
+const ansikt = (n, maal) => `<img data-n="${n}" src="/images/forside/folk/${String(n).padStart(2, '0')}.webp" alt="" width="${maal}" height="${maal}" loading="lazy">`;
+const eier = (rad) => `<span class="a-eier">${ansikt(rad.ansikt, 20)}${skjerm(rad.eier)}</span>`;
+function maltid(dag, merke, medEier = false) {
+  return `<div class="a-maltid${medEier ? ` a-innrad${Object.hasOwn(dag, 'ny') && dag.ny ? ' ny skjult' : ''}` : ''}"><img src="/images/forside/mat/${skjerm(dag.fil)}.webp" alt="" width="92" height="92" loading="lazy"><div><div class="a-tittel">${skjerm(dag.rett)}</div><div class="a-meta"><span>${skjerm(merke)}</span><em>${klokkeikon()}${skjerm(dag.tid)}</em>${medEier ? eier(dag) : ''}</div></div></div>`;
+}
+function kalender(k, forsteUkedag) {
+  const forskyvning = (k.startUkedag - forsteUkedag + 7) % 7;
+  const celler = [...Array(forskyvning).fill(''), ...k.dager];
+  while (celler.length % 7) celler.push('');
+  return Array.from({ length: celler.length / 7 }, (_, i) => {
+    const uke = celler.slice(i * 7, i * 7 + 7);
+    return `<div class="a-kr${uke.includes(k.idag) ? ' valgt' : ''}">${uke.map((dag) => `<span class="${dag === k.idag ? 'idag' : k.planlagt.includes(dag) ? 'prikk' : ''}">${skjerm(dag)}</span>`).join('')}</div>`;
+  }).join('');
+}
+function stegtekst(steg) {
+  const tekst = skjerm(steg.tekst);
+  return `<span>${Object.hasOwn(steg, 'tidsuttrykk') ? tekst.replace(skjerm(steg.tidsuttrykk), `<u>${klokkeikon(15, 2.2)}${skjerm(steg.tidsuttrykk)}</u>`) : tekst}</span>`;
+}
+function middag(t, oppsett) {
+  const m = t.middag, husstander = t.eksempler.husstander;
+  const husinnhold = husstander.map((h) => {
+    const innhold = Object.hasOwn(h, 'dager')
+      ? h.dager.map((dag) => `<div class="a-dag">${skjerm(dag.dag)}</div>${maltid(dag, m.husstand.maltid, true)}`).join('')
+      : `<div class="a-listehode">${skjerm(m.husstand.listehode)}<small>${skjerm(h.listetittel)}</small></div>${h.varer.map((vare) => `<div class="a-vare a-innrad${Object.hasOwn(vare, 'ny') && vare.ny ? ' ny skjult' : ''}"><i></i><span>${skjerm(vare.navn)}</span><b><em>${skjerm(vare.mengde)}</em>${eier(vare)}</b></div>`).join('')}`;
+    return `<div class="a-hus"><span class="a-folk">${h.folk.map((n) => ansikt(n, 46)).join('')}</span><span><b>${skjerm(h.navn)}</b><small>${skjerm(fyll(m.husstand.telling, { n: h.folk.length, ledige: 6 - h.folk.length }))}</small></span></div>${innhold}`;
+  });
+  return `<section class="del ramme" id="middag"><h2>${skjerm(m.tittel)}</h2><p>${skjerm(m.ingress)}</p><div class="bento" id="trio">
+<article class="rute" data-inn="v">
+        <div class="rutetekst"><h3>${skjerm(m.skaler.tittel)}</h3><p>${skjerm(m.skaler.tekst)}</p></div>
+        <div class="app" id="demoSkaler" role="img" aria-label="${skjerm(m.skaler.aria)}">
+          <div class="a-tittel">${skjerm(m.skaler.oppskrift)}</div>
+          <div class="a-rad"><span class="a-pille"><svg aria-hidden="true" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>${skjerm(m.skaler.tid)}</span><span class="a-teller"><i>${skjerm(m.demo.minus)}</i><b class="antall" data-antall="${m.demo.porsjoner.map(skjerm).join('|')}">${skjerm(m.demo.porsjoner[0])}</b><i class="pluss">${skjerm(m.demo.pluss)}</i></span></div>
+          <div class="a-lager"><i></i>${skjerm(m.skaler.lager)}</div>
+          ${m.skaler.ingredienser.map((vare) => `<div class="a-ing"><span>${skjerm(vare.navn)}</span><b data-m="${vare.mengder.map(skjerm).join('|')}">${skjerm(vare.mengder[0])}</b></div>`).join('')}
+        </div>
+      </article>
+<article class="rute" data-inn="h" data-forsink="90">
+        <div class="rutetekst"><h3>${skjerm(m.lag.tittel)}</h3><p>${skjerm(m.lag.tekst)}</p></div>
+        <div class="app" id="demoLag" data-tider="${m.lag.tider.map(skjerm).join('|')}" role="img" aria-label="${skjerm(m.lag.aria)}">
+          <div class="a-lagscene">
+            <div class="a-stegliste">
+              <div class="a-steg"><b><em>${skjerm(m.lag.steg[0].nr)}</em><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 7"></path></svg></b>${stegtekst(m.lag.steg[0])}</div>
+              <div class="a-steg"><b><em>${skjerm(m.lag.steg[1].nr)}</em><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 7"></path></svg></b>${stegtekst(m.lag.steg[1])}</div>
+              <div class="a-steg"><b><em>${skjerm(m.lag.steg[2].nr)}</em><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 7"></path></svg></b>${stegtekst(m.lag.steg[2])}</div>
+            </div>
+            <div class="a-timer">
+              <p>${skjerm(m.lag.timerTekst)}</p>
+              <div class="a-tid">${skjerm(m.lag.tider[0])}</div>
+              <div class="a-spor"><i></i><b></b></div>
+              <div class="a-skala"><span>${skjerm(m.lag.skala[0])}</span><span>${skjerm(m.lag.skala[1])}</span></div>
+              <div class="a-knapper"><span class="avbryt">${skjerm(m.lag.avbryt)}</span><span class="start">${skjerm(m.lag.start)}</span></div>
+            </div>
+            <span class="a-tapp"><i></i><b></b></span>
+          </div>
+        </div>
+      </article>
+<article class="rute bred" data-inn="v">
+        <div class="rutetekst"><h3>${skjerm(m.ukemeny.tittel)}</h3><p>${skjerm(m.ukemeny.tekst)}</p></div>
+        <div class="app a-plan" id="demoPlan" role="img" aria-label="${skjerm(m.ukemeny.aria)}">
+          <div class="a-uke"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg><span>${skjerm(m.ukemeny.uke)}<svg class="ned" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></div>
+          <div class="a-kal"><div class="a-kalinn"><div class="a-kalflate">
+            <div class="a-kalhode"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg><span>${skjerm(m.ukemeny.maaned)}</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></div>
+            <div class="a-ukedager">${m.ukemeny.ukedager.map((dag) => `<span>${skjerm(dag)}</span>`).join('')}</div>
+            ${kalender(m.ukemeny.kalender, oppsett.forsteUkedag)}
+          </div></div></div>
+          ${m.ukemeny.dager.map((dag) => `<div class="a-dag">${skjerm(dag.dag)}</div>${maltid(dag, m.ukemeny.maltid)}`).join('')}
+        </div>
+      </article>
+<article class="rute" data-inn="v">
+        <div class="rutetekst"><h3>${skjerm(m.handle.tittel)}</h3><p>${skjerm(m.handle.tekst)}</p></div>
+        <div class="app" id="demoHandle" role="img" aria-label="${skjerm(m.handle.aria)}">
+          <div class="a-merker">${m.handle.retter.map((rett, i) => `<span class="m${i + 1}${i === 1 ? ' handle-rett' : ''}">${skjerm(rett)}</span>`).join('')}</div>
+          <div class="a-hylle">${skjerm(m.handle.hylle)}</div>
+          ${m.handle.varer.map((vare, i) => `<div class="a-vare"><i>${hake}</i><span>${skjerm(vare.navn)}</span><b>${[[1, 2, 3], [2, 4], [2], [1]][i].map((n) => `<i style="--p:var(--a-prikk${n})"></i>`).join('')}<em data-m="${vare.mengder.map(skjerm).join('|')}">${skjerm(vare.mengder[0])}</em></b></div>`).join('')}
+          <div class="a-meny">${m.handle.meny.map((valg) => `<span>${skjerm(valg)}</span>`).join('')}</div>
+          <div class="a-ark"><div class="a-tittel">${skjerm(m.handle.ark.oppskrift)}</div><small>${skjerm(m.handle.ark.antall)}</small><div class="a-teller"><i>${skjerm(m.demo.minus)}</i><b class="antall" data-antall="${m.demo.porsjoner.map(skjerm).join('|')}">${skjerm(m.demo.porsjoner[0])}</b><i class="pluss">${skjerm(m.demo.pluss)}</i></div><div class="a-oppdater">${skjerm(m.handle.ark.oppdater)}</div></div>
+          <span class="a-tapp"><i></i><b></b></span>
+        </div>
+      </article>
+<article class="rute" data-inn="h" data-forsink="90">
+        <div class="rutetekst"><h3>${skjerm(m.husstand.tittel)}</h3><p>${skjerm(m.husstand.tekst)}</p></div>
+        <div class="app" id="demoHus">
+          <div class="a-husvelg" role="group" aria-label="${skjerm(m.husstand.velgAria)}">${husstander.map((h, i) => `<button type="button" aria-pressed="${i === 0}"><span>${h.folk.slice(0, 3).map((n) => ansikt(n, 24)).join('')}</span>${skjerm(h.merke)}</button>`).join('')}</div>
+          <div class="a-husflate" aria-live="off">${husinnhold[0]}</div>
+          ${husinnhold.map((innhold, i) => `<template class="hus-eksempel" data-sist="${husstander[i].sist}">${innhold}</template>`).join('')}
+        </div>
+      </article>
+</div></section>`;
+}
+function pris(t) {
+  const p = t.pris;
+  const prishake = '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>';
+  return `<section class="pris ramme" id="pris"><h2>${skjerm(p.tittel)}</h2><p>${skjerm(p.ingress)}</p><div class="prisvalg">${[p.gratis, p.pro].map((plan, i) => `<article class="plan${i ? ' pro' : ''}"><h3>${skjerm(plan.tittel)}</h3><p class="planlinje">${skjerm(plan.linje)}</p><ul>${plan.punkter.map((punkt) => `<li>${prishake}${skjerm(punkt)}</li>`).join('')}</ul><p class="planfot">${skjerm(plan.fot)}</p></article>`).join('')}</div><div class="vernblokk"><p class="vernord">${skjerm(p.vernord)}</p><p class="vern"><span>${skjerm(p.vern)}</span><a href="/personvern.html">${skjerm(p.vernlenke)}</a></p></div></section>`;
+}
+function svar(t) {
+  const s = t.svar;
+  const par = s.sporsmal.map(({ q, a }) => ({ q, a }));
+  return {
+    html: `<section class="ofte ramme" id="svar"><h2>${skjerm(s.tittel)}</h2><div class="svarliste">${par.map(({ q, a }) => `<details><summary>${skjerm(q)}<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></summary><p>${skjerm(a)}</p></details>`).join('')}</div></section>`,
+    skjema: `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: par.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }).replaceAll('<', '\\u003c')}</script>`,
+  };
+}
+
 
 export function forside(sprak) {
   if (!Object.hasOwn(TEKST, sprak) || !Object.hasOwn(SPRAK, sprak)) throw new RangeError(`Mangler forside for språk: ${sprak}`);
   const t = lesTekst(TEKST[sprak], sprak), oppsett = SPRAK[sprak];
   const adresser = { ...sider, [sprak]: oppsett.adresse };
+  const faq = svar(t);
   return `<!DOCTYPE html>
 <html lang="${oppsett.lang}">
-${hode(sprak, oppsett)}
+${hode(sprak, oppsett, faq.skjema)}
 <body data-app-uttrykk="1">
 <div class="side"><div class="kort"><div class="blad">
 ${topp(sprak, { folg: t.folg.lenker.map((lenke) => ({ href: '#' + lenke.mal, tekst: lenke.tekst })), sprakvelger: sprakvelger(sprak, 'topp', adresser) })}
 <main id="hovedinnhold">
-${helt(t, oppsett)}${kokebok(t)}${spor(t)}${middag(t, oppsett)}${pris(t)}${svar(t)}
+${helt(t, oppsett)}${kokebok(t)}${spor(t)}${middag(t, oppsett)}${pris(t)}${faq.html}
 </main></div>
 ${hylledel(sprak)}</div>
 ${morkBunn(sprak, { sprakvelger: sprakvelger(sprak, 'bunn', adresser) })}

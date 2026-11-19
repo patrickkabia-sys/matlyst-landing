@@ -158,6 +158,7 @@
       liste.replaceChildren(svarene[nr].content.cloneNode(true));
       antall.textContent = svarene[nr].dataset.antall;
       forklaring.textContent = svarene[nr].dataset.forklaring;
+      seksjon.querySelector('#sporSvar').setAttribute('aria-label', svarene[nr].dataset.aria);
       kort.classList.remove('endrer');
       vist = nr;
     };
@@ -219,4 +220,125 @@
     seksjon.classList.toggle('i-bildet', synlig);
     settRolig();
   }
+  // Hvert kort har en egen tidslinje. Klokka går bare mens kortet er i bildet.
+  const kortloep = (id, bygg) => {
+    const app = document.getElementById(id), rute = app.closest('.rute');
+    let synlig = !('IntersectionObserver' in window), ramme = 0, sist = 0, tid = 0, neste = 0, innkommet = false;
+    const animer = (el, rammer, valg) => {
+      if (!bevegelse.matches && synlig) el.animate(rammer, valg);
+    };
+    const settInn = (el, verdi) => {
+      if (el.textContent === verdi) return;
+      el.textContent = verdi;
+      animer(el, [{ opacity: 0, transform: 'translateY(7px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: 'cubic-bezier(.16,1,.3,1)' });
+    };
+    const trykk = (el) => animer(el, [{ transform: 'scale(1)' }, { transform: 'scale(.88)' }, { transform: 'scale(1)' }], { duration: 520, easing: 'cubic-bezier(.16,1,.3,1)' });
+    const pek = (el, ms = 950) => {
+      const scene = app.querySelector('.a-lagscene') || app;
+      const tapp = app.querySelector('.a-tapp'), s = scene.getBoundingClientRect(), r = el.getBoundingClientRect();
+      tapp.style.transform = `translate(${r.left + r.width / 2 - s.left}px,${r.top + r.height / 2 - s.top}px)`;
+      const holder = ms > 1000;
+      animer(tapp.firstElementChild, [{ opacity: 0, transform: 'scale(1.5)' }, { opacity: 1, transform: 'scale(1)', offset: holder ? .14 : .35 }, { opacity: 1, transform: 'scale(.86)', offset: holder ? .88 : .55 }, { opacity: 0, transform: 'scale(1)' }], { duration: ms, easing: 'ease-out' });
+      animer(tapp.lastElementChild, [{ opacity: 0, transform: 'scale(1)' }, { opacity: .85, transform: 'scale(1)', offset: holder ? .14 : .52 }, { opacity: 0, transform: 'scale(2.6)' }], { duration: ms, easing: holder ? 'linear' : 'ease-out' });
+    };
+    const forloep = bygg(app, { settInn, trykk, pek, animer, begynn: () => { tid = 0; neste = 1; } });
+    const tikk = (naa) => {
+      ramme = 0;
+      if (!synlig || bevegelse.matches) return;
+      tid += naa - sist; sist = naa;
+      while (neste < forloep.steg.length && tid >= forloep.steg[neste][0]) forloep.steg[neste++][1]();
+      if (tid >= forloep.lengde) { tid %= forloep.lengde; neste = 0; }
+      ramme = requestAnimationFrame(tikk);
+    };
+    const start = () => {
+      if (synlig && !bevegelse.matches && !ramme) { sist = performance.now(); ramme = requestAnimationFrame(tikk); }
+    };
+    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => {
+      synlig = rader[0].isIntersecting;
+      rute.classList.toggle('i-bildet', synlig);
+      if (synlig) {
+        rute.getAnimations({ subtree: true }).forEach((a) => { if (a.playState === 'paused') a.play(); });
+        if (!innkommet && !bevegelse.matches) {
+          innkommet = true;
+          animer(rute, [{ opacity: 0, transform: rute.dataset.inn === 'h' ? 'translateX(96px)' : 'translateX(-96px)' }, { opacity: 1, transform: 'none' }], { duration: 950, delay: rute.dataset.inn === 'h' ? 130 : 0, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
+        }
+        start();
+      } else {
+        cancelAnimationFrame(ramme); ramme = 0;
+        rute.getAnimations({ subtree: true }).forEach((a) => a.pause());
+      }
+    }, { threshold: .08 }).observe(rute);
+    const roligKort = () => {
+      cancelAnimationFrame(ramme); ramme = 0;
+      rute.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+      tid = 0; neste = 0;
+      if (bevegelse.matches) { innkommet = true; forloep.slutt(); }
+      // Utenfor bildet beholdes stillbildet til neste synlige ramme.
+      else if (synlig) { forloep.steg[0][1](); neste = 1; start(); }
+    };
+    bevegelse.addEventListener('change', roligKort);
+    roligKort();
+  };
+  kortloep('demoSkaler', (app, { settInn, trykk }) => {
+    const antall = app.querySelector('.antall'), pluss = app.querySelector('.pluss');
+    const sett = (i) => {
+      settInn(antall, antall.dataset.antall.split('|')[i]);
+      app.querySelectorAll('[data-m]').forEach((m) => settInn(m, m.dataset.m.split('|')[i]));
+    };
+    return { lengde: 8500, slutt: () => sett(2), steg: [[0, () => sett(0)], [2400, () => { trykk(pluss); sett(1); }], [4300, () => { trykk(pluss); sett(2); }]] };
+  });
+  kortloep('demoLag', (app, { pek, trykk }) => {
+    const scene = app.querySelector('.a-lagscene'), timer = app.querySelector('.a-timer'), tid = app.querySelector('.a-tid');
+    const steg = app.querySelector('.a-steg'), start = app.querySelector('.start'), tider = app.dataset.tider.split('|');
+    const maal = () => scene.style.setProperty('--kh', timer.offsetHeight + 'px');
+    addEventListener('resize', maal); maal();
+    const nullstill = () => { steg.classList.remove('ferdig'); scene.classList.remove('timer'); tid.textContent = tider[0]; };
+    return { lengde: 16780, slutt: () => { nullstill(); steg.classList.add('ferdig'); }, steg: [
+      [0, nullstill], [2800, () => pek(app.querySelector('u'))], [3440, () => { maal(); scene.classList.add('timer'); }],
+      [5940, () => pek(start)], [6460, () => trykk(start)],
+      ...tider.slice(1).map((tekst, i) => [6980 + i * 1000, () => { tid.textContent = tekst; }]),
+      [11980, () => scene.classList.remove('timer')], [12980, () => steg.classList.add('ferdig')],
+    ] };
+  });
+  kortloep('demoPlan', (app, { trykk }) => ({
+    lengde: 10320, slutt: () => app.classList.add('aapen'), steg: [
+      [0, () => app.classList.remove('aapen')], [3400, () => trykk(app.querySelector('.a-uke'))],
+      [3660, () => app.classList.add('aapen')], [10060, () => trykk(app.querySelector('.a-uke'))],
+    ],
+  }));
+  kortloep('demoHandle', (app, { settInn, trykk, pek }) => {
+    const rett = app.querySelector('.handle-rett'), meny = app.querySelector('.a-meny'), ark = app.querySelector('.a-ark');
+    const antall = ark.querySelector('.antall'), pluss = ark.querySelector('.pluss'), oppdater = ark.querySelector('.a-oppdater');
+    const porsjoner = antall.dataset.antall.split('|');
+    const sett = (i) => app.querySelectorAll('[data-m]').forEach((m) => settInn(m, m.dataset.m.split('|')[i]));
+    const lukk = () => { ark.classList.remove('vis'); meny.classList.remove('vis'); app.classList.remove('modal'); rett.classList.remove('valgt'); };
+    return { lengde: 17150, slutt: () => { lukk(); sett(1); antall.textContent = porsjoner[2]; }, steg: [
+      [0, () => { lukk(); sett(0); antall.textContent = porsjoner[0]; }],
+      [3000, () => { pek(rett, 1300); rett.classList.add('valgt'); }],
+      [4250, () => { const h = app.getBoundingClientRect(), r = rett.getBoundingClientRect(); meny.style.left = Math.max(0, r.left - h.left) + 'px'; meny.style.top = r.bottom - h.top + 8 + 'px'; app.classList.add('modal'); meny.classList.add('vis'); }],
+      [5750, () => pek(meny.firstElementChild, 900)], [6180, () => trykk(meny.firstElementChild)],
+      [6600, () => { meny.classList.remove('vis'); ark.classList.add('vis'); }],
+      [8300, () => { trykk(pluss); settInn(antall, porsjoner[1]); }], [9600, () => { trykk(pluss); settInn(antall, porsjoner[2]); }],
+      [11100, () => trykk(oppdater)], [11550, lukk], [11950, () => sett(1)],
+    ] };
+  });
+  kortloep('demoHus', (app, { animer, begynn }) => {
+    const knapper = [...app.querySelectorAll('.a-husvelg button')], maler = [...app.querySelectorAll('.hus-eksempel')], flate = app.querySelector('.a-husflate');
+    let nr = 0;
+    const leggInn = () => {
+      flate.querySelector('.ny')?.classList.remove('skjult');
+      flate.querySelector(`[data-n="${maler[nr].dataset.sist}"]`)?.classList.add('la-inn');
+    };
+    const tegn = (i, ferdig = false) => {
+      nr = i; flate.replaceChildren(maler[nr].content.cloneNode(true));
+      knapper.forEach((b, j) => b.setAttribute('aria-pressed', String(j === nr)));
+      if (ferdig) leggInn();
+      animer(flate, [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.16,1,.3,1)' });
+    };
+    knapper.forEach((b, i) => b.addEventListener('click', () => { tegn(i, bevegelse.matches); begynn(); }));
+    return { lengde: 7800, slutt: () => tegn(nr, true), steg: [
+      [0, () => tegn(nr)], [2600, leggInn], [4800, () => flate.querySelector('.la-inn')?.classList.remove('la-inn')],
+      [7799, () => { nr = (nr + 1) % maler.length; }],
+    ] };
+  });
 })();

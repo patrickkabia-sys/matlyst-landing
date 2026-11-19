@@ -6,6 +6,7 @@
 // PLASSHOLDERE: {klammer} i en tekst fylles inn av generatoren med fyll() under.
 // Oversettere beholder plassholderne ordrett, men kan flytte dem i setningen.
 // Disse tekstene tar plassholdere, og ingen andre:
+//   spor.kort.svarAria          {oppskrift} {forklaring}  beskrivelse av det viste svaret
 //   spor.kort.endringer         {antall}      antall endringer i listen
 //   spor.kort.byttet            {fra} {til}   ingrediens som byttes, og erstatningen
 //   spor.kort.fjernet           {vare}        ingrediens som er fjernet
@@ -38,6 +39,10 @@ export function fyll(mal, verdier = {}) {
 export const EKSEMPELSTIER = [
   'kokebok.retter',
   'spor.kort.oppskrift',
+  'middag.demo.porsjoner',
+  'middag.lag.tider',
+  'middag.lag.skala',
+  'middag.ukemeny.kalender',
   'middag.skaler.oppskrift',
   'middag.skaler.tid',
   'middag.skaler.lager',
@@ -182,6 +187,7 @@ export const TEKST = {
       // Appkortet til høyre: en gjengivelse av hvordan svaret ser ut i appen.
       kort: {
         // Beskrivelse av hele kortet for skjermlesere.
+        svarAria: 'Eksempel fra appen: {oppskrift}. {forklaring} Med valgene Overskriv og Lag en kopi.',
         aria: 'Eksempel fra appen: Spør Matlyst har skrevet om en kremet kyllinggryte etter ønsket ved siden av, og viser hvilke ingredienser som er byttet, med valgene Overskriv og Lag en kopi.',
         // Toppen av kortet: ordet «spør» foran ordmerket «matlyst», og Pro-merket.
         spor: 'spør',
@@ -216,6 +222,8 @@ export const TEKST = {
     // Seksjonen med fem kort. Hvert kort har overskrift, en kort forklaring og et lite appeksempel.
     // Alle navn, mengder og tall i appeksemplene er håndskrevne eksempler.
     middag: {
+      // Tall og tegn som vises i de animerte eksemplene.
+      demo: { porsjoner: ['4', '5', '6'], minus: '−', pluss: '+' },
       tittel: 'Fra oppskrift til middag',
       ingress: 'Når oppskriften er lagret, kan du skalere den, handle til den og lage den steg for steg.',
 
@@ -258,6 +266,9 @@ export const TEKST = {
         // også tidsuttrykket, ellers ser det ut som tidtakeren hører til et annet steg.
         // EKSEMPEL
         timerTekst: 'Steg 2 · Varm buljongen og visp inn miso, soyasaus og sesamolje. La den trekke på lav varme i 10 minutter.',
+        // Tidtakerens eksempeltilstander og ytterpunkter.
+        tider: ['10:00', '9:59', '9:58', '9:57', '9:56', '9:55'],
+        skala: ['1:00', '20:00'],
         avbryt: 'Avbryt',
         start: 'Start',
       },
@@ -273,12 +284,14 @@ export const TEKST = {
         // Kalenderoverskriften og ukedagene i kalenderen (mandag først, forkortet).
         // EKSEMPEL
         maaned: 'November 2026',
+        // November starter på søndag (0). Eksempelets markerte dag beholdes.
+        kalender: { startUkedag: 0, idag: '18', dager: Array.from({ length: 30 }, (_, i) => String(i + 1)), planlagt: ['3', '5', '6', '10', '12', '13', '19', '20', '22', '24', '26', '27'] },
         ukedager: ['man', 'tir', 'ons', 'tor', 'fre', 'lør', 'søn'],
         // To planlagte dager under kalenderen. Rettene er de samme som i kokeboken.
         // EKSEMPEL
         dager: [
-          { dag: 'Torsdag 19. nov.', rett: 'Butter chicken', tid: '50 min' },
-          { dag: 'Fredag 20. nov.', rett: 'Biff-taco med pico de gallo', tid: '30 min' },
+          { dag: 'Torsdag 19. nov.', rett: 'Butter chicken', fil: 'butterchicken', tid: '50 min' },
+          { dag: 'Fredag 20. nov.', rett: 'Biff-taco med pico de gallo', fil: 'taco', tid: '30 min' },
         ],
         // Måltidstypen på hver planlagt rett.
         maltid: 'Middag',
@@ -470,8 +483,8 @@ export const TEKST = {
           folk: [1, 2, 3, 4],
           sist: 3,
           dager: [
-            { dag: 'Torsdag 19. nov.', rett: 'Butter chicken', min: 50, eier: 'Jonas', ansikt: 2 },
-            { dag: 'Fredag 20. nov.', rett: 'Biff-taco med pico de gallo', min: 30, eier: 'Emma', ansikt: 3, ny: true },
+            { dag: 'Torsdag 19. nov.', rett: 'Butter chicken', fil: 'butterchicken', tid: '50 min', min: 50, eier: 'Jonas', ansikt: 2 },
+            { dag: 'Fredag 20. nov.', rett: 'Biff-taco med pico de gallo', fil: 'taco', tid: '30 min', min: 30, eier: 'Emma', ansikt: 3, ny: true },
           ],
         },
         {
