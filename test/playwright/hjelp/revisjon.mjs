@@ -70,9 +70,17 @@ function geometri({ unntak, krom, tilsiktet }) {
       const b = e.getBoundingClientRect();
       const fri = fritatt(e);
       if (fri) {
-        // Klipping av akkurat denne boksen er tilsiktet: behold bare den synlige delen.
+        // Klipping av akkurat denne boksen er tilsiktet: behold bare den synlige delen, og kutt
+        // bare på aksene boksen faktisk klipper (overflow ulik visible).
+        const kx = cs.overflowX !== 'visible';
+        const ky = cs.overflowY !== 'visible';
         rekter = rekter
-          .map((r) => ({ left: Math.max(r.left, b.left), right: Math.min(r.right, b.right), top: Math.max(r.top, b.top), bottom: Math.min(r.bottom, b.bottom) }))
+          .map((r) => ({
+            left: kx ? Math.max(r.left, b.left) : r.left,
+            right: kx ? Math.min(r.right, b.right) : r.right,
+            top: ky ? Math.max(r.top, b.top) : r.top,
+            bottom: ky ? Math.min(r.bottom, b.bottom) : r.bottom,
+          }))
           .filter((r) => r.right > r.left && r.bottom > r.top);
         if (!rekter.length) return ute;
       }

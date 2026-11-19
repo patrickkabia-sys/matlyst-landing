@@ -169,6 +169,7 @@ test.describe('revisjonsmotoren, røde fikstur', () => {
     ['', false, 'tekst klippet bare av den fritatte boksen er grønn'],
     ['?indre', true, 'indre overflow:hidden-boks som klipper tekst er rød'],
     ['?kort', true, 'synlig del av den fritatte boksen klippet av ytre kort er rød'],
+    ['?yklipp', true, 'boks som bare klipper loddrett kutter ikke vannrett: 200 px tekst i 150 px kort er rød'],
   ]) {
     test(`tilsiktetKlipp fritar bare selve boksen: ${navn}`, async ({ page }) => {
       lokalt();
