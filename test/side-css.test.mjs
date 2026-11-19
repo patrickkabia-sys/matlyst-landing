@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { alleSider, TYPER } from '../scripts/sidetyper.mjs';
 import { utenKommentarer, klasserUtenRegel, klasserIVelgere, velgerliste, regler } from './hjelp/klassedekning.mjs';
 
 const les = (f) => readFileSync(new URL(`../${f}`, import.meta.url), 'utf8');
@@ -88,4 +89,33 @@ test('omregnersidene har stil for alle klassene i innholdet', () => {
     'i-import': 'velger bilde i app-bevis', 'i-kokemodus': 'velger bilde i app-bevis',
     'i-mapper': 'velger bilde i app-bevis', 'i-skalering': 'velger bilde i app-bevis', 'i-enheter': 'velger bilde i app-bevis',
   }), []);
+});
+
+test('lange guider har stil for alle klassene i innholdet', () => {
+  assert.deepEqual(klasserUtenRegel('guide-lang', {
+    'disp': 'skriftvalg på overskrifter, ingen egen regel', 'has-toc': 'markør på lesekolonnen',
+    'i-ask': 'velger bilde i app-bevis', 'i-eksport': 'velger bilde i app-bevis', 'i-enheter': 'velger bilde i app-bevis',
+    'i-import': 'velger bilde i app-bevis', 'i-kokemodus': 'velger bilde i app-bevis', 'i-liste': 'velger bilde i app-bevis',
+    'i-mapper': 'velger bilde i app-bevis', 'i-pantry': 'velger bilde i app-bevis', 'i-plan': 'velger bilde i app-bevis',
+    'i-skalering': 'velger bilde i app-bevis',
+  }), []);
+});
+
+test('lange guider: filmer og bilder i lesekolonnen har en regel som tvinger dem inn i bredden', () => {
+  const rå = les('side.css');
+  const del = rå.slice(rå.indexOf('/* == Lang guide == */'), rå.indexOf('/* == Kort guide == */'));
+  assert.ok(del.length > 100);
+  assert.match(del, /\.locale-prose :is\(video,\.tel\)\{[^}]*width:100%[^}]*max-width:300px/u);
+});
+
+test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', () => {
+  const typer = new Set([...css.matchAll(/data-sidetype="([^"]+)"/gu)].map((m) => m[1]));
+  assert.ok(typer.has('guide-lang') && typer.has('omregner'), 'forventet avgrensning mangler');
+  const sider = alleSider(new URL('..', import.meta.url).pathname);
+  for (const t of typer) {
+    assert.ok(TYPER.includes(t), `ukjent sidetype i side.css: ${t}`);
+    const side = sider.find((s) => s.type === t);
+    assert.ok(side, `ingen side av typen ${t}`);
+    assert.ok(les(side.fil).includes(`data-sidetype="${t}"`), `${side.sti} mangler data-sidetype="${t}"`);
+  }
 });

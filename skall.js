@@ -90,6 +90,58 @@
     hent.addEventListener('close', () => fra?.focus());
   }
 
+  // Innholdsfortegnelsen foldes sammen under 721 px. Uten JavaScript og på PC står lista åpen.
+  const smal = matchMedia('(max-width: 720px)');
+  document.querySelectorAll('.toc').forEach((toc, i) => {
+    const tittel = toc.querySelector('.toc-title');
+    const liste = toc.querySelector('ol, ul');
+    if (!tittel || !liste) return;
+    if (!liste.id) liste.id = 'toc-liste-' + i;
+    const oppdater = () => {
+      const gammel = toc.querySelector('.toc-knapp');
+      if (!smal.matches) {
+        if (gammel) { gammel.replaceWith(tittel); liste.hidden = false; }
+        return;
+      }
+      if (gammel) return;
+      const knapp = document.createElement('button');
+      knapp.type = 'button';
+      knapp.className = 'toc-knapp';
+      knapp.setAttribute('aria-expanded', 'false');
+      knapp.setAttribute('aria-controls', liste.id);
+      knapp.textContent = tittel.textContent;
+      knapp.addEventListener('click', () => {
+        const aapen = knapp.getAttribute('aria-expanded') !== 'true';
+        knapp.setAttribute('aria-expanded', String(aapen));
+        liste.hidden = !aapen;
+      });
+      tittel.replaceWith(knapp);
+      liste.hidden = true;
+    };
+    oppdater();
+    smal.addEventListener('change', oppdater);
+    // Et trykk på en lenke i lista lukker den igjen, så overskriften er synlig.
+    liste.addEventListener('click', (e) => {
+      if (!smal.matches || !e.target.closest('a')) return;
+      toc.querySelector('.toc-knapp')?.setAttribute('aria-expanded', 'false');
+      liste.hidden = true;
+    });
+  });
+
+  // Brede tabeller ruller sideveis i en egen boks i stedet for å bryte ut av lesekolonnen.
+  document.querySelectorAll('.locale-prose table').forEach((tabell) => {
+    if (tabell.closest('.table-wrap')) return;
+    let overskrift = tabell.previousElementSibling;
+    while (overskrift && !/^H[1-6]$/.test(overskrift.tagName)) overskrift = overskrift.previousElementSibling;
+    const boks = document.createElement('div');
+    boks.className = 'table-wrap';
+    boks.tabIndex = 0;
+    boks.setAttribute('role', 'region');
+    boks.setAttribute('aria-label', (overskrift?.textContent || tabell.querySelector('caption')?.textContent || 'Tabell').trim());
+    tabell.replaceWith(boks);
+    boks.append(tabell);
+  });
+
   // Fast knapp vises når startpunktet er forbi og skjules før nedlastingen i bunnen.
   // Undersidene (data-sidetype) starter ved sidens egen topp; forsiden beholder første knapp i main.
   const fast = document.getElementById('fast');
