@@ -1,4 +1,4 @@
-// Patrick 19.11: kortstabling på mobil for rutene i #trio. Av som standard; slås på med klassen `stabel` på #trio.
+// Patrick 19.11: kortstabling på mobil for rutene i #trio. PÅ som standard (Patrick 19.11): klassen `stabel` står på #trio fra scripts/forside.mjs.
 import { test, expect } from '@playwright/test';
 import { STI } from './hjelp/sprak.mjs';
 
@@ -9,7 +9,7 @@ const mobil = async (browser, baseURL, { bredde = 390, hoyde = 664, redusert = '
   await page.goto(STI);
   await page.addStyleTag({ content: '#cookie{display:none!important}' });
   await rullInn(page);
-  if (stabel) await page.evaluate(() => document.getElementById('trio').classList.add('stabel'));
+  await page.evaluate((paa) => document.getElementById('trio').classList.toggle('stabel', paa ?? true), stabel);
   return { ctx, page };
 };
 // Rullestilling der rute nr i (fra 0) står i sin egen posisjon i stabelen.
@@ -19,11 +19,20 @@ const rullTilRute = (page, i) => page.evaluate((n) => {
   scrollTo(0, naturlig - parseFloat(getComputedStyle(ruter[n]).top));
 }, i);
 
-test('standard er AV: ingen stabel-klasse i HTML-en, og rutene står i normal flyt', async ({ browser, baseURL }) => {
+test('standard er PÅ: klassen stabel står i HTML-en (uten skript), og rutene er sticky på mobil', async ({ browser, baseURL }) => {
+  const html = await (await (await browser.newContext({ baseURL })).request.get(STI)).text();
+  expect(html).toMatch(/<div class="bento stabel" id="trio">/u);
+  const { ctx, page } = await mobil(browser, baseURL, { stabel: null });
+  await page.evaluate(() => {});
+  expect(await page.locator('#trio').getAttribute('class')).toContain('stabel');
+  expect(await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => getComputedStyle(e).position))).toEqual(Array(5).fill('sticky'));
+  await ctx.close();
+});
+
+test('klassen kan slås AV: da står rutene i normal flyt', async ({ browser, baseURL }) => {
   const { ctx, page } = await mobil(browser, baseURL, { stabel: false });
   expect(await page.locator('#trio').getAttribute('class')).not.toContain('stabel');
-  const pos = await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => getComputedStyle(e).position));
-  expect(pos).toEqual(['static', 'static', 'static', 'static', 'static']);
+  expect(await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => getComputedStyle(e).position))).toEqual(Array(5).fill('static'));
   await ctx.close();
 });
 

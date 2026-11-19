@@ -497,7 +497,7 @@ export const MOBIL_FLISER = ['#trio article.rute', '.spor .to > *'];
 export const MOBIL_VALG = ['.a-husvelg button', '.forslag'];
 
 /** Elementer i `velg` som er høyere enn ledig høyde ved nåværende visningsstørrelse. Lazy bilder rulles inn først. */
-export async function forHoyePaaMobil(page, velg = MOBIL_MEDIA, unntak = [], { fast = true } = {}) {
+export async function forHoyePaaMobil(page, velg = MOBIL_MEDIA, unntak = [], { fast = true, topp = MOBIL_TOPP } = {}) {
   await page.evaluate(async () => {
     for (let y = 0; y < document.documentElement.scrollHeight; y += 400) {
       window.scrollTo(0, y);
@@ -520,13 +520,18 @@ export async function forHoyePaaMobil(page, velg = MOBIL_MEDIA, unntak = [], { f
       }
     }
     return ut;
-  }, { velg, unntak, topp: MOBIL_TOPP, fast: MOBIL_FAST, luft: MOBIL_LUFT, medFast: fast });
+  }, { velg, unntak, topp, fast: MOBIL_FAST, luft: MOBIL_LUFT, medFast: fast });
 }
 
 /** Forsidens fliser ved nåværende visningsstørrelse, i alle varianter (hver husstand og hvert forslag). Funn har med hvilket valg som var aktivt. */
 export async function forHoyeFliserPaaMobil(page) {
   const funn = [];
-  const mal = async (valg) => { for (const f of await forHoyePaaMobil(page, MOBIL_FLISER, [], { fast: false })) funn.push({ ...f, valg }); };
+  // Stablede ruter (klassen stabel på #trio, standard) festes 12 px fra kanten og har tak 600 px; ellers gjelder toppen på 72 px.
+  const stablet = await page.evaluate(() => document.getElementById('trio')?.classList.contains('stabel') && matchMedia('(max-width:720px)').matches);
+  const mal = async (valg) => {
+    for (const f of await forHoyePaaMobil(page, ['#trio article.rute'], [], { fast: false, topp: stablet ? 12 : MOBIL_TOPP })) funn.push({ ...f, valg });
+    for (const f of await forHoyePaaMobil(page, ['.spor .to > *'], [], { fast: false })) funn.push({ ...f, valg });
+  };
   await mal('start');
   for (const velger of MOBIL_VALG) {
     const antall = await page.locator(velger).count();

@@ -31,7 +31,8 @@ test('husstand: én rett i stedet for to, valgene på én sveipbar linje uten si
   await page.locator('.a-husvelg button').first().focus();
   await page.keyboard.press('Tab'); await page.keyboard.press('Tab');
   expect(await page.evaluate(() => document.activeElement === document.querySelectorAll('.a-husvelg button')[2])).toBe(true);
-  await page.waitForTimeout(400);
+  await expect.poll(() => page.evaluate(() => document.querySelector('.a-husvelg').scrollLeft), { timeout: 4000 }).toBeGreaterThan(0);
+  await page.waitForTimeout(300);
   const synlig = await page.evaluate(() => { const k = document.activeElement.getBoundingClientRect(), r = document.querySelector('.a-husvelg').getBoundingClientRect(); return { venstre: k.left - r.left, hoyre: r.right - k.right, rullet: document.querySelector('.a-husvelg').scrollLeft }; });
   expect(synlig.venstre, 'knappen er innenfor raden til venstre').toBeGreaterThanOrEqual(-1);
   expect(synlig.hoyre, 'knappen er innenfor raden til høyre').toBeGreaterThanOrEqual(-1);
