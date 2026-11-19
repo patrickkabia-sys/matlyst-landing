@@ -74,7 +74,7 @@ html.js .hero h1:not(.klar){visibility:hidden}
 @media (max-width:900px){.importflyt{gap:0 32px}}
 @media (max-width:720px){
   .importflyt{display:flex;flex-direction:column;align-items:center}
-  .film{width:min(82%,310px)}
+  .film{width:min(82%,310px,calc(var(--ledig-hoyde) * 628 / 1300 / 1.008))}
   .steg{order:-1;width:100%;min-height:60px;margin-bottom:6px}
   .steg li{display:none}
   .steg li.naa{display:block}

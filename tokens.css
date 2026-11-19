@@ -48,4 +48,12 @@
   --svart:#000000;
   --kule-gjenskinn:#FFEEF7;
   --ut:cubic-bezier(.16,1,.3,1);
+
+  /* Alt skal få plass på en mobilskjerm: en flis eller telefon kan ses hel mellom den klebrige toppen og den faste nedlastingsknappen. */
+  --topp-hoyde:72px;
+  --fast-hoyde:75px;
+  --luft:16px;
+  --ledig-hoyde:calc(100svh - var(--topp-hoyde) - var(--fast-hoyde) - var(--luft));
 }
+/* Appkort på mobil: tekst til venstre (minst 168 px), telefon til høyre (72 til 124 px). Telefonen krymper først. */
+@media (max-width:720px){:root{--kort-kolonner:minmax(min(168px,60%),1fr) minmax(72px,124px)}}

@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test, expect } from '@playwright/test';
-import { revider, samleFeil, skalering, zoom } from './hjelp/revisjon.mjs';
+import { revider, samleFeil, skalering, zoom, forHoyePaaMobil, MOBIL_MEDIA, MOBIL_UNNTAK } from './hjelp/revisjon.mjs';
 import { utvalg, utrulledeTyper, eksempelStier } from './hjelp/utvalg.mjs';
 import { EKSEMPEL, TYPER } from '../../scripts/sidetyper.mjs';
 
@@ -69,6 +69,20 @@ test('forstørret tekst: px-tekst utenfor skallet feiler, bortsett fra på forsi
   expect(forstorrelseFeil(faktorer, { type: 'forside' })).toEqual([]);
 });
 
+test('alt på en mobilskjerm: for høye telefoner og kort oppdages, og unntakene måles ikke', async ({ page }) => {
+  test.skip(!!process.env.BASE_URL, 'fiksturen finnes bare lokalt');
+  await page.setViewportSize({ width: 390, height: 664 });
+  await page.goto('/test/fixtures/revisjon-for-hoy-telefon.html');
+  const funn = await forHoyePaaMobil(page);
+  expect(funn.map((f) => f.velger).sort()).toEqual(['.tel', 'aside.i-appen']);
+  expect(funn.every((f) => f.ledig === 664 - 72 - 75 - 16)).toBe(true);
+  // Forsidens fliser venter på Patricks vedtak: de står i unntakslista og aldri i den målte lista.
+  expect(MOBIL_UNNTAK).toEqual(['#trio article.rute', '.sporflate']);
+  for (const u of MOBIL_UNNTAK) expect(MOBIL_MEDIA, `${u} skal ikke måles`).not.toContain(u);
+  const utenUnntak = await forHoyePaaMobil(page, ['.tel', '.sporflate'], []);
+  expect(utenUnntak.map((f) => f.velger)).toContain('.sporflate');
+});
+
 test('utvalget følger predikatet: en utrullet type får sine sider, andre ingen', () => {
   const med = utvalg({ revisjon: 'omregner', sprak: '', utrullet: new Set(['omregner']) });
   expect(med.length).toBeGreaterThan(0);
@@ -121,6 +135,16 @@ for (const side of rader) {
       expect(faktorer.length, `ingen tekst å måle på ${bredde} px`).toBeGreaterThan(0);
       const feilFaktor = forstorrelseFeil(faktorer, side);
       expect(feilFaktor, `forstørret tekst på ${bredde} px`).toEqual([]);
+    }
+  });
+
+  // Mobilskjermen er omtrent 390 x 664 (mobil-Safari) og 360 x 640. Telefoner og mediekort skal ses hele.
+  test(`alt får plass på en mobilskjerm: ${navn}`, async ({ page }) => {
+    test.skip(side.fulltSkall === false, 'tjenestesidene har ingen telefonmockuper');
+    for (const [bredde, hoyde] of [[390, 664], [360, 640]]) {
+      await page.setViewportSize({ width: bredde, height: hoyde });
+      await page.goto(side.url);
+      expect(await forHoyePaaMobil(page), `for høye elementer på ${bredde} x ${hoyde}`).toEqual([]);
     }
   });
 

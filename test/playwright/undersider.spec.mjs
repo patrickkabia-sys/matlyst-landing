@@ -216,7 +216,7 @@ for (const bredde of [390, 1280]) test(`lange guider: figurer, filmer og bilder 
   // Beregnet stil beviser at guide-lang-reglene treffer en ekte guide (en feil sidetype i avgrensningen gir 540 px her).
   const filmer = await page.evaluate(() => [...document.querySelectorAll('.locale-prose video')].map((v) => ({ maks: getComputedStyle(v).maxWidth, radius: getComputedStyle(v).borderTopLeftRadius, bredde: v.getBoundingClientRect().width })));
   expect(filmer.length).toBeGreaterThan(0);
-  for (const f of filmer) { expect(f.maks).toMatch(/^(300|200)px$/); expect(f.radius).toBe('24px'); expect(f.bredde).toBeLessThanOrEqual(300); }
+  for (const f of filmer) { expect(f.maks).toMatch(/^(300|200|124)px$|^min\(100%, 300px\)$/); expect(f.radius).toBe('24px'); expect(f.bredde).toBeLessThanOrEqual(300); }
   expect(r.ut).toEqual([]);
   expect(r.kort.length).toBeGreaterThan(0);
   for (const k of r.kort) { expect(k.bredde).toBeGreaterThan(100); expect(k.bredde).toBeLessThanOrEqual(200); expect(k.kortHoyde).toBeLessThan(k.hoyde + 200 + 400); }
@@ -361,7 +361,8 @@ for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${s
     expect(m.feat.r).toBe(bredde >= 721 ? '40px' : '32px');
     expect(m.feat.bg).toBe(true);
     expect(m.feat.bg2).toBe('rgb(245, 243, 239)');
-    expect(m.feat.kol).toBe(bredde >= 721 ? 2 : 1);
+    // Regelen «alt får plass på en mobilskjerm»: teksten til venstre og telefonen til høyre også på mobil.
+    expect(m.feat.kol).toBe(2);
     expect(m.feat.em).toBe('normal');
     expect(m.knapp.h).toBeGreaterThanOrEqual(44);
     expect(m.knapp.bg).toBe('rgb(20, 18, 16)');
@@ -463,7 +464,7 @@ for (const bredde of [390, 1280]) test(`bloggen: kort, forsidebilde, tabell, gal
       tabellStrek: getComputedStyle(tabell.querySelector('tbody th')).borderBottomStyle, tdAlign: getComputedStyle(tdSist).textAlign, tdVekt: getComputedStyle(tdSist).fontWeight,
       radOverflow: getComputedStyle(rad).overflowX, radSnap: getComputedStyle(rad).scrollSnapType, radBredere: rad.scrollWidth > rad.clientWidth, radFokus: rad.tabIndex, radBilde: getComputedStyle(rad.querySelector('img')).borderTopLeftRadius,
       ctaKol: getComputedStyle(cta).gridTemplateColumns.split(' ').length, ctaRadius: getComputedStyle(cta).borderTopLeftRadius,
-      bildeX: cta.querySelector('.app-cta-bilde').getBoundingClientRect().left > cta.querySelector('.app-cta-tekst').getBoundingClientRect().left + 100,
+      bildeX: cta.querySelector('.app-cta-bilde').getBoundingClientRect().left > cta.querySelector('.app-cta-tekst h2').getBoundingClientRect().left + 100,
       knappH: knapp.getBoundingClientRect().height, knappKlasse: knapp.className,
       flereRadius: getComputedStyle(flere).borderTopLeftRadius, flereDisplay: getComputedStyle(flere).display, flereKant: getComputedStyle(flere).borderBottomWidth,
       ut: document.documentElement.scrollWidth - document.documentElement.clientWidth,
@@ -473,7 +474,7 @@ for (const bredde of [390, 1280]) test(`bloggen: kort, forsidebilde, tabell, gal
   expect(m.figRadius).toBe('24px'); expect(m.tabellStrek).toBe('solid'); expect(m.tdAlign).toBe('right'); expect(m.tdVekt).toBe('700');
   expect(m.radOverflow).toBe('auto'); expect(m.radSnap).toContain('mandatory'); expect(m.radFokus).toBe(0); expect(m.radBilde).toBe('24px');
   expect(m.radBredere).toBe(bredde < 721);
-  expect(m.ctaKol).toBe(bredde >= 721 ? 2 : 1); expect(m.ctaRadius).toBe(bredde >= 721 ? '40px' : '32px'); expect(m.bildeX).toBe(bredde >= 721);
+  expect(m.ctaKol).toBe(2); expect(m.ctaRadius).toBe(bredde >= 721 ? '40px' : '32px'); expect(m.bildeX).toBe(true);
   expect(m.knappH).toBeGreaterThanOrEqual(44); expect(m.knappKlasse).toContain('knapp');
   if (bredde >= 721) { expect(m.flereRadius).toBe('999px'); expect(m.flereKant).toBe('1px'); } else { expect(m.flereRadius).toBe('0px'); expect(m.flereDisplay).toBe('flex'); }
   expect(m.ut).toBeLessThanOrEqual(0);
