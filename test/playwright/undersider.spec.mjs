@@ -188,6 +188,9 @@ test('et trykk i innholdsfortegnelsen legger ikke overskriften under toppen', as
   await page.waitForTimeout(300);
   const topp = await page.locator('header.topp').boundingBox(), h2 = await page.locator(`[id="${id}"]`).boundingBox();
   expect(h2.y).toBeGreaterThanOrEqual(topp.y + topp.height);
+  const visning = page.viewportSize().height;
+  expect(h2.y, 'overskriften må ligge i visningsområdet etter klikket').toBeLessThan(visning);
+  expect(h2.y + h2.height).toBeGreaterThan(0);
 });
 
 for (const bredde of [390, 1280]) test(`lange guider: figurer, filmer og bilder holder seg i lesekolonnen på ${bredde} px, og appkortene har innhold`, async ({ page }) => {
@@ -199,16 +202,41 @@ for (const bredde of [390, 1280]) test(`lange guider: figurer, filmer og bilder 
     const kort = [...document.querySelectorAll('aside.i-appen')].map((a) => { const m = a.querySelector('.i-appen-media :is(img, video)').getBoundingClientRect(); return { bredde: m.width, hoyde: m.height, kortHoyde: a.getBoundingClientRect().height }; });
     return { ut, kort };
   });
+  // Beregnet stil beviser at guide-lang-reglene treffer en ekte guide (en feil sidetype i avgrensningen gir 540 px her).
+  const filmer = await page.evaluate(() => [...document.querySelectorAll('.locale-prose video')].map((v) => ({ maks: getComputedStyle(v).maxWidth, radius: getComputedStyle(v).borderTopLeftRadius, bredde: v.getBoundingClientRect().width })));
+  expect(filmer.length).toBeGreaterThan(0);
+  for (const f of filmer) { expect(f.maks).toMatch(/^(300|200)px$/); expect(f.radius).toBe('24px'); expect(f.bredde).toBeLessThanOrEqual(300); }
   expect(r.ut).toEqual([]);
   expect(r.kort.length).toBeGreaterThan(0);
   for (const k of r.kort) { expect(k.bredde).toBeGreaterThan(100); expect(k.bredde).toBeLessThanOrEqual(200); expect(k.kortHoyde).toBeLessThan(k.hoyde + 200 + 400); }
 });
 
+// Hver film vises for seg: samme prosedyre uten og med reduce, så null avspillinger med reduce betyr noe.
+async function spillAvFilmer(page) {
+  const antall = await page.locator('video').count();
+  const spilt = [];
+  for (let i = 0; i < antall; i++) {
+    const v = page.locator('video').nth(i);
+    await v.scrollIntoViewIfNeeded();
+    await v.evaluate((e) => { e.scrollIntoView({ block: 'center' }); });
+    await page.waitForTimeout(700);
+    spilt.push(await v.evaluate((e) => !e.paused));
+    await v.evaluate((e) => e.pause());
+  }
+  return { antall, spilt };
+}
+test('filmer spiller når de vises uten redusert bevegelse (kontroll for testen under)', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto(GUIDE);
+  const r = await spillAvFilmer(page);
+  expect(r.antall).toBeGreaterThan(0);
+  expect(r.spilt.some(Boolean), 'minst én film skal starte uten reduce').toBe(true);
+});
+
 test('redusert bevegelse: ingen film spiller', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(GUIDE);
-  await page.evaluate(() => document.querySelectorAll('video').forEach((v) => v.scrollIntoView()));
-  await page.waitForTimeout(600);
-  const spiller = await page.evaluate(() => [...document.querySelectorAll('video')].filter((v) => !v.paused).length);
-  expect(spiller).toBe(0);
+  const r = await spillAvFilmer(page);
+  expect(r.antall).toBeGreaterThan(0);
+  expect(r.spilt.filter(Boolean)).toEqual([]);
 });
