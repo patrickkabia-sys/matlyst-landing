@@ -18,6 +18,9 @@ function* html(dir) {
 }
 
 const css = () => readFileSync(join(ROT, 'styles.css'), 'utf8');
+// Stilarkene som deklarerer @font-face for sidene. Nye ark legges til her.
+const STILARK = ['styles.css', 'tokens.css'];
+const stilark = () => STILARK.map((f) => readFileSync(join(ROT, f), 'utf8')).join('\n');
 
 // Alt vi faktisk skriver pa norsk: store og sma bokstaver, aeoa, tall og den
 // tegnsettinga sidene bruker. Dette er egenskapen vakten finnes for.
@@ -30,7 +33,7 @@ const NORSK = [
 ].map((c) => c.codePointAt(0));
 
 function ansikter() {
-  return [...css().matchAll(/@font-face\s*\{([^}]*)\}/gu)].map(([, kropp]) => {
+  return [...stilark().matchAll(/@font-face\s*\{([^}]*)\}/gu)].map(([, kropp]) => {
     const felt = (navn) => kropp.match(new RegExp(`${navn}:\\s*([^;]+)`, 'u'))?.[1].trim();
     const omrader = (felt('unicode-range') ?? '')
       .split(',')
@@ -62,8 +65,8 @@ test('ingen side laster fonter fra en tredjepart', () => {
 });
 
 test('stilarket henter ingen font fra en tredjepart', () => {
-  assert.doesNotMatch(css(), /fonts\.(googleapis|gstatic)\.com/u);
-  assert.doesNotMatch(css(), /@import/u);
+  assert.doesNotMatch(stilark(), /fonts\.(googleapis|gstatic)\.com/u);
+  assert.doesNotMatch(stilark(), /@import/u);
 });
 
 test('stilarket definerer begge fontene lokalt med font-display: swap', () => {
@@ -120,6 +123,17 @@ test('hver familie og stil sidene bruker har et ansikt som tegner norsk', () => 
 test('hver fontfil holder seg innenfor sitt eget unicode-range', () => {
   for (const f of ansikter()) {
     const dekket = [...kodepunkter(sti(f.fil))];
+    // Ordmerke-delsettet har med vilje bare noen få bokstaver. Da er kravet at fila
+    // dekker hele sitt eget unicode-range, ikke at den har hundre tegn.
+    const iRange = f.omrader.reduce((n, [a, b]) => n + (b - a + 1), 0);
+    assert.ok(iRange > 0, `${f.fil} har ikke noe unicode-range, da sjekkes ingenting`);
+    if (iRange < 100) {
+      const utenforSmaa = dekket.filter((cp) => !iOmrade(cp, f.omrader));
+      assert.deepEqual(utenforSmaa, [], `${f.fil} har tegn utenfor sitt eget unicode-range`);
+      const mangler = f.omrader.flatMap(([a, b]) => Array.from({ length: b - a + 1 }, (_, i) => a + i)).filter((cp) => !dekket.includes(cp));
+      assert.deepEqual(mangler, [], `${f.fil} mangler tegn fra sitt eget unicode-range`);
+      continue;
+    }
     assert.ok(dekket.length >= 100, `${f.fil} har bare ${dekket.length} tegn, er fila tom?`);
     // Subsettene deler noen fa basisglyfer (mellomrom, «A» som grunnform for
     // sammensatte tegn). Mer enn en handfull utenfor betyr at fila horer til et

@@ -38,3 +38,8 @@ test('kartet oversettes til nordiske språk via sidegruppene, og hubbene finnes 
   assert.deepEqual(kartForSprak(en, 'sv').hubber.l.eiker, ['/sv/spara-recept-fran-instagram/', '/sv/spara-recept-fran-tiktok/']);
   assert.deepEqual(kartForSprak(en, 'da').hubber.l.hub, '/da/opskrifts-app/');
 });
+
+test('generatoren for relaterte lenker lar rotsiden stå urørt', () => {
+  const html = '<main id="hovedinnhold">Ny forside</main>';
+  assert.equal(settInn(html, blokk('nb', [['/ukemeny/', 'Ukemeny']]), '/'), html);
+});

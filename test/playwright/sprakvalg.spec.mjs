@@ -57,7 +57,17 @@ test('toppvelgeren og bunnvelgeren virker med tastatur', async ({ browser, baseU
   await page.goto('/');
 
   const dansk = page.locator('.language-switcher-top a[aria-label="Dansk"]');
-  await dansk.focus();
+  const meny = page.locator('#menyknapp');
+  await meny.focus();
+  await page.keyboard.press('Enter');
+  await expect(meny).toHaveAttribute('aria-expanded', 'true');
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Escape');
+  await expect(meny).toBeFocused();
+  await expect(meny).toHaveAttribute('aria-expanded', 'false');
+  await page.keyboard.press('Enter');
+  await expect(meny).toHaveAttribute('aria-expanded', 'true');
+  for (let i = 0; i < 60 && !(await dansk.evaluate((el) => el === document.activeElement)); i++) await page.keyboard.press('Tab');
   await expect(dansk).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(`${baseURL}/da/`);

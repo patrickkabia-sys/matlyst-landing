@@ -1,11 +1,24 @@
+import { krevGuidemeny } from './hjelp/guidemeny.mjs';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
-import { SITEMAPER, UTELATT, MONSTER, filFor, guider } from '../scripts/guidelenker.mjs';
+import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
+const rot = fileURLToPath(new URL('..', import.meta.url));
+import { SITEMAPER, UTELATT, MONSTER, filFor, guider, settInn } from '../scripts/guidelenker.mjs';
+
+const VIA_HUB = {
+  // Landleys Kök nås gjennom importhubbens kuraterte relatert-blokk.
+  '/importer-fra-landleys-kok/': '/importer-oppskrifter/',
+  // Alletiders Kogebog nås gjennom importhubbens kuraterte relatert-blokk.
+  '/importer-fra-alletiders-kokebok/': '/importer-oppskrifter/',
+  // DR Mad nås gjennom importhubbens kuraterte relatert-blokk.
+  '/importer-fra-dr-mat/': '/importer-oppskrifter/',
+};
 
 // Låser at ingen guide er foreldreløs: hver side i en sitemap med bunntekst skal
-// lenke til alle guidene på sitt språk. En generator som skriver en side på nytt
-// uten blokken gjør denne rød; kjør da node scripts/guidelenker.mjs.
+// lenke til guidene på sitt språk. Rotsiden bruker det nye sideskallet og kan
+// også lenke gjennom en hub. Andre sider beholder den felles guideblokken.
 for (const lang of Object.keys(SITEMAPER)) {
   const liste = guider(lang);
 
@@ -25,6 +38,12 @@ for (const lang of Object.keys(SITEMAPER)) {
     for (const side of sider) {
       const html = readFileSync(filFor(side), 'utf8');
       if (!html.includes('</footer>')) continue;
+      // Det nye sideskallet lenker til guider direkte eller gjennom en synlig hub.
+      // Ingen guide får forsvinne fra navigasjonen når den gamle lenkelista fjernes.
+      if (side === '/') {
+        krevGuidemeny(html, liste, VIA_HUB, (sti) => readFileSync(filFor(sti), 'utf8'));
+        continue;
+      }
       const blokk = html.match(MONSTER)?.[0];
       assert.ok(blokk, `${side} mangler guideblokken`);
       for (const { sti } of liste) {
@@ -42,4 +61,9 @@ test('bunnteksten lenker ikke til enkeltsider under en hub (ingen lenkefarm)', (
   }
   assert.ok(guider('en').some(({ sti }) => sti === '/en/tools/unit-converter/'), 'huben skal stå i bunnteksten');
   assert.ok(guider('en').some(({ sti }) => sti === '/en/holidays/'), 'høytidshuben skal stå i bunnteksten');
+});
+
+test('guidelenkegeneratoren lar rotsiden stå urørt', () => {
+  const html = readFileSync(join(rot, 'index.html'), 'utf8');
+  assert.equal(settInn(html, '<p>Uønsket guideblokk</p>', '/'), html);
 });

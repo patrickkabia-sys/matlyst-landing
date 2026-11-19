@@ -61,7 +61,9 @@ export function blokk(lang, liste) {
   return `<!-- guider:bunn --><div class="f-guider" role="navigation" aria-label="${ETIKETT[lang]}">${lenker}</div><!-- /guider:bunn -->`;
 }
 
-export function settInn(html, ny) {
+export function settInn(html, ny, sti) {
+  // /sv/, /da/ og /en/ trenger samme unntak når scripts/forside.mjs genererer dem.
+  if (sti === '/') return html;
   if (MONSTER.test(html)) return html.replace(MONSTER, ny);
   return html.replace('</footer>', `  ${ny}\n</footer>`);
 }
@@ -75,7 +77,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       if (!existsSync(fil)) continue;
       const html = readFileSync(fil, 'utf8');
       if (!html.includes('</footer>')) continue;
-      const neste = settInn(html, blokk(lang, liste));
+      const neste = settInn(html, blokk(lang, liste), sti);
       if (neste !== html) { writeFileSync(fil, neste); endret += 1; }
     }
   }

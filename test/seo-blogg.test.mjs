@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { cpSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
 
@@ -14,7 +14,7 @@ import {
   indeksMain,
 } from '../scripts/blogg.mjs';
 
-const repoRot = new URL('../', import.meta.url);
+const repoRot = fileURLToPath(new URL('..', import.meta.url));
 const midlertidigRot = mkdtempSync(join(tmpdir(), 'matlyst-seo-blogg-'));
 const fixture = {
   sprak: 'nb',
@@ -68,7 +68,7 @@ let generertRot;
 function byggMidlertidigNettsted() {
   if (generertRot) return generertRot;
   generertRot = mkdtempSync(join(tmpdir(), 'matlyst-seo-nettsted-'));
-  cpSync(new URL('../', import.meta.url), generertRot, {
+  cpSync(repoRot, generertRot, {
     recursive: true,
     filter: (kilde) => !['.git', '.superpowers', 'node_modules'].includes(kilde.split('/').at(-1)),
   });
@@ -81,6 +81,12 @@ function byggMidlertidigNettsted() {
 test.after(() => {
   rmSync(midlertidigRot, { recursive: true, force: true });
   if (generertRot) rmSync(generertRot, { recursive: true, force: true });
+});
+
+test('lokalsidegeneratoren lar index.html for rotsiden stå byte for byte urørt', () => {
+  const foer = readFileSync(join(repoRot, 'index.html'), 'utf8');
+  const etter = readFileSync(join(byggMidlertidigNettsted(), 'index.html'), 'utf8');
+  assert.ok(etter === foer, 'lokalsidegeneratoren skal ikke sette guideblokken inn på /');
 });
 
 test('auto-artikkel får h1, seksjoner, faq og kilder', () => {

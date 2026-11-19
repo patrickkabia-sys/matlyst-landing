@@ -1064,7 +1064,7 @@ for (const [lang, sitemapNavn] of Object.entries(GUIDE_SITEMAPER)) {
     if (!existsSync(fil)) continue;
     const html = readFileSync(fil, 'utf8');
     if (!html.includes('</footer>')) continue;
-    writeFileSync(fil, settInnGuidelenker(html, guideBlokk(lang, liste)));
+    writeFileSync(fil, settInnGuidelenker(html, guideBlokk(lang, liste), sti));
   }
 }
 
