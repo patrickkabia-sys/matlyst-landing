@@ -66,7 +66,6 @@ export const TEKST = {
     // Lenkene i toppfeltet som følger deg nedover siden. Hver lenke hopper til en seksjon.
     // `mal` er seksjonens anker, `tekst` er det som vises.
     folg: {
-      aria: 'På denne siden',
       lenker: [
         { mal: 'lagre', tekst: 'Lagre' },
         { mal: 'spor', tekst: 'Spør Matlyst' },

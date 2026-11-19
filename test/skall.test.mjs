@@ -8,6 +8,7 @@ import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from '../
 import { SKALLTEKST, SPRAKVALG, BUTIKK } from '../scripts/skall-tekst.mjs';
 import { TEKST } from '../scripts/forside-tekst.mjs';
 import { lesCommon } from './hjelp/lokalsider-kilde.mjs';
+import { HYLLETEKST, LOKALE_KILDER } from '../scripts/hyller.mjs';
 import { SIDEGRUPPER } from '../scripts/locale-sider.mjs';
 import { NORSKE_RESTORD } from './hjelp/restord.mjs';
 
@@ -494,11 +495,33 @@ for (const s of ['sv', 'da', 'en']) {
     assert.deepEqual(BUTIKK[s], { apple: c.appStore, google: c.play });
   });
   test(`${s}: skalltekstene følger skrivereglene og plassen`, () => {
-    const synlig = alleDeler(s).replace(/<[^>]+>/g, ' ');
+    const html = alleDeler(s) + topp(s, { folg: [{ href: '#a', tekst: 'Navn' }] });
+    // Synlig tekst og attributtverdiene som skjermlesere og nettlesere viser.
+    const synlig = [html.replace(/<[^>]+>/g, ' '), ...[...html.matchAll(/\b(?:aria-label|alt|title)="([^"]*)"/g)].map((m) => m[1])].join(' ');
     assert.doesNotMatch(synlig, /[–—]/);
     assert.doesNotMatch(synlig, /\b(kopp|kopper|kop|koppar)\b/i);
     assert.doesNotMatch(synlig, NORSKE_RESTORD);
     const t = SKALLTEKST[s];
-    for (const [verdi, maks] of [[t.topp.meny, 8], [t.topp.lastNed, 10], [t.bunn.knapp, 18], [t.fast.knapp, 18], [t.innhold.knapp, 18], [t.bunn.guider, 20], [t.bunnlinje, 50], [t.hent.tittel, 28], [t.hent.ingress, 90]]) assert.ok(verdi.length <= maks, verdi);
+    for (const [verdi, maks] of [[t.topp.folgAria, 24], [t.topp.meny, 8], [t.topp.lastNed, 10], [t.bunn.knapp, 18], [t.fast.knapp, 18], [t.innhold.knapp, 18], [t.bunn.guider, 20], [t.bunnlinje, 50], [t.hent.tittel, 28], [t.hent.ingress, 90]]) assert.ok(verdi.length <= maks, verdi);
   });
 }
+
+// Låser de leverte tekstene mot fasiten (generert én gang fra språkfilene). Koden kan ha flere nøkler enn fasiten.
+const delmengde = (forventet, faktisk, sti = '') => {
+  if (forventet !== null && typeof forventet === 'object') {
+    for (const [k, v] of Object.entries(forventet)) delmengde(v, faktisk?.[k], `${sti}.${k}`);
+  } else assert.equal(faktisk, forventet, sti);
+};
+for (const s of ['sv', 'da', 'en']) {
+  test(`${s}: skall- og hylletekstene er de leverte`, () => {
+    const fasit = JSON.parse(les(`test/fasit/skalltekst-${s}.json`));
+    delmengde(fasit.skall, SKALLTEKST[s], 'skall');
+    delmengde(fasit.hyller, HYLLETEKST[s], 'hyller');
+    assert.equal(Object.keys(HYLLETEKST[s].lenker).length - Object.keys(fasit.hyller.lenker).length, LOKALE_KILDER[s].length);
+  });
+}
+test('følgemenyen har sitt eget navn på hvert språk', () => {
+  for (const [s, navn] of [['nb', 'På denne siden'], ['sv', 'På den här sidan'], ['da', 'På denne side'], ['en', 'On this page']]) {
+    assert.match(topp(s, { folg: [{ href: '#a', tekst: 'A' }] }), new RegExp(`<nav class="folg" id="folg" aria-label="${navn}">`));
+  }
+});

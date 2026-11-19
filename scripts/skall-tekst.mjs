@@ -38,6 +38,8 @@ export const SKALLTEKST = {
       panelAria: 'Hovedmeny',
       // Den lille knappen øverst til høyre. Åpner nedlasting.
       lastNed: 'Last ned',
+      // Navnet på følgemenyen (innholdsfortegnelsen) i toppfeltet, for skjermlesere.
+      folgAria: 'På denne siden',
     },
 
     // Språkvelgeren, i menyen og i bunnen. Avledet fra SPRAKVALG.
@@ -104,7 +106,7 @@ export const SKALLTEKST = {
     },
   },
   sv: {
-    topp: { merkeAria: 'Matlyst, till startsidan', meny: 'Meny', menyAria: 'Meny', panelAria: 'Huvudmeny', lastNed: 'Hämta' },
+    topp: { merkeAria: 'Matlyst, till startsidan', meny: 'Meny', menyAria: 'Meny', panelAria: 'Huvudmeny', lastNed: 'Hämta', folgAria: 'På den här sidan' },
     sprak: sprakvalg('sv'),
     bunn: { aria: 'Allt om Matlyst', menyAria: 'Sidfotsmeny', knapp: 'Hämta gratis', guider: 'Alla guider' },
     bunnlinje: 'Det där receptet du sparade? Laga det i kväll.',
@@ -128,7 +130,7 @@ export const SKALLTEKST = {
     samtykke: { tekst: 'Vi använder nödvändig lagring för att webbplatsen ska fungera. Om du säger ja använder vi även kakor för analys (PostHog, Google Analytics). Läs mer i vår', lenke: 'integritetspolicy', godta: 'Godkänn', avvis: 'Bara nödvändiga' },
   },
   da: {
-    topp: { merkeAria: 'Matlyst, til forsiden', meny: 'Menu', menyAria: 'Menu', panelAria: 'Hovedmenu', lastNed: 'Hent' },
+    topp: { merkeAria: 'Matlyst, til forsiden', meny: 'Menu', menyAria: 'Menu', panelAria: 'Hovedmenu', lastNed: 'Hent', folgAria: 'På denne side' },
     sprak: sprakvalg('da'),
     bunn: { aria: 'Alt på Matlyst', menyAria: 'Bundmenu', knapp: 'Hent gratis', guider: 'Alle guider' },
     bunnlinje: 'Den opskrift, du gemte? Lav den i aften.',
@@ -152,7 +154,7 @@ export const SKALLTEKST = {
     samtykke: { tekst: 'Vi bruger nødvendig lagring, for at siden virker. Siger du ja, bruger vi også analyse (PostHog og Google Analytics) til at forbedre Matlyst. Læs mere i vores', lenke: 'privatlivspolitik', godta: 'Acceptér', avvis: 'Kun nødvendige' },
   },
   en: {
-    topp: { merkeAria: 'Matlyst home page', meny: 'Menu', menyAria: 'Menu', panelAria: 'Main menu', lastNed: 'Download' },
+    topp: { merkeAria: 'Matlyst home page', meny: 'Menu', menyAria: 'Menu', panelAria: 'Main menu', lastNed: 'Download', folgAria: 'On this page' },
     sprak: sprakvalg('en'),
     bunn: { aria: 'More from Matlyst', menyAria: 'Footer menu', knapp: 'Get it free', guider: 'All guides' },
     bunnlinje: 'That recipe you saved? Make it tonight.',

@@ -30,7 +30,7 @@ function hyller(sprak, meny = false) {
 
 export function topp(sprak, valg = {}) {
   const { topp: t } = sjekkSprak(sprak);
-  const folg = valg.folg ? `<nav class="folg" id="folg" aria-label="På denne siden"><i class="folgmerke" aria-hidden="true"></i>${valg.folg.map(({ href, tekst }) => `<a href="${skjerm(href)}">${skjerm(tekst)}</a>`).join('')}</nav>` : '';
+  const folg = valg.folg ? `<nav class="folg" id="folg" aria-label="${skjerm(t.folgAria)}"><i class="folgmerke" aria-hidden="true"></i>${valg.folg.map(({ href, tekst }) => `<a href="${skjerm(href)}">${skjerm(tekst)}</a>`).join('')}</nav>` : '';
   return `<header class="topp">
   <div class="ramme">
     <a class="merke" href="${skjerm(side('forside', sprak))}" id="merke" aria-label="${skjerm(t.merkeAria)}"><span class="merkeflis"><img src="/images/forside/logo/14.webp" width="36" height="36" alt=""><img src="/images/forside/logo/14.webp" width="36" height="36" alt=""></span><span class="ordmerke">mat<em>lyst</em></span></a>

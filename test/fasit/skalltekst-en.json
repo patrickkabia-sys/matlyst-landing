@@ -1,0 +1,92 @@
+{
+  "skall": {
+    "topp": {
+      "merkeAria": "Matlyst home page",
+      "meny": "Menu",
+      "menyAria": "Menu",
+      "panelAria": "Main menu",
+      "lastNed": "Download"
+    },
+    "bunn": {
+      "aria": "More from Matlyst",
+      "menyAria": "Footer menu",
+      "knapp": "Get it free",
+      "guider": "All guides"
+    },
+    "bunnlinje": "That recipe you saved? Make it tonight.",
+    "under": {
+      "vilkarAria": "Legal",
+      "lenker": [
+        "Privacy",
+        "Terms",
+        "Cookie settings"
+      ],
+      "laget": "© 2026 Matlyst. Made in Norway",
+      "flaggAlt": "Norwegian flag"
+    },
+    "fast": {
+      "knapp": "Get it free"
+    },
+    "hent": {
+      "lukkAria": "Close",
+      "qrAlt": "QR code for matlyst-app.no/app",
+      "tittel": "Scan with your phone",
+      "ingress": "Your camera takes you to the right store, whether you have an iPhone or an Android phone."
+    },
+    "innhold": {
+      "knapp": "Get it free"
+    }
+  },
+  "hyller": {
+    "navn": {
+      "appen": "The app",
+      "lagre": "Save recipes",
+      "middag": "Dinner",
+      "verktoy": "Tools",
+      "tips": "Kitchen tips",
+      "matlyst": "Matlyst"
+    },
+    "lenker": {
+      "/oppskriftsbok-app/": "Recipe organizer app",
+      "/importer-oppskrifter/": "Import recipes",
+      "/ukemeny/": "Meal plan",
+      "/handleliste/": "Grocery list",
+      "/spiskammer-app/": "Pantry",
+      "/#spor": "Ask Matlyst",
+      "/finn-oppskrifter/": "Find saved recipes",
+      "/lagre-oppskrifter-fra-instagram/": "Save from Instagram",
+      "/lagre-oppskrifter-fra-tiktok/": "Save from TikTok",
+      "/importer-fra-matprat/": "Save from Matprat",
+      "/importer-fra-koket/": "Save from Köket.se",
+      "/handskrevne-oppskrifter/": "Photos and cookbooks",
+      "/bytt-fra-paprika/": "Import from Paprika",
+      "/middagsforslag/": "Dinner ideas",
+      "/enkel-middag/": "Easy dinners",
+      "/tom-kjoleskapet/": "Clean out the fridge",
+      "/hva-kan-jeg-lage/": "What can I make?",
+      "/verktoy/enhetsomregner/": "Unit converter",
+      "/verktoy/kopp-til-dl/": "Cups to deciliters",
+      "/verktoy/dl-til-kopp/": "Deciliters to cups",
+      "/verktoy/celsius-til-fahrenheit/": "Celsius to Fahrenheit",
+      "/verktoy/dl-til-gram/": "Deciliters to grams",
+      "/verktoy/porsjoner/": "Servings calculator",
+      "/verktoy/kakeform/": "Pan size converter",
+      "/verktoy/steketid/": "Roasting times",
+      "/verktoy/pizzadeig/": "Pizza dough calculator",
+      "/verktoy/gjaer/": "Yeast converter",
+      "/verktoy/": "All calculators",
+      "/blogg/doble-oppskrift/": "Double or halve a recipe",
+      "/blogg/er-egget-ferskt/": "Are your eggs fresh?",
+      "/blogg/erstatte-egg/": "Egg substitutes",
+      "/blogg/kjernetemperatur/": "Internal temperatures",
+      "/blogg/koketider/": "Boiling times",
+      "/blogg/": "All kitchen tips",
+      "/skapere/": "For recipe creators",
+      "https://www.instagram.com/matlyst_app/": "Instagram",
+      "https://www.tiktok.com/@matlyst.appen": "TikTok",
+      "https://www.youtube.com/@matlyst": "YouTube",
+      "https://www.pinterest.com/matlystapp/": "Pinterest",
+      "/personvern.html": "Privacy"
+    }
+  }
+}
