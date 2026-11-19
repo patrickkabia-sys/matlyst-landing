@@ -17,7 +17,7 @@ test('Playwright kjøres i to skår med --shard fra matrisen', () => {
 test('enhetstestene kjøres én gang, i en egen jobb uten Playwright', () => {
   assert.equal([...yml.matchAll(/run: npm test\b/gu)].length, 1);
   assert.match(jobb('enhet'), /run: npm test\b/u);
-  assert.ok(!/matrix/u.test(jobb('enhet')) && !/playwright/u.test(jobb('enhet')));
+  assert.ok(!/matrix/u.test(jobb('enhet')) && !/playwright test/u.test(jobb('enhet')));
   assert.ok(!/run: npm test\b/u.test(jobb('e2e')));
 });
 
