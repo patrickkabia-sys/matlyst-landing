@@ -3,13 +3,11 @@ import { SKALLTEKST, SPRAKVALG, BUTIKK } from './skall-tekst.mjs';
 
 // Rene HTML-funksjoner. Språkdata kommer fra samme kilde for meny og bunn.
 const skjerm = (verdi) => String(verdi).replace(/[&<>"']/g, (tegn) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[tegn]);
-// Kortkodene er skrift på knappen; navnene og etiketten kommer fra skall-tekst.mjs.
-const sprakkort = { nb: 'NO', sv: 'SV', da: 'DA', en: 'EN' };
 
 export function sprakvelger(sprak, plass, sider) {
   const lenker = Object.entries(sider).map(([kode, href]) => {
-    const kort = sprakkort[kode], navn = SPRAKVALG.navn[kode];
-    return `<a href="${skjerm(href)}" lang="${kode}" hreflang="${kode}" aria-label="${navn}"${kode === sprak ? ' aria-current="page"' : ''}>${kort}</a>`;
+    const navn = SPRAKVALG.navn[kode];
+    return `<a href="${skjerm(href)}" lang="${kode}" hreflang="${kode}" aria-label="${navn}"${kode === sprak ? ' aria-current="page"' : ''}>${navn}</a>`;
   }).join('');
   return `<!-- språkvelger:${plass} --><span class="language-switcher language-switcher-${plass === 'topp' ? 'top' : 'bottom'}" role="navigation" aria-label="${skjerm(SPRAKVALG.aria[sprak])}">${lenker}</span><!-- /språkvelger:${plass} -->`;
 }

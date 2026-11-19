@@ -132,6 +132,18 @@ test('bloggforsiden lenker til auto-artikkelen', () => {
   assert.match(html, new RegExp(`href="/blogg/${fixture.slug}/"`, 'u'));
 });
 
+test('den genererte autoartikkelen og bloggforsiden har hver språkvelger nøyaktig én gang, med ett kommentarpar', () => {
+  const rot = byggMidlertidigNettsted();
+  for (const fil of [`blogg/${fixture.slug}/index.html`, 'blogg/index.html']) {
+    const html = readFileSync(join(rot, fil), 'utf8');
+    for (const plass of ['topp', 'bunn']) {
+      assert.equal(html.split(`<!-- språkvelger:${plass} -->`).length, 2, `${fil} ${plass} åpner`);
+      assert.equal(html.split(`<!-- /språkvelger:${plass} -->`).length, 2, `${fil} ${plass} lukker`);
+    }
+    assert.equal(html.split('class="language-switcher ').length, 3, `${fil} språkvelgere`);
+  }
+});
+
 test('sidekartet for språket har auto-artikkelen', () => {
   const rot = byggMidlertidigNettsted();
   const sitemap = readFileSync(join(rot, 'sitemap.xml'), 'utf8');

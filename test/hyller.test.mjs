@@ -3,7 +3,9 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
-import { HYLLER, synligeLenker } from '../scripts/hyller.mjs';
+import { HYLLER, LOKALE_KILDER, lokaliserHyller, synligeLenker } from '../scripts/hyller.mjs';
+import { alleSider } from '../scripts/sidetyper.mjs';
+import { gruppeForSti } from '../scripts/locale-sider.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const SKJULTE = ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'];
@@ -84,4 +86,70 @@ test('synligeLenker beholder alt unntatt de skjulte, 33 totalt', () => {
     assert.deepEqual(synligeLenker(h).map((l) => l.tekst), proto[i].lenker.filter((t) => !SKJULTE.includes(t)), h.navn);
   });
   assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 33);
+});
+
+// Falsk tekst: hver nøkkel får en synlig verdi, så testene ser adressene og ikke oversettelsen.
+const falsk = () => ({
+  navn: Object.fromEntries(HYLLER.nb.map((h) => [h.id, `N:${h.id}`])),
+  lenker: {
+    ...Object.fromEntries(HYLLER.nb.flatMap((h) => h.lenker.map((l) => [l.href, `T:${l.href}`]))),
+    ...Object.fromEntries(Object.values(LOKALE_KILDER).flat().map((k) => [k.href, `T:${k.href}`])),
+  },
+});
+const finn = (hyller, id, nbHref) => hyller.find((h) => h.id === id).lenker.find((l) => l.nbHref === nbHref);
+
+test('lokaliserHyller henter adressene fra SIDEGRUPPER', () => {
+  const sv = lokaliserHyller('sv', falsk());
+  assert.equal(finn(sv, 'appen', '/handleliste/').href, '/sv/inkopslista/');
+  assert.equal(finn(sv, 'verktoy', '/verktoy/kopp-til-dl/').href, '/sv/verktyg/kopp-till-dl/');
+  assert.equal(finn(sv, 'matlyst', '/personvern.html').href, '/sv/integritet/');
+  assert.equal(finn(sv, 'matlyst', 'https://www.youtube.com/@matlyst').href, 'https://www.youtube.com/@matlyst');
+});
+
+test('en lenke uten side på språket vises ikke', () => {
+  for (const s of ['sv', 'da', 'en']) {
+    const koketider = finn(lokaliserHyller(s, falsk()), 'tips', '/blogg/koketider/');
+    assert.equal(koketider.finnes === false, gruppeForSti('/blogg/koketider/')?.sider[s] === undefined, s);
+  }
+  // Lenker som er skjult på bokmål, arves.
+  assert.equal(finn(lokaliserHyller('da', falsk()), 'verktoy', '/verktoy/porsjoner/').finnes, false);
+});
+
+test('Spør Matlyst vises bare når forsiden på språket har delen', () => {
+  for (const s of ['sv', 'da', 'en']) {
+    const forside = readFileSync(join(rot, gruppeForSti('/').sider[s], 'index.html'), 'utf8');
+    assert.equal(finn(lokaliserHyller(s, falsk()), 'appen', '/#spor').finnes, forside.includes('id="spor"'), s);
+  }
+});
+
+test('manglende tekst kaster med adressen', () => {
+  const t = falsk();
+  delete t.lenker['/ukemeny/'];
+  assert.throws(() => lokaliserHyller('sv', t), /mangler tekst.*\/ukemeny\//);
+});
+
+test('norske kilder vises ikke utenfor bokmål, de lokale kildene gjør', () => {
+  for (const s of ['sv', 'da', 'en']) {
+    const lagre = lokaliserHyller(s, falsk()).find((h) => h.id === 'lagre');
+    for (const href of ['/importer-fra-matprat/', '/importer-fra-koket/']) assert.equal(lagre.lenker.find((l) => l.nbHref === href).finnes, false, `${s} ${href}`);
+    const lokale = lagre.lenker.filter((l) => l.nbHref === null);
+    assert.deepEqual(lokale.map((l) => l.href), LOKALE_KILDER[s].map((k) => k.href));
+    assert.ok(lokale.every((l) => l.finnes));
+  }
+  assert.ok(!lokaliserHyller('nb', falsk()).find((h) => h.id === 'lagre').lenker.some((l) => l.nbHref === null));
+});
+
+test('manglende tekst for en lokal kilde kaster med adressen', () => {
+  const t = falsk();
+  delete t.lenker['/da/dr-mad/'];
+  assert.throws(() => lokaliserHyller('da', t), /mangler tekst.*\/da\/dr-mad\//);
+});
+
+test('hver lokale kilde er en side som finnes, på sitt eget språk', () => {
+  const stier = new Set(alleSider(rot).map((s) => s.sti));
+  for (const [sprak, kilder] of Object.entries(LOKALE_KILDER)) for (const { href, nbHref } of kilder) {
+    assert.ok(stier.has(href), href);
+    assert.ok(href.startsWith(`/${sprak}/`), href);
+    assert.equal(nbHref, null);
+  }
 });

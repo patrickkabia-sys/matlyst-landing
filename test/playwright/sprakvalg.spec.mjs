@@ -69,6 +69,9 @@ test('toppvelgeren og bunnvelgeren virker med tastatur', async ({ browser, baseU
   await expect(meny).toHaveAttribute('aria-expanded', 'true');
   for (let i = 0; i < 60 && !(await dansk.evaluate((el) => el === document.activeElement)); i++) await page.keyboard.press('Tab');
   await expect(dansk).toBeFocused();
+  // Fulle navn står som synlig tekst i velgeren.
+  await expect(dansk).toHaveText('Dansk');
+  await expect(page.locator('.language-switcher-top a[aria-label="English"]')).toHaveText('English');
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(`${baseURL}/da/`);
 
@@ -79,6 +82,23 @@ test('toppvelgeren og bunnvelgeren virker med tastatur', async ({ browser, baseU
   await expect(page).toHaveURL(`${baseURL}/`);
   await context.close();
 });
+
+test('Tab ut av menypanelet lukker menyen', async ({ browser }) => {
+  const { context, page } = await nySide(browser, 'nb-NO');
+  await page.goto('/');
+  const meny = page.locator('#menyknapp');
+  await meny.focus();
+  await page.keyboard.press('Enter');
+  await expect(meny).toHaveAttribute('aria-expanded', 'true');
+  // English er siste fokuserbare element i panelet; neste Tab går ut av det.
+  await page.locator('.language-switcher-top a[aria-label="English"]').focus();
+  await page.keyboard.press('Tab');
+  await expect(meny).toHaveAttribute('aria-expanded', 'false');
+  await context.close();
+});
+
+// Verktøysidene får skallet i oppgave 10; da skal toppvelgeren testes på /verktoy/kopp-til-dl/ også.
+test.skip('toppvelgeren virker med tastatur på /verktoy/kopp-til-dl/', async () => {});
 
 test('velgeren bruker riktig motstykke på personvernsiden', async ({ browser, baseURL }) => {
   const { context, page } = await nySide(browser, 'en-US');

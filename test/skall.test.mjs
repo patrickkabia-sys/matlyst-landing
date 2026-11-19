@@ -7,6 +7,7 @@ import { effektiv } from './hjelp/knappevekt.mjs';
 import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from '../scripts/skall.mjs';
 import { SKALLTEKST, SPRAKVALG, BUTIKK } from '../scripts/skall-tekst.mjs';
 import { TEKST } from '../scripts/forside-tekst.mjs';
+import { lesCommon } from './hjelp/lokalsider-kilde.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const les = (sti) => readFileSync(join(rot, sti), 'utf8');
@@ -454,3 +455,15 @@ for (const [sted, velger] of [['menyen', '#panel'], ['bunnen', '.under']]) {
     }
   });
 }
+
+test('språkvelgeren viser fulle navn, beholder etikettene og eier ett kommentarpar', () => {
+  const html = sprakvelger('da', 'topp', { nb: '/', sv: '/sv/', da: '/da/', en: '/en/' });
+  assert.match(html, /^<!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Sprog">/);
+  assert.match(html, /<!-- \/språkvelger:topp -->$/);
+  assert.equal(html.split('<!-- språkvelger:topp -->').length - 1, 1);
+  for (const [kode, navn] of Object.entries(SPRAKVALG.navn)) assert.match(html, new RegExp(`lang="${kode}"[^>]*aria-label="${navn}"[^>]*>${navn}</a>`));
+});
+
+test('butikklenkene på sv, da og en er de L bruker', () => {
+  for (const s of ['sv', 'da', 'en']) assert.deepEqual(BUTIKK[s], { apple: lesCommon(s).appStore, google: lesCommon(s).play });
+});
