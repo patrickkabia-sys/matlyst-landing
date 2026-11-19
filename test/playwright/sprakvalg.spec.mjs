@@ -13,7 +13,9 @@ for (const [locale, maal] of [['sv-SE', '/sv/'], ['da-DK', '/da/']]) {
     await expect(page).toHaveURL(`${baseURL}${maal}`);
     await page.waitForTimeout(100);
     await expect(page).toHaveURL(`${baseURL}${maal}`);
-    await expect(page.locator('.language-switcher-top')).toBeVisible();
+    // Forsiden er bygget av skallet: toppvelgeren ligger i menypanelet og vises når menyen åpnes.
+    await expect(page.locator('.language-switcher-top')).toHaveCount(1);
+    await page.locator('.language-switcher-bottom').scrollIntoViewIfNeeded();
     await expect(page.locator('.language-switcher-bottom')).toBeVisible();
     await context.close();
   });
