@@ -93,10 +93,14 @@ h2[id],h3[id]{scroll-margin-top:16px}
 /* Rader med piller: relaterte sider og omregnerlister */
 .related{max-width:880px;margin:112px auto 0;text-align:center}
 .related h2{margin:0;font-size:1.625rem;line-height:1.12}
-.related ul,.omregner-liste{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:28px auto 0;padding:0;list-style:none}
-.related li a,.omregner-liste li{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:1px solid var(--linje);border-radius:999px;font-size:1.0625rem;font-weight:500;text-align:left;transition:border-color .2s}
-.related li a:hover,.related li a:focus-visible,.omregner-liste li:hover,.omregner-liste li:focus-within{border-color:var(--blekk)}
-.omregner-liste li a{display:inline-flex;align-items:center;min-height:44px;margin-right:.35em;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+.related ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:28px auto 0;padding:0;list-style:none}
+.related li a{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:1px solid var(--linje);border-radius:999px;font-size:1.0625rem;font-weight:500;text-align:left;transition:border-color .2s}
+.related li a:hover,.related li a:focus-visible{border-color:var(--blekk)}
+/* Beslektede omregninger: en rolig liste, ikke piller. Lenken brytes aldri, forklaringen flyter etter den. */
+.omregner-liste{display:grid;margin:20px 0 0;padding:0;list-style:none;border-top:1px solid var(--linje)}
+.omregner-liste li{padding:12px 0;border-bottom:1px solid var(--linje);font-size:1.0625rem;line-height:1.45;color:var(--dempet)}
+.omregner-liste li a{padding-block:.7em;font-weight:700;color:var(--blekk);white-space:nowrap;text-decoration:underline;text-underline-offset:.2em}
+@media (min-width:721px){.omregner-liste{grid-template-columns:1fr 1fr;column-gap:40px}}
 
 /* Nummererte steg med svart sirkel. Dagens sider har enten et eget tall (.n eller b først i steget) eller ingen.
    Eget tall blir sirkelen; en teller genereres bare når steget mangler tall. */
@@ -121,7 +125,7 @@ h2[id],h3[id]{scroll-margin-top:16px}
   .faq summary{font-size:1.125rem}
   .faq details p{padding-right:0}
 }
-@media (prefers-reduced-motion:reduce){.faq summary::after,.related li a,.omregner-liste li,.locale-page-hero .eyebrow a{transition:none}}
+@media (prefers-reduced-motion:reduce){.faq summary::after,.related li a,.locale-page-hero .eyebrow a{transition:none}}
 
 /* Overskriftene vokser i trinn på rem. Prototypen gir kortenes H2 (.okort, .oapptekst) samme skala som lesetekstens H2, så trinnene står SIST i Grunnstil og vinner over de enkeltstående reglene over. clamp() med vw skalerer ikke med brukerens tekststørrelse (revisjonen krever faktor 1,9). */
 @media (min-width:721px){
