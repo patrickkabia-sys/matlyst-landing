@@ -25,9 +25,6 @@ const VIA_HUB_FORSIDE = {
   '/da/': importHub('/da/importer-opskrifter/', ['/da/koket/', '/da/landleys-kok/', '/da/matprat/']),
   '/en/': importHub('/en/import-recipes/', ['/en/alletiders-cookbook/', '/en/dr-food/', '/en/koket/', '/en/landleys-kok/', '/en/matprat/']),
 };
-// Kjent hull: hyllemenyen på /en/ har ingen lenke til høytidshuben, og ingen hub lenker til den.
-// Før forsiden ble generert sto den i den felles guideblokken. Rapportert til kontrolløren.
-const UNNTAK_FORSIDE = { '/en/': ['/en/holidays/'] };
 
 // Låser at ingen guide er foreldreløs: hver side i en sitemap med bunntekst skal
 // lenke til guidene på sitt språk. Rotsiden bruker det nye sideskallet og kan
@@ -54,7 +51,7 @@ for (const lang of Object.keys(SITEMAPER)) {
       // Det nye sideskallet lenker til guider direkte eller gjennom en synlig hub.
       // Ingen guide får forsvinne fra navigasjonen når den gamle lenkelista fjernes.
       if (['/', '/sv/', '/da/', '/en/'].includes(side)) {
-        krevGuidemeny(html, liste.filter(({ sti }) => !UNNTAK_FORSIDE[side]?.includes(sti)), VIA_HUB_FORSIDE[side], (sti) => readFileSync(filFor(sti), 'utf8'));
+        krevGuidemeny(html, liste, VIA_HUB_FORSIDE[side], (sti) => readFileSync(filFor(sti), 'utf8'));
         continue;
       }
       const blokk = html.match(MONSTER)?.[0];

@@ -223,6 +223,7 @@ export const HYLLETEKST = {
       '/blogg/erstatte-egg/': 'Egg substitutes',
       '/blogg/kjernetemperatur/': 'Internal temperatures',
       '/blogg/koketider/': 'Boiling times',
+      '/en/holidays/': 'Holiday cooking',
       '/blogg/': 'All kitchen tips',
       '/skapere/': 'For recipe creators',
       'https://www.instagram.com/matlyst_app/': 'Instagram',
@@ -248,6 +249,13 @@ export const LOKALE_KILDER = {
   ],
   // Engelsk: ingen nordiske kilder i hylla (kjent for få amerikanere); sidene nås fra «Alle guider».
   en: [],
+};
+
+// Lenker som bare finnes på ett språk, i andre hyller enn «Lagre oppskrifter» (der gjelder LOKALE_KILDER).
+// Form: språk, hylle-id, så lenker med `href` og `foran` (nbHref til lenka den settes rett foran; uten `foran`
+// havner den sist). `nbHref: null` fordi de ikke har noen bokmålslenke. Teksten ligger i språkets `lenker`.
+export const LOKALE_LENKER = {
+  en: { tips: [{ href: '/en/holidays/', foran: '/blogg/' }] },
 };
 
 // De norske kildelenkene i bokmål-hylla. Utenfor bokmål vises de aldri; hyllas kilder er LOKALE_KILDER.
@@ -285,6 +293,14 @@ export function lokaliserHyller(sprak, tekst, { grunn = rot } = {}) {
       for (const k of LOKALE_KILDER[sprak] ?? []) {
         const t = tekst?.lenker?.[k.href] ?? mangler(sprak, 'lokal kildelenke', k.href, null);
         lenker.push({ tekst: t, href: k.href, nbHref: null, finnes: finnesFil(grunn, k.href) });
+      }
+    }
+    if (sprak !== 'nb') {
+      for (const k of LOKALE_LENKER[sprak]?.[hylle.id] ?? []) {
+        const t = tekst?.lenker?.[k.href] ?? mangler(sprak, 'lokal lenke', k.href, null);
+        const ny = { tekst: t, href: k.href, nbHref: null, finnes: finnesFil(grunn, k.href) };
+        const i = k.foran === undefined ? -1 : lenker.findIndex((l) => l.nbHref === k.foran);
+        if (i === -1) lenker.push(ny); else lenker.splice(i, 0, ny);
       }
     }
     return { id: hylle.id, flis: hylle.flis, navn, lenker };

@@ -8,7 +8,7 @@ import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from '../
 import { SKALLTEKST, SPRAKVALG, BUTIKK } from '../scripts/skall-tekst.mjs';
 import { TEKST } from '../scripts/forside-tekst.mjs';
 import { lesCommon } from './hjelp/lokalsider-kilde.mjs';
-import { HYLLETEKST, LOKALE_KILDER } from '../scripts/hyller.mjs';
+import { HYLLETEKST, LOKALE_KILDER, LOKALE_LENKER } from '../scripts/hyller.mjs';
 import { SIDEGRUPPER } from '../scripts/locale-sider.mjs';
 import { NORSKE_RESTORD } from './hjelp/restord.mjs';
 
@@ -517,7 +517,7 @@ for (const s of ['sv', 'da', 'en']) {
     const fasit = JSON.parse(les(`test/fasit/skalltekst-${s}.json`));
     delmengde(fasit.skall, SKALLTEKST[s], 'skall');
     delmengde(fasit.hyller, HYLLETEKST[s], 'hyller');
-    assert.equal(Object.keys(HYLLETEKST[s].lenker).length - Object.keys(fasit.hyller.lenker).length, LOKALE_KILDER[s].length);
+    assert.equal(Object.keys(HYLLETEKST[s].lenker).length - Object.keys(fasit.hyller.lenker).length, LOKALE_KILDER[s].length + (LOKALE_LENKER[s]?.tips?.length ?? 0));
   });
 }
 test('følgemenyen har sitt eget navn på hvert språk', () => {
