@@ -194,7 +194,7 @@ export function artikkelMain(a, knapper) {
   return `<main id="hovedinnhold"><article class="blogg-artikkel"><header class="locale-page-hero"><p class="eyebrow"><a href="${BLOGGROT[a.lang]}">${t.blogg}</a> · ${etikett}</p><h1 class="disp">${a.title}</h1><p class="lead">${ingress}</p></header>
 <figure class="blogg-forside"><img src="${bilde(a.lang, a.tema, bilder[0])}" width="800" height="1000" decoding="async" alt="${ren(forside.tittel)} ${ren(forside.under)}"></figure>
 <section class="prose locale-prose">${tabeller}</section>
-<section class="blogg-galleri" aria-label="${t.galleri}"><h2>${t.galleri}</h2><div class="blogg-galleri-rad">${galleri}</div></section>
+<section class="blogg-galleri" aria-label="${t.galleri}"><h2>${t.galleri}</h2><div class="blogg-galleri-rad" tabindex="0">${galleri}</div></section>
 ${cta}
 <div class="blogg-flere" role="navigation" aria-label="${t.flere}"><h2>${t.flere}</h2><ul>${flere}</ul></div></article></main>`;
 }

@@ -135,3 +135,34 @@ test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', 
     assert.ok(les(side.fil).includes(`data-sidetype="${t}"`), `${side.sti} mangler data-sidetype="${t}"`);
   }
 });
+
+test('bloggsidene har stil for alle klassene i innholdet', () => {
+  assert.deepEqual(klasserUtenRegel('blogg', {
+    'disp': 'skriftvalg på overskrifter, ingen egen regel',
+    'blogg-artikkel': 'omslag rundt hele artikkelen, ingen egen stil',
+  }), []);
+});
+
+test('bloggen: kilder i autoartikler (bare i generert innhold, ikke på de 33 sidene) har en regel', () => {
+  assert.ok(klasserIVelgere(les('side.css')).has('blogg-kilder'));
+});
+
+test('bloggen: reglene er avgrenset til blogg, tekst står i rem, og delen har alle sine deler', () => {
+  const rå = les('side.css');
+  const start = rå.indexOf('/* == Blogg == */');
+  const slutt = rå.indexOf('/* == Juss == */');
+  assert.ok(start > -1 && slutt > start);
+  const del = utenKommentarer(rå.slice(start, slutt));
+  assert.ok(regler(del).length >= 20);
+  for (const r of regler(del)) for (const v of r.velger.split(',')) assert.ok(v.trim().startsWith('body[data-sidetype="blogg"] '), `ikke avgrenset: ${v.trim()}`);
+  assert.deepEqual([...del.matchAll(/font-size:[^;}]*px/gu)].map((m) => m[0]), [], 'tekststørrelser i rem, ikke px');
+  for (const nokkel of ['ul.blogg-kort{display:grid;grid-template-columns:repeat(3', 'border-radius:24px;overflow:hidden', 'figure.blogg-forside{max-width:68ch', '.merknad{font-size:.9375rem', 'scroll-snap-type:x mandatory', '.blogg-flere li a{display:inline-flex']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
+});
+
+test('bloggen: galleriraden er fokuserbar, ellers kan tastaturet ikke sveipe den', () => {
+  for (const s of alleSider(new URL('..', import.meta.url).pathname).filter((x) => x.type === 'blogg')) {
+    const html = readFileSync(new URL(`..${s.fil.startsWith('/') ? '' : '/'}${s.fil}`, import.meta.url), 'utf8');
+    for (const rad of html.match(/<div class="blogg-galleri-rad"[^>]*>/gu) ?? []) assert.match(rad, /tabindex="0"/u, s.sti);
+  }
+  assert.match(les('scripts/blogg.mjs'), /<div class="blogg-galleri-rad" tabindex="0">/u);
+});

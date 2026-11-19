@@ -74,12 +74,12 @@ function byggMidlertidigNettsted() {
   kopier(repoRot, generertRot);
   skrivFixture(generertRot, true);
   // Lokal utrulling bare i kopien: repoets UTRULLET røres ikke. Da må generatorkjeden
-  // faktisk legge skallet på de nygenererte omregnersidene.
+  // faktisk legge skallet på de nygenererte omregner- og bloggsidene.
   const sidetyper = join(generertRot, 'scripts/sidetyper.mjs');
   const kilde = readFileSync(sidetyper, 'utf8');
   const regel = /export const UTRULLET = new Set\([^)]*\);/u;
   assert.match(kilde, regel, 'fant ikke UTRULLET i kopien');
-  const lokal = kilde.replace(regel, "export const UTRULLET = new Set(['omregner']);");
+  const lokal = kilde.replace(regel, "export const UTRULLET = new Set(['omregner', 'blogg']);");
   writeFileSync(sidetyper, lokal);
   execFileSync(process.execPath, ['scripts/generer-norske-importguider.mjs'], { cwd: generertRot });
   execFileSync(process.execPath, ['scripts/generer-lokalsider.mjs'], { cwd: generertRot });
@@ -177,11 +177,20 @@ test('auto-artikkel får ikke forbudte merkenavn fra guidebunnteksten', () => {
   assert.doesNotMatch(trekkUt(html, `/blogg/${fixture.slug}/`).innhold, /Matprat|Godt\.no|\bNom\b/iu);
 });
 
-test('den genererte autoartikkelen er det skall-paa lager', (t) => {
-  const sti = `/blogg/${fixture.slug}/`;
-  const html = readFileSync(join(byggMidlertidigNettsted(), `blogg/${fixture.slug}/index.html`), 'utf8');
-  if (!erUtrullet(sti, html)) return t.skip('Blogg er ikke rullet ut ennå');
-  assert.equal(html, rendre(html, sti));
+test('den genererte autoartikkelen og bloggindeksene er det skall-paa lager', () => {
+  const rot = byggMidlertidigNettsted();
+  for (const sti of [`/blogg/${fixture.slug}/`, '/blogg/', '/sv/blogg/', '/da/blog/', '/en/blog/']) {
+    const fil = `${sti.slice(1)}index.html`;
+    const html = readFileSync(join(rot, fil), 'utf8');
+    // Blogg er rullet ut i repoet: testen kan ikke lenger hoppe over seg selv.
+    assert.ok(erUtrullet(sti, html), `${sti}: blogg skal stå i UTRULLET`);
+    assert.ok(html.includes('<!-- skall:topp -->') && html.includes('<!-- skall:bunn -->'), `${sti}: mangler skallet`);
+    assert.ok(html.includes('<link rel="stylesheet" href="/side.css">'), `${sti}: mangler side.css`);
+    assert.match(html, /<body[^>]*data-sidetype="blogg"/u, `${sti}: mangler data-sidetype`);
+    assert.equal(html, rendre(html, sti), `${sti}: rendre er ikke idempotent`);
+  }
+  const artikkel = readFileSync(join(rot, `blogg/${fixture.slug}/index.html`), 'utf8');
+  assert.match(artikkel, /<section class="app-cta">[\s\S]*?<a class="knapp" href="\/app" data-hent="app-cta">[\s\S]*?<\/section>/u, 'appkortet får skallets knapp');
 });
 
 test('generatorkjeden gir autoartikkelen meny, bilder med mål og språksignal', () => {
