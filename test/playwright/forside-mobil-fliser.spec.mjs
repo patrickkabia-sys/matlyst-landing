@@ -27,9 +27,15 @@ test('husstand: én rett i stedet for to, valgene på én sveipbar linje uten si
   expect(m.knapper).toBe(3); expect(m.bredere, 'raden kan sveipes').toBe(true);
   expect(m.side).toBeLessThanOrEqual(390);
   expect(m.maltider, 'én rett vises').toBe(1);
-  // Tastatur: knappene er fokuserbare og dukker opp i raden når de får fokus.
-  await page.locator('.a-husvelg button').nth(2).focus();
-  expect(await page.evaluate(() => document.activeElement.closest('.a-husvelg') !== null)).toBe(true);
+  // Tastatur: Tab flytter fokus til neste knapp i raden, og knappen er synlig i sveiperaden etter fokus (raden ruller den fram).
+  await page.locator('.a-husvelg button').first().focus();
+  await page.keyboard.press('Tab'); await page.keyboard.press('Tab');
+  expect(await page.evaluate(() => document.activeElement === document.querySelectorAll('.a-husvelg button')[2])).toBe(true);
+  await page.waitForTimeout(400);
+  const synlig = await page.evaluate(() => { const k = document.activeElement.getBoundingClientRect(), r = document.querySelector('.a-husvelg').getBoundingClientRect(); return { venstre: k.left - r.left, hoyre: r.right - k.right, rullet: document.querySelector('.a-husvelg').scrollLeft }; });
+  expect(synlig.venstre, 'knappen er innenfor raden til venstre').toBeGreaterThanOrEqual(-1);
+  expect(synlig.hoyre, 'knappen er innenfor raden til høyre').toBeGreaterThanOrEqual(-1);
+  expect(synlig.rullet, 'raden rullet').toBeGreaterThan(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
   // Husstandene med handleliste: varene står alle sammen, ingen er klippet bort
   await page.locator('.a-husvelg button').nth(1).click();
