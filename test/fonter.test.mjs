@@ -122,35 +122,48 @@ function forsteFamilie(verdi, vars) {
   return f && !GENERISKE.has(f.toLowerCase()) ? f : null;
 }
 
-const vektTall = (v) => ({ bold: 700, normal: 400 }[v] ?? Number(v));
+const UKJENT = 'ukjent';
+const vektTall = (v, vars = {}) => {
+  let t = String(v).replace(/\s*!important\s*$/u, '').trim();
+  const nav = t.match(/^var\((--[\w-]+)/u);
+  if (nav) t = (vars[nav[1]] ?? '').trim();
+  const n = { bold: 700, normal: 400 }[t] ?? (/^\d{1,4}$/u.test(t) ? Number(t) : NaN);
+  return Number.isFinite(n) && n >= 1 && n <= 1000 ? n : UKJENT;
+};
 
-// Alle kombinasjoner familie/stil/vekt som en regel faktisk ber om. Vekt og stil regnes bare når regelen setter dem.
-// En regel uten egen familie arver: familien slås opp på regelens forelder-velger i samme ark (`.ordmerke em`
-// arver `.ordmerke`), ellers regnes den mot hovedfamilien i rammen (--f).
+// Alle kombinasjoner familie/stil/vekt som en regel faktisk ber om. Reglene er:
+// - `!important` strippes før verdien leses.
+// - Kortformen `font` uten vekt ber om 400.
+// - En regel uten egen vekt arver: vekten slås opp på forelder-velgeren i samme ark (`.ordmerke em` arver
+//   `.ordmerke`), ellers 400. Det samme gjelder familie (ellers hovedfamilien i rammen, --f).
+// - En vekt som ikke kan leses (bolder, lighter, calc, ukjent var()) blir UKJENT og gir rødt, aldri grønt.
 export function bruk(kilde, vars, hvor) {
   const rader = [];
-  for (const [, velger, kropp] of uten(kilde).replace(/@font-face\s*\{[^}]*\}/gu, '').matchAll(/([^{}@]+)\{([^{}]*)\}/gu)) {
+  for (const [, velger, kropp0] of uten(kilde).replace(/@font-face\s*\{[^}]*\}/gu, '').matchAll(/([^{}@]+)\{([^{}]*)\}/gu)) {
     if (/^\s*$/u.test(velger)) continue;
+    const kropp = kropp0.replace(/\s*!important/gu, '');
     const dekl = (navn) => kropp.match(new RegExp(`(?:^|[;\\s])${navn}\\s*:\\s*([^;]+)`, 'u'))?.[1].trim();
     const kort = kropp.match(/(?:^|[;\s])font\s*:\s*([^;]+)/u)?.[1].trim();
     let familie = dekl('font-family'), vekt = dekl('font-weight'), stil = dekl('font-style');
-    if (kort && !/^(inherit|initial|unset|[a-z-]+\(.*\)\s*$)/u.test(kort)) {
-      const m = kort.match(/^((?:italic|oblique|normal)\s+)?((?:\d{3}|bold|normal)\s+)?(?:[\d.]+(?:px|rem|em|%|pt)|clamp\([^)]*\)|[a-z-]+)(?:\s*\/\s*[^\s]+)?\s+(.+)$/u);
-      if (m) { stil ??= m[1]?.trim(); vekt ??= m[2]?.trim(); familie ??= m[3]; }
+    let kortUlest = false;
+    if (kort && !/^(inherit|initial|unset)$/u.test(kort)) {
+      const m = kort.match(/^((?:italic|oblique|normal)\s+)?((?:\d{3,4}|bold|normal)\s+)?(?:[\d.]+(?:px|rem|em|%|pt)|clamp\([^)]*\))(?:\s*\/\s*[^\s]+)?\s+(.+)$/u);
+      if (m) { stil ??= m[1]?.trim(); vekt ??= m[2]?.trim() ?? '400'; familie ??= m[3]; } else kortUlest = true;
     }
-    if (!familie && !vekt && !stil) continue;
-    if (vekt && (/^(bolder|lighter|inherit|initial|unset)$/u.test(vekt) || !Number.isFinite(vektTall(vekt)))) vekt = undefined;
-    rader.push({ velgere: velger.split(',').map((v) => v.trim()), familie: familie ? forsteFamilie(familie, vars) : undefined, eksplisitt: Boolean(familie), vekt, stil });
+    if (!familie && !vekt && !stil && !kortUlest) continue;
+    if (vekt && /^(inherit|initial|unset)$/u.test(vekt)) vekt = undefined;
+    rader.push({ velgere: velger.split(',').map((v) => v.trim()), familie: familie ? forsteFamilie(familie, vars) : undefined, eksplisitt: Boolean(familie), vekt: kortUlest ? UKJENT : vekt ? vektTall(vekt, vars) : undefined, stil });
   }
-  const medFamilie = new Map(rader.filter((r) => r.eksplisitt && r.familie).flatMap((r) => r.velgere.map((v) => [v, r.familie])));
+  const oppslag = (felt) => new Map(rader.filter((r) => r[felt] !== undefined && (felt !== 'familie' || (r.eksplisitt && r.familie))).flatMap((r) => r.velgere.map((v) => [v, r[felt]])));
+  const famKart = oppslag('familie'), vektKart = oppslag('vekt');
   const forelder = (v) => v.replace(/\s*(?:[>+~]\s*|\s)[^\s>+~]+$/u, '');
   const ut = [];
   for (const r of rader) {
     if (r.eksplisitt && !r.familie) continue; // generisk familie, ingen webfont
     for (const v of r.velgere) {
-      const fam = r.eksplisitt ? r.familie : (medFamilie.get(forelder(v)) ?? forsteFamilie('var(--f)', vars));
-      if (!r.vekt && !r.stil && !r.eksplisitt) continue;
-      ut.push({ familie: fam, stil: r.stil === 'oblique' ? 'italic' : r.stil ?? 'normal', vekt: r.vekt ? vektTall(r.vekt) : undefined, hvor: `${hvor} ${v.slice(0, 70)}`, eksplisittFamilie: r.eksplisitt });
+      const fam = r.eksplisitt ? r.familie : (famKart.get(forelder(v)) ?? forsteFamilie('var(--f)', vars));
+      const vekt = r.vekt ?? vektKart.get(forelder(v)) ?? 400;
+      ut.push({ familie: fam, stil: r.stil === 'oblique' ? 'italic' : r.stil ?? 'normal', vekt, hvor: `${hvor} ${v.slice(0, 70)}`, eksplisittFamilie: r.eksplisitt });
     }
   }
   return ut;
@@ -168,7 +181,7 @@ function alleBruk() {
 
 const dekkerVekt = (a, { familie, stil, vekt }) => a.some((f) => {
   if (f.familie !== familie || f.stil !== stil) return false;
-  if (vekt === undefined) return true;
+  if (vekt === UKJENT) return false;
   const w = f.vekt.trim().split(/\s+/u).map(Number);
   const [min, maks] = w.length === 2 ? w : [w[0], w[0]];
   return vekt >= min && vekt <= maks;
@@ -177,9 +190,14 @@ const dekkerVekt = (a, { familie, stil, vekt }) => a.some((f) => {
 test('vakten leser bruk fra regler, også i kortskrift og via var()', () => {
   const v = variabler();
   assert.deepEqual(bruk('a{font:500 15px/1.55 var(--f)}b{font-family:"DM Sans",sans-serif;font-weight:300}c{font-family:Fraunces;font-style:italic}', v, 't').map((x) => [x.familie, x.stil, x.vekt]),
-    [['Schibsted Grotesk', 'normal', 500], ['DM Sans', 'normal', 300], ['Fraunces', 'italic', undefined]]);
+    [['Schibsted Grotesk', 'normal', 500], ['DM Sans', 'normal', 300], ['Fraunces', 'italic', 400]]);
   assert.deepEqual(bruk('.m{font-family:\'Fraunces Ordmerke\';font-style:italic}.m em{font-weight:400}', v, 't').map((x) => [x.familie, x.stil, x.vekt]),
-    [['Fraunces Ordmerke', 'italic', undefined], ['Fraunces Ordmerke', 'normal', 400]]);
+    [['Fraunces Ordmerke', 'italic', 400], ['Fraunces Ordmerke', 'normal', 400]]);
+  // Det vakten ikke forstår skal bli rødt: !important leses, kortform uten vekt er 400, ulesbar vekt er ukjent.
+  assert.deepEqual(bruk('.app{font-family:\'DM Sans\';font-weight:300 !important}', v, 't').map((x) => x.vekt), [300]);
+  assert.deepEqual(bruk('.t{font:23px/1.2 \'Fraunces\',serif}', v, 't').map((x) => x.vekt), [400]);
+  assert.deepEqual(bruk('.t{font-family:\'DM Sans\';font-weight:bolder}.u{font-weight:calc(300 + 100)}', v, 't').map((x) => x.vekt), [UKJENT, UKJENT]);
+  assert.deepEqual(bruk('.a{font-weight:300}.a b{font-family:\'DM Sans\'}', v, 't').map((x) => x.vekt), [300, 300]);
 });
 
 test('hver kombinasjon av familie, stil og vekt som stilarkene og sidene ber om er dekket av et @font-face i tokens.css', () => {
