@@ -42,9 +42,15 @@ test('tokenbærende sider får aldri skall, site.js, banner eller måling', () =
 // Hviteliste: eksakt sett av <script>-tagger per tokenbærende side (src, eller sha256 av innholdet).
 // Fasiten er hentet fra innholdet før utrullingen (f9d84958); et nytt eller endret skript gir rødt.
 export function skriptene(h) {
-  return [...h.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/giu)].map((m) => {
+  // Sluttaggen følger HTML-regelen (</script fulgt av mellomrom, / eller >), så `</script >` ikke gjemmer et skript.
+  // Et skript med src skal ha tom kropp, og antall åpningstagger må stemme med det som ble funnet.
+  const funnet = [...h.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script(?=[\t\n\f\r \/>])[^>]*>/giu)];
+  const apninger = (h.match(/<script\b/giu) || []).length;
+  if (apninger !== funnet.length) throw new Error(`skript som ikke lar seg lese entydig: ${apninger} åpninger, ${funnet.length} hele`);
+  return funnet.map((m) => {
     const a = m[1].replace(/\s+/gu, ' ').trim();
     const src = /\bsrc="([^"]*)"/u.exec(a)?.[1];
+    if (src && m[2].trim()) throw new Error(`skript med src har innhold: ${src}`);
     return src ? { attributter: a, src } : { attributter: a, sha256: createHash('sha256').update(m[2]).digest('hex') };
   });
 }
@@ -183,4 +189,12 @@ test('alle .cookie- og .ck-reglene i tjeneste.css er skall.css sine, linje for l
   assert.ok(kilde.length >= 10, `fant bare ${kilde.length} bannerregler i skall.css`);
   assert.ok(kilde.some((l) => l.startsWith('.ck-btn:hover')) && kilde.some((l) => l.startsWith('.ck-btn:focus-visible')));
   assert.deepEqual(banner(kamp), kilde);
+});
+
+test('skriptvakten lar seg ikke lure av </script > eller innhold i et src-skript', () => {
+  const ok = '<script src="/a.js"></script>';
+  assert.deepEqual(skriptene(ok), [{ attributter: 'src="/a.js"', src: '/a.js' }]);
+  assert.throws(() => skriptene('<script src="/a.js">fetch("x")</script>'), /src har innhold/u);
+  assert.notDeepEqual(skriptene('<script src="/a.js"></script ><script>fetch("x")</script>'), skriptene(ok));
+  assert.throws(() => skriptene('<script src="/a.js"></scriptx><script>fetch(1)</script>'), /entydig|innhold/u);
 });
