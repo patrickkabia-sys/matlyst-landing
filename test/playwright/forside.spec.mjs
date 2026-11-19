@@ -179,8 +179,7 @@ test('1280 × 800 viser hele telefonen uten rulling', async ({ page }) => {
 test('390 px har overskrift, knapp, stjerner, telefon og ingress i riktig rekkefølge', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 }); await page.goto(STI);
   const bokser = [];
-  // Vurderingslinja finnes ikke på /en/ (vedtak 3), og da hoppes den over.
-  for (const velger of ['.hero h1', '.hero .valg', '.hero .bevis', '.film', '.hero > p']) if (await page.locator(velger).count()) bokser.push(await page.locator(velger).boundingBox());
+  for (const velger of ['.hero h1', '.hero .valg', '.hero .bevis', '.film', '.hero > p']) bokser.push(await page.locator(velger).boundingBox());
   for (let i = 1; i < bokser.length; i++) expect(bokser[i].y).toBeGreaterThanOrEqual(bokser[i - 1].y + bokser[i - 1].height - 1);
 });
 

@@ -239,9 +239,9 @@
   // Hvert kort har en egen tidslinje. Klokka går bare mens kortet er i bildet.
   const kortloep = (id, bygg) => {
     const app = document.getElementById(id), rute = app.closest('.rute');
-    let synlig = !('IntersectionObserver' in window), ramme = 0, sist = 0, tid = 0, neste = 0, innkommet = false;
+    let synlig = !('IntersectionObserver' in window), ramme = 0, sist = 0, tid = 0, neste = 0, innkommet = false, inngang = null;
     const animer = (el, rammer, valg) => {
-      if (!bevegelse.matches && synlig) el.animate(rammer, valg);
+      if (!bevegelse.matches && synlig) return el.animate(rammer, valg);
     };
     const settInn = (el, verdi) => {
       if (el.textContent === verdi) return;
@@ -276,11 +276,13 @@
         rute.getAnimations({ subtree: true }).forEach((a) => { if (a.playState === 'paused') a.play(); });
         if (!innkommet && !bevegelse.matches) {
           innkommet = true;
-          animer(rute, [{ opacity: 0, transform: rute.dataset.inn === 'h' ? 'translateX(96px)' : 'translateX(-96px)' }, { opacity: 1, transform: 'none' }], { duration: 950, delay: rute.dataset.inn === 'h' ? 130 : 0, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
+          inngang = animer(rute, [{ opacity: 0, transform: rute.dataset.inn === 'h' ? 'translateX(96px)' : 'translateX(-96px)' }, { opacity: 1, transform: 'none' }], { duration: 950, delay: rute.dataset.inn === 'h' ? 130 : 0, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
         }
         start();
       } else {
         cancelAnimationFrame(ramme); ramme = 0;
+        // Innsveipet er en engangsbevegelse: pauses det utenfor bildet, står kortet igjen utenfor kolonnen (translateX 96 px).
+        if (inngang) { inngang.finish(); inngang = null; }
         rute.getAnimations({ subtree: true }).forEach((a) => a.pause());
       }
     }, { threshold: .08 }).observe(rute);

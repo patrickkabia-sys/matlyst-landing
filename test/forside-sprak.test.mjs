@@ -73,10 +73,19 @@ for (const sprak of SPRAK) {
   });
 }
 
-test('en: ingen vurderingslinje, og bildene 9 til 12 er egne', () => {
+test('hvert språk har sin egen film og de samme stegtidene som nb', () => {
+  for (const sprak of ['nb', ...SPRAK]) {
+    const html = forside(sprak);
+    assert.ok(html.includes(`src="/images/forside/film/import-${sprak}.mp4"`), sprak);
+    assert.ok(html.includes(`poster="/images/forside/film/import-${sprak}-plakat.webp"`), sprak);
+    assert.deepEqual(TEKST[sprak].stegtider, [0, 2.5, 6.0, 9.7, 13.3, 16.5], sprak);
+  }
+});
+
+test('alle fire språk viser vurderingslinja som på norsk, og en har egne bilder 9 til 12', () => {
   const html = forside('en');
-  assert.doesNotMatch(html, /class="bevis"/);
-  for (const sprak of ['sv', 'da']) assert.match(forside(sprak), /class="bevis"/);
+  const linje = { nb: '<b>5,0</b> av 5 i App Store', sv: '<b>5,0</b> av 5 i App Store', da: '<b>5,0</b> ud af 5 i App Store', en: '<b>5.0</b> out of 5 on the App Store' };
+  for (const [sprak, tekst] of Object.entries(linje)) assert.ok(forside(sprak).includes(`<span>${tekst}</span>`), sprak);
   for (let n = 1; n <= 12; n++) {
     const fil = String(n).padStart(2, '0');
     const mappe = n >= 9 ? 'folk-en' : 'folk';

@@ -157,8 +157,9 @@ test('#9 merges ikke før #536 er merget og deployet', () => {
 
 test('alle vurderingstall sier 5,0 og 12 vurderinger', () => {
   assert.match(les('index.html'), /"ratingValue": "5\.0", "ratingCount": "12"/u);
-  assert.match(les('sv/index.html'), /<b>5,0<\/b> av 5 i norska App Store/u);
-  assert.match(les('da/index.html'), /<b>5,0<\/b> af 5 i den norske App Store/u);
+  assert.match(les('sv/index.html'), /<b>5,0<\/b> av 5 i App Store/u);
+  assert.match(les('da/index.html'), /<b>5,0<\/b> ud af 5 i App Store/u);
+  assert.match(les('en/index.html'), /<b>5\.0<\/b> out of 5 on the App Store/u);
   assert.ok(les('llms.txt').includes('5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026)'));
   for (const fil of ['index.html', 'sv/index.html', 'da/index.html', 'llms.txt']) {
     assert.doesNotMatch(les(fil), /"ratingCount": "(?!12")|\b(?!12\b)\d+ (?:vurderinger|betyg|ratings)\b/u, fil);

@@ -478,8 +478,8 @@ export const TEKST = {
     h1: 'Recepten du faktiskt lagar.',
     ingress: 'Från en reel, en receptsida eller ett foto av mormors receptkort. Matlyst gör dem till ingredienser och steg.',
     knapp: 'Hämta gratis',
-    // Vurderingen er fra NORSK App Store; antallet vises ikke.
-    vurdering: '5,0 av 5 i norska App Store',
+    // Samme linje som på norsk (Patrick 19.11); antallet vises ikke.
+    vurdering: '5,0 av 5 i App Store',
 
     stegAria: 'Så sparar du ett recept från Instagram',
     // «Dela till» er knappen slik den heter i svensk Instagram (samme ord som appkatalogen).
@@ -787,7 +787,7 @@ export const TEKST = {
     h1: 'Opskrifter, der ender på bordet.',
     ingress: 'En reel, en hjemmeside eller et foto af mormors opskriftskort. Matlyst laver det om til ingredienser og trin.',
     knapp: 'Hent gratis',
-    vurdering: '5,0 af 5 i den norske App Store',
+    vurdering: '5,0 ud af 5 i App Store',
 
     stegAria: 'Sådan gemmer du en opskrift fra Instagram',
     steg: [
@@ -1067,8 +1067,7 @@ export const TEKST = {
     h1: 'Recipes you’ll actually make.',
     ingress: 'Save a recipe from a reel, a website, or a photo of Grandma’s recipe card. Matlyst turns it into ingredients and steps.',
     knapp: 'Get it free',
-    // Empty on purpose: the generator omits the rating line when this is empty, because the only rating is from the Norwegian App Store.
-    vurdering: '',
+    vurdering: '5.0 out of 5 on the App Store',
 
     stegAria: 'How to save a recipe from Instagram',
     steg: [

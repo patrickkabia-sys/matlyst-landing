@@ -71,7 +71,7 @@ const SPRAK = {
 }
 </script>
 ${FELLES_HODE}` },
-  sv: { adresse: '/sv/', lang: 'sv', film: '/images/forside/film/import-nb.mp4', plakat: '/images/forside/film/import-nb-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/se/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=sv&gl=SE' }, folk: { egne: [], mappe: 'folk' }, hode: `
+  sv: { adresse: '/sv/', lang: 'sv', film: '/images/forside/film/import-sv.mp4', plakat: '/images/forside/film/import-sv-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/se/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=sv&gl=SE' }, folk: { egne: [], mappe: 'folk' }, hode: `
 <meta charset="UTF-8">
 <meta http-equiv="content-language" content="sv-SE">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,7 +102,7 @@ ${FELLES_HODE}` },
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.","url":"https://matlyst-app.no/sv/"}</script>
 <script src="/locale.js" defer></script>
 ${FELLES_HODE}` },
-  da: { adresse: '/da/', lang: 'da', film: '/images/forside/film/import-nb.mp4', plakat: '/images/forside/film/import-nb-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/dk/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=da&gl=DK' }, folk: { egne: [], mappe: 'folk' }, hode: `
+  da: { adresse: '/da/', lang: 'da', film: '/images/forside/film/import-da.mp4', plakat: '/images/forside/film/import-da-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/dk/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=da&gl=DK' }, folk: { egne: [], mappe: 'folk' }, hode: `
 <meta charset="UTF-8">
 <meta http-equiv="content-language" content="da-DK">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,7 +133,7 @@ ${FELLES_HODE}` },
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.","url":"https://matlyst-app.no/da/"}</script>
 <script src="/locale.js" defer></script>
 ${FELLES_HODE}` },
-  en: { adresse: '/en/', lang: 'en', film: '/images/forside/film/import-nb.mp4', plakat: '/images/forside/film/import-nb-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=en' }, folk: { egne: [9, 10, 11, 12], mappe: 'folk-en' }, hode: `
+  en: { adresse: '/en/', lang: 'en', film: '/images/forside/film/import-en.mp4', plakat: '/images/forside/film/import-en-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=en' }, folk: { egne: [9, 10, 11, 12], mappe: 'folk-en' }, hode: `
 <meta charset="UTF-8">
 <meta http-equiv="content-language" content="en-US">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

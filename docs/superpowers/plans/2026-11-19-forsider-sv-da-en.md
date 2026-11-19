@@ -12,9 +12,9 @@
 
 | # | Spørsmål | Vedtak | Hvem |
 |---|---|---|---|
-| 1 | Film | Ny film per språk. Patrick tar opp på telefon (språk, Instagram og Matlyst på målspråket, markedskonto). Til filmene finnes, står den norske filmen som plassholder, og sidene publiseres ikke. | Patrick 19.11 |
+| 1 | Film | Ny film per språk, rendret i samme stil som nb (språk, Instagram og Matlyst på målspråket). Filene ligger i `images/forside/film/import-{sv,da,en}.mp4` med plakat. | Patrick 19.11 |
 | 2 | Bilder på engelsk | Egne bilder: husstanden «Friendsgiving» (ansikt 9 til 12) bruker `images/forside/folk-en/09.webp` til `12.webp`, uten bunad. | Patrick 19.11 |
-| 3 | Vurderingslinja på /en/ | Vises ikke. Den amerikanske butikken har for få vurderinger, og en norsk vurdering ved «App Store» leses som amerikansk. `vurdering` er tom for `en`, og generatoren tegner ingen linje da. JSON-LD `aggregateRating` beholdes som i dag. | Ruling, kontrolløren |
+| 3 | Vurderingslinja | Vises på alle fire språk som på norsk: nb og sv «5,0 av 5 i App Store», da «5,0 ud af 5 i App Store», en «5.0 out of 5 on the App Store». JSON-LD som i dag. | Patrick 19.11 (erstatter første ruling) |
 | 4 | Ukestart på /en/ | Mandag, som appen. | Ruling |
 | 5 | FAQ-tilleggene på /en/ (captionkrav, US-enheter) | Står. De gjør svaret riktig for amerikanske brukere. | Ruling |
 | 6 | Tekstvalg merket SMAK/USIKKER i rapportene | Tekstene står slik granskingene endte. Innfødt lesing før lansering er anbefalt, ikke blokkerende. | Ruling |
@@ -31,7 +31,7 @@
 ### C1: Tekstene inn
 
 - [ ] `TEKST.sv`, `TEKST.da`, `TEKST.en` i `scripts/forside-tekst.mjs`, kopiert fra de private filene.
-- [ ] Test: hver nøkkel og plassholder i `nb` finnes i hvert språk, og omvendt (unntak: `vurdering` tom på `en`).
+- [ ] Test: hver nøkkel og plassholder i `nb` finnes i hvert språk, og omvendt .
 - [ ] Test: ingen tankestrek, ingen norske restord (liste fra `test/fasit/`), «cups» der språket bruker det.
 - [ ] `en`: ansikt 9 til 12 peker på `folk-en`. Bildene ligger i `~/matlyst-privat/seo-matlyst/2026-11-18/nettfilm/folk-en/` som png; lagres som 132 x 132 webp.
 
@@ -39,7 +39,7 @@
 
 - [ ] `SPRAK.sv`, `SPRAK.da`, `SPRAK.en` med hode fra dagens `sv/index.html`, `da/index.html`, `en/index.html` (ordrett; test sammenligner mot git-versjonen før endringen).
 - [ ] `forsteUkedag: 1` på alle.
-- [ ] Filmen er plassholder (norsk) til C3.
+- [x] Filmen er per språk (C3 levert): `import-<språk>.mp4` og `-plakat.webp`, `stegtider` som nb.
 - [ ] Forsidetestene (`test/playwright/forside*.spec.mjs`) kjøres for alle fire språk der de gjelder innhold som finnes på alle.
 - [ ] Revisjon `REVISJON=forside` grønn på alle fire, og Lighthouse mobil på `/en/`.
 

@@ -104,6 +104,8 @@ test('hele siden har lokal trafikk, feilfri konsoll, fungerende mål og plass p�
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(bredde);
     }
     await page.emulateMedia({ reducedMotion: 'reduce' });
+    // Innsveipet til kortene avbrytes av endringen i bevegelsesvalg; mål først når det er gjort.
+    await page.waitForFunction(() => [...document.querySelectorAll('.rute')].every((r) => r.getAnimations({ subtree: false }).length === 0));
     for (const knapp of await page.locator('.a-husvelg button, .svarliste summary, .vern a').all()) {
       const b = await knapp.boundingBox();
       expect(b.height).toBeGreaterThanOrEqual(44); expect(b.width).toBeGreaterThanOrEqual(44);
