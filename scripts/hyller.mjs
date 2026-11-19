@@ -106,49 +106,45 @@ export const LOKALE_KILDER = {
     { href: '/da/dr-mad/', nbHref: null },
     { href: '/da/alletiders-kogebog/', nbHref: null },
   ],
-  en: [
-    { href: '/en/matprat/', nbHref: null },
-    { href: '/en/koket/', nbHref: null },
-    { href: '/en/landleys-kok/', nbHref: null },
-    { href: '/en/alletiders-cookbook/', nbHref: null },
-    { href: '/en/dr-food/', nbHref: null },
-  ],
+  // Engelsk: ingen nordiske kilder i hylla (kjent for få amerikanere); sidene nås fra «Alle guider».
+  en: [],
 };
 
 // De norske kildelenkene i bokmål-hylla. Utenfor bokmål vises de aldri; hyllas kilder er LOKALE_KILDER.
 const NORSKE_KILDER = new Set(['/importer-fra-matprat/', '/importer-fra-koket/']);
 
-const filFor = (sti) => `${rot}${sti.replace(/^\//, '')}${sti.endsWith('/') ? 'index.html' : ''}`;
-const finnesFil = (sti) => existsSync(filFor(sti));
-const harAnker = (sti, anker) => finnesFil(sti) && readFileSync(filFor(sti), 'utf8').includes(`id="${anker}"`);
+// `grunn` er nettstedets rot; testene peker den på en midlertidig kopi.
+const filFor = (grunn, sti) => `${grunn}${sti.replace(/^\//, '')}${sti.endsWith('/') ? 'index.html' : ''}`;
+const finnesFil = (grunn, sti) => existsSync(filFor(grunn, sti));
+const harAnker = (grunn, sti, anker) => finnesFil(grunn, sti) && readFileSync(filFor(grunn, sti), 'utf8').includes(`id="${anker}"`);
 
 function mangler(sprak, hva, nokkel, nbHref) {
   throw new Error(`mangler tekst: ${hva} på ${sprak} for ${nokkel}${nbHref === undefined ? '' : ` (nbHref ${nbHref})`}`);
 }
 
 // Slår opp språkets adresse i SIDEGRUPPER. Returnerer null når siden, fila eller ankeret mangler.
-function lokalAdresse(sprak, nbHref) {
+function lokalAdresse(grunn, sprak, nbHref) {
   if (/^https?:/.test(nbHref)) return nbHref;
   const [sti, anker] = nbHref.split('#');
   const mal = gruppeForSti(sti)?.sider[sprak];
-  if (!mal || !finnesFil(mal)) return null;
-  if (anker && !harAnker(mal, anker)) return null;
+  if (!mal || !finnesFil(grunn, mal)) return null;
+  if (anker && !harAnker(grunn, mal, anker)) return null;
   return anker ? `${mal}#${anker}` : mal;
 }
 
-export function lokaliserHyller(sprak, tekst) {
+export function lokaliserHyller(sprak, tekst, { grunn = rot } = {}) {
   return HYLLER.nb.map((hylle) => {
     const navn = sprak === 'nb' ? hylle.navn : tekst?.navn?.[hylle.id] ?? mangler(sprak, `hyllenavn ${hylle.id}`, hylle.id);
     const lenker = hylle.lenker.map((l) => {
       if (sprak === 'nb') return { tekst: l.tekst, href: l.href, nbHref: l.href, finnes: l.finnes !== false };
       const t = tekst?.lenker?.[l.href] ?? mangler(sprak, 'lenke', l.href, l.href);
-      const adresse = l.finnes === false || NORSKE_KILDER.has(l.href) ? null : lokalAdresse(sprak, l.href);
+      const adresse = l.finnes === false || NORSKE_KILDER.has(l.href) ? null : lokalAdresse(grunn, sprak, l.href);
       return { tekst: t, href: adresse ?? l.href, nbHref: l.href, finnes: adresse !== null };
     });
     if (hylle.id === 'lagre' && sprak !== 'nb') {
       for (const k of LOKALE_KILDER[sprak] ?? []) {
         const t = tekst?.lenker?.[k.href] ?? mangler(sprak, 'lokal kildelenke', k.href, null);
-        lenker.push({ tekst: t, href: k.href, nbHref: null, finnes: finnesFil(k.href) });
+        lenker.push({ tekst: t, href: k.href, nbHref: null, finnes: finnesFil(grunn, k.href) });
       }
     }
     return { id: hylle.id, flis: hylle.flis, navn, lenker };

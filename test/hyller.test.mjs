@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
@@ -152,4 +153,44 @@ test('hver lokale kilde er en side som finnes, på sitt eget språk', () => {
     assert.ok(href.startsWith(`/${sprak}/`), href);
     assert.equal(nbHref, null);
   }
+});
+
+// Uavhengig fasit, skrevet ut for hånd og ikke utledet fra koden.
+test('de lokale kildene per språk er nøyaktig disse', () => {
+  assert.deepEqual(Object.fromEntries(Object.entries(LOKALE_KILDER).map(([s, k]) => [s, k.map((x) => x.href)])), {
+    sv: ['/sv/koket/', '/sv/landleys-kok/'],
+    da: ['/da/dr-mad/', '/da/alletiders-kogebog/'],
+    en: [],
+  });
+  for (const [s, hrefer] of [['sv', ['/sv/koket/', '/sv/landleys-kok/']], ['da', ['/da/dr-mad/', '/da/alletiders-kogebog/']], ['en', []]]) {
+    const t = falsk();
+    const lagre = lokaliserHyller(s, t).find((h) => h.id === 'lagre');
+    assert.deepEqual(lagre.lenker.filter((l) => l.nbHref === null).map((l) => l.href), hrefer, s);
+  }
+});
+
+// Midlertidig rot med bare de filene en test ber om.
+function medRot(filer, kjor) {
+  const grunn = mkdtempSync(join(tmpdir(), 'matlyst-hyller-'));
+  try {
+    for (const [sti, innhold] of Object.entries(filer)) {
+      mkdirSync(join(grunn, sti, '..'), { recursive: true });
+      writeFileSync(join(grunn, sti), innhold);
+    }
+    return kjor(`${grunn}/`);
+  } finally { rmSync(grunn, { recursive: true, force: true }); }
+}
+
+test('Spør Matlyst vises når forsiden på språket har id="spor", og skjules uten', () => {
+  const med = medRot({ 'sv/index.html': '<section id="spor"></section>' }, (grunn) => finn(lokaliserHyller('sv', falsk(), { grunn }), 'appen', '/#spor'));
+  assert.equal(med.finnes, true);
+  assert.equal(med.href, '/sv/#spor');
+  const uten = medRot({ 'sv/index.html': '<section></section>' }, (grunn) => finn(lokaliserHyller('sv', falsk(), { grunn }), 'appen', '/#spor'));
+  assert.equal(uten.finnes, false);
+});
+
+test('en lenke vises ikke når fila på språket mangler, og vises når den finnes', () => {
+  const funn = (filer) => medRot(filer, (grunn) => finn(lokaliserHyller('sv', falsk(), { grunn }), 'appen', '/handleliste/'));
+  assert.equal(funn({ 'sv/inkopslista/index.html': '' }).finnes, true);
+  assert.equal(funn({ 'sv/index.html': '' }).finnes, false);
 });

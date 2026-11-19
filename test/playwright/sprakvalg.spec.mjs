@@ -58,7 +58,9 @@ test('toppvelgeren og bunnvelgeren virker med tastatur', async ({ browser, baseU
 
   const dansk = page.locator('.language-switcher-top a[aria-label="Dansk"]');
   const meny = page.locator('#menyknapp');
-  await meny.focus();
+  // Fra toppen av siden med Tab, ikke fokus() direkte.
+  for (let i = 0; i < 10 && !(await meny.evaluate((el) => el === document.activeElement)); i++) await page.keyboard.press('Tab');
+  await expect(meny).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(meny).toHaveAttribute('aria-expanded', 'true');
   await page.keyboard.press('Tab');
@@ -80,6 +82,60 @@ test('toppvelgeren og bunnvelgeren virker med tastatur', async ({ browser, baseU
   await expect(norsk).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(`${baseURL}/`);
+  await context.close();
+});
+
+const SKJERM = '.superpowers/sdd/2026-11-19-undersider-skall-og-grunnstil/skjerm';
+for (const bredde of [360, 390, 768]) {
+  test(`toppvelgeren med menyen åpen: fulle navn uten brekk, 2 x 2 under 720 px (${bredde} px)`, async ({ browser }) => {
+    const context = await browser.newContext({ locale: 'nb-NO', viewport: { width: bredde, height: 800 } });
+    await context.addInitScript(() => { try { localStorage.setItem('matlyst-consent', 'rejected'); } catch {} });
+    const page = await context.newPage();
+    await page.goto('/');
+    await page.locator('#menyknapp').click();
+    await page.waitForTimeout(600);
+    const velger = page.locator('.language-switcher-top');
+    await velger.scrollIntoViewIfNeeded();
+    const celler = await velger.locator('a').evaluateAll((as) => as.map((a) => {
+      const r = a.getBoundingClientRect();
+      const m = document.createRange(); m.selectNodeContents(a);
+      return { x: r.x, y: r.y, w: r.width, h: r.height, tekstLinjer: m.getClientRects().length, tekst: a.textContent };
+    }));
+    expect(celler.map((c) => c.tekst)).toEqual(['Norsk', 'Svenska', 'Dansk', 'English']);
+    for (const c of celler) {
+      expect(c.w, c.tekst).toBeGreaterThanOrEqual(44);
+      expect(c.h, c.tekst).toBeGreaterThanOrEqual(44);
+      expect(c.tekstLinjer, `${c.tekst} brytes`).toBe(1);
+    }
+    const rader = new Set(celler.map((c) => Math.round(c.y)));
+    expect(rader.size).toBe(bredde < 721 ? 2 : 1);
+    if (bredde < 721) {
+      expect(Math.round(celler[0].y)).toBe(Math.round(celler[1].y));
+      expect(Math.round(celler[2].y)).toBe(Math.round(celler[3].y));
+      expect(celler[0].x).toBeCloseTo(celler[2].x, 0);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    if (bredde !== 390) await page.screenshot({ path: `${SKJERM}/t4-sprakvelger-${bredde}.png` });
+    await context.close();
+  });
+}
+
+test('bunnvelgeren på 360 px: ingen brekk, 44 px mål, ingen sidelengs rulling', async ({ browser }) => {
+  const context = await browser.newContext({ locale: 'nb-NO', viewport: { width: 360, height: 800 } });
+  const page = await context.newPage();
+  await page.goto('/');
+  const celler = await page.locator('.language-switcher-bottom a').evaluateAll((as) => as.map((a) => {
+    const r = a.getBoundingClientRect();
+    const m = document.createRange(); m.selectNodeContents(a);
+    return { w: r.width, h: r.height, tekstLinjer: m.getClientRects().length, tekst: a.textContent, hoyre: r.right };
+  }));
+  for (const c of celler) {
+    expect(c.w, c.tekst).toBeGreaterThanOrEqual(44);
+    expect(c.h, c.tekst).toBeGreaterThanOrEqual(44);
+    expect(c.tekstLinjer, `${c.tekst} brytes`).toBe(1);
+    expect(c.hoyre).toBeLessThanOrEqual(360);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   await context.close();
 });
 
