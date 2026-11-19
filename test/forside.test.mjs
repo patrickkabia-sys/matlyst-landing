@@ -114,7 +114,7 @@ test('generatoren bruker tekstkilden og skjermer HTML-tegn', () => {
 test('nedlastingsknappene og sideskallet står i avtalt rekkefølge', () => {
   assert.deepEqual([...html.matchAll(/data-hent="([^"]+)"/g)].map((m) => m[1]), ['topp', 'helt', 'bunn', 'fast']);
   assert.match(html, /<a class="knapp" href="\/app" data-hent="helt">/);
-  assert.match(html, /<body data-app-uttrykk="1">/);
+  assert.match(html, /<body>/);
   assert.match(html, /<main id="hovedinnhold">/);
   assert.match(html, /rel="apple-touch-icon"/);
   assert.doesNotMatch(html, /id="dl-bar"|class="hero-stage"|Relaterte guider/);

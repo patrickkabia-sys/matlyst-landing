@@ -1,4 +1,4 @@
-// Organisasjonsskjemaet (schema.org) og de sosiale kontoene. Delt av forside.mjs og app-uttrykk.mjs.
+// Organisasjonsskjemaet (schema.org) og de sosiale kontoene. Brukes av forside.mjs.
 export const SOSIALE = [
   { id: 'instagram', navn: 'Instagram', url: 'https://www.instagram.com/matlyst_app/', ikon: '<path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM17.3 5.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/>' },
   { id: 'tiktok', navn: 'TikTok', url: 'https://www.tiktok.com/@matlyst.appen', ikon: '<path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.1 6.1 0 1 0 5.2 6.1V8.6a7.6 7.6 0 0 0 4.4 1.4V6.8a4.5 4.5 0 0 1-4.4-4.8z"/>' },

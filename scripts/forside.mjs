@@ -391,7 +391,7 @@ export function forside(sprak) {
   return `<!DOCTYPE html>
 <html lang="${oppsett.lang}">
 ${hode(sprak, oppsett, faq.skjema)}
-<body data-app-uttrykk="1">
+<body>
 <div class="side"><div class="kort"><div class="blad">
 ${topp(sprak, { folg: t.folg.lenker.map((lenke) => ({ href: '#' + lenke.mal, tekst: lenke.tekst })), sprakvelger: sprakvelger(sprak, 'topp', adresser) })}
 <main id="hovedinnhold">

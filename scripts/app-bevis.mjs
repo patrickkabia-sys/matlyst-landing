@@ -1,5 +1,5 @@
 // App-bevis: hver lang side får skjermbilder eller animasjon av appen der teksten beskriver en funksjon.
-// Kjøres ETTER generatorene (etter app-uttrykk): node scripts/app-bevis.mjs
+// Kjøres ETTER generatorene: node scripts/app-bevis.mjs
 // Regel (Patrick 18.11.2026): vi viser alltid appen når teksten handler om en funksjon, og hvert bilde har en grunn
 // (billedtekst som sier hva leseren ser). Tekstvegger uten visning av appen er ikke interessante.
 // Idempotent: blokkene ligger mellom markører og skrives på nytt.

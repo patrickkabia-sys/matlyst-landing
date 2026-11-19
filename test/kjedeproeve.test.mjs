@@ -9,7 +9,7 @@ import { kopier } from '../scripts/kjedeproeve.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const node = process.execPath;
-const kjede = ['guidelenker', 'lenker-sett', 'skall-paa', 'app-uttrykk', 'app-bevis', 'bilde-attributter', 'sprak-signaler'];
+const kjede = ['guidelenker', 'lenker-sett', 'skall-paa', 'app-bevis', 'bilde-attributter', 'sprak-signaler'];
 
 test('kjedeprøven kjører i kopi, avgrenser nøkkelen og gir feilkode ved avvik', (t) => {
   assert.ok(existsSync(join(rot, 'scripts/kjedeproeve.mjs')), 'kjedeprøven må finnes');

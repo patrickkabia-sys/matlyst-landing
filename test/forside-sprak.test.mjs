@@ -4,11 +4,13 @@ import { join } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { forside } from '../scripts/forside.mjs';
+import { alleSider } from '../scripts/sidetyper.mjs';
 import { TEKST } from '../scripts/forside-tekst.mjs';
 import { NORSKE_RESTORD } from './hjelp/restord.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const SPRAK = ['sv', 'da', 'en'];
+const NORSKE_ORD = /\b(?:Velg|Trykk|Lagre|Spør|Ferdig|Hvitløk|kyllinggryte|Ukemeny|Handleliste|Åpne|Lukk|oppskriftene)\b/u;
 const hodeFasit = JSON.parse(readFileSync(join(rot, 'test/fasit/forside-hode.json'), 'utf8'));
 const sider = { sv: 'sv/index.html', da: 'da/index.html', en: 'en/index.html' };
 
@@ -55,13 +57,29 @@ for (const sprak of SPRAK) {
       assert.ok(treff > pos, `hodelinje mangler eller står i feil rekkefølge: ${venter.slice(0, 90)}`);
       pos = treff;
     }
-    assert.ok(hode.includes(f.software), 'SoftwareApplication-skjemaet er endret');
-    assert.ok(hode.includes(f.org), 'Organization-skjemaet er endret');
-    assert.equal((hode.match(/name="theme-color"/g) || []).length, 1);
+    // Hele settet av hodefelt, med antall: et ekstra eller motstridende felt gir rødt.
+    const felt = hode.match(/<title>[^<]*<\/title>|<meta\b[^>]*>|<link\b[^>]*>/gu)
+      .filter((x) => !/rel="(?:stylesheet|apple-touch-icon)"/u.test(x));
+    assert.deepEqual(felt, f.seo.map((x) => x.replace('content="#F7F3EC"', 'content="#FFFFFF"')), 'hodefeltene');
+    const skjema = [...hode.matchAll(/<script type="application\/ld\+json">[\s\S]*?<\/script>/gu)].map((m) => m[0]);
+    assert.equal(skjema.length, 3, 'SoftwareApplication, Organization og FAQPage');
+    assert.equal(skjema[0], f.software, 'SoftwareApplication-skjemaet er endret');
+    assert.ok(skjema.includes(f.org), 'Organization-skjemaet er endret');
+    assert.ok(skjema.some((x) => x.includes('"FAQPage"')), 'FAQPage mangler');
   });
 
   test(`${sprak}: ${sider[sprak]} er nøyaktig det generatoren lager`, () => {
     assert.equal(readFileSync(join(rot, sider[sprak]), 'utf8'), forside(sprak));
+  });
+
+  test(`${sprak}: aria-label, alt og title på siden har ingen norske ord`, () => {
+    const verdier = [...forside(sprak).matchAll(/\s(?:aria-label|alt|title)="([^"]*)"/gu)].map((m) => m[1]);
+    assert.ok(verdier.length > 40, `bare ${verdier.length} attributter funnet`);
+    for (const v of verdier) {
+      const tekst = v.replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+      assert.doesNotMatch(tekst, NORSKE_RESTORD, `norsk ord i «${tekst}»`);
+      assert.doesNotMatch(tekst, NORSKE_ORD, `norsk ord i «${tekst}»`);
+    }
   });
 
   test(`${sprak}: bare språkets egen tekst står i det synlige, og kalenderen starter på mandag`, () => {
@@ -112,4 +130,10 @@ test('en bruker amerikanske mål (cups), ikke metriske', () => {
   const alt = JSON.stringify(TEKST.en);
   assert.match(alt, /\bcups?\b/);
   assert.doesNotMatch(alt, /\b\d+\s?(?:dl|ml|msk|kg)\b/);
+});
+
+test('ingen side har data-app-uttrykk, og app-uttrykk.mjs er borte', () => {
+  assert.ok(!existsSync(join(rot, 'scripts/app-uttrykk.mjs')));
+  for (const s of alleSider(rot)) assert.ok(!readFileSync(join(rot, s.fil), 'utf8').includes('data-app-uttrykk'), s.sti);
+  for (const fil of ['index.html', 'sv/index.html', 'da/index.html', 'en/index.html']) assert.ok(!readFileSync(join(rot, fil), 'utf8').includes('data-app-uttrykk'), fil);
 });

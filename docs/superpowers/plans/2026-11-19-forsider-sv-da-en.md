@@ -50,7 +50,7 @@
 
 ### C4: app-uttrykk slettes
 
-- [ ] `scripts/app-uttrykk.mjs` og testene for den slettes; `data-app-uttrykk` finnes ikke på noen side.
-- [ ] Kjedeprøven og `npm test` grønne.
+- [x] `scripts/app-uttrykk.mjs` og testene for den slettes; `data-app-uttrykk` finnes ikke på noen side.
+- [x] Kjedeprøven og `npm test` grønne.
 
 Publisering: én PR når C1 til C4 er grønne, eller C1, C2 og C4 som én PR med norsk film hvis Patrick sier ja til det.
