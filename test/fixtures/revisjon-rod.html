@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revisjonsfikstur</title>
+<style>
+  body { margin: 0; font: 16px/1.4 sans-serif; }
+  #bred { width: 2000px; height: 40px; background: #ccd; }
+  #klipp { width: 120px; overflow: hidden; white-space: nowrap; background: #dcd; }
+  #boks { position: relative; height: 80px; }
+  #boks p { position: absolute; left: 10px; margin: 0; }
+  #a { top: 10px; }
+  #b { top: 18px; }
+  #rem { font-size: 1rem; }
+  #px { font-size: 16px; }
+</style>
+</head>
+<body>
+<div id="bred">bred boks</div>
+<div id="klipp">Dette er en veldig lang tekst som aldri får plass i boksen sin</div>
+<div id="boks"><p id="a">Første avsnitt oppå</p><p id="b">Andre avsnitt oppå</p></div>
+<p id="rem">Tekst i rem</p>
+<p id="px">Tekst i px</p>
+<img src="https://example.com/x.png" alt="" width="10" height="10">
+<script>console.error('rød');</script>
+</body>
+</html>
