@@ -314,19 +314,24 @@ for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${s
     const cta = document.querySelector('.page-cta');
     const knapp = document.querySelector('.hero-actions > a.knapp');
     return {
-      heroAlign: st(hero, 'textAlign'), h1Italic: [...h1.querySelectorAll('.a,.it')].map((e) => st(e, 'fontStyle')), h1Rem: parseFloat(st(h1, 'fontSize')),
+      heroAlign: st(hero, 'textAlign'), h1Barn: h1.children.length, h1Lh: parseFloat(st(h1, 'lineHeight')) / parseFloat(st(h1, 'fontSize')), h1Rem: parseFloat(st(h1, 'fontSize')),
       heroBredde: hero.getBoundingClientRect().width,
       feat: feat && { r: st(feat, 'borderTopLeftRadius'), bg: st(feat, 'backgroundImage').includes('radial-gradient'), bg2: st(feat, 'backgroundColor'), kol: st(feat, 'gridTemplateColumns').split(' ').length, em: st(feat.querySelector('h2 em'), 'fontStyle') },
       prose: { w: prose.getBoundingClientRect().width, max: st(prose, 'maxWidth') },
       faqW: faq && faq.getBoundingClientRect().width, ctaR: cta && st(cta, 'borderTopLeftRadius'),
       knapp: knapp && { h: knapp.getBoundingClientRect().height, bg: st(knapp, 'backgroundColor') },
       vindu: innerWidth, kant: [faq, cta].filter(Boolean).map((e) => e.getBoundingClientRect()).map((r) => [r.left, innerWidth - r.right]),
-      br: getComputedStyle(h1.querySelector('br')).display,
+      cta: cta && { bg: st(cta, 'backgroundImage'), r: st(cta, 'borderTopLeftRadius'), pad: st(cta, 'paddingTop'), mt: parseFloat(st(cta, 'marginTop')), harH2: !!cta.querySelector('h2') },
+      fig: [...document.querySelectorAll('main.prose figure')].map((f) => { const i = f.querySelector('img'); const r = i.getBoundingClientRect(); const fr = f.querySelector('figcaption').getBoundingClientRect(); return { w: r.width, r: st(i, 'borderTopLeftRadius'), mitt: Math.abs((r.left + r.right) / 2 - innerWidth / 2), under: fr.top >= r.bottom - 1 }; }),
+      rel: [...document.querySelectorAll('.related')].map((x) => { const ul = x.querySelector('ul'); const a = x.querySelector('li a'); const li = x.querySelector('li'); return { align: st(x, 'textAlign'), disp: st(ul, 'display'), kol: st(ul, 'gridTemplateColumns').split(' ').length, bT: st(ul, 'borderTopWidth'), bB: st(li, 'borderBottomWidth'), vekt: st(a, 'fontWeight'), uline: st(a, 'textDecorationLine'), brad: st(a, 'borderTopLeftRadius'), bord: st(a, 'borderTopWidth'), ulBredde: ul.getBoundingClientRect().width, hoyde: a.getBoundingClientRect().height }; }),
     };
   });
   expect(m.heroAlign).toBe('center');
-  expect(m.h1Italic.every((x) => x === 'normal')).toBe(true);
-  expect(m.br).toBe('none');
+  expect(m.h1Barn, 'h1 er en tekstnode, ikke spans (spans gir overlapp i revisjonen ved normal linjeavstand)').toBe(0);
+  expect(m.h1Lh).toBeCloseTo(1.05, 2);
+  for (const f of m.fig) { expect(f.w).toBeLessThanOrEqual(300); expect(f.r).toBe('24px'); expect(f.mitt).toBeLessThan(2); expect(f.under).toBe(true); }
+  for (const r of m.rel) { expect(r.align).not.toBe('center'); expect(r.disp).toBe('grid'); expect(r.kol).toBe(bredde >= 721 ? 2 : 1); expect(r.bT).toBe('1px'); expect(r.bB).toBe('1px'); expect(Number(r.vekt)).toBeGreaterThanOrEqual(700); expect(r.uline).toBe('underline'); expect(r.brad).toBe('0px'); expect(r.bord).toBe('0px'); expect(r.hoyde).toBeGreaterThanOrEqual(44); }
+  if (m.cta) { expect(m.cta.harH2).toBe(false); expect(m.cta.bg).toBe('none'); expect(m.cta.r).toBe('0px'); expect(m.cta.pad).toBe('0px'); expect(m.cta.mt).toBeGreaterThanOrEqual(72); }
   expect(m.h1Rem).toBeGreaterThanOrEqual(bredde >= 1201 ? 62 : bredde >= 721 ? 46 : 38);
   expect(m.heroBredde).toBeLessThanOrEqual(m.vindu);
   expect(m.prose.max).not.toBe('none');
@@ -338,7 +343,6 @@ for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${s
     expect(m.feat.bg2).toBe('rgb(245, 243, 239)');
     expect(m.feat.kol).toBe(bredde >= 721 ? 2 : 1);
     expect(m.feat.em).toBe('normal');
-    expect(m.ctaR).toBe(bredde >= 721 ? '40px' : '32px');
     expect(m.knapp.h).toBeGreaterThanOrEqual(44);
     expect(m.knapp.bg).toBe('rgb(20, 18, 16)');
   } else {
@@ -370,4 +374,15 @@ test('eldre side: banneret virker, og samtykket kan trekkes tilbake fra bunnen',
   await expect(page.locator('#cookie')).toBeHidden();
   await page.locator('footer.under [data-consent-withdraw]').click();
   await expect(page.locator('#cookie')).toBeVisible();
+});
+
+// «Relaterte guider» er felles for alle sidetyper: en rolig liste, ikke piller. Lang tekst brytes i raden, ikke i en pille.
+for (const bredde of [390, 1280]) for (const sti of ['/lagre-oppskrifter-fra-instagram/', '/importer-fra-koket/', '/finn-oppskrifter/', '/hva-kan-jeg-lage/']) test(`relaterte guider er en venstrejustert liste på ${sti} ved ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse(sti));
+  const r = await page.evaluate(() => { const x = document.querySelector('.related'); if (!x) return null; const ul = x.querySelector('ul'); const a = x.querySelector('li a'); const st = (e, p) => getComputedStyle(e)[p]; return { disp: st(ul, 'display'), kol: st(ul, 'gridTemplateColumns').split(' ').length, align: st(x, 'textAlign'), brad: st(a, 'borderTopLeftRadius'), vekt: st(a, 'fontWeight'), linje: st(x.querySelector('li'), 'borderBottomWidth'), venstre: a.getBoundingClientRect().left - ul.getBoundingClientRect().left }; });
+  expect(r).not.toBeNull();
+  expect(r).toMatchObject({ disp: 'grid', align: 'start', brad: '0px', vekt: '700', linje: '1px' });
+  expect(r.kol).toBe(bredde >= 721 ? 2 : 1);
+  expect(r.venstre).toBeLessThan(2);
 });

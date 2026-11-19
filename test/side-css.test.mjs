@@ -137,7 +137,7 @@ test('de eldre sidene: alle regler i delen er avgrenset til guide-gammel, og tek
   assert.ok(regler(del).length >= 15);
   for (const r of regler(del)) for (const v of r.velger.split(',')) assert.ok(v.trim().startsWith('body[data-sidetype="guide-gammel"] '), `ikke avgrenset: ${v.trim()}`);
   assert.deepEqual(del.match(/font(?:-size)?:[^;}]*?\d+(?:\.\d+)?(?:px|vw)/gu) ?? [], []);
-  for (const nokkel of ['.hero h1{margin', '.feat{display:grid', '.feat-text h2{margin', 'main.prose a.more{', '.page-cta:not(main *){width:calc(']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
+  for (const nokkel of ['.hero h1{margin', 'main.prose figure img{width:100%;max-width:300px', '.page-cta:not(:has(h2)){', '.feat{display:grid', '.feat-text h2{margin', 'main.prose a.more{', '.page-cta:not(main *){width:calc(']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
 });
 
 test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', () => {
@@ -150,4 +150,16 @@ test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', 
     assert.ok(side, `ingen side av typen ${t}`);
     assert.ok(les(side.fil).includes(`data-sidetype="${t}"`), `${side.sti} mangler data-sidetype="${t}"`);
   }
+});
+
+test('relaterte guider er en rolig liste i Grunnstil, ikke piller', () => {
+  const rå = les('side.css');
+  const del = utenKommentarer(rå.slice(rå.indexOf('/* == Grunnstil == */'), rå.indexOf('/* == Omregner == */')));
+  const ul = regler(del).find((r) => r.velger === '.related ul');
+  assert.ok(ul && /display:grid/u.test(ul.kropp) && /border-top:1px solid var\(--linje\)/u.test(ul.kropp));
+  const a = regler(del).find((r) => r.velger === '.related li a');
+  assert.ok(a && /font-weight:700/u.test(a.kropp) && /text-decoration:underline/u.test(a.kropp));
+  assert.ok(!/border-radius|border:1px/u.test(a.kropp), 'ingen pille');
+  assert.ok(!/text-align:center/u.test(regler(del).find((r) => r.velger === '.related').kropp));
+  assert.ok(/@media \(min-width:721px\)\{\.related ul\{grid-template-columns:1fr 1fr/u.test(del));
 });
