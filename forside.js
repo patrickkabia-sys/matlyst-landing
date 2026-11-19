@@ -290,13 +290,30 @@
     const ankre = [...document.querySelectorAll('#trio > .snap')];
     const berøring = matchMedia('(max-width:720px) and (hover:none) and (pointer:coarse)');
     const rulleMal = (i) => ankre[i].getBoundingClientRect().top + scrollY - (parseFloat(getComputedStyle(ankre[i]).scrollMarginTop) || 0);
-    let fraY = null, egen = false, venter = 0;
+    // Reserven virker bare på rulling som startet med berøring inne i stabelen, og bare kort tid etter at fingeren er løftet (treghetsrullingen).
+    // Aldri mens fingeren er nede, og aldri etter tastatur, fokus, ankerlenke, søk eller programmatisk rulling. Redusert bevegelse: av.
+    const TREGHET = 2500;
+    let fraY = null, nede = false, sluppet = 0, egen = false, venter = 0;
     const iStabel = () => ankre.length === 5 && stabler() && berøring.matches;
-    addEventListener('touchstart', () => { fraY = iStabel() ? scrollY : null; }, { passive: true });
+    const glem = () => { fraY = null; nede = false; sluppet = 0; };
+    addEventListener('touchstart', () => { nede = true; sluppet = 0; fraY = iStabel() && !bevegelse.matches ? scrollY : null; }, { passive: true });
+    const sluppet_ = () => {
+      nede = false;
+      // Trykk uten rulling gir ingen treghet: ingenting å korrigere senere.
+      if (fraY !== null && Math.abs(scrollY - fraY) < 2) { fraY = null; return; }
+      sluppet = performance.now();
+    };
+    addEventListener('touchend', sluppet_, { passive: true });
+    addEventListener('touchcancel', sluppet_, { passive: true });
+    for (const h of ['keydown', 'focusin', 'hashchange', 'orientationchange', 'find']) addEventListener(h, glem);
+    // Skjermendring nullstiller tilstanden; adressefeltets høydeendring på mobil teller ikke (bare bredden).
+    let bredde0 = innerWidth;
+    addEventListener('resize', () => { if (innerWidth !== bredde0) { bredde0 = innerWidth; glem(); } });
+    bevegelse.addEventListener('change', glem);
     const lander = () => {
       venter = 0;
       if (egen) { egen = false; fraY = null; return; }
-      if (fraY === null || !iStabel()) return;
+      if (fraY === null || nede || !sluppet || performance.now() - sluppet > TREGHET || !iStabel() || bevegelse.matches) { if (!nede && (!sluppet || performance.now() - sluppet > TREGHET)) fraY = null; return; }
       const start = fraY, y = scrollY, d = y - start;
       fraY = null;
       const kort = ankre.map((_, i) => rulleMal(i));

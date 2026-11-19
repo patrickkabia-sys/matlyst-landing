@@ -104,9 +104,47 @@ test('WebKit: touchstart og en lang rulling stopper på neste kort (reserven i f
   for (const [i, lengde] of [[1, 200], [2, 900], [3, 1800]]) {
     await page.evaluate(() => document.dispatchEvent(new Event('touchstart', { bubbles: true })));
     await page.evaluate((l) => scrollBy({ top: l, behavior: 'instant' }), lengde);
+    await page.evaluate(() => document.dispatchEvent(new Event('touchend', { bubbles: true })));
     await page.waitForTimeout(1800);
     const t = await topper(page);
     expect(staar(t, i), `WebKit: kort ${i + 1} skal stå 12 px (+6 per kort) fra toppen: ${t}`).toBe(true);
   }
   await b.close();
+});
+
+// Retterunde 3: reserven virker bare på rulling som startet med berøring i stabelen og kort tid etter at fingeren er løftet.
+test('trykk uten rulling etterfulgt av et ankerhopp langt ned trekker ikke siden tilbake til et kort', async ({ browser, baseURL }) => {
+  const { ctx, page } = await mobil(browser, baseURL);
+  await tilKort(page, 2); await page.waitForTimeout(500);
+  await page.touchscreen.tap(200, 300);
+  await page.waitForTimeout(200);
+  await page.evaluate(() => { location.hash = '#pris'; });
+  await page.waitForTimeout(2500);
+  const m = await page.evaluate(() => ({ y: scrollY, pris: document.getElementById('pris').getBoundingClientRect().top }));
+  expect(Math.abs(m.pris), `siden står ved #pris (${m.pris})`).toBeLessThan(120);
+  await ctx.close();
+});
+
+test('en finger som holdes nede i ro i 300 ms gir ingen korreksjon', async ({ browser, baseURL }) => {
+  const { ctx, page } = await mobil(browser, baseURL);
+  await tilKort(page, 1); await page.waitForTimeout(500);
+  const c = await ctx.newCDPSession(page);
+  await c.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: 200, y: 400 }] });
+  await page.evaluate(() => scrollBy({ top: 250, behavior: 'instant' }));
+  await page.waitForTimeout(300);
+  const y = await page.evaluate(() => scrollY);
+  await page.waitForTimeout(600);
+  expect(await page.evaluate(() => scrollY), 'ingen korreksjon mens fingeren er nede').toBe(y);
+  await c.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+  await ctx.close();
+});
+
+test('redusert bevegelse: reserven er av, rullingen er fri', async ({ browser, baseURL }) => {
+  const { ctx, page } = await mobil(browser, baseURL, { redusert: 'reduce' });
+  await tilKort(page, 0); await page.waitForTimeout(300);
+  const y0 = await page.evaluate(() => scrollY);
+  await sveip(ctx, page, 230, 800);
+  const d = (await page.evaluate(() => scrollY)) - y0;
+  expect(d, `fri rulling (${d})`).toBeGreaterThan(150); expect(d).toBeLessThan(330);
+  await ctx.close();
 });
