@@ -55,6 +55,10 @@
   --luft:16px;
   --ledig-hoyde:calc(100svh - var(--topp-hoyde) - var(--fast-hoyde) - var(--luft));
   /* Forsidens fliser: den faste knappen er skjult mens de er i bildet, så bare toppen og luften trekkes fra. */
+  /* Stabelen: toppen er ikke klebrig på mobil, så rutene festes 12 px fra kanten, 6 px forskjøvet per kort, og alle har samme høyde. */
+  --stabel-topp:12px;
+  --stabel-skritt:6px;
+  --stabel-hoyde:min(600px, calc(100svh - var(--stabel-topp) - var(--luft)));
   --flis-hoyde:calc(100svh - var(--topp-hoyde) - var(--luft));
   /* Nettleserens tekststørrelse delt på 16 px (1 ved standard). Gjør vw-leddet i clamp() følgsomt, ellers vokser ikke titler på PC ved 200 % tekst. */
   --skala:tan(atan2(1rem,16px));

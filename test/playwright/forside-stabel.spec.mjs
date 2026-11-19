@@ -27,11 +27,11 @@ test('standard er AV: ingen stabel-klasse i HTML-en, og rutene står i normal fl
   await ctx.close();
 });
 
-test('med klassen: rutene er sticky under toppen + 8 px, forskjøvet 6 px per kort, ugjennomsiktige, og den neste ligger over', async ({ browser, baseURL }) => {
+test('med klassen: rutene er sticky 12 px fra kanten, forskjøvet 6 px per kort, ugjennomsiktige, og den neste ligger over', async ({ browser, baseURL }) => {
   const { ctx, page } = await mobil(browser, baseURL);
   const m = await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => { const s = getComputedStyle(e); return { pos: s.position, top: s.top, bg: s.backgroundColor, z: s.zIndex, mt: s.scrollMarginTop }; }));
   expect(m.map((x) => x.pos)).toEqual(Array(5).fill('sticky'));
-  expect(m.map((x) => x.top)).toEqual(['80px', '86px', '92px', '98px', '104px']);
+  expect(m.map((x) => x.top)).toEqual(['12px', '18px', '24px', '30px', '36px']);
   expect(m.map((x) => x.mt)).toEqual(m.map((x) => x.top));
   for (const x of m) { expect(x.bg).toMatch(/^rgb\(/u); expect(x.bg).not.toMatch(/rgba|, 0\)/u); }
   // Dokumentrekkefølgen avgjør lagene: rute 2 (indeks 1) ligger over rute 1 der de overlapper.
@@ -43,11 +43,22 @@ test('med klassen: rutene er sticky under toppen + 8 px, forskjøvet 6 px per ko
 });
 
 for (const [bredde, hoyde] of [[390, 664], [360, 640]]) {
-  test(`hver stablet rute er høyst 100svh minus toppen minus 16 px (ellers kan bunnen aldri ses), ${bredde} x ${hoyde}`, async ({ browser, baseURL }) => {
+  test(`stablede ruter har samme høyde, høyst 100svh minus toppavstanden (12 px) minus 16 px og 600 px, ${bredde} x ${hoyde}`, async ({ browser, baseURL }) => {
     const { ctx, page } = await mobil(browser, baseURL, { bredde, hoyde });
-    const ledig = hoyde - 72 - 16;
-    const hoyder = await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => e.getBoundingClientRect().height));
+    const ledig = Math.min(600, hoyde - 12 - 16);
+    const hoyder = await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => Math.round(e.getBoundingClientRect().height * 10) / 10));
     for (const [i, h] of hoyder.entries()) expect(h, `rute ${i + 1} er ${h} px, ledig ${ledig}`).toBeLessThanOrEqual(ledig);
+    expect(new Set(hoyder).size, `alle rutene like høye: ${hoyder}`).toBe(1);
+    await ctx.close();
+  });
+
+  test(`ingen piksler fra et underliggende kort synes under det øverste: bunnen er lik eller under alle dekkede, ${bredde} x ${hoyde}`, async ({ browser, baseURL }) => {
+    const { ctx, page } = await mobil(browser, baseURL, { bredde, hoyde });
+    for (let k = 1; k < 5; k++) {
+      await rullTilRute(page, k);
+      const m = await page.evaluate((n) => { const r = [...document.querySelectorAll('#trio > .rute')].map((e) => e.getBoundingClientRect()); return { topp: r[n].bottom, dekkede: r.slice(0, n).map((q) => q.bottom) }; }, k);
+      for (const [j, b] of m.dekkede.entries()) expect(m.topp, `rute ${k + 1} (bunn ${m.topp}) skal dekke bunnen av rute ${j + 1} (${b})`).toBeGreaterThanOrEqual(b - 0.01);
+    }
     await ctx.close();
   });
 }
@@ -86,7 +97,7 @@ test('fokus på et element i en dekket rute ruller ruta fram', async ({ browser,
   await rullTilRute(page, 2);
   await expect(page.locator('#trio > .rute').nth(0)).toHaveClass(/dekket/);
   await page.locator('#prove').focus();
-  await expect.poll(() => page.locator('#trio > .rute').nth(0).evaluate((r) => r.getBoundingClientRect().top)).toBeCloseTo(80, 0);
+  await expect.poll(() => page.locator('#trio > .rute').nth(0).evaluate((r) => r.getBoundingClientRect().top)).toBeCloseTo(12, 0);
   await expect(page.locator('#trio > .rute').nth(0)).not.toHaveClass(/dekket/);
   await ctx.close();
 });

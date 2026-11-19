@@ -478,11 +478,14 @@ html.js .hero h1:not(.klar){visibility:hidden}
 }
 
 /* Patrick 19.11: kortstabling på mobil, av som standard. Slås på med klassen `stabel` på #trio (de fem rutene; Spør Matlyst-flisene stables ikke, se rapporten).
-   Hver flis står fast (sticky) under toppen, og den neste glir opp over den forrige. Bare ren CSS; ingen overgangseffekter. */
+   Hver rute står fast (sticky) 12 px under skjermkanten (toppen er ikke klebrig på mobil), og den neste glir opp over den forrige.
+   Alle rutene har samme høyde, så bunnen av et høyere kort aldri stikker fram under et lavere: teksten står øverst og demoen nederst.
+   Bare ren CSS; ingen overgangseffekter. */
 @media (max-width:720px){
-  #trio.stabel > .rute{position:sticky;top:calc(var(--topp-hoyde) + 8px);scroll-margin-top:calc(var(--topp-hoyde) + 8px);box-shadow:0 -10px 24px -16px rgb(var(--skygge) / .3),0 0 0 1px color-mix(in srgb, var(--blekk) 4%, transparent)}
-  #trio.stabel > .rute:nth-child(2){top:calc(var(--topp-hoyde) + 14px);scroll-margin-top:calc(var(--topp-hoyde) + 14px)}
-  #trio.stabel > .rute:nth-child(3){top:calc(var(--topp-hoyde) + 20px);scroll-margin-top:calc(var(--topp-hoyde) + 20px)}
-  #trio.stabel > .rute:nth-child(4){top:calc(var(--topp-hoyde) + 26px);scroll-margin-top:calc(var(--topp-hoyde) + 26px)}
-  #trio.stabel > .rute:nth-child(5){top:calc(var(--topp-hoyde) + 32px);scroll-margin-top:calc(var(--topp-hoyde) + 32px)}
+  #trio.stabel > .rute{--stabel-n:0;position:sticky;top:calc(var(--stabel-topp) + var(--stabel-n) * var(--stabel-skritt));scroll-margin-top:calc(var(--stabel-topp) + var(--stabel-n) * var(--stabel-skritt));min-height:var(--stabel-hoyde);box-shadow:0 -10px 24px -16px rgb(var(--skygge) / .3),0 0 0 1px color-mix(in srgb, var(--blekk) 4%, transparent)}
+  #trio.stabel > .rute > .app{margin-top:auto}
+  #trio.stabel > .rute:nth-child(2){--stabel-n:1}
+  #trio.stabel > .rute:nth-child(3){--stabel-n:2}
+  #trio.stabel > .rute:nth-child(4){--stabel-n:3}
+  #trio.stabel > .rute:nth-child(5){--stabel-n:4}
 }
