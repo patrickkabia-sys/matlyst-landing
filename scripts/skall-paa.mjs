@@ -1,5 +1,10 @@
-import { normaliserSti, sidetype, tjenestefamilie } from './sidetyper.mjs';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { normaliserSti, sidetype, tjenestefamilie, alleSider, erUtrullet, nokkel, UTRULLET } from './sidetyper.mjs';
 import { SKALLTEKST } from './skall-tekst.mjs';
+import { gruppeForSti } from './locale-sider.mjs';
+import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from './skall.mjs';
 
 // Sluttposisjonen inkluderer lukketaggen. Nøsting av samme tagg må telles;
 // både samtykkebannerne og de eldre nedlastingsboksene har ulik dybde.
@@ -107,4 +112,86 @@ export function byttButikkmerker(innhold, sprak, type) {
     ut = ut.slice(0, start) + `<a class="knapp" href="/app" data-hent="${verdi}">${SKALLTEKST[sprak].innhold.knapp}</a>` + ut.slice(slutt);
   }
   return ut;
+}
+
+const STIL = '<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/side.css"><script src="/skall.js" defer></script><link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- /skall:stil -->';
+const TJENESTESTIL = '<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><!-- /skall:stil -->';
+const STILBLOKK = /<!-- skall:stil -->[\s\S]*?<!-- \/skall:stil -->/gu;
+const LENKE = /<link\b[^>]*>/giu;
+const INNEBYGD_STIL = /<style\b[^>]*>[\s\S]*?<\/style>/giu;
+
+function attributt(tagg, navn) {
+  return new RegExp(`\\s${navn}\\s*=\\s*(["'])(.*?)\\1`, 'iu').exec(tagg)?.[2];
+}
+
+// Velg plass før opprydding; bygg så hodet uten posisjonsforskyvninger.
+function stilHode(html, tjeneste) {
+  return html.replace(/<head\b[^>]*>[\s\S]*?<\/head>/iu, (hode) => {
+    const gamle = [...hode.matchAll(STILBLOKK)];
+    const lenker = [...hode.matchAll(LENKE)];
+    const stiler = lenker.filter((m) => attributt(m[0], 'href') === '/styles.css');
+    const innebygde = tjeneste ? [] : [...hode.matchAll(INNEBYGD_STIL)].filter((m) => m[0].includes('@font-face'));
+    const ikoner = tjeneste ? [] : lenker.filter((m) => attributt(m[0], 'rel') === 'apple-touch-icon');
+    const plass = gamle[0]?.index ?? stiler[0]?.index ?? (tjeneste
+      ? lenker.find((m) => attributt(m[0], 'rel') === 'stylesheet')?.index
+      : innebygde[0]?.index) ?? hode.search(/<\/head>/iu);
+    const fjern = [...gamle, ...stiler, ...innebygde, ...ikoner].map((m) => ({ start: m.index, slutt: m.index + m[0].length }));
+    const blokka = tjeneste ? TJENESTESTIL : STIL;
+    let ut = '';
+    for (let i = 0; i < hode.length;) {
+      if (i === plass) ut += blokka;
+      const del = fjern.find((m) => m.start === i);
+      if (del) i = del.slutt;
+      else ut += hode[i++];
+    }
+    return ut;
+  });
+}
+
+function bodyAttributter(html, type, familie) {
+  return html.replace(/<body\b[^>]*>/u, (body) => {
+    const ren = body.replace(/\sdata-(?:sidetype|app-uttrykk|tjeneste)\s*=\s*(["'])[^]*?\1/gu, '');
+    return ren.slice(0, -1) + ` data-sidetype="${type}"${familie ? ` data-tjeneste="${familie}"` : ''}>`;
+  });
+}
+
+export function rendre(html, sti, utrullet = UTRULLET) {
+  if (!erUtrullet(sti, html, utrullet)) return html;
+  const n = nokkel(sti, html);
+  if (n === 'tjeneste:vervekort' || n === 'tjeneste:verifisering') return html;
+  const gruppe = gruppeForSti(normaliserSti(sti));
+  if (n.startsWith('tjeneste:')) {
+    const sprak = /^\/(sv|da|en)\//u.exec(normaliserSti(sti))?.[1] ?? 'nb';
+    let ut = bodyAttributter(stilHode(html, true), 'tjeneste', tjenestefamilie(sti));
+    if (gruppe) for (const plass of ['topp', 'bunn']) {
+      ut = ut.replace(new RegExp(`<!-- språkvelger:${plass} -->[\\s\\S]*?<!-- /språkvelger:${plass} -->`, 'gu'), () => sprakvelger(sprak, plass, gruppe.sider));
+    }
+    return ut;
+  }
+  const d = trekkUt(html, sti);
+  const velgere = gruppe ? Object.fromEntries(['topp', 'bunn'].map((plass) => [plass, sprakvelger(d.sprak, plass, gruppe.sider)])) : d.sprakvelgere;
+  const kropp = bodyAttributter(stilHode(d.kropp, false), d.type);
+  const innhold = byttButikkmerker(d.innhold, d.sprak, d.type);
+  return kropp + '<!-- skall:topp --><div class="side"><div class="kort"><div class="blad">'
+    + topp(d.sprak, { sprakvelger: velgere.topp }) + '<!-- /skall:topp -->' + innhold
+    + '<!-- skall:bunn --></div>' + hylledel(d.sprak, { guider: d.guider }) + '</div>'
+    + morkBunn(d.sprak, { sprakvelger: velgere.bunn, samtykkelenke: d.harSiteJs })
+    + nedlasting(d.sprak) + (d.banner ?? (d.harSiteJs ? samtykke(d.sprak) : ''))
+    + '</div><!-- /skall:bunn -->' + d.hale;
+}
+
+export function kjor(rot, utrullet = UTRULLET) {
+  const endrede = [];
+  for (const s of alleSider(rot)) {
+    const fil = join(rot, s.fil), html = readFileSync(fil, 'utf8');
+    const ut = rendre(html, s.sti, utrullet);
+    if (ut === html) continue;
+    writeFileSync(fil, ut);
+    endrede.push(s.fil);
+  }
+  return endrede;
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  console.log(`skall-paa: ${kjor(fileURLToPath(new URL('..', import.meta.url))).length} sider oppdatert`);
 }
