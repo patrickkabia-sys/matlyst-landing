@@ -13,6 +13,8 @@ const BREDDER = [360, 390, 768, 1280];
 // Den er unntatt fra forstørret tekst (a), men dekket av zoomtesten (b).
 const SKALL_PX = ['header.topp', '#panel', 'section.bunn', 'footer.under', '#fast', '#hent', '#cookie', '.knapp'];
 const TEKST = '.blad :is(p, li, td, th, dt, dd, summary, h1, h2, h3, h4, figcaption, .lead, .eyebrow)';
+// Tjenestesidene har ikke skallet (.blad). Teksten ligger i main, og bekreftelsen har en bunn utenfor.
+const TJENESTE_TEKST = ':is(main, .bekreft-fot) :is(p, li, h1, h2, h3, .lead, .eyebrow), :is(.nav-back, .nav-right a.link, .language-switcher a)';
 const LOVLIGE_HENT = ['topp', 'bunn', 'fast', 'app-cta', 'side-cta', 'helt'];
 const EKSEMPELSTIER = eksempelStier();
 
@@ -114,7 +116,7 @@ for (const side of rader) {
     for (const bredde of [390, 1280]) {
       await page.setViewportSize({ width: bredde, height: 900 });
       await page.goto(side.url);
-      const utenSkall = `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`;
+      const utenSkall = side.fulltSkall === false ? TJENESTE_TEKST : `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`;
       const faktorer = await skalering(page, utenSkall);
       expect(faktorer.length, `ingen tekst å måle på ${bredde} px`).toBeGreaterThan(0);
       const feilFaktor = forstorrelseFeil(faktorer, side);

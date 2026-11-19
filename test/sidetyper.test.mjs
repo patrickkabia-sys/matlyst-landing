@@ -78,7 +78,7 @@ test('alleSider hopper over punktmapper og verktøymapper, også med HTML i dem'
 });
 test('omregnerne, de lange og de korte guidene er rullet ut så langt', () => {
   // Utrullingsoppgavene (12 til 18) endrer denne testen med vilje når de legger til nøkler.
-  assert.deepEqual([...UTRULLET], ['omregner', 'guide-lang', 'guide-kort', 'blogg', 'juss']);
+  assert.deepEqual([...UTRULLET], ['omregner', 'guide-lang', 'guide-kort', 'blogg', 'juss', 'tjeneste:avmeld', 'tjeneste:bekreft', 'tjeneste:vervekort']);
 });
 test('stien normaliseres likt: med og uten skråstrek, index.html, spørring og anker', () => {
   assert.equal(normaliserSti('/personvern.html?x=1#a'), '/personvern.html');

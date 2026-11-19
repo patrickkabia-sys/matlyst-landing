@@ -47,7 +47,7 @@ export function side(lang) {
        ikke forhåndsviserne (Twitterbot, facebookexternalhit) kortet. -->
   <meta name="robots" content="noindex">
   <meta name="referrer" content="no-referrer">
-  <meta name="theme-color" content="#F7F3EC">
+  <meta name="theme-color" content="#FFFFFF">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Matlyst">
   <meta property="og:locale" content="${t.ogLocale}">
@@ -65,6 +65,8 @@ export function side(lang) {
   <meta name="twitter:image" content="${bildeUrl(lang)}">
   <meta name="twitter:image:alt" content="${esc(t.bildeAlt)}">
   <link rel="icon" type="image/png" href="/images/icon.png">
+  <link rel="stylesheet" href="/tokens.css">
+  <link rel="stylesheet" href="/tjeneste.css">
   <link rel="stylesheet" href="/avmeld.css">
   <link rel="stylesheet" href="/v/vervekort.css">
   <script src="/v/vervekort.js" defer></script>
