@@ -189,6 +189,13 @@ test('fem kort i godkjent rekkefølge', () => {
   assert.deepEqual([...seksjon('del').matchAll(/data-inn="([vh])"/g)].map((m) => m[1]), ['v', 'h', 'v', 'v', 'h']);
 });
 
+test('det gamle funksjoner-ankeret omslutter middag og de fem kortene', () => {
+  const del = html.match(/<div id="funksjoner">\s*(<section\b[^>]*id="middag"[\s\S]*?<\/section>)\s*<\/div>/)?.[1];
+  assert.ok(del, 'funksjoner skal ligge rundt middag, slik at begge ankrene virker');
+  assert.equal((html.match(/id="funksjoner"/g) ?? []).length, 1);
+  assert.deepEqual([...del.matchAll(/<h3[^>]*>([^<]+)<\/h3>/g)].map((m) => m[1]), ['Skaler', 'Lag maten', 'Ukemeny', 'Handle', 'Husstand']);
+});
+
 test('pris: to kort, personvernlinje, og ingen kroner på siden', () => {
   const del = seksjon('pris');
   assert.equal((del.match(/class="plan(?: pro)?"/g) ?? []).length, 2);

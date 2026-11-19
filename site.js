@@ -58,6 +58,11 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
   function capture(name, properties) {
     if (get() !== 'granted') return;
+    if (name === 'download_click') {
+      if (window.posthog) window.posthog.capture(name, properties, { transport: 'sendBeacon' });
+      if (window.gtag) window.gtag('event', name, Object.assign({}, properties, { transport_type: 'beacon' }));
+      return;
+    }
     if (window.posthog) window.posthog.capture(name, properties);
     if (window.gtag) window.gtag('event', name, properties);
   }
@@ -90,10 +95,11 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   document.addEventListener('click', function (e) {
     var hent = e.target.closest('[data-hent]');
     if (hent) {
+      var d = document.getElementById('hent');
       capture('download_click', {
         page_path: location.pathname,
         cta_location: hent.dataset.hent,
-        visning: document.getElementById('hent')?.open ? 'qr' : 'lenke'
+        visning: d && d.open ? 'qr' : 'lenke'
       });
     }
     var a = e.target.closest('a');

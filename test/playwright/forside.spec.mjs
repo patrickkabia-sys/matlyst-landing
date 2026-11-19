@@ -215,7 +215,7 @@ test('filmen holder plassen når videofilen ikke kan lastes', async ({ page }) =
 for (const [navn, valg, plasser, visning] of [
   ['PC', { width: 1280, height: 800 }, ['topp', 'helt', 'bunn'], 'qr'],
   ['mobil', { width: 390, height: 844 }, ['topp', 'helt', 'bunn', 'fast'], 'lenke'],
-]) test(`${navn}: download_click sendes med plassering bare etter Godta`, async ({ browser }) => {
+]) test(`${navn}: download_click sendes med beacon og plassering bare etter Godta`, async ({ browser }) => {
   const context = await browser.newContext({ viewport: valg, hasTouch: navn === 'mobil' });
   const page = await context.newPage(), sendt = [], verter = [];
   // All ekstern trafikk stoppes ved nettverksgrensen. Ingen analyse går til ekte verter.
@@ -223,7 +223,7 @@ for (const [navn, valg, plasser, visning] of [
     const url = new URL(route.request().url());
     if (url.hostname === '127.0.0.1') return route.continue();
     verter.push(url.hostname);
-    if (url.pathname === '/static/array.js') return route.fulfill({ contentType: 'application/javascript', body: `window.posthog.capture = (navn, egenskaper) => fetch('https://eu.i.posthog.com/t9-stubb', {method:'POST', body:JSON.stringify({navn,egenskaper})});` });
+    if (url.pathname === '/static/array.js') return route.fulfill({ contentType: 'application/javascript', body: `window.posthog.capture = (navn, egenskaper, valg) => fetch('https://eu.i.posthog.com/t9-stubb', {method:'POST', body:JSON.stringify({navn,egenskaper,valg})});` });
     if (url.pathname === '/t9-stubb') sendt.push(route.request().postDataJSON());
     return route.fulfill({ contentType: 'application/javascript', body: '', headers: { 'access-control-allow-origin': '*' } });
   });
@@ -247,8 +247,8 @@ for (const [navn, valg, plasser, visning] of [
   await page.locator('#ck-accept').click();
   await page.waitForFunction(() => window.posthog?.capture.toString().includes('t9-stubb'));
   for (const plass of plasser) await klikk(plass);
-  await expect.poll(() => sendt).toEqual(plasser.map((plass) => ({ navn: 'download_click', egenskaper: { page_path: '/', cta_location: plass, visning } })));
-  expect(await page.evaluate(() => window.dataLayer.filter((rad) => rad[0] === 'event').map((rad) => [rad[1], rad[2]]))).toEqual(plasser.map((plass) => ['download_click', { page_path: '/', cta_location: plass, visning }]));
+  await expect.poll(() => sendt).toEqual(plasser.map((plass) => ({ navn: 'download_click', egenskaper: { page_path: '/', cta_location: plass, visning }, valg: { transport: 'sendBeacon' } })));
+  expect(await page.evaluate(() => window.dataLayer.filter((rad) => rad[0] === 'event').map((rad) => [rad[1], rad[2]]))).toEqual(plasser.map((plass) => ['download_click', { page_path: '/', cta_location: plass, visning, transport_type: 'beacon' }]));
   await context.close();
 });
 

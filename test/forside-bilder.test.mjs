@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
@@ -41,6 +42,12 @@ test('filmen er under 2,5 MB og plakaten under 100 kB', () => {
 
 test('QR-koden er en SVG med 25 ruter i hver retning', () => {
   assert.match(readFileSync(bilde('qr-app.svg'), 'utf8'), /<svg\b[^>]*\bviewBox="0 0 25 25"/u);
+});
+
+test('QR-koden er identisk med den dekodede koden til https://matlyst-app.no/app', () => {
+  // Endres QR-koden, skal den dekodes og SHA-256-verdien oppdateres.
+  const sum = createHash('sha256').update(readFileSync(bilde('qr-app.svg'))).digest('hex');
+  assert.equal(sum, '6cc25d005e0ff6d4d72ba928c420229133f2482c1362836666d4ae87ea12b131');
 });
 
 test('QR-koden har SVG-navnerom og fast farge når den lastes som bilde', () => {

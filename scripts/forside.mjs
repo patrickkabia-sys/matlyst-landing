@@ -205,7 +205,7 @@ function middag(t, oppsett) {
       : `<div class="a-listehode">${skjerm(m.husstand.listehode)}<small>${skjerm(h.listetittel)}</small></div>${h.varer.map((vare) => `<div class="a-vare a-innrad${Object.hasOwn(vare, 'ny') && vare.ny ? ' ny skjult' : ''}"><i></i><span>${skjerm(vare.navn)}</span><b><em>${skjerm(vare.mengde)}</em>${eier(vare)}</b></div>`).join('')}`;
     return `<div class="a-hus"><span class="a-folk">${h.folk.map((n) => ansikt(n, 46)).join('')}</span><span><b>${skjerm(h.navn)}</b><small>${skjerm(fyll(m.husstand.telling, { n: h.folk.length, ledige: 6 - h.folk.length }))}</small></span></div>${innhold}`;
   });
-  return `<section class="del ramme" id="middag"><h2>${skjerm(m.tittel)}</h2><p>${skjerm(m.ingress)}</p><div class="bento" id="trio">
+  return `<div id="funksjoner"><section class="del ramme" id="middag"><h2>${skjerm(m.tittel)}</h2><p>${skjerm(m.ingress)}</p><div class="bento" id="trio">
 <article class="rute" data-inn="v">
         <div class="rutetekst"><h3>${skjerm(m.skaler.tittel)}</h3><p>${skjerm(m.skaler.tekst)}</p></div>
         <div class="app" id="demoSkaler" role="img" aria-label="${skjerm(m.skaler.aria)}">
@@ -266,7 +266,7 @@ function middag(t, oppsett) {
           ${husinnhold.map((innhold, i) => `<template class="hus-eksempel" data-sist="${husstander[i].sist}">${innhold}</template>`).join('')}
         </div>
       </article>
-</div></section>`;
+</div></section></div>`;
 }
 function pris(t) {
   const p = t.pris;

@@ -7,6 +7,11 @@ import { forside } from '../scripts/forside.mjs';
 import { TEKST } from '../scripts/forside-tekst.mjs';
 const rot = fileURLToPath(new URL('..', import.meta.url));
 
+test('site.js inneholder verken optional chaining eller nullish coalescing', () => {
+  const js = readFileSync(join(rot, 'site.js'), 'utf8');
+  assert.doesNotMatch(js, /\?\.|\?\?/, 'site.js skal kunne leses uten disse nyere operatorene');
+});
+
 test('site.js måler nedlastingsklikk bare gjennom capture, med plassering', () => {
   const js = readFileSync(join(rot, 'site.js'), 'utf8');
   assert.match(js, /closest\('\[data-hent\]'\)/);
