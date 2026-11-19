@@ -35,6 +35,7 @@ for (const sti of [STI, '/lagre-oppskrifter-fra-instagram/', '/verktoy/kopp-til-
 }
 
 test('kokebokraden glir mot målet uten hopp og uten sprett, og stopper når den er framme', async ({ page }) => {
+  await page.addInitScript(() => { window.__raf = 0; const r = window.requestAnimationFrame.bind(window); window.requestAnimationFrame = (f) => { window.__raf++; return r(f); }; });
   await page.goto(STI);
   await page.evaluate(() => { document.querySelector('#cookie')?.remove(); });
   await page.evaluate(() => document.querySelector('.kokebok').scrollIntoView({ block: 'start', behavior: 'instant' }));
@@ -52,4 +53,8 @@ test('kokebokraden glir mot målet uten hopp og uten sprett, og stopper når den
   expect(Math.max(...steg.map(Math.abs)), 'første steg er ikke et hopp').toBeLessThanOrEqual(Math.abs(total) * 0.25);
   // Stoppet: ingen bevegelse de siste bilderutene.
   expect(Math.abs(rekke.at(-1) - rekke.at(-10))).toBeLessThan(0.11);
+  // Løkka stopper: ingen nye requestAnimationFrame-kall når raden er framme (spion telt etter innsvingen).
+  const c1 = await page.evaluate(() => window.__raf);
+  await page.waitForTimeout(700);
+  expect(await page.evaluate(() => window.__raf), 'rAF-kall etter innsvingen').toBe(c1);
 });

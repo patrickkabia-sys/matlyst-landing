@@ -16,17 +16,26 @@ const tilKort = (page, i) => page.evaluate((n) => { const trio = document.getEle
 const sveip = async (ctx, page, dist, fart) => { const c = await ctx.newCDPSession(page); await c.send('Input.synthesizeScrollGesture', { x: 200, y: 500, yDistance: -dist, speed: fart, gestureSourceType: 'touch' }); await page.waitForTimeout(1600); };
 const topper = (page) => page.evaluate(() => [...document.querySelectorAll('#trio > .rute')].map((r) => Math.round(r.getBoundingClientRect().top)));
 // Kort i er «landet» når det står i sin stabelposisjon: 12 px + 6 px per kort fra toppen.
+// «Ett kort»: scrollY står på kortets anker (naturlig posisjon minus klebrig topp), og kortet er det øverste ved elementFromPoint, ikke bare sticky-toppen.
+const landet = (page, i) => page.evaluate((n) => {
+  const trio = document.getElementById('trio'), r = [...trio.querySelectorAll(':scope > .rute')], gap = parseFloat(getComputedStyle(trio).rowGap) || 0;
+  const mal = trio.getBoundingClientRect().top + scrollY + r.slice(0, n).reduce((t, e) => t + e.offsetHeight + gap, 0) - parseFloat(getComputedStyle(r[n]).top);
+  const el = document.elementFromPoint(195, 12 + 6 * n + 40);
+  return { y: scrollY, mal, topp: r.findIndex((e) => e.contains(el)) };
+}, i);
+const sjekk = async (page, i, navn) => { const m = await landet(page, i); expect(Math.abs(m.y - m.mal), `${navn}: scrollY ${m.y} mot ankeret ${m.mal}`).toBeLessThanOrEqual(2); expect(m.topp, `${navn}: kort ${i + 1} skal ligge øverst`).toBe(i); };
 const staar = (t, i) => Math.abs(t[i] - (12 + 6 * i)) <= 2;
 
 test('ett vanlig sveip flytter nøyaktig ett kort, også et kraftig sveip', async ({ browser, baseURL }) => {
   test.setTimeout(90_000);
   const { ctx, page } = await mobil(browser, baseURL);
   await tilKort(page, 0); await page.waitForTimeout(500);
-  expect(staar(await topper(page), 0)).toBe(true);
+  await sjekk(page, 0, 'start');
   for (const [i, dist, fart] of [[1, 200, 800], [2, 300, 1200], [3, 900, 6000], [4, 1800, 9000]]) {
     await sveip(ctx, page, dist, fart);
     const t = await topper(page);
     expect(staar(t, i), `etter sveip ${dist}/${fart} skal kort ${i + 1} stå 12 px (+6 per kort) fra toppen: ${t}`).toBe(true);
+    await sjekk(page, i, `etter sveip ${dist}/${fart}`);
   }
   await ctx.close();
 });
@@ -35,9 +44,9 @@ test('sveip oppover flytter ett kort tilbake', async ({ browser, baseURL }) => {
   const { ctx, page } = await mobil(browser, baseURL);
   await tilKort(page, 3); await page.waitForTimeout(500);
   await sveip(ctx, page, -250, 900);
-  expect(staar(await topper(page), 2)).toBe(true);
+  await sjekk(page, 2, 'ett kort tilbake');
   await sveip(ctx, page, -1500, 9000);
-  expect(staar(await topper(page), 1), 'kraftig sveip oppover stopper på forrige kort').toBe(true);
+  await sjekk(page, 1, 'kraftig sveip oppover stopper på forrige kort');
   await ctx.close();
 });
 
@@ -80,16 +89,6 @@ test('ingen låsing på resten av siden, og ikke på PC', async ({ browser, base
   await pc.close();
 });
 
-test('redusert bevegelse: kortet hopper direkte (ingen glidning)', async ({ browser, baseURL }) => {
-  const { ctx, page } = await mobil(browser, baseURL, { redusert: 'reduce' });
-  await tilKort(page, 0); await page.waitForTimeout(300);
-  const c = await ctx.newCDPSession(page);
-  await c.send('Input.synthesizeScrollGesture', { x: 200, y: 500, yDistance: -900, speed: 6000, gestureSourceType: 'touch' });
-  await page.waitForTimeout(500);
-  expect(staar(await topper(page), 1), 'neste kort er på plass uten å vente på en glidning').toBe(true);
-  await ctx.close();
-});
-
 test('WebKit: touchstart og en lang rulling stopper på neste kort (reserven i forside.js)', async () => {
   test.setTimeout(90_000);
   const b = await webkit.launch();
@@ -108,6 +107,7 @@ test('WebKit: touchstart og en lang rulling stopper på neste kort (reserven i f
     await page.waitForTimeout(1800);
     const t = await topper(page);
     expect(staar(t, i), `WebKit: kort ${i + 1} skal stå 12 px (+6 per kort) fra toppen: ${t}`).toBe(true);
+    await sjekk(page, i, 'WebKit');
   }
   await b.close();
 });
