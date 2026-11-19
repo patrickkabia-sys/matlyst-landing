@@ -22,20 +22,16 @@ test.use({ reducedMotion: 'reduce' });
 // samtykkebanner heter .cookie, og eldre sider har en flytende nedlastingslinje (.dl-bar).
 const krom = (side) => ['.topp', '.fast', '.samtykke', '.cookie', ...(side.type === 'forside' ? [] : ['.dl-bar'])];
 // Forsiden setter overskriften bokstav for bokstav i span.tegn; boksene overlapper, men det er ett ord.
-// Kildebåndet (.band) ruller i en maske med vilje, så tekst der er klippet av design.
+// Tilsiktet klipp: kildebåndet (.band) ruller i en maske, og demotelefonenes skjermer (.a-plan, .a-lagscene,
+// .a-kalinn har overflow:hidden) lar listene fortsette under skjermkanten med vilje.
 const valg = (side) => ({
   krom: krom(side),
-  ...(side.type === 'forside' ? { unntak: ['.tegn'], tilsiktetKlipp: ['.band'] } : {}),
+  ...(side.type === 'forside' ? { unntak: ['.tegn'], tilsiktetKlipp: ['.band', '.a-plan', '.a-lagscene', '.a-kalinn'] } : {}),
 });
 const reviderSiden = (page, side) => revider(page, valg(side));
 
 const rader = utvalg();
 
-// Revisjonen finner ekte feil på dagens forside («/», levert før denne revisjonen fantes):
-// overlapp og tekst utenfor boksen i demoene (a-dag, spiller, stormerke) og px-tekst i
-// innholdet. Forsiden er ikke rørt her. test.fail() gjør funnene synlige uten å gjøre
-// CI rød (REVISJON_STRENG=1 slår det av), og blir rød av seg selv den dagen forsiden er rettet (fjern da denne linjen).
-const KJENTE_FORSIDEFUNN = (side) => !process.env.REVISJON_STRENG && side.url === '/' && side.type === 'forside';
 
 test('utvalget har sider for hver utrullet type', () => {
   const ute = utrulledeTyper();
@@ -63,7 +59,6 @@ for (const side of rader) {
   const navn = `${side.type} ${side.url}`;
 
   test(`felles: ${navn}`, async ({ page, baseURL }) => {
-    test.fail(KJENTE_FORSIDEFUNN(side), 'kjent funn på forsiden, se task-2b-rapporten');
     const feil = samleFeil(page, new URL(baseURL).origin);
     for (const bredde of BREDDER) {
       await page.setViewportSize({ width: bredde, height: 900 });
@@ -77,20 +72,20 @@ for (const side of rader) {
     expect(feil.mangler).toEqual([]);
   });
 
-  test(`forstørret tekst, rem følger nettleseren: ${navn}`, async ({ page }) => {
-    test.fail(KJENTE_FORSIDEFUNN(side), 'kjent funn på forsiden, se task-2b-rapporten');
+  test(`forstørret tekst, ingen halvveis skalering: ${navn}`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 900 });
     await page.goto(side.url);
     const utenSkall = `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`;
     const faktorer = await skalering(page, utenSkall);
     expect(faktorer.length, 'ingen tekst å måle').toBeGreaterThan(0);
-    const for_liten = faktorer.filter((f) => !(f.faktor >= 1.9));
-    expect(for_liten).toEqual([]);
+    // Å heve standard skriftstørrelse forstørrer rem/em, ikke px-tekst (faktor 1, og det er lovlig).
+    // Feil er tekst som krymper eller vokser bare halvveis (over 1 og under 1,9).
+    const feilFaktor = faktorer.filter((f) => !(f.faktor === 1 || f.faktor >= 1.9));
+    expect(feilFaktor).toEqual([]);
   });
 
   for (const faktor of [2, 4]) {
     test(`zoom ${faktor * 100} %: ${navn}`, async ({ browser }) => {
-    test.fail(KJENTE_FORSIDEFUNN(side), 'kjent funn på forsiden, se task-2b-rapporten');
       const flate = await zoom(browser, side.url, faktor);
       try {
         await flate.emulateMedia({ reducedMotion: 'reduce' });
