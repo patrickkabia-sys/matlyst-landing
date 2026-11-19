@@ -301,9 +301,18 @@ for (const bredde of [390, 1280]) test(`korte guider: steg, ideliste og kildepil
 
 // Eldre sider: beregnet stil på de fire ekte sidene. Hver velger må treffe, ellers beviser regelteksten ingenting.
 const GAMMEL = ['/importer-fra-matprat/', '/finn-oppskrifter/', '/hva-kan-jeg-lage/', '/skapere/'];
+// Forventet antall per side. Et manglende element skal gi rødt, ikke en tom løkke eller et hoppet `if`.
+const FORVENTET = {
+  '/importer-fra-matprat/': { fig: 0, cta: 1, faq: 1, feat: 1, rel: 1, knapp: 1 },
+  '/finn-oppskrifter/': { fig: 1, cta: 1, faq: 0, feat: 1, rel: 1, knapp: 1 },
+  '/hva-kan-jeg-lage/': { fig: 0, cta: 1, faq: 0, feat: 1, rel: 1, knapp: 1 },
+  '/skapere/': { fig: 0, cta: 0, faq: 1, feat: 0, rel: 0, knapp: 0 },
+};
 for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${sti}: topp, kort, kolonne og knapper har ny stil på ${bredde} px`, async ({ page }) => {
   await page.setViewportSize({ width: bredde, height: 900 });
   await page.goto(adresse(sti));
+  const antall = await page.evaluate(() => ({ fig: document.querySelectorAll('main.prose figure').length, cta: document.querySelectorAll('.page-cta').length, faq: document.querySelectorAll('.faq').length, feat: document.querySelectorAll('.feat').length, rel: document.querySelectorAll('.related').length, knapp: document.querySelectorAll('.hero-actions > a.knapp').length }));
+  expect(antall, `elementer på ${sti}`).toEqual(FORVENTET[sti]);
   const m = await page.evaluate(() => {
     const st = (e, p) => getComputedStyle(e)[p];
     const hero = document.querySelector('.hero');
@@ -320,7 +329,7 @@ for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${s
       prose: { w: prose.getBoundingClientRect().width, max: st(prose, 'maxWidth') },
       faqW: faq && faq.getBoundingClientRect().width, ctaR: cta && st(cta, 'borderTopLeftRadius'),
       knapp: knapp && { h: knapp.getBoundingClientRect().height, bg: st(knapp, 'backgroundColor') },
-      vindu: innerWidth, kant: [faq, cta].filter(Boolean).map((e) => e.getBoundingClientRect()).map((r) => [r.left, innerWidth - r.right]),
+      vindu: innerWidth, kant: [...document.querySelectorAll('.faq, .page-cta, .related')].map((e) => e.getBoundingClientRect()).map((r) => [r.left, innerWidth - r.right]),
       cta: cta && { bg: st(cta, 'backgroundImage'), r: st(cta, 'borderTopLeftRadius'), pad: st(cta, 'paddingTop'), mt: parseFloat(st(cta, 'marginTop')), harH2: !!cta.querySelector('h2') },
       fig: [...document.querySelectorAll('main.prose figure')].map((f) => { const i = f.querySelector('img'); const r = i.getBoundingClientRect(); const fr = f.querySelector('figcaption').getBoundingClientRect(); return { w: r.width, r: st(i, 'borderTopLeftRadius'), mitt: Math.abs((r.left + r.right) / 2 - innerWidth / 2), under: fr.top >= r.bottom - 1 }; }),
       rel: [...document.querySelectorAll('.related')].map((x) => { const ul = x.querySelector('ul'); const a = x.querySelector('li a'); const li = x.querySelector('li'); return { align: st(x, 'textAlign'), disp: st(ul, 'display'), kol: st(ul, 'gridTemplateColumns').split(' ').length, bT: st(ul, 'borderTopWidth'), bB: st(li, 'borderBottomWidth'), vekt: st(a, 'fontWeight'), uline: st(a, 'textDecorationLine'), brad: st(a, 'borderTopLeftRadius'), bord: st(a, 'borderTopWidth'), ulBredde: ul.getBoundingClientRect().width, hoyde: a.getBoundingClientRect().height }; }),
@@ -367,13 +376,36 @@ for (const bredde of [390, 1280]) test(`eldre side: forstørret tekst vokser i o
   etter.forEach((x, i) => expect(x / for_[i]).toBeGreaterThanOrEqual(1.9));
 });
 
-test('eldre side: banneret virker, og samtykket kan trekkes tilbake fra bunnen', async ({ page }) => {
+// Samtykket: Godta lagrer granted, «Bare nødvendige» lagrer denied, og tilbaketrekking fra bunnen sletter valget så banneret kommer tilbake.
+const LAGRING = 'matlyst-consent';
+const lagret = (page) => page.evaluate((k) => localStorage.getItem(k), LAGRING);
+async function utenFremmede(page) { await page.route((u) => !['127.0.0.1', 'localhost'].includes(u.hostname), (r) => r.abort()); }
+
+test('eldre side: Godta lagrer granted, og tilbaketrekking fra bunnen sletter valget og viser banneret', async ({ page }) => {
+  await utenFremmede(page);
+  await page.goto(adresse('/finn-oppskrifter/'));
+  await expect(page.locator('#cookie')).toBeVisible();
+  expect(await lagret(page)).toBeNull();
+  await page.locator('#ck-accept').click();
+  await expect(page.locator('#cookie')).toBeHidden();
+  expect(await lagret(page)).toBe('granted');
+  await page.locator('footer.under [data-consent-withdraw]').click();
+  await expect(page.locator('#cookie')).toBeVisible();
+  expect(await lagret(page)).toBeNull();
+});
+
+test('eldre side: Bare nødvendige lagrer denied, og tilbaketrekking fra bunnen viser banneret igjen', async ({ page }) => {
+  await utenFremmede(page);
   await page.goto(adresse('/finn-oppskrifter/'));
   await expect(page.locator('#cookie')).toBeVisible();
   await page.locator('#ck-reject').click();
   await expect(page.locator('#cookie')).toBeHidden();
+  expect(await lagret(page)).toBe('denied');
+  await page.goto(adresse('/finn-oppskrifter/'));
+  await expect(page.locator('#cookie')).toBeHidden();
   await page.locator('footer.under [data-consent-withdraw]').click();
   await expect(page.locator('#cookie')).toBeVisible();
+  expect(await lagret(page)).toBeNull();
 });
 
 // «Relaterte guider» er felles for alle sidetyper: en rolig liste, ikke piller. Lang tekst brytes i raden, ikke i en pille.
