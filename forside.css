@@ -60,7 +60,8 @@
 /* Menyen som følger rullingen, bare på store skjermer */
 .folg{display:none}
 @media (min-width:1001px){
-  .topp{position:sticky;top:0;background:color-mix(in srgb, var(--flate) 82%, transparent);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%)}
+  .topp{position:sticky;top:0;background:color-mix(in srgb, var(--flate) 94%, transparent)}
+  .topp.rullet{box-shadow:0 1px 0 var(--linje)}
   .folg{position:absolute;left:50%;top:50%;display:flex;transform:translate(-50%,-50%);font-size:.9375rem;font-weight:500}
   .folg a{position:relative;display:inline-flex;align-items:center;height:44px;padding:0 14px;color:var(--dempet);white-space:nowrap;transition:color .25s}
   .folg a:hover,.folg a[aria-current]{color:var(--blekk)}
@@ -68,7 +69,7 @@
   #lagre{scroll-margin-top:96px}
   #spor,#middag,#pris,#svar{scroll-margin-top:-48px}
 }
-@media (prefers-reduced-transparency:reduce){.topp,.fast{background:var(--flate);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media (prefers-reduced-transparency:reduce){.topp,.fast{background:var(--flate)}}
 
 html.js .hero h1:not(.klar){visibility:hidden}
 @media (max-width:900px){.importflyt{gap:0 32px}}

@@ -89,7 +89,7 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .butikker a:hover{border-color:var(--blekk)}
 .lukk{position:absolute;right:12px;top:12px;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:none;color:var(--dempet);cursor:pointer;transition:background-color .2s,color .2s}
 .lukk:hover{background:var(--hylle);color:var(--blekk)}
-.fast{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid rgb(20 18 16 / .08);background:rgb(255 255 255 / .8);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);transform:translateY(115%);transition:transform .5s var(--ut)}
+.fast{position:fixed;left:0;right:0;bottom:0;z-index:30;display:none;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid rgb(20 18 16 / .08);background:rgb(255 255 255 / .94);transform:translateY(115%);transition:transform .5s var(--ut)}
 .fast.vis{transform:none}
 .fast .knapp{display:flex}
 @media (max-width:1000px){.fast{display:block}}
@@ -113,7 +113,9 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .merke{min-height:44px}
 .fagknapp::after{content:"";position:absolute;left:0;right:0;bottom:0}
 @media (min-width:1001px){
-  .topp{position:sticky;top:0;background:rgb(255 255 255 / .82);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%)}
+  /* Tett bakgrunn og ingen backdrop-filter: filteret ga doble bilderuter ved rulling. Hårlinja kommer når siden er rullet (skall.js setter .rullet). */
+  .topp{position:sticky;top:0;background:rgb(255 255 255 / .94)}
+  .topp.rullet{box-shadow:0 1px 0 var(--linje)}
 }
 /* Høyere spesifisitet enn language-switcher.css, også når den lastes sist. */
 .panel .language-switcher,.under .language-switcher{display:flex;flex-wrap:wrap;gap:8px;font:500 .9375rem/1.55 var(--f);letter-spacing:normal;flex-basis:auto}
@@ -170,5 +172,5 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
   .bunnrad{margin-top:48px}
   .bunnrad .knapp{display:flex;width:100%}
 }
-@media (prefers-reduced-transparency:reduce){.topp,.fast{background:var(--flate);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media (prefers-reduced-transparency:reduce){.topp,.fast{background:var(--flate)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}

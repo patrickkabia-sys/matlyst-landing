@@ -142,6 +142,14 @@
     boks.append(tabell);
   });
 
+  // Toppen får en hårlinje nederst når siden er rullet (samme uttrykk på alle sider).
+  {
+    const topp = document.querySelector('header.topp');
+    let ventet = false;
+    const sett = () => { ventet = false; topp?.classList.toggle('rullet', scrollY > 0); };
+    if (topp) { addEventListener('scroll', () => { if (!ventet) { ventet = true; requestAnimationFrame(sett); } }, { passive: true }); sett(); }
+  }
+
   // Fast knapp vises når startpunktet er forbi og skjules før nedlastingen i bunnen.
   // Undersidene (data-sidetype) starter ved sidens egen topp; forsiden beholder første knapp i main.
   const fast = document.getElementById('fast');
