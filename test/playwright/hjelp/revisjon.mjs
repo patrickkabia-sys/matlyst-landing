@@ -56,11 +56,20 @@ function geometri({ unntak, krom, tilsiktet }) {
   for (const { n, el, rekter } of tekst) {
     const tilsiktetKlipp = tilsiktet.length > 0 && !!el.closest(tilsiktet.join(','));
     let ute = false;
+    // Når en forfar ruller på en akse, er teksten bare synlig innenfor rullboksen på den aksen,
+    // og ytre klippbokser på samme akse sjekkes ikke for denne teksten (rullboksen selv er
+    // sitt eget element og sjekkes mot dem).
+    let rullerX = false;
+    let rullerY = false;
     for (let e = el; e && e !== document.body && e !== document.documentElement; e = e.parentElement) {
       if (tilsiktetKlipp) break;
       const cs = getComputedStyle(e);
-      const klippX = cs.overflowX !== 'visible' && cs.overflowX !== 'auto' && cs.overflowX !== 'scroll';
-      const klippY = cs.overflowY !== 'visible' && cs.overflowY !== 'auto' && cs.overflowY !== 'scroll';
+      const scrollX = cs.overflowX === 'auto' || cs.overflowX === 'scroll';
+      const scrollY = cs.overflowY === 'auto' || cs.overflowY === 'scroll';
+      const klippX = !rullerX && cs.overflowX !== 'visible' && !scrollX;
+      const klippY = !rullerY && cs.overflowY !== 'visible' && !scrollY;
+      if (scrollX) rullerX = true;
+      if (scrollY) rullerY = true;
       if (!klippX && !klippY) continue;
       const b = e.getBoundingClientRect();
       for (const r of rekter) {
@@ -120,11 +129,12 @@ function geometri({ unntak, krom, tilsiktet }) {
   // Regel: ta fem punkt i snittet (midten og de fire indre hjørnene, 1 px inn) som ligger i
   // visningsvinduet, og finn øverste element med elementFromPoint. Teksten X er skjult i et
   // punkt når kjeden fra det øverste elementet og oppover (til det første elementet som
-  // inneholder X) har et element med ugjennomsiktig bakgrunnsfarge (alfa 1) og laget selv og forfedrene har opacity 1.
+  // inneholder X) har et element med ugjennomsiktig bakgrunnsfarge (alfa 1, eller minst 0,8 med backdrop-filter blur) og laget selv og forfedrene har opacity 1.
   // Et halvgjennomsiktig lag skjuler altså ikke.
   // Paret teller når hver av tekstene er synlig i minst ett punkt. Ligger ingen punkt i
   // visningsvinduet, hoppes paret over her; det vurderes igjen når rullingen når det.
-  // (elementFromPoint ser bort fra pointer-events:none, og det feiler til den trygge siden: rødt.)
+  // revider() slår på pointer-events:auto overalt mens geometrien måles, slik at elementFromPoint
+  // følger tegnerekkefølgen også for lag med pointer-events:none.
   const alfa = (farge) => {
     if (!farge || farge === 'transparent') return 0;
     const m = farge.match(/rgba?\(([^)]*)\)/);
@@ -146,7 +156,11 @@ function geometri({ unntak, krom, tilsiktet }) {
     for (let i = kjede.length - 1; i >= 0; i--) {
       const cs = getComputedStyle(kjede[i]);
       if (parseFloat(cs.opacity) < 1) dimmet = true;
-      if (!dimmet && alfa(cs.backgroundColor) === 1) return true;
+      // Et lag skjuler også når bakgrunnen er minst 80 % dekkende og lager uskarphet bak seg
+      // (backdrop-filter: blur), siden teksten under da ikke lar seg lese.
+      const uskarp = /blur\(/.test(cs.backdropFilter || cs.webkitBackdropFilter || '');
+      const a = alfa(cs.backgroundColor);
+      if (!dimmet && (a === 1 || (uskarp && a >= 0.8))) return true;
     }
     return false;
   };
@@ -221,34 +235,44 @@ export async function revider(page, { unntak = [], krom = ['.topp', '.fast', '.s
   await pause(page, 1000);
 
   const sum = { sidelengs: 0, utenforBoks: [], overlapp: [], iframer: [] };
-  const slaaSammen = (r) => {
-    sum.sidelengs = Math.max(sum.sidelengs, r.sidelengs);
-    for (const k of ['utenforBoks', 'overlapp', 'iframer']) {
-      for (const v of r[k]) if (!sum[k].includes(v)) sum[k].push(v);
-    }
-  };
-  const arg = { unntak, krom, tilsiktet: tilsiktetKlipp };
-
-  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-  for (let steg = 0; steg < 80; steg++) {
-    const { y, maks, h } = await page.evaluate(() => ({
-      y: window.scrollY,
-      maks: document.documentElement.scrollHeight - window.innerHeight,
-      h: window.innerHeight,
-    }));
-    slaaSammen(await page.evaluate(geometri, arg));
-    if (y >= maks - 1) break;
-    await page.evaluate((t) => window.scrollTo({ top: t, behavior: 'instant' }), Math.min(y + h, maks));
-    await pause(page, 120);
-  }
-
   await page.evaluate(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-    document.querySelectorAll('details').forEach((d) => { d.open = true; });
+    const st = document.createElement('style');
+    st.id = 'revisjon-treff';
+    st.textContent = '*{pointer-events:auto!important}';
+    document.head.appendChild(st);
   });
-  await pause(page, 120);
-  slaaSammen(await page.evaluate(geometri, arg));
+  try {
+    const slaaSammen = (r) => {
+      sum.sidelengs = Math.max(sum.sidelengs, r.sidelengs);
+      for (const k of ['utenforBoks', 'overlapp', 'iframer']) {
+        for (const v of r[k]) if (!sum[k].includes(v)) sum[k].push(v);
+      }
+    };
+    const arg = { unntak, krom, tilsiktet: tilsiktetKlipp };
 
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    for (let steg = 0; steg < 80; steg++) {
+      const { y, maks, h } = await page.evaluate(() => ({
+        y: window.scrollY,
+        maks: document.documentElement.scrollHeight - window.innerHeight,
+        h: window.innerHeight,
+      }));
+      slaaSammen(await page.evaluate(geometri, arg));
+      if (y >= maks - 1) break;
+      await page.evaluate((t) => window.scrollTo({ top: t, behavior: 'instant' }), Math.min(y + h, maks));
+      await pause(page, 120);
+    }
+
+    await page.evaluate(() => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      document.querySelectorAll('details').forEach((d) => { d.open = true; });
+    });
+    await pause(page, 120);
+    slaaSammen(await page.evaluate(geometri, arg));
+
+  } finally {
+    await page.evaluate(() => document.getElementById('revisjon-treff')?.remove()).catch(() => {});
+  }
   await pause(page, 500);
   return sum;
 }

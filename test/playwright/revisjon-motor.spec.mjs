@@ -137,6 +137,40 @@ test.describe('revisjonsmotoren, røde fikstur', () => {
     });
   }
 
+  test('okklusjon: synlig tekst med pointer-events:none oppå ugjennomsiktig bakgrunn er rød', async ({ page }) => {
+    lokalt();
+    await page.goto(F('pekerlos'));
+    const r = await revider(page);
+    expect(r.overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(true);
+    expect(await page.evaluate(() => !!document.getElementById('revisjon-treff'))).toBe(false);
+  });
+
+  test('rullrad inni overflow:clip-kort er grønn, bred tekst som ikke ruller i samme kort er rød', async ({ page }) => {
+    lokalt();
+    await page.setViewportSize({ width: 390, height: 600 });
+    await page.goto(F('rullrad'));
+    const r = await revider(page);
+    expect(r.utenforBoks).toHaveLength(1);
+    expect(r.utenforBoks[0]).toContain('#bred');
+  });
+
+  test('okklusjon: ugjennomsiktig .fast (krom) dekker to overlappende tekster, grønn', async ({ page }) => {
+    lokalt();
+    await page.goto(F('fastdekk'));
+    expect((await revider(page)).overlapp).toEqual([]);
+    // uten at kromflaten skjuler noe er paret en ekte overlapp
+    await page.addStyleTag({ content: '.fast{display:none}' });
+    expect((await revider(page)).overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(true);
+  });
+
+  test('okklusjon: .fast med 80 % hvit og uskarphet skjuler, uten uskarphet gjør den ikke det', async ({ page }) => {
+    lokalt();
+    await page.goto(F('fastuskarp'));
+    expect((await revider(page)).overlapp).toEqual([]);
+    await page.goto(F('fastuskarp') + '?klar');
+    expect((await revider(page)).overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(true);
+  });
+
   test('iframe som sprenger bredden rapporteres, men revideres ikke innvendig', async ({ page }) => {
     lokalt();
     await page.setViewportSize({ width: 390, height: 600 });
