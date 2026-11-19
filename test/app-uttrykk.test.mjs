@@ -47,6 +47,8 @@ test('bare de tre forsidene behandles', () => {
 
 test('en underside røres ikke', () => {
   assert.equal(behandle(side('nb'), '/x/'), side('nb'));
+  // nb-forsiden er flyttet; uten markør skal stivakten alene holde den urørt.
+  assert.equal(behandle(side('nb'), '/'), side('nb'));
   for (const lang of ['nb', 'sv', 'da', 'en']) assert.equal(behandle(side(lang), '/x/'), side(lang), lang);
 });
 
