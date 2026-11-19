@@ -35,8 +35,11 @@ export function eksempelStier() {
 
 /** Rader fra qa/forhandsvisning/kart.json (lages av skall-paa --forhandsvis). */
 function forhandsvisning(utrullet) {
-  if (!existsSync(KART)) return [];
-  return JSON.parse(readFileSync(KART, 'utf8'))
+  // En manglende eller tom kart.json må aldri gi en grønn revisjon uten sider.
+  if (!existsSync(KART)) throw new Error(`REVISJON=forhandsvisning, men ${KART} mangler. Kjør skall-paa --forhandsvis først.`);
+  const kart = JSON.parse(readFileSync(KART, 'utf8'));
+  if (!Array.isArray(kart) || kart.length === 0) throw new Error(`REVISJON=forhandsvisning, men ${KART} er tom. Kjør skall-paa --forhandsvis først.`);
+  return kart
     .filter((r) => r.type !== 'tjeneste' || utrullet.has(`tjeneste:${tjenestefamilie(r.sti)}`))
     .map((r) => ({ sti: r.sti, url: r.url, type: r.type, sprak: r.sprak, fulltSkall: r.type !== 'tjeneste' }));
 }

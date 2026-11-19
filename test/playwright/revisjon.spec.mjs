@@ -1,6 +1,7 @@
 // Revisjon per sidetype: hver side i utvalget() åpnes på fire bredder, med forstørret tekst
 // og zoom, og skallet sjekkes uten JavaScript. Typer som ikke er rullet ut, gir ingen rader.
-import { mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, rmdirSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
 import { test, expect } from '@playwright/test';
 import { revider, samleFeil, skalering, zoom } from './hjelp/revisjon.mjs';
 import { utvalg, utrulledeTyper, eksempelStier } from './hjelp/utvalg.mjs';
@@ -13,6 +14,17 @@ const SKALL_PX = ['header.topp', '#panel', 'section.bunn', 'footer.under', '#fas
 const TEKST = '.blad :is(p, li, td, th, dt, dd, summary, h1, h2, h3, h4, figcaption, .lead, .eyebrow)';
 const LOVLIGE_HENT = ['topp', 'bunn', 'fast', 'app-cta', 'side-cta', 'helt'];
 const EKSEMPELSTIER = eksempelStier();
+
+// Sidene er uavhengige av hverandre, så testene kjøres parallelt (antall prosesser settes med --workers).
+test.describe.configure({ mode: 'parallel' });
+
+// Forsiden setter innholdet i px (forside.css, tidligere designvalg) og følger derfor ikke
+// nettleserens tekststørrelse. Bare forsiden er unntatt; omskriving til rem er et poleringspunkt.
+// Alle andre sidetyper må nå faktor 1,9.
+const FORSIDE_PX = (side) => side.type === 'forside';
+/** Elementer som ikke forstørres nok når nettleserens tekststørrelse er 200 %. */
+const forstorrelseFeil = (faktorer, side) =>
+  faktorer.filter((f) => !(f.faktor >= 1.9 || (FORSIDE_PX(side) && f.faktor === 1)));
 
 // Revisjonen kjøres med redusert bevegelse: alt står i sluttilstand og kildebåndet står stille.
 test.use({ reducedMotion: 'reduce' });
@@ -45,6 +57,15 @@ test('utvalget har sider for hver utrullet type', () => {
   }
 });
 
+test('forstørret tekst: px-tekst utenfor skallet feiler, bortsett fra på forsiden', async ({ page }) => {
+  test.skip(!!process.env.BASE_URL, 'fiksturen finnes bare lokalt');
+  await page.goto('/test/fixtures/revisjon-px-tekst.html');
+  const faktorer = await skalering(page, `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`);
+  expect(faktorer.length).toBeGreaterThan(0);
+  expect(forstorrelseFeil(faktorer, { type: 'omregner' }).length).toBeGreaterThan(0);
+  expect(forstorrelseFeil(faktorer, { type: 'forside' })).toEqual([]);
+});
+
 test('utvalget følger predikatet: en utrullet type får sine sider, andre ingen', () => {
   const med = utvalg({ revisjon: 'omregner', sprak: '', utrullet: new Set(['omregner']) });
   expect(med.length).toBeGreaterThan(0);
@@ -53,6 +74,23 @@ test('utvalget følger predikatet: en utrullet type får sine sider, andre ingen
   const eksempler = utvalg({ revisjon: '', sprak: '', utrullet: new Set(['omregner']) }).filter((r) => r.type === 'omregner');
   expect(eksempler.map((r) => r.sti).sort()).toEqual(Object.values(EKSEMPEL.omregner).sort());
   expect(utvalg({ revisjon: 'tjeneste', sprak: '', utrullet: new Set(['tjeneste:avmeld']) }).every((r) => r.fulltSkall === false)).toBe(true);
+});
+
+test('forhåndsvisning uten kart.json eller med tom kart.json feiler tydelig', () => {
+  const kart = join(process.cwd(), 'qa', 'forhandsvisning', 'kart.json');
+  const fantes = existsSync(kart);
+  const original = fantes ? readFileSync(kart, 'utf8') : null;
+  try {
+    if (fantes) rmSync(kart);
+    expect(() => utvalg({ revisjon: 'forhandsvisning', sprak: '' })).toThrow(/mangler/);
+    mkdirSync(dirname(kart), { recursive: true });
+    writeFileSync(kart, '[]');
+    expect(() => utvalg({ revisjon: 'forhandsvisning', sprak: '' })).toThrow(/tom/);
+  } finally {
+    if (original !== null) writeFileSync(kart, original);
+    else rmSync(kart, { force: true });
+    try { rmdirSync(dirname(kart)); } catch { /* ikke tom */ }
+  }
 });
 
 for (const side of rader) {
@@ -72,15 +110,13 @@ for (const side of rader) {
     expect(feil.mangler).toEqual([]);
   });
 
-  test(`forstørret tekst, ingen halvveis skalering: ${navn}`, async ({ page }) => {
+  test(`forstørret tekst, faktor minst 1,9: ${navn}`, async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 900 });
     await page.goto(side.url);
     const utenSkall = `${TEKST}:not(:is(${SKALL_PX.join(', ')}) *)`;
     const faktorer = await skalering(page, utenSkall);
     expect(faktorer.length, 'ingen tekst å måle').toBeGreaterThan(0);
-    // Å heve standard skriftstørrelse forstørrer rem/em, ikke px-tekst (faktor 1, og det er lovlig).
-    // Feil er tekst som krymper eller vokser bare halvveis (over 1 og under 1,9).
-    const feilFaktor = faktorer.filter((f) => !(f.faktor === 1 || f.faktor >= 1.9));
+    const feilFaktor = forstorrelseFeil(faktorer, side);
     expect(feilFaktor).toEqual([]);
   });
 

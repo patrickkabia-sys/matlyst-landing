@@ -2,7 +2,8 @@ name: Revisjon
 
 # Kjører på alle pull requests, uten stifilter: endringer i revisjonstestene, sidetyper.mjs,
 # hyller.mjs, skallfilene og stilarkene skal alltid utløse den. Typer som ikke er rullet ut,
-# gir 0 sider og grønt. test.yml kjører fortsatt standardutvalget.
+# gir 0 sider og grønt. Store typer deles i skår (--shard): ca. 13 s per side på én prosess,
+# omregner-nb/sv har ca. 200 sider, så to skår holder hvert skår under ca. 15 min. test.yml kjører fortsatt standardutvalget.
 on:
   pull_request:
 
@@ -17,16 +18,20 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { type: omregner, sprak: nb }
-          - { type: omregner, sprak: sv }
-          - { type: omregner, sprak: da }
-          - { type: omregner, sprak: en }
-          - { type: guide-lang, sprak: '' }
-          - { type: guide-kort, sprak: '' }
-          - { type: guide-gammel, sprak: '' }
-          - { type: blogg, sprak: '' }
-          - { type: juss, sprak: '' }
-          - { type: tjeneste, sprak: '' }
+          - { type: omregner, sprak: nb, shard: '1/2' }
+          - { type: omregner, sprak: nb, shard: '2/2' }
+          - { type: omregner, sprak: sv, shard: '1/2' }
+          - { type: omregner, sprak: sv, shard: '2/2' }
+          - { type: omregner, sprak: da, shard: '1/2' }
+          - { type: omregner, sprak: da, shard: '2/2' }
+          - { type: omregner, sprak: en, shard: '1/2' }
+          - { type: omregner, sprak: en, shard: '2/2' }
+          - { type: guide-lang, sprak: '', shard: '1/1' }
+          - { type: guide-kort, sprak: '', shard: '1/1' }
+          - { type: guide-gammel, sprak: '', shard: '1/1' }
+          - { type: blogg, sprak: '', shard: '1/1' }
+          - { type: juss, sprak: '', shard: '1/1' }
+          - { type: tjeneste, sprak: '', shard: '1/1' }
     steps:
       - name: Hent kildekoden
         uses: actions/checkout@v4
@@ -43,8 +48,8 @@ jobs:
       - name: Installer Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Revider ${{ matrix.type }} ${{ matrix.sprak }}
-        run: npx playwright test revisjon.spec --workers=4 --pass-with-no-tests
+      - name: Revider ${{ matrix.type }} ${{ matrix.sprak }} ${{ matrix.shard }}
+        run: npx playwright test revisjon.spec --workers=4 --shard=${{ matrix.shard }} --pass-with-no-tests
         env:
           REVISJON: ${{ matrix.type }}
           REVISJON_SPRAK: ${{ matrix.sprak }}
