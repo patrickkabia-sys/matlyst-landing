@@ -40,3 +40,12 @@ test('seo-autopilot publiserer ingen sider: den stager bare seo-data, og skulle 
   // Autopiloten kjører SEO-motoren, som bare skriver kildedata (blogg-kilde/auto og seo-data), aldri HTML.
   assert.match(auto, /node seo-motor\/kjor\.mjs/u);
 });
+
+test('e2e-jobben installerer hver nettleser Playwright-testene starter (chromium og webkit)', () => {
+  const dir = new URL('./playwright/', import.meta.url);
+  const kode = readdirSync(dir).filter((f) => f.endsWith('.mjs')).map((f) => readFileSync(new URL(f, dir), 'utf8').replace(/\/\/.*$/gmu, '')).join('\n');
+  const nettlesere = ['webkit', 'firefox'].filter((n) => new RegExp(`\\b${n}\\b[^\\n]*(?:launch|from '@playwright/test')|import \\{[^}]*\\b${n}\\b[^}]*\\} from '@playwright/test'`, 'u').test(kode));
+  assert.ok(nettlesere.includes('webkit'), 'forventet at en Playwright-test starter WebKit');
+  const e2e = jobb('e2e');
+  for (const n of ['chromium', ...nettlesere]) assert.match(e2e, new RegExp(`playwright install[^\\n]*\\b${n}\\b`, 'u'), `e2e-jobben installerer ikke ${n}`);
+});

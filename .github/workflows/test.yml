@@ -55,7 +55,7 @@ jobs:
         run: npm ci
 
       - name: Installer Chromium
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Kjør Playwright, skår ${{ matrix.skar }} av 2
         run: npx playwright test --shard=${{ matrix.skar }}/2
