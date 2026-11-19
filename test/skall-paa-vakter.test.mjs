@@ -10,7 +10,7 @@ import { HYLLETEKST, lokaliserHyller, synligeLenker } from '../scripts/hyller.mj
 import { gruppeForSti } from '../scripts/locale-sider.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
-const sider = alleSider(rot).filter((s) => s.sti !== '/');
+const sider = alleSider(rot).filter((s) => s.type !== 'forside');
 const utrullet = new Set(sider.map((s) => s.nokkel));
 const les = (s) => readFileSync(join(rot, s.fil), 'utf8');
 const rendret = sider.map((s) => ({ ...s, foer: les(s), etter: rendre(les(s), s.sti, utrullet) }));

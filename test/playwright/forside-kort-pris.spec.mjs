@@ -1,4 +1,7 @@
 import { test, expect } from '@playwright/test';
+import { STI, SPRAK } from './hjelp/sprak.mjs';
+import { TEKST, fyll } from '../../scripts/forside-tekst.mjs';
+const T = TEKST[SPRAK];
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
@@ -13,13 +16,13 @@ test.use({ viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference
 
 test('hvert kort går i loop, fryses utenfor bildet og sveipes inn bare én gang', async ({ page }) => {
   test.setTimeout(90000);
-  await page.goto('/');
+  await page.goto(STI);
   await page.clock.install();
   for (const [velger, tid, slutt, start] of [
     ['#demoSkaler', 4500, ['.antall', '6'], ['.antall', '4']],
     ['#demoLag', 14500, ['.a-steg', null], ['.a-tid', '10:00']],
     ['#demoPlan', 4000, [null, null], [null, null]],
-    ['#demoHandle', 12500, ['[data-m]', '7 fedd'], ['[data-m]', '6 fedd']],
+    ['#demoHandle', 12500, ['[data-m]', T.middag.handle.varer[0].mengder[1]], ['[data-m]', T.middag.handle.varer[0].mengder[0]]],
   ]) {
     await page.reload();
     await rullTil(page, velger);
@@ -47,29 +50,29 @@ test('hvert kort går i loop, fryses utenfor bildet og sveipes inn bare én gang
 });
 
 test('husstandsvalg og hover lar neste husstand komme og alle har to ledige plasser', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(STI);
   await page.clock.install();
   await rullTil(page, '#demoHus');
   const knapper = page.locator('.a-husvelg button');
   await knapper.nth(1).click();
   await knapper.nth(1).hover();
-  await expect(page.locator('.a-husflate')).toContainText('Hytteturen');
+  await expect(page.locator('.a-husflate')).toContainText(T.eksempler.husstander[1].navn);
   await page.clock.runFor(3000);
   await expect(page.locator('.a-husflate .ny')).not.toHaveClass(/skjult/);
   await page.clock.runFor(5000);
   await expect(knapper.nth(2)).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('.a-hus small')).toHaveText('4 av 6 · 2 plasser ledige');
+  await expect(page.locator('.a-hus small')).toHaveText(fyll(T.middag.husstand.telling, { n: 4, ledige: 2 }));
   await page.clock.runFor(8000);
   await expect(knapper.first()).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('redusert bevegelse viser alle kort ferdig og svarbeskrivelsen følger valgt svar', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
+  await page.goto(STI);
   await expect(page.locator('#demoSkaler .antall')).toHaveText('6');
   await expect(page.locator('#demoLag .a-steg').first()).toHaveClass(/ferdig/);
   await expect(page.locator('#demoPlan')).toHaveClass(/aapen/);
-  await expect(page.locator('#demoHandle [data-m]').first()).toHaveText('7 fedd');
+  await expect(page.locator('#demoHandle [data-m]').first()).toHaveText(T.middag.handle.varer[0].mengder[1]);
   await expect(page.locator('.a-husflate .ny')).not.toHaveClass(/skjult/);
   await page.clock.install();
   await rullTil(page, '#demoHus');
@@ -78,7 +81,7 @@ test('redusert bevegelse viser alle kort ferdig og svarbeskrivelsen følger valg
   expect(await stillbilde(page, '#trio')).toBe(ferdig);
   await rullTil(page, '#spor');
   await page.locator('.forslag').nth(2).click();
-  await expect(page.locator('#sporSvar')).toHaveAttribute('aria-label', /Kokosmelk gir samme fylde/);
+  await expect(page.locator('#sporSvar')).toHaveAttribute('aria-label', new RegExp(T.eksempler.svar[2].forklaring.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await rullTil(page, '#demoSkaler');
   await expect(page.locator('#demoSkaler').locator('..')).toHaveClass(/i-bildet/);
@@ -93,7 +96,7 @@ test('hele siden har lokal trafikk, feilfri konsoll, fungerende mål og plass p�
   page.on('pageerror', (e) => feil.push(e.message));
   page.on('console', (e) => { if (e.type() === 'error') feil.push(e.text()); });
   page.on('request', (r) => { if (new URL(r.url()).host !== '127.0.0.1:4173') eksterne.push(r.url()); });
-  await page.goto('/');
+  await page.goto(STI);
   for (const bredde of [320, 360, 390, 768, 1280]) {
     await page.setViewportSize({ width: bredde, height: 844 });
     for (const velger of ['.hero', '.kokebok', '.spor', '#demoSkaler', '#demoLag', '#demoPlan', '#demoHandle', '#demoHus', '.pris', '.ofte', '.bunn', '.under']) {
@@ -101,10 +104,12 @@ test('hele siden har lokal trafikk, feilfri konsoll, fungerende mål og plass p�
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(bredde);
     }
     await page.emulateMedia({ reducedMotion: 'reduce' });
+    // Innsveipet til kortene avbrytes av endringen i bevegelsesvalg; mål først når det er gjort.
+    await page.waitForFunction(() => [...document.querySelectorAll('.rute')].every((r) => r.getAnimations({ subtree: false }).length === 0));
     for (const knapp of await page.locator('.a-husvelg button, .svarliste summary, .vern a').all()) {
       const b = await knapp.boundingBox();
       expect(b.height).toBeGreaterThanOrEqual(44); expect(b.width).toBeGreaterThanOrEqual(44);
-      expect(b.x).toBeGreaterThanOrEqual(0); expect(b.x + b.width).toBeLessThanOrEqual(bredde);
+      expect(b.x).toBeGreaterThanOrEqual(0); expect(b.x + b.width, `${bredde} px: ${(await knapp.textContent()).trim()}`).toBeLessThanOrEqual(bredde);
     }
     await page.emulateMedia({ reducedMotion: 'no-preference' });
   }
@@ -121,11 +126,11 @@ async function visPrototype(page) {
   await page.goto('/t8-prototype');
 }
 
-test('pris og spørsmål er like prototypen linje for linje etter skript', async ({ page }) => {
+(SPRAK === 'nb' ? test : test.skip)('pris og spørsmål er like prototypen linje for linje etter skript', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const tekster = {};
   for (const type of ['t8', 'proto8']) {
-    if (type === 't8') await page.goto('/'); else await visPrototype(page);
+    if (type === 't8') await page.goto(STI); else await visPrototype(page);
     await page.evaluate(() => { document.querySelector('#cookie')?.remove(); });
     await page.evaluate(() => document.fonts.ready);
     // Åpne svarene slik at også avsnittene sammenlignes etter skriptkjøring.
@@ -137,7 +142,7 @@ test('pris og spørsmål er like prototypen linje for linje etter skript', async
 });
 
 test('pågående kalenderovergang fryses uten å hoppe til slutten utenfor bildet', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(STI);
   await rullTil(page, '#demoPlan');
   await expect(page.locator('#demoPlan')).toHaveClass(/aapen/);
   await page.waitForTimeout(100);
@@ -158,7 +163,7 @@ test('pågående kalenderovergang fryses uten å hoppe til slutten utenfor bilde
 
 test('endring av bevegelsesvalg starter ikke overgangene i kort utenfor bildet', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
+  await page.goto(STI);
   const les = () => page.locator('#demoPlan .a-kal').evaluate((el) => ({ opacity: getComputedStyle(el).opacity, hoyde: el.getBoundingClientRect().height, animasjoner: el.getAnimations().filter((a) => a.playState === 'running').length }));
   const foer = await les();
   await page.emulateMedia({ reducedMotion: 'no-preference' });

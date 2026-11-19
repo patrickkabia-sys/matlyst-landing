@@ -9,7 +9,7 @@ import { HYLLER } from '../scripts/hyller.mjs';
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const bilde = (sti) => join(rot, 'images/forside', sti);
 const FILER = [
-  'film/import-nb.mp4', 'film/import-nb-plakat.webp',
+  ...['nb', 'sv', 'da', 'en'].flatMap((l) => [`film/import-${l}.mp4`, `film/import-${l}-plakat.webp`]),
   'mat/butterchicken.webp', 'mat/laks.webp', 'mat/focaccia.webp', 'mat/ramen.webp',
   'mat/kanelboller.webp', 'mat/taco.webp', 'mat/tomatpasta.webp', 'mat/sjokoladekake.webp',
   'mat/mini-butter.webp', 'mat/mini-taco.webp',
@@ -36,8 +36,10 @@ test('alle filene forsiden bruker, finnes', () => {
 });
 
 test('filmen er under 2,5 MB og plakaten under 100 kB', () => {
-  assert.ok(statSync(bilde('film/import-nb.mp4')).size < 2_500_000, 'filmen er for stor');
-  assert.ok(statSync(bilde('film/import-nb-plakat.webp')).size < 100_000, 'plakaten er for stor');
+  for (const l of ['nb', 'sv', 'da', 'en']) {
+    assert.ok(statSync(bilde(`film/import-${l}.mp4`)).size < 2_500_000, `${l}: filmen er for stor`);
+    assert.ok(statSync(bilde(`film/import-${l}-plakat.webp`)).size < 100_000, `${l}: plakaten er for stor`);
+  }
 });
 
 test('QR-koden er en SVG med 25 ruter i hver retning', () => {

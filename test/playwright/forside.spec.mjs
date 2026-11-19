@@ -1,4 +1,7 @@
 import { test, expect } from '@playwright/test';
+import { STI, SPRAK } from './hjelp/sprak.mjs';
+import { TEKST, fyll } from '../../scripts/forside-tekst.mjs';
+const T = TEKST[SPRAK];
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
@@ -14,7 +17,7 @@ for (const bredde of [320, 360, 390, 768, 1280]) {
     page.on('console', (e) => { if (e.type() === 'error') feil.push(e.text()); });
     page.on('request', (r) => { if (new URL(r.url()).hostname !== '127.0.0.1') fremmede.push(r.url()); });
     await page.setViewportSize({ width: bredde, height: 800 });
-    await page.goto('/');
+    await page.goto(STI);
     for (const velger of ['.hero', '.kokebok', '.spor', '#demoSkaler', '#demoLag', '#demoPlan', '#demoHandle', '#demoHus', '.pris', '.ofte', '.bunn', 'footer.under']) {
       await rullTil(page, velger);
       await page.waitForTimeout(100);
@@ -26,7 +29,7 @@ for (const bredde of [320, 360, 390, 768, 1280]) {
 }
 
 test('filmen går, og steg 4 hopper til rundt 9,7 sekunder', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(STI);
   const film = page.locator('.film video');
   await expect.poll(() => film.evaluate((v) => v.paused)).toBe(false);
   await page.locator('.st').nth(3).click();
@@ -35,7 +38,7 @@ test('filmen går, og steg 4 hopper til rundt 9,7 sekunder', async ({ page }) =>
 });
 
 test('PC: QR-vinduet åpnes, Escape lukker og gir fokus tilbake', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(STI);
   const knapp = page.locator('[data-hent="helt"]');
   await knapp.click();
   await expect(page.locator('#hent')).toBeVisible();
@@ -47,7 +50,7 @@ test('PC: QR-vinduet åpnes, Escape lukker og gir fokus tilbake', async ({ page 
 test('mobil: vanlig app-lenke og fast knapp som kommer og går', async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true });
   const page = await context.newPage();
-  await page.goto('/');
+  await page.goto(STI);
   await page.locator('#ck-reject').click();
   await expect(page.locator('#fast')).not.toHaveClass(/vis/);
   await rullTil(page, '.kokebok');
@@ -56,7 +59,7 @@ test('mobil: vanlig app-lenke og fast knapp som kommer og går', async ({ browse
   await page.route('**/app', (r) => r.fulfill({ contentType: 'text/html', body: 'Appmålet' }));
   await page.locator('[data-hent="fast"]').click();
   await expect(page).toHaveURL(/\/app$/);
-  await page.goto('/');
+  await page.goto(STI);
   await rullTil(page, '.bunnrad');
   await expect(page.locator('#fast')).not.toHaveClass(/vis/);
   await expect(page.locator('#fast')).toHaveAttribute('inert');
@@ -64,7 +67,7 @@ test('mobil: vanlig app-lenke og fast knapp som kommer og går', async ({ browse
 });
 
 test('trykk på film, kort og bånd lar løkkene fortsette', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(STI);
   const film = page.locator('.film video');
   await film.click();
   await expect.poll(() => film.evaluate((v) => v.paused)).toBe(false);
@@ -87,9 +90,9 @@ test('trykk på film, kort og bånd lar løkkene fortsette', async ({ page }) =>
 
 test('redusert bevegelse holder film og bånd stille og overskriften ferdig', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
+  await page.goto(STI);
   await expect(page.locator('.hero h1')).toBeVisible();
-  await expect(page.locator('.hero h1')).toHaveText('Oppskrifter du faktisk lager.');
+  await expect(page.locator('.hero h1')).toHaveText(T.h1);
   await expect(page.locator('.film video')).not.toHaveAttribute('src');
   expect(await page.locator('.film video').evaluate((v) => v.paused)).toBe(true);
   await rullTil(page, '.band');
@@ -100,12 +103,12 @@ test('uten JavaScript virker bunnvelger, åpne hyller og alle nedlastingslenker'
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.route('**/app', (r) => r.fulfill({ contentType: 'text/html', body: 'Appmålet' }));
-  await page.goto('/');
+  await page.goto(STI);
   await expect(page.locator('.hero h1')).toBeVisible();
   await expect(page.locator('#panel')).not.toBeVisible();
   for (const lenke of await page.locator('#bunnreol a').all()) await expect(lenke).toBeVisible();
   for (const plass of ['topp', 'helt', 'bunn', 'fast']) {
-    await page.goto('/');
+    await page.goto(STI);
     const lenke = page.locator(`[data-hent="${plass}"]`);
     await expect(lenke).toHaveAttribute('href', '/app');
     // Den faste kopien vises bare med JavaScript; også dens opprinnelige href testes som navigasjon.
@@ -114,7 +117,7 @@ test('uten JavaScript virker bunnvelger, åpne hyller og alle nedlastingslenker'
     await expect(page).toHaveURL(/\/app$/);
   }
   for (const [sprak, sti] of [['Svenska', '/sv/'], ['Dansk', '/da/'], ['English', '/en/'], ['Norsk', '/']]) {
-    await page.goto('/');
+    await page.goto(STI);
     await page.evaluate(() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' }));
     await page.locator(`.language-switcher-bottom a[aria-label="${sprak}"]`).click();
     expect(new URL(page.url()).pathname).toBe(sti);
@@ -125,7 +128,7 @@ test('uten JavaScript virker bunnvelger, åpne hyller og alle nedlastingslenker'
 test('200 prosent tekst på 390 px holder kortenes tekst innenfor boksene', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/');
+  await page.goto(STI);
   await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
   // Siden bruker px. Dobling av rotstørrelsen alene forstørrer derfor ikke teksten.
   await page.evaluate(() => {
@@ -156,7 +159,7 @@ test('200 prosent tekst på 390 px holder kortenes tekst innenfor boksene', asyn
 
 test('mobilmenyen åpnes og lukkes, og bunnhyllene foldes ut', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/');
+  await page.goto(STI);
   const meny = page.locator('#menyknapp');
   await meny.click(); await expect(meny).toHaveAttribute('aria-expanded', 'true');
   await page.keyboard.press('Escape'); await expect(meny).toHaveAttribute('aria-expanded', 'false');
@@ -168,13 +171,13 @@ test('mobilmenyen åpnes og lukkes, og bunnhyllene foldes ut', async ({ page }) 
 });
 
 test('1280 × 800 viser hele telefonen uten rulling', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(STI);
   const b = await page.locator('.film').boundingBox();
   expect(b.y).toBeGreaterThanOrEqual(0); expect(b.y + b.height).toBeLessThanOrEqual(800);
 });
 
 test('390 px har overskrift, knapp, stjerner, telefon og ingress i riktig rekkefølge', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 }); await page.goto('/');
+  await page.setViewportSize({ width: 390, height: 844 }); await page.goto(STI);
   const bokser = [];
   for (const velger of ['.hero h1', '.hero .valg', '.hero .bevis', '.film', '.hero > p']) bokser.push(await page.locator(velger).boundingBox());
   for (let i = 1; i < bokser.length; i++) expect(bokser[i].y).toBeGreaterThanOrEqual(bokser[i - 1].y + bokser[i - 1].height - 1);
@@ -187,14 +190,14 @@ test('punktumet kommer minst 400 ms etter siste bokstav', async ({ page }) => {
       if (rad.target.matches?.('.hero h1 .tegn.inne')) window.tegntider.push({ tegn: rad.target.textContent, tid: performance.now() });
     })).observe(document, { subtree: true, attributes: true, attributeFilter: ['class'] });
   });
-  await page.goto('/');
+  await page.goto(STI);
   await expect.poll(() => page.evaluate(() => window.tegntider.at(-1)?.tegn)).toBe('.');
   const tider = await page.evaluate(() => window.tegntider.slice(-2));
   expect(tider[1].tid - tider[0].tid).toBeGreaterThanOrEqual(400);
 });
 
 for (const [bredde, luft] of [[1280, 72], [390, 52]]) test(`bånd og kokebok har ${luft} px luft på ${bredde} px`, async ({ page }) => {
-  await page.setViewportSize({ width: bredde, height: 800 }); await page.goto('/');
+  await page.setViewportSize({ width: bredde, height: 800 }); await page.goto(STI);
   await page.evaluate(() => document.fonts.ready);
   const avstander = await page.evaluate(() => {
     const kilde = document.querySelector('.kilder').getBoundingClientRect();
@@ -206,7 +209,7 @@ for (const [bredde, luft] of [[1280, 72], [390, 52]]) test(`bånd og kokebok har
 });
 
 test('filmen holder plassen når videofilen ikke kan lastes', async ({ page }) => {
-  await page.goto('/'); const foer = await page.locator('.film').boundingBox();
+  await page.goto(STI); const foer = await page.locator('.film').boundingBox();
   await page.route('**/*.mp4', (r) => r.abort()); await page.reload();
   const etter = await page.locator('.film').boundingBox();
   expect(etter.height).toBeCloseTo(foer.height, 1); expect(etter.height).toBeGreaterThan(500);
@@ -227,7 +230,7 @@ for (const [navn, valg, plasser, visning] of [
     if (url.pathname === '/t9-stubb') sendt.push(route.request().postDataJSON());
     return route.fulfill({ contentType: 'application/javascript', body: '', headers: { 'access-control-allow-origin': '*' } });
   });
-  await page.goto('/');
+  await page.goto(STI);
   // Behold dokumentet ved mobilklikk slik at samtykket kan gis i samme økt.
   await page.evaluate(() => document.addEventListener('click', (e) => { if (e.target.closest('[data-hent]')) e.preventDefault(); }));
   const klikk = async (plass) => {
@@ -247,13 +250,13 @@ for (const [navn, valg, plasser, visning] of [
   await page.locator('#ck-accept').click();
   await page.waitForFunction(() => window.posthog?.capture.toString().includes('t9-stubb'));
   for (const plass of plasser) await klikk(plass);
-  await expect.poll(() => sendt).toEqual(plasser.map((plass) => ({ navn: 'download_click', egenskaper: { page_path: '/', cta_location: plass, visning }, valg: { transport: 'sendBeacon' } })));
-  expect(await page.evaluate(() => window.dataLayer.filter((rad) => rad[0] === 'event').map((rad) => [rad[1], rad[2]]))).toEqual(plasser.map((plass) => ['download_click', { page_path: '/', cta_location: plass, visning, transport_type: 'beacon' }]));
+  await expect.poll(() => sendt).toEqual(plasser.map((plass) => ({ navn: 'download_click', egenskaper: { page_path: STI, cta_location: plass, visning }, valg: { transport: 'sendBeacon' } })));
+  expect(await page.evaluate(() => window.dataLayer.filter((rad) => rad[0] === 'event').map((rad) => [rad[1], rad[2]]))).toEqual(plasser.map((plass) => ['download_click', { page_path: STI, cta_location: plass, visning, transport_type: 'beacon' }]));
   await context.close();
 });
 
 test('prisplaner, personvern og svar glir inn én gang og står stille ved redusert bevegelse', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(STI);
   for (const [velger, fra] of [['.plan:not(.pro)', 'translateX(-96px)'], ['.plan.pro', 'translateX(96px)'], ['.vernblokk', 'translateY(28px)'], ['.svarliste', 'translateY(28px)']]) {
     await page.reload(); await rullTil(page, velger);
     await expect.poll(() => page.locator(velger).evaluate((el) => el.getAnimations().map((a) => a.effect.getKeyframes()[0].transform))).toEqual([fra]);
@@ -286,9 +289,9 @@ function medUnntak(prototype, bygd) {
   }
   return fasit;
 }
-test('hele sidens synlige tekst følger prototypen og lagret fasit etter skriptkjøring', async ({ page }, testInfo) => {
+(SPRAK === 'nb' ? test : test.skip)('hele sidens synlige tekst følger prototypen og lagret fasit etter skriptkjøring', async ({ page }, testInfo) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.goto('/'); const bygd = await lesTekst(page);
+  await page.goto(STI); const bygd = await lesTekst(page);
   const lagret = JSON.parse(readFileSync(join(rot, 'test/fasit/forside-nb-tekst.json'), 'utf8'));
   expect(bygd).toEqual(medUnntak(lagret, bygd));
   if (!harPrototypebilder()) {

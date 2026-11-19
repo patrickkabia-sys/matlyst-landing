@@ -44,7 +44,7 @@ test('CLI lager speilet forhåndsvisning med noindex uten locale.js og bevarer k
     assert.doesNotMatch(ut, /<meta\b[^>]*content="index, follow"/u);
     const seo = (h) => h.match(/<link\b[^>]*(?:rel="canonical"|hreflang=)[^>]*>/gu);
     assert.deepEqual(seo(ut), seo(les(s.fil)), s.sti);
-    if (s.sti === '/') assert.ok(ut.includes('<header class="topp">'));
+    if (s.type === 'forside') assert.ok(ut.includes('<header class="topp">'), s.sti);
     else assert.match(ut, /<!-- skall:topp -->/u, s.sti);
   }
   const foer = kart.map((s) => readFileSync(join(mappe, s.url, s.url.endsWith('/') ? 'index.html' : ''), 'utf8'));

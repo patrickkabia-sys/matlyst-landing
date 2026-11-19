@@ -17,6 +17,15 @@ const VIA_HUB = {
   '/importer-fra-dr-mat/': '/importer-oppskrifter/',
 };
 
+// Forsidene på sv, da og en når kildeguidene gjennom importhubben på sitt språk, som på norsk.
+const importHub = (hub, guider) => Object.fromEntries(guider.map((sti) => [sti, hub]));
+const VIA_HUB_FORSIDE = {
+  '/': VIA_HUB,
+  '/sv/': importHub('/sv/importera-recept/', ['/sv/alletiders-kogebog/', '/sv/dr-mad/', '/sv/matprat/']),
+  '/da/': importHub('/da/importer-opskrifter/', ['/da/koket/', '/da/landleys-kok/', '/da/matprat/']),
+  '/en/': importHub('/en/import-recipes/', ['/en/alletiders-cookbook/', '/en/dr-food/', '/en/koket/', '/en/landleys-kok/', '/en/matprat/']),
+};
+
 // Låser at ingen guide er foreldreløs: hver side i en sitemap med bunntekst skal
 // lenke til guidene på sitt språk. Rotsiden bruker det nye sideskallet og kan
 // også lenke gjennom en hub. Andre sider beholder den felles guideblokken.
@@ -41,8 +50,8 @@ for (const lang of Object.keys(SITEMAPER)) {
       if (!html.includes('</footer>')) continue;
       // Det nye sideskallet lenker til guider direkte eller gjennom en synlig hub.
       // Ingen guide får forsvinne fra navigasjonen når den gamle lenkelista fjernes.
-      if (side === '/') {
-        krevGuidemeny(html, liste, VIA_HUB, (sti) => readFileSync(filFor(sti), 'utf8'));
+      if (['/', '/sv/', '/da/', '/en/'].includes(side)) {
+        krevGuidemeny(html, liste, VIA_HUB_FORSIDE[side], (sti) => readFileSync(filFor(sti), 'utf8'));
         continue;
       }
       const blokk = html.match(MONSTER)?.[0];
@@ -64,9 +73,11 @@ test('bunnteksten lenker ikke til enkeltsider under en hub (ingen lenkefarm)', (
   assert.ok(guider('en').some(({ sti }) => sti === '/en/holidays/'), 'høytidshuben skal stå i bunnteksten');
 });
 
-test('guidelenkegeneratoren lar rotsiden stå urørt', () => {
-  const html = readFileSync(join(rot, 'index.html'), 'utf8');
-  assert.equal(settInn(html, '<p>Uønsket guideblokk</p>', '/'), html);
+test('guidelenkegeneratoren lar forsidene stå urørt', () => {
+  for (const [fil, sti] of [['index.html', '/'], ['sv/index.html', '/sv/'], ['da/index.html', '/da/'], ['en/index.html', '/en/']]) {
+    const html = readFileSync(join(rot, fil), 'utf8');
+    assert.equal(settInn(html, '<p>Uønsket guideblokk</p>', sti), html, sti);
+  }
 });
 
 test('settInn bruker plassen i hylledelen når blokka mangler, og er idempotent', () => {

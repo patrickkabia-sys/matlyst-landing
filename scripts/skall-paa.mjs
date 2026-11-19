@@ -247,8 +247,8 @@ export function forhandsvis(rot, utrullet = UTRULLET, mal = 'qa/forhandsvisning'
     const fil = join(rot, s.fil);
     if (!trygtUnderRot(rot, fil)) return [];
     const html = readFileSync(fil, 'utf8');
-    // Den norske forsiden har allerede sitt eget skall fra forsideoppgaven.
-    let ut = s.sti === '/' ? html : rendre(html, s.sti, new Set([...utrullet, s.nokkel]));
+    // Forsidene har allerede sitt eget skall fra scripts/forside.mjs.
+    let ut = ['/', '/sv/', '/da/', '/en/'].includes(s.sti) ? html : rendre(html, s.sti, new Set([...utrullet, s.nokkel]));
     ut = ut.replace(/<meta\b[^>]*\bname\s*=\s*(["'])robots\1[^>]*>/giu, '')
       .replace(/<\/head>/iu, '<meta name="robots" content="noindex"></head>')
       .replace(/<script\b[^>]*\bsrc\s*=\s*(["'])\/locale\.js\1[^>]*>\s*<\/script>/giu, '');

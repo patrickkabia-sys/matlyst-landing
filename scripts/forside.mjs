@@ -1,13 +1,30 @@
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { TEKST, fyll } from './forside-tekst.mjs';
 import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from './skall.mjs';
 import { organisasjonSkjema } from './organisasjon.mjs';
 
+// Slutten av hodet er lik på alle språk: oppstartsskript, stilark og skript.
+const FELLES_HODE = `
+<script>document.documentElement.className += ' js'; setTimeout(function () { document.querySelector('.hero h1')?.classList.add('klar'); }, 1500);</script>
+<link rel="stylesheet" href="/tokens.css">
+<link rel="stylesheet" href="/skall.css">
+<link rel="stylesheet" href="/forside.css">
+<link rel="stylesheet" href="/language-switcher.css">
+<script src="/language-switcher.js" defer></script>
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<script src="/site.js" defer></script>
+<script src="/skall.js" defer></script>
+<script src="/forside.js" defer></script>
+`.slice(1);
+
 // Språkets adresse, dokumenthode, film og kalender samles her.
+// `butikk` er butikklenkene for språkets land, `folk.egne` er ansiktene som har egen fil i `folk.mappe`.
+// Hodet (tittel, beskrivelse, OG, hreflang, skjema) er ordrett fra siden før den ble generert; det låses av
+// test/fasit/forside-hode.json.
 const SPRAK = {
-  nb: { adresse: '/', lang: 'no', film: '/images/forside/film/import-nb.mp4', plakat: '/images/forside/film/import-nb-plakat.webp', forsteUkedag: 1, hode: `
+  nb: { adresse: '/', lang: 'no', film: '/images/forside/film/import-nb.mp4', plakat: '/images/forside/film/import-nb-plakat.webp', forsteUkedag: 1, folk: { egne: [], mappe: 'folk' }, hode: `
 <meta charset="UTF-8">
 <meta http-equiv="content-language" content="nb-NO">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,17 +70,100 @@ const SPRAK = {
   "dateModified": "2026-09-01"
 }
 </script>
-<script>document.documentElement.className += ' js'; setTimeout(function () { document.querySelector('.hero h1')?.classList.add('klar'); }, 1500);</script>
-<link rel="stylesheet" href="/tokens.css">
-<link rel="stylesheet" href="/skall.css">
-<link rel="stylesheet" href="/forside.css">
-<link rel="stylesheet" href="/language-switcher.css">
-<script src="/language-switcher.js" defer></script>
-<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<script src="/site.js" defer></script>
-<script src="/skall.js" defer></script>
-<script src="/forside.js" defer></script>
-` },
+${FELLES_HODE}` },
+  sv: { adresse: '/sv/', lang: 'sv', film: '/images/forside/film/import-sv.mp4', plakat: '/images/forside/film/import-sv-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/se/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=sv&gl=SE' }, folk: { egne: [], mappe: 'folk' }, hode: `
+<meta charset="UTF-8">
+<meta http-equiv="content-language" content="sv-SE">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receptapp för vardagen | Matlyst Sverige</title>
+<meta name="description" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://matlyst-app.no/sv/">
+<link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/">
+<link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/">
+<link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/">
+<link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/">
+<link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Receptapp för vardagen | Matlyst Sverige">
+<meta property="og:description" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
+<meta property="og:image" content="https://matlyst-app.no/images/og.jpg">
+<meta property="og:image:alt" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
+<meta property="og:url" content="https://matlyst-app.no/sv/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Matlyst">
+<meta property="og:locale" content="sv_SE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Receptapp för vardagen | Matlyst Sverige">
+<meta name="twitter:description" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
+<meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
+<meta name="twitter:image:alt" content="Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.">
+<link rel="icon" type="image/png" href="/images/icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.","url":"https://matlyst-app.no/sv/"}</script>
+<script src="/locale.js" defer></script>
+${FELLES_HODE}` },
+  da: { adresse: '/da/', lang: 'da', film: '/images/forside/film/import-da.mp4', plakat: '/images/forside/film/import-da-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/dk/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=da&gl=DK' }, folk: { egne: [], mappe: 'folk' }, hode: `
+<meta charset="UTF-8">
+<meta http-equiv="content-language" content="da-DK">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opskriftsapp til hverdagen | Matlyst Danmark</title>
+<meta name="description" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://matlyst-app.no/da/">
+<link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/">
+<link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/">
+<link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/">
+<link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/">
+<link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Opskriftsapp til hverdagen | Matlyst Danmark">
+<meta property="og:description" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
+<meta property="og:image" content="https://matlyst-app.no/images/og.jpg">
+<meta property="og:image:alt" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
+<meta property="og:url" content="https://matlyst-app.no/da/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Matlyst">
+<meta property="og:locale" content="da_DK">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Opskriftsapp til hverdagen | Matlyst Danmark">
+<meta name="twitter:description" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
+<meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
+<meta name="twitter:image:alt" content="Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.">
+<link rel="icon" type="image/png" href="/images/icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.","url":"https://matlyst-app.no/da/"}</script>
+<script src="/locale.js" defer></script>
+${FELLES_HODE}` },
+  en: { adresse: '/en/', lang: 'en', film: '/images/forside/film/import-en.mp4', plakat: '/images/forside/film/import-en-plakat.webp', forsteUkedag: 1, butikk: { ios: 'https://apps.apple.com/app/matlyst/id6762563515', play: 'https://play.google.com/store/apps/details?id=app.matlyst&hl=en' }, folk: { egne: [9, 10, 11, 12], mappe: 'folk-en' }, hode: `
+<meta charset="UTF-8">
+<meta http-equiv="content-language" content="en-US">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The recipe app for everyday cooking | Matlyst</title>
+<meta name="description" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://matlyst-app.no/en/">
+<link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/">
+<link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/">
+<link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/">
+<link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/">
+<link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="The recipe app for everyday cooking | Matlyst">
+<meta property="og:description" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
+<meta property="og:image" content="https://matlyst-app.no/images/og.jpg">
+<meta property="og:image:alt" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
+<meta property="og:url" content="https://matlyst-app.no/en/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Matlyst">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The recipe app for everyday cooking | Matlyst">
+<meta name="twitter:description" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
+<meta name="twitter:image" content="https://matlyst-app.no/images/og.jpg">
+<meta name="twitter:image:alt" content="Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.">
+<link rel="icon" type="image/png" href="/images/icon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Matlyst","applicationCategory":"LifestyleApplication","operatingSystem":"iOS, Android","description":"Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.","url":"https://matlyst-app.no/en/"}</script>
+<script src="/locale.js" defer></script>
+${FELLES_HODE}` },
 };
 const sider = { nb: '/', sv: '/sv/', da: '/da/', en: '/en/' };
 const skjerm = (verdi) => String(verdi).replace(/[&<>"']/g, (tegn) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[tegn]);
@@ -78,7 +178,7 @@ function lesTekst(verdi, sti) {
 }
 
 function hode(sprak, oppsett, faq) {
-  const butikklenker = JSON.parse(oppsett.hode.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]).downloadUrl;
+  const butikklenker = oppsett.butikk ? [oppsett.butikk.ios, oppsett.butikk.play] : JSON.parse(oppsett.hode.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]).downloadUrl;
   return `<head>${oppsett.hode}${faq}${organisasjonSkjema(sprak, { ios: butikklenker[0], play: butikklenker[1] })}
 </head>`;
 }
@@ -179,10 +279,10 @@ function spor(t) {
 }
 
 const klokkeikon = (maal = 14, strek = 1.8) => `<svg aria-hidden="true" width="${maal}" height="${maal}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${strek}" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>`;
-const ansikt = (n, maal) => `<img data-n="${n}" src="/images/forside/folk/${String(n).padStart(2, '0')}.webp" alt="" width="${maal}" height="${maal}" loading="lazy">`;
-const eier = (rad) => `<span class="a-eier">${ansikt(rad.ansikt, 20)}${skjerm(rad.eier)}</span>`;
-function maltid(dag, merke, medEier = false) {
-  return `<div class="a-maltid${medEier ? ` a-innrad${Object.hasOwn(dag, 'ny') && dag.ny ? ' ny skjult' : ''}` : ''}"><img src="/images/forside/mat/${skjerm(dag.fil)}.webp" alt="" width="92" height="92" loading="lazy"><div><div class="a-tittel">${skjerm(dag.rett)}</div><div class="a-meta"><span>${skjerm(merke)}</span><em>${klokkeikon()}${skjerm(dag.tid)}</em>${medEier ? eier(dag) : ''}</div></div></div>`;
+const ansikt = (n, maal, folk) => `<img data-n="${n}" src="/images/forside/${folk.egne.includes(n) ? folk.mappe : 'folk'}/${String(n).padStart(2, '0')}.webp" alt="" width="${maal}" height="${maal}" loading="lazy">`;
+const eier = (rad, folk) => `<span class="a-eier">${ansikt(rad.ansikt, 20, folk)}${skjerm(rad.eier)}</span>`;
+function maltid(dag, merke, folk, medEier = false) {
+  return `<div class="a-maltid${medEier ? ` a-innrad${Object.hasOwn(dag, 'ny') && dag.ny ? ' ny skjult' : ''}` : ''}"><img src="/images/forside/mat/${skjerm(dag.fil)}.webp" alt="" width="92" height="92" loading="lazy"><div><div class="a-tittel">${skjerm(dag.rett)}</div><div class="a-meta"><span>${skjerm(merke)}</span><em>${klokkeikon()}${skjerm(dag.tid)}</em>${medEier ? eier(dag, folk) : ''}</div></div></div>`;
 }
 function kalender(k, forsteUkedag) {
   const forskyvning = (k.startUkedag - forsteUkedag + 7) % 7;
@@ -201,9 +301,9 @@ function middag(t, oppsett) {
   const m = t.middag, husstander = t.eksempler.husstander;
   const husinnhold = husstander.map((h) => {
     const innhold = Object.hasOwn(h, 'dager')
-      ? h.dager.map((dag) => `<div class="a-dag">${skjerm(dag.dag)}</div>${maltid(dag, m.husstand.maltid, true)}`).join('')
-      : `<div class="a-listehode">${skjerm(m.husstand.listehode)}<small>${skjerm(h.listetittel)}</small></div>${h.varer.map((vare) => `<div class="a-vare a-innrad${Object.hasOwn(vare, 'ny') && vare.ny ? ' ny skjult' : ''}"><i></i><span>${skjerm(vare.navn)}</span><b><em>${skjerm(vare.mengde)}</em>${eier(vare)}</b></div>`).join('')}`;
-    return `<div class="a-hus"><span class="a-folk">${h.folk.map((n) => ansikt(n, 46)).join('')}</span><span><b>${skjerm(h.navn)}</b><small>${skjerm(fyll(m.husstand.telling, { n: h.folk.length, ledige: 6 - h.folk.length }))}</small></span></div>${innhold}`;
+      ? h.dager.map((dag) => `<div class="a-dag">${skjerm(dag.dag)}</div>${maltid(dag, m.husstand.maltid, oppsett.folk, true)}`).join('')
+      : `<div class="a-listehode">${skjerm(m.husstand.listehode)}<small>${skjerm(h.listetittel)}</small></div>${h.varer.map((vare) => `<div class="a-vare a-innrad${Object.hasOwn(vare, 'ny') && vare.ny ? ' ny skjult' : ''}"><i></i><span>${skjerm(vare.navn)}</span><b><em>${skjerm(vare.mengde)}</em>${eier(vare, oppsett.folk)}</b></div>`).join('')}`;
+    return `<div class="a-hus"><span class="a-folk">${h.folk.map((n) => ansikt(n, 46, oppsett.folk)).join('')}</span><span><b>${skjerm(h.navn)}</b><small>${skjerm(fyll(m.husstand.telling, { n: h.folk.length, ledige: 6 - h.folk.length }))}</small></span></div>${innhold}`;
   });
   return `<div id="funksjoner"><section class="del ramme" id="middag"><h2>${skjerm(m.tittel)}</h2><p>${skjerm(m.ingress)}</p><div class="bento" id="trio">
 <article class="rute" data-inn="v">
@@ -244,7 +344,7 @@ function middag(t, oppsett) {
             <div class="a-ukedager">${m.ukemeny.ukedager.map((dag) => `<span>${skjerm(dag)}</span>`).join('')}</div>
             ${kalender(m.ukemeny.kalender, oppsett.forsteUkedag)}
           </div></div></div>
-          ${m.ukemeny.dager.map((dag) => `<div class="a-dag">${skjerm(dag.dag)}</div>${maltid(dag, m.ukemeny.maltid)}`).join('')}
+          ${m.ukemeny.dager.map((dag) => `<div class="a-dag">${skjerm(dag.dag)}</div>${maltid(dag, m.ukemeny.maltid, oppsett.folk)}`).join('')}
         </div>
       </article>
 <article class="rute" data-inn="v">
@@ -261,7 +361,7 @@ function middag(t, oppsett) {
 <article class="rute" data-inn="h">
         <div class="rutetekst"><h3>${skjerm(m.husstand.tittel)}</h3><p>${skjerm(m.husstand.tekst)}</p></div>
         <div class="app" id="demoHus">
-          <div class="a-husvelg" role="group" aria-label="${skjerm(m.husstand.velgAria)}">${husstander.map((h, i) => `<button type="button" aria-pressed="${i === 0}"><span>${h.folk.slice(0, 3).map((n) => ansikt(n, 24)).join('')}</span>${skjerm(h.merke)}</button>`).join('')}</div>
+          <div class="a-husvelg" role="group" aria-label="${skjerm(m.husstand.velgAria)}">${husstander.map((h, i) => `<button type="button" aria-pressed="${i === 0}"><span>${h.folk.slice(0, 3).map((n) => ansikt(n, 24, oppsett.folk)).join('')}</span>${skjerm(h.merke)}</button>`).join('')}</div>
           <div class="a-husflate" aria-live="off">${husinnhold[0]}</div>
           ${husinnhold.map((innhold, i) => `<template class="hus-eksempel" data-sist="${husstander[i].sist}">${innhold}</template>`).join('')}
         </div>
@@ -291,7 +391,7 @@ export function forside(sprak) {
   return `<!DOCTYPE html>
 <html lang="${oppsett.lang}">
 ${hode(sprak, oppsett, faq.skjema)}
-<body data-app-uttrykk="1">
+<body>
 <div class="side"><div class="kort"><div class="blad">
 ${topp(sprak, { folg: t.folg.lenker.map((lenke) => ({ href: '#' + lenke.mal, tekst: lenke.tekst })), sprakvelger: sprakvelger(sprak, 'topp', adresser) })}
 <main id="hovedinnhold">
@@ -308,7 +408,11 @@ ${samtykke(sprak)}
 }
 
 export function kjor(rot) {
-  writeFileSync(join(rot, 'index.html'), forside('nb'));
+  for (const sprak of Object.keys(SPRAK)) {
+    const mappe = join(rot, SPRAK[sprak].adresse);
+    mkdirSync(mappe, { recursive: true });
+    writeFileSync(join(mappe, 'index.html'), forside(sprak));
+  }
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

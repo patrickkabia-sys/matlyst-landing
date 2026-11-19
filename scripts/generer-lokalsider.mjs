@@ -813,7 +813,10 @@ function medSprakvelgere(html, gruppe, aktivtSprak) {
 }
 
 for (const lang of SPRAK) {
-  write(`../${lang}/index.html`, home(lang));
+  // Forsiden på sv, da og en bygges av scripts/forside.mjs (samme generator som den norske). Den skrives ikke her,
+  // men tas med i språksitemapen.
+  const forsidefil = fileURLToPath(new URL(`../${lang}/index.html`, import.meta.url));
+  if (existsSync(forsidefil)) lokaleSider.push(readFileSync(forsidefil, 'utf8'));
   // Juridiske sider: HTML-en er fasit etter juss-PR-ene, som retter direkte i fila.
   // legalPage() lager bare en side som ikke finnes ennå; en eksisterende side skrives
   // aldri over (det rullet tilbake juss-rettelser 2026-10-28), men tas med i sitemapen.

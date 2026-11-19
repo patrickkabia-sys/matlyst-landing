@@ -83,7 +83,7 @@ function byggMidlertidigNettsted() {
   writeFileSync(sidetyper, lokal);
   execFileSync(process.execPath, ['scripts/generer-norske-importguider.mjs'], { cwd: generertRot });
   execFileSync(process.execPath, ['scripts/generer-lokalsider.mjs'], { cwd: generertRot });
-  for (const skript of ['guidelenker', 'lenker-sett', 'skall-paa', 'app-uttrykk', 'app-bevis', 'bilde-attributter', 'sprak-signaler']) {
+  for (const skript of ['guidelenker', 'lenker-sett', 'skall-paa', 'app-bevis', 'bilde-attributter', 'sprak-signaler']) {
     execFileSync(process.execPath, [`scripts/${skript}.mjs`], { cwd: generertRot });
   }
   return generertRot;

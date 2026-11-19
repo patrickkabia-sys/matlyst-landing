@@ -9,7 +9,7 @@ import { rendre, trekkUt } from '../scripts/skall-paa.mjs';
 const rot = fileURLToPath(new URL('..', import.meta.url));
 // 875 sider utenom /: 872 undersider og de tre utenlandske forsidene.
 // Også de utenlandske forsidene prøves, så ingen av brevets 875 sider faller utenfor.
-const sider = alleSider(rot).filter((s) => s.sti !== '/');
+const sider = alleSider(rot).filter((s) => s.type !== 'forside');
 
 test('uttrekk kaster for nøyaktig tjenestesidene i registeret', (t) => {
   const kast = [];

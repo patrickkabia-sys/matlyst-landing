@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { alleSider, trygtUnderRot } from './sidetyper.mjs';
 
-const KJEDE = ['guidelenker', 'lenker-sett', 'skall-paa', 'app-uttrykk', 'app-bevis', 'bilde-attributter', 'sprak-signaler'];
+const KJEDE = ['guidelenker', 'lenker-sett', 'skall-paa', 'app-bevis', 'bilde-attributter', 'sprak-signaler'];
 const UTELATT = new Set(['.git', '.superpowers', 'node_modules', 'qa', 'test-results', 'playwright-report']);
 
 // Første linje som skiller de to filene, ellers null.

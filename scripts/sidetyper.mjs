@@ -1,6 +1,6 @@
 // Sideregisteret: hvilken type hver publiserbare HTML-fil har, og ÉT predikat for
-// hva som er rullet ut til nytt skall og ny grunnstil. Rendereren, testvaktene,
-// app-uttrykk og revisjonen bruker bare erUtrullet(), aldri UTRULLET direkte.
+// hva som er rullet ut til nytt skall og ny grunnstil. Rendereren, testvaktene og
+// revisjonen bruker bare erUtrullet(), aldri UTRULLET direkte.
 // Reglene ser aldri på rammen (nav/footer), bare på stien og på innholdsklassene.
 import { readdirSync, readFileSync, realpathSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';

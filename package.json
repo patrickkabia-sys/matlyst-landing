@@ -4,6 +4,7 @@
   "scripts": {
     "test": "node --test test/*.test.mjs",
     "test:e2e": "playwright test",
+    "test:forside": "for l in nb sv da en; do FORSIDE_SPRAK=$l playwright test forside --workers=8 || exit 1; done",
     "revisjon": "playwright test revisjon.spec --pass-with-no-tests",
     "seo": "node seo-motor/kjor.mjs",
     "skall": "node scripts/skall-paa.mjs"

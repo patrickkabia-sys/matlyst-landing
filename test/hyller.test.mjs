@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
-import { HYLLER, HYLLETEKST, LOKALE_KILDER, lokaliserHyller, synligeLenker } from '../scripts/hyller.mjs';
+import { HYLLER, HYLLETEKST, LOKALE_KILDER, LOKALE_LENKER, lokaliserHyller, synligeLenker } from '../scripts/hyller.mjs';
 import { alleSider } from '../scripts/sidetyper.mjs';
 import { gruppeForSti } from '../scripts/locale-sider.mjs';
 
@@ -95,6 +95,7 @@ const falsk = () => ({
   lenker: {
     ...Object.fromEntries(HYLLER.nb.flatMap((h) => h.lenker.map((l) => [l.href, `T:${l.href}`]))),
     ...Object.fromEntries(Object.values(LOKALE_KILDER).flat().map((k) => [k.href, `T:${k.href}`])),
+    ...Object.fromEntries(Object.values(LOKALE_LENKER).flatMap((hyller) => Object.values(hyller).flat()).map((k) => [k.href, `T:${k.href}`])),
   },
 });
 const finn = (hyller, id, nbHref) => hyller.find((h) => h.id === id).lenker.find((l) => l.nbHref === nbHref);
@@ -169,6 +170,17 @@ test('de lokale kildene per språk er nøyaktig disse', () => {
   }
 });
 
+// Uavhengig fasit: enkeltspråklige lenker utenfor «Lagre oppskrifter».
+test('lokale lenker i andre hyller står på riktig plass, og bare på sitt språk', () => {
+  assert.deepEqual(LOKALE_LENKER, { en: { tips: [{ href: '/en/holidays/', foran: '/blogg/' }] } });
+  const en = lokaliserHyller('en', HYLLETEKST.en).find((h) => h.id === 'tips').lenker;
+  assert.deepEqual(en.slice(-2).map((l) => [l.tekst, l.href, l.nbHref]), [['Holiday cooking', '/en/holidays/', null], ['All kitchen tips', '/en/blog/', '/blogg/']]);
+  for (const s of ['nb', 'sv', 'da']) {
+    const tekst = s === 'nb' ? undefined : HYLLETEKST[s];
+    assert.ok(!lokaliserHyller(s, tekst).flatMap((h) => h.lenker).some((l) => l.href === '/en/holidays/'), s);
+  }
+});
+
 // Midlertidig rot med bare de filene en test ber om.
 function medRot(filer, kjor) {
   const grunn = mkdtempSync(join(tmpdir(), 'matlyst-hyller-'));
@@ -212,7 +224,7 @@ for (const s of ['sv', 'da', 'en']) {
     }
   });
   test(`${s}: tekstfila har ingen nøkler koden ikke kjenner`, () => {
-    const kjente = new Set([...HYLLER.nb.flatMap((h) => h.lenker.map((l) => l.href)), ...LOKALE_KILDER[s].map((k) => k.href)]);
+    const kjente = new Set([...HYLLER.nb.flatMap((h) => h.lenker.map((l) => l.href)), ...LOKALE_KILDER[s].map((k) => k.href), ...Object.values(LOKALE_LENKER[s] ?? {}).flat().map((k) => k.href)]);
     for (const nokkel of Object.keys(HYLLETEKST[s].lenker)) if (!kjente.has(nokkel) && !Object.values(LOKALE_KILDER).flat().some((k) => k.href === nokkel)) assert.fail(nokkel);
   });
 }
