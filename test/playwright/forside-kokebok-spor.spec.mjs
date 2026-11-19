@@ -119,9 +119,14 @@ test('seksjonene har lokale ressurser, feilfri konsoll og plass på alle skjermb
       await expect(page.locator(velger)).toBeVisible();
       expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(bredde);
     }
+    // Patrick 19.11: på mobil står forslagene på én sveipbar linje. Raden selv skal være innenfor skjermen;
+    // knappene i den kan stikke utenfor og nås med sveip, men er fortsatt minst 44 px høye.
+    const rad = await page.locator('.forslagrad').evaluate((el) => { const s = getComputedStyle(el); const b = el.getBoundingClientRect(); return { ruller: s.overflowX === 'auto' && el.scrollWidth > el.clientWidth, x: b.x, hoyre: b.right }; });
+    if (rad.ruller) { expect(rad.x).toBeGreaterThanOrEqual(0); expect(rad.hoyre).toBeLessThanOrEqual(bredde); }
     for (const knapp of await page.locator('.forslag').all()) {
       const boks = await knapp.boundingBox();
       expect(boks.height).toBeGreaterThanOrEqual(44);
+      if (rad.ruller) continue;
       expect(boks.x).toBeGreaterThanOrEqual(0);
       expect(boks.x + boks.width).toBeLessThanOrEqual(bredde);
     }

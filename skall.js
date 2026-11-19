@@ -152,14 +152,23 @@
       : document.querySelector('main [data-hent]');
     const neste = document.querySelector('.bunn [data-hent]');
     let venter = false;
+    // Forsidens fliser (#trio og #spor) er høye nok til å fylle en mobilskjerm: knappen skjules mens de er i bildet, og kommer tilbake etterpå.
+    const ibildet = new Set();
     const les = () => {
       venter = false;
       const forbi = forste ? forste.getBoundingClientRect().bottom < 0 : scrollY >= 600;
-      const vis = forbi && (!neste || neste.getBoundingClientRect().top > innerHeight + 40);
+      const vis = forbi && ibildet.size === 0 && (!neste || neste.getBoundingClientRect().top > innerHeight + 40);
       fast.classList.toggle('vis', vis);
       fast.inert = !vis;
     };
     const ko = () => { if (!venter) { venter = true; requestAnimationFrame(les); } };
+    if (!underside && 'IntersectionObserver' in window) {
+      const flater = new IntersectionObserver((rader) => {
+        rader.forEach((rad) => { if (rad.isIntersecting) ibildet.add(rad.target); else ibildet.delete(rad.target); });
+        ko();
+      });
+      for (const id of ['trio', 'spor']) { const el = document.getElementById(id); if (el) flater.observe(el); }
+    }
     addEventListener('scroll', ko, { passive: true });
     addEventListener('resize', ko);
     if ('ResizeObserver' in window) new ResizeObserver(ko).observe(document.body);

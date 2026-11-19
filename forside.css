@@ -103,7 +103,7 @@ html.js .hero h1:not(.klar){visibility:hidden}
 /* Spør Matlyst: kula fra appen, eksempler på hva du kan be om, og et eksempelsvar */
 .spor{padding-block:136px 0}
 /* Flaten låner lyset fra kula, slik bakgrunnen i appen gjør */
-.sporflate{padding:72px 56px;border-radius:40px;background:radial-gradient(90% 80% at 0% 0%,color-mix(in srgb, var(--kule1) 34%, transparent),color-mix(in srgb, var(--kule1) 0%, transparent) 62%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb, var(--kule3) 36%, transparent),color-mix(in srgb, var(--kule3) 0%, transparent) 62%),var(--hylle)}
+.sporflate{--sporflis:radial-gradient(90% 80% at 0% 0%,color-mix(in srgb, var(--kule1) 34%, transparent),color-mix(in srgb, var(--kule1) 0%, transparent) 62%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb, var(--kule3) 36%, transparent),color-mix(in srgb, var(--kule3) 0%, transparent) 62%),var(--hylle);padding:72px 56px;border-radius:40px;background:var(--sporflis)}
 .spor .to{display:grid;grid-template-columns:minmax(0,460px) minmax(0,400px);align-items:center;justify-content:center;gap:40px 72px}
 .kulerom{display:inline-block;width:116px}
 .kuleskygge{display:block;width:74%;height:16px;margin:12px auto 0;border-radius:50%;background:rgb(var(--kule-kant) / .42);filter:blur(8px)}
@@ -411,3 +411,68 @@ html.js .hero h1:not(.klar){visibility:hidden}
 /* Samme bredde som prototypens rettmerke, avgrenset til handlekortet. */
 .a-merker .handle-rett{width:260px}
 @media (max-width:720px){.a-merker .handle-rett{width:220px}}
+
+/* Patrick 19.11: forsidens fliser skal få plass på en mobilskjerm (høyst --flis-hoyde, siden den faste knappen er skjult her).
+   Bare mobil; PC er uendret. Raden med valg og retter kan sveipes sidelengs, uten synlig rullefelt. */
+@media (max-width:720px){
+  .rute{gap:8px;padding:18px 16px}
+  .rute p{margin:4px 0 4px;font-size:1rem;line-height:1.4}
+  .rute h3{font-size:1.375rem}
+  .a-husvelg,.forslagrad,.a-merker{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .a-husvelg::-webkit-scrollbar,.forslagrad::-webkit-scrollbar,.a-merker::-webkit-scrollbar{display:none}
+  .a-husvelg button,.forslag,.a-merker span{flex:none;scroll-snap-align:start}
+  .a-husvelg{margin-bottom:12px}
+  .forslagrad{justify-content:flex-start;margin-inline:-16px;padding-inline:16px}
+  .forslag{max-width:none;height:44px;white-space:nowrap}
+  .a-merker span{max-width:none;white-space:nowrap}
+  .a-merker .handle-rett{width:auto}
+  /* Husstand: én rett i stedet for to (den som blir lagt til), og lista uten luft */
+  .a-hus + .a-dag,.a-hus + .a-dag + .a-maltid{display:none}
+  .a-husflate{min-height:17.3125rem}
+  .a-husflate .a-vare{min-height:0;padding:5px 8px 5px 10px;gap:6px 8px;font-size:.9375rem}
+  .a-husflate .a-vare span{overflow-wrap:anywhere}
+  .a-husflate .a-vare em{font-size:.875rem}
+  .a-husflate .a-vare > i{width:24px;height:24px}
+  .a-husflate .a-vare b{gap:6px}
+  .a-husflate .a-vare em{margin-left:0}
+  .a-hus{gap:10px}
+  .a-hus b{font-size:1.0625rem}
+  .a-hus small{font-size:.875rem}
+  .a-folk img{width:38px;height:38px;border-width:2px}
+  .a-listehode{margin-top:12px}
+  .a-dag{margin-top:12px}
+  /* Handle: tre varer */
+  #demoHandle .a-vare:nth-child(n+6){display:none}
+  .a-hylle{margin-top:12px}
+  .a-vare{height:54px;margin-top:6px}
+  .a-lagscene{height:380px}
+  .a-plan{height:350px}
+  /* Spør Matlyst: to fliser, kula og feltet i den første, svarkortet i den andre */
+  .sporflate{padding:0;border-radius:0;background:none}
+  .spor .to{gap:16px;justify-items:stretch;text-align:left}
+  .spor .to > div:first-child,.spor .to > .app{padding:20px 16px;border-radius:28px;background:var(--sporflis)}
+  .spor .to > div:first-child{display:flex;flex-direction:column;align-items:flex-start}
+  .spor .to > .app{margin:0;max-width:none}
+  .kulerom{width:72px;margin:0}
+  .kule{width:72px;height:72px}
+  .spor h2{margin-top:14px}
+  .spor .inn{margin-top:8px}
+  .felt{margin-top:16px;min-height:56px}
+  .forslagrad{margin-top:12px;align-self:stretch}
+  .smaatt{margin-top:12px}
+  .a-liste{min-height:0}
+  .a-liste .a-endr:nth-child(n+3){display:none}
+  .a-svar{padding:12px 14px 16px}
+  .a-forkl span{min-height:0}
+  .a-forkl{margin-top:10px}
+  .a-valg{margin-top:10px;gap:8px}
+  .a-valg span{height:46px}
+  .a-endr{min-height:44px}
+  .a-svar .a-tittel{margin-top:10px}
+  .a-etikett{margin-top:6px}
+  .a-husflate .a-eier{padding:2px 8px 2px 2px;font-size:.8125rem}
+}
+/* Under 380 px er det ikke plass til både navn og tall på samme rad: avataren viser hvem som la inn varen, navnet blir stående for skjermlesere. */
+@media (max-width:380px){
+  .a-husflate .a-eier{font-size:0;gap:0;padding:2px}
+}

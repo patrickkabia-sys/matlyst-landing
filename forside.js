@@ -154,9 +154,12 @@
     const skjelett = [74, 58, 66].map((bredde) => '<div class="a-endr sk" style="--b:' + bredde + '%"><i></i><span></span></div>').join('');
     let synlig = !('IntersectionObserver' in window), ramme = 0, sist = 0, tid = 0;
     let nr = 0, vist = 0, tegn = 0, fase = 'skriver';
+    // Patrick 19.11: på mobil vises bare to endringer, og tallet i etiketten følger med (første tall i teksten fra TEKST).
+    const smal = matchMedia('(max-width:720px)');
+    const antallTekst = (tekst) => (smal.matches ? tekst.replace(/\d+/, (n) => Math.min(2, Number(n))) : tekst);
     const settSvar = () => {
       liste.replaceChildren(svarene[nr].content.cloneNode(true));
-      antall.textContent = svarene[nr].dataset.antall;
+      antall.textContent = antallTekst(svarene[nr].dataset.antall);
       forklaring.textContent = svarene[nr].dataset.forklaring;
       seksjon.querySelector('#sporSvar').setAttribute('aria-label', svarene[nr].dataset.aria);
       kort.classList.remove('endrer');
@@ -217,6 +220,9 @@
       else start();
     };
     bevegelse.addEventListener('change', settRolig);
+    const tilpassAntall = () => { if (!kort.classList.contains('endrer')) antall.textContent = antallTekst(svarene[vist].dataset.antall); };
+    smal.addEventListener('change', tilpassAntall);
+    tilpassAntall();
     seksjon.classList.toggle('i-bildet', synlig);
     settRolig();
   }

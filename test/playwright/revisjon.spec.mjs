@@ -4,7 +4,7 @@ import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test, expect } from '@playwright/test';
-import { revider, samleFeil, skalering, zoom, forHoyePaaMobil, MOBIL_MEDIA, MOBIL_UNNTAK } from './hjelp/revisjon.mjs';
+import { revider, samleFeil, skalering, zoom, forHoyePaaMobil, forHoyeFliserPaaMobil, MOBIL_MEDIA, MOBIL_FLISER } from './hjelp/revisjon.mjs';
 import { utvalg, utrulledeTyper, eksempelStier } from './hjelp/utvalg.mjs';
 import { EKSEMPEL, TYPER } from '../../scripts/sidetyper.mjs';
 
@@ -63,18 +63,18 @@ test('forstørret tekst: px-tekst feiler på alle sidetyper, også i skallet og 
   expect(forstorrelseFeil(faktorer).map((f) => f.faktor)).toEqual([1]);
 });
 
-test('alt på en mobilskjerm: for høye telefoner og kort oppdages, og unntakene måles ikke', async ({ page }) => {
+test('alt på en mobilskjerm: for høye telefoner, kort og fliser oppdages', async ({ page }) => {
   test.skip(!!process.env.BASE_URL, 'fiksturen finnes bare lokalt');
   await page.setViewportSize({ width: 390, height: 664 });
   await page.goto('/test/fixtures/revisjon-for-hoy-telefon.html');
   const funn = await forHoyePaaMobil(page);
   expect(funn.map((f) => f.velger).sort()).toEqual(['.tel', 'aside.i-appen']);
   expect(funn.every((f) => f.ledig === 664 - 72 - 75 - 16)).toBe(true);
-  // Forsidens fliser venter på Patricks vedtak: de står i unntakslista og aldri i den målte lista.
-  expect(MOBIL_UNNTAK).toEqual(['#trio article.rute', '.sporflate']);
-  for (const u of MOBIL_UNNTAK) expect(MOBIL_MEDIA, `${u} skal ikke måles`).not.toContain(u);
-  const utenUnntak = await forHoyePaaMobil(page, ['.tel', '.sporflate'], []);
-  expect(utenUnntak.map((f) => f.velger)).toContain('.sporflate');
+  // Fliser: ingen unntaksliste. Den faste knappen er skjult der, så ledig høyde er 664 - 72 - 16.
+  const fliser = await forHoyePaaMobil(page, MOBIL_FLISER, [], { fast: false });
+  expect(fliser.map((f) => f.velger)).toEqual(['#trio article.rute']);
+  expect(fliser[0].ledig).toBe(664 - 72 - 16);
+  expect(MOBIL_MEDIA).not.toContain('#trio article.rute');
 });
 
 test('utvalget følger predikatet: en utrullet type får sine sider, andre ingen', () => {
@@ -139,6 +139,8 @@ for (const side of rader) {
       await page.setViewportSize({ width: bredde, height: hoyde });
       await page.goto(side.url);
       expect(await forHoyePaaMobil(page), `for høye elementer på ${bredde} x ${hoyde}`).toEqual([]);
+      // Forsidens fliser (alle fem rutene og begge Spør Matlyst-flisene), i alle varianter.
+      if (side.type === 'forside') expect(await forHoyeFliserPaaMobil(page), `for høye fliser på ${bredde} x ${hoyde}`).toEqual([]);
     }
   });
 

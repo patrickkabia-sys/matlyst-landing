@@ -109,6 +109,8 @@ test('hele siden har lokal trafikk, feilfri konsoll, fungerende mål og plass p�
     for (const knapp of await page.locator('.a-husvelg button, .svarliste summary, .vern a').all()) {
       const b = await knapp.boundingBox();
       expect(b.height).toBeGreaterThanOrEqual(44); expect(b.width).toBeGreaterThanOrEqual(44);
+      // Patrick 19.11: husstandsvalgene står på én sveipbar linje på mobil; raden selv må være innenfor skjermen.
+      if (await knapp.evaluate((el) => { const r = el.parentElement; return getComputedStyle(r).overflowX === 'auto' && r.scrollWidth > r.clientWidth; })) { const r = await knapp.evaluate((el) => { const q = el.parentElement.getBoundingClientRect(); return { x: q.x, h: q.right }; }); expect(r.x).toBeGreaterThanOrEqual(0); expect(r.h).toBeLessThanOrEqual(bredde); continue; }
       expect(b.x).toBeGreaterThanOrEqual(0); expect(b.x + b.width, `${bredde} px: ${(await knapp.textContent()).trim()}`).toBeLessThanOrEqual(bredde);
     }
     await page.emulateMedia({ reducedMotion: 'no-preference' });

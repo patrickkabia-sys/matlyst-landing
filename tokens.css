@@ -54,6 +54,8 @@
   --fast-hoyde:75px;
   --luft:16px;
   --ledig-hoyde:calc(100svh - var(--topp-hoyde) - var(--fast-hoyde) - var(--luft));
+  /* Forsidens fliser: den faste knappen er skjult mens de er i bildet, så bare toppen og luften trekkes fra. */
+  --flis-hoyde:calc(100svh - var(--topp-hoyde) - var(--luft));
   /* Nettleserens tekststørrelse delt på 16 px (1 ved standard). Gjør vw-leddet i clamp() følgsomt, ellers vokser ikke titler på PC ved 200 % tekst. */
   --skala:tan(atan2(1rem,16px));
 }
