@@ -312,6 +312,35 @@ test('klikk utenfor lukker menyen også når fokus blir på menyknappen', async 
   assert.equal(await side.locator('#panel').isVisible(), false);
 });
 
+for (const width of [1280, 390]) for (const flate of ['polstring', 'tom flate ved hyllelisten']) {
+  test(`menyen forblir åpen etter klikk på ${flate} ved ${width} px`, async (t) => {
+    const { side } = await prove(t, { viewport: { width, height: 800 }, reducedMotion: 'reduce' });
+    await side.locator('#menyknapp').click();
+    const panel = side.locator('#panel');
+    assert.equal(await panel.isVisible(), true);
+    if (flate !== 'polstring') {
+      if (width === 390) await side.locator('#panel .fagknapp').first().click();
+      await side.locator('#panel .fag a').first().focus();
+    }
+    const punkt = await panel.evaluate((e, flate) => {
+      if (flate === 'polstring') {
+        const r = e.getBoundingClientRect();
+        return { x: r.left + r.width / 2, y: r.top + parseFloat(getComputedStyle(e).paddingTop) / 2 };
+      }
+      // Luften over lenkelisten er en ekte tom flate inne i den åpne hyllen.
+      const liste = e.querySelector('.fag ul'), r = liste.getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top - parseFloat(getComputedStyle(liste).marginTop) / 2 };
+    }, flate);
+    assert.equal(await side.evaluate(({ punkt, flate }) => {
+      const mal = document.elementFromPoint(punkt.x, punkt.y);
+      return flate === 'polstring' ? mal?.id === 'panel' : !!mal?.closest('#panel .fag.aapen') && !mal.closest('a, button');
+    }, { punkt, flate }), true, 'Klikket må treffe tom flate inne i panelet');
+    await side.mouse.click(punkt.x, punkt.y);
+    assert.equal(await panel.isVisible(), true, 'Et klikk på tom flate skal beholde den åpne menyen');
+    assert.equal(await side.locator('#menyknapp').getAttribute('aria-expanded'), 'true');
+  });
+}
+
 test('hylleoverskriften beholder fokus begge veier over 721 px', async (t) => {
   for (const velger of ['#panel', '#bunnreol']) {
     const { side } = await prove(t, { viewport: { width: 720, height: 800 }, reducedMotion: 'reduce' });

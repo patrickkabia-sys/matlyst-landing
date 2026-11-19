@@ -21,6 +21,7 @@
       if (!panel.hidden && !panel.contains(e.target) && !knapp.contains(e.target)) settMeny(false);
     });
     const lukkVedFokusUt = (e) => {
+      if (e.relatedTarget === null) return;
       if (!panel.contains(e.relatedTarget) && !knapp.contains(e.relatedTarget)) settMeny(false);
     };
     knapp.addEventListener('focusout', lukkVedFokusUt);
