@@ -1,6 +1,3 @@
-const nav = document.getElementById('nav') || document.querySelector('body > nav');
-if (nav) { const tilstand = () => nav.classList.toggle('scrolled', scrollY > 20); tilstand(); addEventListener('scroll', tilstand, { passive: true }); }
-
 const io = new IntersectionObserver((es) => {
   es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
@@ -141,40 +138,6 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     film.preload = 'metadata';
     obs.observe(film);
   }
-})();
-
-// Nedlasting: vis den faste linja på mobil etter litt rulling, og send Android til Google Play.
-(() => {
-  const linje = document.getElementById('dl-bar');
-  const android = /android/i.test(navigator.userAgent);
-  if (android) {
-    for (const a of document.querySelectorAll('.nav-dl[data-dl]')) {
-      const play = document.querySelector('a[data-dl="play"], a[href*="play.google.com"]');
-      if (play) a.href = play.href;
-    }
-  }
-  if (!linje) return;
-  const vis = () => linje.classList.toggle('show', window.scrollY > 320);
-  vis();
-  window.addEventListener('scroll', vis, { passive: true });
-})();
-
-// Guider-menyen i toppmenyen: åpne og lukke med knapp, Escape og klikk utenfor.
-(() => {
-  const knapp = document.querySelector('.nav-meny-knapp');
-  const panel = document.getElementById('nav-panel');
-  if (!knapp || !panel) return;
-  // Mobil: én språkvelger, inne i menyen (toppen har ikke plass til den).
-  const velger = document.querySelector('.language-switcher-top');
-  if (velger && !panel.querySelector('.hylle-sprak')) {
-    const kopi = velger.cloneNode(true);
-    kopi.className = 'hylle-sprak';
-    panel.prepend(kopi);
-  }
-  const sett = (apen) => { knapp.setAttribute('aria-expanded', String(apen)); panel.hidden = !apen; };
-  knapp.addEventListener('click', () => sett(panel.hidden));
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { sett(false); knapp.focus(); } });
-  document.addEventListener('click', (e) => { if (!panel.hidden && !e.target.closest('.nav-meny')) sett(false); });
 })();
 
 // Enhetsomregner: regner ut mens du skriver (volum, vekt, lengde, temperatur).

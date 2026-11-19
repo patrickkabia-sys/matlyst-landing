@@ -7,6 +7,7 @@ import { norskeImportGuider } from './import-guider-lokale.mjs';
 import { kildesider, norskeFunksjonssider } from './undersider-alle-sprak.mjs';
 import { norskeAppsider } from './nordiske-appsider.mjs';
 import { appCta } from './app-cta.mjs';
+import { STIL } from './skall-paa.mjs';
 import { RIK_DATO, RIKE, medRik, utvid } from './rike-sider-register.mjs';
 import { middagssider } from './middagssider.mjs';
 import {
@@ -70,7 +71,7 @@ ${hreflang}
 <meta name="twitter:image" content="${base}/images/og.jpg">
 <meta name="twitter:image:alt" content="${esc(v.description)}">
 <link rel="icon" type="image/png" href="/images/icon.png">
-<link rel="stylesheet" href="/styles.css">
+${STIL}
 <script type="application/ld+json">${json(schemas)}</script>
 <script src="/locale.js" defer></script>
 </head>`;

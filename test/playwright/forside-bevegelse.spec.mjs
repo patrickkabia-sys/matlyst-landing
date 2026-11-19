@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test';
 import { STI, SPRAK } from './hjelp/sprak.mjs';
 
 test.use({ viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+// Filmen og bevegelsesvalget følger ekte tid og ekte avspilling (ikke page.clock). En travel CI-maskin kan bomme én gang.
+test.describe.configure({ retries: process.env.CI ? 2 : 0 });
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => localStorage.setItem('matlyst-consent', 'denied'));

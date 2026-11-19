@@ -53,6 +53,7 @@
   background: var(--flate);
   color: var(--blekk);
   font-family: var(--mono);
+  font-weight: 500;
   font-size: .9375rem;
   line-height: 1.5;
   text-align: left;

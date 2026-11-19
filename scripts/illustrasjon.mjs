@@ -1,5 +1,5 @@
 // Egen illustrasjon til forsidene: flate matformer i merkefargene, tegnet som inline SVG.
-// Dekorative (aria-hidden), ingen eksterne filer. Plasseres av .hero-stage og .app-row i styles.css.
+// Dekorative (aria-hidden), ingen eksterne filer. Plasseres av stilarkene (forside.css, side.css).
 const form = (klasse, innhold, vb) => `<svg class="mat ${klasse}" viewBox="${vb}" aria-hidden="true" focusable="false">${innhold}</svg>`;
 
 export const tomat = form('mat-tomat', '<circle cx="60" cy="66" r="48" fill="#C4552A"/><path d="M60 22c-8 8-20 10-28 8 6 10 16 12 28 10 12 2 22 0 28-10-8 2-20 0-28-8z" fill="#7C9A74"/><path d="M60 22v-10" stroke="#5F7C58" stroke-width="6" stroke-linecap="round"/><ellipse cx="42" cy="58" rx="9" ry="14" fill="#E07A52" opacity=".55" transform="rotate(25 42 58)"/>', '0 0 120 120');

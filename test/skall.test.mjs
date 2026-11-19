@@ -107,7 +107,7 @@ const sideHtml = (innhold = '<main style="height:1400px"><a class="knapp" href="
   const sider = { nb: '/', sv: '/sv/', da: '/da/', en: '/en/' };
   return `<!doctype html><html lang="nb"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/language-switcher.css"><body><div class="side"><div class="kort"><div class="blad">${topp('nb', { sprakvelger: sprakvelger('nb', 'topp', sider) })}${innhold}</div>${hylledel('nb')}</div>${morkBunn('nb', { sprakvelger: sprakvelger('nb', 'bunn', sider) })}${nedlasting('nb')}${samtykke('nb')}</div><script src="/skall.js"></script></body></html>`;
 };
-async function prove(t, { html = sideHtml(), ...valg } = {}) {
+async function prove(t, { html = sideHtml(), frys = false, ...valg } = {}) {
   nettleser ??= await chromium.launch();
   const kontekst = await nettleser.newContext({ viewport: { width: 1280, height: 800 }, ...valg });
   t.after(() => kontekst.close());
@@ -124,7 +124,10 @@ async function prove(t, { html = sideHtml(), ...valg } = {}) {
     const typer = { css: 'text/css', js: 'text/javascript', webp: 'image/webp', svg: 'image/svg+xml', woff2: 'font/woff2' };
     await rute.fulfill({ contentType: typer[url.pathname.split('.').pop()], body: readFileSync(join(rot, url.pathname)) });
   });
-  await side.clock.install();
+  // clock.install() lar tiden gå i sanntid. En treg CI-maskin kan da bruke opp en hel nedtelling
+  // mellom sidelast og første runFor; `frys` stopper klokka så testen eier hvert millisekund.
+  await side.clock.install({ time: 0 });
+  if (frys) await side.clock.pauseAt(1000);
   await side.goto('http://skall.test/');
   await side.evaluate(() => document.fonts.ready);
   return { side, feil, foresporsler };
@@ -196,7 +199,7 @@ test('fast knapp følger innholdsknappen og bruker 600 px når den mangler', asy
 });
 
 test('logoen venter 1800 ms, går i loop og står stille ved redusert bevegelse', async (t) => {
-  const { side, foresporsler } = await prove(t);
+  const { side, foresporsler } = await prove(t, { frys: true });
   const logo = side.locator('#merke img').first();
   const forst = await logo.getAttribute('src');
   await side.locator('#merke').hover();
@@ -205,9 +208,16 @@ test('logoen venter 1800 ms, går i loop og står stille ved redusert bevegelse'
   assert.equal(await logo.getAttribute('src'), forst);
   await side.mouse.move(500, 500);
   await side.clock.runFor(3300);
-  await side.waitForFunction(() => document.querySelector('#merke img').getAttribute('src') !== '/images/forside/logo/14.webp');
+  // Klokka står: bildet lastes i sanntid, så byttet (170 ms etter lastet) drives fram steg for steg.
+  let byttet = false;
+  for (let i = 0; i < 50 && !byttet; i++) {
+    await side.clock.runFor(200);
+    byttet = await side.evaluate(() => document.querySelector('#merke img').getAttribute('src') !== '/images/forside/logo/14.webp');
+    if (!byttet) await side.waitForTimeout(50);
+  }
+  assert.ok(byttet, 'logoen byttet ikke form');
   assert.equal(foresporsler.includes('/images/forside/logo/40.webp'), true);
-  const rolig = await prove(t, { reducedMotion: 'reduce' });
+  const rolig = await prove(t, { reducedMotion: 'reduce', frys: true });
   await rolig.side.locator('#merke').hover();
   await rolig.side.clock.runFor(10000);
   assert.equal(await rolig.side.locator('#merke img').first().getAttribute('src'), forst);
@@ -533,4 +543,29 @@ test('topp() har skiplenken som første element i hvert språk, med teksten fra 
     assert.ok(html.startsWith(`<a class="hopp" href="#hovedinnhold">${tekst}</a>`), `${sprak}: skiplenken må stå først`);
     assert.equal(SKALLTEKST[sprak].topp.hopp, tekst);
   }
+});
+
+const utenKommentarer = (kilde) => kilde.replace(/\/\*[\s\S]*?\*\//gu, '');
+
+test('guider-panelet er skjult til det åpnes: markupen har hidden og skall.css setter ikke display på .panel', () => {
+  assert.match(topp('nb', { sprakvelger: '' }), /<nav class="panel"[^>]*\shidden[\s>]/u);
+  const css = utenKommentarer(les('skall.css'));
+  const panelregler = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/gu)].filter(([, v]) => v.split(',').some((d) => /(^|[\s>+~])\.panel(?![\w-])(?:\[[^\]]*\]|:[\w-]+)*\s*$/u.test(d)));
+  assert.ok(panelregler.length > 0, 'fant ingen regler for .panel selv');
+  const medDisplay = panelregler.filter(([, v, kropp]) => /(^|[;\s])display\s*:/u.test(kropp) && !v.split(',').every((d) => /\[hidden\]/u.test(d)));
+  assert.deepEqual(medDisplay.map((m) => m[1].trim()), [], '.panel kan ikke sette display uten [hidden]-unntak');
+});
+
+test('toppen får bakgrunn ved rulling: sticky og backdrop-filter fra 1001 px, og en reserve ved redusert gjennomsiktighet', () => {
+  const css = utenKommentarer(les('skall.css'));
+  const blokk = css.match(/@media \(min-width:1001px\)\s*\{([\s\S]*?)\n\}/u);
+  assert.ok(blokk, 'mangler @media (min-width:1001px)');
+  const topp1001 = blokk[1].match(/\.topp\s*\{([^}]*)\}/u);
+  assert.ok(topp1001, 'mangler .topp i bredskjermsblokken');
+  assert.match(topp1001[1], /position:\s*sticky/u);
+  assert.match(topp1001[1], /(?<![-\w])backdrop-filter:\s*blur/u);
+  const reserve = css.match(/@media \(prefers-reduced-transparency:\s*reduce\)\s*\{([^{}]*\{[^}]*\})\s*\}/u);
+  assert.ok(reserve, 'mangler reserve for redusert gjennomsiktighet');
+  assert.match(reserve[1], /\.topp/u);
+  assert.match(reserve[1], /(?<![-\w])backdrop-filter:\s*none/u);
 });

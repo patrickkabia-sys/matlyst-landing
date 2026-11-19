@@ -15,7 +15,14 @@ const ROT = fileURLToPath(new URL('..', import.meta.url));
 // Kommentarer strippes for parsing: kommentaren som forklarer regelen under
 // inneholder bade komma og tekst, og ville ellers blitt lest som en del av
 // velgeren i regelen rett etter.
-const css = readFileSync(join(ROT, 'styles.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//gu, '');
+const uten = (fil) => readFileSync(join(ROT, fil), 'utf8').replace(/\/\*[\s\S]*?\*\//gu, '');
+const tokens = uten('tokens.css');
+// Banneret bor i to stilark: skall.css (fullt skall) og tjeneste.css (kampanjesidene, med sidetypen foran velgerne).
+// Begge kjøres gjennom de samme kravene, tjeneste.css uten sidetypeprefikset så velgerne blir .ck-btn og .ck-accept.
+const ARK = {
+  'skall.css': uten('skall.css'),
+  'tjeneste.css': uten('tjeneste.css').replaceAll('body[data-tjeneste="kampanje"] ', ''),
+};
 const index = readFileSync(join(ROT, 'index.html'), 'utf8');
 
 test('begge samtykkeknappene finnes i banneret', () => {
@@ -23,7 +30,8 @@ test('begge samtykkeknappene finnes i banneret', () => {
   assert.match(index, /class="ck-btn ck-reject"[^>]*>Bare nødvendige</u);
 });
 
-test('«Bare nødvendige» veier nøyaktig like mye som «Godta»', () => {
+for (const [navn, css] of Object.entries(ARK)) {
+test(`${navn}: «Bare nødvendige» veier nøyaktig like mye som «Godta»`, () => {
   const godta = effektiv(css, 'ck-accept');
   const avvis = effektiv(css, 'ck-reject');
   assert.ok(Object.keys(godta).length > 0, 'fant ingen stil for «Godta»');
@@ -35,12 +43,12 @@ test('«Bare nødvendige» veier nøyaktig like mye som «Godta»', () => {
   );
 });
 
-test('knappene er like også når musepekeren er over dem', () => {
+test(`${navn}: knappene er like også når musepekeren er over dem`, () => {
   assert.deepEqual(effektiv(css, 'ck-reject', 'hover'), effektiv(css, 'ck-accept', 'hover'));
   assert.deepEqual(effektiv(css, 'ck-reject', 'focus-visible'), effektiv(css, 'ck-accept', 'focus-visible'));
 });
 
-test('ingen av knappene er fylt mens den andre bare har omriss', () => {
+test(`${navn}: ingen av knappene er fylt mens den andre bare har omriss`, () => {
   const fyll = (t) => {
     const b = t['background'] ?? t['background-color'] ?? 'transparent';
     return !/^(transparent|none|rgba\([^)]*,\s*0\))$/u.test(b);
@@ -52,9 +60,9 @@ test('ingen av knappene er fylt mens den andre bare har omriss', () => {
   );
 });
 
-test('knappeteksten holder AA mot knappeflaten', () => {
+test(`${navn}: knappeteksten holder AA mot knappeflaten`, () => {
   const variabler = Object.fromEntries(
-    [...css.matchAll(/--([\w-]+):\s*(#[0-9A-Fa-f]{3,8})/gu)].map((m) => [m[1], m[2]]),
+    [...(tokens + css).matchAll(/--([\w-]+):\s*(#[0-9A-Fa-f]{3,8})/gu)].map((m) => [m[1], m[2]]),
   );
   const los = (v) => {
     const n = v.match(/var\(--([\w-]+)\)/u);
@@ -85,3 +93,4 @@ test('knappeteksten holder AA mot knappeflaten', () => {
     assert.ok(r >= 4.5, `${klasse}: kontrast ${r.toFixed(2)}:1, AA krever 4,5:1`);
   }
 });
+}

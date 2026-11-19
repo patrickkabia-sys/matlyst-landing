@@ -114,7 +114,8 @@ export function byttButikkmerker(innhold, sprak, type) {
   return ut;
 }
 
-const STIL = '<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/side.css"><script src="/skall.js" defer></script><link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- /skall:stil -->';
+// Stilblokken som alle sider med fullt skall får. Generatorene skriver den samme blokken, så ingen mal lenker til et gammelt stilark.
+export const STIL = '<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/side.css"><script src="/skall.js" defer></script><link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- /skall:stil -->';
 const TJENESTESTIL = '<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><!-- /skall:stil -->';
 const STILBLOKK = /<!-- skall:stil -->[\s\S]*?<!-- \/skall:stil -->/gu;
 const LENKE = /<link\b[^>]*>/giu;

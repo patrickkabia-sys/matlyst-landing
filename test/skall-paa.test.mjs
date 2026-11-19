@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync, statSync, cpSync, realpathSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync, statSync, cpSync, realpathSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,7 +15,8 @@ import { overskrifter } from './hjelp/overskrifter.mjs';
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const les = (fil) => readFileSync(join(rot, fil), 'utf8');
 const fiks = (navn) => les(`test/fixtures/skall-paa/${navn}.html.fiks`);
-const sider = alleSider(rot).filter((s) => s.type !== 'forside');
+const alle = alleSider(rot);
+const sider = alle.filter((s) => s.type !== 'forside');
 const ALLE = new Set(sider.map((s) => s.nokkel).filter((n) => n !== 'tjeneste:verifisering'));
 const STI = { 'omregner-nb': '/verktoy/kopp-til-dl/', 'juss-nb': '/vilkar.html', 'gammel-nb': '/finn-oppskrifter/', 'lang-sv': '/sv/spara-recept-fran-instagram/', 'uten-guider': '/verktoy/kopp-til-dl/' };
 const rendre = (...args) => { assert.equal(typeof skall.rendre, 'function', 'rendre må eksporteres'); return skall.rendre(...args); };
@@ -169,8 +170,15 @@ test('tjenester får bare tjenestestil, familie og nye språkvelgere', () => {
 test('hver utrullet side er nøyaktig det skall-paa lager', () => {
   assert.deepEqual(sider.filter((s) => erUtrullet(s.sti, les(s.fil)) && rendre(les(s.fil), s.sti) !== les(s.fil)).map((s) => s.sti), [], 'kjør: node scripts/skall-paa.mjs');
 });
-test('ingen utrullet side laster styles.css', () => {
-  assert.deepEqual(sider.filter((s) => erUtrullet(s.sti, les(s.fil)) && /href="\/styles\.css"/u.test(les(s.fil))).map((s) => s.sti), []);
+test('ingen side laster styles.css, og ingen generator kan skrive lenken igjen', () => {
+  assert.equal(existsSync(join(rot, 'styles.css')), false, 'styles.css er slettet');
+  assert.ok(alle.length > 800, `fant bare ${alle.length} sider`);
+  assert.deepEqual(alle.filter((s) => /styles\.css/u.test(les(s.fil))).map((s) => s.sti), []);
+  for (const skript of ['scripts/generer-norske-importguider.mjs', 'scripts/generer-lokalsider.mjs']) {
+    const kilde = les(skript);
+    assert.match(kilde, /\$\{STIL\}/u, `${skript} skriver ikke skallets stilblokk`);
+    assert.doesNotMatch(kilde, /href="\/styles\.css"/u, `${skript} skriver fortsatt styles.css`);
+  }
 });
 test('utrullede sider med fullt skall har nedlasting i toppen, i bunnen og fast på mobil', () => {
   for (const s of sider.filter((x) => x.type !== 'tjeneste' && erUtrullet(x.sti, les(x.fil)))) for (const v of ['topp', 'bunn', 'fast']) assert.equal(les(s.fil).split(`data-hent="${v}"`).length - 1, 1, `${s.sti}: ${v}`);

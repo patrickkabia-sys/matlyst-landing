@@ -75,7 +75,7 @@ test('ingen side i sitemappene er utelatt', () => {
   assert.ok(stier.length > 500, `fant bare ${stier.length} adresser i sitemappene`);
   assert.deepEqual(stier.filter((sti) => !filer.includes(sti) && !filer.includes(`${sti}.html`)), [], 'adresser uten fil');
   assert.deepEqual(stier.filter(erUtelatt), []);
-  for (const sti of ['index.html', 'styles.css', 'site.js', 'sitemap.xml', 'robots.txt', 'llms.txt', 'CNAME']) {
+  for (const sti of ['index.html', 'tokens.css', 'skall.css', 'side.css', 'skall.js', 'tjeneste.css', 'site.js', 'sitemap.xml', 'robots.txt', 'llms.txt', 'CNAME']) {
     assert.ok(filer.includes(sti), `${sti} finnes ikke`);
     assert.equal(erUtelatt(sti), false, `${sti} er utelatt`);
   }

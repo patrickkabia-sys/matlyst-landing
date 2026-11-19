@@ -79,7 +79,7 @@ h2[id],h3[id]{scroll-margin-top:16px}
 .page-cta{padding:56px;text-align:center}
 
 /* Spørsmål og svar: linje mellom spørsmålene, pluss som blir kryss */
-.faq{max-width:760px;margin:112px auto 0}
+.faq{max-width:68ch;margin:112px auto 0;font-size:1.1875rem}
 .faq h2{margin:0 0 44px;font-size:1.625rem;line-height:1.12;text-align:center}
 .faq details{border-bottom:1px solid var(--linje)}
 .faq details:first-of-type{border-top:1px solid var(--linje)}
@@ -87,7 +87,7 @@ h2[id],h3[id]{scroll-margin-top:16px}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"";flex:none;width:22px;height:22px;background:linear-gradient(currentColor,currentColor) center / 100% 2px no-repeat,linear-gradient(currentColor,currentColor) center / 2px 100% no-repeat;transition:transform .35s var(--ut)}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{margin:0;padding:0 44px 22px 0;max-width:62ch;color:var(--dempet)}
+.faq details p{margin:0;padding:0 44px 22px 0;max-width:62ch;font-size:1.125rem;color:var(--dempet)}
 .faq a{text-decoration:underline;text-underline-offset:.2em}
 
 /* Rader med piller: relaterte sider og omregnerlister */

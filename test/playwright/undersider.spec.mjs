@@ -193,6 +193,17 @@ test('et trykk i innholdsfortegnelsen legger ikke overskriften under toppen', as
   expect(h2.y + h2.height).toBeGreaterThan(0);
 });
 
+test('lange guider på 1280 px: prosa og FAQ har samme kolonne, og kortene flukter med helten (±1 px)', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto('/handleliste/');
+  const boks = await page.evaluate(() => Object.fromEntries(['.locale-page-hero', '.locale-prose', '.faq', '.app-cta', '.page-cta'].map((v) => { const e = document.querySelector(v); const b = e?.getBoundingClientRect(); return [v, b ? { venstre: b.left, bredde: b.width } : null]; })));
+  for (const [velger, b] of Object.entries(boks)) expect(b, `${velger} finnes ikke på guiden`).not.toBeNull();
+  expect(Math.abs(boks['.faq'].venstre - boks['.locale-prose'].venstre), `FAQ ${boks['.faq'].venstre} mot prosa ${boks['.locale-prose'].venstre}`).toBeLessThanOrEqual(1);
+  expect(Math.abs(boks['.faq'].bredde - boks['.locale-prose'].bredde), 'FAQ og prosa har ulik bredde').toBeLessThanOrEqual(1);
+  // Kortene bryter bevisst ut av lesekolonnen og følger heltens venstrekant.
+  for (const kort of ['.app-cta', '.page-cta']) expect(Math.abs(boks[kort].venstre - boks['.locale-page-hero'].venstre), `${kort} har ikke heltens venstrekant`).toBeLessThanOrEqual(1);
+});
+
 for (const bredde of [390, 1280]) test(`lange guider: figurer, filmer og bilder holder seg i lesekolonnen på ${bredde} px, og appkortene har innhold`, async ({ page }) => {
   await page.setViewportSize({ width: bredde, height: 900 });
   await page.goto(GUIDE);

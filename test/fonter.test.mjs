@@ -18,9 +18,8 @@ function* html(dir) {
   }
 }
 
-const css = () => readFileSync(join(ROT, 'styles.css'), 'utf8');
-// Stilarkene som deklarerer @font-face for sidene. Nye ark legges til her.
-const STILARK = ['styles.css', 'tokens.css'];
+// @font-face bor bare i tokens.css. Alle andre ark bruker skriftene derfra.
+const STILARK = ['tokens.css'];
 const stilark = () => STILARK.map((f) => readFileSync(join(ROT, f), 'utf8')).join('\n');
 
 // Alt vi faktisk skriver pa norsk: store og sma bokstaver, aeoa, tall og den
@@ -70,12 +69,11 @@ test('stilarket henter ingen font fra en tredjepart', () => {
   assert.doesNotMatch(stilark(), /@import/u);
 });
 
-test('stilarket definerer begge fontene lokalt med font-display: swap', () => {
+test('stilarket definerer alle fontene lokalt med font-display: swap', () => {
   const a = ansikter();
-  assert.ok(a.length >= 6, `fant bare ${a.length} @font-face i styles.css`);
+  assert.ok(a.length >= 6, `fant bare ${a.length} @font-face i tokens.css`);
   const familier = new Set(a.map((f) => f.familie));
-  assert.ok(familier.has('Fraunces'), 'Fraunces mangler som @font-face');
-  assert.ok(familier.has('DM Sans'), 'DM Sans mangler som @font-face');
+  for (const navn of ['Schibsted Grotesk', 'IBM Plex Mono', 'Fraunces', 'DM Sans', 'Fraunces Ordmerke']) assert.ok(familier.has(navn), `${navn} mangler som @font-face`);
   for (const f of a) assert.match(f.kropp, /font-display:\s*swap/u, `@font-face uten swap: ${f.fil}`);
 });
 
@@ -106,19 +104,123 @@ test('fonten som dekker vanlig tekst kan faktisk tegne norsk', () => {
   }
 });
 
-test('hver familie og stil sidene bruker har et ansikt som tegner norsk', () => {
-  const dekker = new Set(
-    ansikter()
-      .filter((f) => {
-        if (!iOmrade(0x41, f.omrader)) return false;
-        const d = kodepunkter(sti(f.fil));
-        return NORSK.every((cp) => d.has(cp));
-      })
-      .map((f) => `${f.familie}/${f.stil}`),
-  );
-  for (const par of ['Fraunces/normal', 'Fraunces/italic', 'DM Sans/normal']) {
-    assert.ok(dekker.has(par), `${par} har ingen fil som kan tegne norsk tekst`);
+// Fontbruken avledes fra stilarkene og sidene, ikke fra en fast liste: står det Fraunces kursiv
+// eller DM Sans 300 i et stilark, er det stilarket som rettes, ikke testen.
+const BRUKSARK = ['tokens.css', 'skall.css', 'side.css', 'forside.css', 'tjeneste.css', 'avmeld.css', 'tiktok-auth.css', '404.css', 'v/vervekort.css'];
+const uten = (t) => t.replace(/\/\*[\s\S]*?\*\//gu, '');
+const GENERISKE = new Set(['serif', 'sans-serif', 'monospace', 'system-ui', 'ui-monospace', 'ui-serif', 'ui-sans-serif', 'ui-rounded', 'inherit', 'initial', 'unset', '-apple-system', 'blinkmacsystemfont', 'sfmono-regular']);
+
+function variabler() {
+  const t = uten(readFileSync(join(ROT, 'tokens.css'), 'utf8'));
+  return Object.fromEntries([...t.matchAll(/(--[\w-]+)\s*:\s*([^;}]+)/gu)].map(([, n, v]) => [n, v.trim()]));
+}
+
+function forsteFamilie(verdi, vars) {
+  let v = verdi.trim();
+  for (let i = 0; i < 5; i++) v = v.replace(/var\((--[\w-]+)\s*(?:,[^)]*)?\)/gu, (_, n) => vars[n] ?? '');
+  const f = v.split(',')[0].trim().replace(/^['"]|['"]$/gu, '').trim();
+  return f && !GENERISKE.has(f.toLowerCase()) ? f : null;
+}
+
+const UKJENT = 'ukjent';
+const vektTall = (v, vars = {}) => {
+  let t = String(v).replace(/\s*!important\s*$/u, '').trim();
+  const nav = t.match(/^var\((--[\w-]+)/u);
+  if (nav) t = (vars[nav[1]] ?? '').trim();
+  const n = { bold: 700, normal: 400 }[t] ?? (/^\d{1,4}$/u.test(t) ? Number(t) : NaN);
+  return Number.isFinite(n) && n >= 1 && n <= 1000 ? n : UKJENT;
+};
+
+// Alle kombinasjoner familie/stil/vekt som en regel faktisk ber om. Reglene er:
+// - `!important` strippes før verdien leses.
+// - Kortformen `font` uten vekt ber om 400.
+// - En regel uten egen vekt arver: vekten slås opp på forelder-velgeren i samme ark (`.ordmerke em` arver
+//   `.ordmerke`), ellers 400. Det samme gjelder familie (ellers hovedfamilien i rammen, --f).
+// - En vekt som ikke kan leses (bolder, lighter, calc, ukjent var()) blir UKJENT og gir rødt, aldri grønt.
+export function bruk(kilde, vars, hvor) {
+  const rader = [];
+  for (const [, velger, kropp0] of uten(kilde).replace(/@font-face\s*\{[^}]*\}/gu, '').matchAll(/([^{}@]+)\{([^{}]*)\}/gu)) {
+    if (/^\s*$/u.test(velger)) continue;
+    const kropp = kropp0.replace(/\s*!important/gu, '');
+    const dekl = (navn) => kropp.match(new RegExp(`(?:^|[;\\s])${navn}\\s*:\\s*([^;]+)`, 'u'))?.[1].trim();
+    const kort = kropp.match(/(?:^|[;\s])font\s*:\s*([^;]+)/u)?.[1].trim();
+    let familie = dekl('font-family'), vekt = dekl('font-weight'), stil = dekl('font-style');
+    let kortUlest = false;
+    if (kort && !/^(inherit|initial|unset)$/u.test(kort)) {
+      const m = kort.match(/^((?:italic|oblique|normal)\s+)?((?:\d{3,4}|bold|normal)\s+)?(?:[\d.]+(?:px|rem|em|%|pt)|clamp\([^)]*\))(?:\s*\/\s*[^\s]+)?\s+(.+)$/u);
+      if (m) { stil ??= m[1]?.trim(); vekt ??= m[2]?.trim() ?? '400'; familie ??= m[3]; } else kortUlest = true;
+    }
+    if (!familie && !vekt && !stil && !kortUlest) continue;
+    if (vekt && /^(inherit|initial|unset)$/u.test(vekt)) vekt = undefined;
+    rader.push({ velgere: velger.split(',').map((v) => v.trim()), familie: familie ? forsteFamilie(familie, vars) : undefined, eksplisitt: Boolean(familie), vekt: kortUlest ? UKJENT : vekt ? vektTall(vekt, vars) : undefined, stil });
   }
+  const oppslag = (felt) => new Map(rader.filter((r) => r[felt] !== undefined && (felt !== 'familie' || (r.eksplisitt && r.familie))).flatMap((r) => r.velgere.map((v) => [v, r[felt]])));
+  const famKart = oppslag('familie'), vektKart = oppslag('vekt');
+  const forelder = (v) => v.replace(/\s*(?:[>+~]\s*|\s)[^\s>+~]+$/u, '');
+  const ut = [];
+  for (const r of rader) {
+    if (r.eksplisitt && !r.familie) continue; // generisk familie, ingen webfont
+    for (const v of r.velgere) {
+      const fam = r.eksplisitt ? r.familie : (famKart.get(forelder(v)) ?? forsteFamilie('var(--f)', vars));
+      const vekt = r.vekt ?? vektKart.get(forelder(v)) ?? 400;
+      ut.push({ familie: fam, stil: r.stil === 'oblique' ? 'italic' : r.stil ?? 'normal', vekt, hvor: `${hvor} ${v.slice(0, 70)}`, eksplisittFamilie: r.eksplisitt });
+    }
+  }
+  return ut;
+}
+
+function alleBruk() {
+  const vars = variabler();
+  const ut = [];
+  for (const f of BRUKSARK) if (existsSync(join(ROT, f))) ut.push(...bruk(readFileSync(join(ROT, f), 'utf8'), vars, f));
+  for (const s of alleSider(ROT)) {
+    for (const m of readFileSync(join(ROT, s.fil), 'utf8').matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/giu)) ut.push(...bruk(m[1], vars, s.sti));
+  }
+  return ut;
+}
+
+const dekkerVekt = (a, { familie, stil, vekt }) => a.some((f) => {
+  if (f.familie !== familie || f.stil !== stil) return false;
+  if (vekt === UKJENT) return false;
+  const w = f.vekt.trim().split(/\s+/u).map(Number);
+  const [min, maks] = w.length === 2 ? w : [w[0], w[0]];
+  return vekt >= min && vekt <= maks;
+});
+
+test('vakten leser bruk fra regler, også i kortskrift og via var()', () => {
+  const v = variabler();
+  assert.deepEqual(bruk('a{font:500 15px/1.55 var(--f)}b{font-family:"DM Sans",sans-serif;font-weight:300}c{font-family:Fraunces;font-style:italic}', v, 't').map((x) => [x.familie, x.stil, x.vekt]),
+    [['Schibsted Grotesk', 'normal', 500], ['DM Sans', 'normal', 300], ['Fraunces', 'italic', 400]]);
+  assert.deepEqual(bruk('.m{font-family:\'Fraunces Ordmerke\';font-style:italic}.m em{font-weight:400}', v, 't').map((x) => [x.familie, x.stil, x.vekt]),
+    [['Fraunces Ordmerke', 'italic', 400], ['Fraunces Ordmerke', 'normal', 400]]);
+  // Det vakten ikke forstår skal bli rødt: !important leses, kortform uten vekt er 400, ulesbar vekt er ukjent.
+  assert.deepEqual(bruk('.app{font-family:\'DM Sans\';font-weight:300 !important}', v, 't').map((x) => x.vekt), [300]);
+  assert.deepEqual(bruk('.t{font:23px/1.2 \'Fraunces\',serif}', v, 't').map((x) => x.vekt), [400]);
+  assert.deepEqual(bruk('.t{font-family:\'DM Sans\';font-weight:bolder}.u{font-weight:calc(300 + 100)}', v, 't').map((x) => x.vekt), [UKJENT, UKJENT]);
+  assert.deepEqual(bruk('.a{font-weight:300}.a b{font-family:\'DM Sans\'}', v, 't').map((x) => x.vekt), [300, 300]);
+});
+
+test('hver kombinasjon av familie, stil og vekt som stilarkene og sidene ber om er dekket av et @font-face i tokens.css', () => {
+  const a = ansikter();
+  const bruket = alleBruk();
+  assert.ok(bruket.length > 40, `fant bare ${bruket.length} fontbruk, leser vakten noe?`);
+  const familier = new Set(a.map((f) => f.familie));
+  const mangler = bruket.filter((b) => b.familie && familier.has(b.familie) && !dekkerVekt(a, b));
+  assert.deepEqual(mangler.map((b) => `${b.familie} ${b.stil} ${b.vekt}: ${b.hvor}`), []);
+  const ukjente = bruket.filter((b) => b.eksplisittFamilie && b.familie && !familier.has(b.familie));
+  assert.deepEqual(ukjente.map((b) => `${b.familie}: ${b.hvor}`), [], 'en familie uten @font-face i tokens.css');
+});
+
+test('hver familie som bærer tekst har et ansikt som tegner norsk, og ordmerket har bare tegnene matlys', () => {
+  const a = ansikter();
+  for (const familie of new Set(['Schibsted Grotesk', 'DM Sans', 'Fraunces', ...alleBruk().filter((b) => b.eksplisittFamilie && b.familie && b.familie !== 'Fraunces Ordmerke' && b.familie !== 'IBM Plex Mono').map((b) => b.familie)])) {
+    const dekker = a.filter((f) => f.familie === familie && iOmrade(0x41, f.omrader) && NORSK.every((cp) => kodepunkter(sti(f.fil)).has(cp)));
+    assert.ok(dekker.length > 0, `${familie} har ingen fil som kan tegne norsk tekst`);
+  }
+  const ordmerke = a.filter((f) => f.familie === 'Fraunces Ordmerke');
+  assert.ok(ordmerke.length > 0);
+  const tegn = ordmerke.flatMap((f) => f.omrader.flatMap(([x, y]) => Array.from({ length: y - x + 1 }, (_, i) => String.fromCodePoint(x + i)))).sort().join('');
+  assert.equal(tegn, [...'matlys'].sort().join(''));
 });
 
 test('hver fontfil holder seg innenfor sitt eget unicode-range', () => {
@@ -154,28 +256,13 @@ test('lisensen følger fontfilene', () => {
   }
 });
 
-test('alle vektene sidene bruker er dekket av de lokale fontene', () => {
-  const a = ansikter();
-  function dekker(familie, stil, vekt) {
-    return a.some((f) => {
-      if (f.familie !== familie || f.stil !== stil) return false;
-      const w = f.vekt.trim().split(/\s+/u).map(Number);
-      const [min, maks] = w.length === 2 ? w : [w[0], w[0]];
-      return vekt >= min && vekt <= maks;
-    });
-  }
-  for (const vekt of [300, 400, 500]) assert.ok(dekker('Fraunces', 'normal', vekt), `Fraunces normal ${vekt} mangler`);
-  for (const vekt of [300, 400]) assert.ok(dekker('Fraunces', 'italic', vekt), `Fraunces kursiv ${vekt} mangler`);
-  for (const vekt of [300, 400, 500, 600]) assert.ok(dekker('DM Sans', 'normal', vekt), `DM Sans ${vekt} mangler`);
-});
-
 function fontFaces(tekst) {
   return [...tekst.matchAll(/@font-face\s*\{[^}]*\}/gu)].map((m) => m[0].replace(/\s+/gu, ''));
 }
 
 // Ingen publisert side har eget stilark i markupen lenger: de tre norske juridiske
 // sidene var de siste, og lenker nå tokens.css via skallet. @font-face hører
-// hjemme i styles.css og tokens.css, så skrifter kan ikke drive fra hverandre.
+// hjemme i tokens.css, så skrifter kan ikke drive fra hverandre.
 test('ingen publisert side har @font-face i en <style>-blokk', () => {
   const sider = alleSider(ROT);
   assert.ok(sider.length >= 800, `alleSider ga bare ${sider.length} sider`);

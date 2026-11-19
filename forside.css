@@ -228,7 +228,7 @@ html.js .hero h1:not(.klar){visibility:hidden}
 .a-lager i{width:7px;height:7px;border-radius:50%;background:var(--a-oransje)}
 .a-ing{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:15px 0;border-bottom:1px solid var(--a-kant);font-size:19px}
 .a-ing:last-child{border-bottom:0}
-.a-ing b{font:700 19px/1 'Fraunces',Georgia,serif;color:var(--a-oransje);white-space:nowrap}
+.a-ing b{font:600 19px/1 'Fraunces',Georgia,serif;color:var(--a-oransje);white-space:nowrap}
 /* Lag maten: et trykk på tiden i steget maner fram tidtakeren, og stegene glir ned under den */
 .a-lagscene{position:relative;height:440px;margin:-14px;padding:14px;overflow:hidden;-webkit-mask-image:linear-gradient(var(--svart) calc(100% - 56px),transparent);mask-image:linear-gradient(var(--svart) calc(100% - 56px),transparent)}
 .a-stegliste{transform:translateY(34px);transition:transform .95s var(--ut)}
