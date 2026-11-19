@@ -64,7 +64,8 @@ test('skriving, glød og skjeletter gir valgt svar og fortsetter i loop etter tr
   await expect(page.locator('.forslag').first()).toHaveAttribute('aria-pressed', 'true', { timeout: 10000 });
 });
 
-test('skriving og svar fryses utenfor bildet og fortsetter ved retur', async ({ page }) => {
+test('skriving og svar nullstilles til startbildet utenfor bildet og begynner forfra ved retur', async ({ page }) => {
+  // Patrick 19.11: Spør Matlyst spiller bare mens en flate er minst 60 % i bildet; ellers står den i startbildet og begynner forfra.
   await rullTil(page, '.sporflate');
   await page.locator('.forslag').nth(1).click();
   await page.waitForTimeout(250);
@@ -72,19 +73,17 @@ test('skriving og svar fryses utenfor bildet og fortsetter ved retur', async ({ 
   expect(delvis.length).toBeGreaterThan(0);
   expect(delvis.length).toBeLessThan(T.spor.forslag[1].length);
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-  await page.waitForTimeout(150);
-  const skrift = await tilstand(page);
-  await page.waitForTimeout(1500);
-  expect(await tilstand(page)).toEqual(skrift);
+  await expect(page.locator('#sporTekst')).toHaveText(T.spor.forslag[0]);
+  await expect(page.locator('.forslag').first()).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('#sporListe .a-endr')).toHaveCount(T.eksempler.svar[0].endringer.length);
+  await expect(page.locator('.sk')).toHaveCount(0);
+  const stille = await tilstand(page);
+  await page.waitForTimeout(2500);
+  expect(await tilstand(page), 'startbildet står stille utenfor bildet').toEqual(stille);
   await rullTil(page, '.sporflate');
-  await expect(page.locator('.sk')).toHaveCount(3);
-  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
-  await page.waitForTimeout(150);
-  const skjelett = await tilstand(page);
-  await page.waitForTimeout(2200);
-  expect(await tilstand(page)).toEqual(skjelett);
-  await rullTil(page, '.sporflate');
-  await expect(page.locator('#sporListe .a-endr')).toHaveCount(T.eksempler.svar[1].endringer.length);
+  // Tilbake: skrivingen begynner forfra (tomt felt og så tegn for tegn).
+  await expect.poll(async () => (await page.locator('#sporTekst').textContent()).length, { timeout: 3000 }).toBeLessThan(T.spor.forslag[0].length);
+  await expect(page.locator('#sporTekst')).toHaveText(T.spor.forslag[0], { timeout: 10000 });
 });
 
 test('redusert bevegelse viser første svar ferdig og kobler fra rulling også ved endring', async ({ page }) => {

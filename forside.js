@@ -223,12 +223,28 @@
       if (synlig && !bevegelse.matches && !ramme) { sist = performance.now(); ramme = requestAnimationFrame(tikk); }
     };
     forslag.forEach((knapp, i) => knapp.addEventListener('click', () => { velg(i); start(); }));
-    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => {
-      synlig = rader[0].isIntersecting;
+    // Patrick 19.11: Spør Matlyst spiller bare mens en av flisene (mobil) eller kolonnene (PC) er minst 60 % i bildet. Aktiv: start forfra. Ellers: stopp og startbildet.
+    const flater = [...seksjon.querySelectorAll('.to > *')], andel = new Map();
+    const startbilde = () => {
+      nr = 0; tegn = 0; tid = 0; fase = 'skriver';
+      forslag.forEach((knapp, i) => knapp.setAttribute('aria-pressed', String(i === 0)));
+      felt.classList.remove('ferdig');
+      tekst.textContent = forslag[0].textContent;
+      settSvar();
+    };
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((rader) => {
+      rader.forEach((rad) => andel.set(rad.target, rad.isIntersecting ? rad.intersectionRatio : 0));
+      const ny = flater.some((f) => (andel.get(f) || 0) >= 0.6);
+      if (ny === synlig) return;
+      synlig = ny;
       seksjon.classList.toggle('i-bildet', synlig);
-      if (synlig) start();
-      else { cancelAnimationFrame(ramme); ramme = 0; }
-    }).observe(seksjon);
+      cancelAnimationFrame(ramme); ramme = 0;
+      if (bevegelse.matches) return;
+      if (synlig) { velg(0); start(); } else startbilde();
+      }, { threshold: [0, 0.6] });
+      flater.forEach((f) => io.observe(f));
+    }
     const settRolig = () => {
       cancelAnimationFrame(ramme); ramme = 0;
       if (bevegelse.matches) velg(0);
@@ -258,6 +274,15 @@
       if (bevegelse.matches) flater.forEach((el) => el.getAnimations().forEach((a) => a.cancel()));
     });
   }
+  // Fokus i en sveiperad (mobil): knappen som får fokus skal alltid være helt synlig i raden, ikke bare delvis (nettleseren ruller bare når den er helt skjult).
+  document.querySelectorAll('.a-husvelg, .forslagrad, .a-merker').forEach((rad) => rad.addEventListener('focusin', (e) => {
+    const k = e.target.closest('button'); if (!k || rad.scrollWidth <= rad.clientWidth) return;
+    const kb = k.getBoundingClientRect(), rb = rad.getBoundingClientRect();
+    const venstre = kb.left - rb.left - 8, hoyre = kb.right - rb.right + 8;
+    if (venstre < 0) rad.scrollBy({ left: venstre, behavior: bevegelse.matches ? 'auto' : 'smooth' });
+    else if (hoyre > 0) rad.scrollBy({ left: Math.min(hoyre, venstre), behavior: bevegelse.matches ? 'auto' : 'smooth' });
+  }));
+
   // Patrick 19.11: ett sveip er ett kort (mobil med berøring, stabelen er på). CSS-snappunktene på ankrene (.snap) tar de korte sveipene; her er reserven:
   // etter at rullingen har stoppet (scrollend), glir siden mykt til neste kortstart, og et kraftig sveip som ville passert flere kort stoppes på neste.
   // Ut av stabelen (nedover fra siste kort, oppover fra første) og inn i den ovenfra går fritt. Ingen preventDefault; ved redusert bevegelse hopper siden direkte.
@@ -355,35 +380,37 @@
     const start = () => {
       if (synlig && !bevegelse.matches && !ramme) { sist = performance.now(); ramme = requestAnimationFrame(tikk); }
     };
-    // Ruta går bare mens den er i bildet og ikke dekket av den neste.
+    // Patrick 19.11: ruta spiller bare mens den er aktiv: minst 60 % i bildet og ikke dekket av den neste (stabelen på mobil: den øverste, udekkede).
+    // Når den blir aktiv, starter den fra steg 0; når den ikke lenger er det, stopper løkka og ruta nullstilles til startbildet (den fortsetter aldri midt i).
     const bruk = (tvang) => {
       const ny = ioSynlig && !dekket;
       if (ny === synlig && !tvang) return;
       synlig = ny;
       rute.classList.toggle('i-bildet', synlig);
+      cancelAnimationFrame(ramme); ramme = 0;
+      if (inngang) { inngang.finish(); inngang = null; }
+      rute.getAnimations({ subtree: true }).forEach((a) => a.cancel());
+      tid = 0; neste = 0;
+      if (bevegelse.matches) return;
+      // Startbildet (steg 0) settes i begge tilfeller; animasjoner kjører bare mens ruta er aktiv.
+      forloep.steg[0][1](); neste = 1;
       if (synlig) {
-        rute.getAnimations({ subtree: true }).forEach((a) => { if (a.playState === 'paused') a.play(); });
-        if (!innkommet && !bevegelse.matches) {
+        if (!innkommet) {
           innkommet = true;
           inngang = animer(rute, [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 600, fill: 'backwards', easing: 'cubic-bezier(.16,1,.3,1)' });
         }
         start();
-      } else {
-        cancelAnimationFrame(ramme); ramme = 0;
-        // Innsveipet er en engangsbevegelse: pauses det utenfor bildet, står kortet igjen utenfor kolonnen (translateX 96 px).
-        if (inngang) { inngang.finish(); inngang = null; }
-        rute.getAnimations({ subtree: true }).forEach((a) => a.pause());
       }
     };
-    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => { ioSynlig = rader[0].isIntersecting; bruk(true); }, { threshold: .08 }).observe(rute);
+    if ('IntersectionObserver' in window) new IntersectionObserver((rader) => { const rad = rader[rader.length - 1]; ioSynlig = rad.isIntersecting && rad.intersectionRatio >= 0.6; bruk(false); }, { threshold: [0, 0.6] }).observe(rute);
     kortRegister.push({ rute, sett: (d) => { if (d === dekket) return; dekket = d; rute.classList.toggle('dekket', d); if ('IntersectionObserver' in window) bruk(false); } });
     const roligKort = () => {
       cancelAnimationFrame(ramme); ramme = 0;
       rute.getAnimations({ subtree: true }).forEach((a) => a.cancel());
       tid = 0; neste = 0;
       if (bevegelse.matches) { innkommet = true; forloep.slutt(); }
-      // Utenfor bildet beholdes stillbildet til neste synlige ramme.
-      else if (synlig) { forloep.steg[0][1](); neste = 1; start(); }
+      // Ikke aktiv: startbildet. Aktiv: begynn forfra.
+      else { forloep.steg[0][1](); neste = 1; if (synlig) start(); }
     };
     bevegelse.addEventListener('change', roligKort);
     roligKort();
