@@ -26,6 +26,10 @@ jobs:
       - name: Installer avhengigheter
         run: npm ci
 
+      # Noen enhetstester (side-css-beregnet, skall) starter Chromium.
+      - name: Installer Chromium
+        run: npx playwright install --with-deps chromium
+
       - name: Kjør enhetstester
         run: npm test
 
