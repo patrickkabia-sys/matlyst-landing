@@ -3,11 +3,12 @@
 // 1. Alle indekserbare sider får nedlastingsknapp i toppmenyen og en fast nedlastingslinje på mobil.
 // 2. Forsidene (nb, sv, da, en) får telefoner og matformer i heroen, og funksjonskortene blir rader med telefon.
 // Idempotent: markørene data-app-uttrykk og app-uttrykk:slutt hindrer dobbel innsetting.
-import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { matformer, tomat, sitron, chili, blad, egg } from './illustrasjon.mjs';
 import { SIDEGRUPPER } from './locale-sider.mjs';
+import { alleSider, erUtrullet, UTRULLET } from './sidetyper.mjs';
 
 const TEKSTER = {
   nb: { last: 'Få appen', tittel: 'Last ned Matlyst', under: 'Gratis for iPhone og Android', regionnavn: 'Last ned appen' },
@@ -28,7 +29,6 @@ const IMPORT_BILDE = {
   da: { src: '/images/en-guide/da/matlyst-share-instagram-post-to-matlyst-poster.webp', w: 540, h: 960, alt: 'Illustration: del et opslag med Matlyst' },
 };
 const HJEM = { '/': 'nb', '/sv/': 'sv', '/da/': 'da', '/en/': 'en' };
-const UTELATT = new Set(['node_modules', '.git', 'test-results', 'playwright-report']);
 const MERKE = '<!-- app-uttrykk:start -->';
 const MERKE_SLUTT = '<!-- app-uttrykk:slutt -->';
 
@@ -137,7 +137,8 @@ export function navMeny(lang) {
   return `${MERKE}<div class="nav-meny"><button type="button" class="nav-meny-knapp" aria-expanded="false" aria-controls="nav-panel" aria-label="${h.meny}"><span class="nav-meny-tekst">${tittel}</span></button><div class="nav-panel" id="nav-panel" hidden>${krukke('terracotta', e.produkt, a)}${krukke('honning', h.verktoy, verktoy)}${krukke('salvie', e.laer, b)}${krukke('plomme', e.folg, sosial)}</div></div>${MERKE_SLUTT}`;
 }
 
-export function behandle(html, sti) {
+export function behandle(html, sti, utrullet = UTRULLET) {
+  if (erUtrullet(sti, html, utrullet)) return html;
   if (html.includes('data-app-uttrykk') || erNoindex(html)) return html;
   const lang = sprakFra(html);
   if (!TEKSTER[lang]) return html;
@@ -162,18 +163,10 @@ export function behandle(html, sti) {
   return ut.replace('<body', '<body data-app-uttrykk="1"');
 }
 
-function htmlFiler(mappe) {
-  return readdirSync(mappe, { withFileTypes: true }).flatMap((d) => {
-    if (d.isDirectory()) return UTELATT.has(d.name) ? [] : htmlFiler(join(mappe, d.name));
-    return d.name.endsWith('.html') ? [join(mappe, d.name)] : [];
-  });
-}
-
 export function kjor(rot) {
   const endret = [];
-  for (const fil of htmlFiler(rot)) {
-    const rel = relative(rot, fil);
-    const sti = rel === 'index.html' ? '/' : `/${rel.replace(/index\.html$/u, '')}`;
+  for (const { fil: rel, sti } of alleSider(rot)) {
+    const fil = join(rot, rel);
     const html = readFileSync(fil, 'utf8');
     const ny = behandle(html, sti);
     if (ny !== html) { writeFileSync(fil, ny); endret.push(rel); }

@@ -50,8 +50,8 @@ test('uttrekk prøves på alle undersider og alle kast rapporteres', (t) => {
   }
   t.diagnostic(`${sider.length} sider; ${sider.length - kast.length} uttrekk; ${kast.length} kast.`);
   for (const feil of kast) t.diagnostic(`${feil.sti}: ${feil.grunn}`);
-  // Tjenesteavvisningen er kontrakten fra oppgave 6, og rapporteres som en bekymring.
-  assert.deepEqual(kast.filter((s) => s.type !== 'tjeneste' || !s.grunn.startsWith('Kan ikke trekke ut tjeneste')), []);
+  // Ruling 42: alle tjenester skal kaste, og ingen andre typer får kaste.
+  assert.deepEqual(kast.map((s) => s.sti).sort(), sider.filter((s) => s.type === 'tjeneste').map((s) => s.sti).sort());
   // Brevet sier 875, men registeret er kilden til hvilke filer som faktisk finnes.
   assert.ok(sider.length > 800, 'hele sideregisteret må være med');
 });
@@ -143,7 +143,7 @@ test('samtykke opprettes bare når site.js finnes, og hale og innhold bevares', 
   const sti = STI['juss-nb'], html = fiks('juss-nb');
   const ut = rendre(html, sti, ALLE);
   assert.doesNotMatch(ut, /id="cookie"|data-consent-withdraw/u);
-  assert.equal(skall.trekkUt(ut, sti).innhold, skall.trekkUt(html, sti).innhold);
+  assert.equal(skall.trekkUt(ut, sti).innhold, skall.trekkUt(html, sti).innhold.replace('<main class="doc">', '<main class="doc" id="hovedinnhold">'));
   assert.equal(skall.trekkUt(ut, sti).hale, skall.trekkUt(html, sti).hale);
   const med = rendre(html.replace('</body>', '<script src="/site.js" defer></script></body>'), sti, ALLE);
   assert.equal(skall.trekkUt(med, sti).banner, samtykke('nb'));
@@ -199,11 +199,28 @@ test('kjor skriver bare endrede filer i valgt rot og er idempotent', (t) => {
   assert.equal(statSync(join(mappe, 'index.html')).mtimeMs, uendretTid);
 });
 
-test('CLI og npm-kommandoen bruker skall-paa og rapporterer null uten utrulling', (t) => {
+test('CLI skriver faktisk rendring ved utrulling og lar andre sider stå', (t) => {
   assert.equal(JSON.parse(les('package.json')).scripts.skall, 'node scripts/skall-paa.mjs');
-  // CLI prøves i en tom arbeidskopi, så testen aldri kan skrive publiserte sider.
+  // Utrulling endres bare i kopien. Forventningen kommer fra resultatkontrakten.
   const mappe = realpathSync(mkdtempSync(join(tmpdir(), 'skall-cli-')));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   cpSync(join(rot, 'scripts'), join(mappe, 'scripts'), { recursive: true });
+  const fil = join(mappe, 'verktoy/kopp-til-dl/index.html');
+  mkdirSync(join(mappe, 'verktoy/kopp-til-dl'), { recursive: true });
+  writeFileSync(fil, fiks('omregner-nb'));
+  writeFileSync(join(mappe, 'vilkar.html'), fiks('juss-nb'));
+  const kjorCli = () => execFileSync('/opt/homebrew/bin/node', [join(mappe, 'scripts/skall-paa.mjs')], { cwd: tmpdir(), encoding: 'utf8' });
+  assert.equal(kjorCli(), 'skall-paa: 0 sider oppdatert\n');
+  assert.equal(readFileSync(fil, 'utf8'), fiks('omregner-nb'));
+  const register = join(mappe, 'scripts/sidetyper.mjs');
+  writeFileSync(register, readFileSync(register, 'utf8').replace('export const UTRULLET = new Set();', "export const UTRULLET = new Set(['omregner']);"));
+  assert.equal(kjorCli(), 'skall-paa: 1 sider oppdatert\n');
+  const ut = readFileSync(fil, 'utf8');
+  assert.notEqual(ut, fiks('omregner-nb'));
+  for (const del of ['<!-- skall:topp -->', '<!-- skall:bunn -->', 'data-sidetype="omregner"', 'href="/skall.css"', 'class="hopp"']) assert.ok(ut.includes(del), del);
+  assert.ok(!ut.includes('href="/styles.css"'));
+  assert.deepEqual(overskrifter(ut), overskrifter(fiks('omregner-nb')));
+  assert.equal(readFileSync(join(mappe, 'vilkar.html'), 'utf8'), fiks('juss-nb'));
   assert.equal(execFileSync('/opt/homebrew/bin/node', [join(mappe, 'scripts/skall-paa.mjs')], { cwd: tmpdir(), encoding: 'utf8' }), 'skall-paa: 0 sider oppdatert\n');
+  assert.equal(readFileSync(fil, 'utf8'), ut);
 });

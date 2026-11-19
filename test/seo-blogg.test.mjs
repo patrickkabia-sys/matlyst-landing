@@ -5,6 +5,8 @@ import { join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
+import { rendre, trekkUt } from '../scripts/skall-paa.mjs';
+import { erUtrullet } from '../scripts/sidetyper.mjs';
 
 import {
   autoArtikkelMain,
@@ -75,6 +77,9 @@ function byggMidlertidigNettsted() {
   skrivFixture(generertRot, true);
   execFileSync(process.execPath, ['scripts/generer-norske-importguider.mjs'], { cwd: generertRot });
   execFileSync(process.execPath, ['scripts/generer-lokalsider.mjs'], { cwd: generertRot });
+  for (const skript of ['guidelenker', 'lenker-sett', 'skall-paa', 'app-uttrykk', 'app-bevis', 'bilde-attributter', 'sprak-signaler']) {
+    execFileSync('/opt/homebrew/bin/node', [`scripts/${skript}.mjs`], { cwd: generertRot });
+  }
   return generertRot;
 }
 
@@ -163,5 +168,22 @@ test('lanseringstestene godtar auto-artikler og deres publiseringsdato', () => {
 test('auto-artikkel får ikke forbudte merkenavn fra guidebunnteksten', () => {
   const html = readFileSync(join(byggMidlertidigNettsted(), `blogg/${fixture.slug}/index.html`), 'utf8');
 
-  assert.doesNotMatch(html, /Matprat|Godt\.no|\bNom\b/iu);
+  assert.doesNotMatch(trekkUt(html, `/blogg/${fixture.slug}/`).innhold, /Matprat|Godt\.no|\bNom\b/iu);
+});
+
+test('den genererte autoartikkelen er det skall-paa lager', (t) => {
+  const sti = `/blogg/${fixture.slug}/`;
+  const html = readFileSync(join(byggMidlertidigNettsted(), `blogg/${fixture.slug}/index.html`), 'utf8');
+  if (!erUtrullet(sti, html)) return t.skip('Blogg er ikke rullet ut ennå');
+  assert.equal(html, rendre(html, sti));
+});
+
+test('generatorkjeden gir autoartikkelen meny, bilder med mål og språksignal', () => {
+  const html = readFileSync(join(byggMidlertidigNettsted(), `blogg/${fixture.slug}/index.html`), 'utf8');
+  assert.match(html, /class="(?:nav-meny|topp)"/u);
+  assert.match(html, /http-equiv="content-language" content="nb-NO"/u);
+  for (const bilde of html.matchAll(/<img[^>]*src="\/images\/(?:appstore-badge\.svg|googleplay-badge-en\.png)"[^>]*>/gu)) {
+    assert.match(bilde[0], /width="\d+"/u);
+    assert.match(bilde[0], /height="\d+"/u);
+  }
 });

@@ -1,7 +1,7 @@
-import { readFileSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync, writeFileSync, mkdirSync, lstatSync } from 'node:fs';
+import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { normaliserSti, sidetype, tjenestefamilie, alleSider, erUtrullet, nokkel, UTRULLET } from './sidetyper.mjs';
+import { normaliserSti, sidetype, tjenestefamilie, alleSider, erUtrullet, nokkel, UTRULLET, EKSEMPEL, trygtUnderRot } from './sidetyper.mjs';
 import { SKALLTEKST } from './skall-tekst.mjs';
 import { gruppeForSti } from './locale-sider.mjs';
 import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from './skall.mjs';
@@ -155,6 +155,21 @@ function bodyAttributter(html, type, familie) {
   });
 }
 
+function innholdsramme(innhold, type) {
+  let ut = innhold;
+  // De eldre heltene står utenfor main. Behold utseende og anker, men la
+  // header.topp være sidens eneste banner-landemerke. Knappene er byttet først.
+  for (const { start, slutt } of ctaOmrader(innhold, type).filter((o) => o.verdi === 'helt').reverse()) {
+    const helt = innhold.slice(start, slutt).replace(/^<header\b/u, '<div').replace(/<\/header>$/u, '</div>');
+    ut = ut.slice(0, start) + helt + ut.slice(slutt);
+  }
+  // De tre eldre juridiske sidene mangler mål for hopp-lenka.
+  if (!/\bid=["']hovedinnhold["']/u.test(ut)) {
+    ut = ut.replace(/<main\b[^>]*>/u, (main) => attributt(main, 'id') === undefined ? main.slice(0, -1) + ' id="hovedinnhold">' : main);
+  }
+  return ut;
+}
+
 export function rendre(html, sti, utrullet = UTRULLET) {
   if (!erUtrullet(sti, html, utrullet)) return html;
   const n = nokkel(sti, html);
@@ -171,7 +186,7 @@ export function rendre(html, sti, utrullet = UTRULLET) {
   const d = trekkUt(html, sti);
   const velgere = gruppe ? Object.fromEntries(['topp', 'bunn'].map((plass) => [plass, sprakvelger(d.sprak, plass, gruppe.sider)])) : d.sprakvelgere;
   const kropp = bodyAttributter(stilHode(d.kropp, false), d.type);
-  const innhold = byttButikkmerker(d.innhold, d.sprak, d.type);
+  const innhold = innholdsramme(byttButikkmerker(d.innhold, d.sprak, d.type), d.type);
   return kropp + '<!-- skall:topp --><div class="side"><div class="kort"><div class="blad">'
     + topp(d.sprak, { sprakvelger: velgere.topp }) + '<!-- /skall:topp -->' + innhold
     + '<!-- skall:bunn --></div>' + hylledel(d.sprak, { guider: d.guider }) + '</div>'
@@ -180,18 +195,78 @@ export function rendre(html, sti, utrullet = UTRULLET) {
     + '</div><!-- /skall:bunn -->' + d.hale;
 }
 
-export function kjor(rot, utrullet = UTRULLET) {
+export function kjor(rot, utrullet = UTRULLET, { forhandsvis: mal } = {}) {
+  if (mal !== undefined) return forhandsvis(rot, utrullet, mal);
   const endrede = [];
   for (const s of alleSider(rot)) {
-    const fil = join(rot, s.fil), html = readFileSync(fil, 'utf8');
+    const fil = join(rot, s.fil);
+    if (!trygtUnderRot(rot, fil)) continue;
+    const html = readFileSync(fil, 'utf8');
     const ut = rendre(html, s.sti, utrullet);
-    if (ut === html) continue;
+    if (ut === html || !trygtUnderRot(rot, fil)) continue;
     writeFileSync(fil, ut);
     endrede.push(s.fil);
   }
   return endrede;
 }
 
+// Nye mål finnes ikke ennå. Kontroller nærmeste eksisterende forelder før
+// mkdir, og selve fila hvis den finnes (lstat oppdager også brutte symlenker).
+function trygtSkrivemal(rot, fil) {
+  let eksisterende = resolve(fil);
+  while (!lstatSync(eksisterende, { throwIfNoEntry: false })) eksisterende = dirname(eksisterende);
+  return eksisterende === resolve(rot) || trygtUnderRot(rot, eksisterende);
+}
+
+function skrivForhandsvisning(rot, fil, innhold) {
+  if (!trygtSkrivemal(rot, fil)) return false;
+  mkdirSync(dirname(fil), { recursive: true });
+  if (!trygtUnderRot(rot, dirname(fil)) || !trygtSkrivemal(rot, fil)) return false;
+  writeFileSync(fil, innhold);
+  return true;
+}
+
+// Kildesidene røres ikke. Både kilder, speilede mål og kartet må bli under rot.
+export function forhandsvis(rot, utrullet = UTRULLET, mal = 'qa/forhandsvisning') {
+  const utrot = resolve(rot, mal);
+  const rel = relative(resolve(rot), utrot).split('\\').join('/');
+  if (!rel.startsWith('qa/') || rel.includes('../')) throw new Error('Forhåndsvisningen må ligge i en undermappe av qa');
+  const eksempler = new Set(Object.values(EKSEMPEL).flatMap(Object.values));
+  const familier = new Set();
+  const valgte = alleSider(rot).filter((s) => {
+    if (!trygtUnderRot(rot, join(rot, s.fil))) return false;
+    if (s.type !== 'tjeneste') return eksempler.has(s.sti);
+    if (s.nokkel === 'tjeneste:verifisering' || !erUtrullet(s.sti, readFileSync(join(rot, s.fil), 'utf8'), utrullet)) return false;
+    const eksempel = `${s.nokkel}:${s.sprak}`;
+    if (familier.has(eksempel)) return false;
+    familier.add(eksempel);
+    return true;
+  });
+  // Rendring fullføres før skriving, så en feil ikke etterlater et halvt nytt kart.
+  const sider = valgte.flatMap((s) => {
+    const fil = join(rot, s.fil);
+    if (!trygtUnderRot(rot, fil)) return [];
+    const html = readFileSync(fil, 'utf8');
+    // Den norske forsiden har allerede sitt eget skall fra forsideoppgaven.
+    let ut = s.sti === '/' ? html : rendre(html, s.sti, new Set([...utrullet, s.nokkel]));
+    ut = ut.replace(/<meta\b[^>]*\bname\s*=\s*(["'])robots\1[^>]*>/giu, '')
+      .replace(/<\/head>/iu, '<meta name="robots" content="noindex"></head>')
+      .replace(/<script\b[^>]*\bsrc\s*=\s*(["'])\/locale\.js\1[^>]*>\s*<\/script>/giu, '');
+    return [{ s, ut }];
+  });
+  const kart = sider.flatMap(({ s, ut }) => {
+    const fil = join(utrot, s.fil);
+    if (!skrivForhandsvisning(rot, fil, ut)) return [];
+    return [{ sti: s.sti, url: `/${rel}${s.sti}`, type: s.type, sprak: s.sprak }];
+  });
+  skrivForhandsvisning(rot, join(utrot, 'kart.json'), JSON.stringify(kart, null, 2) + '\n');
+  return kart;
+}
+
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  console.log(`skall-paa: ${kjor(fileURLToPath(new URL('..', import.meta.url))).length} sider oppdatert`);
+  const rot = fileURLToPath(new URL('..', import.meta.url));
+  const args = process.argv.slice(2);
+  if (args.length === 0) console.log(`skall-paa: ${kjor(rot).length} sider oppdatert`);
+  else if (args.length === 2 && args[0] === '--forhandsvis') console.log(`skall-paa: ${kjor(rot, UTRULLET, { forhandsvis: args[1] }).length} forhåndsvisninger skrevet`);
+  else { console.error('Bruk: node scripts/skall-paa.mjs [--forhandsvis qa/forhandsvisning]'); process.exitCode = 1; }
 }
