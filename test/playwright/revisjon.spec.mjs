@@ -94,6 +94,8 @@ for (const side of rader) {
   const navn = `${side.type} ${side.url}`;
 
   test(`felles: ${navn}`, async ({ page, baseURL }) => {
+    // Fire bredder med rulling i 120 ms-steg: lange guider (opptil 80 skjermer på 360 px) trenger mer enn 30 s under last.
+    test.setTimeout(120_000);
     const feil = samleFeil(page, new URL(baseURL).origin);
     for (const bredde of BREDDER) {
       await page.setViewportSize({ width: bredde, height: 900 });

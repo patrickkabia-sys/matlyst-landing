@@ -152,3 +152,63 @@ for (const [navn, valg, plass, visning] of [
   await expect.poll(() => sendt).toEqual([{ navn: 'download_click', egenskaper: { page_path: sti, cta_location: plass, visning }, valg: { transport: 'sendBeacon' } }]);
   await context.close();
 });
+
+// Lange guider (oppgave 11).
+const GUIDE = '/lagre-oppskrifter-fra-instagram/';
+test('innholdsfortegnelsen foldes på mobil og står åpen på PC', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(GUIDE);
+  const knapp = page.locator('.toc-knapp');
+  await expect(knapp).toHaveCount(1);
+  await expect(knapp).toHaveAttribute('aria-expanded', 'false');
+  const liste = page.locator('.toc ol');
+  await expect(knapp).toHaveAttribute('aria-controls', (await liste.getAttribute('id')));
+  await expect(liste).toBeHidden();
+  await knapp.click();
+  await expect(knapp).toHaveAttribute('aria-expanded', 'true');
+  await expect(liste).toBeVisible();
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await expect(page.locator('.toc-knapp')).toHaveCount(0);
+  await expect(liste).toBeVisible();
+});
+
+test('innholdsfortegnelsen er åpen uten JavaScript', async ({ browser, baseURL }) => {
+  const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const page = await context.newPage();
+  await page.goto(GUIDE);
+  await expect(page.locator('.toc ol')).toBeVisible();
+  await context.close();
+});
+
+test('et trykk i innholdsfortegnelsen legger ikke overskriften under toppen', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.goto(GUIDE);
+  const lenke = page.locator('.toc a').nth(2), id = (await lenke.getAttribute('href')).slice(1);
+  await lenke.click();
+  await page.waitForTimeout(300);
+  const topp = await page.locator('header.topp').boundingBox(), h2 = await page.locator(`[id="${id}"]`).boundingBox();
+  expect(h2.y).toBeGreaterThanOrEqual(topp.y + topp.height);
+});
+
+for (const bredde of [390, 1280]) test(`lange guider: figurer, filmer og bilder holder seg i lesekolonnen på ${bredde} px, og appkortene har innhold`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(GUIDE);
+  const r = await page.evaluate(() => {
+    const k = document.querySelector('.locale-prose').getBoundingClientRect();
+    const ut = [...document.querySelectorAll('.locale-prose :is(figure, video, img, aside.i-appen)')].filter((e) => { const b = e.getBoundingClientRect(); return b.left < k.left - 1 || b.right > k.right + 1; }).map((e) => e.tagName + '.' + e.className);
+    const kort = [...document.querySelectorAll('aside.i-appen')].map((a) => { const m = a.querySelector('.i-appen-media :is(img, video)').getBoundingClientRect(); return { bredde: m.width, hoyde: m.height, kortHoyde: a.getBoundingClientRect().height }; });
+    return { ut, kort };
+  });
+  expect(r.ut).toEqual([]);
+  expect(r.kort.length).toBeGreaterThan(0);
+  for (const k of r.kort) { expect(k.bredde).toBeGreaterThan(100); expect(k.bredde).toBeLessThanOrEqual(200); expect(k.kortHoyde).toBeLessThan(k.hoyde + 200 + 400); }
+});
+
+test('redusert bevegelse: ingen film spiller', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto(GUIDE);
+  await page.evaluate(() => document.querySelectorAll('video').forEach((v) => v.scrollIntoView()));
+  await page.waitForTimeout(600);
+  const spiller = await page.evaluate(() => [...document.querySelectorAll('video')].filter((v) => !v.paused).length);
+  expect(spiller).toBe(0);
+});

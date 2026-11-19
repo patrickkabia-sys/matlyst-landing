@@ -182,6 +182,47 @@ body[data-sidetype="omregner"] .btn-store{display:inline-flex;align-items:center
 }
 @media (prefers-reduced-motion:reduce){body[data-sidetype="omregner"] .omregner-bytt,body[data-sidetype="omregner"] .omregner-rad label{transition:none}}
 /* == Lang guide == */
+/* Innholdsfortegnelse, kortsvar, scenarioer, grunnleggerkort og medier i lange guider. Alle kort er grå (--hylle) med 28 px radius; bilder og filmer 24 px. */
+body[data-sidetype="guide-lang"] .toc{margin:20px 0 0;padding:24px 28px;border-radius:28px;background:var(--hylle);font-size:1.0625rem;line-height:1.45}
+body[data-sidetype="guide-lang"] .toc-title,body[data-sidetype="guide-lang"] .toc-knapp{margin:0 0 10px;font-size:.875rem;font-weight:500;letter-spacing:.04em;color:var(--dempet)}
+body[data-sidetype="guide-lang"] .toc ol{display:grid;gap:2px;margin:0;padding:0;list-style:none}
+body[data-sidetype="guide-lang"] .toc ol[hidden]{display:none}
+body[data-sidetype="guide-lang"] .toc a{display:flex;align-items:center;min-height:44px;padding-block:6px;color:var(--blekk);text-decoration:none}
+body[data-sidetype="guide-lang"] .toc a:hover,body[data-sidetype="guide-lang"] .toc a:focus-visible{text-decoration:underline;text-underline-offset:.2em}
+body[data-sidetype="guide-lang"] .toc-knapp{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:44px;margin:0;padding:0;border:0;background:none;font:inherit;font-size:1rem;font-weight:700;letter-spacing:normal;color:var(--blekk);text-align:left;cursor:pointer}
+body[data-sidetype="guide-lang"] .toc-knapp::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .25s var(--ut)}
+body[data-sidetype="guide-lang"] .toc-knapp[aria-expanded="true"]::after{transform:rotate(-135deg)}
+body[data-sidetype="guide-lang"] .toc-knapp[aria-expanded="true"]{margin-bottom:6px}
+body[data-sidetype="guide-lang"] .locale-prose .answer{max-width:none;margin:0;padding:28px 32px;border-radius:28px;background:var(--hylle);text-align:left}
+
+body[data-sidetype="guide-lang"] .locale-prose .scenario{margin:20px 0 0;padding:28px 32px;border-radius:28px;background:var(--hylle)}
+body[data-sidetype="guide-lang"] .locale-prose .scenario h3{margin:0}
+body[data-sidetype="guide-lang"] .locale-prose .scenario dl{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:12px 28px;margin:18px 0 0}
+body[data-sidetype="guide-lang"] .locale-prose .scenario dt{font-size:.9375rem;font-weight:500;line-height:1.6;color:var(--dempet)}
+body[data-sidetype="guide-lang"] .locale-prose .scenario dd{margin:0;font-size:1.0625rem;line-height:1.55}
+body[data-sidetype="guide-lang"] .locale-prose .scenario-note{margin:14px 0 0;padding:14px 20px;border-radius:20px;background:var(--hylle);font-size:.9375rem;color:var(--dempet)}
+body[data-sidetype="guide-lang"] .locale-prose .founder{display:grid;grid-template-columns:minmax(0,1fr);gap:0 32px;align-items:center;margin:40px 0 0;padding:32px;border-radius:28px;background:var(--hylle)}
+body[data-sidetype="guide-lang"] .locale-prose .founder:has(> img){grid-template-columns:minmax(0,180px) minmax(0,1fr)}
+body[data-sidetype="guide-lang"] .locale-prose .founder img{display:block;width:100%;height:auto;border-radius:24px}
+body[data-sidetype="guide-lang"] .locale-prose .founder p{margin:0;font-size:1.375rem;line-height:1.4;letter-spacing:-.01em}
+body[data-sidetype="guide-lang"] .locale-prose .founder p.by{margin-top:12px;font-size:.9375rem;letter-spacing:normal;line-height:1.5;color:var(--dempet)}
+/* Medier: aldri bredere enn lesekolonnen. Filmens width-attributt (540) er bare størrelsesforhold, aldri bredde. */
+body[data-sidetype="guide-lang"] .locale-prose :is(img,video,picture,iframe){max-width:100%}
+body[data-sidetype="guide-lang"] .locale-prose :is(video,.tel){display:block;width:100%;max-width:300px;height:auto;margin-inline:auto;border-radius:24px;background:var(--hylle);box-shadow:0 0 0 1px var(--a-kant)}
+body[data-sidetype="guide-lang"] .locale-prose .phones{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin:32px 0 0}
+body[data-sidetype="guide-lang"] .locale-prose .phones figure{flex:0 1 300px;min-width:0;max-width:300px;margin:0}
+body[data-sidetype="guide-lang"] .locale-prose .shot,body[data-sidetype="guide-lang"] .locale-prose .shot img{max-width:100%;border-radius:24px}
+body[data-sidetype="guide-lang"] .locale-prose .i-appen-media :is(video,.tel){max-width:200px}
+@media (max-width:720px){
+  body[data-sidetype="guide-lang"] .toc{margin-top:20px;padding:12px 20px;border-radius:24px}
+  body[data-sidetype="guide-lang"] .locale-prose .answer{padding:22px 20px}
+  body[data-sidetype="guide-lang"] .locale-prose .scenario{padding:22px 20px}
+  body[data-sidetype="guide-lang"] .locale-prose .scenario dl{grid-template-columns:minmax(0,1fr);gap:2px}
+  body[data-sidetype="guide-lang"] .locale-prose .scenario dd{margin-bottom:12px}
+  body[data-sidetype="guide-lang"] .locale-prose .founder{padding:24px 20px}
+  body[data-sidetype="guide-lang"] .locale-prose .founder:has(> img){grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){body[data-sidetype="guide-lang"] .toc-knapp::after{transition:none}}
 /* == Kort guide == */
 /* == Eldre sider == */
 /* == Blogg == */

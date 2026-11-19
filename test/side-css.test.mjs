@@ -89,3 +89,20 @@ test('omregnersidene har stil for alle klassene i innholdet', () => {
     'i-mapper': 'velger bilde i app-bevis', 'i-skalering': 'velger bilde i app-bevis', 'i-enheter': 'velger bilde i app-bevis',
   }), []);
 });
+
+test('lange guider har stil for alle klassene i innholdet', () => {
+  assert.deepEqual(klasserUtenRegel('guide-lang', {
+    'disp': 'skriftvalg på overskrifter, ingen egen regel', 'has-toc': 'markør på lesekolonnen',
+    'i-ask': 'velger bilde i app-bevis', 'i-eksport': 'velger bilde i app-bevis', 'i-enheter': 'velger bilde i app-bevis',
+    'i-import': 'velger bilde i app-bevis', 'i-kokemodus': 'velger bilde i app-bevis', 'i-liste': 'velger bilde i app-bevis',
+    'i-mapper': 'velger bilde i app-bevis', 'i-pantry': 'velger bilde i app-bevis', 'i-plan': 'velger bilde i app-bevis',
+    'i-skalering': 'velger bilde i app-bevis',
+  }), []);
+});
+
+test('lange guider: filmer og bilder i lesekolonnen har en regel som tvinger dem inn i bredden', () => {
+  const rå = les('side.css');
+  const del = rå.slice(rå.indexOf('/* == Lang guide == */'), rå.indexOf('/* == Kort guide == */'));
+  assert.ok(del.length > 100);
+  assert.match(del, /\.locale-prose :is\(video,\.tel\)\{[^}]*width:100%[^}]*max-width:300px/u);
+});
