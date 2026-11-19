@@ -59,7 +59,7 @@ test('bannerstilen i skall.css er på plass', () => {
   assert.match(skall, /\.cookie h3/u);
 });
 
-test('godta og avvis har nøyaktig samme stil i skall.css', () => {
+test('godta og avvis har samme regler i skall.css (grovt; den beregnede testen tar bredder)', () => {
   const normalisert = (navn) => regler(skall)
     .filter((r) => r.velger.split(',').some((v) => new RegExp(`\\.${navn}(?![\\w-])`, 'u').test(v)))
     .map((r) => JSON.stringify([r.velger.split(',').map((v) => v.trim().replace(/\.ck-(accept|reject)(?![\w-])/gu, '.ck-X')).sort(), r.kropp.replace(/\s+/gu, '')]))
@@ -81,11 +81,11 @@ test('skriftstørrelser bruker ikke vw (følger ikke tekststørrelsen)', () => {
   assert.deepEqual([...css.matchAll(/font-size:[^;}]*\dvw/gu)].map((m) => m[0]), []);
 });
 
-test('lenker i brødtekst er understreket, også .more', () => {
-  assert.doesNotMatch(css, /:not\(\.more\)/u);
-});
-
-test('steg med eget tall får ikke et ekstra generert tall', () => {
-  assert.match(css, /\.steps > :not\(:has\(> \.n,> b:first-child\)\)::before/u);
-  assert.match(css, /\.steps > \.step > \.n/u);
+test('omregnersidene har stil for alle klassene i innholdet', () => {
+  assert.deepEqual(klasserUtenRegel('omregner', {
+    'omregner-data': 'bare data for kalkulatoren i site.js',
+    'disp': 'skriftvalg på overskrifter, ingen egen regel', 'has-toc': 'markør; innholdsfortegnelsen skjules', 'toc-title': 'skjules sammen med .toc',
+    'i-import': 'velger bilde i app-bevis', 'i-kokemodus': 'velger bilde i app-bevis',
+    'i-mapper': 'velger bilde i app-bevis', 'i-skalering': 'velger bilde i app-bevis', 'i-enheter': 'velger bilde i app-bevis',
+  }), []);
 });

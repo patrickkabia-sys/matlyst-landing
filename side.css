@@ -40,17 +40,6 @@ main.prose{padding-block:72px 0}
 h2[id],h3[id]{scroll-margin-top:16px}
 @media (min-width:1001px){h2[id],h3[id]{scroll-margin-top:88px}}
 
-/* Overskriftene vokser i trinn på rem. clamp() med vw skalerer ikke med brukerens tekststørrelse (revisjonen krever faktor 1,9). */
-@media (min-width:721px){
-  .locale-page-hero h1{font-size:2.875rem}
-  .locale-prose h2,main.prose h2,.app-cta h2,.page-cta h2,.faq h2,.related h2{font-size:1.875rem}
-}
-@media (min-width:1001px){
-  .locale-page-hero h1{font-size:3.375rem}
-  .locale-prose h2,main.prose h2,.app-cta h2,.page-cta h2,.faq h2,.related h2{font-size:2.125rem}
-}
-@media (min-width:1201px){.locale-page-hero h1{font-size:3.875rem}}
-
 /* Kort svar */
 .answer{max-width:52ch;margin:0 auto;font-size:1.1875rem;line-height:1.5;text-align:center}
 .answer p{margin:0}
@@ -61,7 +50,7 @@ h2[id],h3[id]{scroll-margin-top:16px}
 .table-wrap:focus-visible{outline:2px solid var(--blekk);outline-offset:2px}
 .table-wrap > table,.locale-prose table{width:100%;border-collapse:collapse;font-size:1.125rem}
 .table-wrap > table{margin:0}
-.locale-prose table{margin-top:22px}
+.locale-prose table{margin-top:22px;line-height:1.55}
 .table-wrap table{margin-top:0}
 .locale-prose th{padding:0 0 10px;font-size:.875rem;font-weight:500;letter-spacing:.04em;text-align:left;color:var(--dempet);border-bottom:1px solid var(--blekk)}
 .locale-prose tbody th{padding:13px 0;font-size:inherit;font-weight:500;letter-spacing:normal;color:var(--blekk);border-bottom:1px solid var(--linje)}
@@ -133,6 +122,17 @@ h2[id],h3[id]{scroll-margin-top:16px}
   .faq details p{padding-right:0}
 }
 @media (prefers-reduced-motion:reduce){.faq summary::after,.related li a,.omregner-liste li,.locale-page-hero .eyebrow a{transition:none}}
+
+/* Overskriftene vokser i trinn på rem. Prototypen gir kortenes H2 (.okort, .oapptekst) samme skala som lesetekstens H2, så trinnene står SIST i Grunnstil og vinner over de enkeltstående reglene over. clamp() med vw skalerer ikke med brukerens tekststørrelse (revisjonen krever faktor 1,9). */
+@media (min-width:721px){
+  .locale-page-hero h1{font-size:2.875rem}
+  .locale-prose h2,main.prose h2,.app-cta h2,.page-cta h2,.faq h2,.related h2{font-size:1.875rem}
+}
+@media (min-width:1001px){
+  .locale-page-hero h1{font-size:3.375rem}
+  .locale-prose h2,main.prose h2,.app-cta h2,.page-cta h2,.faq h2,.related h2{font-size:2.125rem}
+}
+@media (min-width:1201px){.locale-page-hero h1{font-size:3.875rem}}
 
 /* == Omregner == */
 /* == Lang guide == */
