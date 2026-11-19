@@ -52,51 +52,81 @@ function geometri({ unntak, krom, tilsiktet }) {
 
   // Tekst utenfor boks: hver klippende forfar (overflow ulik visible) sjekkes per akse.
   // En rullbar akse (auto/scroll) klipper ikke i den aksen, men en nærmere hidden/clip-boks teller.
-  const utenforBoks = [];
-  for (const { n, el, rekter } of tekst) {
-    const tilsiktetKlipp = tilsiktet.length > 0 && !!el.closest(tilsiktet.join(','));
+  // tilsiktetKlipp fritar bare klipping AV selve elementet som treffer velgeren (dets egen boks,
+  // begge akser): rektene kuttes til den synlige delen innenfor boksen, og den delen sjekkes
+  // videre mot ytre klippbokser. Indre klippbokser inni elementet sjekkes som vanlig.
+  const tilsiktetSel = tilsiktet.join(',');
+  const fritatt = (e) => tilsiktet.length > 0 && e.matches(tilsiktetSel);
+  const rot = (e) => !e || e === document.body || e === document.documentElement;
+  const rullerPaa = (v) => v === 'auto' || v === 'scroll';
+  // Sjekker rektene mot klippende forfedre fra og med `fra`. rullerX/rullerY: en nærmere boks
+  // ruller allerede på aksen, så ytre bokser på den aksen sjekkes ikke for disse rektene
+  // (rullboksen sjekkes selv, se under).
+  const klippetAvForfar = (fra, rekter, rullerX = false, rullerY = false) => {
     let ute = false;
-    // Når en forfar ruller på en akse, er teksten bare synlig innenfor rullboksen på den aksen,
-    // og ytre klippbokser på samme akse sjekkes ikke for denne teksten (rullboksen selv er
-    // sitt eget element og sjekkes mot dem).
-    let rullerX = false;
-    let rullerY = false;
-    for (let e = el; e && e !== document.body && e !== document.documentElement; e = e.parentElement) {
-      if (tilsiktetKlipp) break;
+    rekter = rekter.map((r) => ({ left: r.left, right: r.right, top: r.top, bottom: r.bottom }));
+    for (let e = fra; !rot(e); e = e.parentElement) {
       const cs = getComputedStyle(e);
-      const scrollX = cs.overflowX === 'auto' || cs.overflowX === 'scroll';
-      const scrollY = cs.overflowY === 'auto' || cs.overflowY === 'scroll';
-      const klippX = !rullerX && cs.overflowX !== 'visible' && !scrollX;
-      const klippY = !rullerY && cs.overflowY !== 'visible' && !scrollY;
+      const b = e.getBoundingClientRect();
+      const fri = fritatt(e);
+      if (fri) {
+        // Klipping av akkurat denne boksen er tilsiktet: behold bare den synlige delen.
+        rekter = rekter
+          .map((r) => ({ left: Math.max(r.left, b.left), right: Math.min(r.right, b.right), top: Math.max(r.top, b.top), bottom: Math.min(r.bottom, b.bottom) }))
+          .filter((r) => r.right > r.left && r.bottom > r.top);
+        if (!rekter.length) return ute;
+      }
+      const scrollX = rullerPaa(cs.overflowX);
+      const scrollY = rullerPaa(cs.overflowY);
+      const klippX = !fri && !rullerX && cs.overflowX !== 'visible' && !scrollX;
+      const klippY = !fri && !rullerY && cs.overflowY !== 'visible' && !scrollY;
       if (scrollX) rullerX = true;
       if (scrollY) rullerY = true;
       if (!klippX && !klippY) continue;
-      const b = e.getBoundingClientRect();
       for (const r of rekter) {
         if (klippX && (r.left < b.left - 1 || r.right > b.right + 1)) ute = true;
         if (klippY && (r.top < b.top - 1 || r.bottom > b.bottom + 1)) ute = true;
       }
     }
-    if (!tilsiktetKlipp) {
-      // Reservekontroll mot sidekortet (.blad/body). Tekst som har en klippende eller rullende
-      // forfar på aksen er allerede vurdert mot den boksen, og hoppes over her.
-      let xBoks = false;
-      let yBoks = false;
-      let fast = false;
-      for (let e = el; e && e !== blad && e !== document.body && e !== document.documentElement; e = e.parentElement) {
-        const cs = getComputedStyle(e);
-        if (cs.overflowX !== 'visible') xBoks = true;
-        if (cs.overflowY !== 'visible') yBoks = true;
-        if (cs.position === 'fixed') fast = true;
-      }
-      const iKortet = blad !== document.body && blad.contains(el);
-      for (const r of rekter) {
-        if (!xBoks && (r.left < bladBoks.left - 1 || r.right > bladBoks.right + 1)) ute = true;
-        // Loddrett bare mot kortet: selve siden ruller loddrett. Fast tekst følger ikke kortet.
-        if (iKortet && !yBoks && !fast && (r.top < bladBoks.top - 1 || r.bottom > bladBoks.bottom + 1)) ute = true;
-      }
+    return ute;
+  };
+  const utenforBoks = [];
+  const rullbokser = new Set();
+  for (const { n, el, rekter } of tekst) {
+    let ute = klippetAvForfar(el, rekter);
+    for (let e = el; !rot(e); e = e.parentElement) {
+      const cs = getComputedStyle(e);
+      if (rullerPaa(cs.overflowX) || rullerPaa(cs.overflowY)) rullbokser.add(e);
+    }
+    // Reservekontroll mot sidekortet (.blad/body). Tekst som har en klippende eller rullende
+    // forfar på aksen er allerede vurdert mot den boksen, og hoppes over her.
+    let xBoks = false;
+    let yBoks = false;
+    let fast = false;
+    for (let e = el; e && e !== blad && e !== document.body && e !== document.documentElement; e = e.parentElement) {
+      const cs = getComputedStyle(e);
+      if (cs.overflowX !== 'visible') xBoks = true;
+      if (cs.overflowY !== 'visible') yBoks = true;
+      if (cs.position === 'fixed') fast = true;
+    }
+    const iKortet = blad !== document.body && blad.contains(el);
+    for (const r of rekter) {
+      if (!xBoks && (r.left < bladBoks.left - 1 || r.right > bladBoks.right + 1)) ute = true;
+      // Loddrett bare mot kortet: selve siden ruller loddrett. Fast tekst følger ikke kortet.
+      if (iKortet && !yBoks && !fast && (r.top < bladBoks.top - 1 || r.bottom > bladBoks.bottom + 1)) ute = true;
     }
     if (ute) utenforBoks.push(beskriv(el, n.nodeValue));
+  }
+  // Rullbokser: tekst inni dem sjekkes ikke mot ytre klipp på rulleaksen. Derfor sjekkes hver
+  // rullboks som inneholder synlig tekst selv, på sin rulleakse, mot de ytre klippboksene
+  // (den andre aksen er allerede dekket av tekstkontrollen).
+  for (const e of rullbokser) {
+    if (e.closest(alle) || skjult(e)) continue;
+    const cs = getComputedStyle(e);
+    if (klippetAvForfar(e.parentElement, [e.getBoundingClientRect()], !rullerPaa(cs.overflowX), !rullerPaa(cs.overflowY))) {
+      const s = beskriv(e, '(rullboks)');
+      if (!utenforBoks.includes(s)) utenforBoks.push(s);
+    }
   }
 
   // Overlapp: en overlapp er reell når flaten er over 4 px² etter avrunding til enhetspiksler
@@ -129,12 +159,13 @@ function geometri({ unntak, krom, tilsiktet }) {
   // Regel: ta fem punkt i snittet (midten og de fire indre hjørnene, 1 px inn) som ligger i
   // visningsvinduet, og finn øverste element med elementFromPoint. Teksten X er skjult i et
   // punkt når kjeden fra det øverste elementet og oppover (til det første elementet som
-  // inneholder X) har et element med ugjennomsiktig bakgrunnsfarge (alfa 1, eller minst 0,8 med backdrop-filter blur) og laget selv og forfedrene har opacity 1.
+  // inneholder X) har et element med ugjennomsiktig bakgrunnsfarge (alfa 1, eller minst 0,8 med backdrop-filter blur på minst 8 px) og laget selv og forfedrene har opacity 1.
   // Et halvgjennomsiktig lag skjuler altså ikke.
   // Paret teller når hver av tekstene er synlig i minst ett punkt. Ligger ingen punkt i
   // visningsvinduet, hoppes paret over her; det vurderes igjen når rullingen når det.
-  // revider() slår på pointer-events:auto overalt mens geometrien måles, slik at elementFromPoint
-  // følger tegnerekkefølgen også for lag med pointer-events:none.
+  // revider() setter pointer-events:auto som inline !important på hvert element mens geometrien
+  // måles (inline important slår stilark-important), slik at elementFromPoint følger
+  // tegnerekkefølgen også for lag med pointer-events:none.
   const alfa = (farge) => {
     if (!farge || farge === 'transparent') return 0;
     const m = farge.match(/rgba?\(([^)]*)\)/);
@@ -145,6 +176,18 @@ function geometri({ unntak, krom, tilsiktet }) {
     const k = farge.match(/\/\s*([\d.]+%?)\s*\)/);
     if (k) return k[1].endsWith('%') ? parseFloat(k[1]) / 100 : parseFloat(k[1]);
     return 1;
+  };
+  // Største blur-radius i px i backdrop-filter (0 når den mangler). Bare blur fra 8 px gjør
+  // teksten bak uleselig; blur(0px) og blur(2px) dekker ikke.
+  const rotSkrift = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+  const uskarphet = (cs) => {
+    let maks = 0;
+    const f = cs.backdropFilter || cs.webkitBackdropFilter || '';
+    for (const m of f.matchAll(/blur\(\s*([\d.]+)\s*(px|rem|em)?\s*\)/g)) {
+      const v = parseFloat(m[1]) * (m[2] === 'rem' || m[2] === 'em' ? rotSkrift : 1);
+      if (v > maks) maks = v;
+    }
+    return maks;
   };
   const skjules = (x, topp) => {
     if (x.el.contains(topp) || topp.contains(x.el)) return false;
@@ -158,9 +201,8 @@ function geometri({ unntak, krom, tilsiktet }) {
       if (parseFloat(cs.opacity) < 1) dimmet = true;
       // Et lag skjuler også når bakgrunnen er minst 80 % dekkende og lager uskarphet bak seg
       // (backdrop-filter: blur), siden teksten under da ikke lar seg lese.
-      const uskarp = /blur\(/.test(cs.backdropFilter || cs.webkitBackdropFilter || '');
       const a = alfa(cs.backgroundColor);
-      if (!dimmet && (a === 1 || (uskarp && a >= 0.8))) return true;
+      if (!dimmet && (a === 1 || (a >= 0.8 && uskarphet(cs) >= 8))) return true;
     }
     return false;
   };
@@ -227,7 +269,8 @@ const pause = (page, ms) => page.waitForTimeout(ms);
  * Iframes revideres ikke innvendig; en iframe som selv sprenger bredden rapporteres i `iframer`.
  * @param {{ unntak?: string[], krom?: string[], tilsiktetKlipp?: string[] }} valg
  *   unntak: velgere som hoppes over helt. krom: sidens egne flytende flater (bare par med én side her er unntatt fra overlapp).
- *   tilsiktetKlipp: velgere hvis etterkommere kan være klippet med vilje.
+ *   tilsiktetKlipp: bokser som klipper med vilje. Bare klipping AV selve boksen er fritatt; indre
+ *   klippbokser, ytre klipp av den synlige delen og overlapp kontrolleres fortsatt.
  * @returns {Promise<{ sidelengs: number, utenforBoks: string[], overlapp: string[], iframer: string[] }>}
  */
 export async function revider(page, { unntak = [], krom = ['.topp', '.fast', '.samtykke'], tilsiktetKlipp = [] } = {}) {
@@ -235,11 +278,16 @@ export async function revider(page, { unntak = [], krom = ['.topp', '.fast', '.s
   await pause(page, 1000);
 
   const sum = { sidelengs: 0, utenforBoks: [], overlapp: [], iframer: [] };
-  await page.evaluate(() => {
-    const st = document.createElement('style');
-    st.id = 'revisjon-treff';
-    st.textContent = '*{pointer-events:auto!important}';
-    document.head.appendChild(st);
+  // Treff uten pekerhendelser: pointer-events:auto som inline !important på hvert element
+  // (slår også stilark-regler med !important). Forrige inline-verdi lagres og settes tilbake i
+  // finally. Kjøres før hver måling, så elementer som kommer til underveis også får det.
+  const pekerPaa = () => page.evaluate(() => {
+    const lagret = (window.__revisjonPeker ||= new Map());
+    for (const e of document.querySelectorAll('*')) {
+      if (!e.style || lagret.has(e)) continue;
+      lagret.set(e, { v: e.style.getPropertyValue('pointer-events'), p: e.style.getPropertyPriority('pointer-events'), attr: e.hasAttribute('style') });
+      e.style.setProperty('pointer-events', 'auto', 'important');
+    }
   });
   try {
     const slaaSammen = (r) => {
@@ -257,6 +305,7 @@ export async function revider(page, { unntak = [], krom = ['.topp', '.fast', '.s
         maks: document.documentElement.scrollHeight - window.innerHeight,
         h: window.innerHeight,
       }));
+      await pekerPaa();
       slaaSammen(await page.evaluate(geometri, arg));
       if (y >= maks - 1) break;
       await page.evaluate((t) => window.scrollTo({ top: t, behavior: 'instant' }), Math.min(y + h, maks));
@@ -268,10 +317,20 @@ export async function revider(page, { unntak = [], krom = ['.topp', '.fast', '.s
       document.querySelectorAll('details').forEach((d) => { d.open = true; });
     });
     await pause(page, 120);
+    await pekerPaa();
     slaaSammen(await page.evaluate(geometri, arg));
 
   } finally {
-    await page.evaluate(() => document.getElementById('revisjon-treff')?.remove()).catch(() => {});
+    await page.evaluate(() => {
+      const lagret = window.__revisjonPeker;
+      if (!lagret) return;
+      for (const [e, { v, p, attr }] of lagret) {
+        if (v) e.style.setProperty('pointer-events', v, p);
+        else e.style.removeProperty('pointer-events');
+        if (!attr && e.getAttribute('style') === '') e.removeAttribute('style');
+      }
+      delete window.__revisjonPeker;
+    }).catch(() => {});
   }
   await pause(page, 500);
   return sum;

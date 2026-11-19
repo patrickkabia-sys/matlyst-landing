@@ -142,8 +142,42 @@ test.describe('revisjonsmotoren, røde fikstur', () => {
     await page.goto(F('pekerlos'));
     const r = await revider(page);
     expect(r.overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(true);
-    expect(await page.evaluate(() => !!document.getElementById('revisjon-treff'))).toBe(false);
+    expect(await page.evaluate(() => [...document.querySelectorAll('[style]')].length)).toBe(0);
   });
+
+  test('okklusjon: pointer-events:none!important i stilarket taper mot målingen, rød; inline-verdi settes tilbake', async ({ page }) => {
+    lokalt();
+    await page.goto(F('pekerviktig'));
+    const r = await revider(page);
+    expect(r.overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(true);
+    expect(await page.evaluate(() => { const s = document.getElementById('a').style; return s.getPropertyValue('pointer-events') + '|' + s.getPropertyPriority('pointer-events'); })).toBe('none|');
+    expect(await page.evaluate(() => document.getElementById('b').hasAttribute('style'))).toBe(false);
+  });
+
+  test('rullboks på 200 px i 100 px overflow:clip-kort er rød, i bredt nok kort grønn', async ({ page }) => {
+    lokalt();
+    await page.setViewportSize({ width: 390, height: 600 });
+    await page.goto(F('rullkort'));
+    const r = await revider(page);
+    expect(r.utenforBoks).toHaveLength(1);
+    expect(r.utenforBoks[0]).toContain('#rad');
+    await page.goto(F('rullkort') + '?bred');
+    expect(await revider(page)).toEqual(tomt);
+  });
+
+  for (const [q, rod, navn] of [
+    ['', false, 'tekst klippet bare av den fritatte boksen er grønn'],
+    ['?indre', true, 'indre overflow:hidden-boks som klipper tekst er rød'],
+    ['?kort', true, 'synlig del av den fritatte boksen klippet av ytre kort er rød'],
+  ]) {
+    test(`tilsiktetKlipp fritar bare selve boksen: ${navn}`, async ({ page }) => {
+      lokalt();
+      await page.setViewportSize({ width: 600, height: 600 });
+      await page.goto(F('tilsiktet-indre') + q);
+      const r = await revider(page, { tilsiktetKlipp: ['.band'] });
+      expect(r.utenforBoks.some((x) => x.includes('#t'))).toBe(rod);
+    });
+  }
 
   test('rullrad inni overflow:clip-kort er grønn, bred tekst som ikke ruller i samme kort er rød', async ({ page }) => {
     lokalt();
@@ -170,6 +204,14 @@ test.describe('revisjonsmotoren, røde fikstur', () => {
     await page.goto(F('fastuskarp') + '?klar');
     expect((await revider(page)).overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(true);
   });
+
+  for (const [blur, rod] of [[0, true], [2, true], [8, false], [18, false]]) {
+    test(`okklusjon: 80 % hvit med blur(${blur}px) ${rod ? 'dekker ikke, rød' : 'dekker, grønn'}`, async ({ page }) => {
+      lokalt();
+      await page.goto(F('fastuskarp') + `?blur=${blur}`);
+      expect((await revider(page)).overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(rod);
+    });
+  }
 
   test('iframe som sprenger bredden rapporteres, men revideres ikke innvendig', async ({ page }) => {
     lokalt();
