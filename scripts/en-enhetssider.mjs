@@ -1,6 +1,6 @@
 // Enhetsomregnere på engelsk: én side per enhetspar (ml til dl, cups til ml, °F til °C osv.) pluss en hub.
 // Hver side har en kalkulator (site.js), en tabell, formel, kjøkkennotat, en grunn til å bruke Matlyst og lenker til beslektede omregninger.
-import { ENHETER, allePar, enheterFor, konverter, parSti, parSlug, tall } from './enheter.mjs';
+import { ENHETER, allePar, enheterFor, konverter, omregnerData, ordFor, parSti, parSlug, tall } from './enheter.mjs';
 import { animasjon, byggRik, skjerm } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
@@ -90,14 +90,14 @@ function skjema(fra, til) {
   const ids = gruppeIds(g);
   const data = Object.fromEntries(ids.map((id) => [id, g === 'temperatur' ? 0 : ENHETER[id].f]));
   const opt = (valgt) => ids.map((id) => `<option value="${id}"${id === valgt ? ' selected' : ''}>${esc(N(id).fl)} (${esc(N(id).kort)})</option>`).join('');
-  const svar = `1 ${N(fra).kort} = ${tall(konverter(1, fra, til))} ${N(til).kort}`;
+  const svar = `1 ${ordFor('en', fra, 1)} = ${tall(konverter(1, fra, til))} ${ordFor('en', til, konverter(1, fra, til))}`;
   return `<form class="omregner" data-gruppe="${g}" onsubmit="return false"><div class="omregner-rad">`
     + `<label>Amount<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label>`
     + `<label>From<select data-felt="fra">${opt(fra)}</select></label>`
     + `<button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Swap units">⇄</button>`
     + `<label>To<select data-felt="til">${opt(til)}</select></label></div>`
     + `<p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">${esc(svar)}</p>`
-    + `<script type="application/json" class="omregner-data">${JSON.stringify({ f: data, t: g === 'temperatur' })}</script></form>`;
+    + `<script type="application/json" class="omregner-data">${JSON.stringify(omregnerData('en', data, g === 'temperatur'))}</script></form>`;
 }
 
 function tabell(fra, til) {

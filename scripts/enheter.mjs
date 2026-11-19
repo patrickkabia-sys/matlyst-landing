@@ -77,3 +77,24 @@ const slugDel = (id, lang) => SLUGDEL[lang]?.[id] ?? id;
 export const parSlug = (fra, til, lang = 'en') => `${slugDel(fra, lang)}-${TIL[lang]}-${slugDel(til, lang)}`;
 export const VERKTOY = { en: 'tools', nb: 'verktoy', sv: 'verktyg', da: 'vaerktoejer' };
 export const parSti = (fra, til, lang = 'en') => `${VERKTOY[lang]}/${parSlug(fra, til, lang)}/`;
+
+/** Ordformen for enheter som skrives som ord (ikke symbol): [entall, flertall]. Entall gjelder bare for nøyaktig 1.
+ *  Symboler (ml, dl, fl oz, pt, qt, °C ...) og ord uten egen flertallsform står ikke her og skrives som `kort`. */
+export const FLERTALL = {
+  nb: { cups: ['kopp', 'kopper'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
+  sv: { cups: ['kopp', 'koppar'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'] },
+  da: { cups: ['kop', 'kopper'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
+  en: { cups: ['cup', 'cups'] },
+};
+
+/** Dataene en omregner bærer i siden (class omregner-data): faktorene, om det er temperatur, og ordformene (`o`) for enhetene i valglisten. */
+export function omregnerData(lang, f, temperatur) {
+  const o = Object.fromEntries(Object.keys(f).filter((id) => FLERTALL[lang]?.[id]).map((id) => [id, FLERTALL[lang][id]]));
+  return { f, t: temperatur, ...(Object.keys(o).length ? { o } : {}) };
+}
+
+/** Ordet for enhet `id` ved mengden `v` på språket: entall bare når tallet som vises er nøyaktig 1, ellers flertall. Symboler står uendret. */
+export function ordFor(lang, id, v) {
+  const form = FLERTALL[lang]?.[id];
+  return form ? form[Math.abs(Number(tall(v))) === 1 ? 0 : 1] : ENHETER[id][lang].kort;
+}

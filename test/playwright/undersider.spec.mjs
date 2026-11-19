@@ -30,13 +30,49 @@ test('omregneren bytter enheter og regner det omvendte; svaret brytes i stedet f
   expect(await fraFelt.inputValue()).toBe(til);
   expect(await tilFelt.inputValue()).toBe(fra);
   const ut = 1500 * f[til] / f[fra];
-  await expect(svar).toHaveText(`1500 ${await kort(fraFelt)} = ${tall(ut)} ${await kort(tilFelt)}`);
+  // Enheter som skrives som ord har flertall i sidens data (omregner-data, o): «1500 dl = 6,34 kopper», ikke «kopp».
+  const o = JSON.parse(await page.locator('.omregner-data').textContent()).o ?? {};
+  const ord = async (felt, n) => { const id = await felt.inputValue(); return o[id] ? o[id][Number(tall(n)) === 1 ? 0 : 1] : kort(felt); };
+  await expect(svar).toHaveText(`1500 ${await ord(fraFelt, 1500)} = ${tall(ut)} ${await ord(tilFelt, ut)}`);
   const boks = await svar.evaluate((e) => ({ s: e.scrollWidth, b: e.clientWidth }));
   expect(boks.s).toBeLessThanOrEqual(boks.b);
   const knapp = await page.locator('[data-handling=bytt]').boundingBox();
   expect(knapp.width).toBeGreaterThanOrEqual(44);
   expect(knapp.height).toBeGreaterThanOrEqual(44);
 });
+
+// Flertall i svaret, per språk, med formene fra sidens data (omregner-data.o) og aldri fra JS.
+const FLERTALL_SIDER = [
+  { sprak: 'nb', sti: '/verktoy/kopp-til-dl/', entall: 'kopp', flertall: 'kopper', pint: ['pint', 'pints'] },
+  { sprak: 'sv', sti: '/sv/verktyg/kopp-till-dl/', entall: 'kopp', flertall: 'koppar', pint: ['pint', 'pints'] },
+  { sprak: 'da', sti: '/da/vaerktoejer/kop-til-dl/', entall: 'kop', flertall: 'kopper', pint: ['pint', 'pints'] },
+  { sprak: 'en', sti: '/en/tools/cups-to-dl/', entall: 'cup', flertall: 'cups', pint: ['pt', 'pt'] },
+];
+for (const { sprak, sti, entall, flertall, pint } of FLERTALL_SIDER) {
+  test(`omregneren (${sprak}): entall for 1 og flertall ellers, med formene fra sidens data`, async ({ page }) => {
+    await page.goto(sti);
+    const data = JSON.parse(await page.locator('.omregner-data').textContent());
+    expect(data.o.cups, 'formene står i sidens data').toEqual([entall, flertall]);
+    const svar = page.locator('[data-felt=svar]');
+    const verdi = page.locator('[data-felt=verdi]');
+    await expect(svar).toHaveText(new RegExp(`^1 ${entall} = `, 'u'));
+    await verdi.fill('1500');
+    await expect(svar).toHaveText(new RegExp(`^1500 ${flertall} = `, 'u'));
+    await verdi.fill('2');
+    await expect(svar).toHaveText(new RegExp(`^2 ${flertall} = `, 'u'));
+    await verdi.fill('0.5');
+    await expect(svar).toHaveText(new RegExp(`^0.5 ${flertall} = `, 'u'));
+    // Svarsiden: to kopper er én pint (entall på høyre side), og symboler står uendret.
+    await page.locator('[data-felt=fra]').selectOption('cups');
+    await page.locator('[data-felt=til]').selectOption('pints');
+    await verdi.fill('2');
+    await expect(svar).toHaveText(new RegExp(`^2 ${flertall} = 1 ${pint[0]}$`, 'u'));
+    await verdi.fill('4');
+    await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 2 ${pint[1]}$`, 'u'));
+    await page.locator('[data-felt=til]').selectOption('ml');
+    await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 946.4 ml$`, 'u'));
+  });
+}
 
 test('omregneren: tab-rekkefølge, tilgjengelige navn og synlig fokus', async ({ page }) => {
   await page.goto(adresse('/verktoy/kopp-til-dl/'));

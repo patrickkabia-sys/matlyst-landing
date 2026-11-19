@@ -156,13 +156,15 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     const til = skjema.querySelector('[data-felt=til]');
     const svar = skjema.querySelector('[data-felt=svar]');
     const kort = (sel) => sel.options[sel.selectedIndex].text.replace(/^.*\(([^)]+)\)$/u, '$1');
+    // Enheter som skrives som ord har entall og flertall i sidens data (data.o): entall bare for nøyaktig 1, målt på tallet som vises.
+    const ord = (sel, n) => { const o = data.o && data.o[sel.value]; return o ? o[Number(tall(n)) === 1 ? 0 : 1] : kort(sel); };
     const reg = () => {
       const v = parseFloat(String(verdi.value).replace(',', '.'));
       if (!Number.isFinite(v)) { svar.textContent = ''; return; }
       let ut;
       if (data.t) ut = fra.value === til.value ? v : fra.value === 'c' ? v * 9 / 5 + 32 : (v - 32) * 5 / 9;
       else ut = v * data.f[fra.value] / data.f[til.value];
-      svar.textContent = `${tall(v)} ${kort(fra)} = ${tall(ut)} ${kort(til)}`;
+      svar.textContent = `${tall(v)} ${ord(fra, v)} = ${tall(ut)} ${ord(til, ut)}`;
     };
     for (const el of [verdi, fra, til]) el.addEventListener('input', reg);
     skjema.querySelector('[data-handling=bytt]').addEventListener('click', () => { const x = fra.value; fra.value = til.value; til.value = x; reg(); });
