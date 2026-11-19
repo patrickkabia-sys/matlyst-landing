@@ -1,1 +1,131 @@
 /* == Grunnstil == */
+/* Undersidenes felles utseende. Verdiene er hentet fra omregner-prototypen
+   (docs/superpowers/prototyper/2026-11-18-omregner.html, delen «Omregnersiden»):
+   .ohelt og .sti (topp), .lese og .punkter (lesetekst), .kortsvar, .otabell,
+   .oappkort, .svarliste og .kjede. Lesbar tekst står i rem så den følger
+   brukerens tekststørrelse. Bare tokens fra tokens.css. Skallet (topp, bunn,
+   knapp, banner) hører hjemme i skall.css og røres ikke her. */
+
+/* Innholdsrammen: samme gutter og bredde som skallet */
+main{font-size:1.125rem;line-height:1.55;max-width:1184px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Toppen: midtstilt, overlinje, tittel og ingress */
+.locale-page-hero{padding-block:56px 0;text-align:center}
+.locale-page-hero .eyebrow{margin:0;font-size:.9375rem;font-weight:500;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--dempet)}
+.locale-page-hero .eyebrow a{display:inline-flex;align-items:center;min-height:44px;color:var(--dempet);transition:color .2s}
+.locale-page-hero .eyebrow a:hover,.locale-page-hero .eyebrow a:focus-visible{color:var(--blekk)}
+.locale-page-hero h1{margin:6px auto 0;font-size:clamp(2.375rem,5vw,3.875rem);line-height:1.05;overflow-wrap:break-word}
+.locale-page-hero .lead{margin:18px auto 0;max-width:44ch;font-size:1.25rem;line-height:1.5;color:var(--dempet)}
+
+/* Lesekolonnen */
+.locale-prose,main.prose{max-width:68ch;margin-inline:auto;font-size:1.1875rem;line-height:1.6;overflow-wrap:break-word}
+.locale-prose{margin-top:44px}
+main.prose{padding-block:72px 0}
+.locale-prose h2,main.prose h2{margin:64px 0 0;font-size:clamp(1.625rem,2.8vw,2.125rem);line-height:1.12}
+.locale-prose h2:first-child,main.prose h2:first-child{margin-top:0}
+.locale-prose h3,main.prose h3{margin:40px 0 0;font-size:1.3125rem;line-height:1.25;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
+.locale-prose h2 + p,.locale-prose h2 + ul,.locale-prose h2 + ol,main.prose h2 + p,main.prose h2 + ul{margin-top:14px}
+.locale-prose p,main.prose p{margin:14px 0 0}
+.locale-prose > ul:not([class]),main.prose > ul:not([class]){display:grid;gap:12px;margin:14px 0 0;padding:0;list-style:none}
+.locale-prose > ul:not([class]) li,main.prose > ul:not([class]) li{position:relative;padding-left:28px}
+.locale-prose > ul:not([class]) li::before,main.prose > ul:not([class]) li::before{content:"";position:absolute;left:4px;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--blekk)}
+.locale-prose > ol:not([class]),main.prose > ol:not([class]){display:grid;gap:12px;margin:14px 0 0;padding-left:1.5em}
+.locale-prose strong,main.prose strong{font-weight:700}
+.locale-prose a:not([data-hent]):not(.more),main.prose a:not([data-hent]):not(.more){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em}
+.locale-prose a:not([data-hent]):hover,main.prose a:not([data-hent]):hover{text-decoration-thickness:2px}
+.locale-prose figure,main.prose figure{margin:32px 0 0}
+.locale-prose figure img,main.prose figure img{display:block;max-width:100%;height:auto;border-radius:24px}
+.locale-prose figcaption,main.prose figcaption{margin-top:10px;font-size:.9375rem;color:var(--dempet)}
+/* Ankerhopp lander under den klebrige toppen (72 px høy på PC, ikke klebrig under 1001 px) */
+h2[id],h3[id]{scroll-margin-top:16px}
+@media (min-width:1001px){h2[id],h3[id]{scroll-margin-top:88px}}
+
+/* Kort svar */
+.answer{max-width:52ch;margin:0 auto;font-size:1.1875rem;line-height:1.5;text-align:center}
+.answer p{margin:0}
+.answer b,.answer strong{font-weight:700}
+
+/* Tabeller: tynn svart strek under hodet, lyse linjer mellom radene, siste kolonne høyrestilt og fet */
+.table-wrap{margin-top:22px;max-width:100%;overflow-x:auto}
+.table-wrap:focus-visible{outline:2px solid var(--blekk);outline-offset:2px}
+.table-wrap > table,.locale-prose table{width:100%;border-collapse:collapse;font-size:1.125rem;line-height:1.4}
+.table-wrap > table{margin:0}
+.locale-prose table{margin-top:22px}
+.table-wrap table{margin-top:0}
+.locale-prose th{padding:0 16px 10px 0;font-size:.875rem;font-weight:500;letter-spacing:.04em;text-align:left;color:var(--dempet);border-bottom:1px solid var(--blekk)}
+.locale-prose tbody th{padding:13px 16px 13px 0;font-size:inherit;font-weight:500;letter-spacing:normal;color:var(--blekk);border-bottom:1px solid var(--linje)}
+.locale-prose td{padding:13px 0 13px 16px;border-bottom:1px solid var(--linje)}
+.locale-prose td:first-child{padding-left:0}
+.locale-prose th:last-child:not(:first-child),.locale-prose td:last-child:not(:first-child){text-align:right}
+.locale-prose td:last-child:not(:first-child){font-weight:700}
+.locale-prose tbody tr:last-child th,.locale-prose tbody tr:last-child td{border-bottom:0}
+
+/* Appkortet: svak toning i hjørnene, bildet til høyre på PC og under på mobil */
+.i-appen,.app-cta,.page-cta{border-radius:40px;background:radial-gradient(90% 80% at 0% 0%,color-mix(in srgb,var(--kule1) 30%,transparent),transparent 62%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--kule3) 32%,transparent),transparent 62%),var(--hylle)}
+.i-appen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,200px);align-items:center;gap:28px 40px;margin:40px 0 0;padding:36px 40px}
+.i-appen-tekst p{margin:12px 0 0;max-width:40ch;font-size:1.0625rem;line-height:1.5;color:var(--dempet)}
+.i-appen-tekst p.i-appen-tittel{display:flex;align-items:center;gap:10px;margin:0;font-size:1.25rem;font-weight:700;letter-spacing:-.015em;line-height:1.25;color:var(--blekk)}
+.i-appen-tittel img{flex:none;border-radius:6px}
+.i-appen .more{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+.i-appen-media{min-width:0}
+.i-appen-media img{display:block;width:100%;max-width:200px;height:auto;margin-inline:auto;border-radius:24px;box-shadow:0 0 0 1px var(--a-kant)}
+.app-cta,.page-cta{margin:112px auto 0}
+.app-cta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,280px);align-items:center;gap:40px 72px;padding:56px}
+.app-cta-tekst{grid-column:1;grid-row:1}
+.app-cta-bilde{grid-column:2;grid-row:1;margin:0}
+.app-cta-bilde img{display:block;width:100%;max-width:280px;height:auto;margin-inline:auto;border-radius:28px;box-shadow:0 0 0 1px var(--a-kant)}
+.app-cta h2,.page-cta h2{margin:0;font-size:clamp(1.625rem,2.8vw,2.125rem);line-height:1.12}
+.app-cta-tekst p{margin:12px 0 0;max-width:40ch;font-size:1.1875rem;line-height:1.5;color:var(--dempet)}
+.app-cta-tekst > a,.page-cta > a{margin-top:26px}
+.page-cta{padding:56px;text-align:center}
+
+/* Spørsmål og svar: linje mellom spørsmålene, pluss som blir kryss */
+.faq{max-width:760px;margin:112px auto 0}
+.faq h2{margin:0 0 32px;font-size:clamp(1.625rem,2.8vw,2.125rem);line-height:1.12;text-align:center}
+.faq details{border-bottom:1px solid var(--linje)}
+.faq details:first-of-type{border-top:1px solid var(--linje)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px;padding:14px 0;font-size:1.1875rem;font-weight:700;line-height:1.3;letter-spacing:-.01em;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:22px;height:22px;background:linear-gradient(currentColor,currentColor) center / 100% 2px no-repeat,linear-gradient(currentColor,currentColor) center / 2px 100% no-repeat;transition:transform .35s var(--ut)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0;padding:0 44px 22px 0;max-width:62ch;font-size:1.0625rem;line-height:1.55;color:var(--dempet)}
+.faq details p + p{margin-top:-10px}
+.faq a{text-decoration:underline;text-underline-offset:.2em}
+
+/* Rader med piller: relaterte sider og omregnerlister */
+.related{max-width:880px;margin:112px auto 0;text-align:center}
+.related h2{margin:0;font-size:clamp(1.625rem,2.8vw,2.125rem);line-height:1.12}
+.related ul,.omregner-liste{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:28px auto 0;padding:0;list-style:none}
+.related li a,.omregner-liste li{display:inline-flex;align-items:center;min-height:48px;padding:6px 20px;border:1px solid var(--linje);border-radius:28px;font-size:1.0625rem;font-weight:500;line-height:1.35;text-align:left;transition:border-color .2s}
+.related li a:hover,.related li a:focus-visible,.omregner-liste li:hover,.omregner-liste li:focus-within{border-color:var(--blekk)}
+.omregner-liste li a{display:inline-flex;align-items:center;min-height:44px;margin-right:.35em;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+
+/* Nummererte steg med svart sirkel */
+.steps{display:grid;gap:18px;margin:22px 0 0;padding:0;list-style:none;counter-reset:steg}
+.steps > li,.steps > .step{position:relative;min-height:2rem;padding-left:52px;counter-increment:steg}
+.steps > li::before,.steps > .step::before{content:counter(steg);position:absolute;left:0;top:0;display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--blekk);color:var(--flate);font:500 .875rem/1 var(--mono)}
+
+@media (max-width:720px){
+  .locale-page-hero{padding-block:28px 0}
+  .locale-page-hero .lead{font-size:1.125rem}
+  .locale-prose{margin-top:32px}
+  .locale-prose h2,main.prose h2{margin-top:48px}
+  .answer{font-size:1.125rem}
+  main.prose{padding-block:48px 0}
+  .i-appen{grid-template-columns:minmax(0,1fr);padding:28px 20px;border-radius:32px}
+  .app-cta{grid-template-columns:minmax(0,1fr);gap:28px;padding:28px 20px;border-radius:32px}
+  .app-cta-bilde{grid-column:1;grid-row:2}
+  .app-cta-tekst > a{display:flex}
+  .page-cta{padding:36px 20px;border-radius:32px}
+  .app-cta,.page-cta,.faq,.related{margin-top:72px}
+  .faq summary{font-size:1.125rem}
+  .faq details p{padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){.faq summary::after,.related li a,.omregner-liste li,.locale-page-hero .eyebrow a{transition:none}}
+
+/* == Omregner == */
+/* == Lang guide == */
+/* == Kort guide == */
+/* == Eldre sider == */
+/* == Blogg == */
+/* == Juss == */

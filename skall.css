@@ -128,13 +128,18 @@ h1,h2{margin:0;font-weight:700;letter-spacing:-.028em;text-wrap:balance}
 .under .language-switcher a:hover,.under .language-switcher a:focus-visible{color:#E9E5DE;background:var(--blekk);text-decoration:underline}
 .panel .language-switcher a:focus-visible{outline-color:var(--blekk);outline-offset:4px}
 .under .language-switcher a:focus-visible{outline-color:#E9E5DE;outline-offset:4px}
-/* Samtykke bruker samme uttrykk og samme vekt for begge valg. */
+/* Samtykkebanneret er sidens eget, i begge familier, og står likt på forsiden og undersidene.
+   Begge valg har samme uttrykk og samme vekt (samtykkeVekt): ingen skjult avvis-knapp. */
 .cookie{position:fixed;z-index:40;right:16px;bottom:16px;width:min(100% - 32px,380px);max-height:calc(100dvh - 32px);overflow:auto;padding:28px;border:1px solid var(--linje);border-radius:28px;background:var(--flate);color:var(--blekk)}
-.cookie h3{margin:0;font-size:20px;line-height:1.4}
-.cookie p{margin:12px 0 20px;font-size:15px;line-height:1.4;color:var(--dempet)}
+.cookie[hidden]{display:none}
+/* Den eldre familien har en h3 som tittel, den nyere en .cookie-inner med bare tekst. Begge får forsidens titteluttrykk. */
+.cookie h3{margin:0;font-size:1.25rem;line-height:1.4;font-weight:700;letter-spacing:-.01em;color:var(--blekk)}
+.cookie-inner{margin:0;padding:0}
+.cookie p{margin:12px 0 20px;font-size:.9375rem;line-height:1.4;color:var(--dempet)}
+.cookie-inner p{margin-top:0}
 .cookie p a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline}
 .cookie-actions{display:flex;flex-wrap:wrap;gap:8px}
-.ck-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;flex:1;padding:10px 16px;border:1px solid var(--blekk);border-radius:999px;background:var(--blekk);color:var(--flate);font:500 15px/1.4 var(--f);cursor:pointer}
+.ck-btn,.ck-accept,.ck-reject{display:inline-flex;align-items:center;justify-content:center;min-height:44px;flex:1;padding:10px 16px;border:1px solid var(--blekk);border-radius:999px;background:var(--blekk);color:var(--flate);font:500 .9375rem/1.4 var(--f);white-space:normal;cursor:pointer}
 .ck-btn:hover{background:var(--blekk-lys)}
 .ck-btn:focus-visible{outline:2px solid var(--blekk);outline-offset:4px}
 @media (max-width:720px){
