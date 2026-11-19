@@ -8,7 +8,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { matformer, tomat, sitron, chili, blad, egg } from './illustrasjon.mjs';
 import { SIDEGRUPPER } from './locale-sider.mjs';
-import { alleSider, erUtrullet, UTRULLET } from './sidetyper.mjs';
+import { alleSiderMedUkjente, erUtrullet, trygtUnderRot, UTRULLET } from './sidetyper.mjs';
 
 const TEKSTER = {
   nb: { last: 'Få appen', tittel: 'Last ned Matlyst', under: 'Gratis for iPhone og Android', regionnavn: 'Last ned appen' },
@@ -165,11 +165,13 @@ export function behandle(html, sti, utrullet = UTRULLET) {
 
 export function kjor(rot) {
   const endret = [];
-  for (const { fil: rel, sti } of alleSider(rot)) {
+  // Ukjente sider (type null) behandles som før 7b, ikke som feil.
+  for (const { fil: rel, sti } of alleSiderMedUkjente(rot)) {
     const fil = join(rot, rel);
+    if (!trygtUnderRot(rot, fil)) continue;
     const html = readFileSync(fil, 'utf8');
     const ny = behandle(html, sti);
-    if (ny !== html) { writeFileSync(fil, ny); endret.push(rel); }
+    if (ny !== html && trygtUnderRot(rot, fil)) { writeFileSync(fil, ny); endret.push(rel); }
   }
   return endret;
 }

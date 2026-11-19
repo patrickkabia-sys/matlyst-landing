@@ -209,7 +209,7 @@ test('CLI skriver faktisk rendring ved utrulling og lar andre sider stå', (t) =
   mkdirSync(join(mappe, 'verktoy/kopp-til-dl'), { recursive: true });
   writeFileSync(fil, fiks('omregner-nb'));
   writeFileSync(join(mappe, 'vilkar.html'), fiks('juss-nb'));
-  const kjorCli = () => execFileSync('/opt/homebrew/bin/node', [join(mappe, 'scripts/skall-paa.mjs')], { cwd: tmpdir(), encoding: 'utf8' });
+  const kjorCli = () => execFileSync(process.execPath, [join(mappe, 'scripts/skall-paa.mjs')], { cwd: tmpdir(), encoding: 'utf8' });
   assert.equal(kjorCli(), 'skall-paa: 0 sider oppdatert\n');
   assert.equal(readFileSync(fil, 'utf8'), fiks('omregner-nb'));
   const register = join(mappe, 'scripts/sidetyper.mjs');
@@ -221,6 +221,6 @@ test('CLI skriver faktisk rendring ved utrulling og lar andre sider stå', (t) =
   assert.ok(!ut.includes('href="/styles.css"'));
   assert.deepEqual(overskrifter(ut), overskrifter(fiks('omregner-nb')));
   assert.equal(readFileSync(join(mappe, 'vilkar.html'), 'utf8'), fiks('juss-nb'));
-  assert.equal(execFileSync('/opt/homebrew/bin/node', [join(mappe, 'scripts/skall-paa.mjs')], { cwd: tmpdir(), encoding: 'utf8' }), 'skall-paa: 0 sider oppdatert\n');
+  assert.equal(execFileSync(process.execPath, [join(mappe, 'scripts/skall-paa.mjs')], { cwd: tmpdir(), encoding: 'utf8' }), 'skall-paa: 0 sider oppdatert\n');
   assert.equal(readFileSync(fil, 'utf8'), ut);
 });

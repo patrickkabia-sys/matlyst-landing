@@ -25,7 +25,7 @@ function kopi(t) {
 
 test('CLI lager speilet forhåndsvisning med noindex uten locale.js og bevarer kildesidene', (t) => {
   const { mappe, sider } = kopi(t);
-  execFileSync('/opt/homebrew/bin/node', [join(mappe, 'scripts/skall-paa.mjs'), '--forhandsvis', 'qa/forhandsvisning'], { cwd: tmpdir() });
+  execFileSync(process.execPath, [join(mappe, 'scripts/skall-paa.mjs'), '--forhandsvis', 'qa/forhandsvisning'], { cwd: tmpdir() });
   const kartfil = join(mappe, 'qa/forhandsvisning/kart.json');
   assert.ok(existsSync(kartfil), 'forhåndsvisningen må skrive kart.json');
   const kart = JSON.parse(readFileSync(kartfil, 'utf8'));
@@ -46,7 +46,7 @@ test('CLI lager speilet forhåndsvisning med noindex uten locale.js og bevarer k
     else assert.match(ut, /<!-- skall:topp -->/u, s.sti);
   }
   const foer = kart.map((s) => readFileSync(join(mappe, s.url, s.url.endsWith('/') ? 'index.html' : ''), 'utf8'));
-  execFileSync('/opt/homebrew/bin/node', [join(mappe, 'scripts/skall-paa.mjs'), '--forhandsvis', 'qa/forhandsvisning']);
+  execFileSync(process.execPath, [join(mappe, 'scripts/skall-paa.mjs'), '--forhandsvis', 'qa/forhandsvisning']);
   assert.equal(readFileSync(kartfil, 'utf8'), JSON.stringify(kart, null, 2) + '\n');
   assert.deepEqual(kart.map((s) => readFileSync(join(mappe, s.url, s.url.endsWith('/') ? 'index.html' : ''), 'utf8')), foer);
   assert.equal(UTRULLET.size, 0);

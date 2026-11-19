@@ -64,7 +64,7 @@ const skall = await import(${JSON.stringify(join(inne, 'scripts/skall-paa.mjs'))
 const resultat = skall.${modus}(${JSON.stringify(inne)}, new Set(['omregner', 'tjeneste:auth']));
 console.log(JSON.stringify(resultat));
 `;
-    const resultat = JSON.parse(execFileSync('/opt/homebrew/bin/node', ['--input-type=module', '-e', program], { encoding: 'utf8' }));
+    const resultat = JSON.parse(execFileSync(process.execPath, ['--input-type=module', '-e', program], { encoding: 'utf8' }));
     assert.equal(resultat.length, tjeneste ? 1 : 0);
     assert.equal(readFileSync(join(ute, 'index.html'), 'utf8'), original);
   });
@@ -112,6 +112,6 @@ const { kjor } = await import(${JSON.stringify(join(inne, 'scripts/skall-paa.mjs
 console.log(JSON.stringify(kjor(${JSON.stringify(inne)}, new Set(['omregner']))));
 if (antall !== 2) throw new Error('Kildebyttet ble ikke prøvd');
 `;
-  assert.deepEqual(JSON.parse(execFileSync('/opt/homebrew/bin/node', ['--input-type=module', '-e', program], { encoding: 'utf8' })), []);
+  assert.deepEqual(JSON.parse(execFileSync(process.execPath, ['--input-type=module', '-e', program], { encoding: 'utf8' })), []);
   assert.equal(readFileSync(join(ute, 'index.html'), 'utf8'), original);
 });

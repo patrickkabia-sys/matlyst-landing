@@ -37,3 +37,13 @@ test('kjor skanner bare publiserbare sider', (t) => {
   for (const del of skjulte) assert.equal(readFileSync(join(mappe, del, 'index.html'), 'utf8'), generert, del);
   assert.deepEqual(kjor(mappe), []);
 });
+
+test('kjor kaster ikke på en side med ukjent type, men behandler den som før', (t) => {
+  const mappe = mkdtempSync(join(tmpdir(), 'app-ukjent-'));
+  t.after(() => rmSync(mappe, { recursive: true, force: true }));
+  const side = '<html lang="nb"><head></head><body><nav><div class="nav-right"></div></nav><main><a href="https://apps.apple.com/app/matlyst/id1">a</a><a href="https://play.google.com/store/apps/details?id=app.matlyst">p</a></main><footer></footer></body></html>';
+  mkdirSync(join(mappe, 'ny-side'));
+  writeFileSync(join(mappe, 'ny-side/index.html'), side);
+  assert.deepEqual(kjor(mappe), ['ny-side/index.html']);
+  assert.match(readFileSync(join(mappe, 'ny-side/index.html'), 'utf8'), /class="nav-dl"/u);
+});

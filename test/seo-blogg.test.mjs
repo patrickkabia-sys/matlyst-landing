@@ -6,7 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import test from 'node:test';
 import { rendre, trekkUt } from '../scripts/skall-paa.mjs';
-import { erUtrullet } from '../scripts/sidetyper.mjs';
+import { alleSider, erUtrullet } from '../scripts/sidetyper.mjs';
 
 import {
   autoArtikkelMain,
@@ -75,10 +75,17 @@ function byggMidlertidigNettsted() {
     filter: (kilde) => !['.git', '.superpowers', 'node_modules'].includes(kilde.split('/').at(-1)),
   });
   skrivFixture(generertRot, true);
+  // Lokal utrulling bare i kopien: repoets UTRULLET røres ikke. Da må generatorkjeden
+  // faktisk legge skallet på de nygenererte omregnersidene.
+  const sidetyper = join(generertRot, 'scripts/sidetyper.mjs');
+  const kilde = readFileSync(sidetyper, 'utf8');
+  const lokal = kilde.replace('export const UTRULLET = new Set();', "export const UTRULLET = new Set(['omregner']);");
+  assert.notEqual(lokal, kilde, 'fant ikke UTRULLET i kopien');
+  writeFileSync(sidetyper, lokal);
   execFileSync(process.execPath, ['scripts/generer-norske-importguider.mjs'], { cwd: generertRot });
   execFileSync(process.execPath, ['scripts/generer-lokalsider.mjs'], { cwd: generertRot });
   for (const skript of ['guidelenker', 'lenker-sett', 'skall-paa', 'app-uttrykk', 'app-bevis', 'bilde-attributter', 'sprak-signaler']) {
-    execFileSync('/opt/homebrew/bin/node', [`scripts/${skript}.mjs`], { cwd: generertRot });
+    execFileSync(process.execPath, [`scripts/${skript}.mjs`], { cwd: generertRot });
   }
   return generertRot;
 }
@@ -185,5 +192,19 @@ test('generatorkjeden gir autoartikkelen meny, bilder med mål og språksignal',
   for (const bilde of html.matchAll(/<img[^>]*src="\/images\/(?:appstore-badge\.svg|googleplay-badge-en\.png)"[^>]*>/gu)) {
     assert.match(bilde[0], /width="\d+"/u);
     assert.match(bilde[0], /height="\d+"/u);
+  }
+});
+
+test('generatorkjeden legger det nye skallet på regenererte omregnersider (og ingen gammel meny)', () => {
+  const rot = byggMidlertidigNettsted();
+  const sider = alleSider(rot).filter((s) => s.nokkel === 'omregner');
+  assert.ok(sider.length > 0, 'L skal ha generert omregnersider');
+  for (const s of sider) {
+    const html = readFileSync(join(rot, s.fil), 'utf8');
+    assert.ok(html.includes('<!-- skall:topp -->'), `${s.sti}: mangler skall:topp`);
+    assert.ok(html.includes('<link rel="stylesheet" href="/side.css">'), `${s.sti}: mangler side.css`);
+    assert.match(html, /<header class="topp"/u, `${s.sti}: mangler topp()`);
+    assert.ok(!html.includes('class="nav-meny"') && !html.includes('class="nav-dl"') && !html.includes('data-app-uttrykk'), `${s.sti}: gammel nav fra app-uttrykk`);
+    assert.equal(html, rendre(html, s.sti, new Set(['omregner'])), `${s.sti}: rendre er ikke idempotent`);
   }
 });

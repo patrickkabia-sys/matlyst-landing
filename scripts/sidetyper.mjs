@@ -110,14 +110,24 @@ function sprakForSti(sti) {
   return m ? m[1] : 'nb';
 }
 
-export function alleSider(rot) {
+function leseSiderIntern(rot, tillatUkjent) {
   return htmlFiler(rot).sort().map((full) => {
     const fil = relative(rot, full).split('\\').join('/');
     const sti = stiForFil(fil);
     const html = readFileSync(full, 'utf8');
-    const type = sidetype(sti, html);
+    const type = tillatUkjent ? sidetypeEllerNull(sti, html) : sidetype(sti, html);
     return { sti, fil, sprak: sprakForSti(sti), type, nokkel: nokkel(sti, html) };
   });
+}
+
+// Ukjent sidetype kaster.
+export function alleSider(rot) {
+  return leseSiderIntern(rot, false);
+}
+
+// Ukjente sider får type og nøkkel null i stedet for å kaste.
+export function alleSiderMedUkjente(rot) {
+  return leseSiderIntern(rot, true);
 }
 
 function gruppeSider(id) {

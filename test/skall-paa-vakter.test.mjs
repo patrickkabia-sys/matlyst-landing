@@ -79,6 +79,53 @@ for (const sprak of ['nb', 'sv', 'da', 'en']) {
   });
 }
 
+// Alle tekster i et språks skalltekster, rekursivt (strenger i objekter og lister).
+const strenger = (v) => typeof v === 'string' ? [v] : v && typeof v === 'object' ? Object.values(v).flatMap(strenger) : [];
+
+// Rendrer ett eksempel og henter ut skallet (topp og bunn) uten sidens egne guideblokk.
+function skalldeler(side) {
+  const original = les(side), d = trekkUt(original, side.sti);
+  const ut = rendre(d.banner ? original.replace(d.banner, '') : original, side.sti, utrullet);
+  const deler = [...ut.matchAll(/<!-- skall:(topp|bunn) -->([^]*?)<!-- \/skall:\1 -->/gu)].map((m) => m[2]);
+  assert.equal(deler.length, 2, side.sti);
+  return deler.join('').replace(d.guider, '');
+}
+
+// Alle synlige tekster og alle aria-label/alt/title i skallet må høre til sidens språk.
+export function sprakAvvik(skall, sprak, sti) {
+  const t = SKALLTEKST[sprak], h = lokaliserHyller(sprak, HYLLETEKST[sprak]);
+  const lov = new Set([...strenger(t), ...h.flatMap((x) => [x.navn, ...synligeLenker(x).map((l) => l.tekst)]), 'mat', 'lyst', '.', ''].map(skjerm));
+  const synlig = ren(skall).split(/<[^>]+>/u).map((x) => x.replace(/\s+/gu, ' ').trim()).filter(Boolean);
+  const etiketter = [...ren(skall).matchAll(/\s(?:aria-label|alt|title)\s*=\s*(["'])(.*?)\1/gu)].map((m) => m[2]);
+  return [...synlig, ...etiketter].filter((x) => !lov.has(x)).map((x) => `${sti} (${sprak}): «${x}»`);
+}
+
+test('språkvakten dekker alle ikke-tjenestetyper i alle språk de finnes på', () => {
+  let antall = 0;
+  for (const type of ['omregner', 'guide-lang', 'guide-kort', 'guide-gammel', 'blogg', 'juss']) {
+    for (const sprak of ['nb', 'sv', 'da', 'en']) {
+      const sti = EKSEMPEL[type]?.[sprak];
+      if (!sti) { assert.ok(type === 'guide-gammel' && sprak !== 'nb', `${type} mangler eksempel på ${sprak}`); continue; }
+      const side = sider.find((s) => s.sti === sti);
+      assert.ok(side, `${type}/${sprak}: ${sti}`);
+      assert.equal(side.sprak, sprak, sti);
+      const skall = skalldeler(side);
+      assert.ok(skall.includes(skjerm(SKALLTEKST[sprak].topp.hopp)), `${sti}: skallet må ha hopp-lenka på ${sprak}`);
+      assert.deepEqual(sprakAvvik(skall, sprak, sti), []);
+      antall++;
+    }
+  }
+  assert.equal(antall, 6 * 4 - 3, 'seks typer på fire språk, guide-gammel bare på nb');
+});
+
+test('språkvakten slår ut når en bloggside har skall på feil språk', () => {
+  const side = sider.find((s) => s.sti === EKSEMPEL.blogg.sv);
+  const nb = SKALLTEKST.nb.topp.hopp;
+  assert.notEqual(nb, SKALLTEKST.sv.topp.hopp);
+  const skall = skalldeler(side).replace(skjerm(SKALLTEKST.sv.topp.hopp), skjerm(nb)).replace(skjerm(SKALLTEKST.sv.topp.meny), skjerm(SKALLTEKST.nb.topp.meny));
+  assert.ok(sprakAvvik(skall, 'sv', side.sti).length > 0);
+});
+
 test('canonical, hreflang og JSON-LD er byte-identiske på alle sider', () => {
   const seo = (h) => [...h.matchAll(/<link\b[^>]*>|<script\b[^>]*type=["']application\/ld\+json["'][^>]*>[^]*?<\/script>/giu)]
     .map((m) => m[0]).filter((x) => x.startsWith('<script') || attr(x, 'rel') === 'canonical' || attr(x, 'hreflang') !== undefined);
