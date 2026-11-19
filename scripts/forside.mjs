@@ -280,7 +280,7 @@ function spor(t) {
 
 const klokkeikon = (maal = 14, strek = 1.8) => `<svg aria-hidden="true" width="${maal}" height="${maal}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${strek}" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>`;
 const ansikt = (n, maal, folk) => `<img data-n="${n}" src="/images/forside/${folk.egne.includes(n) ? folk.mappe : 'folk'}/${String(n).padStart(2, '0')}.webp" alt="" width="${maal}" height="${maal}" loading="lazy">`;
-const eier = (rad, folk) => `<span class="a-eier">${ansikt(rad.ansikt, 20, folk)}${skjerm(rad.eier)}</span>`;
+const eier = (rad, folk) => `<span class="a-eier">${ansikt(rad.ansikt, 20, folk)}<span class="a-navn">${skjerm(rad.eier)}</span></span>`;
 function maltid(dag, merke, folk, medEier = false) {
   return `<div class="a-maltid${medEier ? ` a-innrad${Object.hasOwn(dag, 'ny') && dag.ny ? ' ny skjult' : ''}` : ''}"><img src="/images/forside/mat/${skjerm(dag.fil)}.webp" alt="" width="92" height="92" loading="lazy"><div><div class="a-tittel">${skjerm(dag.rett)}</div><div class="a-meta"><span>${skjerm(merke)}</span><em>${klokkeikon()}${skjerm(dag.tid)}</em>${medEier ? eier(dag, folk) : ''}</div></div></div>`;
 }

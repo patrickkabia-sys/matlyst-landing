@@ -472,9 +472,11 @@ html.js .hero h1:not(.klar){visibility:hidden}
   .a-etikett{margin-top:6px}
   .a-husflate .a-eier{padding:2px 8px 2px 2px;font-size:.8125rem}
 }
-/* Under 380 px er det ikke plass til både navn og tall på samme rad: avataren viser hvem som la inn varen, navnet blir stående for skjermlesere. */
+/* Under 380 px er det ikke plass til både navn og tall på samme rad: avataren viser hvem som la inn varen, navnet er skjult på skjermleser-måten (ikke display:none). */
 @media (max-width:380px){
-  .a-husflate .a-eier{font-size:0;gap:0;padding:2px}
+  .a-husflate .a-eier{gap:0;padding:2px}
+  /* Navnet er skjult på den vanlige måten for skjermlesere (ikke display:none), så avataren har tilgjengelig navn. */
+  .a-husflate .a-navn{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 }
 
 /* Patrick 19.11: kortstabling på mobil, av som standard. Slås på med klassen `stabel` på #trio (de fem rutene; Spør Matlyst-flisene stables ikke, se rapporten).

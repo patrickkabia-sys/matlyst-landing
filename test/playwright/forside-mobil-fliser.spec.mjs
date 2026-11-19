@@ -104,3 +104,21 @@ test('PC er uendret: to kolonner i Spør Matlyst, retter og husvalg brytes, to r
   }));
   expect(m).toEqual({ kol: 2, flate: '72px', husvelg: 'wrap', forslag: 'wrap', maltider: 2, kule: 116 });
 });
+
+test('under 380 px vises bare avataren på husstandsvarene, og navnet er tilgjengelig (ikke display:none)', async ({ page }) => {
+  await mobil(page, 360, 640);
+  await page.locator('.a-husvelg button').nth(1).click();
+  const m = await page.evaluate(() => [...document.querySelectorAll('.a-husflate .a-eier')].map((e) => {
+    const n = e.querySelector('.a-navn'), s = getComputedStyle(n), r = n.getBoundingClientRect();
+    return { navn: n.textContent.trim(), display: s.display, visibility: s.visibility, bredde: Math.round(r.width), ariaHidden: !!n.closest('[aria-hidden="true"]'), boks: Math.round(e.getBoundingClientRect().width) };
+  }));
+  expect(m.length).toBeGreaterThanOrEqual(5);
+  for (const x of m) {
+    expect(x.navn.length, 'navnet står i DOM').toBeGreaterThan(1);
+    expect(x.display, 'ikke display:none').not.toBe('none'); expect(x.visibility).toBe('visible'); expect(x.ariaHidden).toBe(false);
+    expect(x.bredde, 'visuelt skjult').toBeLessThanOrEqual(1); expect(x.boks, 'bare avataren synes').toBeLessThanOrEqual(30);
+  }
+  // Over 380 px står navnet synlig.
+  await page.setViewportSize({ width: 390, height: 664 });
+  expect(await page.locator('.a-husflate .a-navn').first().evaluate((e) => e.getBoundingClientRect().width)).toBeGreaterThan(20);
+});
