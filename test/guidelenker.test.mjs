@@ -99,3 +99,17 @@ test('settInn erstatter en eksisterende guideblokk med nytt innhold, og plassen 
   assert.ok(fraPlass.indexOf(ny) < fraPlass.indexOf('<footer'));
   assert.ok(fraPlass.indexOf(ny) < fraPlass.indexOf('</section>'));
 });
+
+test('settInn uten plassmerke: blokka står i hylledelen foran .bunnrad, ikke i eller etter bunnteksten', () => {
+  const ny = '<!-- guider:bunn --><div class="f-guider">ny</div><!-- /guider:bunn -->';
+  const utenPlass = (hylledel('nb') + morkBunn('nb', {})).replace('<!-- guider:plass -->', '');
+  assert.ok(!utenPlass.includes('guider:plass'));
+  const ut = settInn(utenPlass, ny);
+  assert.equal(ut.split(ny).length - 1, 1);
+  const pos = (m) => { const i = ut.indexOf(m); assert.ok(i > -1, m); return i; };
+  assert.ok(pos('<section class="bunn"') < pos(ny));
+  assert.ok(pos(ny) < pos('<div class="bunnrad">'));
+  assert.ok(pos(ny) < pos('</section>'));
+  assert.ok(pos(ny) < pos('<footer'));
+  assert.equal(settInn(ut, ny), ut, 'idempotent');
+});

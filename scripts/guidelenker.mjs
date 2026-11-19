@@ -27,6 +27,8 @@ export const UNDER_HUB = /^\/(?:[a-z]{2}\/)?(?:tools|verktoy|verktyg|vaerktoejer
 // Plassmerket scripts/skall.mjs skriver i hylledelen til guideblokka.
 export const PLASS = '<!-- guider:plass -->';
 
+const BUNNRAD = '<div class="bunnrad">';
+
 export const MONSTER = /<!-- guider:bunn -->[\s\S]*?<!-- \/guider:bunn -->/u;
 
 export function filFor(sti) {
@@ -70,6 +72,8 @@ export function settInn(html, ny, sti) {
   if (MONSTER.test(html)) return html.replace(MONSTER, () => ny);
   // Det nye skallet har en plass i hylledelen (<details class="alle-guider">).
   if (html.includes(PLASS)) return html.replace(PLASS, () => ny);
+  // Hylledel uten plassmerke: blokka står i hylledelen foran .bunnrad, aldri etter bunnteksten.
+  if (html.includes(BUNNRAD)) return html.replace(BUNNRAD, () => `${ny}${BUNNRAD}`);
   return html.replace('</footer>', () => `  ${ny}\n</footer>`);
 }
 
