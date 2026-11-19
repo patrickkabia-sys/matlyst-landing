@@ -5,11 +5,12 @@ import { STI } from './hjelp/sprak.mjs';
 const rullInn = (page) => page.evaluate(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += 400) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 20)); } scrollTo(0, 0); });
 const mobil = async (browser, baseURL, { bredde = 390, hoyde = 664, redusert = 'reduce', stabel = true } = {}) => {
   const ctx = await browser.newContext({ baseURL, viewport: { width: bredde, height: hoyde }, reducedMotion: redusert });
+  if (stabel === false) await ctx.addInitScript(() => { new MutationObserver(() => document.getElementById('trio')?.classList.remove('stabel')).observe(document, { childList: true, subtree: true }); });
   const page = await ctx.newPage();
   await page.goto(STI);
   await page.addStyleTag({ content: '#cookie{display:none!important}' });
   await rullInn(page);
-  await page.evaluate((paa) => document.getElementById('trio').classList.toggle('stabel', paa ?? true), stabel);
+  if (stabel !== false) await page.evaluate(() => document.getElementById('trio').classList.add('stabel'));
   return { ctx, page };
 };
 // Rullestilling der rute nr i (fra 0) står i sin egen posisjon i stabelen.

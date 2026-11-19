@@ -12,7 +12,7 @@ const mobil = async (browser, baseURL, { redusert = 'no-preference', berøring =
   await page.waitForTimeout(600);
   return { ctx, page };
 };
-const tilKort = (page, i) => page.evaluate((n) => { const a = document.querySelectorAll('#trio > .snap')[n]; scrollTo(0, a.getBoundingClientRect().top + scrollY - parseFloat(getComputedStyle(a).scrollMarginTop)); }, i);
+const tilKort = (page, i) => page.evaluate((n) => { const trio = document.getElementById('trio'), r = [...trio.querySelectorAll(':scope > .rute')], gap = parseFloat(getComputedStyle(trio).rowGap) || 0; scrollTo(0, trio.getBoundingClientRect().top + scrollY + r.slice(0, n).reduce((t, e) => t + e.offsetHeight + gap, 0) - parseFloat(getComputedStyle(r[n]).top)); }, i);
 const sveip = async (ctx, page, dist, fart) => { const c = await ctx.newCDPSession(page); await c.send('Input.synthesizeScrollGesture', { x: 200, y: 500, yDistance: -dist, speed: fart, gestureSourceType: 'touch' }); await page.waitForTimeout(1600); };
 const topper = (page) => page.evaluate(() => [...document.querySelectorAll('#trio > .rute')].map((r) => Math.round(r.getBoundingClientRect().top)));
 // Kort i er «landet» når det står i sin stabelposisjon: 12 px + 6 px per kort fra toppen.
@@ -146,5 +146,38 @@ test('redusert bevegelse: reserven er av, rullingen er fri', async ({ browser, b
   await sveip(ctx, page, 230, 800);
   const d = (await page.evaluate(() => scrollY)) - y0;
   expect(d, `fri rulling (${d})`).toBeGreaterThan(150); expect(d).toBeLessThan(330);
+  await ctx.close();
+});
+
+// Retterunde 3: stabling og låsing er bare på når hvert kort får plass i ledig høyde.
+test('liggende telefon (667 x 375): stabelen er av, kortene ligger vanlig under hverandre, og rullingen er fri', async ({ browser }) => {
+  const ctx = await browser.newContext({ baseURL: 'http://127.0.0.1:4173', viewport: { width: 667, height: 375 }, hasTouch: true, isMobile: true, reducedMotion: 'no-preference' });
+  await ctx.addInitScript(() => { try { localStorage.setItem('matlyst-consent', 'denied'); } catch {} });
+  const page = await ctx.newPage();
+  await page.goto(STI);
+  await page.addStyleTag({ content: '#cookie{display:none!important}' });
+  await page.waitForTimeout(800);
+  expect(await page.locator('#trio').getAttribute('class')).not.toContain('stabel');
+  const m = await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => ({ pos: getComputedStyle(e).position, t: e.getBoundingClientRect().top + scrollY, h: e.offsetHeight })));
+  expect(m.map((x) => x.pos)).toEqual(Array(5).fill('static'));
+  for (let i = 1; i < 5; i++) expect(m[i].t, 'ingenting skjult bak et annet kort').toBeGreaterThanOrEqual(m[i - 1].t + m[i - 1].h - 1);
+  await page.evaluate(() => document.getElementById('trio').scrollIntoView({ block: 'start', behavior: 'instant' }));
+  const y0 = await page.evaluate(() => scrollY);
+  const c = await ctx.newCDPSession(page);
+  await c.send('Input.synthesizeScrollGesture', { x: 300, y: 300, yDistance: -120, speed: 600, gestureSourceType: 'touch' });
+  await page.waitForTimeout(1500);
+  const d = (await page.evaluate(() => scrollY)) - y0;
+  expect(d, `fri rulling (${d})`).toBeGreaterThan(80); expect(d).toBeLessThan(160);
+  await ctx.close();
+});
+
+test('200 % tekst: stabelen slås av, og slås på igjen når teksten er normal', async ({ browser, baseURL }) => {
+  const { ctx, page } = await mobil(browser, baseURL);
+  expect(await page.locator('#trio').getAttribute('class')).toContain('stabel');
+  await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+  await expect.poll(() => page.locator('#trio').getAttribute('class'), { timeout: 4000 }).not.toContain('stabel');
+  expect(await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => getComputedStyle(e).position))).toEqual(Array(5).fill('static'));
+  await page.evaluate(() => { document.documentElement.style.fontSize = ''; });
+  await expect.poll(() => page.locator('#trio').getAttribute('class'), { timeout: 4000 }).toContain('stabel');
   await ctx.close();
 });

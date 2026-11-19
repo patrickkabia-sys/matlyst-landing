@@ -492,16 +492,3 @@ html.js .hero h1:not(.klar){visibility:hidden}
   #trio.stabel > .rute:nth-child(4){--stabel-n:3}
   #trio.stabel > .rute:nth-child(5){--stabel-n:4}
 }
-
-/* Patrick 19.11: ett sveip er ett kort. Bare forsiden, bare mobil med berøring: usynlige ankere (.snap) i kortenes naturlige posisjon, ett per kort (ikke på de klebrige kortene).
-   CSS scroll-snap (y proximity) ble prøvd og er ikke brukt: i Chromium snapper den tilbake til samme kort etter korte sveip og stopper ikke kraftige; reserven i forside.js styrer i stedet. Alle kort er like høye (--stabel-hoyde), og kortet lander 12 px (pluss 6 px per kort) fra toppen. */
-.snap{display:none}
-@media (max-width:720px) and (hover:none) and (pointer:coarse){
-  #trio.stabel{position:relative}
-  #trio.stabel > .snap{display:block;position:absolute;left:0;width:1px;height:0;pointer-events:none}
-  #trio.stabel > .s1{top:0;scroll-margin-top:var(--stabel-topp)}
-  #trio.stabel > .s2{top:calc(1 * (var(--stabel-hoyde) + 16px));scroll-margin-top:calc(var(--stabel-topp) + 1 * var(--stabel-skritt))}
-  #trio.stabel > .s3{top:calc(2 * (var(--stabel-hoyde) + 16px));scroll-margin-top:calc(var(--stabel-topp) + 2 * var(--stabel-skritt))}
-  #trio.stabel > .s4{top:calc(3 * (var(--stabel-hoyde) + 16px));scroll-margin-top:calc(var(--stabel-topp) + 3 * var(--stabel-skritt))}
-  #trio.stabel > .s5{top:calc(4 * (var(--stabel-hoyde) + 16px));scroll-margin-top:calc(var(--stabel-topp) + 4 * var(--stabel-skritt))}
-}

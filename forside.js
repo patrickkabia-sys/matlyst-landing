@@ -283,18 +283,23 @@
     else if (hoyre > 0) rad.scrollBy({ left: Math.min(hoyre, venstre), behavior: bevegelse.matches ? 'auto' : 'smooth' });
   }));
 
-  // Patrick 19.11: ett sveip er ett kort (mobil med berøring, stabelen er på). CSS-snappunktene på ankrene (.snap) tar de korte sveipene; her er reserven:
+  // Patrick 19.11: ett sveip er ett kort (mobil med berøring, stabelen er på). reserven:
   // etter at rullingen har stoppet (scrollend), glir siden mykt til neste kortstart, og et kraftig sveip som ville passert flere kort stoppes på neste.
   // Ut av stabelen (nedover fra siste kort, oppover fra første) og inn i den ovenfra går fritt. Ingen preventDefault; ved redusert bevegelse hopper siden direkte.
   {
-    const ankre = [...document.querySelectorAll('#trio > .snap')];
     const berøring = matchMedia('(max-width:720px) and (hover:none) and (pointer:coarse)');
-    const rulleMal = (i) => ankre[i].getBoundingClientRect().top + scrollY - (parseFloat(getComputedStyle(ankre[i]).scrollMarginTop) || 0);
+    // Kortstartene regnes fra kortenes faktiske plassering og høyde (naturlig posisjon i flyten minus klebrig topp), ikke fra faste mål.
+    const ruterIStabel = () => [...trio.querySelectorAll(':scope > .rute')];
+    const kortStarter = () => {
+      const r = ruterIStabel(), gap = parseFloat(getComputedStyle(trio).rowGap) || 0;
+      let naturlig = trio.getBoundingClientRect().top + scrollY;
+      return r.map((el) => { const m = naturlig - (parseFloat(getComputedStyle(el).top) || 0); naturlig += el.offsetHeight + gap; return m; });
+    };
     // Reserven virker bare på rulling som startet med berøring inne i stabelen, og bare kort tid etter at fingeren er løftet (treghetsrullingen).
     // Aldri mens fingeren er nede, og aldri etter tastatur, fokus, ankerlenke, søk eller programmatisk rulling. Redusert bevegelse: av.
     const TREGHET = 2500;
     let fraY = null, nede = false, sluppet = 0, egen = false, venter = 0;
-    const iStabel = () => ankre.length === 5 && stabler() && berøring.matches;
+    const iStabel = () => stabler() && berøring.matches;
     const glem = () => { fraY = null; nede = false; sluppet = 0; };
     addEventListener('touchstart', () => { nede = true; sluppet = 0; fraY = iStabel() && !bevegelse.matches ? scrollY : null; }, { passive: true });
     const sluppet_ = () => {
@@ -316,7 +321,7 @@
       if (fraY === null || nede || !sluppet || performance.now() - sluppet > TREGHET || !iStabel() || bevegelse.matches) { if (!nede && (!sluppet || performance.now() - sluppet > TREGHET)) fraY = null; return; }
       const start = fraY, y = scrollY, d = y - start;
       fraY = null;
-      const kort = ankre.map((_, i) => rulleMal(i));
+      const kort = kortStarter();
       // Inn i stabelen ovenfra og ut av den nedenfra går fritt: bare sveip som starter fra første kort til siste kort låses.
       if (start < kort[0] - 24 || start > kort[kort.length - 1] + 24) return;
       let mal;
@@ -337,6 +342,20 @@
   const trio = document.getElementById('trio');
   const smalSkjerm = matchMedia('(max-width:720px)');
   const stabler = () => trio.classList.contains('stabel') && smalSkjerm.matches;
+  // Stabling og låsing er bare på når HVERT kort faktisk får plass i ledig høyde (skjermhøyde minus 12 px topp minus 16 px luft). Er ett kort høyere
+  // (liggende telefon, stor tekst), ligger kortene vanlig under hverandre. Vurderes ved lasting, når skriftene er lastet, ved skjermendring og når et kort endrer størrelse.
+  const stabelOnsket = trio ? trio.classList.contains('stabel') : false; // står klassen ikke i HTML-en, er stabelen av og JS slår den aldri på
+  const vurderStabel = () => {
+    if (!trio || !smalSkjerm.matches || !stabelOnsket) return;
+    const ledig = innerHeight - 12 - 16;
+    const passer = [...trio.querySelectorAll(':scope > .rute')].every((el) => el.getBoundingClientRect().height <= ledig + 0.5);
+    if (trio.classList.contains('stabel') !== passer) trio.classList.toggle('stabel', passer);
+  };
+  addEventListener('resize', vurderStabel);
+  smalSkjerm.addEventListener('change', vurderStabel);
+  if (document.fonts?.ready) document.fonts.ready.then(vurderStabel);
+  if (trio && 'ResizeObserver' in window) { const ro = new ResizeObserver(vurderStabel); trio.querySelectorAll(':scope > .rute').forEach((el) => ro.observe(el)); }
+  vurderStabel();
   const kortRegister = [];
   const mal = (rute) => { const r = rute.getBoundingClientRect(), n = rute.nextElementSibling?.getBoundingClientRect(); return { r, n }; };
   // Det som sees av ruta er det den neste ikke dekker (bare noen piksler av stabelkanten).
