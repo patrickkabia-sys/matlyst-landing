@@ -18,8 +18,13 @@ test('kjeden er generatorene først og så etterbehandlingen, med forsidene sist
 });
 
 test('byggekjeden gir de publiserte sidene: bare de kjente avvikene i fasiten', { timeout: 300_000 }, () => {
-  const { avvik } = kjor(rot, 'alle');
+  const { avvik, hasher } = kjor(rot, 'alle');
   const kjente = Object.keys(fasit.avvik).sort();
   assert.deepEqual(avvik.filter((sti) => !kjente.includes(sti)), [], 'NYE avvik: generatorene gir noe annet enn de publiserte sidene');
   assert.deepEqual(kjente.filter((sti) => !avvik.includes(sti)), [], 'avvik som er rettet står fortsatt i fasiten');
+  // Unntaket gjelder bare akkurat dette innholdet: en ny forskjell i den publiserte eller genererte fila gir rødt.
+  for (const sti of kjente) {
+    assert.equal(hasher[sti].publisert, fasit.avvik[sti].sha256_publisert, `${sti}: den publiserte fila er endret siden fasiten`);
+    assert.equal(hasher[sti].generert, fasit.avvik[sti].sha256_generert, `${sti}: den genererte fila er endret siden fasiten`);
+  }
 });

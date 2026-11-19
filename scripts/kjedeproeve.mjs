@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { alleSider, trygtUnderRot } from './sidetyper.mjs';
 import { EKSTRA_FILER, KJEDE } from './kjede.mjs';
 
@@ -43,7 +44,8 @@ export function kjor(rot, nokkel) {
     for (const skript of KJEDE) execFileSync(process.execPath, [`scripts/${skript}.mjs`], { cwd: mappe, stdio: 'pipe' });
     const hent = (rotmappe) => new Map(alleSider(rotmappe).map((s) => [s.fil, s]));
     const alleFoer = hent(rot), alleEtter = hent(mappe);
-    const avvik = [], andre = [];
+    const avvik = [], andre = [], hasher = {};
+    const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex');
     for (const fil of [...new Set([...alleFoer.keys(), ...alleEtter.keys()])].sort()) {
       const a = alleFoer.get(fil), b = alleEtter.get(fil);
       const side = a ?? b;
@@ -55,7 +57,7 @@ export function kjor(rot, nokkel) {
         if (!innA.equals(innB)) forskjell = foersteForskjell(innA, innB);
       }
       if (forskjell === null) continue;
-      if (nokkel === 'alle' || side.nokkel === nokkel || a?.nokkel === nokkel || b?.nokkel === nokkel) avvik.push(side.sti);
+      if (nokkel === 'alle' || side.nokkel === nokkel || a?.nokkel === nokkel || b?.nokkel === nokkel) { avvik.push(side.sti); hasher[side.sti] = { publisert: a ? sha(join(rot, fil)) : null, generert: b ? sha(join(mappe, fil)) : null }; }
       else andre.push({ sti: side.sti, forskjell });
     }
     for (const fil of EKSTRA_FILER) {
@@ -63,7 +65,7 @@ export function kjor(rot, nokkel) {
       const a = existsSync(join(rot, fil)) ? readFileSync(join(rot, fil)) : null, b = existsSync(join(mappe, fil)) ? readFileSync(join(mappe, fil)) : null;
       if (!a || !b || !a.equals(b)) avvik.push(`/${fil}`);
     }
-    return { avvik, andre };
+    return { avvik, andre, hasher };
   } finally {
     rmSync(mappe, { recursive: true, force: true });
   }
