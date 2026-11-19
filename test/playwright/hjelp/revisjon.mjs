@@ -90,7 +90,8 @@ function geometri({ unntak, krom, tilsiktet }) {
     if (ute) utenforBoks.push(beskriv(el, n.nodeValue));
   }
 
-  // Overlapp: en overlapp er reell når bredde og høyde begge er over 0,5 px etter avrunding. Bare par der nøyaktig
+  // Overlapp: en overlapp er reell når flaten er over 4 px² etter avrunding til enhetspiksler
+  // (og begge tekstene faktisk synes, se okklusjon under). Bare par der nøyaktig
   // én side ligger i sidens egen flytende kromflate (krom) er unntatt.
   const iKrom = (el) => krom.length > 0 && !!el.closest(krom.join(','));
   // Hver tekstrekt kuttes mot klippende forfar (overflow ulik visible): det som ikke vises,
@@ -115,6 +116,55 @@ function geometri({ unntak, krom, tilsiktet }) {
       if (v) linjer.push({ i, krom: iKrom(t.el), el: t.el, n: t.n, ...v });
     }
   });
+  // Okklusjon: en overlapp teller bare når begge tekstene faktisk SES i snittflaten.
+  // Regel: ta fem punkt i snittet (midten og de fire indre hjørnene, 1 px inn) som ligger i
+  // visningsvinduet, og finn øverste element med elementFromPoint. Teksten X er skjult i et
+  // punkt når kjeden fra det øverste elementet og oppover (til det første elementet som
+  // inneholder X) har et element med ugjennomsiktig bakgrunnsfarge (alfa 1) og laget selv og forfedrene har opacity 1.
+  // Et halvgjennomsiktig lag skjuler altså ikke.
+  // Paret teller når hver av tekstene er synlig i minst ett punkt. Ligger ingen punkt i
+  // visningsvinduet, hoppes paret over her; det vurderes igjen når rullingen når det.
+  // (elementFromPoint ser bort fra pointer-events:none, og det feiler til den trygge siden: rødt.)
+  const alfa = (farge) => {
+    if (!farge || farge === 'transparent') return 0;
+    const m = farge.match(/rgba?\(([^)]*)\)/);
+    if (m) {
+      const d = m[1].split(/[ ,\/]+/).filter(Boolean);
+      return d.length > 3 ? parseFloat(d[3]) : 1;
+    }
+    const k = farge.match(/\/\s*([\d.]+%?)\s*\)/);
+    if (k) return k[1].endsWith('%') ? parseFloat(k[1]) / 100 : parseFloat(k[1]);
+    return 1;
+  };
+  const skjules = (x, topp) => {
+    if (x.el.contains(topp) || topp.contains(x.el)) return false;
+    const kjede = [];
+    for (let e = topp; e && !e.contains(x.el); e = e.parentElement) kjede.push(e);
+    // Fra roten og ned: et lag med alfa 1 skjuler bare hvis laget selv og alle forfedrene
+    // (i kjeden) har opacity 1. Dimming av etterkommerne (inni laget) angår ikke laget.
+    let dimmet = false;
+    for (let i = kjede.length - 1; i >= 0; i--) {
+      const cs = getComputedStyle(kjede[i]);
+      if (parseFloat(cs.opacity) < 1) dimmet = true;
+      if (!dimmet && alfa(cs.backgroundColor) === 1) return true;
+    }
+    return false;
+  };
+  const begge = (a, b) => {
+    const l = Math.max(a.l, b.l), r = Math.min(a.r, b.r), t = Math.max(a.t, b.t), u = Math.min(a.b, b.b);
+    const vl = Math.max(l, 0), vr = Math.min(r, window.innerWidth), vt = Math.max(t, 0), vu = Math.min(u, window.innerHeight);
+    if (vr <= vl || vu <= vt) return false;
+    const inx = Math.min(1, (vr - vl) / 2), iny = Math.min(1, (vu - vt) / 2);
+    const punkt = [[(vl + vr) / 2, (vt + vu) / 2], [vl + inx, vt + iny], [vr - inx, vt + iny], [vl + inx, vu - iny], [vr - inx, vu - iny]];
+    let seA = false, seB = false;
+    for (const [px, py] of punkt) {
+      const topp = document.elementFromPoint(px, py);
+      if (!topp) { seA = seB = true; continue; }
+      if (!skjules(a, topp)) seA = true;
+      if (!skjules(b, topp)) seB = true;
+    }
+    return seA && seB;
+  };
   linjer.sort((a, b) => a.t - b.t);
   const overlapp = [];
   const sett = new Set();
@@ -128,7 +178,8 @@ function geometri({ unntak, krom, tilsiktet }) {
       if (a.el.contains(b.el) || b.el.contains(a.el)) continue;
       const w = Math.min(a.r, b.r) - Math.max(a.l, b.l);
       const h = Math.min(a.b, b.b) - Math.max(a.t, b.t);
-      if (w > 0.5 && h > 0.5) {
+      if (w > 0 && h > 0 && w * h > 4) {
+        if (!begge(a, b, w, h)) continue;
         const nokkel = a.i + ':' + b.i;
         if (sett.has(nokkel)) continue;
         sett.add(nokkel);

@@ -104,6 +104,39 @@ test.describe('revisjonsmotoren, røde fikstur', () => {
     expect(r.utenforBoks).toEqual([]);
   });
 
+  for (const [w, h, rod] of [[1, 1, false], [2, 2, false], [3, 2, true], ['full', 3, true]]) {
+    test(`overlappflate ${w} x ${h} px er ${rod ? 'rød' : 'grønn'} (grense: over 4 px²)`, async ({ page }) => {
+      lokalt();
+      await page.goto(F('areal') + `?w=${w}&h=${h}`);
+      const r = await revider(page);
+      expect(r.overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(rod);
+    });
+  }
+
+  test('overlapp på 0,4 px høyde over full bredde er rød (flate 40 px² og mer)', async ({ browser, baseURL }) => {
+    lokalt();
+    const context = await browser.newContext({ baseURL, deviceScaleFactor: 5, viewport: { width: 390, height: 600 } });
+    const page = await context.newPage();
+    await page.goto(F('areal') + '?w=full&h=0.4');
+    const r = await revider(page);
+    await context.close();
+    expect(r.overlapp.some((x) => x.includes('#a') && x.includes('#b'))).toBe(true);
+  });
+
+  for (const [dekke, rod, navn] of [
+    ['ugj', false, 'tekst under et ugjennomsiktig kort er grønn'],
+    ['', true, 'to synlige tekster oppå hverandre er røde'],
+    ['op', true, 'tekst under lag med opacity .5 er rød'],
+    ['alfa', true, 'tekst under lag med halvgjennomsiktig bakgrunn er rød'],
+  ]) {
+    test(`okklusjon: ${navn}`, async ({ page }) => {
+      lokalt();
+      await page.goto(F('dekket') + `?dekke=${dekke}`);
+      const r = await revider(page);
+      expect(r.overlapp.some((x) => x.includes('#under') && x.includes('#over'))).toBe(rod);
+    });
+  }
+
   test('iframe som sprenger bredden rapporteres, men revideres ikke innvendig', async ({ page }) => {
     lokalt();
     await page.setViewportSize({ width: 390, height: 600 });

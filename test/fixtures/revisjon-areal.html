@@ -1,0 +1,10 @@
+<!doctype html><html lang="nb"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fikstur</title><style>body{margin:0;font:16px/1.5 sans-serif}p{position:absolute;margin:0;top:0}#a{left:10px;top:20px}</style></head><body>
+<p id="a">MMMMMMMMMMMMMMMM</p><p id="b">MMMMMMMMMMMMMMMM</p>
+<script>
+// ?w=bredde&h=høyde i px: tekstene overlapper med nøyaktig dette; w=full gir full bredde.
+var q=new URLSearchParams(location.search),a=document.getElementById('a'),b=document.getElementById('b');
+function r(e){var x=document.createRange();x.selectNodeContents(e);return x.getBoundingClientRect()}
+var ra=r(a),rb=r(b),h=parseFloat(q.get('h')),w=q.get('w');
+b.style.top=(ra.bottom-h-rb.top)+'px';
+b.style.left=(w==='full'?ra.left:ra.right-parseFloat(w))+'px';
+</script></body></html>
