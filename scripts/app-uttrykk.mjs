@@ -1,14 +1,15 @@
 // App-uttrykk: gjør nettsiden til en appside. Kjøres ETTER generatorene (som sprak-signaler.mjs):
 //   node scripts/app-uttrykk.mjs
-// 1. Alle indekserbare sider får nedlastingsknapp i toppmenyen og en fast nedlastingslinje på mobil.
-// 2. Forsidene (nb, sv, da, en) får telefoner og matformer i heroen, og funksjonskortene blir rader med telefon.
+// 1. Forsidene sv, da og en får nedlastingsknapp i toppmenyen og en fast nedlastingslinje på mobil.
+// 2. De samme forsidene får telefoner og matformer i heroen, og funksjonskortene blir rader med telefon.
 // Idempotent: markørene data-app-uttrykk og app-uttrykk:slutt hindrer dobbel innsetting.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { matformer, tomat, sitron, chili, blad, egg } from './illustrasjon.mjs';
 import { SIDEGRUPPER } from './locale-sider.mjs';
-import { alleSiderMedUkjente, erUtrullet, trygtUnderRot, UTRULLET } from './sidetyper.mjs';
+import { alleSiderMedUkjente, trygtUnderRot } from './sidetyper.mjs';
+import { SOSIALE, organisasjonSkjema } from './organisasjon.mjs';
 
 const TEKSTER = {
   nb: { last: 'Få appen', tittel: 'Last ned Matlyst', under: 'Gratis for iPhone og Android', regionnavn: 'Last ned appen' },
@@ -85,12 +86,6 @@ export function rader(lang, kort) {
 
 
 // ---- Logo, bunntekst med kolonner og sosiale lenker ----
-export const SOSIALE = [
-  { id: 'instagram', navn: 'Instagram', url: 'https://www.instagram.com/matlyst_app/', ikon: '<path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9a3.7 3.7 0 0 0 3.7 3.7h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4zM17.3 5.6a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/>' },
-  { id: 'tiktok', navn: 'TikTok', url: 'https://www.tiktok.com/@matlyst.appen', ikon: '<path d="M16.6 2h-3.2v13.2a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.1a6.1 6.1 0 1 0 5.2 6.1V8.6a7.6 7.6 0 0 0 4.4 1.4V6.8a4.5 4.5 0 0 1-4.4-4.8z"/>' },
-  { id: 'youtube', navn: 'YouTube', url: 'https://www.youtube.com/@matlyst', ikon: '<path d="M21.6 7.2a2.5 2.5 0 0 0-1.800-1.800C18.200 5 12 5 12 5s-6.200 0-7.800.4A2.500 2.500 0 0 0 2.400 7.200C2 8.800 2 12 2 12s0 3.200.4 4.800a2.500 2.500 0 0 0 1.800 1.800C5.800 19 12 19 12 19s6.200 0 7.800-.4a2.500 2.500 0 0 0 1.800-1.800C22 15.200 22 12 22 12s0-3.200-.4-4.800zM10 15V9l5.200 3L10 15z"/>' },
-  { id: 'pinterest', navn: 'Pinterest', url: 'https://www.pinterest.com/matlystapp/', ikon: '<path d="M12 2a10 10 0 0 0-3.6 19.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.4 1.800-2.4.8 0 1.200.6 1.200 1.400 0 .9-.5 2.200-.8 3.400-.2 1 .5 1.800 1.500 1.800 1.800 0 3.200-1.900 3.200-4.600 0-2.400-1.700-4.100-4.200-4.100-2.900 0-4.600 2.200-4.600 4.400 0 .9.300 1.800.8 2.300.1.100.1.200.1.300l-.3 1.200c0 .2-.2.200-.4.100-1.300-.6-2.100-2.500-2.100-4 0-3.300 2.400-6.300 6.900-6.300 3.600 0 6.400 2.600 6.400 6 0 3.600-2.300 6.500-5.400 6.500-1.100 0-2.100-.6-2.400-1.200l-.7 2.500c-.2.900-.9 2-1.300 2.700A10 10 0 1 0 12 2z"/>' },
-];
 const GRUPPER = ['oppskrifts-app', 'importer-oppskrifter', 'ukemeny', 'handleliste', 'spiskammer', 'instagram-oppskrifter', 'tiktok-oppskrifter', 'auto-velg-oppskriftsapp', 'skapere', 'vilkar', 'personvern'];
 const ETIKETT = {
   nb: { produkt: 'Produkt', laer: 'Lær mer', selskap: 'Om Matlyst', folg: 'Følg oss', blogg: 'Kjøkkentips', kontakt: 'Kontakt',
@@ -114,7 +109,6 @@ export function bunnKolonner(lang) {
   return `${MERKE}<div class="f-kolonner">${kol(e.produkt, ['oppskrifts-app', 'importer-oppskrifter', 'ukemeny', 'handleliste', 'spiskammer'].map(lenke).join(''))}${kol(e.laer, `<li><a href="${BLOGGROT[lang]}">${e.blogg}</a></li>${['auto-velg-oppskriftsapp', 'instagram-oppskrifter', 'tiktok-oppskrifter'].map(lenke).join('')}`)}${kol(e.selskap, `${lenke('skapere')}${lenke('vilkar')}${lenke('personvern')}<li><a href="mailto:hei@matlyst-app.no">${e.kontakt}</a></li>`)}<div class="f-kol"><p class="f-kol-tittel">${e.folg}</p>${sosialeIkoner()}</div></div>${MERKE_SLUTT}`;
 }
 
-export const organisasjonSkjema = (lang, urler) => `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: 'Matlyst', url: 'https://matlyst-app.no/', logo: 'https://matlyst-app.no/images/icon.png', email: 'hei@matlyst-app.no', sameAs: [...SOSIALE.map((s) => s.url), urler.ios, urler.play] })}</script>`;
 
 const HYLLE = {
   nb: { verktoy: 'Verktøy', meny: 'Meny', enh: 'Enhetsomregner' },
@@ -137,8 +131,11 @@ export function navMeny(lang) {
   return `${MERKE}<div class="nav-meny"><button type="button" class="nav-meny-knapp" aria-expanded="false" aria-controls="nav-panel" aria-label="${h.meny}"><span class="nav-meny-tekst">${tittel}</span></button><div class="nav-panel" id="nav-panel" hidden>${krukke('terracotta', e.produkt, a)}${krukke('honning', h.verktoy, verktoy)}${krukke('salvie', e.laer, b)}${krukke('plomme', e.folg, sosial)}</div></div>${MERKE_SLUTT}`;
 }
 
-export function behandle(html, sti, utrullet = UTRULLET) {
-  if (erUtrullet(sti, html, utrullet)) return html;
+// Alle undersider har skall-paa. Her står bare forsidene sv, da og en igjen (nb eies av forside.mjs).
+const FORSIDER_IGJEN = new Set(['/sv/', '/da/', '/en/']);
+
+export function behandle(html, sti) {
+  if (!FORSIDER_IGJEN.has(sti)) return html;
   if (html.includes('data-app-uttrykk') || erNoindex(html)) return html;
   const lang = sprakFra(html);
   if (!TEKSTER[lang]) return html;
