@@ -627,8 +627,8 @@ for (const bredde of [390, 1280]) for (const j of JUSS) test(`juss: ${j.sti} har
 
 // Bytteanimasjonen i omregneren (felles site.js): verdiene byttes straks, bevegelsen er bare visuell (FLIP).
 const BYTT = '/verktoy/kopp-til-ml/';
-const etiketter = (page) => page.evaluate(() => { const f = document.querySelector('[data-felt=fra]').closest('label'), t = document.querySelector('[data-felt=til]').closest('label'); return [f, t].map((e) => e.getAnimations().length); });
-const transformer = (page) => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => getComputedStyle(document.querySelector(s).closest('label')).transform));
+const etiketter = (page) => page.evaluate(() => { const f = document.querySelector('[data-felt=fra]'), t = document.querySelector('[data-felt=til]'); return [f, t].map((e) => e.getAnimations().length); });
+const transformer = (page) => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => getComputedStyle(document.querySelector(s)).transform));
 const sidelengs = (page) => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
 
 test('bytteknappen: verdiene og svaret er byttet med en gang, og knappen har trykkflate og navn', async ({ browser, baseURL }) => {
@@ -639,7 +639,7 @@ test('bytteknappen: verdiene og svaret er byttet med en gang, og knappen har try
   const svar0 = await page.locator('[data-felt=svar]').textContent();
   await page.locator('[data-handling=bytt]').click();
   // Ingen venting: DOM-tilstanden er allerede riktig mens bevegelsen pågår.
-  const na = await page.evaluate(() => ({ fra: document.querySelector('[data-felt=fra]').value, til: document.querySelector('[data-felt=til]').value, svar: document.querySelector('[data-felt=svar]').textContent, live: document.querySelector('[data-felt=svar]').getAttribute('aria-live'), animasjoner: document.querySelector('[data-felt=fra]').closest('label').getAnimations().length }));
+  const na = await page.evaluate(() => ({ fra: document.querySelector('[data-felt=fra]').value, til: document.querySelector('[data-felt=til]').value, svar: document.querySelector('[data-felt=svar]').textContent, live: document.querySelector('[data-felt=svar]').getAttribute('aria-live'), animasjoner: document.querySelector('[data-felt=fra]').getAnimations().length }));
   expect(na.fra).toBe(til0); expect(na.til).toBe(fra0); expect(na.svar).not.toBe(svar0); expect(na.live).toBe('polite');
   expect(na.animasjoner, 'bevegelsen pågår').toBeGreaterThan(0);
   const knapp = await page.locator('[data-handling=bytt]').boundingBox();
@@ -649,14 +649,14 @@ test('bytteknappen: verdiene og svaret er byttet med en gang, og knappen har try
 });
 
 for (const [navn, vp, vannrett] of [['PC', { width: 1280, height: 800 }, true], ['mobil 360', { width: 360, height: 700 }, false]]) {
-  test(`bytteanimasjon (${navn}): begge feltene beveger seg ${vannrett ? 'vannrett' : 'loddrett'}, uten sidelengs rulling, og ender uten transform`, async ({ browser, baseURL }) => {
+  test(`bytteanimasjon (${navn}): begge valgene beveger seg (etikettene og boksene står stille) ${vannrett ? 'vannrett' : 'loddrett'}, uten sidelengs rulling, og ender uten transform`, async ({ browser, baseURL }) => {
     const ctx = await browser.newContext({ baseURL, viewport: vp, reducedMotion: 'no-preference' });
     const page = await ctx.newPage();
     await page.goto(BYTT);
     await page.locator('[data-handling=bytt]').click();
     const [a, b] = await etiketter(page);
     expect(a).toBeGreaterThan(0); expect(b).toBeGreaterThan(0);
-    const nok = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const an = document.querySelector(s).closest('label').getAnimations()[0]; const k = an.effect.getKeyframes(); const m = /translate\((-?[\d.]+)px, (-?[\d.]+)px\)/u.exec(k[0].transform); return { dx: Number(m[1]), dy: Number(m[2]), props: Object.keys(k[0]).filter((p) => !['offset', 'easing', 'composite', 'computedOffset'].includes(p)), varighet: an.effect.getTiming().duration, easing: an.effect.getTiming().easing }; }));
+    const nok = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const an = document.querySelector(s).getAnimations()[0]; const k = an.effect.getKeyframes(); const m = /translate\((-?[\d.]+)px, (-?[\d.]+)px\)/u.exec(k[0].transform); return { dx: Number(m[1]), dy: Number(m[2]), props: Object.keys(k[0]).filter((p) => !['offset', 'easing', 'composite', 'computedOffset'].includes(p)), varighet: an.effect.getTiming().duration, easing: an.effect.getTiming().easing }; }));
     for (const f of nok) {
       expect(f.props, 'bare transform animeres på feltene').toEqual(['transform']);
       expect(f.varighet).toBeGreaterThanOrEqual(280); expect(f.varighet).toBeLessThanOrEqual(340);
@@ -704,7 +704,7 @@ test('bytteanimasjon: et nytt trykk midt i bevegelsen starter der feltene står 
   await page.waitForTimeout(110);
   // Innholdet som nå står i «Til» (det gamle «Fra») er på vei mot høyre; mål dets posisjon rett før og rett etter neste trykk.
   const m = await page.evaluate(() => {
-    const f = document.querySelector('[data-felt=fra]').closest('label'), t = document.querySelector('[data-felt=til]').closest('label');
+    const f = document.querySelector('[data-felt=fra]'), t = document.querySelector('[data-felt=til]');
     const fFor = f.getBoundingClientRect().left, tFor = t.getBoundingClientRect().left;
     document.querySelector('[data-handling=bytt]').click();
     // Etter trykket: innholdet i «Fra» er det som var i «Til» og skal stå omtrent der det stod.
@@ -722,7 +722,29 @@ test('bytteanimasjon: ved redusert bevegelse kjører ingen animasjon, men verdie
   const til0 = await page.locator('[data-felt=til]').inputValue();
   await page.locator('[data-handling=bytt]').click();
   expect(await page.locator('[data-felt=fra]').inputValue()).toBe(til0);
-  const antall = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]', '[data-handling=bytt]', '[data-felt=svar]'].map((s) => { const e = document.querySelector(s); return (e.closest('label') || e).getAnimations().length; }));
+  const antall = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]', '[data-handling=bytt]', '[data-felt=svar]'].map((s) => { const e = document.querySelector(s); return (e || e).getAnimations().length; }));
   expect(antall).toEqual([0, 0, 0, 0]);
+  await ctx.close();
+});
+
+test('bytteanimasjon: etikettene og boksene står stille, og svarlinja toner bare teksten (bakgrunnen er svart hele veien)', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const boks = () => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const r = document.querySelector(s).closest('label').getBoundingClientRect(); return [r.left, r.top]; }));
+  const foerBoks = await boks();
+  const for_ = await page.evaluate(() => getComputedStyle(document.querySelector('[data-felt=svar]')).backgroundColor);
+  await page.locator('[data-handling=bytt]').click();
+  const m = await page.evaluate(() => {
+    const lab = ['[data-felt=fra]', '[data-felt=til]'].map((s) => document.querySelector(s).closest('label'));
+    const svar = document.querySelector('[data-felt=svar]');
+    const k = svar.getAnimations().flatMap((a) => a.effect.getKeyframes().flatMap((f) => Object.keys(f))).filter((p) => !['offset', 'easing', 'composite', 'computedOffset'].includes(p));
+    return { etiketter: lab.map((l) => l.getAnimations({ subtree: false }).length), etikettTekst: lab.map((l) => l.firstChild.textContent.trim()), svarProps: [...new Set(k)], bakgrunn: getComputedStyle(svar).backgroundColor, opacity: getComputedStyle(svar).opacity };
+  });
+  expect(m.etiketter).toEqual([0, 0]);
+  expect(m.svarProps).toEqual(['color']);
+  expect(m.bakgrunn).toBe(for_); expect(m.opacity).toBe('1');
+  await page.waitForTimeout(100);
+  expect(await boks(), 'etikettboksene beveger seg ikke').toEqual(foerBoks);
   await ctx.close();
 });

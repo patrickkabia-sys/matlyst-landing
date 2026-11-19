@@ -168,13 +168,14 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     };
     for (const el of [verdi, fra, til]) el.addEventListener('input', reg);
     // Bytteknappen: verdiene byttes med en gang i DOM (skjermleser og tastatur får riktig tilstand straks), og bevegelsen er bare visuell (FLIP):
-    // «Fra» glir til «Til» sin plass og omvendt, vannrett på PC og loddrett på mobil, med en liten bue. Bare transform og opacity.
+    // valget i «Fra» glir til «Til» sin plass og omvendt, vannrett på PC og loddrett på mobil, med en liten bue. Bare transform og opacity.
     // Et nytt trykk midt i bevegelsen starter fra der feltene står. Ved redusert bevegelse skjer ingenting.
     const bytt = skjema.querySelector('[data-handling=bytt]');
     const rolig = matchMedia('(prefers-reduced-motion: reduce)');
     const VARIGHET = 320, EASING = 'cubic-bezier(.2,.8,.2,1)';
     bytt.addEventListener('click', () => {
-      const a = fra.closest('label'), b = til.closest('label');
+      // Etikettene («Fra», «Til») og boksene står stille; bare selve valget i feltet beveger seg.
+      const a = fra, b = til;
       const beveger = !rolig.matches && a && b && typeof a.animate === 'function';
       let va, vb, a0, b0, vinkel = 0;
       if (beveger) {
@@ -199,7 +200,9 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       // Innholdet i «Fra» kom fra «Til» og omvendt: hvert felt starter der innholdet stod.
       flytt(a, vb, a0, 1); flytt(b, va, b0, -1);
       bytt.animate([{ rotate: `${vinkel}deg` }, { rotate: '180deg' }], { duration: VARIGHET, easing: EASING });
-      svar.animate([{ opacity: 0.25 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
+      // Bare teksten toner (farge), bakgrunnen står uendret.
+      const [r, g, bl] = (getComputedStyle(svar).color.match(/[\d.]+/gu) || [243, 239, 232]).slice(0, 3);
+      svar.animate([{ color: `rgb(${r} ${g} ${bl} / 0.25)` }, { color: `rgb(${r} ${g} ${bl} / 1)` }], { duration: 200, easing: 'ease-out' });
     });
     reg();
   }
