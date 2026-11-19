@@ -53,7 +53,8 @@ export function blokk(lang, lenker) {
   return `${START}<section class="related"><h2>${OVERSKRIFT[lang]}</h2><ul>${li}</ul></section>${SLUTT}`;
 }
 
-export function settInn(html, blokkTekst) {
+export function settInn(html, blokkTekst, sti) {
+  if (sti === '/') return html;
   const uten = html.replace(new RegExp(`${START}[\\s\\S]*?${SLUTT}\\n?`, 'u'), '');
   for (const anker of ['<section class="faq">', '<section class="page-cta">', '<section class="cta">', '</main>']) {
     const i = uten.indexOf(anker);
@@ -87,7 +88,7 @@ export function kjor(rot, lang = 'en') {
     const lenker = maal.filter((m) => existsSync(filFraSti(rot, m))).map((m) => [m, tittel(readFileSync(filFraSti(rot, m), 'utf8'))]);
     if (!lenker.length) continue;
     const html = readFileSync(fil, 'utf8');
-    const ny = settInn(html, blokk(lang, lenker));
+    const ny = settInn(html, blokk(lang, lenker), side);
     if (ny !== html) { writeFileSync(fil, ny); endret.push(side); }
   }
   return endret;

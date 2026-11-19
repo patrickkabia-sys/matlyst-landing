@@ -1,0 +1,100 @@
+/* Toppen og samlebåndet, flyttet fra den godkjente prototypen. */
+.hero{text-align:center;padding-block:72px 0}
+.hero h1{margin:0 auto;max-width:16ch;font-size:clamp(38px,5vw,62px);line-height:1.05}
+.hero > p{margin:20px auto 0;max-width:48ch;font-size:20px;line-height:1.5;color:var(--dempet)}
+.hero .valg{margin-top:32px}
+.spiller{display:flex;flex-direction:column;align-items:center}
+.hero .spiller{margin-top:64px}
+/* Importflyten: bare telefonen i filmen, stegene er tekst ved siden av */
+.importflyt{display:grid;grid-template-columns:minmax(0,330px) minmax(0,360px);align-items:center;justify-content:center;gap:0 72px}
+/* Filmen er klippet nøyaktig rundt telefonen. Hjørnene rundes her, så ingenting av filmens bakgrunn synes. */
+.film{grid-column:1;grid-row:1;width:100%;max-width:330px;aspect-ratio:628/1300;border-radius:13.4% / 6.47%;overflow:hidden;background:var(--blekk);box-shadow:0 44px 60px -34px rgb(var(--skygge) / .5),0 10px 22px -12px rgb(var(--skygge) / .28)}
+.film{position:relative}
+.film video{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.008)}
+.steg{grid-column:2;grid-row:1;list-style:none;margin:0;padding:0;text-align:left}
+.st{display:flex;align-items:center;gap:16px;width:100%;min-height:56px;padding:0;border:0;background:none;text-align:left;font-size:19px;line-height:1.3;color:var(--dempet);cursor:pointer;transition:color .3s}
+.st b{flex:none;display:grid;place-items:center;width:30px;height:30px;border:1.5px solid var(--linje);border-radius:50%;font:500 13px/1 var(--mono);transition:background-color .3s,border-color .3s,color .3s}
+.naa .st{color:var(--blekk);font-weight:700}
+.naa .st b{background:var(--blekk);border-color:var(--blekk);color:var(--flate)}
+@media (min-width:1001px){
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:1fr auto auto auto auto auto 1fr;column-gap:72px;padding-block:40px 0;text-align:left}
+  .hero h1{grid-column:1;grid-row:2;margin:0;font-size:clamp(52px,5.4vw,70px)}
+  .hero > p{grid-column:1;grid-row:3;margin:20px 0 0;max-width:40ch}
+  .hero .valg{grid-column:1;grid-row:4}
+  .hero .bevis{grid-column:1;grid-row:5;justify-content:flex-start}
+  .hero .spiller{display:contents}
+  .hero .steg{grid-column:1;grid-row:6;max-width:420px;margin-top:34px}
+  .hero .st{gap:14px;min-height:44px;font-size:17px}
+  .hero .st b{width:26px;height:26px;font-size:12px}
+  .hero .film{grid-column:2;grid-row:1 / 8;align-self:center;width:clamp(250px,calc((100vh - 200px) * .483),330px);max-width:none;margin-right:clamp(0px,5vw,72px)}
+  .hero .kilder{grid-column:1 / -1;grid-row:8;text-align:center}
+}
+.bevis{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;margin-top:18px;font-size:15px;color:var(--dempet)}
+.bevis b{color:var(--blekk);font-weight:700}
+.stjerner{display:inline-flex;gap:2px;color:var(--blekk)}
+.stjerner svg{display:block;width:15px;height:15px}
+.kilder{margin-top:72px}
+.kildetittel{margin:0;font-size:15px;color:var(--dempet)}
+/* Samlebåndet: kildene glir fra høyre mot venstre i full bredde. Lista står fire ganger og flyttes én listebredde per runde, så båndet aldri tar slutt, heller ikke på svært brede skjermer. */
+.band{width:100vw;margin:22px 0 0 calc(50% - 50vw);padding-block:8px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}
+.bane{display:flex;width:max-content;animation:band 54s linear infinite}
+.bane ul{display:flex;align-items:center;margin:0;padding:0;list-style:none}
+.bane li{display:flex;align-items:center;gap:16px;padding:0 46px;font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.bane svg{flex:none;display:block;width:42px;height:42px}
+@keyframes band{to{transform:translateX(-25%)}}
+@media (prefers-reduced-motion:reduce){
+  .band{width:auto;margin-left:0;-webkit-mask-image:none;mask-image:none}
+  .bane{width:auto;animation:none}
+  .bane ul{flex-wrap:wrap;justify-content:center;row-gap:20px}
+  .bane ul + ul{display:none}
+}
+/* Overskriften skrives inn. Plassen er satt av på forhånd, så ingenting flytter seg. */
+.hero h1 .ord{display:inline-block;white-space:nowrap}
+.hero h1 .tegn{opacity:0}
+.hero h1 .tegn.inne{opacity:1}
+.skrivestrek{position:relative;display:inline-block;width:0;height:1em;vertical-align:-.12em}
+.skrivestrek::after{content:"";position:absolute;left:3px;top:0;bottom:0;width:3px;border-radius:2px;background:var(--a-merke)}
+.skrivestrek.ferdig::after{animation:blunk .8s steps(1) 2,bort .3s 1.6s forwards}
+@keyframes blunk{50%{opacity:0}}
+@keyframes bort{to{opacity:0}}
+/* Menyen som følger rullingen, bare på store skjermer */
+.folg{display:none}
+@media (min-width:1001px){
+  .topp{position:sticky;top:0;background:rgb(255 255 255 / .82);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%)}
+  .folg{position:absolute;left:50%;top:50%;display:flex;transform:translate(-50%,-50%);font-size:15px;font-weight:500}
+  .folg a{position:relative;display:inline-flex;align-items:center;height:44px;padding:0 14px;color:var(--dempet);white-space:nowrap;transition:color .25s}
+  .folg a:hover,.folg a[aria-current]{color:var(--blekk)}
+  .folgmerke{position:absolute;left:0;top:0;height:44px;border-radius:999px;background:var(--hylle);opacity:0;transition:transform .5s var(--ut),width .5s var(--ut),opacity .3s}
+  #lagre{scroll-margin-top:96px}
+  #spor,#middag,#pris,#svar{scroll-margin-top:-48px}
+}
+@media (prefers-reduced-transparency:reduce){.topp,.fast{background:var(--flate);-webkit-backdrop-filter:none;backdrop-filter:none}}
+
+html.js .hero h1:not(.klar){visibility:hidden}
+@media (max-width:900px){.importflyt{gap:0 32px}}
+@media (max-width:720px){
+  .importflyt{display:flex;flex-direction:column;align-items:center}
+  .film{width:min(82%,310px)}
+  .steg{order:-1;width:100%;min-height:60px;margin-bottom:6px}
+  .steg li{display:none}
+  .steg li.naa{display:block}
+  .st{justify-content:center;min-height:60px;cursor:default}
+  .hero{padding-block:40px 0}
+  .hero > p{font-size:18px}
+  .hero .knapp{display:flex}
+  .hero .spiller{margin-top:44px}
+  .hero{display:flex;flex-direction:column;padding-block:28px 0}
+  .hero .valg{order:1;margin-top:24px}
+  .hero .bevis{order:2}
+  .hero .spiller{order:3;margin-top:28px}
+  .hero > p{order:4;margin-top:32px}
+  .hero .kilder{order:5}
+  .kilder{margin-top:52px}
+  .bane li{gap:13px;padding:0 28px;font-size:26px}
+  .bane svg{width:36px;height:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .tegn{opacity:1}
+  .skrivestrek{display:none}
+  .folgmerke,.st,.st b{transition:none}
+}

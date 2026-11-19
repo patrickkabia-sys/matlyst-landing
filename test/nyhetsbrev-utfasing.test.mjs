@@ -54,14 +54,13 @@ test('forsida har nedlastingsknapper der skjemaet sto, og ingen e-postfelt', () 
   assert.doesNotMatch(index, /<form\b/u);
   assert.doesNotMatch(index, /type="email"/u);
   assert.doesNotMatch(index, /id="nyhetsbrev/u);
-  const seksjon = index.match(/<section class="last-ned" id="last-ned">[\s\S]*?<\/section>/u)?.[0];
+  const seksjon = index.match(/<section class="bunn" id="last-ned"[\s\S]*?<\/section>/u)?.[0];
   assert.ok(seksjon, 'fant ikke nedlastingsseksjonen');
-  assert.match(seksjon, /href="https:\/\/apps\.apple\.com\/no\/app\/matlyst\/id6762563515"/u);
-  assert.match(seksjon, /href="https:\/\/play\.google\.com\/store\/apps\/details\?id=app\.matlyst"/u);
-  // Seksjonen står mellom husstand og personvern, der skjemaet sto.
-  const pos = (m) => { const i = index.indexOf(m); assert.ok(i > -1, m); return i; };
-  assert.ok(pos('id="husstand"') < pos('id="last-ned"'));
-  assert.ok(pos('id="last-ned"') < pos('<section class="manifesto reveal" id="personvern">'));
+  assert.match(seksjon, /<a class="knapp" href="\/app" data-hent="bunn">/u);
+  // Nedlasting står i hylledelen etter hovedinnholdet, før den mørke bunnen.
+  assert.ok(index.indexOf('</main>') < index.indexOf('id="last-ned"'));
+  assert.ok(index.indexOf('id="last-ned"') < index.indexOf('<footer class="under"'));
+
 });
 
 test('site.js og styles.css har ingen rester av skjemaet', () => {
