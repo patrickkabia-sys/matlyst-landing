@@ -299,6 +299,126 @@ for (const bredde of [390, 1280]) test(`korte guider: steg, ideliste og kildepil
   for (const u of ide) { expect(u.kol).toBe(bredde >= 721 ? 2 : 1); expect(u.bg).toBe('rgb(245, 243, 239)'); expect(u.radius).toBe('24px'); expect(u.ut).toBeLessThanOrEqual(0); }
 });
 
+// Eldre sider: beregnet stil på de fire ekte sidene. Hver velger må treffe, ellers beviser regelteksten ingenting.
+const GAMMEL = ['/importer-fra-matprat/', '/finn-oppskrifter/', '/hva-kan-jeg-lage/', '/skapere/'];
+// Forventet antall per side. Et manglende element skal gi rødt, ikke en tom løkke eller et hoppet `if`.
+const FORVENTET = {
+  '/importer-fra-matprat/': { fig: 0, cta: 1, faq: 1, feat: 1, rel: 1, knapp: 1 },
+  '/finn-oppskrifter/': { fig: 1, cta: 1, faq: 0, feat: 1, rel: 1, knapp: 1 },
+  '/hva-kan-jeg-lage/': { fig: 0, cta: 1, faq: 0, feat: 1, rel: 1, knapp: 1 },
+  '/skapere/': { fig: 0, cta: 0, faq: 1, feat: 0, rel: 0, knapp: 0 },
+};
+for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${sti}: topp, kort, kolonne og knapper har ny stil på ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse(sti));
+  const antall = await page.evaluate(() => ({ fig: document.querySelectorAll('main.prose figure').length, cta: document.querySelectorAll('.page-cta').length, faq: document.querySelectorAll('.faq').length, feat: document.querySelectorAll('.feat').length, rel: document.querySelectorAll('.related').length, knapp: document.querySelectorAll('.hero-actions > a.knapp').length }));
+  expect(antall, `elementer på ${sti}`).toEqual(FORVENTET[sti]);
+  const m = await page.evaluate(() => {
+    const st = (e, p) => getComputedStyle(e)[p];
+    const hero = document.querySelector('.hero');
+    const h1 = hero.querySelector('h1');
+    const feat = document.querySelector('.feat');
+    const prose = document.querySelector('main.prose');
+    const faq = document.querySelector('.faq');
+    const cta = document.querySelector('.page-cta');
+    const knapp = document.querySelector('.hero-actions > a.knapp');
+    return {
+      heroAlign: st(hero, 'textAlign'), h1Barn: h1.children.length, h1Lh: parseFloat(st(h1, 'lineHeight')) / parseFloat(st(h1, 'fontSize')), h1Rem: parseFloat(st(h1, 'fontSize')),
+      heroBredde: hero.getBoundingClientRect().width,
+      feat: feat && { r: st(feat, 'borderTopLeftRadius'), bg: st(feat, 'backgroundImage').includes('radial-gradient'), bg2: st(feat, 'backgroundColor'), kol: st(feat, 'gridTemplateColumns').split(' ').length, em: st(feat.querySelector('h2 em'), 'fontStyle') },
+      prose: { w: prose.getBoundingClientRect().width, max: st(prose, 'maxWidth') },
+      faqW: faq && faq.getBoundingClientRect().width, ctaR: cta && st(cta, 'borderTopLeftRadius'),
+      knapp: knapp && { h: knapp.getBoundingClientRect().height, bg: st(knapp, 'backgroundColor') },
+      vindu: innerWidth, kant: [...document.querySelectorAll('.faq, .page-cta, .related')].map((e) => e.getBoundingClientRect()).map((r) => [r.left, innerWidth - r.right]),
+      cta: cta && { bg: st(cta, 'backgroundImage'), r: st(cta, 'borderTopLeftRadius'), pad: st(cta, 'paddingTop'), mt: parseFloat(st(cta, 'marginTop')), harH2: !!cta.querySelector('h2') },
+      fig: [...document.querySelectorAll('main.prose figure')].map((f) => { const i = f.querySelector('img'); const r = i.getBoundingClientRect(); const fr = f.querySelector('figcaption').getBoundingClientRect(); return { w: r.width, r: st(i, 'borderTopLeftRadius'), mitt: Math.abs((r.left + r.right) / 2 - innerWidth / 2), under: fr.top >= r.bottom - 1 }; }),
+      rel: [...document.querySelectorAll('.related')].map((x) => { const ul = x.querySelector('ul'); const a = x.querySelector('li a'); const li = x.querySelector('li'); return { align: st(x, 'textAlign'), disp: st(ul, 'display'), kol: st(ul, 'gridTemplateColumns').split(' ').length, bT: st(ul, 'borderTopWidth'), bB: st(li, 'borderBottomWidth'), vekt: st(a, 'fontWeight'), uline: st(a, 'textDecorationLine'), brad: st(a, 'borderTopLeftRadius'), bord: st(a, 'borderTopWidth'), ulBredde: ul.getBoundingClientRect().width, hoyde: a.getBoundingClientRect().height }; }),
+    };
+  });
+  expect(m.heroAlign).toBe('center');
+  expect(m.h1Barn, 'h1 er en tekstnode, ikke spans (spans gir overlapp i revisjonen ved normal linjeavstand)').toBe(0);
+  expect(m.h1Lh).toBeCloseTo(1.05, 2);
+  for (const f of m.fig) { expect(f.w).toBeLessThanOrEqual(300); expect(f.r).toBe('24px'); expect(f.mitt).toBeLessThan(2); expect(f.under).toBe(true); }
+  for (const r of m.rel) { expect(r.align).not.toBe('center'); expect(r.disp).toBe('grid'); expect(r.kol).toBe(bredde >= 721 ? 2 : 1); expect(r.bT).toBe('1px'); expect(r.bB).toBe('1px'); expect(Number(r.vekt)).toBeGreaterThanOrEqual(700); expect(r.uline).toBe('underline'); expect(r.brad).toBe('0px'); expect(r.bord).toBe('0px'); expect(r.hoyde).toBeGreaterThanOrEqual(44); }
+  if (m.cta) { expect(m.cta.harH2).toBe(false); expect(m.cta.bg).toBe('none'); expect(m.cta.r).toBe('0px'); expect(m.cta.pad).toBe('0px'); expect(m.cta.mt).toBeGreaterThanOrEqual(72); }
+  expect(m.h1Rem).toBeGreaterThanOrEqual(bredde >= 1201 ? 62 : bredde >= 721 ? 46 : 38);
+  expect(m.heroBredde).toBeLessThanOrEqual(m.vindu);
+  expect(m.prose.max).not.toBe('none');
+  expect(m.prose.w).toBeLessThanOrEqual(bredde);
+  for (const [v, h] of m.kant) { expect(v).toBeGreaterThanOrEqual(16); expect(h).toBeGreaterThanOrEqual(16); }
+  if (sti !== '/skapere/') {
+    expect(m.feat.r).toBe(bredde >= 721 ? '40px' : '32px');
+    expect(m.feat.bg).toBe(true);
+    expect(m.feat.bg2).toBe('rgb(245, 243, 239)');
+    expect(m.feat.kol).toBe(bredde >= 721 ? 2 : 1);
+    expect(m.feat.em).toBe('normal');
+    expect(m.knapp.h).toBeGreaterThanOrEqual(44);
+    expect(m.knapp.bg).toBe('rgb(20, 18, 16)');
+  } else {
+    expect(m.feat).toBeNull();
+  }
+});
+
+test('eldre side: kortet ser ut som appkortet på en guide', async ({ page }) => {
+  const kort = async (sti, velger) => { await page.goto(adresse(sti)); return page.evaluate((v) => { const e = document.querySelector(v); const c = getComputedStyle(e); return [c.backgroundImage, c.backgroundColor, c.borderTopLeftRadius]; }, velger); };
+  const gammel = await kort('/finn-oppskrifter/', '.feat');
+  const ny = await kort('/lagre-oppskrifter-fra-instagram/', '.i-appen');
+  expect(gammel).toEqual(ny);
+});
+
+for (const bredde of [390, 1280]) test(`eldre side: forstørret tekst vokser i overskrift og tekst på ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse('/finn-oppskrifter/'));
+  const mål = () => page.evaluate(() => ['.hero h1', '.hero .lead', '.feat-text h2', 'main.prose h2', 'main.prose p'].map((v) => parseFloat(getComputedStyle(document.querySelector(v)).fontSize)));
+  const for_ = await mål();
+  await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+  const etter = await mål();
+  etter.forEach((x, i) => expect(x / for_[i]).toBeGreaterThanOrEqual(1.9));
+});
+
+// Samtykket: Godta lagrer granted, «Bare nødvendige» lagrer denied, og tilbaketrekking fra bunnen sletter valget så banneret kommer tilbake.
+const LAGRING = 'matlyst-consent';
+const lagret = (page) => page.evaluate((k) => localStorage.getItem(k), LAGRING);
+async function utenFremmede(page) { await page.route((u) => !['127.0.0.1', 'localhost'].includes(u.hostname), (r) => r.abort()); }
+
+test('eldre side: Godta lagrer granted, og tilbaketrekking fra bunnen sletter valget og viser banneret', async ({ page }) => {
+  await utenFremmede(page);
+  await page.goto(adresse('/finn-oppskrifter/'));
+  await expect(page.locator('#cookie')).toBeVisible();
+  expect(await lagret(page)).toBeNull();
+  await page.locator('#ck-accept').click();
+  await expect(page.locator('#cookie')).toBeHidden();
+  expect(await lagret(page)).toBe('granted');
+  await page.locator('footer.under [data-consent-withdraw]').click();
+  await expect(page.locator('#cookie')).toBeVisible();
+  expect(await lagret(page)).toBeNull();
+});
+
+test('eldre side: Bare nødvendige lagrer denied, og tilbaketrekking fra bunnen viser banneret igjen', async ({ page }) => {
+  await utenFremmede(page);
+  await page.goto(adresse('/finn-oppskrifter/'));
+  await expect(page.locator('#cookie')).toBeVisible();
+  await page.locator('#ck-reject').click();
+  await expect(page.locator('#cookie')).toBeHidden();
+  expect(await lagret(page)).toBe('denied');
+  await page.goto(adresse('/finn-oppskrifter/'));
+  await expect(page.locator('#cookie')).toBeHidden();
+  await page.locator('footer.under [data-consent-withdraw]').click();
+  await expect(page.locator('#cookie')).toBeVisible();
+  expect(await lagret(page)).toBeNull();
+});
+
+// «Relaterte guider» er felles for alle sidetyper: en rolig liste, ikke piller. Lang tekst brytes i raden, ikke i en pille.
+for (const bredde of [390, 1280]) for (const sti of ['/lagre-oppskrifter-fra-instagram/', '/importer-fra-koket/', '/finn-oppskrifter/', '/hva-kan-jeg-lage/']) test(`relaterte guider er en venstrejustert liste på ${sti} ved ${bredde} px`, async ({ page }) => {
+  await page.setViewportSize({ width: bredde, height: 900 });
+  await page.goto(adresse(sti));
+  const r = await page.evaluate(() => { const x = document.querySelector('.related'); if (!x) return null; const ul = x.querySelector('ul'); const a = x.querySelector('li a'); const st = (e, p) => getComputedStyle(e)[p]; return { disp: st(ul, 'display'), kol: st(ul, 'gridTemplateColumns').split(' ').length, align: st(x, 'textAlign'), brad: st(a, 'borderTopLeftRadius'), vekt: st(a, 'fontWeight'), linje: st(x.querySelector('li'), 'borderBottomWidth'), venstre: a.getBoundingClientRect().left - ul.getBoundingClientRect().left }; });
+  expect(r).not.toBeNull();
+  expect(r).toMatchObject({ disp: 'grid', align: 'start', brad: '0px', vekt: '700', linje: '1px' });
+  expect(r.kol).toBe(bredde >= 721 ? 2 : 1);
+  expect(r.venstre).toBeLessThan(2);
+});
+
 // Bloggen: beregnet stil på ekte sider beviser at velgerne treffer.
 const BLOGG = { indeks: '/blogg/', artikkel: '/blogg/koketider/', merknad: '/blogg/erstatte-egg/' };
 for (const bredde of [390, 1280]) test(`bloggen: kort, forsidebilde, tabell, galleri, appkort og flere-rad treffer ekte sider på ${bredde} px`, async ({ page }) => {

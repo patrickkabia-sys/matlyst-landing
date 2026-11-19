@@ -91,11 +91,13 @@ h2[id],h3[id]{scroll-margin-top:16px}
 .faq a{text-decoration:underline;text-underline-offset:.2em}
 
 /* Rader med piller: relaterte sider og omregnerlister */
-.related{max-width:880px;margin:112px auto 0;text-align:center}
+.related{max-width:880px;margin:112px auto 0}
 .related h2{margin:0;font-size:1.625rem;line-height:1.12}
-.related ul{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:28px auto 0;padding:0;list-style:none}
-.related li a{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:1px solid var(--linje);border-radius:999px;font-size:1.0625rem;font-weight:500;text-align:left;transition:border-color .2s}
-.related li a:hover,.related li a:focus-visible{border-color:var(--blekk)}
+.related ul{display:grid;margin:20px 0 0;padding:0;list-style:none;border-top:1px solid var(--linje)}
+.related li{border-bottom:1px solid var(--linje);font-size:1.0625rem;line-height:1.45}
+.related li a{display:block;padding-block:.85em;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+.related li a:hover,.related li a:focus-visible{text-decoration-thickness:2px}
+@media (min-width:721px){.related ul{grid-template-columns:1fr 1fr;column-gap:40px}}
 /* Beslektede omregninger: en rolig liste, ikke piller. Lenken brytes aldri, forklaringen flyter etter den. */
 .omregner-liste{display:grid;margin:20px 0 0;padding:0;list-style:none;border-top:1px solid var(--linje)}
 .omregner-liste li{padding:12px 0;border-bottom:1px solid var(--linje);font-size:1.0625rem;line-height:1.45;color:var(--dempet)}
@@ -125,7 +127,7 @@ h2[id],h3[id]{scroll-margin-top:16px}
   .faq summary{font-size:1.125rem}
   .faq details p{padding-right:0}
 }
-@media (prefers-reduced-motion:reduce){.faq summary::after,.related li a,.locale-page-hero .eyebrow a{transition:none}}
+@media (prefers-reduced-motion:reduce){.faq summary::after,.locale-page-hero .eyebrow a{transition:none}}
 
 /* Overskriftene vokser i trinn på rem. Prototypen gir kortenes H2 (.okort, .oapptekst) samme skala som lesetekstens H2, så trinnene står SIST i Grunnstil og vinner over de enkeltstående reglene over. clamp() med vw skalerer ikke med brukerens tekststørrelse (revisjonen krever faktor 1,9). */
 @media (min-width:721px){
@@ -239,6 +241,43 @@ body[data-sidetype="guide-kort"] .locale-prose > p > a[rel~="noopener"]:only-chi
 }
 @media (prefers-reduced-motion:reduce){body[data-sidetype="guide-kort"] .locale-prose > p > a[rel~="noopener"]:only-child{transition:none}}
 /* == Eldre sider == */
+/* De fire eldre norske sidene (Matprat, finn oppskrifter, hva kan jeg lage, skapere). Heltens, kortets og bunnradens innhold ligger rett i bladet, uten main, så hver flate henter sin egen gutter. Alt avgrenset til guide-gammel. Tekst i rem; størrelsene trappes opp på samme brytepunkter som Grunnstil. */
+body[data-sidetype="guide-gammel"] .hero{max-width:1184px;margin:0 auto;padding:56px max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));text-align:center}
+body[data-sidetype="guide-gammel"] .hero .hero-eyebrow{margin:0;font-size:.9375rem;font-weight:500;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .hero h1{margin:6px auto 0;font-size:2.375rem;line-height:1.05;overflow-wrap:break-word}
+body[data-sidetype="guide-gammel"] .hero-side{min-width:0;margin:0}
+body[data-sidetype="guide-gammel"] .hero .lead{margin:18px auto 0;max-width:44ch;font-size:1.25rem;line-height:1.5;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .hero-actions{display:flex;justify-content:center;margin-top:26px}
+body[data-sidetype="guide-gammel"] .feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,200px);align-items:center;gap:28px 40px;max-width:1152px;margin:56px auto 0;padding:36px 40px;border-radius:40px;background:radial-gradient(90% 80% at 0% 0%,color-mix(in srgb,var(--kule1) 30%,transparent),transparent 62%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--kule3) 32%,transparent),transparent 62%),var(--hylle)}
+body[data-sidetype="guide-gammel"] .feat-text{grid-column:1;grid-row:1;min-width:0}
+body[data-sidetype="guide-gammel"] .feat-media{grid-column:2;grid-row:1;min-width:0}
+body[data-sidetype="guide-gammel"] .feat-text .eyebrow{margin:0;font-size:.9375rem;font-weight:500;line-height:1.5;letter-spacing:normal;text-transform:none;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .feat-text h2{margin:4px 0 0;font-size:1.625rem;line-height:1.12}
+body[data-sidetype="guide-gammel"] .feat-text h2 em{font-style:normal}
+body[data-sidetype="guide-gammel"] .feat-text p:not(.eyebrow){margin:12px 0 0;max-width:40ch;font-size:1.0625rem;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .feat-media .num{display:block;margin-bottom:10px;font:500 .875rem/1.4 var(--mono);letter-spacing:.06em;text-align:center;color:var(--dempet)}
+body[data-sidetype="guide-gammel"] .feat-media img{display:block;width:100%;max-width:200px;height:auto;margin-inline:auto;border-radius:24px;box-shadow:0 0 0 1px var(--a-kant)}
+body[data-sidetype="guide-gammel"] main.prose figure img{width:100%;max-width:300px;margin-inline:auto;background:var(--hylle);box-shadow:0 0 0 1px var(--a-kant)}
+body[data-sidetype="guide-gammel"] main.prose figcaption{text-align:center}
+body[data-sidetype="guide-gammel"] main.prose a.more{display:inline-flex;align-items:center;min-height:44px;font-weight:700}
+body[data-sidetype="guide-gammel"] .faq:not(main *),body[data-sidetype="guide-gammel"] .related:not(main *),body[data-sidetype="guide-gammel"] .page-cta:not(main *){width:calc(100% - max(16px,env(safe-area-inset-left,0px)) - max(16px,env(safe-area-inset-right,0px)));font-size:1.125rem;line-height:1.55}
+body[data-sidetype="guide-gammel"] .page-cta:not(:has(h2)){margin-top:72px;padding:0;border-radius:0;background:none}
+body[data-sidetype="guide-gammel"] .page-cta > a:only-child{margin-top:0}
+@media (max-width:720px){
+  body[data-sidetype="guide-gammel"] .hero{padding-top:28px}
+  body[data-sidetype="guide-gammel"] .hero .lead{font-size:1.125rem}
+  body[data-sidetype="guide-gammel"] .feat{grid-template-columns:minmax(0,1fr);margin-top:36px;padding:28px 20px;border-radius:32px}
+  body[data-sidetype="guide-gammel"] .feat-media{grid-column:1;grid-row:2}
+}
+@media (min-width:721px){
+  body[data-sidetype="guide-gammel"] .hero h1{font-size:2.875rem}
+  body[data-sidetype="guide-gammel"] .feat-text h2{font-size:1.875rem}
+}
+@media (min-width:1001px){
+  body[data-sidetype="guide-gammel"] .hero h1{font-size:3.375rem}
+  body[data-sidetype="guide-gammel"] .feat-text h2{font-size:2.125rem}
+}
+@media (min-width:1201px){body[data-sidetype="guide-gammel"] .hero h1{font-size:3.875rem}}
 /* == Blogg == */
 /* Bloggindeks og artikler (scripts/blogg.mjs). Alt avgrenset til blogg. Kortene er grå (--hylle) med 24 px radius; bildene følger. Tekst i rem. */
 body[data-sidetype="blogg"] ul.blogg-kort{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:48px 0 0;padding:0;list-style:none}
