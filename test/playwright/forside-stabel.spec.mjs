@@ -63,6 +63,13 @@ for (const [bredde, hoyde] of [[390, 664], [360, 640]]) {
   });
 }
 
+test('stabel: demoen står midt i den ledige plassen (lik luft over og under)', async ({ browser, baseURL }) => {
+  const { ctx, page } = await mobil(browser, baseURL);
+  const m = await page.locator('#trio > .rute').evaluateAll((r) => r.map((e) => { const t = e.querySelector('.rutetekst').getBoundingClientRect(), a = e.querySelector('.app').getBoundingClientRect(), b = e.getBoundingClientRect(); return { over: a.top - t.bottom - parseFloat(getComputedStyle(e).rowGap || 0), under: b.bottom - parseFloat(getComputedStyle(e).paddingBottom) - a.bottom }; }));
+  for (const [i, x] of m.entries()) expect(Math.abs(x.over - x.under), `rute ${i + 1}: luft over ${x.over}, under ${x.under}`).toBeLessThanOrEqual(2);
+  await ctx.close();
+});
+
 test('en rute som er dekket av den neste står stille; den øverste går', async ({ browser, baseURL }) => {
   test.setTimeout(90_000);
   const { ctx, page } = await mobil(browser, baseURL, { redusert: 'no-preference' });

@@ -485,7 +485,7 @@ html.js .hero h1:not(.klar){visibility:hidden}
    Bare ren CSS; ingen overgangseffekter. */
 @media (max-width:720px){
   #trio.stabel > .rute{--stabel-n:0;position:sticky;top:calc(var(--stabel-topp) + var(--stabel-n) * var(--stabel-skritt));scroll-margin-top:calc(var(--stabel-topp) + var(--stabel-n) * var(--stabel-skritt));min-height:var(--stabel-hoyde);box-shadow:0 -10px 24px -16px rgb(var(--skygge) / .3),0 0 0 1px color-mix(in srgb, var(--blekk) 4%, transparent)}
-  #trio.stabel > .rute > .app{margin-top:auto}
+  #trio.stabel > .rute > .app{margin-block:auto}
   #trio.stabel > .rute:nth-child(2){--stabel-n:1}
   #trio.stabel > .rute:nth-child(3){--stabel-n:2}
   #trio.stabel > .rute:nth-child(4){--stabel-n:3}
