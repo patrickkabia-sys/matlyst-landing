@@ -210,6 +210,11 @@ body[data-sidetype="guide-lang"] .toc-knapp{display:flex;align-items:center;just
 body[data-sidetype="guide-lang"] .toc-knapp::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .25s var(--ut)}
 body[data-sidetype="guide-lang"] .toc-knapp[aria-expanded="true"]::after{transform:rotate(-135deg)}
 body[data-sidetype="guide-lang"] .toc-knapp[aria-expanded="true"]{margin-bottom:6px}
+/* Fra 1000 px står innholdsfortegnelsen i to kolonner, og ingen post deles mellom dem (lange guider har opptil 14 poster). */
+@media (min-width:1000px){
+  body[data-sidetype="guide-lang"] .toc ol{display:block;column-count:2;column-gap:40px}
+  body[data-sidetype="guide-lang"] .toc li{break-inside:avoid}
+}
 body[data-sidetype="guide-lang"] .locale-prose .answer{max-width:none;margin:0;padding:28px 32px;border-radius:28px;background:var(--hylle);text-align:left}
 
 body[data-sidetype="guide-lang"] .locale-prose .scenario{margin:20px 0 0;padding:28px 32px;border-radius:28px;background:var(--hylle)}

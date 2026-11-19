@@ -208,6 +208,29 @@ test('innholdsfortegnelsen foldes på mobil og står åpen på PC', async ({ pag
   await expect(liste).toBeVisible();
 });
 
+// Beregnet: to kolonner fra 1000 px (ikke under), og ingen post krysser en kolonnekant.
+for (const [bredde, kolonner] of [[999, 1], [1000, 2], [1280, 2]]) {
+  test(`innholdsfortegnelsen har ${kolonner} kolonne(r) på ${bredde} px, og ingen post deles`, async ({ page }) => {
+    await page.setViewportSize({ width: bredde, height: 900 });
+    await page.goto(GUIDE);
+    const m = await page.evaluate(() => {
+      const ol = document.querySelector('.toc ol'), r = ol.getBoundingClientRect(), st = getComputedStyle(ol);
+      const li = [...ol.children].map((e) => { const b = e.getBoundingClientRect(); return { x: Math.round(b.left), y: Math.round(b.top), b: Math.round(b.width), h: Math.round(b.height), avoid: getComputedStyle(e).breakInside }; });
+      return { antall: li.length, bredde: r.width, kolonner: st.columnCount === 'auto' ? 1 : Number(st.columnCount), li };
+    });
+    expect(m.antall).toBeGreaterThanOrEqual(4);
+    expect(m.kolonner).toBe(kolonner);
+    expect(new Set(m.li.map((l) => l.x)).size, 'antall x-posisjoner').toBe(kolonner);
+    if (kolonner === 2) {
+      for (const l of m.li) { expect(l.avoid).toBe('avoid'); expect(l.b, 'en post er smalere enn halve listen').toBeLessThanOrEqual(m.bredde / 2); expect(l.h).toBeGreaterThanOrEqual(44); }
+      // Radene fordeles: begge kolonner har poster, og første kolonne er minst like lang som den andre.
+      const venstre = m.li.filter((l) => l.x === Math.min(...m.li.map((q) => q.x))).length;
+      expect(venstre).toBeGreaterThanOrEqual(m.antall - venstre);
+      expect(venstre).toBeLessThan(m.antall);
+    }
+  });
+}
+
 test('innholdsfortegnelsen er åpen uten JavaScript', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ baseURL, javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
