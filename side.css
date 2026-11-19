@@ -295,7 +295,8 @@ body[data-sidetype="juss"] .doc-updated,body[data-sidetype="juss"] .legal-update
 body[data-sidetype="juss"] .doc-intro,body[data-sidetype="juss"] main.legal-doc > header .lead{margin:18px 0 0;font-size:1.25rem;line-height:1.5;color:var(--dempet)}
 body[data-sidetype="juss"] :is(main.doc,main.legal-doc) h2{margin:56px 0 0;font-size:1.625rem;line-height:1.12}
 body[data-sidetype="juss"] :is(main.doc,main.legal-doc) h3{margin:36px 0 0;font-size:1.3125rem;line-height:1.25;font-weight:700;letter-spacing:-.015em;text-wrap:balance}
-body[data-sidetype="juss"] :is(main.doc,main.legal-doc) p{margin:14px 0 0}
+/* :where gir avsnittsregelen null spesifisitet, så .doc-kicker og .doc-intro får sine egne marginer */
+body[data-sidetype="juss"] :where(main.doc,main.legal-doc) p{margin:14px 0 0}
 body[data-sidetype="juss"] :is(main.doc,main.legal-doc) strong{font-weight:700}
 body[data-sidetype="juss"] :is(main.doc,main.legal-doc) ul:not([class]){display:grid;gap:10px;margin:14px 0 0;padding:0;list-style:none}
 body[data-sidetype="juss"] :is(main.doc,main.legal-doc) ul:not([class]) li{position:relative;padding-left:28px}

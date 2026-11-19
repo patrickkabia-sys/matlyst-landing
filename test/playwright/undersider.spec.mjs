@@ -383,6 +383,7 @@ for (const bredde of [390, 1280]) for (const j of JUSS) test(`juss: ${j.sti} har
     return {
       sidetype: document.body.dataset.sidetype, bredde: Math.round(r.width), venstre: Math.round(r.left), hoyre: Math.round(document.documentElement.clientWidth - r.right),
       fontMain: c(main).fontSize, linjeMain: c(main).lineHeight,
+      margKicker: c(h(j.kicker)).marginTop, margIngress: c(h(j.ingress)).marginTop, margDato: c(h(j.dato)).marginTop,
       kicker: { f: c(h(j.kicker)).color, s: c(h(j.kicker)).fontSize, v: c(h(j.kicker)).fontWeight }, dato: { f: c(h(j.dato)).color, s: c(h(j.dato)).fontSize },
       ingress: { f: c(h(j.ingress)).color, s: c(h(j.ingress)).fontSize }, tittel: c(h(j.tittel)).fontSize, tittelLinje: c(h(j.tittel)).lineHeight, tittelMarg: c(h(j.tittel)).marginTop,
       kort: { bg: c(kort).backgroundColor, radius: c(kort).borderTopLeftRadius },
@@ -396,6 +397,7 @@ for (const bredde of [390, 1280]) for (const j of JUSS) test(`juss: ${j.sti} har
   expect(m.bredde).toBeLessThanOrEqual(bredde >= 1001 ? 860 : bredde);
   if (bredde >= 1001) expect(Math.abs(m.venstre - m.hoyre)).toBeLessThanOrEqual(1);
   expect(m.fontMain).toBe('19px');
+  expect([m.margKicker, m.margIngress, m.margDato]).toEqual(['0px', '18px', '14px']);
   expect(m.kicker).toEqual({ f: 'rgb(95, 89, 82)', s: '15px', v: '500' });
   expect(m.dato).toEqual({ f: 'rgb(95, 89, 82)', s: '15px' });
   expect(m.ingress).toEqual({ f: 'rgb(95, 89, 82)', s: '20px' });

@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { alleSider, TYPER } from '../scripts/sidetyper.mjs';
 import { utenKommentarer, klasserUtenRegel, klasserIVelgere, velgerliste, regler } from './hjelp/klassedekning.mjs';
 
@@ -214,5 +215,21 @@ test('juss: de tolv sidene har nøyaktig den kjente lesekolonnen, uten innsatt w
     assert.match(mains[0], /\sclass="(doc|legal-doc)"/u, s.sti);
     assert.ok(html.includes('data-sidetype="juss"'), `${s.sti} er ikke rendret med juss`);
     assert.ok(html.includes('<link rel="stylesheet" href="/side.css">'), s.sti);
+  }
+});
+
+test('juss: innerHTML i main.doc og main.legal-doc er byte for byte lik fasiten (wrapper eller tekstendring gir rødt)', () => {
+  const fasit = JSON.parse(les('test/fasit/juss-innerhtml.json'));
+  const sider = alleSider(new URL('..', import.meta.url).pathname).filter((x) => x.type === 'juss');
+  assert.equal(sider.length, 12);
+  assert.deepEqual(Object.keys(fasit).sort(), sider.map((x) => x.fil).sort());
+  for (const s of sider) {
+    const html = les(s.fil);
+    const start = /<main\b[^>]*\bclass="(?:doc|legal-doc)"[^>]*>/u.exec(html);
+    assert.ok(start, s.sti);
+    const slutt = html.indexOf('</main>', start.index + start[0].length);
+    assert.ok(slutt > -1, s.sti);
+    const inne = html.slice(start.index + start[0].length, slutt);
+    assert.equal(createHash('sha256').update(inne).digest('hex'), fasit[s.fil], `${s.sti}: innholdet i main er endret (tekst eller innsatt wrapper)`);
   }
 });
