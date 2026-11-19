@@ -3,7 +3,7 @@ import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { TEKST, fyll } from './forside-tekst.mjs';
 import { topp, hylledel, morkBunn, nedlasting, samtykke, sprakvelger } from './skall.mjs';
-import { organisasjonSkjema } from './app-uttrykk.mjs';
+import { organisasjonSkjema } from './organisasjon.mjs';
 
 // Språkets adresse, dokumenthode, film og kalender samles her.
 const SPRAK = {

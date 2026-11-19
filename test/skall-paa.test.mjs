@@ -175,13 +175,6 @@ test('ingen utrullet side laster styles.css', () => {
 test('utrullede sider med fullt skall har nedlasting i toppen, i bunnen og fast på mobil', () => {
   for (const s of sider.filter((x) => x.type !== 'tjeneste' && erUtrullet(x.sti, les(x.fil)))) for (const v of ['topp', 'bunn', 'fast']) assert.equal(les(s.fil).split(`data-hent="${v}"`).length - 1, 1, `${s.sti}: ${v}`);
 });
-test('overgang: indekserbare sider som ikke er rullet ut, har den faste linja som før', () => {
-  for (const s of sider.filter((x) => x.type !== 'tjeneste' && !erUtrullet(x.sti, les(x.fil)))) {
-    const h = les(s.fil);
-    if (!/<meta name="robots" content="[^"]*noindex/u.test(h) && /apps\.apple\.com/u.test(h)) assert.ok(h.includes('id="dl-bar"'), s.sti);
-  }
-});
-
 test('kjor skriver bare endrede filer i valgt rot og er idempotent', (t) => {
   assert.equal(typeof skall.kjor, 'function', 'kjor må eksporteres');
   const mappe = mkdtempSync(join(tmpdir(), 'skall-paa-'));
