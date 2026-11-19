@@ -30,11 +30,13 @@ test('kjor skanner bare publiserbare sider', (t) => {
   const mappe = mkdtempSync(join(tmpdir(), 'app-overgang-'));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   const skjulte = ['docs', 'test', 'qa', 'scripts', '.arbeid'];
-  for (const del of ['finn-oppskrifter', ...skjulte]) {
+  // Juss er ikke rullet ut ennå; personvern.html er et ekte sidetype-treff uten index-mappe.
+  writeFileSync(join(mappe, 'personvern.html'), generert);
+  for (const del of skjulte) {
     mkdirSync(join(mappe, del), { recursive: true });
     writeFileSync(join(mappe, del, 'index.html'), generert);
   }
-  assert.deepEqual(kjor(mappe), ['finn-oppskrifter/index.html']);
+  assert.deepEqual(kjor(mappe), ['personvern.html']);
   for (const del of skjulte) assert.equal(readFileSync(join(mappe, del, 'index.html'), 'utf8'), generert, del);
   assert.deepEqual(kjor(mappe), []);
 });

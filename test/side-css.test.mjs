@@ -124,9 +124,25 @@ test('korte guider: stegene, idelisten og kildepillen er avgrenset til guide-kor
   for (const nokkel of ['content:counter(list-item)', ':not([reversed]):not(:has(> li[value]))', 'ul.ide-liste{display:grid;grid-template-columns:repeat(2', 'a[rel~="noopener"]:only-child{display:inline-flex']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
 });
 
+test('de eldre sidene har stil for alle klassene i innholdet', () => {
+  assert.deepEqual(klasserUtenRegel('guide-gammel', { 'disp': 'skriftvalg på overskrifter, ingen egen regel' }), []);
+});
+
+test('de eldre sidene: alle regler i delen er avgrenset til guide-gammel, og tekst står i rem', () => {
+  const rå = les('side.css');
+  const start = rå.indexOf('/* == Eldre sider == */');
+  const slutt = rå.indexOf('/* == Blogg == */');
+  assert.ok(start > -1 && slutt > start);
+  const del = utenKommentarer(rå.slice(start, slutt));
+  assert.ok(regler(del).length >= 15);
+  for (const r of regler(del)) for (const v of r.velger.split(',')) assert.ok(v.trim().startsWith('body[data-sidetype="guide-gammel"] '), `ikke avgrenset: ${v.trim()}`);
+  assert.deepEqual(del.match(/font(?:-size)?:[^;}]*?\d+(?:\.\d+)?(?:px|vw)/gu) ?? [], []);
+  for (const nokkel of ['.hero h1{margin', 'main.prose figure img{width:100%;max-width:300px', '.page-cta:not(:has(h2)){', '.feat{display:grid', '.feat-text h2{margin', 'main.prose a.more{', '.page-cta:not(main *){width:calc(']) assert.ok(del.includes(nokkel), `mangler ${nokkel}`);
+});
+
 test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', () => {
   const typer = new Set([...css.matchAll(/data-sidetype="([^"]+)"/gu)].map((m) => m[1]));
-  assert.ok(typer.has('guide-lang') && typer.has('omregner') && typer.has('guide-kort'), 'forventet avgrensning mangler');
+  assert.ok(typer.has('guide-lang') && typer.has('omregner') && typer.has('guide-kort') && typer.has('guide-gammel'), 'forventet avgrensning mangler');
   const sider = alleSider(new URL('..', import.meta.url).pathname);
   for (const t of typer) {
     assert.ok(TYPER.includes(t), `ukjent sidetype i side.css: ${t}`);
@@ -134,6 +150,18 @@ test('hver sidetype side.css avgrenser til finnes, og en ekte side bærer den', 
     assert.ok(side, `ingen side av typen ${t}`);
     assert.ok(les(side.fil).includes(`data-sidetype="${t}"`), `${side.sti} mangler data-sidetype="${t}"`);
   }
+});
+
+test('relaterte guider er en rolig liste i Grunnstil, ikke piller', () => {
+  const rå = les('side.css');
+  const del = utenKommentarer(rå.slice(rå.indexOf('/* == Grunnstil == */'), rå.indexOf('/* == Omregner == */')));
+  const ul = regler(del).find((r) => r.velger === '.related ul');
+  assert.ok(ul && /display:grid/u.test(ul.kropp) && /border-top:1px solid var\(--linje\)/u.test(ul.kropp));
+  const a = regler(del).find((r) => r.velger === '.related li a');
+  assert.ok(a && /font-weight:700/u.test(a.kropp) && /text-decoration:underline/u.test(a.kropp));
+  assert.ok(!/border-radius|border:1px/u.test(a.kropp), 'ingen pille');
+  assert.ok(!/text-align:center/u.test(regler(del).find((r) => r.velger === '.related').kropp));
+  assert.ok(/@media \(min-width:721px\)\{\.related ul\{grid-template-columns:1fr 1fr/u.test(del));
 });
 
 test('bloggsidene har stil for alle klassene i innholdet', () => {
