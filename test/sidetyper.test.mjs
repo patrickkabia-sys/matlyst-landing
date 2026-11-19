@@ -6,7 +6,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { allePar } from '../scripts/enheter.mjs';
 import {
-  BLOGGINDEKS, EKSEMPEL, TYPER, alleSider, erUtrullet, nokkel, sidetype, sidetypeEllerNull, tjenestefamilie,
+  BLOGGINDEKS, EKSEMPEL, TYPER, UTRULLET, alleSider, erUtrullet, nokkel, normaliserSti, sidetype, sidetypeEllerNull, tjenestefamilie,
 } from '../scripts/sidetyper.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
@@ -16,7 +16,10 @@ const type = (sti) => sider.find((s) => s.sti === sti)?.type;
 
 test('hver publiserbar HTML-fil får én type og én nøkkel', () => {
   assert.equal(sider.length, 876, 'nye sider: forklar endringen i commit-meldingen og rett tallet');
-  for (const s of sider) { assert.ok(TYPER.includes(s.type), s.sti); assert.ok(s.nokkel, s.sti); }
+  for (const s of sider) {
+    assert.ok(TYPER.includes(s.type), s.sti);
+    assert.equal(s.nokkel, s.type === 'tjeneste' ? `tjeneste:${tjenestefamilie(s.sti)}` : s.type, s.sti);
+  }
   assert.ok(!sider.some((s) => s.fil.includes('/.')));
 });
 test('omregnerne er alle parene pluss fire hubber', () => {
@@ -48,10 +51,11 @@ test('nøkkel og predikat: type for vanlige sider, familie for tjenester, null u
   assert.equal(erUtrullet('/x/', '<html><body></body></html>', new Set(TYPER)), false);
 });
 test('hver eksempelside har typen den står som', () => {
+  for (const t of TYPER) assert.ok(Object.keys(EKSEMPEL[t] ?? {}).length > 0, `ingen eksempel for ${t}`);
   for (const [t, perSprak] of Object.entries(EKSEMPEL)) for (const sti of Object.values(perSprak)) assert.equal(type(sti), t, sti);
 });
 test('ukjent side kaster med stien, og EllerNull gir null', () => {
-  assert.throws(() => sidetype('/ingenting/', '<html lang="nb"><body></body></html>'), /\/ingenting\//);
+  assert.throws(() => sidetype('/ingenting/', '<html lang="nb"><body></body></html>'), { message: 'Ukjent sidetype: /ingenting/' });
   assert.equal(sidetypeEllerNull('/ingenting/', '<html lang="nb"><body></body></html>'), null);
 });
 test('tjenestefamilier og bloggindekser dekker alle språk', () => {
@@ -59,6 +63,7 @@ test('tjenestefamilier og bloggindekser dekker alle språk', () => {
   assert.equal(tjenestefamilie('/christine/'), 'kampanje');
   assert.equal(tjenestefamilie('/ukemeny/'), null);
   assert.deepEqual(Object.keys(BLOGGINDEKS).sort(), ['da', 'en', 'nb', 'sv']);
+  for (const sti of Object.values(BLOGGINDEKS)) assert.equal(type(sti), 'blogg', sti);
 });
 test('alleSider hopper over punktmapper og verktøymapper, også med HTML i dem', () => {
   const tmp = mkdtempSync(join(tmpdir(), 'sidetyper-'));
@@ -70,4 +75,24 @@ test('alleSider hopper over punktmapper og verktøymapper, også med HTML i dem'
     }
     assert.deepEqual(alleSider(tmp).map((s) => s.sti), ['/ukemeny/']);
   } finally { rmSync(tmp, { recursive: true, force: true }); }
+});
+test('ingen side er rullet ut i denne oppgaven', () => {
+  // Utrullingsoppgavene (10 til 18) endrer denne testen med vilje når de legger til nøkler.
+  assert.equal(UTRULLET.size, 0);
+});
+test('stien normaliseres likt: med og uten skråstrek, index.html, spørring og anker', () => {
+  assert.equal(normaliserSti('/personvern.html?x=1#a'), '/personvern.html');
+  assert.equal(normaliserSti('avmeld'), '/avmeld/');
+  assert.equal(normaliserSti(''), '/');
+  for (const s of sider) {
+    const html = les(s.fil);
+    const varianter = s.sti.endsWith('.html')
+      ? [s.sti, s.sti.slice(1), `${s.sti}?a=1#b`]
+      : [s.sti, s.sti === '/' ? '' : s.sti.slice(0, -1), s.sti.slice(1), `${s.sti}index.html`, `${s.sti}?a=1#b`];
+    for (const v of varianter) {
+      assert.equal(nokkel(v, html), s.nokkel, `${s.sti} som «${v}»`);
+      assert.equal(sidetypeEllerNull(v, html), s.type, v);
+      assert.equal(erUtrullet(v, html, new Set([s.nokkel])), true, v);
+    }
+  }
 });

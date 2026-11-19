@@ -15,7 +15,19 @@ const GAMLE_GUIDER = new Set(['/importer-fra-matprat/', '/finn-oppskrifter/', '/
 const TJENESTEGRUPPER = { avmeld: 'avmeld', 'tiktok-auth': 'auth', 'tiktok-stotte': 'kampanje', christine: 'kampanje' };
 const VERIFISERING = new Set(['/googleeaf5ec75e707227b.html', '/pinterest-55ce57abd0b250c89348ecc452354dac.html']);
 
-export function tjenestefamilie(sti) {
+// Alle innganger normaliserer stien likt: uten spørring og anker, med ledende
+// skråstrek, og «x», «x/» og «x/index.html» er samme side. .html-filer som
+// /personvern.html beholdes som de er.
+export function normaliserSti(sti) {
+  let s = String(sti).replace(/[?#].*$/u, '');
+  if (!s.startsWith('/')) s = `/${s}`;
+  if (s.endsWith('/index.html')) s = s.slice(0, -'index.html'.length);
+  if (!s.endsWith('/') && !s.endsWith('.html')) s += '/';
+  return s;
+}
+
+export function tjenestefamilie(rasti) {
+  const sti = normaliserSti(rasti);
   const gruppe = gruppeForSti(sti);
   if (gruppe && TJENESTEGRUPPER[gruppe.id]) return TJENESTEGRUPPER[gruppe.id];
   if (/^(\/(sv|da|en))?\/v\/$/u.test(sti)) return 'vervekort';
@@ -28,7 +40,8 @@ export function tjenestefamilie(sti) {
 
 // Rekkefølgen er regelen: blogg må sjekkes før has-toc, siden en bloggartikkel
 // kan inneholde begge.
-export function sidetypeEllerNull(sti, html) {
+export function sidetypeEllerNull(rasti, html) {
+  const sti = normaliserSti(rasti);
   if (FORSIDER.has(sti)) return 'forside';
   if (tjenestefamilie(sti) !== null) return 'tjeneste';
   if (JURIDISKE_GRUPPER.has(gruppeForSti(sti)?.id)) return 'juss';
@@ -46,10 +59,10 @@ export function sidetype(sti, html) {
   return type;
 }
 
-export function nokkel(sti, html) {
-  const type = sidetypeEllerNull(sti, html);
+export function nokkel(rastisti, html) {
+  const type = sidetypeEllerNull(rastisti, html);
   if (type === null) return null;
-  return type === 'tjeneste' ? `tjeneste:${tjenestefamilie(sti)}` : type;
+  return type === 'tjeneste' ? `tjeneste:${tjenestefamilie(rastisti)}` : type;
 }
 
 // Oppgave 10 til 18 legger til nøkler. 'tjeneste:verifisering' legges aldri til.
@@ -60,7 +73,9 @@ export function erUtrullet(sti, html, utrullet = UTRULLET) {
   return n !== null && utrullet.has(n);
 }
 
-const HOPP_OVER = new Set(['node_modules', 'docs', 'test', 'scripts', 'seo-motor', 'seo-data', 'seo', 'blogg-kilde', 'qa', 'test-results', 'playwright-report']);
+// 'seo' står utenfor brevets liste, men mappen har bare .md-filer og ingen publiserbar HTML.
+const HOPP_OVER = new Set(['node_modules', 'docs', 'test', 'scripts', 'seo-motor', 'seo-data', 'seo',
+    'blogg-kilde', 'qa', 'test-results', 'playwright-report']);
 
 function htmlFiler(mappe) {
   const ut = [];
