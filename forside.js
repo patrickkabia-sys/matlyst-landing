@@ -372,11 +372,17 @@
     const antall = ark.querySelector('.antall'), pluss = ark.querySelector('.pluss'), oppdater = ark.querySelector('.a-oppdater');
     const porsjoner = antall.dataset.antall.split('|');
     const sett = (i) => app.querySelectorAll('[data-m]').forEach((m) => settInn(m, m.dataset.m.split('|')[i]));
+    const merker = app.querySelector('.a-merker');
+    // Patrick 19.11: rettene står på en sveipbar linje på mobil. Før «hold inne» rulles linja så retten står først og helt synlig; ved start går den tilbake.
+    const rullRad = (rad, mal, mykt) => { if (rad.scrollWidth > rad.clientWidth) rad.scrollTo({ left: Math.max(0, mal.getBoundingClientRect().left - rad.getBoundingClientRect().left + rad.scrollLeft - 12), behavior: mykt && !bevegelse.matches ? 'smooth' : 'auto' }); };
     const lukk = () => { ark.classList.remove('vis'); meny.classList.remove('vis'); app.classList.remove('modal'); rett.classList.remove('valgt'); };
-    return { lengde: 17150, slutt: () => { lukk(); sett(1); antall.textContent = porsjoner[2]; }, steg: [
-      [0, () => { lukk(); sett(0); antall.textContent = porsjoner[0]; }],
+    return { lengde: 17150, slutt: () => { lukk(); sett(1); antall.textContent = porsjoner[2]; if (merker) merker.scrollTo({ left: 0, behavior: 'auto' }); }, steg: [
+      [0, () => { lukk(); sett(0); antall.textContent = porsjoner[0]; if (merker) merker.scrollTo({ left: 0, behavior: 'auto' }); }],
+      [2000, () => { if (merker) rullRad(merker, rett, true); }],
       [3000, () => { pek(rett, 1300); rett.classList.add('valgt'); }],
-      [4250, () => { const h = app.getBoundingClientRect(), r = rett.getBoundingClientRect(); meny.style.left = Math.max(0, r.left - h.left) + 'px'; meny.style.top = r.bottom - h.top + 8 + 'px'; app.classList.add('modal'); meny.classList.add('vis'); }],
+      [4250, () => { const h = app.getBoundingClientRect(), r = rett.getBoundingClientRect(); // Menyen klemmes alltid innenfor flaten (12 px luft), vannrett og loddrett.
+        const klem = (v, lav, hoy) => Math.max(lav, Math.min(v, Math.max(lav, hoy)));
+        meny.style.left = klem(r.left - h.left, 12, h.width - meny.offsetWidth - 12) + 'px'; meny.style.top = klem(r.bottom - h.top + 8, 12, h.height - meny.offsetHeight - 12) + 'px'; app.classList.add('modal'); meny.classList.add('vis'); }],
       [5750, () => pek(meny.firstElementChild, 900)], [6180, () => trykk(meny.firstElementChild)],
       [6600, () => { meny.classList.remove('vis'); ark.classList.add('vis'); }],
       [8300, () => { trykk(pluss); settInn(antall, porsjoner[1]); }], [9600, () => { trykk(pluss); settInn(antall, porsjoner[2]); }],
@@ -393,6 +399,9 @@
     const tegn = (i, ferdig = false) => {
       nr = i; flate.replaceChildren(maler[nr].content.cloneNode(true));
       knapper.forEach((b, j) => b.setAttribute('aria-pressed', String(j === nr)));
+      // Det valgte husstandsvalget skal alltid være synlig i sveiperaden (mobil).
+      const rad = app.querySelector('.a-husvelg');
+      if (rad && rad.scrollWidth > rad.clientWidth) rad.scrollTo({ left: Math.max(0, knapper[nr].getBoundingClientRect().left - rad.getBoundingClientRect().left + rad.scrollLeft - 8), behavior: bevegelse.matches ? 'auto' : 'smooth' });
       if (ferdig) leggInn();
       animer(flate, [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 480, easing: 'cubic-bezier(.16,1,.3,1)' });
     };
