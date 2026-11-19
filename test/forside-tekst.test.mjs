@@ -19,7 +19,7 @@ test('pris: gratis og Pro følger llms.txt, uten kroner og uten «ubegrenset»',
   assert.equal(t.pris.gratis.linje, '5 importer i måneden.');
   assert.deepEqual(t.pris.gratis.punkter, ['Ukemeny og handleliste', 'Skaler porsjoner', 'Lag maten steg for steg']);
   assert.equal(t.pris.pro.linje, 'Uten grensen på fem importer.');
-  assert.deepEqual(t.pris.pro.punkter, ['Lagre fra bilder og kokebøker', 'Spør Matlyst', 'Næringsinnhold per porsjon', 'Del med husstanden, opptil 6']);
+  assert.deepEqual(t.pris.pro.punkter, ['Lagre fra bilder og kokebøker', 'Skriv om oppskrifter med Spør Matlyst', 'Næringsinnhold per porsjon', 'Del med husstanden, opptil 6']);
   assert.equal(t.pris.pro.fot, 'Prisen ser du i appen før du kjøper.');
   assert.equal(t.pris.vernord, 'Vi har bedre ting å gjøre enn å spore deg. Nyt maten din.');
   assert.equal(t.pris.vern, 'Matlyst sporer deg ikke for reklame. Ingen annonser, ingen salg av data.');

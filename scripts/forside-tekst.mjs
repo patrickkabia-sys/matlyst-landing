@@ -342,7 +342,7 @@ export const TEKST = {
       pro: {
         tittel: 'Pro',
         linje: 'Uten grensen på fem importer.',
-        punkter: ['Lagre fra bilder og kokebøker', 'Spør Matlyst', 'Næringsinnhold per porsjon', 'Del med husstanden, opptil 6'],
+        punkter: ['Lagre fra bilder og kokebøker', 'Skriv om oppskrifter med Spør Matlyst', 'Næringsinnhold per porsjon', 'Del med husstanden, opptil 6'],
         fot: 'Prisen ser du i appen før du kjøper.',
       },
       // Den store linjen under prisene: et lett og varmt løfte om at vi ikke sporer deg.
