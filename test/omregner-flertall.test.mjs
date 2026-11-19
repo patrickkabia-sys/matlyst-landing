@@ -53,3 +53,12 @@ test('entallsformen er sidens egen korte skrivemåte, og site.js har ingen formt
   }
   assert.match(js, /data\.o\[sel\.value\]/u);
 });
+
+test('negative tall: −1 er entall i generatoren (samme regel som site.js)', () => {
+  assert.equal(ordFor('en', 'cups', -1), 'cup');
+  assert.equal(ordFor('en', 'cups', -2), 'cups');
+  assert.equal(ordFor('nb', 'cups', -1), 'kopp');
+  assert.equal(ordFor('sv', 'cups', -1.5), 'koppar');
+  assert.equal(ordFor('da', 'cups', -1), 'kop');
+  assert.match(readFileSync(join(ROT, 'site.js'), 'utf8'), /Math\.abs\(Number\(tall\(n\)\)\) === 1/u);
+});

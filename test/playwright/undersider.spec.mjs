@@ -113,11 +113,54 @@ for (const [sti, d, ut] of [['/verktoy/kopp-til-ml/', ',', '354,9'], ['/sv/verkt
     const tekst = await svar.textContent();
     expect(tekst, 'ingen tusenskille som kan forveksles').toMatch(/^1500 \S+ = 354\d{3}(?:[.,]\d+)? ml$/u);
     expect(await page.evaluate(() => document.documentElement.lang)).toMatch(/^(nb|sv|da|en)/u);
-    // Svaret på siden (server) og i skriptet bruker samme tegn.
-    await page.reload();
-    expect(await svar.textContent()).toContain(d === ',' ? ',' : '.');
+    // Serverens HTML (hentet uten skript) og skriptets svar for samme verdi (1) skal være identiske.
+    const html = await (await page.request.get(sti)).text();
+    const server = /data-felt="svar">([^<]*)</u.exec(html)[1].replace(/&amp;/gu, '&');
+    await verdi.fill('1');
+    expect(await svar.textContent(), 'server og skript har ulikt svar for 1').toBe(server);
   });
 }
+
+// Hele inntastingen valideres (testtabell for alle fire språk). Forventet: tallet som svaret starter med, eller null = ugyldig (svaret tomt, aria-invalid).
+const NORDISK = [['1,5', '1,5'], ['1.5', '1,5'], ['1.500', '1500'], ['1 500', '1500'], ['1\u00a0500', '1500'], ['1\u202f500', '1500'], ['1.500,25', '1500'], ['1,500', '1,5'], ['12.345', '12345'], ['1234.567', '1235'], ['1.500.000', '1500000'], ['12.34', '12,34'], ['-1', '-1'], ['+2', '2'], ['0,5', '0,5'], ['1,5,2', null], ['1.5.2', null], ['1,5.2', null], ['2cups', null], ['abc', null], ['1 5 0', '150'], ['--1', null], ['1,.5', null], ['1,500.5', null], ['1.0500', '1,05']];
+const ENGELSK = [['1.5', '1.5'], ['1,5', '1.5'], ['1,500', '1500'], ['1 500', '1500'], ['1\u00a0500', '1500'], ['1\u202f500', '1500'], ['1,500.25', '1500'], ['1.500', '1.5'], ['12,345', '12345'], ['1234,567', '1235'], ['1,500,000', '1500000'], ['12.34', '12.34'], ['-1', '-1'], ['0.5', '0.5'], ['1,5,2', null], ['1.5.2', null], ['1.500,5', null], ['2cups', null], ['abc', null], ['--1', null]];
+for (const [sprak, sti, tabell] of [['nb', '/verktoy/kopp-til-ml/', NORDISK], ['sv', '/sv/verktyg/kopp-till-ml/', NORDISK], ['da', '/da/vaerktoejer/kop-til-ml/', NORDISK], ['en', '/en/tools/cups-to-ml/', ENGELSK]]) {
+  test(`omregneren (${sprak}): hele inntastingen valideres, delsvar finnes ikke`, async ({ page }) => {
+    await page.goto(sti);
+    const verdi = page.locator('[data-felt=verdi]'), svar = page.locator('[data-felt=svar]');
+    for (const [inn, forventet] of tabell) {
+      await verdi.fill(inn);
+      const tekst = await svar.textContent(), ugyldig = await verdi.getAttribute('aria-invalid');
+      if (forventet === null) { expect(tekst, `«${inn}» skal gi tomt svar`).toBe(''); expect(ugyldig, `«${inn}» aria-invalid`).toBe('true'); }
+      else { expect(tekst.startsWith(`${forventet} `), `«${inn}» skal gi ${forventet}, ga «${tekst}»`).toBe(true); expect(ugyldig, `«${inn}» er gyldig`).toBeNull(); }
+    }
+    await verdi.fill('');
+    expect(await svar.textContent()).toBe(''); expect(await verdi.getAttribute('aria-invalid')).toBeNull();
+    // Flertall for negative tall: −1 er entall (som generatoren).
+    await verdi.fill('-1');
+    expect(await svar.textContent()).toMatch(new RegExp(`^-1 ${{ nb: 'kopp', sv: 'kopp', da: 'kop', en: 'cup' }[sprak]} = `, 'u'));
+    await verdi.fill('-2');
+    expect(await svar.textContent()).toMatch(new RegExp(`^-2 ${{ nb: 'kopper', sv: 'koppar', da: 'kopper', en: 'cups' }[sprak]} = `, 'u'));
+  });
+}
+
+test('bytteanimasjon: redusert bevegelse som slås på midt i byttet stopper animasjonene straks, og nytt trykk avbryter pågående', async ({ browser, baseURL }) => {
+  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
+  const page = await ctx.newPage();
+  await page.goto(BYTT);
+  const antall = () => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]', '[data-handling=bytt]', '[data-felt=svar]'].reduce((n, s) => n + document.querySelector(s).getAnimations().length, 0));
+  await page.locator('[data-handling=bytt]').click();
+  expect(await antall()).toBeGreaterThan(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect.poll(antall, { timeout: 500 }).toBe(0);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.locator('[data-handling=bytt]').click();
+  expect(await antall()).toBeGreaterThan(0);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.locator('[data-handling=bytt]').click();
+  expect(await antall(), 'trykk ved redusert bevegelse avbryter også pågående').toBe(0);
+  await ctx.close();
+});
 
 test('omregneren: tab-rekkefølge, tilgjengelige navn og synlig fokus', async ({ page }) => {
   await page.goto(adresse('/verktoy/kopp-til-dl/'));
