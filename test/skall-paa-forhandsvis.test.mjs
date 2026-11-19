@@ -29,10 +29,10 @@ test('CLI lager speilet forhåndsvisning med noindex uten locale.js og bevarer k
   const kartfil = join(mappe, 'qa/forhandsvisning/kart.json');
   assert.ok(existsSync(kartfil), 'forhåndsvisningen må skrive kart.json');
   const kart = JSON.parse(readFileSync(kartfil, 'utf8'));
-  // 25 eksempelsider, pluss de utrullede tjenestefamiliene: fire avmeldingssider, bekreftelsen og fire vervekort.
-  assert.equal(kart.length, 25 + 9);
-  assert.equal(kart.filter((s) => s.type === 'tjeneste').length, 9);
-  assert.deepEqual(new Set(kart.filter((s) => s.type === 'tjeneste').map((s) => tjenestefamilie(s.sti))), new Set(['avmeld', 'bekreft', 'vervekort']));
+  // 25 eksempelsider, pluss de utrullede tjenestefamiliene: fire avmeldingssider, bekreftelsen, fire vervekort, fire auth-sider og /app/.
+  assert.equal(kart.length, 25 + 9 + 5);
+  assert.equal(kart.filter((s) => s.type === 'tjeneste').length, 9 + 5);
+  assert.deepEqual(new Set(kart.filter((s) => s.type === 'tjeneste').map((s) => tjenestefamilie(s.sti))), new Set(['avmeld', 'bekreft', 'vervekort', 'auth', 'app']));
   for (const s of sider) {
     assert.equal(readFileSync(join(mappe, s.fil), 'utf8'), les(s.fil), s.sti);
     if (s.type === 'tjeneste') continue;
@@ -51,7 +51,7 @@ test('CLI lager speilet forhåndsvisning med noindex uten locale.js og bevarer k
   execFileSync(process.execPath, [join(mappe, 'scripts/skall-paa.mjs'), '--forhandsvis', 'qa/forhandsvisning']);
   assert.equal(readFileSync(kartfil, 'utf8'), JSON.stringify(kart, null, 2) + '\n');
   assert.deepEqual(kart.map((s) => readFileSync(join(mappe, s.url, s.url.endsWith('/') ? 'index.html' : ''), 'utf8')), foer);
-  assert.deepEqual([...UTRULLET], ['omregner', 'guide-lang', 'guide-kort', 'blogg', 'juss', 'tjeneste:avmeld', 'tjeneste:bekreft', 'tjeneste:vervekort']);
+  assert.deepEqual([...UTRULLET], ['omregner', 'guide-lang', 'guide-kort', 'blogg', 'juss', 'tjeneste:avmeld', 'tjeneste:bekreft', 'tjeneste:vervekort', 'tjeneste:auth', 'tjeneste:app']);
   assert.ok(les('side.css').startsWith('/* == Grunnstil == */'), 'grunnstilarket må finnes før forhåndsvisningen åpnes');
 });
 

@@ -5,6 +5,7 @@
    Alle regler gjelder body.avmeld-rot (avmelding, bekreftelse og vervekort) og body[data-tjeneste]
    (alle sidene som går gjennom skall-paa). */
 body.avmeld-rot,body[data-tjeneste]{margin:0;background:var(--flate);color:var(--blekk);font-family:var(--f);font-weight:400;font-size:1.125rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+:where(body[data-tjeneste]) *,:where(body[data-tjeneste]) *::before,:where(body[data-tjeneste]) *::after{margin:0;padding:0;box-sizing:border-box}
 body.avmeld-rot ::selection,body[data-tjeneste] ::selection{background:var(--blekk);color:var(--flate)}
 body.avmeld-rot :focus-visible,body[data-tjeneste] :focus-visible{outline:2px solid var(--blekk);outline-offset:4px;border-radius:10px}
 /* Ordmerket: Fraunces kursiv, bare bokstavene i «matlyst» (skriften har ikke stor M) */
@@ -48,3 +49,14 @@ body.avmeld-rot .skip-link:focus,body[data-tjeneste] .skip-link:focus{width:auto
 body.avmeld-rot .bekreft-fot{max-width:600px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-left,0px)) 48px;font-size:.9375rem;color:var(--dempet)}
 body.avmeld-rot .bekreft-fot p + p{margin-top:6px}
 body.avmeld-rot .bekreft-fot a{display:inline-flex;align-items:center;min-height:44px;color:var(--blekk);text-decoration:underline;text-underline-offset:.2em}
+
+/* == Auth og app == */
+/* TikTok-retursidene: den norske siden har bare en språkvelgerlinje øverst, og får ordmerket inn i den linja */
+body[data-tjeneste="auth"] .language-switcher-standalone-top{position:static;display:flex;align-items:center;max-width:1184px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));background:none}
+body[data-tjeneste="auth"] .language-switcher-standalone-top .nav-brand{display:inline-flex;align-items:center;min-height:44px;margin-right:auto}
+body[data-tjeneste="auth"] .language-switcher-standalone-bottom{margin-top:0}
+@media (max-width:700px){
+  body[data-tjeneste="auth"] .language-switcher-standalone-top{flex-wrap:wrap}
+  body[data-tjeneste="auth"] .language-switcher-standalone-top .language-switcher{flex-basis:100%}
+}
+/* /app/ (videresendingen til butikkene) har sin egen oppsetning i en innebygd stil, med farger og skrift fra tokens. Resten kommer fra Felles. */

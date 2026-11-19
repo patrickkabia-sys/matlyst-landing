@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 <title>Matlyst</title>
-<meta name="theme-color" content="#F7F3EC">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://matlyst-app.no/app/">
 <meta property="og:title" content="Matlyst">
@@ -56,18 +56,17 @@
 })();
 </script>
 <style>
-  :root{--cream:#F7F3EC;--ink:#1E1813;--ink-soft:#5C5047}
-  @media (prefers-color-scheme: dark){:root{--cream:#0C0A08;--ink:#F7F3EC;--ink-soft:#BDB2A7}}
   *{box-sizing:border-box;margin:0}
-  body{background:var(--cream);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px 16px;text-align:center}
+  body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px 16px;text-align:center}
   img{width:62px;height:62px;border-radius:14px}
-  h1{font-weight:500;font-size:22px}
-  p{color:var(--ink-soft);font-size:15px;max-width:34ch;line-height:1.5}
+  h1{font-weight:700;font-size:1.5rem;letter-spacing:-.02em}
+  p{color:var(--dempet);font-size:1rem;max-width:34ch;line-height:1.5}
   .stores{display:flex;flex-direction:column;gap:12px;width:100%;max-width:320px}
-  a.store{display:block;text-decoration:none;background:var(--ink);color:var(--cream);border-radius:14px;padding:15px 20px;font-size:16px;font-weight:500}
+  a.store{display:flex;align-items:center;justify-content:center;min-height:54px;text-decoration:none;background:var(--blekk);color:var(--flate);border-radius:999px;padding:0 24px;font-size:1.0625rem;font-weight:700;transition:background-color .2s}
+  a.store:hover{background:var(--blekk-lys)}
 </style>
-</head>
-<body>
+<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><!-- /skall:stil --></head>
+<body data-sidetype="tjeneste" data-tjeneste="app">
   <img src="/images/icon.png" width="62" height="62" alt="">
   <h1>Matlyst</h1>
   <p>Last ned appen · Get the app</p>

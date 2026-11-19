@@ -47,7 +47,7 @@ test('de utrullede tjenestefamiliene har nøklene sine', () => {
 
 test('tjeneste.css har delene i rekkefølge', () => {
   const rå = les('tjeneste.css');
-  const navn = ['Felles', 'Avmeld'];
+  const navn = ['Felles', 'Avmeld', 'Auth og app'];
   const pos = navn.map((n) => rå.indexOf(`/* == ${n} == */`));
   assert.ok(pos.every((p) => p > -1), `mangler del: ${pos}`);
   assert.deepEqual([...pos].sort((a, b) => a - b), pos);
@@ -55,7 +55,7 @@ test('tjeneste.css har delene i rekkefølge', () => {
 
 test('tjeneste.css, avmeld.css og vervekort.css bruker bare tokens eller egne variabler', () => {
   const tokens = utenKommentarer(les('tokens.css'));
-  for (const fil of ['tjeneste.css', 'avmeld.css', 'v/vervekort.css']) {
+  for (const fil of ['tjeneste.css', 'avmeld.css', 'v/vervekort.css', 'tiktok-auth.css']) {
     const css = utenKommentarer(les(fil));
     const definert = new Set([...tokens.matchAll(/(--[\w-]+)\s*:/gu), ...css.matchAll(/(--[\w-]+)\s*:/gu)].map((m) => m[1]));
     const brukt = [...css.matchAll(/var\((--[\w-]+)/gu)].map((m) => m[1]);
@@ -80,4 +80,28 @@ test('knappen er en svart pille på 44 px med lysere svart ved peker over, og vi
     assert.match(regel(`${v}:hover`), /background:var\(--blekk-lys\)/u, v);
   }
   assert.match(regel('body.avmeld-rot .vk-butikker a'), /min-height:44px/u);
+});
+
+test('auth og app laster tokens og tjeneste.css, og alle variabler er definert', () => {
+  assert.equal(familie('auth').length, 4);
+  assert.equal(familie('app').length, 1);
+  for (const s of [...familie('auth'), ...familie('app')]) {
+    const h = les(s.fil);
+    assert.match(h, /href="\/tokens\.css"[\s\S]*href="\/tjeneste\.css"/u, s.sti);
+    assert.doesNotMatch(h, /href="\/styles\.css"/u, s.sti);
+    assert.ok(h.indexOf('href="/tjeneste.css"') < (h.indexOf('href="/tiktok-auth.css"') === -1 ? Infinity : h.indexOf('href="/tiktok-auth.css"')), `${s.sti}: tjeneste.css før tiktok-auth.css`);
+  }
+  const auth = utenKommentarer(les('tiktok-auth.css'));
+  const definert = new Set([...utenKommentarer(les('tokens.css')).matchAll(/(--[\w-]+)\s*:/gu), ...auth.matchAll(/(--[\w-]+)\s*:/gu)].map((m) => m[1]));
+  assert.ok(definert.has('--pad'), '--pad defineres i tiktok-auth.css selv');
+  assert.deepEqual([...auth.matchAll(/var\((--[\w-]+)/gu)].map((m) => m[1]).filter((v) => !definert.has(v)), []);
+  for (const gammel of ['--ink', '--ink-soft', '--line', '--line-soft', '--sand', '--cream']) assert.doesNotMatch(auth, new RegExp(`var\\(${gammel}\\b`, 'u'), gammel);
+});
+
+test('/app/ har ingen egne fargevariabler, ingen mørk modus og ingen sporing', () => {
+  const h = les('app/index.html');
+  const stil = h.match(/<style>([\s\S]*?)<\/style>/u)[1];
+  assert.doesNotMatch(stil, /--cream|--ink|prefers-color-scheme|#[0-9a-fA-F]{3,8}\b|font-family|font-size:\s*[\d.]+px/u);
+  assert.deepEqual([...stil.matchAll(/var\((--[\w-]+)/gu)].map((m) => m[1]).filter((v) => !les('tokens.css').includes(`${v}:`)), []);
+  for (const f of ['/site.js', '/skall.js', 'id="cookie"', '/locale.js', 'posthog', 'googletagmanager']) assert.ok(!h.includes(f), f);
 });

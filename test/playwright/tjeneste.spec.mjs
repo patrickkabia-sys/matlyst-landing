@@ -100,3 +100,74 @@ test('avmeldingssiden på 390 px: toppen brytes i to rader og språkvelgeren hol
     await expect(page.locator('.nav-right a.link, nav .nav-back')).toBeHidden();
   }
 });
+
+// TikTok-retursidene og /app/
+const AUTH = [['nb', '/tiktok-auth/'], ['sv', '/sv/tiktok-auth/'], ['da', '/da/tiktok-auth/'], ['en', '/en/tiktok-auth/']];
+const FEIL = 'rgb(196, 52, 52)';
+
+for (const bredde of BREDDER) {
+  for (const [sprak, sti] of AUTH) {
+    test(`auth ${sprak} ${bredde}: kodeboksen, knappen og toppen har nettstedets stil`, async ({ page }) => {
+      await page.setViewportSize({ width: bredde, height: 900 });
+      await page.goto(`${sti}?code=abc123&scopes=user.info.basic`);
+      await expect(page.locator('.nav-brand, .brand')).toHaveCount(1);
+      await expect(page.locator('#boks')).toBeVisible();
+      const g = await grunnstil(page);
+      expect(g.skrift).toContain('Schibsted Grotesk');
+      expect(g.bakgrunn).toBe(FLATE);
+      expect(g.merke.skrift).toContain('Fraunces Ordmerke');
+      expect(g.overflow).toBeLessThanOrEqual(0);
+      const h1 = await page.locator('.auth h1').evaluate((e) => ({ vekt: getComputedStyle(e).fontWeight, skrift: getComputedStyle(e).fontFamily }));
+      expect(h1.vekt).toBe('700');
+      expect(h1.skrift).toContain('Schibsted Grotesk');
+      const boks = await page.locator('.auth .box').evaluate((e) => ({ bg: getComputedStyle(e).backgroundColor, r: getComputedStyle(e).borderTopLeftRadius }));
+      expect(boks).toEqual({ bg: HYLLE, r: '28px' });
+      const kode = await page.locator('.auth code').evaluate((e) => ({ skrift: getComputedStyle(e).fontFamily, bg: getComputedStyle(e).backgroundColor }));
+      expect(kode.skrift).toContain('IBM Plex Mono');
+      expect(kode.bg).toBe(FLATE);
+      const knapp = page.locator('#kopier');
+      expect(await knapp.evaluate((e) => getComputedStyle(e).backgroundColor)).toBe(BLEKK);
+      expect((await knapp.boundingBox()).height).toBeGreaterThanOrEqual(44);
+      await knapp.hover();
+      await expect.poll(() => knapp.evaluate((e) => getComputedStyle(e).backgroundColor)).toBe(BLEKK_LYS);
+    });
+  }
+}
+
+test('auth: feilsvaret får feilfargen, og siden uten kode viser hjelpeteksten', async ({ page }) => {
+  await page.goto('/tiktok-auth/?error=access_denied');
+  expect(await page.locator('.auth h1').evaluate((e) => getComputedStyle(e).color)).toBe(FEIL);
+  await page.goto('/tiktok-auth/');
+  await expect(page.locator('#boks')).toBeHidden();
+  expect(await page.locator('.auth h1').evaluate((e) => getComputedStyle(e).color)).toBe(BLEKK);
+});
+
+test('auth: koden kan fortsatt kopieres', async ({ browser }) => {
+  const ctx = await browser.newContext({ permissions: ['clipboard-read', 'clipboard-write'] });
+  const side = await ctx.newPage();
+  await side.goto('/tiktok-auth/?code=abc123');
+  await side.locator('#kopier').click();
+  expect(await side.evaluate(() => navigator.clipboard.readText())).toBe('abc123');
+  await ctx.close();
+});
+
+for (const bredde of BREDDER) {
+  test(`app ${bredde}: Schibsted på hvitt, svarte pillemerker på minst 44 px, begge butikkene synlige på PC`, async ({ page }) => {
+    await page.setViewportSize({ width: bredde, height: 800 });
+    await page.goto('/app/');
+    const g = await grunnstil(page);
+    expect(g.skrift).toContain('Schibsted Grotesk');
+    expect(g.bakgrunn).toBe(FLATE);
+    expect(g.farge).toBe(BLEKK);
+    expect(g.overflow).toBeLessThanOrEqual(0);
+    const knapper = page.locator('a.store');
+    await expect(knapper).toHaveCount(2);
+    for (const k of await knapper.all()) {
+      await expect(k).toBeVisible();
+      expect((await k.boundingBox()).height).toBeGreaterThanOrEqual(44);
+      expect(await k.evaluate((e) => ({ bg: getComputedStyle(e).backgroundColor, farge: getComputedStyle(e).color, r: parseFloat(getComputedStyle(e).borderTopLeftRadius) }))).toMatchObject({ bg: BLEKK, farge: FLATE });
+      expect(await k.evaluate((e) => parseFloat(getComputedStyle(e).borderTopLeftRadius))).toBeGreaterThan(40);
+    }
+    expect(await page.locator('h1').evaluate((e) => getComputedStyle(e).fontWeight)).toBe('700');
+  });
+}
