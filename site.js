@@ -143,14 +143,45 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 // Enhetsomregner: regner ut mens du skriver (volum, vekt, lengde, temperatur).
 (() => {
   const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
-  const tall = (n) => {
+  // Delte funksjoner: omregneren og kalkulatorkortet (form.kalk) leser og skriver tall på samme måte.
+  // Utenfor løkka, så begge bruker dem. Legges på window.MatlystTall slik at testene når dem.
+  // visTall: antall desimaler følger størrelsen (4 gjeldende sifre som standard). Færre sifre gir færre desimaler.
+  // Språkets desimaltegn (sidens lang): komma på nb, sv og da, punktum på en. Ingen tusenskille, slik sidene ellers skriver tall.
+  const visTall = (n, komma, sifre = 4) => {
     if (!Number.isFinite(n)) return '';
     const a = Math.abs(n);
-    const d = a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5;
+    const d = Math.max(0, (a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5) - (4 - sifre));
     const t = String(Number(n.toFixed(d)));
-    // Språkets desimaltegn (sidens lang): komma på nb, sv og da, punktum på en. Ingen tusenskille, slik sidene ellers skriver tall.
-    return KOMMA ? t.replace('.', ',') : t;
+    return komma ? t.replace('.', ',') : t;
   };
+  // Hele inntastingen valideres. Gyldig: valgfritt fortegn, sifre, valgfritt tusenskille og høyst ett desimaltegn.
+  // Mellomrom (også hardt og smalt) mellom sifre er tusenskille. Språkets tusenskille er punktum på nb, sv og da og komma på en:
+  // «1.500» er 1500 på norsk og «1,500» er 1500 på engelsk (nøyaktig tre sifre etter, og ett til tre foran). Ellers er komma og punktum desimaltegn.
+  // Gir null for alt som ikke er ett tall. Fortegn tolkes, men om negativt er lov avgjør den som bruker tallet.
+  const tolkTall = (tekst, komma) => {
+    const TUSEN = komma ? '.' : ',';
+    const t = String(tekst).trim().replace(/(?<=\d)[   ](?=\d)/gu, '');
+    const m = /^([+-]?)(\d*(?:[.,]\d*)*)$/u.exec(t);
+    if (!m || !/\d/u.test(m[2])) return null;
+    const grupper = m[2].split(/[.,]/u), skilletegn = m[2].match(/[.,]/gu) || [];
+    // En tusengruppe krever ett til tre sifre foran som ikke begynner med 0 («0.125» og «0,125» er desimaltall på alle språk).
+    const tusen = (g) => g.length > 0 && g[0].length >= 1 && g[0].length <= 3 && g[0][0] !== '0' && g.slice(1).every((x) => x.length === 3);
+    let tall = '';
+    if (skilletegn.length === 0) tall = grupper[0];
+    else if (skilletegn.every((c) => c === skilletegn[0])) {
+      if (skilletegn.length >= 2) { if (skilletegn[0] !== TUSEN || !tusen(grupper)) return null; tall = grupper.join(''); }
+      else if (skilletegn[0] === TUSEN && tusen(grupper)) tall = grupper.join('');
+      else tall = `${grupper[0] || '0'}.${grupper[1] || '0'}`;
+    } else {
+      const siste = skilletegn[skilletegn.length - 1];
+      const foran = grupper.slice(0, -1);
+      if (siste === TUSEN || skilletegn.slice(0, -1).some((c) => c !== TUSEN) || !tusen(foran)) return null;
+      tall = `${foran.join('')}.${grupper[grupper.length - 1] || '0'}`;
+    }
+    return Number(`${m[1] === '-' ? '-' : ''}${tall}`);
+  };
+  window.MatlystTall = { tolkTall, visTall };
+  const tall = (n) => visTall(n, KOMMA);
   for (const skjema of document.querySelectorAll('form.omregner')) {
     let data;
     try { data = JSON.parse(skjema.querySelector('.omregner-data').textContent); } catch { continue; }
@@ -163,31 +194,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     const ord = (sel, n) => { const o = data.o && data.o[sel.value]; return o ? o[Math.abs(Number(tall(n))) === 1 ? 0 : 1] : kort(sel); };
     // Inntastingen tåler både komma og punktum: feltet er tekst med desimaltastatur (type=number avviser komma i engelske nettlesere).
     if (verdi.type === 'number') verdi.type = 'text';
-    // Hele inntastingen valideres. Gyldig: valgfritt fortegn, sifre, valgfritt tusenskille og høyst ett desimaltegn.
-    // Mellomrom (også hardt og smalt) mellom sifre er tusenskille. Språkets tusenskille er punktum på nb, sv og da og komma på en:
-    // «1.500» er 1500 på norsk og «1,500» er 1500 på engelsk (nøyaktig tre sifre etter, og ett til tre foran). Ellers er komma og punktum desimaltegn.
-    const TUSEN = KOMMA ? '.' : ',';
-    const tolk = (tekst) => {
-      const t = String(tekst).trim().replace(/(?<=\d)[ \u00a0\u202f](?=\d)/gu, '');
-      const m = /^([+-]?)(\d*(?:[.,]\d*)*)$/u.exec(t);
-      if (!m || !/\d/u.test(m[2])) return NaN;
-      const grupper = m[2].split(/[.,]/u), skilletegn = m[2].match(/[.,]/gu) || [];
-      // En tusengruppe krever ett til tre sifre foran som ikke begynner med 0 («0.125» og «0,125» er desimaltall på alle språk).
-      const tusen = (g) => g.length > 0 && g[0].length >= 1 && g[0].length <= 3 && g[0][0] !== '0' && g.slice(1).every((x) => x.length === 3);
-      let tall = '';
-      if (skilletegn.length === 0) tall = grupper[0];
-      else if (skilletegn.every((c) => c === skilletegn[0])) {
-        if (skilletegn.length >= 2) { if (skilletegn[0] !== TUSEN || !tusen(grupper)) return NaN; tall = grupper.join(''); }
-        else if (skilletegn[0] === TUSEN && tusen(grupper)) tall = grupper.join('');
-        else tall = `${grupper[0] || '0'}.${grupper[1] || '0'}`;
-      } else {
-        const siste = skilletegn[skilletegn.length - 1];
-        const foran = grupper.slice(0, -1);
-        if (siste === TUSEN || skilletegn.slice(0, -1).some((c) => c !== TUSEN) || !tusen(foran)) return NaN;
-        tall = `${foran.join('')}.${grupper[grupper.length - 1] || '0'}`;
-      }
-      return Number(`${m[1] === '-' ? '-' : ''}${tall}`);
-    };
+    const tolk = (tekst) => { const v = tolkTall(tekst, KOMMA); return v === null ? NaN : v; };
     const reg = () => {
       const v = tolk(verdi.value);
       const tomt = String(verdi.value).trim() === '';
@@ -242,5 +249,86 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       svar.animate([{ color: `rgb(${r} ${g} ${bl} / 0.25)` }, { color: `rgb(${r} ${g} ${bl} / 1)` }], { duration: 200, easing: 'ease-out' });
     });
     reg();
+  }
+})();
+
+// Kalkulatorkortet (form.kalk): regner mens du skriver. Volum regnes mot volum via ml og vekt mot vekt via gram, direkte.
+// Bare kryssing mellom volum og vekt bruker varens gram per dl: ml[enhet] / 100 * gram per dl, og mangler vekten (eller er den 0), vises veiledningen.
+// All tekst (enhetsnavn, hurtigmengder, veiledning) kommer fra skjemaets egne data (script.kalk-data), så filen har ingen språkstrenger.
+// Tallesing er den delte tolkTall fra omregneren (window.MatlystTall). Skrivemåten av svaret har ikke tak på antall desimaler (visTall har det), så små tall aldri blir 0.
+(() => {
+  const skjemaer = document.querySelectorAll('form.kalk');
+  if (!skjemaer.length || !window.MatlystTall) return;
+  const { tolkTall } = window.MatlystTall;
+  const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
+  const komma = (t) => (KOMMA ? t.replace('.', ',') : t);
+  // Svaret: 100 og over som heltall, 10 til 100 med tre gjeldende sifre, under 10 med to. Ingen tak på desimaler, og aldri 0 for et tall som ikke er 0.
+  const svarTekst = (n) => {
+    const a = Math.abs(n);
+    if (a === 0) return '0';
+    if (a >= 100) return komma(String(Math.round(n)));
+    const sifre = a >= 10 ? 3 : 2;
+    const desimaler = Math.min(100, Math.max(0, sifre - 1 - Math.floor(Math.log10(a))));
+    // Halve runder opp også når flyttallet ligger like under (0,00275 er ikke eksakt i binært): rund på tolv gjeldende sifre først.
+    const t = (Math.round(Number((n * 10 ** desimaler).toPrecision(12))) / 10 ** desimaler).toFixed(desimaler);
+    return komma(t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t);
+  };
+  // Mengden gjengis slik den ble tolket, uten avrunding og uten overflødige nuller.
+  const mengdeTekst = (n) => {
+    const t = String(n);
+    return komma(/e/u.test(t) ? n.toLocaleString('en', { useGrouping: false, maximumFractionDigits: 20 }) : t);
+  };
+  for (const skjema of skjemaer) {
+    // Hvert skjema settes opp for seg: et ødelagt skjema hoppes over (det statiske svaret i HTML-en blir stående), og resten virker.
+    try {
+      const data = JSON.parse(skjema.querySelector('.kalk-data').textContent);
+      const felt = (navn) => skjema.querySelector(`[data-felt="${navn}"]`);
+      const mengde = felt('mengde'), fra = felt('fra'), til = felt('til'), svar = felt('svar'), setning = felt('setning'), bytt = felt('bytt'), vare = felt('vare');
+      const hurtig = [...skjema.querySelectorAll('.hurtig button')];
+      const ok = data && Array.isArray(data.varer) && data.varer.length && data.ml && data.g && data.steg && typeof data.feil === 'string'
+        && ['volum', 'ml', 'g', 'kg'].every((g) => Array.isArray(data.steg[g]) && data.steg[g].length >= hurtig.length)
+        && mengde && fra && til && svar && setning && bytt;
+      if (!ok) continue;
+      const kort = (e) => (data.kort && data.kort[e]) || e;
+      // Setningen under er den som leses opp; selve svarfeltet står utenfor opplesingen.
+      svar.setAttribute('aria-live', 'off');
+      const regn = () => {
+        const [ord, gramPerDl] = data.varer[vare ? Number(vare.value) : 0] || [];
+        const n = tolkTall(mengde.value, KOMMA);
+        // Negativt og alt som ikke er ett tall gir veiledning, aldri et delsvar.
+        const gyldig = n !== null && n >= 0;
+        let ut = NaN;
+        if (gyldig) {
+          const fraVekt = fra.value in data.g, tilVekt = til.value in data.g;
+          const grunn = (e) => (e in data.g ? data.g[e] : data.ml[e]);
+          if (fraVekt === tilVekt) ut = n * grunn(fra.value) / grunn(til.value);
+          else if (gramPerDl > 0) ut = fraVekt ? n * data.g[fra.value] * 100 / gramPerDl / data.ml[til.value] : n * data.ml[fra.value] / 100 * gramPerDl / data.g[til.value];
+        }
+        if (gyldig) mengde.removeAttribute('aria-invalid'); else mengde.setAttribute('aria-invalid', 'true');
+        if (Number.isFinite(ut)) {
+          svar.textContent = svarTekst(ut);
+          setning.textContent = [`${mengdeTekst(n)} ${kort(fra.value)}`, ord, `= ${svarTekst(ut)} ${kort(til.value)}`].filter(Boolean).join(' ');
+        } else {
+          svar.textContent = '';
+          setning.textContent = data.feil;
+        }
+        const gruppe = fra.value in data.g ? (fra.value === 'kg' ? 'kg' : 'g') : (fra.value === 'ml' ? 'ml' : 'volum');
+        const steg = data.steg[gruppe];
+        hurtig.forEach((k, i) => {
+          k.dataset.v = steg[i];
+          k.textContent = `${steg[i]} ${kort(fra.value)}`;
+          k.setAttribute('aria-pressed', String(gyldig && tolkTall(steg[i], KOMMA) === n));
+        });
+      };
+      for (const el of [mengde, fra, til, vare]) if (el) el.addEventListener(el === mengde ? 'input' : 'change', regn);
+      hurtig.forEach((k) => k.addEventListener('click', () => { mengde.value = k.dataset.v; regn(); }));
+      bytt.addEventListener('click', () => {
+        const f = fra.value; fra.value = til.value; til.value = f;
+        bytt.classList.toggle('snudd');
+        mengde.value = fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
+        regn();
+      });
+      regn();
+    } catch { /* hopp over dette skjemaet */ }
   }
 })();
