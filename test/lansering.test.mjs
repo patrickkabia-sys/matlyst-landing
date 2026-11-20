@@ -33,6 +33,9 @@ test('robots.txt tillater alt og peker på norsk, svensk og dansk sitemap', () =
   }
 });
 
+// Sider som kom etter RIK_DATO og har egen dato (generatoren: sistEndretSide i scripts/generer-lokalsider.mjs).
+const EGNE_DATOER = { '/en/mealime-alternative/': '2026-11-20' };
+
 for (const lang of ['sv', 'da', 'en']) {
   test(`sitemap-${lang}.xml har alle indekserbare ${lang}-sider med lastmod og gjensidige alternativer`, () => {
     const xml = les(`sitemap-${lang}.xml`);
@@ -53,6 +56,7 @@ for (const lang of ['sv', 'da', 'en']) {
       const oppdatertGuide = /\/(?:sv\/(?:importera-recept|spara-recept-fran-instagram|spara-recept-fran-tiktok|byt-fran-paprika|handskrivna-recept|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|da\/(?:importer-opskrifter|gem-opskrifter-fra-instagram|gem-opskrifter-fra-tiktok|skift-fra-paprika|haandskrevne-opskrifter|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|en\/(?:import-recipes|import-recipes-from-photos|import-recipes-from-instagram|import-recipes-from-paprika|import-recipes-from-tiktok|find-recipes|recipes-by-ingredients|dinner-ideas|pantry-app|empty-the-fridge|easy-dinner|recipe-creators|matprat|koket|landleys-kok|alletiders-cookbook|dr-food|delete-account))\/$/u.test(side);
       const appside = /\/(?:(?:sv|da|en)\/blogg?(?:\/[^/]+)?|en\/(?:shopping-list|meal-plan-app|recipe-book-app|dinner-ideas|easy-dinner)|sv\/(?:receptbok-app|veckomeny-app|inkopslista|vad-ska-jag-laga|enkel-middag)|da\/(?:opskrifts-app|madplan-app|indkoebsliste-app|middagsforslag|nem-mad))\/$/u.test(side);
       const forventetDato = autoDato.get(new URL(side).pathname)
+        ?? EGNE_DATOER[new URL(side).pathname]
         ?? (rikeStier.has(new URL(side).pathname) ? RIK_DATO : null)
         ?? (appside ? '2026-10-28' : oppdatertGuide ? '2026-10-27' : lang === 'en' ? '2026-10-20' : '2026-10-05');
       assert.match(blokk, new RegExp(`<loc>[^<]+<\\/loc>\\s*<lastmod>${forventetDato}<\\/lastmod>`, 'u'), side);

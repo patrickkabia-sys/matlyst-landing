@@ -275,6 +275,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/meal-plan-app/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/en/mealime-alternative/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/mealime-alternative/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/mealime-alternative/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/en/pantry-app/</loc>
     <lastmod>2026-11-18</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/spiskammer-app/"/>

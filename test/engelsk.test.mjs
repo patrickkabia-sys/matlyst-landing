@@ -49,7 +49,7 @@ test('engelsk personvern og vilkår har ingen USA- eller UK-avsnitt (bølge 2), 
 test('engelske sider har engelsk sitemap i robots.txt', () => {
   assert.match(les('robots.txt'), /^Sitemap: https:\/\/matlyst-app\.no\/sitemap-en\.xml$/mu);
   const xml = les('sitemap-en.xml');
-  for (const sti of ['en/', 'en/import-recipes/', 'en/import-recipes-from-photos/', 'en/import-recipes-from-instagram/', 'en/import-recipes-from-paprika/', 'en/import-recipes-from-tiktok/', 'en/privacy/', 'en/terms/']) {
+  for (const sti of ['en/', 'en/import-recipes/', 'en/import-recipes-from-photos/', 'en/import-recipes-from-instagram/', 'en/import-recipes-from-paprika/', 'en/mealime-alternative/', 'en/import-recipes-from-tiktok/', 'en/privacy/', 'en/terms/']) {
     assert.match(xml, new RegExp(`<loc>https://matlyst-app\\.no/${sti}</loc>`, 'u'), sti);
   }
   assert.doesNotMatch(xml, /en\/unsubscribe/u);
