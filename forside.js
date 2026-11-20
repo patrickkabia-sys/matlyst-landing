@@ -1,6 +1,20 @@
 (() => {
   const bevegelse = matchMedia('(prefers-reduced-motion: reduce)');
   const rolig = bevegelse.matches;
+  // Felles håndtering av bevegelsesendringer: hver del (kort, Spør Matlyst, film) melder inn hva den gjør når bevegelse slås av (rolig) og på (levende).
+  // «change» kan utebli: Chromium sender ikke hendelsen hvis siden leser .matches mellom at innstillingen byttes og at hendelsen leveres, og løkkene leser den hver ramme.
+  // Derfor avstemmer vi også mot .matches på steder som alt kjører (rammeløkkene), ved rulling og når fanen blir synlig igjen. Delene kalles bare når tilstanden har endret seg.
+  const bevegelseDeler = [];
+  let bevegelseRolig = rolig;
+  const avstemBevegelse = () => {
+    const na = bevegelse.matches;
+    if (na === bevegelseRolig) return;
+    bevegelseRolig = na;
+    bevegelseDeler.forEach((del) => (na ? del.rolig : del.levende)());
+  };
+  bevegelse.addEventListener('change', avstemBevegelse);
+  addEventListener('scroll', avstemBevegelse, { passive: true });
+  document.addEventListener('visibilitychange', avstemBevegelse);
   // Aktiv: synlig høyde er minst 60 % av det minste av kortets høyde og skjermens høyde (da kan ingen demo bli stående inaktiv for alltid på lave skjermer).
   const TERSKLER = Array.from({ length: 21 }, (_, i) => i / 20);
   const aktivAndel = (rad) => rad.intersectionRect.height >= 0.6 * Math.min(rad.boundingClientRect.height, innerHeight) - 0.5;
@@ -113,7 +127,7 @@
     synlighet.observe(video);
     synlighet.observe(band);
   }
-  bevegelse.addEventListener('change', settBevegelse);
+  bevegelseDeler.push({ rolig: settBevegelse, levende: settBevegelse });
   settBevegelse();
   // Kokeboka følger rullingen på PC. På mobil sveipes raden direkte.
   {
@@ -198,9 +212,9 @@
     const tikk = (naa) => {
       ramme = 0;
       if (!synlig) return;
-      // Chromium sender ikke «change» til en MediaQueryList hvis siden leser .matches mellom at innstillingen byttes og at hendelsen leveres, og denne løkka leser den hver ramme.
-      // Ser løkka at redusert bevegelse er slått på, viser den ALLE rutene ferdige (ikke bare sin egen: «change» gikk tapt for alle), ellers står de igjen midt i et steg.
-      if (bevegelse.matches) { roligeKort.forEach((f) => f()); return; }
+      // Ser løkka at redusert bevegelse er slått på (uten at «change» kom), avstemmes alle delene i stedet for å la teksten eller skjelettet stå uferdig.
+      avstemBevegelse();
+      if (bevegelse.matches) return;
       tid += naa - sist; sist = naa;
       if (fase === 'skriver') {
         const onsket = forslag[nr].textContent;
@@ -256,7 +270,7 @@
       if (bevegelse.matches) velg(0);
       else start();
     };
-    bevegelse.addEventListener('change', settRolig);
+    bevegelseDeler.push({ rolig: settRolig, levende: settRolig });
     const tilpassAntall = () => { if (!kort.classList.contains('endrer')) antall.textContent = antallTekst(svarene[vist].dataset.antall); };
     smal.addEventListener('change', tilpassAntall);
     tilpassAntall();
@@ -362,7 +376,7 @@
   if (document.fonts?.ready) document.fonts.ready.then(vurderStabel);
   if (trio && 'ResizeObserver' in window) { const ro = new ResizeObserver(vurderStabel); trio.querySelectorAll(':scope > .rute').forEach((el) => ro.observe(el)); }
   vurderStabel();
-  const kortRegister = [], roligeKort = [];
+  const kortRegister = [];
   const mal = (rute) => { const r = rute.getBoundingClientRect(), n = rute.nextElementSibling?.getBoundingClientRect(); return { r, n }; };
   // Det som sees av ruta er det den neste ikke dekker (bare noen piksler av stabelkanten).
   const dekkes = (rute) => {
@@ -414,9 +428,9 @@
     const tikk = (naa) => {
       ramme = 0;
       if (!synlig) return;
-      // Chromium sender ikke «change» til en MediaQueryList hvis siden leser .matches mellom at innstillingen byttes og at hendelsen leveres, og denne løkka leser den hver ramme.
-      // Ser løkka at redusert bevegelse er slått på, viser den ALLE rutene ferdige (ikke bare sin egen: «change» gikk tapt for alle), ellers står de igjen midt i et steg.
-      if (bevegelse.matches) { roligeKort.forEach((f) => f()); return; }
+      // Avstemmingen viser ALLE rutene ferdige når «change» gikk tapt (ikke bare denne), ellers står de igjen midt i et steg.
+      avstemBevegelse();
+      if (bevegelse.matches) return;
       tid += naa - sist; sist = naa;
       while (neste < forloep.steg.length && tid >= forloep.steg[neste][0]) forloep.steg[neste++][1]();
       if (tid >= forloep.lengde) { tid %= forloep.lengde; neste = 0; }
@@ -457,8 +471,7 @@
       // Ikke aktiv: startbildet. Aktiv: begynn forfra.
       else { forloep.steg[0][1](); neste = 1; if (synlig) start(); }
     };
-    bevegelse.addEventListener('change', roligKort);
-    roligeKort.push(roligKort);
+    bevegelseDeler.push({ rolig: roligKort, levende: roligKort });
     roligKort();
   };
   kortloep('demoSkaler', (app, { settInn, trykk }) => {
