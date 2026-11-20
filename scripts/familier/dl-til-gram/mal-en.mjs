@@ -279,7 +279,7 @@ export function sideForRad(rad, data, rader) {
   const lead = `1 ${enhetEn} of ${v} weighs ${gEn} (${ozEn} oz). Type an amount to convert.`;
   const beskr = (kort) => `1 ${enhetEn} of ${variant(rad)} weighs ${gEn} (${ozEn} oz). Convert ${tsp ? 'teaspoons, tablespoons, and cups' : 'cups, tablespoons, and teaspoons'} to grams and ounces${kort ? '.' : ', with a chart and USDA numbers.'}`;
   const description = beskr(false).length <= 160 ? beskr(false) : beskr(true);
-  const tabell = `<table class="otabell"><thead><tr><th scope="col">${esc(rad.navn)}</th><th scope="col">Grams</th><th scope="col">Ounces</th></tr></thead><tbody>${u.tabell.map(([e, g, oz]) => `<tr><td>${e}</td><td>${g} g</td><td>${oz ? `${oz} oz` : ''}</td></tr>`).join('')}</tbody></table>`;
+  const tabell = `<table class="otabell"><thead><tr><th scope="col">Amount</th><th scope="col">Grams</th><th scope="col">Ounces</th></tr></thead><tbody>${u.tabell.map(([e, g, oz]) => `<tr><td>${e}</td><td>${g} g</td><td>${oz ? `${oz} oz` : ''}</td></tr>`).join('')}</tbody></table>`;
   const eks = u.tilbake.map(([g, c]) => `<li><b>${g} g</b><span>${c} ${tsp ? 'tsp' : cupsEnhet(c)}</span></li>`).join('');
   // Pund og kilo (ekte innhold for amerikanske lesere) står én gang per side, ikke for hevemidlene.
   const pundCups = mengdeTekst(453.59237 / u.gPerCup);

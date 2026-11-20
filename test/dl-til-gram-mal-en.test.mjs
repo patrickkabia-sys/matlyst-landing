@@ -448,3 +448,7 @@ test('varianten står i ingress, beskrivelse, short answer og spørsmål 1 (og i
     assert.ok(n <= 6, `${r.id}: «${v}» står ${n} ganger`);
   }
 });
+
+test('tabellens første overskrift er «Amount» (et langt varenavn tvang kolonnene sammen på 390 px)', () => {
+  for (const r of rader) assert.match(sideForRad(r, data, rader).rik, /<table class="otabell"><thead><tr><th scope="col">Amount<\/th><th scope="col">Grams<\/th><th scope="col">Ounces<\/th><\/tr><\/thead>/u, r.id);
+});
