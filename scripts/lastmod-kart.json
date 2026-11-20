@@ -988,8 +988,8 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/en/import-recipes-from-paprika/": {
-  "hash": "07ef7af91c975a39",
-  "dato": "2026-11-19"
+  "hash": "578326fb3e515eb8",
+  "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/import-recipes-from-photos/": {
   "hash": "fade2a954ffe7af6",
@@ -1018,6 +1018,10 @@
  "https://matlyst-app.no/en/meal-plan-app/": {
   "hash": "5164c0366fcb598a",
   "dato": "2026-11-19"
+ },
+ "https://matlyst-app.no/en/mealime-alternative/": {
+  "hash": "e7a241a4fc6dfa08",
+  "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/pantry-app/": {
   "hash": "138451e155c714a4",

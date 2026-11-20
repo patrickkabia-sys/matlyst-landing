@@ -189,6 +189,7 @@ Matlyst imports a recipe from a shared link, video or photo, translates it into 
 - [Save recipes from Landleys Kök](https://matlyst-app.no/en/landleys-kok/): How to save a recipe from Landleys Kök in Matlyst while keeping the source.
 - [Save recipes from Matprat](https://matlyst-app.no/en/matprat/): How to save a recipe from Matprat in Matlyst while keeping the source.
 - [Meal planner app with a grocery list](https://matlyst-app.no/en/meal-plan-app/): Plan the week with recipes you already like, then send the ingredients to one grocery list, sorted by aisle. Free on iPhone and Android.
+- [Mealime Alternative: Moving Your Recipes](https://matlyst-app.no/en/mealime-alternative/): Mealime’s published recipes still import into Matlyst by link, one at a time (tested November 20, 2026). Find a recipe, paste the link, check the draft.
 - [Pantry app: know what you have and cook it](https://matlyst-app.no/en/pantry-app/): A pantry app that shows what you have, how many days are left, and which of your saved recipes use it. Add items fast and waste less food.
 - [Recipe organizer app: one home for every recipe](https://matlyst-app.no/en/recipe-book-app/): Save recipes from websites, Instagram, TikTok, and photos in one recipe organizer app. Scale servings, plan the week, and build a grocery list. Free to start.
 - [Matlyst for recipe creators](https://matlyst-app.no/en/recipe-creators/): How Matlyst shows sources, handles imports and receives requests from rights holders.
