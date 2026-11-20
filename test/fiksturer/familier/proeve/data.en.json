@@ -1,0 +1,58 @@
+{
+  "familie": "proeve",
+  "marked": "en",
+  "kilder": {
+    "prove-tabell": {
+      "navn": "Prøvetabellen",
+      "utgiver": "Prøveinstituttet",
+      "aar": 2024,
+      "adresse": "https://eksempel.test/prove-tabell",
+      "hentet": "2026-11-20"
+    },
+    "prove-bok": {
+      "navn": "Prøveboka",
+      "utgiver": "Prøveforlaget",
+      "aar": 2022,
+      "adresse": "https://eksempel.test/prove-bok",
+      "hentet": "2026-11-20"
+    }
+  },
+  "rader": [
+    {
+      "id": "provemel",
+      "slug": "test-flour",
+      "navn": "Test flour",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerCup": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "prove-tabell"
+        }
+      },
+      "tekst": {
+        "beskrivelse": "This test flour is invented for testing and does not exist in any shop. It is only used to show that every page in the family carries text written for exactly this ingredient, and not merely a name dropped into a shared template."
+      }
+    },
+    {
+      "id": "provehonning",
+      "slug": "test-honey",
+      "navn": "Test honey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerCup": {
+          "verdi": 340,
+          "enhet": "g",
+          "kilde": "prove-bok"
+        }
+      },
+      "tekst": {
+        "beskrivelse": "The test honey is another invented ingredient with a description of its own. It says something about how the syrup settles in the measuring cup, and why two identical cups can weigh differently depending on how carefully they are filled."
+      }
+    }
+  ]
+}

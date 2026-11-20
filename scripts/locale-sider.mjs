@@ -1,6 +1,7 @@
 // Engelsk er internasjonalt (ingen region), derfor bare «en».
 import { bloggGrupper } from './blogg.mjs';
 import { allePar, parSti } from './enheter.mjs';
+import { familieGrupper } from './familier/register.mjs';
 
 export const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en' });
 export const SPRAKREKKEFOLGE = Object.freeze(Object.keys(SPRAKKODER));
@@ -69,11 +70,23 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'dr-mad', sider: { nb: '/importer-fra-dr-mat/', sv: '/sv/dr-mad/', da: '/da/dr-mad/', en: '/en/dr-food/' } },
   { id: 'auto-enhetsomregner', sider: { en: '/en/tools/unit-converter/', nb: '/verktoy/enhetsomregner/', sv: '/sv/verktyg/enhetsomvandlare/', da: '/da/vaerktoejer/enhedsomregner/' } },
   ...enhetsGrupper(),
+  ...familieGrupper(),
   ...bloggGrupper(),
 ]);
 
-const GRUPPE_FOR_STI = new Map(SIDEGRUPPER.flatMap((gruppe) =>
-  Object.values(gruppe.sider).map((sti) => [sti, gruppe])));
+// Sti til gruppe. Samme sti i to grupper ville overskrevet den ene stille, så det stopper bygget.
+export function byggStiOppslag(grupper) {
+  const kart = new Map();
+  for (const gruppe of grupper) {
+    for (const sti of Object.values(gruppe.sider)) {
+      if (kart.has(sti)) throw new Error(`Sti i to sidegrupper: ${sti} står i både «${kart.get(sti).id}» og «${gruppe.id}»`);
+      kart.set(sti, gruppe);
+    }
+  }
+  return kart;
+}
+
+const GRUPPE_FOR_STI = byggStiOppslag(SIDEGRUPPER);
 
 export function gruppeForSti(sti) {
   return GRUPPE_FOR_STI.get(sti) ?? null;

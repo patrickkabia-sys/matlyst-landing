@@ -1,0 +1,14 @@
+[
+  {
+    "sti": "/a/",
+    "title": "Samme tittel",
+    "h1": "En",
+    "description": "Første"
+  },
+  {
+    "sti": "/b/",
+    "title": "  samme TITTEL ",
+    "h1": "To",
+    "description": "Andre"
+  }
+]

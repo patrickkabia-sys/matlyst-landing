@@ -245,6 +245,16 @@ Gamle stiler slettes når siste sidetype er flyttet.
 
 **Status 19.11.2026:** steg 1, 2, 3, 4, 6 og 7 er publisert, og tjenestesidene (avmelding, bekreftelse, vervekort, innlogging, 404) har samme identitet. Alle 876 sider bruker `tokens.css`, `skall.css` og `side.css` eller `tjeneste.css`; `styles.css` er slettet. Av steg 5 er omregnerne flyttet til ny mal. Det som gjenstår av steg 5 (kalkulatoren øverst, «cups» i teksten og de seks nye kalkulatorene) er en egen runde som Patrick starter senere.
 
+### Sidefamilier
+
+Datadrevne sider (hundrevis av like sider fra tall med kilde) bor i `scripts/familier/`.
+
+- **Data:** `scripts/familier/<familie>/data.<marked>.json`, én fil per marked. Skjemaet (`felles.mjs`) krever kilde på hvert tall (navn, utgiver, år, https-adresse, hentedato). Bare rader med status `kontrollert` blir sider. Samme rad-id på to markeder gir hreflang mellom språkene.
+- **Maler:** `mal-<marked>.mjs` i familiens mappe: `navSide`, `sideForRad` og `tillatteTall`. Strukturerte data bygges med `skjema.mjs` (ingen HowTo, ingen FAQPage; `'faq'` i `schemas` lager FAQPage fra synlig FAQ).
+- **Register:** `register.mjs` kobler familiene til `RIKE` (`rike-sider-register.mjs`), `SIDEGRUPPER` (`locale-sider.mjs`) og sideregisteret (`fam:<id>` i `sidetyper.mjs`). Alt under en familierot skal komme fra datafila.
+- **Vakter:** `test/familier.test.mjs` med `test/hjelp/familievakt.mjs` krever for hver familie og marked: gyldig data, ingen tall utenfor `tillatteTall`, ingen side for lik de andre (terskel 0,2, måles på ekte sider av første familie), ingen like titler, H1 eller beskrivelser, ingen norske restord på sv, da og en, og samsvar mellom rader og filer.
+- **Sidekontroll:** PR-er går på et utvalg per familie; `felles.mjs`, `skjema.mjs` og `register.mjs` gir full kontroll (`scripts/revisjon-omfang.mjs`).
+
 ## 14. Det byggeren avgjør selv
 
 - Hvordan prototypens ene fil deles i `tokens.css`, komponent-CSS og skript, og hvordan generatorene tar dem i bruk.
