@@ -31,6 +31,9 @@
           "enhet": "g",
           "kilde": "prove-tabell"
         }
+      },
+      "tekst": {
+        "beskrivelse": "This test flour is invented for testing and does not exist in any shop. It is only used to show that every page in the family carries text written for exactly this ingredient, and not merely a name dropped into a shared template."
       }
     },
     {
@@ -46,6 +49,9 @@
           "enhet": "g",
           "kilde": "prove-bok"
         }
+      },
+      "tekst": {
+        "beskrivelse": "The test honey is another invented ingredient with a description of its own. It says something about how the syrup settles in the measuring cup, and why two identical cups can weigh differently depending on how carefully they are filled."
       }
     }
   ]

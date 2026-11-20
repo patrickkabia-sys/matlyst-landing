@@ -33,7 +33,7 @@ export function sideForRad(rad) {
     eyebrow: 'Test family', h1: `${rad.navn} in grams`, lead: `One cup of ${rad.navn.toLowerCase()} weighs ${fmt(t.verdi)} ${t.enhet}.`, forst: 'Read off the number.',
     stegTittel: 'How to read it', steg: [['Read the number', `The number is ${fmt(t.verdi)}.`]],
     alternativ: '', grense: '', seksjoner: [], faqTittel: `Questions about ${rad.navn.toLowerCase()}`, faq: [['How much does one cup weigh?', `${fmt(t.verdi)} ${t.enhet}.`]],
-    rik: rik(`One cup weighs ${fmt(t.verdi)} ${t.enhet}.`, [['The number', `<p>${fmt(t.verdi)} ${t.enhet}.</p>`]]), cta: 'Try Matlyst',
+    rik: rik(`One cup weighs ${fmt(t.verdi)} ${t.enhet}.`, [['The number', `<p>${fmt(t.verdi)} ${t.enhet}.</p>`], ['About the ingredient', `<p>${esc(rad.tekst?.beskrivelse ?? '')}</p>`]]), cta: 'Try Matlyst',
     publisert: rad.oppdatert,
     schemas: ['faq', webApplikasjon({ navn: `${rad.navn} in grams`, beskrivelse: 'Test page.', adresse: `/${ROT}${rad.slug}/`, sprak: 'en' })],
   };

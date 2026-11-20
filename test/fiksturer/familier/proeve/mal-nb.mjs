@@ -32,7 +32,7 @@ export function sideForRad(rad) {
     eyebrow: 'Prøvefamilie', h1: `${rad.navn} i gram`, lead: `Én dl ${rad.navn.toLowerCase()} veier ${fmt(t.verdi)} ${t.enhet}.`, forst: 'Les av tallet.',
     stegTittel: 'Slik leser du av', steg: [['Les tallet', `Tallet er ${fmt(t.verdi)}.`]],
     alternativ: '', grense: '', seksjoner: [], faqTittel: `Spørsmål om ${rad.navn.toLowerCase()}`, faq: [['Hvor mye veier én dl?', `${fmt(t.verdi)} ${t.enhet}.`]],
-    rik: rik(`Én dl veier ${fmt(t.verdi)} ${t.enhet}.`, [['Tallet', `<p>${fmt(t.verdi)} ${t.enhet}.</p>`]]), cta: 'Prøv Matlyst',
+    rik: rik(`Én dl veier ${fmt(t.verdi)} ${t.enhet}.`, [['Tallet', `<p>${fmt(t.verdi)} ${t.enhet}.</p>`], ['Om varen', `<p>${esc(rad.tekst?.beskrivelse ?? '')}</p>`]]), cta: 'Prøv Matlyst',
     publisert: rad.oppdatert,
     schemas: [brodsmuler([{ navn: 'Forside', adresse: '/' }, { navn: rad.navn, adresse: `/${ROT}${rad.slug}/` }]), webApplikasjon({ navn: `${rad.navn} i gram`, beskrivelse: 'Prøveside.', adresse: `/${ROT}${rad.slug}/`, sprak: 'nb' })],
   };

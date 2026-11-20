@@ -27,7 +27,7 @@ const trengFelles = () => {
 
 export const FAMILIER = Object.freeze([]);
 
-const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });
+export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });
 // Feltene generatorene krever: utvid() i rike-sider-register.mjs dropper stille en ny side uten eyebrow og steg.
 const KREVD = ['title', 'description', 'eyebrow', 'h1', 'lead', 'steg', 'rik', 'faq', 'cta', 'publisert', 'schemas'];
 

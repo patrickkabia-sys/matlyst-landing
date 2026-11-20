@@ -37,6 +37,9 @@
             }
           ]
         }
+      },
+      "tekst": {
+        "beskrivelse": "Dette prøvemelet er oppdiktet til testbruk og finnes ikke i noen butikk. Det brukes bare for å vise at hver side i familien har tekst som er skrevet for akkurat denne varen, og ikke bare et navn satt inn i en felles mal."
       }
     },
     {
@@ -52,6 +55,9 @@
           "enhet": "g",
           "kilde": "prove-tabell"
         }
+      },
+      "tekst": {
+        "beskrivelse": "Prøvesukkeret er en annen oppdiktet vare med en helt egen beskrivelse. Her står det noe om hvordan krystallene pakker seg i målebegeret, og hvorfor to like beger kan veie ulikt avhengig av hvor hardt de fylles."
       }
     },
     {
