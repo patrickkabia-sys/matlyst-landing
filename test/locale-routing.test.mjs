@@ -1,16 +1,26 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
 import vm from 'node:vm';
 
-import { SIDEGRUPPER, byggLocalePageMap, filForSti } from '../scripts/locale-sider.mjs';
+import { SIDEGRUPPER, filForSti } from '../scripts/locale-sider.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const source = readFileSync(join(ROOT, 'locale.js'), 'utf8');
 
+// Hreflang-lenkene slik de står i den ekte HTML-fila for stien. Adresser uten
+// endelse (/personvern) og /index.html serveres av samme fil som sider med endelse.
+function ekteAlternativer(sti) {
+  const kandidater = [filForSti(sti), `${sti.replace(/^\//u, '')}.html`, sti === '/index.html' ? 'index.html' : null].filter(Boolean);
+  const fil = kandidater.find((f) => existsSync(join(ROOT, f)));
+  if (!fil) return [];
+  const html = readFileSync(join(ROOT, fil), 'utf8');
+  return [...html.matchAll(/<link rel="alternate" hreflang="([^"]*)" href="([^"]*)"/gu)].map((m) => [m[1], m[2]]);
+}
+
 function lastInn() {
-  const context = { globalThis: {}, URLSearchParams };
+  const context = { globalThis: {}, URLSearchParams, URL };
   vm.runInNewContext(source, context);
   return context.globalThis.MatlystLocale;
 }
@@ -23,6 +33,7 @@ function besok(url, {
   lagret = null,
   vurdert = false,
   userAgent = 'Mozilla/5.0',
+  alternativer = null,
 } = {}) {
   const { pathname, search, hash } = new URL(url, 'https://matlyst-app.no');
   const lager = new Map();
@@ -30,15 +41,18 @@ function besok(url, {
   if (vurdert) lager.set('matlyst-sprak-vurdert', '1');
   const omdirigert = [];
   let vedLast = null;
-  const document = { readyState: 'loading', cookie: '' };
+  const lenker = (alternativer ?? ekteAlternativer(pathname)).map(([hreflang, href]) => ({
+    getAttribute: (navn) => (navn === 'hreflang' ? hreflang : href),
+  }));
+  const document = { readyState: 'loading', cookie: '', querySelectorAll: () => lenker };
   const window = {
     document,
-    location: { pathname, search, hash, replace: (til) => omdirigert.push(til) },
+    location: { pathname, search, hash, href: new URL(url, 'https://matlyst-app.no').href, replace: (til) => omdirigert.push(til) },
     navigator: { languages: sprakliste, language: sprak, userAgent },
     localStorage: { getItem: (k) => lager.get(k) ?? null, setItem: (k, v) => lager.set(k, v) },
     addEventListener: (navn, handler) => { if (navn === 'load') vedLast = handler; },
   };
-  vm.runInNewContext(source, { window, URLSearchParams });
+  vm.runInNewContext(source, { window, URLSearchParams, URL });
   const forLast = omdirigert[0] ?? null;
   vedLast?.();
   return {
@@ -58,7 +72,8 @@ test('bare primært svensk eller dansk nettleserspråk foreslår automatisk spr�
 });
 
 test('side uten motstykke omdirigeres ikke', () => {
-  assert.equal(lastInn().finnMaalsti('/ukjent/', 'sv', {}), null);
+  assert.equal(lastInn().finnMaalsti('sv', []), null);
+  assert.equal(lastInn().finnMaalsti('sv', [{ sprak: 'nb', sti: '/ukjent/' }]), null);
 });
 
 test('omdirigering skjer først etter lasting', () => {
@@ -113,16 +128,51 @@ test('roboter omdirigeres aldri', () => {
   assert.equal(svar.vurdert, null);
 });
 
-test('tekniske retursider og avmeldingslenker omdirigeres aldri', () => {
-  for (const sti of ['/tiktok-auth/?code=abc', '/avmeld/?u=bruker&s=signatur']) {
-    assert.equal(besok(sti, { sprak: 'sv-SE' }).til, null, sti);
+test('tekniske retursider og avmeldingslenker laster ikke locale.js', () => {
+  // Kartet var det som holdt disse utenfor; nå er det fraværet av script-taggen.
+  for (const fil of ['tiktok-auth/index.html', 'avmeld/index.html']) {
+    assert.doesNotMatch(readFileSync(join(ROOT, fil), 'utf8'), /<script src="\/locale\.js"/u, fil);
+  }
+  for (const gruppe of SIDEGRUPPER.filter(({ redirect }) => redirect === false)) {
+    for (const sti of Object.values(gruppe.sider)) {
+      assert.doesNotMatch(readFileSync(join(ROOT, filForSti(sti)), 'utf8'), /<script src="\/locale\.js"/u, sti);
+    }
   }
 });
 
-test('LOCALE_PAGE_MAP er bygd fra den samme tabellen som hreflang', () => {
-  const faktisk = JSON.parse(JSON.stringify(lastInn().LOCALE_PAGE_MAP));
-  assert.deepEqual(faktisk, byggLocalePageMap());
-  assert.equal(Object.keys(faktisk).length > 40, true);
+test('locale.js bærer ikke lenger noe sidekart', () => {
+  assert.equal(source.includes('LOCALE_PAGE_MAP'), false);
+  assert.equal('LOCALE_PAGE_MAP' in lastInn(), false);
+  assert.ok(Buffer.byteLength(source) < 6000);
+});
+
+test('adresser uten endelse sendes videre som før', () => {
+  assert.equal(besok('/personvern', { sprak: 'da-DK' }).til, '/da/privatliv/');
+  assert.equal(besok('/index.html', { sprak: 'sv-SE' }).til, '/sv/');
+});
+
+test('hreflang som ikke er til å stole på gir ingen videresending ut av nettstedet', () => {
+  for (const href of ['', 'https://eksempel.no/sv/', 'http://[', 'javascript:alert(1)', 'https://eksempel.no//ond.no/', '//ond.no/']) {
+    const r = besok('/', { sprak: 'sv-SE', alternativer: [['nb-NO', 'https://matlyst-app.no/'], ['sv-SE', href]] });
+    assert.ok(r.til === null || r.til.startsWith('/'), href);
+    assert.equal(/^\/\//u.test(r.til ?? ''), false, href);
+  }
+  // Bare pathname brukes: annen vert gir en sti på vårt eget nettsted.
+  const annen = besok('/', { sprak: 'sv-SE', alternativer: [['nb-NO', 'https://matlyst-app.no/'], ['sv-SE', 'https://eksempel.no/sv/']] });
+  assert.equal(annen.til, '/sv/');
+});
+
+test('lesAlternativer hopper over x-default og ukjente språk', () => {
+  const { lesAlternativer } = lastInn();
+  const lenker = [['x-default', '/'], ['nb-NO', '/'], ['fr-FR', '/fr/'], ['sv-SE', '/sv/']]
+    .map(([h, href]) => ({ getAttribute: (n) => (n === 'hreflang' ? h : href) }));
+  const r = lesAlternativer({ querySelectorAll: () => lenker }, 'https://matlyst-app.no/');
+  assert.deepEqual(JSON.parse(JSON.stringify(r)), [{ sprak: 'nb', sti: '/' }, { sprak: 'sv', sti: '/sv/' }]);
+});
+
+test('side uten hreflang eller uten norsk alternativ omdirigeres ikke', () => {
+  assert.equal(besok('/', { sprak: 'sv-SE', alternativer: [] }).til, null);
+  assert.equal(besok('/', { sprak: 'sv-SE', alternativer: [['sv-SE', '/sv/']] }).til, null);
 });
 
 test('alle norske sider med motstykke laster locale.js utsatt', () => {

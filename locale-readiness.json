@@ -8,7 +8,7 @@
       "consent_banner": "Samtykkebanner med like tunge valg på alle sv/da-sider (test/samtykkeVekt.test.mjs, test/locale-pages.test.mjs).",
       "self_hosted_fonts": "Fonter fra /fonts/, ingen tredjepart (test/fonter.test.mjs).",
       "hreflang_and_sitemaps": "Gjensidig hreflang nb/sv/da for forside, personvern, vilkår og slett konto; sitemap-sv.xml og sitemap-da.xml i robots.txt (test/lansering.test.mjs, test/landing9Runde3.test.mjs).",
-      "automatic_language": "LOCALE_PAGE_MAP generert fra hreflang; ?sprak= og lagret valg vinner over nettleserspråket (test/locale-routing.test.mjs)."
+      "automatic_language": "locale.js leser sidens egne hreflang-lenker; ?sprak= og lagret valg vinner over nettleserspråket (test/locale-routing.test.mjs)."
     },
     "apne": {
       "apple_store_listing": "Ikke verifisert i dette repoet: lokaliserte App Store-metadata for DK og SE.",
@@ -26,7 +26,7 @@
       "consent_banner": "Samtykkebanner med like tunge valg på alle sv/da-sider (test/samtykkeVekt.test.mjs, test/locale-pages.test.mjs).",
       "self_hosted_fonts": "Fonter fra /fonts/, ingen tredjepart (test/fonter.test.mjs).",
       "hreflang_and_sitemaps": "Gjensidig hreflang nb/sv/da for forside, personvern, vilkår og slett konto; sitemap-sv.xml og sitemap-da.xml i robots.txt (test/lansering.test.mjs, test/landing9Runde3.test.mjs).",
-      "automatic_language": "LOCALE_PAGE_MAP generert fra hreflang; ?sprak= og lagret valg vinner over nettleserspråket (test/locale-routing.test.mjs)."
+      "automatic_language": "locale.js leser sidens egne hreflang-lenker; ?sprak= og lagret valg vinner over nettleserspråket (test/locale-routing.test.mjs)."
     },
     "apne": {
       "apple_store_listing": "Ikke verifisert i dette repoet: lokaliserte App Store-metadata for DK og SE.",

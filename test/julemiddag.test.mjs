@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
-import { SIDEGRUPPER, alternativerFor, byggLocalePageMap } from '../scripts/locale-sider.mjs';
+import { SIDEGRUPPER, alternativerFor } from '../scripts/locale-sider.mjs';
 import { sidetype } from '../scripts/sidetyper.mjs';
 import { DAMP_START_KL, FAQ, GJESTER, HENTET, HENTET_TEKST, KILDER, MIDDAG_KL, TALL, UTVANN_START_KL } from '../scripts/nb-jul/julemiddag.mjs';
 
@@ -46,7 +46,7 @@ test('siden er egen sidegruppe med bare norsk, og hreflang har bare nb og x-defa
   assert.ok(gruppe, 'mangler i SIDEGRUPPER');
   assert.deepEqual(Object.keys(gruppe.sider), ['nb']);
   assert.deepEqual(alternativerFor(STI), [['nb-NO', STI], ['x-default', STI]]);
-  assert.equal(byggLocalePageMap()[STI], undefined);
+  assert.doesNotMatch(html, /<script src="\/locale\.js"/u);
   for (const mappe of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mappe}.xml`), 'utf8'), /julemiddag/u);
   assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/julemiddag\/<\/loc>\s*<lastmod>2026-11-20<\/lastmod>/u);
 });

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
-import { SIDEGRUPPER, alternativerFor, byggLocalePageMap } from '../scripts/locale-sider.mjs';
+import { SIDEGRUPPER, alternativerFor } from '../scripts/locale-sider.mjs';
 import { sidetype } from '../scripts/sidetyper.mjs';
 import { ORG_ID, PERSON_ID, side } from '../scripts/nb-om/om.mjs';
 
@@ -28,7 +28,7 @@ test('siden er egen sidegruppe med bare norsk, og hreflang har bare nb og x-defa
   assert.ok(gruppe);
   assert.deepEqual(Object.keys(gruppe.sider), ['nb']);
   assert.deepEqual(alternativerFor(STI), [['nb-NO', STI], ['x-default', STI]]);
-  assert.equal(byggLocalePageMap()[STI], undefined);
+  assert.doesNotMatch(html, /<script src="\/locale\.js"/u);
   assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/om\/<\/loc>\s*<lastmod>2026-11-20<\/lastmod>/u);
 });
 
