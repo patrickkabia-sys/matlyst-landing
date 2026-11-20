@@ -22,7 +22,7 @@ concurrency: indexnow
 
 jobs:
   indexnow:
-    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && vars.INDEXNOW != 'av')
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.head_branch == 'main' && vars.INDEXNOW != 'av')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     # Feil her skal aldri gjøre publiseringen rød, og scriptet avslutter med 0 også ved feil.
@@ -33,6 +33,10 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha || 'main' }}
           fetch-depth: 0
+
+      # Bare commits som faktisk ligger på main i dette repoet får kjøre skriptet.
+      - name: Bekreft at commiten ligger på main
+        run: git merge-base --is-ancestor HEAD origin/main
 
       - name: Sett opp Node.js
         uses: actions/setup-node@v4
