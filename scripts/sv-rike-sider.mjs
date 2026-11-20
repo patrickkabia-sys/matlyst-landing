@@ -425,9 +425,9 @@ const kopguide = byggRik({
 
 export const rikeSider = {
   'receptbok-app/': {
-    title: 'Receptbok-app: ett hem för alla dina recept',
-    description: 'Spara recept från webbsidor, Instagram, TikTok och foton i en receptbok-app. Räkna om portioner, planera veckan och få en inköpslista. Gratis att börja.',
-    h1: 'En receptbok-app som samlar alla dina recept på ett ställe',
+    title: 'Digital receptbok och receptapp',
+    description: 'Digital receptbok som samlar recept från webbsidor, Instagram, TikTok och foton. Sök, räkna om portioner och planera veckan. Gratis att börja.',
+    h1: 'En digital receptbok för alla dina recept',
     rik: receptbok,
     faq: [
       ['Finns det en gratis receptbok-app?', 'Ja. Matlyst är gratis att börja med: 5 importer per kalendermånad, mappar, sökning, veckomeny och inköpslista. Matlyst Pro ger fler importer, fotoimport, Fråga Matlyst och delning med hushållet.'],
@@ -442,9 +442,9 @@ export const rikeSider = {
     ],
   },
   'spara-recept-fran-instagram/': {
-    title: 'Så sparar du recept från Instagram (inlägg och reels)',
-    description: 'Spara ett recept från ett Instagram-inlägg eller en reel genom att dela det med Matlyst. Steg för steg, och vad du gör när receptet inte står i bildtexten.',
-    h1: 'Så sparar du recept från Instagram',
+    title: 'Spara recept från Instagram och reels',
+    description: 'Dela ett Instagram-inlägg eller en reel med Matlyst så blir receptet i bildtexten ingredienser och steg. Så gör du, och vad du gör när receptet saknas.',
+    h1: 'Så sparar du recept från Instagram och reels',
     rik: instagram,
     faq: [
       ['Kan jag spara ett recept från en Instagram-reel?', 'Ja, om receptet står i bildtexten. Dela reelen med Matlyst, läs utkastet och spara. Matlyst transkriberar inte tal eller text som bara visas i videon.'],
@@ -454,7 +454,7 @@ export const rikeSider = {
     ],
   },
   'spara-recept-fran-tiktok/': {
-    title: 'Så sparar du recept från TikTok, steg för steg',
+    title: 'TikTok-recept: så sparar du dem steg för steg',
     description: 'Gör ett TikTok-recept till ingredienser och steg. Dela videon med Matlyst, kontrollera utkastet och laga efter det, sök och räkna om. Gratis att börja.',
     h1: 'Gör en TikTok till ett recept du faktiskt kan laga',
     rik: tiktok,
@@ -494,8 +494,8 @@ export const rikeSider = {
     ],
   },
   'inkopslista/': {
-    title: 'Inköpslista från recept: en lista för hela veckan',
-    description: 'Lägg recept i Matlyst så hamnar ingredienserna på en inköpslista, ihopslagen och sorterad efter butikens avdelningar. Hoppa över det du har. Gratis att börja.',
+    title: 'Inköpslista från recept: dela med hushållet',
+    description: 'Inköpslista som skapas från dina recept: lika varor slås ihop och sorteras efter butikens avdelningar. Gratis att börja, gemensam lista kräver Pro.',
     h1: 'En inköpslista som kommer direkt från dina recept',
     rik: inkopslista,
     faq: [

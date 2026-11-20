@@ -428,9 +428,9 @@ const kobsguide = byggRik({
 
 export const rikeSider = {
   'opskrifts-app/': {
-    title: 'Opskrifts-app: ét sted til alle dine opskrifter',
-    description: 'Gem opskrifter fra hjemmesider, Instagram, TikTok og billeder i én opskriftsapp. Skalér portioner, planlæg ugen og lav indkøbsliste. Gratis at komme i gang.',
-    h1: 'En opskriftsapp, der samler alle dine opskrifter ét sted',
+    title: 'Digital kogebog og opskriftsapp',
+    description: 'Digital kogebog, der samler opskrifter fra hjemmesider, Instagram, TikTok og billeder. Søg, skalér portioner og planlæg ugen. Gratis at komme i gang.',
+    h1: 'En digital kogebog, der samler alle dine opskrifter',
     rik: opskriftsApp,
     faq: [
       ['Findes der en gratis opskriftsapp?', 'Ja. Matlyst er gratis at komme i gang med: 5 importer pr. kalendermåned, mapper, søgning, madplan og indkøbsliste. Matlyst Pro giver flere importer, billedimport, Spørg Matlyst og deling i en husstand.'],
@@ -445,14 +445,14 @@ export const rikeSider = {
     ],
   },
   'gem-opskrifter-fra-instagram/': {
-    title: 'Sådan gemmer du opskrifter fra Instagram',
-    description: 'Gem en opskrift fra et Instagram-opslag eller en reel ved at dele den med Matlyst. Trin for iPhone og Android, og hvad du gør, når billedteksten er tom.',
-    h1: 'Sådan gemmer du opskrifter fra Instagram',
+    title: 'Gem opskrifter fra Instagram og reels',
+    description: 'Del et Instagram-opslag eller en reel med Matlyst, så bliver opskriften i billedteksten til ingredienser og trin. Sådan gør du, også hvis teksten er tom.',
+    h1: 'Sådan gemmer du opskrifter fra Instagram og reels',
     rik: instagram,
   },
   'gem-opskrifter-fra-tiktok/': {
-    title: 'Sådan gemmer du opskrifter fra TikTok trin for trin',
-    description: 'Gør en TikTok-opskrift til ingredienser og trin, du kan søge i. Del videoen med Matlyst, tjek udkastet, skalér portionerne og lav maden. Gratis at komme i gang.',
+    title: 'TikTok-opskrifter: gem dem trin for trin',
+    description: 'Gør en TikTok-opskrift til ingredienser og trin, du kan søge i. Del videoen med Matlyst, tjek udkastet og lav maden. Gratis at komme i gang.',
     h1: 'Gør en TikTok til en opskrift, du faktisk kan lave mad efter',
     rik: tiktok,
   },
@@ -485,9 +485,9 @@ export const rikeSider = {
     ],
   },
   'indkoebsliste-app/': {
-    title: 'Indkøbsliste ud fra opskrifter: én liste til ugen',
-    description: 'Læg opskrifter ind i Matlyst, så havner ingredienserne på én indkøbsliste, lagt sammen og sorteret efter afdeling. Spring det over, du har. Gratis at starte.',
-    h1: 'En indkøbsliste, der kommer direkte fra dine opskrifter',
+    title: 'Fælles indkøbsliste ud fra dine opskrifter',
+    description: 'Lav en indkøbsliste ud fra dine opskrifter: ens varer lægges sammen og sorteres efter afdeling. Gratis at starte, fælles liste med husstanden kræver Pro.',
+    h1: 'En fælles indkøbsliste direkte fra dine opskrifter',
     rik: indkoeb,
     faq: [
       ['Findes der en indkøbsliste-app, der tilføjer ingredienser fra opskrifter?', 'Ja. I Matlyst lægger du en opskrift eller en planlagt dag på indkøbslisten, og ingredienserne kommer på listen, hvor ens varer er lagt sammen.'],

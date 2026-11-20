@@ -147,8 +147,8 @@ test('slug i forbudt.json avvises', () => {
 
 test('nesten-duplikat avvises', () => {
   assert.ok(ordOverlapp(
-    'Koketider for ris, pasta, egg og grønnsaker',
-    'Koketider for egg, ris, pasta og grønnsaker',
+    'Koketid for egg, poteter, pasta og ris',
+    'Koketid for poteter, egg, ris og pasta',
   ) > 0.5);
   assert.match(sjekk('nesten-duplikat').grunner.join(' '), /overlapp/i);
 });

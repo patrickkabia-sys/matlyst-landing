@@ -387,9 +387,9 @@ const kjoperguide = byggRik({
 
 export const rikeSider = {
   'oppskriftsbok-app/': {
-    title: 'Oppskriftsapp: ett sted for alle oppskriftene',
-    description: 'Lagre oppskrifter fra nettsider, Instagram, TikTok og bilder i én oppskriftsapp. Regn om porsjoner, planlegg uka og lag handleliste. Gratis å komme i gang.',
-    h1: 'En oppskriftsapp som samler alle oppskriftene på ett sted',
+    title: 'Digital oppskriftsbok og oppskriftsapp',
+    description: 'Digital oppskriftsbok som samler oppskrifter fra nettsider, Instagram, TikTok og bilder. Søk, regn om porsjoner og planlegg uka. Gratis å komme i gang.',
+    h1: 'En digital oppskriftsbok for alle oppskriftene dine',
     rik: oppskriftsbokApp,
     faq: [
       ['Finnes det en gratis oppskriftsapp?', 'Ja. Matlyst er gratis å komme i gang med: 5 importer per kalendermåned, mapper, søk, ukemeny og handleliste. Matlyst Pro gir flere importer, bildeimport, Spør Matlyst og deling med husstanden.'],
@@ -403,9 +403,9 @@ export const rikeSider = {
     ],
   },
   'lagre-oppskrifter-fra-instagram/': {
-    title: 'Slik lagrer du oppskrifter fra Instagram',
-    description: 'Lagre en oppskrift fra et Instagram-innlegg eller en reel ved å dele den med Matlyst. Slik gjør du det, og hva du gjør når oppskriften ikke står i teksten.',
-    h1: 'Slik lagrer du oppskrifter fra Instagram',
+    title: 'Lagre oppskrifter fra Instagram og reels',
+    description: 'Del et Instagram-innlegg eller en reel med Matlyst, så blir oppskriften i bildeteksten til ingredienser og steg. Slik gjør du, og hva om teksten mangler.',
+    h1: 'Slik lagrer du oppskrifter fra Instagram og reels',
     rik: instagram,
     faq: [
       ['Hvordan lagrer jeg en oppskrift fra Instagram?', 'Åpne innlegget eller reelen, trykk på Del og velg Matlyst. Appen leser bildeteksten og lager et utkast med ingredienser og steg. Les over utkastet og lagre.'],
@@ -465,8 +465,8 @@ export const rikeSider = {
     ],
   },
   'handleliste/': {
-    title: 'Handleliste fra oppskrifter: én liste for uka',
-    description: 'Legg oppskrifter i Matlyst, så havner ingrediensene på én handleliste, slått sammen og sortert etter hylle. Hopp over det du har. Gratis å komme i gang.',
+    title: 'Handleliste-app: lages fra oppskriftene dine',
+    description: 'Handleliste-app som lages fra oppskriftene dine. Like varer slås sammen og sorteres etter hylle. Gratis å komme i gang, deling med husstanden krever Pro.',
     h1: 'En handleliste som lages rett fra oppskriftene dine',
     rik: handleliste,
     faq: [
