@@ -118,12 +118,17 @@ for (const [navn, motor] of [['Chromium', chromium], ['WebKit', webkit]]) test(`
   await page.addStyleTag({ content: '#cookie{display:none!important}' });
   await page.waitForTimeout(800);
   expect(await page.evaluate(() => matchMedia('(pointer:coarse)').matches), 'emuleringen har berøring').toBe(true);
+  await page.evaluate(() => { window.__hendelser = []; window.__t0 = performance.now(); for (const h of ['touchstart', 'touchend', 'scroll', 'scrollend']) addEventListener(h, () => __hendelser.push(`${Math.round(performance.now() - __t0)} ${h} y=${Math.round(scrollY)}`), { passive: true }); });
   await tilKort(page, 0); await page.waitForTimeout(400);
   for (const [i, lengde] of [[1, 200], [2, 900], [3, 1800]]) {
+    await page.evaluate(() => { window.__hendelser.length = 0; window.__t0 = performance.now(); });
     await page.evaluate(() => document.dispatchEvent(new Event('touchstart', { bubbles: true })));
-    await page.evaluate((l) => scrollBy({ top: l, behavior: 'instant' }), lengde);
-    await page.evaluate(() => document.dispatchEvent(new Event('touchend', { bubbles: true })));
-    await page.waitForTimeout(1800);
+    // Rullingen og touchend i SAMME oppgave: i en ekte nettleser leveres scrollend først etter at fingeren er løftet, mens to adskilte evaluate-kall lot scrollend
+    // av og til komme mens «fingeren» fortsatt var nede (da gjør reserven med rette ingenting, og testen så en rulling uten korreksjon).
+    await page.evaluate((l) => { scrollBy({ top: l, behavior: 'instant' }); document.dispatchEvent(new Event('touchend', { bubbles: true })); }, lengde);
+    // Vent på tilstanden, ikke på et fast antall millisekunder: den myke rullingen til kortstarten tar like lang tid som maskinen trenger.
+    await expect.poll(async () => { const m = await landet(page, i); return staar(await topper(page), i) && Math.abs(m.y - m.mal) <= 2; }, { timeout: 15_000, intervals: [100, 200, 400] }).toBe(true).catch(async (feil) => { throw new Error(`${navn}: kort ${i + 1} nådde aldri kortstarten. scrollY ${(await landet(page, i)).y}, mål ${(await landet(page, i)).mal}, hendelser: ${(await page.evaluate(() => __hendelser)).join(' | ')}\n${feil.message}`); });
+    await page.waitForTimeout(400); // og blir stående
     const t = await topper(page);
     expect(staar(t, i), `${navn}: kort ${i + 1} skal stå 12 px (+6 per kort) fra toppen: ${t}`).toBe(true);
     await sjekk(page, i, navn);

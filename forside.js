@@ -197,7 +197,10 @@
     };
     const tikk = (naa) => {
       ramme = 0;
-      if (!synlig || bevegelse.matches) return;
+      if (!synlig) return;
+      // Chromium sender ikke «change» til en MediaQueryList hvis siden leser .matches mellom at innstillingen byttes og at hendelsen leveres, og denne løkka leser den hver ramme.
+      // Ser løkka at redusert bevegelse er slått på, viser den ALLE rutene ferdige (ikke bare sin egen: «change» gikk tapt for alle), ellers står de igjen midt i et steg.
+      if (bevegelse.matches) { roligeKort.forEach((f) => f()); return; }
       tid += naa - sist; sist = naa;
       if (fase === 'skriver') {
         const onsket = forslag[nr].textContent;
@@ -359,7 +362,7 @@
   if (document.fonts?.ready) document.fonts.ready.then(vurderStabel);
   if (trio && 'ResizeObserver' in window) { const ro = new ResizeObserver(vurderStabel); trio.querySelectorAll(':scope > .rute').forEach((el) => ro.observe(el)); }
   vurderStabel();
-  const kortRegister = [];
+  const kortRegister = [], roligeKort = [];
   const mal = (rute) => { const r = rute.getBoundingClientRect(), n = rute.nextElementSibling?.getBoundingClientRect(); return { r, n }; };
   // Det som sees av ruta er det den neste ikke dekker (bare noen piksler av stabelkanten).
   const dekkes = (rute) => {
@@ -410,7 +413,10 @@
     const forloep = bygg(app, { settInn, trykk, pek, animer, begynn: () => { tid = 0; neste = 1; } });
     const tikk = (naa) => {
       ramme = 0;
-      if (!synlig || bevegelse.matches) return;
+      if (!synlig) return;
+      // Chromium sender ikke «change» til en MediaQueryList hvis siden leser .matches mellom at innstillingen byttes og at hendelsen leveres, og denne løkka leser den hver ramme.
+      // Ser løkka at redusert bevegelse er slått på, viser den ALLE rutene ferdige (ikke bare sin egen: «change» gikk tapt for alle), ellers står de igjen midt i et steg.
+      if (bevegelse.matches) { roligeKort.forEach((f) => f()); return; }
       tid += naa - sist; sist = naa;
       while (neste < forloep.steg.length && tid >= forloep.steg[neste][0]) forloep.steg[neste++][1]();
       if (tid >= forloep.lengde) { tid %= forloep.lengde; neste = 0; }
@@ -452,6 +458,7 @@
       else { forloep.steg[0][1](); neste = 1; if (synlig) start(); }
     };
     bevegelse.addEventListener('change', roligKort);
+    roligeKort.push(roligKort);
     roligKort();
   };
   kortloep('demoSkaler', (app, { settInn, trykk }) => {
