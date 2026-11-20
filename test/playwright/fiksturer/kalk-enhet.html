@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fikstur: kalkulatorkortet for enheter</title>
+<link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/side.css">
+</head>
+<body data-sidetype="omregner">
+<main id="hovedinnhold">
+<header class="locale-page-hero"><p class="eyebrow">Verktøy</p><h1 class="disp">Fikstur for enhetskortet</h1><p class="lead">Fire skjemaer uten varerad.</p>
+<form class="kalk" id="volum" data-kalk="enhet" onsubmit="return false" aria-label="Kalkulator: cups til dl">
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Mengde</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="1"></label>
+      <label class="kalkenhet"><span class="skjult">Fra</span><select data-felt="fra"><option value="ml">Milliliter (ml)</option><option value="dl">Desiliter (dl)</option><option value="cups" selected>Cups (cup)</option><option value="gallons">Gallon (gallon)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Bytt enheter"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">2,366</output>
+      <label class="kalkenhet"><span class="skjult">Til</span><select data-felt="til"><option value="ml">Milliliter (ml)</option><option value="dl" selected>Desiliter (dl)</option><option value="cups">Cups (cup)</option><option value="gallons">Gallon (gallon)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Vanlige mengder"><button type="button" data-v="0,25">0,25</button><button type="button" data-v="0,5">0,5</button><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">1 cup = 2,366 dl</p>
+  <script type="application/json" class="kalk-data">{"ml":{"ml":1,"dl":100,"cups":236.5882365,"gallons":3785.411784},"g":{},"sifre":4,"beholdMengde":true,"stegFor":{"ml":"ml","dl":"dl","cups":"cups","gallons":"gallons"},"steg":{"ml":["50","100","150","250","500","1000"],"dl":["0,5","1","2","3","5","10"],"cups":["0,25","0,5","1","2","3","4"],"gallons":["0,25","0,5","1","2","3","5"]},"feil":"Skriv inn en mengde, for eksempel 2 eller 2,5.","kort":{"cups":["cup","cups"],"gallons":"gallon"}}</script>
+</form>
+<form class="kalk" id="vekt" data-kalk="enhet" onsubmit="return false" aria-label="Kalkulator: pund til gram">
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Mengde</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="1"></label>
+      <label class="kalkenhet"><span class="skjult">Fra</span><select data-felt="fra"><option value="g">Gram (g)</option><option value="lb" selected>Pund (lb)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Bytt enheter"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">453,6</output>
+      <label class="kalkenhet"><span class="skjult">Til</span><select data-felt="til"><option value="g" selected>Gram (g)</option><option value="lb">Pund (lb)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Vanlige mengder"><button type="button" data-v="0,25">0,25</button><button type="button" data-v="0,5">0,5</button><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="5">5</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">1 lb = 453,6 g</p>
+  <script type="application/json" class="kalk-data">{"ml":{},"g":{"g":1,"lb":453.59237},"sifre":4,"beholdMengde":true,"stegFor":{"g":"g","lb":"lb"},"steg":{"g":["50","100","150","250","500","1000"],"lb":["0,25","0,5","1","2","3","5"]},"feil":"Skriv inn en mengde, for eksempel 2 eller 2,5.","kort":{"g":"g","lb":"lb"}}</script>
+</form>
+<form class="kalk" id="lengde" data-kalk="enhet" onsubmit="return false" aria-label="Kalkulator: tommer til cm">
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Mengde</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="1"></label>
+      <label class="kalkenhet"><span class="skjult">Fra</span><select data-felt="fra"><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option><option value="inches" selected>Tommer (tomme)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Bytt enheter"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">2,54</output>
+      <label class="kalkenhet"><span class="skjult">Til</span><select data-felt="til"><option value="mm">Millimeter (mm)</option><option value="cm" selected>Centimeter (cm)</option><option value="inches">Tommer (tomme)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Vanlige mengder"><button type="button" data-v="1">1</button><button type="button" data-v="6">6</button><button type="button" data-v="8">8</button><button type="button" data-v="9">9</button><button type="button" data-v="10">10</button><button type="button" data-v="12">12</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">1 tomme = 2,54 cm</p>
+  <script type="application/json" class="kalk-data">{"ml":{"mm":1,"cm":10,"inches":25.4},"g":{},"sifre":4,"beholdMengde":true,"stegFor":{"mm":"mm","cm":"cm","inches":"inches"},"steg":{"mm":["1","2","5","10","20","30"],"cm":["5","10","18","20","24","30"],"inches":["1","6","8","9","10","12"]},"feil":"Skriv inn en mengde, for eksempel 2 eller 2,5.","kort":{"inches":["tomme","tommer"],"mm":"mm","cm":"cm"}}</script>
+</form>
+<form class="kalk" id="temp" data-kalk="enhet" onsubmit="return false" aria-label="Kalkulator: celsius til fahrenheit">
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Mengde</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="180"></label>
+      <label class="kalkenhet"><span class="skjult">Fra</span><select data-felt="fra"><option value="c" selected>Grader celsius (°C)</option><option value="f">Grader fahrenheit (°F)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Bytt enheter"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">356</output>
+      <label class="kalkenhet"><span class="skjult">Til</span><select data-felt="til"><option value="c">Grader celsius (°C)</option><option value="f" selected>Grader fahrenheit (°F)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Vanlige mengder"><button type="button" data-v="100">100</button><button type="button" data-v="150">150</button><button type="button" data-v="180">180</button><button type="button" data-v="200">200</button><button type="button" data-v="220">220</button><button type="button" data-v="250">250</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">180 °C = 356 °F</p>
+  <script type="application/json" class="kalk-data">{"ml":{},"g":{},"sifre":4,"beholdMengde":true,"stegFor":{"c":"c","f":"f"},"steg":{"c":["100","150","180","200","220","250"],"f":["300","325","350","375","400","450"]},"feil":"Skriv inn en mengde, for eksempel 2 eller 2,5.","affin":{"c":[1,0],"f":[0.5555555555555556,-17.77777777777778]},"negativ":true,"kort":{"c":"°C","f":"°F"}}</script>
+</form>
+</header>
+</main>
+<script src="/site.js" defer></script>
+</body>
+</html>

@@ -255,8 +255,9 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 // Kalkulatorkortet (form.kalk): regner mens du skriver. Volum regnes mot volum via ml og vekt mot vekt via gram, direkte.
 // Bare kryssing mellom volum og vekt bruker varens gram per dl: ml[enhet] / 100 * gram per dl, og mangler vekten (eller er den 0), vises veiledningen.
 // All tekst (enhetsnavn, hurtigmengder, veiledning) kommer fra skjemaets egne data (script.kalk-data), så filen har ingen språkstrenger.
-// Fire valgfrie datafelt gir engelske skjemaer det de trenger, og skjemaer uten dem oppfører seg som før:
+// Valgfrie datafelt gir engelske skjemaer og enhetsomregnerne det de trenger, og skjemaer uten dem oppfører seg som før:
 // brok (mengden kan skrives «1/2» eller «1 1/2»), kort[e] som [entall, flertall], stegFor[e] (hvilken hurtiggruppe enheten bruker) og byttTil[e] (mengden ved bytte).
+// Enhetsomregning uten vare: affin[e] = [a, b] (temperatur), negativ (negative mengder er gyldige), sifre (gjeldende sifre i svaret), beholdMengde (bytte lar mengden stå), og varer kan mangle.
 // Tallesing er den delte tolkTall fra omregneren (window.MatlystTall). Skrivemåten av svaret har ikke tak på antall desimaler (visTall har det), så små tall aldri blir 0.
 (() => {
   const skjemaer = document.querySelectorAll('form.kalk');
@@ -274,6 +275,16 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     if (enhet === 'g' && a >= 10) return komma(String(Math.round(Number(n.toPrecision(12)))));
     if (a >= 100) return komma(String(Math.round(Number(n.toPrecision(12)))));
     const sifre = a >= 10 && enhet !== 'g' ? 3 : 2;
+    const desimaler = Math.min(100, Math.max(0, sifre - 1 - Math.floor(Math.log10(a))));
+    const t = (Math.round(Number((n * 10 ** desimaler).toPrecision(12))) / 10 ** desimaler).toFixed(desimaler);
+    return komma(t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t);
+  };
+  // Svaret med `sifre` gjeldende sifre (felt `sifre` i kalk-data), for alle enheter også gram: 1000 og over som heltall (halve runder opp), ellers uten overflødige nuller og uten tak på desimaler, så små tall aldri blir 0.
+  // Samme regel som presisTekst i scripts/kalk-kort.mjs, låst av kalk-tabell-enhet.spec.mjs.
+  const presis = (n, sifre) => {
+    const a = Math.abs(n);
+    if (a === 0) return '0';
+    if (a >= 1000) return komma(String(Math.round(Number(n.toPrecision(12)))));
     const desimaler = Math.min(100, Math.max(0, sifre - 1 - Math.floor(Math.log10(a))));
     const t = (Math.round(Number((n * 10 ** desimaler).toPrecision(12))) / 10 ** desimaler).toFixed(desimaler);
     return komma(t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t);
@@ -311,7 +322,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       const hurtig = [...skjema.querySelectorAll('.hurtig button')];
       // Med stegFor kreves bare gruppene den peker på (og hver fra-enhet må peke på en), ellers de fire faste gruppene.
       const grupper = data && data.stegFor && fra ? [...fra.options].map((o) => data.stegFor[o.value]) : ['volum', 'ml', 'g', 'kg'];
-      const ok = data && Array.isArray(data.varer) && data.varer.length && data.ml && data.g && data.steg && typeof data.feil === 'string'
+      // `varer` kan mangle (enhetsomregning uten vare); står den der, må den ha minst én vare.
+      const ok = data && (data.varer === undefined || (Array.isArray(data.varer) && data.varer.length)) && data.ml && data.g && data.steg && typeof data.feil === 'string'
         && grupper.every((g) => Array.isArray(data.steg[g]) && data.steg[g].length >= hurtig.length)
         && mengde && fra && til && svar && setning && bytt;
       if (!ok) continue;
@@ -324,13 +336,18 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       // Setningen under er den som leses opp; selve svarfeltet står utenfor opplesingen.
       svar.setAttribute('aria-live', 'off');
       const regn = () => {
-        const [ord, gramPerDl] = data.varer[vare ? Number(vare.value) : 0] || [];
+        const [ord, gramPerDl] = (data.varer && data.varer[vare ? Number(vare.value) : 0]) || [];
         const m = tolkMengde(mengde.value, brok);
         const n = m ? m.n : null;
-        // Negativt og alt som ikke er ett tall gir veiledning, aldri et delsvar.
-        const gyldig = n !== null && n >= 0;
+        // Negativt (unntatt med `negativ`) og alt som ikke er ett tall gir veiledning, aldri et delsvar.
+        const gyldig = n !== null && (n >= 0 || Boolean(data.negativ));
         let ut = NaN;
-        if (gyldig) {
+        const aff = data.affin;
+        if (gyldig && aff && aff[fra.value] && aff[til.value]) {
+          // Affin enhet (temperatur): grunnverdi = n * a + b, og svaret går tilbake gjennom til-enhetens a og b.
+          const [aF, bF] = aff[fra.value], [aT, bT] = aff[til.value];
+          ut = (n * aF + bF - bT) / aT;
+        } else if (gyldig) {
           const fraVekt = fra.value in data.g, tilVekt = til.value in data.g;
           const grunn = (e) => (e in data.g ? data.g[e] : data.ml[e]);
           if (fraVekt === tilVekt) ut = n * grunn(fra.value) / grunn(til.value);
@@ -338,7 +355,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         }
         if (gyldig) mengde.removeAttribute('aria-invalid'); else mengde.setAttribute('aria-invalid', 'true');
         if (Number.isFinite(ut)) {
-          const utTekst = svarTekst(ut, til.value);
+          const utTekst = data.sifre ? presis(ut, data.sifre) : svarTekst(ut, til.value);
           svar.textContent = utTekst;
           setning.textContent = [`${m.tekst || mengdeTekst(n)} ${kort(fra.value, m.entall)}`, ord, `= ${utTekst} ${kort(til.value, utTekst === '1')}`].filter(Boolean).join(' ');
         } else {
@@ -359,7 +376,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       bytt.addEventListener('click', () => {
         const f = fra.value; fra.value = til.value; til.value = f;
         bytt.classList.toggle('snudd');
-        mengde.value = data.byttTil && data.byttTil[fra.value] !== undefined ? data.byttTil[fra.value] : fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
+        if (!data.beholdMengde) mengde.value = data.byttTil && data.byttTil[fra.value] !== undefined ? data.byttTil[fra.value] : fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
         regn();
       });
       regn();

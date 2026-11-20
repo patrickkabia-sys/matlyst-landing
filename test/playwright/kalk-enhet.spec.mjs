@@ -1,0 +1,86 @@
+// Kalkulatorkortet uten varerad (data-kalk="enhet"): volum, vekt, lengde og temperatur, fire gjeldende sifre og bytte som beholder mengden.
+// Fiksturen har fire skjemaer: #volum (cups til dl), #vekt (lb til g), #lengde (tomme til cm) og #temp (°C til °F, med affin og negativ).
+import { test, expect } from '@playwright/test';
+
+const FIKSTUR = '/test/playwright/fiksturer/kalk-enhet.html';
+const FEIL = 'Skriv inn en mengde, for eksempel 2 eller 2,5.';
+
+test.beforeEach(async ({ page }) => { await page.goto(FIKSTUR); });
+
+const setning = (page, id) => page.locator(`#${id} [data-felt=setning]`);
+const svar = (page, id) => page.locator(`#${id} [data-felt=svar]`);
+const skriv = (page, id, tekst) => page.fill(`#${id} [data-felt=mengde]`, tekst);
+
+test('volum: fire gjeldende sifre og bøyd enhet', async ({ page }) => {
+  await skriv(page, 'volum', '1');
+  await expect(setning(page, 'volum')).toHaveText('1 cup = 2,366 dl');
+  await skriv(page, 'volum', '2');
+  await expect(setning(page, 'volum')).toHaveText('2 cups = 4,732 dl');
+  await expect(svar(page, 'volum')).toHaveText('4,732');
+});
+
+test('vekt: gram følger sifre, ikke gramregelen', async ({ page }) => {
+  await skriv(page, 'vekt', '1');
+  await expect(setning(page, 'vekt')).toHaveText('1 lb = 453,6 g');
+  await skriv(page, 'vekt', '3');
+  await expect(setning(page, 'vekt')).toHaveText('3 lb = 1361 g');
+});
+
+test('lengde regnes i ml-feltet', async ({ page }) => {
+  await skriv(page, 'lengde', '1');
+  await expect(setning(page, 'lengde')).toHaveText('1 tomme = 2,54 cm');
+  await skriv(page, 'lengde', '9');
+  await expect(setning(page, 'lengde')).toHaveText('9 tommer = 22,86 cm');
+});
+
+test('temperatur er affin begge veier', async ({ page }) => {
+  await expect(setning(page, 'temp')).toHaveText('180 °C = 356 °F');
+  await page.click('#temp [data-felt=bytt]');
+  await expect(setning(page, 'temp')).toHaveText('180 °F = 82,22 °C');
+  await page.click('#temp [data-felt=bytt]');
+  await skriv(page, 'temp', '0');
+  await expect(setning(page, 'temp')).toHaveText('0 °C = 32 °F');
+});
+
+test('minusgrader er gyldige bare med negativ', async ({ page }) => {
+  await skriv(page, 'temp', '-18');
+  await expect(setning(page, 'temp')).toHaveText('-18 °C = -0,4 °F');
+  await expect(page.locator('#temp [data-felt=mengde]')).not.toHaveAttribute('aria-invalid', 'true');
+  await skriv(page, 'volum', '-1');
+  await expect(setning(page, 'volum')).toHaveText(FEIL);
+  await expect(page.locator('#volum [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
+});
+
+test('svært små svar blir aldri 0', async ({ page }) => {
+  await page.selectOption('#volum [data-felt=fra]', 'ml');
+  await page.selectOption('#volum [data-felt=til]', 'gallons');
+  await skriv(page, 'volum', '0,01');
+  await expect(setning(page, 'volum')).toHaveText('0,01 ml = 0,000002642 gallon');
+});
+
+test('1000 og over er heltall', async ({ page }) => {
+  await page.selectOption('#volum [data-felt=fra]', 'gallons');
+  await page.selectOption('#volum [data-felt=til]', 'ml');
+  await skriv(page, 'volum', '16');
+  await expect(svar(page, 'volum')).toHaveText('60567');
+  await expect(setning(page, 'volum')).toHaveText('16 gallon = 60567 ml');
+});
+
+test('bytte beholder mengden og bytter hurtigmengdene', async ({ page }) => {
+  await skriv(page, 'volum', '3');
+  await page.click('#volum [data-felt=bytt]');
+  await expect(page.locator('#volum [data-felt=mengde]')).toHaveValue('3');
+  await expect(page.locator('#volum [data-felt=fra]')).toHaveValue('dl');
+  const knapper = page.locator('#volum .hurtig button');
+  await expect(knapper).toHaveText(['0,5 dl', '1 dl', '2 dl', '3 dl', '5 dl', '10 dl']);
+  await expect(knapper.nth(3)).toHaveAttribute('aria-pressed', 'true');
+  await expect(knapper.nth(2)).toHaveAttribute('aria-pressed', 'false');
+});
+
+test('skjema uten varer settes opp', async ({ page }) => {
+  for (const id of ['volum', 'vekt', 'lengde', 'temp']) {
+    await skriv(page, id, '5');
+    await expect(setning(page, id), id).toContainText('5 ');
+    await expect(svar(page, id), id).not.toHaveText('');
+  }
+});

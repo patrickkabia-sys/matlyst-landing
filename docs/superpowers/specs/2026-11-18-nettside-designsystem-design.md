@@ -351,4 +351,10 @@ Alle punktene er valgt eller bekreftet av Patrick 19.11, i valgkort eller etter 
   - `kort[e]` som liste er `[entall, flertall]`: entall når mengden er nøyaktig 1 eller en ekte brøk under 1 skrevet som brøk («1/2 cup»), ellers flertall («0.8 cups», «1 1/2 cups»). På svarsiden er det entall bare når svaret vises som «1».
   - `stegFor[e]` peker på hurtiggruppen i `steg` for hver fra-enhet; bare gruppene den peker på kreves.
   - `byttTil[e]` er mengden som settes når `e` blir fra-enhet ved bytte. Enhetsnøklene i `ml` og `g` er fritt valgte (`floz` er volum, `oz` og `lb` er vekt); fluid ounces til ounces krysser volum og vekt og trenger varens vekt.
-- Låst av `test/playwright/kalk.spec.mjs` (også `kalk-en.html`), `test/site-tall.test.mjs` og `test/side-css.test.mjs`.
+- Fem valgfrie felt gir enhetsomregning uten vare (lengde, temperatur, volum, vekt); mangler de, oppfører kortet seg som over:
+  - `affin: { [enhet]: [a, b] }`: grunnverdi = `n * a + b`. Når både fra og til står i `affin`, er `ut = (n * aFra + bFra - bTil) / aTil`. Celsius er `[1, 0]`, fahrenheit `[5/9, -160/9]`.
+  - `negativ: true`: negative mengder er gyldige (minusgrader). Uten feltet gir negative tall veiledningen.
+  - `sifre: 4`: svaret skrives slik for alle enheter, også gram. 0 er «0», absoluttverdi 1000 og over er heltall (halve runder opp, rundet på tolv gjeldende sifre først), ellers `sifre` gjeldende sifre uten overflødige nuller og uten tak på desimaler. Språkets desimaltegn.
+  - `beholdMengde: true`: bytteknappen bytter fra og til og lar mengden stå.
+  - `varer` kan mangle. Vareordet er da tomt, og kryssing mellom `ml` og `g` gir veiledningen. `ml` holder faktorene for gruppen som ikke er vekt (volum eller lengde); en temperaturside har `ml: {}` og `g: {}`.
+- Låst av `test/playwright/kalk.spec.mjs` (også `kalk-en.html`), `test/playwright/kalk-enhet.spec.mjs`, `test/site-tall.test.mjs` og `test/side-css.test.mjs`.
