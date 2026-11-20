@@ -20,8 +20,6 @@ export const UTELATT = new Set([
   '/sv/integritet/', '/sv/villkor/', '/sv/radera-konto/',
   '/da/privatliv/', '/da/vilkaar/', '/da/slet-konto/',
   '/en/privacy/', '/en/terms/', '/en/delete-account/',
-  // Nevner en annen app ved navn: lenkes bare fra Paprika-siden (seo-data/lenkekart.json), ikke fra hver bunntekst.
-  '/en/mealime-alternative/',
 ]);
 
 export const UNDER_HUB = /^\/(?:[a-z]{2}\/)?(?:tools|verktoy|verktyg|vaerktoejer|holidays)\/(?!unit-converter\/$|enhetsomregner\/$|enhetsomvandlare\/$|enhedsomregner\/$)[^/]+\/$/u;

@@ -23,7 +23,8 @@ const VIA_HUB_FORSIDE = {
   '/': VIA_HUB,
   '/sv/': importHub('/sv/importera-recept/', ['/sv/alletiders-kogebog/', '/sv/dr-mad/', '/sv/matprat/']),
   '/da/': importHub('/da/importer-opskrifter/', ['/da/koket/', '/da/landleys-kok/', '/da/matprat/']),
-  '/en/': importHub('/en/import-recipes/', ['/en/alletiders-cookbook/', '/en/dr-food/', '/en/koket/', '/en/landleys-kok/', '/en/matprat/']),
+  // Mealime-siden står i «All guides» i bunnen, men ikke i hovedhyllene: den nås gjennom Paprika-siden (lenkekartet, gruppen flytting).
+  '/en/': { ...importHub('/en/import-recipes/', ['/en/alletiders-cookbook/', '/en/dr-food/', '/en/koket/', '/en/landleys-kok/', '/en/matprat/']), '/en/mealime-alternative/': '/en/import-recipes-from-paprika/' },
 };
 
 // Låser at ingen guide er foreldreløs: hver side i en sitemap med bunntekst skal

@@ -1,13 +1,13 @@
 // Flytteside for tidligere Mealime-brukere (en-US, bare engelsk). Skrevet 2026-11-20 for Patricks godkjenning.
 // Fakta om Mealime står bare der mealime.com/closing sier det (lest 2026-11-20); om eksport vet vi ikke noe, og siden sier det.
-// Matlyst har INGEN Mealime-import. Siden skal aldri påstå det (låst av test/mealime.test.mjs).
+// Matlyst har INGEN masseimport fra Mealime og ingen kontokobling (bare Paprika-filer). Lenkeimport av publiserte mealime.com-oppskrifter er testet 2026-11-20 (kontrolløren, engelsk QA-konto). Låst av test/mealime.test.mjs.
 import { byggRik } from './../rik-sider.mjs';
 
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
 const ul = (...li) => `<ul>${li.map((t) => `<li>${t}</li>`).join('')}</ul>`;
 
 const html = byggRik({
-  svarTekst: 'Mealime was discontinued on October 21, 2026, and its closing page says the recipes are moving to Meals Hub, inside Albertsons Companies store apps. Matlyst has no Mealime import, so you bring recipes over one at a time: share or paste a link, take a photo or screenshot (a Pro feature), or type the recipe in. Then you can plan the week, build a grocery list, and keep a pantry in the same app.',
+  svarTekst: 'The recipes Mealime published on mealime.com/recipes can still be brought into Matlyst by link, one at a time. Find the recipe, share or paste its link in Matlyst, and check the draft. We tested this on November 20, 2026. It could stop working if Mealime takes those pages down, so it’s worth doing soon. There’s no bulk import and no connection to your Mealime account, and recipes you created yourself in Mealime have no public page, so save those from a photo or screenshot (Pro) or type them in.',
   seksjoner: [
     ['What happened to Mealime', p(
       'This is what Mealime says on its own <a href="https://www.mealime.com/closing" rel="noopener">closing page</a>.')
@@ -17,24 +17,32 @@ const html = byggRik({
         'Paid subscriptions were wound down, and Pro subscribers were not charged any more subscription fees before the shutdown.',
         'Your account information does not transfer automatically. Some preferences have to be set up again in Meals Hub.',
         'Mealime says all personal data will be deleted when the app shuts down.')
-      + p('The closing page does not say anything about exporting your saved recipes. If you shop at an Albertsons Companies store, Meals Hub is the route Mealime itself points to, and it may be the simplest thing to try first. The rest of this page is for people who want their recipes in a place they control.')],
+      + p('If you shop at an Albertsons Companies store, Meals Hub is the route Mealime itself points to, and it may be the simplest thing to try first. The rest of this page is for people who want their recipes in a place they control.')],
+
+    ['Bring a Mealime recipe into Matlyst by link', p(
+      'Mealime’s published recipes are still open on <a href="https://www.mealime.com/recipes" rel="noopener">mealime.com/recipes</a>, where you can browse and search. Each recipe has its own page, and you can bring it into Matlyst one at a time.')
+      + '<ol><li>Find the recipe on mealime.com/recipes and open it.</li>'
+      + '<li>Share the page to Matlyst from the Share Sheet. Or copy the link, open <strong>Add recipe</strong> in Matlyst, choose <strong>Paste a link</strong>, and paste it.</li>'
+      + '<li>Check the draft before you save it. Look over the amounts and ingredient names, and fix anything that needs fixing.</li></ol>'
+      + p('We tested this on November 20, 2026, with two recipes from mealime.com. Both came in with ingredients, steps, and a photo, in about 7 and 12 seconds. One had 12 ingredients and 7 steps, the other 15 ingredients and 14 steps. The number of servings didn’t come along, so set it in the draft before you save.',
+        'Mealime has shut down, and we don’t control its website. If Mealime takes those pages down, this stops working, so it’s worth saving the recipes you want soon.')],
 
     ['What Matlyst can and can’t bring over', p(
-      'Matlyst has no Mealime import. It doesn’t connect to Mealime, it can’t read a Mealime account, and it never asks for your Mealime login. Matlyst is not affiliated with Mealime or Albertsons, and their names belong to their owners.',
-      'What Matlyst does do is turn a recipe you give it into an editable recipe: separate ingredients with amounts, numbered steps, and a photo when one is available. You give it each recipe in one of three ways, and you check the draft before you save it. That is slower than a bulk import, so it is worth starting with the recipes you cook most, not the whole collection.')],
+      'There’s no bulk Mealime import. Matlyst doesn’t connect to Mealime, it can’t read a Mealime account, and it never asks for your Mealime login. Matlyst is not affiliated with Mealime or Albertsons, and their names belong to their owners.',
+      'Link import only reaches recipes that Mealime published. Recipes you created yourself in Mealime had no public page, so a link can’t reach them. Start with the recipes you cook most, not the whole collection, since each one comes over by hand.')],
 
-    ['Three ways to bring a recipe across', p('Pick whichever matches what you still have in front of you.')
-      + '<h3>1. Share or paste a link</h3>'
-      + p('If the recipe has a page on the web, share it to Matlyst from the Share Sheet, or open <strong>Add recipe</strong> and paste the link. Matlyst reads the page and builds the recipe. Websites, Instagram, TikTok, and YouTube descriptions work. We haven’t tested links to Mealime’s own pages, so read the draft before you save it.')
-      + '<h3>2. Take a photo or a screenshot</h3>'
-      + p('If you have a recipe on your screen, a screenshot, or a printout, choose <strong>Take a photo</strong> in Add recipe. Pick the photo or screenshot from your library, or photograph the page. If a recipe runs over several screenshots, add them all, in order. Photo import is a Matlyst Pro feature. Image quality affects the result, and Matlyst can misread quantities, so compare the draft with the original.')
-      + '<h3>3. Type it in</h3>'
+    ['Your own recipes and other ways in', p('Pick whichever matches what you still have in front of you.')
+      + '<h3>A photo or a screenshot</h3>'
+      + p('If you have one of your own recipes on a screen, in a screenshot, or on a printout, choose <strong>Take a photo</strong> in Add recipe. Pick the photo or screenshot from your library, or photograph the page. If a recipe runs over several screenshots, add them all, in order. Photo import is a Matlyst Pro feature. Image quality affects the result, and Matlyst can misread quantities, so compare the draft with the original.')
+      + '<h3>Type it in</h3>'
       + p('If you can copy the text, or you know the recipe by heart, choose <strong>Type it in</strong>, then paste or type the recipe. Matlyst sorts it into ingredients and steps.')
+      + '<h3>An export from a third-party tool</h3>'
+      + p('If you saved your recipes with a third-party export tool, Matlyst can’t read that file. Open the recipes in the tool, copy the text of each one, and paste it under Type it in. Or use the mealime.com links to the original recipes, where they exist.')
       + p('Imports can make mistakes, because AI reads the recipe. Look over amounts and ingredient names before you cook. Amounts are metric by default. Switch to <strong>Units: US</strong> in Settings and Matlyst keeps the cups, ounces, and degrees Fahrenheit the source used. It doesn’t convert metric recipes into cups for you.')],
 
     ['Can you export your recipes from Mealime?', p(
-      'We don’t know. The closing page doesn’t mention exporting, and we haven’t found an export option described by Mealime. Check whether Mealime lets you export your recipes, in the app’s settings or on its support pages, before you assume you can’t.',
-      'Whether your saved recipes are still reachable also depends on your device and on Mealime, and we can’t check that for you. If you can still open any of them, in the app, in a browser, or in a screenshot you already took, use one of the three ways above now rather than later. Mealime says personal data will be deleted at shutdown.')],
+      'Mealime doesn’t offer an official export, and its closing page doesn’t mention one. On November 20, 2026, the Mealime web app was showing “Offline for Maintenance.” The published recipes on mealime.com/recipes were still online.',
+      'So the recipes you can still reach are the published ones, and those you can bring over by link. A recipe you created yourself is only safe if you already have a screenshot or a copy. Mealime says personal data will be deleted at shutdown.')],
 
     ['What your week looks like in Matlyst', p(
       'Matlyst is built around recipes you save yourself, and it doesn’t build your week for you. If you want an app that picks the dinners, this isn’t that. You choose the recipes, and the app does the bookkeeping.')
@@ -55,18 +63,18 @@ const html = byggRik({
 
 export const side = {
   title: 'Mealime Alternative: Moving Your Recipes',
-  description: 'Mealime closed on October 21, 2026. See how to bring your recipes to Matlyst by link, photo, or text, and what the meal plan and grocery list do.',
+  description: 'Mealime’s published recipes still import into Matlyst by link, one at a time (tested November 20, 2026). Find a recipe, paste the link, check the draft.',
   eyebrow: 'After Mealime',
-  h1: 'Mealime has shut down. Here’s how to bring your recipes to Matlyst.',
-  lead: 'There’s no Mealime import, so recipes move one at a time. Here’s what Mealime says about the shutdown, three ways to save a recipe, and what Matlyst gives you for the week.',
+  h1: 'Mealime’s recipes are still online. Here’s how to save them in Matlyst.',
+  lead: 'Find the recipe on mealime.com/recipes, share or paste the link in Matlyst, and check the draft. We tested it on November 20, 2026. It works one recipe at a time, and it could stop if Mealime takes the pages down.',
   publisert: '2026-11-20',
   schemas: ['article', 'faq'],
-  forst: 'Start with the recipes you cook most.',
+  forst: 'Do it soon, and start with the recipes you cook most.',
   stegTittel: 'The short version',
   steg: [
-    ['Save the recipes you cook most', 'Share or paste a link, take a photo or screenshot (Pro), or type the recipe in.'],
-    ['Check each draft', 'Look over the amounts and ingredient names before you save.'],
-    ['Plan and shop', 'Put recipes on your meal plan and send the ingredients to one grocery list.'],
+    ['Paste the link', 'Find the recipe on mealime.com/recipes and share or paste its link in Matlyst.'],
+    ['Check the draft', 'Look over the amounts and ingredient names, and set the servings.'],
+    ['Save your own recipes another way', 'Recipes you created yourself have no public page. Use a photo or screenshot (Pro), or type them in.'],
   ],
   alternativ: '',
   grense: '',
@@ -75,10 +83,12 @@ export const side = {
   rik: html,
   faq: [
     ['What happened to Mealime?', 'According to its closing page, Mealime was discontinued on October 21, 2026, and its recipes and meal-planning tools are moving to Meals Hub in Albertsons Companies store apps.'],
-    ['Can I import my Mealime recipes into Matlyst?', 'Not in bulk. Matlyst has no Mealime import and doesn’t connect to Mealime accounts. You can save recipes one at a time by sharing or pasting a link, with a photo or screenshot (Matlyst Pro), or by typing the recipe in.'],
-    ['Can I export my recipes from Mealime?', 'We don’t know. Mealime’s closing page doesn’t mention exporting, so check Mealime’s settings and support pages. If you can still open your recipes, save the ones you want now.'],
+    ['Can I import my Mealime recipes into Matlyst?', 'One at a time, by link, if Mealime published them on mealime.com/recipes. We tested it on November 20, 2026. There’s no bulk import, and Matlyst doesn’t connect to Mealime accounts. Recipes you created yourself have no public page, so save those from a photo or screenshot (Matlyst Pro) or type them in.'],
+    ['Will the link import keep working?', 'We can’t promise it. It depends on Mealime keeping its recipe pages online, so save the recipes you want soon.'],
+    ['Why is the number of servings missing?', 'In our test, the servings didn’t come along from mealime.com. Set the number of servings in the draft before you save the recipe.'],
+    ['Can I export my recipes from Mealime?', 'Mealime doesn’t offer an official export, and its closing page doesn’t mention one. Published recipes are still on mealime.com/recipes, and you can bring those over by link.'],
     ['Does Matlyst ask for my Mealime login?', 'No. Matlyst never connects to your Mealime account or asks for your Mealime password.'],
-    ['Can I save a Mealime recipe from a screenshot?', 'Yes, with Matlyst Pro. Save the screenshot to your photo library, choose Take a photo in Add recipe, and select the image. If the recipe runs over several screenshots, add them all in order, then compare the result with the original.'],
+    ['Can I save a recipe I made myself in Mealime?', 'Only from a copy you already have. With Matlyst Pro, take a photo or screenshot of it in Add recipe. Without Pro, choose Type it in and paste or type the recipe. Look over the draft against the original.'],
     ['Does Matlyst make a meal plan for me?', 'No. You choose the recipes and put them on the days you want. Matlyst then sends the ingredients to one grocery list.'],
     ['Does Matlyst have the same recipes Mealime had?', 'No. Matlyst works with the recipes you save yourself. Mealime says its recipes continue in Meals Hub.'],
     ['Is Matlyst free?', 'Matlyst is free to start, with 5 imports per calendar month. The meal plan and the grocery list are free. Photo import, Ask Matlyst, and creating a household are part of Matlyst Pro.'],
