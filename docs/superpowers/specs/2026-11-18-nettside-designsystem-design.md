@@ -253,6 +253,7 @@ Datadrevne sider (hundrevis av like sider fra tall med kilde) bor i `scripts/fam
 - **Maler:** `mal-<marked>.mjs` i familiens mappe: `navSide`, `sideForRad` og `tillatteTall`. Strukturerte data bygges med `skjema.mjs` (ingen HowTo, ingen FAQPage; `'faq'` i `schemas` lager FAQPage fra synlig FAQ).
 - **Register:** `register.mjs` kobler familiene til `RIKE` (`rike-sider-register.mjs`), `SIDEGRUPPER` (`locale-sider.mjs`) og sideregisteret (`fam:<id>` i `sidetyper.mjs`). Alt under en familierot skal komme fra datafila.
 - **Vakter:** `test/familier.test.mjs` med `test/hjelp/familievakt.mjs` krever for hver familie og marked: gyldig data, ingen tall utenfor `tillatteTall`, ingen side for lik de andre (terskel 0,2, måles på ekte sider av første familie), ingen like titler, H1 eller beskrivelser, ingen norske restord på sv, da og en, og samsvar mellom rader og filer.
+- **Hva likhetsvakten ikke stopper:** terskelen på 0,2 stopper sider som er like, men ikke malsider med ulike navn og tall (40 kopier av én side med bare navn og tall byttet fikk 23 til 33 prosent «unikt»). `maskertUnik` i `familievakt.mjs` måler likheten etter at radens egne navn og alle tall er maskert, og er en opplysning uten terskel. To sider i samme marked med lik maskert tekst og like datatall er duplikater og gir rødt.
 - **Sidekontroll:** PR-er går på et utvalg per familie; `felles.mjs`, `skjema.mjs` og `register.mjs` gir full kontroll (`scripts/revisjon-omfang.mjs`).
 
 ## 14. Det byggeren avgjør selv

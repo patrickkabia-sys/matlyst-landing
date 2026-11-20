@@ -393,3 +393,24 @@ test('kalkSkjelett: id er valgfritt, tekstene kommer fra kalleren, og dataene be
   assert.ok(uten.includes('a\\u003cb') && !uten.includes('a<b'));
   assert.ok(uten.includes(PIL) && uten.includes(BYTT));
 });
+
+// Samlesiden: hver rad i varetabellen (alle tre tall) og tittel, beskrivelse og kort svar regnes ut på nytt fra datafila.
+function sjekkNav(s) {
+  const feil = [];
+  const lik = (navn, faktisk, forventet) => { if (JSON.stringify(faktisk) !== JSON.stringify(forventet)) feil.push(`${navn}: ${JSON.stringify(faktisk)} mot ${JSON.stringify(forventet)}`); };
+  const sortert = [...rader].sort((a, b) => a.navn.localeCompare(b.navn, 'nb'));
+  lik('varetabellen', [...blokk(s.rik, '<table class="varer">').matchAll(/<tr><td><a href="\/verktoy\/dl-til-gram\/([^/"]+)\/">[^<]*<\/a><\/td><td>([^<]*)<\/td><td>([^<]*)<\/td><td>([^<]*)<\/td><\/tr>/gu)].map((m) => m.slice(1, 5)),
+    sortert.map((r) => [r.slug, `${r.tall.dl.verdi} g`, `${gramT(r.tall.dl.verdi * 15 / 100).replace('.', ',')} g`, `${gramT(r.tall.dl.verdi * 5 / 100).replace('.', ',')} g`]));
+  lik('tittel', tall(s.title), [String(rader.length)]);
+  lik('beskrivelse', tall(s.description), ['1', String(rader.length)]);
+  return feil;
+}
+
+test('samlesiden: tabellen, tittelen og beskrivelsen regnes ut på nytt fra datafila, og salt endret til 125 g gir rødt', () => {
+  const nav = navSide(data, rader);
+  assert.deepEqual(sjekkNav(nav), []);
+  assert.ok(nav.rik.includes('/salt/">Salt</a></td><td>130 g</td>'));
+  const feil = sjekkNav({ ...nav, rik: nav.rik.replace('/salt/">Salt</a></td><td>130 g</td>', '/salt/">Salt</a></td><td>125 g</td>') });
+  assert.ok(feil.length > 0 && feil[0].startsWith('varetabellen'), String(feil));
+  assert.ok(sjekkNav({ ...nav, title: nav.title.replace(String(rader.length), '99') }).length > 0);
+});

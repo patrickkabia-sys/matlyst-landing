@@ -55,6 +55,9 @@ function sjekkSide(r, s) {
   lik('avsnittet om gram til cups', tall(ren(s.rik.match(/<h2>Convert grams back to [a-z]+<\/h2><p>([\s\S]*?)<\/p>/u)?.[1])), [String(grunn), String(grunn)]);
   lik('første kort', tall(ren(s.rik.match(/ in grams and ounces<\/h2><p>([\s\S]*?)<\/p>/u)?.[1])), ['1', ...v, gramT(grunn)]);
   const ounces = andreT(grunn / OZ);
+  // Tittelen: tallet i «(1 cup = 125 g)» regnes ut på nytt, og en tittel uten parentes har ingen tall (varenavnene har ingen sifre).
+  const tm = /\(1 (cup|tsp) = ([\d.]+) g\)/u.exec(s.title);
+  lik('tittelen', tm ? [tm[1], tm[2], tall(s.title).join(',')] : ['', '', tall(s.title).join(',')], tm ? [tsp ? 'tsp' : 'cup', gramT(grunn), `1,${gramT(grunn)}`] : ['', '', '']);
   lik('ingress', tall(s.lead), ['1', ...v, gramT(grunn), ounces]);
   lik('metabeskrivelse', tall(s.description), ['1', ...v, gramT(grunn), ounces]);
   lik('short answer', tall(ren(s.topp.match(/<p class="kortsvar">([\s\S]*?)<\/p>/u)?.[1])),
@@ -96,6 +99,47 @@ function usdaVisning(r) {
   const poster = (prefiks) => Object.entries(r.tall).filter(([k]) => k.startsWith('b_') === (prefiks === 'b_')).filter(([k, t]) => k === `${prefiks}cup` || k === `${prefiks}tsp` || vis(t)).map(([, t]) => `${t.verdi} g`);
   return [poster(''), ...(r.tekst.fdcId2 ? [poster('b_')] : [])];
 }
+
+/** Samlesiden: hver rad i tabellen (alle fire kolonner), tittel, beskrivelse, short answer og spørsmål regnes ut på nytt fra datafila. */
+function sjekkNav(s) {
+  const feil = [];
+  const lik = (navn, faktisk, forventet) => { if (JSON.stringify(faktisk) !== JSON.stringify(forventet)) feil.push(`${navn}: ${JSON.stringify(faktisk)} mot ${JSON.stringify(forventet)}`); };
+  const cupAv = (r) => (r.tall.tsp ? r.tall.tsp.verdi * 48 : r.tall.cup.verdi);
+  const sortert = [...rader].sort((a, b) => a.navn.localeCompare(b.navn, 'en'));
+  const forventet = sortert.map((r) => [r.slug, `${gramT(cupAv(r))} g`, `${andreT(cupAv(r) / OZ)} oz`, `${gramT(cupAv(r) / 16)} g`, `${gramT(cupAv(r) / 48)} g`]);
+  const faktisk = [...blokk(s.rik, '<table class="varer">').matchAll(/<tr><td><a href="\/en\/tools\/cups-to-grams\/([^/"]+)\/">[^<]*<\/a><\/td><td>([^<]*)<\/td><td>([^<]*)<\/td><td>([^<]*)<\/td><td>([^<]*)<\/td><\/tr>/gu)].map((m) => m.slice(1, 6));
+  lik('varetabellen', faktisk, forventet);
+  lik('tittel', tall(s.title), [String(rader.length)]);
+  lik('beskrivelse', tall(s.description), [String(rader.length)]);
+  const hv = (id) => cupAv(rad(id));
+  lik('short answer', tall(ren(s.topp.match(/<p class="kortsvar">([\s\S]*?)<\/p>/u)?.[1])), ['1', gramT(hv('hvetemel')), '1', gramT(hv('sukker')), '1', gramT(hv('smor'))]);
+  lik('spørsmål 1', tall(s.faq[0][1]), ['1', gramT(hv('hvetemel')), '1', gramT(hv('sukker')), '1', gramT(hv('smor'))]);
+  lik('spørsmål 2', tall(s.faq[1][1]), ['1', '1', gramT(hv('hvetemel')), '2', gramT(2 * hv('hvetemel'))]);
+  lik('spørsmål 3', tall(s.faq[2][1]), ['1', '100', andreT(100 / hv('hvetemel'))]);
+  const tung = [...rader].sort((a, b) => cupAv(b) - cupAv(a))[0];
+  const lett = [...rader].sort((a, b) => cupAv(a) - cupAv(b))[0];
+  lik('hvorfor veier ikke', tall(ren(s.rik.match(/<h2>Why[^<]*<\/h2><p>([\s\S]*?)<\/p>/u)?.[1])), ['1', gramT(cupAv(tung)), '1', gramT(cupAv(lett))]);
+  return feil;
+}
+
+test('samlesiden: tabellen, tittelen og tekstene regnes ut på nytt fra datafila og stemmer på sin plass', () => {
+  assert.deepEqual(sjekkNav(navSide(data, rader)), []);
+});
+
+test('bevis: salt endret fra 292 til 125 g i samlesidens tabell, og whole wheat flour fra 120 til 125 g i tittelen, gir rødt', () => {
+  const nav = navSide(data, rader);
+  assert.ok(nav.rik.includes('/salt/">Salt</a></td><td>292 g</td>'));
+  const feilNav = sjekkNav({ ...nav, rik: nav.rik.replace('/salt/">Salt</a></td><td>292 g</td>', '/salt/">Salt</a></td><td>125 g</td>') });
+  assert.ok(feilNav.length > 0 && feilNav[0].startsWith('varetabellen'), String(feilNav));
+  for (const kolonne of [['<td>10.3 oz</td>', '<td>10.4 oz</td>'], ['<td>18 g</td><td>6.1 g</td>', '<td>18 g</td><td>6.2 g</td>']]) assert.ok(sjekkNav({ ...nav, rik: nav.rik.replace(...kolonne) }).length > 0, kolonne[0]);
+  const hvete = rad('sammalt-hvetemel');
+  const s = sideForRad(hvete, data, rader);
+  assert.ok(s.title.includes('= 120 g'), s.title);
+  assert.deepEqual(sjekkSide(hvete, s), []);
+  const feil = sjekkSide(hvete, { ...s, title: s.title.replace('= 120 g', '= 125 g') });
+  assert.ok(feil.some((f) => f.startsWith('tittelen')), String(feil));
+  assert.ok(sjekkSide(hvete, { ...s, description: s.description.replace('120', '125') }).length > 0);
+});
 
 test('flour: svaret står i ingress, beskrivelse, short answer, tabell og kalkulator, og er det samme tallet', () => {
   const s = sideForRad(rad('hvetemel'), data, rader);
