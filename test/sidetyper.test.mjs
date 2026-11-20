@@ -5,6 +5,7 @@ import { join } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { allePar } from '../scripts/enheter.mjs';
+import { familieAntall } from '../scripts/familier/register.mjs';
 import {
   BLOGGINDEKS, EKSEMPEL, TYPER, UTRULLET, alleSider, erGenerertFamilie, erUtrullet, nokkel, normaliserSti, sidetype, sidetypeEllerNull, tjenestefamilie,
 } from '../scripts/sidetyper.mjs';
@@ -15,7 +16,7 @@ const sider = alleSider(rot);
 const type = (sti) => sider.find((s) => s.sti === sti)?.type;
 
 test('hver publiserbar HTML-fil får én type og én nøkkel', () => {
-  assert.equal(sider.length, 879, 'nye sider: forklar endringen i commit-meldingen og rett tallet');
+  assert.equal(sider.length, 879 + familieAntall().omregner + familieAntall()['guide-lang'], 'nye sider: forklar endringen i commit-meldingen og rett tallet');
   for (const s of sider) {
     assert.ok(TYPER.includes(s.type), s.sti);
     assert.equal(s.nokkel, s.type === 'tjeneste' ? `tjeneste:${tjenestefamilie(s.sti)}` : s.type, s.sti);
@@ -24,15 +25,15 @@ test('hver publiserbar HTML-fil får én type og én nøkkel', () => {
 });
 test('hver side har en familie, og omregnerne fordeler seg på enhetsgrupper', () => {
   for (const s of sider) assert.equal(typeof s.familie, 'string', s.sti);
-  for (const s of sider.filter((x) => x.type !== 'omregner')) assert.equal(s.familie, s.nokkel, s.sti);
+  for (const s of sider.filter((x) => x.type !== 'omregner' && !x.familie.startsWith('fam:'))) assert.equal(s.familie, s.nokkel, s.sti);
   const tell = (f) => sider.filter((s) => s.familie === f).length;
   assert.equal(tell('omregner:nav'), 4);
   // «nav» er nøyaktig de fire hubbene. En ny side som havner der, må få en egen familie (se oppgave 5) i stedet for å regnes som håndskrevet.
   assert.deepEqual(sider.filter((s) => s.familie === 'omregner:nav').map((s) => s.sti).sort(),
     ['/da/vaerktoejer/enhedsomregner/', '/en/tools/unit-converter/', '/sv/verktyg/enhetsomvandlare/', '/verktoy/enhetsomregner/']);
-  const fam = new Set(sider.filter((s) => s.type === 'omregner').map((s) => s.familie));
+  const fam = new Set(sider.filter((s) => s.type === 'omregner' && !s.familie.startsWith('fam:')).map((s) => s.familie));
   assert.deepEqual([...fam].sort(), ['omregner:lengde', 'omregner:nav', 'omregner:temperatur', 'omregner:vekt', 'omregner:volum']);
-  assert.equal(sider.filter((s) => s.type === 'omregner').length, ['volum', 'vekt', 'lengde', 'temperatur', 'nav'].reduce((n, g) => n + tell(`omregner:${g}`), 0));
+  assert.equal(sider.filter((s) => s.type === 'omregner' && !s.familie.startsWith('fam:')).length, ['volum', 'vekt', 'lengde', 'temperatur', 'nav'].reduce((n, g) => n + tell(`omregner:${g}`), 0));
   assert.equal(erGenerertFamilie('omregner:volum'), true);
   assert.equal(erGenerertFamilie('omregner:nav'), false);
   assert.equal(erGenerertFamilie('fam:dl-til-gram'), true);
@@ -40,10 +41,11 @@ test('hver side har en familie, og omregnerne fordeler seg på enhetsgrupper', (
 });
 test('omregnerne er alle parene pluss fire hubber', () => {
   const par = ['nb', 'sv', 'da', 'en'].reduce((n, l) => n + allePar(l).length, 0);
-  assert.equal(sider.filter((s) => s.type === 'omregner').length, par + 4);
+  assert.equal(sider.filter((s) => s.type === 'omregner').length, par + 4 + familieAntall().omregner);
 });
 test('typene har de målte antallene', () => {
-  assert.deepEqual(TYPER.map((t) => sider.filter((s) => s.type === t).length), [4, 714, 34, 56, 4, 33, 12, 22]);
+  const fa = familieAntall();
+  assert.deepEqual(TYPER.map((t) => sider.filter((s) => s.type === t).length), [4, 714 + fa.omregner, 34 + fa['guide-lang'], 56, 4, 33, 12, 22]);
 });
 test('kjente sider får riktig type', () => {
   for (const [sti, forventet] of [

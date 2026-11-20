@@ -6,6 +6,7 @@ import { readdirSync, readFileSync, realpathSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { SIDEGRUPPER, gruppeForSti } from './locale-sider.mjs';
 import { ENHETER } from './enheter.mjs';
+import { familieForSti } from './familier/register.mjs';
 
 export const TYPER = Object.freeze(['forside', 'omregner', 'guide-lang', 'guide-kort', 'guide-gammel', 'blogg', 'juss', 'tjeneste']);
 
@@ -81,6 +82,9 @@ const ENHETSGRUPPE_FRA_ID = (() => {
 })();
 
 export function familie(sti, html) {
+  // Datadrevne familier (scripts/familier/) først: alt under familiens rot er familien.
+  const registrert = familieForSti(normaliserSti(sti));
+  if (registrert !== null) return `fam:${registrert}`;
   const n = nokkel(sti, html);
   if (n !== 'omregner') return n;
   const gruppe = ENHETSGRUPPE_FRA_ID.get(gruppeForSti(normaliserSti(sti))?.id);

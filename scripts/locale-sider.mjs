@@ -1,6 +1,7 @@
 // Engelsk er internasjonalt (ingen region), derfor bare «en».
 import { bloggGrupper } from './blogg.mjs';
 import { allePar, parSti } from './enheter.mjs';
+import { familieGrupper } from './familier/register.mjs';
 
 export const SPRAKKODER = Object.freeze({ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en' });
 export const SPRAKREKKEFOLGE = Object.freeze(Object.keys(SPRAKKODER));
@@ -69,6 +70,7 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'dr-mad', sider: { nb: '/importer-fra-dr-mat/', sv: '/sv/dr-mad/', da: '/da/dr-mad/', en: '/en/dr-food/' } },
   { id: 'auto-enhetsomregner', sider: { en: '/en/tools/unit-converter/', nb: '/verktoy/enhetsomregner/', sv: '/sv/verktyg/enhetsomvandlare/', da: '/da/vaerktoejer/enhedsomregner/' } },
   ...enhetsGrupper(),
+  ...familieGrupper(),
   ...bloggGrupper(),
 ]);
 
