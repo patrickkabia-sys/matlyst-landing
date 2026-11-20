@@ -7,7 +7,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { lesData, publiserbare } from '../scripts/familier/felles.mjs';
 import { FAMILIER, SPRAKMAPPE, familieSider } from '../scripts/familier/register.mjs';
-import { dupliserte, forLike, kontrollerFamilier, sideMotData, synligTekst, tallUtenforData } from './hjelp/familievakt.mjs';
+import { antallFeil, dupliserte, forLike, kontrollerFamilier, sideMotData, synligTekst, tallUtenforData } from './hjelp/familievakt.mjs';
 
 const ROT = fileURLToPath(new URL('..', import.meta.url));
 const FIKS = new URL('./fiksturer/familier/', import.meta.url);
@@ -197,6 +197,11 @@ test.describe('Filvakten: symlenker, tomme familier og filene på disk', () => {
     const ok = await kontrollerFamilier([PROEVE], mappe);
     assert.deepEqual([ok.kontrollert, ok.forventet], [6, 6]);
   }));
+
+  test('færre kontrollerte sider enn forventet gir feil', () => {
+    assert.deepEqual(antallFeil(5, 6), ['kontrollerte 5 av 6 sider som skal finnes']);
+    assert.deepEqual(antallFeil(6, 6), []);
+  });
 
   test('filen på disk må inneholde sidens title, h1 og lead; en fil med annen HTML felles', () => medMappe(async (mappe) => {
     await skrivSider(mappe, PROEVE);

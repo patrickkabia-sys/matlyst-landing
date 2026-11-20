@@ -168,6 +168,9 @@ export function sideMotData(familie, rotmappe) {
 const htmlKodet = (t) => t.replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/>/gu, '&gt;').replace(/"/gu, '&quot;').replace(/'/gu, '&#39;');
 const harTekst = (html, tekst) => typeof tekst === 'string' && (html.includes(tekst) || html.includes(htmlKodet(tekst)));
 
+/** Feil når vaktene har sett færre sider enn de som skal finnes. */
+export const antallFeil = (kontrollert, forventet) => (kontrollert < forventet ? [`kontrollerte ${kontrollert} av ${forventet} sider som skal finnes`] : []);
+
 /**
  * Kjører alle vaktene for hver familie og marked. Gir `feil` (lesbare linjer, tom når alt er i orden)
  * `kontrollert` (antall sider vaktene faktisk så på) og `forventet` (samleside pluss publiserbare rader per marked),
@@ -213,6 +216,6 @@ export async function kontrollerFamilier(familier, rotmappe) {
       for (const f of m.symlenker) feil.push(`${navn}: symlenke: ${f}`);
     }
   }
-  if (kontrollert < forventet) feil.push(`kontrollerte ${kontrollert} av ${forventet} sider som skal finnes`);
+  feil.push(...antallFeil(kontrollert, forventet));
   return { feil, kontrollert, forventet };
 }
