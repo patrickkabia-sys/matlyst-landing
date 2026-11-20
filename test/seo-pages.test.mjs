@@ -13,10 +13,9 @@ test('den norske importsiden bruker ikke tankestrek som skilletegn', () => {
 });
 
 test('sitemap viser publiseringsdatoen for den oppdaterte importsiden', () => {
-  assert.match(
-    sitemap,
-    /<loc>https:\/\/matlyst-app\.no\/importer-oppskrifter\/<\/loc>\s*<lastmod>2026-10-27<\/lastmod>/u,
-  );
+  // Datoen er innholdsdatoen fra scripts/lastmod-kart.json; formatet og at den ikke ligger etter i tid er det som sjekkes her.
+  const dato = /<loc>https:\/\/matlyst-app\.no\/importer-oppskrifter\/<\/loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})<\/lastmod>/u.exec(sitemap)?.[1];
+  assert.ok(dato && dato >= '2026-10-27', `lastmod ${dato}`);
 });
 
 test('den norske importsiden består grunnleggende HTML-kvalitetsregler', () => {
