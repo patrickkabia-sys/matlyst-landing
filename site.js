@@ -255,6 +255,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 // Kalkulatorkortet (form.kalk): regner mens du skriver. Volum regnes mot volum via ml og vekt mot vekt via gram, direkte.
 // Bare kryssing mellom volum og vekt bruker varens gram per dl: ml[enhet] / 100 * gram per dl, og mangler vekten (eller er den 0), vises veiledningen.
 // All tekst (enhetsnavn, hurtigmengder, veiledning) kommer fra skjemaets egne data (script.kalk-data), så filen har ingen språkstrenger.
+// Fire valgfrie datafelt gir engelske skjemaer det de trenger, og skjemaer uten dem oppfører seg som før:
+// brok (mengden kan skrives «1/2» eller «1 1/2»), kort[e] som [entall, flertall], stegFor[e] (hvilken hurtiggruppe enheten bruker) og byttTil[e] (mengden ved bytte).
 // Tallesing er den delte tolkTall fra omregneren (window.MatlystTall). Skrivemåten av svaret har ikke tak på antall desimaler (visTall har det), så små tall aldri blir 0.
 (() => {
   const skjemaer = document.querySelectorAll('form.kalk');
@@ -281,6 +283,24 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     const t = String(n);
     return komma(/e/u.test(t) ? n.toLocaleString('en', { useGrouping: false, maximumFractionDigits: 20 }) : t);
   };
+  // Mengden som tall, med brøk når skjemaet tillater det: a/b eller n a/b (heltall, nevner over 0, valgfritt mellomrom rundt skråstreken).
+  // Gir { n, tekst, entall } eller null. tekst er brøken normalisert («1 1/2»). entall er sant for nøyaktig 1 og for en ekte brøk under 1 skrevet som brøk («3/4»).
+  // Med brøk slått på er mellomrom mellom sifre ikke tusenskille («1 2» er ugyldig), ellers ville «1 2» blitt 12.
+  const tolkMengde = (tekst, brok) => {
+    const t = String(tekst).trim();
+    if (brok) {
+      const m = /^(?:(\d+)\s+)?(\d+)\s*\/\s*(\d+)$/u.exec(t);
+      if (m) {
+        const [, hel, a, b] = m;
+        if (Number(b) === 0) return null;
+        const n = Number(hel || 0) + Number(a) / Number(b);
+        return { n, tekst: `${hel === undefined ? '' : `${Number(hel)} `}${Number(a)}/${Number(b)}`, entall: n === 1 || (hel === undefined && n > 0 && n < 1) };
+      }
+      if (/\d\s+\d/u.test(t) || t.includes('/')) return null;
+    }
+    const n = tolkTall(t, KOMMA);
+    return n === null ? null : { n, tekst: null, entall: n === 1 };
+  };
   for (const skjema of skjemaer) {
     // Hvert skjema settes opp for seg: et ødelagt skjema hoppes over (det statiske svaret i HTML-en blir stående), og resten virker.
     try {
@@ -288,16 +308,24 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       const felt = (navn) => skjema.querySelector(`[data-felt="${navn}"]`);
       const mengde = felt('mengde'), fra = felt('fra'), til = felt('til'), svar = felt('svar'), setning = felt('setning'), bytt = felt('bytt'), vare = felt('vare');
       const hurtig = [...skjema.querySelectorAll('.hurtig button')];
+      // Med stegFor kreves bare gruppene den peker på (og hver fra-enhet må peke på en), ellers de fire faste gruppene.
+      const grupper = data && data.stegFor && fra ? [...fra.options].map((o) => data.stegFor[o.value]) : ['volum', 'ml', 'g', 'kg'];
       const ok = data && Array.isArray(data.varer) && data.varer.length && data.ml && data.g && data.steg && typeof data.feil === 'string'
-        && ['volum', 'ml', 'g', 'kg'].every((g) => Array.isArray(data.steg[g]) && data.steg[g].length >= hurtig.length)
+        && grupper.every((g) => Array.isArray(data.steg[g]) && data.steg[g].length >= hurtig.length)
         && mengde && fra && til && svar && setning && bytt;
       if (!ok) continue;
-      const kort = (e) => (data.kort && data.kort[e]) || e;
+      const brok = Boolean(data.brok);
+      // Enhetens kortform: en streng, eller [entall, flertall] (bare der enheten bøyes, som «cup» og «cups»).
+      const kort = (e, entall) => {
+        const k = data.kort && data.kort[e];
+        return Array.isArray(k) ? k[entall ? 0 : 1] : (k || e);
+      };
       // Setningen under er den som leses opp; selve svarfeltet står utenfor opplesingen.
       svar.setAttribute('aria-live', 'off');
       const regn = () => {
         const [ord, gramPerDl] = data.varer[vare ? Number(vare.value) : 0] || [];
-        const n = tolkTall(mengde.value, KOMMA);
+        const m = tolkMengde(mengde.value, brok);
+        const n = m ? m.n : null;
         // Negativt og alt som ikke er ett tall gir veiledning, aldri et delsvar.
         const gyldig = n !== null && n >= 0;
         let ut = NaN;
@@ -309,18 +337,20 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         }
         if (gyldig) mengde.removeAttribute('aria-invalid'); else mengde.setAttribute('aria-invalid', 'true');
         if (Number.isFinite(ut)) {
-          svar.textContent = svarTekst(ut, til.value);
-          setning.textContent = [`${mengdeTekst(n)} ${kort(fra.value)}`, ord, `= ${svarTekst(ut, til.value)} ${kort(til.value)}`].filter(Boolean).join(' ');
+          const utTekst = svarTekst(ut, til.value);
+          svar.textContent = utTekst;
+          setning.textContent = [`${m.tekst || mengdeTekst(n)} ${kort(fra.value, m.entall)}`, ord, `= ${utTekst} ${kort(til.value, utTekst === '1')}`].filter(Boolean).join(' ');
         } else {
           svar.textContent = '';
           setning.textContent = data.feil;
         }
-        const gruppe = fra.value in data.g ? (fra.value === 'kg' ? 'kg' : 'g') : (fra.value === 'ml' ? 'ml' : 'volum');
+        const gruppe = data.stegFor ? data.stegFor[fra.value] : fra.value in data.g ? (fra.value === 'kg' ? 'kg' : 'g') : (fra.value === 'ml' ? 'ml' : 'volum');
         const steg = data.steg[gruppe];
         hurtig.forEach((k, i) => {
+          const h = tolkMengde(steg[i], brok);
           k.dataset.v = steg[i];
-          k.textContent = `${steg[i]} ${kort(fra.value)}`;
-          k.setAttribute('aria-pressed', String(gyldig && tolkTall(steg[i], KOMMA) === n));
+          k.textContent = `${steg[i]} ${kort(fra.value, h ? h.entall : false)}`;
+          k.setAttribute('aria-pressed', String(gyldig && h !== null && h.n === n));
         });
       };
       for (const el of [mengde, fra, til, vare]) if (el) el.addEventListener(el === mengde ? 'input' : 'change', regn);
@@ -328,7 +358,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       bytt.addEventListener('click', () => {
         const f = fra.value; fra.value = til.value; til.value = f;
         bytt.classList.toggle('snudd');
-        mengde.value = fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
+        mengde.value = data.byttTil && data.byttTil[fra.value] !== undefined ? data.byttTil[fra.value] : fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
         regn();
       });
       regn();
