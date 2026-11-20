@@ -42,6 +42,12 @@ const RODE = {
   'kontrollert-uten-dato': 'provemel',
   'rad-uten-tall': 'provesukker',
   'ukjent-kilde': 'provemel',
+  'prototypekilde-constructor': 'provemel',
+  'prototypekilde-toString': 'provemel',
+  'prototypekilde-proto': 'provemel',
+  'prototypekilde-hoved-constructor': 'provemel',
+  'prototypekilde-hoved-toString': 'provemel',
+  'prototypekilde-hoved-proto': 'provemel',
 };
 
 test('de røde fiksturene er alle med i oversikten', () => {
@@ -56,6 +62,7 @@ for (const [navn, radId] of Object.entries(RODE)) {
       (feil) => {
         assert.ok(feil instanceof Error);
         assert.ok(feil.message.startsWith(`rode/nb/${radId}:`), feil.message);
+        if (navn.startsWith('prototypekilde')) assert.match(feil.message, /ikke finnes i kilder/u);
         return true;
       },
     );

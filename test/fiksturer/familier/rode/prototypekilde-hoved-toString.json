@@ -1,0 +1,66 @@
+{
+  "familie": "rode",
+  "marked": "nb",
+  "kilder": {
+    "prove-tabell": {
+      "navn": "Prøvetabellen",
+      "utgiver": "Prøveinstituttet",
+      "aar": 2024,
+      "adresse": "https://eksempel.test/prove-tabell",
+      "hentet": "2026-11-20"
+    },
+    "prove-bok": {
+      "navn": "Prøveboka",
+      "utgiver": "Prøveforlaget",
+      "aar": 2022,
+      "adresse": "https://eksempel.test/prove-bok",
+      "hentet": "2026-11-20"
+    }
+  },
+  "rader": [
+    {
+      "id": "provemel",
+      "slug": "provemel",
+      "navn": "Prøvemel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerDl": {
+          "verdi": 55,
+          "enhet": "g",
+          "kilde": "toString"
+        }
+      }
+    },
+    {
+      "id": "provesukker",
+      "slug": "provesukker",
+      "navn": "Prøvesukker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerDl": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "prove-tabell"
+        }
+      }
+    },
+    {
+      "id": "provesalt",
+      "slug": "provesalt",
+      "navn": "Prøvesalt",
+      "status": "utkast",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerDl": {
+          "verdi": 120,
+          "enhet": "g",
+          "kilde": "prove-bok"
+        }
+      }
+    }
+  ]
+}

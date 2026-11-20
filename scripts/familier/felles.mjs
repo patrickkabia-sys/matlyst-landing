@@ -44,7 +44,7 @@ const Data = z.strictObject({
 });
 
 const nevner = (kilder, rader) => [...new Set(rader.flatMap((r) => Object.values(r.tall).flatMap((t) => [t.kilde, ...(t.andre ?? []).map((a) => a.kilde)])))]
-  .filter((k) => kilder[k]);
+  .filter((k) => Object.hasOwn(kilder, k));
 
 /**
  * Validerer en datafil. Kaster Error der hver linje i meldingen begynner med
@@ -87,7 +87,7 @@ export function validerData(obj) {
     if (r.status === 'kontrollert' && !r.kontrollert) meld(r.id, 'status kontrollert krever feltet kontrollert (dato)');
     for (const [navn, t] of Object.entries(r.tall)) {
       for (const k of [t.kilde, ...(t.andre ?? []).map((a) => a.kilde)]) {
-        if (!d.kilder[k]) meld(r.id, `tallet «${navn}» peker på kilden «${k}», som ikke finnes i kilder`);
+        if (!Object.hasOwn(d.kilder, k)) meld(r.id, `tallet «${navn}» peker på kilden «${k}», som ikke finnes i kilder`);
       }
     }
   }
