@@ -17,14 +17,14 @@ const rad = (id) => rader.find((r) => r.id === id);
 const vare = (id) => VARER_EN.find((v) => v.id === id);
 const sider = () => [['nav', navSide(data, rader)], ...rader.map((r) => [r.id, sideForRad(r, data, rader)])];
 
-// Uavhengig utregning i testen (ikke importert fra malen). Gram fra 1 g som hele gram (halve opp), under 1 g to gjeldende sifre;
+// Uavhengig utregning i testen (ikke importert fra malen). Gram fra 10 g som hele gram (halve opp), under 10 g to gjeldende sifre;
 // andre enheter: 100 og over som heltall, 10 til 100 tre gjeldende sifre, under 10 to, uten «.0» til slutt.
 const sig = (n, sifre) => {
   const d = Math.min(100, Math.max(0, sifre - 1 - Math.floor(Math.log10(Math.abs(n)))));
   const t = (Math.round(Number((n * 10 ** d).toPrecision(12))) / 10 ** d).toFixed(d);
   return t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t;
 };
-const gramT = (n) => (n >= 1 ? String(Math.round(Number(n.toPrecision(12)))) : sig(n, 2));
+const gramT = (n) => (n >= 10 ? String(Math.round(Number(n.toPrecision(12)))) : sig(n, 2));
 const andreT = (n) => (n >= 100 ? String(Math.round(n)) : sig(n, n >= 10 ? 3 : 2));
 const OZ = 28.349523125;
 const tall = (t) => String(t).match(/\d+(?:\.\d+)?/gu) ?? [];
@@ -45,11 +45,10 @@ function sjekkSide(r, s) {
   let forventet = tsp
     ? [['1/2 tsp', 1 / 96], ['1 tsp', 1 / 48], ['2 tsp', 1 / 24], ['1 tbsp', 1 / 16], ['1/4 cup', 1 / 4], ['1/2 cup', 1 / 2], ['1 cup', 1]].map(([e, b]) => rad_(e, cup * b))
     : [['1 tsp', 1 / 48], ['1 tbsp', 1 / 16], ...cups].map(([e, b]) => rad_(e, cup * b));
-  if (r.id === 'smor') forventet.splice(forventet.findIndex(([e]) => e === '1/2 cup') + 1, 0, rad_('1 stick', 113));
-  lik('tabellen cups to grams', [...blokk(s.rik, '<table class="otabell">').matchAll(/<tr><td>([^<]*)<\/td><td>([^<]*)<\/td><td>([^<]*)<\/td><\/tr>/gu)].map((m) => [m[1], m[2], m[3]]), forventet.map(([e, g, oz]) => [`${e} ${vare(r.id).ord}`, g, oz]));
+  lik('tabellen cups to grams', [...blokk(s.rik, '<table class="otabell">').matchAll(/<tr><td>([^<]*)<\/td><td>([^<]*)<\/td><td>([^<]*)<\/td><\/tr>/gu)].map((m) => [m[1], m[2], m[3]]), forventet);
   const eksG = tsp ? [5, 10, 25, 50] : [50, 100, 250, 500];
   lik('grams to cups', [...blokk(s.rik, '<ul class="eksempler">').matchAll(/<li><b>([^<]*)<\/b><span>([^<]*)<\/span><\/li>/gu)].map((m) => [m[1], m[2]]),
-    eksG.map((g) => { const c = andreT(g / grunn); return [`${g} g ${vare(r.id).ord}`, tsp ? `${c} tsp` : `${c} ${c === '1' ? 'cup' : 'cups'}`]; }));
+    eksG.map((g) => { const c = andreT(g / grunn); return [`${g} g`, tsp ? `${c} tsp` : `${c} ${c === '1' ? 'cup' : 'cups'}`]; }));
   const pundC = andreT(453.59237 / grunn);
   lik('pund', tall(ren(s.rik.match(/<p>(1 pound of [^<]*)<\/p>/u)?.[1])), ['1', ...v, '454', pundC, '1', '1000', andreT(1000 / grunn), ...v]);
   lik('formelen', s.rik.match(/<b>([\d.]+)<\/b><\/p>/u)?.[1], String(grunn));
@@ -66,13 +65,13 @@ function sjekkSide(r, s) {
     [start, `2 ${tsp ? 'tsp' : 'cups'} ${vare(r.id).ord} = ${start} g`]);
   const svar = s.faq.map(([, a]) => ren(a));
   const navn = tall(utenParentes(r.tekst.usdaNavn));
-  lik('FAQ 1', tall(svar[0]), ['1', ...v, gramT(grunn), ounces, r.tekst.fdcId, ...navn]);
+  lik('FAQ 1', tall(svar[0]), ['1', ...v, gramT(grunn), ounces, r.tekst.fdcId, ...navn, ...(r.tekst.fdcId2 ? [r.tekst.fdcId2, ...tall(utenParentes(r.tekst.usdaNavn2))] : [])]);
   lik('FAQ 2', tall(svar[1]), tsp ? ['10', ...v, andreT(10 / grunn), String(grunn)] : ['100', ...v, andreT(100 / grunn), String(cup)]);
   lik('FAQ 3', tall(svar[2]), tsp ? ['1', ...v, gramT(cup / 48), '1', ...v, gramT(cup / 16)] : ['1', ...v, gramT(cup / 16), '1', gramT(cup / 48)]);
   const t = TEKST_EN[r.id] ?? {};
   const naer = t.naer?.[0] && rad(t.naer[0]);
-  const stick = r.tall.p_3?.merknad === 'stick' && r.tall.p_3;
-  if (stick) lik('FAQ 4, stick', tall(svar[3]), ['1', ...v, '113', andreT(113 / OZ)]);
+  const stick = Object.values(r.tall).find((x) => x.merknad === 'stick');
+  if (stick) lik('FAQ 4, stick', tall(svar[3]), ['1', ...v, '113']);
   else if (t.alt) lik('FAQ 4, alternativ porsjon', tall(svar[3]), [String(Object.values(r.tall).find((x) => x.merknad === t.alt.porsjon).verdi), '1', '1', String(r.tall.cup.verdi)]);
   else if (naer && (naer.tall.tsp ?? naer.tall.cup).verdi !== grunn) {
     const nv = tall(vare(naer.id).variant);
@@ -80,21 +79,22 @@ function sjekkSide(r, s) {
     const nGrunn = nTsp ? naer.tall.tsp.verdi : naer.tall.cup.verdi;
     lik('FAQ 4, nær vare', tall(svar[3]), ['1', ...nv, gramT(nGrunn), gramT(grunn), ...v]);
   } else lik('FAQ 4, ounces', tall(svar[3]), ['1', ...v, andreT(cup / OZ), '8']);
-  lik('USDA-tabellen', [...blokk(s.rik, '<table class="sprik">').matchAll(/<td>[^<]*(?:<small>[^<]*<\/small>)?<\/td><td>([^<]*)<\/td>/gu)].map((m) => m[1]),
-    usdaVisning(r).map(([, g]) => `${g} g`));
+  const tabeller = [...s.rik.matchAll(/<table class="sprik">[\s\S]*?<\/table>/gu)].map((m) => [...m[0].matchAll(/<td>[^<]*(?:<small>[^<]*<\/small>)?<\/td><td>([^<]*)<\/td>/gu)].map((x) => x[1]));
+  lik('USDA-tabellene', tabeller, usdaVisning(r));
   return feil;
 }
 
-// De porsjonene USDA-tabellen skal vise, utledet uavhengig av malen fra postens porsjoner i datafila: grunnlaget først, så de som sier noe om cups, skjeer, stick og pat.
+// De porsjonene USDA-tabellene skal vise, utledet uavhengig av malen fra postenes porsjoner i datafila: grunnlaget først, så de som sier noe om cups, skjeer, stick og pat.
+// Raden kan ha en post til (nøklene med b_ foran), som får sin egen tabell.
 function usdaVisning(r) {
-  const grunn = r.tall.cup ? 'cup' : 'tsp';
   const skjules = /container|package|box|NLEA|slice|packet|dash|cube|cubic inch|^almond$|^(?:extra|small|medium|large)\b/u;
-  const vis = ([, t]) => {
+  const vis = (t) => {
     const m = /^(\d+(?:\.\d+)?) (.+)$/u.exec(t.merknad);
     const [mengde, mod] = m ? [Number(m[1]), m[2]] : [1, t.merknad];
     return !skjules.test(mod) && (mengde !== 1 || /^(?:cup|tbsp|tablespoon|tsp|teaspoon|stick|pat|fl oz|quart|ml|serving 1)/u.test(mod));
   };
-  return Object.entries(r.tall).filter((e) => e[0] === grunn || vis(e)).map(([, t]) => [t.merknad, t.verdi]);
+  const poster = (prefiks) => Object.entries(r.tall).filter(([k]) => k.startsWith('b_') === (prefiks === 'b_')).filter(([k, t]) => k === `${prefiks}cup` || k === `${prefiks}tsp` || vis(t)).map(([, t]) => `${t.verdi} g`);
+  return [poster(''), ...(r.tekst.fdcId2 ? [poster('b_')] : [])];
 }
 
 test('flour: svaret står i ingress, beskrivelse, short answer, tabell og kalkulator, og er det samme tallet', () => {
@@ -102,9 +102,9 @@ test('flour: svaret står i ingress, beskrivelse, short answer, tabell og kalkul
   assert.equal(s.lead, '1 cup of all-purpose flour weighs 125 g (4.4 oz). Type an amount to convert.');
   assert.match(s.description, /^1 cup of all-purpose flour weighs 125 g \(4\.4 oz\)\./u);
   assert.match(s.topp, /2 cups flour = 250 g/u);
-  assert.match(s.topp, /<b>Short answer:<\/b> 1 cup of all-purpose flour is 125 g\. 1 tablespoon is 8 g and 1 teaspoon is 3 g, calculated from the cup weight\./u);
-  assert.match(s.rik, /<tr><td>1\/4 cup flour<\/td><td>31 g<\/td><td>1\.1 oz<\/td><\/tr>/u);
-  assert.match(s.rik, /<tr><td>1 cup flour<\/td><td>125 g<\/td><td>4\.4 oz<\/td><\/tr>/u);
+  assert.match(s.topp, /<b>Short answer:<\/b> 1 cup of all-purpose flour is 125 g\. 1 tablespoon is 7\.8 g and 1 teaspoon is 2\.6 g, calculated from the cup weight\./u);
+  assert.match(s.rik, /<tr><td>1\/4 cup<\/td><td>31 g<\/td><td>1\.1 oz<\/td><\/tr>/u);
+  assert.match(s.rik, /<tr><td>1 cup<\/td><td>125 g<\/td><td>4\.4 oz<\/td><\/tr>/u);
   assert.equal(s.title, 'Flour: cups to grams and ounces (1 cup = 125 g)');
   assert.equal(s.h1, 'Flour: cups to grams');
   assert.match(s.rik, /<h2>Ounces: volume and weight<\/h2>\s*<p>A cup holds 8 fluid ounces\. A cup of all-purpose flour weighs 4\.4 oz\.<\/p>/u);
@@ -122,13 +122,13 @@ test('bevis: flour endret til 1, 120 eller 200 i en kopi av datafila gir rødt i
     kopi.tall.cup.verdi = verdi;
     assert.ok(sjekkSide(kopi, s).length > 0, `${verdi}: siden er laget av 125, kontrollen utleder fra ${verdi}`);
   }
-  assert.ok(s.rik.includes('<td>1 cup flour</td><td>125 g</td>'));
+  assert.ok(s.rik.includes('<td>1 cup</td><td>125 g</td>'));
   for (const feilVerdi of [1, 120, 200]) {
-    assert.ok(sjekkSide(r, { ...s, rik: s.rik.replace('<td>1 cup flour</td><td>125 g</td>', `<td>1 cup flour</td><td>${feilVerdi} g</td>`) })[0].startsWith('tabellen cups to grams'), String(feilVerdi));
+    assert.ok(sjekkSide(r, { ...s, rik: s.rik.replace('<td>1 cup</td><td>125 g</td>', `<td>1 cup</td><td>${feilVerdi} g</td>`) })[0].startsWith('tabellen cups to grams'), String(feilVerdi));
   }
   assert.ok(sjekkSide(r, { ...s, lead: s.lead.replace('125', '120') }).length > 0);
   assert.ok(sjekkSide(r, { ...s, description: s.description.replace('125', '200') }).length > 0);
-  assert.ok(sjekkSide(r, { ...s, topp: s.topp.replace('is 8 g', 'is 9 g') }).length > 0);
+  assert.ok(sjekkSide(r, { ...s, topp: s.topp.replace('is 7.8 g', 'is 9 g') }).length > 0);
   assert.ok(sjekkSide(r, { ...s, faq: s.faq.map(([q, a]) => [q, a.replace('0.8', '0.9')]) }).length > 0);
 });
 
@@ -138,7 +138,7 @@ test('tallvakten er stram: en tabellverdi på 120 eller 200 er ikke tillatt på 
   const tillatt = tillatteTall(r, data);
   for (const feilVerdi of ['90', '200', '27']) assert.equal(tillatt.has(feilVerdi), false, feilVerdi);
   for (const ok of ['125', '250', '31', '4.4', '168894', '2026', '137']) assert.equal(tillatt.has(ok), true, ok);
-  assert.deepEqual(tallUtenforData({ ...s, rik: s.rik.replace('<td>1 cup flour</td><td>125 g</td>', '<td>1 cup flour</td><td>200 g</td>') }, tillatt), ['200']);
+  assert.deepEqual(tallUtenforData({ ...s, rik: s.rik.replace('<td>1 cup</td><td>125 g</td>', '<td>1 cup</td><td>200 g</td>') }, tillatt), ['200']);
 });
 
 test('hvert tall på hver side er tillatt, og samlesiden har sin egen liste', () => {
@@ -149,21 +149,24 @@ test('hvert tall på hver side er tillatt, og samlesiden har sin egen liste', ()
 test('hevemidlene har teaspoon først: ingress, kalkulator og tabell, og cup er utregnet', () => {
   const r = rad('baking-powder');
   const s = sideForRad(r, data, rader);
-  assert.equal(s.lead, '1 teaspoon of double-acting baking powder weighs 5 g (0.16 oz). Type an amount to convert.');
+  assert.equal(s.lead, '1 teaspoon of double-acting baking powder weighs 4.6 g (0.16 oz). Type an amount to convert.');
   assert.equal(s.h1, 'Baking powder: teaspoons to grams');
   assert.match(s.topp, /<option value="tsp" selected>Teaspoons \(tsp\)<\/option>/u);
-  assert.match(s.topp, /2 tsp baking powder = 9 g/u);
+  assert.match(s.topp, /2 tsp baking powder = 9\.2 g/u);
   assert.match(s.topp, /1 cup is 221 g, calculated from the teaspoon weight/u);
-  assert.ok(s.rik.indexOf('<td>1 tsp baking powder</td>') > -1 && s.rik.indexOf('<td>1 tsp baking powder</td>') < s.rik.indexOf('<td>1 cup baking powder</td>'));
+  assert.ok(s.rik.indexOf('<td>1 tsp</td>') > -1 && s.rik.indexOf('<td>1 tsp</td>') < s.rik.indexOf('<td>1 cup</td>') && s.rik.indexOf('<td>1/2 tsp</td>') < s.rik.indexOf('<td>1 tsp</td>'));
   assert.match(s.rik, /<td>tsp<small>Used in the calculator<\/small><\/td><td>4\.6 g<\/td>/u);
   assert.match(s.rik, /<td>0\.5 tsp<\/td><td>2\.3 g<\/td>/u);
   for (const id of ['baking-powder', 'baking-soda', 'active-dry-yeast']) assert.match(sideForRad(rad(id), data, rader).topp, /<option value="tsp" selected>/u, id);
 });
 
-test('smør har raden «1 stick» med 113 g og ett spørsmål om sticks; ingen andre varer har dem', () => {
+test('smør: «stick» står i USDA-tabellen og i ett spørsmål, ikke i hovedtabellen; ingen andre varer har sticks', () => {
   const s = sideForRad(rad('smor'), data, rader);
-  assert.match(s.rik, /<tr><td>1 stick butter<\/td><td>113 g<\/td><td>4 oz<\/td><\/tr>/u);
-  assert.ok(s.faq.some(([q, a]) => q === 'How many grams are in a stick of butter?' && /113 g/u.test(a)));
+  assert.equal(/<tr><td>1 stick/u.test(s.rik), false);
+  assert.equal(s.rik.match(/<table class="otabell">[\s\S]*?<\/table>/u)[0].includes('stick'), false);
+  assert.match(s.rik, /<tr><td>stick<\/td><td>113 g<\/td><\/tr>/u);
+  assert.match(s.rik, /<tr><td>pat \(1&quot; sq, 1\/3&quot; high\)<\/td><td>5 g<\/td><\/tr>/u);
+  assert.deepEqual(s.faq.find(([q]) => q === 'How many grams are in a stick of butter?'), ['How many grams are in a stick of butter?', 'USDA lists 1 stick of salted butter as 113 g.']);
   for (const [id, side] of sider().filter(([i]) => i !== 'smor')) assert.equal(/stick/iu.test(JSON.stringify(side)), false, id);
 });
 
@@ -197,7 +200,7 @@ test('der USDAs eget tablespoon-tall avviker mer enn 10 prosent, sier siden begg
   assert.deepEqual(rader.filter((r) => skjeAvvik(r).length).map((r) => r.id).sort(), ['grated-parmesan', 'romme']);
   const romme = sideForRad(rad('romme'), data, rader).rik;
   assert.match(romme, /<p>USDA lists 1 tbsp of sour cream as 12 g\. The calculator and the chart use the cup weight, which gives 14 g for 1 tbsp\.<\/p>/u);
-  assert.match(sideForRad(rad('grated-parmesan'), data, rader).rik, /USDA lists 1 tbsp of grated parmesan as 5 g\. The calculator and the chart use the cup weight, which gives 6 g for 1 tbsp\./u);
+  assert.match(sideForRad(rad('grated-parmesan'), data, rader).rik, /USDA lists 1 tbsp of grated parmesan as 5 g\. The calculator and the chart use the cup weight, which gives 6\.3 g for 1 tbsp\./u);
   for (const id of ['hvetemel', 'smor', 'salt', 'melk']) assert.equal(sideForRad(rad(id), data, rader).rik.includes('USDA lists 1 tbsp'), false, id);
 });
 
@@ -210,7 +213,7 @@ test('«Ounces: volume and weight» sier bare de to setningene, på alle sider',
 });
 
 test('varianten står i ingress og beskrivelse, mens tittel og H1 beholder kortnavnet', () => {
-  for (const [id, v, navn] of [['brunt-sukker', 'packed brown sugar', 'Brown sugar'], ['mandler', 'whole almonds', 'Almonds'], ['walnuts', 'chopped walnuts', 'Walnuts'], ['ris', 'uncooked long-grain white rice', 'White rice'], ['melk', 'whole milk', 'Milk'], ['smor', 'salted butter', 'Butter']]) {
+  for (const [id, v, navn] of [['brunt-sukker', 'packed brown sugar', 'Brown sugar'], ['mandler', 'whole almonds', 'Almonds'], ['walnuts', 'chopped walnuts', 'Walnuts'], ['ris', 'uncooked long-grain white or brown rice', 'Rice'], ['melk', 'whole milk', 'Milk'], ['smor', 'salted butter', 'Butter']]) {
     const s = sideForRad(rad(id), data, rader);
     assert.ok(s.lead.includes(`of ${v} weighs`), id);
     assert.ok(s.description.includes(`of ${v} weighs`), id);
@@ -290,15 +293,24 @@ test('samlesiden lister alle varene med lenke, med tabellen «What does 1 cup we
   for (const r of rader) assert.ok(s.rik.includes(`href="/en/tools/cups-to-grams/${r.slug}/"`), r.id);
   assert.match(s.rik, /<h2>What does 1 cup weigh\?<\/h2>/u);
   assert.match(s.rik, /<th scope="col">1 cup \(g\)<\/th><th scope="col">1 cup \(oz\)<\/th><th scope="col">1 tbsp \(g\)<\/th><th scope="col">1 tsp \(g\)<\/th>/u);
-  assert.match(s.rik, /<td><a href="\/en\/tools\/cups-to-grams\/flour\/">Flour<\/a><\/td><td>125 g<\/td><td>4\.4 oz<\/td><td>8 g<\/td><td>3 g<\/td>/u);
+  assert.match(s.rik, /<td><a href="\/en\/tools\/cups-to-grams\/flour\/">Flour<\/a><\/td><td>125 g<\/td><td>4\.4 oz<\/td><td>7\.8 g<\/td><td>2\.6 g<\/td>/u);
   assert.match(s.topp, /<select data-felt="vare">/u);
   for (const h of ['Why a cup does not weigh the same', 'How we calculated', 'Sources', 'Related conversions']) assert.ok(s.rik.includes(`<h2>${h}</h2>`), h);
 });
 
-test('appkortet bruker teksten de engelske omregnersidene alt har', () => {
-  const oz = readFileSync(new URL('../en/tools/oz-to-ml/index.html', import.meta.url), 'utf8');
-  const tekst = (html) => html.match(/<h2>Stop converting by hand<\/h2>[\s\S]*?works\.<\/p>/u)?.[0] ?? oz.match(/<h2 id="stop-converting-by-hand">[\s\S]*?works\.<\/p>/u)?.[0].replace(' id="stop-converting-by-hand"', '');
-  assert.equal(tekst(sideForRad(rad('hvetemel'), data, rader).rik), tekst(oz));
+test('appkortet har samme oppsett som det norske: overskrift, kort med tekst og telefonbilde, og bare setninger fra de engelske omregnersidene', () => {
+  const oz = readFileSync(new URL('../en/tools/oz-to-ml/index.html', import.meta.url), 'utf8').replace(/<[^>]+>/gu, '');
+  const bilder = JSON.parse(readFileSync(new URL('../images/en-guide/bilder.json', import.meta.url), 'utf8'));
+  const alt = Object.values(bilder).find((v) => Object.values(v.files ?? {}).some((f) => f.file.startsWith('matlyst-settings-units-language-')))?.alt;
+  for (const s of [sideForRad(rad('hvetemel'), data, rader), navSide(data, rader)]) {
+    const kort = s.rik.match(/<h2>Stop converting by hand<\/h2>\s*<aside class="i-appen i-enheter">([\s\S]*?)<\/aside>/u)?.[1];
+    assert.ok(kort, 'kortet står rett under overskriften');
+    assert.match(kort, /<div class="i-appen-tekst"><p class="i-appen-tittel"><img src="\/images\/icon-64\.png" width="22" height="22" alt="">In Matlyst<\/p>/u);
+    assert.match(kort, /<a class="more" href="\/en\/recipe-book-app\/">Read more<\/a>/u);
+    assert.match(kort, /<div class="i-appen-media"><img class="tel" src="\/images\/en-guide\/matlyst-settings-units-language-400\.webp"/u);
+    assert.ok(alt && kort.includes(`alt="${alt}"`), 'bildets alt-tekst står i bilder.json');
+    for (const setning of kort.match(/<p>([^<]*)<\/p>/u)[1].split(/(?<=\.) /u)) assert.ok(oz.includes(setning), `setningen står på omregnersidene: ${setning}`);
+  }
 });
 
 test('andre varer: åtte lenker pluss «All ingredients», aldri varen selv, nære varer først', () => {
@@ -321,7 +333,7 @@ test('hver tekst-en-oppføring peker på en vare som finnes, og nære varer finn
 
 test('utregnetEn: tallreglene (hele gram, to gjeldende sifre under 10) og gram per dl uten avrunding', () => {
   const u = utregnetEn(rad('hvetemel'));
-  assert.deepEqual(u.tabell[0], ['1 tsp', '3', '0.092']);
+  assert.deepEqual(u.tabell[0], ['1 tsp', '2.6', '0.092']);
   assert.deepEqual(u.tabell.find(([e]) => e === '1/4 cup'), ['1/4 cup', '31', '1.1']);
   assert.deepEqual(u.tilbake, [[50, '0.4'], [100, '0.8'], [250, '2'], [500, '4']]);
   assert.equal(u.gPerDl, 125 / 2.365882365);

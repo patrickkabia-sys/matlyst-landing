@@ -260,6 +260,10 @@ output.kalktall{word-spacing:.25em;overflow:hidden;text-overflow:ellipsis;white-
 .locale-prose .okort h2{margin:0;font-size:1.5rem;line-height:1.12}
 .locale-prose .okort > p{margin:8px 0 0;font-size:1.125rem;color:var(--dempet)}
 .locale-prose .otabell{width:100%;margin-top:22px}
+/* Tabellen med tre kolonner (vare, gram, ounces): gram er fet, ounces har vanlig vekt, og begge tallkolonnene står til høyre uten linjeskift. */
+.locale-prose .otabell td:nth-child(n+2),.locale-prose .otabell th:nth-child(n+2){text-align:right;white-space:nowrap}
+.locale-prose .otabell td:nth-child(2){font-weight:700}
+.locale-prose .otabell td:nth-child(3){font-weight:400}
 .locale-prose .formel{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:26px 0 0;padding:22px 24px;border-radius:20px;background:var(--flate);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;color:var(--blekk)}
 .formel i{font-style:normal;font-weight:400;color:var(--dempet)}
 .locale-prose .okort .liten{margin:22px 0 0;font-size:.875rem;font-weight:500;letter-spacing:.04em;line-height:1.5;color:var(--dempet)}

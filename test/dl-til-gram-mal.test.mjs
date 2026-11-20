@@ -21,7 +21,7 @@ const sig = (n, sifre) => {
   const t = (Math.round(Number((n * 10 ** d).toPrecision(12))) / 10 ** d).toFixed(d);
   return (t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t).replace('.', ',');
 };
-const gramT = (n) => (n >= 1 ? String(Math.round(Number(n.toPrecision(12)))) : sig(n, 2));
+const gramT = (n) => (n >= 10 ? String(Math.round(Number(n.toPrecision(12)))) : sig(n, 2));
 const andreT = (n) => (n >= 100 ? String(Math.round(n)) : sig(n, n >= 10 ? 3 : 2));
 const tall = (t) => String(t).match(/\d+(?:[.,]\d+)?/gu) ?? [];
 const ren = (html) => htmlTilTekst(html, { attributter: false }).replace(/\s+/gu, ' ').trim();
@@ -89,18 +89,18 @@ test('hvetemel: svaret står i ingress, kort svar, tabell og kalkulator, og er d
 test('utregningene følger tallreglene: hele gram fra 1 g, to gjeldende sifre under, og få desimaler for andre enheter', () => {
   const u = utregnet({ tall: { dl: { verdi: 55 } } });
   assert.deepEqual(u.tilbake, [[100, '1,8'], [250, '4,5'], [500, '9,1'], [1000, '18,2']]);
-  assert.equal(u.ss, 8);
-  assert.equal(u.ts, 3);
-  assert.equal(utregnet({ tall: { dl: { verdi: 35 } } }).ts, 2);
+  assert.equal(u.ss, 8.3);
+  assert.equal(u.ts, 2.8);
+  assert.equal(utregnet({ tall: { dl: { verdi: 35 } } }).ts, 1.8);
   assert.deepEqual(u.tabell.map(([e]) => e), ['1 ts', '1 ss', '0,5 dl', '1 dl', '2 dl', '3 dl', '4 dl', '5 dl', '1 liter']);
-  assert.deepEqual(u.tabell.map(([, g]) => g), [3, 8, 28, 55, 110, 165, 220, 275, 550]);
+  assert.deepEqual(u.tabell.map(([, g]) => g), [2.8, 8.3, 28, 55, 110, 165, 220, 275, 550]);
   // Salt, 130 g per dl: 100 g er 0,77 dl, ikke 0,8.
   assert.deepEqual(utregnet({ tall: { dl: { verdi: 130 } } }).tilbake, [[100, '0,77'], [250, '1,9'], [500, '3,8'], [1000, '7,7']]);
   // Hele tideler uten «,0»: 100 g per dl gir 1, 2,5, 5 og 10 dl.
   assert.deepEqual(utregnet({ tall: { dl: { verdi: 100 } } }).tilbake, [[100, '1'], [250, '2,5'], [500, '5'], [1000, '10']]);
   // Under 1 g: to gjeldende sifre.
   const lite = utregnet({ tall: { dl: { verdi: 5 } } });
-  assert.deepEqual(lite.tabell.slice(0, 3).map(([, g]) => g), [0.25, 0.75, 2.5].map((x) => (x === 2.5 ? 3 : x)));
+  assert.deepEqual(lite.tabell.slice(0, 3).map(([, g]) => g), [0.25, 0.75, 2.5]);
 });
 
 test('hvert tall på hver side regnes ut på nytt fra datafila og stemmer på sin plass', () => {
@@ -118,7 +118,7 @@ test('bevis: en tabellverdi endret til 1, 27 eller 90 gir rødt i den posisjonel
   // Det samme for ingress, kort svar, metabeskrivelse, FAQ og kildetabell.
   assert.ok(sjekkSide(r, { ...s, lead: s.lead.replace('55', '27') }).length > 0);
   assert.ok(sjekkSide(r, { ...s, description: s.description.replace('55', '90') }).length > 0);
-  assert.ok(sjekkSide(r, { ...s, topp: s.topp.replace('er 8 g', 'er 9 g') }).length > 0);
+  assert.ok(sjekkSide(r, { ...s, topp: s.topp.replace('er 8,3 g', 'er 9 g') }).length > 0);
   assert.ok(sjekkSide(r, { ...s, faq: s.faq.map(([q, a]) => [q, a.replace('1,8', '1,9')]) }).length > 0);
   assert.ok(sjekkSide(r, { ...s, rik: s.rik.replace('<td>53 g</td>', '<td>54 g</td>') }).length > 0);
 });
@@ -128,7 +128,7 @@ test('tallvakten er stram: en tabellverdi på 27 eller 90 er ikke lenger tillatt
   const s = sideForRad(r, data, rader);
   const tillatt = tillatteTall(r, data);
   for (const feilVerdi of ['27', '90', '14', '3,5']) assert.equal(tillatt.has(feilVerdi), false, feilVerdi);
-  for (const ok of ['55', '110', '28', '8', '3', '1,8', '18,2', '53', '2026', '168936']) assert.equal(tillatt.has(ok), true, ok);
+  for (const ok of ['55', '110', '28', '8,3', '2,8', '1,8', '18,2', '53', '2026', '168936']) assert.equal(tillatt.has(ok), true, ok);
   assert.deepEqual(tallUtenforData({ ...s, rik: s.rik.replace('<td>1 dl</td><td>55 g</td>', '<td>1 dl</td><td>27 g</td>') }, tillatt), ['27']);
   assert.deepEqual(tallUtenforData({ ...s, rik: s.rik.replace('<td>1 dl</td><td>55 g</td>', '<td>1 dl</td><td>90 g</td>') }, tillatt), ['90']);
   // Ingen intervaller: ingen heltall 0 til 29 bare fordi de kan være en indeks.
@@ -204,7 +204,7 @@ test('toppede skjeer står ikke på sidene, og rapporten er ikke blant kildene',
 
 test('spiseskje og teskje er merket som utregnet; væsker (melk, fløte, olje, sirup) sies uten «strøken»', () => {
   const s = sideForRad(rad('hvetemel'), data, rader);
-  assert.match(s.topp, /strøken spiseskje \(15 ml\) er 8 g, og en strøken teskje \(5 ml\) er 3 g, regnet ut fra dl-tallet/u);
+  assert.match(s.topp, /strøken spiseskje \(15 ml\) er 8,3 g, og en strøken teskje \(5 ml\) er 2,8 g, regnet ut fra dl-tallet/u);
   const ss = s.faq.find(([q]) => /1 ss/u.test(q));
   assert.match(ss[1], /strøken/u);
   assert.match(ss[1], /regnet ut/u);

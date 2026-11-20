@@ -41,19 +41,29 @@ export function grunnPorsjon(post, modifikator) {
 
 const g = (verdi, merknad) => ({ verdi, enhet: 'g', kilde: 'usda', merknad });
 
+/** Tallene for én post: grunnlaget først (nøkkel `basis`), så alle øvrige porsjoner som p_<n>, i USDAs egen rekkefølge. `prefiks` er '' eller 'b_'. */
+function tallFraPost(post, grunn, nokkel, prefiks) {
+  const tall = { [`${prefiks}${nokkel}`]: g(grunn.gramWeight, porsjonEtikett(grunn)) };
+  const ovrige = post.foodPortions.filter((p) => p !== grunn).sort((a, b) => a.sequenceNumber - b.sequenceNumber);
+  ovrige.forEach((p, i) => { tall[`${prefiks}p_${i + 1}`] = g(p.gramWeight, porsjonEtikett(p)); });
+  return tall;
+}
+
 /** Én rad fra varelista og SR Legacy, eller null når posten eller porsjonen ikke finnes. Gjetter aldri. */
 export function radFraUsda(vare, sr, dato = '2026-11-20') {
   const post = finnPost(sr, vare.fdcId);
   const grunn = grunnPorsjon(post, vare.porsjon);
   if (!post || !grunn || !Number.isFinite(grunn.gramWeight)) return null;
-  const tall = { [vare.basis]: g(grunn.gramWeight, porsjonEtikett(grunn)) };
-  // Alle øvrige porsjoner i posten, i USDAs egen rekkefølge, hver med modifikatoren ordrett.
-  const ovrige = post.foodPortions.filter((p) => p !== grunn).sort((a, b) => a.sequenceNumber - b.sequenceNumber);
-  ovrige.forEach((p, i) => { tall[`p_${i + 1}`] = g(p.gramWeight, porsjonEtikett(p)); });
-  return {
-    id: vare.id, slug: vare.slug, navn: vare.navn, status: 'utkast', oppdatert: dato, tall,
-    tekst: { variant: vare.variant, usdaNavn: post.description, fdcId: String(vare.fdcId) },
-  };
+  const tall = tallFraPost(post, grunn, vare.basis, '');
+  const tekst = { variant: vare.variant, usdaNavn: post.description, fdcId: String(vare.fdcId) };
+  if (vare.ogsa) {
+    const post2 = finnPost(sr, vare.ogsa.fdcId);
+    const grunn2 = grunnPorsjon(post2, vare.ogsa.porsjon);
+    if (!post2 || !grunn2) return null;
+    Object.assign(tall, tallFraPost(post2, grunn2, vare.basis, 'b_'));
+    Object.assign(tekst, { usdaNavn2: post2.description, fdcId2: String(vare.ogsa.fdcId) });
+  }
+  return { id: vare.id, slug: vare.slug, navn: vare.navn, status: 'utkast', oppdatert: dato, tall, tekst };
 }
 
 export function lagDataEn(sr, dato) {

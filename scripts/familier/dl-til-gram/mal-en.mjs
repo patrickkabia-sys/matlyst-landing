@@ -35,9 +35,6 @@ export function utregnetEn(rad) {
   const tabell = tsp
     ? [['1/2 tsp', 1 / 96], ['1 tsp', 1 / 48], ['2 tsp', 1 / 24], ['1 tbsp', 1 / 16], ['1/4 cup', 1 / 4], ['1/2 cup', 1 / 2], ['1 cup', 1]].map(([e, b]) => rad_(e, perCup(b)))
     : [['1 tsp', 1 / 48], ['1 tbsp', 1 / 16], ...cups].map(([e, b]) => rad_(e, perCup(b)));
-  // Smør: USDAs egen porsjon «stick» står i tabellen som en egen rad.
-  const stick = Object.values(rad.tall).find((t) => t.merknad === 'stick');
-  if (stick) tabell.splice(tabell.findIndex(([e]) => e === '1/2 cup') + 1, 0, rad_('1 stick', stick.verdi));
   const grunn = tsp ? rad.tall.tsp.verdi : gPerCup;
   const tilbake = (tsp ? [5, 10, 25, 50] : [50, 100, 250, 500]).map((g) => [g, mengdeTekst(g / grunn)]);
   return {
@@ -104,13 +101,16 @@ export function visPorsjon(etikett) {
   if (SKJULES.test(mod)) return false;
   return mengde !== 1 || BEHOLDES.test(mod);
 }
-/** Modifikatoren til porsjonen som brukes (grunnlaget), slik USDA skriver den. */
-const grunnPorsjon = (rad) => (rad.tall.cup ?? rad.tall.tsp).merknad;
-/** Alle porsjoner raden har i datafila, med den som brukes først: [etikett, gram, brukt]. */
-export function usdaPorsjoner(rad) {
-  const grunn = rad.tall.cup ? 'cup' : 'tsp';
-  return Object.entries(rad.tall).map(([felt, t]) => [t.merknad, t.verdi, felt === grunn]).filter(([e, , brukt]) => brukt || visPorsjon(e));
+/** Porsjonene i én av radens poster (prefiks '' eller 'b_'), med grunnlaget først: [etikett, gram, brukt]. Brukt gjelder bare den første posten. */
+export function usdaPorsjoner(rad, prefiks = '') {
+  const grunnNokkel = `${prefiks}${rad.tall[`${prefiks}cup`] ? 'cup' : 'tsp'}`;
+  return Object.entries(rad.tall)
+    .filter(([felt]) => felt.startsWith('b_') === (prefiks === 'b_'))
+    .filter(([felt, t]) => felt === grunnNokkel || visPorsjon(t.merknad))
+    .map(([felt, t]) => [t.merknad, t.verdi, prefiks === '' && felt === grunnNokkel]);
 }
+/** Postene raden bygger på: [{ fdcId, navn, prefiks }]. */
+export const poster = (rad) => [{ fdcId: rad.tekst.fdcId, navn: rad.tekst.usdaNavn, prefiks: '' }, ...(rad.tekst.fdcId2 ? [{ fdcId: rad.tekst.fdcId2, navn: rad.tekst.usdaNavn2, prefiks: 'b_' }] : [])];
 /** USDAs egne tbsp- og tsp-tall som avviker mer enn 10 prosent fra det som regnes ut fra cup (eller teskje): [enhet, USDAs tall, utregnet gram per enhet]. */
 export function skjeAvvik(rad) {
   const u = utregnetEn(rad);
@@ -129,7 +129,10 @@ export function skjeAvvik(rad) {
 const kildeLinje = (k) => `${esc(k.utgiver)}. ${esc(k.navn)} (${k.aar}). <a href="${esc(k.adresse)}" rel="noopener">${esc(new URL(k.adresse).hostname)}</a>. Retrieved ${engelskDato(k.hentet)}.`;
 const kildeliste = (kilder) => `<h2>Sources</h2>\n<ol class="kilder" id="sources">${kilder.map((k) => `<li>${kildeLinje(k)}</li>`).join('')}</ol>`;
 
-const APPKORT = `<h2>Stop converting by hand</h2><p>Converting by hand gets old fast, especially when a whole recipe is in the wrong units. When you import a recipe into Matlyst, you choose how amounts are shown. With <strong>Units</strong> set to <strong>Metric</strong> in Settings, cups, ounces, and pounds from a US recipe are converted to milliliters and grams as you import it. Set it to <strong>US</strong> and Matlyst keeps the source amounts as written. The setting applies to new imports.</p><ul><li><strong>Import once, no math.</strong> Share a recipe from Instagram, TikTok, or a website, and check the draft before you save.</li><li><strong>Scale the servings.</strong> Change from 1 to 20 servings and every amount scales with it. Scaling is linear, so check baking and spices yourself.</li><li><strong>One grocery list.</strong> Matching items are combined and sorted by store section.</li></ul><p>Matlyst is free to start, with 5 imports per calendar month. Read more about the <a href="/en/recipe-book-app/">recipe organizer app</a>, or see how the <a href="/en/shopping-list/">grocery list</a> works.</p>`;
+// Samme kortoppsett som APPKORT i mal-nb.mjs: overskrift og kort med telefonbilde. Teksten er setninger fra «Stop converting by hand» på de engelske
+// omregnersidene, og bildet er det de bruker for Units (images/en-guide/bilder.json, matlyst-settings-units-language).
+const APPKORT = `<h2>Stop converting by hand</h2>
+<aside class="i-appen i-enheter"><div class="i-appen-tekst"><p class="i-appen-tittel"><img src="/images/icon-64.png" width="22" height="22" alt="">In Matlyst</p><p>With Units set to Metric in Settings, cups, ounces, and pounds from a US recipe are converted to milliliters and grams as you import it. The setting applies to new imports.</p><a class="more" href="/en/recipe-book-app/">Read more</a></div><div class="i-appen-media"><img class="tel" src="/images/en-guide/matlyst-settings-units-language-400.webp" srcset="/images/en-guide/matlyst-settings-units-language-400.webp 400w, /images/en-guide/matlyst-settings-units-language-800.webp 800w" sizes="200px" width="400" height="870" loading="lazy" decoding="async" alt="Settings screen with Units set to US and the language set to English"></div></aside>`;
 
 const EYEBROW_VARE = `Tools<span aria-hidden="true"> › </span><a href="${ROT}">Cups to grams</a>`;
 const EYEBROW_NAV = 'Tools<span aria-hidden="true"> › </span>Cups to grams';
@@ -154,7 +157,7 @@ export function tillatteTall(rad, data) {
   s.add(mengdeTekst(453.59237 / (tsp ? u.grunn : u.gPerCup))); s.add(mengdeTekst(1000 / (tsp ? u.grunn : u.gPerCup)));
   for (const t of Object.values(rad.tall)) { s.add(String(t.verdi)); tallI(t.merknad).forEach((n) => s.add(n)); s.add(gramTekst(t.verdi)); s.add(ouncesTekst(t.verdi)); }
   for (const [, usda, regnet] of skjeAvvik(rad)) { s.add(String(usda)); s.add(gramTekst(regnet)); }
-  for (const t of [rad.tekst?.usdaNavn, rad.tekst?.fdcId, variant(rad)]) tallI(t).forEach((n) => s.add(n));
+  for (const t of [rad.tekst?.usdaNavn, rad.tekst?.fdcId, rad.tekst?.usdaNavn2, rad.tekst?.fdcId2, variant(rad)]) tallI(t).forEach((n) => s.add(n));
   for (const id of TEKST_EN[rad.id]?.naer ?? []) {
     const n = publiserbare(data).find((r) => r.id === id);
     if (!n) continue;
@@ -186,12 +189,16 @@ export function tillatteTallNav(data) {
 
 function usdaAvsnitt(rad, data) {
   const t = TEKST_EN[rad.id] ?? {};
-  const rader = usdaPorsjoner(rad).map(([etikett, g, brukt]) => `<tr${brukt ? ' class="valgt"' : ''}><td>${esc(etikett)}${brukt ? '<small>Used in the calculator</small>' : ''}</td><td>${g} g</td></tr>`).join('');
+  const tabellFor = (prefiks) => `<table class="sprik"><thead><tr><th scope="col">Portion</th><th scope="col">Grams</th></tr></thead><tbody>${usdaPorsjoner(rad, prefiks).map(([etikett, g, brukt]) => `<tr${brukt ? ' class="valgt"' : ''}><td>${esc(etikett)}${brukt ? '<small>Used in the calculator</small>' : ''}</td><td>${g} g</td></tr>`).join('')}</tbody></table>`;
+  const [forste, andre] = poster(rad);
   const avvik = skjeAvvik(rad).map(([e, usda, regnet]) => `<p>USDA lists 1 ${e} of ${esc(ord(rad))} as ${usda} g. The calculator and the chart use the ${erTsp(rad) ? 'teaspoon' : 'cup'} weight, which gives ${gramTekst(regnet)} g for 1 ${e}.</p>`).join('\n');
+  const stick = Object.values(rad.tall).find((x) => x.merknad === 'stick');
   const naer = (t.naer ?? []).map((id) => publiserbare(data).find((r) => r.id === id)).filter(Boolean);
+  const grunnTall = rad.tall.cup ?? rad.tall.tsp;
+  const likt = andre && rad.tall.b_cup && rad.tall.b_cup.verdi === grunnTall.verdi ? `\n<p>Both entries list ${grunnTall.verdi} g for 1 ${grunnTall.merknad}.</p>` : '';
   return `<h2>USDA entries</h2>
-<p>USDA FoodData Central, SR Legacy, FDC ID ${rad.tekst.fdcId}: “${esc(rad.tekst.usdaNavn)}”. Every portion in the entry is shown as USDA writes it. The calculator uses the portion “${esc(grunnPorsjon(rad))}” for ${esc(variant(rad))}.</p>
-<table class="sprik"><thead><tr><th scope="col">Portion</th><th scope="col">Grams</th></tr></thead><tbody>${rader}</tbody></table>${avvik ? `\n${avvik}` : ''}${naer.length ? `\n<p>Close entries with their own page: ${naer.map((n) => lenke(n)).join(', ')}.</p>` : ''}`;
+<p>USDA FoodData Central, SR Legacy, FDC ID ${forste.fdcId}: “${esc(forste.navn)}”. Every portion in the ${andre ? 'entries' : 'entry'} is shown as USDA writes it.</p>
+${tabellFor('')}${andre ? `\n<p>FDC ID ${andre.fdcId}: “${esc(andre.navn)}”.</p>\n${tabellFor('b_')}${likt}` : ''}${avvik ? `\n${avvik}` : ''}${naer.length ? `\n<p>Close entries with their own page: ${naer.map((n) => lenke(n)).join(', ')}.</p>` : ''}`;
 }
 
 function spmForRad(rad, data, rader, u) {
@@ -200,7 +207,7 @@ function spmForRad(rad, data, rader, u) {
   const v = variant(rad);
   const tsp = erTsp(rad);
   const enhet = tsp ? 'teaspoon' : 'cup';
-  const kilde = `Source: USDA FoodData Central, SR Legacy, FDC ID ${rad.tekst.fdcId}, “${esc(kortUsdaNavn(rad.tekst.usdaNavn))}”.`;
+  const kilde = `Source: USDA FoodData Central, SR Legacy, ${poster(rad).map((p) => `FDC ID ${p.fdcId}, “${esc(kortUsdaNavn(p.navn))}”`).join(' and ')}.`;
   const spm = [[
     `How many grams are in a ${enhet} of ${o}?`,
     `1 ${enhet} of ${v} weighs ${tsp ? gram(u.grunn) : gram(u.gPerCup)} (${tsp ? ouncesTekst(u.grunn) : u.oz} oz). ${kilde}`,
@@ -216,7 +223,7 @@ function spmForRad(rad, data, rader, u) {
   const alt = t.alt && Object.values(rad.tall).find((x) => x.merknad === t.alt.porsjon);
   const naer = (t.naer ?? []).map((id) => rader.find((r) => r.id === id)).filter(Boolean);
   if (stick) {
-    spm.push([`How many grams are in a stick of ${o}?`, `1 stick of ${v} weighs ${gram(stick.verdi)} (${ouncesTekst(stick.verdi)} oz), from the USDA portion “stick”.`]);
+    spm.push([`How many grams are in a stick of ${o}?`, `USDA lists 1 stick of ${v} as ${stick.verdi} g.`]);
   } else if (alt) {
     spm.push([t.alt.sporsmal, `USDA lists ${alt.verdi} g for 1 ${t.alt.porsjon}. This page uses 1 ${rad.tall.cup.merknad}, which is ${rad.tall.cup.verdi} g.`]);
   } else if (naer[0] && utregnetEn(naer[0]).gPerCup !== u.gPerCup) {
@@ -245,7 +252,7 @@ function kortsvar(rad, u) {
     ? `1 teaspoon of ${v} is ${gram(u.grunn)}. 1 tablespoon is ${u.tbsp} g and 1 cup is ${gram(u.gPerCup)}, calculated from the teaspoon weight.`
     : `1 cup of ${v} is ${gram(u.gPerCup)}. 1 tablespoon is ${u.tbsp} g and 1 teaspoon is ${u.tsp} g, calculated from the cup weight.`;
   return `<p class="kortsvar"><b>Short answer:</b> ${svar}</p>
-<p class="kilde">Source: <a href="#sources">USDA FoodData Central, SR Legacy</a>, “${esc(rad.tekst.usdaNavn)}”.</p>`;
+<p class="kilde">Source: <a href="#sources">USDA FoodData Central, SR Legacy</a>, ${poster(rad).map((p) => `“${esc(p.navn)}”`).join(' and ')}.</p>`;
 }
 
 const tittel = (navn, enhet, g, medOunces) => `${navn}: ${enhet} to grams${medOunces ? ' and ounces' : ''} (1 ${enhet === 'cups' ? 'cup' : 'tsp'} = ${g} g)`;
@@ -266,8 +273,8 @@ export function sideForRad(rad, data, rader) {
   const lead = `1 ${enhetEn} of ${v} weighs ${gEn} (${ozEn} oz). Type an amount to convert.`;
   const beskr = (kort) => `1 ${enhetEn} of ${variant(rad)} weighs ${gEn} (${ozEn} oz). Convert ${tsp ? 'teaspoons, tablespoons, and cups' : 'cups, tablespoons, and teaspoons'} to grams and ounces${kort ? '.' : ', with a chart and USDA numbers.'}`;
   const description = beskr(false).length <= 160 ? beskr(false) : beskr(true);
-  const tabell = `<table class="otabell"><thead><tr><th scope="col">${esc(rad.navn)}</th><th scope="col">Grams</th><th scope="col">Ounces</th></tr></thead><tbody>${u.tabell.map(([e, g, oz]) => `<tr><td>${e} ${esc(o)}</td><td>${g} g</td><td>${oz} oz</td></tr>`).join('')}</tbody></table>`;
-  const eks = u.tilbake.map(([g, c]) => `<li><b>${g} g ${esc(o)}</b><span>${c} ${tsp ? 'tsp' : cupsEnhet(c)}</span></li>`).join('');
+  const tabell = `<table class="otabell"><thead><tr><th scope="col">${esc(rad.navn)}</th><th scope="col">Grams</th><th scope="col">Ounces</th></tr></thead><tbody>${u.tabell.map(([e, g, oz]) => `<tr><td>${e}</td><td>${g} g</td><td>${oz} oz</td></tr>`).join('')}</tbody></table>`;
+  const eks = u.tilbake.map(([g, c]) => `<li><b>${g} g</b><span>${c} ${tsp ? 'tsp' : cupsEnhet(c)}</span></li>`).join('');
   const pundCups = mengdeTekst(453.59237 / (tsp ? u.grunn : u.gPerCup));
   const kiloCups = mengdeTekst(1000 / (tsp ? u.grunn : u.gPerCup));
   const pund = `<p>1 pound of ${v} is ${gramTekst(453.59237)} g, or ${pundCups} ${tsp ? 'tsp' : cupsEnhet(pundCups)}. 1 kilogram is 1000 g, or ${kiloCups} ${tsp ? 'tsp' : cupsEnhet(kiloCups)} of ${v}.</p>`;

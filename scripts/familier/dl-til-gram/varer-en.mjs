@@ -4,6 +4,7 @@
 //   navn: overskriftsformen. ord: formen i en setning. variant: hva posten er («all-purpose flour»).
 //   fdcId: FDC-ID i SR Legacy. basis: 'cup' (vanlig) eller 'tsp' (hevemidler, som bare har teskje hos USDA).
 //   porsjon: modifikatoren som brukes som grunnlag, ordrett fra datasettet (mengden må være 1).
+//   ogsa: én post til som står i «USDA entries» (tall med b_ foran, tekst.fdcId2 og tekst.usdaNavn2). Bare der postene har samme grunnlagstall.
 // Ikke med: cake flour, almond flour, kosher salt, chia seeds og Greek yogurt (se planen og kandidatlista).
 
 export const VARER_EN = Object.freeze([
@@ -32,8 +33,8 @@ export const VARER_EN = Object.freeze([
   { id: 'grated-parmesan', slug: 'grated-parmesan', navn: 'Grated parmesan', ord: 'grated parmesan', variant: 'grated parmesan cheese', fdcId: 171247, basis: 'cup', porsjon: 'cup' },
   { id: 'water', slug: 'water', navn: 'Water', ord: 'water', variant: 'water', fdcId: 174158, basis: 'cup', porsjon: 'cup' },
   { id: 'havregryn', slug: 'rolled-oats', navn: 'Rolled oats', ord: 'rolled oats', variant: 'rolled oats', fdcId: 173904, basis: 'cup', porsjon: 'cup' },
-  { id: 'ris', slug: 'white-rice', navn: 'White rice', ord: 'white rice', variant: 'uncooked long-grain white rice', fdcId: 168877, basis: 'cup', porsjon: 'cup' },
-  { id: 'brown-rice', slug: 'brown-rice', navn: 'Brown rice', ord: 'brown rice', variant: 'uncooked long-grain brown rice', fdcId: 169703, basis: 'cup', porsjon: 'cup' },
+  // Hvit og brun ris har samme tall (185 g per cup) og er derfor én side; den brune posten står i «USDA entries» (b_-tall i datafila).
+  { id: 'ris', slug: 'rice', navn: 'Rice', ord: 'rice', variant: 'uncooked long-grain white or brown rice', fdcId: 168877, basis: 'cup', porsjon: 'cup', ogsa: { fdcId: 169703, porsjon: 'cup' } },
   { id: 'quinoa', slug: 'quinoa', navn: 'Quinoa', ord: 'quinoa', variant: 'uncooked quinoa', fdcId: 168874, basis: 'cup', porsjon: 'cup' },
   { id: 'lentils', slug: 'lentils', navn: 'Lentils', ord: 'lentils', variant: 'uncooked lentils', fdcId: 172420, basis: 'cup', porsjon: 'cup' },
   { id: 'black-beans', slug: 'black-beans', navn: 'Black beans', ord: 'black beans', variant: 'dried black beans', fdcId: 173734, basis: 'cup', porsjon: 'cup' },

@@ -14,10 +14,13 @@ export const porsjonMedEtikett = (post, etikett) => (post?.foodPortions ?? []).f
 export function avvikUsda(data, sr) {
   const ut = [];
   for (const rad of data.rader) {
-    const post = finnPost(sr, Number(rad.tekst?.fdcId));
-    if (!post) continue; // meldes av manglerUsda
-    if (rad.tekst.usdaNavn !== post.description) ut.push({ id: rad.id, felt: 'usdaNavn', iFila: rad.tekst.usdaNavn, iKilden: post.description });
+    const post1 = finnPost(sr, Number(rad.tekst?.fdcId));
+    const post2 = rad.tekst?.fdcId2 ? finnPost(sr, Number(rad.tekst.fdcId2)) : null;
+    if (!post1) continue; // meldes av manglerUsda
+    if (rad.tekst.usdaNavn !== post1.description) ut.push({ id: rad.id, felt: 'usdaNavn', iFila: rad.tekst.usdaNavn, iKilden: post1.description });
+    if (rad.tekst.fdcId2 && (!post2 || rad.tekst.usdaNavn2 !== post2.description)) ut.push({ id: rad.id, felt: 'usdaNavn2', iFila: rad.tekst.usdaNavn2, iKilden: post2?.description ?? null });
     for (const [felt, tall] of Object.entries(rad.tall)) {
+      const post = felt.startsWith('b_') ? post2 : post1;
       const p = porsjonMedEtikett(post, tall.merknad);
       if (p && p.gramWeight !== tall.verdi) ut.push({ id: rad.id, felt, iFila: tall.verdi, iKilden: p.gramWeight });
       if (!p) ut.push({ id: rad.id, felt, iFila: tall.verdi, iKilden: null });
@@ -28,7 +31,7 @@ export function avvikUsda(data, sr) {
 
 /** Rader der posten ikke finnes i datasettet. */
 export function manglerUsda(data, sr) {
-  return data.rader.filter((r) => !finnPost(sr, Number(r.tekst?.fdcId))).map((r) => ({ id: r.id, fdcId: r.tekst?.fdcId }));
+  return data.rader.flatMap((r) => [r.tekst?.fdcId, r.tekst?.fdcId2].filter(Boolean).filter((f) => !finnPost(sr, Number(f))).map((f) => ({ id: r.id, fdcId: f })));
 }
 
 /** Ny kopi med alle rader kontrollert på `dato`. Kalles bare når det ikke er avvik. */

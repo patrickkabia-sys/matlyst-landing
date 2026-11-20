@@ -838,8 +838,8 @@
     },
     {
       "id": "ris",
-      "slug": "white-rice",
-      "navn": "White rice",
+      "slug": "rice",
+      "navn": "Rice",
       "status": "kontrollert",
       "kontrollert": "2026-11-20",
       "oppdatert": "2026-11-20",
@@ -849,33 +849,20 @@
           "enhet": "g",
           "kilde": "usda",
           "merknad": "cup"
+        },
+        "b_cup": {
+          "verdi": 185,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
         }
       },
       "tekst": {
-        "variant": "uncooked long-grain white rice",
+        "variant": "uncooked long-grain white or brown rice",
         "usdaNavn": "Rice, white, long-grain, regular, raw, enriched",
-        "fdcId": "168877"
-      }
-    },
-    {
-      "id": "brown-rice",
-      "slug": "brown-rice",
-      "navn": "Brown rice",
-      "status": "kontrollert",
-      "kontrollert": "2026-11-20",
-      "oppdatert": "2026-11-20",
-      "tall": {
-        "cup": {
-          "verdi": 185,
-          "enhet": "g",
-          "kilde": "usda",
-          "merknad": "cup"
-        }
-      },
-      "tekst": {
-        "variant": "uncooked long-grain brown rice",
-        "usdaNavn": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",
-        "fdcId": "169703"
+        "fdcId": "168877",
+        "usdaNavn2": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",
+        "fdcId2": "169703"
       }
     },
     {

@@ -29,8 +29,6 @@ export const TEKST_EN = {
   'grated-parmesan': { naer: ['shredded-cheddar'] },
   water: { naer: ['melk'] },
   havregryn: { naer: ['ris'] },
-  ris: { naer: ['brown-rice'] },
-  'brown-rice': { naer: ['ris'] },
   quinoa: { naer: ['ris'] },
   lentils: { naer: ['black-beans'] },
   'black-beans': { naer: ['lentils'] },

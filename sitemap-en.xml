@@ -544,12 +544,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/breadcrumbs/"/>
   </url>
   <url>
-    <loc>https://matlyst-app.no/en/tools/cups-to-grams/brown-rice/</loc>
-    <lastmod>2026-11-20</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/brown-rice/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/brown-rice/"/>
-  </url>
-  <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/brown-sugar/</loc>
     <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/brunt-sukker/"/>
@@ -691,6 +685,13 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/raisins/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/en/tools/cups-to-grams/rice/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/ris/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/rice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/rice/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/rolled-oats/</loc>
     <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/havregryn/"/>
@@ -753,13 +754,6 @@
     <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/water/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/water/"/>
-  </url>
-  <url>
-    <loc>https://matlyst-app.no/en/tools/cups-to-grams/white-rice/</loc>
-    <lastmod>2026-11-20</lastmod>
-    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/ris/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/white-rice/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/white-rice/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/whole-wheat-flour/</loc>
