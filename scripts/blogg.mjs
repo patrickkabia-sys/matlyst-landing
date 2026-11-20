@@ -5,6 +5,7 @@
 // Her står bare det som ikke finnes i karusellen: adresse, sidetittel og CTA-bilde.
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { appCta } from './app-cta.mjs';
+import { FORFATTERLINJE, forfatterPerson, harForfatter } from './forfatter.mjs';
 
 const base = 'https://matlyst-app.no';
 export const PUBLISERT = '2026-10-28';
@@ -173,9 +174,11 @@ export function artikkelSchema(a) {
     '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.description,
     image: [`${base}${bilde(a.lang, a.tema, a.karusell.bilder[0])}`], inLanguage: SPRAKKODE[a.lang],
     datePublished: PUBLISERT, dateModified: PUBLISERT, mainEntityOfPage: `${base}${a.path}`,
-    author: { '@type': 'Organization', name: 'Matlyst', url: base }, publisher: { '@type': 'Organization', name: 'Matlyst', url: base },
+    author: medForfatter(a) ? forfatterPerson() : { '@type': 'Organization', name: 'Matlyst', url: base }, publisher: { '@type': 'Organization', name: 'Matlyst', url: base },
   }];
 }
+
+const medForfatter = (a) => a.lang === 'nb' && harForfatter(a.path);
 
 export function artikkelMain(a, knapper) {
   const t = TEKST[a.lang];
@@ -191,7 +194,7 @@ export function artikkelMain(a, knapper) {
   }, knapper);
   const flere = bloggArtikler(a.lang).filter((b) => b.tema !== a.tema)
     .map((b) => `<li><a href="${b.path}">${b.title}</a></li>`).join('');
-  return `<main id="hovedinnhold"><article class="blogg-artikkel"><header class="locale-page-hero"><p class="eyebrow"><a href="${BLOGGROT[a.lang]}">${t.blogg}</a> · ${etikett}</p><h1 class="disp">${a.title}</h1><p class="lead">${ingress}</p></header>
+  return `<main id="hovedinnhold"><article class="blogg-artikkel"><header class="locale-page-hero"><p class="eyebrow"><a href="${BLOGGROT[a.lang]}">${t.blogg}</a> · ${etikett}</p><h1 class="disp">${a.title}</h1><p class="lead">${ingress}</p>${medForfatter(a) ? FORFATTERLINJE : ''}</header>
 <figure class="blogg-forside"><img src="${bilde(a.lang, a.tema, bilder[0])}" width="800" height="1000" decoding="async" alt="${ren(forside.tittel)} ${ren(forside.under)}"></figure>
 <section class="prose locale-prose">${tabeller}</section>
 <section class="blogg-galleri" aria-label="${t.galleri}"><h2>${t.galleri}</h2><div class="blogg-galleri-rad" tabindex="0">${galleri}</div></section>

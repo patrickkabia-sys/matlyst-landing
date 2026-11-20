@@ -75,6 +75,8 @@ export const HYLLER = {
       id: 'matlyst', navn: 'Matlyst', flis: 'b3fdbf.webp',
       lenker: [
         { tekst: 'For matskapere', href: '/skapere/' },
+        // Om-siden finnes bare på norsk (bareNb): sv, da og en får ikke lenka før de har en egen om-side.
+        { tekst: 'Om Matlyst', href: '/om/', bareNb: true },
         { tekst: 'Instagram', href: 'https://www.instagram.com/matlyst_app/' },
         { tekst: 'TikTok', href: 'https://www.tiktok.com/@matlyst.appen' },
         { tekst: 'YouTube', href: 'https://www.youtube.com/@matlyst' },
@@ -283,7 +285,7 @@ function lokalAdresse(grunn, sprak, nbHref) {
 export function lokaliserHyller(sprak, tekst, { grunn = rot } = {}) {
   return HYLLER.nb.map((hylle) => {
     const navn = sprak === 'nb' ? hylle.navn : tekst?.navn?.[hylle.id] ?? mangler(sprak, `hyllenavn ${hylle.id}`, hylle.id);
-    const lenker = hylle.lenker.map((l) => {
+    const lenker = hylle.lenker.filter((l) => sprak === 'nb' || !l.bareNb).map((l) => {
       if (sprak === 'nb') return { tekst: l.tekst, href: l.href, nbHref: l.href, finnes: l.finnes !== false };
       const t = tekst?.lenker?.[l.href] ?? mangler(sprak, 'lenke', l.href, l.href);
       const adresse = l.finnes === false || NORSKE_KILDER.has(l.href) ? null : lokalAdresse(grunn, sprak, l.href);

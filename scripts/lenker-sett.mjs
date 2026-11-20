@@ -79,8 +79,10 @@ export function kartForSprak(enKart, lang) {
 }
 
 export function kjor(rot, lang = 'en') {
-  const enKart = JSON.parse(readFileSync(join(rot, 'seo-data/lenkekart.json'), 'utf8')).en;
-  const kart = kartForSprak(enKart, lang);
+  const alle = JSON.parse(readFileSync(join(rot, 'seo-data/lenkekart.json'), 'utf8'));
+  const kart = kartForSprak(alle.en, lang);
+  // Sider som bare finnes på ett språk (julemiddag og om-siden på norsk) står under språknøkkelen i kartet.
+  if (lang !== 'en' && alle[lang]) kart.hubber = { ...kart.hubber, ...alle[lang].hubber };
   const per = beregn(kart, FORSIDE[lang]);
   const endret = [];
   for (const [side, maal] of per) {

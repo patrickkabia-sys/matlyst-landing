@@ -71,7 +71,8 @@ test('hver hylle har en flis og unike id-er', () => {
 test('hyllene er identiske med prototypet: navn, flis og lenketekster i rekkefølge', () => {
   const proto = hyllerFraPrototyp();
   assert.deepEqual(
-    HYLLER.nb.map((h) => ({ navn: h.navn, flis: h.flis, lenker: h.lenker.map((l) => l.tekst) })),
+    // «Om Matlyst» (bareNb) er lagt til etter prototypet, bare på norsk.
+    HYLLER.nb.map((h) => ({ navn: h.navn, flis: h.flis, lenker: h.lenker.filter((l) => !l.bareNb).map((l) => l.tekst) })),
     proto,
   );
 });
@@ -81,12 +82,13 @@ test('nøyaktig disse syv lenkene er skjult', () => {
   assert.deepEqual(skjulte, SKJULTE);
 });
 
-test('synligeLenker beholder alt unntatt de skjulte, 33 totalt', () => {
+test('synligeLenker beholder alt unntatt de skjulte, 34 totalt', () => {
   const proto = hyllerFraPrototyp();
   HYLLER.nb.forEach((h, i) => {
-    assert.deepEqual(synligeLenker(h).map((l) => l.tekst), proto[i].lenker.filter((t) => !SKJULTE.includes(t)), h.navn);
+    // «Om Matlyst» (bareNb) er ikke i prototypet.
+    assert.deepEqual(synligeLenker(h).filter((l) => !l.bareNb).map((l) => l.tekst), proto[i].lenker.filter((t) => !SKJULTE.includes(t)), h.navn);
   });
-  assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 33);
+  assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 34);
 });
 
 // Falsk tekst: hver nøkkel får en synlig verdi, så testene ser adressene og ikke oversettelsen.

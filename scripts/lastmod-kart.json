@@ -1,7 +1,7 @@
 {
  "https://matlyst-app.no/": {
-  "hash": "b1e08616eaca49e9",
-  "dato": "2026-11-19"
+  "hash": "fb1de5151e0769b8",
+  "dato": "2026-11-20"
  },
  "https://matlyst-app.no/blogg/": {
   "hash": "b74a7f9936e1e5d8",
@@ -20,15 +20,15 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/blogg/kjernetemperatur/": {
-  "hash": "a6feb3397921608c",
+  "hash": "157fc593a6302cc8",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/blogg/koketider/": {
-  "hash": "c41f11d434824017",
+  "hash": "f3b87dcc3da66f3d",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/blogg/mat-i-fryseren/": {
-  "hash": "7d800128726f9b35",
+  "hash": "8ac884a36932090e",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/blogg/ovnsoppskrift-i-airfryer/": {
@@ -36,7 +36,7 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/blogg/rester-i-kjoleskapet/": {
-  "hash": "70c3e64766b7f544",
+  "hash": "247a4deff47aa797",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/blogg/velg-oppskriftsapp/": {
@@ -48,8 +48,8 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/da/": {
-  "hash": "8a2a5496f0cba5ef",
-  "dato": "2026-11-19"
+  "hash": "fdb1a24ce1a0a5cf",
+  "dato": "2026-11-20"
  },
  "https://matlyst-app.no/da/alletiders-kogebog/": {
   "hash": "9ccec58393ee7fe1",
@@ -888,8 +888,8 @@
   "dato": "2026-10-22"
  },
  "https://matlyst-app.no/en/": {
-  "hash": "15f8ecb9458169f6",
-  "dato": "2026-11-19"
+  "hash": "1a3d0e5646ed7215",
+  "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/alletiders-cookbook/": {
   "hash": "c23b0ec4c170e3c0",
@@ -1619,6 +1619,10 @@
   "hash": "56614b36af30f1b1",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/julemiddag/": {
+  "hash": "364965d4fe57fedd",
+  "dato": "2026-11-20"
+ },
  "https://matlyst-app.no/lagre-oppskrifter-fra-instagram/": {
   "hash": "d8a312d49a258c00",
   "dato": "2026-11-20"
@@ -1629,6 +1633,10 @@
  },
  "https://matlyst-app.no/middagsforslag/": {
   "hash": "f8d8da414cb7adf7",
+  "dato": "2026-11-20"
+ },
+ "https://matlyst-app.no/om/": {
+  "hash": "b4a38ed63f2543c5",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/oppskriftsbok-app/": {
@@ -1652,8 +1660,8 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/sv/": {
-  "hash": "d13ba2f1d3d5b56d",
-  "dato": "2026-11-19"
+  "hash": "c94ab590087d6c1f",
+  "dato": "2026-11-20"
  },
  "https://matlyst-app.no/sv/alletiders-kogebog/": {
   "hash": "9292064c9585602e",
@@ -2600,7 +2608,7 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/ukemeny/": {
-  "hash": "b99b1bc7830b9ce5",
+  "hash": "db4d53411b28b319",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/verktoy/celsius-til-fahrenheit/": {
