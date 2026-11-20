@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { SITEMAPER, avtrykk, filForUrl, kjorLastmod, nyOppforing } from '../scripts/lastmod.mjs';
+import { SITEMAPER, avtrykk, byggIndeks, filForUrl, kjorLastmod, nyOppforing } from '../scripts/lastmod.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 
@@ -72,4 +72,18 @@ test('de publiserte sidekartene: lastmod følger kartet, og kartet følger siden
     }
   }
   assert.ok(antall > 800);
+});
+
+test('sidekartindeksen peker på de fire sidekartene med deres nyeste lastmod, og de fire beholder adressene', () => {
+  const idx = readFileSync(join(rot, 'sitemap-index.xml'), 'utf8');
+  assert.match(idx, /<sitemapindex xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/u);
+  const poster = [...idx.matchAll(/<sitemap>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>\s*<\/sitemap>/gu)];
+  assert.deepEqual(poster.map((p) => p[1]), SITEMAPER.map((n) => `https://matlyst-app.no/${n}`));
+  for (const [, url, dato] of poster) {
+    const xml = readFileSync(join(rot, new URL(url).pathname.slice(1)), 'utf8');
+    assert.ok(xml.includes('<urlset'), `${url} skal fortsatt være et vanlig sidekart`);
+    assert.equal(dato, [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/gu)].map((m) => m[1]).sort().at(-1));
+  }
+  assert.ok(readFileSync(join(rot, 'robots.txt'), 'utf8').includes('Sitemap: https://matlyst-app.no/sitemap-index.xml\n'));
+  assert.equal(byggIndeks({ 'a.xml': '<lastmod>2026-01-02</lastmod><lastmod>2026-03-04</lastmod>' }).includes('<lastmod>2026-03-04</lastmod>'), true);
 });

@@ -37,6 +37,7 @@ Allow: /
 User-agent: bingbot
 Allow: /
 
+Sitemap: https://matlyst-app.no/sitemap-index.xml
 Sitemap: https://matlyst-app.no/sitemap.xml
 Sitemap: https://matlyst-app.no/sitemap-sv.xml
 Sitemap: https://matlyst-app.no/sitemap-da.xml

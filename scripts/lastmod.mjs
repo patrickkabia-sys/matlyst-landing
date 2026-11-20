@@ -36,6 +36,16 @@ export function filForUrl(url) {
   return sti.slice(1);
 }
 
+// Sidekartindeks. sitemap.xml er selv et sidekart for norsk og kan ikke bli en indeks uten å bytte adresse,
+// så indeksen har egen adresse og peker på de fire sidekartene, som beholder sine adresser.
+export function byggIndeks(xmler) {
+  const rader = Object.entries(xmler).map(([navn, xml]) => {
+    const siste = [...xml.matchAll(/<lastmod>([^<]+)<\/lastmod>/gu)].map((m) => m[1]).sort().at(-1);
+    return `  <sitemap>\n    <loc>${BASE}/${navn}</loc>${siste ? `\n    <lastmod>${siste}</lastmod>` : ''}\n  </sitemap>`;
+  });
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${rader.join('\n')}\n</sitemapindex>\n`;
+}
+
 export function dagensDato() {
   return process.env.LASTMOD_DATO ?? new Date().toISOString().slice(0, 10);
 }
@@ -61,11 +71,14 @@ export function kjorLastmod(rot, dato = dagensDato()) {
   const kartFil = join(rot, 'scripts/lastmod-kart.json');
   const kart = existsSync(kartFil) ? JSON.parse(readFileSync(kartFil, 'utf8')) : {};
   const mangler = [];
+  const xmler = {};
   for (const navn of SITEMAPER) {
     const r = oppdaterSitemap(readFileSync(join(rot, navn), 'utf8'), kart, rot, dato);
     mangler.push(...r.mangler);
     writeFileSync(join(rot, navn), r.xml);
+    xmler[navn] = r.xml;
   }
+  writeFileSync(join(rot, 'sitemap-index.xml'), byggIndeks(xmler));
   const sortert = Object.fromEntries(Object.keys(kart).sort().map((k) => [k, kart[k]]));
   writeFileSync(kartFil, `${JSON.stringify(sortert, null, 1)}\n`);
   return { mangler };
