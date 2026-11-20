@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://matlyst-app.no/sitemap.xml</loc>
+    <lastmod>2026-11-19</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://matlyst-app.no/sitemap-sv.xml</loc>
+    <lastmod>2026-11-19</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://matlyst-app.no/sitemap-da.xml</loc>
+    <lastmod>2026-11-19</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://matlyst-app.no/sitemap-en.xml</loc>
+    <lastmod>2026-11-20</lastmod>
+  </sitemap>
+</sitemapindex>

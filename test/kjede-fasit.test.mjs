@@ -12,7 +12,8 @@ const fasit = JSON.parse(readFileSync(new URL('./fasit/kjede-kjente-avvik.json',
 
 test('kjeden er generatorene først og så etterbehandlingen, med forsidene sist', () => {
   assert.deepEqual(KJEDE, [...GENERATORER, ...ETTERBEHANDLING]);
-  assert.equal(KJEDE.at(-1), 'forside');
+  assert.ok(KJEDE.indexOf('forside') > KJEDE.indexOf('omregner-flertall'));
+  assert.deepEqual(KJEDE.slice(-3), ['forside', 'lastmod', 'llms']);
   assert.ok(KJEDE.indexOf('skall-paa') > KJEDE.indexOf('generer-lokalsider'));
   assert.ok(KJEDE.indexOf('omregner-flertall') > KJEDE.indexOf('skall-paa'));
 });

@@ -1,0 +1,71 @@
+name: IndexNow
+
+# Varsler Bing og andre om nye og endrede adresser etter at GitHub Pages har publisert main.
+# Pages bygger fra grenen (innebygd arbeidsflyt «pages-build-deployment»), så vi lytter på den.
+# Stoppbryter: sett repovariabelen INDEXNOW til «av».
+on:
+  workflow_run:
+    workflows: ['pages-build-deployment']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      fra:
+        description: 'Commit å sammenligne fra (tom: forrige publiserte)'
+        required: false
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency: indexnow
+
+jobs:
+  indexnow:
+    if: github.event_name == 'workflow_dispatch' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository && github.event.workflow_run.head_branch == 'main' && vars.INDEXNOW != 'av')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Feil her skal aldri gjøre publiseringen rød, og scriptet avslutter med 0 også ved feil.
+    continue-on-error: true
+    steps:
+      - name: Hent kildekoden
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || 'main' }}
+          fetch-depth: 0
+
+      # Bare commits som faktisk ligger på main i dette repoet får kjøre skriptet.
+      - name: Bekreft at commiten ligger på main
+        run: git merge-base --is-ancestor HEAD origin/main
+
+      - name: Sett opp Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Forrige vellykkede publisering er sammenligningsgrunnlaget. Mangler den, brukes foreldrecommit.
+      - name: Finn forrige publiserte commit
+        id: forrige
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NY: ${{ github.event.workflow_run.head_sha || github.sha }}
+          FRA: ${{ inputs.fra }}
+        run: |
+          fra="$FRA"
+          if [ -z "$fra" ]; then
+            fra=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "pages-build-deployment" --branch main --status success --limit 20 --json headSha --jq "[.[].headSha | select(. != \"$NY\")][0]" || true)
+          fi
+          if [ -z "$fra" ] || [ "$fra" = "null" ]; then fra=$(git rev-parse "$NY^" || true); fi
+          echo "fra=$fra" >> "$GITHUB_OUTPUT"
+          echo "Sammenligner $fra med $NY"
+
+      # Gi Pages og CDN-en tid til å servere de nye sidene før Bing kan komme og se.
+      - name: Vent litt
+        run: sleep 45
+
+      - name: Send til IndexNow
+        env:
+          FRA: ${{ steps.forrige.outputs.fra }}
+        run: |
+          if [ -z "$FRA" ]; then echo "Ingen sammenligningscommit, sender ingenting"; exit 0; fi
+          node scripts/indexnow.mjs --fra "$FRA" --til HEAD --maks 500 --send

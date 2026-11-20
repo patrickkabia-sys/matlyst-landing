@@ -33,9 +33,7 @@ test('robots.txt tillater alt og peker på norsk, svensk og dansk sitemap', () =
   }
 });
 
-// Sider som kom etter RIK_DATO og har egen dato (generatoren: sistEndretSide i scripts/generer-lokalsider.mjs).
-const EGNE_DATOER = { '/en/mealime-alternative/': '2026-11-20' };
-
+const lastmodKart = JSON.parse(readFileSync(join(ROOT, 'scripts/lastmod-kart.json'), 'utf8'));
 for (const lang of ['sv', 'da', 'en']) {
   test(`sitemap-${lang}.xml har alle indekserbare ${lang}-sider med lastmod og gjensidige alternativer`, () => {
     const xml = les(`sitemap-${lang}.xml`);
@@ -53,12 +51,8 @@ for (const lang of ['sv', 'da', 'en']) {
       .map((artikkel) => [artikkel.path, artikkel.auto.publisert]));
     for (const blokk of blokker) {
       const side = blokk.match(/<loc>([^<]+)<\/loc>/u)[1];
-      const oppdatertGuide = /\/(?:sv\/(?:importera-recept|spara-recept-fran-instagram|spara-recept-fran-tiktok|byt-fran-paprika|handskrivna-recept|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|da\/(?:importer-opskrifter|gem-opskrifter-fra-instagram|gem-opskrifter-fra-tiktok|skift-fra-paprika|haandskrevne-opskrifter|matprat|koket|landleys-kok|alletiders-kogebog|dr-mad)|en\/(?:import-recipes|import-recipes-from-photos|import-recipes-from-instagram|import-recipes-from-paprika|import-recipes-from-tiktok|find-recipes|recipes-by-ingredients|dinner-ideas|pantry-app|empty-the-fridge|easy-dinner|recipe-creators|matprat|koket|landleys-kok|alletiders-cookbook|dr-food|delete-account))\/$/u.test(side);
-      const appside = /\/(?:(?:sv|da|en)\/blogg?(?:\/[^/]+)?|en\/(?:shopping-list|meal-plan-app|recipe-book-app|dinner-ideas|easy-dinner)|sv\/(?:receptbok-app|veckomeny-app|inkopslista|vad-ska-jag-laga|enkel-middag)|da\/(?:opskrifts-app|madplan-app|indkoebsliste-app|middagsforslag|nem-mad))\/$/u.test(side);
-      const forventetDato = autoDato.get(new URL(side).pathname)
-        ?? EGNE_DATOER[new URL(side).pathname]
-        ?? (rikeStier.has(new URL(side).pathname) ? RIK_DATO : null)
-        ?? (appside ? '2026-10-28' : oppdatertGuide ? '2026-10-27' : lang === 'en' ? '2026-10-20' : '2026-10-05');
+      // Datoen er innholdsdatoen i scripts/lastmod-kart.json (dekket av test/lastmod.test.mjs), ikke en fast dato per sidetype.
+      const forventetDato = lastmodKart[side].dato;
       assert.match(blokk, new RegExp(`<loc>[^<]+<\\/loc>\\s*<lastmod>${forventetDato}<\\/lastmod>`, 'u'), side);
       const html = readFileSync(urlTilFil(side), 'utf8');
       assert.doesNotMatch(html, /content="noindex/u, side);
@@ -118,7 +112,9 @@ test('llms.txt er skandinavisk, posisjonert og uten udokumenterte påstander', (
   for (const sprak of ['norsk bokmål (nb)', 'dansk (da)', 'svensk (sv)']) assert.ok(llms.includes(sprak), sprak);
   for (const navn of ['Spør Matlyst', 'Spørg Matlyst', 'Fråga Matlyst']) assert.ok(llms.includes(navn), navn);
   assert.match(llms, /metriske mål/u);
-  assert.doesNotMatch(llms, /Alt på norsk|oversettes[^.\n]*til norsk|(?<!\p{L})(?:beste?|bedste|bästa?|best|nr\. ?1)(?!\p{L})|håndskrev|handskriv|håndskrift|ubegrenset|unlimited|Pinterest|PDF/iu);
+  // Forbudte ord sjekkes mot den håndskrevne teksten; lenkelistene hentes fra sidenes egne titler og beskrivelser.
+  const handtekst = llms.split('\n').filter((l) => !l.startsWith('- [')).join('\n');
+  assert.doesNotMatch(handtekst, /Alt på norsk|oversettes[^.\n]*til norsk|(?<!\p{L})(?:beste?|bedste|bästa?|best|nr\. ?1)(?!\p{L})|håndskrev|handskriv|håndskrift|ubegrenset|unlimited|Pinterest|PDF/iu);
   const lenker = [...llms.matchAll(/https:\/\/matlyst-app\.no(\/[^\s)]*)/gu)].map(([, sti]) => sti);
   for (const sti of ['/sv/', '/da/', '/sv/importera-recept/', '/da/importer-opskrifter/', '/sv/veckomeny-app/', '/da/madplan-app/']) {
     assert.ok(lenker.includes(sti), sti);
