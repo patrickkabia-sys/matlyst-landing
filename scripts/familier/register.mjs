@@ -26,7 +26,7 @@ const trengFelles = () => {
 };
 
 export const FAMILIER = Object.freeze([
-  { id: 'dl-til-gram', sidetype: 'omregner', mappe: new URL('./dl-til-gram/', import.meta.url), markeder: { nb: { rot: 'verktoy/dl-til-gram/' } } },
+  { id: 'dl-til-gram', sidetype: 'omregner', mappe: new URL('./dl-til-gram/', import.meta.url), markeder: { nb: { rot: 'verktoy/dl-til-gram/' }, en: { rot: 'tools/cups-to-grams/' } } },
 ]);
 
 export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });
