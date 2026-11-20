@@ -28,7 +28,7 @@ test('siden er egen sidegruppe med bare norsk, og hreflang har bare nb og x-defa
   assert.ok(gruppe);
   assert.deepEqual(Object.keys(gruppe.sider), ['nb']);
   assert.deepEqual(alternativerFor(STI), [['nb-NO', STI], ['x-default', STI]]);
-  assert.doesNotMatch(html, /<script src="\/locale\.js"/u);
+  assert.doesNotMatch(html, /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu);
   assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/om\/<\/loc>\s*<lastmod>2026-11-20<\/lastmod>/u);
 });
 

@@ -47,8 +47,7 @@ test('hreflang har bare en og x-default, og siden er ikke i språkkartet for omd
   assert.deepEqual(alternativerFor(STI), [['en', STI], ['x-default', STI]]);
   const lenker = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/gu)].map(([, k, h]) => [k, h]);
   assert.deepEqual(lenker, [['en', `https://matlyst-app.no${STI}`], ['x-default', `https://matlyst-app.no${STI}`]]);
-  assert.doesNotMatch(html, /<script src="\/locale\.js"/u);
-  assert.doesNotMatch(html, /<script src="\/locale\.js"/u);
+  assert.doesNotMatch(html, /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu);
 });
 
 test('siden står i det engelske sidekartet, men ikke i de andre', () => {

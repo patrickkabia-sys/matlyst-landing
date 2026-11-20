@@ -26,10 +26,13 @@
   var ROBOT = /bot|crawl|spider|slurp|lighthouse/i;
 
   // Leser <link rel="alternate" hreflang>. x-default og ukjente språk hoppes over.
-  // Bare pathname brukes av href-en (løst mot base), så en lenke med annen vert,
-  // et annet skjema eller en ugyldig adresse kan aldri sende brukeren ut av nettstedet.
+  // Bare lenker til matlyst-app.no eller sidens egen vert (verten i base) tas med, og
+  // bare pathname brukes. En annen vert, et annet skjema eller en ugyldig adresse kan
+  // dermed aldri sende brukeren ut av nettstedet.
   function lesAlternativer(dok, base) {
     var resultat = [];
+    var basisVert = '';
+    try { basisVert = new URL(base).hostname; } catch (e) {}
     var lenker;
     try { lenker = dok.querySelectorAll('link[rel="alternate"][hreflang]'); } catch (e) { return resultat; }
     for (var i = 0; i < lenker.length; i += 1) {
@@ -39,6 +42,7 @@
         if (!sprak || !href) continue;
         var url = new URL(href, base);
         if (url.protocol !== 'https:' && url.protocol !== 'http:') continue;
+        if (url.hostname !== 'matlyst-app.no' && url.hostname !== basisVert) continue;
         var sti = url.pathname;
         if (sti.charAt(0) !== '/' || sti.charAt(1) === '/') continue;
         resultat.push({ sprak: sprak, sti: sti });

@@ -46,7 +46,7 @@ test('siden er egen sidegruppe med bare norsk, og hreflang har bare nb og x-defa
   assert.ok(gruppe, 'mangler i SIDEGRUPPER');
   assert.deepEqual(Object.keys(gruppe.sider), ['nb']);
   assert.deepEqual(alternativerFor(STI), [['nb-NO', STI], ['x-default', STI]]);
-  assert.doesNotMatch(html, /<script src="\/locale\.js"/u);
+  assert.doesNotMatch(html, /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu);
   for (const mappe of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mappe}.xml`), 'utf8'), /julemiddag/u);
   assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/julemiddag\/<\/loc>\s*<lastmod>2026-11-20<\/lastmod>/u);
 });

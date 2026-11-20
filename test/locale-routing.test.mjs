@@ -19,6 +19,9 @@ function ekteAlternativer(sti) {
   return [...html.matchAll(/<link rel="alternate" hreflang="([^"]*)" href="([^"]*)"/gu)].map((m) => [m[1], m[2]]);
 }
 
+// Enhver script-tagg med src=/locale.js, uansett attributtrekkefølge og anførselstegn.
+const harLocaleScript = (html) => /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu.test(html);
+
 function lastInn() {
   const context = { globalThis: {}, URLSearchParams, URL };
   vm.runInNewContext(source, context);
@@ -131,11 +134,11 @@ test('roboter omdirigeres aldri', () => {
 test('tekniske retursider og avmeldingslenker laster ikke locale.js', () => {
   // Kartet var det som holdt disse utenfor; nå er det fraværet av script-taggen.
   for (const fil of ['tiktok-auth/index.html', 'avmeld/index.html']) {
-    assert.doesNotMatch(readFileSync(join(ROOT, fil), 'utf8'), /<script src="\/locale\.js"/u, fil);
+    assert.equal(harLocaleScript(readFileSync(join(ROOT, fil), 'utf8')), false, fil);
   }
   for (const gruppe of SIDEGRUPPER.filter(({ redirect }) => redirect === false)) {
     for (const sti of Object.values(gruppe.sider)) {
-      assert.doesNotMatch(readFileSync(join(ROOT, filForSti(sti)), 'utf8'), /<script src="\/locale\.js"/u, sti);
+      assert.equal(harLocaleScript(readFileSync(join(ROOT, filForSti(sti)), 'utf8')), false, sti);
     }
   }
 });
@@ -157,9 +160,20 @@ test('hreflang som ikke er til å stole på gir ingen videresending ut av nettst
     assert.ok(r.til === null || r.til.startsWith('/'), href);
     assert.equal(/^\/\//u.test(r.til ?? ''), false, href);
   }
-  // Bare pathname brukes: annen vert gir en sti på vårt eget nettsted.
+  // Annen vert enn matlyst-app.no og sidens egen vert hoppes over.
   const annen = besok('/', { sprak: 'sv-SE', alternativer: [['nb-NO', 'https://matlyst-app.no/'], ['sv-SE', 'https://eksempel.no/sv/']] });
-  assert.equal(annen.til, '/sv/');
+  assert.equal(annen.til, null);
+  // Egen vert og matlyst-app.no virker.
+  assert.equal(besok('/', { sprak: 'sv-SE', alternativer: [['nb-NO', 'https://matlyst-app.no/'], ['sv-SE', 'https://matlyst-app.no/sv/']] }).til, '/sv/');
+  assert.equal(besok('/', { sprak: 'sv-SE', alternativer: [['nb-NO', '/'], ['sv-SE', '/sv/']] }).til, '/sv/');
+});
+
+test('vakten mot script-taggen fanger enhver rekkefølge og anførsel, og kan bli rød', () => {
+  assert.equal(harLocaleScript('<script src="/locale.js" defer></script>'), true);
+  assert.equal(harLocaleScript('<script defer src="/locale.js"></script>'), true);
+  assert.equal(harLocaleScript("<script defer src='/locale.js'></script>"), true);
+  assert.equal(harLocaleScript('<script async\n src=/locale.js></script>'), true);
+  assert.equal(harLocaleScript('<script src="/site.js" defer></script>'), false);
 });
 
 test('lesAlternativer hopper over x-default og ukjente språk', () => {
