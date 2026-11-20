@@ -48,11 +48,15 @@ export function radFraKilde(vare, foods, dato = '2026-11-20') {
   }
   if (vare.usda) {
     const u = vare.usda;
-    tall.dl_usda = g(gPerDlFraCup(u.gPerCup), 'usda', u.modifikator ? `${u.gPerCup} g per ${u.modifikator}, regnet om fra cup` : `${u.gPerCup} g per cup, regnet om`);
-    if (u.annen) tall[u.annen.felt] = g(gPerDlFraCup(u.annen.gPerCup), 'usda', `${u.annen.gPerCup} g per ${u.annen.modifikator}, regnet om fra cup`);
+    // Merknaden er USDA-målet ordrett («145 g per cup unpacked»); malen skriver «regnet om fra cup til dl» selv.
+    tall.dl_usda = g(gPerDlFraCup(u.gPerCup), 'usda', `${u.gPerCup} g per ${u.modifikator ?? 'cup'}`);
+    if (u.annen) tall[u.annen.felt] = g(gPerDlFraCup(u.annen.gPerCup), 'usda', `${u.annen.gPerCup} g per ${u.annen.modifikator}`);
     tekst.usdaFdcId = String(u.fdcId);
     tekst.usdaNavn = u.navn;
   }
+  // Andre poster som ligner, med vekt per dl slik API-et har den. En post som ikke finnes eller mangler dl-porsjon, tas ikke med.
+  const andre = (vare.ogsa ?? []).map((navn) => [navn, dlFraMatvare(finnMatvare(foods, navn))]).filter(([, v]) => v !== null);
+  if (andre.length) tekst.andrePoster = JSON.stringify(andre);
   return { id: vare.id, slug: vare.slug, navn: vare.navn, status: 'utkast', oppdatert: dato, tall, tekst };
 }
 

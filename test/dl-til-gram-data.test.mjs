@@ -5,7 +5,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { lesData, publiserbare } from '../scripts/familier/felles.mjs';
 import { radFraKilde } from '../scripts/familier/dl-til-gram/hent.mjs';
-import { avvik, manglerIKilden } from '../scripts/familier/dl-til-gram/kontroller.mjs';
+import { avvik, manglerAndrePoster, manglerIKilden } from '../scripts/familier/dl-til-gram/kontroller.mjs';
 import { VARER } from '../scripts/familier/dl-til-gram/varer.mjs';
 
 const MAPPE = fileURLToPath(new URL('../scripts/familier/dl-til-gram/', import.meta.url));
@@ -82,4 +82,21 @@ test('kildene i datafila har navn, utgiver, år, adresse og hentedato', () => {
   const data = lesData(MAPPE, 'nb');
   assert.deepEqual(Object.keys(data.kilder).sort(), ['matvaretabellen', 'rapport-2015', 'usda']);
   assert.equal(data.kilder.matvaretabellen.hentet, '2026-11-20');
+});
+
+test('andre poster: hver post varelista nevner, står i datafila med vekt fra kilden', () => {
+  const data = lesData(MAPPE, 'nb');
+  for (const v of VARER.filter((x) => x.ogsa)) {
+    const rad = data.rader.find((r) => r.id === v.id);
+    if (!rad) continue;
+    assert.deepEqual(JSON.parse(rad.tekst.andrePoster).map(([navn]) => navn), v.ogsa, v.id);
+  }
+});
+
+test('en annen post som avviker fra kilden navngis, og en som mangler meldes', () => {
+  const data = structuredClone(lesData(MAPPE, 'nb'));
+  const hvete = data.rader.find((r) => r.id === 'hvetemel');
+  hvete.tekst.andrePoster = JSON.stringify([['Hvetemel, siktet', 99], ['Finnes ikke', 1]]);
+  assert.deepEqual(avvik(data, foods), [{ id: 'hvetemel', felt: 'annen post «Hvetemel, siktet»', iFila: 99, iKilden: 55 }]);
+  assert.deepEqual(manglerAndrePoster(data, foods).filter((m) => m.id === 'hvetemel'), [{ id: 'hvetemel', matvaretabell: 'Finnes ikke' }]);
 });

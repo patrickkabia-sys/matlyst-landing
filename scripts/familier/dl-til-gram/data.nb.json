@@ -52,14 +52,15 @@
           "verdi": 53,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "125 g per cup, regnet om"
+          "merknad": "125 g per cup"
         }
       },
       "tekst": {
         "matvaretabell": "Hvetemel, siktet",
         "rapportnavn": "Hvetemel, siktet",
         "usdaFdcId": "168936",
-        "usdaNavn": "Wheat flour, white, all-purpose, enriched, unbleached"
+        "usdaNavn": "Wheat flour, white, all-purpose, enriched, unbleached",
+        "andrePoster": "[[\"Hvetemel, økologisk\",55]]"
       }
     },
     {
@@ -89,7 +90,7 @@
           "verdi": 51,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "120 g per cup, regnet om"
+          "merknad": "120 g per cup"
         }
       },
       "tekst": {
@@ -125,7 +126,8 @@
       },
       "tekst": {
         "matvaretabell": "Rugmel, siktet",
-        "rapportnavn": "Rugmel, siktet"
+        "rapportnavn": "Rugmel, siktet",
+        "andrePoster": "[[\"Rugmel, sammalt\",55]]"
       }
     },
     {
@@ -149,7 +151,8 @@
       },
       "tekst": {
         "matvaretabell": "Havregryn",
-        "rapportnavn": "Havregryn"
+        "rapportnavn": "Havregryn",
+        "andrePoster": "[[\"Havregryn, økologiske\",40]]"
       }
     },
     {
@@ -179,7 +182,7 @@
           "verdi": 85,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "200 g per cup, regnet om"
+          "merknad": "200 g per cup"
         }
       },
       "tekst": {
@@ -216,13 +219,13 @@
           "verdi": 61,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "145 g per cup unpacked, regnet om fra cup"
+          "merknad": "145 g per cup unpacked"
         },
         "dl_usda_pakket": {
           "verdi": 93,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "220 g per cup packed, regnet om fra cup"
+          "merknad": "220 g per cup packed"
         }
       },
       "tekst": {
@@ -259,13 +262,13 @@
           "verdi": 51,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "120 g per cup unsifted, regnet om fra cup"
+          "merknad": "120 g per cup unsifted"
         },
         "dl_usda_siktet": {
           "verdi": 42,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "100 g per cup sifted, regnet om fra cup"
+          "merknad": "100 g per cup sifted"
         }
       },
       "tekst": {
@@ -331,7 +334,7 @@
           "verdi": 54,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "128 g per cup, regnet om"
+          "merknad": "128 g per cup"
         }
       },
       "tekst": {
@@ -368,7 +371,7 @@
           "verdi": 36,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "86 g per cup, regnet om"
+          "merknad": "86 g per cup"
         }
       },
       "tekst": {
@@ -452,14 +455,15 @@
           "verdi": 96,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "227 g per cup, regnet om"
+          "merknad": "227 g per cup"
         }
       },
       "tekst": {
         "matvaretabell": "Smør",
         "rapportnavn": "Smør, margarin",
         "usdaFdcId": "173410",
-        "usdaNavn": "Butter, salted"
+        "usdaNavn": "Butter, salted",
+        "andrePoster": "[[\"Smør, usaltet\",90],[\"Smør, meierismør, ekstra salt, Kviteseidsmør\",90]]"
       }
     },
     {
@@ -488,7 +492,8 @@
       },
       "tekst": {
         "matvaretabell": "Margarin, hard",
-        "rapportnavn": "Smør, margarin"
+        "rapportnavn": "Smør, margarin",
+        "andrePoster": "[[\"Margarin, myk\",90],[\"Margarin, Melange\",90],[\"Margarin, Melange, uten salt og melk, folie\",90]]"
       }
     },
     {
@@ -508,13 +513,14 @@
           "verdi": 92,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "218 g per cup, regnet om"
+          "merknad": "218 g per cup"
         }
       },
       "tekst": {
         "matvaretabell": "Solsikkeolje",
         "usdaFdcId": "171025",
-        "usdaNavn": "Oil, sunflower, linoleic, (approx. 65%)"
+        "usdaNavn": "Oil, sunflower, linoleic, (approx. 65%)",
+        "andrePoster": "[[\"Rapsolje, kaldpresset, Odelia\",90],[\"Olivenolje, extra virgin, jomfruolje\",90],[\"Sesamolje\",90],[\"Palmeolje\",90]]"
       }
     },
     {
@@ -534,13 +540,14 @@
           "verdi": 103,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "244 g per cup, regnet om"
+          "merknad": "244 g per cup"
         }
       },
       "tekst": {
         "matvaretabell": "Helmelk, uspesifisert",
         "usdaFdcId": "172217",
-        "usdaNavn": "Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D"
+        "usdaNavn": "Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D",
+        "andrePoster": "[[\"Melk, uspesifisert\",100],[\"Helmelk, 3,5 % fett, Tine\",100],[\"Helmelk, 3,5 % fett, laktosefri\",100]]"
       }
     },
     {
@@ -560,13 +567,14 @@
           "verdi": 101,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "238 g per cup, fluid (yields 2 cups whipped), regnet om fra cup"
+          "merknad": "238 g per cup, fluid (yields 2 cups whipped)"
         }
       },
       "tekst": {
         "matvaretabell": "Kremfløte, 37 % fett",
         "usdaFdcId": "170859",
-        "usdaNavn": "Cream, fluid, heavy whipping"
+        "usdaNavn": "Cream, fluid, heavy whipping",
+        "andrePoster": "[[\"Matfløte, 18 % fett\",100],[\"Kaffefløte, 10 % fett\",100],[\"Kremfløte, 37 % fett, laktosefri\",100]]"
       }
     },
     {
@@ -584,7 +592,8 @@
         }
       },
       "tekst": {
-        "matvaretabell": "Seterrømme, 35 % fett"
+        "matvaretabell": "Seterrømme, 35 % fett",
+        "andrePoster": "[[\"Lettrømme, 18 % fett\",100],[\"Lettrømme, 10 % fett\",100]]"
       }
     },
     {
@@ -602,7 +611,8 @@
         }
       },
       "tekst": {
-        "matvaretabell": "Sirup"
+        "matvaretabell": "Sirup",
+        "andrePoster": "[[\"Agavesirup\",140]]"
       }
     },
     {
@@ -632,14 +642,15 @@
           "verdi": 123,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "292 g per cup, regnet om"
+          "merknad": "292 g per cup"
         }
       },
       "tekst": {
         "matvaretabell": "Salt, bordsalt",
         "rapportnavn": "Salt, fint",
         "usdaFdcId": "173468",
-        "usdaNavn": "Salt, table"
+        "usdaNavn": "Salt, table",
+        "andrePoster": "[[\"Salt, bordsalt, jodert\",130]]"
       }
     },
     {
@@ -657,7 +668,8 @@
         }
       },
       "tekst": {
-        "matvaretabell": "Ris, polert, jasminris, tørr"
+        "matvaretabell": "Ris, polert, jasminris, tørr",
+        "andrePoster": "[[\"Ris, polert, basmatiris, tørr\",80],[\"Ris, polert, langkornet, tørr\",80]]"
       }
     },
     {
@@ -675,7 +687,8 @@
         }
       },
       "tekst": {
-        "matvaretabell": "Ris, grøtris, 1 times koketid, tørr"
+        "matvaretabell": "Ris, grøtris, 1 times koketid, tørr",
+        "andrePoster": "[[\"Ris, grøtris, 5-25 min koketid, tørr\",90],[\"Ris, arborio, risottoris, tørr\",90]]"
       }
     },
     {
@@ -695,13 +708,14 @@
           "verdi": 81,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "192 g per cup, regnet om"
+          "merknad": "192 g per cup"
         }
       },
       "tekst": {
         "matvaretabell": "Linser, røde, tørre",
         "usdaFdcId": "174284",
-        "usdaNavn": "Lentils, pink or red, raw"
+        "usdaNavn": "Lentils, pink or red, raw",
+        "andrePoster": "[[\"Linser, grønne, tørre\",85],[\"Linser, røde, hermetisk\",100]]"
       }
     },
     {
@@ -721,7 +735,7 @@
           "verdi": 61,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "145 g per cup (not packed), regnet om fra cup"
+          "merknad": "145 g per cup (not packed)"
         }
       },
       "tekst": {
@@ -747,13 +761,14 @@
           "verdi": 60,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "143 g per cup, whole, regnet om fra cup"
+          "merknad": "143 g per cup, whole"
         }
       },
       "tekst": {
         "matvaretabell": "Mandler",
         "usdaFdcId": "170567",
-        "usdaNavn": "Nuts, almonds"
+        "usdaNavn": "Nuts, almonds",
+        "andrePoster": "[[\"Mandler, skåldet\",60]]"
       }
     },
     {
@@ -796,14 +811,15 @@
           "verdi": 61,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "144 g per cup, regnet om"
+          "merknad": "144 g per cup"
         }
       },
       "tekst": {
         "matvaretabell": "Sesamfrø, med skall",
         "rapportnavn": "Sesamfrø",
         "usdaFdcId": "170150",
-        "usdaNavn": "Seeds, sesame seeds, whole, dried"
+        "usdaNavn": "Seeds, sesame seeds, whole, dried",
+        "andrePoster": "[[\"Sesamfrø, uten skall\",60]]"
       }
     },
     {
@@ -828,7 +844,7 @@
           "verdi": 59,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "140 g per cup, regnet om"
+          "merknad": "140 g per cup"
         }
       },
       "tekst": {
@@ -860,7 +876,7 @@
           "verdi": 73,
           "enhet": "g",
           "kilde": "usda",
-          "merknad": "173 g per cup, regnet om"
+          "merknad": "173 g per cup"
         }
       },
       "tekst": {
