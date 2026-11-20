@@ -6,7 +6,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { allePar } from '../scripts/enheter.mjs';
 import {
-  BLOGGINDEKS, EKSEMPEL, TYPER, UTRULLET, alleSider, erUtrullet, nokkel, normaliserSti, sidetype, sidetypeEllerNull, tjenestefamilie,
+  BLOGGINDEKS, EKSEMPEL, TYPER, UTRULLET, alleSider, erGenerertFamilie, erUtrullet, nokkel, normaliserSti, sidetype, sidetypeEllerNull, tjenestefamilie,
 } from '../scripts/sidetyper.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
@@ -21,6 +21,22 @@ test('hver publiserbar HTML-fil får én type og én nøkkel', () => {
     assert.equal(s.nokkel, s.type === 'tjeneste' ? `tjeneste:${tjenestefamilie(s.sti)}` : s.type, s.sti);
   }
   assert.ok(!sider.some((s) => s.fil.includes('/.')));
+});
+test('hver side har en familie, og omregnerne fordeler seg på enhetsgrupper', () => {
+  for (const s of sider) assert.equal(typeof s.familie, 'string', s.sti);
+  for (const s of sider.filter((x) => x.type !== 'omregner')) assert.equal(s.familie, s.nokkel, s.sti);
+  const tell = (f) => sider.filter((s) => s.familie === f).length;
+  assert.equal(tell('omregner:nav'), 4);
+  // «nav» er nøyaktig de fire hubbene. En ny side som havner der, må få en egen familie (se oppgave 5) i stedet for å regnes som håndskrevet.
+  assert.deepEqual(sider.filter((s) => s.familie === 'omregner:nav').map((s) => s.sti).sort(),
+    ['/da/vaerktoejer/enhedsomregner/', '/en/tools/unit-converter/', '/sv/verktyg/enhetsomvandlare/', '/verktoy/enhetsomregner/']);
+  const fam = new Set(sider.filter((s) => s.type === 'omregner').map((s) => s.familie));
+  assert.deepEqual([...fam].sort(), ['omregner:lengde', 'omregner:nav', 'omregner:temperatur', 'omregner:vekt', 'omregner:volum']);
+  assert.equal(sider.filter((s) => s.type === 'omregner').length, ['volum', 'vekt', 'lengde', 'temperatur', 'nav'].reduce((n, g) => n + tell(`omregner:${g}`), 0));
+  assert.equal(erGenerertFamilie('omregner:volum'), true);
+  assert.equal(erGenerertFamilie('omregner:nav'), false);
+  assert.equal(erGenerertFamilie('fam:dl-til-gram'), true);
+  assert.equal(erGenerertFamilie('guide-lang'), false);
 });
 test('omregnerne er alle parene pluss fire hubber', () => {
   const par = ['nb', 'sv', 'da', 'en'].reduce((n, l) => n + allePar(l).length, 0);
