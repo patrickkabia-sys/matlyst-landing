@@ -1,0 +1,874 @@
+{
+  "familie": "dl-til-gram",
+  "marked": "nb",
+  "kilder": {
+    "matvaretabellen": {
+      "navn": "Matvaretabellen 2026",
+      "utgiver": "Mattilsynet",
+      "aar": 2026,
+      "adresse": "https://www.matvaretabellen.no",
+      "hentet": "2026-11-20"
+    },
+    "rapport-2015": {
+      "navn": "Mål, vekt og porsjonsstørrelser for matvarer (IS-2286)",
+      "utgiver": "Mattilsynet, Universitetet i Oslo og Helsedirektoratet",
+      "aar": 2015,
+      "adresse": "https://www.helsedirektoratet.no/brosjyrer/mal-vekt-og-porsjonsstorrelser-for-matvarer",
+      "hentet": "2026-11-20"
+    },
+    "usda": {
+      "navn": "FoodData Central, SR Legacy",
+      "utgiver": "U.S. Department of Agriculture",
+      "aar": 2019,
+      "adresse": "https://fdc.nal.usda.gov",
+      "hentet": "2026-11-20"
+    }
+  },
+  "rader": [
+    {
+      "id": "hvetemel",
+      "slug": "hvetemel",
+      "navn": "Hvetemel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 55,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 9,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 4,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 53,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "125 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Hvetemel, siktet",
+        "rapportnavn": "Hvetemel, siktet",
+        "usdaFdcId": "168936",
+        "usdaNavn": "Wheat flour, white, all-purpose, enriched, unbleached"
+      }
+    },
+    {
+      "id": "sammalt-hvetemel",
+      "slug": "sammalt-hvetemel",
+      "navn": "Sammalt hvetemel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 9,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 3.5,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 51,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "120 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Hvetemel, sammalt, fint/grovt",
+        "rapportnavn": "Hvetemel, sammalt",
+        "usdaFdcId": "168893",
+        "usdaNavn": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)"
+      }
+    },
+    {
+      "id": "rugmel",
+      "slug": "rugmel",
+      "navn": "Rugmel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 9,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 4,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Rugmel, siktet",
+        "rapportnavn": "Rugmel, siktet"
+      }
+    },
+    {
+      "id": "havregryn",
+      "slug": "havregryn",
+      "navn": "Havregryn",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 6,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Havregryn",
+        "rapportnavn": "Havregryn"
+      }
+    },
+    {
+      "id": "sukker",
+      "slug": "sukker",
+      "navn": "Sukker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 90,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 13,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 5,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "200 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Sukker, hvitt",
+        "rapportnavn": "Sukker, hvitt",
+        "usdaFdcId": "169655",
+        "usdaNavn": "Sugars, granulated"
+      }
+    },
+    {
+      "id": "brunt-sukker",
+      "slug": "brunt-sukker",
+      "navn": "Brunt sukker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 70,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 10,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 5.5,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 61,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "145 g per cup unpacked, regnet om fra cup"
+        },
+        "dl_usda_pakket": {
+          "verdi": 93,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "220 g per cup packed, regnet om fra cup"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Sukker, brunt",
+        "rapportnavn": "Sukker, brunt",
+        "usdaFdcId": "168833",
+        "usdaNavn": "Sugars, brown"
+      }
+    },
+    {
+      "id": "melis",
+      "slug": "melis",
+      "navn": "Melis",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 55,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 8,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 4,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 51,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "120 g per cup unsifted, regnet om fra cup"
+        },
+        "dl_usda_siktet": {
+          "verdi": 42,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "100 g per cup sifted, regnet om fra cup"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Melis",
+        "rapportnavn": "Melis",
+        "usdaFdcId": "169656",
+        "usdaNavn": "Sugars, powdered"
+      }
+    },
+    {
+      "id": "potetmel",
+      "slug": "potetmel",
+      "navn": "Potetmel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 70,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 11,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 4.5,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Potetmel, potetstivelse",
+        "rapportnavn": "Potetmel, potetstivelse"
+      }
+    },
+    {
+      "id": "maisstivelse",
+      "slug": "maisstivelse",
+      "navn": "Maisstivelse",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 9,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 3.5,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 54,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "128 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Maisstivelse",
+        "rapportnavn": "Maisstivelse",
+        "usdaFdcId": "169698",
+        "usdaNavn": "Cornstarch"
+      }
+    },
+    {
+      "id": "kakao",
+      "slug": "kakao",
+      "navn": "Kakao",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 7,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 4.5,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 36,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "86 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Kakaopulver",
+        "rapportnavn": "Kakaopulver",
+        "usdaFdcId": "169593",
+        "usdaNavn": "Cocoa, dry powder, unsweetened"
+      }
+    },
+    {
+      "id": "kokosmasse",
+      "slug": "kokosmasse",
+      "navn": "Kokosmasse",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 35,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 5,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 2.5,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Kokosmasse, usøtet",
+        "rapportnavn": "Kokosmasse"
+      }
+    },
+    {
+      "id": "mandelmel",
+      "slug": "mandelmel",
+      "navn": "Mandelmel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Mandelmel"
+      }
+    },
+    {
+      "id": "smor",
+      "slug": "smor",
+      "navn": "Smør",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 90,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 15,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 7,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 96,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "227 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Smør",
+        "rapportnavn": "Smør, margarin",
+        "usdaFdcId": "173410",
+        "usdaNavn": "Butter, salted"
+      }
+    },
+    {
+      "id": "margarin",
+      "slug": "margarin",
+      "navn": "Margarin",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 90,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 15,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 7,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Margarin, hard",
+        "rapportnavn": "Smør, margarin"
+      }
+    },
+    {
+      "id": "olje",
+      "slug": "olje",
+      "navn": "Olje",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 90,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "dl_usda": {
+          "verdi": 92,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "218 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Solsikkeolje",
+        "usdaFdcId": "171025",
+        "usdaNavn": "Oil, sunflower, linoleic, (approx. 65%)"
+      }
+    },
+    {
+      "id": "melk",
+      "slug": "melk",
+      "navn": "Melk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "dl_usda": {
+          "verdi": 103,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "244 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Helmelk, uspesifisert",
+        "usdaFdcId": "172217",
+        "usdaNavn": "Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D"
+      }
+    },
+    {
+      "id": "flote",
+      "slug": "flote",
+      "navn": "Fløte",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "dl_usda": {
+          "verdi": 101,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "238 g per cup, fluid (yields 2 cups whipped), regnet om fra cup"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Kremfløte, 37 % fett",
+        "usdaFdcId": "170859",
+        "usdaNavn": "Cream, fluid, heavy whipping"
+      }
+    },
+    {
+      "id": "romme",
+      "slug": "romme",
+      "navn": "Rømme",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Seterrømme, 35 % fett"
+      }
+    },
+    {
+      "id": "sirup",
+      "slug": "sirup",
+      "navn": "Sirup",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 140,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Sirup"
+      }
+    },
+    {
+      "id": "salt",
+      "slug": "salt",
+      "navn": "Salt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 130,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 17,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "ts_toppet": {
+          "verdi": 7,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 123,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "292 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Salt, bordsalt",
+        "rapportnavn": "Salt, fint",
+        "usdaFdcId": "173468",
+        "usdaNavn": "Salt, table"
+      }
+    },
+    {
+      "id": "ris",
+      "slug": "ris",
+      "navn": "Ris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Ris, polert, jasminris, tørr"
+      }
+    },
+    {
+      "id": "grotris",
+      "slug": "grotris",
+      "navn": "Grøtris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 90,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Ris, grøtris, 1 times koketid, tørr"
+      }
+    },
+    {
+      "id": "rode-linser",
+      "slug": "rode-linser",
+      "navn": "Røde linser",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "dl_usda": {
+          "verdi": 81,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "192 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Linser, røde, tørre",
+        "usdaFdcId": "174284",
+        "usdaNavn": "Lentils, pink or red, raw"
+      }
+    },
+    {
+      "id": "rosiner",
+      "slug": "rosiner",
+      "navn": "Rosiner",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "dl_usda": {
+          "verdi": 61,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "145 g per cup (not packed), regnet om fra cup"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Rosiner",
+        "usdaFdcId": "168165",
+        "usdaNavn": "Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)"
+      }
+    },
+    {
+      "id": "mandler",
+      "slug": "mandler",
+      "navn": "Mandler",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "dl_usda": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "143 g per cup, whole, regnet om fra cup"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Mandler",
+        "usdaFdcId": "170567",
+        "usdaNavn": "Nuts, almonds"
+      }
+    },
+    {
+      "id": "chiafro",
+      "slug": "chiafro",
+      "navn": "Chiafrø",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 70,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Chiafrø, tørket"
+      }
+    },
+    {
+      "id": "sesamfro",
+      "slug": "sesamfro",
+      "navn": "Sesamfrø",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 9,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 61,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "144 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Sesamfrø, med skall",
+        "rapportnavn": "Sesamfrø",
+        "usdaFdcId": "170150",
+        "usdaNavn": "Seeds, sesame seeds, whole, dried"
+      }
+    },
+    {
+      "id": "bulgur",
+      "slug": "bulgur",
+      "navn": "Bulgur",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 13,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 59,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "140 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Bulgurgryn, tørr",
+        "rapportnavn": "Bulgurgryn, tørr",
+        "usdaFdcId": "170688",
+        "usdaNavn": "Bulgur, dry"
+      }
+    },
+    {
+      "id": "couscous",
+      "slug": "couscous",
+      "navn": "Couscous",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "dl": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "matvaretabellen"
+        },
+        "ss_toppet": {
+          "verdi": 11,
+          "enhet": "g",
+          "kilde": "rapport-2015"
+        },
+        "dl_usda": {
+          "verdi": 73,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "173 g per cup, regnet om"
+        }
+      },
+      "tekst": {
+        "matvaretabell": "Couscous, tørr",
+        "rapportnavn": "Couscous, tørr",
+        "usdaFdcId": "169699",
+        "usdaNavn": "Couscous, dry"
+      }
+    }
+  ]
+}
