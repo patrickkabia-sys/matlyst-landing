@@ -15,8 +15,8 @@ export const sigTekst = (n, sifre, { komma = false } = {}) => {
   const ren = t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t;
   return komma ? ren.replace('.', ',') : ren;
 };
-/** Gram: hele gram fra 1 g (halve runder opp), under 1 g to gjeldende sifre. */
-export const gramTekst = (n, { komma = false } = {}) => (n === 0 ? '0' : Math.abs(n) >= 1 ? String(Math.round(Number(n.toPrecision(12)))) : sigTekst(n, 2, { komma }));
+/** Gram: hele gram fra 10 g (halve runder opp), under 10 g to gjeldende sifre (4.6, 2.8, 0.52). */
+export const gramTekst = (n, { komma = false } = {}) => (n === 0 ? '0' : Math.abs(n) >= 10 ? String(Math.round(Number(n.toPrecision(12)))) : sigTekst(n, 2, { komma }));
 /** Alle andre enheter: 100 og over som heltall, 10 til 100 med tre gjeldende sifre, under 10 med to. */
 export const mengdeTekst = (n, { komma = false } = {}) => (n === 0 ? '0' : Math.abs(n) >= 100 ? String(Math.round(Number(n.toPrecision(12)))) : sigTekst(n, Math.abs(n) >= 10 ? 3 : 2, { komma }));
 

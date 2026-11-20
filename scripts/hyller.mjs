@@ -213,7 +213,7 @@ export const HYLLETEKST = {
       '/verktoy/kopp-til-dl/': 'Cups to deciliters',
       '/verktoy/dl-til-kopp/': 'Deciliters to cups',
       '/verktoy/celsius-til-fahrenheit/': 'Celsius to Fahrenheit',
-      '/verktoy/dl-til-gram/': 'Deciliters to grams',
+      '/verktoy/dl-til-gram/': 'Cups to grams',
       '/verktoy/porsjoner/': 'Servings calculator',
       '/verktoy/kakeform/': 'Pan size converter',
       '/verktoy/steketid/': 'Roasting times',

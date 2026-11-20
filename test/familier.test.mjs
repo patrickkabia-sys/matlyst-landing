@@ -7,7 +7,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { lesData, publiserbare } from '../scripts/familier/felles.mjs';
 import { FAMILIER, SPRAKMAPPE, familieSider } from '../scripts/familier/register.mjs';
-import { antallFeil, dupliserte, forLike, kontrollerFamilier, sideMotData, synligTekst, tallUtenforData } from './hjelp/familievakt.mjs';
+import { antallFeil, datatall, dupliserte, forLike, kontrollerFamilier, maskertDuplikater, maskertUnik, sideMotData, synligTekst, tallUtenforData } from './hjelp/familievakt.mjs';
 
 const ROT = fileURLToPath(new URL('..', import.meta.url));
 const FIKS = new URL('./fiksturer/familier/', import.meta.url);
@@ -51,6 +51,21 @@ test.describe('Vaktene kan bli røde', () => {
     // Én side alene har ingen å ligne på, men en tom side har ingenting eget.
     assert.deepEqual(forLike([{ sti: '/a/', tekst: 'Dette er en tekst med nok ord til å lage ordfemmere.' }]), []);
     assert.deepEqual(forLike([{ sti: '/tom/', tekst: '' }]).map((r) => r.sti), ['/tom/']);
+  });
+
+  test('maskertUnik og duplikatvakten: to kopier med bare navnet byttet er samme side, og en side med eget innhold er det ikke', () => {
+    const kopier = rodSide('maskert-duplikat');
+    // Uten maskering ser de ulike ut (navnet står i alle setningene), med maskering er de ens.
+    assert.ok(forLike(kopier.map((s) => ({ sti: s.sti, tekst: s.tekst }))).length === 0, 'forLike med terskel 0,2 stopper dem ikke');
+    const m = maskertUnik(kopier);
+    assert.ok(m.every((r) => r.unik === 0), JSON.stringify(m));
+    assert.deepEqual(maskertDuplikater(kopier), [['/verktoy/proeve/mel/', '/verktoy/proeve/mel-kopi/']]);
+    // Andre datatall gjør dem ikke til duplikater (to varer med samme mal og ulike tall er to sider), og eget innhold gir unik tekst.
+    assert.deepEqual(maskertDuplikater([kopier[0], { ...kopier[1], data: '["60|dl"]' }]), []);
+    const egen = { sti: '/verktoy/proeve/salt/', tekst: 'Salt løser seg fort opp i varmt vann, og grovt salt trenger lengre tid enn fint. Se tabellen under for vekt per dl. En klype er ikke et mål vi har tall for.', navn: ['salt'], data: '["130|dl"]' };
+    assert.deepEqual(maskertDuplikater([...kopier, egen]), [['/verktoy/proeve/mel/', '/verktoy/proeve/mel-kopi/']]);
+    assert.ok(maskertUnik([...kopier, egen]).find((r) => r.sti === egen.sti).unik > 0.9);
+    assert.equal(datatall({ tall: { a: { verdi: 5, merknad: 'x' }, b: { verdi: 2 } } }), datatall({ tall: { b: { verdi: 2 }, a: { verdi: 5, merknad: 'x' } } }), 'rekkefølgen teller ikke');
   });
 
   test('dupliserte: to sider med lik tittel felles, ulike slipper gjennom', () => {

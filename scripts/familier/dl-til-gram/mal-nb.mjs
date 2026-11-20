@@ -251,6 +251,9 @@ export function sideForRad(rad, data, rader) {
   };
 }
 
+/** Radens egne navn som duplikatvakten maskerer (test/hjelp/familievakt.mjs): ord og variant, og postene vi valgte bort. */
+export const maskeNavn = (rad) => [ord(rad), TEKST[rad.id]?.variant, ...JSON.parse(rad.tekst?.andrePoster ?? '[]').map(([n]) => n)];
+
 export function navSide(data, rader) {
   const sortert = [...rader].sort((a, b) => a.navn.localeCompare(b.navn, 'nb'));
   const etterVekt = [...rader].sort((a, b) => a.tall.dl.verdi - b.tall.dl.verdi);

@@ -1,0 +1,20 @@
+[
+  {
+    "sti": "/verktoy/proeve/mel/",
+    "tekst": "Dette er prøvesiden for hvetemel. En hvetemel-side har tabellen 1 dl hvetemel veier 55 g, og 2 dl hvetemel veier 110 g. Slik regner du om hvetemel fra dl til gram uten kalkulator: gang antall dl med 55 og les av svaret. Kilden til tallet 55 er prøvedata fra Matvaretabellen. Spørsmål om hvetemel: hvor mange gram er 1 dl hvetemel? Svar: 55 g. Skriv aldri tall for hånd.",
+    "navn": [
+      "hvetemel",
+      "Hvetemel"
+    ],
+    "data": "[\"55|dl\"]"
+  },
+  {
+    "sti": "/verktoy/proeve/mel-kopi/",
+    "tekst": "Dette er prøvesiden for speltmel. En speltmel-side har tabellen 1 dl speltmel veier 55 g, og 2 dl speltmel veier 110 g. Slik regner du om speltmel fra dl til gram uten kalkulator: gang antall dl med 55 og les av svaret. Kilden til tallet 55 er prøvedata fra Matvaretabellen. Spørsmål om speltmel: hvor mange gram er 1 dl speltmel? Svar: 55 g. Skriv aldri tall for hånd.",
+    "navn": [
+      "speltmel",
+      "Speltmel"
+    ],
+    "data": "[\"55|dl\"]"
+  }
+]

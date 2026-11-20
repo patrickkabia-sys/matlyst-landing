@@ -1,0 +1,41 @@
+// Den håndskrevne delen av sidene for «cups to grams» (en). Alt annet skrives av mal-en.mjs fra data.en.json.
+//   naer: rad-id-er for nære varer. Den første får et spørsmål («Does bread flour weigh the same as flour?»), og alle står først i «Other ingredients».
+//   alt: en annen cup-porsjon i samme post som er klart merket, med spørsmålet om den. `porsjon` er USDAs modifikator ordrett.
+// Nære varer har samme grunnlag (cup eller teskje), så tallene i spørsmålet om den første kan sammenlignes.
+// Ingen setning her skal påstå mer enn kilden sier, og ingen tall skrives for hånd: tallene kommer fra datafila.
+export const TEKST_EN = {
+  hvetemel: { naer: ['bread-flour', 'sammalt-hvetemel'] },
+  'bread-flour': { naer: ['hvetemel', 'sammalt-hvetemel'] },
+  'sammalt-hvetemel': { naer: ['hvetemel', 'bread-flour'] },
+  maisstivelse: { naer: ['hvetemel'] },
+  cornmeal: { naer: ['hvetemel'] },
+  sukker: { naer: ['brunt-sukker', 'melis'] },
+  'brunt-sukker': { naer: ['sukker'], alt: { porsjon: 'cup unpacked', adj: 'unpacked', hoved: 'Packed', sporsmal: 'How much does 1 cup of unpacked brown sugar weigh?' } },
+  melis: { naer: ['sukker'], alt: { porsjon: 'cup sifted', adj: 'sifted', hoved: 'Unsifted', sporsmal: 'How much does 1 cup of sifted powdered sugar weigh?' } },
+  honey: { naer: ['maple-syrup', 'molasses'] },
+  'maple-syrup': { naer: ['honey', 'molasses'] },
+  molasses: { naer: ['honey', 'maple-syrup'] },
+  smor: { naer: ['shortening'] },
+  'olive-oil': { naer: ['vegetable-oil'] },
+  'vegetable-oil': { naer: ['olive-oil'] },
+  shortening: { naer: ['smor'] },
+  melk: { naer: ['flote'] },
+  flote: { naer: ['melk', 'romme'] },
+  romme: { naer: ['yogurt', 'flote'] },
+  yogurt: { naer: ['romme'] },
+  'cottage-cheese': { naer: ['cream-cheese'] },
+  'cream-cheese': { naer: ['cottage-cheese'] },
+  'shredded-cheddar': { naer: ['grated-parmesan'] },
+  'grated-parmesan': { naer: ['shredded-cheddar'] },
+  water: { naer: ['melk'] },
+  quinoa: { naer: ['ris'] },
+  lentils: { naer: ['black-beans'] },
+  'black-beans': { naer: ['lentils'] },
+  kakao: { naer: ['chocolate-chips'] },
+  'chocolate-chips': { naer: ['kakao'] },
+  'peanut-butter': { naer: ['smor'] },
+  walnuts: { naer: ['mandler'] },
+  mandler: { naer: ['walnuts'] },
+  'mashed-banana': { naer: ['blueberries'] },
+  blueberries: { naer: ['mashed-banana'] },
+};

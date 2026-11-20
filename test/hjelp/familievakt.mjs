@@ -103,6 +103,43 @@ export function forLike(sider, terskel = 0.2) {
   }).filter((r) => r.unik < terskel);
 }
 
+/** Radens egne navn (navn, ord, variant, slug og postnavn), de som maskeres i `maskertUnik`. */
+const maskeTekst = (tekst, navn) => {
+  let t = htmlTilTekst(utenSkjult(tekst), { attributter: false }).toLowerCase();
+  const alle = [...new Set(navn.filter((n) => typeof n === 'string' && n.trim()).map((n) => n.toLowerCase().trim()))].sort((a, b) => b.length - a.length);
+  for (const n of alle) t = t.split(n).join(' vare ');
+  return (t.match(/[\p{L}\p{N}]+/gu) ?? []).map((w) => (/^\d+$/u.test(w) ? '#' : w));
+};
+const femmereAv = (ord) => new Set(Array.from({ length: Math.max(0, ord.length - 4) }, (_, i) => ord.slice(i, i + 5).join(' ')));
+
+/**
+ * Som forLike, men etter at hver sides egne navn er byttet med «vare» og alle tall med «#». Viser hvor mye av en side som er annet enn
+ * mal med innsatt navn og tall. `sider`: { sti, tekst, navn: string[] }. Gir alle sidene, laveste unike andel først. Ingen terskel.
+ */
+export function maskertUnik(sider) {
+  const sett = sider.map((s) => femmereAv(maskeTekst(s.tekst, s.navn ?? [])));
+  const antall = new Map();
+  for (const f of sett) for (const g of f) antall.set(g, (antall.get(g) ?? 0) + 1);
+  return sider.map((s, i) => ({ sti: s.sti, unik: sett[i].size === 0 ? 0 : [...sett[i]].filter((g) => antall.get(g) === 1).length / sett[i].size }))
+    .sort((a, b) => a.unik - b.unik);
+}
+
+/**
+ * Duplikater: sider i samme marked med identisk maskert tekst OG identiske datatall (`data`, en tekst som beskriver grunntall og porsjoner).
+ * Det er samme side to ganger med bare navnet byttet, og skal være én side. Gir grupper av stier.
+ */
+export function maskertDuplikater(sider) {
+  const grupper = new Map();
+  for (const s of sider) {
+    const nokkel = `${maskeTekst(s.tekst, s.navn ?? []).join(' ')}|${s.data ?? ''}`;
+    grupper.set(nokkel, [...(grupper.get(nokkel) ?? []), s.sti]);
+  }
+  return [...grupper.values()].filter((g) => g.length > 1);
+}
+
+/** Datatallene til en rad som tekst: alle tall med verdi og merknad, sortert. Brukes av duplikatvakten. */
+export const datatall = (rad) => JSON.stringify(Object.values(rad.tall).map((t) => `${t.verdi}|${t.merknad ?? ''}`).sort());
+
 /** Grupper av stier med samme verdi i feltet (små og store bokstaver og ytre mellomrom teller ikke). */
 export function dupliserte(sider, felt) {
   const perVerdi = new Map();
@@ -209,6 +246,9 @@ export async function kontrollerFamilier(familier, rotmappe) {
           if (mangler.length) feil.push(`${navn}: filen ${relative(rotmappe, fil)} mangler ${mangler.join(', ')} fra malen`);
         }
       }
+      // Duplikater (lik maskert tekst og like datatall) og likhet etter maskering. Siste er en opplysning, ikke en terskel (se maskertUnik).
+      const maskert = liste.map((x) => { const rad = rader.find((r) => x.sti === `${familie.markeder[marked].rot}${r.slug}/`); return { sti: x.sti, tekst: x.tekst, navn: rad ? [rad.navn, rad.slug, rad.tekst?.variant, rad.tekst?.usdaNavn, rad.tekst?.usdaNavn2, rad.tekst?.matvaretabell, ...(mal.maskeNavn?.(rad) ?? [])] : [], data: rad ? datatall(rad) : x.sti }; });
+      for (const g of maskertDuplikater(maskert)) feil.push(`${navn}: samme side to ganger med bare navnet byttet (lik maskert tekst og like datatall): ${g.join(', ')}`);
       for (const r of forLike(liste)) feil.push(`${navn}: for lik de andre sidene: ${r.sti} (${r.unik.toFixed(2)} unik)`);
       for (const felt of ['title', 'h1', 'description']) for (const g of dupliserte(liste, felt)) feil.push(`${navn}: lik ${felt} på ${g.join(', ')}`);
       const m = sideMotData({ ...familie, markeder: { [marked]: familie.markeder[marked] } }, rotmappe);

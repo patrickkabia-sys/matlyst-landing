@@ -76,11 +76,11 @@ test('svarsetningen gjengir mengden slik den ble tolket, bare svaret avrundes', 
   await expect(setning).toHaveText('1000 dl hvetemel = 55000 g');
 });
 
-test('svar i gram: hele gram fra 1 g, to gjeldende sifre under 1 g; andre enheter: 100 og over som heltall, ellers tre og to gjeldende sifre', async ({ page }) => {
+test('svar i gram: hele gram fra 10 g, to gjeldende sifre under 10 g; andre enheter: 100 og over som heltall, ellers tre og to gjeldende sifre', async ({ page }) => {
   const f = '#fast';
   const svar = page.locator(`${f} [data-felt=svar]`);
-  // 55 g per dl. Gram: 0,5 dl er 27,5 g (opp til 28), 1 ts er 2,75 g (3), 1 ss er 8,25 g (8).
-  for (const [fra, mengde, ut] of [['dl', '0,5', '28'], ['ts', '1', '3'], ['ss', '1', '8'], ['dl', '0,01', '0,55'], ['dl', '0,015', '0,83'], ['dl', '0,02', '1']]) {
+  // 55 g per dl. Gram: 0,5 dl er 27,5 g (opp til 28), 1 ts er 2,75 g (2,8), 1 ss er 8,25 g (8,3), 0,02 dl er 1,1 g, 0,18 dl er 9,9 g og 0,2 dl er 11 g.
+  for (const [fra, mengde, ut] of [['dl', '0,5', '28'], ['ts', '1', '2,8'], ['ss', '1', '8,3'], ['dl', '0,01', '0,55'], ['dl', '0,015', '0,83'], ['dl', '0,02', '1,1'], ['dl', '0,18', '9,9'], ['dl', '0,2', '11']]) {
     await page.selectOption(`${f} [data-felt=fra]`, fra);
     await page.selectOption(`${f} [data-felt=til]`, 'g');
     await page.fill(`${f} [data-felt=mengde]`, mengde);
