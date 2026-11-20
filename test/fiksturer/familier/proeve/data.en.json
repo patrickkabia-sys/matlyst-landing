@@ -1,0 +1,52 @@
+{
+  "familie": "proeve",
+  "marked": "en",
+  "kilder": {
+    "prove-tabell": {
+      "navn": "Prøvetabellen",
+      "utgiver": "Prøveinstituttet",
+      "aar": 2024,
+      "adresse": "https://eksempel.test/prove-tabell",
+      "hentet": "2026-11-20"
+    },
+    "prove-bok": {
+      "navn": "Prøveboka",
+      "utgiver": "Prøveforlaget",
+      "aar": 2022,
+      "adresse": "https://eksempel.test/prove-bok",
+      "hentet": "2026-11-20"
+    }
+  },
+  "rader": [
+    {
+      "id": "provemel",
+      "slug": "test-flour",
+      "navn": "Test flour",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerCup": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "prove-tabell"
+        }
+      }
+    },
+    {
+      "id": "provehonning",
+      "slug": "test-honey",
+      "navn": "Test honey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerCup": {
+          "verdi": 340,
+          "enhet": "g",
+          "kilde": "prove-bok"
+        }
+      }
+    }
+  ]
+}
