@@ -272,6 +272,8 @@ const unntak = [
   { seksjon: '.del', fra: ['Antall porsjoner', '−', '4', '+'], til: ['Antall porsjoner', '−', '6', '+'] },
   // Spec 10: kalkulatorer som ennå ikke finnes, får ingen lenke. Heller ikke oversikten finnes.
   { seksjon: '.bunn', fra: ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'], til: [] },
+  // «Om Matlyst» er lagt til i hyllen Matlyst etter prototypet (om-siden finnes bare på norsk).
+  { seksjon: '.bunn', fra: ['For matskapere', 'Instagram'], til: ['For matskapere', 'Om Matlyst', 'Instagram'] },
   // Det vedtatte sideskallet bruker korte språkkoder i begge velgerne.
 ];
 // Prototypens prøvestripe ligger utenfor de åtte seksjonene. «Juridisk» er en aria-label,
