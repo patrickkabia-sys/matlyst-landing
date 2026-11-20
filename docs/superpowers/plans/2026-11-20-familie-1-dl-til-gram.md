@@ -243,6 +243,7 @@ test('alt i kortet er minst 44 px høyt å trykke på, og ingenting ruller sidel
 - `tekst-nb.mjs`: `export const TEKST: { [radId]: { variant?: string, sprik?: string, ekstraSpm?: [sporsmal, svar][] } }`. Det er den håndskrevne delen per vare: én setning om hvilken variant tallet gjelder («siktet hvetemel»), og én til to setninger til avsnittet om kildene når de spriker. Hver setning skal kunne belegges med et tall i datafila eller en betegnelse i kilden.
 - Strukturerte data: varesiden får brødsmuler, `WebApplication` og `Article` med kildene som `citation`. Samlesiden får i tillegg `ItemList` over varesidene. Ingen `HowTo`, ingen `FAQPage`.
 - Rekkefølge, titler og tallregler: som i «Utforming».
+- `tillatteTall` må dekke alt vakten leser etter retterunden i grunnmuren: tittel, beskrivelse, H1, toppfeltet, attributter som `value` og `data-v`, og tallene i `kalk-data` (også enhetsfaktorene). Tusenskille skrives med hardt mellomrom og regnes som ett tall.
 
 - [ ] **Steg 1: Skriv de røde testene:**
 
@@ -297,6 +298,7 @@ test('strukturerte data: kalkulator og artikkel med kilder, ingen HowTo', () => 
 - Lag: `verktoy/dl-til-gram/**/index.html` (skrives av kjeden), oppdatert `sitemap.xml`, `llms.txt`, `scripts/lastmod-kart.json`
 
 - [ ] **Steg 1: Legg inn oppføringen og kjør kjeden** på arbeidskopien (rekkefølgen i `scripts/kjede.mjs`). Forventet: nye filer bare under `verktoy/dl-til-gram/`, pluss sidekart, `llms.txt`, lastmod-kart og bunnmenyen på nb-sidene (hyllelenka). Sv, da og en skal ikke få lenka (siden finnes bare på norsk); bekreft med `git status`.
+- [ ] **Steg 1b: `llms.txt`.** Røyktesten i grunnmuren viste at nye familiesider ikke kommer i `llms.txt` av seg selv (`scripts/llms.mjs` tar bare verktøyhuben for omregnere). Utvid `llms.mjs` så samlesiden til hver registrerte familie tas med (ikke hver vareside), med test i `test/llms.test.mjs`.
 - [ ] **Steg 2: Kjør** `npm test`. Forventet: rødt bare på de tellende testene (hyller, sidetyper). Oppdater tallene, kjør på nytt: grønt, og `test/familier.test.mjs` grønn for den ekte familien.
 - [ ] **Steg 3: Mål likheten.** Skriv ut `forLike(sider, 0)` for familien (andelen unik tekst per side) og legg tabellen i PR-en. Ligger noen under 0,2: gjør sidene mer ulike gjennom innhold som finnes i kildene (kildesammenligning, variant, skjetall), ikke ved å senke terskelen. Sett den endelige terskelen i `test/familier.test.mjs` med én linje begrunnelse.
 - [ ] **Steg 4: Kjør** `REVISJON=pr npx playwright test revisjon.spec` med de nye sidene i `REVISJON_ENDRET`. Forventet: grønt på 360, 390, 768 og 1280 px, forstørret tekst og zoom.
