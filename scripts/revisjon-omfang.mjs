@@ -1,7 +1,7 @@
 // Hvor stor sidekontrollen skal være på en PR: 'full' (alle klare sider) eller 'pr' (utvalg).
 // Regelen er snudd: bare filer som er kjent for å gi tekst eller data til enkeltsider, eller som ikke
 // påvirker sidenes utseende, kan gå i utvalg. Alt annet, også en helt ny filtype eller mappe, gir full kontroll.
-// Bruk: git -c core.quotePath=false diff --name-only <base>...HEAD | node scripts/revisjon-omfang.mjs
+// Bruk: git -c core.quotePath=false diff --no-renames --name-only <base>...HEAD | node scripts/revisjon-omfang.mjs
 // Feiler git diff (grunn klone, gren fra en gaffel), kalles skriptet med --ukjent og svarer full.
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -14,7 +14,10 @@ export const PR_TRYGGE = Object.freeze([
   // Dokumentasjon og kilde-/dataområder som ikke publiseres som sider.
   /\.md$/u,
   /^docs\//u,
-  /^(seo-motor|seo-data|seo|blogg-kilde|qa)\//u,
+  /^(seo-motor|seo|blogg-kilde|qa)\//u,
+  // seo-data er SEO-motorens data, men generatorene leser seo-data/sprak/ (språkstrenger til alle sider) og
+  // seo-data/lenkekart.json (lenkeblokkene): de gir full. blogg-kilde gir bare bloggartikler, og de endrede sidene er med uansett.
+  /^seo-data\/(?!sprak\/|lenkekart\.json$)/u,
   // Tester: enhetstester og deres fiksturer, men ikke test/playwright/ (revisjonen selv).
   /^test\/[^/]+\.test\.mjs$/u,
   /^test\/(fiksturer|fasit|hjelp)\//u,

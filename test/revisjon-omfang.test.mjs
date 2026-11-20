@@ -83,7 +83,8 @@ test('arbeidsflyten kjører full kontroll på manuell start, og faller tilbake t
   assert.match(yml, /workflow_dispatch:/u);
   assert.match(yml, /github\.event\.pull_request\.base\.sha/u);
   assert.match(yml, /--ukjent/u);
-  assert.match(yml, /git -c core\.quotePath=false diff --name-only/u);
+  // --no-renames: ellers viser en omdøping bare det nye navnet, og en flyttet side.css ser trygg ut.
+  assert.match(yml, /git -c core\.quotePath=false diff --no-renames --name-only/u);
   assert.match(yml, /REVISJON_ENDRET: /u);
   assert.match(yml, /timeout-minutes: 30/u);
   assert.match(yml, /--shard=\$\{\{ matrix\.skar \}\}\/12/u);
@@ -115,4 +116,25 @@ test('kontroll-jobben krever at nøyaktig én revisjonsjobb lyktes, og bruker sa
   assert.match(kontroll, /needs\.utvalg\.result/u);
   assert.match(kontroll, /needs\.full\.result/u);
   assert.match(kontroll, /exit 1/u);
+});
+
+// Filer utenfor sidene som generatorene og etterbehandlingen leser. Endres de, kan mer enn én gruppe sider endre seg.
+const GENERATORER_SOM_LESER = ['generer-lokalsider', 'generer-norske-importguider', 'blogg', 'forside', 'lenker-sett', 'rik-sider', 'app-bevis'];
+test('datafiler som generatorene leser gir full kontroll', () => {
+  const funnet = new Set(['seo-data/sprak/nb.json', 'seo-data/lenkekart.json', 'images/en-guide/bilder.json']);
+  for (const navn of GENERATORER_SOM_LESER) {
+    const kilde = readFileSync(join(ROT, 'scripts', `${navn}.mjs`), 'utf8').replace(/\/\/.*$/gmu, '');
+    for (const m of kilde.matchAll(/(seo-data|images\/en-guide)\/[\w./${}-]+\.json/gu)) funnet.add(m[0].replace('${lang}', 'nb').replace('${språk}', 'nb'));
+  }
+  assert.ok(funnet.size >= 3);
+  for (const f of funnet) {
+    assert.ok(!f.includes('$'), `ulest mal i ${f}`);
+    assert.equal(omfang([f]), 'full', f);
+  }
+  for (const lang of ['nb', 'sv', 'da', 'en']) assert.equal(omfang([`seo-data/sprak/${lang}.json`]), 'full', lang);
+});
+test('seo-data som bare SEO-motoren bruker, og kilder til enkeltsider, er fortsatt trygge', () => {
+  for (const f of ['seo-data/publisert.json', 'seo-data/kilder.json', 'seo-data/logg/x.json', 'blogg-kilde/karuseller.json', 'blogg-kilde/auto/x.json']) {
+    assert.equal(omfang([f]), 'pr', f);
+  }
 });
