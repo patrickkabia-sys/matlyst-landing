@@ -62,5 +62,16 @@
         "planlagt": []
       }
     }
+  },
+  "nb": {
+    "hubber": {
+      "hoytid": {
+        "hub": "/ukemeny/",
+        "eiker": [
+          "/julemiddag/"
+        ],
+        "planlagt": []
+      }
+    }
   }
 }

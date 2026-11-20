@@ -2,6 +2,8 @@
 // felt per path som legges oppå den tynne siden, eller en ny side når path ikke finnes fra før.
 // Skrevet fra meningen etter matlyst-sprak, ikke oversatt. Fakta følger de engelske sidene (funksjonssjekken 18.11.2026).
 // Matsikkerhetstall er utelatt med vilje: Mattilsynets sider kunne ikke leses (HTTP 429), og vi bruker ingen tall vi ikke har hentet derfra.
+import { side as julemiddag } from './nb-jul/julemiddag.mjs';
+import { side as om } from './nb-om/om.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
@@ -505,5 +507,6 @@ export const rikeSider = {
       ['Hvordan flytter jeg oppskriftene mellom apper?', 'Se etter eksport i et format andre apper kan åpne, og etter import som leser andre appers eksportfiler. Test begge før du flytter alt.'],
     ],
     cta: 'Prøv med dine egne oppskrifter',
-  },
+  },  'julemiddag/': julemiddag,
+  'om/': om,
 };

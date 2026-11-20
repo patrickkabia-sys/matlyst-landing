@@ -15,6 +15,8 @@ const VIA_HUB = {
   '/importer-fra-alletiders-kokebok/': '/importer-oppskrifter/',
   // DR Mad nås gjennom importhubbens kuraterte relatert-blokk.
   '/importer-fra-dr-mat/': '/importer-oppskrifter/',
+  // Julemiddagsplanen står i «Alle guider» i bunnen og nås gjennom relatert-blokken på ukemenyen (lenkekartet, nøkkelen nb). Om-siden har egen lenke i hyllen Matlyst.
+  '/julemiddag/': '/ukemeny/',
 };
 
 // Forsidene på sv, da og en når kildeguidene gjennom importhubben på sitt språk, som på norsk.

@@ -69,7 +69,7 @@ test('det norske sitemapet er fortsatt bare norske sider', () => {
   assert.doesNotMatch(sitemap, /matlyst-app\.no\/(?:sv|da|en)\//u);
   // 24 sider + bloggforsiden, 8 håndskrevne bloggartikler, kjøperguiden og autoartiklene.
   const auto = autoArtikler('nb', pathToFileURL(`${ROOT}/`));
-  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 237 + auto.length);
+  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 239 + auto.length);
   assert.match(sitemap, /<loc>https:\/\/matlyst-app\.no\/slett-konto\.html<\/loc>/u);
 });
 

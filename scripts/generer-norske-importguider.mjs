@@ -10,6 +10,7 @@ import { appCta } from './app-cta.mjs';
 import { STIL } from './skall-paa.mjs';
 import { RIK_DATO, RIKE, medRik, utvid } from './rike-sider-register.mjs';
 import { middagssider } from './middagssider.mjs';
+import { FORFATTERLINJE, harForfatter } from './forfatter.mjs';
 import {
   autoArtikkelMain,
   autoArtikkelSchema,
@@ -88,7 +89,7 @@ ${main}
 }
 
 function side(v) {
-  return ramme(v, `<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p></header>
+  return ramme(v, `<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p>${harForfatter(v.path) ? FORFATTERLINJE : ''}</header>
 <section class="${v.rik ? 'prose locale-prose has-toc' : 'prose locale-prose'}">${v.rik ? v.rik : `${(v.ideer ?? []).map(([h, liste]) => `<h2>${h}</h2><ul class="ide-liste">${liste.map(([navn, tekst]) => `<li><strong>${navn}.</strong> ${tekst}</li>`).join('')}</ul>`).join('\n')}<h2>${v.stegTittel}</h2>${v.forst ? `<p>${v.forst}</p>` : ''}<ol>${v.steg.map(([tittel, tekst]) => `<li><strong>${tittel}.</strong> ${tekst}</li>`).join('')}</ol>${v.alternativ ? `<p>${v.alternativ}</p>` : ''}${v.grense ? `<p>${v.grense}</p>` : ''}
 ${v.seksjoner.map(([tittel, innhold]) => `<h2>${tittel}</h2>${innhold}`).join('\n')}`}</section>
 ${v.bilde ? appCta('nb', v, butikkKnapper) : ''}<section class="faq"><h2>${v.faqTittel}</h2>${v.faq.map(([sporsmal, svar], index) => `<details${index === 0 ? ' open' : ''}><summary>${sporsmal}</summary><p>${svar}</p></details>`).join('')}</section>
@@ -121,7 +122,7 @@ const kildeguider = kildesider.nb.slice(1).map(([path,title,description,source,s
   cta: 'Samle oppskriftene der du lager maten',
 }));
 
-const alleNorskeGuider = [...norskeImportGuider.map((v) => medRik('nb', v)), ...funksjonsguider, ...kildeguider, ...produktsider.map((v) => ({...v, lastmod: '2026-10-28'}))].map((v) => (RIKE.nb[v.path] ? { ...v, lastmod: RIK_DATO } : v));
+const alleNorskeGuider = [...norskeImportGuider.map((v) => medRik('nb', v)), ...funksjonsguider, ...kildeguider, ...produktsider.map((v) => ({...v, lastmod: '2026-10-28'}))].map((v) => (RIKE.nb[v.path] ? { ...v, lastmod: RIKE.nb[v.path].publisert ?? RIK_DATO } : v));
 const ekstraNorskeSitemapSider = [{ path: 'slett-konto.html', priority: '0.3', changefreq: 'yearly' }];
 
 for (const v of alleNorskeGuider) {
