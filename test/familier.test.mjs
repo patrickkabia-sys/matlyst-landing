@@ -103,6 +103,67 @@ test.describe('Vaktene kan bli røde', () => {
   });
 });
 
+test.describe('Tallvakten: tall deles ikke feil og synlige tall utelates ikke', () => {
+  const lead = (tekst) => ({ lead: tekst, rik: '', steg: [], faq: [] });
+  test('tusenskille (vanlig og hardt mellomrom) er ett tall som sammenlignes uten mellomrom', () => {
+    for (const mellomrom of [' ', '\u00a0', '\u202f']) {
+      const side = lead(`Du trenger 1${mellomrom}200 g mel.`);
+      assert.deepEqual(tallUtenforData(side, new Set(['1', '200'])), ['1200'], JSON.stringify(mellomrom));
+      assert.deepEqual(tallUtenforData(side, new Set(['1200'])), []);
+      assert.deepEqual(tallUtenforData(side, new Set(['1 200'])), []);
+    }
+    assert.deepEqual(tallUtenforData(lead('Opptil 1 200,5 g.'), new Set(['1200,5'])), []);
+  });
+  test('brøk med skråstrek er ett symbol, og brøktegn er symboler som må være tillatt', () => {
+    assert.deepEqual(tallUtenforData(lead('Bruk 1/2 kopp.'), new Set(['1', '2'])), ['1/2']);
+    assert.deepEqual(tallUtenforData(lead('Bruk 1/2 kopp.'), new Set(['1/2'])), []);
+    for (const tegn of ['½', '⅓', '⅔', '¼', '¾', '⅛', '⅜', '⅝', '⅞']) {
+      assert.deepEqual(tallUtenforData(lead(`Bruk ${tegn} kopp.`), new Set(['1', '2'])), [tegn], tegn);
+      assert.deepEqual(tallUtenforData(lead(`Bruk ${tegn} kopp.`), new Set([tegn])), [], tegn);
+    }
+    assert.deepEqual(tallUtenforData(lead('Bruk 1½ kopp.'), new Set(['1'])), ['½']);
+  });
+  test('tittel, beskrivelse, H1, overskrift, knapp og topp kontrolleres også', () => {
+    for (const felt of ['title', 'description', 'h1', 'eyebrow', 'cta', 'topp']) {
+      assert.deepEqual(tallUtenforData({ [felt]: '137 gram', lead: '', rik: '', steg: [], faq: [] }, new Set()), ['137'], felt);
+    }
+  });
+  test('attributter leseren ser eller som styrer det leseren ser, og JSON-data, kontrolleres', () => {
+    const rik = (html) => ({ lead: '', rik: html, steg: [], faq: [] });
+    for (const html of [
+      '<input value="137">', '<input placeholder=\'137\'>', '<button aria-label="137 g">x</button>', '<a title="137">x</a>',
+      '<img alt="137 gram" src="/x.png">', '<meta content="137">', '<div data-v="137"></div>', '<div data-kalk-faktor="137"></div>',
+      '<script type="application/json">{"faktor":137}</script>', "<script type='application/json' id='k'>[137]</script>",
+    ]) assert.deepEqual(tallUtenforData(rik(html), new Set()), ['137'], html);
+    for (const html of [
+      '<script type="application/ld+json">{"x":137}</script>', '<style>a{top:137px}</style>', '<script>var x = 137;</script>', '<div class="b137"></div>',
+    ]) assert.deepEqual(tallUtenforData(rik(html), new Set()), [], html);
+  });
+});
+
+test.describe('Likhetsvakten: skjult tekst gir ikke unikt innhold', () => {
+  test('tre nesten like sider med 30 støyord i skjult tekst felles fortsatt', () => {
+    const felt = forLike(rodSide('for-like-skjult'));
+    assert.equal(felt.length, 3);
+  });
+  test('støy i attributter og skript gir heller ikke unikt innhold', () => {
+    const basis = rodSide('for-like-skjult')[0].tekst.replace(/<span hidden>[\s\S]*<\/span>/u, '');
+    const sider = [0, 1, 2].map((i) => ({ sti: `/${i}/`, tekst: `${basis}<div data-x="${Array.from({ length: 30 }, (_, j) => `a${i}x${j}`).join(' ')}"></div><script>var s = "${Array.from({ length: 30 }, (_, j) => `b${i}x${j}`).join(' ')}";</script>` }));
+    assert.equal(forLike(sider).length, 3);
+  });
+  test('alle måter å skjule på regnes som skjult, og synlig tekst regnes som unik', () => {
+    const basis = rodSide('for-like-skjult')[0].tekst.replace(/<span hidden>[\s\S]*<\/span>/u, '');
+    const stoy = (i) => Array.from({ length: 30 }, (_, j) => `ord${i}x${j}`).join(' ');
+    for (const skjul of ['<span hidden>', '<div aria-hidden="true">', '<p style="color:red; display : none">', '<p style="visibility:hidden">', '<div class="a skjult b">']) {
+      const navn = skjul.match(/<(\w+)/u)[1];
+      const sider = [0, 1, 2].map((i) => ({ sti: `/${i}/`, tekst: `${basis}${skjul}${stoy(i)}<${navn}>dypt</${navn}></${navn}>` }));
+      assert.equal(forLike(sider).length, 3, skjul);
+    }
+    const synlige = [0, 1, 2].map((i) => ({ sti: `/${i}/`, tekst: `${basis}<span>${Array.from({ length: 30 }, (_, j) => `ord${i}x${j}`).join(' ')}</span>` }));
+    assert.equal(forLike(synlige).length, 0);
+  });
+});
+
 test.describe('Familiene i registeret', () => {
   test('hver familie består alle vaktene', async () => {
     const { feil } = await kontrollerFamilier(FAMILIER, ROT);

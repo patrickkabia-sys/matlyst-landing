@@ -7,24 +7,81 @@ import { SPRAKMAPPE, familieSider } from '../../scripts/familier/register.mjs';
 import { NORSKE_RESTORD } from './restord.mjs';
 
 const ENTITETER = { '&nbsp;': ' ', '&#160;': ' ', '&#8239;': ' ', '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'" };
-const utenTagger = (html) => String(html)
-  .replace(/<!--[\s\S]*?-->/gu, ' ').replace(/<script[\s\S]*?<\/script>/gu, ' ').replace(/<style[\s\S]*?<\/style>/gu, ' ')
-  .replace(/<[^>]+>/gu, ' ')
-  .replace(/&(?:nbsp|amp|lt|gt|quot|#160|#8239|#39);/gu, (e) => ENTITETER[e]);
+const avkod = (t) => t.replace(/&(?:nbsp|amp|lt|gt|quot|#160|#8239|#39);/gu, (e) => ENTITETER[e]);
+const TAGG = String.raw`<(\/?)([a-zA-Z][\w-]*)((?:"[^"]*"|'[^']*'|[^'">])*?)(\/?)>`;
+const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
 
-/** Lead, forst, rik, steg og faq som tekst, uten HTML-tagger, script og stil. */
+// Attributter leseren ser, eller som styrer det leseren ser (kalkulatorens data bor i data-*).
+const SYNLIG_ATTR = /\s(?:value|placeholder|aria-label|title|alt|content|data-[\w:.-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/giu;
+
+function erSkjult(attr) {
+  return /(?:^|\s)hidden(?=[\s=/]|$)/iu.test(attr)
+    || /(?:^|\s)aria-hidden\s*=\s*["']?true["']?/iu.test(attr)
+    || /(?:^|\s)style\s*=\s*(?:"[^"]*"|'[^']*')/iu.test(attr) && /(?:display\s*:\s*none|visibility\s*:\s*hidden)/iu.test(attr)
+    || /(?:^|\s)class\s*=\s*["'][^"']*(?:^|[\s"'])skjult(?=[\s"'])/iu.test(attr);
+}
+
+/** Fjerner elementer som er skjult (hidden, aria-hidden, display:none, visibility:hidden, klassen skjult) med alt innhold. */
+export function utenSkjult(html) {
+  let ut = '';
+  let pos = 0;
+  let skjuler = null;
+  for (const m of String(html).matchAll(new RegExp(TAGG, 'gu'))) {
+    const [hel, lukk, navn0, attr, selvlukk] = m;
+    const navn = navn0.toLowerCase();
+    if (skjuler === null) {
+      ut += html.slice(pos, m.index);
+      if (!lukk && erSkjult(attr)) {
+        if (!VOID.has(navn) && !selvlukk) skjuler = { navn, dybde: 1 };
+      } else ut += hel;
+    } else if (navn === skjuler.navn && !VOID.has(navn) && !selvlukk) {
+      skjuler.dybde += lukk ? -1 : 1;
+      if (skjuler.dybde === 0) skjuler = null;
+    }
+    pos = m.index + hel.length;
+  }
+  return skjuler === null ? ut + html.slice(pos) : ut;
+}
+
+/** HTML til tekst, men med verdiene i attributter som leseren ser og innholdet i application/json-skript med. ld+json, stil og vanlige skript holdes utenfor. */
+export function htmlTilTekst(html, { attributter = true } = {}) {
+  const s = String(html).replace(/<!--[\s\S]*?-->/gu, ' ');
+  const json = [...s.matchAll(/<script\b[^>]*\btype\s*=\s*["']application\/json["'][^>]*>([\s\S]*?)<\/script>/giu)].map((m) => m[1]);
+  const uten = s.replace(/<script\b[\s\S]*?<\/script>/giu, ' ').replace(/<style\b[\s\S]*?<\/style>/giu, ' ');
+  const attr = [...uten.matchAll(SYNLIG_ATTR)].map((m) => m[1] ?? m[2]);
+  return avkod([uten.replace(/<[^>]+>/gu, ' '), ...(attributter ? [...attr, ...json] : [])].join(' '));
+}
+
+const TEKSTFELT = ['title', 'description', 'h1', 'eyebrow', 'topp', 'lead', 'forst', 'stegTittel', 'alternativ', 'grense', 'faqTittel', 'rik', 'cta'];
+const delerAv = (side) => [
+  ...TEKSTFELT.map((f) => side[f]),
+  ...(side.steg ?? []).flat(),
+  ...(side.faq ?? []).flat(),
+  ...(side.seksjoner ?? []).flat(),
+].filter((d) => typeof d === 'string');
+
+/** Alt leseren kan se på siden (også skjult tekst, så tallvakten ser den), som tekst. */
 export function synligTekst(side) {
-  const deler = [side.lead, side.forst, side.rik, ...(side.steg ?? []).flat(), ...(side.faq ?? []).flat()];
-  return deler.filter((d) => typeof d === 'string').map(utenTagger).join(' ').replace(/[ \t\r\n]+/gu, ' ').trim();
+  return delerAv(side).map(htmlTilTekst).join(' ').replace(/\s+/gu, ' ').trim();
 }
 
-/** Hvert tall i synlig tekst som ikke står i `tillatte`. Hardt mellomrom som tusenskille slås sammen først. */
+/** Samme felt som HTML, til likhetsvakten (som selv fjerner skjult tekst). */
+export const sideHtml = (side) => delerAv(side).join(' ');
+
+const BROKTEGN = '½⅓⅔¼¾⅛⅜⅝⅞';
+const TALL = new RegExp(String.raw`\d{1,3}(?:[   ]\d{3})+(?:[.,]\d+)?(?:\/\d+)?|\d+(?:[.,]\d+)?(?:\/\d+)?|[${BROKTEGN}]`, 'gu');
+const utenRom = (t) => t.replace(/[   ]/gu, '');
+
+/**
+ * Hvert tall i synlig tekst som ikke står i `tillatte`. «1 200» (vanlig eller hardt mellomrom) er ett tall og
+ * sammenlignes uten mellomrom, «1/2» er ett symbol, og brøktegn (½ osv.) er symboler som må være tillatt.
+ */
 export function tallUtenforData(side, tillatte) {
-  const tekst = synligTekst(side).replace(/(\d)[  ](?=\d{3}(?!\d))/gu, '$1');
-  return (tekst.match(/\d+(?:[.,]\d+)?/gu) ?? []).filter((t) => !tillatte.has(t));
+  const godkjent = new Set([...tillatte].map(utenRom));
+  return (synligTekst(side).match(TALL) ?? []).map(utenRom).filter((t) => !godkjent.has(t));
 }
 
-const ord = (tekst) => tekst.toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
+const ord = (tekst) => htmlTilTekst(utenSkjult(tekst), { attributter: false }).toLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
 const femmere = (tekst) => {
   const o = ord(tekst);
   return new Set(Array.from({ length: Math.max(0, o.length - 4) }, (_, i) => o.slice(i, i + 5).join(' ')));
@@ -99,12 +156,12 @@ export async function kontrollerFamilier(familier, rotmappe) {
       const mal = await import(new URL(`mal-${marked}.mjs`, familie.mappe));
       const rader = publiserbare(data);
       const alleTillatte = new Set(rader.flatMap((r) => [...mal.tillatteTall(r, data)]));
-      const liste = Object.entries(sider).map(([nokkel, side]) => ({ sti: nokkel, ...side, tekst: synligTekst(side) }));
+      const liste = Object.entries(sider).map(([nokkel, side]) => ({ sti: nokkel, ...side, tekst: sideHtml(side) }));
       for (const s of liste) {
         kontrollert += 1;
         const rad = rader.find((r) => s.sti === `${familie.markeder[marked].rot}${r.slug}/`);
         for (const t of tallUtenforData(s, rad ? mal.tillatteTall(rad, data) : alleTillatte)) feil.push(`${navn}: tall utenfor data på ${s.sti}: ${t}`);
-        if (marked !== 'nb' && NORSKE_RESTORD.test(s.tekst)) feil.push(`${navn}: norsk restord på ${s.sti}`);
+        if (marked !== 'nb' && NORSKE_RESTORD.test(synligTekst(s))) feil.push(`${navn}: norsk restord på ${s.sti}`);
       }
       for (const r of forLike(liste)) feil.push(`${navn}: for lik de andre sidene: ${r.sti} (${r.unik.toFixed(2)} unik)`);
       for (const felt of ['title', 'h1', 'description']) for (const g of dupliserte(liste, felt)) feil.push(`${navn}: lik ${felt} på ${g.join(', ')}`);
