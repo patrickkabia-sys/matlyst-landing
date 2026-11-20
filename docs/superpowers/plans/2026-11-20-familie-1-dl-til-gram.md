@@ -24,13 +24,13 @@
 | Bruk | Kilde | Vilkår |
 |---|---|---|
 | Vekt per dl (tallet siden bruker) | Matvaretabellen 2026, Mattilsynet. `https://www.matvaretabellen.no/api/nb/foods.json`, feltet `portions` med `portionUnit: "dl"` | CC BY 4.0. Kildelinje: «Matvaretabellen 2026. Mattilsynet. www.matvaretabellen.no» |
-| Toppet spiseskje og teskje | «Mål, vekt og porsjonsstørrelser for matvarer» (2015), Mattilsynet, Universitetet i Oslo og Helsedirektoratet, IS-2286 | Ingen lisens oppgitt. Enkelttall gjengis med kilde |
+| Toppet spiseskje og teskje (ligger i datafila, vises ikke) | «Mål, vekt og porsjonsstørrelser for matvarer» (2015), Mattilsynet, Universitetet i Oslo og Helsedirektoratet, IS-2286 | Ingen lisens oppgitt. Enkelttall gjengis med kilde |
 | Sammenligning der kildene spriker | USDA FoodData Central, SR Legacy (2019) | Offentlig eie (CC0) |
 
 - Der kildene spriker, bruker siden Matvaretabellens tall, viser de andre side om side og sier hvilket som brukes.
-- Spiseskje og teskje regnes ut fra dl-tallet som strøkne mål (15 ml og 5 ml) og merkes som utregnet. Rapporten fra 2015 målte toppede skjeer; de tallene står i et eget avsnitt, aldri blandet med de strøkne.
+- Spiseskje og teskje regnes ut fra dl-tallet som strøkne mål (15 ml og 5 ml) og merkes som utregnet. Rapporten fra 2015 målte toppede skjeer; de tallene ligger i datafila, men vises ikke.
 - Ingen måleråd eller påstander som ikke står i en kilde. Teksten sier hva tallet er, hvor det kommer fra og hvordan det er regnet.
-- Åpent punkt for Patrick: jeg anbefaler en kort e-post til matvaretabellen@mattilsynet.no om gjenbruk av skjetallene fra rapporten. Jeg skriver utkast, Patrick sender. Sidene kan publiseres uten svar; da tas avsnittet om toppet skje ut til svaret foreligger.
+- Toppet spiseskje og teskje fra rapporten vises ikke: tallene lar seg ikke skille fra strøkne mål (Patrick 20.11.2026: ingen e-post til kilden).
 
 ### Varesiden, ovenfra og ned
 1. Brødsmulesti: Verktøy › Dl til gram.
@@ -40,7 +40,7 @@
 5. To kort: tabell fra dl til gram (1 ts, 1 ss, 0,5 dl, 1, 2, 3, 4, 5 dl, 1 liter) og «Fra gram til dl» med formel og fire eksempler (100 g, 250 g, 500 g, 1 kg).
 6. Appkortet «Slutt å regne om for hånd» (som på omregnersidene).
 7. «Hvorfor kildene ikke er helt enige»: tabell med kildene side om side, valgt kilde uthevet. Vises bare når raden har tall fra mer enn én kilde eller en nær variant i samme kilde.
-8. «Strøken eller toppet skje»: bare når rapporten har skjetall for varen.
+8. «Strøken eller toppet skje»: tas ikke med (se Kilder).
 9. Spørsmål og svar: tre til fire, alle med tall fra datafila.
 10. Kilder: nummerert liste med utgiver, år, lenke og hentedato.
 11. Andre varer: åtte lenker pluss «Alle varer».
