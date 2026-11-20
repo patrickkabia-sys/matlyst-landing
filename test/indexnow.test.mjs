@@ -79,7 +79,7 @@ test('urler mellom to commits utledes fra sidekartene i git', () => {
 
 test('arbeidsflyten sender bare etter vellykket publisering, har tak og kan ikke gjøre publiseringen rød', () => {
   const yml = readFileSync(join(rot, '.github/workflows/indexnow.yml'), 'utf8');
-  assert.match(yml, /workflows: \['pages build and deployment'\]/u);
+  assert.match(yml, /workflows: \['pages-build-deployment'\]/u);
   assert.match(yml, /workflow_run\.conclusion == 'success'/u);
   assert.match(yml, /continue-on-error: true/u);
   assert.match(yml, /--maks \d+ --send/u);

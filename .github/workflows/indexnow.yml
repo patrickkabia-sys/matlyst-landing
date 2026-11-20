@@ -1,11 +1,11 @@
 name: IndexNow
 
 # Varsler Bing og andre om nye og endrede adresser etter at GitHub Pages har publisert main.
-# Pages bygger fra grenen (innebygd arbeidsflyt «pages build and deployment»), så vi lytter på den.
+# Pages bygger fra grenen (innebygd arbeidsflyt «pages-build-deployment»), så vi lytter på den.
 # Stoppbryter: sett repovariabelen INDEXNOW til «av».
 on:
   workflow_run:
-    workflows: ['pages build and deployment']
+    workflows: ['pages-build-deployment']
     types: [completed]
     branches: [main]
   workflow_dispatch:
@@ -49,7 +49,7 @@ jobs:
         run: |
           fra="$FRA"
           if [ -z "$fra" ]; then
-            fra=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "pages build and deployment" --branch main --status success --limit 20 --json headSha --jq "[.[].headSha | select(. != \"$NY\")][0]" || true)
+            fra=$(gh run list --repo "$GITHUB_REPOSITORY" --workflow "pages-build-deployment" --branch main --status success --limit 20 --json headSha --jq "[.[].headSha | select(. != \"$NY\")][0]" || true)
           fi
           if [ -z "$fra" ] || [ "$fra" = "null" ]; then fra=$(git rev-parse "$NY^" || true); fi
           echo "fra=$fra" >> "$GITHUB_OUTPUT"
