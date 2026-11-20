@@ -262,14 +262,17 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   const { tolkTall } = window.MatlystTall;
   const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
   const komma = (t) => (KOMMA ? t.replace('.', ',') : t);
-  // Svaret: 100 og over som heltall, 10 til 100 med tre gjeldende sifre, under 10 med to. Ingen tak på desimaler, og aldri 0 for et tall som ikke er 0.
-  const svarTekst = (n) => {
+  // Svaret i gram: hele gram fra 1 g (halve runder opp), og to gjeldende sifre under 1 g.
+  // Alle andre enheter: 100 og over som heltall, 10 til 100 med tre gjeldende sifre, under 10 med to. Ingen tak på desimaler, og aldri 0 for et tall som ikke er 0.
+  // Sidefamilienes maler (scripts/familier/dl-til-gram/mal-nb.mjs) skriver tabellene etter samme regel, låst av kalk-tabell.spec.mjs.
+  const svarTekst = (n, enhet) => {
     const a = Math.abs(n);
     if (a === 0) return '0';
-    if (a >= 100) return komma(String(Math.round(n)));
-    const sifre = a >= 10 ? 3 : 2;
+    // Halve runder opp også når flyttallet ligger like under: rund på tolv gjeldende sifre først.
+    if (enhet === 'g' && a >= 1) return komma(String(Math.round(Number(n.toPrecision(12)))));
+    if (a >= 100) return komma(String(Math.round(Number(n.toPrecision(12)))));
+    const sifre = a >= 10 && enhet !== 'g' ? 3 : 2;
     const desimaler = Math.min(100, Math.max(0, sifre - 1 - Math.floor(Math.log10(a))));
-    // Halve runder opp også når flyttallet ligger like under (0,00275 er ikke eksakt i binært): rund på tolv gjeldende sifre først.
     const t = (Math.round(Number((n * 10 ** desimaler).toPrecision(12))) / 10 ** desimaler).toFixed(desimaler);
     return komma(t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t);
   };
@@ -306,8 +309,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         }
         if (gyldig) mengde.removeAttribute('aria-invalid'); else mengde.setAttribute('aria-invalid', 'true');
         if (Number.isFinite(ut)) {
-          svar.textContent = svarTekst(ut);
-          setning.textContent = [`${mengdeTekst(n)} ${kort(fra.value)}`, ord, `= ${svarTekst(ut)} ${kort(til.value)}`].filter(Boolean).join(' ');
+          svar.textContent = svarTekst(ut, til.value);
+          setning.textContent = [`${mengdeTekst(n)} ${kort(fra.value)}`, ord, `= ${svarTekst(ut, til.value)} ${kort(til.value)}`].filter(Boolean).join(' ');
         } else {
           svar.textContent = '';
           setning.textContent = data.feil;

@@ -1,5 +1,6 @@
 // Den håndskrevne delen av sidene for «dl til gram» (nb). Alt annet skrives av malen fra datafila.
 //   variant: navnet på varen slik den står i Matvaretabellen, på lesbar form. Brukes i kort svar og kildelinje.
+//   flytende: true for væsker (melk, fløte, olje, sirup). Da skrives skjeene uten «strøken».
 //   naer: rad-id-er for nære varer i samme familie. Den første får et spørsmål, og alle står først i «Andre varer».
 //   ekstraSpm: [spørsmål, svar][] som legges bak de vanlige. Svar uten tall som ikke står i datafila.
 // Ingen setning her skal påstå mer enn kilden sier, og ingen tall skrives for hånd: tallene kommer fra datafila.
@@ -18,11 +19,11 @@ export const TEKST = {
   mandelmel: { variant: 'mandelmel', naer: ['mandler'] },
   smor: { variant: 'smør', naer: ['margarin'] },
   margarin: { variant: 'hard margarin', naer: ['smor'] },
-  olje: { variant: 'solsikkeolje' },
-  melk: { variant: 'helmelk', naer: ['flote'] },
-  flote: { variant: 'kremfløte med 37 % fett', naer: ['romme'] },
+  olje: { variant: 'solsikkeolje', flytende: true },
+  melk: { variant: 'helmelk', flytende: true, naer: ['flote'] },
+  flote: { variant: 'kremfløte med 37 % fett', flytende: true, naer: ['romme'] },
   romme: { variant: 'seterrømme med 35 % fett', naer: ['flote'] },
-  sirup: { variant: 'sirup' },
+  sirup: { variant: 'sirup', flytende: true },
   salt: { variant: 'bordsalt' },
   ris: { variant: 'tørr, polert jasminris', naer: ['grotris'] },
   grotris: { variant: 'tørr grøtris med 1 times koketid', naer: ['ris'] },

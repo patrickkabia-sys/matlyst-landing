@@ -193,12 +193,13 @@ export async function kontrollerFamilier(familier, rotmappe) {
       const mal = await import(new URL(`mal-${marked}.mjs`, familie.mappe));
       const rader = publiserbare(data);
       forventet += 1 + rader.length;
-      const alleTillatte = new Set(rader.flatMap((r) => [...mal.tillatteTall(r, data)]));
+      // Samlesiden bruker malens egen liste når den har en (tillatteTallNav); ellers er den foreningen av radenes lister.
+      const navTillatte = typeof mal.tillatteTallNav === 'function' ? mal.tillatteTallNav(data) : new Set(rader.flatMap((r) => [...mal.tillatteTall(r, data)]));
       const liste = Object.entries(sider).map(([nokkel, side]) => ({ sti: nokkel, ...side, tekst: sideHtml(side) }));
       for (const s of liste) {
         kontrollert += 1;
         const rad = rader.find((r) => s.sti === `${familie.markeder[marked].rot}${r.slug}/`);
-        for (const t of tallUtenforData(s, rad ? mal.tillatteTall(rad, data) : alleTillatte)) feil.push(`${navn}: tall utenfor data på ${s.sti}: ${t}`);
+        for (const t of tallUtenforData(s, rad ? mal.tillatteTall(rad, data) : navTillatte)) feil.push(`${navn}: tall utenfor data på ${s.sti}: ${t}`);
         if (marked !== 'nb' && NORSKE_RESTORD.test(synligTekst(s))) feil.push(`${navn}: norsk restord på ${s.sti}`);
         // Innholdsvaktene ser på malobjektene; her sjekkes at fila på disk faktisk bærer det malen ga.
         const fil = join(rotmappe, SPRAKMAPPE[marked], s.sti, 'index.html');

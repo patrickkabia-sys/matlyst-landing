@@ -19,25 +19,50 @@ const norskDato = (iso) => { const [a, m, d] = iso.split('-').map(Number); retur
 const tallI = (tekst) => String(tekst ?? '').match(/\d+(?:[.,]\d+)?/gu) ?? [];
 const USDA_FELT = ['dl_usda', 'dl_usda_pakket', 'dl_usda_siktet'];
 
-/** Alle utregninger på siden, ett sted. Skjeer og andre mengder avrundes til heltall, minst 1 g. Gram til dl får én desimal. */
+// Tallreglene er de samme som i kalkulatorkortet (site.js, svarTekst), låst av test/playwright/kalk-tabell.spec.mjs:
+// gram fra 1 g som hele gram (halve runder opp), under 1 g to gjeldende sifre; alle andre enheter: 100 og over som heltall,
+// 10 til 100 med tre gjeldende sifre, under 10 med to, uten «,0» til slutt. Halve runder opp også når flyttallet ligger like under.
+const sigTekst = (n, sifre) => {
+  const d = Math.min(100, Math.max(0, sifre - 1 - Math.floor(Math.log10(Math.abs(n)))));
+  const t = (Math.round(Number((n * 10 ** d).toPrecision(12))) / 10 ** d).toFixed(d);
+  return (t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t).replace('.', ',');
+};
+export const gramTekst = (n) => (n === 0 ? '0' : Math.abs(n) >= 1 ? String(Math.round(Number(n.toPrecision(12)))) : sigTekst(n, 2));
+export const mengdeTekst = (n) => (n === 0 ? '0' : Math.abs(n) >= 100 ? String(Math.round(Number(n.toPrecision(12)))) : sigTekst(n, Math.abs(n) >= 10 ? 3 : 2));
+const gramVerdi = (n) => Number(gramTekst(n).replace(',', '.'));
+
+/** Alle utregninger på siden, ett sted. */
 export function utregnet(rad) {
   const dl = rad.tall.dl.verdi;
-  const rund = (x) => Math.max(1, Math.round(x));
-  const ss = rund(dl * 15 / 100);
-  const ts = rund(dl * 5 / 100);
+  const ss = gramVerdi(dl * 15 / 100);
+  const ts = gramVerdi(dl * 5 / 100);
   return {
     dl, ss, ts,
-    tabell: [['1 ts', ts], ['1 ss', ss], ['0,5 dl', rund(dl / 2)], ['1 dl', dl], ['2 dl', 2 * dl], ['3 dl', 3 * dl], ['4 dl', 4 * dl], ['5 dl', 5 * dl], ['1 liter', 10 * dl]],
-    tilbake: [100, 250, 500, 1000].map((g) => [g, (g / dl).toFixed(1).replace('.', ',')]),
+    tabell: [['1 ts', ts], ['1 ss', ss], ['0,5 dl', gramVerdi(dl / 2)], ['1 dl', dl], ['2 dl', 2 * dl], ['3 dl', 3 * dl], ['4 dl', 4 * dl], ['5 dl', 5 * dl], ['1 liter', 10 * dl]],
+    tilbake: [100, 250, 500, 1000].map((g) => [g, mengdeTekst(g / dl)]),
   };
 }
 
 // Raden slik siden bruker den: rapporten vises ikke (VIS_TOPPET), så kilden hører ikke hjemme i kildelista.
 const synligRad = (rad) => ({ ...rad, tall: Object.fromEntries(Object.entries(rad.tall).filter(([k]) => k === 'dl' || USDA_FELT.includes(k) || (VIS_TOPPET && k.endsWith('_toppet')))) });
+// USDA-målene står på engelsk i datafila (ordrett fra kilden) og skrives på norsk på sidene. Postnavnet står ordrett i «».
+const USDA_MAL = {
+  cup: 'per cup',
+  'cup unpacked': 'per løst fylt cup',
+  'cup packed': 'per pakket cup',
+  'cup sifted': 'per cup, siktet',
+  'cup unsifted': 'per cup, usiktet',
+  'cup, whole': 'per cup, hele mandler',
+  'cup (not packed)': 'per cup, ikke pakket',
+  'cup, fluid (yields 2 cups whipped)': 'per cup flytende fløte (gir 2 cups pisket)',
+};
 const usdaTall = (rad) => USDA_FELT.filter((k) => rad.tall[k]).map((k) => {
-  const m = /^(\d+(?:[.,]\d+)?) g per (.+)$/u.exec(rad.tall[k].merknad ?? '');
-  return { verdi: rad.tall[k].verdi, gPerCup: m?.[1], mal: m?.[2] };
+  const m = /^(\d+(?:[.,]\d+)?) g (per .+)$/u.exec(rad.tall[k].merknad ?? '');
+  const mal = USDA_MAL[m?.[2].replace(/^per /u, '')];
+  if (!mal) throw new Error(`${rad.id}: ukjent USDA-mål «${rad.tall[k].merknad}», legg det til i USDA_MAL`);
+  return { verdi: rad.tall[k].verdi, gPerCup: m[1], mal };
 });
+const kortUsdaNavn = (navn) => navn.replace(/\s*\(Includes[^)]*\)/u, '');
 
 const PIL = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>';
 const BYTT = '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>';
@@ -93,47 +118,72 @@ const APPKORT = `<h2>Slutt å regne om for hånd</h2>
 
 const EYEBROW_VARE = `<a href="/verktoy/">Verktøy</a><span aria-hidden="true"> › </span><a href="${ROT}">Dl til gram</a>`;
 const EYEBROW_NAV = '<a href="/verktoy/">Verktøy</a><span aria-hidden="true"> › </span>Dl til gram';
-const MVT = 'Matvaretabellen 2026, Mattilsynet';
+const MVT = 'Matvaretabellen 2026 (Mattilsynet)';
 const sti = (rad) => `${ROT}${rad.slug}/`;
 const lenke = (rad, tekst = rad.navn) => `<a href="${sti(rad)}">${esc(tekst)}</a>`;
 const STEG = [['Skriv inn mengden', 'Kalkulatoren regner om mens du skriver.']];
 const SKJELETT = { stegTittel: 'Slik bruker du kalkulatoren', forst: '', alternativ: '', grense: '', seksjoner: [], cta: 'Regn om oppskrifter i Matlyst' };
 const brodsmule = (...ledd) => brodsmuler([{ navn: 'Forside', adresse: '/' }, { navn: 'Verktøy', adresse: '/verktoy/' }, ...ledd]);
 
-/** Tallene en side kan bruke: alt malen regner ut fra raden (og de nære varene), tall i betegnelsene fra kildene og kildenes år og datoer. */
+// De faste mengdene i tabellene, hurtigknappene og kalkulatorens data (enhetsfaktorene og veiledningen «2 eller 2,5»), skrevet ut eksplisitt. Ingen intervaller.
+const FASTE_MENGDER = ['0,25', '0,5', '1', '1,5', '2', '2,5', '3', '4', '5', '10', '15', '25', '50', '100', '150', '250', '500', '1000', '236.5882365'];
+const kildeTall = (k) => [String(k.aar), ...tallI(norskDato(k.hentet))];
+
+/**
+ * Tallene DEN siden kan bruke: radens egne kildetall, de utregnede verdiene, de faste mengdene, tall i postnavn og varianter,
+ * og år og datoer for kildene siden viser. Tall fra den nære varen tillates bare der de vises (spørsmålet om den første nære varen).
+ */
 export function tillatteTall(rad, data) {
-  const s = new Set(['0,5', '0,25', '1', '1,5', '2', '2,5', '3', '4', '5', '10', '15', '25', '50', '100', '150', '250', '500', '1000', '236.5882365']);
+  const s = new Set(FASTE_MENGDER);
   const legg = (n) => s.add(fmt(n));
-  const raderIData = publiserbare(data);
-  legg(raderIData.length);
-  // Varevalget på samlesiden bærer indeksen i value (0, 1, 2 ...).
-  raderIData.forEach((_, i) => s.add(String(i)));
-  const bruk = [rad, ...(TEKST[rad.id]?.naer ?? []).map((id) => raderIData.find((r) => r.id === id)).filter(Boolean)];
-  for (const r of bruk) {
-    const u = utregnet(r);
-    [u.dl, u.ss, u.ts, 2 * u.dl].forEach(legg);
-    u.tabell.forEach(([, g]) => legg(g));
-    u.tilbake.forEach(([, d]) => s.add(d));
-    for (const t of [r.tekst?.matvaretabell, r.tekst?.andrePoster, r.tekst?.usdaNavn, r.tekst?.usdaFdcId, TEKST[r.id]?.variant, ...USDA_FELT.map((k) => r.tall[k]?.merknad)]) tallI(t).forEach((n) => s.add(n));
-    for (const k of USDA_FELT) if (r.tall[k]) legg(r.tall[k].verdi);
+  const u = utregnet(rad);
+  [u.dl, u.ss, u.ts, 2 * u.dl].forEach(legg);
+  u.tabell.forEach(([, g]) => legg(g));
+  u.tilbake.forEach(([, d]) => s.add(d));
+  for (const t of [rad.tekst?.matvaretabell, rad.tekst?.andrePoster, rad.tekst?.usdaNavn, rad.tekst?.usdaFdcId, TEKST[rad.id]?.variant]) tallI(t).forEach((n) => s.add(n));
+  for (const k of USDA_FELT) {
+    if (!rad.tall[k]) continue;
+    legg(rad.tall[k].verdi);
+    tallI(rad.tall[k].merknad).forEach((n) => s.add(n));
   }
-  for (const r of raderIData) { const u = utregnet(r); [u.dl, u.ss, u.ts].forEach(legg); }
-  for (const k of Object.values(data.kilder)) { s.add(String(k.aar)); tallI(norskDato(k.hentet)).forEach((n) => s.add(n)); }
+  const naer = publiserbare(data).find((r) => r.id === TEKST[rad.id]?.naer?.[0]);
+  if (naer) { legg(naer.tall.dl.verdi); tallI(TEKST[naer.id].variant).forEach((n) => s.add(n)); }
+  kildeTall(data.kilder.matvaretabellen).forEach((n) => s.add(n));
+  if (usdaTall(rad).length) kildeTall(data.kilder.usda).forEach((n) => s.add(n));
   return s;
 }
+
+/** Samlesiden: alle varenes dl, ss og ts (varetabellen), antallet og indeksene i varevalget, eksemplet i spørsmålene og kildenes år og datoer. */
+export function tillatteTallNav(data) {
+  const alle = publiserbare(data);
+  const s = new Set(FASTE_MENGDER);
+  s.add(String(alle.length));
+  alle.forEach((_, i) => s.add(String(i)));
+  for (const r of alle) { const u = utregnet(r); [u.dl, u.ss, u.ts].forEach((n) => s.add(fmt(n))); }
+  const hvete = alle.find((r) => r.id === 'hvetemel') ?? alle[0];
+  const u = utregnet(hvete);
+  s.add(fmt(2 * u.dl)); s.add(u.tilbake[0][1]);
+  kildeTall(data.kilder.matvaretabellen).forEach((n) => s.add(n));
+  return s;
+}
+
+const og = (liste) => (liste.length > 1 ? `${liste.slice(0, -1).join(', ')} og ${liste.at(-1)}` : liste[0]);
 
 function sprikAvsnitt(rad, data) {
   const usda = usdaTall(rad);
   if (!usda.length) return '';
   const dl = rad.tall.dl.verdi;
+  const o = ord(rad);
   const lik = usda.every((u) => u.verdi === dl);
-  const k = data.kilder.usda;
+  const innledning = lik
+    ? `Matvaretabellen og USDA oppgir begge ${gram(dl)} for 1 dl ${esc(o)}.`
+    : `Matvaretabellen oppgir ${gram(dl)} for 1 dl ${esc(o)}, USDA ${og(usda.map((u) => gram(u.verdi)))}. Vi bruker tallet fra Matvaretabellen.`;
   const rader = [
     `<tr class="valgt"><td>${MVT}<small>«${esc(rad.tekst.matvaretabell)}». Tallet vi bruker.</small></td><td>${gram(dl)}</td></tr>`,
-    ...usda.map((u) => `<tr><td>USDA FoodData Central<small>«${esc(rad.tekst.usdaNavn)}» (FDC ${rad.tekst.usdaFdcId}). ${esc(`${u.gPerCup} g per ${u.mal}`)}, regnet om fra cup til dl.</small></td><td>${gram(u.verdi)}</td></tr>`),
+    ...usda.map((u) => `<tr><td>USDA FoodData Central<small>«${esc(rad.tekst.usdaNavn)}» (FDC ${rad.tekst.usdaFdcId}). ${esc(`${u.gPerCup} g ${u.mal}`)}, regnet om fra cup til dl.</small></td><td>${gram(u.verdi)}</td></tr>`),
   ];
   return `<h2>Kildene side om side</h2>
-<p>Matvaretabellen og ${esc(k.utgiver.startsWith('U.S.') ? 'USDA' : k.navn)} oppgir ${lik ? 'samme' : 'ikke samme'} vekt for 1 dl ${esc(ord(rad))}. Vi bruker tallet fra Matvaretabellen.</p>
+<p>${innledning}</p>
 <table class="sprik"><thead><tr><th scope="col">Kilde</th><th scope="col">1 dl</th></tr></thead><tbody>${rader.join('')}</tbody></table>`;
 }
 
@@ -150,21 +200,26 @@ function spmForRad(rad, data, rader, u) {
   const t = TEKST[rad.id];
   const o = ord(rad);
   const spm = [
-    [`Hvor mange gram er 1 dl ${o}?`, `1 dl ${esc(t.variant)} veier ${gram(u.dl)} (${MVT}, «${esc(rad.tekst.matvaretabell)}»).`],
-    [`Hvor mange dl er 100 g ${o}?`, `100 g ${o} er ${u.tilbake[0][1]} dl. Du får det ved å dele vekten på ${u.dl}.`],
-    [`Hvor mye veier 1 ss ${o}?`, `En strøken spiseskje (15 ml) veier ${gram(u.ss)}, regnet ut fra dl-tallet. En strøken teskje (5 ml) veier ${gram(u.ts)}.`],
+    [`Hvor mange gram er 1 dl ${o}?`, `1 dl ${esc(t.variant)} veier ${gram(u.dl)}. Kilde: ${MVT}, «${esc(rad.tekst.matvaretabell)}».`],
+    [`Hvor mange dl er 100 g ${o}?`, `100 g ${o} er ${u.tilbake[0][1]} dl. Del 100 på ${u.dl}.`],
+    [`Hvor mye veier 1 ss ${o}?`, t.flytende
+      ? `En spiseskje (15 ml) veier ${gram(u.ss)}, regnet ut fra dl-tallet. En teskje (5 ml) veier ${gram(u.ts)}.`
+      : `En strøken spiseskje (15 ml) veier ${gram(u.ss)}, regnet ut fra dl-tallet. En strøken teskje (5 ml) veier ${gram(u.ts)}.`],
   ];
   const naer = (t.naer ?? []).map((id) => rader.find((r) => r.id === id)).filter(Boolean);
   const usda = usdaTall(rad);
   if (naer[0]) {
     const n = naer[0];
     const dlN = n.tall.dl.verdi;
-    spm.push([`Veier ${ord(n)} det samme som ${o}?`, `${dlN === u.dl ? 'Ja' : 'Nei'}. 1 dl ${esc(TEKST[n.id].variant)} veier ${gram(dlN)}${dlN === u.dl ? ', det samme som' : ', mot'} ${gram(u.dl)} for ${esc(t.variant)}. ${lenke(n, `Se siden for ${ord(n)}`)}.`]);
+    const svar = dlN === u.dl
+      ? `Ja. 1 dl ${esc(TEKST[n.id].variant)} veier ${gram(dlN)}, like mye som ${esc(t.variant)}.`
+      : `Nei. 1 dl ${esc(TEKST[n.id].variant)} veier ${gram(dlN)}, mot ${gram(u.dl)} for ${esc(t.variant)}.`;
+    spm.push([`Veier ${ord(n)} det samme som ${o}?`, `${svar} ${lenke(n, `Se siden for ${ord(n)}`)}.`]);
   } else if (!usda.length) {
     spm.push([`Hvor mye er 1 liter ${o} i gram?`, `1 liter ${o} er 10 dl, og det veier ${gram(10 * u.dl)}. 1 kg ${o} er ${u.tilbake[3][1]} dl.`]);
-  } else if (usda.length) {
-    const deler = usda.map((x) => `${esc(`${x.gPerCup} g per ${x.mal}`)} er ${gram(x.verdi)} per dl`);
-    spm.push([`Hva oppgir USDA for 1 dl ${o}?`, `USDA har posten «${esc(rad.tekst.usdaNavn)}»: ${deler.join(', og ')}. Vi bruker tallet fra Matvaretabellen, ${gram(u.dl)}.`]);
+  } else {
+    const deler = usda.map((x) => `${esc(`${x.gPerCup} g ${x.mal}`)}, som tilsvarer ${gram(Math.round(Number(x.gPerCup.replace(',', '.')) / 2.365882))} per dl`);
+    spm.push([`Hva oppgir USDA for 1 dl ${o}?`, `USDA har posten «${esc(kortUsdaNavn(rad.tekst.usdaNavn))}»: ${deler.join(', og ')}. Vi bruker Matvaretabellens ${gram(u.dl)}.`]);
   }
   return [...spm, ...(t.ekstraSpm ?? [])];
 }
@@ -178,7 +233,11 @@ function andreVarer(rad, rader) {
 }
 
 function kortsvar(rad, u) {
-  return `<p class="kortsvar"><b>Kort svar:</b> 1 dl ${esc(TEKST[rad.id].variant)} er ${gram(u.dl)}. En strøken spiseskje (15 ml) er ${gram(u.ss)}, og en strøken teskje (5 ml) er ${gram(u.ts)}, regnet ut fra dl-tallet.</p>
+  const t = TEKST[rad.id];
+  const skjeer = t.flytende
+    ? `En spiseskje (15 ml) er ${gram(u.ss)}, og en teskje (5 ml) er ${gram(u.ts)}, regnet ut fra dl-tallet.`
+    : `En strøken spiseskje (15 ml) er ${gram(u.ss)}, og en strøken teskje (5 ml) er ${gram(u.ts)}, regnet ut fra dl-tallet.`;
+  return `<p class="kortsvar"><b>Kort svar:</b> 1 dl ${esc(t.variant)} er ${gram(u.dl)}. ${skjeer}</p>
 <p class="kilde">Kilde: <a href="#kilder">${MVT}</a>, «${esc(rad.tekst.matvaretabell)}».</p>`;
 }
 
@@ -189,12 +248,13 @@ export function sideForRad(rad, data, rader) {
   const lang = `1 dl ${o} i gram: regn om dl, ss og ts`;
   const title = lang.length <= 60 ? lang : `1 dl ${o} i gram: dl, ss og ts`;
   const medUsda = usdaTall(rad).length > 0;
-  const description = `1 dl ${o} veier ${gram(u.dl)}. Regn om dl, ss, ts og gram med kalkulatoren, og se tabell, kilde${medUsda ? ' og USDA ved siden av' : ' og hvordan tallet er regnet ut'}.`;
-  const lead = `1 dl ${o} veier ${gram(u.dl)}. Skriv inn mengden, så ser du vekten med en gang.`;
+  const variant = esc(TEKST[rad.id].variant);
+  const description = `1 dl ${variant} veier ${gram(u.dl)}. Regn om mellom dl, ss, ts og gram, med tabell og tall${medUsda ? '' : 'et'} fra Matvaretabellen${medUsda ? ' og USDA' : ''}.`;
+  const lead = `1 dl ${variant} veier ${gram(u.dl)}. Skriv inn mengden, så ser du vekten med en gang.`;
   const tabell = `<table class="otabell"><thead><tr><th scope="col">${esc(rad.navn)}</th><th scope="col">Gram</th></tr></thead><tbody>${u.tabell.map(([e, g]) => `<tr><td>${e}</td><td>${gram(g)}</td></tr>`).join('')}</tbody></table>`;
   const eks = u.tilbake.map(([g, d]) => `<li><b>${g === 1000 ? '1 kg' : `${g} g`}</b><span>${d} dl</span></li>`).join('');
   const rik = [
-    `<div class="oto"><div class="okort"><h2>${esc(rad.navn)} fra dl til gram</h2><p>Mengdene oppskrifter bruker mest, regnet ut fra dl-tallet: 1 dl ${o} veier ${gram(u.dl)}.</p>${tabell}</div>`,
+    `<div class="oto"><div class="okort"><h2>${esc(rad.navn)} fra dl til gram</h2><p>1 dl ${variant} veier ${gram(u.dl)}.</p>${tabell}</div>`,
     `<div class="okort"><h2>Fra gram til dl</h2><p>Del vekten i gram på ${u.dl} for å få dl ${o}. Motsatt vei ganger du dl ${o} med ${u.dl}.</p><p class="formel"><span>dl</span><i>=</i><span>gram</span><i>÷</i><b>${u.dl}</b></p><p class="liten">Eksempler</p><ul class="eksempler">${eks}</ul></div></div>`,
     APPKORT,
     sprikAvsnitt(rad, data),
@@ -227,22 +287,22 @@ export function navSide(data, rader) {
   const rekke = eksTekst.length > 1 ? `${eksTekst.slice(0, -1).join(', ')} og ${eksTekst.at(-1)}` : eksTekst[0];
   const rows = sortert.map((r) => { const u = utregnet(r); return `<tr><td>${lenke(r)}</td><td>${gram(u.dl)}</td><td>${gram(u.ss)}</td><td>${gram(u.ts)}</td></tr>`; }).join('');
   const title = `Dl til gram: kalkulator og tabell for ${rader.length} varer`;
-  const description = `Hva veier 1 dl? Regn om dl, ss, ts og gram for ${rader.length} varer, fra ${ord(lett)} til ${ord(tung)}, med kilde på hvert tall.`;
+  const description = `Hva veier 1 dl? Regn om dl, ss, ts og gram for ${rader.length} varer, fra mel og sukker til smør og melk, med kilde på hvert tall.`;
   const kilder = kilderFor(data, rader.map((r) => ({ ...r, tall: { dl: r.tall.dl } })));
   const rik = [
-    `<h2>Hva veier 1 dl?</h2><p>Velg en vare for tabell, gram til dl og kilder. Skjeene er regnet ut fra dl-tallet.</p>
+    `<h2>Hva veier 1 dl?</h2><p>Trykk på en vare for flere mengder, gram til dl og kilder.</p>
 <div class="varerull"><table class="varer"><thead><tr><th scope="col">Vare</th><th scope="col">1 dl</th><th scope="col">1 ss (15 ml)</th><th scope="col">1 ts (5 ml)</th></tr></thead><tbody>${rows}</tbody></table></div>`,
     APPKORT,
     `<h2>Hvorfor veier ikke 1 dl det samme?</h2><p>Desiliter måler volum, og gram måler vekt. 1 dl ${ord(tung)} veier ${gram(tung.tall.dl.verdi)}, og 1 dl ${ord(lett)} veier ${gram(lett.tall.dl.verdi)}. Derfor har hver vare sitt eget tall når du regner mellom dl og gram.</p>
-<h2>Slik har vi regnet</h2><p>Vekten per dl er hentet fra Matvaretabellen 2026, fra Mattilsynet. Spiseskje og teskje er regnet ut fra dl-tallet, som strøkne mål på 15 ml og 5 ml. Gram til dl regnes ved å dele vekten på tallet for varen.</p>`,
+<h2>Slik har vi regnet</h2><p>Vekten per dl er hentet fra Matvaretabellen 2026 (Mattilsynet). Spiseskje og teskje regnes som strøkne mål på 15 ml og 5 ml. Gram til dl regnes ved å dele vekten på tallet for varen.</p>`,
     kildeliste(data, kilder),
     `<div class="related"><h2>Beslektede omregninger</h2><ul><li><a href="/verktoy/dl-til-ss/">dl til ss</a></li><li><a href="/verktoy/dl-til-ts/">dl til ts</a></li><li><a href="/verktoy/dl-til-ml/">dl til ml</a></li><li><a href="/verktoy/dl-til-kopp/">dl til kopp</a></li><li><a href="/verktoy/kopp-til-dl/">kopp til dl</a></li><li><a href="/verktoy/enhetsomregner/">Enhetsomregner</a></li></ul></div>`,
   ].join('\n');
   const faq = [
     ['Hvor mange gram er 1 dl?', `Det kommer an på varen. ${eksTekst.length ? `${rekke.charAt(0).toUpperCase()}${rekke.slice(1)}.` : ''} Velg varen i kalkulatoren eller i tabellen.`.replace('  ', ' ')],
-    ['Hvordan regner jeg om dl til gram?', `Gang antall dl med vekten per dl for varen. For ${ord(eks[0] ?? lett)} er det ${eks[0] ? eks[0].tall.dl.verdi : lett.tall.dl.verdi}, så 2 dl blir ${2 * (eks[0] ?? lett).tall.dl.verdi} g.`],
-    ['Hvordan regner jeg om gram til dl?', `Del vekten på vekten per dl for varen. 100 g ${ord(eks[0] ?? lett)} er ${utregnet(eks[0] ?? lett).tilbake[0][1]} dl.`],
-    ['Hvor kommer tallene fra?', 'Vekten per dl er hentet fra Matvaretabellen 2026 fra Mattilsynet. Spiseskje og teskje er regnet ut fra dl-tallet.'],
+    ['Hvordan regner jeg om dl til gram?', `Gang antall dl med vekten per dl for varen. 1 dl ${ord(eks[0] ?? lett)} veier ${gram((eks[0] ?? lett).tall.dl.verdi)}, så 2 dl blir ${gram(2 * (eks[0] ?? lett).tall.dl.verdi)}.`],
+    ['Hvordan regner jeg om gram til dl?', `Del antall gram på det 1 dl av varen veier. 100 g ${ord(eks[0] ?? lett)} er ${utregnet(eks[0] ?? lett).tilbake[0][1]} dl.`],
+    ['Hvor kommer tallene fra?', 'Vekten per dl er hentet fra Matvaretabellen 2026 (Mattilsynet).'],
   ];
   return {
     title, description, eyebrow: EYEBROW_NAV, h1: 'Dl til gram',
