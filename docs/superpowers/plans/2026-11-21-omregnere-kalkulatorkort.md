@@ -32,6 +32,8 @@
 5. **Startmengden er 1,** unntatt temperatur: 180 for celsius og 350 for fahrenheit. Bytteknappen beholder mengden. Negative tall er lov bare for temperatur.
 6. **Samlesidene** (enhetsomregner på fire språk) får kortet med volumenhetene, som i dag, og listene under.
 7. **Engelske sider** får brøker i kortet (`brok: true`), som cups to grams.
+8. **Appkortene i lesedelen beholdes.** `scripts/app-bevis.mjs` kjører i dag bare på sider med `has-toc`, og `topp` fjerner den markøren. Skriptet skal derfor også behandle sider med `form.kalk[data-kalk="enhet"]`, så hver side beholder de samme blokkene som i dag. Familiesidene (`data-kalk="volumvekt"`) behandles fortsatt ikke.
+9. **Spørsmålet «Er en cup det samme som en kopp?»** (fra prototypen) er spørsmålet som bærer biordet, sammen med «Hvor mange dl er en kopp?» på sidene mellom cups og dl.
 
 ## Filstruktur
 
@@ -47,7 +49,27 @@
 | `test/fasit/omregner-adresser.json`, `test/omregner-adresser.test.mjs` (nye) | Låser de 714 adressene. |
 | `test/playwright/fiksturer/kalk-enhet.html`, `test/playwright/kalk-enhet.spec.mjs`, `test/playwright/kalk-tabell-enhet.spec.mjs` (nye) | Kortets nye felt, og at tabellene på ekte sider er like kortets svar. |
 | `test/omregner-sider.test.mjs` (ny) | Sidenes oppbygning og «cups»-regelen på alle fire språk. |
+| `scripts/app-bevis.mjs`, `test/app-bevis.test.mjs` | Behandler også sider med enhetskortet (avgjørelse 8). |
 | Designspec 16.4 og 16.8 | Skrives om etter det som er bygget. |
+
+## Tester som låser dagens sider og endres med vilje
+
+Disse er røde underveis og rettes i oppgaven som bryter dem. Hver endret test skal fortsatt vokte egenskapen sin, bare mot det nye kortet. Ingen test slettes uten at vakta flyttes.
+
+| Test | Hva den låser i dag | Oppgave |
+|---|---|---|
+| `test/enheter.test.mjs:40` | `class="omregner"` i `rik` på hver engelske side | 5 |
+| `test/omregner-flertall.test.mjs` | `omregner-data`, `data.o`, «kopp/koppar/kop» i svar | 3 (skip), 6 (slettes; bøyingen vokter `omregner-sider.test.mjs` og `kalk-enhet.spec.mjs`) |
+| `test/playwright/undersider.spec.mjs` | regning, bytte, flertall, desimaltegn, «-1 kopp», FLIP-avbrudd, tab-rekkefølge, 44 px og 200 % tekst på `form.omregner`; venstrekanten til H2 foran skjemaet | 7 (skrives om mot `form.kalk` på de ekte sidene; samme egenskaper, uten FLIP og med veiledning ved «-1» på volum) |
+| `test/side-css.test.mjs:86` | stil for klassene på omregnersidene, unntak `omregner-data`, `has-toc`, `toc-title` | 6 |
+| `test/kjede-fasit.test.mjs:15,18` | plassen til `omregner-flertall` i kjeden | 6 |
+| `test/side-topp.test.mjs` | at `verktoy/dl-til-kopp` og `tools/cups-to-ml/` uten topp er like de publiserte | 3 og 5 (bytt eksempelsidene til sider som fortsatt er uten topp, og legg omregnerne i testene for sider med topp) |
+| `test/landing9Runde3.test.mjs:49` | ordlikhet mellom H1 og hver H2 under 0,75 på sv, da og en | 4 og 5 (ny H1 og H2 må holde grensen) |
+| `test/locale-pages.test.mjs` | FAQ lik JSON-LD, ingen like nabo-ord i h1 til h3 («Cups til cups» finnes ikke; pass på «cups (cups)») | 3, 4 |
+| `test/app-bevis.test.mjs:31` | går over sider med `has-toc` | 3 |
+| `test/fixtures/skall-paa/omregner-nb*.html.fiks` | frosne omregnersider | 7 (nye fiksturer av bygde sider, de gamle beholdes hvis testene trenger gammel form) |
+| `test/hyller.test.mjs`, `test/skall.test.mjs:512`, `test/forside-tekst.test.mjs:43` | ingen «kopp» i hyller, skall og forside | uendret, skal være grønne |
+| `test/sidetyper.test.mjs`, `test/kjedeproeve.test.mjs`, `test/guidelenker.test.mjs` | 714 sider, `omregner:nav` er 4, adressene | uendret, skal være grønne |
 
 ## Review Focus
 
@@ -194,7 +216,7 @@ test('tall følger presisTekst', …)                          // erstatter «fo
 - Produces:
   - `byggLese({ seksjoner }) → string` i `rik-sider.mjs`: `<h2 id="…">` og innhold for hver seksjon, uten svarboks og uten innholdsfortegnelse (samme `slugg` som `byggRik`).
   - `sideForPar(fra, til)` gir i tillegg `topp: enhetsKort('nb', fra, til) + '\n<p class="kortsvar"><b>Kort svar:</b> …</p>'`, der teksten er dagens `svar` («1 cup = 2,366 dl. Skal du regne om cups til desiliter, gang med 2,366.»). `rik` er `byggLese` av dagens seksjoner uten den første («Kalkulator: …»).
-  - `ENHETER.cups.nb = { en: 'cup', fl: 'cups', kort: 'cups' }`, `FLERTALL.nb.cups = ['cup', 'cups']`.
+  - `ENHETER.cups.nb = { en: 'cup', fl: 'cups', kort: 'cups' }`, `FLERTALL.nb.cups = ['cup', 'cups']`. H1 skal ikke gjenta ordet («Cups til desiliter (cups til dl)» er greit, «Cups (cups)» er det ikke): der langform og kortform er like, skrives H1 uten parentes for den enheten.
   - `export const KOPP_BIORD` i `nb-enhetssider.mjs`: de nøyaktige setningene der «kopp» får stå (forklaringssetningen i `DEF.cups` og spørsmålet med svar på sidene `cups>dl` og `dl>cups`).
   - Samlesiden `verktoy/enhetsomregner/`: `topp: enhetsKort('nb', 'cups', 'ml', { ids: gruppeIds('volum') })`, og setningen «Kalkulatoren her regner om volum. For vekt, lengde og temperatur bruker du listene under.» som første avsnitt i lesedelen.
 
@@ -217,6 +239,8 @@ test('nb: ingen tankestrek i synlig tekst', …)
 - [ ] **Step 2: Kjør og se dem feile.** Run: `node --test test/omregner-sider.test.mjs` Expected: FAIL.
 
 - [ ] **Step 3: Bygg.** `byggLese`; `topp` og ny `rik` i `sideForPar` og på samlesiden; `skjema()` slettes. Bytt navnene for `cups`, og gå gjennom hver forekomst av «kopp» i `nb-enhetssider.mjs` (27 treff: `BRUK`, `DEF`, `NOTE`, `FEIL`, `MAALETIPS`, `MENTAL`, `UTVID`, `MATLYST`, samlesiden og spørsmålene): skriv «cups» der det er enheten, og la «kaffekopp» bli «kaffekrus» eller omskrives der ordet handler om koppen i skapet. Ordlyden skrives etter `matlyst-sprak`. Stegteksten («Kontroller at Fra er …») beholdes.
+
+- [ ] **Step 3b: Appkortene.** I `scripts/app-bevis.mjs` (`behandle`): betingelsen blir «`has-toc` eller `data-kalk="enhet"`». Test i `test/app-bevis.test.mjs`: en omregnerside med enhetskortet får blokkene (i-mapper, i-skalering, i-enheter på nb `dl-til-kopp`, samme nøkler som den publiserte siden har i dag, utledet av den publiserte fila), og en familieside med `data-kalk="volumvekt"` er uendret. Bevis rød.
 
 - [ ] **Step 4: Kjør testene.** Run: `npm test` Expected: PASS. `test/omregner-flertall.test.mjs` kan feile her; den slettes i oppgave 6, så merk den midlertidig med `test.skip` og en kommentar som viser til oppgave 6.
 
