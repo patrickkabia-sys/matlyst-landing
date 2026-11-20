@@ -274,13 +274,16 @@ output.kalktall{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-h
 .sprik .valgt td:last-child{padding-right:14px;border-radius:0 14px 14px 0}
 .kilder{margin:14px 0 0;padding:0 0 0 22px;font-size:1.0625rem;line-height:1.55;color:var(--dempet)}
 .kilder li{margin-top:8px}
+.kilder li::marker{font-variant-numeric:normal}
 .kilder a{color:var(--blekk)}
 .varerull{max-width:100%;margin-top:28px;overflow-x:auto}
 .locale-prose .varer{width:100%;margin-top:0;font-size:1.125rem;font-variant-numeric:tabular-nums}
 .locale-prose .varer th{text-align:right}
 .locale-prose .varer th:first-child,.locale-prose .varer td:first-child{text-align:left}
 .locale-prose .varer td{padding:0;text-align:right;font-weight:400}
+.locale-prose .varer td:not(:first-child){white-space:nowrap}
 .locale-prose .varer td:nth-child(2){font-weight:700}
+.locale-prose .varer td:last-child:not(:first-child){font-weight:400}
 .varer td:first-child a{display:flex;align-items:center;min-height:52px;font-weight:500}
 @media (min-width:1001px){
   .locale-prose .oto{grid-template-columns:repeat(2,minmax(0,1fr));width:920px;margin-left:50%;transform:translateX(-50%)}
