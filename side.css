@@ -272,7 +272,8 @@ output.kalktall{word-spacing:.25em;overflow:hidden;text-overflow:ellipsis;white-
 .eksempler li:last-child{border-bottom:0}
 .locale-prose .sprik{width:100%;margin-top:22px}
 .sprik small{display:block;font-size:.9375rem;font-weight:400;color:var(--dempet)}
-.sprik td:last-child,.sprik th:last-child{white-space:nowrap;font-variant-numeric:tabular-nums}
+.sprik td:last-child,.sprik th:last-child{white-space:nowrap}
+/* Skriftens tabelltall gjør punktum like bredt som et siffer («4 . 6 g»); tallene står til høyre og trenger ikke like sifferbredder. */
 .sprik .valgt td{background:var(--hylle)}
 .sprik .valgt td:first-child{padding-left:14px;border-radius:14px 0 0 14px}
 .sprik .valgt td:last-child{padding-right:14px;border-radius:0 14px 14px 0}
@@ -281,7 +282,7 @@ output.kalktall{word-spacing:.25em;overflow:hidden;text-overflow:ellipsis;white-
 .kilder li::marker{font-variant-numeric:normal}
 .kilder a{color:var(--blekk)}
 .varerull{max-width:100%;margin-top:28px;overflow-x:auto}
-.locale-prose .varer{width:100%;margin-top:0;font-size:1.125rem;font-variant-numeric:tabular-nums}
+.locale-prose .varer{width:100%;margin-top:0;font-size:1.125rem}
 .locale-prose .varer th{text-align:right}
 .locale-prose .varer th:first-child,.locale-prose .varer td:first-child{text-align:left}
 .locale-prose .varer td{padding:0;text-align:right;font-weight:400}
