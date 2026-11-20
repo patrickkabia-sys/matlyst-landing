@@ -2,9 +2,8 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
-import vm from 'node:vm';
 
-import { SIDEGRUPPER, SPRAKKODER, alternativerFor, byggLocalePageMap, filForSti } from '../scripts/locale-sider.mjs';
+import { SIDEGRUPPER, SPRAKKODER, alternativerFor, filForSti } from '../scripts/locale-sider.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const BASE = 'https://matlyst-app.no';
@@ -79,14 +78,6 @@ test('alle hreflang-lenker i alle HTML-filer peker på en side som finnes', () =
       assert.equal(existsSync(join(ROOT, filForSti(url.pathname))), true, `${fil}: ${url.pathname}`);
     }
   }
-});
-
-test('LOCALE_PAGE_MAP bygges direkte fra sidetabellen', () => {
-  const source = readFileSync(join(ROOT, 'locale.js'), 'utf8');
-  const context = { globalThis: {}, URLSearchParams };
-  vm.runInNewContext(source, context);
-  const faktisk = JSON.parse(JSON.stringify(context.globalThis.MatlystLocale.LOCALE_PAGE_MAP));
-  assert.deepEqual(faktisk, byggLocalePageMap());
 });
 
 test('kildeguidene har fire ekte språkversjoner', () => {

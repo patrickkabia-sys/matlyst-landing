@@ -89,22 +89,6 @@ export function alternativerFor(sti) {
   return [...alternativer, ['x-default', gruppe.sider[standard]]];
 }
 
-export function byggLocalePageMap() {
-  const kart = {};
-  for (const gruppe of SIDEGRUPPER) {
-    if (gruppe.redirect === false || Object.keys(gruppe.sider).length < 2) continue;
-    const rad = Object.fromEntries(SPRAKREKKEFOLGE
-      .filter((sprak) => gruppe.sider[sprak])
-      .map((sprak) => [sprak, gruppe.sider[sprak]]));
-    for (const sti of Object.values(gruppe.sider)) {
-      kart[sti] = rad;
-      if (sti.endsWith('.html')) kart[sti.slice(0, -'.html'.length)] = rad;
-      if (sti === '/') kart['/index.html'] = rad;
-    }
-  }
-  return Object.fromEntries(Object.entries(kart).sort(([a], [b]) => a.localeCompare(b)));
-}
-
 export function filForSti(sti) {
   if (sti === '/') return 'index.html';
   if (sti.endsWith('.html')) return sti.slice(1);

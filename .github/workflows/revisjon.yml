@@ -1,37 +1,110 @@
 name: Revisjon
 
-# Kjører på alle pull requests, uten stifilter: endringer i revisjonstestene, sidetyper.mjs,
-# hyller.mjs, skallfilene og stilarkene skal alltid utløse den. Typer som ikke er rullet ut,
-# gir 0 sider og grønt. Store typer deles i skår (--shard): ca. 13 s per side på én prosess,
-# omregner-nb/sv har ca. 200 sider, så to skår holder hvert skår under ca. 15 min. test.yml kjører fortsatt standardutvalget.
+# PR-er kjører et utvalg: alt håndskrevet, tre sider per generert familie og språk,
+# eksempelsidene og sidene PR-en selv endrer. Full kontroll (alle klare sider, tolv skår)
+# kjøres hver mandag, ved manuell start, og når en PR rører delt stil, skall, generatorer eller
+# selve revisjonen (alt som ikke står i PR_TRYGGE i scripts/revisjon-omfang.mjs gir full). Finner git ikke basen, kjøres full kontroll.
+# Skårene deler testene (ikke sidene) mellom seg, så de tåler at familiene vokser.
+# test.yml kjører fortsatt standardutvalget.
 on:
   pull_request:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  revisjon:
+  omfang:
+    name: Omfang
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      modus: ${{ steps.modus.outputs.modus }}
+    steps:
+      - name: Hent kildekoden
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sett opp Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Regn ut omfang
+        id: modus
+        env:
+          HENDELSE: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          : > endret.txt
+          if [ "$HENDELSE" != "pull_request" ]; then
+            modus=full
+          elif git -c core.quotePath=false diff --no-renames --name-only "$BASE...HEAD" > endret.tmp; then
+            mv endret.tmp endret.txt
+            modus=$(node scripts/revisjon-omfang.mjs < endret.txt)
+          else
+            echo "git diff mot $BASE feilet: kjører full kontroll"
+            modus=$(node scripts/revisjon-omfang.mjs --ukjent)
+          fi
+          echo "modus=$modus" >> "$GITHUB_OUTPUT"
+          echo "Omfang: $modus ($(wc -l < endret.txt) endrede filer)"
+
+      - name: Lagre endringslista
+        uses: actions/upload-artifact@v4
+        with:
+          name: endret
+          path: endret.txt
+
+  utvalg:
+    name: Utvalg ${{ matrix.skar }}/2
+    needs: omfang
+    if: needs.omfang.outputs.modus == 'pr'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - { type: omregner, sprak: nb, shard: '1/2' }
-          - { type: omregner, sprak: nb, shard: '2/2' }
-          - { type: omregner, sprak: sv, shard: '1/2' }
-          - { type: omregner, sprak: sv, shard: '2/2' }
-          - { type: omregner, sprak: da, shard: '1/2' }
-          - { type: omregner, sprak: da, shard: '2/2' }
-          - { type: omregner, sprak: en, shard: '1/2' }
-          - { type: omregner, sprak: en, shard: '2/2' }
-          - { type: guide-lang, sprak: '', shard: '1/1' }
-          - { type: guide-kort, sprak: '', shard: '1/1' }
-          - { type: guide-gammel, sprak: '', shard: '1/1' }
-          - { type: blogg, sprak: '', shard: '1/1' }
-          - { type: juss, sprak: '', shard: '1/1' }
-          - { type: tjeneste, sprak: '', shard: '1/1' }
+        skar: [1, 2]
+    steps:
+      - name: Hent kildekoden
+        uses: actions/checkout@v4
+
+      - name: Hent endringslista
+        uses: actions/download-artifact@v4
+        with:
+          name: endret
+
+      - name: Sett opp Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installer avhengigheter
+        run: npm ci
+
+      - name: Installer Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Revider utvalget (skår ${{ matrix.skar }}/2)
+        run: npx playwright test revisjon.spec --workers=4 --shard=${{ matrix.skar }}/2 --pass-with-no-tests
+        env:
+          REVISJON: pr
+          REVISJON_ENDRET: ${{ github.workspace }}/endret.txt
+
+  full:
+    name: Full ${{ matrix.skar }}/12
+    needs: omfang
+    if: needs.omfang.outputs.modus == 'full'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        skar: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     steps:
       - name: Hent kildekoden
         uses: actions/checkout@v4
@@ -48,8 +121,30 @@ jobs:
       - name: Installer Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Revider ${{ matrix.type }} ${{ matrix.sprak }} ${{ matrix.shard }}
-        run: npx playwright test revisjon.spec --workers=4 --shard=${{ matrix.shard }} --pass-with-no-tests
+      - name: Revider alle sider (skår ${{ matrix.skar }}/12)
+        run: npx playwright test revisjon.spec --workers=4 --shard=${{ matrix.skar }}/12 --pass-with-no-tests
         env:
-          REVISJON: ${{ matrix.type }}
-          REVISJON_SPRAK: ${{ matrix.sprak }}
+          REVISJON: alle
+
+  # Vern mot at begge revisjonsjobbene hoppes over (feilstavet output, tomt vilkår): nøyaktig én må ha lyktes.
+  kontroll:
+    name: Kontroll
+    needs: [omfang, utvalg, full]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Sjekk at nøyaktig én revisjonsjobb lyktes
+        env:
+          OMFANG: ${{ needs.omfang.result }}
+          UTVALG: ${{ needs.utvalg.result }}
+          FULL: ${{ needs.full.result }}
+        run: |
+          echo "omfang=$OMFANG utvalg=$UTVALG full=$FULL"
+          lyktes=0
+          [ "$UTVALG" = "success" ] && lyktes=$((lyktes + 1))
+          [ "$FULL" = "success" ] && lyktes=$((lyktes + 1))
+          if [ "$OMFANG" != "success" ] || [ "$lyktes" -ne 1 ]; then
+            echo "Forventet omfang=success og nøyaktig én av utvalg og full lyktes" >&2
+            exit 1
+          fi
