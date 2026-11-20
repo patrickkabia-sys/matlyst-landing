@@ -1,0 +1,39 @@
+{
+  "head": "# Matlyst\n\n> Matlyst er oppskriftsappen for å oversette og tilpasse oppskrifter.\n> Matlyst är receptappen som översätter och anpassar dina recept.\n> Matlyst er opskriftsappen, der oversætter og tilpasser dine opskrifter.\n> Matlyst is the recipe app for translating and adapting recipes.\n\nFakta (kontrollert mot appens kode 5. oktober 2026):\n\n- Plattformer: iOS (iPhone og iPad) og Android.\n- Import: lenke til en nettside eller matblogg, Instagram (reel eller innlegg), Facebook, TikTok og YouTube, delt fra delingsmenyen eller limt inn. Bilde av en oppskrift fra kokebok, blad eller skjerm. Eksportfil fra Paprika Recipe Manager.\n- Oversetting: importerte oppskrifter oversettes til språket brukeren har valgt i appen: norsk bokmål (nb), dansk (da) eller svensk (sv).\n- Enheter: metriske mål (g, dl, ml, °C) er standard. I innstillingene kan brukeren velge å beholde amerikanske mål fra kilden.\n- Tilpassing: Spør Matlyst (dansk: Spørg Matlyst, svensk: Fråga Matlyst) kan bytte, fjerne og legge til ingredienser og endre porsjoner i en oppskrift. Svarene kommer på brukerens språk (nb, da eller sv). Spørsmål om en oppskrift er gratis; å lage eller endre oppskrifter krever Matlyst Pro.\n- Planlegging: ukemeny, handleliste fra oppskriftene, spiskammer, mapper og favoritter. Kokemodus holder skjermen våken.\n- Gratis: fem importer i måneden og spørsmål om en oppskrift. Bildeimport og å lage eller endre oppskrifter med Spør Matlyst krever Matlyst Pro.\n- Ingen reklame og ingen annonsenettverk i appen.\n- Vurdering: 5,0 i App Store (12 vurderinger, Norge, per 5. oktober 2026).\n",
+  "sprak": {
+    "nb": {
+      "navn": "Norsk",
+      "intro": "Matlyst henter oppskriften fra lenken, videoen eller bildet du deler, oversetter den til norsk og gjør målene metriske. Du planlegger uka i Ukemeny, sender ingrediensene til Handlelisten og holder oversikt i Spiskammeret. Med Spør Matlyst kan du bytte ingredienser, tilpasse porsjoner eller stille spørsmål om oppskriften.",
+      "funksjoner": "Funksjoner og guider",
+      "blogg": "Blogg",
+      "verktoy": "Verktøy",
+      "juss": "Personvern og vilkår"
+    },
+    "da": {
+      "navn": "Dansk",
+      "intro": "Matlyst henter opskriften fra det link, den video eller det billede, du deler, oversætter den til dansk og bruger metriske mål. I appen planlægger du ugen i Madplan, sender ingredienserne til Indkøbslisten og holder styr på varerne i Spisekammeret. Spørg Matlyst kan bytte ingredienser og tilpasse portioner, og svarene kommer på dansk.",
+      "funksjoner": "Funktioner og guides",
+      "blogg": "Blog",
+      "verktoy": "Værktøjer",
+      "juss": "Privatliv og vilkår"
+    },
+    "sv": {
+      "navn": "Svenska",
+      "intro": "Matlyst hämtar receptet från länken, videon eller bilden du delar, översätter det till svenska och använder metriska mått. I appen planerar du veckan i Veckomeny, skickar ingredienserna till Inköpslistan och håller koll på varorna i Skafferiet. Fråga Matlyst kan byta ingredienser och anpassa portioner, och svaren kommer på svenska.",
+      "funksjoner": "Funktioner och guider",
+      "blogg": "Blogg",
+      "verktoy": "Verktyg",
+      "juss": "Integritet och villkor"
+    },
+    "en": {
+      "navn": "English",
+      "intro": "Matlyst imports a recipe from a shared link, video or photo, translates it into the language chosen in the app (Norwegian Bokmål, Danish or Swedish) and uses metric units by default. Users plan the week, send ingredients to a shopping list and keep track of a pantry. \"Spør Matlyst\" (Ask Matlyst) can swap, remove or add ingredients and change servings; answers come in the user's language. Questions about a recipe are free; creating or changing recipes requires Matlyst Pro. The app has no ads and no ad networks.",
+      "funksjoner": "Features and guides",
+      "blogg": "Blog",
+      "verktoy": "Tools",
+      "juss": "Privacy and terms"
+    }
+  },
+  "personvern": "Gratis og Matlyst Pro har samme personvern. Bruksanalyse er av til brukeren sier ja, og Matlyst selger ikke personopplysninger. Free and Pro have the same privacy; analytics is opt-in and user data is never sold.",
+  "hale": "## For matskapere / For food creators\n\nKilden vises med lenke tilbake på importerte oppskrifter når kilden er kjent, og oppskriftene publiseres ikke. En matskaper kan be om at nettstedet eller kontoen sperres for import ved å skrive til hei@matlyst-app.no.\n\n## Kontakt / Contact\n\nhei@matlyst-app.no\n"
+}

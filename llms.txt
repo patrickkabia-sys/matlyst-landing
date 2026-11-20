@@ -21,53 +21,209 @@ Fakta (kontrollert mot appens kode 5. oktober 2026):
 
 Matlyst henter oppskriften fra lenken, videoen eller bildet du deler, oversetter den til norsk og gjør målene metriske. Du planlegger uka i Ukemeny, sender ingrediensene til Handlelisten og holder oversikt i Spiskammeret. Med Spør Matlyst kan du bytte ingredienser, tilpasse porsjoner eller stille spørsmål om oppskriften.
 
-- [Forside](https://matlyst-app.no/): hva Matlyst er, på norsk
-- [Importer oppskrifter](https://matlyst-app.no/importer-oppskrifter/): lenke, video og bilde
-- [Ukemeny](https://matlyst-app.no/ukemeny/): planlegg uka med egne oppskrifter
-- [Handleliste](https://matlyst-app.no/handleliste/): ingredienser fra oppskriftene
-- [Personvern](https://matlyst-app.no/personvern.html): personvernerklæringen
+- [Matlyst: oppskriftsappen for iPhone og Android](https://matlyst-app.no/): Oppskriftsappen som oversetter og tilpasser oppskriftene dine. Importer fra en lenke, en video eller et bilde, også av håndskrevne oppskrifter. Planlegg uka og send ukas ingredienser til handlelista. Ingen reklame, ingen salg av data. Gratis å prøve på App Store og Google Play.
+- [Importer oppskrifter fra Paprika til Matlyst](https://matlyst-app.no/bytt-fra-paprika/): Eksporter oppskriftene fra Paprika, og importer filen i Matlyst. Velg oppskriftene du vil flytte, og kontroller resultatet.
+- [Enkel middag: 14 raske retter på under 30 minutter](https://matlyst-app.no/enkel-middag/): Enkel og rask middag til travle hverdager: 14 retter på under 30 minutter, og tips som gjør kvelden lettere.
+- [Finn oppskriftene dine — søk og filtrer](https://matlyst-app.no/finn-oppskrifter/): Søk i din egen oppskriftssamling på ingrediens, tag eller kilde, og filtrer på måltid, kjøkken og kosthold. Finn alltid tilbake til den rette oppskriften.
+- [Handleliste fra oppskrifter: én liste for uka](https://matlyst-app.no/handleliste/): Legg oppskrifter i Matlyst, så havner ingrediensene på én handleliste, slått sammen og sortert etter hylle. Hopp over det du har. Gratis å komme i gang.
+- [Skann oppskrifter fra bilder og kokebøker](https://matlyst-app.no/handskrevne-oppskrifter/): Gjør bilder av kokeboksider, håndskrevne oppskriftskort, ukeblader og skjermbilder til ryddige oppskrifter i Matlyst.
+- [Hva kan jeg lage med det jeg har?](https://matlyst-app.no/hva-kan-jeg-lage/): Legg inn det du har hjemme, så viser Matlyst oppskrifter du kan lage nå. Få varsel før ting går ut på dato, og kast mindre mat.
+- [Lagre oppskrifter fra Alletiders Kogebog](https://matlyst-app.no/importer-fra-alletiders-kokebok/): Slik lagrer du en oppskrift fra Alletiders Kogebog i Matlyst med kilden bevart.
+- [Lagre oppskrifter fra DR Mad](https://matlyst-app.no/importer-fra-dr-mat/): Slik lagrer du en oppskrift fra DR Mad i Matlyst med kilden bevart.
+- [Lagre oppskrifter fra Köket.se](https://matlyst-app.no/importer-fra-koket/): Slik lagrer du en oppskrift fra Köket.se i Matlyst med kilden bevart.
+- [Lagre oppskrifter fra Landleys Kök](https://matlyst-app.no/importer-fra-landleys-kok/): Slik lagrer du en oppskrift fra Landleys Kök i Matlyst med kilden bevart.
+- [Lagre Matprat-oppskrifter i Matlyst](https://matlyst-app.no/importer-fra-matprat/): Ta vare på favorittoppskriftene dine fra Matprat i Matlyst. Lim inn lenken, så hentes ingredienser og steg strukturert, klare for ukeplan og handleliste.
+- [Importer oppskrifter fra sosiale medier og nettsider](https://matlyst-app.no/importer-oppskrifter/): Importer oppskrifter fra Instagram, TikTok, YouTube, nettsider, Pinterest-lenker, bilder, tekst og Paprika. Bildeimport krever Pro.
+- [Slik lagrer du oppskrifter fra Instagram](https://matlyst-app.no/lagre-oppskrifter-fra-instagram/): Lagre en oppskrift fra et Instagram-innlegg eller en reel ved å dele den med Matlyst. Slik gjør du det, og hva du gjør når oppskriften ikke står i teksten.
+- [Slik lagrer du oppskrifter fra TikTok](https://matlyst-app.no/lagre-oppskrifter-fra-tiktok/): Gjør en TikTok-oppskrift om til ingredienser og steg. Del videoen med Matlyst, sjekk utkastet og lag maten fra en oppskrift du finner igjen. Gratis å prøve.
+- [Middagstips: 22 middagsforslag til hverdagen](https://matlyst-app.no/middagsforslag/): Middagsforslag når du står fast: raske retter, fisk, vegetar og familiefavoritter. Og en enkel måte å slippe spørsmålet hver dag.
+- [Oppskriftsapp: ett sted for alle oppskriftene](https://matlyst-app.no/oppskriftsbok-app/): Lagre oppskrifter fra nettsider, Instagram, TikTok og bilder i én oppskriftsapp. Regn om porsjoner, planlegg uka og lag handleliste. Gratis å komme i gang.
+- [For matskapere og bloggere](https://matlyst-app.no/skapere/): Hva skjer når en bruker importerer oppskriften din til Matlyst: hva som lagres, hvem som ser det, at kilden vises, og hvordan du sperrer nettstedet eller kontoen din for import med én e-post.
+- [Spiskammer-app: se hva du har og lag mat av det](https://matlyst-app.no/spiskammer-app/): En spiskammer-app som viser hva du har, hvor mange dager som er igjen og hvilke lagrede oppskrifter som bruker det. Legg inn varer raskt og kast mindre mat.
+- [Tøm kjøleskapet med lagrede oppskrifter](https://matlyst-app.no/tom-kjoleskapet/): Match Spiskammer med din egen oppskriftsamling og bruk mer av maten du allerede har.
+- [Ukemeny-app med handleliste](https://matlyst-app.no/ukemeny/): Lag ukemeny med oppskrifter du allerede liker, og send ingrediensene til én handleliste sortert etter avdelingene i butikken. Gratis for iPhone og Android.
+
+## Norsk: Blogg
+
+- [Kjøkkentips fra Matlyst](https://matlyst-app.no/blogg/): Kjøkkentips fra Matlyst: koketider, kjernetemperatur, rester, fryser, airfryer og eggtest, med tabeller du kan slå opp i.
+- [Doble en oppskrift: dette må du passe på](https://matlyst-app.no/blogg/doble-oppskrift/): Skal du lage dobbel porsjon? Mel og smør ganger du med to, men salt, krydder og steketid gjør du ikke. Her er hva du må passe på.
+- [Er egget ferskt? Slik tester du med et glass vann](https://matlyst-app.no/blogg/er-egget-ferskt/): Legg egget i et glass vann. Synker det, er det ferskt. Flyter det, er det gammelt. Her er testen, og hvordan egg holder seg best.
+- [Erstatte egg i baking: dette kan du bruke i stedet](https://matlyst-app.no/blogg/erstatte-egg/): Tom for egg midt i baksten? Banan, eplemos, linfrø eller kikertvann kan ta jobben, men ikke i alt.
+- [Kjernetemperatur for kjøtt, kylling og fisk](https://matlyst-app.no/blogg/kjernetemperatur/): Kylling er ferdig på 75 grader, laks på 50. Her er kjernetemperaturene for storfe, lam, svin, kylling og fisk, så du slipper å skjære i kjøttet for å sjekke.
+- [Koketider for egg, ris, pasta og grønnsaker](https://matlyst-app.no/blogg/koketider/): Smilende egg tar 8 minutter. Her er koketidene for egg, ris, pasta, poteter og grønnsaker, regnet fra vannet koker.
+- [Hvor lenge kan mat ligge i fryseren?](https://matlyst-app.no/blogg/mat-i-fryseren/): Kjøttdeig holder tre måneder i fryseren, storfe et helt år. Her er tidene for kjøtt, fisk, bakst og rester, og hva du aldri bør fryse.
+- [Ovnsoppskrift i airfryer: slik regner du om tid og temperatur](https://matlyst-app.no/blogg/ovnsoppskrift-i-airfryer/): Ovnsoppskrift i airfryeren? Ta 20 grader ned og 20 prosent av tiden. Her er regelen og noen eksempler.
+- [Hvor lenge holder rester i kjøleskapet?](https://matlyst-app.no/blogg/rester-i-kjoleskapet/): Kokt ris holder ett døgn. Kylling, pasta og gryte to til tre. Her er hvor lenge restene holder i kjøleskapet, og hvordan du får dem til å holde lenger.
+- [Hvordan velge en oppskriftsapp](https://matlyst-app.no/blogg/velg-oppskriftsapp/): Ti ting å se etter i en oppskriftsapp, en test på ti minutter du kan kjøre på alle apper, og feilene folk gjør når de velger. Ingen rangering, bare kriterier.
+
+## Norsk: Verktøy
+
+- [Enhetsomregner for mat: dl, ml, kopper, gram og °F](https://matlyst-app.no/verktoy/enhetsomregner/): Gratis enhetsomregner for matlaging: dl til ml, kopper til ml, unser til gram, pund til kilo, °F til °C og mer, med tabeller og tips til kjøkkenet.
+
+## Norsk: Personvern og vilkår
+
+- [Personvern — Matlyst](https://matlyst-app.no/personvern.html): Personvernerklæring for Matlyst: hvilke data vi samler, hvordan de brukes, og dine rettigheter.
+- [Slett konto — Matlyst](https://matlyst-app.no/slett-konto.html): Slik sletter du Matlyst-kontoen din og alle tilknyttede data, direkte i appen eller ved å kontakte oss.
+- [Brukervilkår — Matlyst](https://matlyst-app.no/vilkar.html): Brukervilkår for Matlyst: bruk av tjenesten, immaterielle rettigheter, abonnement og ansvar.
 
 ## Dansk
 
 Matlyst henter opskriften fra det link, den video eller det billede, du deler, oversætter den til dansk og bruger metriske mål. I appen planlægger du ugen i Madplan, sender ingredienserne til Indkøbslisten og holder styr på varerne i Spisekammeret. Spørg Matlyst kan bytte ingredienser og tilpasse portioner, og svarene kommer på dansk.
 
-- [Forside](https://matlyst-app.no/da/): Matlyst på dansk
-- [Importér opskrifter](https://matlyst-app.no/da/importer-opskrifter/): link, video og foto
-- [Madplan](https://matlyst-app.no/da/madplan-app/): planlæg ugens aftensmad
-- [Indkøbsliste](https://matlyst-app.no/da/indkoebsliste-app/): ingredienser fra opskrifterne
-- [Middagsforslag og Spørg Matlyst](https://matlyst-app.no/da/middagsforslag/): forslag fra egne opskrifter
-- [Spisekammer](https://matlyst-app.no/da/spisekammer-app/): overblik over varerne derhjemme
-- [Privatlivspolitik](https://matlyst-app.no/da/privatliv/): privatliv og samtykke
+- [Opskriftsapp til hverdagen | Matlyst Danmark](https://matlyst-app.no/da/): Opskriftsappen, der oversætter og tilpasser dine opskrifter. Importér fra nettet, Instagram, TikTok eller et foto, planlæg ugens aftensmad, og lav en indkøbsliste.
+- [Gem opskrifter fra Alletiders Kogebog](https://matlyst-app.no/da/alletiders-kogebog/): Sådan gemmer du en opskrift fra Alletiders Kogebog i Matlyst med kilden bevaret.
+- [Gem opskrifter fra DR Mad](https://matlyst-app.no/da/dr-mad/): Sådan gemmer du en opskrift fra DR Mad i Matlyst med kilden bevaret.
+- [Find mine opskrifter](https://matlyst-app.no/da/find-opskrifter/): Søg i din egen opskriftssamling efter navn, ingrediens, kategori eller kilde.
+- [Sådan gemmer du opskrifter fra Instagram](https://matlyst-app.no/da/gem-opskrifter-fra-instagram/): Gem en opskrift fra et Instagram-opslag eller en reel ved at dele den med Matlyst. Trin for iPhone og Android, og hvad du gør, når billedteksten er tom.
+- [Sådan gemmer du opskrifter fra TikTok trin for trin](https://matlyst-app.no/da/gem-opskrifter-fra-tiktok/): Gør en TikTok-opskrift til ingredienser og trin, du kan søge i. Del videoen med Matlyst, tjek udkastet, skalér portionerne og lav maden. Gratis at komme i gang.
+- [Scan opskrifter fra fotos og kogebøger](https://matlyst-app.no/da/haandskrevne-opskrifter/): Gør fotos af kogebogssider, håndskrevne opskriftskort, tidsskrifter og skærmbilleder til overskuelige opskrifter i Matlyst.
+- [Importér opskrifter fra sociale medier og nettet](https://matlyst-app.no/da/importer-opskrifter/): Importér opskrifter fra Instagram, TikTok, YouTube, opskriftssider, fotos, tekst og Paprika til Matlyst.
+- [Indkøbsliste ud fra opskrifter: én liste til ugen](https://matlyst-app.no/da/indkoebsliste-app/): Læg opskrifter ind i Matlyst, så havner ingredienserne på én indkøbsliste, lagt sammen og sorteret efter afdeling. Spring det over, du har. Gratis at starte.
+- [Gem opskrifter fra Köket.se](https://matlyst-app.no/da/koket/): Sådan gemmer du en opskrift fra Köket.se i Matlyst med kilden bevaret.
+- [Gem opskrifter fra Landleys Kök](https://matlyst-app.no/da/landleys-kok/): Sådan gemmer du en opskrift fra Landleys Kök i Matlyst med kilden bevaret.
+- [Madplan-app med indkøbsliste](https://matlyst-app.no/da/madplan-app/): Lav ugens madplan med opskrifter, du allerede kan lide, og send ingredienserne til én indkøbsliste sorteret efter butikkens afdelinger. Gratis til iPhone og Android.
+- [Gem opskrifter fra Matprat](https://matlyst-app.no/da/matprat/): Sådan gemmer du en opskrift fra Matprat i Matlyst med kilden bevaret.
+- [Aftensmad ideer: 22 forslag til hverdagen](https://matlyst-app.no/da/middagsforslag/): Idéer til aftensmad, når du er gået i stå: hurtige retter, fisk, vegetar og familiefavoritter. Og en nem måde at slippe for spørgsmålet hver dag.
+- [Nem mad: 14 hurtige retter på under 30 minutter](https://matlyst-app.no/da/nem-mad/): Nem og hurtig aftensmad til travle hverdage: 14 retter på under 30 minutter og tips, der gør aftenen lettere.
+- [Opskrifter ud fra ingredienser](https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/): Find opskrifter i din egen samling, der passer til de ingredienser, du har derhjemme.
+- [Opskrifts-app: ét sted til alle dine opskrifter](https://matlyst-app.no/da/opskrifts-app/): Gem opskrifter fra hjemmesider, Instagram, TikTok og billeder i én opskriftsapp. Skalér portioner, planlæg ugen og lav indkøbsliste. Gratis at komme i gang.
+- [Matlyst for opskriftsskabere](https://matlyst-app.no/da/opskriftsskabere/): Sådan viser Matlyst kilden, håndterer import og modtager henvendelser fra rettighedshavere.
+- [Importér opskrifter fra Paprika til Matlyst](https://matlyst-app.no/da/skift-fra-paprika/): Eksportér opskrifterne fra Paprika, og importér filen i Matlyst. Vælg de opskrifter, du vil flytte, og tjek resultatet.
+- [Spisekammer-app: se, hvad du har, og lav mad af det](https://matlyst-app.no/da/spisekammer-app/): En spisekammer-app, der viser, hvad du har, hvor mange dage der er tilbage, og hvilke gemte opskrifter der bruger det. Tilføj varer hurtigt og spild mindre mad.
+- [Tøm køleskabet med opskrifter](https://matlyst-app.no/da/toem-koeleskabet/): Brug det, du har, ved at matche Spisekammeret med din egen opskriftssamling.
+
+## Dansk: Blog
+
+- [Køkkentips fra Matlyst](https://matlyst-app.no/da/blog/): Køkkentips fra Matlyst: kernetemperatur, rester, fryseren, airfryer og ægtest, med tabeller, du kan slå op i.
+- [Er ægget friskt? Sådan tester du med et glas vand](https://matlyst-app.no/da/blog/er-aegget-friskt/): Læg ægget i et glas vand. Synker det, er det friskt. Flyder det, er det gammelt. Her er testen, og hvordan æg holder sig bedst.
+- [Erstat æg i bagning: det her kan du bruge i stedet](https://matlyst-app.no/da/blog/erstat-aeg/): Løbet tør for æg midt i bagningen? Banan, æblemos, hørfrø eller kikærtevand kan tage over, men ikke i alt.
+- [Fordoble en opskrift: det her skal du passe på](https://matlyst-app.no/da/blog/fordoble-opskrift/): Skal du lave dobbelt portion? Mel og smør ganger du med to, men salt, krydderier og tid gør du ikke. Her kan du se, hvad du skal passe på.
+- [Kernetemperatur for kød, kylling og fisk](https://matlyst-app.no/da/blog/kernetemperatur/): Kylling er færdig ved 75 grader, laks ved 50. Her er kernetemperaturerne for okse, lam, svin, kylling og fisk, så du slipper for at skære i kødet for at tjekke.
+- [Hvor længe kan mad holde sig i fryseren?](https://matlyst-app.no/da/blog/mad-i-fryseren/): Hakket kød holder tre måneder i fryseren, oksekød et helt år. Her er tiderne for kød, fisk, bagværk og rester, og hvad du aldrig bør fryse.
+- [Ovnopskrift i airfryer: sådan omregner du tid og temperatur](https://matlyst-app.no/da/blog/ovnopskrift-i-airfryer/): Ovnopskrift i airfryeren? Skru 20 grader ned, og skær 20 procent af tiden. Her er reglen og et par eksempler.
+- [Hvor længe holder rester i køleskabet?](https://matlyst-app.no/da/blog/rester-i-koeleskabet/): Kogte ris holder et døgn. Kylling, pasta og gryderet to til tre dage. Her kan du se, hvor længe resterne holder i køleskabet, og hvordan de holder længere.
+- [Sådan vælger du en opskriftsapp](https://matlyst-app.no/da/blog/vaelg-opskriftsapp/): Ti ting at kigge efter i en opskriftsapp, en test på ti minutter, du kan køre på enhver app, og de fejl, folk begår, når de vælger. Fra dem bag Matlyst.
+
+## Dansk: Værktøjer
+
+- [Enhedsomregner til køkkenet: dl, ml, kopper, g, °F](https://matlyst-app.no/da/vaerktoejer/enhedsomregner/): Gratis enhedsomregner til køkkenet: ml til dl, kopper til ml, ounces til gram, pund til kilo og °F til °C. Med tabeller og tips til opskrifter.
+
+## Dansk: Privatliv og vilkår
+
+- [Privatlivspolitik](https://matlyst-app.no/da/privatliv/): Patrick Omassa Kabia er dataansvarlig for Matlyst og driver appen som privatperson i Norge. Kontakt: Vollebekkveien 2J, 0598 Oslo, Norge, hei@matlyst-app.no.
+- [Slet konto](https://matlyst-app.no/da/slet-konto/): Du kan slette Matlyst-kontoen og indholdet permanent. Et abonnement skal opsiges særskilt i App Store eller Google Play.
+- [Brugervilkår](https://matlyst-app.no/da/vilkaar/): Vilkårene gælder, når du bruger Matlyst. Matlyst udbydes af Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge. Skriv til hei@matlyst-app.no, hvis noget er uklart.
 
 ## Svenska
 
 Matlyst hämtar receptet från länken, videon eller bilden du delar, översätter det till svenska och använder metriska mått. I appen planerar du veckan i Veckomeny, skickar ingredienserna till Inköpslistan och håller koll på varorna i Skafferiet. Fråga Matlyst kan byta ingredienser och anpassa portioner, och svaren kommer på svenska.
 
-- [Startsida](https://matlyst-app.no/sv/): Matlyst på svenska
-- [Importera recept](https://matlyst-app.no/sv/importera-recept/): länk, video och foto
-- [Veckomeny](https://matlyst-app.no/sv/veckomeny-app/): planera veckans middagar
-- [Inköpslista](https://matlyst-app.no/sv/inkopslista/): ingredienser från recepten
-- [Middagsförslag och Fråga Matlyst](https://matlyst-app.no/sv/vad-ska-jag-laga/): förslag från egna recept
-- [Skafferi](https://matlyst-app.no/sv/skafferi-app/): överblick över varorna hemma
-- [Integritetspolicy](https://matlyst-app.no/sv/integritet/): integritet och samtycke
+- [Receptapp för vardagen | Matlyst Sverige](https://matlyst-app.no/sv/): Receptappen som översätter och anpassar dina recept. Importera från webben, Instagram, TikTok eller ett foto, planera veckans middagar och gör en inköpslista.
+- [Spara recept från Alletiders Kogebog](https://matlyst-app.no/sv/alletiders-kogebog/): Så sparar du ett recept från Alletiders Kogebog i Matlyst, med källan kvar.
+- [Importera recept från Paprika till Matlyst](https://matlyst-app.no/sv/byt-fran-paprika/): Exportera recepten från Paprika och importera filen i Matlyst. Välj vilka recept du vill flytta och kontrollera resultatet.
+- [Spara recept från DR Mad](https://matlyst-app.no/sv/dr-mad/): Så sparar du ett recept från DR Mad i Matlyst, med källan kvar.
+- [Enkel middag: 14 snabba rätter på under 30 minuter](https://matlyst-app.no/sv/enkel-middag/): Enkel och snabb middag för stressiga vardagar: 14 rätter på under 30 minuter och tips som gör kvällen lättare.
+- [Skanna recept från foton och kokböcker](https://matlyst-app.no/sv/handskrivna-recept/): Gör foton av kokbokssidor, handskrivna receptkort, tidningar och skärmbilder till tydliga recept i Matlyst.
+- [Hitta mina recept](https://matlyst-app.no/sv/hitta-recept/): Sök i din egen receptsamling efter namn, ingrediens, kategori eller källa.
+- [Importera recept från sociala medier och webben](https://matlyst-app.no/sv/importera-recept/): Importera recept från Instagram, TikTok, YouTube, receptsidor, foton, text och Paprika till Matlyst.
+- [Inköpslista från recept: en lista för hela veckan](https://matlyst-app.no/sv/inkopslista/): Lägg recept i Matlyst så hamnar ingredienserna på en inköpslista, ihopslagen och sorterad efter butikens avdelningar. Hoppa över det du har. Gratis att börja.
+- [Spara recept från Köket.se](https://matlyst-app.no/sv/koket/): Så sparar du ett recept från Köket.se i Matlyst, med källan kvar.
+- [Spara recept från Landleys Kök](https://matlyst-app.no/sv/landleys-kok/): Så sparar du ett recept från Landleys Kök i Matlyst, med källan kvar.
+- [Spara recept från Matprat](https://matlyst-app.no/sv/matprat/): Så sparar du ett recept från Matprat i Matlyst, med källan kvar.
+- [Vad kan jag laga med dessa ingredienser?](https://matlyst-app.no/sv/recept-pa-ingredienser/): Hitta recept i din egen samling som passar ingredienserna du har hemma.
+- [Receptbok-app: ett hem för alla dina recept](https://matlyst-app.no/sv/receptbok-app/): Spara recept från webbsidor, Instagram, TikTok och foton i en receptbok-app. Räkna om portioner, planera veckan och få en inköpslista. Gratis att börja.
+- [Matlyst för receptskapare](https://matlyst-app.no/sv/receptskapare/): Så visar Matlyst källan, hanterar import och tar emot begäranden från rättighetshavare.
+- [Skafferi-app: ha koll på vad du har och laga det](https://matlyst-app.no/sv/skafferi-app/): En skafferi-app som visar vad du har, hur många dagar som är kvar och vilka sparade recept som använder det. Lägg in varor snabbt och släng mindre mat.
+- [Så sparar du recept från Instagram (inlägg och reels)](https://matlyst-app.no/sv/spara-recept-fran-instagram/): Spara ett recept från ett Instagram-inlägg eller en reel genom att dela det med Matlyst. Steg för steg, och vad du gör när receptet inte står i bildtexten.
+- [Så sparar du recept från TikTok, steg för steg](https://matlyst-app.no/sv/spara-recept-fran-tiktok/): Gör ett TikTok-recept till ingredienser och steg. Dela videon med Matlyst, kontrollera utkastet och laga efter det, sök och räkna om. Gratis att börja.
+- [Töm kylskåpet med recept](https://matlyst-app.no/sv/tom-kylskapet/): Använd det du redan har genom att matcha Skafferi mot din egen receptsamling.
+- [Middagstips: 22 middagsförslag till vardagen](https://matlyst-app.no/sv/vad-ska-jag-laga/): Middagsförslag när du har kört fast: snabba rätter, fisk, vegetariskt och familjefavoriter. Och ett enkelt sätt att slippa frågan varje dag.
+- [Veckomeny-app med inköpslista](https://matlyst-app.no/sv/veckomeny-app/): Planera veckans middagar med recept du redan gillar och skicka ingredienserna till en inköpslista sorterad efter butikens avdelningar. Gratis för iPhone och Android.
+
+## Svenska: Blogg
+
+- [Kökstips från Matlyst](https://matlyst-app.no/sv/blogg/): Kökstips från Matlyst: innertemperatur, rester, frysen, airfryer och äggtest, med tabeller att slå upp i.
+- [Är ägget färskt? Så testar du med ett glas vatten](https://matlyst-app.no/sv/blogg/ar-agget-farskt/): Lägg ägget i ett glas vatten. Sjunker det är det färskt. Flyter det är det gammalt. Här är testet, och hur ägg håller sig bäst.
+- [Dubbla ett recept: det här ska du se upp med](https://matlyst-app.no/sv/blogg/dubbla-recept/): Ska du laga dubbel sats? Mjöl och smör tar du gånger två, men salt, kryddor och tid gör du inte. Här ser du vad du ska se upp med.
+- [Ersätta ägg i bakning: det här kan du använda i stället](https://matlyst-app.no/sv/blogg/ersatta-agg/): Slut på ägg mitt i bakningen? Banan, äppelmos, linfrön eller kikärtsspad kan ta över, men inte i allt.
+- [Innertemperatur för kött, kyckling och fisk](https://matlyst-app.no/sv/blogg/innertemperatur/): Kyckling är klar vid 75 grader, lax vid 50. Här är innertemperaturerna för nöt, lamm, fläsk, kyckling och fisk, så slipper du skära i köttet för att kolla.
+- [Hur länge håller mat i frysen?](https://matlyst-app.no/sv/blogg/mat-i-frysen/): Köttfärs håller tre månader i frysen, nötkött ett helt år. Här är tiderna för kött, fisk, bakverk och rester, och vad du aldrig ska frysa.
+- [Hur länge håller rester i kylen?](https://matlyst-app.no/sv/blogg/rester-i-kylen/): Kokt ris håller ett dygn. Kyckling, pasta och gryta två till tre. Här ser du hur länge resterna håller i kylen, och hur du får dem att hålla längre.
+- [Ugnsrecept i airfryer: så räknar du om tid och temperatur](https://matlyst-app.no/sv/blogg/ugnsrecept-i-airfryer/): Ugnsrecept i airfryern? Sänk värmen med 20 grader och korta tiden med 20 procent. Här är regeln och några exempel.
+- [Så väljer du receptapp: tio saker att kolla](https://matlyst-app.no/sv/blogg/valj-receptapp/): Tio saker att titta efter i en receptapp, ett test på tio minuter som du kan köra på vilken app som helst, och de vanligaste misstagen när man väljer.
+
+## Svenska: Verktyg
+
+- [Enhetsomvandlare för matlagning: dl, ml, koppar, °F](https://matlyst-app.no/sv/verktyg/enhetsomvandlare/): Gratis enhetsomvandlare för matlagning med alla kombinationer: ml till dl, koppar till ml, uns till g, pund till kg, °F till °C. Med tabeller och köksråd.
+
+## Svenska: Integritet och villkor
+
+- [Integritetspolicy](https://matlyst-app.no/sv/integritet/): Patrick Omassa Kabia är personuppgiftsansvarig för Matlyst och driver appen som privatperson i Norge. Kontakt: Vollebekkveien 2J, 0598 Oslo, Norge, hei@matlyst-app.no.
+- [Radera konto](https://matlyst-app.no/sv/radera-konto/): Du kan radera Matlyst-kontot och innehållet permanent. Ett abonnemang måste sägas upp separat i App Store eller Google Play.
+- [Användarvillkor](https://matlyst-app.no/sv/villkor/): Villkoren gäller när du använder Matlyst. Matlyst tillhandahålls av Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norge. Kontakta oss på hei@matlyst-app.no om något är oklart.
 
 ## English
 
 Matlyst imports a recipe from a shared link, video or photo, translates it into the language chosen in the app (Norwegian Bokmål, Danish or Swedish) and uses metric units by default. Users plan the week, send ingredients to a shopping list and keep track of a pantry. "Spør Matlyst" (Ask Matlyst) can swap, remove or add ingredients and change servings; answers come in the user's language. Questions about a recipe are free; creating or changing recipes requires Matlyst Pro. The app has no ads and no ad networks.
 
+- [The recipe app for everyday cooking](https://matlyst-app.no/en/): Save recipes from websites, Instagram, TikTok or a photo. Matlyst gives you the ingredients and method in English, helps you plan the week and builds your shopping list.
+- [Save recipes from Alletiders Kogebog](https://matlyst-app.no/en/alletiders-cookbook/): How to save a recipe from Alletiders Kogebog in Matlyst while keeping the source.
+- [Dinner ideas: 22 easy weeknight dinners](https://matlyst-app.no/en/dinner-ideas/): Dinner ideas for when you're stuck: quick meals, fish, vegetarian, and family favorites. Plus a simple way to stop asking every night.
+- [Save recipes from DR Mad](https://matlyst-app.no/en/dr-food/): How to save a recipe from DR Mad in Matlyst while keeping the source.
+- [Easy dinner ideas: 14 quick meals in under 30 minutes](https://matlyst-app.no/en/easy-dinner/): Easy, quick dinner ideas for busy weeknights: 14 meals in under 30 minutes, plus habits that make dinner easier.
+- [Use up food with recipes you saved](https://matlyst-app.no/en/empty-the-fridge/): Match your Pantry with your own recipe collection to use more of what you already have.
+- [Find recipes in your collection](https://matlyst-app.no/en/find-recipes/): Search your own recipe collection by title, ingredient, folder or source.
+- [Holiday cooking planner: timelines and quantities](https://matlyst-app.no/en/holidays/): Plan Thanksgiving, Hanukkah, Christmas, New Year’s Eve and more with timelines, quantities, grocery lists, and food safety numbers from FoodSafety.gov.
+- [Christmas Dinner Planner: Menu, Timeline, Leftovers](https://matlyst-app.no/en/holidays/christmas-dinner/): Plan Christmas dinner from four weeks out: menu, two grocery rounds, make-ahead dishes, safe roast temperatures, a timeline for the day, and leftovers.
+- [Friendsgiving: Plan a Potluck That Works](https://matlyst-app.no/en/holidays/friendsgiving/): Plan Friendsgiving without the chaos: split the menu, ask about allergies, scale recipes for 12, keep food at safe temperatures, and handle leftovers.
+- [Hanukkah Cooking Plan: Eight Nights, Latkes, Shopping](https://matlyst-app.no/en/holidays/hanukkah/): Plan eight nights of Hanukkah cooking: latkes and sufganiyot, make-ahead dishes, safe frying habits, one grocery list for the whole week, and leftovers.
+- [New Year’s Eve Food: Plan the Party and the Day After](https://matlyst-app.no/en/holidays/new-years-eve/): Plan New Year’s Eve food: finger food timeline, make-ahead dishes, buffet or seated dinner, dinner for two, New Year’s Day meals, and a January fridge reset.
+- [Thanksgiving Leftovers: Safe Storage and a Week of Meals](https://matlyst-app.no/en/holidays/thanksgiving-leftovers/): Store Thanksgiving leftovers safely: refrigerate within 2 hours, keep 3 to 4 days, freeze the rest, reheat to 165 °F, and plan a week of leftover meals.
+- [Thanksgiving Plan: Timeline, Portions & Oven Schedule](https://matlyst-app.no/en/holidays/thanksgiving/): A Thanksgiving plan for November 26, 2026: a T-minus timeline, portions for 4 to 16 guests, a one-oven schedule, make-ahead dishes, and food safety rules.
+- [How to save recipes from Instagram (posts and reels)](https://matlyst-app.no/en/import-recipes-from-instagram/): Save a recipe from an Instagram post or reel by sharing it to Matlyst. Steps for iPhone and Android, what to do when the recipe is not in the caption, and common mistakes.
+- [How to import recipes from Paprika](https://matlyst-app.no/en/import-recipes-from-paprika/): Move recipes from Paprika to Matlyst with a Paprika export file. Choose what to import and keep recognised ingredients, instructions, images and folders.
+- [Import recipes from photos and cookbooks](https://matlyst-app.no/en/import-recipes-from-photos/): Turn photos of cookbook pages, handwritten recipe cards, magazines and screenshots into organised ingredients and instructions with Matlyst.
+- [How to save recipes from TikTok: step by step](https://matlyst-app.no/en/import-recipes-from-tiktok/): Turn a TikTok recipe into ingredients and steps. Share the video to Matlyst, check the draft, and cook from it. Free to start.
+- [Import recipes from social media and websites](https://matlyst-app.no/en/import-recipes/): Import recipes from Instagram, TikTok, YouTube, recipe websites, Pinterest links, photos, text or a Paprika export file with Matlyst.
+- [Save recipes from Köket.se](https://matlyst-app.no/en/koket/): How to save a recipe from Köket.se in Matlyst while keeping the source.
+- [Save recipes from Landleys Kök](https://matlyst-app.no/en/landleys-kok/): How to save a recipe from Landleys Kök in Matlyst while keeping the source.
+- [Save recipes from Matprat](https://matlyst-app.no/en/matprat/): How to save a recipe from Matprat in Matlyst while keeping the source.
+- [Meal planner app with a grocery list](https://matlyst-app.no/en/meal-plan-app/): Plan the week with recipes you already like, then send the ingredients to one grocery list, sorted by aisle. Free on iPhone and Android.
+- [Pantry app: know what you have and cook it](https://matlyst-app.no/en/pantry-app/): A pantry app that shows what you have, how many days are left, and which of your saved recipes use it. Add items fast and waste less food.
+- [Recipe organizer app: one home for every recipe](https://matlyst-app.no/en/recipe-book-app/): Save recipes from websites, Instagram, TikTok, and photos in one recipe organizer app. Scale servings, plan the week, and build a grocery list. Free to start.
+- [Matlyst for recipe creators](https://matlyst-app.no/en/recipe-creators/): How Matlyst shows sources, handles imports and receives requests from rights holders.
+- [Find recipes by ingredients](https://matlyst-app.no/en/recipes-by-ingredients/): Find recipes in your own collection that match the ingredients you already have.
+- [Grocery list from recipes: one list for the week](https://matlyst-app.no/en/shopping-list/): Add recipes to Matlyst and the ingredients land on one grocery list, combined and sorted by store section. Skip what you already have. Free to start.
+
+## English: Blog
+
+- [Kitchen tips from Matlyst](https://matlyst-app.no/en/blog/): Kitchen tips from Matlyst: boiling times, safe internal temperatures, leftovers, freezer times, air fryer conversions, and the egg float test.
+- [Boiling times for eggs and vegetables](https://matlyst-app.no/en/blog/boiling-times/): Broccoli florets need 3 to 6 minutes in boiling water. Large eggs need 12 minutes in the hot water after you turn off the heat.
+- [How to choose a recipe organizer app](https://matlyst-app.no/en/blog/choose-recipe-organizer-app/): Ten things to look for in a recipe organizer app, a ten minute test you can run on any app, and the mistakes people make when they choose.
+- [How to double or halve a recipe](https://matlyst-app.no/en/blog/double-a-recipe/): Doubling a recipe? Salt, spices, oil for the pan, and cooking time don't just double.
+- [How to tell if eggs are fresh: the float test](https://matlyst-app.no/en/blog/egg-float-test/): Not sure how old those eggs are? Put one in a bowl of water. If it sinks and lies flat, it's fresh. If it stands on end, it's getting old.
+- [How long can you freeze meat, fish, and leftovers?](https://matlyst-app.no/en/blog/freezer-storage-times/): For best quality, use frozen ground beef within 3 to 4 months and a whole chicken within a year. After that, it's still safe at 0°F.
+- [How long do leftovers last in the fridge?](https://matlyst-app.no/en/blog/leftovers-in-the-fridge/): Most leftovers last 3 to 4 days in the fridge. Here's how long the usual ones last, plus how to store and reheat them safely, based on USDA guidelines.
+- [How to convert an oven recipe to an air fryer](https://matlyst-app.no/en/blog/oven-to-air-fryer/): Air frying a recipe written for the oven? Turn the heat down 25 to 30°F and cut the time by 20%, then shake or flip halfway through.
+- [Safe internal temperatures for meat, chicken, and fish](https://matlyst-app.no/en/blog/safe-internal-temperatures/): Cook chicken and turkey to 165°F, ground beef to 160°F, and fish to 145°F. Steaks, roasts, and pork chops need 145°F plus a 3-minute rest.
+
+## English: Tools
+
+- [Cooking unit converter: cups, ml, oz, grams, °F](https://matlyst-app.no/en/tools/unit-converter/): Free cooking unit converter for every combination: ml to dl, cups to ml, oz to g, lb to kg, °F to °C and more, with charts and kitchen tips.
+
+## English: Privacy and terms
+
+- [Delete your Matlyst account](https://matlyst-app.no/en/delete-account/): Delete your Matlyst account and personal data in the app, or contact us if you no longer have access.
+- [Privacy Policy](https://matlyst-app.no/en/privacy/): Matlyst is a food app for importing, organising and cooking recipes. We collect only the data the app needs to work, and we never sell it. This policy explains what we collect, why, who we share it with and what rights you have. It covers the Matlyst app and the website matlyst-app.no.
+- [Terms of Use](https://matlyst-app.no/en/terms/): By using Matlyst you agree to these terms. Matlyst is provided by Patrick Omassa Kabia, Vollebekkveien 2J, 0598 Oslo, Norway. If anything here is unclear, email hei@matlyst-app.no.
+
 ## Personvern / Privacy
 
 Gratis og Matlyst Pro har samme personvern. Bruksanalyse er av til brukeren sier ja, og Matlyst selger ikke personopplysninger. Free and Pro have the same privacy; analytics is opt-in and user data is never sold.
 
-- [Personvern](https://matlyst-app.no/personvern.html): norsk personvernerklæring
-- [Integritetspolicy](https://matlyst-app.no/sv/integritet/): svensk integritetspolicy
-- [Privatlivspolitik](https://matlyst-app.no/da/privatliv/): dansk privatlivspolitik
-
 ## For matskapere / For food creators
 
 Kilden vises med lenke tilbake på importerte oppskrifter når kilden er kjent, og oppskriftene publiseres ikke. En matskaper kan be om at nettstedet eller kontoen sperres for import ved å skrive til hei@matlyst-app.no.
-
-- [For matskapere](https://matlyst-app.no/skapere/): import, kildevisning og sperring
 
 ## Kontakt / Contact
 

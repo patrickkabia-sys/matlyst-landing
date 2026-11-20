@@ -118,7 +118,9 @@ test('llms.txt er skandinavisk, posisjonert og uten udokumenterte påstander', (
   for (const sprak of ['norsk bokmål (nb)', 'dansk (da)', 'svensk (sv)']) assert.ok(llms.includes(sprak), sprak);
   for (const navn of ['Spør Matlyst', 'Spørg Matlyst', 'Fråga Matlyst']) assert.ok(llms.includes(navn), navn);
   assert.match(llms, /metriske mål/u);
-  assert.doesNotMatch(llms, /Alt på norsk|oversettes[^.\n]*til norsk|(?<!\p{L})(?:beste?|bedste|bästa?|best|nr\. ?1)(?!\p{L})|håndskrev|handskriv|håndskrift|ubegrenset|unlimited|Pinterest|PDF/iu);
+  // Forbudte ord sjekkes mot den håndskrevne teksten; lenkelistene hentes fra sidenes egne titler og beskrivelser.
+  const handtekst = llms.split('\n').filter((l) => !l.startsWith('- [')).join('\n');
+  assert.doesNotMatch(handtekst, /Alt på norsk|oversettes[^.\n]*til norsk|(?<!\p{L})(?:beste?|bedste|bästa?|best|nr\. ?1)(?!\p{L})|håndskrev|handskriv|håndskrift|ubegrenset|unlimited|Pinterest|PDF/iu);
   const lenker = [...llms.matchAll(/https:\/\/matlyst-app\.no(\/[^\s)]*)/gu)].map(([, sti]) => sti);
   for (const sti of ['/sv/', '/da/', '/sv/importera-recept/', '/da/importer-opskrifter/', '/sv/veckomeny-app/', '/da/madplan-app/']) {
     assert.ok(lenker.includes(sti), sti);
