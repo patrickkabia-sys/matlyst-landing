@@ -1,3 +1,4 @@
+import { webApplikasjon } from '../../../../scripts/familier/skjema.mjs';
 // Fiksturmal (engelsk) for familien «proeve». Oppdiktede varer, ingen ekte tall.
 const fmt = (n) => String(n);
 const tegn = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
@@ -20,7 +21,8 @@ export function navSide(data, rader) {
     alternativ: '', grense: '', seksjoner: [], faqTittel: 'Questions about the test family', faq: [['Are the numbers real?', 'No, they are made up.']],
     rik: rik('A hub page for made-up ingredients.', [['The ingredients', liste]]), cta: 'Try Matlyst',
     publisert: data.rader[0].oppdatert,
-    schemas: [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: 'The test converter' }],
+    // Brødsmulene lager guidePage selv; 'faq' lager FAQPage fra synlig FAQ (locale-pages-testen krever at de er like).
+    schemas: ['faq', webApplikasjon({ navn: 'The test converter', beskrivelse: 'Test page.', adresse: `/${ROT}`, sprak: 'en' })],
   };
 }
 
@@ -33,6 +35,6 @@ export function sideForRad(rad) {
     alternativ: '', grense: '', seksjoner: [], faqTittel: `Questions about ${rad.navn.toLowerCase()}`, faq: [['How much does one cup weigh?', `${fmt(t.verdi)} ${t.enhet}.`]],
     rik: rik(`One cup weighs ${fmt(t.verdi)} ${t.enhet}.`, [['The number', `<p>${fmt(t.verdi)} ${t.enhet}.</p>`]]), cta: 'Try Matlyst',
     publisert: rad.oppdatert,
-    schemas: [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: `${rad.navn} in grams` }],
+    schemas: ['faq', webApplikasjon({ navn: `${rad.navn} in grams`, beskrivelse: 'Test page.', adresse: `/${ROT}${rad.slug}/`, sprak: 'en' })],
   };
 }

@@ -1,3 +1,4 @@
+import { brodsmuler, webApplikasjon } from '../../../../scripts/familier/skjema.mjs';
 // Fiksturmal (norsk) for familien «proeve». Oppdiktede varer, ingen ekte tall. Gir ekte sideobjekter til registertestene.
 const fmt = (n) => String(n).replace('.', ',');
 const tegn = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
@@ -20,7 +21,7 @@ export function navSide(data, rader) {
     alternativ: '', grense: '', seksjoner: [], faqTittel: 'Spørsmål om prøvefamilien', faq: [['Er tallene ekte?', 'Nei, de er oppdiktet.']],
     rik: rik('En samleside for oppdiktede varer.', [['Varene', liste]]), cta: 'Prøv Matlyst',
     publisert: data.rader[0].oppdatert,
-    schemas: [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Prøveomregneren' }],
+    schemas: [brodsmuler([{ navn: 'Forside', adresse: '/' }, { navn: 'Prøveomregneren', adresse: `/${ROT}` }]), webApplikasjon({ navn: 'Prøveomregneren', beskrivelse: 'Prøveside.', adresse: `/${ROT}`, sprak: 'nb' })],
   };
 }
 
@@ -33,6 +34,6 @@ export function sideForRad(rad) {
     alternativ: '', grense: '', seksjoner: [], faqTittel: `Spørsmål om ${rad.navn.toLowerCase()}`, faq: [['Hvor mye veier én dl?', `${fmt(t.verdi)} ${t.enhet}.`]],
     rik: rik(`Én dl veier ${fmt(t.verdi)} ${t.enhet}.`, [['Tallet', `<p>${fmt(t.verdi)} ${t.enhet}.</p>`]]), cta: 'Prøv Matlyst',
     publisert: rad.oppdatert,
-    schemas: [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: `${rad.navn} i gram` }],
+    schemas: [brodsmuler([{ navn: 'Forside', adresse: '/' }, { navn: rad.navn, adresse: `/${ROT}${rad.slug}/` }]), webApplikasjon({ navn: `${rad.navn} i gram`, beskrivelse: 'Prøveside.', adresse: `/${ROT}${rad.slug}/`, sprak: 'nb' })],
   };
 }
