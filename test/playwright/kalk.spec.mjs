@@ -74,10 +74,15 @@ test('svarsetningen gjengir mengden slik den ble tolket, bare svaret avrundes', 
   await expect(setning).toHaveText('0,5 dl hvetemel = 27,5 g');
   await page.fill(`${f} [data-felt=mengde]`, '1.000');
   await expect(setning).toHaveText('1000 dl hvetemel = 55000 g');
-  // Mellomrom som tusenskille er ugyldig i kalkulatorkortet (planen), selv om omregneren godtar det.
-  await page.fill(`${f} [data-felt=mengde]`, '1 000');
-  await expect(setning).toHaveText(FEIL);
-  await expect(page.locator(`${f} [data-felt=mengde]`)).toHaveAttribute('aria-invalid', 'true');
+});
+
+test('tusenskille leses likt som i omregneren: mellomrom, hardt mellomrom og punktum gir 1000', async ({ page }) => {
+  const f = '#fast';
+  for (const inn of ['1 000', '1\u00a0000', '1.000']) {
+    await page.fill(`${f} [data-felt=mengde]`, inn);
+    await expect(page.locator(`${f} [data-felt=setning]`), inn).toHaveText('1000 dl hvetemel = 55000 g');
+    await expect(page.locator(`${f} [data-felt=mengde]`)).not.toHaveAttribute('aria-invalid', 'true');
+  }
 });
 
 test('ødelagte skjemaer hoppes over uten feil, og det hele skjemaet virker', async ({ page }) => {
@@ -98,7 +103,7 @@ test('ødelagte skjemaer hoppes over uten feil, og det hele skjemaet virker', as
   expect(feil).toEqual([]);
 });
 
-for (const tekst of ['', 'abc', '1,5,2', '-2', '1 000']) {
+for (const tekst of ['', 'abc', '1,5,2', '-2']) {
   test(`ugyldig inntasting «${tekst}» gir veiledning, ikke et tall`, async ({ page }) => {
     await page.fill('#fast [data-felt=mengde]', tekst);
     await expect(page.locator('#fast [data-felt=setning]')).toHaveText(FEIL);

@@ -294,8 +294,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       svar.setAttribute('aria-live', 'off');
       const regn = () => {
         const [ord, gramPerDl] = data.varer[vare ? Number(vare.value) : 0] || [];
-        // Mellomrom som tusenskille er ugyldig her (planen), selv om omregneren godtar det; tolkTall er ellers den delte lesingen.
-        const n = /\s/u.test(mengde.value.trim()) ? null : tolkTall(mengde.value, KOMMA);
+        const n = tolkTall(mengde.value, KOMMA);
         // Negativt og alt som ikke er ett tall gir veiledning, aldri et delsvar.
         const gyldig = n !== null && n >= 0;
         let ut = NaN;

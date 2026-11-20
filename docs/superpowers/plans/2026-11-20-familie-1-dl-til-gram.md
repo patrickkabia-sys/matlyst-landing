@@ -67,7 +67,7 @@ Som varesiden, men: H1 «Dl til gram», kalkulatoren har varevalg (standard hvet
 
 ## Det granskeren skal se etter
 
-1. **Inntasting som ikke er et tall.** Tomt felt, «abc», «1,5,2», negativt tall og «1 000» skal gi svarsetningen «Skriv inn en mengde, for eksempel 2 eller 2,5.», aldri «NaN» eller «0 g». Test i oppgave 3.
+1. **Inntasting som ikke er et tall.** Tomt felt, «abc», «1,5,2» og negativt tall skal gi svarsetningen «Skriv inn en mengde, for eksempel 2 eller 2,5.», aldri «NaN» eller «0 g». «1 000» (mellomrom eller hardt mellomrom som tusenskille) og «1.000» er 1000, som i omregneren. Test i oppgave 3.
 2. **Samme enhet begge veier, og vekt til vekt.** Dl til dl og gram til kilo skal regne riktig uten varens vekt. Bytteknappen to ganger skal gi utgangspunktet. Test i oppgave 3.
 3. **Uten JavaScript.** Siden skal gi svaret likevel: ingress, kort svar og tabeller står i HTML-en, og kalkulatoren viser et ferdig utregnet eksempel. Test i oppgave 5.
 4. **Vare som mangler noe.** En vare uten sammenligningskilde eller uten skjetall i rapporten skal gi en side uten de avsnittene, ikke tomme overskrifter eller «undefined». Test i oppgave 5.
