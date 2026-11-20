@@ -270,8 +270,8 @@ const unntak = [
   { seksjon: '.spor', fra: ['Gjør denne vegansk', 'Gjør denne vegansk'], til: ['Eksempel på hva du kan be om:', 'Gjør denne vegansk', 'Gjør denne vegansk'] },
   // Sluttilstanden viser seks porsjoner, som pålagt i oppgave 8; prototypens ark blir stående på fire.
   { seksjon: '.del', fra: ['Antall porsjoner', '−', '4', '+'], til: ['Antall porsjoner', '−', '6', '+'] },
-  // Spec 10: kalkulatorer som ennå ikke finnes, får ingen lenke. Heller ikke oversikten finnes.
-  { seksjon: '.bunn', fra: ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'], til: [] },
+  // Spec 10: kalkulatorer som ennå ikke finnes, får ingen lenke. Heller ikke oversikten finnes. «Dl til gram» finnes (familien dl-til-gram) og står i menyen.
+  { seksjon: '.bunn', fra: ['Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'], til: [] },
   // «Om Matlyst» er lagt til i hyllen Matlyst etter prototypet (om-siden finnes bare på norsk).
   { seksjon: '.bunn', fra: ['For matskapere', 'Instagram'], til: ['For matskapere', 'Om Matlyst', 'Instagram'] },
   // Det vedtatte sideskallet bruker korte språkkoder i begge velgerne.
