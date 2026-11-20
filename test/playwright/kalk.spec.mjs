@@ -25,16 +25,80 @@ test('bytt retning, og tilbake igjen', async ({ page }) => {
   await expect(page.locator('#fast [data-felt=setning]')).toHaveText('2 dl hvetemel = 110 g');
 });
 
-test('samme enhet og vekt til vekt trenger ikke varens vekt', async ({ page }) => {
-  await page.selectOption('#fast [data-felt=til]', 'dl');
-  await expect(page.locator('#fast [data-felt=svar]')).toHaveText('2');
-  await page.selectOption('#fast [data-felt=fra]', 'g');
-  await page.selectOption('#fast [data-felt=til]', 'kg');
-  await page.fill('#fast [data-felt=mengde]', '500');
-  await expect(page.locator('#fast [data-felt=svar]')).toHaveText('0,5');
+test('samme enhet og vekt til vekt trenger ikke varens vekt (varen «Uten vekt» har ingen gram per dl)', async ({ page }) => {
+  const f = '#valg';
+  await page.selectOption(`${f} [data-felt=vare]`, '2');
+  await page.selectOption(`${f} [data-felt=til]`, 'dl');
+  await expect(page.locator(`${f} [data-felt=svar]`)).toHaveText('2');
+  await expect(page.locator(`${f} [data-felt=setning]`)).toHaveText('2 dl mystisk = 2 dl');
+  await page.selectOption(`${f} [data-felt=til]`, 'ml');
+  await expect(page.locator(`${f} [data-felt=svar]`)).toHaveText('200');
+  await page.selectOption(`${f} [data-felt=fra]`, 'g');
+  await page.selectOption(`${f} [data-felt=til]`, 'kg');
+  await page.fill(`${f} [data-felt=mengde]`, '500');
+  await expect(page.locator(`${f} [data-felt=svar]`)).toHaveText('0,5');
 });
 
-for (const tekst of ['', 'abc', '1,5,2', '-2']) {
+test('kryssing uten vekt gir veiledningen, og kryssing med vekt regner via gram per dl', async ({ page }) => {
+  const f = '#valg';
+  await page.selectOption(`${f} [data-felt=vare]`, '2');
+  await page.selectOption(`${f} [data-felt=til]`, 'g');
+  await expect(page.locator(`${f} [data-felt=setning]`)).toHaveText(FEIL);
+  await expect(page.locator(`${f} [data-felt=svar]`)).toHaveText('');
+  await page.selectOption(`${f} [data-felt=vare]`, '0');
+  await expect(page.locator(`${f} [data-felt=setning]`)).toHaveText('2 dl hvetemel = 110 g');
+});
+
+test('små tall avrundes til to gjeldende sifre uten tak på desimaler, og blir aldri 0', async ({ page }) => {
+  const f = '#fast';
+  await page.selectOption(`${f} [data-felt=fra]`, 'g');
+  await page.selectOption(`${f} [data-felt=til]`, 'kg');
+  for (const [inn, ut] of [['0,005', '0,000005'], ['0,004', '0,000004'], ['1', '0,001'], ['1234', '1,2'], ['12345', '12,3'], ['150000', '150']]) {
+    await page.fill(`${f} [data-felt=mengde]`, inn);
+    await expect(page.locator(`${f} [data-felt=svar]`), `${inn} g til kg`).toHaveText(ut);
+  }
+  // 1 ts hvetemel til kg: 5 ml er 0,05 dl, og 55 g per dl gir 2,75 g, altså 0,00275 kg, som skrives med to gjeldende sifre (halve runder opp).
+  await page.selectOption(`${f} [data-felt=fra]`, 'ts');
+  await page.fill(`${f} [data-felt=mengde]`, '1');
+  await expect(page.locator(`${f} [data-felt=svar]`)).toHaveText('0,0028');
+});
+
+test('svarsetningen gjengir mengden slik den ble tolket, bare svaret avrundes', async ({ page }) => {
+  const f = '#fast';
+  const setning = page.locator(`${f} [data-felt=setning]`);
+  await page.fill(`${f} [data-felt=mengde]`, '1,25');
+  await expect(setning).toHaveText('1,25 dl hvetemel = 68,8 g');
+  await page.fill(`${f} [data-felt=mengde]`, '2,50');
+  await expect(setning).toHaveText('2,5 dl hvetemel = 138 g');
+  await page.fill(`${f} [data-felt=mengde]`, '0,5');
+  await expect(setning).toHaveText('0,5 dl hvetemel = 27,5 g');
+  await page.fill(`${f} [data-felt=mengde]`, '1.000');
+  await expect(setning).toHaveText('1000 dl hvetemel = 55000 g');
+  // Mellomrom som tusenskille er ugyldig i kalkulatorkortet (planen), selv om omregneren godtar det.
+  await page.fill(`${f} [data-felt=mengde]`, '1 000');
+  await expect(setning).toHaveText(FEIL);
+  await expect(page.locator(`${f} [data-felt=mengde]`)).toHaveAttribute('aria-invalid', 'true');
+});
+
+test('ødelagte skjemaer hoppes over uten feil, og det hele skjemaet virker', async ({ page }) => {
+  const feil = [];
+  page.on('console', (m) => { if (m.type() === 'error') feil.push(m.text()); });
+  page.on('pageerror', (e) => feil.push(String(e)));
+  await page.goto('/test/playwright/fiksturer/kalk-defekt.html');
+  await page.fill('#hel [data-felt=mengde]', '3');
+  await expect(page.locator('#hel [data-felt=setning]')).toHaveText('3 dl hvetemel = 165 g');
+  await page.click('#hel [data-felt=bytt]');
+  await expect(page.locator('#hel [data-felt=setning]')).toHaveText('100 g hvetemel = 1,8 dl');
+  // De ødelagte beholder det statiske svaret, og trykk på dem gjør ingenting galt.
+  for (const id of ['uten-svar', 'ugyldig-json', 'null-data', 'uten-data']) {
+    await expect(page.locator(`#${id} [data-felt=setning]`)).toHaveText('2 dl hvetemel = 110 g');
+    await page.fill(`#${id} [data-felt=mengde]`, '3');
+    await expect(page.locator(`#${id} [data-felt=setning]`)).toHaveText('2 dl hvetemel = 110 g');
+  }
+  expect(feil).toEqual([]);
+});
+
+for (const tekst of ['', 'abc', '1,5,2', '-2', '1 000']) {
   test(`ugyldig inntasting «${tekst}» gir veiledning, ikke et tall`, async ({ page }) => {
     await page.fill('#fast [data-felt=mengde]', tekst);
     await expect(page.locator('#fast [data-felt=setning]')).toHaveText(FEIL);
@@ -45,12 +109,11 @@ for (const tekst of ['', 'abc', '1,5,2', '-2']) {
   });
 }
 
-test('gyldig inntasting fjerner feilmerket igjen, også med tusenskille', async ({ page }) => {
+test('gyldig inntasting fjerner feilmerket igjen', async ({ page }) => {
   await page.fill('#fast [data-felt=mengde]', 'abc');
   await expect(page.locator('#fast [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
-  await page.fill('#fast [data-felt=mengde]', '1 000');
+  await page.fill('#fast [data-felt=mengde]', '3');
   await expect(page.locator('#fast [data-felt=mengde]')).not.toHaveAttribute('aria-invalid', 'true');
-  await expect(page.locator('#fast [data-felt=setning]')).toHaveText('1000 dl hvetemel = 55000 g');
 });
 
 test('hurtigknappene følger fra-enheten og viser valgt mengde', async ({ page }) => {

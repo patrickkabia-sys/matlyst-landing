@@ -3,7 +3,7 @@
 // med en prøvefamilie (test/fiksturer/familier/proeve-topp) lagt inn i en kopi av registeret.
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test, { after } from 'node:test';
@@ -49,8 +49,34 @@ test('sider uten topp er som før: ingen topp i heroen, og has-toc står der', (
   assert.match(/<section class="prose[^"]*"/u.exec(html)[0], /has-toc/u);
 });
 
-test('feltet er valgfritt: en vanlig guide har samme hero som før (ingen tom streng eller undefined)', () => {
-  const html = les('verktoy/dl-til-kopp');
-  assert.equal(hode(html).includes('undefined'), false);
-  assert.match(hode(html), /<p class="lead">[^<]*<\/p>(<p class="[^"]*">[\s\S]*?<\/p>)?$/u);
+// Fasit: de publiserte sidene. Etterbehandlingen (lenker, appbevis) endrer innholdet lenger ned, men ikke heroen og åpningen av lesedelen,
+// så de to sammenlignes tegn for tegn, side for side. Et `topp` som endrer noe for sider uten feltet (en tom streng, en linjeskift) gir rødt.
+const HERO = /<header class="locale-page-hero">[\s\S]*?<section class="prose[^"]*">/u;
+function nbSider(mappe, rel = '') {
+  return readdirSync(join(mappe, rel), { withFileTypes: true }).flatMap((e) => {
+    if (!rel && ['node_modules', '.git', 'sv', 'da', 'en', 'qa', 'test', 'scripts', 'docs'].includes(e.name)) return [];
+    const sti = join(rel, e.name);
+    if (e.isDirectory()) return nbSider(mappe, sti);
+    return e.name === 'index.html' ? [sti] : [];
+  });
+}
+
+test('sider uten topp gir nøyaktig samme hero og lesedel-åpning som de publiserte sidene', () => {
+  let sammenlignet = 0;
+  const avvik = [];
+  for (const rel of nbSider(kopi)) {
+    if (rel.startsWith('verktoy/proeve-topp')) continue;
+    if (!existsSync(join(ROT, rel))) continue;
+    const generert = HERO.exec(readFileSync(join(kopi, rel), 'utf8'));
+    const publisert = HERO.exec(readFileSync(join(ROT, rel), 'utf8'));
+    if (!generert && !publisert) continue;
+    sammenlignet++;
+    if (!generert || !publisert || generert[0] !== publisert[0]) avvik.push(rel);
+  }
+  assert.ok(sammenlignet >= 200, `forventet minst 200 sider å sammenligne, fant ${sammenlignet}`);
+  assert.deepEqual(avvik, []);
+});
+
+test('feltet er valgfritt: ingen «undefined» i heroen på en vanlig side', () => {
+  assert.equal(hode(les('verktoy/dl-til-kopp')).includes('undefined'), false);
 });
