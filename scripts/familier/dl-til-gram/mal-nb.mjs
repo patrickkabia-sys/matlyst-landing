@@ -4,8 +4,8 @@ import { kilderFor, publiserbare } from '../felles.mjs';
 import { artikkel, brodsmuler, elementliste, webApplikasjon } from '../skjema.mjs';
 import { TEKST } from './tekst-nb.mjs';
 
-// Rapportens toppede skjetall (ss_toppet, ts_toppet) ligger i datafila, men skrives ikke på sidene ennå:
-// «toppede» tall er ofte like de strøkne målene, og vi venter på svar fra Mattilsynet.
+// Rapportens toppede skjetall (ss_toppet, ts_toppet) ligger i datafila, men vises ikke: tallene lar seg ikke skille fra strøkne mål
+// (rapportens «toppede» skjeer veier ofte det samme som de strøkne), så de ville gitt en påstand vi ikke kan stå for.
 export const VIS_TOPPET = false;
 
 const ROT = '/verktoy/dl-til-gram/';
@@ -53,7 +53,7 @@ const USDA_MAL = {
   'cup sifted': 'per cup, siktet',
   'cup unsifted': 'per cup, usiktet',
   'cup, whole': 'per cup, hele mandler',
-  'cup (not packed)': 'per cup, ikke pakket',
+  'cup (not packed)': 'per cup (ikke pakket)',
   'cup, fluid (yields 2 cups whipped)': 'per cup flytende fløte (gir 2 cups pisket)',
 };
 const usdaTall = (rad) => USDA_FELT.filter((k) => rad.tall[k]).map((k) => {
@@ -201,7 +201,7 @@ function spmForRad(rad, data, rader, u) {
   const o = ord(rad);
   const spm = [
     [`Hvor mange gram er 1 dl ${o}?`, `1 dl ${esc(t.variant)} veier ${gram(u.dl)}. Kilde: ${MVT}, «${esc(rad.tekst.matvaretabell)}».`],
-    [`Hvor mange dl er 100 g ${o}?`, `100 g ${o} er ${u.tilbake[0][1]} dl. Del 100 på ${u.dl}.`],
+    [`Hvor mange dl er 100 g ${o}?`, `100 g ${o} er ${u.tilbake[0][1]} dl.${u.dl === 100 ? '' : ` Del 100 på ${u.dl}.`}`],
     [`Hvor mye veier 1 ss ${o}?`, t.flytende
       ? `En spiseskje (15 ml) veier ${gram(u.ss)}, regnet ut fra dl-tallet. En teskje (5 ml) veier ${gram(u.ts)}.`
       : `En strøken spiseskje (15 ml) veier ${gram(u.ss)}, regnet ut fra dl-tallet. En strøken teskje (5 ml) veier ${gram(u.ts)}.`],

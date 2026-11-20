@@ -48,7 +48,7 @@ function sjekkSide(r, s) {
   lik('kalkulatorens eksempel', [s.topp.match(/<output[^>]*>([^<]*)<\/output>/u)?.[1], ren(s.topp.match(/class="kalksetning"[^>]*>([\s\S]*?)<\/p>/u)?.[1])], [String(2 * dl), `2 dl ${r.navn.toLowerCase()} = ${2 * dl} g`]);
   const svar = s.faq.map(([, a]) => ren(a));
   lik('FAQ 1', tall(svar[0]), ['1', ...v, String(dl), '2026', ...tall(r.tekst.matvaretabell)]);
-  lik('FAQ 2', tall(svar[1]), ['100', andreT(100 / dl), '100', String(dl)]);
+  lik('FAQ 2', tall(svar[1]), dl === 100 ? ['100', andreT(100 / dl)] : ['100', andreT(100 / dl), '100', String(dl)]);
   lik('FAQ 3', tall(svar[2]), ['15', ss, '5', ts]);
   const naer = TEKST[t.naer?.[0]] && rad(t.naer[0]);
   const usda = ['dl_usda', 'dl_usda_pakket', 'dl_usda_siktet'].filter((k) => r.tall[k]).map((k) => ({ g: /^(\d+(?:[.,]\d+)?) g per/u.exec(r.tall[k].merknad)[1], verdi: r.tall[k].verdi }));
@@ -182,7 +182,7 @@ test('ingen engelske USDA-mål i norske setninger, og den lange parentesen i ros
   const rosiner = sideForRad(rad('rosiner'), data, rader);
   assert.ok(rosiner.rik.includes("Includes foods for USDA's Food Distribution Program"));
   assert.equal(rosiner.faq.some(([, a]) => a.includes('Includes')), false);
-  assert.ok(rosiner.rik.includes('145 g per cup, ikke pakket'));
+  assert.ok(rosiner.rik.includes('145 g per cup (ikke pakket)'));
 });
 
 test('innledningen til kildetabellen sier tallene, og «oppgir ikke samme» er borte', () => {
@@ -257,6 +257,23 @@ test('nær vare: samme vekt sies «like mye som», ellers «mot»', () => {
   assert.equal(melk[1], 'Ja. 1 dl kremfløte med 37 % fett veier 100 g, like mye som helmelk. <a href="/verktoy/dl-til-gram/flote/">Se siden for fløte</a>.');
   const hvete = sideForRad(rad('hvetemel'), data, rader).faq[3];
   assert.match(hvete[1], /^Nei\. 1 dl sammalt hvetemel \(fint eller grovt\) veier 60 g, mot 55 g for siktet hvetemel\./u);
+});
+
+test('FAQ: «Del 100 på 100» er et trivielt regnestykke og sløyfes (melk, fløte, rømme), ellers står det', () => {
+  for (const [id, ord] of [['melk', 'melk'], ['flote', 'fløte'], ['romme', 'rømme']]) {
+    assert.equal(sideForRad(rad(id), data, rader).faq[1][1], `100 g ${ord} er 1 dl.`, id);
+  }
+  for (const r of rader.filter((x) => x.tall.dl.verdi !== 100)) {
+    assert.match(sideForRad(r, data, rader).faq[1][1], new RegExp(`^100 g .+ er [\\d,]+ dl\\. Del 100 på ${r.tall.dl.verdi}\\.$`, 'u'), r.id);
+  }
+});
+
+test('kommentaren ved VIS_TOPPET sier hvorfor tallene ikke vises, uten å vente på noe svar', async () => {
+  const { readFileSync } = await import('node:fs');
+  const kilde = readFileSync(new URL('../scripts/familier/dl-til-gram/mal-nb.mjs', import.meta.url), 'utf8');
+  const ved = kilde.slice(0, kilde.indexOf('export const VIS_TOPPET'));
+  assert.match(ved, /lar seg ikke skille fra strøkne mål/u);
+  assert.equal(/venter på svar/u.test(kilde), false);
 });
 
 test('FAQ: «Del 100 på 55» og «som tilsvarer … per dl»', () => {
