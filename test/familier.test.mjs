@@ -1,12 +1,12 @@
 // Vaktene for alle sidefamilier. Del 1: hver vakt kan bli rød. Del 2: familiene i registeret består vaktene.
 import assert from 'node:assert/strict';
-import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { lesData, publiserbare } from '../scripts/familier/felles.mjs';
-import { FAMILIER, SPRAKMAPPE } from '../scripts/familier/register.mjs';
+import { FAMILIER, SPRAKMAPPE, familieSider } from '../scripts/familier/register.mjs';
 import { dupliserte, forLike, kontrollerFamilier, sideMotData, synligTekst, tallUtenforData } from './hjelp/familievakt.mjs';
 
 const ROT = fileURLToPath(new URL('..', import.meta.url));
@@ -16,14 +16,15 @@ const familieFor = (navn, markeder) => ({ id: navn, sidetype: 'omregner', mappe:
 const PROEVE = familieFor('proeve', { nb: { rot: 'verktoy/proeve/' }, en: { rot: 'tools/proeve/' } });
 const PROEVE_ROD = familieFor('proeve-rod', { nb: { rot: 'verktoy/proeverod/' } });
 
-// Skriver en tom side for samlesiden og hver publiserbare rad, slik generatorene ville gjort.
-function skrivSider(rotmappe, familie) {
+const esc = (t) => String(t).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/>/gu, '&gt;').replace(/"/gu, '&quot;');
+// Skriver en fil for samlesiden og hver publiserbare rad, med sidens title, h1 og lead slik generatorene ville gjort.
+async function skrivSider(rotmappe, familie) {
   for (const [marked, { rot }] of Object.entries(familie.markeder)) {
-    const slugs = ['', ...publiserbare(lesData(fileURLToPath(familie.mappe), marked)).map((r) => `${r.slug}/`)];
-    for (const slug of slugs) {
-      const fil = join(rotmappe, SPRAKMAPPE[marked], rot, slug, 'index.html');
+    const sider = await familieSider(marked, [{ ...familie, markeder: { [marked]: { rot } } }]);
+    for (const [nokkel, side] of Object.entries(sider)) {
+      const fil = join(rotmappe, SPRAKMAPPE[marked], nokkel, 'index.html');
       mkdirSync(dirname(fil), { recursive: true });
-      writeFileSync(fil, '<html></html>');
+      writeFileSync(fil, `<html><head><title>${esc(side.title)} | Matlyst</title></head><body><h1>${side.h1}</h1><p>${side.lead}</p></body></html>`);
     }
   }
 }
@@ -64,9 +65,9 @@ test.describe('Vaktene kan bli røde', () => {
     assert.equal(NORSKE_RESTORD.test(synligTekst({ lead: 'Save every recipe in one place.', rik: '', steg: [], faq: [] })), false);
   });
 
-  test('sideMotData: rad uten fil, utkast med fil og fremmed fil under familierota felles', () => medMappe((mappe) => {
-    skrivSider(mappe, PROEVE);
-    assert.deepEqual(sideMotData(PROEVE, mappe), { manglerFil: [], manglerRad: [] });
+  test('sideMotData: rad uten fil, utkast med fil og fremmed fil under familierota felles', () => medMappe(async (mappe) => {
+    await skrivSider(mappe, PROEVE);
+    assert.deepEqual(sideMotData(PROEVE, mappe), { manglerFil: [], manglerRad: [], symlenker: [] });
     // Rad uten fil.
     rmSync(join(mappe, 'verktoy/proeve/provesukker/index.html'));
     assert.deepEqual(sideMotData(PROEVE, mappe).manglerFil, ['verktoy/proeve/provesukker/index.html']);
@@ -80,7 +81,7 @@ test.describe('Vaktene kan bli røde', () => {
 
   test('en fremmed index.html under fiksturfamiliens rot felles av hele kjeden og navngis', async () => {
     await medMappe(async (mappe) => {
-      skrivSider(mappe, PROEVE);
+      await skrivSider(mappe, PROEVE);
       assert.deepEqual((await kontrollerFamilier([PROEVE], mappe)).feil, []);
       mkdirSync(join(mappe, 'en/tools/proeve/fremmed'), { recursive: true });
       writeFileSync(join(mappe, 'en/tools/proeve/fremmed/index.html'), '<html>fra en annen kilde</html>');
@@ -91,7 +92,7 @@ test.describe('Vaktene kan bli røde', () => {
 
   test('hele kjeden felles den røde fiksturfamilien på tall, likhet og tittel', async () => {
     await medMappe(async (mappe) => {
-      skrivSider(mappe, PROEVE_ROD);
+      await skrivSider(mappe, PROEVE_ROD);
       const { feil } = await kontrollerFamilier([PROEVE_ROD], mappe);
       const tekst = feil.join('\n');
       assert.match(tekst, /tall utenfor data på verktoy\/proeverod\/provemel\/: 137/u);
@@ -164,18 +165,63 @@ test.describe('Likhetsvakten: skjult tekst gir ikke unikt innhold', () => {
   });
 });
 
+test.describe('Filvakten: symlenker, tomme familier og filene på disk', () => {
+  test('symlenker under familierota (fil, mappe og samleside) navngis, aldri godkjent som side', () => medMappe(async (mappe) => {
+    await skrivSider(mappe, PROEVE);
+    const utenfor = join(mappe, 'utenfor.html');
+    writeFileSync(utenfor, '<html>utenfor</html>');
+    mkdirSync(join(mappe, 'utenfor-mappe'));
+    symlinkSync(utenfor, join(mappe, 'verktoy/proeve/lenke.html'));
+    symlinkSync(join(mappe, 'utenfor-mappe'), join(mappe, 'en/tools/proeve/mappe'));
+    rmSync(join(mappe, 'verktoy/proeve/provemel/index.html'));
+    symlinkSync(utenfor, join(mappe, 'verktoy/proeve/provemel/index.html'));
+    const m = sideMotData(PROEVE, mappe);
+    assert.deepEqual(m.symlenker, ['en/tools/proeve/mappe', 'verktoy/proeve/lenke.html', 'verktoy/proeve/provemel/index.html']);
+    const { feil } = await kontrollerFamilier([PROEVE], mappe);
+    for (const f of m.symlenker) assert.ok(feil.some((x) => x.includes(`symlenke: ${f}`)), f);
+  }));
+
+  test('en symlenke i selve familierota (mappa) feller også', () => medMappe(async (mappe) => {
+    mkdirSync(join(mappe, 'annen'), { recursive: true });
+    mkdirSync(join(mappe, 'verktoy'), { recursive: true });
+    symlinkSync(join(mappe, 'annen'), join(mappe, 'verktoy/proeve'));
+    const m = sideMotData(familieFor('proeve', { nb: { rot: 'verktoy/proeve/' } }), mappe);
+    assert.deepEqual(m.symlenker, ['verktoy/proeve']);
+  }));
+
+  test('en familie uten markeder gir feil, og antall kontrollerte sider sammenlignes med forventet', () => medMappe(async (mappe) => {
+    const tom = await kontrollerFamilier([familieFor('proeve', {})], mappe);
+    assert.deepEqual(tom.feil, ['proeve: familien har ingen markeder']);
+    assert.deepEqual([tom.kontrollert, tom.forventet], [0, 0]);
+    await skrivSider(mappe, PROEVE);
+    const ok = await kontrollerFamilier([PROEVE], mappe);
+    assert.deepEqual([ok.kontrollert, ok.forventet], [6, 6]);
+  }));
+
+  test('filen på disk må inneholde sidens title, h1 og lead; en fil med annen HTML felles', () => medMappe(async (mappe) => {
+    await skrivSider(mappe, PROEVE);
+    assert.deepEqual((await kontrollerFamilier([PROEVE], mappe)).feil, []);
+    writeFileSync(join(mappe, 'verktoy/proeve/provemel/index.html'), '<html><title>Noe helt annet</title><h1>Annet</h1></html>');
+    const { feil } = await kontrollerFamilier([PROEVE], mappe);
+    assert.deepEqual(feil, ['proeve/nb: filen verktoy/proeve/provemel/index.html mangler title, h1, lead fra malen']);
+  }));
+
+});
+
 test.describe('Familiene i registeret', () => {
   test('hver familie består alle vaktene', async () => {
-    const { feil } = await kontrollerFamilier(FAMILIER, ROT);
+    const { feil, kontrollert, forventet } = await kontrollerFamilier(FAMILIER, ROT);
     assert.deepEqual(feil, []);
+    assert.equal(kontrollert, forventet, 'vaktene må ha sett hver side som skal finnes');
   });
 
   test('del 2 kjører faktisk når fiksturen gis som register (grønn fordi alt er sjekket, ikke fordi alt er hoppet over)', async () => {
     await medMappe(async (mappe) => {
-      skrivSider(mappe, PROEVE);
-      const { feil, kontrollert } = await kontrollerFamilier([PROEVE], mappe);
+      await skrivSider(mappe, PROEVE);
+      const { feil, kontrollert, forventet } = await kontrollerFamilier([PROEVE], mappe);
       assert.deepEqual(feil, []);
       assert.equal(kontrollert, 6, 'tre sider på nb og tre på en');
+      assert.equal(forventet, 6);
     });
   });
 
@@ -189,7 +235,7 @@ test.describe('Familiene i registeret', () => {
       // Malen importerer skjema.mjs med relativ sti, så den ligger i fiksturmappa; kopien peker dit.
       writeFileSync(join(tmp, 'mal-en.mjs'), readFileSync(join(tmp, 'mal-en.mjs'), 'utf8').replace("'../../../../scripts/", `'${ROT}scripts/`));
       const fam = { id: 'proeve', sidetype: 'omregner', mappe: new URL(`file://${tmp}/`), markeder: { en: { rot: 'tools/proeve/' } } };
-      skrivSider(mappe, fam);
+      await skrivSider(mappe, fam);
       const { feil } = await kontrollerFamilier([fam], mappe);
       assert.deepEqual(feil.filter((f) => f.includes('restord')), ['proeve/en: norsk restord på tools/proeve/test-flour/']);
     });

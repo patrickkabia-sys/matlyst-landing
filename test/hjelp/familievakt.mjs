@@ -1,5 +1,5 @@
 // Vaktene for alle sidefamilier (scripts/familier/). Hver vakt er en ren funksjon, så testen kan vise at den blir rød.
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, lstatSync, readFileSync, readdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { lesData, publiserbare, validerData } from '../../scripts/familier/felles.mjs';
@@ -113,38 +113,72 @@ export function dupliserte(sider, felt) {
   return [...perVerdi.values()].filter((g) => g.length > 1);
 }
 
-function htmlUnder(mappe) {
-  if (!existsSync(mappe)) return [];
-  return readdirSync(mappe, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? htmlUnder(join(mappe, e.name)) : e.name.endsWith('.html') ? [join(mappe, e.name)] : []));
+// Går gjennom alt under mappa uten å følge symlenker (lstat). Symlenker, av alle slag, samles for seg.
+function skann(mappe) {
+  const filer = [];
+  const lenker = [];
+  const gaa = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const full = join(dir, e.name);
+      if (e.isSymbolicLink()) lenker.push(full);
+      else if (e.isDirectory()) gaa(full);
+      else if (e.name.endsWith('.html')) filer.push(full);
+    }
+  };
+  gaa(mappe);
+  return { filer, lenker };
 }
+const erLenke = (sti) => { try { return lstatSync(sti).isSymbolicLink(); } catch { return false; } };
+const finnes = (sti) => { try { lstatSync(sti); return true; } catch { return false; } };
 
 /**
  * Samsvar mellom data og filer. manglerFil: publiserbare rader (og samlesiden) uten fil på disk.
  * manglerRad: HTML-fil under familiens rot som ikke hører til en publiserbar rad. Alt under en familierot
  * skal komme fra datafila: en håndskrevet fil, en fil for et utkast og en gammel fil etter at en rad er
- * fjernet gir alle manglerRad. Stiene er relative til `rotmappe`.
+ * fjernet gir alle manglerRad. symlenker: enhver symlenke (fil eller mappe) under familierota, eller i
+ * selve stien ned til den, er en feil og regnes aldri som en side. Stiene er relative til `rotmappe`.
  */
 export function sideMotData(familie, rotmappe) {
   const manglerFil = [];
   const manglerRad = [];
+  const symlenker = [];
+  const rel = (f) => relative(rotmappe, f);
   for (const [marked, { rot }] of Object.entries(familie.markeder)) {
     const mappe = join(rotmappe, SPRAKMAPPE[marked], rot);
+    // Hvert ledd fra språkmappa og ned til familierota.
+    let sti = rotmappe;
+    let brutt = false;
+    for (const ledd of join(SPRAKMAPPE[marked], rot).split('/').filter(Boolean)) {
+      sti = join(sti, ledd);
+      if (erLenke(sti)) { symlenker.push(rel(sti)); brutt = true; break; }
+    }
+    if (brutt) continue;
     const forventet = new Map([[join(mappe, 'index.html'), 'samleside']]);
     for (const rad of publiserbare(lesData(fileURLToPath(familie.mappe), marked))) forventet.set(join(mappe, rad.slug, 'index.html'), rad.id);
-    for (const fil of forventet.keys()) if (!existsSync(fil)) manglerFil.push(relative(rotmappe, fil));
-    for (const fil of htmlUnder(mappe)) if (!forventet.has(fil)) manglerRad.push(relative(rotmappe, fil));
+    const { filer, lenker } = existsSync(mappe) ? skann(mappe) : { filer: [], lenker: [] };
+    symlenker.push(...lenker.map(rel));
+    for (const fil of forventet.keys()) if (!finnes(fil)) manglerFil.push(rel(fil));
+    for (const fil of filer) if (!forventet.has(fil)) manglerRad.push(rel(fil));
   }
-  return { manglerFil: manglerFil.sort(), manglerRad: manglerRad.sort() };
+  const sortert = (l) => [...new Set(l)].sort();
+  return { manglerFil: sortert(manglerFil), manglerRad: sortert(manglerRad), symlenker: sortert(symlenker) };
 }
+
+// Kontrollerer at fila på disk har sidens title, h1 og lead (rått eller HTML-kodet, slik generatorene skriver dem).
+const htmlKodet = (t) => t.replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/>/gu, '&gt;').replace(/"/gu, '&quot;').replace(/'/gu, '&#39;');
+const harTekst = (html, tekst) => typeof tekst === 'string' && (html.includes(tekst) || html.includes(htmlKodet(tekst)));
 
 /**
  * Kjører alle vaktene for hver familie og marked. Gir `feil` (lesbare linjer, tom når alt er i orden)
- * og `kontrollert` (antall sider vaktene faktisk så på), så en test kan kreve at vaktene ikke hoppet over alt.
+ * `kontrollert` (antall sider vaktene faktisk så på) og `forventet` (samleside pluss publiserbare rader per marked),
+ * så en test kan kreve at vaktene ikke hoppet over noe.
  */
 export async function kontrollerFamilier(familier, rotmappe) {
   const feil = [];
   let kontrollert = 0;
+  let forventet = 0;
   for (const familie of familier) {
+    if (Object.keys(familie.markeder ?? {}).length === 0) feil.push(`${familie.id}: familien har ingen markeder`);
     for (const marked of Object.keys(familie.markeder)) {
       const navn = `${familie.id}/${marked}`;
       const data = (() => {
@@ -155,6 +189,7 @@ export async function kontrollerFamilier(familier, rotmappe) {
       const sider = await familieSider(marked, [{ ...familie, markeder: { [marked]: familie.markeder[marked] } }]);
       const mal = await import(new URL(`mal-${marked}.mjs`, familie.mappe));
       const rader = publiserbare(data);
+      forventet += 1 + rader.length;
       const alleTillatte = new Set(rader.flatMap((r) => [...mal.tillatteTall(r, data)]));
       const liste = Object.entries(sider).map(([nokkel, side]) => ({ sti: nokkel, ...side, tekst: sideHtml(side) }));
       for (const s of liste) {
@@ -162,13 +197,22 @@ export async function kontrollerFamilier(familier, rotmappe) {
         const rad = rader.find((r) => s.sti === `${familie.markeder[marked].rot}${r.slug}/`);
         for (const t of tallUtenforData(s, rad ? mal.tillatteTall(rad, data) : alleTillatte)) feil.push(`${navn}: tall utenfor data på ${s.sti}: ${t}`);
         if (marked !== 'nb' && NORSKE_RESTORD.test(synligTekst(s))) feil.push(`${navn}: norsk restord på ${s.sti}`);
+        // Innholdsvaktene ser på malobjektene; her sjekkes at fila på disk faktisk bærer det malen ga.
+        const fil = join(rotmappe, SPRAKMAPPE[marked], s.sti, 'index.html');
+        if (finnes(fil) && !erLenke(fil)) {
+          const html = readFileSync(fil, 'utf8');
+          const mangler = ['title', 'h1', 'lead'].filter((felt) => !harTekst(html, s[felt]));
+          if (mangler.length) feil.push(`${navn}: filen ${relative(rotmappe, fil)} mangler ${mangler.join(', ')} fra malen`);
+        }
       }
       for (const r of forLike(liste)) feil.push(`${navn}: for lik de andre sidene: ${r.sti} (${r.unik.toFixed(2)} unik)`);
       for (const felt of ['title', 'h1', 'description']) for (const g of dupliserte(liste, felt)) feil.push(`${navn}: lik ${felt} på ${g.join(', ')}`);
       const m = sideMotData({ ...familie, markeder: { [marked]: familie.markeder[marked] } }, rotmappe);
       for (const f of m.manglerFil) feil.push(`${navn}: rad uten fil: ${f}`);
       for (const f of m.manglerRad) feil.push(`${navn}: fil uten rad: ${f}`);
+      for (const f of m.symlenker) feil.push(`${navn}: symlenke: ${f}`);
     }
   }
-  return { feil, kontrollert };
+  if (kontrollert < forventet) feil.push(`kontrollerte ${kontrollert} av ${forventet} sider som skal finnes`);
+  return { feil, kontrollert, forventet };
 }
