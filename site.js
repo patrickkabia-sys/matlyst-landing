@@ -251,3 +251,58 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     reg();
   }
 })();
+
+// Kalkulatorkortet (form.kalk): regner mens du skriver. Volum regnes via gram: ml[enhet] / 100 * gram per dl, vekt er g[enhet].
+// All tekst (enhetsnavn, hurtigmengder, veiledning) kommer fra skjemaets egne data (script.kalk-data), så filen har ingen språkstrenger.
+// Tallesing og tallformat er de delte funksjonene fra omregneren (window.MatlystTall).
+(() => {
+  const skjemaer = document.querySelectorAll('form.kalk');
+  if (!skjemaer.length || !window.MatlystTall) return;
+  const { tolkTall, visTall } = window.MatlystTall;
+  const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
+  // Tre gjeldende sifre fra 10 til 100, to under 10, og heltall fra 100. Selve skrivemåten (desimaltegn) er visTall sin.
+  const avrund = (n) => { const a = Math.abs(n); return a >= 100 ? Math.round(n) : Number(n.toPrecision(a >= 10 ? 3 : 2)); };
+  const vis = (n) => visTall(avrund(n), KOMMA);
+  for (const skjema of skjemaer) {
+    let data;
+    try { data = JSON.parse(skjema.querySelector('.kalk-data').textContent); } catch { continue; }
+    const felt = (navn) => skjema.querySelector(`[data-felt="${navn}"]`);
+    const mengde = felt('mengde'), fra = felt('fra'), til = felt('til'), svar = felt('svar'), setning = felt('setning'), bytt = felt('bytt'), vare = felt('vare');
+    const hurtig = [...skjema.querySelectorAll('.hurtig button')];
+    const kort = (e) => (data.kort && data.kort[e]) || e;
+    // Setningen under er den som leses opp; selve svarfeltet står utenfor opplesingen.
+    svar.setAttribute('aria-live', 'off');
+    const regn = () => {
+      const [ord, gramPerDl] = data.varer[vare ? Number(vare.value) : 0];
+      const tilGram = (e) => (e in data.g ? data.g[e] : data.ml[e] / 100 * gramPerDl);
+      const n = tolkTall(mengde.value, KOMMA);
+      // Negativt og alt som ikke er ett tall gir veiledning, aldri et delsvar.
+      const gyldig = n !== null && n >= 0;
+      const ut = gyldig ? n * tilGram(fra.value) / tilGram(til.value) : NaN;
+      if (gyldig && Number.isFinite(ut)) mengde.removeAttribute('aria-invalid'); else mengde.setAttribute('aria-invalid', 'true');
+      if (gyldig && Number.isFinite(ut)) {
+        svar.textContent = vis(ut);
+        setning.textContent = `${vis(n)} ${kort(fra.value)} ${ord} = ${vis(ut)} ${kort(til.value)}`;
+      } else {
+        svar.textContent = '';
+        setning.textContent = data.feil;
+      }
+      const gruppe = fra.value in data.g ? (fra.value === 'kg' ? 'kg' : 'g') : (fra.value === 'ml' ? 'ml' : 'volum');
+      const steg = data.steg[gruppe];
+      hurtig.forEach((k, i) => {
+        k.dataset.v = steg[i];
+        k.textContent = `${steg[i]} ${kort(fra.value)}`;
+        k.setAttribute('aria-pressed', String(gyldig && tolkTall(steg[i], KOMMA) === n));
+      });
+    };
+    for (const el of [mengde, fra, til, vare]) if (el) el.addEventListener(el === mengde ? 'input' : 'change', regn);
+    hurtig.forEach((k) => k.addEventListener('click', () => { mengde.value = k.dataset.v; regn(); }));
+    bytt.addEventListener('click', () => {
+      const f = fra.value; fra.value = til.value; til.value = f;
+      bytt.classList.toggle('snudd');
+      mengde.value = fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
+      regn();
+    });
+    regn();
+  }
+})();

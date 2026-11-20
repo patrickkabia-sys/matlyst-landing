@@ -336,3 +336,13 @@ Alle punktene er valgt eller bekreftet av Patrick 19.11, i valgkort eller etter 
 - **En test som aldri er sett rød, vokter ingenting.** Hver ny test bevises rød ved et bevisst brudd før den regnes.
 - Publisering skjer steg for steg når testene er grønne, med kontroll av den publiserte siden etterpå.
 
+
+### 16.8 Kalkulatorkortet
+
+- Kortet (`form.kalk`) står rett under ingressen i toppen av siden, midtstilt og høyst 920 px bredt. Grått kort (`--hylle`, 32 px radius), med en hvit inndataside, en mørk svarside og bytteknappen mellom. På mobil stables sidene, og hurtigmengdene ruller sidelengs i sin egen rad.
+- Felt: mengde, fra-enhet og til-enhet (dl, ss, ts, ml, liter, cups, gram, kilo), bytteknapp og seks hurtigmengder som følger fra-enheten. Varen står fast øverst i kortet med lenken «Bytt vare», eller velges i en liste. Under står én svarsetning («2 dl hvetemel = 110 g») som leses opp (`role="status"`).
+- Regning: alt går via gram. Volum til gram er ml per enhet delt på 100 ganger gram per dl; vekt til vekt og samme enhet trenger ikke varens vekt. Bytteknappen bytter fra og til og setter mengden til 100 (gram), 1 (kilo) eller 2.
+- Tall: 100 og over som heltall, 10 til 100 med tre gjeldende sifre, under 10 med to. Språkets desimaltegn, ingen tusenskille. Tallesingen er den samme som i omregneren (`tolkTall`, `visTall`).
+- Ugyldig inntasting (tomt, tekst, flere desimaltegn, negativt tall) gir veiledningen fra sidens data og `aria-invalid="true"` på feltet, aldri «NaN» eller «0 g».
+- All tekst kommer fra sidens egne data (`kalk-data`). Uten JavaScript står et ferdig utregnet eksempel. Trykkflater er minst 44 px, fokus er synlig også på den mørke siden, og bytteanimasjonen står stille ved redusert bevegelse.
+- Låst av `test/playwright/kalk.spec.mjs`, `test/site-tall.test.mjs` og `test/side-css.test.mjs`.

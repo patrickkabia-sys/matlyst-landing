@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fikstur: kalkulatorkortet</title>
+<link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/side.css">
+</head>
+<body data-sidetype="omregner">
+<main id="hovedinnhold">
+<header class="locale-page-hero"><p class="eyebrow">Verktøy</p><h1 class="disp">Fikstur for kalkulatorkortet</h1><p class="lead">To skjemaer: fast vare, og varevalg.</p>
+<form class="kalk" id="fast" data-kalk="volumvekt" onsubmit="return false" aria-label="Kalkulator: desiliter til gram">
+  <div class="kalkvare"><span><span class="hva">Vare</span><br><b>Hvetemel</b></span><a href="#samleside">Bytt vare</a></div>
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Mengde</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="2"></label>
+      <label class="kalkenhet"><span class="skjult">Fra</span><select data-felt="fra"><option value="dl" selected>Desiliter (dl)</option><option value="ss">Spiseskjeer (ss)</option><option value="ts">Teskjeer (ts)</option><option value="ml">Milliliter (ml)</option><option value="l">Liter (l)</option><option value="cups">Amerikanske cups</option><option value="g">Gram (g)</option><option value="kg">Kilo (kg)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Bytt retning"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">110</output>
+      <label class="kalkenhet"><span class="skjult">Til</span><select data-felt="til"><option value="dl">Desiliter (dl)</option><option value="ss">Spiseskjeer (ss)</option><option value="ts">Teskjeer (ts)</option><option value="ml">Milliliter (ml)</option><option value="l">Liter (l)</option><option value="cups">Amerikanske cups</option><option value="g" selected>Gram (g)</option><option value="kg">Kilo (kg)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Vanlige mengder"><button type="button" data-v="0,5">0,5 dl</button><button type="button" data-v="1">1 dl</button><button type="button" data-v="2">2 dl</button><button type="button" data-v="3">3 dl</button><button type="button" data-v="5">5 dl</button><button type="button" data-v="10">10 dl</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">2 dl hvetemel = 110 g</p>
+  <script type="application/json" class="kalk-data">{"varer":[["hvetemel",55],["sukker",90]],"ml":{"dl":100,"ss":15,"ts":5,"ml":1,"l":1000,"cups":236.5882365},"g":{"g":1,"kg":1000},"kort":{"dl":"dl","ss":"ss","ts":"ts","ml":"ml","l":"l","cups":"cups","g":"g","kg":"kg"},"steg":{"volum":["0,5","1","2","3","5","10"],"ml":["25","50","100","250","500","1000"],"g":["50","100","150","250","500","1000"],"kg":["0,25","0,5","1","1,5","2","5"]},"feil":"Skriv inn en mengde, for eksempel 2 eller 2,5."}</script>
+</form>
+<form class="kalk" id="valg" data-kalk="volumvekt" onsubmit="return false" aria-label="Kalkulator: desiliter til gram">
+  <div class="kalkvare"><label><span class="hva">Vare</span><select data-felt="vare"><option value="0">Hvetemel</option><option value="1">Sukker</option></select></label></div>
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Mengde</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="2"></label>
+      <label class="kalkenhet"><span class="skjult">Fra</span><select data-felt="fra"><option value="dl" selected>Desiliter (dl)</option><option value="ss">Spiseskjeer (ss)</option><option value="ts">Teskjeer (ts)</option><option value="ml">Milliliter (ml)</option><option value="l">Liter (l)</option><option value="cups">Amerikanske cups</option><option value="g">Gram (g)</option><option value="kg">Kilo (kg)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Bytt retning"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">110</output>
+      <label class="kalkenhet"><span class="skjult">Til</span><select data-felt="til"><option value="dl">Desiliter (dl)</option><option value="ss">Spiseskjeer (ss)</option><option value="ts">Teskjeer (ts)</option><option value="ml">Milliliter (ml)</option><option value="l">Liter (l)</option><option value="cups">Amerikanske cups</option><option value="g" selected>Gram (g)</option><option value="kg">Kilo (kg)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Vanlige mengder"><button type="button" data-v="0,5">0,5 dl</button><button type="button" data-v="1">1 dl</button><button type="button" data-v="2">2 dl</button><button type="button" data-v="3">3 dl</button><button type="button" data-v="5">5 dl</button><button type="button" data-v="10">10 dl</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">2 dl hvetemel = 110 g</p>
+  <script type="application/json" class="kalk-data">{"varer":[["hvetemel",55],["sukker",90]],"ml":{"dl":100,"ss":15,"ts":5,"ml":1,"l":1000,"cups":236.5882365},"g":{"g":1,"kg":1000},"kort":{"dl":"dl","ss":"ss","ts":"ts","ml":"ml","l":"l","cups":"cups","g":"g","kg":"kg"},"steg":{"volum":["0,5","1","2","3","5","10"],"ml":["25","50","100","250","500","1000"],"g":["50","100","150","250","500","1000"],"kg":["0,25","0,5","1","1,5","2","5"]},"feil":"Skriv inn en mengde, for eksempel 2 eller 2,5."}</script>
+</form>
+</header>
+</main>
+<script src="/site.js" defer></script>
+</body>
+</html>
