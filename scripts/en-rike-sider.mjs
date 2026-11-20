@@ -14,6 +14,7 @@ import { side as christmasDinner } from './en-hoytider/christmas-dinner.mjs';
 import { side as hanukkah } from './en-hoytider/hanukkah.mjs';
 import { side as newYearsEve } from './en-hoytider/new-years-eve.mjs';
 import { side as friendsgiving } from './en-hoytider/friendsgiving.mjs';
+import { side as mealime } from './en-flytting/mealime.mjs';
 import { enhetsSider } from './en-enhetssider.mjs';
 import { animasjon, byggRik, founder, scenario, scenarioNotat, skjerm, telefoner } from './rik-sider.mjs';
 
@@ -576,6 +577,7 @@ export const rikeSider = {
     cta: 'Try it with your own recipes',
   },
   ...Object.fromEntries(Object.entries({ thanksgiving, 'thanksgiving-leftovers': thanksgivingLeftovers, 'christmas-dinner': christmasDinner, hanukkah, 'new-years-eve': newYearsEve, friendsgiving }).filter(([, v]) => v).map(([k, v]) => [`holidays/${k}/`, v])),
+  'mealime-alternative/': mealime,
   'holidays/': {
     title: 'Holiday cooking planner: timelines and quantities',
     description: 'Plan Thanksgiving, Hanukkah, Christmas, New Year’s Eve and more with timelines, quantities, grocery lists, and food safety numbers from FoodSafety.gov.',

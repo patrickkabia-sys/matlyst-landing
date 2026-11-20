@@ -53,6 +53,13 @@
         "planlagt": [
           "/en/tools/recipe-scaler/"
         ]
+      },
+      "flytting": {
+        "hub": "/en/import-recipes-from-paprika/",
+        "eiker": [
+          "/en/mealime-alternative/"
+        ],
+        "planlagt": []
       }
     }
   }

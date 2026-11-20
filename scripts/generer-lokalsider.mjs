@@ -720,11 +720,12 @@ const veiledninger = {
 function guidePage(lang, v) {
   const faq = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:v.faq.map(([q,a]) => ({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))};
   const howTo = {'@context':'https://schema.org','@type':'HowTo',name:v.stegTittel,step:v.steg.map(([name,text],i) => ({'@type':'HowToStep',position:i+1,name,text:text.replace(/<[^>]+>/gu,'')}))};
+  const artikkel = {'@context':'https://schema.org','@type':'Article',headline:v.title,description:v.description,image:[`${base}/images/og.jpg`],inLanguage:lang,datePublished:v.publisert,dateModified:v.publisert,mainEntityOfPage:`${base}/${lang}/${v.path}`,author:{'@type':'Organization',name:'Matlyst',url:base},publisher:{'@type':'Organization',name:'Matlyst',url:base}};
   const crumbs = {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
     {'@type':'ListItem',position:1,name:common[lang].home,item:`${base}/${lang}/`},
     {'@type':'ListItem',position:2,name:v.h1,item:`${base}/${lang}/${v.path}`},
   ]};
-  return `${head({lang,path:v.path,title:`${v.title} | Matlyst`,description:v.description,schema:[crumbs,howTo,faq]})}<body data-locale="${lang}">
+  return `${head({lang,path:v.path,title:`${v.title} | Matlyst`,description:v.description,schema:[crumbs,...(v.schemas ?? ['howto','faq']).map((navn) => ({ howto: howTo, faq, article: artikkel })[navn])]})}<body data-locale="${lang}">
 ${nav(lang,v.path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p></header>
 <section class="${v.rik ? 'prose locale-prose has-toc' : 'prose locale-prose'}">${v.rik ? v.rik : `${(v.ideer ?? []).map(([h, liste]) => `<h2>${h}</h2><ul class="ide-liste">${liste.map(([navn, tekst]) => `<li><strong>${navn}.</strong> ${tekst}</li>`).join('')}</ul>`).join('\n')}<h2>${v.stegTittel}</h2><p>${v.forst}</p><ol>${v.steg.map(([h,p]) => `<li><strong>${h}.</strong> ${p}</li>`).join('')}</ol><p>${v.alternativ}</p><p>${v.grense}</p>
 ${v.seksjoner.map(([h,body]) => `<h2>${h}</h2>${body}`).join('\n')}`}</section>
@@ -916,6 +917,7 @@ const sistEndretSide = {
   ...Object.fromEntries(Object.entries(appsider).flatMap(([lang, sider]) => sider.map((v) => [`https://matlyst-app.no/${lang}/${v.path}`, '2026-10-28']))),
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => [BLOGGROT[lang], ...bloggArtikler(lang).map((a) => a.path)].map((sti) => [`https://matlyst-app.no${sti}`, '2026-10-28']))),
   ...Object.fromEntries(rikeAdresser().map((sti) => [`https://matlyst-app.no${sti}`, RIK_DATO])),
+  'https://matlyst-app.no/en/mealime-alternative/': '2026-11-20',
   ...Object.fromEntries(['sv', 'da', 'en'].flatMap((lang) => autoArtikler(lang).map((a) => [`https://matlyst-app.no${a.path}`, a.auto.publisert]))),
 };
 for (const lang of SPRAK) {

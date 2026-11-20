@@ -54,6 +54,8 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'auto-hoytid-new-years-eve', sider: { en: '/en/holidays/new-years-eve/' } },
   { id: 'auto-hoytid-friendsgiving', sider: { en: '/en/holidays/friendsgiving/' } },
   { id: 'auto-hoytider', sider: { en: '/en/holidays/' } },
+  // Flytteside for tidligere Mealime-brukere: bare engelsk (USA). «auto-»-prefikset gir variabel språkdekning i hreflang-testen.
+  { id: 'auto-mealime-alternative', sider: { en: '/en/mealime-alternative/' } },
   { id: 'enkel-middag', sider: { nb: '/enkel-middag/', sv: '/sv/enkel-middag/', da: '/da/nem-mad/', en: '/en/easy-dinner/' } },
 
   { id: 'matprat', sider: { nb: '/importer-fra-matprat/', sv: '/sv/matprat/', da: '/da/matprat/', en: '/en/matprat/' } },
