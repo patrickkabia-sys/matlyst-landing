@@ -4,7 +4,7 @@ import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { legal, liste } from './juridisk-tekster.mjs';
 import { STIL } from './skall-paa.mjs';
-import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, byggLocalePageMap, filForSti, gruppeForSti } from './locale-sider.mjs';
+import { SIDEGRUPPER, SPRAKREKKEFOLGE, alternativerFor, filForSti, gruppeForSti } from './locale-sider.mjs';
 import { lokaleImportGuider } from './import-guider-lokale.mjs';
 import { engelskeFunksjonssider, kildesider } from './undersider-alle-sprak.mjs';
 import { amerikanskeAppsider as tynneAmerikanskeAppsider } from './en-appsider.mjs';
@@ -960,17 +960,6 @@ if (alleAutoArtikler.length > 0) {
     : llms.replace('\n## Personvern / Privacy\n', `\n${seksjon}\n## Personvern / Privacy\n`);
   writeFileSync(llmsFil, nesteLlms);
 }
-
-// Automatisk språk bygges direkte fra den samme sidetabellen som hreflang.
-const sidekart = byggLocalePageMap();
-const kartTekst = Object.keys(sidekart).sort()
-  .map((sti) => `    ${JSON.stringify(sti)}: ${JSON.stringify(sidekart[sti]).replaceAll(',', ', ').replaceAll(':', ': ')},`)
-  .join('\n');
-const localeFil = fileURLToPath(new URL('../locale.js', import.meta.url));
-const localeKilde = readFileSync(localeFil, 'utf8');
-const nyLocale = localeKilde.replace(/var LOCALE_PAGE_MAP = Object\.freeze\(\{[\s\S]*?\}\);/u, `var LOCALE_PAGE_MAP = Object.freeze({\n${kartTekst}\n  });`);
-if (nyLocale === localeKilde && !localeKilde.includes(kartTekst)) throw new Error('Fant ikke LOCALE_PAGE_MAP i locale.js');
-writeFileSync(localeFil, nyLocale);
 
 const norskeAvsnitt = {
   'importera-recept/': 'Send en lenke eller del innholdet til Matlyst. Appen tolker ingredienser og fremgangsmåte og viser kilden på oppskriften.',

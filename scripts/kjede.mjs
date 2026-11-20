@@ -9,4 +9,4 @@ export const GENERATORER = ['generer-norske-importguider', 'generer-lokalsider']
 export const ETTERBEHANDLING = ['guidelenker', 'lenker-sett', 'skall-paa', 'app-bevis', 'bilde-attributter', 'sprak-signaler', 'omregner-flertall', 'forside', 'lastmod', 'llms'];
 export const KJEDE = [...GENERATORER, ...ETTERBEHANDLING];
 // Filer utenfor sidene som generatorene også skriver, og som sammenlignes.
-export const EKSTRA_FILER = ['llms.txt', 'locale.js', 'sitemap.xml', 'sitemap-sv.xml', 'sitemap-da.xml', 'sitemap-en.xml', 'sitemap-index.xml'];
+export const EKSTRA_FILER = ['llms.txt', 'sitemap.xml', 'sitemap-sv.xml', 'sitemap-da.xml', 'sitemap-en.xml', 'sitemap-index.xml'];

@@ -133,15 +133,19 @@ function besok(url, { sprak = ['en-US'], lagret = null, agent = 'Mozilla/5.0' } 
   const lager = new Map(lagret ? [['matlyst-sprak', lagret]] : []);
   const omdirigert = [];
   let vedLast = null;
-  const document = { readyState: 'loading', cookie: '' };
+  const fil = [pathname.endsWith('/') ? `${pathname.slice(1)}index.html` : null, `${pathname.slice(1)}.html`, pathname === '/index.html' ? 'index.html' : null]
+    .find((f) => f && existsSync(join(ROOT, f)));
+  const lenker = fil ? [...readFileSync(join(ROOT, fil), 'utf8').matchAll(/<link rel="alternate" hreflang="([^"]*)" href="([^"]*)"/gu)]
+    .map(([, hreflang, href]) => ({ getAttribute: (n) => (n === 'hreflang' ? hreflang : href) })) : [];
+  const document = { readyState: 'loading', cookie: '', querySelectorAll: () => lenker };
   const window = {
     document,
-    location: { pathname, search, hash, replace: (til) => omdirigert.push(til) },
+    location: { pathname, search, hash, href: new URL(url, 'https://matlyst-app.no').href, replace: (til) => omdirigert.push(til) },
     navigator: { languages: sprak, language: sprak[0], userAgent: agent },
     localStorage: { getItem: (k) => lager.get(k) ?? null, setItem: (k, v) => lager.set(k, v) },
     addEventListener: (navn, handler) => { if (navn === 'load') vedLast = handler; },
   };
-  vm.runInNewContext(les('locale.js'), { window, URLSearchParams });
+  vm.runInNewContext(les('locale.js'), { window, URLSearchParams, URL });
   vedLast?.();
   return { til: omdirigert[0] ?? null, lagret: lager.get('matlyst-sprak') ?? null };
 }
