@@ -1,0 +1,1479 @@
+{
+  "familie": "dl-til-gram",
+  "marked": "en",
+  "kilder": {
+    "usda": {
+      "navn": "FoodData Central, SR Legacy",
+      "utgiver": "U.S. Department of Agriculture, Agricultural Research Service",
+      "aar": 2019,
+      "adresse": "https://fdc.nal.usda.gov/",
+      "hentet": "2026-11-20"
+    }
+  },
+  "rader": [
+    {
+      "id": "hvetemel",
+      "slug": "flour",
+      "navn": "Flour",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        }
+      },
+      "tekst": {
+        "variant": "all-purpose flour",
+        "usdaNavn": "Wheat flour, white, all-purpose, enriched, bleached",
+        "fdcId": "168894"
+      }
+    },
+    {
+      "id": "bread-flour",
+      "slug": "bread-flour",
+      "navn": "Bread flour",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 137,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        }
+      },
+      "tekst": {
+        "variant": "bread flour",
+        "usdaNavn": "Wheat flour, white, bread, enriched",
+        "fdcId": "168896"
+      }
+    },
+    {
+      "id": "sammalt-hvetemel",
+      "slug": "whole-wheat-flour",
+      "navn": "Whole wheat flour",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 120,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        }
+      },
+      "tekst": {
+        "variant": "whole wheat flour",
+        "usdaNavn": "Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program)",
+        "fdcId": "168893"
+      }
+    },
+    {
+      "id": "maisstivelse",
+      "slug": "cornstarch",
+      "navn": "Cornstarch",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 128,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        }
+      },
+      "tekst": {
+        "variant": "cornstarch",
+        "usdaNavn": "Cornstarch",
+        "fdcId": "169698"
+      }
+    },
+    {
+      "id": "cornmeal",
+      "slug": "cornmeal",
+      "navn": "Cornmeal (whole-grain yellow)",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 122,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        }
+      },
+      "tekst": {
+        "variant": "whole-grain yellow cornmeal",
+        "usdaNavn": "Cornmeal, whole-grain, yellow",
+        "fdcId": "169697"
+      }
+    },
+    {
+      "id": "sukker",
+      "slug": "sugar",
+      "navn": "Sugar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 2.8,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "serving packet"
+        },
+        "p_2": {
+          "verdi": 4.2,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp"
+        },
+        "p_3": {
+          "verdi": 2.3,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "serving 1 cube"
+        }
+      },
+      "tekst": {
+        "variant": "granulated sugar",
+        "usdaNavn": "Sugars, granulated",
+        "fdcId": "169655"
+      }
+    },
+    {
+      "id": "brunt-sukker",
+      "slug": "brown-sugar",
+      "navn": "Brown sugar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 220,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup packed"
+        },
+        "p_1": {
+          "verdi": 3,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp unpacked"
+        },
+        "p_2": {
+          "verdi": 145,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup unpacked"
+        },
+        "p_3": {
+          "verdi": 4.6,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp packed"
+        },
+        "p_4": {
+          "verdi": 3.2,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp brownulated"
+        }
+      },
+      "tekst": {
+        "variant": "packed brown sugar",
+        "usdaNavn": "Sugars, brown",
+        "fdcId": "168833"
+      }
+    },
+    {
+      "id": "melis",
+      "slug": "powdered-sugar",
+      "navn": "Powdered sugar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 120,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup unsifted"
+        },
+        "p_1": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup sifted"
+        },
+        "p_2": {
+          "verdi": 8,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp unsifted"
+        },
+        "p_3": {
+          "verdi": 2.5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp"
+        }
+      },
+      "tekst": {
+        "variant": "unsifted powdered sugar",
+        "usdaNavn": "Sugars, powdered",
+        "fdcId": "169656"
+      }
+    },
+    {
+      "id": "honey",
+      "slug": "honey",
+      "navn": "Honey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 339,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 21,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_2": {
+          "verdi": 14,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "packet (0.5 oz)"
+        }
+      },
+      "tekst": {
+        "variant": "honey",
+        "usdaNavn": "Honey",
+        "fdcId": "169640"
+      }
+    },
+    {
+      "id": "maple-syrup",
+      "slug": "maple-syrup",
+      "navn": "Maple syrup",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 315,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 20,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_2": {
+          "verdi": 83,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "serving 1/4 cup"
+        }
+      },
+      "tekst": {
+        "variant": "maple syrup",
+        "usdaNavn": "Syrups, maple",
+        "fdcId": "169661"
+      }
+    },
+    {
+      "id": "molasses",
+      "slug": "molasses",
+      "navn": "Molasses",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 337,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 20,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "serving 1 tbsp"
+        }
+      },
+      "tekst": {
+        "variant": "molasses",
+        "usdaNavn": "Molasses",
+        "fdcId": "168820"
+      }
+    },
+    {
+      "id": "smor",
+      "slug": "butter",
+      "navn": "Butter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 227,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "pat (1\" sq, 1/3\" high)"
+        },
+        "p_2": {
+          "verdi": 14.2,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_3": {
+          "verdi": 113,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "stick"
+        }
+      },
+      "tekst": {
+        "variant": "salted butter",
+        "usdaNavn": "Butter, salted",
+        "fdcId": "173410"
+      }
+    },
+    {
+      "id": "olive-oil",
+      "slug": "olive-oil",
+      "navn": "Olive oil",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 216,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 13.5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tablespoon"
+        },
+        "p_2": {
+          "verdi": 4.5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp"
+        }
+      },
+      "tekst": {
+        "variant": "olive oil",
+        "usdaNavn": "Oil, olive, salad or cooking",
+        "fdcId": "171413"
+      }
+    },
+    {
+      "id": "vegetable-oil",
+      "slug": "vegetable-oil",
+      "navn": "Vegetable oil (soybean)",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 218,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 13.6,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tablespoon"
+        },
+        "p_2": {
+          "verdi": 4.5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "teaspoon"
+        }
+      },
+      "tekst": {
+        "variant": "vegetable (soybean) oil",
+        "usdaNavn": "Oil, vegetable, soybean, refined",
+        "fdcId": "172370"
+      }
+    },
+    {
+      "id": "shortening",
+      "slug": "shortening",
+      "navn": "Shortening",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 205,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 12.8,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        }
+      },
+      "tekst": {
+        "variant": "vegetable shortening",
+        "usdaNavn": "Shortening, vegetable, household, composite",
+        "fdcId": "173584"
+      }
+    },
+    {
+      "id": "melk",
+      "slug": "milk",
+      "navn": "Milk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 244,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 30.5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "fl oz"
+        },
+        "p_2": {
+          "verdi": 15,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_3": {
+          "verdi": 976,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "quart"
+        }
+      },
+      "tekst": {
+        "variant": "whole milk",
+        "usdaNavn": "Milk, whole, 3.25% milkfat, with added vitamin D",
+        "fdcId": "171265"
+      }
+    },
+    {
+      "id": "flote",
+      "slug": "heavy-cream",
+      "navn": "Heavy cream",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 238,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, fluid (yields 2 cups whipped)"
+        },
+        "p_1": {
+          "verdi": 120,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, whipped"
+        },
+        "p_2": {
+          "verdi": 15,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_3": {
+          "verdi": 29.8,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "fl oz"
+        }
+      },
+      "tekst": {
+        "variant": "heavy whipping cream",
+        "usdaNavn": "Cream, fluid, heavy whipping",
+        "fdcId": "170859"
+      }
+    },
+    {
+      "id": "romme",
+      "slug": "sour-cream",
+      "navn": "Sour cream",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 230,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 12,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        }
+      },
+      "tekst": {
+        "variant": "sour cream",
+        "usdaNavn": "Cream, sour, cultured",
+        "fdcId": "171257"
+      }
+    },
+    {
+      "id": "yogurt",
+      "slug": "yogurt",
+      "navn": "Yogurt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 245,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup (8 fl oz)"
+        },
+        "p_1": {
+          "verdi": 170,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "container (6 oz)"
+        },
+        "p_2": {
+          "verdi": 227,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "container (8 oz)"
+        },
+        "p_3": {
+          "verdi": 113,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "0.5 container (4 oz)"
+        }
+      },
+      "tekst": {
+        "variant": "plain whole-milk yogurt",
+        "usdaNavn": "Yogurt, plain, whole milk",
+        "fdcId": "171284"
+      }
+    },
+    {
+      "id": "cottage-cheese",
+      "slug": "cottage-cheese",
+      "navn": "Cottage cheese",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 225,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, small curd (not packed)"
+        },
+        "p_1": {
+          "verdi": 113,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "4 oz"
+        },
+        "p_2": {
+          "verdi": 210,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, large curd (not packed)"
+        }
+      },
+      "tekst": {
+        "variant": "small-curd cottage cheese",
+        "usdaNavn": "Cheese, cottage, creamed, large or small curd",
+        "fdcId": "172179"
+      }
+    },
+    {
+      "id": "cream-cheese",
+      "slug": "cream-cheese",
+      "navn": "Cream cheese",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 232,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 14.5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_2": {
+          "verdi": 10,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp, whipped"
+        },
+        "p_3": {
+          "verdi": 28.35,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "oz"
+        },
+        "p_4": {
+          "verdi": 16,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cubic inch"
+        },
+        "p_5": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "package, small (3 oz)"
+        }
+      },
+      "tekst": {
+        "variant": "cream cheese",
+        "usdaNavn": "Cheese, cream",
+        "fdcId": "173418"
+      }
+    },
+    {
+      "id": "shredded-cheddar",
+      "slug": "shredded-cheddar",
+      "navn": "Shredded cheddar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 113,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, shredded"
+        },
+        "p_1": {
+          "verdi": 132,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, diced"
+        },
+        "p_2": {
+          "verdi": 244,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, melted"
+        },
+        "p_3": {
+          "verdi": 28.35,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "oz"
+        },
+        "p_4": {
+          "verdi": 17,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cubic inch"
+        },
+        "p_5": {
+          "verdi": 28,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "slice (1 oz)"
+        }
+      },
+      "tekst": {
+        "variant": "shredded cheddar cheese",
+        "usdaNavn": "Cheese, cheddar (Includes foods for USDA's Food Distribution Program)",
+        "fdcId": "173414"
+      }
+    },
+    {
+      "id": "grated-parmesan",
+      "slug": "grated-parmesan",
+      "navn": "Grated parmesan",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_2": {
+          "verdi": 28.35,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "oz"
+        }
+      },
+      "tekst": {
+        "variant": "grated parmesan cheese",
+        "usdaNavn": "Cheese, parmesan, grated",
+        "fdcId": "171247"
+      }
+    },
+    {
+      "id": "water",
+      "slug": "water",
+      "navn": "Water",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 237,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 29.6,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "fl oz"
+        },
+        "p_2": {
+          "verdi": 1,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "ml"
+        }
+      },
+      "tekst": {
+        "variant": "water",
+        "usdaNavn": "Water, bottled, generic",
+        "fdcId": "174158"
+      }
+    },
+    {
+      "id": "havregryn",
+      "slug": "rolled-oats",
+      "navn": "Rolled oats",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 81,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 27,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "0.33 cup"
+        }
+      },
+      "tekst": {
+        "variant": "rolled oats",
+        "usdaNavn": "Cereals, oats, regular and quick, not fortified, dry",
+        "fdcId": "173904"
+      }
+    },
+    {
+      "id": "ris",
+      "slug": "white-rice",
+      "navn": "White rice",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 185,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        }
+      },
+      "tekst": {
+        "variant": "uncooked long-grain white rice",
+        "usdaNavn": "Rice, white, long-grain, regular, raw, enriched",
+        "fdcId": "168877"
+      }
+    },
+    {
+      "id": "brown-rice",
+      "slug": "brown-rice",
+      "navn": "Brown rice",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 185,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        }
+      },
+      "tekst": {
+        "variant": "uncooked long-grain brown rice",
+        "usdaNavn": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",
+        "fdcId": "169703"
+      }
+    },
+    {
+      "id": "quinoa",
+      "slug": "quinoa",
+      "navn": "Quinoa",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 170,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        }
+      },
+      "tekst": {
+        "variant": "uncooked quinoa",
+        "usdaNavn": "Quinoa, uncooked",
+        "fdcId": "168874"
+      }
+    },
+    {
+      "id": "lentils",
+      "slug": "lentils",
+      "navn": "Lentils",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 192,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 12,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tablespoon"
+        }
+      },
+      "tekst": {
+        "variant": "uncooked lentils",
+        "usdaNavn": "Lentils, raw",
+        "fdcId": "172420"
+      }
+    },
+    {
+      "id": "black-beans",
+      "slug": "black-beans",
+      "navn": "Black beans",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 194,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 12.1,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        }
+      },
+      "tekst": {
+        "variant": "dried black beans",
+        "usdaNavn": "Beans, black, mature seeds, raw",
+        "fdcId": "173734"
+      }
+    },
+    {
+      "id": "kakao",
+      "slug": "cocoa-powder",
+      "navn": "Cocoa powder",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 86,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 5.4,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        }
+      },
+      "tekst": {
+        "variant": "unsweetened cocoa powder",
+        "usdaNavn": "Cocoa, dry powder, unsweetened",
+        "fdcId": "169593"
+      }
+    },
+    {
+      "id": "chocolate-chips",
+      "slug": "chocolate-chips",
+      "navn": "Chocolate chips",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 168,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup chips (6 oz package)"
+        },
+        "p_1": {
+          "verdi": 14.5,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "serving"
+        },
+        "p_2": {
+          "verdi": 182,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup large chips"
+        },
+        "p_3": {
+          "verdi": 173,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup mini chips"
+        },
+        "p_4": {
+          "verdi": 28.35,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "oz (approx 60 pcs)"
+        }
+      },
+      "tekst": {
+        "variant": "semisweet chocolate chips",
+        "usdaNavn": "Candies, semisweet chocolate",
+        "fdcId": "167976"
+      }
+    },
+    {
+      "id": "peanut-butter",
+      "slug": "peanut-butter",
+      "navn": "Peanut butter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 258,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 32,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "2 tbsp"
+        }
+      },
+      "tekst": {
+        "variant": "smooth peanut butter",
+        "usdaNavn": "Peanut Butter, smooth (Includes foods for USDA's Food Distribution Program)",
+        "fdcId": "174294"
+      }
+    },
+    {
+      "id": "salt",
+      "slug": "salt",
+      "navn": "Salt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 292,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 6,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp"
+        },
+        "p_2": {
+          "verdi": 18,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_3": {
+          "verdi": 0.4,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "dash"
+        }
+      },
+      "tekst": {
+        "variant": "table salt",
+        "usdaNavn": "Salt, table",
+        "fdcId": "173468"
+      }
+    },
+    {
+      "id": "baking-powder",
+      "slug": "baking-powder",
+      "navn": "Baking powder",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "tsp": {
+          "verdi": 4.6,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp"
+        },
+        "p_1": {
+          "verdi": 2.3,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "0.5 tsp"
+        }
+      },
+      "tekst": {
+        "variant": "double-acting baking powder",
+        "usdaNavn": "Leavening agents, baking powder, double-acting, straight phosphate",
+        "fdcId": "172804"
+      }
+    },
+    {
+      "id": "baking-soda",
+      "slug": "baking-soda",
+      "navn": "Baking soda",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "tsp": {
+          "verdi": 4.6,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp"
+        },
+        "p_1": {
+          "verdi": 2.3,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "0.5 tsp"
+        }
+      },
+      "tekst": {
+        "variant": "baking soda",
+        "usdaNavn": "Leavening agents, baking soda",
+        "fdcId": "175040"
+      }
+    },
+    {
+      "id": "active-dry-yeast",
+      "slug": "active-dry-yeast",
+      "navn": "Active dry yeast",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "tsp": {
+          "verdi": 4,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp"
+        },
+        "p_1": {
+          "verdi": 12,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tbsp"
+        },
+        "p_2": {
+          "verdi": 7.2,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "packet"
+        }
+      },
+      "tekst": {
+        "variant": "active dry yeast",
+        "usdaNavn": "Leavening agents, yeast, baker's, active dry",
+        "fdcId": "175043"
+      }
+    },
+    {
+      "id": "rosiner",
+      "slug": "raisins",
+      "navn": "Raisins",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 145,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup (not packed)"
+        },
+        "p_1": {
+          "verdi": 165,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, packed"
+        },
+        "p_2": {
+          "verdi": 14,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "miniature box (.5 oz)"
+        },
+        "p_3": {
+          "verdi": 43,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "small box (1.5 oz)"
+        },
+        "p_4": {
+          "verdi": 26,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "50 raisins"
+        },
+        "p_5": {
+          "verdi": 28.35,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "oz (60 raisins)"
+        }
+      },
+      "tekst": {
+        "variant": "dark seedless raisins",
+        "usdaNavn": "Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)",
+        "fdcId": "168165"
+      }
+    },
+    {
+      "id": "walnuts",
+      "slug": "walnuts",
+      "navn": "Walnuts",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 117,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, chopped"
+        },
+        "p_1": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, ground"
+        },
+        "p_2": {
+          "verdi": 28,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, in shell, edible yield (7 nuts)"
+        },
+        "p_3": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup shelled (50 halves)"
+        },
+        "p_4": {
+          "verdi": 120,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup pieces or chips"
+        },
+        "p_5": {
+          "verdi": 28.35,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "oz (14 halves)"
+        }
+      },
+      "tekst": {
+        "variant": "chopped walnuts",
+        "usdaNavn": "Nuts, walnuts, english",
+        "fdcId": "170187"
+      }
+    },
+    {
+      "id": "mandler",
+      "slug": "almonds",
+      "navn": "Almonds",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 143,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, whole"
+        },
+        "p_1": {
+          "verdi": 92,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, sliced"
+        },
+        "p_2": {
+          "verdi": 108,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, slivered"
+        },
+        "p_3": {
+          "verdi": 95,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, ground"
+        },
+        "p_4": {
+          "verdi": 28.35,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "oz (23 whole kernels)"
+        },
+        "p_5": {
+          "verdi": 1.2,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "almond"
+        }
+      },
+      "tekst": {
+        "variant": "whole almonds",
+        "usdaNavn": "Nuts, almonds",
+        "fdcId": "170567"
+      }
+    },
+    {
+      "id": "shredded-coconut",
+      "slug": "shredded-coconut",
+      "navn": "Sweetened shredded coconut",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 93,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, shredded"
+        },
+        "p_1": {
+          "verdi": 199,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "package (7 oz)"
+        }
+      },
+      "tekst": {
+        "variant": "sweetened shredded coconut",
+        "usdaNavn": "Nuts, coconut meat, dried (desiccated), sweetened, shredded",
+        "fdcId": "168586"
+      }
+    },
+    {
+      "id": "breadcrumbs",
+      "slug": "breadcrumbs",
+      "navn": "Breadcrumbs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 108,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 28.35,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "oz"
+        }
+      },
+      "tekst": {
+        "variant": "dry plain breadcrumbs",
+        "usdaNavn": "Bread, crumbs, dry, grated, plain",
+        "fdcId": "174928"
+      }
+    },
+    {
+      "id": "mashed-banana",
+      "slug": "mashed-banana",
+      "navn": "Mashed banana",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 225,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, mashed"
+        },
+        "p_1": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup, sliced"
+        },
+        "p_2": {
+          "verdi": 81,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "extra small (less than 6\" long)"
+        },
+        "p_3": {
+          "verdi": 101,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "small (6\" to 6-7/8\" long)"
+        },
+        "p_4": {
+          "verdi": 118,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "medium (7\" to 7-7/8\" long)"
+        },
+        "p_5": {
+          "verdi": 136,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "large (8\" to 8-7/8\" long)"
+        },
+        "p_6": {
+          "verdi": 152,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "extra large (9\" or longer)"
+        },
+        "p_7": {
+          "verdi": 126,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "NLEA serving"
+        }
+      },
+      "tekst": {
+        "variant": "mashed banana",
+        "usdaNavn": "Bananas, raw",
+        "fdcId": "173944"
+      }
+    },
+    {
+      "id": "blueberries",
+      "slug": "blueberries",
+      "navn": "Blueberries",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "cup": {
+          "verdi": 148,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "cup"
+        },
+        "p_1": {
+          "verdi": 68,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "50 berries"
+        }
+      },
+      "tekst": {
+        "variant": "raw blueberries",
+        "usdaNavn": "Blueberries, raw",
+        "fdcId": "171711"
+      }
+    }
+  ]
+}
