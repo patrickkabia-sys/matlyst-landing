@@ -724,6 +724,7 @@ function skjemaFor(skjema, kjente) {
   throw new Error(`Ukjent skjema i schemas: ${JSON.stringify(skjema)}`);
 }
 
+// `topp` (valgfritt, HTML) står i heroen rett under ingressen, for eksempel kalkulatorkortet. En side med topp får ingen innholdsfortegnelse-markør.
 // Eksportert så testene kan kalle den. Skriptet skriver sidene ved import, så tester importerer det bare i en isolert kopi.
 export function guidePage(lang, v) {
   const faq = {'@context':'https://schema.org','@type':'FAQPage',mainEntity:v.faq.map(([q,a]) => ({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))};
@@ -734,8 +735,8 @@ export function guidePage(lang, v) {
     {'@type':'ListItem',position:2,name:v.h1,item:`${base}/${lang}/${v.path}`},
   ]};
   return `${head({lang,path:v.path,title:`${v.title} | Matlyst`,description:v.description,schema:[crumbs,...(v.schemas ?? ['howto','faq']).map((skjema) => skjemaFor(skjema, { howto: howTo, faq, article: artikkel }))]})}<body data-locale="${lang}">
-${nav(lang,v.path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p></header>
-<section class="${v.rik ? 'prose locale-prose has-toc' : 'prose locale-prose'}">${v.rik ? v.rik : `${(v.ideer ?? []).map(([h, liste]) => `<h2>${h}</h2><ul class="ide-liste">${liste.map(([navn, tekst]) => `<li><strong>${navn}.</strong> ${tekst}</li>`).join('')}</ul>`).join('\n')}<h2>${v.stegTittel}</h2><p>${v.forst}</p><ol>${v.steg.map(([h,p]) => `<li><strong>${h}.</strong> ${p}</li>`).join('')}</ol><p>${v.alternativ}</p><p>${v.grense}</p>
+${nav(lang,v.path)}<main id="hovedinnhold"><header class="locale-page-hero"><p class="eyebrow">${v.eyebrow}</p><h1 class="disp">${v.h1}</h1><p class="lead">${v.lead}</p>${v.topp ?? ''}</header>
+<section class="${v.rik && !v.topp ? 'prose locale-prose has-toc' : 'prose locale-prose'}">${v.rik ? v.rik : `${(v.ideer ?? []).map(([h, liste]) => `<h2>${h}</h2><ul class="ide-liste">${liste.map(([navn, tekst]) => `<li><strong>${navn}.</strong> ${tekst}</li>`).join('')}</ul>`).join('\n')}<h2>${v.stegTittel}</h2><p>${v.forst}</p><ol>${v.steg.map(([h,p]) => `<li><strong>${h}.</strong> ${p}</li>`).join('')}</ol><p>${v.alternativ}</p><p>${v.grense}</p>
 ${v.seksjoner.map(([h,body]) => `<h2>${h}</h2>${body}`).join('\n')}`}</section>
 ${v.bilde ? appCta(lang, v, storeButtons(lang)) : ''}<section class="faq"><h2>${v.faqTittel}</h2>${v.faq.map(([q,a],i) => `<details${i === 0 ? ' open' : ''}><summary>${q}</summary><p>${a}</p></details>`).join('')}</section>
 <section class="page-cta"><h2 class="disp">${v.cta}</h2>${storeButtons(lang)}</section></main>${footer(lang)}<script src="/site.js" defer></script></body></html>`;

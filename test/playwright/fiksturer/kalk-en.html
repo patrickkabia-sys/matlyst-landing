@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fixture: the calculator card in English</title>
+<link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/side.css">
+</head>
+<body data-sidetype="omregner">
+<main id="hovedinnhold">
+<header class="locale-page-hero"><p class="eyebrow">Tools</p><h1 class="disp">Fixture for the calculator card</h1><p class="lead">Two forms: flour with a weight, and an item without one.</p>
+<form class="kalk" id="fast" data-kalk="volumvekt" onsubmit="return false" aria-label="Calculator: cups to grams">
+  <div class="kalkvare"><span><span class="hva">Ingredient</span><br><b>Flour</b></span><a href="#samleside">Change ingredient</a></div>
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Amount</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="2"></label>
+      <label class="kalkenhet"><span class="skjult">From</span><select data-felt="fra"><option value="cups" selected>Cups</option><option value="tbsp">Tablespoons (tbsp)</option><option value="tsp">Teaspoons (tsp)</option><option value="floz">Fluid ounces (fl oz)</option><option value="ml">Milliliters (ml)</option><option value="g">Grams (g)</option><option value="oz">Ounces (oz)</option><option value="lb">Pounds (lb)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Swap direction"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">250</output>
+      <label class="kalkenhet"><span class="skjult">To</span><select data-felt="til"><option value="cups">Cups</option><option value="tbsp">Tablespoons (tbsp)</option><option value="tsp">Teaspoons (tsp)</option><option value="floz">Fluid ounces (fl oz)</option><option value="ml">Milliliters (ml)</option><option value="g" selected>Grams (g)</option><option value="oz">Ounces (oz)</option><option value="lb">Pounds (lb)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Common amounts"><button type="button" data-v="1/4">1/4 cup</button><button type="button" data-v="1/3">1/3 cup</button><button type="button" data-v="1/2">1/2 cup</button><button type="button" data-v="3/4">3/4 cup</button><button type="button" data-v="1">1 cup</button><button type="button" data-v="2">2 cups</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">2 cups flour = 250 g</p>
+  <script type="application/json" class="kalk-data">{"varer":[["flour",52.83441047162968]],"brok":true,"ml":{"cups":236.5882365,"tbsp":14.78676478125,"tsp":4.92892159375,"floz":29.5735295625,"ml":1},"g":{"g":1,"oz":28.349523125,"lb":453.59237},"kort":{"cups":["cup","cups"],"tbsp":"tbsp","tsp":"tsp","floz":"fl oz","ml":"ml","g":"g","oz":"oz","lb":"lb"},"stegFor":{"cups":"cup","tbsp":"skje","tsp":"skje","floz":"floz","ml":"ml","g":"g","oz":"oz","lb":"lb"},"byttTil":{"cups":"1","tbsp":"1","tsp":"1","floz":"8","ml":"100","g":"100","oz":"4","lb":"1"},"steg":{"cup":["1/4","1/3","1/2","3/4","1","2"],"skje":["1","2","3","4","6","8"],"floz":["1","2","4","8","12","16"],"ml":["25","50","100","250","500","1000"],"g":["50","100","150","250","500","1000"],"oz":["1","2","4","8","12","16"],"lb":["0.25","0.5","1","1.5","2","5"]},"feil":"Enter an amount, like 2 or 1/2."}</script>
+</form>
+<form class="kalk" id="utenvekt" data-kalk="volumvekt" onsubmit="return false" aria-label="Calculator: cups to grams">
+  <div class="kalkvare"><span><span class="hva">Ingredient</span><br><b>Mystery</b></span><a href="#samleside">Change ingredient</a></div>
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Amount</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="2"></label>
+      <label class="kalkenhet"><span class="skjult">From</span><select data-felt="fra"><option value="cups" selected>Cups</option><option value="tbsp">Tablespoons (tbsp)</option><option value="tsp">Teaspoons (tsp)</option><option value="floz">Fluid ounces (fl oz)</option><option value="ml">Milliliters (ml)</option><option value="g">Grams (g)</option><option value="oz">Ounces (oz)</option><option value="lb">Pounds (lb)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Swap direction"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar"></output>
+      <label class="kalkenhet"><span class="skjult">To</span><select data-felt="til"><option value="cups">Cups</option><option value="tbsp">Tablespoons (tbsp)</option><option value="tsp">Teaspoons (tsp)</option><option value="floz">Fluid ounces (fl oz)</option><option value="ml">Milliliters (ml)</option><option value="g" selected>Grams (g)</option><option value="oz">Ounces (oz)</option><option value="lb">Pounds (lb)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Common amounts"><button type="button" data-v="1/4">1/4 cup</button><button type="button" data-v="1/3">1/3 cup</button><button type="button" data-v="1/2">1/2 cup</button><button type="button" data-v="3/4">3/4 cup</button><button type="button" data-v="1">1 cup</button><button type="button" data-v="2">2 cups</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">Enter an amount, like 2 or 1/2.</p>
+  <script type="application/json" class="kalk-data">{"varer":[["mystery"]],"brok":true,"ml":{"cups":236.5882365,"tbsp":14.78676478125,"tsp":4.92892159375,"floz":29.5735295625,"ml":1},"g":{"g":1,"oz":28.349523125,"lb":453.59237},"kort":{"cups":["cup","cups"],"tbsp":"tbsp","tsp":"tsp","floz":"fl oz","ml":"ml","g":"g","oz":"oz","lb":"lb"},"stegFor":{"cups":"cup","tbsp":"skje","tsp":"skje","floz":"floz","ml":"ml","g":"g","oz":"oz","lb":"lb"},"byttTil":{"cups":"1","tbsp":"1","tsp":"1","floz":"8","ml":"100","g":"100","oz":"4","lb":"1"},"steg":{"cup":["1/4","1/3","1/2","3/4","1","2"],"skje":["1","2","3","4","6","8"],"floz":["1","2","4","8","12","16"],"ml":["25","50","100","250","500","1000"],"g":["50","100","150","250","500","1000"],"oz":["1","2","4","8","12","16"],"lb":["0.25","0.5","1","1.5","2","5"]},"feil":"Enter an amount, like 2 or 1/2."}</script>
+</form>
+</header>
+</main>
+<script src="/site.js" defer></script>
+</body>
+</html>

@@ -227,3 +227,151 @@ test('de to sidene stables på mobil og står side om side på PC', async ({ pag
   const kort = await page.locator('#fast').boundingBox();
   expect(kort.width).toBeLessThanOrEqual(920);
 });
+
+// Engelsk skjema (kalk-en.html): brøker, entall og flertall, hurtigmengder per enhet og bytteverdi.
+// Fiksturen har #fast (flour, 125 g per cup) og #utenvekt (en vare uten vekt). Skjemaer uten de nye feltene er som på norsk (siste test).
+test.describe('engelsk skjema', () => {
+  const EN = '/test/playwright/fiksturer/kalk-en.html';
+  const FEIL_EN = 'Enter an amount, like 2 or 1/2.';
+  test.beforeEach(async ({ page }) => { await page.goto(EN); });
+
+  test('brøker regnes, og setningen gjengir brøken', async ({ page }) => {
+    for (const [inn, setning] of [['1/2', '1/2 cup flour = 63 g'], ['1 1/2', '1 1/2 cups flour = 188 g'], ['3/4', '3/4 cup flour = 94 g'], ['2', '2 cups flour = 250 g'], ['1.5', '1.5 cups flour = 188 g'], ['1', '1 cup flour = 125 g'], ['0.8', '0.8 cups flour = 100 g'], ['0', '0 cups flour = 0 g'], ['1  1 / 2', '1 1/2 cups flour = 188 g'], [' 3 /4 ', '3/4 cup flour = 94 g'], ['2/2', '2/2 cup flour = 125 g'], ['3/2', '3/2 cups flour = 188 g']]) {
+      await page.fill('#fast [data-felt=mengde]', inn);
+      await expect(page.locator('#fast [data-felt=setning]'), inn).toHaveText(setning);
+      await expect(page.locator('#fast [data-felt=mengde]')).not.toHaveAttribute('aria-invalid', 'true');
+    }
+  });
+
+  for (const tekst of ['1/0', '1/', '/2', '1 2', '1/2/3', '-1/2', '1 1/', '1/2 3', 'a/b']) {
+    test(`«${tekst}» gir veiledning`, async ({ page }) => {
+      await page.fill('#fast [data-felt=mengde]', tekst);
+      await expect(page.locator('#fast [data-felt=setning]')).toHaveText(FEIL_EN);
+      await expect(page.locator('#fast [data-felt=svar]')).toHaveText('');
+      await expect(page.locator('#fast [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
+    });
+  }
+
+  // Brøkledd har høyst seks sifre; alt som gir et uendelig eller ikke-endelig tall er ugyldig.
+  for (const tekst of ['9007199254740993/2', `1/1${'0'.repeat(309)}`, '1234567/2', '1/1234567', '1234567 1/2', '1 1234567/2']) {
+    test(`brøkledd over seks sifre «${tekst.slice(0, 20)}» gir veiledning`, async ({ page }) => {
+      await page.fill('#fast [data-felt=mengde]', tekst);
+      await expect(page.locator('#fast [data-felt=setning]')).toHaveText(FEIL_EN);
+      await expect(page.locator('#fast [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
+    });
+  }
+  test('brøk med seks sifre i leddene er gyldig', async ({ page }) => {
+    await page.fill('#fast [data-felt=mengde]', '999999/2');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('999999/2 cups flour = 62499938 g');
+    await expect(page.locator('#fast [data-felt=mengde]')).not.toHaveAttribute('aria-invalid', 'true');
+  });
+
+  test('entall og flertall gjelder også svaret', async ({ page }) => {
+    await page.selectOption('#fast [data-felt=fra]', 'g');
+    await page.selectOption('#fast [data-felt=til]', 'cups');
+    await page.fill('#fast [data-felt=mengde]', '125');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('125 g flour = 1 cup');
+    await page.fill('#fast [data-felt=mengde]', '100');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('100 g flour = 0.8 cups');
+    await page.fill('#fast [data-felt=mengde]', '250');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('250 g flour = 2 cups');
+  });
+
+  test('gram til ounces og pounds, og fluid ounces er volum', async ({ page }) => {
+    await page.selectOption('#fast [data-felt=til]', 'oz');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('2 cups flour = 8.8 oz');
+    await page.selectOption('#fast [data-felt=til]', 'lb');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('2 cups flour = 0.55 lb');
+    await page.selectOption('#fast [data-felt=til]', 'oz');
+    await page.selectOption('#fast [data-felt=fra]', 'floz'); await page.fill('#fast [data-felt=mengde]', '8');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('8 fl oz flour = 4.4 oz');
+    // Fluid ounces til ounces krysser fra volum til vekt og trenger vekten; uten den er det veiledningen.
+    await page.selectOption('#utenvekt [data-felt=fra]', 'floz'); await page.selectOption('#utenvekt [data-felt=til]', 'oz');
+    await expect(page.locator('#utenvekt [data-felt=setning]')).toHaveText(FEIL_EN);
+    // Fluid ounces til fluid ounces og ounces til gram er samme slag og trenger ikke vekten.
+    await page.selectOption('#utenvekt [data-felt=til]', 'floz');
+    await expect(page.locator('#utenvekt [data-felt=setning]')).toHaveText('2 fl oz mystery = 2 fl oz');
+    await page.selectOption('#utenvekt [data-felt=fra]', 'oz');
+    await page.selectOption('#utenvekt [data-felt=til]', 'g');
+    await expect(page.locator('#utenvekt [data-felt=setning]')).toHaveText('2 oz mystery = 57 g');
+  });
+
+  test('hurtigknappene følger enheten, med brøker for cups', async ({ page }) => {
+    await expect(page.locator('#fast .hurtig button')).toHaveText(['1/4 cup', '1/3 cup', '1/2 cup', '3/4 cup', '1 cup', '2 cups']);
+    await page.click('#fast .hurtig button:nth-child(3)');
+    await expect(page.locator('#fast [data-felt=svar]')).toHaveText('63');
+    await expect(page.locator('#fast .hurtig button:nth-child(3)')).toHaveAttribute('aria-pressed', 'true');
+    // aria-pressed sammenligner tallverdier: «0.5» og «1/2» er samme mengde.
+    await page.fill('#fast [data-felt=mengde]', '0.5');
+    await expect(page.locator('#fast .hurtig button:nth-child(3)')).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('#fast .hurtig button:nth-child(4)')).toHaveAttribute('aria-pressed', 'false');
+    await page.selectOption('#fast [data-felt=fra]', 'tbsp');
+    await expect(page.locator('#fast .hurtig button')).toHaveText(['1 tbsp', '2 tbsp', '3 tbsp', '4 tbsp', '6 tbsp', '8 tbsp']);
+    await page.selectOption('#fast [data-felt=fra]', 'oz');
+    await expect(page.locator('#fast .hurtig button').first()).toHaveText('1 oz');
+    await page.selectOption('#fast [data-felt=fra]', 'cups');
+    await page.click('#fast .hurtig button:nth-child(5)');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('1 cup flour = 125 g');
+  });
+
+  test('bytte setter mengden fra byttTil, og tilbake', async ({ page }) => {
+    await page.click('#fast [data-felt=bytt]');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('100 g flour = 0.8 cups');
+    await page.click('#fast [data-felt=bytt]');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('1 cup flour = 125 g');
+    await page.selectOption('#fast [data-felt=fra]', 'oz'); await page.selectOption('#fast [data-felt=til]', 'floz');
+    await page.click('#fast [data-felt=bytt]');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('8 fl oz flour = 4.4 oz');
+  });
+
+  test('uten JavaScript står det ferdig utregnede eksempelet der', async ({ browser }) => {
+    const ctx = await browser.newContext({ javaScriptEnabled: false });
+    const p = await ctx.newPage();
+    await p.goto(EN);
+    await expect(p.locator('#fast [data-felt=setning]')).toHaveText('2 cups flour = 250 g');
+    await ctx.close();
+  });
+
+  for (const bredde of [360, 390, 1280]) {
+    test(`trykkflater minst 44 px og ingen sidelengs rulling på ${bredde} px, også med brøkknappene`, async ({ page }) => {
+      await page.setViewportSize({ width: bredde, height: 800 });
+      await page.goto(EN);
+      const mal = await page.evaluate(() => {
+        const smaa = [];
+        for (const e of document.querySelectorAll('.kalk button, .kalk select, .kalk input, .kalk a')) {
+          const r = e.getBoundingClientRect();
+          if (r.width < 44 || r.height < 44) smaa.push(`${e.tagName.toLowerCase()}.${e.className || e.getAttribute('data-felt')} ${Math.round(r.width)}x${Math.round(r.height)}`);
+        }
+        return { smaa, side: document.documentElement.scrollWidth, vindu: innerWidth };
+      });
+      expect(mal.smaa).toEqual([]);
+      expect(mal.side).toBeLessThanOrEqual(mal.vindu);
+    });
+  }
+
+  test('mellomrommet i et blandet tall har synlig bredde: «1 1/2» er minst 0,2 em bredere enn «11/2» i feltets egen skrift', async ({ page }) => {
+    const em = await page.locator('#fast [data-felt=mengde]').evaluate((felt) => {
+      const stil = getComputedStyle(felt);
+      const maal = (tekst) => {
+        const e = document.createElement('span');
+        Object.assign(e.style, { position: 'absolute', visibility: 'hidden', whiteSpace: 'pre', font: stil.font, letterSpacing: stil.letterSpacing, wordSpacing: stil.wordSpacing });
+        e.textContent = tekst;
+        document.body.append(e);
+        const b = e.getBoundingClientRect().width;
+        e.remove();
+        return b;
+      };
+      return (maal('1 1/2') - maal('11/2')) / parseFloat(stil.fontSize);
+    });
+    expect(em).toBeGreaterThanOrEqual(0.2);
+  });
+
+  test('norsk skjema uten de nye feltene er som før: brøk er ugyldig, og «1 000» er 1000', async ({ page }) => {
+    await page.goto(FIKSTUR);
+    await page.fill('#fast [data-felt=mengde]', '1/2');
+    await expect(page.locator('#fast [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText(FEIL);
+    await page.fill('#fast [data-felt=mengde]', '1 000');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('1000 dl hvetemel = 55000 g');
+  });
+});

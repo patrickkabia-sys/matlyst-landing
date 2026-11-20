@@ -2,6 +2,7 @@
 // Malen skriver bare tall som kan regnes ut fra datafila (se tillatteTall). Teksten per vare ligger i tekst-nb.mjs.
 import { kilderFor, publiserbare } from '../felles.mjs';
 import { artikkel, brodsmuler, elementliste, webApplikasjon } from '../skjema.mjs';
+import { esc, gramTekst as gramFelles, kalkSkjelett, mengdeTekst as mengdeFelles, tallI } from './felles-mal.mjs';
 import { TEKST } from './tekst-nb.mjs';
 
 // Rapportens toppede skjetall (ss_toppet, ts_toppet) ligger i datafila, men vises ikke: tallene lar seg ikke skille fra strøkne mål
@@ -11,24 +12,14 @@ export const VIS_TOPPET = false;
 const ROT = '/verktoy/dl-til-gram/';
 const fmt = (n) => String(n).replace('.', ',');
 const gram = (n) => `${fmt(n)} g`;
-const tegn = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
-const esc = (t) => String(t).replace(/[&<>"]/gu, (c) => tegn[c]);
 const ord = (rad) => rad.navn.toLowerCase();
 const MAANEDER = ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember'];
 const norskDato = (iso) => { const [a, m, d] = iso.split('-').map(Number); return `${d}. ${MAANEDER[m - 1]} ${a}`; };
-const tallI = (tekst) => String(tekst ?? '').match(/\d+(?:[.,]\d+)?/gu) ?? [];
 const USDA_FELT = ['dl_usda', 'dl_usda_pakket', 'dl_usda_siktet'];
 
-// Tallreglene er de samme som i kalkulatorkortet (site.js, svarTekst), låst av test/playwright/kalk-tabell.spec.mjs:
-// gram fra 1 g som hele gram (halve runder opp), under 1 g to gjeldende sifre; alle andre enheter: 100 og over som heltall,
-// 10 til 100 med tre gjeldende sifre, under 10 med to, uten «,0» til slutt. Halve runder opp også når flyttallet ligger like under.
-const sigTekst = (n, sifre) => {
-  const d = Math.min(100, Math.max(0, sifre - 1 - Math.floor(Math.log10(Math.abs(n)))));
-  const t = (Math.round(Number((n * 10 ** d).toPrecision(12))) / 10 ** d).toFixed(d);
-  return (t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t).replace('.', ',');
-};
-export const gramTekst = (n) => (n === 0 ? '0' : Math.abs(n) >= 1 ? String(Math.round(Number(n.toPrecision(12)))) : sigTekst(n, 2));
-export const mengdeTekst = (n) => (n === 0 ? '0' : Math.abs(n) >= 100 ? String(Math.round(Number(n.toPrecision(12)))) : sigTekst(n, Math.abs(n) >= 10 ? 3 : 2));
+// Tallreglene (felles-mal.mjs) er de samme som i kalkulatorkortet (site.js, svarTekst), låst av test/playwright/kalk-tabell.spec.mjs, her med komma.
+export const gramTekst = (n) => gramFelles(n, { komma: true });
+export const mengdeTekst = (n) => mengdeFelles(n, { komma: true });
 const gramVerdi = (n) => Number(gramTekst(n).replace(',', '.'));
 
 /** Alle utregninger på siden, ett sted. */
@@ -64,10 +55,7 @@ const usdaTall = (rad) => USDA_FELT.filter((k) => rad.tall[k]).map((k) => {
 });
 const kortUsdaNavn = (navn) => navn.replace(/\s*\(Includes[^)]*\)/u, '');
 
-const PIL = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>';
-const BYTT = '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg>';
 const ENHETER = [['dl', 'Desiliter (dl)'], ['ss', 'Spiseskjeer (ss)'], ['ts', 'Teskjeer (ts)'], ['ml', 'Milliliter (ml)'], ['l', 'Liter (l)'], ['cups', 'Amerikanske cups'], ['g', 'Gram (g)'], ['kg', 'Kilo (kg)']];
-const valg = (valgt) => ENHETER.map(([v, t]) => `<option value="${v}"${v === valgt ? ' selected' : ''}>${t}</option>`).join('');
 const KALK = {
   varer: null,
   ml: { dl: 100, ss: 15, ts: 5, ml: 1, l: 1000, cups: 236.5882365 },
@@ -87,24 +75,11 @@ export function kalkHtml({ rader, fast }) {
   const vare = fast
     ? `<div class="kalkvare"><span><span class="hva">Vare</span><br><b>${esc(fast.navn)}</b></span><a href="${ROT}">Bytt vare</a></div>`
     : `<div class="kalkvare"><label><span class="hva">Vare</span><select data-felt="vare">${varer.map((r, i) => `<option value="${i}"${i === indeks ? ' selected' : ''}>${esc(r.navn)}</option>`).join('')}</select></label></div>`;
-  const hurtig = KALK.steg.volum.map((v) => `<button type="button" data-v="${v}">${v} dl</button>`).join('');
-  return `<form class="kalk" data-kalk="volumvekt" onsubmit="return false" aria-label="Kalkulator: desiliter til gram">
-  ${vare}
-  <div class="kalkrad">
-    <div class="kalkside">
-      <label class="kalktall"><span class="skjult">Mengde</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="2"></label>
-      <label class="kalkenhet"><span class="skjult">Fra</span><select data-felt="fra">${valg('dl')}</select>${PIL}</label>
-    </div>
-    <button type="button" class="bytt" data-felt="bytt" aria-label="Bytt retning">${BYTT}</button>
-    <div class="kalkside til">
-      <output class="kalktall" data-felt="svar">${fmt(2 * dl)}</output>
-      <label class="kalkenhet"><span class="skjult">Til</span><select data-felt="til">${valg('g')}</select>${PIL}</label>
-    </div>
-  </div>
-  <div class="hurtig" role="group" aria-label="Vanlige mengder">${hurtig}</div>
-  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">2 dl ${esc(ord(forste))} = ${gram(2 * dl)}</p>
-  <script type="application/json" class="kalk-data">${json.replaceAll('<', '\\u003c')}</script>
-</form>`;
+  return kalkSkjelett({
+    etiketter: { aria: 'Kalkulator: desiliter til gram', mengde: 'Mengde', fra: 'Fra', til: 'Til', bytt: 'Bytt retning', vanlige: 'Vanlige mengder' },
+    enheter: ENHETER, fra: 'dl', til: 'g', data: JSON.parse(json), vareHtml: vare,
+    start: { mengde: '2', svar: fmt(2 * dl), setning: `2 dl ${esc(ord(forste))} = ${gram(2 * dl)}`, hurtig: KALK.steg.volum.map((v) => [v, `${v} dl`]) },
+  });
 }
 
 const kildeNavn = (k) => (k.navn.includes(String(k.aar)) ? k.navn : `${k.navn} (${k.aar})`);
