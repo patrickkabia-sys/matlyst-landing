@@ -508,16 +508,10 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/almonds/"/>
   </url>
   <url>
-    <loc>https://matlyst-app.no/en/tools/cups-to-grams/baking-powder/</loc>
+    <loc>https://matlyst-app.no/en/tools/cups-to-grams/baking-powder-and-baking-soda/</loc>
     <lastmod>2026-11-20</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/baking-powder/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/baking-powder/"/>
-  </url>
-  <url>
-    <loc>https://matlyst-app.no/en/tools/cups-to-grams/baking-soda/</loc>
-    <lastmod>2026-11-20</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/baking-soda/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/baking-soda/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/baking-powder-and-baking-soda/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/baking-powder-and-baking-soda/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/black-beans/</loc>

@@ -42,8 +42,8 @@ export const VARER_EN = Object.freeze([
   { id: 'chocolate-chips', slug: 'chocolate-chips', navn: 'Chocolate chips', ord: 'chocolate chips', variant: 'semisweet chocolate chips', fdcId: 167976, basis: 'cup', porsjon: 'cup chips (6 oz package)' },
   { id: 'peanut-butter', slug: 'peanut-butter', navn: 'Peanut butter', ord: 'peanut butter', variant: 'smooth peanut butter', fdcId: 174294, basis: 'cup', porsjon: 'cup' },
   { id: 'salt', slug: 'salt', navn: 'Salt', ord: 'salt', variant: 'table salt', fdcId: 173468, basis: 'cup', porsjon: 'cup' },
-  { id: 'baking-powder', slug: 'baking-powder', navn: 'Baking powder', ord: 'baking powder', variant: 'double-acting baking powder', fdcId: 172804, basis: 'tsp', porsjon: 'tsp' },
-  { id: 'baking-soda', slug: 'baking-soda', navn: 'Baking soda', ord: 'baking soda', variant: 'baking soda', fdcId: 175040, basis: 'tsp', porsjon: 'tsp' },
+  // Baking powder og baking soda har samme tall (4.6 g per teaspoon) og er derfor én side; baking soda står som post nummer to (b_-tall i datafila).
+  { id: 'baking-powder', slug: 'baking-powder-and-baking-soda', navn: 'Baking powder and baking soda', ord: 'baking powder or baking soda', variant: 'double-acting baking powder or baking soda', fdcId: 172804, basis: 'tsp', porsjon: 'tsp', ogsa: { fdcId: 175040, porsjon: 'tsp' } },
   { id: 'active-dry-yeast', slug: 'active-dry-yeast', navn: 'Active dry yeast', ord: 'active dry yeast', variant: 'active dry yeast', fdcId: 175043, basis: 'tsp', porsjon: 'tsp' },
   { id: 'rosiner', slug: 'raisins', navn: 'Raisins', ord: 'raisins', variant: 'dark seedless raisins', fdcId: 168165, basis: 'cup', porsjon: 'cup (not packed)' },
   { id: 'walnuts', slug: 'walnuts', navn: 'Walnuts', ord: 'walnuts', variant: 'chopped walnuts', fdcId: 170187, basis: 'cup', porsjon: 'cup, chopped' },

@@ -213,7 +213,7 @@ Matlyst imports a recipe from a shared link, video or photo, translates it into 
 
 ## English: Tools
 
-- [Cups to grams: calculator and chart for 43 ingredients](https://matlyst-app.no/en/tools/cups-to-grams/): How much does a cup weigh? Convert cups, tablespoons, and teaspoons to grams and ounces for 43 ingredients, with USDA numbers.
+- [Cups to grams: chart for 42 ingredients](https://matlyst-app.no/en/tools/cups-to-grams/): How much does a cup weigh? Convert cups, tablespoons, and teaspoons to grams and ounces for 42 ingredients, with USDA numbers.
 - [Cooking unit converter: cups, ml, oz, grams, °F](https://matlyst-app.no/en/tools/unit-converter/): Free cooking unit converter for every combination: ml to dl, cups to ml, oz to g, lb to kg, °F to °C and more, with charts and kitchen tips.
 
 ## English: Privacy and terms

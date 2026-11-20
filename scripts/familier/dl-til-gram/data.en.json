@@ -1080,8 +1080,8 @@
     },
     {
       "id": "baking-powder",
-      "slug": "baking-powder",
-      "navn": "Baking powder",
+      "slug": "baking-powder-and-baking-soda",
+      "navn": "Baking powder and baking soda",
       "status": "kontrollert",
       "kontrollert": "2026-11-20",
       "oppdatert": "2026-11-20",
@@ -1097,39 +1097,26 @@
           "enhet": "g",
           "kilde": "usda",
           "merknad": "0.5 tsp"
+        },
+        "b_tsp": {
+          "verdi": 4.6,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "tsp"
+        },
+        "b_p_1": {
+          "verdi": 2.3,
+          "enhet": "g",
+          "kilde": "usda",
+          "merknad": "0.5 tsp"
         }
       },
       "tekst": {
-        "variant": "double-acting baking powder",
+        "variant": "double-acting baking powder or baking soda",
         "usdaNavn": "Leavening agents, baking powder, double-acting, straight phosphate",
-        "fdcId": "172804"
-      }
-    },
-    {
-      "id": "baking-soda",
-      "slug": "baking-soda",
-      "navn": "Baking soda",
-      "status": "kontrollert",
-      "kontrollert": "2026-11-20",
-      "oppdatert": "2026-11-20",
-      "tall": {
-        "tsp": {
-          "verdi": 4.6,
-          "enhet": "g",
-          "kilde": "usda",
-          "merknad": "tsp"
-        },
-        "p_1": {
-          "verdi": 2.3,
-          "enhet": "g",
-          "kilde": "usda",
-          "merknad": "0.5 tsp"
-        }
-      },
-      "tekst": {
-        "variant": "baking soda",
-        "usdaNavn": "Leavening agents, baking soda",
-        "fdcId": "175040"
+        "fdcId": "172804",
+        "usdaNavn2": "Leavening agents, baking soda",
+        "fdcId2": "175040"
       }
     },
     {

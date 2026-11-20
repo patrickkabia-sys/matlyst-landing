@@ -12,7 +12,7 @@ const les = (tekst) => {
 
 for (const side of ['flour', 'butter', 'salt', 'baking-powder', 'rice']) {
   test(`kalkulatoren og tabellene på ${side}-siden gir samme svar`, async ({ page }) => {
-    await page.goto(`/en/tools/cups-to-grams/${side}/`);
+    await page.goto(`/en/tools/cups-to-grams/${side === 'baking-powder' ? 'baking-powder-and-baking-soda' : side}/`);
     const f = 'form.kalk';
     const svar = page.locator(`${f} [data-felt=svar]`);
     const tabell = await page.$$eval('table.otabell tbody tr', (rader) => rader.map((r) => [...r.cells].map((c) => c.textContent.trim())));
@@ -28,6 +28,8 @@ for (const side of ['flour', 'butter', 'salt', 'baking-powder', 'rice']) {
       await page.fill(`${f} [data-felt=mengde]`, rad.mengde);
       await page.selectOption(`${f} [data-felt=til]`, 'g');
       await expect(svar, `${side}: ${etikett} i gram`).toHaveText(gram.replace(/\s*g$/u, ''));
+      // Ounces står bare fra 1 oz; en tom celle betyr at tabellen ikke sier noe (kalkulatoren viser da en verdi under 1).
+      if (ounces === '') { await page.selectOption(`${f} [data-felt=til]`, 'oz'); expect(Number(await svar.textContent()), `${side}: ${etikett} er under 1 oz`).toBeLessThan(1); continue; }
       await page.selectOption(`${f} [data-felt=til]`, 'oz');
       await expect(svar, `${side}: ${etikett} i ounces`).toHaveText(ounces.replace(/\s*oz$/u, ''));
     }

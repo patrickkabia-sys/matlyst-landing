@@ -30,7 +30,8 @@ export function utregnetEn(rad) {
   const tsp = erTsp(rad);
   const gPerCup = tsp ? rad.tall.tsp.verdi * SKJE_PER_CUP.tsp : rad.tall.cup.verdi;
   const perCup = (brøk) => gPerCup * brøk;
-  const rad_ = (etikett, g) => [etikett, gramTekst(g), ouncesTekst(g)];
+  // Ounces bare når verdien er 1 oz eller mer; ellers tom celle.
+  const rad_ = (etikett, g) => [etikett, gramTekst(g), g / G_PER_OZ >= 1 ? ouncesTekst(g) : ''];
   const cups = [['1/4 cup', 1 / 4], ['1/3 cup', 1 / 3], ['1/2 cup', 1 / 2], ['2/3 cup', 2 / 3], ['3/4 cup', 3 / 4], ['1 cup', 1], ['2 cups', 2]];
   const tabell = tsp
     ? [['1/2 tsp', 1 / 96], ['1 tsp', 1 / 48], ['2 tsp', 1 / 24], ['1 tbsp', 1 / 16], ['1/4 cup', 1 / 4], ['1/2 cup', 1 / 2], ['1 cup', 1]].map(([e, b]) => rad_(e, perCup(b)))
@@ -53,11 +54,12 @@ export const KALK_EN = {
   ml: { cups: ML_PER_CUP, tbsp: 14.78676478125, tsp: 4.92892159375, floz: 29.5735295625, ml: 1 },
   g: { g: 1, oz: G_PER_OZ, lb: 453.59237 },
   kort: { cups: ['cup', 'cups'], tbsp: 'tbsp', tsp: 'tsp', floz: 'fl oz', ml: 'ml', g: 'g', oz: 'oz', lb: 'lb' },
-  stegFor: { cups: 'cup', tbsp: 'skje', tsp: 'skje', floz: 'floz', ml: 'ml', g: 'g', oz: 'oz', lb: 'lb' },
+  stegFor: { cups: 'cup', tbsp: 'skje', tsp: 'tsp', floz: 'floz', ml: 'ml', g: 'g', oz: 'oz', lb: 'lb' },
   byttTil: { cups: '1', tbsp: '1', tsp: '1', floz: '8', ml: '100', g: '100', oz: '4', lb: '1' },
   steg: {
     cup: ['1/4', '1/3', '1/2', '3/4', '1', '2'],
     skje: ['1/2', '1', '2', '3', '4', '8'],
+    tsp: ['1/4', '1/2', '3/4', '1', '1 1/2', '2'],
     floz: ['1', '2', '4', '6', '8', '16'],
     ml: ['30', '60', '125', '250', '500', '1000'],
     g: ['50', '100', '150', '250', '500', '1000'],
@@ -82,7 +84,7 @@ export function kalkHtmlEn({ rader, fast }) {
   const vare = fast
     ? `<div class="kalkvare"><span><span class="hva">Ingredient</span><br><b>${esc(fast.navn)}</b></span><a href="${ROT}">Change ingredient</a></div>`
     : `<div class="kalkvare"><label><span class="hva">Ingredient</span><select data-felt="vare">${varer.map((r, i) => `<option value="${i}"${i === indeks ? ' selected' : ''}>${esc(r.navn)}</option>`).join('')}</select></label></div>`;
-  const grp = enhet === 'tsp' ? KALK_EN.steg.skje : KALK_EN.steg.cup;
+  const grp = enhet === 'tsp' ? KALK_EN.steg.tsp : KALK_EN.steg.cup;
   return kalkSkjelett({
     etiketter: { aria: 'Calculator: cups to grams', mengde: 'Amount', fra: 'From', til: 'To', bytt: 'Swap direction', vanlige: 'Common amounts' },
     enheter: ENHETER, fra: enhet, til: 'g', data, vareHtml: vare,
@@ -93,8 +95,9 @@ export function kalkHtmlEn({ rader, fast }) {
 // ---- USDA-porsjonene ----
 
 const delEtikett = (etikett) => { const m = /^(\d+(?:\.\d+)?) (.+)$/u.exec(etikett); return m ? { mengde: Number(m[1]), mod: m[2] } : { mengde: 1, mod: etikett }; };
-const SKJULES = /container|package|box|NLEA|slice|packet|dash|cube|cubic inch|^almond$|^(?:extra|small|medium|large)\b/u;
-const BEHOLDES = /^(?:cup|tbsp|tablespoon|tsp|teaspoon|stick|pat|fl oz|quart|ml|serving 1)/u;
+// «serving …», «brownulated», «melted» og pakker med mål i parentes sier ikke noe om cups og skjeer. «packet» (active dry yeast) står med.
+const SKJULES = /container|package|box|NLEA|slice|dash|cubic inch|brownulated|melted|^serving|^packet \(|^almond$|^(?:extra|small|medium|large)\b/u;
+const BEHOLDES = /^(?:cup|tbsp|tablespoon|tsp|teaspoon|stick|pat|fl oz|quart|ml|packet$)/u;
 /** Porsjoner som sier leseren noe om cups, skjeer og stick. Mengder utenfor 1 («2 tbsp», «50 raisins») står med mengden slik USDA skriver den. */
 export function visPorsjon(etikett) {
   const { mengde, mod } = delEtikett(etikett);
@@ -129,10 +132,11 @@ export function skjeAvvik(rad) {
 const kildeLinje = (k) => `${esc(k.utgiver)}. ${esc(k.navn)} (${k.aar}). <a href="${esc(k.adresse)}" rel="noopener">${esc(new URL(k.adresse).hostname)}</a>. Retrieved ${engelskDato(k.hentet)}.`;
 const kildeliste = (kilder) => `<h2>Sources</h2>\n<ol class="kilder" id="sources">${kilder.map((k) => `<li>${kildeLinje(k)}</li>`).join('')}</ol>`;
 
-// Samme kortoppsett som APPKORT i mal-nb.mjs: overskrift og kort med telefonbilde. Teksten er setninger fra «Stop converting by hand» på de engelske
-// omregnersidene, og bildet er det de bruker for Units (images/en-guide/bilder.json, matlyst-settings-units-language).
+// Samme kortoppsett som APPKORT i mal-nb.mjs: overskrift og kort med telefonbilde. Teksten er de to første setningene, uendret, av «Stop converting by hand» på de
+// engelske omregnersidene (en/tools/cups-to-ml), og bildet er det samme som der (images/en-guide/bilder.json, matlyst-settings-units-language). Bildet viser
+// Units: US, så kortet sier bare at du velger hvordan mengder vises. Flere setninger sprenger høyden på 360 x 640 (sidekontrollen).
 const APPKORT = `<h2>Stop converting by hand</h2>
-<aside class="i-appen i-enheter"><div class="i-appen-tekst"><p class="i-appen-tittel"><img src="/images/icon-64.png" width="22" height="22" alt="">In Matlyst</p><p>With Units set to Metric in Settings, cups, ounces, and pounds from a US recipe are converted to milliliters and grams as you import it. The setting applies to new imports.</p><a class="more" href="/en/recipe-book-app/">Read more</a></div><div class="i-appen-media"><img class="tel" src="/images/en-guide/matlyst-settings-units-language-400.webp" srcset="/images/en-guide/matlyst-settings-units-language-400.webp 400w, /images/en-guide/matlyst-settings-units-language-800.webp 800w" sizes="200px" width="400" height="870" loading="lazy" decoding="async" alt="Settings screen with Units set to US and the language set to English"></div></aside>`;
+<aside class="i-appen i-enheter"><div class="i-appen-tekst"><p class="i-appen-tittel"><img src="/images/icon-64.png" width="22" height="22" alt="">In Matlyst</p><p>Converting by hand gets old fast, especially when a whole recipe is in the wrong units. When you import a recipe into Matlyst, you choose how amounts are shown.</p><a class="more" href="/en/recipe-book-app/">About the app</a></div><div class="i-appen-media"><img class="tel" src="/images/en-guide/matlyst-settings-units-language-400.webp" srcset="/images/en-guide/matlyst-settings-units-language-400.webp 400w, /images/en-guide/matlyst-settings-units-language-800.webp 800w" sizes="200px" width="400" height="870" loading="lazy" decoding="async" alt="Settings screen with Units set to US and the language set to English"></div></aside>`;
 
 const EYEBROW_VARE = `Tools<span aria-hidden="true"> › </span><a href="${ROT}">Cups to grams</a>`;
 const EYEBROW_NAV = 'Tools<span aria-hidden="true"> › </span>Cups to grams';
@@ -141,7 +145,7 @@ const SKJELETT = { stegTittel: 'How to use the calculator', forst: '', alternati
 
 // De faste tallene på sidene: brøkene i hurtigknappene og tabellene, enhetsfaktorene i kalkulatorens data, definisjonene av enhetene,
 // og tallene i appkortet. Ingen intervaller.
-const FASTE = ['1/4', '1/3', '1/2', '2/3', '3/4', '1', '2', '3', '4', '5', '6', '8', '12', '16', '20', '25', '30', '48', '50', '60', '96', '100', '125', '150', '250', '500', '1000', '236.6', '28.35', '454',
+const FASTE = ['1/4', '1/3', '1/2', '2/3', '3/4', '1', '2', '3', '4', '5', '6', '8', '12', '16', '20', '25', '30', '48', '50', '60', '96', '100', '125', '150', '250', '500', '1000', '236.6', '28.35', '454', '1,000',
   ...Object.values(KALK_EN.ml).map(String), ...Object.values(KALK_EN.g).map(String), ...Object.values(KALK_EN.steg).flat(), ...Object.values(KALK_EN.byttTil)];
 const kildeTall = (k) => [String(k.aar), ...tallI(engelskDato(k.hentet))];
 
@@ -192,13 +196,13 @@ function usdaAvsnitt(rad, data) {
   const tabellFor = (prefiks) => `<table class="sprik"><thead><tr><th scope="col">Portion</th><th scope="col">Grams</th></tr></thead><tbody>${usdaPorsjoner(rad, prefiks).map(([etikett, g, brukt]) => `<tr${brukt ? ' class="valgt"' : ''}><td>${esc(etikett)}${brukt ? '<small>Used in the calculator</small>' : ''}</td><td>${g} g</td></tr>`).join('')}</tbody></table>`;
   const [forste, andre] = poster(rad);
   const avvik = skjeAvvik(rad).map(([e, usda, regnet]) => `<p>USDA lists 1 ${e} of ${esc(ord(rad))} as ${usda} g. The calculator and the chart use the ${erTsp(rad) ? 'teaspoon' : 'cup'} weight, which gives ${gramTekst(regnet)} g for 1 ${e}.</p>`).join('\n');
-  const stick = Object.values(rad.tall).find((x) => x.merknad === 'stick');
   const naer = (t.naer ?? []).map((id) => publiserbare(data).find((r) => r.id === id)).filter(Boolean);
   const grunnTall = rad.tall.cup ?? rad.tall.tsp;
-  const likt = andre && rad.tall.b_cup && rad.tall.b_cup.verdi === grunnTall.verdi ? `\n<p>Both entries list ${grunnTall.verdi} g for 1 ${grunnTall.merknad}.</p>` : '';
-  return `<h2>USDA entries</h2>
-<p>USDA FoodData Central, SR Legacy, FDC ID ${forste.fdcId}: “${esc(forste.navn)}”. Every portion in the ${andre ? 'entries' : 'entry'} is shown as USDA writes it.</p>
-${tabellFor('')}${andre ? `\n<p>FDC ID ${andre.fdcId}: “${esc(andre.navn)}”.</p>\n${tabellFor('b_')}${likt}` : ''}${avvik ? `\n${avvik}` : ''}${naer.length ? `\n<p>Close entries with their own page: ${naer.map((n) => lenke(n)).join(', ')}.</p>` : ''}`;
+  const grunn2 = rad.tall.b_cup ?? rad.tall.b_tsp;
+  const likt = andre && grunn2 && grunn2.verdi === grunnTall.verdi ? `\n<p>Both entries list ${grunnTall.verdi} g for 1 ${grunnTall.merknad}.</p>` : '';
+  return `<h2>USDA data</h2>
+<p>USDA FoodData Central, SR Legacy, FDC ID ${forste.fdcId}: “${esc(forste.navn)}.” Portions are listed in USDA's own wording.</p>
+${tabellFor('')}${andre ? `\n<p>FDC ID ${andre.fdcId}: “${esc(andre.navn)}.”</p>\n${tabellFor('b_')}${likt}` : ''}${avvik ? `\n${avvik}` : ''}${naer.length ? `\n<p>Similar ingredients: ${naer.map((n) => lenke(n)).join(', ')}.</p>` : ''}`;
 }
 
 function spmForRad(rad, data, rader, u) {
@@ -207,33 +211,33 @@ function spmForRad(rad, data, rader, u) {
   const v = variant(rad);
   const tsp = erTsp(rad);
   const enhet = tsp ? 'teaspoon' : 'cup';
-  const kilde = `Source: USDA FoodData Central, SR Legacy, ${poster(rad).map((p) => `FDC ID ${p.fdcId}, “${esc(kortUsdaNavn(p.navn))}”`).join(' and ')}.`;
+  // 1: svaret med variant, ellers kortordet. Kilden står i kildelinja og kildelista, ikke her.
   const spm = [[
     `How many grams are in a ${enhet} of ${o}?`,
-    `1 ${enhet} of ${v} weighs ${tsp ? gram(u.grunn) : gram(u.gPerCup)} (${tsp ? ouncesTekst(u.grunn) : u.oz} oz). ${kilde}`,
+    `1 ${enhet} of ${v} weighs ${tsp ? gram(u.grunn) : gram(u.gPerCup)} (${tsp ? ouncesTekst(u.grunn) : u.oz} oz).`,
   ]];
   const [g0, c0] = u.tilbake[1];
   spm.push(tsp
-    ? [`How many teaspoons is ${g0} grams of ${o}?`, `${g0} g of ${v} is ${c0} tsp. Divide the grams by ${u.grunn}.`]
-    : [`How many cups is ${g0} grams of ${o}?`, `${g0} g of ${v} is ${c0} ${cupsEnhet(c0)}. Divide the grams by ${u.gPerCup}.`]);
-  spm.push([`How much does 1 tablespoon of ${o} weigh?`, tsp
-    ? `1 teaspoon of ${v} weighs ${u.tsp} g. 1 tablespoon of ${v}, calculated from the teaspoon weight, is ${u.tbsp} g.`
-    : `1 tablespoon of ${v} weighs ${u.tbsp} g and 1 teaspoon weighs ${u.tsp} g, calculated from the cup weight.`]);
+    ? [`How many teaspoons is ${g0} grams of ${o}?`, `${g0} g of ${o} is ${c0} tsp. Divide the grams by ${u.grunn}.`]
+    : [`How many cups is ${g0} grams of ${o}?`, `${g0} g of ${o} is ${c0} ${cupsEnhet(c0)}. Divide the grams by ${u.gPerCup}.`]);
+  spm.push([`How many grams are in a tablespoon of ${o}?`, tsp
+    ? `1 tablespoon is 3 teaspoons, so it weighs ${u.tbsp} g.`
+    : `1 tablespoon weighs ${u.tbsp} g, and 1 teaspoon weighs ${u.tsp} g. Both are calculated from the cup weight.`]);
   const stick = Object.values(rad.tall).find((x) => x.merknad === 'stick');
   const alt = t.alt && Object.values(rad.tall).find((x) => x.merknad === t.alt.porsjon);
   const naer = (t.naer ?? []).map((id) => rader.find((r) => r.id === id)).filter(Boolean);
   if (stick) {
     spm.push([`How many grams are in a stick of ${o}?`, `USDA lists 1 stick of ${v} as ${stick.verdi} g.`]);
   } else if (alt) {
-    spm.push([t.alt.sporsmal, `USDA lists ${alt.verdi} g for 1 ${t.alt.porsjon}. This page uses 1 ${rad.tall.cup.merknad}, which is ${rad.tall.cup.verdi} g.`]);
+    spm.push([t.alt.sporsmal, `USDA lists 1 cup of ${t.alt.adj} ${o} as ${alt.verdi} g. ${t.alt.hoved}, it's ${rad.tall.cup.verdi} g, which is what this page uses.`]);
   } else if (naer[0] && utregnetEn(naer[0]).gPerCup !== u.gPerCup) {
-    // Samme vekt gir ikke et eget spørsmål: «Yes, the same» ville gjort de to sidene til speilbilder av hverandre.
+    // Samme vekt gir ikke et eget spørsmål: de to sidene ville blitt speilbilder av hverandre.
     const n = naer[0];
     const un = utregnetEn(n);
     const tall = (x) => (tsp ? gram(x.grunn) : gram(x.gPerCup));
-    spm.push([`Does ${ord(n)} weigh the same as ${o}?`, `No. 1 ${enhet} of ${variant(n)} weighs ${tall(un)}, compared with ${tall(u)} for ${v}.`]);
-  } else {
-    spm.push([`How many ounces does a cup of ${o} weigh?`, `1 cup of ${v} weighs ${u.oz} oz. A cup holds 8 fluid ounces.`]);
+    spm.push([`Does a ${enhet} of ${o} weigh the same as a ${enhet} of ${ord(n)}?`, `1 ${enhet} of ${v} weighs ${tall(u)}, and 1 ${enhet} of ${variant(n)} weighs ${tall(un)}.`]);
+  } else if (!tsp) {
+    spm.push([`How many ounces does a cup of ${o} weigh?`, `1 cup of ${o} weighs ${u.oz} oz. That's weight. By volume, a cup is 8 fl oz.`]);
   }
   return spm;
 }
@@ -252,10 +256,12 @@ function kortsvar(rad, u) {
     ? `1 teaspoon of ${v} is ${gram(u.grunn)}. 1 tablespoon is ${u.tbsp} g and 1 cup is ${gram(u.gPerCup)}, calculated from the teaspoon weight.`
     : `1 cup of ${v} is ${gram(u.gPerCup)}. 1 tablespoon is ${u.tbsp} g and 1 teaspoon is ${u.tsp} g, calculated from the cup weight.`;
   return `<p class="kortsvar"><b>Short answer:</b> ${svar}</p>
-<p class="kilde">Source: <a href="#sources">USDA FoodData Central, SR Legacy</a>, ${poster(rad).map((p) => `“${esc(p.navn)}”`).join(' and ')}.</p>`;
+<p class="kilde">Source: <a href="#sources">USDA FoodData Central, SR Legacy</a>, ${poster(rad).map((p, i, a) => `“${esc(kortUsdaNavn(p.navn))}${i === a.length - 1 ? '.' : ''}”`).join(' and ')}</p>`;
 }
 
-const tittel = (navn, enhet, g, medOunces) => `${navn}: ${enhet} to grams${medOunces ? ' and ounces' : ''} (1 ${enhet === 'cups' ? 'cup' : 'tsp'} = ${g} g)`;
+/** Tittelen, talt MED « | Matlyst» (60 tegn i alt). «Flour: cups to grams (1 cup = 125 g)»; for lang gir uten parentesen. Hevemidlene har aldri parentes. */
+export const TITTEL_MAKS = 60 - ' | Matlyst'.length;
+const tittelFor = (navn, enhetNavn, g, medParentes) => `${navn}: ${enhetNavn} to grams${medParentes ? ` (1 ${enhetNavn === 'cups' ? 'cup' : 'tsp'} = ${g} g)` : ''}`;
 
 export function sideForRad(rad, data, rader) {
   const u = utregnetEn(rad);
@@ -268,21 +274,22 @@ export function sideForRad(rad, data, rader) {
   const ozEn = tsp ? ouncesTekst(u.grunn) : u.oz;
   const adresse = sti(rad);
   const gTall = gramTekst(tsp ? u.grunn : u.gPerCup);
-  const kandidater = [tittel(rad.navn, enhetNavn, gTall, true), tittel(rad.navn, enhetNavn, gTall, false), `${rad.navn}: ${enhetNavn} to grams`];
-  const title = kandidater.find((t) => t.length <= 60) ?? kandidater.at(-1);
+  const kandidater = [...(tsp ? [] : [tittelFor(rad.navn, enhetNavn, gTall, true)]), tittelFor(rad.navn, enhetNavn, gTall, false)];
+  const title = kandidater.find((t) => t.length <= TITTEL_MAKS) ?? kandidater.at(-1);
   const lead = `1 ${enhetEn} of ${v} weighs ${gEn} (${ozEn} oz). Type an amount to convert.`;
   const beskr = (kort) => `1 ${enhetEn} of ${variant(rad)} weighs ${gEn} (${ozEn} oz). Convert ${tsp ? 'teaspoons, tablespoons, and cups' : 'cups, tablespoons, and teaspoons'} to grams and ounces${kort ? '.' : ', with a chart and USDA numbers.'}`;
   const description = beskr(false).length <= 160 ? beskr(false) : beskr(true);
-  const tabell = `<table class="otabell"><thead><tr><th scope="col">${esc(rad.navn)}</th><th scope="col">Grams</th><th scope="col">Ounces</th></tr></thead><tbody>${u.tabell.map(([e, g, oz]) => `<tr><td>${e}</td><td>${g} g</td><td>${oz} oz</td></tr>`).join('')}</tbody></table>`;
+  const tabell = `<table class="otabell"><thead><tr><th scope="col">${esc(rad.navn)}</th><th scope="col">Grams</th><th scope="col">Ounces</th></tr></thead><tbody>${u.tabell.map(([e, g, oz]) => `<tr><td>${e}</td><td>${g} g</td><td>${oz ? `${oz} oz` : ''}</td></tr>`).join('')}</tbody></table>`;
   const eks = u.tilbake.map(([g, c]) => `<li><b>${g} g</b><span>${c} ${tsp ? 'tsp' : cupsEnhet(c)}</span></li>`).join('');
-  const pundCups = mengdeTekst(453.59237 / (tsp ? u.grunn : u.gPerCup));
-  const kiloCups = mengdeTekst(1000 / (tsp ? u.grunn : u.gPerCup));
-  const pund = `<p>1 pound of ${v} is ${gramTekst(453.59237)} g, or ${pundCups} ${tsp ? 'tsp' : cupsEnhet(pundCups)}. 1 kilogram is 1000 g, or ${kiloCups} ${tsp ? 'tsp' : cupsEnhet(kiloCups)} of ${v}.</p>`;
+  // Pund og kilo (ekte innhold for amerikanske lesere) står én gang per side, ikke for hevemidlene.
+  const pundCups = mengdeTekst(453.59237 / u.gPerCup);
+  const kiloCups = mengdeTekst(1000 / u.gPerCup);
+  const pund = tsp ? '' : `<p>1 pound of ${esc(o)} is ${gramTekst(453.59237)} g, or ${pundCups} ${cupsEnhet(pundCups)}. 1 kilogram (1,000 g) is ${kiloCups} ${cupsEnhet(kiloCups)}.</p>`;
   const rik = [
-    `<div class="oto"><div class="okort"><h2>${esc(rad.navn)} in grams and ounces</h2><p>1 ${enhetEn} of ${v} weighs ${gEn}.</p>${tabell}</div>`,
+    `<div class="oto"><div class="okort"><h2>${esc(rad.navn)} in grams and ounces</h2>${tabell}</div>`,
     `<div class="okort"><h2>Convert grams back to ${enhetNavn}</h2><p>Divide the weight in grams by ${tsp ? u.grunn : u.gPerCup} to get ${enhetNavn} of ${esc(o)}. Going the other way, multiply ${enhetNavn} by ${tsp ? u.grunn : u.gPerCup}.</p><p class="formel"><span>${enhetNavn}</span><i>=</i><span>grams</span><i>÷</i><b>${tsp ? u.grunn : u.gPerCup}</b></p><p class="liten">Examples</p><ul class="eksempler">${eks}</ul>${pund}</div></div>`,
     APPKORT,
-    `<h2>Ounces: volume and weight</h2>\n<p>A cup holds 8 fluid ounces. A cup of ${v} weighs ${u.oz} oz.</p>`,
+    ...(tsp ? [] : [`<h2>Ounces and fluid ounces</h2>\n<p>Fluid ounces measure volume, and ounces measure weight (1 oz = 28.35 g). A cup holds 8 fl oz. 1 cup of ${esc(o)} weighs ${u.oz} oz.</p>`]),
     usdaAvsnitt(rad, data),
     kildeliste(kilderFor(data, [rad])),
     andreVarer(rad, rader),
@@ -317,15 +324,15 @@ export function navSide(data, rader) {
   const hvete = eks[0] ?? lett;
   const uh = utregnetEn(hvete);
   const rows = sortert.map((r) => { const u = utregnetEn(r); return `<tr><td>${lenke(r)}</td><td>${gram(u.gPerCup)}</td><td>${u.oz} oz</td><td>${u.tbsp} g</td><td>${u.tsp} g</td></tr>`; }).join('');
-  const title = `Cups to grams: calculator and chart for ${rader.length} ingredients`;
+  const title = `Cups to grams: chart for ${rader.length} ingredients`;
   const description = `How much does a cup weigh? Convert cups, tablespoons, and teaspoons to grams and ounces for ${rader.length} ingredients, with USDA numbers.`;
   const kilder = kilderFor(data, rader);
   const rik = [
-    `<h2>What does 1 cup weigh?</h2><p>Select an ingredient for more amounts, grams to cups, and the USDA entries.</p>
+    `<h2>What does 1 cup weigh?</h2><p>Pick an ingredient for a full chart and grams to cups.</p>
 <div class="varerull"><table class="varer"><thead><tr><th scope="col">Ingredient</th><th scope="col">1 cup (g)</th><th scope="col">1 cup (oz)</th><th scope="col">1 tbsp (g)</th><th scope="col">1 tsp (g)</th></tr></thead><tbody>${rows}</tbody></table></div>`,
     APPKORT,
-    `<h2>Why a cup does not weigh the same</h2><p>A cup measures volume, and grams measure weight. 1 cup of ${esc(variant(tung))} weighs ${gram(cupG(tung))}, and 1 cup of ${esc(variant(lett))} weighs ${gram(cupG(lett))}. So every ingredient has its own number when you convert between cups and grams.</p>
-<h2>How we calculated</h2><p>The cup weights come from USDA FoodData Central, SR Legacy. Tablespoons and teaspoons are calculated from the cup weight (1 cup = 16 tbsp = 48 tsp). For baking powder, baking soda, and active dry yeast, USDA lists a teaspoon, so the cup weight is calculated from the teaspoon weight. Ounces are weight ounces (1 oz = 28.35 g), not fluid ounces.</p>`,
+    `<h2>Why cups don't all weigh the same</h2><p>A cup measures volume, and grams measure weight. 1 cup of ${esc(ord(tung))} weighs ${gram(cupG(tung))}, and 1 cup of ${esc(ord(lett))} weighs ${gram(cupG(lett))}. That's why each ingredient needs its own number.</p>
+<h2>Where the numbers come from</h2><p>The cup weights come from USDA FoodData Central, SR Legacy. Tablespoons and teaspoons are calculated from the cup weight (1 cup = 16 tbsp = 48 tsp). USDA gives a teaspoon weight for baking powder, baking soda, and active dry yeast, so their cup weights are calculated from that. Ounces are weight ounces (1 oz = 28.35 g), not fluid ounces.</p>`,
     kildeliste(kilder),
     `<div class="related"><h2>Related conversions</h2><ul><li><a href="/en/tools/cups-to-tbsp/">Cups to tablespoons</a></li><li><a href="/en/tools/cups-to-tsp/">Cups to teaspoons</a></li><li><a href="/en/tools/cups-to-ml/">Cups to milliliters</a></li><li><a href="/en/tools/g-to-oz/">Grams to ounces</a></li><li><a href="/en/tools/oz-to-g/">Ounces to grams</a></li><li><a href="/en/tools/g-to-lb/">Grams to pounds</a></li><li><a href="/en/tools/unit-converter/">Unit converter</a></li></ul></div>`,
   ].join('\n');
@@ -338,7 +345,7 @@ export function navSide(data, rader) {
   ];
   return {
     title, description, eyebrow: EYEBROW_NAV, h1: 'Cups to grams',
-    lead: 'How much a cup weighs depends on what is in it. Pick an ingredient, then type an amount to convert.',
+    lead: "What a cup weighs depends on what's in it. Pick an ingredient, then type an amount to convert.",
     topp: `${kalkHtmlEn({ rader })}
 <p class="kortsvar"><b>Short answer:</b> ${rekkeTekst}.</p>
 <p class="kilde">Source: <a href="#sources">USDA FoodData Central, SR Legacy</a>. Tablespoons and teaspoons are calculated from the cup weight.</p>`,

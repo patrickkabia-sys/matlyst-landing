@@ -241,7 +241,7 @@ test('varianten står i ingress og metabeskrivelse, mens tittel og H1 beholder k
 test('alle sider: metabeskrivelsen følger malen og er 100 til 160 tegn, uten tankestrek og uten like titler', () => {
   const titler = new Set();
   for (const [navn, s] of alleSider()) {
-    assert.ok(s.title.length <= 60, `${navn}: ${s.title.length} tegn`);
+    assert.ok(`${s.title} | Matlyst`.length <= 60, `${navn}: ${s.title.length + 10} tegn med « | Matlyst»`);
     assert.ok(s.description.length >= 100 && s.description.length <= 160, `${navn}: beskrivelse ${s.description.length} tegn: ${s.description}`);
     assert.equal(/[—–]/u.test(synligTekst(s)), false, `${navn}: tankestrek`);
     assert.equal(/undefined|NaN|\[object/u.test(synligTekst(s)), false, `${navn}: ugyldig tekst`);

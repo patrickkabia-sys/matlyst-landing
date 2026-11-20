@@ -1,5 +1,5 @@
 // Data for «cups to grams»: radene lages av USDA SR Legacy og kontrolleres mot datasettet.
-// Utdraget er fem poster kopiert uendret fra datasettet (flour, brown sugar, baking powder, butter, salt).
+// Utdraget er seks poster kopiert uendret fra datasettet (flour, brown sugar, baking powder, baking soda, butter, salt).
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
@@ -114,7 +114,7 @@ test('hver rad er en vare i varelista, med grunnlaget lista sier og kilden usda'
 test('hevemidlene har teskje som grunnlag, alle andre cup', () => {
   const data = lesData(MAPPE, 'en');
   for (const rad of data.rader) {
-    const hevemiddel = ['baking-powder', 'baking-soda', 'active-dry-yeast'].includes(rad.id);
+    const hevemiddel = ['baking-powder', 'active-dry-yeast'].includes(rad.id);
     assert.equal(rad.tall.tsp !== undefined, hevemiddel, rad.id);
     assert.equal(rad.tall.cup !== undefined, !hevemiddel, rad.id);
   }
@@ -134,4 +134,18 @@ test('de utelatte varene er ikke med, og lagDataEn gir like mange rader som vare
   const { data: lite, utenRad } = lagDataEn(sr, '2026-11-20');
   assert.equal(lite.rader.length, 5);
   assert.equal(utenRad.length, VARER_EN.length - 5);
+});
+
+test('baking powder og baking soda er én rad med to poster: soda står som b_-tall, og kontrollen leser begge postene', () => {
+  const rad = radFraUsda(vare('baking-powder'), sr);
+  assert.equal(rad.tekst.fdcId, '172804');
+  assert.equal(rad.tekst.fdcId2, '175040');
+  assert.equal(rad.tekst.usdaNavn2, 'Leavening agents, baking soda');
+  assert.deepEqual(rad.tall.b_tsp, { verdi: 4.6, enhet: 'g', kilde: 'usda', merknad: 'tsp' });
+  assert.deepEqual(rad.tall.b_p_1, { verdi: 2.3, enhet: 'g', kilde: 'usda', merknad: '0.5 tsp' });
+  assert.equal(rad.tall.tsp.verdi, rad.tall.b_tsp.verdi, 'samme tall er grunnen til at de er én side');
+  const data = structuredClone(lesData(MAPPE, 'en'));
+  data.rader.find((r) => r.id === 'baking-powder').tall.b_tsp.verdi = 4.5;
+  assert.deepEqual(avvikUsda(data, sr), [{ id: 'baking-powder', felt: 'b_tsp', iFila: 4.5, iKilden: 4.6 }]);
+  assert.equal(lesData(MAPPE, 'en').rader.some((r) => r.id === 'brown-rice' || r.id === 'baking-soda'), false);
 });
