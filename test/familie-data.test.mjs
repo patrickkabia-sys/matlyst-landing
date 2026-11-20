@@ -86,3 +86,15 @@ test('en grønn fikstur med ett tall endret til rød feiler (vakten kan bli rød
   delete d.rader[1].tall.gramPerDl.kilde;
   assert.throws(() => validerData(d), /^Error: proeve\/nb\/provesukker:/u);
 });
+
+test('slug er begrenset til a-z, 0-9 og bindestrek (ingen punktum, skråstrek eller store bokstaver)', () => {
+  const d = () => JSON.parse(readFileSync(new URL('proeve/data.nb.json', FIKS), 'utf8'));
+  for (const slug of ['..', 'A', 'a/b', '', 'a b', 'æ', '../x', 'a.b']) {
+    const x = d();
+    x.rader[0].slug = slug;
+    assert.throws(() => validerData(x), /^Error: proeve\/nb\/provemel: slug/u, JSON.stringify(slug));
+  }
+  const ok = d();
+  ok.rader[0].slug = 'a-b-1';
+  assert.doesNotThrow(() => validerData(ok));
+});

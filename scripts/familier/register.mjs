@@ -31,6 +31,25 @@ export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/
 // Feltene generatorene krever: utvid() i rike-sider-register.mjs dropper stille en ny side uten eyebrow og steg.
 const KREVD = ['title', 'description', 'eyebrow', 'h1', 'lead', 'steg', 'rik', 'faq', 'cta', 'publisert', 'schemas'];
 
+const ROT_MONSTER = /^[a-z0-9-]+(\/[a-z0-9-]+)*\/$/u;
+const ID_MONSTER = /^[a-z0-9-]+$/u;
+const SIDETYPER = new Set(['omregner', 'guide-lang']);
+const validerte = new WeakSet();
+
+/** Alle innganger validerer registeret først: id, sidetype, marked og rot (ingen «..», ingen ledende skråstrek, ingen store bokstaver). */
+function valider(familier) {
+  if (validerte.has(familier)) return;
+  for (const familie of familier) {
+    if (typeof familie.id !== 'string' || !ID_MONSTER.test(familie.id)) throw new Error(`Familie med ugyldig id ${JSON.stringify(familie.id)}: id må være a-z, 0-9 og bindestrek`);
+    if (!SIDETYPER.has(familie.sidetype)) throw new Error(`${familie.id}: ugyldig sidetype ${JSON.stringify(familie.sidetype)} (omregner eller guide-lang)`);
+    for (const [marked, m] of Object.entries(familie.markeder ?? {})) {
+      if (!Object.hasOwn(SPRAKMAPPE, marked)) throw new Error(`${familie.id}: ukjent marked ${JSON.stringify(marked)}`);
+      if (typeof m?.rot !== 'string' || !ROT_MONSTER.test(m.rot)) throw new Error(`${familie.id}/${marked}: ugyldig rot ${JSON.stringify(m?.rot)}: den må ha formen verktoy/familie/ (a-z, 0-9 og bindestrek, slutter på skråstrek)`);
+    }
+  }
+  validerte.add(familier);
+}
+
 const mappeSti = (familie) => fileURLToPath(familie.mappe);
 const sti = (marked, rot, slug = '') => `/${SPRAKMAPPE[marked]}${rot}${slug ? `${slug}/` : ''}`;
 
@@ -47,8 +66,41 @@ function lesFamilie(familie, marked) {
   return { data, rader: publiserbare(data) };
 }
 
-/** Sidene til ett marked, nøklet på stien uten språkmappe (som RIKE i rike-sider-register.mjs). */
-export async function familieSider(marked, familier = FAMILIER) {
+/**
+ * Sidene ett marked skal ha, som Map fra sti (uten språkmappe) til familie-id. Kaster med begge navngitt når
+ * to familier gir samme sti, eller når én families rot ligger i en annens (eller er lik den).
+ */
+function stierFor(familier, marked) {
+  const stier = new Map();
+  const roter = [];
+  for (const familie of familier) {
+    const m = familie.markeder[marked];
+    if (!m) continue;
+    const { rader } = lesFamilie(familie, marked);
+    for (const [navn, nokkel] of [['samleside', m.rot], ...rader.map((r) => [r.id, `${m.rot}${r.slug}/`])]) {
+      if (stier.has(nokkel)) throw new Error(`Sti-kollisjon på ${marked}: /${nokkel} gis av både «${stier.get(nokkel)}» og «${familie.id}» (${navn})`);
+      stier.set(nokkel, familie.id);
+    }
+    roter.push({ id: familie.id, rot: m.rot });
+  }
+  for (const a of roter) {
+    for (const b of roter) {
+      if (a !== b && b.rot.startsWith(a.rot)) throw new Error(`Rot-kollisjon på ${marked}: roten ${b.rot} (${b.id}) ligger under roten ${a.rot} (${a.id})`);
+    }
+  }
+  return stier;
+}
+
+/**
+ * Sidene til ett marked, nøklet på stien uten språkmappe (som RIKE i rike-sider-register.mjs).
+ * `basis` er det som alt finnes i RIKE for språket: en familieside med samme sti kaster i stedet for å overskrive stille.
+ */
+export async function familieSider(marked, familier = FAMILIER, basis = {}) {
+  valider(familier);
+  const stier = stierFor(familier, marked);
+  for (const [nokkel, id] of stier) {
+    if (Object.hasOwn(basis, nokkel)) throw new Error(`Sti-kollisjon på ${marked}: /${nokkel} gis av familien «${id}», men finnes alt i RIKE.${marked}`);
+  }
   const ut = {};
   for (const familie of familier) {
     const m = familie.markeder[marked];
@@ -63,6 +115,8 @@ export async function familieSider(marked, familier = FAMILIER) {
 
 /** Sidegrupper til SIDEGRUPPER: én for samlesiden og én per rad-id. Synkron, leser bare datafilene. */
 export function familieGrupper(familier = FAMILIER) {
+  valider(familier);
+  for (const mk of Object.keys(SPRAKMAPPE)) stierFor(familier, mk);
   const ut = [];
   for (const familie of familier) {
     const marked = Object.keys(familie.markeder);
@@ -83,6 +137,7 @@ export function familieGrupper(familier = FAMILIER) {
 
 /** Familie-id for en full sti (med språkmappe), eller null. Alt under familiens rot hører til familien. */
 export function familieForSti(fullSti, familier = FAMILIER) {
+  valider(familier);
   for (const familie of familier) {
     for (const [mk, { rot }] of Object.entries(familie.markeder)) {
       if (fullSti.startsWith(sti(mk, rot))) return familie.id;
@@ -93,6 +148,7 @@ export function familieForSti(fullSti, familier = FAMILIER) {
 
 /** Antall sider per sidetype (samleside pluss publiserbare rader, alle markeder). */
 export function familieAntall(familier = FAMILIER) {
+  valider(familier);
   const antall = { omregner: 0, 'guide-lang': 0 };
   for (const familie of familier) {
     for (const mk of Object.keys(familie.markeder)) antall[familie.sidetype] += 1 + lesFamilie(familie, mk).rader.length;

@@ -13,10 +13,10 @@ const svEnh = await laster('./sv-enhetssider.mjs', 'enhetsSiderSv');
 const daEnh = await laster('./da-enhetssider.mjs', 'enhetsSiderDa');
 // Familiene (scripts/familier/) kommer sist: de er datadrevne og tomme til første familie bygges.
 export const RIKE = {
-  en: { ...en, ...await familieSider('en') },
-  nb: { ...nb, ...nbEnh, ...await familieSider('nb') },
-  sv: { ...sv, ...svEnh, ...await familieSider('sv') },
-  da: { ...da, ...daEnh, ...await familieSider('da') },
+  en: { ...en, ...await familieSider('en', undefined, en) },
+  nb: { ...nb, ...nbEnh, ...await familieSider('nb', undefined, { ...nb, ...nbEnh }) },
+  sv: { ...sv, ...svEnh, ...await familieSider('sv', undefined, { ...sv, ...svEnh }) },
+  da: { ...da, ...daEnh, ...await familieSider('da', undefined, { ...da, ...daEnh }) },
 };
 
 /** Legger de lange feltene oppå sider med samme path, og tar med helt nye sider (må ha eyebrow og steg). */

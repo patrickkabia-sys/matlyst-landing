@@ -1,0 +1,64 @@
+{
+  "familie": "proeve-lik",
+  "marked": "nb",
+  "kilder": {
+    "prove-tabell": {
+      "navn": "Prøvetabellen",
+      "utgiver": "Prøveinstituttet",
+      "aar": 2024,
+      "adresse": "https://eksempel.test/prove-tabell",
+      "hentet": "2026-11-20"
+    },
+    "prove-bok": {
+      "navn": "Prøveboka",
+      "utgiver": "Prøveforlaget",
+      "aar": 2022,
+      "adresse": "https://eksempel.test/prove-bok",
+      "hentet": "2026-11-20"
+    }
+  },
+  "rader": [
+    {
+      "id": "provemel",
+      "slug": "provemel",
+      "navn": "Prøvemel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerDl": {
+          "verdi": 55,
+          "enhet": "g",
+          "kilde": "prove-tabell",
+          "andre": [
+            {
+              "verdi": 60,
+              "kilde": "prove-bok"
+            }
+          ]
+        }
+      },
+      "tekst": {
+        "beskrivelse": "Dette prøvemelet er oppdiktet til testbruk og finnes ikke i noen butikk. Det brukes bare for å vise at hver side i familien har tekst som er skrevet for akkurat denne varen, og ikke bare et navn satt inn i en felles mal."
+      }
+    },
+    {
+      "id": "provesukker",
+      "slug": "provesukker",
+      "navn": "Prøvesukker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-20",
+      "oppdatert": "2026-11-20",
+      "tall": {
+        "gramPerDl": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "prove-tabell"
+        }
+      },
+      "tekst": {
+        "beskrivelse": "Prøvesukkeret er en annen oppdiktet vare med en helt egen beskrivelse. Her står det noe om hvordan krystallene pakker seg i målebegeret, og hvorfor to like beger kan veie ulikt avhengig av hvor hardt de fylles."
+      }
+    }
+  ]
+}
