@@ -74,8 +74,19 @@ export const SIDEGRUPPER = Object.freeze([
   ...bloggGrupper(),
 ]);
 
-const GRUPPE_FOR_STI = new Map(SIDEGRUPPER.flatMap((gruppe) =>
-  Object.values(gruppe.sider).map((sti) => [sti, gruppe])));
+// Sti til gruppe. Samme sti i to grupper ville overskrevet den ene stille, så det stopper bygget.
+export function byggStiOppslag(grupper) {
+  const kart = new Map();
+  for (const gruppe of grupper) {
+    for (const sti of Object.values(gruppe.sider)) {
+      if (kart.has(sti)) throw new Error(`Sti i to sidegrupper: ${sti} står i både «${kart.get(sti).id}» og «${gruppe.id}»`);
+      kart.set(sti, gruppe);
+    }
+  }
+  return kart;
+}
+
+const GRUPPE_FOR_STI = byggStiOppslag(SIDEGRUPPER);
 
 export function gruppeForSti(sti) {
   return GRUPPE_FOR_STI.get(sti) ?? null;

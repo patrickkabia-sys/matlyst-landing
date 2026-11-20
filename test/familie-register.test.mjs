@@ -176,3 +176,14 @@ test('kollisjonsvakten er koblet inn i rike-sider-register', () => {
   const rike = kilde('rike-sider-register.mjs');
   for (const [mk, basis] of [['en', 'en'], ['nb', '{ ...nb, ...nbEnh }'], ['sv', '{ ...sv, ...svEnh }'], ['da', '{ ...da, ...daEnh }']]) pos(rike, `await familieSider('${mk}', undefined, ${basis})`);
 });
+
+test('samme sti i to sidegrupper stopper bygget, med stien og begge gruppe-id-ene', async () => {
+  const { byggStiOppslag } = await import('../scripts/locale-sider.mjs');
+  // Dagens grupper har ingen duplikater.
+  assert.doesNotThrow(() => byggStiOppslag(SIDEGRUPPER));
+  // En familie med rot lik en håndskrevet side utenfor RIKE.
+  const lik = fam('proeve-lik', { nb: { rot: 'julemiddag/' } });
+  assert.throws(() => byggStiOppslag([...SIDEGRUPPER, ...familieGrupper([lik])]), /\/julemiddag\/.*auto-julemiddag.*auto-fam-proeve-lik-nav|\/julemiddag\/.*auto-fam-proeve-lik-nav.*auto-julemiddag/u);
+  // Gjelder alle grupper, ikke bare familier.
+  assert.throws(() => byggStiOppslag([{ id: 'a', sider: { nb: '/x/' } }, { id: 'b', sider: { en: '/x/' } }]), /\/x\/.*«a».*«b»/u);
+});
