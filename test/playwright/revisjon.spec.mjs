@@ -48,8 +48,10 @@ test('utvalget har sider for hver utrullet type', () => {
   for (const type of ute) {
     expect(utvalg({ revisjon: type, sprak: '' }).length, `REVISJON=${type} gir ingen sider`).toBeGreaterThan(0);
     expect(utvalg({ revisjon: '', sprak: '' }).some((r) => r.type === type), `standardutvalget mangler ${type}`).toBe(true);
+    expect(utvalg({ revisjon: 'pr', sprak: '', endret: [] }).some((r) => r.type === type), `PR-utvalget mangler ${type}`).toBe(true);
   }
   const valgt = process.env.REVISJON;
+  if (valgt === 'pr') expect(rader.length, 'REVISJON=pr velger null sider').toBeGreaterThan(0);
   if (valgt && TYPER.includes(valgt) && ute.includes(valgt)) {
     expect(rader.some((r) => r.type === valgt), `REVISJON=${valgt} REVISJON_SPRAK=${process.env.REVISJON_SPRAK || ''} velger null sider`).toBe(true);
   }

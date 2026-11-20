@@ -5,6 +5,7 @@
 import { readdirSync, readFileSync, realpathSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { SIDEGRUPPER, gruppeForSti } from './locale-sider.mjs';
+import { ENHETER } from './enheter.mjs';
 
 export const TYPER = Object.freeze(['forside', 'omregner', 'guide-lang', 'guide-kort', 'guide-gammel', 'blogg', 'juss', 'tjeneste']);
 
@@ -65,6 +66,32 @@ export function nokkel(rastisti, html) {
   return type === 'tjeneste' ? `tjeneste:${tjenestefamilie(rastisti)}` : type;
 }
 
+// Familie: finere inndeling enn nøkkelen, så revisjonen kan ta et utvalg per familie.
+// Enhetsomregnerne deles etter enhetsgruppe (volum, vekt, lengde, temperatur), hubbene er «nav».
+// Gruppe-id er auto-enhet-<fra>-<til>, og enhets-id kan selv ha bindestrek («oz-vekt»),
+// så paret slås opp mot ENHETER i stedet for å splittes på bindestrek.
+const ENHETSGRUPPE_FRA_ID = (() => {
+  const kart = new Map();
+  for (const fra of Object.keys(ENHETER)) {
+    for (const til of Object.keys(ENHETER)) {
+      if (fra !== til && ENHETER[fra].gruppe === ENHETER[til].gruppe) kart.set(`auto-enhet-${fra}-${til}`, ENHETER[fra].gruppe);
+    }
+  }
+  return kart;
+})();
+
+export function familie(sti, html) {
+  const n = nokkel(sti, html);
+  if (n !== 'omregner') return n;
+  const gruppe = ENHETSGRUPPE_FRA_ID.get(gruppeForSti(normaliserSti(sti))?.id);
+  return gruppe ? `omregner:${gruppe}` : 'omregner:nav';
+}
+
+// Genererte familier får et utvalg i stedet for alle sidene på PR-er.
+export function erGenerertFamilie(fam) {
+  return (typeof fam === 'string') && ((fam.startsWith('omregner:') && fam !== 'omregner:nav') || fam.startsWith('fam:'));
+}
+
 // Oppgave 10 til 18 legger til nøkler. 'tjeneste:verifisering' legges aldri til.
 export const UTRULLET = new Set(['omregner', 'guide-lang', 'guide-kort', 'blogg', 'guide-gammel', 'juss', 'tjeneste:avmeld', 'tjeneste:bekreft', 'tjeneste:vervekort', 'tjeneste:auth', 'tjeneste:app', 'tjeneste:kampanje', 'tjeneste:feil']);
 
@@ -116,7 +143,7 @@ function leseSiderIntern(rot, tillatUkjent) {
     const sti = stiForFil(fil);
     const html = readFileSync(full, 'utf8');
     const type = tillatUkjent ? sidetypeEllerNull(sti, html) : sidetype(sti, html);
-    return { sti, fil, sprak: sprakForSti(sti), type, nokkel: nokkel(sti, html) };
+    return { sti, fil, sprak: sprakForSti(sti), type, nokkel: nokkel(sti, html), familie: type === null ? null : familie(sti, html) };
   });
 }
 
