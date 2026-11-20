@@ -335,6 +335,23 @@ test.describe('engelsk skjema', () => {
     });
   }
 
+  test('mellomrommet i et blandet tall har synlig bredde: «1 1/2» er minst 0,2 em bredere enn «11/2» i feltets egen skrift', async ({ page }) => {
+    const em = await page.locator('#fast [data-felt=mengde]').evaluate((felt) => {
+      const stil = getComputedStyle(felt);
+      const maal = (tekst) => {
+        const e = document.createElement('span');
+        Object.assign(e.style, { position: 'absolute', visibility: 'hidden', whiteSpace: 'pre', font: stil.font, letterSpacing: stil.letterSpacing, wordSpacing: stil.wordSpacing });
+        e.textContent = tekst;
+        document.body.append(e);
+        const b = e.getBoundingClientRect().width;
+        e.remove();
+        return b;
+      };
+      return (maal('1 1/2') - maal('11/2')) / parseFloat(stil.fontSize);
+    });
+    expect(em).toBeGreaterThanOrEqual(0.2);
+  });
+
   test('norsk skjema uten de nye feltene er som før: brøk er ugyldig, og «1 000» er 1000', async ({ page }) => {
     await page.goto(FIKSTUR);
     await page.fill('#fast [data-felt=mengde]', '1/2');
