@@ -479,9 +479,9 @@ const enhetsHub = (() => {
 
 export const rikeSider = {
   'recipe-book-app/': {
-    title: 'Recipe organizer app: one home for every recipe',
-    description: 'Save recipes from websites, Instagram, TikTok, and photos in one recipe organizer app. Scale servings, plan the week, and build a grocery list. Free to start.',
-    h1: 'A recipe organizer app that keeps every recipe in one place',
+    title: 'Cookbook app: save and organize every recipe',
+    description: 'A recipe organizer and cookbook app for recipes from websites, Instagram, TikTok, and photos. Search, scale servings, plan the week. Free to start.',
+    h1: 'A cookbook app that keeps every recipe in one place',
     rik: recipeBookApp,
     faq: [
       ['Is there a free recipe organizer app?', 'Yes. Matlyst is free to start: 5 imports per calendar month, folders, search, the meal plan, and the grocery list. Matlyst Pro adds more imports, photo import, Ask Matlyst, and household sharing.'],
@@ -495,14 +495,14 @@ export const rikeSider = {
     ],
   },
   'import-recipes-from-instagram/': {
-    title: 'How to save recipes from Instagram (posts and reels)',
-    description: 'Save a recipe from an Instagram post or reel by sharing it to Matlyst. Steps for iPhone and Android, what to do when the recipe is not in the caption, and common mistakes.',
+    title: 'Save Instagram recipes from posts and reels',
+    description: 'Save a recipe from an Instagram post or reel by sharing it to Matlyst. Steps for iPhone and Android, and what to do when the recipe is not in the caption.',
     h1: 'How to save recipes from Instagram',
     rik: instagram,
   },
   'import-recipes-from-tiktok/': {
-    title: 'How to save recipes from TikTok: step by step',
-    description: 'Turn a TikTok recipe into ingredients and steps. Share the video to Matlyst, check the draft, and cook from it. Free to start.',
+    title: 'TikTok recipe app: save recipes step by step',
+    description: 'Turn a TikTok recipe into ingredients and steps. Share the video to Matlyst, check the draft, and cook from it. Free to start, on iPhone and Android.',
     h1: 'Turn a TikTok into a recipe you can actually cook',
     rik: tiktok,
   },
@@ -535,9 +535,9 @@ export const rikeSider = {
     cta: 'Start your pantry',
   },
   'shopping-list/': {
-    title: 'Grocery list from recipes: one list for the week',
-    description: 'Add recipes to Matlyst and the ingredients land on one grocery list, combined and sorted by store section. Skip what you already have. Free to start.',
-    h1: 'A grocery list that comes straight from your recipes',
+    title: 'Shopping list app: a grocery list from recipes',
+    description: 'A shopping list app that builds the list from your recipes. Matching items combine by store section. Free to start; sharing with your household takes Pro.',
+    h1: 'A shopping list that comes straight from your recipes',
     rik: shopping,
     faq: [
       ['Is there a grocery list app that adds ingredients from recipes?', 'Yes. In Matlyst, you add a recipe or a planned day to the grocery list, and the ingredients go on the list with matching items combined.'],

@@ -23,13 +23,13 @@ const AUTO_CTA_BILDE = {
 // tema → språk → [slug, sidetittel]. Sidetittelen er skrevet for søket, ikke for karusellen.
 export const BLOGGTEMAER = {
   koketid: {
-    nb: ['koketider', 'Koketider for egg, ris, pasta og grønnsaker'],
-    en: ['boiling-times', 'Boiling times for eggs and vegetables'],
+    nb: ['koketider', 'Koketid for poteter, egg, ris og pasta', 'Poteter koker i 18 til 22 minutter, smilende egg i 8. Her er koketidene for egg, ris, pasta, poteter og grønnsaker, regnet fra vannet koker.'],
+    en: ['boiling-times', 'How long to boil eggs, potatoes, and vegetables', 'Large eggs need 12 minutes in the hot water after you turn off the heat. Whole medium potatoes take 30 to 40 minutes. Times for eggs and vegetables.'],
   },
   kjernetemp: {
-    nb: ['kjernetemperatur', 'Kjernetemperatur for kjøtt, kylling og fisk'],
+    nb: ['kjernetemperatur', 'Kjernetemperatur for lam, storfe, svin og kylling', 'Lam er rosa ved 60 grader og gjennomstekt ved 70. Her er kjernetemperaturene for lam, storfe, svin, kylling og fisk, så du slipper å skjære i kjøttet.'],
     sv: ['innertemperatur', 'Innertemperatur för kött, kyckling och fisk'],
-    da: ['kernetemperatur', 'Kernetemperatur for kød, kylling og fisk'],
+    da: ['kernetemperatur', 'Kernetemperatur for lam, oksekød, svin og kylling', 'Lam er rosa ved 60 grader og gennemstegt ved 70. Her er kernetemperaturerne for lam, oksekød, svin, kylling og fisk, så du slipper for at skære i kødet.'],
     en: ['safe-internal-temperatures', 'Safe internal temperatures for meat, chicken, and fish'],
   },
   egg: {
@@ -45,8 +45,8 @@ export const BLOGGTEMAER = {
   },
   fryser: {
     nb: ['mat-i-fryseren', 'Hvor lenge kan mat ligge i fryseren?'],
-    sv: ['mat-i-frysen', 'Hur länge håller mat i frysen?'],
-    da: ['mad-i-fryseren', 'Hvor længe kan mad holde sig i fryseren?'],
+    sv: ['mat-i-frysen', 'Hur länge håller nötkött och annan mat i frysen?', 'Kan man frysa mat? Det mesta går bra. Köttfärs håller tre månader i frysen, nötkött ett år. Tider för kött, fisk, bakverk och rester.'],
+    da: ['mad-i-fryseren', 'Kan man fryse mad? Så længe holder det i fryseren', 'Kan man fryse mad? Det meste går fint. Hakket kød holder tre måneder i fryseren, oksekød et helt år. Tider for kød, fisk, bagværk og rester.'],
     en: ['freezer-storage-times', 'How long can you freeze meat, fish, and leftovers?'],
   },
   airfryer: {
@@ -116,9 +116,9 @@ export function bloggArtikler(lang) {
   return Object.entries(BLOGGTEMAER)
     .filter(([tema, sprak]) => sprak[lang] && data[tema])
     .map(([tema, sprak]) => {
-      const [slug, title] = sprak[lang];
+      const [slug, title, meta] = sprak[lang];
       const k = data[tema];
-      return { tema, lang, path: `${BLOGGROT[lang]}${slug}/`, title, description: beskrivelse(k.ingress), karusell: k };
+      return { tema, lang, path: `${BLOGGROT[lang]}${slug}/`, title, description: meta ?? beskrivelse(k.ingress), karusell: k };
     });
 }
 

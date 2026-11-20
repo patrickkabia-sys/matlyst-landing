@@ -1,0 +1,187 @@
+{
+ "/handleliste/": {
+  "tittel": "Handleliste-app: lages fra oppskriftene dine | Matlyst",
+  "h1": "En handleliste som lages rett fra oppskriftene dine",
+  "meta": "Handleliste-app som lages fra oppskriftene dine. Like varer slås sammen og sorteres etter hylle. Gratis å komme i gang, deling med husstanden krever Pro."
+ },
+ "/oppskriftsbok-app/": {
+  "tittel": "Digital oppskriftsbok og oppskriftsapp | Matlyst",
+  "h1": "En digital oppskriftsbok for alle oppskriftene dine",
+  "meta": "Digital oppskriftsbok som samler oppskrifter fra nettsider, Instagram, TikTok og bilder. Søk, regn om porsjoner og planlegg uka. Gratis å komme i gang."
+ },
+ "/ukemeny/": {
+  "tittel": "Ukemeny-app: planlegg middagene for uka | Matlyst",
+  "h1": "Ukemeny med dine egne oppskrifter",
+  "meta": "Planlegg middagene for uka med oppskrifter du allerede liker. Ukemenyen sender ingrediensene til én handleliste sortert etter butikkens avdelinger. Gratis."
+ },
+ "/handskrevne-oppskrifter/": {
+  "tittel": "Skann håndskrevne oppskrifter og kokebøker | Matlyst",
+  "h1": "Skann håndskrevne oppskrifter, kokebøker og skjermbilder",
+  "meta": "Ta bilde av et håndskrevet oppskriftskort, en kokebokside eller et skjermbilde, og få en ryddig oppskrift du kan søke i. Bildeimport krever Pro."
+ },
+ "/lagre-oppskrifter-fra-instagram/": {
+  "tittel": "Lagre oppskrifter fra Instagram og reels | Matlyst",
+  "h1": "Slik lagrer du oppskrifter fra Instagram og reels",
+  "meta": "Del et Instagram-innlegg eller en reel med Matlyst, så blir oppskriften i bildeteksten til ingredienser og steg. Slik gjør du, og hva om teksten mangler."
+ },
+ "/importer-oppskrifter/": {
+  "tittel": "Importer oppskrift fra lenke, YouTube og nettsider | Matlyst",
+  "h1": "Importer oppskrifter fra lenker, nettsider og sosiale medier",
+  "meta": "Importer oppskrifter fra en lenke, YouTube, Instagram, TikTok, nettsider og Paprika. Samle dem på ett sted og finn dem igjen. Bildeimport krever Pro."
+ },
+ "/bytt-fra-paprika/": {
+  "tittel": "Flytt oppskrifter fra Paprika til Matlyst | Matlyst",
+  "h1": "Flytt oppskriftene dine fra Paprika til Matlyst",
+  "meta": "Flytt oppskriftene fra Paprika til Matlyst: eksporter filen fra Paprika, importer den i Matlyst, velg oppskriftene og kontroller resultatet."
+ },
+ "/blogg/koketider/": {
+  "tittel": "Koketid for poteter, egg, ris og pasta | Matlyst",
+  "h1": "Koketid for poteter, egg, ris og pasta",
+  "meta": "Poteter koker i 18 til 22 minutter, smilende egg i 8. Her er koketidene for egg, ris, pasta, poteter og grønnsaker, regnet fra vannet koker."
+ },
+ "/blogg/kjernetemperatur/": {
+  "tittel": "Kjernetemperatur for lam, storfe, svin og kylling | Matlyst",
+  "h1": "Kjernetemperatur for lam, storfe, svin og kylling",
+  "meta": "Lam er rosa ved 60 grader og gjennomstekt ved 70. Her er kjernetemperaturene for lam, storfe, svin, kylling og fisk, så du slipper å skjære i kjøttet."
+ },
+ "/sv/inkopslista/": {
+  "tittel": "Inköpslista från recept: dela med hushållet | Matlyst",
+  "h1": "En inköpslista som kommer direkt från dina recept",
+  "meta": "Inköpslista som skapas från dina recept: lika varor slås ihop och sorteras efter butikens avdelningar. Gratis att börja, gemensam lista kräver Pro."
+ },
+ "/sv/receptbok-app/": {
+  "tittel": "Digital receptbok och receptapp | Matlyst",
+  "h1": "En digital receptbok för alla dina recept",
+  "meta": "Digital receptbok som samlar recept från webbsidor, Instagram, TikTok och foton. Sök, räkna om portioner och planera veckan. Gratis att börja."
+ },
+ "/sv/veckomeny-app/": {
+  "tittel": "Veckomeny-app: planera veckans middagar | Matlyst",
+  "h1": "Veckomeny med dina egna recept",
+  "meta": "Planera veckans middagar med recept du redan gillar. Ingredienserna går till en inköpslista sorterad efter avdelning. Gratis för iPhone och Android."
+ },
+ "/sv/handskrivna-recept/": {
+  "tittel": "Skanna handskrivna recept och kokböcker | Matlyst",
+  "h1": "Skanna handskrivna recept, kokböcker och skärmbilder",
+  "meta": "Fota ett handskrivet receptkort, en kokbokssida eller en skärmbild och få ett tydligt recept som du kan söka i. Fotoimport kräver Pro."
+ },
+ "/sv/spara-recept-fran-instagram/": {
+  "tittel": "Spara recept från Instagram och reels | Matlyst",
+  "h1": "Så sparar du recept från Instagram och reels",
+  "meta": "Dela ett Instagram-inlägg eller en reel med Matlyst så blir receptet i bildtexten ingredienser och steg. Så gör du, och vad du gör när receptet saknas."
+ },
+ "/sv/spara-recept-fran-tiktok/": {
+  "tittel": "TikTok-recept: så sparar du dem steg för steg | Matlyst",
+  "h1": "Gör en TikTok till ett recept du faktiskt kan laga",
+  "meta": "Gör ett TikTok-recept till ingredienser och steg. Dela videon med Matlyst, kontrollera utkastet och laga efter det, sök och räkna om. Gratis att börja."
+ },
+ "/sv/importera-recept/": {
+  "tittel": "Importera recept från länk, YouTube och webbsidor | Matlyst",
+  "h1": "Importera recept från länkar, webbsidor och sociala medier",
+  "meta": "Importera recept från en länk, YouTube, Instagram, TikTok, webbsidor och Paprika. Samla dem på ett ställe och hitta dem igen. Fotoimport kräver Pro."
+ },
+ "/sv/byt-fran-paprika/": {
+  "tittel": "Flytta recept från Paprika till Matlyst | Matlyst",
+  "h1": "Flytta dina recept från Paprika till Matlyst",
+  "meta": "Flytta recepten från Paprika till Matlyst: exportera filen från Paprika, importera den i Matlyst, välj recepten och kontrollera resultatet."
+ },
+ "/sv/blogg/mat-i-frysen/": {
+  "tittel": "Hur länge håller nötkött och annan mat i frysen? | Matlyst",
+  "h1": "Hur länge håller nötkött och annan mat i frysen?",
+  "meta": "Kan man frysa mat? Det mesta går bra. Köttfärs håller tre månader i frysen, nötkött ett år. Tider för kött, fisk, bakverk och rester."
+ },
+ "/da/indkoebsliste-app/": {
+  "tittel": "Fælles indkøbsliste ud fra dine opskrifter | Matlyst",
+  "h1": "En fælles indkøbsliste direkte fra dine opskrifter",
+  "meta": "Lav en indkøbsliste ud fra dine opskrifter: ens varer lægges sammen og sorteres efter afdeling. Gratis at starte, fælles liste med husstanden kræver Pro."
+ },
+ "/da/opskrifts-app/": {
+  "tittel": "Digital kogebog og opskriftsapp | Matlyst",
+  "h1": "En digital kogebog, der samler alle dine opskrifter",
+  "meta": "Digital kogebog, der samler opskrifter fra hjemmesider, Instagram, TikTok og billeder. Søg, skalér portioner og planlæg ugen. Gratis at komme i gang."
+ },
+ "/da/madplan-app/": {
+  "tittel": "Madplan-app: ugens madplan med dine opskrifter | Matlyst",
+  "h1": "Ugens madplan med dine egne opskrifter",
+  "meta": "Lav din madplan for ugen med opskrifter, du allerede kan lide. Ingredienserne går til én indkøbsliste sorteret efter afdeling. Gratis."
+ },
+ "/da/haandskrevne-opskrifter/": {
+  "tittel": "Scan håndskrevne opskrifter og kogebøger | Matlyst",
+  "h1": "Scan håndskrevne opskrifter, kogebøger og skærmbilleder",
+  "meta": "Tag et billede af et håndskrevet opskriftskort, en kogebogsside eller et skærmbillede, og få en overskuelig opskrift, du kan søge i. Fotoimport kræver Pro."
+ },
+ "/da/gem-opskrifter-fra-instagram/": {
+  "tittel": "Gem opskrifter fra Instagram og reels | Matlyst",
+  "h1": "Sådan gemmer du opskrifter fra Instagram og reels",
+  "meta": "Del et Instagram-opslag eller en reel med Matlyst, så bliver opskriften i billedteksten til ingredienser og trin. Sådan gør du, også hvis teksten er tom."
+ },
+ "/da/gem-opskrifter-fra-tiktok/": {
+  "tittel": "TikTok-opskrifter: gem dem trin for trin | Matlyst",
+  "h1": "Gør en TikTok til en opskrift, du faktisk kan lave mad efter",
+  "meta": "Gør en TikTok-opskrift til ingredienser og trin, du kan søge i. Del videoen med Matlyst, tjek udkastet og lav maden. Gratis at komme i gang."
+ },
+ "/da/importer-opskrifter/": {
+  "tittel": "Importér opskrift fra link, YouTube og hjemmeside | Matlyst",
+  "h1": "Importér opskrifter fra links, hjemmesider og sociale medier",
+  "meta": "Importér opskrifter fra et link, YouTube, Instagram, TikTok, hjemmesider og Paprika. Saml dem ét sted, og find dem igen. Fotoimport kræver Pro."
+ },
+ "/da/skift-fra-paprika/": {
+  "tittel": "Flyt opskrifter fra Paprika til Matlyst | Matlyst",
+  "h1": "Flyt dine opskrifter fra Paprika til Matlyst",
+  "meta": "Flyt opskrifterne fra Paprika til Matlyst: eksportér filen fra Paprika, importér den i Matlyst, vælg opskrifterne, og tjek resultatet."
+ },
+ "/da/blog/kernetemperatur/": {
+  "tittel": "Kernetemperatur for lam, oksekød, svin og kylling | Matlyst",
+  "h1": "Kernetemperatur for lam, oksekød, svin og kylling",
+  "meta": "Lam er rosa ved 60 grader og gennemstegt ved 70. Her er kernetemperaturerne for lam, oksekød, svin, kylling og fisk, så du slipper for at skære i kødet."
+ },
+ "/da/blog/mad-i-fryseren/": {
+  "tittel": "Kan man fryse mad? Så længe holder det i fryseren | Matlyst",
+  "h1": "Kan man fryse mad? Så længe holder det i fryseren",
+  "meta": "Kan man fryse mad? Det meste går fint. Hakket kød holder tre måneder i fryseren, oksekød et helt år. Tider for kød, fisk, bagværk og rester."
+ },
+ "/en/shopping-list/": {
+  "tittel": "Shopping list app: a grocery list from recipes | Matlyst",
+  "h1": "A shopping list that comes straight from your recipes",
+  "meta": "A shopping list app that builds the list from your recipes. Matching items combine by store section. Free to start; sharing with your household takes Pro."
+ },
+ "/en/recipe-book-app/": {
+  "tittel": "Cookbook app: save and organize every recipe | Matlyst",
+  "h1": "A cookbook app that keeps every recipe in one place",
+  "meta": "A recipe organizer and cookbook app for recipes from websites, Instagram, TikTok, and photos. Search, scale servings, plan the week. Free to start."
+ },
+ "/en/meal-plan-app/": {
+  "tittel": "Meal planner app: weekly plan and shopping list | Matlyst",
+  "h1": "A weekly meal planner built on your own recipes",
+  "meta": "Plan your weekly meals with recipes you already like, then send the ingredients to one shopping list sorted by aisle. Free on iPhone and Android."
+ },
+ "/en/import-recipes-from-photos/": {
+  "tittel": "Scan recipes from photos and cookbooks | Matlyst",
+  "h1": "Scan handwritten recipes, cookbooks, and screenshots",
+  "meta": "Scan a cookbook page, handwritten recipe card or screenshot and turn it into an editable recipe with ingredients and steps. Photo import is a Pro feature."
+ },
+ "/en/import-recipes/": {
+  "tittel": "Recipe extractor: import from a link or website | Matlyst",
+  "h1": "Import recipes from links, websites, and social media",
+  "meta": "A recipe extractor for links, posts, photos, and text. Import from Instagram, TikTok, YouTube, recipe websites, Pinterest links, or a Paprika file."
+ },
+ "/en/import-recipes-from-instagram/": {
+  "tittel": "Save Instagram recipes from posts and reels | Matlyst",
+  "h1": "How to save recipes from Instagram",
+  "meta": "Save a recipe from an Instagram post or reel by sharing it to Matlyst. Steps for iPhone and Android, and what to do when the recipe is not in the caption."
+ },
+ "/en/import-recipes-from-tiktok/": {
+  "tittel": "TikTok recipe app: save recipes step by step | Matlyst",
+  "h1": "Turn a TikTok into a recipe you can actually cook",
+  "meta": "Turn a TikTok recipe into ingredients and steps. Share the video to Matlyst, check the draft, and cook from it. Free to start, on iPhone and Android."
+ },
+ "/en/import-recipes-from-paprika/": {
+  "tittel": "Export recipes from Paprika, import into Matlyst | Matlyst",
+  "h1": "Export from Paprika, import into Matlyst",
+  "meta": "Export your recipes from Paprika and import the file into Matlyst. Choose what to bring over and keep ingredients, instructions, images, and folders."
+ },
+ "/en/blog/boiling-times/": {
+  "tittel": "How long to boil eggs, potatoes, and vegetables | Matlyst",
+  "h1": "How long to boil eggs, potatoes, and vegetables",
+  "meta": "Large eggs need 12 minutes in the hot water after you turn off the heat. Whole medium potatoes take 30 to 40 minutes. Times for eggs and vegetables."
+ }
+}
