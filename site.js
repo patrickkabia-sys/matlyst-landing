@@ -143,14 +143,45 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 // Enhetsomregner: regner ut mens du skriver (volum, vekt, lengde, temperatur).
 (() => {
   const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
-  const tall = (n) => {
+  // Delte funksjoner: omregneren og kalkulatorkortet (form.kalk) leser og skriver tall på samme måte.
+  // Utenfor løkka, så begge bruker dem. Legges på window.MatlystTall slik at testene når dem.
+  // visTall: antall desimaler følger størrelsen (4 gjeldende sifre som standard). Færre sifre gir færre desimaler.
+  // Språkets desimaltegn (sidens lang): komma på nb, sv og da, punktum på en. Ingen tusenskille, slik sidene ellers skriver tall.
+  const visTall = (n, komma, sifre = 4) => {
     if (!Number.isFinite(n)) return '';
     const a = Math.abs(n);
-    const d = a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5;
+    const d = Math.max(0, (a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5) - (4 - sifre));
     const t = String(Number(n.toFixed(d)));
-    // Språkets desimaltegn (sidens lang): komma på nb, sv og da, punktum på en. Ingen tusenskille, slik sidene ellers skriver tall.
-    return KOMMA ? t.replace('.', ',') : t;
+    return komma ? t.replace('.', ',') : t;
   };
+  // Hele inntastingen valideres. Gyldig: valgfritt fortegn, sifre, valgfritt tusenskille og høyst ett desimaltegn.
+  // Mellomrom (også hardt og smalt) mellom sifre er tusenskille. Språkets tusenskille er punktum på nb, sv og da og komma på en:
+  // «1.500» er 1500 på norsk og «1,500» er 1500 på engelsk (nøyaktig tre sifre etter, og ett til tre foran). Ellers er komma og punktum desimaltegn.
+  // Gir null for alt som ikke er ett tall. Fortegn tolkes, men om negativt er lov avgjør den som bruker tallet.
+  const tolkTall = (tekst, komma) => {
+    const TUSEN = komma ? '.' : ',';
+    const t = String(tekst).trim().replace(/(?<=\d)[   ](?=\d)/gu, '');
+    const m = /^([+-]?)(\d*(?:[.,]\d*)*)$/u.exec(t);
+    if (!m || !/\d/u.test(m[2])) return null;
+    const grupper = m[2].split(/[.,]/u), skilletegn = m[2].match(/[.,]/gu) || [];
+    // En tusengruppe krever ett til tre sifre foran som ikke begynner med 0 («0.125» og «0,125» er desimaltall på alle språk).
+    const tusen = (g) => g.length > 0 && g[0].length >= 1 && g[0].length <= 3 && g[0][0] !== '0' && g.slice(1).every((x) => x.length === 3);
+    let tall = '';
+    if (skilletegn.length === 0) tall = grupper[0];
+    else if (skilletegn.every((c) => c === skilletegn[0])) {
+      if (skilletegn.length >= 2) { if (skilletegn[0] !== TUSEN || !tusen(grupper)) return null; tall = grupper.join(''); }
+      else if (skilletegn[0] === TUSEN && tusen(grupper)) tall = grupper.join('');
+      else tall = `${grupper[0] || '0'}.${grupper[1] || '0'}`;
+    } else {
+      const siste = skilletegn[skilletegn.length - 1];
+      const foran = grupper.slice(0, -1);
+      if (siste === TUSEN || skilletegn.slice(0, -1).some((c) => c !== TUSEN) || !tusen(foran)) return null;
+      tall = `${foran.join('')}.${grupper[grupper.length - 1] || '0'}`;
+    }
+    return Number(`${m[1] === '-' ? '-' : ''}${tall}`);
+  };
+  window.MatlystTall = { tolkTall, visTall };
+  const tall = (n) => visTall(n, KOMMA);
   for (const skjema of document.querySelectorAll('form.omregner')) {
     let data;
     try { data = JSON.parse(skjema.querySelector('.omregner-data').textContent); } catch { continue; }
@@ -163,31 +194,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     const ord = (sel, n) => { const o = data.o && data.o[sel.value]; return o ? o[Math.abs(Number(tall(n))) === 1 ? 0 : 1] : kort(sel); };
     // Inntastingen tåler både komma og punktum: feltet er tekst med desimaltastatur (type=number avviser komma i engelske nettlesere).
     if (verdi.type === 'number') verdi.type = 'text';
-    // Hele inntastingen valideres. Gyldig: valgfritt fortegn, sifre, valgfritt tusenskille og høyst ett desimaltegn.
-    // Mellomrom (også hardt og smalt) mellom sifre er tusenskille. Språkets tusenskille er punktum på nb, sv og da og komma på en:
-    // «1.500» er 1500 på norsk og «1,500» er 1500 på engelsk (nøyaktig tre sifre etter, og ett til tre foran). Ellers er komma og punktum desimaltegn.
-    const TUSEN = KOMMA ? '.' : ',';
-    const tolk = (tekst) => {
-      const t = String(tekst).trim().replace(/(?<=\d)[ \u00a0\u202f](?=\d)/gu, '');
-      const m = /^([+-]?)(\d*(?:[.,]\d*)*)$/u.exec(t);
-      if (!m || !/\d/u.test(m[2])) return NaN;
-      const grupper = m[2].split(/[.,]/u), skilletegn = m[2].match(/[.,]/gu) || [];
-      // En tusengruppe krever ett til tre sifre foran som ikke begynner med 0 («0.125» og «0,125» er desimaltall på alle språk).
-      const tusen = (g) => g.length > 0 && g[0].length >= 1 && g[0].length <= 3 && g[0][0] !== '0' && g.slice(1).every((x) => x.length === 3);
-      let tall = '';
-      if (skilletegn.length === 0) tall = grupper[0];
-      else if (skilletegn.every((c) => c === skilletegn[0])) {
-        if (skilletegn.length >= 2) { if (skilletegn[0] !== TUSEN || !tusen(grupper)) return NaN; tall = grupper.join(''); }
-        else if (skilletegn[0] === TUSEN && tusen(grupper)) tall = grupper.join('');
-        else tall = `${grupper[0] || '0'}.${grupper[1] || '0'}`;
-      } else {
-        const siste = skilletegn[skilletegn.length - 1];
-        const foran = grupper.slice(0, -1);
-        if (siste === TUSEN || skilletegn.slice(0, -1).some((c) => c !== TUSEN) || !tusen(foran)) return NaN;
-        tall = `${foran.join('')}.${grupper[grupper.length - 1] || '0'}`;
-      }
-      return Number(`${m[1] === '-' ? '-' : ''}${tall}`);
-    };
+    const tolk = (tekst) => { const v = tolkTall(tekst, KOMMA); return v === null ? NaN : v; };
     const reg = () => {
       const v = tolk(verdi.value);
       const tomt = String(verdi.value).trim() === '';
