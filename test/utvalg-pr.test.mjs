@@ -8,19 +8,37 @@ import { utvalg, utrulledeTyper } from './playwright/hjelp/utvalg.mjs';
 
 const ROT = fileURLToPath(new URL('..', import.meta.url));
 
+// Kontrollen går over alle familiene i alleSider(), ikke bare de som finnes i resultatet:
+// en familie som faller helt ut av utvalget skal gi rødt.
+export function kontrollerUtvalg(rader, sider) {
+  const perFam = Map.groupBy(rader, (r) => `${sider.get(r.sti).familie}|${r.sprak}`);
+  const alle = Map.groupBy([...sider.values()], (s) => `${s.familie}|${s.sprak}`);
+  for (const [nokkel, iAlt] of alle) {
+    if (nokkel.startsWith('null|')) continue;
+    const liste = perFam.get(nokkel) ?? [];
+    if (!erGenerertFamilie(nokkel.split('|')[0])) {
+      // Håndskrevne: hver side er med.
+      assert.equal(liste.length, iAlt.filter((s) => rader.some((r) => r.sti === s.sti)).length, nokkel);
+      continue;
+    }
+    // Små familier (temperatur har to sider per språk) tas hele. Eksempelsiden kan gi én ekstra.
+    assert.ok(liste.length >= Math.min(3, iAlt.length) && liste.length <= 4, `${nokkel}: ${liste.length} av ${iAlt.length}`);
+  }
+}
 test('PR-utvalget har tre per generert familie og språk, og alt det håndskrevne', () => {
   const rader = utvalg({ revisjon: 'pr', endret: [] });
   const sider = new Map(alleSider(ROT).map((s) => [s.sti, s]));
-  const perFam = Map.groupBy(rader, (r) => `${sider.get(r.sti).familie}|${r.sprak}`);
-  for (const [nokkel, liste] of perFam) {
-    if (!erGenerertFamilie(nokkel.split('|')[0])) continue;
-    const iAlt = [...sider.values()].filter((s) => `${s.familie}|${s.sprak}` === nokkel).length;
-    // Små familier (temperatur har to sider per språk) tas hele. Eksempelsiden kan gi én ekstra.
-    assert.ok(liste.length >= Math.min(3, iAlt) && liste.length <= 4, nokkel);
-  }
+  kontrollerUtvalg(rader, sider);
   const handskrevne = [...sider.values()].filter((s) => ['guide-lang', 'guide-kort', 'blogg', 'juss'].includes(s.type));
   for (const s of handskrevne) assert.ok(rader.some((r) => r.sti === s.sti), s.sti);
   assert.ok(rader.length < 260, `utvalget er ${rader.length} sider`);
+});
+test('kontrollen blir rød når en hel generert familie mangler i utvalget', () => {
+  const rader = utvalg({ revisjon: 'pr', endret: [] });
+  const sider = new Map(alleSider(ROT).map((s) => [s.sti, s]));
+  const utenVolum = rader.filter((r) => sider.get(r.sti).familie !== 'omregner:volum');
+  assert.ok(utenVolum.length < rader.length);
+  assert.throws(() => kontrollerUtvalg(utenVolum, sider), /omregner:volum/u);
 });
 test('utvalget er likt fra kjøring til kjøring', () => {
   assert.deepEqual(utvalg({ revisjon: 'pr', endret: [] }), utvalg({ revisjon: 'pr', endret: [] }));

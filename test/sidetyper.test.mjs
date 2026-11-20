@@ -27,6 +27,9 @@ test('hver side har en familie, og omregnerne fordeler seg på enhetsgrupper', (
   for (const s of sider.filter((x) => x.type !== 'omregner')) assert.equal(s.familie, s.nokkel, s.sti);
   const tell = (f) => sider.filter((s) => s.familie === f).length;
   assert.equal(tell('omregner:nav'), 4);
+  // «nav» er nøyaktig de fire hubbene. En ny side som havner der, må få en egen familie (se oppgave 5) i stedet for å regnes som håndskrevet.
+  assert.deepEqual(sider.filter((s) => s.familie === 'omregner:nav').map((s) => s.sti).sort(),
+    ['/da/vaerktoejer/enhedsomregner/', '/en/tools/unit-converter/', '/sv/verktyg/enhetsomvandlare/', '/verktoy/enhetsomregner/']);
   const fam = new Set(sider.filter((s) => s.type === 'omregner').map((s) => s.familie));
   assert.deepEqual([...fam].sort(), ['omregner:lengde', 'omregner:nav', 'omregner:temperatur', 'omregner:vekt', 'omregner:volum']);
   assert.equal(sider.filter((s) => s.type === 'omregner').length, ['volum', 'vekt', 'lengde', 'temperatur', 'nav'].reduce((n, g) => n + tell(`omregner:${g}`), 0));

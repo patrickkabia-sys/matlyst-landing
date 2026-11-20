@@ -3,7 +3,7 @@ name: Revisjon
 # PR-er kjører et utvalg: alt håndskrevet, tre sider per generert familie og språk,
 # eksempelsidene og sidene PR-en selv endrer. Full kontroll (alle klare sider, tolv skår)
 # kjøres hver mandag, ved manuell start, og når en PR rører delt stil, skall, generatorer eller
-# selve revisjonen (se FULL_MONSTRE i scripts/revisjon-omfang.mjs). Finner git ikke basen, kjøres full kontroll.
+# selve revisjonen (alt som ikke står i PR_TRYGGE i scripts/revisjon-omfang.mjs gir full). Finner git ikke basen, kjøres full kontroll.
 # Skårene deler testene (ikke sidene) mellom seg, så de tåler at familiene vokser.
 # test.yml kjører fortsatt standardutvalget.
 on:
@@ -42,7 +42,7 @@ jobs:
           : > endret.txt
           if [ "$HENDELSE" != "pull_request" ]; then
             modus=full
-          elif git diff --name-only "$BASE...HEAD" > endret.tmp; then
+          elif git -c core.quotePath=false diff --name-only "$BASE...HEAD" > endret.tmp; then
             mv endret.tmp endret.txt
             modus=$(node scripts/revisjon-omfang.mjs < endret.txt)
           else
@@ -125,3 +125,26 @@ jobs:
         run: npx playwright test revisjon.spec --workers=4 --shard=${{ matrix.skar }}/12 --pass-with-no-tests
         env:
           REVISJON: alle
+
+  # Vern mot at begge revisjonsjobbene hoppes over (feilstavet output, tomt vilkår): nøyaktig én må ha lyktes.
+  kontroll:
+    name: Kontroll
+    needs: [omfang, utvalg, full]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Sjekk at nøyaktig én revisjonsjobb lyktes
+        env:
+          OMFANG: ${{ needs.omfang.result }}
+          UTVALG: ${{ needs.utvalg.result }}
+          FULL: ${{ needs.full.result }}
+        run: |
+          echo "omfang=$OMFANG utvalg=$UTVALG full=$FULL"
+          lyktes=0
+          [ "$UTVALG" = "success" ] && lyktes=$((lyktes + 1))
+          [ "$FULL" = "success" ] && lyktes=$((lyktes + 1))
+          if [ "$OMFANG" != "success" ] || [ "$lyktes" -ne 1 ]; then
+            echo "Forventet omfang=success og nøyaktig én av utvalg og full lyktes" >&2
+            exit 1
+          fi
