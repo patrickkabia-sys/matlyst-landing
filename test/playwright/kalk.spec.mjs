@@ -252,6 +252,20 @@ test.describe('engelsk skjema', () => {
     });
   }
 
+  // Brøkledd har høyst seks sifre; alt som gir et uendelig eller ikke-endelig tall er ugyldig.
+  for (const tekst of ['9007199254740993/2', `1/1${'0'.repeat(309)}`, '1234567/2', '1/1234567', '1234567 1/2', '1 1234567/2']) {
+    test(`brøkledd over seks sifre «${tekst.slice(0, 20)}» gir veiledning`, async ({ page }) => {
+      await page.fill('#fast [data-felt=mengde]', tekst);
+      await expect(page.locator('#fast [data-felt=setning]')).toHaveText(FEIL_EN);
+      await expect(page.locator('#fast [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
+    });
+  }
+  test('brøk med seks sifre i leddene er gyldig', async ({ page }) => {
+    await page.fill('#fast [data-felt=mengde]', '999999/2');
+    await expect(page.locator('#fast [data-felt=setning]')).toHaveText('999999/2 cups flour = 62499938 g');
+    await expect(page.locator('#fast [data-felt=mengde]')).not.toHaveAttribute('aria-invalid', 'true');
+  });
+
   test('entall og flertall gjelder også svaret', async ({ page }) => {
     await page.selectOption('#fast [data-felt=fra]', 'g');
     await page.selectOption('#fast [data-felt=til]', 'cups');

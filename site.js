@@ -285,11 +285,11 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   };
   // Mengden som tall, med brøk når skjemaet tillater det: a/b eller n a/b (heltall, nevner over 0, valgfritt mellomrom rundt skråstreken).
   // Gir { n, tekst, entall } eller null. tekst er brøken normalisert («1 1/2»). entall er sant for nøyaktig 1 og for en ekte brøk under 1 skrevet som brøk («3/4»).
-  // Med brøk slått på er mellomrom mellom sifre ikke tusenskille («1 2» er ugyldig), ellers ville «1 2» blitt 12.
+  // Heltall, teller og nevner har høyst seks sifre (ellers er brøken ugyldig). Med brøk slått på er mellomrom mellom sifre ikke tusenskille («1 2» er ugyldig), ellers ville «1 2» blitt 12.
   const tolkMengde = (tekst, brok) => {
     const t = String(tekst).trim();
     if (brok) {
-      const m = /^(?:(\d+)\s+)?(\d+)\s*\/\s*(\d+)$/u.exec(t);
+      const m = /^(?:(\d{1,6})\s+)?(\d{1,6})\s*\/\s*(\d{1,6})$/u.exec(t);
       if (m) {
         const [, hel, a, b] = m;
         if (Number(b) === 0) return null;
@@ -299,7 +299,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       if (/\d\s+\d/u.test(t) || t.includes('/')) return null;
     }
     const n = tolkTall(t, KOMMA);
-    return n === null ? null : { n, tekst: null, entall: n === 1 };
+    // Med brøk slått på avvises også et tall som ikke er endelig (for eksempel 400 sifre).
+    return n === null || (brok && !Number.isFinite(n)) ? null : { n, tekst: null, entall: n === 1 };
   };
   for (const skjema of skjemaer) {
     // Hvert skjema settes opp for seg: et ødelagt skjema hoppes over (det statiske svaret i HTML-en blir stående), og resten virker.
