@@ -127,3 +127,14 @@ test('settInn uten plassmerke: blokka står i hylledelen foran .bunnrad, ikke i 
   assert.ok(pos(ny) < pos('<footer'));
   assert.equal(settInn(ut, ny), ut, 'idempotent');
 });
+
+test('enkeltsidene og samlesiden til en datadrevet familie står ikke i bunnlista (samlesiden har egen lenke i hyllen)', async () => {
+  const { FAMILIER, SPRAKMAPPE } = await import('../scripts/familier/register.mjs');
+  assert.ok(FAMILIER.length > 0);
+  for (const f of FAMILIER) {
+    for (const [marked, { rot }] of Object.entries(f.markeder)) {
+      const under = guider(marked).map((g) => g.sti).filter((sti) => sti.startsWith(`/${SPRAKMAPPE[marked]}${rot}`));
+      assert.deepEqual(under, [], `${f.id}/${marked}`);
+    }
+  }
+});

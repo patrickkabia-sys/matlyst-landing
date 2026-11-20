@@ -16,7 +16,6 @@ test('kjedeprøven kjører i kopi, avgrenser nøkkelen og gir feilkode ved avvik
   const mappe = mkdtempSync(join(tmpdir(), 'kjedeproeve-test-'));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   kopier(rot, mappe);
-  symlinkSync(join(rot, 'node_modules'), join(mappe, 'node_modules'), 'dir');
   for (const skript of kjede) execFileSync(node, [`scripts/${skript}.mjs`], { cwd: mappe });
   const kjor = (nokkel) => spawnSync(node, ['scripts/kjedeproeve.mjs', nokkel], { cwd: mappe, encoding: 'utf8' });
   const ren = kjor('omregner');
@@ -56,7 +55,6 @@ test('kjedeprøven skriver ut avvik på andre sider med sti og første avvikende
   const mappe = mkdtempSync(join(tmpdir(), 'kjedeproeve-andre-'));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   kopier(rot, mappe);
-  symlinkSync(join(rot, 'node_modules'), join(mappe, 'node_modules'), 'dir');
   for (const skript of kjede) execFileSync(process.execPath, [`scripts/${skript}.mjs`], { cwd: mappe });
   const fil = join(mappe, 'personvern.html');
   writeFileSync(fil, readFileSync(fil, 'utf8').replace('<meta http-equiv="content-language" content="nb-NO">', ''));

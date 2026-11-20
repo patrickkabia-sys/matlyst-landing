@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { existsSync, readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync, statSync, cpSync, realpathSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdtempSync, mkdirSync, rmSync, statSync, cpSync, realpathSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -206,6 +206,8 @@ test('CLI skriver faktisk rendring ved utrulling og lar andre sider stå', (t) =
   const mappe = realpathSync(mkdtempSync(join(tmpdir(), 'skall-cli-')));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   cpSync(join(rot, 'scripts'), join(mappe, 'scripts'), { recursive: true });
+  // Familiene (scripts/familier/) leser dataene sine med zod.
+  symlinkSync(join(rot, 'node_modules'), join(mappe, 'node_modules'), 'dir');
   const fil = join(mappe, 'verktoy/kopp-til-dl/index.html');
   mkdirSync(join(mappe, 'verktoy/kopp-til-dl'), { recursive: true });
   writeFileSync(fil, fiks('omregner-nb'));

@@ -9,7 +9,7 @@ import { alleSider } from '../scripts/sidetyper.mjs';
 import { gruppeForSti } from '../scripts/locale-sider.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
-const SKJULTE = ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'];
+const SKJULTE = ['Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'];
 
 // Leser de seks hyllene ut av menyen i det godkjente prototypet. Kaster hvis noe mangler.
 function hyllerFraPrototyp() {
@@ -51,10 +51,11 @@ test('hver synlige lenke peker på en side som finnes', () => {
   }
 });
 
-test('de seks kalkulatorene som ikke finnes, vises ikke', () => {
+test('kalkulatorene som ikke finnes ennå, og oversikten, vises ikke (Dl til gram finnes og vises)', () => {
   const verktoy = HYLLER.nb.find((h) => h.id === 'verktoy');
   const manglerSider = verktoy.lenker.filter((l) => l.finnes === false).map((l) => l.tekst);
-  assert.deepEqual(manglerSider.slice(0, 6), ['Dl til gram', 'Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær']);
+  assert.deepEqual(manglerSider.slice(0, 5), ['Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær']);
+  assert.ok(synligeLenker(verktoy).some((l) => l.tekst === 'Dl til gram'));
   assert.ok(!synligeLenker(verktoy).some((l) => l.finnes === false));
 });
 
@@ -77,18 +78,18 @@ test('hyllene er identiske med prototypet: navn, flis og lenketekster i rekkefø
   );
 });
 
-test('nøyaktig disse syv lenkene er skjult', () => {
+test('nøyaktig disse seks lenkene er skjult', () => {
   const skjulte = HYLLER.nb.flatMap((h) => h.lenker.filter((l) => l.finnes === false).map((l) => l.tekst));
   assert.deepEqual(skjulte, SKJULTE);
 });
 
-test('synligeLenker beholder alt unntatt de skjulte, 34 totalt', () => {
+test('synligeLenker beholder alt unntatt de skjulte, 35 totalt', () => {
   const proto = hyllerFraPrototyp();
   HYLLER.nb.forEach((h, i) => {
     // «Om Matlyst» (bareNb) er ikke i prototypet.
     assert.deepEqual(synligeLenker(h).filter((l) => !l.bareNb).map((l) => l.tekst), proto[i].lenker.filter((t) => !SKJULTE.includes(t)), h.navn);
   });
-  assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 34);
+  assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 35);
 });
 
 // Falsk tekst: hver nøkkel får en synlig verdi, så testene ser adressene og ikke oversettelsen.

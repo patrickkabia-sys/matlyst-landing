@@ -30,8 +30,10 @@ const trygtMal = (mappe, mal) => {
   return resolve(mal) === resolve(mappe) || resolve(naermest) === resolve(mappe) || trygtUnderRot(mappe, naermest);
 };
 
+// node_modules kopieres ikke, men lenkes inn: familiene (scripts/familier/) leser dataene sine med zod, så en kopi uten zod kan ikke bygge sidene deres.
 export function kopier(rot, mappe) {
   cpSync(rot, mappe, { recursive: true, dereference: false, filter: (kilde, mal) => !UTELATT.has(basename(kilde)) && ikkeLenke(kilde) && trygtMal(mappe, mal) });
+  if (existsSync(join(rot, 'node_modules')) && !existsSync(join(mappe, 'node_modules'))) symlinkSync(resolve(rot, 'node_modules'), join(mappe, 'node_modules'), 'dir');
 }
 
 export function kjor(rot, nokkel) {
@@ -40,7 +42,6 @@ export function kjor(rot, nokkel) {
   const mappe = mkdtempSync(join(tmpdir(), 'matlyst-kjedeproeve-'));
   try {
     kopier(rot, mappe);
-    if (existsSync(join(rot, 'node_modules'))) symlinkSync(resolve(rot, 'node_modules'), join(mappe, 'node_modules'), 'dir');
     for (const skript of KJEDE) execFileSync(process.execPath, [`scripts/${skript}.mjs`], { cwd: mappe, stdio: 'pipe' });
     const hent = (rotmappe) => new Map(alleSider(rotmappe).map((s) => [s.fil, s]));
     const alleFoer = hent(rot), alleEtter = hent(mappe);

@@ -63,12 +63,18 @@ test('antall sider per type regnes med samleside og publiserbare rader', () => {
   assert.deepEqual(familieAntall([{ ...PROEVE, sidetype: 'guide-lang' }]), { omregner: 0, 'guide-lang': 6 });
 });
 
-test('tomt register endrer ingenting', async () => {
-  assert.equal(FAMILIER.length, 0);
-  assert.deepEqual(await familieSider('nb'), {});
-  assert.deepEqual(familieGrupper(), []);
-  assert.deepEqual(familieAntall(), { omregner: 0, 'guide-lang': 0 });
+test('en tom liste endrer ingenting', async () => {
+  assert.deepEqual(await familieSider('nb', []), {});
+  assert.deepEqual(familieGrupper([]), []);
+  assert.deepEqual(familieAntall([]), { omregner: 0, 'guide-lang': 0 });
+  assert.equal(familieForSti('/verktoy/proeve/provemel/', []), null);
+});
+
+test('det ekte registeret har dl til gram, og ingen fiksturfamilier', () => {
+  assert.deepEqual(FAMILIER.map((f) => f.id), ['dl-til-gram']);
+  assert.equal(familieForSti('/verktoy/dl-til-gram/hvetemel/'), 'dl-til-gram');
   assert.equal(familieForSti('/verktoy/proeve/provemel/'), null);
+  assert.equal(familieForSti('/verktoy/dl-til-kopp/'), null);
 });
 
 // Markørtest på kildetekst: kommentarene strippes, og hver markør må finnes (indexOf gir -1 for manglende, og -1 er mindre enn alt).
@@ -94,20 +100,24 @@ test('markørtesten kan bli rød: en kilde uten koblingen feiler pos()', () => {
   assert.throws(() => pos(utenKommentarer('// ...familieGrupper()\nexport const x = 1;'), '...familieGrupper()'), /mangler/u);
 });
 
-test('tomt register gir ingen auto-fam-grupper og ingen familiesider i RIKE', () => {
-  assert.equal(SIDEGRUPPER.some((g) => g.id.startsWith('auto-fam-')), false);
+test('registeret gir auto-fam-grupper og RIKE-sider for dl til gram, og ingenting for fiksturfamilier', () => {
+  assert.ok(SIDEGRUPPER.some((g) => g.id === 'auto-fam-dl-til-gram-nav'));
+  assert.equal(SIDEGRUPPER.some((g) => g.id.startsWith('auto-fam-proeve')), false);
+  assert.ok(Object.hasOwn(RIKE.nb, 'verktoy/dl-til-gram/'));
+  assert.ok(Object.hasOwn(RIKE.nb, 'verktoy/dl-til-gram/hvetemel/'));
   assert.equal(Object.keys(RIKE.nb).some((s) => s.includes('proeve')), false);
+  for (const mk of ['sv', 'da', 'en']) assert.equal(Object.keys(RIKE[mk]).some((s) => s.includes('dl-til-gram')), false, mk);
 });
 
-// Generatorene kopieres av mange tester til mapper uten node_modules. Med tomt register skal registeret derfor
-// ikke trenge zod; først når en familie faktisk leses, skal manglende zod gi en tydelig feil.
+// Registeret skal ikke trenge zod så lenge ingen familie leses; først når en familie faktisk leses, skal manglende zod gi en tydelig feil.
+// (Kopier av generatorene lenkes til node_modules, se kopier i scripts/kjedeproeve.mjs, fordi det ekte registeret har en familie.)
 test('registeret virker uten zod så lenge ingen familie leses, og sier fra tydelig når en leses', () => {
   const mappe = mkdtempSync(join(tmpdir(), 'familie-uten-zod-'));
   try {
     mkdirSync(join(mappe, 'familier'));
     for (const f of ['register.mjs', 'felles.mjs']) copyFileSync(new URL(`../scripts/familier/${f}`, import.meta.url), join(mappe, 'familier', f));
     const kjor = (kode) => spawnSync(process.execPath, ['--input-type=module', '-e', kode], { cwd: mappe, encoding: 'utf8' });
-    const tom = kjor("const r = await import('./familier/register.mjs'); console.log(JSON.stringify([r.familieGrupper(), await r.familieSider('nb'), r.familieAntall(), r.familieForSti('/x/')]));");
+    const tom = kjor("const r = await import('./familier/register.mjs'); console.log(JSON.stringify([r.familieGrupper([]), await r.familieSider('nb', []), r.familieAntall([]), r.familieForSti('/x/', [])]));");
     assert.equal(tom.status, 0, tom.stderr);
     assert.equal(tom.stdout.trim(), '[[],{},{"omregner":0,"guide-lang":0},null]');
     const med = kjor(`const r = await import('./familier/register.mjs'); r.familieGrupper([{ id: 'x', sidetype: 'omregner', mappe: new URL('file:///finnes-ikke/'), markeder: { nb: { rot: 'a/' } } }]);`);

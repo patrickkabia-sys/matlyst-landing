@@ -1,7 +1,7 @@
 // Strukturerte data for sidefamilier, og guidePage som tar ferdige objekter i `schemas`.
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, symlinkSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test, { after } from 'node:test';
@@ -64,7 +64,6 @@ test('artikkel med to kilder gir to citation med url og publisher', () => {
 const kopi = mkdtempSync(join(tmpdir(), 'familie-skjema-'));
 after(() => rmSync(kopi, { recursive: true, force: true }));
 kopier(ROT, kopi);
-symlinkSync(join(ROT, 'node_modules'), join(kopi, 'node_modules'), 'dir');
 
 function guide(sprak, side) {
   const kode = `const m = await import('./scripts/generer-lokalsider.mjs');

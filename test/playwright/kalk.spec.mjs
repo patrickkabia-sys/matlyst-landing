@@ -67,13 +67,32 @@ test('svarsetningen gjengir mengden slik den ble tolket, bare svaret avrundes', 
   const f = '#fast';
   const setning = page.locator(`${f} [data-felt=setning]`);
   await page.fill(`${f} [data-felt=mengde]`, '1,25');
-  await expect(setning).toHaveText('1,25 dl hvetemel = 68,8 g');
+  await expect(setning).toHaveText('1,25 dl hvetemel = 69 g');
   await page.fill(`${f} [data-felt=mengde]`, '2,50');
   await expect(setning).toHaveText('2,5 dl hvetemel = 138 g');
   await page.fill(`${f} [data-felt=mengde]`, '0,5');
-  await expect(setning).toHaveText('0,5 dl hvetemel = 27,5 g');
+  await expect(setning).toHaveText('0,5 dl hvetemel = 28 g');
   await page.fill(`${f} [data-felt=mengde]`, '1.000');
   await expect(setning).toHaveText('1000 dl hvetemel = 55000 g');
+});
+
+test('svar i gram: hele gram fra 1 g, to gjeldende sifre under 1 g; andre enheter: 100 og over som heltall, ellers tre og to gjeldende sifre', async ({ page }) => {
+  const f = '#fast';
+  const svar = page.locator(`${f} [data-felt=svar]`);
+  // 55 g per dl. Gram: 0,5 dl er 27,5 g (opp til 28), 1 ts er 2,75 g (3), 1 ss er 8,25 g (8).
+  for (const [fra, mengde, ut] of [['dl', '0,5', '28'], ['ts', '1', '3'], ['ss', '1', '8'], ['dl', '0,01', '0,55'], ['dl', '0,015', '0,83'], ['dl', '0,02', '1']]) {
+    await page.selectOption(`${f} [data-felt=fra]`, fra);
+    await page.selectOption(`${f} [data-felt=til]`, 'g');
+    await page.fill(`${f} [data-felt=mengde]`, mengde);
+    await expect(svar, `${mengde} ${fra} til g`).toHaveText(ut);
+  }
+  // Andre enheter: gram til dl. 100 g er 1,818 dl (1,8), 500 g er 9,09 dl (9,1), 1000 g er 18,18 dl (18,2), 6000 g er 109 dl.
+  await page.selectOption(`${f} [data-felt=fra]`, 'g');
+  await page.selectOption(`${f} [data-felt=til]`, 'dl');
+  for (const [mengde, ut] of [['100', '1,8'], ['500', '9,1'], ['1000', '18,2'], ['5500', '100'], ['6000', '109'], ['55', '1']]) {
+    await page.fill(`${f} [data-felt=mengde]`, mengde);
+    await expect(svar, `${mengde} g til dl`).toHaveText(ut);
+  }
 });
 
 test('tusenskille leses likt som i omregneren: mellomrom, hardt mellomrom og punktum gir 1000', async ({ page }) => {

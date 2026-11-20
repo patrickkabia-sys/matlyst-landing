@@ -51,7 +51,7 @@ export const HYLLER = {
         { tekst: 'Cups til dl', href: '/verktoy/kopp-til-dl/' },
         { tekst: 'Dl til cups', href: '/verktoy/dl-til-kopp/' },
         { tekst: 'Celsius til Fahrenheit', href: '/verktoy/celsius-til-fahrenheit/' },
-        { tekst: 'Dl til gram', href: '/verktoy/dl-til-gram/', finnes: false },
+        { tekst: 'Dl til gram', href: '/verktoy/dl-til-gram/' },
         { tekst: 'Porsjoner', href: '/verktoy/porsjoner/', finnes: false },
         { tekst: 'Kakeform', href: '/verktoy/kakeform/', finnes: false },
         { tekst: 'Steketid', href: '/verktoy/steketid/', finnes: false },

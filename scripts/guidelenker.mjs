@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { familieForSti } from './familier/register.mjs';
 
 const ROT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOMENE = 'https://matlyst-app.no';
@@ -58,6 +59,8 @@ export function guider(lang) {
     // Enkeltsider under en hub (enhetsomregnere, høytider) lenkes fra huben og fra hverandre.
     // Uten dette fikk hver bunntekst over 200 omregnerlenker (designgjennomgang 18.11.2026).
     .filter((sti) => !UNDER_HUB.test(sti))
+    // Det samme gjelder alt under roten til en datadrevet familie (scripts/familier/), som ligger to nivåer under huben.
+    .filter((sti) => familieForSti(sti) === null)
     .map((sti) => ({ sti, tekst: lenketekst(readFileSync(filFor(sti), 'utf8')) }));
 }
 

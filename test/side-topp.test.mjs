@@ -3,7 +3,7 @@
 // med en prøvefamilie (test/fiksturer/familier/proeve-topp) lagt inn i en kopi av registeret.
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test, { after } from 'node:test';
@@ -14,13 +14,13 @@ const ROT = fileURLToPath(new URL('..', import.meta.url));
 const kopi = mkdtempSync(join(tmpdir(), 'side-topp-'));
 after(() => rmSync(kopi, { recursive: true, force: true }));
 kopier(ROT, kopi);
-symlinkSync(join(ROT, 'node_modules'), join(kopi, 'node_modules'), 'dir');
 
 const registerFil = join(kopi, 'scripts/familier/register.mjs');
 const original = readFileSync(registerFil, 'utf8');
-const TOM = 'export const FAMILIER = Object.freeze([]);';
-assert.ok(original.includes(TOM), 'registeret har ikke lenger det tomme FAMILIER-uttrykket testen bytter ut');
-writeFileSync(registerFil, original.replace(TOM, `export const FAMILIER = Object.freeze([{ id: 'proeve-topp', sidetype: 'omregner', mappe: new URL(${JSON.stringify(`file://${ROT}test/fiksturer/familier/proeve-topp/`)}), markeder: { nb: { rot: 'verktoy/proeve-topp/' } } }]);`));
+// Registeret byttes som helhet, så prøvefamilien er den eneste i kopien uansett hvilke ekte familier som er registrert.
+const LISTE = /export const FAMILIER = Object\.freeze\(\[[\s\S]*?\n?\]\);/u;
+assert.ok(LISTE.test(original), 'fant ikke FAMILIER-lista i registeret');
+writeFileSync(registerFil, original.replace(LISTE, () => `export const FAMILIER = Object.freeze([{ id: 'proeve-topp', sidetype: 'omregner', mappe: new URL(${JSON.stringify(`file://${ROT}test/fiksturer/familier/proeve-topp/`)}), markeder: { nb: { rot: 'verktoy/proeve-topp/' } } }]);`));
 execFileSync(process.execPath, ['scripts/generer-norske-importguider.mjs'], { cwd: kopi, stdio: 'pipe', maxBuffer: 64 * 1024 * 1024 });
 
 const les = (sti) => readFileSync(join(kopi, sti, 'index.html'), 'utf8');
