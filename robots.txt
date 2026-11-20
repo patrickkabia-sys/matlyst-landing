@@ -1,8 +1,8 @@
-# Alle roboter er velkomne. KI-søk og KI-svar er tillatt uttrykkelig (eierens vedtak 2026-11-20).
-# Navnene er hentet fra leverandørenes egen dokumentasjon.
-
 User-agent: *
 Allow: /
+
+# KI-søk og KI-svar er tillatt uttrykkelig (eierens vedtak 2026-11-20).
+# Navnene er hentet fra leverandørenes egen dokumentasjon.
 
 # OpenAI: søk i ChatGPT, opplæring og brukerstyrt henting
 User-agent: OAI-SearchBot
