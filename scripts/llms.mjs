@@ -4,6 +4,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { FAMILIER, SPRAKMAPPE } from './familier/register.mjs';
 import { alleSider } from './sidetyper.mjs';
 
 const BASE = 'https://matlyst-app.no';
@@ -26,8 +27,11 @@ export function sideInfo(html) {
   return { tittel: tittel && avkod(tittel).replace(/\s*\|\s*Matlyst\s*$/u, '').trim(), beskrivelse: beskrivelse && avkod(beskrivelse).trim(), noindex };
 }
 
+// Samlesidene til de registrerte familiene (scripts/familier/), per språk. Enkeltsidene under dem tas ikke med.
+const familiesamlesider = (familier, sprak) => new Set(familier.flatMap((f) => Object.entries(f.markeder).filter(([marked]) => marked === sprak).map(([marked, { rot }]) => `/${SPRAKMAPPE[marked]}${rot}`)));
+
 // Pure funksjon: registeroppføringer med tittel/beskrivelse inn, llms.txt-tekst ut.
-export function byggLlms(sider, tekst) {
+export function byggLlms(sider, tekst, familier = FAMILIER) {
   const ut = [tekst.head.trimEnd(), ''];
   const linje = (s) => `- [${s.tittel}](${BASE}${s.sti}): ${s.beskrivelse}`;
   const liste = (xs) => xs.sort((a, b) => a.sti.localeCompare(b.sti)).map(linje);
@@ -35,7 +39,8 @@ export function byggLlms(sider, tekst) {
     const t = tekst.sprak[sprak];
     const av = sider.filter((s) => s.sprak === sprak && !s.noindex && s.tittel && s.beskrivelse);
     const blogg = av.filter((s) => s.sti.startsWith(BLOGGROT[sprak]));
-    const hub = av.filter((s) => s.sti === VERKTOYHUB[sprak]);
+    const nav = familiesamlesider(familier, sprak);
+    const hub = av.filter((s) => s.sti === VERKTOYHUB[sprak] || nav.has(s.sti));
     const juss = av.filter((s) => s.type === 'juss');
     const forside = av.filter((s) => s.type === 'forside');
     const funksjoner = av.filter((s) => ['guide-kort', 'guide-lang', 'guide-gammel'].includes(s.type) && !s.sti.startsWith(BLOGGROT[sprak]));

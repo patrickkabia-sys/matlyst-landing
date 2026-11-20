@@ -35,6 +35,8 @@ for (const modus of ['kjor', 'forhandsvis']) for (const tjeneste of [false, true
   test(`${modus} leser ikke en kilde som blir symlenke etter skanningen (${tjeneste ? 'tjeneste' : 'omregner'})`, (t) => {
     const { inne, ute } = oppsett(t);
     cpSync(join(rot, 'scripts'), join(inne, 'scripts'), { recursive: true });
+    // Familiene (scripts/familier/) leser dataene sine med zod.
+    symlinkSync(join(rot, 'node_modules'), join(inne, 'node_modules'), 'dir');
     const kilde = tjeneste ? 'tiktok-auth/index.html' : fil;
     if (tjeneste) {
       mkdirSync(join(inne, 'tiktok-auth'));
@@ -95,6 +97,8 @@ for (const variant of ['fil', 'manglende fil', 'mappe', 'qa', 'kart']) {
 test('kjor sjekker kilden på nytt før skriving hvis den byttes etter lesing', (t) => {
   const { inne, ute } = oppsett(t);
   cpSync(join(rot, 'scripts'), join(inne, 'scripts'), { recursive: true });
+    // Familiene (scripts/familier/) leser dataene sine med zod.
+    symlinkSync(join(rot, 'node_modules'), join(inne, 'node_modules'), 'dir');
   const program = `
 import fs from 'node:fs';
 import { syncBuiltinESMExports } from 'node:module';

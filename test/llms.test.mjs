@@ -64,3 +64,27 @@ test('byggLlms utelater noindex-sider og sider uten beskrivelse', () => {
 test('HTML-entiteter avkodes', () => {
   assert.equal(avkod('Tom &amp; Jerry&#39;s &quot;mat&quot;'), 'Tom & Jerry\'s "mat"');
 });
+
+test('samlesiden til hver registrerte familie er med i llms.txt, men ikke hver vareside', async () => {
+  const { FAMILIER, SPRAKMAPPE } = await import('../scripts/familier/register.mjs');
+  const stier = lenker.map((l) => l[2]);
+  assert.ok(FAMILIER.length > 0, 'registeret har en familie');
+  for (const f of FAMILIER) {
+    for (const [marked, { rot: familierot }] of Object.entries(f.markeder)) {
+      const nav = `/${SPRAKMAPPE[marked]}${familierot}`;
+      assert.ok(stier.includes(nav), `llms.txt mangler samlesiden ${nav}`);
+      assert.deepEqual(stier.filter((s) => s.startsWith(nav) && s !== nav), [], `llms.txt skal ikke ha enkeltsidene under ${nav}`);
+    }
+  }
+});
+
+test('byggLlms tar med samlesiden til en familie under verktøy, og hopper over enkeltsidene og noindex', () => {
+  const tekst = JSON.parse(readFileSync(join(rot, 'scripts/llms-tekst.json'), 'utf8'));
+  const familier = [{ id: 'prove', sidetype: 'omregner', markeder: { nb: { rot: 'verktoy/prove/' } } }];
+  const side = (sti, tittel, noindex = false) => ({ sti, sprak: 'nb', type: 'omregner', tittel, beskrivelse: `Beskrivelse av ${tittel}`, noindex });
+  const ut = byggLlms([side('/verktoy/prove/', 'Prøve'), side('/verktoy/prove/mel/', 'Prøvemel'), side('/verktoy/prove2/', 'Annet')], tekst, familier);
+  assert.ok(ut.includes('(https://matlyst-app.no/verktoy/prove/)'));
+  assert.ok(!ut.includes('/verktoy/prove/mel/') && !ut.includes('/verktoy/prove2/'));
+  const skjult = byggLlms([side('/verktoy/prove/', 'Prøve', true)], tekst, familier);
+  assert.ok(!skjult.includes('/verktoy/prove/'));
+});

@@ -214,6 +214,7 @@ test.describe('Filvakten: symlenker, tomme familier og filene på disk', () => {
 });
 
 test.describe('Familiene i registeret', () => {
+  // Terskelen 0,2 for unik tekst per side beholdes (forLike i hjelp/familievakt.mjs). Målt på dl til gram: 0,24 til 0,81, laveste er hvetemel.
   test('hver familie består alle vaktene', async () => {
     const { feil, kontrollert, forventet } = await kontrollerFamilier(FAMILIER, ROT);
     assert.deepEqual(feil, []);

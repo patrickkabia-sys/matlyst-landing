@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { cpSync, readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync, existsSync, realpathSync } from 'node:fs';
+import { cpSync, readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync, existsSync, realpathSync, symlinkSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
@@ -14,6 +14,8 @@ function kopi(t) {
   const mappe = realpathSync(mkdtempSync(join(tmpdir(), 'skall-forhandsvis-')));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   cpSync(join(rot, 'scripts'), join(mappe, 'scripts'), { recursive: true });
+  // Familiene (scripts/familier/) leser dataene sine med zod.
+  symlinkSync(join(rot, 'node_modules'), join(mappe, 'node_modules'), 'dir');
   const eksempler = new Set(Object.values(EKSEMPEL).flatMap(Object.values));
   const sider = alleSider(rot).filter((s) => eksempler.has(s.sti) || s.type === 'tjeneste');
   for (const s of sider) {

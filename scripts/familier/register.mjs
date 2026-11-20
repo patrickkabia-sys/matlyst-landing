@@ -25,7 +25,9 @@ const trengFelles = () => {
   throw new Error(`Familiedata kan ikke leses uten zod (kjør npm ci): ${fellesFeil?.message}`);
 };
 
-export const FAMILIER = Object.freeze([]);
+export const FAMILIER = Object.freeze([
+  { id: 'dl-til-gram', sidetype: 'omregner', mappe: new URL('./dl-til-gram/', import.meta.url), markeder: { nb: { rot: 'verktoy/dl-til-gram/' } } },
+]);
 
 export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });
 // Feltene generatorene krever: utvid() i rike-sider-register.mjs dropper stille en ny side uten eyebrow og steg.
