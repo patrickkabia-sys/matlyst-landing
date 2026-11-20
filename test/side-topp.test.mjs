@@ -80,3 +80,41 @@ test('sider uten topp gir nøyaktig samme hero og lesedel-åpning som de publise
 test('feltet er valgfritt: ingen «undefined» i heroen på en vanlig side', () => {
   assert.equal(hode(les('verktoy/dl-til-kopp')).includes('undefined'), false);
 });
+
+// Den engelske generatoren (guidePage i generer-lokalsider.mjs) har samme `topp`-felt. Den skriver sidene ved import, så den kalles i kopien.
+function engelsk(side) {
+  const kode = `const m = await import('./scripts/generer-lokalsider.mjs');
+    const { RIKE } = await import('./scripts/rike-sider-register.mjs');
+    const side = JSON.parse(process.env.SIDE);
+    const base = side.fraRik ? { path: side.fraRik, ...RIKE.en[side.fraRik] } : side;
+    process.stdout.write(m.guidePage('en', { ...base, ...(side.topp ? { topp: side.topp } : {}) }));`;
+  return execFileSync(process.execPath, ['--input-type=module', '-e', kode], { cwd: kopi, env: { ...process.env, SIDE: JSON.stringify(side) }, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+}
+const ENGELSK = { path: 'mealime-alternative/', title: 'T', description: 'B', publisert: '2026-11-20', h1: 'H', lead: 'L', eyebrow: 'E', forst: 'F', stegTittel: 'S', steg: [['a', 'b']], alternativ: '', grense: '', seksjoner: [], faqTittel: 'Q', faq: [['Q1?', 'A1']], cta: 'C', rik: '<p>x</p>' };
+const TOPP = '<form class="kalk" data-kalk="proeve"><p>Calculator</p></form>';
+
+test('engelsk side med topp: skjemaet står mellom ingressen og lesedelen, inne i heroen, uten has-toc', () => {
+  const html = engelsk({ ...ENGELSK, topp: TOPP });
+  const ingress = html.indexOf('class="lead"');
+  const skjema = html.indexOf('<form class="kalk"');
+  const lesedel = html.indexOf('<section class="prose locale-prose');
+  assert.ok(ingress > -1 && skjema > -1 && lesedel > -1, 'ingress, skjema og lesedel må finnes');
+  assert.ok(ingress < skjema && skjema < lesedel);
+  assert.ok(hode(html).includes('<form class="kalk"') && hode(html).endsWith(`${TOPP}`), 'topp står rett før </header>');
+  assert.equal(/<section class="prose[^"]*"/u.exec(html)[0], '<section class="prose locale-prose"');
+});
+
+test('engelsk side uten topp: has-toc står der, og heroen er uten rest', () => {
+  const html = engelsk(ENGELSK);
+  assert.match(/<section class="prose[^"]*"/u.exec(html)[0], /has-toc/u);
+  assert.equal(hode(html).includes('undefined'), false);
+  assert.equal(hode(html).includes('class="kalk"'), false);
+});
+
+test('engelsk side uten topp er tegn for tegn lik den publiserte (hero og åpningen av lesedelen)', () => {
+  const sti = 'tools/cups-to-ml/';
+  const generert = HERO.exec(engelsk({ fraRik: sti }));
+  const publisert = HERO.exec(readFileSync(join(ROT, 'en', sti, 'index.html'), 'utf8'));
+  assert.ok(generert && publisert, 'begge sidene har hero og lesedel');
+  assert.equal(generert[0], publisert[0]);
+});

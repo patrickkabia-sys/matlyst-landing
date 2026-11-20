@@ -4,6 +4,7 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { lesData, publiserbare } from '../scripts/familier/felles.mjs';
 import { VIS_TOPPET, kalkHtml, navSide, sideForRad, tillatteTall, tillatteTallNav, utregnet } from '../scripts/familier/dl-til-gram/mal-nb.mjs';
+import { BYTT, PIL, esc, gramTekst, kalkSkjelett, mengdeTekst, sigTekst, tallI } from '../scripts/familier/dl-til-gram/felles-mal.mjs';
 import { TEKST } from '../scripts/familier/dl-til-gram/tekst-nb.mjs';
 import { htmlTilTekst, synligTekst, tallUtenforData } from './hjelp/familievakt.mjs';
 
@@ -357,4 +358,38 @@ test('andre varer: åtte lenker pluss «Alle varer», og aldri varen selv', () =
 test('teksten leses som ren tekst uten rester av markup', () => {
   const tekst = htmlTilTekst(sideForRad(rad('hvetemel'), data, rader).rik, { attributter: false });
   assert.equal(/&[a-z]+;|<|>/u.test(tekst.replace(/[«»]/gu, '')), false);
+});
+
+// Den språknøytrale malkoden (felles-mal.mjs), som norsk og engelsk mal deler.
+test('felles tallregler: desimaltegnet velges, og reglene er de samme som før', () => {
+  assert.equal(gramTekst(27.5, { komma: false }), '28');
+  assert.equal(gramTekst(0.275, { komma: false }), '0.28');
+  assert.equal(gramTekst(0.275, { komma: true }), '0,28');
+  assert.equal(gramTekst(0, { komma: true }), '0');
+  assert.equal(mengdeTekst(4.409, { komma: false }), '4.4');
+  assert.equal(mengdeTekst(0.8, { komma: true }), '0,8');
+  assert.equal(mengdeTekst(0.8, { komma: false }), '0.8');
+  assert.equal(mengdeTekst(16, { komma: false }), '16');
+  assert.equal(mengdeTekst(250, { komma: true }), '250');
+  assert.equal(sigTekst(2.75, 2, { komma: true }), '2,8');
+  assert.equal(sigTekst(0.5, 2), '0.5');
+  assert.deepEqual(tallI('1 dl er 55,5 g og 2.5 cups'), ['1', '55,5', '2.5']);
+  assert.equal(esc('<a href="x">&</a>'), '&lt;a href=&quot;x&quot;&gt;&amp;&lt;/a&gt;');
+});
+
+test('kalkSkjelett: id er valgfritt, tekstene kommer fra kalleren, og dataene beskyttes mot </script>', () => {
+  const arg = {
+    etiketter: { aria: 'Calculator', mengde: 'Amount', fra: 'From', til: 'To', bytt: 'Swap', vanlige: 'Common' },
+    enheter: [['cups', 'Cups'], ['g', 'Grams (g)']], fra: 'cups', til: 'g', data: { varer: [['a<b', 1]] },
+    start: { mengde: '2', svar: '250', setning: '2 cups flour = 250 g', hurtig: [['1', '1 cup']] }, vareHtml: '<div class="kalkvare">V</div>',
+  };
+  const uten = kalkSkjelett(arg);
+  assert.ok(uten.startsWith('<form class="kalk" data-kalk="volumvekt"'));
+  assert.equal(kalkSkjelett({ ...arg, id: 'fast' }).startsWith('<form class="kalk" id="fast" data-kalk="volumvekt"'), true);
+  assert.ok(uten.includes('<option value="cups" selected>Cups</option><option value="g">Grams (g)</option>'));
+  assert.ok(uten.includes('<option value="cups">Cups</option><option value="g" selected>Grams (g)</option>'));
+  assert.ok(uten.includes('<button type="button" data-v="1">1 cup</button>'));
+  assert.ok(uten.includes('class="kalksetning" data-felt="setning" role="status" aria-live="polite">2 cups flour = 250 g</p>'));
+  assert.ok(uten.includes('a\\u003cb') && !uten.includes('a<b'));
+  assert.ok(uten.includes(PIL) && uten.includes(BYTT));
 });
