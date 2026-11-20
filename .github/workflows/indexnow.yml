@@ -62,4 +62,6 @@ jobs:
       - name: Send til IndexNow
         env:
           FRA: ${{ steps.forrige.outputs.fra }}
-        run: node scripts/indexnow.mjs --fra "$FRA" --til HEAD --maks 500 --send
+        run: |
+          if [ -z "$FRA" ]; then echo "Ingen sammenligningscommit, sender ingenting"; exit 0; fi
+          node scripts/indexnow.mjs --fra "$FRA" --til HEAD --maks 500 --send

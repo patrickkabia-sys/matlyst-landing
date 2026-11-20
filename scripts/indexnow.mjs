@@ -3,7 +3,8 @@
 // .github/workflows/indexnow.yml etter at Pages har publisert. Nøkkelfila ligger i rota og heter <nøkkel>.txt.
 //
 // Bruk:
-//   node scripts/indexnow.mjs                          alle adresser i sidekartene (tørr)
+//   node scripts/indexnow.mjs                          alle adresser i sidekartene (tørrkjøring)
+//   node scripts/indexnow.mjs --alle --send           hele sidekartene, med tak (må være uttrykkelig)
 //   node scripts/indexnow.mjs --fra <sha> [--til <sha>] [--maks N] [--send]
 //       bare adresser som er NYE eller har ENDRET lastmod i sidekartene mellom to commits.
 //       lastmod er innholdsdato (scripts/lastmod.mjs), så en ren rammeendring gir ingen adresser.
@@ -51,6 +52,7 @@ export function begrens(urler, maks = STANDARD_MAKS) {
 
 export function urlerMellomCommits(rot, fra, til = 'HEAD', git = (...a) => execFileSync('git', a, { cwd: rot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 })) {
   for (const sha of [fra, til]) git('rev-parse', '--verify', `${sha}^{commit}`);
+  // Begge commitene er verifisert over, så en fil som mangler i en av dem betyr bare at den ikke fantes da.
   const les = (sha, fil) => { try { return git('show', `${sha}:${fil}`); } catch { return ''; } };
   return SITEMAPER.flatMap((fil) => endredeUrler(les(fra, fil), les(til, fil)));
 }
@@ -67,23 +69,47 @@ export async function send(nyttlast, hent = fetch) {
   return svar.status;
 }
 
-const flagg = (navn) => { const i = process.argv.indexOf(navn); return i >= 0 ? process.argv[i + 1] : undefined; };
+// Verdien etter et flagg, eller null. En verdi som mangler, er tom eller ser ut som et nytt flagg regnes som mangler.
+export function flaggVerdi(args, navn) {
+  const i = args.indexOf(navn);
+  if (i < 0) return undefined;
+  const v = args[i + 1];
+  return v && !v.startsWith('--') ? v : null;
+}
+
+// Hva som skal sendes, avgjort før noe nett er i nærheten. Feiler lukket: alt uklart gir { avbrutt }.
+//   --fra <sha>  bare nye og endrede adresser siden <sha>
+//   --alle       hele sidekartene (kreves uttrykkelig for å sende uten --fra)
+// Taket gjelder alle veier. Uten --send er det tørrkjøring, også for --alle.
+export function planlegg(args, rot, git) {
+  const send = args.includes('--send');
+  const maks = Number(flaggVerdi(args, '--maks') ?? STANDARD_MAKS);
+  if (!Number.isInteger(maks) || maks < 1) return { avbrutt: '--maks må være et positivt heltall' };
+  let urler;
+  if (args.includes('--fra')) {
+    const fra = flaggVerdi(args, '--fra');
+    if (!fra) return { avbrutt: '--fra mangler verdi, sender ingenting' };
+    const til = args.includes('--til') ? flaggVerdi(args, '--til') : 'HEAD';
+    if (!til) return { avbrutt: '--til mangler verdi, sender ingenting' };
+    try { urler = urlerMellomCommits(rot, fra, til, git); } catch (feil) { return { avbrutt: `kunne ikke sammenligne ${fra} med ${til}: ${feil.message.split('\n')[0]}` }; }
+  } else if (args.includes('--alle') || !send) {
+    const filer = args.filter((a) => a.endsWith('.xml'));
+    urler = (filer.length ? filer : SITEMAPER).flatMap((f) => urlerFraSitemap(readFileSync(join(rot, f), 'utf8')));
+  } else {
+    return { avbrutt: '--send krever --fra <sha> eller uttrykkelig --alle' };
+  }
+  return { send, ...begrens(urler, maks) };
+}
 
 if (import.meta.url === `file://${process.argv[1]}` || process.argv[1] === fileURLToPath(import.meta.url)) {
   const rot = fileURLToPath(new URL('../', import.meta.url));
-  const fra = flagg('--fra');
   try {
-    let urler, utelatt = 0;
-    if (fra) {
-      ({ urler, utelatt } = begrens(urlerMellomCommits(rot, fra, flagg('--til') ?? 'HEAD'), Number(flagg('--maks') ?? STANDARD_MAKS)));
-      if (!urler.length) { console.log('IndexNow: ingen nye eller endrede adresser, ingenting å sende.'); process.exit(0); }
-    } else {
-      const filer = process.argv.slice(2).filter((a) => a.endsWith('.xml'));
-      urler = (filer.length ? filer : SITEMAPER).flatMap((f) => urlerFraSitemap(readFileSync(join(rot, f), 'utf8')));
-    }
-    const nyttlast = lagNutlast({ nokkel: finnNokkel(rot), urler });
-    if (utelatt) console.warn(`IndexNow: ${utelatt} adresser over taket utelatt`);
-    if (process.argv.includes('--send')) console.log('Sendt', nyttlast.urlList.length, 'adresser, status', await send(nyttlast));
+    const plan = planlegg(process.argv.slice(2), rot);
+    if (plan.avbrutt) { console.warn(`IndexNow: ${plan.avbrutt}`); process.exit(0); }
+    if (!plan.urler.length) { console.log('IndexNow: ingen nye eller endrede adresser, ingenting å sende.'); process.exit(0); }
+    const nyttlast = lagNutlast({ nokkel: finnNokkel(rot), urler: plan.urler });
+    if (plan.utelatt) console.warn(`IndexNow: ${plan.utelatt} adresser over taket utelatt`);
+    if (plan.send) console.log('Sendt', nyttlast.urlList.length, 'adresser, status', await send(nyttlast));
     else console.log(`Tørrkjøring: ${nyttlast.urlList.length} URL-er, nøkkelfil ${nyttlast.keyLocation}. Bruk --send for å sende.`);
   } catch (feil) {
     // Et varsel som ikke går gjennom skal aldri gjøre publiseringen rød.

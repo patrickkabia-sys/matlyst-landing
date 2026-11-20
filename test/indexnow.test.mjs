@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { begrens, endredeUrler, finnNokkel, lagNutlast, send, urlerFraSitemap, urlerMellomCommits } from '../scripts/indexnow.mjs';
+import { begrens, endredeUrler, finnNokkel, lagNutlast, send, urlerFraSitemap, urlerMellomCommits, planlegg } from '../scripts/indexnow.mjs';
 import { execFileSync } from 'node:child_process';
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -86,12 +86,50 @@ test('arbeidsflyten sender bare etter vellykket publisering, har tak og kan ikke
   assert.ok(!/secrets\./u.test(yml), 'ingen hemmeligheter trengs');
 });
 
-test('uten --send sendes ingenting (tørrkjøring er standard lokalt)', () => {
-  const ut = execFileSync(process.execPath, [join(rot, 'scripts/indexnow.mjs')], { encoding: 'utf8' });
-  assert.match(ut, /Tørrkjøring/u);
+test('uten --send er alt tørrkjøring, og taket gjelder også da', () => {
+  const p = planlegg(['--maks', '5'], rot);
+  assert.equal(p.send, false);
+  assert.equal(p.urler.length, 5);
+  assert.ok(p.utelatt > 100);
 });
 
-test('feil i scriptet gir utgangskode 0', () => {
+test('--send uten --fra eller --alle nekter', () => {
+  assert.match(planlegg(['--send'], rot).avbrutt, /--fra|--alle/u);
+  assert.match(planlegg(['--send', '--maks', '10'], rot).avbrutt, /--alle/u);
+});
+
+test('--alle --send er uttrykkelig, men har tak', () => {
+  const p = planlegg(['--alle', '--send', '--maks', '7'], rot);
+  assert.equal(p.send, true);
+  assert.equal(p.urler.length, 7);
+});
+
+test('tom, manglende eller flaggaktig --fra sender ingenting', () => {
+  for (const args of [['--fra', '--send'], ['--send', '--fra'], ['--fra', '', '--send'], ['--fra']]) {
+    const p = planlegg(args, rot);
+    assert.ok(p.avbrutt, JSON.stringify(args));
+    assert.equal(p.urler, undefined, JSON.stringify(args));
+  }
+});
+
+test('en basecommit som ikke finnes sender ingenting, verken som feil eller som «alt er nytt»', () => {
+  const p = planlegg(['--fra', 'finnes-ikke-sha', '--send'], rot);
+  assert.ok(p.avbrutt);
+  assert.equal(p.urler, undefined);
+  assert.ok(planlegg(['--fra', 'HEAD', '--til', 'finnes-ikke', '--send'], rot).avbrutt);
+});
+
+test('ugyldig tak avbryter', () => {
+  assert.ok(planlegg(['--alle', '--maks', '0'], rot).avbrutt);
+  assert.ok(planlegg(['--alle', '--maks', 'abc'], rot).avbrutt);
+});
+
+test('arbeidsflyten avslutter uten å sende når FRA er tom', () => {
+  const yml = readFileSync(join(rot, '.github/workflows/indexnow.yml'), 'utf8');
+  assert.match(yml, /if \[ -z "\$FRA" \]; then[^\n]*exit 0; fi\n\s*node scripts\/indexnow\.mjs/u);
+});
+
+test('feil i scriptet gir utgangskode 0 uten å sende (kjøres uten --send)', () => {
   const r = execFileSync(process.execPath, [join(rot, 'scripts/indexnow.mjs'), '--fra', 'finnes-ikke-sha'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
   assert.equal(r, '');
 });
