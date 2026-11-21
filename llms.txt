@@ -163,9 +163,11 @@ Matlyst hämtar receptet från länken, videon eller bilden du delar, översätt
 - [Importera recept från länk, YouTube och webbsidor](https://matlyst-app.no/sv/importera-recept/): Importera recept från en länk, YouTube, Instagram, TikTok, webbsidor och Paprika. Samla dem på ett ställe och hitta dem igen. Fotoimport kräver Pro.
 - [Inköpslista från recept: dela med hushållet](https://matlyst-app.no/sv/inkopslista/): Inköpslista som skapas från dina recept: lika varor slås ihop och sorteras efter butikens avdelningar. Gratis att börja, gemensam lista kräver Pro.
 - [Innertemperatur för kött och fågel, med källor](https://matlyst-app.no/sv/innertemperatur/): Innertemperatur för kyckling, kalkon, köttfärs, griskött, nötkött och lamm. Siffror från Svensk Fågel, Svenskt Kött och Livsmedelsverket, med källa på varje siffra.
+- [Julbord hemma: planering, mängder och inköpslista](https://matlyst-app.no/sv/julbord/): Planera julbord hemma med tidslinje från början av december, mängder per gäst för julskinka, lax och Janssons samt inköpslista och kylregler. Siffror med källa.
 - [Spara recept från Köket.se](https://matlyst-app.no/sv/koket/): Så sparar du ett recept från Köket.se i Matlyst, med källan kvar.
 - [Spara recept från Landleys Kök](https://matlyst-app.no/sv/landleys-kok/): Så sparar du ett recept från Landleys Kök i Matlyst, med källan kvar.
 - [Spara recept från Matprat](https://matlyst-app.no/sv/matprat/): Så sparar du ett recept från Matprat i Matlyst, med källan kvar.
+- [Nyårsmiddag: planering, tider och mängder](https://matlyst-app.no/sv/nyarsmiddag/): Planera nyårsmiddagen hemma: tidslinje, kalkon med steketid och innertemperatur, mängder per gäst och inköpslista. Siffror med källa och datum.
 - [Vad kan jag laga med dessa ingredienser?](https://matlyst-app.no/sv/recept-pa-ingredienser/): Hitta recept i din egen samling som passar ingredienserna du har hemma.
 - [Digital receptbok och receptapp](https://matlyst-app.no/sv/receptbok-app/): Digital receptbok som samlar recept från webbsidor, Instagram, TikTok och foton. Sök, räkna om portioner och planera veckan. Gratis att börja.
 - [Matlyst för receptskapare](https://matlyst-app.no/sv/receptskapare/): Så visar Matlyst källan, hanterar import och tar emot begäranden från rättighetshavare.

@@ -117,5 +117,17 @@
         "planlagt": []
       }
     }
+  },
+  "sv": {
+    "hubber": {
+      "hoytid": {
+        "hub": "/sv/veckomeny-app/",
+        "eiker": [
+          "/sv/julbord/",
+          "/sv/nyarsmiddag/"
+        ],
+        "planlagt": []
+      }
+    }
   }
 }

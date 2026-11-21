@@ -3,6 +3,8 @@
 // Fakta følger de engelske sidene (funksjonssjekken 18.11.2026). Ingen skjermbilder av engelsk app.
 // Matsikkerhetstall fra Livsmedelsverket er IKKE hentet (sidene lot seg ikke lese ut), så tabellen er utelatt.
 import { sider as sammenligning } from './sammenligning/sv.mjs';
+import { side as julbord } from './sv-jul/julbord.mjs';
+import { side as nyarsmiddag } from './sv-jul/nyarsmiddag.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
@@ -425,6 +427,8 @@ const kopguide = byggRik({
 }).html;
 
 export const rikeSider = {
+  'julbord/': julbord,
+  'nyarsmiddag/': nyarsmiddag,
   'receptbok-app/': {
     title: 'Digital receptbok och receptapp',
     description: 'Digital receptbok som samlar recept från webbsidor, Instagram, TikTok och foton. Sök, räkna om portioner och planera veckan. Gratis att börja.',

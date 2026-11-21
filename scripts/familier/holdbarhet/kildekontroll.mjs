@@ -45,7 +45,7 @@ const ACCEPT = 'text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8'
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36';
 
 /** Henter siden med fetch, og med curl når fetch ikke får 200 (Arla svarer 404 på Node sin fetch, men 200 på curl). */
-async function hent(adresse, id) {
+export async function hent(adresse, id) {
   try {
     const svar = await fetch(adresse, { headers: { 'user-agent': UA, 'accept-language': SPRAK, accept: ACCEPT } });
     if (svar.ok) return Buffer.from(await svar.arrayBuffer());

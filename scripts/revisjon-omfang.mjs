@@ -26,7 +26,7 @@ export const PR_TRYGGE = Object.freeze([
   // Innholdsmoduler som bare gir tekst til én gruppe sider.
   /^scripts\/[^/]+-enhetssider\.mjs$/u,
   /^scripts\/[^/]+-rike-sider\.mjs$/u,
-  /^scripts\/(en-hoytider|nb-jul|nb-om|en-flytting|en-ekstra)\//u,
+  /^scripts\/(en-hoytider|nb-jul|sv-jul|nb-om|en-flytting|en-ekstra)\//u,
   /^scripts\/(blogg|forfatter)\.mjs$/u,
   // Drift uten virkning på sidenes utseende.
   /^scripts\/(lastmod[^/]*|llms[^/]*|indexnow|serp-sjekk|sweetspot|kjede[^/]*)\.(mjs|json)$/u,

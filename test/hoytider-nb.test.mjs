@@ -49,13 +49,15 @@ for (const { sti, mod } of SIDER) {
   const celler = (tab) => [...tab.matchAll(/<tr>([\s\S]*?)<\/tr>/gu)].slice(1).map(([, r]) => [...r.matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gu)].map(([, c]) => c));
   const tallSomBrukt = Object.fromEntries(brukt.tall.map((id) => [id, DATA.tall[id]]));
 
-  test(`${sti}: egen sidegruppe med bare norsk, i sitemap og llms.txt, og ingen annen sitemap`, () => {
+  test(`${sti}: egen sidegruppe med norsk og svensk, i sitemap og llms.txt, og ingen dansk eller engelsk sitemap`, () => {
     const gruppe = SIDEGRUPPER.find(({ sider }) => sider.nb === sti);
     assert.ok(gruppe, 'mangler i SIDEGRUPPER');
-    assert.deepEqual(Object.keys(gruppe.sider), ['nb']);
-    assert.deepEqual(alternativerFor(sti), [['nb-NO', sti], ['x-default', sti]]);
-    assert.doesNotMatch(html, /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu);
-    for (const mappe of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mappe}.xml`), 'utf8'), new RegExp(sti.replaceAll('/', '')));
+    // Den svenske motparten (scripts/sv-jul/) gir hreflang mellom julebord og julbord, nyttårsmiddag og nyårsmiddag.
+    const sv = { '/julebord/': '/sv/julbord/', '/nyttarsmiddag/': '/sv/nyarsmiddag/' }[sti];
+    assert.deepEqual(Object.keys(gruppe.sider), ['nb', 'sv']);
+    assert.equal(gruppe.sider.sv, sv);
+    assert.deepEqual(alternativerFor(sti), [['nb-NO', sti], ['sv-SE', sv], ['x-default', sti]]);
+    for (const mappe of ['da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mappe}.xml`), 'utf8'), new RegExp(sti.replaceAll('/', '')));
     assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), new RegExp(`<loc>https://matlyst-app\\.no${sti}</loc>\\s*<lastmod>2026-11-2\\d</lastmod>`, 'u'));
     assert.ok(readFileSync(join(ROOT, 'llms.txt'), 'utf8').includes(`(https://matlyst-app.no${sti})`));
   });
