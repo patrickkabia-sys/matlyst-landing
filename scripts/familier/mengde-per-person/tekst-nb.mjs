@@ -433,7 +433,7 @@ export const TEKST = {
         ['Hvor stor kalkun til 8 personer?', `Med ${h.t('hel')} per person blir det ${h.sum('hel', 8)} til 8 voksne.`],
         ['Hvor stor kalkun til 10 personer?', `Med ${h.t('hel')} per person blir det ${h.sum('hel', 10)} til 10 voksne.`],
       ],
-      soster: [['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/mengde-per-person/kylling/', 'Hvor mye kylling per person?'], ['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?'], ['/steketid/kalkun/', 'Hvor lenge skal kalkunen stekes?']],
+      soster: [['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/mengde-per-person/kylling/', 'Hvor mye kylling per person?'], ['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?'], ['/steketid/kalkun/', 'Hvor lenge skal kalkunen stekes?'], ['/nyttarsmiddag/', 'Nyttårsmiddag: kalkun, tider og mengder']],
     }),
   },
 
@@ -467,7 +467,7 @@ export const TEKST = {
         ['Hvor mye poteter til julemiddagen?', `${h.t('poteter')} per person.`],
         ['Teller barn som en hel porsjon?', 'MatPrat sier at du gjerne kan regne en halv porsjon til små barn, og en full porsjon til ungdom og voksne.'],
       ],
-      soster: [['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?'], ['/mengde-per-person/pinnekjott/', 'Hvor mye pinnekjøtt per person?'], ['/mengde-per-person/kalkun/', 'Hvor mye kalkun per person?'], ['/mengde-per-person/lutefisk/', 'Hvor mye lutefisk per person?']],
+      soster: [['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?'], ['/mengde-per-person/pinnekjott/', 'Hvor mye pinnekjøtt per person?'], ['/mengde-per-person/kalkun/', 'Hvor mye kalkun per person?'], ['/mengde-per-person/lutefisk/', 'Hvor mye lutefisk per person?'], ['/julebord/', 'Julebord hjemme: plan, mengder og handleliste'], ['/nyttarsmiddag/', 'Nyttårsmiddag: kalkun, tider og mengder']],
     }),
   },
 
@@ -574,7 +574,7 @@ export const TEKST = {
         ['Hvor mye roastbiff per person til koldtbord?', `${h.t('roastbiff')} per porsjon.`],
         ['Hvor mye spekemat til koldtbord?', `${h.r('spekemat-i-koldtbord-min', 'spekemat-i-koldtbord-maks')} per person når spekematen er en del av et større koldtbord.`],
       ],
-      soster: [['/mengde-per-person/spekemat/', 'Hvor mye spekemat per person?'], ['/mengde-per-person/mat-til-selskap/', 'Hvor mye mat til selskap?'], ['/mengde-per-person/salat/', 'Hvor mye salat per person?']],
+      soster: [['/mengde-per-person/spekemat/', 'Hvor mye spekemat per person?'], ['/mengde-per-person/mat-til-selskap/', 'Hvor mye mat til selskap?'], ['/mengde-per-person/salat/', 'Hvor mye salat per person?'], ['/julebord/', 'Julebord hjemme: plan, mengder og handleliste']],
     }),
   },
 
@@ -603,7 +603,7 @@ export const TEKST = {
         ['Hvor mye spekeskinke per person?', `Som eneste kjøtt ${h.t('skinke-alene')}, med godt tilbehør ${h.r('skinke-tilbehor-min', 'skinke-tilbehor-maks')}, på tapasbordet ${h.r('skinke-tapas-min', 'skinke-tapas-maks')}.`],
         ['Hvor mye spekemat på koldtbord?', `${h.r('koldtbord-min', 'koldtbord-maks')} per person når spekemat er en del av et større koldtbord (${h.kp('mp-koldtbord')}).`],
       ],
-      soster: [['/mengde-per-person/koldtbord/', 'Hvor mye mat til koldtbord?'], ['/mengde-per-person/mat-til-selskap/', 'Hvor mye mat til selskap?'], ['/mengde-per-person/poteter/', 'Hvor mye poteter per person?']],
+      soster: [['/mengde-per-person/koldtbord/', 'Hvor mye mat til koldtbord?'], ['/mengde-per-person/mat-til-selskap/', 'Hvor mye mat til selskap?'], ['/mengde-per-person/poteter/', 'Hvor mye poteter per person?'], ['/julebord/', 'Julebord hjemme: plan, mengder og handleliste']],
     }),
   },
 
@@ -627,7 +627,7 @@ export const TEKST = {
         ['Hvor mye mat til 10 personer?', `Med ${h.t('total')} per person blir det ${h.sum('total', 10)} til 10 voksne.`],
         ['Teller barn som en hel person?', 'MatPrat sier at du gjerne kan regne en halv porsjon til små barn. Kalkulatoren bruker det.'],
       ],
-      soster: [['/mengde-per-person/koldtbord/', 'Hvor mye mat til koldtbord?'], ['/mengde-per-person/spekemat/', 'Hvor mye spekemat per person?'], ['/mengde-per-person/julemat/', 'Hvor mye julemat per person?']],
+      soster: [['/mengde-per-person/koldtbord/', 'Hvor mye mat til koldtbord?'], ['/mengde-per-person/spekemat/', 'Hvor mye spekemat per person?'], ['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/julebord/', 'Julebord hjemme: plan, mengder og handleliste']],
     }),
   },
 };

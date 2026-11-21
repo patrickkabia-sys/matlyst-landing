@@ -68,7 +68,9 @@
       "hoytid": {
         "hub": "/ukemeny/",
         "eiker": [
-          "/julemiddag/"
+          "/julemiddag/",
+          "/julebord/",
+          "/nyttarsmiddag/"
         ],
         "planlagt": []
       },

@@ -3,6 +3,8 @@
 // Skrevet fra meningen etter matlyst-sprak, ikke oversatt. Fakta følger de engelske sidene (funksjonssjekken 18.11.2026).
 // Matsikkerhetstall er utelatt med vilje: Mattilsynets sider kunne ikke leses (HTTP 429), og vi bruker ingen tall vi ikke har hentet derfra.
 import { side as julemiddag } from './nb-jul/julemiddag.mjs';
+import { side as julebord } from './nb-jul/julebord.mjs';
+import { side as nyttarsmiddag } from './nb-jul/nyttarsmiddag.mjs';
 import { side as om } from './nb-om/om.mjs';
 import { sider as sammenligning } from './nb-sammenligning/sammenligning.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
@@ -510,6 +512,8 @@ export const rikeSider = {
     ],
     cta: 'Prøv med dine egne oppskrifter',
   },  'julemiddag/': julemiddag,
+  'julebord/': julebord,
+  'nyttarsmiddag/': nyttarsmiddag,
   'om/': om,
   ...sammenligning,
 };
