@@ -182,10 +182,13 @@ test('valgteksten er «Flertallsnavn (kort)», men navnet står alene når kortf
   assert.equal(nb.dl, 'Desiliter (dl)');
   assert.equal(nb.pints, 'Amerikanske pints (pint)');
   assert.equal(tekster(enhetsKort('nb', 'inches', 'cm'), 'til').inches, 'Tommer');
+  // Svensk og dansk bruker «cup» som kortform og entall, og «cups» som flertall: også da står navnet alene.
+  for (const lang of ['sv', 'da']) assert.equal(tekster(enhetsKort(lang, 'cups', 'dl'), 'fra').cups, 'Cups', lang);
+  assert.equal(tekster(enhetsKort('en', 'cups', 'ml'), 'fra').cups, 'US cups (cup)');
   for (const lang of LANG) {
     for (const [id, tekst] of Object.entries(tekster(enhetsKort(lang, ...allePar(lang)[0]), 'fra'))) {
-      const { fl, kort } = ENHETER[id][lang];
-      assert.equal(tekst, fl.toLocaleLowerCase() === kort.toLocaleLowerCase() ? fl.charAt(0).toUpperCase() + fl.slice(1) : `${fl.charAt(0).toUpperCase()}${fl.slice(1)} (${kort})`, `${lang} ${id}`);
+      const { en, fl, kort } = ENHETER[id][lang];
+      assert.equal(tekst, [fl, en].some((t) => t.toLocaleLowerCase() === kort.toLocaleLowerCase()) ? fl.charAt(0).toUpperCase() + fl.slice(1) : `${fl.charAt(0).toUpperCase()}${fl.slice(1)} (${kort})`, `${lang} ${id}`);
     }
   }
 });

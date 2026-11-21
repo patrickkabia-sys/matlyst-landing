@@ -1,8 +1,8 @@
-// Enhedsomregnere på dansk: én side pr. enhedspar (ml til dl, kopper til ml, °F til °C osv.) plus en hub.
+// Enhedsomregnere på dansk: én side pr. enhedspar (ml til dl, cup til ml, °F til °C osv.) plus en hub.
 // Samme motor som den engelske (en-enhetssider.mjs), men med danske tekster, dansk decimalkomma
 // og danske husholdningsmål (1 tsk = 5 ml, 1 spsk = 15 ml, 1 dl = 100 ml).
-import { ENHETER, allePar, enheterFor, konverter, omregnerData, ordFor, parSti, tall } from './enheter.mjs';
-import { byggRik } from './rik-sider.mjs';
+import { ENHETER, FLERTALL, allePar, enheterFor, enhetsKort, kortSetning, konverter, parSti, tall } from './enheter.mjs';
+import { byggLese } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
@@ -10,14 +10,12 @@ const stor = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const N = (id) => ENHETER[id].da;
 const gruppeIds = (g) => enheterFor('da').filter((id) => ENHETER[id].gruppe === g);
 
-// Dansk talformat: decimalkomma og punktum som tusindtalsseparator.
-function dk(n) {
-  const s = tall(n);
-  if (s === '') return s;
-  const [h, d] = s.split('.');
-  const hs = h.replace(/\B(?=(\d{3})+(?!\d))/gu, '.');
-  return d ? `${hs},${d}` : hs;
-}
+// Dansk talformat: decimalkomma, fire gældende cifre og ingen tusindtalsseparator. Samme regel som regnemaskinekortet, så tabellen og kortets svar er ens.
+const k = (n) => tall(n).replace('.', ',');
+const er1 = (v) => Math.abs(v - 1) < 1e-9;
+/** Ordet for en enhed ved en bestemt mængde (kort skrivemåde, men «1 cup» og «2 cups»). */
+const label = (v, id) => (FLERTALL.da[id] ? FLERTALL.da[id][er1(v) ? 0 : 1] : N(id).kort);
+const val = (v, id) => `${k(v)} ${label(v, id)}`;
 
 const AMERIKANSK = new Set(['tsp', 'tbsp', 'oz', 'cups', 'pints', 'quarts', 'gallons', 'oz-vekt', 'lb', 'inches', 'f']);
 
@@ -29,6 +27,17 @@ const VERDIER = {
   g: [5, 10, 25, 50, 100, 150, 200, 250, 500, 750, 1000], kg: [0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 5, 10], 'oz-vekt': [1, 2, 3, 4, 6, 8, 10, 12, 16, 24, 32], lb: [0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4, 5, 10],
   mm: [1, 2, 5, 10, 15, 20, 25, 30], cm: [5, 10, 15, 18, 20, 22, 23, 24, 25, 26, 28, 30, 35], inches: [1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 13, 14],
   c: [100, 120, 140, 150, 160, 175, 180, 190, 200, 220, 225, 250], f: [250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500],
+};
+
+// «Cup» er hovedordet (søgevolumen: «cup til dl» 100 til 1 000 om måneden i Danmark), men folk spørger også med «kop».
+// Sætningerne herunder er de eneste steder, «kop» står i synlig tekst: forklaringen på hver side med cups og to spørgsmål med svar
+// (om cup og kop på alle sider med cups, om dl og kop på siderne mellem cups og dl). test/omregner-sider.test.mjs låser det.
+export const KOPP_BIORD = {
+  forklaring: 'En cup er en amerikansk kop på 236,6 ml, eller 8 flydende ounces.',
+  sammeSporsmal: 'Er en cup det samme som en kop?',
+  sammeSvar: 'En cup er en amerikansk kop på 236,6 ml. Koppen i skabet har sjældent samme størrelse.',
+  dlSporsmal: 'Hvor mange dl er en kop?',
+  dlSvar: 'En kop i en amerikansk opskrift er en cup, altså 2,366 dl. Opskrifter runder ofte af til 2,4 dl.',
 };
 
 // Hvor enheden optræder (til det generiske køkkennotat). Hvert led begynder lige efter «bruges».
@@ -52,12 +61,12 @@ const NOTE = {
   'cl>dl': 'Ti centiliter er en deciliter. 33 cl, som står på en almindelig sodavandsdåse, er 3,3 dl.',
   'l>dl': 'En liter er 10 dl. En opskrift på 0,75 liter bouillon beder altså om 7,5 dl, og en halv liter er 5 dl.',
   'dl>l': 'Ti deciliter er en liter. 15 dl er 1,5 liter, og 5 dl er en halv liter, som er mængden i en almindelig karton fløde eller yoghurt.',
-  'l>ml': 'En liter er 1.000 ml. Skal du bruge 1,5 liter, skal du bruge 1.500 ml. Det er den omregning, du skal bruge, når et målebæger kun viser milliliter.',
+  'l>ml': 'En liter er 1000 ml. Skal du bruge 1,5 liter, skal du bruge 1500 ml. Det er den omregning, du skal bruge, når et målebæger kun viser milliliter.',
   'ml>l': 'Tusind milliliter er en liter. 750 ml er 0,75 liter, og 250 ml er en kvart liter.',
-  'cups>ml': 'Amerikanske opskrifter måler i kopper, men en amerikansk kop er ikke den kop, du har i skabet. En amerikansk kop er 236,6 ml. Mange kogebøger runder den af til 240 ml, derfor ser du begge tal. Ved bagning er det mere pålideligt at veje end at måle i volumen.',
-  'ml>cups': 'Er en opskrift skrevet i milliliter, og du kun har amerikanske målekopper, dividerer du med 236,6. 250 ml er lidt mere end én amerikansk kop.',
-  'cups>dl': 'En amerikansk kop er 2,37 dl, og opskrifter runder den ofte af til 2,4 dl. Står der 2,5 dl i en dansk opskrift, er det lidt mere end en amerikansk kop. I en suppe eller en gryderet gør forskellen ingenting.',
-  'dl>cups': 'Fra deciliter til amerikanske kopper dividerer du med 2,366. Tre deciliter er cirka 1,27 kopper, altså en og en kvart kop i de fleste opskrifter.',
+  'cups>ml': 'Amerikanske opskrifter måler i cups, men en cup er ikke det krus, du har i skabet. En cup er 236,6 ml. Mange kogebøger runder den af til 240 ml, derfor ser du begge tal. Ved bagning er det mere pålideligt at veje end at måle i volumen.',
+  'ml>cups': 'Er en opskrift skrevet i milliliter, og du kun har målebægre i cups, dividerer du med 236,6. 250 ml er lidt mere end én cup.',
+  'cups>dl': 'En cup er 2,366 dl, og opskrifter runder den ofte af til 2,4 dl. Står der 2,5 dl i en dansk opskrift, er det lidt mere end en cup. I en suppe eller en gryderet gør forskellen ingenting.',
+  'dl>cups': 'Fra deciliter til cups dividerer du med 2,366. Tre deciliter er cirka 1,27 cups, altså en og en kvart cup i de fleste opskrifter.',
   'tbsp>ml': 'En amerikansk spiseskefuld er 14,8 ml, som de fleste opskrifter runder af til 15 ml. En dansk spiseskefuld er 15 ml, så forskellen er så lille, at du sjældent mærker den. I Australien er en spiseskefuld 20 ml, så tjek, hvor opskriften kommer fra.',
   'ml>tbsp': 'Små mængder væske i metriske opskrifter bliver til spiseskefulde i amerikanske opskrifter. 15 ml er cirka én amerikansk spiseskefuld.',
   'tsp>ml': 'En amerikansk teskefuld er 4,9 ml, som opskrifter runder af til 5 ml. Brug en afstrøget målske og ikke en ske fra bestikskuffen, for dens størrelse varierer meget.',
@@ -80,7 +89,7 @@ const NOTE = {
   'g>lb': 'Fra gram til pund dividerer du med 453,6. 500 g er cirka 1,1 pund. Butikker i lande, der bruger pund, sælger ofte pakker på 1 pund, hvor vi køber 450 g eller 500 g.',
   'lb>kg': 'Et pund er 0,4536 kg. To pund er lidt over 900 g, derfor er en pakke på 1 kg lidt mere end 2 pund.',
   'kg>lb': 'Fra kilo til pund ganger du med 2,205. En kylling på 1,5 kg er cirka 3,3 pund, og det er nyttigt, når en amerikansk opskrift opgiver kyllingen i pund.',
-  'kg>g': 'Et kilo er 1.000 gram. 1,5 kg er 1.500 g, og en kvart kilo er 250 g. Det er den omregning, du skal bruge, når køkkenvægten kun viser gram.',
+  'kg>g': 'Et kilo er 1000 gram. 1,5 kg er 1500 g, og en kvart kilo er 250 g. Det er den omregning, du skal bruge, når køkkenvægten kun viser gram.',
   'g>kg': 'Tusind gram er et kilo. 750 g er 0,75 kg, og 250 g er en kvart kilo.',
   'f>c': 'De fleste amerikanske ovne og opskrifter bruger Fahrenheit. 350 °F er 177 °C, som de fleste metriske opskrifter runder af til 175 eller 180 °C. En ovn med varmluft har ofte en lavere temperatur end en almindelig ovn, så tjek også ovnens vejledning.',
   'c>f': 'Fra Celsius til Fahrenheit ganger du med 9/5 og lægger 32 til. 180 °C er 356 °F, som amerikanske opskrifter runder af til 350 °F. Forvarm altid ovnen helt, før du begynder at bage.',
@@ -90,9 +99,9 @@ const NOTE = {
   'cm>inches': 'Fra centimeter til tommer dividerer du med 2,54. En form på 20 cm er cirka 8 tommer, og en på 30 cm er cirka 12 tommer.',
   'tbsp>tsp': 'En amerikansk spiseskefuld er 3 amerikanske teskefulde. Det er den nemmeste måde at gøre en krydderimængde større eller mindre.',
   'tsp>tbsp': 'Tre amerikanske teskefulde er én amerikansk spiseskefuld. Fire teskefulde er én spiseskefuld og én teskefuld.',
-  'cups>tbsp': 'Der går 16 amerikanske spiseskefulde på én amerikansk kop. En kvart kop er altså 4 spiseskefulde, og en tredjedel kop er godt 5.',
-  'cups>oz': 'Én amerikansk kop er 8 flydende ounces. Brug det til væsker. Til tørre ingredienser kan kopper og ounces som vægtmål ikke bruges i flæng.',
-  'oz>cups': 'En amerikansk kop rummer 8 flydende ounces, så 16 fl oz er 2 kopper. Det er volumen og ikke vægt: en kop mel vejer cirka 4 oz og ikke 8.',
+  'cups>tbsp': 'Der går 16 amerikanske spiseskefulde på én cup. En kvart cup er altså 4 spiseskefulde, og en tredjedel cup er godt 5.',
+  'cups>oz': 'Én cup er 8 flydende ounces. Brug det til væsker. Til tørre ingredienser kan cups og ounces som vægtmål ikke bruges i flæng.',
+  'oz>cups': 'En cup rummer 8 flydende ounces, så 16 fl oz er 2 cups. Det er volumen og ikke vægt: en cup mel vejer cirka 4 oz og ikke 8.',
   'tbsp>spsk': 'En amerikansk spiseskefuld er 14,8 ml, og en dansk er 15 ml. I praksis kan du bytte dem, men i en følsom opskrift, for eksempel bagning, skal du holde dig til samme mål hele vejen.',
   'spsk>tbsp': 'En dansk spiseskefuld er 15 ml og en amerikansk 14,8 ml. Forskellen er så lille, at du kan bruge dem i flæng i de fleste opskrifter.',
   'tsp>tsk': 'En amerikansk teskefuld er 4,9 ml, og en dansk er 5 ml. Forskellen er så lille, at du kan bruge dem i flæng.',
@@ -100,21 +109,21 @@ const NOTE = {
 };
 
 const FEJL = {
-  volum: ['Du bruger en kaffekop som kop. En kaffekop er sjældent lige så stor som et målebæger, mens en amerikansk kop er 236,6 ml.', 'Du blander flydende ounces og ounces som vægtmål. Flydende ounces måler volumen, mens ounces på en pakke måler vægt.', 'Du tror, at en pint eller en gallon er lige stor i USA og Storbritannien. De britiske (imperial) er større end de amerikanske.', 'Du runder af for tidligt. Regn hele opskriften om først, og rund først de endelige mængder af.', 'Du måler tørre ingredienser i et målebæger til væske, så de pakker sig og giver for meget.'],
-  vekt: ['Du tror, at ounces på pakken er flydende ounces. Vægt og volumen er to forskellige mål.', 'Du måler mel i kopper og venter samme antal gram hver gang. Øser du, pakker melet sig, og hælder du det løst i og stryger af, bliver det mindre.', 'Du runder et pund af til 500 g i en følsom opskrift, for eksempel brød. Et pund er 454 g.', 'Du glemmer at nulstille vægten, når du har sat skålen på.', 'Du regner én ingrediens om og lader de andre stå, så forholdene mellem dem skrider.'],
+  volum: ['Du bruger et kaffekrus som målebæger. Et kaffekrus er sjældent lige så stort som et målebæger, mens en cup er 236,6 ml.', 'Du blander flydende ounces og ounces som vægtmål. Flydende ounces måler volumen, mens ounces på en pakke måler vægt.', 'Du tror, at en pint eller en gallon er lige stor i USA og Storbritannien. De britiske (imperial) er større end de amerikanske.', 'Du runder af for tidligt. Regn hele opskriften om først, og rund først de endelige mængder af.', 'Du måler tørre ingredienser i et målebæger til væske, så de pakker sig og giver for meget.'],
+  vekt: ['Du tror, at ounces på pakken er flydende ounces. Vægt og volumen er to forskellige mål.', 'Du måler mel i cups og venter samme antal gram hver gang. Øser du, pakker melet sig, og hælder du det løst i og stryger af, bliver det mindre.', 'Du runder et pund af til 500 g i en følsom opskrift, for eksempel brød. Et pund er 454 g.', 'Du glemmer at nulstille vægten, når du har sat skålen på.', 'Du regner én ingrediens om og lader de andre stå, så forholdene mellem dem skrider.'],
   lengde: ['Du måler formen på ydersiden af kanten og ikke indvendigt.', 'Du skifter en form på 9 tommer ud med en på 20 cm uden at tjekke, men det er et andet areal.', 'Du glemmer, at en dybere form kræver længere bagetid.', 'Du læser mm som cm, når du ruller dej ud.', 'Du runder ikke af til en formstørrelse, som du faktisk kan købe.'],
   temperatur: ['Du bruger celsiustallet i en ovn, der viser Fahrenheit, og så bliver den langt for kold.', 'Du glemmer, at ovne med varmluft ofte kører med en lavere temperatur end en almindelig ovn.', 'Du stoler på ovnens drejeknap og ikke på et termometer.', 'Du åbner lågen for tit, så temperaturen falder hurtigt.', 'Du regner en opskrift om, der angiver gasmærke, uden at tjekke din egen ovn.'],
 };
 
 const MENTAL = {
-  volum: 'Et hurtigt overslag: en amerikansk kop er lidt mindre end 2,5 dl, og en liter er lidt mere end fire amerikanske kopper. Brug regnemaskinen til alt, der skal hældes i en skål.',
+  volum: 'Et hurtigt overslag: en cup er lidt mindre end 2,5 dl, og en liter er lidt mere end fire cups. Brug regnemaskinen til alt, der skal hældes i en skål.',
   vekt: 'Et hurtigt overslag: et pund er lidt mindre end et halvt kilo, og et kilo er lidt mere end to pund. En ounce er cirka 28 gram.',
   lengde: 'Et hurtigt overslag: en tomme er cirka 2,5 cm, og en form på 9 tommer er cirka 23 cm.',
   temperatur: 'Et hurtigt overslag: fordobl celsiustallet, og læg 30 til for en grov Fahrenheit-værdi. Jo højere temperaturen er, jo mere unøjagtigt bliver det, så brug regnemaskinen til bagning.',
 };
 
 const GODT = {
-  volum: 'De danske husholdningsmål er enkle: 1 tsk er 5 ml, 1 spsk er 15 ml, og 1 dl er 100 ml. De amerikanske mål ligner dem i navnet, men er ikke helt ens: en amerikansk kop er 236,6 ml, en amerikansk spiseskefuld er 14,8 ml, og en amerikansk teskefuld er 4,9 ml. Mange opskrifter runder dem af til 2,4 dl, 15 ml og 5 ml. Er opskriften britisk, skal du huske, at de britiske (imperial) pint og gallon er større end de amerikanske.',
+  volum: 'De danske husholdningsmål er enkle: 1 tsk er 5 ml, 1 spsk er 15 ml, og 1 dl er 100 ml. De amerikanske mål ligner dem i navnet, men er ikke helt ens: en cup er 236,6 ml, en amerikansk spiseskefuld er 14,8 ml, og en amerikansk teskefuld er 4,9 ml. Mange opskrifter runder dem af til 2,4 dl, 15 ml og 5 ml. Er opskriften britisk, skal du huske, at de britiske (imperial) pint og gallon er større end de amerikanske.',
   vekt: 'Herhjemme vejer vi i gram og kilo, mens amerikanske opskrifter vejer i ounces og pund. 1 ounce er 28,35 g, og 1 pund er 453,6 g, så en pakke på 500 g er lidt mere end et pund. Opskrifter og emballager runder ofte af, for eksempel til 450 g for et pund. I en gryderet gør det sjældent noget, men i brød og kage kan du mærke det.',
   lengde: 'En tomme er præcis 2,54 cm. Bageforme opgives i USA i tommer og herhjemme i centimeter. En form på 9 tommer er cirka 23 cm, og en på 8 tommer er cirka 20 cm. Formens størrelse afgør, hvor tyk dejen bliver, og dermed hvor lang bagetiden er.',
   temperatur: 'Danmark bruger Celsius, og USA bruger Fahrenheit. De to skalaer mødes ved minus 40 grader. En ovn med varmluft kører ofte med en lavere temperatur end en almindelig ovn, så tjek, hvad opskriften forudsætter.',
@@ -128,8 +137,8 @@ const EKSTRA = {
 };
 
 const MAALETIPS = {
-  volum: p('Brug et målebæger til væske og afstrøgne målskeer eller målebægre til tørre ingredienser. Aflæs bægeret i øjenhøjde på et vandret underlag, og stryg skeer og kopper af med bagsiden af en kniv.', 'Amerikanske, britiske og australske mål med samme navn er ikke altid lige store, så tjek, hvor opskriften kommer fra, før du regner om.'),
-  vekt: p('En køkkenvægt slår ethvert målebæger, især til mel og sukker. Sæt skålen på vægten, nulstil den, og hæld ingrediensen i.', 'Har du kun målebægre, så husk, at en kop mel og en kop sukker ikke vejer det samme.'),
+  volum: p('Brug et målebæger til væske og afstrøgne målskeer eller målebægre til tørre ingredienser. Aflæs bægeret i øjenhøjde på et vandret underlag, og stryg skeer og mål af med bagsiden af en kniv.', 'Amerikanske, britiske og australske mål med samme navn er ikke altid lige store, så tjek, hvor opskriften kommer fra, før du regner om.'),
+  vekt: p('En køkkenvægt slår ethvert målebæger, især til mel og sukker. Sæt skålen på vægten, nulstil den, og hæld ingrediensen i.', 'Har du kun målebægre, så husk, at en cup mel og en cup sukker ikke vejer det samme.'),
   lengde: p('Mål formen på tværs af toppen fra indvendig kant til indvendig kant og ikke over ydersiden af kanten.', 'En form, der er en størrelse forkert, ændrer bagetiden, så kig til kagen tidligere, hvis din form er større end den, opskriften nævner.'),
   temperatur: p('Ovnens drejeknap er ofte upræcis. Et billigt ovntermometer viser den rigtige temperatur.', 'Ovne med varmluft bager varmere, så mange opskrifter foreslår en lavere temperatur, når du bruger dem.'),
 };
@@ -139,29 +148,14 @@ function regelTekst(fra, til) {
   const a = ENHETER[fra]; const b = ENHETER[til];
   if (a.gruppe === 'temperatur') return fra === 'f' ? 'træk 32 fra, og gang derefter med 5/9' : 'gang med 9/5, og læg derefter 32 til';
   const x = a.f / b.f;
-  if (x >= 1) return `gang med ${dk(x)}`;
+  if (x >= 1) return `gang med ${k(x)}`;
   const inv = b.f / a.f;
   const rundt = Math.abs(inv - Math.round(inv)) < 1e-9;
-  return rundt ? `divider med ${dk(inv)}` : `gang med ${dk(x)} (eller divider med ${dk(inv)})`;
-}
-
-function skjema(fra, til) {
-  const g = ENHETER[fra].gruppe;
-  const ids = gruppeIds(g);
-  const data = Object.fromEntries(ids.map((id) => [id, g === 'temperatur' ? 0 : ENHETER[id].f]));
-  const opt = (valgt) => ids.map((id) => `<option value="${id}"${id === valgt ? ' selected' : ''}>${esc(N(id).fl)} (${esc(N(id).kort)})</option>`).join('');
-  const svar = `1 ${ordFor('da', fra, 1)} = ${dk(konverter(1, fra, til))} ${ordFor('da', til, konverter(1, fra, til))}`;
-  return `<form class="omregner" data-gruppe="${g}" onsubmit="return false"><div class="omregner-rad">`
-    + `<label>Mængde<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label>`
-    + `<label>Fra<select data-felt="fra">${opt(fra)}</select></label>`
-    + `<button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Skift enheder">⇄</button>`
-    + `<label>Til<select data-felt="til">${opt(til)}</select></label></div>`
-    + `<p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">${esc(svar)}</p>`
-    + `<script type="application/json" class="omregner-data">${JSON.stringify(omregnerData('da', data, g === 'temperatur'))}</script></form>`;
+  return rundt ? `divider med ${k(inv)}` : `gang med ${k(x)} (eller divider med ${k(inv)})`;
 }
 
 function tabell(fra, til) {
-  const rader = (VERDIER[fra] ?? [1, 2, 5, 10]).map((v) => `<tr><td>${dk(v)} ${N(fra).kort}</td><td>${dk(konverter(v, fra, til))} ${N(til).kort}</td></tr>`).join('');
+  const rader = (VERDIER[fra] ?? [1, 2, 5, 10]).map((v) => `<tr><td>${val(v, fra)}</td><td>${val(konverter(v, fra, til), til)}</td></tr>`).join('');
   return `<div class="table-wrap"><table><thead><tr><th>${esc(stor(N(fra).fl))}</th><th>${esc(stor(N(til).fl))}</th></tr></thead><tbody>${rader}</tbody></table></div>`;
 }
 
@@ -174,7 +168,7 @@ function eksempelVaerdier(fra) {
 }
 
 function eksempler(fra, til) {
-  return `<ul>${eksempelVaerdier(fra).map((v) => `<li><strong>${dk(v)} ${N(fra).kort}</strong> = ${dk(konverter(v, fra, til))} ${N(til).kort}</li>`).join('')}</ul>`;
+  return `<ul>${eksempelVaerdier(fra).map((v) => `<li><strong>${val(v, fra)}</strong> = ${val(konverter(v, fra, til), til)}</li>`).join('')}</ul>`;
 }
 
 function relaterte(fra, til) {
@@ -196,40 +190,47 @@ function titel(F, T) {
   return mellem.length <= 60 ? mellem : `Regn ${F.kort} om til ${T.kort}`;
 }
 
-function beskrivelse(F, T, x) {
+function beskrivelse(F, T, kortSvar) {
   const kandidater = [
-    `Regn ${F.fl} om til ${T.fl} med en gratis regnemaskine. 1 ${F.kort} = ${dk(x)} ${T.kort}. Med tabel, formel og gode tips til køkkenet.`,
-    `Regn ${F.kort} om til ${T.kort} med en gratis regnemaskine. 1 ${F.kort} = ${dk(x)} ${T.kort}. Med tabel, formel og gode tips til køkkenet.`,
-    `Regn ${F.kort} om til ${T.kort} med en gratis regnemaskine. 1 ${F.kort} = ${dk(x)} ${T.kort}. Med tabel og formel.`,
+    `Regn ${F.fl} om til ${T.fl} med en gratis regnemaskine. ${kortSvar}. Med tabel, formel og gode tips til køkkenet.`,
+    `Regn ${F.kort} om til ${T.kort} med en gratis regnemaskine. ${kortSvar}. Med tabel, formel og gode tips til køkkenet.`,
+    `Regn ${F.kort} om til ${T.kort} med en gratis regnemaskine. ${kortSvar}. Med tabel og formel.`,
   ];
   const ok = kandidater.find((t) => t.length >= 100 && t.length <= 160);
   return ok ?? kandidater[2];
 }
+
+/** Er kortformen lig med navnet («cups», «tommer»), skrives enheden uden parentes: «Cups», ikke «Cups (cup)». */
+const likNavn = (id) => [N(id).fl, N(id).en].some((t) => t.toLocaleLowerCase() === N(id).kort.toLocaleLowerCase());
+/** Parentesen udelades også, når kortformen er sidste ord i navnet («amerikanske gallon (gallon)» ville give to ens nabo-ord). */
+const sisteOrd = (id) => N(id).fl.toLocaleLowerCase().split(' ').pop() === N(id).kort.toLocaleLowerCase();
+const medKort = (id) => (likNavn(id) || sisteOrd(id) ? N(id).fl : `${N(id).fl} (${N(id).kort})`);
 
 export function sideForPar(fra, til) {
   const F = N(fra); const T = N(til);
   const g = ENHETER[fra].gruppe;
   const x = konverter(1, fra, til);
   const temp = g === 'temperatur';
-  const svar = `1 ${F.kort} = ${dk(x)} ${T.kort}. Når du skal regne ${F.fl} om til ${T.fl}, ${regelTekst(fra, til)}.`;
+  const svar = `${kortSetning('da', fra, til)}. Når du skal regne ${F.fl} om til ${T.fl}, ${regelTekst(fra, til)}.`;
+  const kortSvar = `1 ${label(1, fra)} = ${val(x, til)}`;
+  const likt = likNavn(fra) || likNavn(til);
+  const medCups = fra === 'cups' || til === 'cups';
   const note = NOTE[`${fra}>${til}`] ?? `${stor(F.fl)} bruges ${BRUG[fra]}. ${stor(T.fl)} bruges ${BRUG[til]}. Derfor regner du om, når en opskrift er skrevet i den ene enhed, og dine måleredskaber bruger den anden.`;
-  const formel = temp ? (fra === 'f' ? '(°F - 32) × 5/9' : '°C × 9/5 + 32') : `${T.kort} = ${F.kort} × ${dk(x)}`;
+  const formel = temp ? (fra === 'f' ? '(°F - 32) × 5/9' : '°C × 9/5 + 32') : `${T.kort} = ${F.kort} × ${k(x)}`;
   const formelTekst = temp ? `${T.kort} = ${formel}` : formel;
-  const rik = byggRik({
-    lang: 'da',
-    svarTekst: svar,
+  const rik = byggLese({
     seksjoner: [
-      [`Regnemaskine: ${F.fl} til ${T.fl}`, skjema(fra, til)],
       [`Tabel: ${F.kort} til ${T.kort}`, p('Tallene herunder er dem, opskrifter oftest bruger. Find din mængde i den venstre kolonne.') + tabell(fra, til)],
       [`Sådan regner du ${F.fl} om til ${T.fl}`, p(`Reglen er: ${regelTekst(fra, til)}. Som formel: ${formelTekst}.`) + p('Her er tre hurtige eksempler:') + eksempler(fra, til) + p(GODT[g])],
-      [`Hvor opskrifter bruger ${F.fl} og ${T.fl}`, p(note)],
+      [`Hvor opskrifter bruger ${F.fl} og ${T.fl}`, (medCups ? p(KOPP_BIORD.forklaring) : '') + p(note)],
       ['Tips til måling', MAALETIPS[g] + p(MENTAL[g]) + p(EKSTRA[g])],
       ['Almindelige fejl, når du regner om', `<ul>${FEJL[g].map((t) => `<li>${t}</li>`).join('')}</ul>`],
       ['Regn en hel opskrift om', p(`Står en opskrift i ${F.fl}, og du laver mad i ${T.fl}, så regn alle mængder om i ét hug, og hold forholdene mellem dem ens. Skriv de nye mængder ved siden af de gamle, så du kan kontrollere dit regnestykke. Skal opskriften også gøres større eller mindre, så regn enhederne om først og skalér bagefter, så du ikke runder af to gange.`) + p('At gøre det for én opskrift går an. For en hel samling gemte opskrifter er det grunden til, at mange vælger en app.')],
       ['Hold op med at regne om i hånden', MATLYST],
       ['Beslægtede omregninger', relaterte(fra, til)],
     ],
-  }).html;
+  });
+  const topp = `${enhetsKort('da', fra, til)}\n<p class="kortsvar"><b>Kort svar:</b> ${esc(svar)}</p>`;
   const q = (a, b) => [a, b];
   const eksVal = eksempelVaerdier(fra)[0];
   const eksRes = konverter(eksVal, fra, til);
@@ -237,59 +238,60 @@ export function sideForPar(fra, til) {
     ? 'Faktoren er nøjagtig, men opskrifter runder den ofte af, så du møder lidt forskellige tal i forskellige kilder. Brug det afrundede tal, når opskriften tåler det.'
     : temp ? 'Formlen er nøjagtig. Opskrifter runder som regel af til nærmeste 5 grader.' : 'Ja. Begge enheder er metriske eller danske husholdningsmål, så faktoren er nøjagtig, og regnemaskinen viser kun de gældende cifre.';
   const faq = [
-    temp ? q(`Hvad er ${dk(eksVal)} ${F.kort} i ${T.kort}?`, `${dk(eksVal)} ${F.kort} er ${dk(eksRes)} ${T.kort}. ${stor(regelTekst(fra, til))}.`)
-      : q(`Hvor mange ${T.fl} er der i 1 ${F.en}?`, `1 ${F.en} er ${dk(x)} ${T.fl}.`),
-    temp ? q(`Hvad er ${dk(eksempelVaerdier(til)[0])} ${T.kort} i ${F.kort}?`, `${dk(eksempelVaerdier(til)[0])} ${T.kort} er ${dk(konverter(eksempelVaerdier(til)[0], til, fra))} ${F.kort}.`)
-      : q(`Hvor mange ${F.fl} er der i 1 ${T.en}?`, `1 ${T.en} er ${dk(konverter(1, til, fra))} ${F.fl}.`),
-    q(`Hvordan regner jeg ${F.kort} om til ${T.kort} uden en regnemaskine?`, `${stor(regelTekst(fra, til))}. For eksempel er ${dk(eksVal)} ${F.kort} lig med ${dk(eksRes)} ${T.kort}.`),
+    temp ? q(`Hvad er ${k(eksVal)} ${F.kort} i ${T.kort}?`, `${val(eksVal, fra)} er ${val(eksRes, til)}. ${stor(regelTekst(fra, til))}.`)
+      : q(`Hvor mange ${T.fl} er der i 1 ${F.en}?`, `1 ${F.en} er ${k(x)} ${T.fl}.`),
+    temp ? q(`Hvad er ${k(eksempelVaerdier(til)[0])} ${T.kort} i ${F.kort}?`, `${k(eksempelVaerdier(til)[0])} ${T.kort} er ${k(konverter(eksempelVaerdier(til)[0], til, fra))} ${F.kort}.`)
+      : q(`Hvor mange ${F.fl} er der i 1 ${T.en}?`, `1 ${T.en} er ${k(konverter(1, til, fra))} ${F.fl}.`),
+    q(`Hvordan regner jeg ${F.kort} om til ${T.kort} uden en regnemaskine?`, `${stor(regelTekst(fra, til))}. For eksempel er ${val(eksVal, fra)} lig med ${val(eksRes, til)}.`),
     q('Er omregningen nøjagtig?', eksakt),
     q(`Hvad bruges ${F.fl} og ${T.fl} til i madlavning?`, `${stor(F.fl)} bruges ${BRUG[fra]}. ${stor(T.fl)} bruges ${BRUG[til]}.`),
-    q(`Kan jeg regne ${T.kort} om til ${F.kort}?`, `Ja. Brug knappen til at skifte enheder i regnemaskinen, eller åbn siden om ${T.kort} til ${F.kort}. 1 ${T.en} er ${dk(konverter(1, til, fra))} ${F.fl}.`),
+    q(`Kan jeg regne ${T.kort} om til ${F.kort}?`, `Ja. Brug knappen til at skifte enheder i regnemaskinen, eller åbn siden om ${T.kort} til ${F.kort}. 1 ${T.en} er ${k(konverter(1, til, fra))} ${F.fl}.`),
+    ...(medCups ? [[KOPP_BIORD.sammeSporsmal, KOPP_BIORD.sammeSvar]] : []),
+    ...((fra === 'cups' && til === 'dl') || (fra === 'dl' && til === 'cups') ? [[KOPP_BIORD.dlSporsmal, KOPP_BIORD.dlSvar]] : []),
     q('Kan jeg bruge omregningen til en hel opskrift?', 'Ja, men regn alle ingredienser om i ét hug, og hold forholdene mellem dem ens. Rund først af til sidst. Bagning er følsom, så tjek mængderne, før du går i gang.'),
     q('Regner Matlyst enheder om i opskrifter?', 'Når du importerer en opskrift, vælger du under Enheder i Indstillinger, om mængderne vises Metrisk, eller beholdes, som kilden skrev dem. Med Metrisk regnes cups, ounces og pund om til milliliter og gram. Indstillingen gælder nye importer.'),
   ];
   return {
     title: titel(F, T),
-    description: beskrivelse(F, T, x),
+    description: beskrivelse(F, T, kortSvar),
     eyebrow: 'Enhedsomregner',
-    h1: `${stor(F.fl)} til ${T.fl} (${F.kort} til ${T.kort})`,
+    h1: likt ? `${stor(medKort(fra))} til ${medKort(til)}` : `${stor(F.fl)} til ${T.fl} (${F.kort} til ${T.kort})`,
     lead: `${stor(F.fl)} til ${T.fl} med tabel, formel og det, du skal være opmærksom på i en opskrift.`,
     forst: 'Skriv en mængde, vælg enhederne, og aflæs svaret.',
     stegTittel: `Sådan regner du ${F.fl} om til ${T.fl}`,
-    steg: [['Skriv mængden', `Skriv antallet af ${F.fl}.`], ['Tjek enhederne', `Sørg for, at Fra er ${F.fl}, og at Til er ${T.fl}.`], ['Aflæs svaret', `Resultatet vises, mens du skriver: 1 ${F.kort} = ${dk(x)} ${T.kort}.`]],
-    alternativ: '', grense: '', seksjoner: [], faqTittel: `Spørgsmål om ${F.kort} til ${T.kort}`, rik, faq,
+    steg: [['Skriv mængden', `Skriv antallet af ${F.fl}.`], ['Tjek enhederne', `Sørg for, at Fra er ${F.fl}, og at Til er ${T.fl}.`], ['Aflæs svaret', `Resultatet vises, mens du skriver: ${kortSvar}.`]],
+    alternativ: '', grense: '', seksjoner: [], faqTittel: `Spørgsmål om ${F.kort} til ${T.kort}`, topp, rik, faq,
     cta: 'Importér opskrifter i Matlyst',
   };
 }
 
 function hub() {
-  const grupper = [['volum', 'Volumen: milliliter, deciliter, kopper og skeer'], ['vekt', 'Vægt: gram, kilo, ounces og pund'], ['lengde', 'Længde: centimeter og tommer'], ['temperatur', 'Temperatur: Celsius og Fahrenheit']];
+  const grupper = [['volum', 'Volumen: milliliter, deciliter, cups og skeer'], ['vekt', 'Vægt: gram, kilo, ounces og pund'], ['lengde', 'Længde: centimeter og tommer'], ['temperatur', 'Temperatur: Celsius og Fahrenheit']];
   const sektion = ([g, h]) => {
     const par = allePar('da').filter(([a]) => ENHETER[a].gruppe === g);
     const lister = par.map(([a, b]) => `<li><a href="/da/${parSti(a, b, 'da')}">${esc(N(a).kort)} til ${esc(N(b).kort)}</a>: ${esc(N(a).fl)} til ${esc(N(b).fl)}</li>`).join('');
     return [h, `<ul class="omregner-liste">${lister}</ul>`];
   };
-  const rik = byggRik({
-    lang: 'da',
-    svarTekst: 'Her finder du alle køkkenomregninger samlet: ml til dl, kopper til ml, ounces til gram, pund til kilo og °F til °C. Hver side har en regnemaskine, en tabel og tips til opskrifter.',
+  const rik = p('Her finder du alle køkkenomregninger samlet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Hver side har en regnemaskine, en tabel og tips til opskrifter.') + p('Regnemaskinen her regner volumen om. Til vægt, længde og temperatur bruger du listerne herunder.') + '\n' + byggLese({
     seksjoner: [
-      ['Danske og amerikanske mål', p('Herhjemme måler vi med 1 tsk = 5 ml, 1 spsk = 15 ml og 1 dl = 100 ml. Amerikanske opskrifter bruger kopper, spiseskefulde og teskefulde, som er lidt anderledes: en amerikansk kop er 236,6 ml, og mange opskrifter runder den af til 2,4 dl. Vægt opgives i ounces og pund (1 ounce er 28,35 g, og 1 pund er 453,6 g), længder i tommer (1 tomme er 2,54 cm) og temperaturer i Fahrenheit.')],
+      ['Danske og amerikanske mål', p('Herhjemme måler vi med 1 tsk = 5 ml, 1 spsk = 15 ml og 1 dl = 100 ml. Amerikanske opskrifter bruger cups, spiseskefulde og teskefulde, som er lidt anderledes: en cup er 236,6 ml, og mange opskrifter runder den af til 2,4 dl. Vægt opgives i ounces og pund (1 ounce er 28,35 g, og 1 pund er 453,6 g), længder i tommer (1 tomme er 2,54 cm) og temperaturer i Fahrenheit.')],
       ...grupper.map(sektion),
       ['Hold op med at regne om i hånden', MATLYST],
     ],
-  }).html;
+  });
   return {
-    title: 'Enhedsomregner til køkkenet: dl, ml, kopper, g, °F',
-    description: 'Gratis enhedsomregner til køkkenet: ml til dl, kopper til ml, ounces til gram, pund til kilo og °F til °C. Med tabeller og tips til opskrifter.',
+    title: 'Enhedsomregner til køkkenet: dl, ml, cups, g, °F',
+    description: 'Gratis enhedsomregner til køkkenet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Med tabeller og tips til opskrifter.',
     eyebrow: 'Enhedsomregner',
     h1: 'Enhedsomregner til køkkenet',
     lead: 'Alle køkkenomregninger samlet, med en regnemaskine og en tabel til hver.',
     forst: 'Vælg to enheder, og aflæs svaret.',
     stegTittel: 'Sådan bruger du omregneren',
     steg: [['Vælg enhederne', 'Vælg den enhed, din opskrift bruger, og den enhed, du vil have.'], ['Skriv mængden', 'Svaret vises, mens du skriver.'], ['Brug tabellen', 'Hver side har en tabel over de mængder, der oftest bruges.']],
-    alternativ: '', grense: '', seksjoner: [], faqTittel: 'Spørgsmål om enhedsomregneren', rik,
+    alternativ: '', grense: '', seksjoner: [], faqTittel: 'Spørgsmål om enhedsomregneren', topp: enhetsKort('da', 'cups', 'ml', { ids: enheterFor('da').filter((id) => ENHETER[id].gruppe === 'volum') }), rik,
     faq: [
-      ['Hvor mange ml er der i en amerikansk kop?', 'En amerikansk kop er 236,6 ml. Mange opskrifter runder den af til 2,4 dl eller 240 ml.'],
+      ['Hvor mange ml er der i en cup?', 'En cup er 236,6 ml. Mange opskrifter runder den af til 2,4 dl eller 240 ml.'],
+      [KOPP_BIORD.sammeSporsmal, KOPP_BIORD.sammeSvar],
       ['Hvor mange ml er der i en teskefuld og en spiseskefuld?', 'En dansk teskefuld er 5 ml, og en dansk spiseskefuld er 15 ml. De amerikanske er lidt mindre, henholdsvis 4,9 ml og 14,8 ml.'],
       ['Hvor mange gram er der i en ounce?', 'En ounce som vægtmål er 28,35 gram. En flydende ounce måler i stedet volumen: 1 amerikansk flydende ounce er 29,57 ml.'],
       ['Hvor mange gram er der i et pund?', 'Et pund er 453,6 gram. Mange amerikanske opskrifter og butikker runder det af til 450 g.'],
