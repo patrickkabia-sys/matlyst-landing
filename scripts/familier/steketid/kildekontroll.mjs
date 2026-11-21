@@ -1,9 +1,9 @@
 // Kontroll mot kilden for familiene «kjernetemperatur» og «steketid»: hvert tall i datafila har sitatet fra kilden i `merknad`,
 // og setningene prosaen siterer ligger i radens `tekst` som «kildeId|sitat». Her sjekkes at hvert sitat fortsatt står ordrett på kildesiden.
 // Endrer ingenting når noe avviker; da skrives lista og koden blir 1. Uten avvik settes kontrollert og hentet til dagens dato.
-// Bruk: node scripts/familier/steketid/kildekontroll.mjs kjernetemperatur|steketid
+// Bruk: node scripts/familier/steketid/kildekontroll.mjs kjernetemperatur|steketid [nb|en]
 // Tabellceller blir «a | b» og linjeskift i en celle «a / b», så et sitat fra en tabellrad kan kontrolleres som tekst.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validerData } from '../felles.mjs';
@@ -44,25 +44,33 @@ export function avvik(data, tekster) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  // Bruk: kildekontroll.mjs <familie> [marked]. Uten marked kontrolleres alle markeder familien har (data.nb.json, data.en.json).
   const familie = process.argv[2];
-  const fil = join(fileURLToPath(new URL('..', import.meta.url)), familie, 'data.nb.json');
-  if (!['kjernetemperatur', 'steketid'].includes(familie)) throw new Error('Bruk: kildekontroll.mjs kjernetemperatur|steketid');
-  const data = validerData(JSON.parse(readFileSync(fil, 'utf8')));
-  const tekster = {};
-  for (const [id, k] of Object.entries(data.kilder)) {
-    const svar = await fetch(k.adresse, { headers: { 'user-agent': 'Mozilla/5.0' } });
-    if (!svar.ok) throw new Error(`${id}: ${k.adresse} svarte ${svar.status}`);
-    tekster[id] = kildetekst(await svar.text());
+  if (!['kjernetemperatur', 'steketid'].includes(familie)) throw new Error('Bruk: kildekontroll.mjs kjernetemperatur|steketid [nb|en]');
+  const mappe = join(fileURLToPath(new URL('..', import.meta.url)), familie);
+  const markeder = process.argv[3] ? [process.argv[3]] : ['nb', 'en'].filter((m) => existsSync(join(mappe, `data.${m}.json`)));
+  let feilet = false;
+  for (const marked of markeder) {
+    const fil = join(mappe, `data.${marked}.json`);
+    const data = validerData(JSON.parse(readFileSync(fil, 'utf8')));
+    const tekster = {};
+    for (const [id, k] of Object.entries(data.kilder)) {
+      const svar = await fetch(k.adresse, { headers: { 'user-agent': 'Mozilla/5.0' } });
+      if (!svar.ok) throw new Error(`${id}: ${k.adresse} svarte ${svar.status}`);
+      tekster[id] = kildetekst(await svar.text());
+    }
+    const liste = avvik(data, tekster);
+    if (liste.length) {
+      feilet = true;
+      for (const a of liste) console.error(`${familie}/${marked}/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
+      continue;
+    }
+    const idag = new Date().toISOString().slice(0, 10);
+    const ny = JSON.parse(readFileSync(fil, 'utf8'));
+    for (const r of ny.rader) if (r.status === 'kontrollert') { r.kontrollert = idag; r.oppdatert = r.oppdatert > idag ? idag : r.oppdatert; }
+    for (const k of Object.values(ny.kilder)) k.hentet = idag;
+    writeFileSync(fil, `${JSON.stringify(ny, null, 2)}\n`);
+    console.log(`${familie}/${marked}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length + Object.keys(r.tekst ?? {}).length, 0)} sitater står hos kilden (${idag})`);
   }
-  const liste = avvik(data, tekster);
-  if (liste.length) {
-    for (const a of liste) console.error(`${familie}/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
-    process.exit(1);
-  }
-  const idag = new Date().toISOString().slice(0, 10);
-  const ny = JSON.parse(readFileSync(fil, 'utf8'));
-  for (const r of ny.rader) if (r.status === 'kontrollert') { r.kontrollert = idag; r.oppdatert = r.oppdatert > idag ? idag : r.oppdatert; }
-  for (const k of Object.values(ny.kilder)) k.hentet = idag;
-  writeFileSync(fil, `${JSON.stringify(ny, null, 2)}\n`);
-  console.log(`${familie}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length + Object.keys(r.tekst ?? {}).length, 0)} sitater står hos kilden (${idag})`);
+  if (feilet) process.exit(1);
 }

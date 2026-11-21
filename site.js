@@ -189,7 +189,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 // Enhetsomregning uten vare: affin[e] = [a, b] (temperatur), negativ (negative mengder er gyldige), sifre (gjeldende sifre i svaret), beholdMengde (bytte lar mengden stå), og varer kan mangle.
 // Tallesing er den delte tolkTall (window.MatlystTall). Skrivemåten av svaret har ikke tak på antall desimaler (visTall har det), så små tall aldri blir 0.
 (() => {
-  const skjemaer = document.querySelectorAll('form.kalk:not([data-kalk="porsjon"])');
+  const skjemaer = document.querySelectorAll('form.kalk:not([data-kalk="porsjon"]):not([data-kalk="band"])');
   if (!skjemaer.length || !window.MatlystTall) return;
   const { tolkTall } = window.MatlystTall;
   const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
@@ -313,6 +313,55 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         if (!data.beholdMengde) mengde.value = data.byttTil && data.byttTil[fra.value] !== undefined ? data.byttTil[fra.value] : fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
         regn();
       });
+      regn();
+    } catch { /* hopp over dette skjemaet */ }
+  }
+})();
+
+// Vekt-til-tid med tabellbånd (form.kalk[data-kalk="band"]): kilden gir tid per vektgruppe, ikke per pound, så vekten slås opp i bandene i skjemaets data.
+// data.band = [{ navn, enhet: [entall, flertall], band: [{ a: vektFra, b: vektTil, c: tidFra, d: tidTil }] }]; språkstrengene (feil, til, to, og, lb) står i dataene. Filen har ingen språkstrenger.
+// En vekt på grensen mellom to rader står i begge, og da vises begge radene. Brøker i svaret: kvarter og halve (2 1/4, 3 1/2).
+(() => {
+  const skjemaer = document.querySelectorAll('form.kalk[data-kalk="band"]');
+  if (!skjemaer.length || !window.MatlystTall) return;
+  const { tolkTall } = window.MatlystTall;
+  const brok = (n) => {
+    const hel = Math.floor(n), f = Math.round((n - hel) * 100) / 100;
+    const b = { 0.25: '1/4', 0.5: '1/2', 0.75: '3/4' }[f];
+    return f === 0 ? String(hel) : b ? (hel ? `${hel} ${b}` : b) : String(n);
+  };
+  for (const skjema of skjemaer) {
+    try {
+      const data = JSON.parse(skjema.querySelector('.kalk-data').textContent);
+      const felt = (navn) => skjema.querySelector(`[data-felt="${navn}"]`);
+      const mengde = felt('mengde'), til = felt('til'), svar = felt('svar'), setning = felt('setning'), vare = felt('vare');
+      const hurtig = [...skjema.querySelectorAll('.hurtig button')];
+      if (!(data && Array.isArray(data.band) && data.band.length && data.t && typeof data.t.feil === 'string' && mengde && til && svar && setning)) continue;
+      svar.setAttribute('aria-live', 'off');
+      const spenn = (a, b) => (a === b ? brok(a) : `${brok(a)} ${data.t.til} ${brok(b)}`);
+      const tid = (a, b, e) => `${spenn(a, b)} ${b <= 1 ? e[0] : e[1]}`;
+      const regn = () => {
+        const sett = data.band[vare ? vare.selectedIndex : 0];
+        const n = tolkTall(mengde.value, false);
+        const treff = n === null ? [] : sett.band.filter((b) => n >= b.a && n <= b.b);
+        til.options[0].textContent = sett.enhet[1];
+        hurtig.forEach((k) => k.setAttribute('aria-pressed', String(n !== null && Number(k.dataset.v) === n)));
+        if (!treff.length) {
+          mengde.setAttribute('aria-invalid', 'true'); svar.textContent = ''; svar.style.removeProperty('--tegn'); setning.textContent = data.t.feil;
+          return;
+        }
+        mengde.removeAttribute('aria-invalid');
+        const lo = Math.min(...treff.map((b) => b.c)), hi = Math.max(...treff.map((b) => b.d));
+        const utTekst = spenn(lo, hi);
+        svar.textContent = utTekst;
+        svar.style.setProperty('--tegn', String(Math.max(utTekst.length, 1)));
+        const vekt = `${n} ${n === 1 ? data.t.lb[0] : data.t.lb[1]}, ${sett.navn.toLowerCase()}`;
+        setning.textContent = treff.length === 1
+          ? `${vekt}: ${tid(treff[0].c, treff[0].d, sett.enhet)}`
+          : `${vekt}: ${data.t.to} ${tid(treff[0].c, treff[0].d, sett.enhet)} ${data.t.og} ${tid(treff[1].c, treff[1].d, sett.enhet)}`;
+      };
+      for (const el of [mengde, vare]) if (el) el.addEventListener(el === mengde ? 'input' : 'change', regn);
+      hurtig.forEach((k) => k.addEventListener('click', () => { mengde.value = k.dataset.v; regn(); }));
       regn();
     } catch { /* hopp over dette skjemaet */ }
   }

@@ -65,7 +65,7 @@ const rik = byggRik({
       + p('After you scale, read the amounts once. It takes a minute and it is the step that catches the odd result. Write what you changed under My notes on the recipe in <a href="/en/recipe-book-app/">Matlyst</a>, so next year you do not have to work it out again.')],
 
     ['The main roast: ham, turkey, beef, or something vegetarian', p(
-      'We do not give roasting times on this page, because a time depends on the cut, the weight, your oven, and whether the meat is thawed. Use the time in your recipe or on the package as a guide, and use a thermometer as the judge. The temperatures below are the minimum safe internal temperatures from FoodSafety.gov.')
+      'We do not give roasting times on this page, because a time depends on the cut, the weight, your oven, and whether the meat is thawed. Use the time in your recipe or on the package as a guide, and use a thermometer as the judge. USDA times by weight are on our pages for <a href="/en/cooking-times/ham/">ham</a>, <a href="/en/cooking-times/roast-beef/">roast beef</a>, <a href="/en/cooking-times/pork-roast/">pork roast</a>, and <a href="/en/cooking-times/leg-of-lamb/">leg of lamb</a>, and each has a matching <a href="/en/internal-temperature/">internal temperature</a> page. The temperatures below are the minimum safe internal temperatures from FoodSafety.gov.')
       + p('How to take a temperature: put a food thermometer into the thickest part of the meat, without touching bone, fat, or gristle, and check more than one spot for a large piece.')
       + '<h3>Ham</h3>'
       + ul(
