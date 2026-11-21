@@ -23,10 +23,10 @@ const gange = (g, n) => (Array.isArray(g) ? g.map((x) => x * n) : g * n);
 // revbensspjäll och sill, så de räknas som proteinrätter enligt Svenskt Kötts tumregel (buffe-rad). Källkolumnen säger det rakt ut.
 export const RATTER = [
   ['Julskinka', 'skinka-jul', () => `${sk('sk-skinka')}`],
-  ['Köttbullar', 'buffe-rad', () => `${sk('sk-servera')}, tumregel för proteinrätter`],
-  ['Prinskorv', 'buffe-rad', () => `${sk('sk-servera')}, tumregel för proteinrätter`],
-  ['Revbensspjäll', 'buffe-rad', () => `${sk('sk-servera')}, tumregel för proteinrätter`],
-  ['Sill', 'buffe-rad', () => `${sk('sk-servera')}, tumregel för proteinrätter`],
+  ['Köttbullar', 'buffe-rad', () => `${sk('sk-servera')}, tumregel`],
+  ['Prinskorv', 'buffe-rad', () => `${sk('sk-servera')}, tumregel`],
+  ['Revbensspjäll', 'buffe-rad', () => `${sk('sk-servera')}, tumregel`],
+  ['Sill', 'buffe-rad', () => `${sk('sk-servera')}, tumregel`],
   ['Gravad lax', 'lax-buffe', () => `${arla('arla-lax')}`],
   ['Janssons frestelse', 'jansson', () => `${arlaK('arla-jansson')}`],
   ['Kokt potatis', 'potatis', () => `${arla('arla-potatis')}`],
@@ -71,7 +71,7 @@ const mangder = p(`${sk('sk-servera')} räknar med ${t('buffe-rad')} per portion
   + p(`Tabellen är räknad från ${t('buffe-rad')} per person och rätt. Tre rätter är bara ett exempel, du väljer själv hur många.`)
   + '<h3>Per rätt</h3>'
   + p(`Här är mängderna per person där en källa anger dem, uträknade för tio och tjugo gäster. Du ska inte ha alla rätterna. Julskinka på ett traditionellt julbord, där mycket annat också står framdukat: ${t('skinka-jul')} per person, enligt ${sk('sk-skinka')}.`)
-  + tabell(['Rätt', 'Per person', `${GAESTER_RATTER[0]} gäster`, `${GAESTER_RATTER[1]} gäster`, 'Källa'], RATTER.map(rattRad))
+  + tabell(['Rätt', 'Per gäst', `${GAESTER_RATTER[0]} gäster`, `${GAESTER_RATTER[1]} gäster`, 'Källa'], RATTER.map(rattRad))
   + p(`Vi hittade ingen svensk källa som anger en mängd för just köttbullar, prinskorv, revbensspjäll och sill. Därför visar tabellen tumregeln för proteinrätter på en buffé, ${t('buffe-rad')} per rätt. Det är en startpunkt, inte en uppgift om just den rätten. Vill du ha fler siffror om kött, se <a href="/sv/hur-mycket-per-person/kott/">hur mycket kött per person</a> och <a href="/sv/hur-mycket-per-person/korv/">hur mycket korv per person</a>.`)
   + '<h3>Om julskinkan är huvudrätten</h3>'
   + p(`Är skinkan huvudrätt vid en vanlig middag, gäller andra siffror. ${sk('sk-servera')} räknar ${t('middag-benfritt')} benfritt kött per person vid en middag, och ${t('middag-ben')} per portion för kött med ben. Ska du laga skinkan själv, säger ${sk('sk-gris')} ${t('skinka-sjalv-utan')} per person utan ben och ${t('skinka-sjalv-med')} med ben. Av färdiglagad skinka är ${t('skinka-fardig')} per person lagom, enligt samma källa. Se <a href="/sv/hur-mycket-per-person/julskinka/">hur mycket julskinka per person</a>.`)

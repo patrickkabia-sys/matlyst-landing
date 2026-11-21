@@ -198,7 +198,7 @@ test('julbord: mängdtabellerna är uträknade från siffrorna per person, obero
   assert.deepEqual(celler(tab[0]), julbord.GAESTER_TOTALT.map((n) => [String(n), fmt(n * 50), fmt(n * 150)]));
   assert.equal(DATA.tall['buffe-rad'].g, 50);
   const rader = [['Julskinka', '50 till 75 g', [50, 75]], ['Köttbullar', '50 g', 50], ['Prinskorv', '50 g', 50], ['Revbensspjäll', '50 g', 50], ['Sill', '50 g', 50], ['Gravad lax', '100 g', 100], ['Janssons frestelse', '70 till 100 g', [70, 100]], ['Kokt potatis', '200 g', 200]];
-  const kalla = ['Svenskt Kött (2025)', ...Array(4).fill('Svenskt Kött (2024), tumregel för proteinrätter'), 'Arla (2026)', 'Arla (2026)', 'Arla (2026)'];
+  const kalla = ['Svenskt Kött (2025)', ...Array(4).fill('Svenskt Kött (2024), tumregel'), 'Arla (2026)', 'Arla (2026)', 'Arla (2026)'];
   const mangd = (g, n) => (Array.isArray(g) ? `${fmt(g[0] * n)} till ${fmt(g[1] * n)}` : fmt(g * n));
   assert.deepEqual(celler(tab[1]), rader.map(([namn, per, g], i) => [namn, per, mangd(g, 10), mangd(g, 20), kalla[i]]));
   // Tabellens tal står i datafilen.
