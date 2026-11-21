@@ -37,12 +37,12 @@ export const FAMILIER = Object.freeze([
   // Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
   { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' }, en: { rot: 'how-long-does-it-last/' } } },
   { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' }, en: { rot: 'can-you-freeze/' } } },
-  // Mengde per person: bare norsk. Tall fra MatPrat og Helsedirektoratet med sitat per tall (kildekontroll.mjs), tekstene i tekst-nb.mjs.
-  { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' } } },
+  // Mengde per person: norsk (MatPrat og Helsedirektoratet, tekstene i tekst-nb.mjs) og amerikansk engelsk (USDA FSIS, land-grant extension, National Turkey Federation m.fl., tekstene i tekst-en.mjs; US-mål først, metrisk i parentes). Sitat per tall (kildekontroll.mjs [nb|en]).
+  { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' }, en: { rot: 'how-much-per-person/' } } },
   // Airfryer: tid og temperatur per råvare med kilde, og omregner fra ovn. Bare norsk. Tallene står i data.nb.json med sitat fra kilden (kildekontroll.mjs).
   { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' } } },
-  // Erstatning: hva du kan bruke i stedet for en vare du mangler. Bare norsk. Tall med sitat fra Idun, MatPrat, melk.no med flere (se erstatning/kildekontroll.mjs).
-  { id: 'erstatning', sidetype: 'guide-lang', mappe: new URL('./erstatning/', import.meta.url), markeder: { nb: { rot: 'erstatning/' } } },
+  // Erstatning: hva du kan bruke i stedet for en vare du mangler. Norsk (Idun, MatPrat, melk.no med flere) og amerikansk engelsk (land-grant extension og King Arthur Baking; tallene er hentet fra amerikanske kilder, ikke oversatt). Sitatkontroll i erstatning/kildekontroll.mjs.
+  { id: 'erstatning', sidetype: 'guide-lang', mappe: new URL('./erstatning/', import.meta.url), markeder: { nb: { rot: 'erstatning/' }, en: { rot: 'substitutes/' } } },
   // Rester og råvarer: undersidene /hva-kan-jeg-lage/med-<vare>/ til den eksisterende guiden. Samlesiden /hva-kan-jeg-lage/ har sidegruppen oppskrifter-fra-ingredienser (nb, sv, da, en).
   { id: 'rester', sidetype: 'guide-lang', mappe: new URL('./rester/', import.meta.url), markeder: { nb: { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true } } },
 ]);

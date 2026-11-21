@@ -220,16 +220,16 @@ output.kalktall{word-spacing:.25em;overflow:hidden;text-overflow:ellipsis;white-
 /* Porsjonskortet (mengde per person): voksne og barn på hver sin flate og svaret på en mørk flate. På smal skjerm står voksne og barn ved siden av hverandre og svaret under. Svaret krymper med tegnantallet (--tegn) som i enhetskortet. */
 .kalkmerke{display:block;font-size:1.0625rem;font-weight:500;color:var(--dempet)}
 .kalkside.til .kalkmerke{color:var(--pro-dempet)}
-.kalk[data-kalk="porsjon"] .kalkrad{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.kalk[data-kalk="porsjon"] .kalkside.til{grid-column:1 / -1}
-.kalk[data-kalk="porsjon"] .kalkside{container-type:inline-size}
-.kalk[data-kalk="porsjon"] output.kalktall{font-size:min(2.75rem,calc(100cqw / (var(--tegn) * .62)))}
+.kalk:is([data-kalk="porsjon"],[data-kalk="portion"]) .kalkrad{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.kalk:is([data-kalk="porsjon"],[data-kalk="portion"]) .kalkside.til{grid-column:1 / -1}
+.kalk:is([data-kalk="porsjon"],[data-kalk="portion"]) .kalkside{container-type:inline-size}
+.kalk:is([data-kalk="porsjon"],[data-kalk="portion"]) output.kalktall{font-size:min(2.75rem,calc(100cqw / (var(--tegn,13) * .62)))}
 @media (min-width:721px){
-  .kalk[data-kalk="porsjon"] .kalkrad{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-  .kalk[data-kalk="porsjon"] .kalkside.til{grid-column:auto}
-  .kalk[data-kalk="porsjon"] output.kalktall{font-size:min(3.5rem,calc(100cqw / (var(--tegn) * .62)))}
+  .kalk:is([data-kalk="porsjon"],[data-kalk="portion"]) .kalkrad{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  .kalk:is([data-kalk="porsjon"],[data-kalk="portion"]) .kalkside.til{grid-column:auto}
+  .kalk:is([data-kalk="porsjon"],[data-kalk="portion"]) output.kalktall{font-size:min(3.5rem,calc(100cqw / (var(--tegn,13) * .62)))}
 }
-@media (min-width:1001px){.kalk[data-kalk="porsjon"] output.kalktall{font-size:min(4.5rem,calc(100cqw / (var(--tegn) * .62)))}}
+@media (min-width:1001px){.kalk:is([data-kalk="porsjon"],[data-kalk="portion"]) output.kalktall{font-size:min(4.5rem,calc(100cqw / (var(--tegn,13) * .62)))}}
 @media (max-width:720px){
   .kalk{margin-top:32px;padding:14px;border-radius:28px}
   .kalkrad{grid-template-columns:minmax(0,1fr);gap:0}

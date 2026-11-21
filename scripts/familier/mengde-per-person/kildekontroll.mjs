@@ -1,7 +1,7 @@
 // Kontroll mot kilden for familien «mengde per person»: hvert tall i datafila har sitatet fra kilden i `merknad`, og tekstsitater
 // (uten tall, nøkkel «sitat:<kilde>:<n>» i `tekst`) står i samme fil. Her sjekkes at sitatene fortsatt står ordrett på kildesiden.
 // Endrer ingenting når noe avviker; da skrives lista og koden blir 1. Er alt i orden, settes `kontrollert` og `hentet` til dagens dato.
-// Bruk: node scripts/familier/mengde-per-person/kildekontroll.mjs
+// Bruk: node scripts/familier/mengde-per-person/kildekontroll.mjs [nb|en]  (uten marked: nb)
 // Tabellceller blir «a | b» og linjeskift i en celle «a / b», så et sitat fra en tabellrad kan kontrolleres som tekst.
 // En kilde som er en PDF (Helsedirektoratets tabell) leses med pdftotext -layout, og sitatet er teksten slik den står der, med mellomrom slått sammen.
 import { spawnSync } from 'node:child_process';
@@ -60,7 +60,8 @@ export function avvik(data, tekster) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const fil = join(fileURLToPath(new URL('.', import.meta.url)), 'data.nb.json');
+  const marked = process.argv[2] ?? 'nb';
+  const fil = join(fileURLToPath(new URL('.', import.meta.url)), `data.${marked}.json`);
   const data = validerData(JSON.parse(readFileSync(fil, 'utf8')));
   const tekster = {};
   for (const [id, k] of Object.entries(data.kilder)) {
@@ -71,7 +72,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
   const liste = avvik(data, tekster);
   if (liste.length) {
-    for (const a of liste) console.error(`mengde-per-person/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
+    for (const a of liste) console.error(`mengde-per-person/${marked}/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
     process.exit(1);
   }
   const idag = new Date().toISOString().slice(0, 10);
@@ -79,5 +80,5 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   for (const r of ny.rader) if (r.status === 'kontrollert') r.kontrollert = idag;
   for (const k of Object.values(ny.kilder)) k.hentet = idag;
   writeFileSync(fil, `${JSON.stringify(ny, null, 2)}\n`);
-  console.log(`mengde-per-person: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length + Object.keys(r.tekst ?? {}).filter((k) => k.startsWith('sitat:')).length, 0)} sitater står hos kilden (${idag})`);
+  console.log(`mengde-per-person/${marked}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length + Object.keys(r.tekst ?? {}).filter((k) => k.startsWith('sitat:')).length, 0)} sitater står hos kilden (${idag})`);
 }

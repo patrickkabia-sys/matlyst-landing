@@ -200,6 +200,7 @@ Matlyst imports a recipe from a shared link, video or photo, translates it into 
 - [Thanksgiving Leftovers: Safe Storage and a Week of Meals](https://matlyst-app.no/en/holidays/thanksgiving-leftovers/): Store Thanksgiving leftovers safely: refrigerate within 2 hours, keep 3 to 4 days, freeze the rest, reheat to 165 °F, and plan a week of leftover meals.
 - [Thanksgiving Plan: Timeline, Portions & Oven Schedule](https://matlyst-app.no/en/holidays/thanksgiving/): A Thanksgiving plan for November 26, 2026: a T-minus timeline, portions for 4 to 16 guests, a one-oven schedule, make-ahead dishes, and food safety rules.
 - [How long does food last in the fridge? Chart with sources](https://matlyst-app.no/en/how-long-does-it-last/): How long do chicken, rice, ground beef, eggs, leftovers, and more last in the fridge? Times from FoodSafety.gov, USDA, and FDA, with the source on every number.
+- [How much food per person? Calculator and chart](https://matlyst-app.no/en/how-much-per-person/): How much food per person? A calculator for adults and kids and a table for 15 foods and dishes, from turkey and ham to rice and pasta, with a source for every number.
 - [Save Instagram recipes from posts and reels](https://matlyst-app.no/en/import-recipes-from-instagram/): Save a recipe from an Instagram post or reel by sharing it to Matlyst. Steps for iPhone and Android, and what to do when the recipe is not in the caption.
 - [Export recipes from Paprika, import into Matlyst](https://matlyst-app.no/en/import-recipes-from-paprika/): Export your recipes from Paprika and import the file into Matlyst. Choose what to bring over and keep ingredients, instructions, images, and folders.
 - [Scan recipes from photos and cookbooks](https://matlyst-app.no/en/import-recipes-from-photos/): Scan a cookbook page, handwritten recipe card or screenshot and turn it into an editable recipe with ingredients and steps. Photo import is a Pro feature.
@@ -215,6 +216,7 @@ Matlyst imports a recipe from a shared link, video or photo, translates it into 
 - [Matlyst for recipe creators](https://matlyst-app.no/en/recipe-creators/): How Matlyst shows sources, handles imports and receives requests from rights holders.
 - [Find recipes by ingredients](https://matlyst-app.no/en/recipes-by-ingredients/): Find recipes in your own collection that match the ingredients you already have.
 - [Shopping list app: a grocery list from recipes](https://matlyst-app.no/en/shopping-list/): A shopping list app that builds the list from your recipes. Matching items combine by store section. Free to start; sharing with your household takes Pro.
+- [Ingredient substitutes: what can I use instead?](https://matlyst-app.no/en/substitutes/): Out of buttermilk, eggs, baking powder, or brown sugar? Each page gives the swap and the ratio from a university extension service or King Arthur Baking, and what changes.
 
 ## English: Blog
 
