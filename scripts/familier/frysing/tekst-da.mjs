@@ -240,7 +240,7 @@ export function nav({ rader, sti, h, p, esc }) {
     description: 'Kan man fryse kød, fisk, brød, ost og grøntsager, og hvor længe holder de? Tider fra Forbrugerrådet Tænk, Madens Verden og Arla, med kilde på hvert tal.',
     lead: `Fryseren skal ifølge Forbrugerrådet Tænk være minimum ${forste.t('frys18')}. Hvert tal på siderne her står hos en navngiven kilde med årstal.`,
     rik: [
-      `<h2>Hvad kilderne siger</h2>${p([
+      `<h2>Det siger kilderne</h2>${p([
         `${forste.k('taenk-nedfrys')} skriver, at fryseren skal være minimum ${forste.t('frys18')}, for at maden kan opbevares sikkert.`,
         `Om optøning skriver ${forste.k('fvst-optoening')}: ${forste.s('optoen', { med: false })}`,
         'Fødevarestyrelsen har ikke selv tider for hver enkelt vare i fryseren. Tiderne nedenfor er derfor fra Forbrugerrådet Tænk, Madens Verden og Arla, hver med årstal.',

@@ -57,7 +57,8 @@ async function hent(adresse, id) {
   }
 }
 
-const norm = (t) => t.replace(/[­​﻿]/gu, '').replace(/\s+/gu, ' ').trim();
+// Kildeteksten mister mellomrom foran tegnsetting (se kildetekst), så sitatet normaliseres likt («Charkuterier : 1-2» hos Svenskt Kött).
+const norm = (t) => t.replace(/[­​﻿]/gu, '').replace(/\s+/gu, ' ').trim().replace(/ ([,.;:!?])/gu, '$1');
 
 const utenRom = (t) => t.replace(/\s+/gu, '');
 

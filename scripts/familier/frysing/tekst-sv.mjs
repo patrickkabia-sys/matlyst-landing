@@ -85,7 +85,7 @@ export const TEKST = {
       ['Kan man frysa kött som har tinat?', `${h.s('otillagat')}`],
       ['Kan man frysa in halvtinad mat?', `${h.s('halv')}`],
     ],
-    soster: H('elavbrott', 'Hur länge håller maten i kylen vid elavbrott?'),
+    soster: H('elavbrott', 'Hur länge håller maten i kylen vid strömavbrott?'),
     andre: [F('matrester', 'Kan man frysa matrester?'), F('kott', 'Hur länge kan man ha kött i frysen?')],
   }),
 
@@ -137,7 +137,7 @@ export const TEKST = {
     ord: 'mjölk, grädde och fil',
     title: 'Kan man frysa mjölk, grädde och fil?',
     h1: 'Kan man frysa mjölk, grädde och fil?',
-    description: `Mjölk och grädde kan frysas in, skriver Livsmedelsverket. Fil, yoghurt, majonnäs och crème fraiche skär sig. Frysen ska hålla ${h.t('fryser')}.`,
+    description: `Mjölk och grädde kan frysas in, skriver Livsmedelsverket. Fil, yoghurt, majonnäs och crème fraiche skär sig. Lagom temperatur i frysen är ${h.t('fryser')}.`,
     lead: `Det beror på produkten. ${h.s('mjolk')}`,
     kilder: [
       h.s('gradde'),
@@ -158,7 +158,7 @@ export const TEKST = {
     ord: 'ost',
     title: 'Kan man frysa ost?',
     h1: 'Kan man frysa ost?',
-    description: `Ja. Livsmedelsverket (2026) skriver att ost går bra att frysa in, men att den blir lite smulig. Riv den gärna först. Frysen ska hålla ${h.t('fryser')}.`,
+    description: `Ja. Livsmedelsverket (2026) skriver att ost går bra att frysa in, men att den blir lite smulig. Riv den gärna först, och frys vid ${h.t('fryser')}.`,
     lead: `Ja. ${h.s('frys')}`,
     kilder: [
       h.s('riv'),
@@ -179,7 +179,7 @@ export const TEKST = {
     ord: 'ägg',
     title: 'Kan man frysa ägg?',
     h1: 'Kan man frysa ägg?',
-    description: `Ja, men inte med skalet på. Livsmedelsverket (2026) skriver att äggvitor och äggulor som blir över går bra att frysa in. Frysen ska hålla ${h.t('fryser')}.`,
+    description: `Ja, men inte med skalet på. Livsmedelsverket (2026) skriver att äggvitor och äggulor som blir över går bra att frysa in, vid ${h.t('fryser')}.`,
     lead: `Ja, men inte i skalet. ${h.s('skal')}`,
     kilder: [
       h.s('vitor'),

@@ -85,7 +85,7 @@ test('Livsmedelsverket står først i kildelista når siden bruker den', async (
 test('samme rad-id på nb og sv gir hreflang, og en vare uten norsk motstykke står alene', () => {
   const grupper = familieGrupper();
   const g = (navn) => grupper.find((x) => x.id === navn);
-  assert.deepEqual(g('auto-fam-holdbarhet-egg').sider, { nb: '/holdbarhet/egg/', sv: '/sv/hallbarhet/agg/', en: '/en/how-long-does-it-last/eggs/' });
+  assert.deepEqual(g('auto-fam-holdbarhet-egg').sider, { nb: '/holdbarhet/egg/', sv: '/sv/hallbarhet/agg/', da: '/da/holdbarhed/aeg/', en: '/en/how-long-does-it-last/eggs/' });
   assert.deepEqual(g('auto-fam-kjernetemperatur-kylling').sider.sv, '/sv/innertemperatur/kyckling/');
   assert.deepEqual(g('auto-fam-holdbarhet-framme').sider, { sv: '/sv/hallbarhet/framme/' });
   assert.equal(g('auto-fam-frysing-nav').sider.sv, '/sv/frysa/');

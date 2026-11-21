@@ -55,12 +55,12 @@ export const TEKST = {
       ['Vad räknas som kylvaror?', `${h.k('kylvaror')} nämner som exempel färsk fisk, kött och mejerivaror.`],
     ],
     soster: H('rester', 'Hur länge håller matrester i kylen?'),
-    andre: [H('elavbrott', 'Hur länge håller maten i kylen vid elavbrott?'), H('kylskapstemperatur', 'Vilken temperatur ska kylen ha?')],
+    andre: [H('elavbrott', 'Hur länge håller maten i kylen vid strömavbrott?'), H('kylskapstemperatur', 'Vilken temperatur ska kylen ha?')],
   }),
 
   elavbrott: (h) => ({
     ord: 'maten vid elavbrott',
-    title: 'Hur länge håller maten i kylen vid elavbrott?',
+    title: 'Hur länge håller maten i kylen vid strömavbrott?',
     h1: 'Hur länge håller maten i kylen vid elavbrott?',
     description: `Vid strömavbrott kan du bedöma maten i kylen om avbrottet varat högst ${h.t('h4')} (kylen höll ${h.t('g4')}) eller ${h.t('h8')} (${h.t('g8')}). Enligt Livsmedelsverket.`,
     lead: `Hur länge maten håller utan el beror på hur kallt det var i kylen från början. ${h.k('elkyl')} anger högst ${h.t('h4')} om kylen höll ${h.t('g4')} och högst ${h.t('h8')} om den höll ${h.t('g8')}.`,
@@ -100,7 +100,7 @@ export const TEKST = {
       ['Vilken temperatur ska kylskåpet ha?', `${h.k('kylvaror')} skriver att en lämplig kylskåpstemperatur är ${h.t('kjol')}.`],
       ['Vilken temperatur ska frysen ha?', `${h.k('kylvaror')} nämner ${h.t('frys')} eller lägre.`],
     ],
-    soster: H('elavbrott', 'Hur länge håller maten i kylen vid elavbrott?'),
+    soster: H('elavbrott', 'Hur länge håller maten i kylen vid strömavbrott?'),
     andre: [H('rester', 'Hur länge håller matrester i kylen?'), F('matrester', 'Kan man frysa matrester?')],
   }),
 
@@ -108,7 +108,7 @@ export const TEKST = {
     ord: 'ägg',
     title: 'Hur länge håller ägg i kylen?',
     h1: 'Hur länge håller ägg i kylen?',
-    description: `Råa ägg förvaras i kylen, cirka ${h.t('kjol')}. Då kan de hålla flera veckor efter bäst före-datumet, enligt Livsmedelsverket (2026). Det här skriver källan.`,
+    description: `Råa ägg förvaras i kylen, cirka ${h.t('kjol')}. Då kan de hålla flera veckor efter bäst före-datumet, enligt Livsmedelsverket (2026).`,
     lead: `Livsmedelsverket anger inget antal dagar för ägg. Källan skriver att råa ägg ska förvaras i kylen, cirka ${h.t('kjol')}, och att de då kan hålla flera veckor efter bäst före-datumet.`,
     kilder: [
       h.s('veckor'),
@@ -204,7 +204,7 @@ export const TEKST = {
     ord: 'bröd',
     title: 'Hur länge håller bröd?',
     h1: 'Hur länge håller bröd, och ska det ligga i kylen?',
-    description: `Mjukt bröd möglar ofta efter ungefär ${h.t('mogel')}, enligt Livsmedelsverket (2026). Bröd mår bäst i rumstemperatur, inte i kylen. Det här säger källan.`,
+    description: `Mjukt bröd möglar ofta efter ungefär ${h.t('mogel')}, enligt Livsmedelsverket (2026). Bröd mår bäst i rumstemperatur, inte i kylen.`,
     lead: `Livsmedelsverket skriver att mjukt bröd ofta möglar efter ungefär ${h.t('mogel')}, men att vissa bröd håller längre. Bröd ska förvaras i rumstemperatur.`,
     kilder: [
       h.s('rum'),
@@ -228,7 +228,7 @@ export const TEKST = {
     ord: 'frukt och grönsaker',
     title: 'Hur ska frukt och grönsaker förvaras?',
     h1: 'Hur ska frukt och grönsaker förvaras?',
-    description: `De flesta grönsaker och frukter trivs bäst i kylen, skriver Livsmedelsverket (2026). Några ska stå svalt, ${h.t('svalt')}, eller i rumstemperatur. Så säger källan.`,
+    description: `De flesta grönsaker och frukter trivs bäst i kylen, skriver Livsmedelsverket (2026). Några ska stå svalt, ${h.t('svalt')}, eller i rumstemperatur. Här ser du var de olika sorterna trivs.`,
     lead: `Livsmedelsverket anger inga dagar här, men visar var olika frukter och grönsaker trivs. Med svalt menas ${h.t('svalt')}.`,
     kilder: [
       h.s('kylen'),
@@ -253,7 +253,7 @@ export const TEKST = {
 const OVERSIKT = {
   rester: ['Tillagad mat, upp till', 'vecka'],
   framme: ['Mat som står framme (vid högst 20 °C)', 'h20'],
-  elavbrott: ['Elavbrott, kylen höll 4 °C', 'h4'],
+  elavbrott: ['Strömavbrott, kylen höll 4 °C', 'h4'],
   kylskapstemperatur: ['Lämplig temperatur i kylen', 'kjol'],
   egg: ['Råa ägg i kylen', 'kjol'],
   kjott: ['Köttfärs, innertemperatur vid stekning', 'fars'],

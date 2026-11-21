@@ -5,6 +5,6 @@ import { TEKST, nav } from './tekst-da.mjs';
 
 export const ROT = '/da/kernetemperatur/';
 export const { sideForRad, navSide, tillatteTall, tillatteTallNav, maskeNavn } = lagMal({
-  rot: ROT, eyebrowNavn: 'Kernetemperatur', alleTekst: 'Kernetemperatur for alle varer', cta: 'Lav aftensmaden trin for trin med Matlyst', kilderTitel: 'Hvad kilderne siger', TEKST, nav,
+  rot: ROT, eyebrowNavn: 'Kernetemperatur', alleTekst: 'Kernetemperatur for alle varer', cta: 'Lav aftensmaden trin for trin med Matlyst', kilderTitel: 'Det siger kilderne', TEKST, nav,
   app: [['Følg trinnene i madlavningstilstand', 'I Matlyst bliver trinnene til en tjekliste, og madlavningstilstanden foreslår timere.'], ['Planlæg aftensmaden i madplanen', 'Læg opskriften på den dag, du skal lave den, så ser du ugen samlet.']],
 });

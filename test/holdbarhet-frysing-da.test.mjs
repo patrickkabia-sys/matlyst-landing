@@ -91,11 +91,11 @@ test('ingen norske kilder eller ord, ingen tankestrek, ingen forfatterlinje, kil
 test('samme rad-id på nb, da og en gir hreflang, og en vare uten norsk motstykke står uten nb', () => {
   const grupper = familieGrupper();
   const g = (navn) => grupper.find((x) => x.id === navn);
-  assert.deepEqual(g('auto-fam-holdbarhet-egg').sider, { nb: '/holdbarhet/egg/', da: '/da/holdbarhed/aeg/', en: '/en/how-long-does-it-last/eggs/' });
-  assert.deepEqual(g('auto-fam-holdbarhet-rester').sider, { nb: '/holdbarhet/rester/', da: '/da/holdbarhed/rester/', en: '/en/how-long-does-it-last/leftovers/' });
-  assert.deepEqual(g('auto-fam-holdbarhet-nav').sider, { nb: '/holdbarhet/', da: '/da/holdbarhed/', en: '/en/how-long-does-it-last/' });
-  assert.deepEqual(g('auto-fam-frysing-nav').sider, { nb: '/frysing/', da: '/da/kan-man-fryse/', en: '/en/can-you-freeze/' });
-  assert.deepEqual(g('auto-fam-frysing-fisk').sider, { nb: '/frysing/fisk/', da: '/da/kan-man-fryse/fisk/'});
+  assert.deepEqual(g('auto-fam-holdbarhet-egg').sider, { nb: '/holdbarhet/egg/', sv: '/sv/hallbarhet/agg/', da: '/da/holdbarhed/aeg/', en: '/en/how-long-does-it-last/eggs/' });
+  assert.deepEqual(g('auto-fam-holdbarhet-rester').sider, { nb: '/holdbarhet/rester/', sv: '/sv/hallbarhet/matrester/', da: '/da/holdbarhed/rester/', en: '/en/how-long-does-it-last/leftovers/' });
+  assert.deepEqual(g('auto-fam-holdbarhet-nav').sider, { nb: '/holdbarhet/', sv: '/sv/hallbarhet/', da: '/da/holdbarhed/', en: '/en/how-long-does-it-last/' });
+  assert.deepEqual(g('auto-fam-frysing-nav').sider, { nb: '/frysing/', sv: '/sv/frysa/', da: '/da/kan-man-fryse/', en: '/en/can-you-freeze/' });
+  assert.deepEqual(g('auto-fam-frysing-fisk').sider, { nb: '/frysing/fisk/', sv: '/sv/frysa/fisk/', da: '/da/kan-man-fryse/fisk/'});
   assert.deepEqual(g('auto-fam-holdbarhet-baer').sider, { da: '/da/holdbarhed/baer/' });
   assert.deepEqual(g('auto-fam-kjernetemperatur-kylling').sider.da, '/da/kernetemperatur/kylling/');
   assert.deepEqual(g('auto-fam-kjernetemperatur-nav').sider.da, '/da/kernetemperatur/');

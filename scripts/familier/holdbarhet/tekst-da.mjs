@@ -64,7 +64,7 @@ export const TEKST = {
     title: 'Hvor længe kan rester holde sig i køleskabet?',
     h1: 'Hvor længe kan rester af kød holde sig i køleskabet?',
     description: `Tilberedt kød kan holde sig ${h.t('tilb')} i køleskabet, skriver ${h.k('taenk-holdbarhed')}. Teknologisk Institut skriver op til ${h.t('tek')}. Her er begge tal med kilde.`,
-    lead: `Tilberedt kød kan holde sig ${h.t('tilb')} i køleskabet, hvis det er varmet grundigt igennem og kølet hurtigt ned, skriver ${h.k('taenk-holdbarhed')}. ${h.k('tek-sikker')} skriver op til ${h.t('tek')} ved højst ${h.t('kjol')}. De to tal er ikke ens, og her står begge.`,
+    lead: `Tilberedt kød kan holde sig ${h.t('tilb')} i køleskabet, hvis det er varmet grundigt igennem og kølet hurtigt ned, skriver ${h.k('taenk-holdbarhed')}. ${h.k('tek-sikker')} skriver op til ${h.t('tek')} ved højst ${h.t('kjol')}. De to kilder har forskellige tal, så begge står her.`,
     kilder: [
       `${h.k('fvst-koel')} skriver: ${h.s('rester5', { med: false })}`,
       `Om afkøling skriver Fødevarestyrelsen: ${h.s('portioner', { med: false })}`,
@@ -74,7 +74,7 @@ export const TEKST = {
     tabell: {
       tittel: TID, kilde: 'taenk-holdbarhed', intro: 'To danske kilder oplyser en tid for tilberedt kød:', kolonner: ['Kilde', 'Tid i køleskabet'],
       rader: [['Forbrugerrådet Tænk, tilberedt kød', 'tilb'], ['Teknologisk Institut, tilberedt gris og okse, op til', 'tek']],
-      etter: [`Teknologisk Institut (2021) skriver det som sidste trin i en vejledning til sikker tilberedning af grise- og oksekød: spis kødet med det samme, eller opbevar det ved højst ${h.n('tek')} °C i op til ${h.t('tek')}. Tænk (2025) skriver om tilberedt kød i det hele. Vi vælger ikke for dig.`],
+      etter: [`Teknologisk Institut (2021) skriver det som sidste trin i en vejledning til sikker tilberedning af grise- og oksekød: spis kødet med det samme, eller opbevar det ved højst ${h.n('tek')} °C i op til ${h.t('tek')}. Tænk (2025) skriver om tilberedt kød generelt. Vi vælger ikke mellem de to tal.`],
     },
     faq: [
       ['Hvor længe kan kogt kød holde sig i køleskabet?', `${h.k('taenk-holdbarhed')} skriver ${h.t('tilb')}, hvis kødet er varmet grundigt igennem og kølet hurtigt ned. ${h.k('tek-sikker')} skriver op til ${h.t('tek')} ved højst ${h.t('kjol')}.`],
@@ -281,7 +281,7 @@ export function nav({ rader, sti, h, p, esc }) {
     description: 'Hvor længe kan æg, hakket kød, fisk, ost, mælk, pålæg og grøntsager holde sig i køleskabet? Tider fra Forbrugerrådet Tænk, Arla og Teknologisk Institut, med kilde på hvert tal.',
     lead: `Fødevarestyrelsen skriver, at temperaturen i køleskabet bør være højst ${forste.t('kjol')}. Hvert tal på siderne her står hos en navngiven kilde med årstal.`,
     rik: [
-      `<h2>Hvad kilderne siger</h2>${p([
+      `<h2>Det siger kilderne</h2>${p([
         `${forste.k('fvst-koel')} skriver, at temperaturen i køleskabet bør være højst ${forste.t('kjol')}.`,
         'Fødevarestyrelsen har ikke selv tal for hvert enkelt produkt. Tiderne nedenfor er derfor fra Forbrugerrådet Tænk, Arla og Teknologisk Institut, hver med årstal.',
       ])}`,

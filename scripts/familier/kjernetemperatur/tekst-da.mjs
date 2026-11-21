@@ -17,7 +17,7 @@ export const TEKST = {
     ord: 'kylling',
     title: 'Kernetemperatur kylling',
     h1: 'Kernetemperatur kylling',
-    description: `Kylling skal gennemsteges til mindst ${h.t('min75')} i kernen, skriver ${h.k('mv-kerne')}: hel kylling og bryst ${h.t('hel')}, lår ${h.t('laar')}. Det siger Fødevarestyrelsen.`,
+    description: `Kylling skal gennemsteges til mindst ${h.t('min75')} i kernen, skriver ${h.k('mv-kerne')}: hel kylling og bryst ${h.t('hel')}, lår ${h.t('laar')}. Her er også, hvad Fødevarestyrelsen skriver.`,
     lead: `${h.k('mv-kerne')} skriver, at fjerkræ bør gennemsteges til en kernetemperatur på mindst ${h.t('min75')}. Hel kylling og kyllingebryst står med ${h.t('hel')} og kyllingelår med ${h.t('laar')}.`,
     kilder: [
       `Fødevarestyrelsen skriver: ${h.s('gennemstegt', { med: false })} Styrelsen nævner ikke et tal for kylling på samme side, men skriver: ${h.s('rod', { med: false })}`,
@@ -129,7 +129,7 @@ export const TEKST = {
     title: 'Kernetemperatur nakkesteg',
     h1: 'Kernetemperatur nakkesteg',
     description: `Nakkesteg står med ${h.t('lf-nakke')} hos Landbrug & Fødevarer, og nakkefilet og nakkekam med ${h.t('nakkefilet')} hos ${h.k('mv-kerne')}.`,
-    lead: `${h.k('lf-stegning')} skriver ${h.t('lf-nakke')} for nakkesteg. ${h.k('mv-kerne')} skriver ${h.t('nakkefilet')} for nakkefilet og nakkekam, når kødet skal være mørt efter lang tid. Tallene er ikke ens, og her står begge.`,
+    lead: `${h.k('lf-stegning')} skriver ${h.t('lf-nakke')} for nakkesteg. ${h.k('mv-kerne')} skriver ${h.t('nakkefilet')} for nakkefilet og nakkekam, når kødet skal være mørt efter lang tid. De to kilder har forskellige tal, og vi viser begge.`,
     kilder: [
       INGEN_FVST(h, 'nakkesteg', 'mv-kerne', 'lf-stegning'),
       `Landbrug & Fødevarer skriver: ${h.s('lf-fedt', { med: false })}`,
@@ -175,7 +175,7 @@ export const TEKST = {
     title: 'Kernetemperatur roastbeef',
     h1: 'Kernetemperatur roastbeef',
     description: `Roastbeef er medium ved ${h.t('medium')} hos ${h.k('mv-kerne')}, og Landbrug & Fødevarer skriver ${h.t('lf')}. Her er også rød og gennemstegt.`,
-    lead: `${h.k('mv-kerne')} skriver ${h.t('rod')} for rød roastbeef, ${h.t('medium')} for medium og ${h.t('gennem')} for gennemstegt. ${h.k('lf-stegning')} skriver ${h.t('lf')}. Tallene er ikke ens, og her står begge.`,
+    lead: `${h.k('mv-kerne')} skriver ${h.t('rod')} for rød roastbeef, ${h.t('medium')} for medium og ${h.t('gennem')} for gennemstegt. ${h.k('lf-stegning')} skriver ${h.t('lf')}. Tallene er forskellige, og her står begge.`,
     kilder: [
       INGEN_FVST(h, 'roastbeef', 'mv-kerne', 'lf-stegning'),
       `Om eftervarme skriver Landbrug & Fødevarer, at centrumtemperaturen i kødet kan stige op til ${h.t('lf-stig')}, efter at det er taget ud af ovnen.`,
@@ -198,7 +198,7 @@ export const TEKST = {
     title: 'Kernetemperatur oksefilet og oksemørbrad',
     h1: 'Kernetemperatur oksefilet og oksemørbrad',
     description: `Oksemørbrad er medium ved ${h.t('mb-med')} hos ${h.k('mv-kerne')}, og Landbrug & Fødevarer skriver ${h.t('lf-moerbrad')} for oksemørbrad og oksefilet.`,
-    lead: `${h.k('mv-kerne')} skriver ${h.t('mb-mr')} for medium-rare og ${h.t('mb-med')} for medium oksemørbrad. ${h.k('lf-stegning')} skriver ${h.t('lf-moerbrad')}. Tallene er ikke ens, og her står begge.`,
+    lead: `${h.k('mv-kerne')} skriver ${h.t('mb-mr')} for medium-rare og ${h.t('mb-med')} for medium oksemørbrad. ${h.k('lf-stegning')} skriver ${h.t('lf-moerbrad')}. Kilderne er ikke enige, så begge tal står her.`,
     kilder: [
       INGEN_FVST(h, 'oksefilet', 'mv-kerne', 'lf-stegning'),
       `Landbrug & Fødevarer skriver: ${h.s('lf-tor', { med: false })}`,
@@ -243,7 +243,7 @@ export const TEKST = {
     title: 'Kernetemperatur kalvefilet og kalvesteg',
     h1: 'Kernetemperatur kalvefilet og kalvesteg',
     description: `Kalvefilet er rosa ved ${h.t('filet')} hos ${h.k('mv-kerne')}, og Landbrug & Fødevarer skriver ${h.t('lf')}. Kalvesteg er medium ved ${h.t('steg')}.`,
-    lead: `${h.k('mv-kerne')} skriver ${h.t('filet')} for kalvefilet og kalvemørbrad, og ${h.t('steg')} for medium kalvesteg. ${h.k('lf-stegning')} skriver ${h.t('lf')} for kalvefilet. Tallene er ikke ens, og her står begge.`,
+    lead: `${h.k('mv-kerne')} skriver ${h.t('filet')} for kalvefilet og kalvemørbrad, og ${h.t('steg')} for medium kalvesteg. ${h.k('lf-stegning')} skriver ${h.t('lf')} for kalvefilet. De to kilder har forskellige tal, og vi viser begge.`,
     kilder: [
       INGEN_FVST(h, 'kalv', 'mv-kerne', 'lf-stegning'),
       `Landbrug & Fødevarer skriver: ${h.s('lf-hele', { med: false })}`,
@@ -315,7 +315,7 @@ export function nav({ rader, sti, h, p, esc }) {
     description: 'Kernetemperatur for kylling, kalkun, svin, okse, lam, kalv og hakket kød. Tal fra Fødevarestyrelsen, Madens Verden og Landbrug & Fødevarer, med kilde på hvert tal.',
     lead: `Kernetemperaturen er temperaturen midt i kødet. Madens Verden skriver, at fjerkræ og hakket kød bør gennemsteges til mindst ${kylling.t('min75')}. Hvert tal på siderne her står hos en navngiven kilde med årstal.`,
     rik: [
-      `<h2>Hvad kilderne siger</h2>${p([
+      `<h2>Det siger kilderne</h2>${p([
         `${deig.k('fvst-varm')} skriver: ${deig.s('bakterier', { med: false })} Styrelsen skriver også, at hakkebøffen er helt gennemstegt ved en kernetemperatur på minimum ${deig.t('fvst')}.`,
         `${kylling.k('fvst-varm')} skriver om kylling: ${kylling.s('gennemstegt', { med: false })}`,
         `${kylling.k('mv-kerne')} skriver: ${kylling.s('maal', { med: false })}`,
