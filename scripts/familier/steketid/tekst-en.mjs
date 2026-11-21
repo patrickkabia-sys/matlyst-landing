@@ -56,7 +56,7 @@ export const TEKST = {
       ['Should the turkey be stuffed?', h.s('fylling')],
     ],
     soster: kk('turkey', 'Turkey internal temperature'),
-    andre: [ss('thaw-turkey', 'How long to thaw a turkey'), ss('turkey-breast', 'How long to cook a turkey breast'), ss('turkey-legs-and-wings', 'How long to cook turkey legs, thighs, and wings'), ss('fried-smoked-grilled-turkey', 'How long to fry, grill, or smoke a turkey'), THANKS, rr('turkey-leftovers', 'How long do turkey leftovers last?')],
+    andre: [ss('thaw-turkey', 'How long to thaw a turkey'), ['/en/how-much-per-person/turkey/', 'How much turkey per person?'], ss('turkey-breast', 'How long to cook a turkey breast'), ss('turkey-legs-and-wings', 'How long to cook turkey legs, thighs, and wings'), ss('fried-smoked-grilled-turkey', 'How long to fry, grill, or smoke a turkey'), THANKS, rr('turkey-leftovers', 'How long do turkey leftovers last?')],
   }),
 
   kalkunbryst: (h, { tabell, p }) => ({

@@ -516,7 +516,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
       ])}`,
       `<h2>Minimum temperatures for every food</h2><p>Pick a food for the full page. The source is in the last column.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Safe internal temperatures"><table class="sprik"><thead><tr><th scope="col">Food</th><th scope="col">Minimum temperature</th><th scope="col">Source</th></tr></thead><tbody>${radene}</tbody></table></div>`,
       `<h2>Foods and names that are not here</h2><p>We list a number only when we found it on a federal or university page. Steak doneness names such as rare and medium have no page of their own for that reason. ${termo ? `The <a href="${sti(termo)}">food thermometer page</a> covers where the probe goes.` : ''}</p>`,
-      '<div class="related"><h2>Related pages</h2><ul><li><a href="/en/cooking-times/">How long to cook it: times for turkey, ham, chicken, and more</a></li><li><a href="/en/how-long-does-it-last/">How long does food last in the fridge?</a></li></ul></div>',
+      '<div class="related"><h2>Related pages</h2><ul><li><a href="/en/air-fryer/">Air fryer times and temperatures for common foods</a></li><li><a href="/en/cooking-times/">How long to cook it: times for turkey, ham, chicken, and more</a></li><li><a href="/en/how-long-does-it-last/">How long does food last in the fridge?</a></li></ul></div>',
     ].join('\n'),
     faqTittel: 'Questions about internal temperatures',
     faq: [

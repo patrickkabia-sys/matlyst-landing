@@ -17,7 +17,8 @@ const KOLONNER = ['Source', 'Cut', 'Temperature', 'Time'];
 const KOLONNER_MAT = ['Source', 'Food', 'Temperature', 'Time'];
 
 /** Avsnittet om kjernetemperatur for kjøtt og fisk: tallet står i radens `kjerne`, og siden sier at temperaturen avgjør. */
-const KJERNE = (h, innhold) => [KJERNE_H, h.p(innhold, `${TERMOMETER(h)}The times above only tell you when to start checking. The temperature decides, not the clock.`)];
+const TEMP_LENKE = { chicken: 'chicken', salmon: 'fish and seafood', 'ground-beef': 'ground beef', pork: 'pork', steak: 'steak', '': 'all foods' };
+const KJERNE = (h, innhold, temp = '') => [KJERNE_H, h.p(innhold, `${TERMOMETER(h)}The times above only tell you when to start checking. The temperature decides, not the clock.`, `See our <a href="/en/internal-temperature/${temp ? `${temp}/` : ''}">internal temperature chart for ${TEMP_LENKE[temp]}</a>.`)];
 
 export const TEKST = {
   // ---------------------------------------------------------------- chicken
@@ -48,7 +49,7 @@ export const TEKST = {
         `${h.k('cosori')} says chicken cutlets and fish fillets under three quarters of an inch finish faster than expected, so check them sooner.${h.u('cosori:tykk')} It also says a timer is a cue to check, not a guarantee.${h.u('cosori:tid-cue')}`,
       )],
     ],
-    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for all poultry, including breasts, measured with a food thermometer.`),
+    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for all poultry, including breasts, measured with a food thermometer.`, 'chicken'),
     app: 'Save the chicken breast recipe you like in Matlyst, and put it on the day you want to make it.',
     faq: [
       ['Do I flip chicken breast in the air fryer?', `${h.k('cosori')} marks all three chicken breast rows for flipping. ${h.k('philips-book')} does not say.`],
@@ -85,7 +86,7 @@ export const TEKST = {
         `${h.k('cosori')} lists drumsticks at ${h.t('c-kl-temp')} for ${h.t('c-kl-tid')}. ${h.k('msu')} lists them at ${h.t('m-kl-temp')} for ${h.t('m-kl-tid')}, and ${h.k('philips-book')} at ${h.t('pb-kl-temp')} for ${h.t('pb-kl-tid')}. The times are close, and the temperatures are not.`,
       )],
     ],
-    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} for all poultry, and names breasts, whole birds, legs, thighs, wings, ground poultry, giblets, and stuffing. It says to measure with a food thermometer.`),
+    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} for all poultry, and names breasts, whole birds, legs, thighs, wings, ground poultry, giblets, and stuffing. It says to measure with a food thermometer.`, 'chicken'),
     app: 'Save your favorite chicken thigh recipe in Matlyst, and put it on the day you want to make it.',
     faq: [
       ['Are boneless chicken thighs faster in the air fryer?', `Yes in ${h.k('cosori')}: ${h.t('c-uten-tid')} for boneless, against ${h.t('c-ben-tid')} for bone-in.`],
@@ -121,7 +122,7 @@ export const TEKST = {
         `${h.k('cosori')} marks wings for shaking. ${h.k('philips-book')} says to shake small items such as fries and wings once or twice during the time, and to empty the fat from the bottom now and then when you cook high-fat foods such as wings, to avoid excess smoke.${h.u('philips-book:ryst')}${h.u('philips-book:fett')}`,
       )],
     ],
-    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for all poultry, wings included.`),
+    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for all poultry, wings included.`, 'chicken'),
     app: 'Save your wing recipe in Matlyst, and put it on game day.',
     faq: [
       ['What temperature should I air fry chicken wings at?', `It depends on the source: ${h.t('i-temp')} at ${h.k('instant')}, ${h.t('c-temp')} at ${h.k('cosori')}, and ${h.t('k-temp')} at ${h.k('kitchenaid')}.`],
@@ -156,7 +157,7 @@ export const TEKST = {
         `${h.k('instant')} lists salmon under its Broil function, not Air Fry, at ${h.t('i-temp')} for ${h.t('i-tid')}. Its rows for wings, fries, and shrimp use Air Fry, so check which function your own model calls for.`,
       )],
     ],
-    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for fish and shellfish, measured with a food thermometer.`),
+    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for fish and shellfish, measured with a food thermometer.`, 'salmon'),
     app: 'Save your salmon recipe in Matlyst, and put it on the day you want to make it.',
     faq: [
       ['Should I flip salmon in the air fryer?', `${h.k('cosori')} lists no flip or shake for salmon fillets. ${h.k('msu')} and ${h.k('instant')} do not say.`],
@@ -189,7 +190,7 @@ export const TEKST = {
         `${h.k('cosori')} marks both large shrimp and breaded shrimp for shaking.`,
       )],
     ],
-    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for fish and shellfish.`),
+    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for fish and shellfish.`, ''),
     app: 'Save your shrimp recipe in Matlyst, and put it on the day you want to make it.',
     faq: [
       ['How long do shrimp take in the air fryer?', `${h.k('cosori')} says ${h.t('c-tid')} for large shrimp at ${h.t('c-temp')}. ${h.k('instant')} says ${h.t('i-tid')} at ${h.t('i-temp')}.`],
@@ -367,7 +368,7 @@ export const TEKST = {
         `The sources do not explain the gap. ${h.k('cosori')} says thickness has the most direct effect on the time.${h.u('cosori:stortid')}`,
       )],
     ],
-    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for ground meats, and ${h.t('kjerne-fjor')} for ground poultry, so a turkey or chicken burger has a different number.`),
+    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for ground meats, and ${h.t('kjerne-fjor')} for ground poultry, so a turkey or chicken burger has a different number.`, 'ground-beef'),
     app: 'Save your burger recipes in Matlyst, and put them on the day you want to make them.',
     faq: [
       ['How long do burgers take in the air fryer?', `${h.k('cosori')} says ${h.t('c-tid')} at ${h.t('c-temp')}, and ${h.k('msu')} says ${h.t('m-tid')} at ${h.t('m-temp')}.`],
@@ -399,7 +400,7 @@ export const TEKST = {
         `${h.k('msu')} gives one time for a chop of six and a half ounces, without saying whether it has a bone.`,
       )],
     ],
-    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} for beef, pork, veal, and lamb steaks, chops, and roasts, and says to let them rest for at least ${h.t('hvile')}.`),
+    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} for beef, pork, veal, and lamb steaks, chops, and roasts, and says to let them rest for at least ${h.t('hvile')}.`, 'pork'),
     app: 'Save your pork chop recipes in Matlyst, and put them on the day you want to make them.',
     faq: [
       ['How long do pork chops take in the air fryer?', `${h.k('cosori')} says ${h.t('c-tid')} for boneless chops. ${h.k('msu')} says ${h.t('m-tid')}.`],
@@ -437,7 +438,7 @@ export const TEKST = {
         `${h.k('cosori')} runs all its steaks at ${h.t('c-strip-temp')}, and ${h.k('msu')} runs its steaks at ${h.t('m-filet-temp')}. ${h.k('cosori')} marks steaks for flipping.`,
       )],
     ],
-    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} for beef, pork, veal, and lamb steaks, chops, and roasts, measured with a food thermometer.`),
+    kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} for beef, pork, veal, and lamb steaks, chops, and roasts, measured with a food thermometer.`, 'steak'),
     app: 'Save your steak dinner recipes in Matlyst, and put them on the day you want to make them.',
     faq: [
       ['How long does steak take in the air fryer?', `For a one-inch strip, ${h.k('cosori')} says ${h.t('c-strip-tid')}. ${h.k('kitchenaid')} says ${h.t('k-tid')} for medium.`],
@@ -576,6 +577,7 @@ export const TEKST = {
       ['Leftovers need to reach a safe temperature', h.p(
         `${h.k('ill')} says to set the air fryer to ${h.t('il-temp')} and cook until the food reaches an internal temperature of ${h.t('kjerne')}. ${h.k('fsis-chart')} lists ${h.t('fsis-rester')} for leftovers.`,
         `${TERMOMETER(h)}So the times above only tell you when to start checking. The temperature decides, not the clock.`,
+        'See our <a href="/en/internal-temperature/leftovers/">internal temperature chart for leftovers</a>.',
       )],
     ],
     app: 'Matlyst lets you see what is left in your pantry, so leftovers get eaten before they go bad.',
@@ -715,7 +717,7 @@ export function NAV({ rader, h, sti, tabell, p, esc }) {
       ['Times and temperatures for common foods', `${p('Each row shows one source, with the year. Open a food to see every source we found for it. Times vary with the air fryer, the amount, and the thickness.')}${tabell('Times and temperatures for common foods', ['Food', 'Source', 'Temperature', 'Time'], hurtig)}`],
       ['Rules for converting a recipe', `${p(`${ov.k('kitchenaid')} says to take ${ov.t('ka-grad')} off the oven temperature and cut the time by ${ov.t('ka-prosent')}. ${ov.k('ill')} says the same, with a drop of up to ${ov.t('il-grad-maks')}. ${ov.k('philips-book')} gives ${ov.t('pb-grad')} lower and half the time for pre-made packaged foods.`)}${p(`See all three, with examples, on the ${lenke('ovn-til-airfryer', 'oven to air fryer page')}.`)}`],
       ['Warming up the air fryer', `${p(`${ov.k('cosori')} says a preheat of ${ov.t('c-forvarm')} is enough for most foods, and ${ov.k('ill')} says typically ${ov.t('il-forvarm')}. ${ov.k('philips-book')} says ${ov.t('pb-forvarm')}, and ${ov.k('instant')} says ${ov.t('i-forvarm')} or less. ${ov.k('cosori')} makes one exception: hard-boiled eggs go into a cold basket.${ov.u('cosori:egg-kald')}`)}`],
-      ['Safe internal temperatures', `${p(`For poultry, meat, and fish the thermometer decides whether the food is done, not the clock. The times on our pages only say when to start checking. These are the minimums from ${kf.k('fsis-chart')}, measured with a food thermometer:`)}${tabell('USDA safe minimum internal temperatures', ['Food', 'Source', 'Minimum'], trygg)}${p('The USDA chart does not list bacon, hot dogs, vegetables, or potatoes, so we give no safe minimum for them.')}`],
+      ['Safe internal temperatures', `${p(`For poultry, meat, and fish the thermometer decides whether the food is done, not the clock. The times on our pages only say when to start checking. These are the minimums from ${kf.k('fsis-chart')}, measured with a food thermometer:`)}${tabell('USDA safe minimum internal temperatures', ['Food', 'Source', 'Minimum'], trygg)}${p('The USDA chart does not list bacon, hot dogs, vegetables, or potatoes, so we give no safe minimum for them.')}${p('For more foods, see our <a href="/en/internal-temperature/">internal temperature charts</a>.')}`],
       ['Reading the times', p(
         `${ov.k('cosori')} says cooking times may vary by food thickness, starting temperature, and basket load.${ov.u('cosori:varierer')} ${ov.k('msu')} says you may need to adjust times and temperatures for the size of the food and for your air fryer.${ov.u('msu:justere')}`,
         `${ov.k('cosori')} says a full basket reduces airflow and makes the time longer, so food should go in a single, even layer.${ov.u('cosori:lag')}`,

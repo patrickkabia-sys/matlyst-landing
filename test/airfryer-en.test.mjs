@@ -268,6 +268,10 @@ test('lenker: samlesiden lenker til alle sidene, hver side lenker til samlesiden
     assert.ok(side.includes('href="/en/blog/oven-to-air-fryer/"'), `${s}: lenker ikke til bloggartikkelen`);
   }
   assert.ok(readFileSync(join(ROT, 'en/blog/index.html'), 'utf8').includes('href="/en/air-fryer/"'), 'bloggforsiden lenker ikke til samlesiden');
-  // Den andre bygderen lager /en/internal-temperature/: ingen lenke dit før sidene finnes (lenkevakten feiler).
-  for (const a of ADRESSER) assert.doesNotMatch(html(a.replace('/en/air-fryer/', '')), /href="\/en\/internal-temperature/u, a);
+  // Kjernetemperatur: hver kjøtt- og fiskeside lenker til riktig side under /en/internal-temperature/, og samlesiden til oversikten.
+  const TEMP = { 'chicken-breast': 'chicken', 'chicken-thighs': 'chicken', 'chicken-wings': 'chicken', salmon: 'salmon', burgers: 'ground-beef', 'pork-chops': 'pork', steak: 'steak', 'reheat-pizza-leftovers': 'leftovers', shrimp: '' };
+  for (const [s, t] of Object.entries(TEMP)) {
+    assert.ok(html(s).includes(`href="/en/internal-temperature/${t ? `${t}/` : ''}"`), `${s}: lenker ikke til /en/internal-temperature/${t}`);
+  }
+  assert.ok(hub.includes('href="/en/internal-temperature/"'), 'samlesiden lenker ikke til temperaturoversikten');
 });

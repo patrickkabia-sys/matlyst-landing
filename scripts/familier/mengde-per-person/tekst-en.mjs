@@ -34,7 +34,7 @@ export const TEKST = {
         ['Does the pound figure include the bone?', `${h.k('wf')} says its ${h.t('wf')} per person includes bone weight. ${h.k('fsisturkey')} gives its figure for a whole turkey.`],
         ['Do kids count?', 'The calculator counts each kid as half an adult, because Iowa State Extension lists half the adult amount per child.'],
       ],
-      soster: [L('thanksgiving-dinner', 'Thanksgiving dinner: how much of everything?'), L('stuffing', 'How much stuffing per person?'), L('mashed-potatoes', 'How much mashed potatoes per person?'), L('ham', 'How much ham per person?')],
+      soster: [['/en/cooking-times/turkey/', 'How long to cook a turkey'], L('thanksgiving-dinner', 'Thanksgiving dinner: how much of everything?'), L('stuffing', 'How much stuffing per person?'), L('mashed-potatoes', 'How much mashed potatoes per person?'), L('ham', 'How much ham per person?')],
     }),
   },
 

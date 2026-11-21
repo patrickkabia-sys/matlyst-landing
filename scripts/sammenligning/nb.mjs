@@ -91,7 +91,7 @@ export const MARKED = {
       best: {
         matlyst: 'lagrer fra TikTok, Instagram og nettsider og vil ha oppskriftene på norsk med metriske mål.',
         paprika: 'vil ha samme app på iPhone, Mac, Android og Windows, og lagrer mange oppskrifter.',
-        recime: 'lagrer mye fra sosiale medier og vil ha flest gratis importer.',
+        recime: 'lagrer mye fra sosiale medier og vil ha gratis importer hver uke.',
         samsung: 'vil finne nye oppskrifter i et stort bibliotek og planlegge gratis.',
         recipekeeper: 'vil skanne oppskrifter fra bilder og PDF, eller flytte fra en annen oppskriftsapp.',
         crouton: 'bare bruker Apple-enheter og vil lage mat ett steg om gangen.',
@@ -99,12 +99,12 @@ export const MARKED = {
       },
       ekstra: [
         ['Hva oppskriftsappene gjør ulikt', p('Appene løser to ulike ting. De fleste her er laget for å <strong>lagre dine egne oppskrifter</strong> fra nettsider, sosiale medier og bilder. Matprat-appen er først og fremst laget for å <strong>finne oppskrifter</strong> fra Matprat. Samsung Food gjør litt av begge deler.',
-          'Det som skiller lagre-appene mest, er hvor du finner oppskriftene, om du vil ha dem på norsk, og hvor mange enheter du bruker. Vil du teste selv, se <a href="/blogg/velg-oppskriftsapp/">ti ting å se etter i en oppskriftsapp</a>.')],
+          'Lagre-appene skiller seg særlig på hvor du finner oppskriftene, om du vil ha dem på norsk, og hvor mange enheter du bruker. Vil du teste selv, se <a href="/blogg/velg-oppskriftsapp/">ti ting å se etter i en oppskriftsapp</a>.')],
       ],
       iMatlyst: ['Slik lagrer du en oppskrift i Matlyst', p('Velger du Matlyst, gjør du slik: del en lenke eller et innlegg fra Instagram, TikTok, YouTube eller en nettside til Matlyst, eller lim inn lenken i appen. Les over utkastet før du lagrer, fordi KI leser oppskriften og kan ta feil av en mengde.', 'Se <a href="/importer-oppskrifter/">slik importerer du oppskrifter</a> og <a href="/oppskriftsbok-app/">hva oppskriftsappen gjør</a>.')],
       steg: [['Tenk på hvor du finner oppskriftene', 'Nettsider, Instagram, TikTok eller kokebøker.'], ['Sjekk språk og enheter', 'Norsk i appen, og om den finnes på telefonen og PC-en din.'], ['Prøv gratisversjonen', 'Lagre fem ekte oppskrifter før du bestemmer deg.']],
       faq: [
-        ['Hva er den beste oppskriftsappen?', 'Det kommer an på hva du trenger. Lagrer du fra Instagram og TikTok og vil ha norsk, se på Matlyst eller Recipe Keeper. Vil du ha flest gratis importer, se på ReciMe. Bruker du PC eller Windows, se på Paprika eller Recipe Keeper. Vil du ha ferdige norske oppskrifter, se på Matprat-appen.'],
+        ['Hva er den beste oppskriftsappen?', 'Det kommer an på hva du trenger. Lagrer du fra Instagram og TikTok og vil ha norsk, se på Matlyst eller Recipe Keeper. Vil du ha gratis importer hver uke, se på ReciMe, som oppgir fem i uka. Bruker du PC eller Windows, se på Paprika eller Recipe Keeper. Vil du ha ferdige norske oppskrifter, se på Matprat-appen.'],
         ['Finnes det en gratis oppskriftsapp?', 'Ja. Alle appene på siden kan lastes ned gratis. Gratisversjonene har ulike grenser, for eksempel fem importer per uke i ReciMe, fem per måned i Matlyst og 50 oppskrifter på én enhet i Paprika.'],
         ['Hvilke oppskriftsapper er på norsk?', 'Matlyst, Paprika, Recipe Keeper og Matprat har norsk bokmål blant språkene i App Store. ReciMe, Samsung Food og Crouton har det ikke.'],
         ['Hvorfor står det ingen stjerner eller priser?', 'Stjerner og priser endrer seg ofte. Vi skriver bare det vi kan vise til i appens egen oppføring eller nettside, med dato.'],
@@ -181,7 +181,7 @@ export const MARKED = {
         meny: 'handler hos MENY og vil ha middagstips rett i handleappen.',
       },
       ekstra: [
-        ['Planlegger du selv, eller skal appen gjøre det?', p('Det er det største skillet. I de fleste appene her velger <strong>du</strong> middagene, og appen holder orden på dagene og handlelista. Noen kan også <strong>lage planen</strong> for deg: Samsung Food med Samsung Food+ og Recipe Keeper oppgir det. Matlyst lager ikke planen for deg.',
+        ['Planlegger du selv, eller skal appen gjøre det?', p('Det er et viktig skille. I de fleste appene her velger <strong>du</strong> middagene, og appen holder orden på dagene og handlelista. Noen kan også <strong>lage planen</strong> for deg: Samsung Food med Samsung Food+ og Recipe Keeper oppgir det. Matlyst lager ikke planen for deg.',
           'Vil du ha et ferdig utgangspunkt uten app, finnes det <a href="/ukemenyer/">ferdige ukemenyer med handleliste</a> her på nettstedet. Les mer om <a href="/ukemeny/">ukemenyen i Matlyst</a>.')],
       ],
       iMatlyst: ['Slik lager du handlelista fra uka i Matlyst', p('Velger du Matlyst, legger du oppskriftene du har lagret på dagene i ukemenyen. Så sender du hele uka til handlelista med ett trykk, og lista er sortert etter hvor varene står i butikken.', 'Les mer om <a href="/ukemeny/">ukemenyen</a> og <a href="/handleliste/">handlelista</a>.')],
