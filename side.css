@@ -58,6 +58,10 @@ h2[id],h3[id]{scroll-margin-top:16px}
 .locale-prose th:last-child:not(:first-child),.locale-prose td:last-child:not(:first-child){text-align:right}
 .locale-prose td:last-child:not(:first-child){font-weight:700}
 .locale-prose tbody tr:last-child th,.locale-prose tbody tr:last-child td{border-bottom:0}
+/* Sammenligningstabellen (scripts/nb-sammenligning/): mange tekstkolonner, så hver celle får minstebredde og luft, og tabellen sveipes i sin egen boks. */
+.locale-prose table.stabell th,.locale-prose table.stabell td{min-width:11em;padding-right:20px;vertical-align:top;text-align:left;font-weight:400}
+.locale-prose table.stabell tbody th{min-width:7em;font-weight:500}
+.locale-prose table.stabell caption{text-align:left;padding-bottom:10px;color:var(--dempet);font-size:.875rem}
 
 /* Appkortet: svak toning i hjørnene, bildet til høyre på PC og under på mobil */
 .i-appen,.app-cta,.page-cta{border-radius:40px;background:radial-gradient(90% 80% at 0% 0%,color-mix(in srgb,var(--kule1) 30%,transparent),transparent 62%),radial-gradient(90% 80% at 100% 100%,color-mix(in srgb,var(--kule3) 32%,transparent),transparent 62%),var(--hylle)}
