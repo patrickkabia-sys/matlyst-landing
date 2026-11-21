@@ -57,7 +57,7 @@ export const MARKED = {
     enForEn: 'Appsene en for en',
     slikValgte: 'Sådan valgte vi',
     sidenavn: { oppskrift: 'opskriftsapps', handleliste: 'apps til indkøbslister', ukemeny: 'madplan-apps' },
-    andreSider: (lenker) => `Vi har sammenlignet ${lenker} på samme måde.`,
+    andreSider: (lenker) => `Vi har også sammenlignet ${lenker} på samme måde.`,
     slikValgteTekst: (kategori, dato) => p(
       `Vi tog apps med, der findes i den danske App Store, og hvor ${kategori} er en af hovedfunktionerne. De fleste findes også på Google Play. Udvalget er vores eget, og en app, der ikke står her, er ikke dårligere af den grund.`,
       `Alle oplysninger kommer fra appens egen side i App Store (Danmark), fra Google Play (Danmark) og fra appens egen hjemmeside. Vi tjekkede dem ${dato}. Hvert kort linker til kilderne.`,
@@ -100,15 +100,15 @@ export const MARKED = {
       },
       ekstra: [
         ['Gem dine egne opskrifter, eller find nye', p('De fleste apps her er bygget til at <strong>gemme dine egne opskrifter</strong> fra hjemmesider, sociale medier og billeder. Valdemarsro er bygget op om <strong>sine egne opskrifter</strong>, og Samsung Food har sit eget bibliotek at kigge i.',
-          'Resten adskiller sig mest ved, hvor du finder dine opskrifter, hvilke enheder du bruger, og om du vil have et abonnement. Vil du selv teste, så læs <a href="/da/blog/vaelg-opskriftsapp/">sådan vælger du en opskriftsapp</a>.')],
+          'Resten adskiller sig mest ved, hvor du finder dine opskrifter, hvilke enheder du bruger, og om du vil have et abonnement. Vil du selv teste, så læs guiden <a href="/da/blog/vaelg-opskriftsapp/">Sådan vælger du en opskriftsapp</a>.')],
       ],
-      iMatlyst: ['Sådan gemmer du en opskrift og planlægger ugen i Matlyst', p('Vælger du Matlyst, deler du et link eller et opslag fra Instagram, TikTok, YouTube eller en hjemmeside med Matlyst, eller du indsætter linket i appen. Læs kladden, før du gemmer, for det er AI, der læser opskriften, og den kan tage fejl af en mængde. Læg derefter opskriften på en dag i madplanen, så havner ingredienserne på indkøbslisten.', 'Læs, <a href="/da/importer-opskrifter/">hvordan importen virker</a>, og <a href="/da/opskrifts-app/">hvad opskriftsappen kan</a>.')],
+      iMatlyst: ['Sådan gemmer du en opskrift og planlægger ugen i Matlyst', p('Vælger du Matlyst, deler du et link eller et opslag fra Instagram, TikTok, YouTube eller en hjemmeside med Matlyst, eller du indsætter linket i appen. Læs kladden, før du gemmer, for det er AI, der læser opskriften, og den kan læse en mængde forkert. Læg derefter opskriften på en dag i madplanen, så havner ingredienserne på indkøbslisten.', 'Læs, <a href="/da/importer-opskrifter/">hvordan importen virker</a>, og <a href="/da/opskrifts-app/">hvad opskriftsappen kan</a>.')],
       steg: [['Tænk over, hvor dine opskrifter kommer fra', 'Hjemmesider, Instagram, TikTok eller kogebøger.'], ['Tjek enheder og sprog', 'Sørg for, at appen findes til din telefon og computer og på et sprog, du vil bruge.'], ['Prøv gratisversionen', 'Gem fem rigtige opskrifter, før du beslutter dig.']],
       faq: [
         ['Hvad er den bedste opskriftsapp?', 'Det afhænger af, hvad du har brug for. Gemmer du fra Instagram og TikTok, så se på Matlyst, ReciMe eller Recipe Keeper. Vil du have færdige opskrifter og en madplan hver uge, så se på Valdemarsro. Bruger du pc eller Mac, så se på Paprika eller Recipe Keeper.'],
         ['Findes der en gratis opskriftsapp?', 'Ja. Alle apps på siden er gratis at hente. Gratisversionerne har forskellige grænser, fx fem importer om ugen i ReciMe, fem om måneden i Matlyst og 50 opskrifter på én enhed i Paprika.'],
         ['Hvilke opskriftsapps findes på dansk?', 'Matlyst, Paprika, Recipe Keeper og Valdemarsro har dansk blandt sprogene i App Store. Det har ReciMe og Samsung Food ikke.'],
-        ['Hvorfor er der ingen stjerner eller priser?', 'Bedømmelser og priser ændrer sig tit. Vi skriver kun det, vi kan pege på på appens egen side i butikken eller på dens hjemmeside, med dato.'],
+        ['Hvorfor er der ingen stjerner eller priser?', 'Bedømmelser og priser ændrer sig tit. Vi skriver kun det, vi kan finde på appens egen side i butikken eller på dens hjemmeside, med dato.'],
         NEUTRAL,
       ],
       cta: 'Prøv Matlyst med dine egne opskrifter',
@@ -138,7 +138,7 @@ export const MARKED = {
         rema: 'handler i REMA 1000 og vil have en komplet indkøbsliste ud fra kædens opskrifter.',
       },
       ekstra: [
-        ['Det, der adskiller appsene', p('Her er der tre slags apps. <strong>Liste-apps</strong> som Bring! og Listonic er bygget til hurtigt at dele en liste. <strong>Kædernes egne apps</strong>, som Coop, Netto+ og REMA 1000, kobler listen til tilbud i kæden. <strong>Opskriftsapps med indkøbsliste</strong>, som Matlyst, laver listen ud fra det, du vil lave.',
+        ['Det, der adskiller appsene', p('Der er tre slags apps her. <strong>Liste-apps</strong> som Bring! og Listonic er bygget til at dele en liste hurtigt. <strong>Kædernes egne apps</strong>, som Coop, Netto+ og REMA 1000, kobler listen til tilbud i kæden. <strong>Opskriftsapps med indkøbsliste</strong>, som Matlyst, laver listen ud fra det, du vil lave.',
           'Matlyst har også en side om <a href="/da/indkoebsliste-app/">indkøbslisten, der kommer fra dine opskrifter</a>.')],
       ],
       iMatlyst: ['Sådan planlægger du ugen og handler med Matlyst', p('Vælger du Matlyst, lægger du opskrifter på dagene i madplanen og fører ugens ingredienser over på indkøbslisten. Listen er sorteret efter afdeling i butikken, og du kan tilføje dine egne varer.', 'Læs mere om <a href="/da/indkoebsliste-app/">indkøbslisten</a> og <a href="/da/madplan-app/">madplanen</a>.')],

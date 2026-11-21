@@ -57,7 +57,7 @@ export const MARKED = {
     enForEn: 'Apparna en och en',
     slikValgte: 'Så valde vi',
     sidenavn: { oppskrift: 'receptappar', handleliste: 'appar för inköpslistor', ukemeny: 'appar för veckomeny' },
-    andreSider: (lenker) => `Vi har jämfört ${lenker} på samma sätt.`,
+    andreSider: (lenker) => `Vi har också jämfört ${lenker} på samma sätt.`,
     slikValgteTekst: (kategori, dato) => p(
       `Vi tog med appar som finns i svenska App Store och där ${kategori} är en av huvudfunktionerna. De flesta finns också på Google Play. Urvalet är vårt eget, och en app som inte står här är inte sämre för det.`,
       `Alla uppgifter kommer från appens egen sida i App Store (Sverige), från Google Play (Sverige) och från appens egen webbplats. Vi kontrollerade dem den ${dato}. Varje kort länkar till källorna.`,
@@ -101,9 +101,9 @@ export const MARKED = {
       },
       ekstra: [
         ['Spara dina egna recept, eller hitta nya', p('De flesta apparna här är byggda för att <strong>spara dina egna recept</strong> från webbsidor, sociala medier och foton. Arla Mat och ICA är byggda kring <strong>sina egna recept</strong>, och Samsung Food har ett eget bibliotek att bläddra i.',
-          'Resten skiljer sig mest i var du hittar dina recept, vilka enheter du använder och om du vill ha abonnemang. Vill du testa själv, läs <a href="/sv/blogg/valj-receptapp/">så väljer du receptapp</a>.')],
+          'Resten skiljer sig mest i var du hittar dina recept, vilka enheter du använder och om du vill ha abonnemang. Vill du testa själv? Läs guiden <a href="/sv/blogg/valj-receptapp/">Så väljer du receptapp</a>.')],
       ],
-      iMatlyst: ['Så sparar du ett recept och planerar veckan i Matlyst', p('Väljer du Matlyst delar du en länk eller ett inlägg från Instagram, TikTok, YouTube eller en webbsida med Matlyst, eller klistrar in länken i appen. Läs utkastet innan du sparar, för det är AI som läser receptet och den kan ta fel på en mängd. Lägg sedan receptet på en dag i veckomenyn, så hamnar ingredienserna på inköpslistan.', 'Läs <a href="/sv/importera-recept/">hur importen fungerar</a> och <a href="/sv/receptbok-app/">vad receptappen gör</a>.')],
+      iMatlyst: ['Så sparar du ett recept och planerar veckan i Matlyst', p('Väljer du Matlyst delar du en länk eller ett inlägg från Instagram, TikTok, YouTube eller en webbsida med Matlyst, eller klistrar in länken i appen. Läs utkastet innan du sparar, för det är AI som läser receptet och den kan få en mängd fel. Lägg sedan receptet på en dag i veckomenyn, så hamnar ingredienserna på inköpslistan.', 'Läs <a href="/sv/importera-recept/">hur importen fungerar</a> och <a href="/sv/receptbok-app/">vad receptappen gör</a>.')],
       steg: [['Tänk på var dina recept kommer ifrån', 'Webbsidor, Instagram, TikTok eller kokböcker.'], ['Kolla enheter och språk', 'Se till att appen finns för din telefon och dator, och på ett språk du vill använda.'], ['Prova gratisversionen', 'Spara fem riktiga recept innan du bestämmer dig.']],
       faq: [
         ['Vilken är den bästa receptappen?', 'Det beror på vad du behöver. Sparar du från Instagram och TikTok, titta på Matlyst, ReciMe eller Recipe Keeper. Vill du ha många färdiga recept att välja bland, titta på Arla Mat eller ICA. På pc eller Mac, titta på Paprika eller Recipe Keeper.'],
@@ -139,7 +139,7 @@ export const MARKED = {
         willys: 'handlar på Willys och vill dela listan med hushållet och lägga erbjudanden på den.',
       },
       ekstra: [
-        ['Listappar, butikernas egna appar och receptappar', p('Här finns tre slags appar. <strong>Listappar</strong> som Bring! och Listonic är byggda för att dela en lista snabbt. <strong>Butikernas egna appar</strong>, som Coop, ICA och Willys, kopplar listan till erbjudanden och handel i kedjan. <strong>Receptappar med inköpslista</strong>, som Matlyst, gör listan av det du tänker laga.',
+        ['Listappar, butikernas egna appar och receptappar', p('Här finns tre slags appar. <strong>Listappar</strong> som Bring! och Listonic är byggda för att dela en lista snabbt. <strong>Butikernas egna appar</strong>, som Coop, ICA och Willys, kopplar listan till erbjudanden och handel i kedjan. <strong>Receptappar med inköpslista</strong>, som Matlyst, bygger listan på det du tänker laga.',
           'Matlyst har också en egen sida om <a href="/sv/inkopslista/">inköpslistan som kommer från dina recept</a>.')],
       ],
       iMatlyst: ['Så planerar du veckan och handlar med Matlyst', p('Väljer du Matlyst lägger du recept på dagarna i veckomenyn och för över veckans ingredienser till inköpslistan. Listan är sorterad efter butikens avdelningar, och du kan lägga till egna varor.', 'Läs mer om <a href="/sv/inkopslista/">inköpslistan</a> och <a href="/sv/veckomeny-app/">veckomenyn</a>.')],

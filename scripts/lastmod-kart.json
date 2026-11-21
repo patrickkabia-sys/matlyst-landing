@@ -84,15 +84,15 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/beste-handleliste-app/": {
-  "hash": "a2d15f0337852668",
+  "hash": "0a3280957e2e1286",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/beste-oppskriftsapp/": {
-  "hash": "80f2598df136c61d",
+  "hash": "8009e6999d405268",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/beste-ukemeny-app/": {
-  "hash": "9a786bcc00826667",
+  "hash": "c2f61705fb143013",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/": {
@@ -147,6 +147,18 @@
   "hash": "9ccec58393ee7fe1",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/da/bedste-indkoebsliste-app/": {
+  "hash": "14e28c40fd97dc8f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/bedste-madplan-app/": {
+  "hash": "d04c11ed00206076",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/bedste-opskriftsapp/": {
+  "hash": "bbfa27028a439d64",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/da/blog/": {
   "hash": "8ab1a716ae4baabb",
   "dato": "2026-11-21"
@@ -180,8 +192,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/blog/vaelg-opskriftsapp/": {
-  "hash": "6ce42b2b882f83dc",
-  "dato": "2026-11-20"
+  "hash": "eb899bee216aaf96",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/dr-mad/": {
   "hash": "3003b0cbb51c1c78",
@@ -252,8 +264,8 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/da/indkoebsliste-app/": {
-  "hash": "38b2da9b85e42850",
-  "dato": "2026-11-20"
+  "hash": "89c90d21159f9b56",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kan-man-fryse/": {
   "hash": "0458c67d5b1fad6c",
@@ -352,8 +364,8 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/da/madplan-app/": {
-  "hash": "e81abfba8af57b30",
-  "dato": "2026-11-20"
+  "hash": "2be37f51681769d4",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/matprat/": {
   "hash": "59e711ac18d8d22e",
@@ -372,8 +384,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/opskrifts-app/": {
-  "hash": "42cfffd024f6b1f3",
-  "dato": "2026-11-20"
+  "hash": "e8eaf013b7dec9b8",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/opskriftsskabere/": {
   "hash": "393a8540714799e3",
@@ -1308,15 +1320,15 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/best-grocery-list-app/": {
-  "hash": "42da80681ab6bdd7",
+  "hash": "df45a043ef4e1d44",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/best-meal-planning-app/": {
-  "hash": "645c202b3039ee11",
+  "hash": "9b5bf6dfdc94d057",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/best-recipe-app/": {
-  "hash": "273b1ec5a5754c8d",
+  "hash": "5a76d83b8ecc5d1d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/blog/": {
@@ -3179,6 +3191,18 @@
   "hash": "9292064c9585602e",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/sv/basta-inkopslista-app/": {
+  "hash": "211cffc33cbb4abd",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/basta-receptapp/": {
+  "hash": "b8c08a1369c10f38",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/basta-veckomeny-app/": {
+  "hash": "ff4e24ddba2cf8c2",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/sv/blogg/": {
   "hash": "c2f4c67e1f9ac9d1",
   "dato": "2026-11-20"
@@ -3212,7 +3236,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/blogg/valj-receptapp/": {
-  "hash": "cba48dc8f4ac6417",
+  "hash": "930117a7bbdc4645",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/byt-fran-paprika/": {
@@ -3332,8 +3356,8 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/sv/inkopslista/": {
-  "hash": "522fbe55c12c15f9",
-  "dato": "2026-11-20"
+  "hash": "c6cb47065012182a",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/innertemperatur/": {
   "hash": "45ec6dcf26b92e7e",
@@ -3388,8 +3412,8 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/sv/receptbok-app/": {
-  "hash": "148560abede0ee02",
-  "dato": "2026-11-20"
+  "hash": "d43450d6e5c3f66e",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/receptskapare/": {
   "hash": "3d081e90767138ca",
@@ -3416,8 +3440,8 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/sv/veckomeny-app/": {
-  "hash": "b905c993cc6a57ff",
-  "dato": "2026-11-20"
+  "hash": "b486bce9caf90aa5",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/verktyg/celsius-till-fahrenheit/": {
   "hash": "549508d791f75465",
