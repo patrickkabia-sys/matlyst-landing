@@ -283,11 +283,11 @@ body[data-sidetype="guide-lang"] .toc-knapp[aria-expanded="true"]{margin-bottom:
 }
 body[data-sidetype="guide-lang"] .locale-prose .answer{max-width:none;margin:0;padding:28px 32px;border-radius:28px;background:var(--hylle);text-align:left}
 
-body[data-sidetype="guide-lang"] .locale-prose .scenario{margin:20px 0 0;padding:28px 32px;border-radius:28px;background:var(--hylle)}
-body[data-sidetype="guide-lang"] .locale-prose .scenario h3{margin:0}
-body[data-sidetype="guide-lang"] .locale-prose .scenario dl{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:12px 28px;margin:18px 0 0}
-body[data-sidetype="guide-lang"] .locale-prose .scenario dt{font-size:.9375rem;font-weight:500;line-height:1.6;color:var(--dempet)}
-body[data-sidetype="guide-lang"] .locale-prose .scenario dd{margin:0;font-size:1.0625rem;line-height:1.55}
+body[data-sidetype="guide-lang"] .locale-prose .scenario,body[data-sidetype="blogg"] .locale-prose .scenario{margin:20px 0 0;padding:28px 32px;border-radius:28px;background:var(--hylle)}
+body[data-sidetype="guide-lang"] .locale-prose .scenario h3,body[data-sidetype="blogg"] .locale-prose .scenario h3{margin:0}
+body[data-sidetype="guide-lang"] .locale-prose .scenario dl,body[data-sidetype="blogg"] .locale-prose .scenario dl{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:12px 28px;margin:18px 0 0}
+body[data-sidetype="guide-lang"] .locale-prose .scenario dt,body[data-sidetype="blogg"] .locale-prose .scenario dt{font-size:.9375rem;font-weight:500;line-height:1.6;color:var(--dempet)}
+body[data-sidetype="guide-lang"] .locale-prose .scenario dd,body[data-sidetype="blogg"] .locale-prose .scenario dd{margin:0;font-size:1.0625rem;line-height:1.55}
 /* Handlelista i ukemenyene: én vare per linje, to kolonner fra 700 px, dagene dempet etter varen. */
 body[data-sidetype="guide-lang"] .locale-prose .handleliste{margin:10px 0 0;padding:0 0 0 22px}
 body[data-sidetype="guide-lang"] .locale-prose .handleliste li{margin-top:4px;break-inside:avoid}
@@ -311,9 +311,9 @@ body[data-sidetype="guide-lang"] .locale-prose .i-appen-media :is(video,.tel){ma
 @media (max-width:720px){
   body[data-sidetype="guide-lang"] .toc{margin-top:20px;padding:12px 20px;border-radius:24px}
   body[data-sidetype="guide-lang"] .locale-prose .answer{padding:22px 20px}
-  body[data-sidetype="guide-lang"] .locale-prose .scenario{padding:22px 20px}
-  body[data-sidetype="guide-lang"] .locale-prose .scenario dl{grid-template-columns:minmax(0,1fr);gap:2px}
-  body[data-sidetype="guide-lang"] .locale-prose .scenario dd{margin-bottom:12px}
+  body[data-sidetype="guide-lang"] .locale-prose .scenario,body[data-sidetype="blogg"] .locale-prose .scenario{padding:22px 20px}
+  body[data-sidetype="guide-lang"] .locale-prose .scenario dl,body[data-sidetype="blogg"] .locale-prose .scenario dl{grid-template-columns:minmax(0,1fr);gap:2px}
+  body[data-sidetype="guide-lang"] .locale-prose .scenario dd,body[data-sidetype="blogg"] .locale-prose .scenario dd{margin-bottom:12px}
   body[data-sidetype="guide-lang"] .locale-prose .founder{padding:24px 20px}
   body[data-sidetype="guide-lang"] .locale-prose .founder:has(> img){grid-template-columns:minmax(0,1fr)}
 }

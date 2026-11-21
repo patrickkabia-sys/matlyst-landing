@@ -37,3 +37,32 @@ for (const lang of Object.keys(BLOGGROT)) {
     }
   });
 }
+
+// Tallene om mattrygghet i rester- og fryserartiklene er rettet til kildene (Mattilsynet først, MatPrat med årstall).
+// karuseller.json skrives på nytt av eksporter-karuseller.mjs fra marketing-mappa; vakten under blir rød
+// hvis en ny eksport tar med de gamle tallene uten kilde tilbake.
+const lesKarusell = () => JSON.parse(readFileSync(new URL('blogg-kilde/karuseller.json', ROT), 'utf8'));
+const GAMLE_TALL = {
+  rester: [/kokt ris', '<b>1<\/b> d/u, /kogte ris', '<b>1<\/b> d/u, /kokt fisk|kogt fisk/u, /<b>én<\/b> gang|<b>en<\/b> gång/u, /rykende|rykande|rygende/u],
+  fryser: [/<b>12<\/b> m/u, /<b>3<\/b> m[nåd]+\.?'\],\s*\['(?:kaker|kakor|kager)/u, /kokt ris|kogte ris/u, /brød og boller|bröd och bullar/u],
+};
+for (const lang of ['nb', 'sv', 'da']) {
+  for (const [tema, forbudt] of Object.entries(GAMLE_TALL)) {
+    test(`${lang}/${tema}: ingen tall uten kilde, og kildene står på siden`, () => {
+      const karusell = lesKarusell()[lang][tema];
+      assert.ok(karusell, `${lang}/${tema} mangler`);
+      const tekst = JSON.stringify(karusell.sider).replaceAll('"', "'") + karusell.ingress;
+      for (const m of forbudt) assert.doesNotMatch(tekst, m, `${lang}/${tema}: gammelt tall uten kilde (${m})`);
+      const a = bloggArtikler(lang).find((x) => x.tema === tema);
+      assert.ok(a, `${lang}/${tema}: artikkelen finnes ikke`);
+      const html = les(a.path);
+      assert.match(html, /<h2 id="kilder">/u, `${a.path}: mangler kildeseksjonen`);
+      for (const url of ['https://www.mattilsynet.no/mat-og-drikke/forbrukere/rad-for-oppbevaring-av-mat', tema === 'rester' ? 'https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/hvordan-oppbevare-rester-av-ris-og-pasta/' : 'https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/oppbevaring-i-fryser/']) {
+        assert.ok(html.includes(`href="${url}"`), `${a.path}: mangler lenke til ${url}`);
+      }
+      const start = html.indexOf('<h2 id="kilder">');
+      const kilder = html.slice(start, html.indexOf('</section>', start));
+      assert.ok(kilder.indexOf('mattilsynet.no') > -1 && kilder.indexOf('matprat.no') > kilder.indexOf('mattilsynet.no'), `${a.path}: Mattilsynet skal stå før MatPrat`);
+    });
+  }
+}

@@ -46,8 +46,8 @@ export const BLOGGTEMAER = {
   },
   fryser: {
     nb: ['mat-i-fryseren', 'Hvor lenge kan mat ligge i fryseren?'],
-    sv: ['mat-i-frysen', 'Hur länge håller nötkött och annan mat i frysen?', 'Kan man frysa mat? Det mesta går bra. Köttfärs håller tre månader i frysen, nötkött ett år. Tider för kött, fisk, bakverk och rester.'],
-    da: ['mad-i-fryseren', 'Kan man fryse mad? Så længe holder det i fryseren', 'Kan man fryse mad? Det meste går fint. Hakket kød holder tre måneder i fryseren, oksekød et helt år. Tider for kød, fisk, bagværk og rester.'],
+    sv: ['mat-i-frysen', 'Hur länge håller nötkött och annan mat i frysen?', 'Kan man frysa mat? Det mesta går bra. Köttfärs håller fyra månader i frysen, nötkött 10 till 12. Tider för kött, fisk, bakverk och rester.'],
+    da: ['mad-i-fryseren', 'Kan man fryse mad? Så længe holder det i fryseren', 'Kan man fryse mad? Det meste går fint. Hakket kød holder fire måneder i fryseren, oksekød 10 til 12. Tider for kød, fisk, bagværk og rester.'],
     en: ['freezer-storage-times', 'How long can you freeze meat, fish, and leftovers?'],
   },
   airfryer: {
@@ -69,6 +69,78 @@ export const BLOGGTEMAER = {
     en: ['egg-float-test', 'How to tell if eggs are fresh: the float test'],
   },
 };
+
+// Kildene til tallene i karusellartiklene om mattrygghet, i samme form som /julemiddag/: adresse, dato på kilden,
+// hentedato og hvert tall vi bruker. Mattilsynet først, MatPrat etter med årstall. Tall uten kilde står ikke i artikkelen.
+// Ligger her og ikke i karuseller.json, fordi eksporter-karuseller.mjs skriver den fila på nytt fra marketing-mappa.
+export const KILDER_HENTET = '2026-11-21';
+const KILDE = {
+  'mt-oppbevaring': { navn: 'Mattilsynet: Råd for oppbevaring av mat og drikke', url: 'https://www.mattilsynet.no/mat-og-drikke/forbrukere/rad-for-oppbevaring-av-mat', dato: '2026-02-20' },
+  'mt-ris': { navn: 'Mattilsynet: Kokt ris og pasta som står fremme, kan lage giftstoffer', url: 'https://www.mattilsynet.no/mat-og-drikke/forbrukere/kokt-ris-og-pasta-som-star-fremme-kan-lage-giftstoffer', dato: '2023-08-14' },
+  'mt-kjokken': { navn: 'Mattilsynet: Kjøkkenhygiene', url: 'https://www.mattilsynet.no/mat-og-drikke/forbrukere/kjokkenhygiene', dato: '2023-10-27' },
+  'mp-ris': { navn: 'MatPrat: Er det farlig å spise rester av ris og pasta?', url: 'https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/hvordan-oppbevare-rester-av-ris-og-pasta/', dato: '2022-02-24' },
+  'mp-fryser': { navn: 'MatPrat: Oppbevaring i fryser', url: 'https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/oppbevaring-i-fryser/', dato: '2023-08-22' },
+};
+// tema → språk → kilde-id → [hva, tall] (tall tomt når kilden står bak et råd uten tall).
+const KARUSELL_KILDER = {
+  rester: {
+    nb: {
+      'mt-oppbevaring': [['restemat i kjøleskapet', '2 til 4 dager'], ['kjøleskapet', 'under 4 °C'], ['kjøle ned fra 60 til 10 °C', 'innen 2 timer']],
+      'mt-ris': [['kokt ris og pasta skal kjøles ned så raskt som mulig og oppbevares i kjøleskapet', '']],
+      'mt-kjokken': [['nedkjølingen går fortere når maten deles i mindre porsjoner', '']],
+      'mp-ris': [['kokt ris og pasta i kjøleskapet, når restene er kjølt raskt ned', '2 til 3 dager']],
+    },
+    sv: {
+      'mt-oppbevaring': [['matrester i kylen', '2 till 4 dagar'], ['kylskåpet', 'under 4 °C'], ['kyla ner från 60 till 10 °C', 'inom 2 timmar']],
+      'mt-ris': [['kokt ris och pasta ska kylas ner så snabbt som möjligt och förvaras i kylen', '']],
+      'mt-kjokken': [['nedkylningen går fortare när maten delas upp i mindre portioner', '']],
+      'mp-ris': [['kokt ris och pasta i kylen, när resterna har kylts ner snabbt', '2 till 3 dagar']],
+    },
+    da: {
+      'mt-oppbevaring': [['madrester i køleskabet', '2 til 4 dage'], ['køle ned fra 60 til 10 °C', 'inden for 2 timer']],
+      'mt-ris': [['kogte ris og pasta skal køles ned så hurtigt som muligt og opbevares i køleskabet', '']],
+      'mt-kjokken': [['nedkølingen går hurtigere, når maden deles i mindre portioner', '']],
+      'mp-ris': [['kogte ris og pasta i køleskabet, når resterne er kølet hurtigt ned', '2 til 3 dage']],
+    },
+  },
+  fryser: {
+    nb: {
+      'mt-oppbevaring': [['fryseren', '-18 °C eller kaldere'], ['kvaliteten blir dårligere etter', '3 til 12 måneder, avhengig av varen'], ['tin i kjøleskapet, ikke på kjøkkenbenken', '']],
+      'mp-fryser': [['storfe', '10 til 12 måneder'], ['kylling', '4 måneder'], ['magert svinekjøtt', '6 måneder'], ['kjøttdeig', '4 måneder'], ['mager fisk', 'ca. 6 måneder'], ['fet fisk, som laks', 'ca. 3 måneder'], ['brød og rundstykker', '6 til 7 måneder'], ['kaker og søt bakst', '3 til 6 måneder'], ['middagsrester, gryter og supper', '3 til 6 måneder']],
+    },
+    sv: {
+      'mt-oppbevaring': [['frysen', '-18 °C eller kallare'], ['kvaliteten blir sämre efter', '3 till 12 månader, beroende på varan'], ['tina i kylen, inte på köksbänken', '']],
+      'mp-fryser': [['nötkött', '10 till 12 månader'], ['kyckling', '4 månader'], ['magert fläskkött', '6 månader'], ['köttfärs', '4 månader'], ['mager fisk', 'cirka 6 månader'], ['fet fisk, som lax', 'cirka 3 månader'], ['bröd och frallor', '6 till 7 månader'], ['kakor och söta bakverk', '3 till 6 månader'], ['matrester, grytor och soppor', '3 till 6 månader']],
+    },
+    da: {
+      'mt-oppbevaring': [['fryseren', '-18 °C eller koldere'], ['kvaliteten bliver dårligere efter', '3 til 12 måneder, afhængigt af varen'], ['tø op i køleskabet, ikke på køkkenbordet', '']],
+      'mp-fryser': [['oksekød', '10 til 12 måneder'], ['kylling', '4 måneder'], ['magert svinekød', '6 måneder'], ['hakket kød', '4 måneder'], ['mager fisk', 'ca. 6 måneder'], ['fed fisk, som laks', 'ca. 3 måneder'], ['brød og rundstykker', '6 til 7 måneder'], ['kager og sødt bagværk', '3 til 6 måneder'], ['madrester, gryderetter og supper', '3 til 6 måneder']],
+    },
+  },
+};
+const KILDETEKST = {
+  nb: { tittel: 'Kilder og tall', intro: 'Hvert tall i tabellene står her, med kilde, adresse og dato. Mattilsynet er den norske myndigheten for mattrygghet, og MatPrat er Opplysningskontoret for egg og kjøtt. Vi har åpnet og lest hver side 21. november 2026. Tidene er veiledende.', adresse: 'Adresse', dato: 'Dato på kilden', hentet: 'Hentet', tall: 'Det vi bruker', mnd: ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember'], punktum: '.' },
+  sv: { tittel: 'Källor och siffror', intro: 'Varje siffra i tabellerna står här, med källa, adress och datum. Mattilsynet är den norska myndigheten för livsmedelssäkerhet, och MatPrat är Opplysningskontoret for egg og kjøtt, den norska ägg- och köttbranschens informationskontor. Vi har öppnat och läst varje sida den 21 november 2026. Tiderna är ungefärliga.', adresse: 'Adress', dato: 'Datum på källan', hentet: 'Hämtad', tall: 'Det vi använder', mnd: ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december'], punktum: '' },
+  da: { tittel: 'Kilder og tal', intro: 'Hvert tal i tabellerne står her med kilde, adresse og dato. Mattilsynet er den norske fødevaremyndighed, og MatPrat er Opplysningskontoret for egg og kjøtt, den norske æg- og kødbranches oplysningskontor. Vi har åbnet og læst hver side den 21. november 2026. Tiderne er vejledende.', adresse: 'Adresse', dato: 'Dato på kilden', hentet: 'Hentet', tall: 'Det, vi bruger', mnd: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'], punktum: '.' },
+};
+const datoTekst = (lang, iso) => {
+  const [aar, mnd, dag] = iso.split('-').map(Number);
+  const t = KILDETEKST[lang];
+  return `${dag}${t.punktum} ${t.mnd[mnd - 1]} ${aar}`;
+};
+export const karusellKilder = (lang, tema) => KARUSELL_KILDER[tema]?.[lang] ?? null;
+
+function kilderSeksjon(lang, tema) {
+  const kilder = karusellKilder(lang, tema);
+  if (!kilder) return '';
+  const t = KILDETEKST[lang];
+  const kort = Object.entries(kilder).map(([id, tall]) => {
+    const k = KILDE[id];
+    const liste = tall.map(([hva, vis]) => `<li>${hva}${vis ? `: <strong>${vis}</strong>` : ''}</li>`).join('');
+    return `<div class="scenario" id="kilde-${id}"><h3>${k.navn}</h3><dl><dt>${t.adresse}</dt><dd><a href="${k.url}" rel="noopener">${k.url}</a></dd><dt>${t.dato}</dt><dd><time datetime="${k.dato}">${datoTekst(lang, k.dato)}</time></dd><dt>${t.hentet}</dt><dd><time datetime="${KILDER_HENTET}">${datoTekst(lang, KILDER_HENTET)}</time></dd><dt>${t.tall}</dt><dd><ul>${liste}</ul></dd></dl></div>`;
+  }).join('');
+  return `<section class="prose locale-prose"><h2 id="kilder">${t.tittel}</h2><p>${t.intro}</p>${kort}</section>\n`;
+}
 
 // Sluttsiden i karusellen peker på én funksjon; CTA-bildet viser den.
 const CTA_BILDE = { koketid: '05-kokemodus', kjernetemp: '05-kokemodus', airfryer: '05-kokemodus', rester: '02-ukemeny', fryser: '02-ukemeny', eggtest: '02-ukemeny', egg: '01-import', doble: '01-import' };
@@ -174,6 +246,7 @@ export function artikkelSchema(a) {
     '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.description,
     image: [`${base}${bilde(a.lang, a.tema, a.karusell.bilder[0])}`], inLanguage: SPRAKKODE[a.lang],
     datePublished: PUBLISERT, dateModified: PUBLISERT, mainEntityOfPage: `${base}${a.path}`,
+    ...(karusellKilder(a.lang, a.tema) ? { citation: Object.keys(karusellKilder(a.lang, a.tema)).map((id) => ({ '@type': 'WebPage', name: KILDE[id].navn, url: KILDE[id].url })) } : {}),
     author: medForfatter(a) ? forfatterPerson() : { '@type': 'Organization', name: 'Matlyst', url: base }, publisher: { '@type': 'Organization', name: 'Matlyst', url: base },
   }];
 }
@@ -197,7 +270,7 @@ export function artikkelMain(a, knapper) {
   return `<main id="hovedinnhold"><article class="blogg-artikkel"><header class="locale-page-hero"><p class="eyebrow"><a href="${BLOGGROT[a.lang]}">${t.blogg}</a> · ${etikett}</p><h1 class="disp">${a.title}</h1><p class="lead">${ingress}</p>${medForfatter(a) ? FORFATTERLINJE : ''}</header>
 <figure class="blogg-forside"><img src="${bilde(a.lang, a.tema, bilder[0])}" width="800" height="1000" decoding="async" alt="${ren(forside.tittel)} ${ren(forside.under)}"></figure>
 <section class="prose locale-prose">${tabeller}</section>
-<section class="blogg-galleri" aria-label="${t.galleri}"><h2>${t.galleri}</h2><div class="blogg-galleri-rad" tabindex="0">${galleri}</div></section>
+${kilderSeksjon(a.lang, a.tema)}<section class="blogg-galleri" aria-label="${t.galleri}"><h2>${t.galleri}</h2><div class="blogg-galleri-rad" tabindex="0">${galleri}</div></section>
 ${cta}
 <div class="blogg-flere" role="navigation" aria-label="${t.flere}"><h2>${t.flere}</h2><ul>${flere}</ul></div></article></main>`;
 }

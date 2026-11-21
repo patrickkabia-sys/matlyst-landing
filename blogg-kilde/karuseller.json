@@ -293,45 +293,29 @@
     },
     "rester": {
       "etikett": "Rester",
-      "ingress": "Kokt ris holder ett døgn. Kylling, pasta og gryte to til tre. Her er hvor lenge restene holder i kjøleskapet, og hvordan du får dem til å holde lenger.",
+      "ingress": "Restemat holder seg i to til fire dager i kjøleskapet, sier Mattilsynet (2026). For kokt ris og pasta sier MatPrat (2022) to til tre dager. Her er hvor lenge restene holder i kjøleskapet, og hvordan du får dem til å holde lenger.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Hvor lenge holder <em>restene</em>?",
           "under": "Det du har laget selv og satt i kjøleskapet, ikke det med dato på.",
-          "fra": "kokt ris",
-          "til": "<b>1</b> døgn"
+          "fra": "restemat",
+          "til": "<b>2–4</b> dager"
         },
         {
           "type": "tabell",
           "tittel": "I kjøleskapet",
           "rader": [
             [
-              "kokt ris",
-              "<b>1</b> døgn"
+              "restemat",
+              "<b>2–4</b> dager"
             ],
             [
-              "kokt fisk",
-              "<b>1–2</b> dager"
-            ],
-            [
-              "kokt kylling",
-              "<b>2–3</b> dager"
-            ],
-            [
-              "kokt pasta",
-              "<b>2–3</b> dager"
-            ],
-            [
-              "kokte poteter",
-              "<b>2–3</b> dager"
-            ],
-            [
-              "suppe og gryte",
+              "kokt ris og pasta",
               "<b>2–3</b> dager"
             ]
           ],
-          "notis": "Veiledende tider. Lukter eller ser det feil ut, kast det."
+          "notis": "Veiledende tider: restemat fra Mattilsynet (2026), kokt ris og pasta fra MatPrat (2022) når restene er kjølt raskt ned. Lukter eller ser det feil ut, kast det."
         },
         {
           "type": "tabell",
@@ -339,19 +323,11 @@
           "rader": [
             [
               "kjøleskapet",
-              "<b>4</b> °C"
+              "under <b>4</b> °C"
             ],
             [
-              "inn i kjøleskapet innen",
+              "kjøl ned fra 60 til 10 °C innen",
               "<b>2</b> timer"
-            ],
-            [
-              "varm opp til",
-              "rykende varmt"
-            ],
-            [
-              "varm opp",
-              "<b>én</b> gang"
             ]
           ],
           "notis": "Ris skal kjøles raskt. Del store porsjoner i mindre bokser, så blir de kalde fortere."
@@ -372,14 +348,14 @@
     },
     "fryser": {
       "etikett": "Fryseren",
-      "ingress": "Kjøttdeig holder tre måneder i fryseren, storfe et helt år. Her er tidene for kjøtt, fisk, bakst og rester, og hva du aldri bør fryse.",
+      "ingress": "Kjøttdeig holder fire måneder i fryseren og storfe 10 til 12 måneder, ifølge MatPrat (2023). Her er tidene for kjøtt, fisk, bakst og rester, og hva du aldri bør fryse.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Hvor lenge i <em>fryseren</em>?",
           "under": "Og hva som aldri bør fryses.",
           "fra": "kjøttdeig",
-          "til": "<b>3</b> mnd"
+          "til": "<b>4</b> mnd"
         },
         {
           "type": "tabell",
@@ -387,19 +363,19 @@
           "rader": [
             [
               "storfe",
-              "<b>12</b> mnd"
+              "<b>10–12</b> mnd"
             ],
             [
               "kylling",
-              "<b>12</b> mnd"
+              "<b>4</b> mnd"
             ],
             [
-              "svin",
+              "magert svin",
               "<b>6</b> mnd"
             ],
             [
               "kjøttdeig",
-              "<b>3</b> mnd"
+              "<b>4</b> mnd"
             ],
             [
               "mager fisk",
@@ -410,27 +386,23 @@
               "<b>3</b> mnd"
             ]
           ],
-          "notis": "Tidene er veiledende for best kvalitet ved -18 °C."
+          "notis": "Mattilsynet (2026) sier at fryseren skal være -18 °C eller kaldere, og at kvaliteten blir dårligere etter 3 til 12 måneder, avhengig av varen. Tidene i tabellen er veiledende og kommer fra MatPrat (2023)."
         },
         {
           "type": "tabell",
           "tittel": "Bakst og middagsrester",
           "rader": [
             [
-              "brød og boller",
-              "<b>3</b> mnd"
+              "brød og rundstykker",
+              "<b>6–7</b> mnd"
             ],
             [
-              "kaker og småkaker",
-              "<b>3</b> mnd"
+              "kaker og søt bakst",
+              "<b>3–6</b> mnd"
             ],
             [
               "suppe og gryte",
-              "<b>3</b> mnd"
-            ],
-            [
-              "kokt ris",
-              "<b>1</b> mnd"
+              "<b>3–6</b> mnd"
             ]
           ],
           "notis": "Tin i kjøleskapet, ikke på benken."
@@ -1469,45 +1441,29 @@
     },
     "rester": {
       "etikett": "Rester",
-      "ingress": "Kokt ris håller ett dygn. Kyckling, pasta och gryta två till tre. Här ser du hur länge resterna håller i kylen, och hur du får dem att hålla längre.",
+      "ingress": "Enligt den norska livsmedelsmyndigheten Mattilsynet (2026) håller matrester två till fyra dagar i kylen. För kokt ris och pasta anger MatPrat (2022) två till tre dagar. Här ser du hur länge resterna håller i kylen, och hur du får dem att hålla längre.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Hur länge håller <em>resterna</em>?",
           "under": "Det du har lagat själv och ställt i kylen, inte det som har datum.",
-          "fra": "kokt ris",
-          "til": "<b>1</b> dygn"
+          "fra": "matrester",
+          "til": "<b>2–4</b> dagar"
         },
         {
           "type": "tabell",
           "tittel": "I kylskåpet",
           "rader": [
             [
-              "kokt ris",
-              "<b>1</b> dygn"
+              "matrester",
+              "<b>2–4</b> dagar"
             ],
             [
-              "kokt fisk",
-              "<b>1–2</b> dagar"
-            ],
-            [
-              "kokt kyckling",
-              "<b>2–3</b> dagar"
-            ],
-            [
-              "kokt pasta",
-              "<b>2–3</b> dagar"
-            ],
-            [
-              "kokt potatis",
-              "<b>2–3</b> dagar"
-            ],
-            [
-              "soppa och gryta",
+              "kokt ris och pasta",
               "<b>2–3</b> dagar"
             ]
           ],
-          "notis": "Ungefärliga tider. Luktar eller ser det konstigt ut, släng det."
+          "notis": "Ungefärliga tider: matrester enligt Mattilsynet (2026), kokt ris och pasta enligt MatPrat (2022) när resterna har kylts ner snabbt. Luktar eller ser det konstigt ut, släng det."
         },
         {
           "type": "tabell",
@@ -1515,19 +1471,11 @@
           "rader": [
             [
               "kylskåpet",
-              "<b>4</b> °C"
+              "under <b>4</b> °C"
             ],
             [
-              "in i kylen inom",
+              "kyl ner från 60 till 10 °C inom",
               "<b>2</b> timmar"
-            ],
-            [
-              "värm tills det är",
-              "rykande hett"
-            ],
-            [
-              "värm upp",
-              "bara <b>en</b> gång"
             ]
           ],
           "notis": "Ris ska kylas snabbt. Dela stora portioner i mindre burkar, så kallnar de fortare."
@@ -1548,14 +1496,14 @@
     },
     "fryser": {
       "etikett": "Frysen",
-      "ingress": "Köttfärs håller tre månader i frysen, nötkött ett helt år. Här är tiderna för kött, fisk, bakverk och rester, och vad du aldrig ska frysa.",
+      "ingress": "Köttfärs håller fyra månader i frysen och nötkött 10 till 12 månader, enligt MatPrat (2023). Här är tiderna för kött, fisk, bakverk och rester, och vad du aldrig ska frysa.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Hur länge i <em>frysen</em>?",
           "under": "Och vad som aldrig bör frysas.",
           "fra": "köttfärs",
-          "til": "<b>3</b> mån"
+          "til": "<b>4</b> mån"
         },
         {
           "type": "tabell",
@@ -1563,19 +1511,19 @@
           "rader": [
             [
               "nötkött",
-              "<b>12</b> mån"
+              "<b>10–12</b> mån"
             ],
             [
               "kyckling",
-              "<b>12</b> mån"
+              "<b>4</b> mån"
             ],
             [
-              "fläsk",
+              "magert fläskkött",
               "<b>6</b> mån"
             ],
             [
               "köttfärs",
-              "<b>3</b> mån"
+              "<b>4</b> mån"
             ],
             [
               "mager fisk",
@@ -1586,27 +1534,23 @@
               "<b>3</b> mån"
             ]
           ],
-          "notis": "Tiderna gäller bästa kvalitet vid -18 °C."
+          "notis": "Enligt Mattilsynet (2026) ska frysen hålla -18 °C eller kallare, och kvaliteten blir sämre efter 3 till 12 månader, beroende på varan. Tiderna i tabellen är ungefärliga och kommer från MatPrat (2023)."
         },
         {
           "type": "tabell",
           "tittel": "Bakverk och rester",
           "rader": [
             [
-              "bröd och bullar",
-              "<b>3</b> mån"
+              "bröd och frallor",
+              "<b>6–7</b> mån"
             ],
             [
-              "kakor och småkakor",
-              "<b>3</b> mån"
+              "kakor och söta bakverk",
+              "<b>3–6</b> mån"
             ],
             [
               "soppa och gryta",
-              "<b>3</b> mån"
-            ],
-            [
-              "kokt ris",
-              "<b>1</b> mån"
+              "<b>3–6</b> mån"
             ]
           ],
           "notis": "Tina i kylskåpet, inte på bänken."
@@ -2074,45 +2018,29 @@
     },
     "rester": {
       "etikett": "Rester",
-      "ingress": "Kogte ris holder et døgn. Kylling, pasta og gryderet to til tre dage. Her kan du se, hvor længe resterne holder i køleskabet, og hvordan de holder længere.",
+      "ingress": "Ifølge den norske fødevaremyndighed Mattilsynet (2026) holder madrester to til fire dage i køleskabet. For kogte ris og pasta angiver MatPrat (2022) to til tre dage. Her kan du se, hvor længe resterne holder i køleskabet, og hvordan de holder længere.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Hvor længe holder <em>resterne</em>?",
           "under": "Det, du selv har lavet og sat i køleskabet, ikke det med dato på.",
-          "fra": "kogte ris",
-          "til": "<b>1</b> døgn"
+          "fra": "madrester",
+          "til": "<b>2–4</b> dage"
         },
         {
           "type": "tabell",
           "tittel": "I køleskabet",
           "rader": [
             [
-              "kogte ris",
-              "<b>1</b> døgn"
+              "madrester",
+              "<b>2–4</b> dage"
             ],
             [
-              "kogt fisk",
-              "<b>1–2</b> dage"
-            ],
-            [
-              "kogt kylling",
-              "<b>2–3</b> dage"
-            ],
-            [
-              "kogt pasta",
-              "<b>2–3</b> dage"
-            ],
-            [
-              "kogte kartofler",
-              "<b>2–3</b> dage"
-            ],
-            [
-              "suppe og gryderet",
+              "kogte ris og pasta",
               "<b>2–3</b> dage"
             ]
           ],
-          "notis": "Vejledende tider. Lugter eller ser det forkert ud, så smid det ud."
+          "notis": "Vejledende tider: madrester ifølge Mattilsynet (2026), kogte ris og pasta ifølge MatPrat (2022), når resterne er kølet hurtigt ned. Lugter eller ser det forkert ud, så smid det ud."
         },
         {
           "type": "tabell",
@@ -2123,16 +2051,8 @@
               "højst <b>5</b> °C"
             ],
             [
-              "i køleskabet inden for",
+              "køl ned fra 60 til 10 °C inden for",
               "<b>2</b> timer"
-            ],
-            [
-              "varm op, til det er",
-              "rygende varmt"
-            ],
-            [
-              "varm op",
-              "kun <b>én</b> gang"
             ]
           ],
           "notis": "Ris skal køles hurtigt ned. Del store portioner i mindre bøtter, så bliver de hurtigere kolde."
@@ -2153,14 +2073,14 @@
     },
     "fryser": {
       "etikett": "Fryseren",
-      "ingress": "Hakket kød holder tre måneder i fryseren, oksekød et helt år. Her er tiderne for kød, fisk, bagværk og rester, og hvad du aldrig bør fryse.",
+      "ingress": "Hakket kød holder fire måneder i fryseren og oksekød 10 til 12 måneder ifølge MatPrat (2023). Her er tiderne for kød, fisk, bagværk og rester, og hvad du aldrig bør fryse.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Hvor længe i <em>fryseren</em>?",
           "under": "Og hvad du aldrig bør fryse.",
           "fra": "hakket kød",
-          "til": "<b>3</b> mdr."
+          "til": "<b>4</b> mdr."
         },
         {
           "type": "tabell",
@@ -2168,19 +2088,19 @@
           "rader": [
             [
               "oksekød",
-              "<b>12</b> mdr."
+              "<b>10–12</b> mdr."
             ],
             [
               "kylling",
-              "<b>12</b> mdr."
+              "<b>4</b> mdr."
             ],
             [
-              "svinekød",
+              "magert svinekød",
               "<b>6</b> mdr."
             ],
             [
               "hakket kød",
-              "<b>3</b> mdr."
+              "<b>4</b> mdr."
             ],
             [
               "mager fisk",
@@ -2191,27 +2111,23 @@
               "<b>3</b> mdr."
             ]
           ],
-          "notis": "Tiderne er vejledende for bedste kvalitet ved -18 °C."
+          "notis": "Ifølge Mattilsynet (2026) skal fryseren være -18 °C eller koldere, og kvaliteten bliver dårligere efter 3 til 12 måneder, afhængigt af varen. Tiderne i tabellen er vejledende og kommer fra MatPrat (2023)."
         },
         {
           "type": "tabell",
           "tittel": "Bagværk og rester",
           "rader": [
             [
-              "brød og boller",
-              "<b>3</b> mdr."
+              "brød og rundstykker",
+              "<b>6–7</b> mdr."
             ],
             [
-              "kager og småkager",
-              "<b>3</b> mdr."
+              "kager og sødt bagværk",
+              "<b>3–6</b> mdr."
             ],
             [
               "suppe og gryderet",
-              "<b>3</b> mdr."
-            ],
-            [
-              "kogte ris",
-              "<b>1</b> md."
+              "<b>3–6</b> mdr."
             ]
           ],
           "notis": "Tø op i køleskabet, ikke på køkkenbordet."
