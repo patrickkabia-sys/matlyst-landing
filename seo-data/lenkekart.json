@@ -71,6 +71,15 @@
           "/julemiddag/"
         ],
         "planlagt": []
+      },
+      "sammenligning": {
+        "hub": "/oppskriftsbok-app/",
+        "eiker": [
+          "/beste-oppskriftsapp/",
+          "/beste-handleliste-app/",
+          "/beste-ukemeny-app/"
+        ],
+        "planlagt": []
       }
     }
   }

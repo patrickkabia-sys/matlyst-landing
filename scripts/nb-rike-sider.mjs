@@ -4,6 +4,7 @@
 // Matsikkerhetstall er utelatt med vilje: Mattilsynets sider kunne ikke leses (HTTP 429), og vi bruker ingen tall vi ikke har hentet derfra.
 import { side as julemiddag } from './nb-jul/julemiddag.mjs';
 import { side as om } from './nb-om/om.mjs';
+import { sider as sammenligning } from './nb-sammenligning/sammenligning.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
@@ -88,7 +89,7 @@ const oppskriftsbokApp = byggRik({
     ['Oppskriftene dine er dine', p('Du kan eksportere alle oppskriftene dine når som helst, gratis, som en Matlyst-fil (en zip med mapper og bilder) eller som HTML. Skal du flytte fra Paprika? <a href="/bytt-fra-paprika/">Importer Paprika-eksporten</a>, så blir kategoriene dine til mapper.')
       + p('Oppskrifter og handleliste kan leses uten nett i opptil 30 dager etter siste synkronisering. Redigering og kokemodus trenger forbindelse.')
       + p('Har du håndskrevne familieoppskrifter? Se siden om <a href="/handskrevne-oppskrifter/">håndskrevne oppskrifter</a>. Vil du hente flere oppskrifter inn, finner du oversikten på <a href="/importer-oppskrifter/">importer oppskrifter</a>.')],
-    ['Abonnement, grenser og deling', p('Matlyst er gratis å komme i gang med: 5 importer per kalendermåned, og spiskammeret viser 5 varer. Lagring av oppskrifter, mapper, søk, ukemeny og handleliste er med i gratisversjonen. Matlyst Pro gir flere importer, bildeimport, Spør Matlyst og muligheten til å opprette en husstand.')
+    ['Abonnement, grenser og deling', p('Matlyst er gratis å komme i gang med: 5 importer per kalendermåned, og spiskammeret viser 5 varer. Lagring av oppskrifter, mapper, søk, ukemeny og handleliste er med i gratisversjonen. Matlyst Pro gir flere importer, bildeimport, Spør Matlyst og muligheten til å opprette en husstand.', 'Vil du se Matlyst ved siden av andre oppskriftsapper? Se <a href="/beste-oppskriftsapp/">sju oppskriftsapper sammenlignet</a>, med kilde og dato.')
       + p('Et Pro-medlem kan opprette en husstand for opptil 6 personer, og det er gratis å bli med. Handlelista, ukemenyen og spiskammeret deles og oppdateres direkte hos alle. På siden om <a href="/handleliste/">handlelista</a> står det hvordan delingen fungerer.')],
   ],
 }).html;
@@ -310,7 +311,8 @@ const handleliste = byggRik({
         matlyst: 'Endre antall porsjoner (mellom 1 og 20), og legg den så på handlelista.' })],
     ['Hva handlelista ikke gjør', '<ul><li><strong>Den bestiller ikke varer.</strong> Det er en liste, ikke en butikk.</li>'
       + '<li><strong>Den regner ikke om enheter for deg.</strong> Like enheter legges sammen, og ulike enheter vises som egne linjer.</li>'
-      + '<li><strong>Den kan lese en oppskrift feil.</strong> Matlyst bruker KI til å lese oppskrifter fra innlegg og bilder, så sjekk mengdene før du stoler på lista.</li></ul>'],
+      + '<li><strong>Den kan lese en oppskrift feil.</strong> Matlyst bruker KI til å lese oppskrifter fra innlegg og bilder, så sjekk mengdene før du stoler på lista.</li></ul>'
+      + p('Vil du se flere handleliste-apper side om side? Se <a href="/beste-handleliste-app/">sju handleliste-apper sammenlignet</a>, med kilde og dato.')],
   ],
 }).html;
 
@@ -379,7 +381,7 @@ const kjoperguide = byggRik({
       + '<tr><td>vil søke på ingrediens og ha et spiskammer</td><td>trenger strekkodeskanning for varer i spiskammeret</td></tr>'
       + '<tr><td>vil kunne eksportere alt du lagrer, gratis</td><td>bare lager mat fra trykte kokebøker og aldri lagrer noe digitalt</td></tr>'
       + '</tbody></table></div>'
-      + p('Matlyst er gratis å komme i gang med, med 5 importer per kalendermåned. Les mer på siden om <a href="/oppskriftsbok-app/">oppskriftsappen</a>, eller se hvordan den fungerer med <a href="/lagre-oppskrifter-fra-instagram/">Instagram</a>, <a href="/lagre-oppskrifter-fra-tiktok/">TikTok</a>, <a href="/ukemeny/">ukemenyen</a> og <a href="/handleliste/">handlelista</a>.')],
+      + p('Matlyst er gratis å komme i gang med, med 5 importer per kalendermåned. Les mer på siden om <a href="/oppskriftsbok-app/">oppskriftsappen</a>, eller se hvordan den fungerer med <a href="/lagre-oppskrifter-fra-instagram/">Instagram</a>, <a href="/lagre-oppskrifter-fra-tiktok/">TikTok</a>, <a href="/ukemeny/">ukemenyen</a> og <a href="/handleliste/">handlelista</a>.', 'Vil du se konkrete apper sammenlignet med kilde og dato? Se <a href="/beste-oppskriftsapp/">oppskriftsapper</a>, <a href="/beste-handleliste-app/">handleliste-apper</a> og <a href="/beste-ukemeny-app/">ukemeny-apper</a> sammenlignet.')],
     ['Vanlige feil når du velger', '<ul><li><strong>Å velge etter funksjonsliste.</strong> Test med dine egne oppskrifter.</li>'
       + '<li><strong>Å flytte alt den første dagen.</strong> Begynn med de ti oppskriftene du lager oftest.</li>'
       + '<li><strong>Å ikke lese importen.</strong> Sjekk alltid mengdene.</li>'
@@ -509,4 +511,5 @@ export const rikeSider = {
     cta: 'Prøv med dine egne oppskrifter',
   },  'julemiddag/': julemiddag,
   'om/': om,
+  ...sammenligning,
 };
