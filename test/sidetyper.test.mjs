@@ -79,6 +79,7 @@ test('ukjent side kaster med stien, og EllerNull gir null', () => {
 test('tjenestefamilier og bloggindekser dekker alle språk', () => {
   assert.equal(tjenestefamilie('/googleeaf5ec75e707227b.html'), 'verifisering');
   assert.equal(tjenestefamilie('/christine/'), 'kampanje');
+  assert.equal(tjenestefamilie('/hanna/'), 'kampanje');
   assert.equal(tjenestefamilie('/ukemeny/'), null);
   assert.deepEqual(Object.keys(BLOGGINDEKS).sort(), ['da', 'en', 'nb', 'sv']);
   for (const sti of Object.values(BLOGGINDEKS)) assert.equal(type(sti), 'blogg', sti);

@@ -30,8 +30,8 @@ test('alle offentlige sidegrupper finnes på alle fire språk', () => {
   for (const gruppe of blogg) assert.ok(gruppe.sider.nb, `${gruppe.id} mangler norsk`);
   const harVariabelSprakdekning = (id) => id.startsWith('blogg-') || id.startsWith('auto-');
   const unntak = SIDEGRUPPER.filter(({ id, sider }) => Object.keys(sider).length !== 4 && !harVariabelSprakdekning(id));
-  assert.deepEqual(unntak.map(({ id }) => id), ['christine']);
-  for (const gruppe of SIDEGRUPPER.filter(({ id }) => id !== 'christine' && !harVariabelSprakdekning(id))) {
+  assert.deepEqual(unntak.map(({ id }) => id), ['christine', 'hanna']);
+  for (const gruppe of SIDEGRUPPER.filter(({ id }) => !['christine', 'hanna'].includes(id) && !harVariabelSprakdekning(id))) {
     assert.deepEqual(Object.keys(gruppe.sider).sort(), ['da', 'en', 'nb', 'sv'], gruppe.id);
   }
 });
