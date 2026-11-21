@@ -245,6 +245,7 @@
     <loc>https://matlyst-app.no/en/can-you-freeze/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/"/>
   </url>
@@ -294,6 +295,7 @@
     <loc>https://matlyst-app.no/en/can-you-freeze/eggs/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/egg/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/agg/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/eggs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/eggs/"/>
   </url>
@@ -580,6 +582,7 @@
     <loc>https://matlyst-app.no/en/how-long-does-it-last/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/"/>
   </url>
@@ -629,6 +632,7 @@
     <loc>https://matlyst-app.no/en/how-long-does-it-last/eggs/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/egg/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/agg/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/eggs/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/eggs/"/>
   </url>
@@ -661,6 +665,7 @@
     <loc>https://matlyst-app.no/en/how-long-does-it-last/leftovers/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/rester/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/matrester/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/leftovers/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/leftovers/"/>
   </url>
@@ -864,6 +869,7 @@
     <loc>https://matlyst-app.no/en/internal-temperature/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/kjernetemperatur/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/internal-temperature/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/internal-temperature/"/>
   </url>
@@ -871,6 +877,7 @@
     <loc>https://matlyst-app.no/en/internal-temperature/chicken/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/kjernetemperatur/kylling/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/kyckling/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/internal-temperature/chicken/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/internal-temperature/chicken/"/>
   </url>
@@ -884,6 +891,7 @@
     <loc>https://matlyst-app.no/en/internal-temperature/ground-beef/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/kjernetemperatur/kjottdeig/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/kottfars/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/internal-temperature/ground-beef/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/internal-temperature/ground-beef/"/>
   </url>
@@ -962,6 +970,7 @@
     <loc>https://matlyst-app.no/en/internal-temperature/turkey/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/kjernetemperatur/kalkun/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/kalkon/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/internal-temperature/turkey/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/internal-temperature/turkey/"/>
   </url>
