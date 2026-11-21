@@ -44,6 +44,7 @@ Matlyst henter oppskriften fra lenken, videoen eller bildet du deler, oversetter
 - [Spiskammer-app: se hva du har og lag mat av det](https://matlyst-app.no/spiskammer-app/): En spiskammer-app som viser hva du har, hvor mange dager som er igjen og hvilke lagrede oppskrifter som bruker det. Legg inn varer raskt og kast mindre mat.
 - [Tøm kjøleskapet med lagrede oppskrifter](https://matlyst-app.no/tom-kjoleskapet/): Match Spiskammer med din egen oppskriftsamling og bruk mer av maten du allerede har.
 - [Ukemeny-app: planlegg middagene for uka](https://matlyst-app.no/ukemeny/): Planlegg middagene for uka med oppskrifter du allerede liker. Ukemenyen sender ingrediensene til én handleliste sortert etter butikkens avdelinger. Gratis.
+- [Ukemenyer: sju middager med handleliste](https://matlyst-app.no/ukemenyer/): Ferdige ukemenyer med sju middager, rester planlagt inn i uka og én handleliste etter hylle: for familien, billig, vegetar, for én og husmannskost.
 
 ## Norsk: Blogg
 

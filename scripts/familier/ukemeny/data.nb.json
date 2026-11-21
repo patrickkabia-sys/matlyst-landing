@@ -1,0 +1,253 @@
+{
+  "familie": "ukemeny",
+  "marked": "nb",
+  "kilder": {
+    "mt-oppbevaring": {
+      "navn": "Råd for oppbevaring av mat og drikke",
+      "utgiver": "Mattilsynet",
+      "aar": 2026,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/rad-for-oppbevaring-av-mat",
+      "hentet": "2026-11-21"
+    },
+    "mt-kjokken": {
+      "navn": "Kjøkkenhygiene",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/kjokkenhygiene",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "familie",
+      "slug": "familie",
+      "navn": "Familie",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat holder seg i kjøleskap i to til fire dager."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring"
+        },
+        "avkjol_fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Senk temperaturen fra 60 °C til 10 °C så raskt som mulig, senest i løpet av to timer."
+        },
+        "avkjol_til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring"
+        },
+        "kjoleskap": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør være under 4 °C."
+        },
+        "oppvarming": {
+          "verdi": 70,
+          "enhet": "grader",
+          "kilde": "mt-kjokken",
+          "merknad": "Over 70 grader i flere minutter dreper de aller fleste bakterier."
+        }
+      }
+    },
+    {
+      "id": "billig",
+      "slug": "billig",
+      "navn": "Billig",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat holder seg i kjøleskap i to til fire dager."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring"
+        },
+        "avkjol_fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Senk temperaturen fra 60 °C til 10 °C så raskt som mulig, senest i løpet av to timer."
+        },
+        "avkjol_til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring"
+        },
+        "kjoleskap": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør være under 4 °C."
+        },
+        "oppvarming": {
+          "verdi": 70,
+          "enhet": "grader",
+          "kilde": "mt-kjokken",
+          "merknad": "Over 70 grader i flere minutter dreper de aller fleste bakterier."
+        }
+      }
+    },
+    {
+      "id": "vegetar",
+      "slug": "vegetar",
+      "navn": "Vegetar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat holder seg i kjøleskap i to til fire dager."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring"
+        },
+        "avkjol_fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Senk temperaturen fra 60 °C til 10 °C så raskt som mulig, senest i løpet av to timer."
+        },
+        "avkjol_til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring"
+        },
+        "kjoleskap": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør være under 4 °C."
+        },
+        "oppvarming": {
+          "verdi": 70,
+          "enhet": "grader",
+          "kilde": "mt-kjokken",
+          "merknad": "Over 70 grader i flere minutter dreper de aller fleste bakterier."
+        }
+      }
+    },
+    {
+      "id": "for-en",
+      "slug": "for-en",
+      "navn": "For én",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat holder seg i kjøleskap i to til fire dager."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring"
+        },
+        "avkjol_fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Senk temperaturen fra 60 °C til 10 °C så raskt som mulig, senest i løpet av to timer."
+        },
+        "avkjol_til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring"
+        },
+        "kjoleskap": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør være under 4 °C."
+        },
+        "oppvarming": {
+          "verdi": 70,
+          "enhet": "grader",
+          "kilde": "mt-kjokken",
+          "merknad": "Over 70 grader i flere minutter dreper de aller fleste bakterier."
+        },
+        "fryser_kv_min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten på frossen mat reduseres etter 3 til 12 måneder, avhengig av produktet."
+        },
+        "fryser_kv_maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring"
+        }
+      }
+    },
+    {
+      "id": "husmannskost",
+      "slug": "husmannskost",
+      "navn": "Husmannskost",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat holder seg i kjøleskap i to til fire dager."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring"
+        },
+        "avkjol_fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Senk temperaturen fra 60 °C til 10 °C så raskt som mulig, senest i løpet av to timer."
+        },
+        "avkjol_til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring"
+        },
+        "kjoleskap": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør være under 4 °C."
+        },
+        "oppvarming": {
+          "verdi": 70,
+          "enhet": "grader",
+          "kilde": "mt-kjokken",
+          "merknad": "Over 70 grader i flere minutter dreper de aller fleste bakterier."
+        }
+      }
+    }
+  ]
+}
