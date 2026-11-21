@@ -113,12 +113,13 @@ test('sidene har ingen tankestrek, ingen emoji, ingen oppskriftsoverskrifter og 
   }
 });
 
-test('hver side har forfatterlinje, appkort fra spiskammer og to app-bevis, og lenker til samlesiden', () => {
+test('hver side har appkort fra spiskammer og to app-bevis, og lenker til samlesiden', () => {
   for (const [rot, ider] of [['erstatning', ERSTATNING], ['hva-kan-jeg-lage/med', RESTER]]) {
     for (const id of ider) {
       const sti = rot === 'erstatning' ? `erstatning/${id}` : `hva-kan-jeg-lage/med-${id}`;
       const html = readFileSync(join(ROT, sti, 'index.html'), 'utf8');
-      assert.match(html, /Av <a href="\/om\/">Patrick Kabia<\/a>, kjøletekniker/u, `${sti}: forfatter`);
+      // Kjøletekniker-linjen passer ikke på bakeerstatninger: bare restesidene har den.
+      assert.equal(/Av <a href="\/om\/">Patrick Kabia<\/a>, kjøletekniker/u.test(html), rot !== 'erstatning', `${sti}: forfatterlinje`);
       assert.ok((html.match(/class="i-appen i-/gu) ?? []).length >= 2, `${sti}: app-bevis`);
       assert.match(html, new RegExp(`href="/${rot === 'erstatning' ? 'erstatning' : 'hva-kan-jeg-lage'}/"`, 'u'), `${sti}: lenke til samlesiden`);
       assert.match(html, /href="\/spiskammer-app\/"/u, `${sti}: spiskammer-app`);

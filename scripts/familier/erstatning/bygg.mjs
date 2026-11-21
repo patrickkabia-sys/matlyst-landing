@@ -7,7 +7,7 @@ import { kilderFor } from '../felles.mjs';
 import { artikkel, brodsmuler, elementliste } from '../skjema.mjs';
 import { byggRik } from '../../rik-sider.mjs';
 import { esc, tallI } from '../../kalk-kort.mjs';
-import { forfatterPerson } from '../../forfatter.mjs';
+import { forfatterPerson, harForfatter } from '../../forfatter.mjs';
 
 const MAANEDER = ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember'];
 export const norskDato = (iso) => { const [a, m, d] = iso.split('-').map(Number); return `${d}. ${MAANEDER[m - 1]} ${a}`; };
@@ -109,7 +109,7 @@ export function lagMal({ familie, rot, innhold, nav, kildeIntro, eyebrow, cta, r
       publisert: rad.oppdatert,
       schemas: [
         brodsmuler([{ navn: 'Forside', adresse: '/' }, { navn: nav.lenke, adresse: rot }, { navn: c.h1, adresse }]),
-        artikkel({ tittel: c.h1, beskrivelse: c.beskrivelse, adresse, sprak: 'nb', publisert: rad.oppdatert, kilder, forfatter: forfatterPerson() }),
+        artikkel({ tittel: c.h1, beskrivelse: c.beskrivelse, adresse, sprak: 'nb', publisert: rad.oppdatert, kilder, forfatter: harForfatter(adresse) ? forfatterPerson() : undefined }),
       ],
     };
   }
@@ -137,7 +137,7 @@ export function lagMal({ familie, rot, innhold, nav, kildeIntro, eyebrow, cta, r
       publisert,
       schemas: [
         brodsmuler([{ navn: 'Forside', adresse: '/' }, { navn: n.h1, adresse: rot }]),
-        artikkel({ tittel: n.h1, beskrivelse: n.beskrivelse, adresse: rot, sprak: 'nb', publisert, kilder, forfatter: forfatterPerson() }),
+        artikkel({ tittel: n.h1, beskrivelse: n.beskrivelse, adresse: rot, sprak: 'nb', publisert, kilder, forfatter: harForfatter(rot) ? forfatterPerson() : undefined }),
         elementliste({ navn: n.h1, adresse: rot, elementer: rader.map((r) => ({ navn: bygg(r).h1, adresse: sti(r) })) }),
       ],
     };
