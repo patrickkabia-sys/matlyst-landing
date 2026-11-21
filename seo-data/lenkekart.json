@@ -26,7 +26,8 @@
         "eiker": [
           "/en/shopping-list/",
           "/en/easy-dinner/",
-          "/en/dinner-ideas/"
+          "/en/dinner-ideas/",
+          "/en/how-much-per-person/"
         ],
         "planlagt": []
       },
@@ -39,7 +40,8 @@
           "/en/blog/leftovers-in-the-fridge/",
           "/en/blog/freezer-storage-times/",
           "/en/how-long-does-it-last/",
-          "/en/can-you-freeze/"
+          "/en/can-you-freeze/",
+          "/en/substitutes/"
         ],
         "planlagt": []
       },
@@ -48,6 +50,7 @@
         "eiker": [
           "/en/blog/boiling-times/",
           "/en/blog/oven-to-air-fryer/",
+          "/en/air-fryer/",
           "/en/blog/double-a-recipe/",
           "/en/blog/safe-internal-temperatures/",
           "/en/blog/egg-float-test/"
@@ -60,6 +63,15 @@
         "hub": "/en/import-recipes-from-paprika/",
         "eiker": [
           "/en/mealime-alternative/"
+        ],
+        "planlagt": []
+      },
+      "sammenligning": {
+        "hub": "/en/recipe-book-app/",
+        "eiker": [
+          "/en/best-recipe-app/",
+          "/en/best-grocery-list-app/",
+          "/en/best-meal-planning-app/"
         ],
         "planlagt": []
       }

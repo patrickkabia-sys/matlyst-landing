@@ -189,7 +189,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 // Enhetsomregning uten vare: affin[e] = [a, b] (temperatur), negativ (negative mengder er gyldige), sifre (gjeldende sifre i svaret), beholdMengde (bytte lar mengden stå), og varer kan mangle.
 // Tallesing er den delte tolkTall (window.MatlystTall). Skrivemåten av svaret har ikke tak på antall desimaler (visTall har det), så små tall aldri blir 0.
 (() => {
-  const skjemaer = document.querySelectorAll('form.kalk:not([data-kalk="porsjon"])');
+  const skjemaer = document.querySelectorAll('form.kalk:not([data-kalk="porsjon"]):not([data-kalk="band"])');
   if (!skjemaer.length || !window.MatlystTall) return;
   const { tolkTall } = window.MatlystTall;
   const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
@@ -318,6 +318,55 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   }
 })();
 
+// Vekt-til-tid med tabellbånd (form.kalk[data-kalk="band"]): kilden gir tid per vektgruppe, ikke per pound, så vekten slås opp i bandene i skjemaets data.
+// data.band = [{ navn, enhet: [entall, flertall], band: [{ a: vektFra, b: vektTil, c: tidFra, d: tidTil }] }]; språkstrengene (feil, til, to, og, lb) står i dataene. Filen har ingen språkstrenger.
+// En vekt på grensen mellom to rader står i begge, og da vises begge radene. Brøker i svaret: kvarter og halve (2 1/4, 3 1/2).
+(() => {
+  const skjemaer = document.querySelectorAll('form.kalk[data-kalk="band"]');
+  if (!skjemaer.length || !window.MatlystTall) return;
+  const { tolkTall } = window.MatlystTall;
+  const brok = (n) => {
+    const hel = Math.floor(n), f = Math.round((n - hel) * 100) / 100;
+    const b = { 0.25: '1/4', 0.5: '1/2', 0.75: '3/4' }[f];
+    return f === 0 ? String(hel) : b ? (hel ? `${hel} ${b}` : b) : String(n);
+  };
+  for (const skjema of skjemaer) {
+    try {
+      const data = JSON.parse(skjema.querySelector('.kalk-data').textContent);
+      const felt = (navn) => skjema.querySelector(`[data-felt="${navn}"]`);
+      const mengde = felt('mengde'), til = felt('til'), svar = felt('svar'), setning = felt('setning'), vare = felt('vare');
+      const hurtig = [...skjema.querySelectorAll('.hurtig button')];
+      if (!(data && Array.isArray(data.band) && data.band.length && data.t && typeof data.t.feil === 'string' && mengde && til && svar && setning)) continue;
+      svar.setAttribute('aria-live', 'off');
+      const spenn = (a, b) => (a === b ? brok(a) : `${brok(a)} ${data.t.til} ${brok(b)}`);
+      const tid = (a, b, e) => `${spenn(a, b)} ${b <= 1 ? e[0] : e[1]}`;
+      const regn = () => {
+        const sett = data.band[vare ? vare.selectedIndex : 0];
+        const n = tolkTall(mengde.value, false);
+        const treff = n === null ? [] : sett.band.filter((b) => n >= b.a && n <= b.b);
+        til.options[0].textContent = sett.enhet[1];
+        hurtig.forEach((k) => k.setAttribute('aria-pressed', String(n !== null && Number(k.dataset.v) === n)));
+        if (!treff.length) {
+          mengde.setAttribute('aria-invalid', 'true'); svar.textContent = ''; svar.style.removeProperty('--tegn'); setning.textContent = data.t.feil;
+          return;
+        }
+        mengde.removeAttribute('aria-invalid');
+        const lo = Math.min(...treff.map((b) => b.c)), hi = Math.max(...treff.map((b) => b.d));
+        const utTekst = spenn(lo, hi);
+        svar.textContent = utTekst;
+        svar.style.setProperty('--tegn', String(Math.max(utTekst.length, 1)));
+        const vekt = `${n} ${n === 1 ? data.t.lb[0] : data.t.lb[1]}, ${sett.navn.toLowerCase()}`;
+        setning.textContent = treff.length === 1
+          ? `${vekt}: ${tid(treff[0].c, treff[0].d, sett.enhet)}`
+          : `${vekt}: ${data.t.to} ${tid(treff[0].c, treff[0].d, sett.enhet)} ${data.t.og} ${tid(treff[1].c, treff[1].d, sett.enhet)}`;
+      };
+      for (const el of [mengde, vare]) if (el) el.addEventListener(el === mengde ? 'input' : 'change', regn);
+      hurtig.forEach((k) => k.addEventListener('click', () => { mengde.value = k.dataset.v; regn(); }));
+      regn();
+    } catch { /* hopp over dette skjemaet */ }
+  }
+})();
+
 // Mengde per person (form.kalk[data-kalk="porsjon"]): voksne og barn gir hele mengden fra kildens tall per person.
 // Varianter, tall og tekster kommer fra skjemaets egne data (script.kalk-data): v = [{ n: navn, d: [[min, maks, enhet]] }], b = barnets andel av en voksen, t = tekstene.
 // Reglene mellom «porsjon:start» og «porsjon:slutt» er de samme som i scripts/familier/mengde-per-person/regn.mjs (tabellene på sidene skrives med den),
@@ -383,5 +432,101 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       hurtig.forEach((k) => k.addEventListener('click', () => { voksne.value = k.dataset.v; regn(); }));
       regn();
     } catch { /* hopp over dette skjemaet */ }
+  }
+})();
+
+// How much per person, English (form.kalk[data-kalk="portion"]): adults and kids give the whole amount from the source's figure per person.
+// Same data shape as the Norwegian block above: v = [{ n: name, d: [[min, max, unit]] }], b = a kid's share of an adult, t = the texts.
+// The rules between «portion:start» and «portion:slutt» are the same as in scripts/familier/mengde-per-person/regn-en.mjs (the tables on the pages are written with it),
+// and test/mengde-per-person-en.test.mjs runs this block against regn-en.mjs. US measures first, metric in parentheses; the decimal mark is a point.
+(() => {
+  const skjemaer = document.querySelectorAll('form.kalk[data-kalk="portion"]');
+  if (!skjemaer.length || !window.MatlystTall) return;
+  // portion:start
+  const CUP_ML = 240;
+  const COUNT = { sandwich: 'sandwiches' };
+  const FRAC = { 0.125: '1/8', 0.25: '1/4', 0.375: '3/8', 0.5: '1/2', 0.625: '5/8', 0.75: '3/4', 0.875: '7/8' };
+  const round = (n, d) => Math.round(Number((n * 10 ** d).toPrecision(12))) / 10 ** d;
+  const plain = (n, d) => {
+    const t = round(n, d).toFixed(d);
+    return t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t;
+  };
+  const cups = (n) => {
+    const q = Math.round(n * 8) / 8;
+    const whole = Math.floor(q);
+    const f = FRAC[q - whole];
+    if (!f) return String(whole);
+    return whole ? `${whole} ${f}` : f;
+  };
+  const frak = (n) => {
+    const whole = Math.floor(n + 1e-9);
+    const rest = n - whole;
+    if (rest < 0.005) return String(whole);
+    for (const d of [2, 3, 4, 8]) {
+      const k = Math.round(rest * d);
+      if (k > 0 && k < d && Math.abs(rest * d - k) < 0.03) return whole ? `${whole} ${k}/${d}` : `${k}/${d}`;
+    }
+    return plain(n, 2);
+  };
+  const metricWeight = (g) => (g >= 1000 ? `${plain(g / 1000, 1)} kg` : `${Math.round(g / 5) * 5} g`);
+  const metricVolume = (ml) => (ml >= 1000 ? `${plain(ml / 1000, 1)} L` : `${Math.round(ml / 10) * 10} mL`);
+  const del = (n, unit) => {
+    if (unit === 'lb') return { tall: frak(n), enhet: 'lb', metrisk: metricWeight(n * 453.6) };
+    if (unit === 'oz') return { tall: plain(n, 1), enhet: 'oz', metrisk: metricWeight(n * 28.35) };
+    if (unit === 'cup') return { tall: cups(n), enhet: n > 1 ? 'cups' : 'cup', metrisk: metricVolume(Math.round(n * 8) / 8 * CUP_ML) };
+    const flertall = COUNT[unit] || `${unit}s`;
+    const t = plain(n, 1);
+    return { tall: t, enhet: Number(t) > 1 ? flertall : unit, metrisk: null };
+  };
+  const delTekst = (min, maks, unit, til) => {
+    let u = unit, a0 = min, b0 = maks;
+    if (u === 'oz' && round(maks, 1) >= 16) { u = 'lb'; a0 = min / 16; b0 = maks / 16; }
+    const a = del(a0, u);
+    if (b0 === a0) return a.metrisk ? `${a.tall} ${a.enhet} (${a.metrisk})` : `${a.tall} ${a.enhet}`;
+    const b = del(b0, u);
+    if (!a.metrisk) return `${a.tall} ${til} ${b.tall} ${b.enhet}`;
+    return `${a.tall} ${til} ${b.tall} ${b.enhet} (${a.metrisk} ${til} ${b.metrisk})`;
+  };
+  const totalt = (perPerson, adults, kids, share) => perPerson * (adults + share * kids);
+  const deler = (v, adults, kids, share, til) => v.d.map(([min, maks, enhet]) => delTekst(totalt(min, adults, kids, share), totalt(maks, adults, kids, share), enhet, til));
+  const setningTekst = (v, adults, kids, share, t) => `${v.n}: ${adults} ${adults === 1 ? t.adult : t.adults}${kids > 0 ? ` ${t.and} ${kids} ${kids === 1 ? t.kid : t.kids}` : ''} ${adults + kids === 1 ? t.needs : t.need} ${deler(v, adults, kids, share, t.to).join(` ${t.or} `)}.`;
+  // portion:slutt
+  for (const skjema of skjemaer) {
+    // Each form is set up on its own: a broken form is skipped (the static answer in the HTML stays), and the rest work.
+    try {
+      const data = JSON.parse(skjema.querySelector('.kalk-data').textContent);
+      const felt = (navn) => skjema.querySelector(`[data-felt="${navn}"]`);
+      const voksne = felt('voksne'), barn = felt('barn'), svar = felt('svar'), setning = felt('setning'), vare = felt('vare');
+      const hurtig = [...skjema.querySelectorAll('.hurtig button')];
+      if (!(data && Array.isArray(data.v) && data.v.length && typeof data.b === 'number' && data.t && typeof data.t.error === 'string' && voksne && barn && svar && setning)) continue;
+      svar.setAttribute('aria-live', 'off');
+      // Whole numbers from 0 to 10,000. Anything else gives guidance, never a partial answer.
+      const heltall = (el) => {
+        const n = window.MatlystTall.tolkTall(el.value, true);
+        return n !== null && Number.isInteger(n) && n >= 0 && n <= 10000 ? n : null;
+      };
+      const regn = () => {
+        const v = data.v[vare ? vare.selectedIndex : 0];
+        const a = heltall(voksne), b = heltall(barn);
+        for (const [el, n] of [[voksne, a], [barn, b]]) { if (n === null) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
+        if (a === null || b === null) {
+          svar.textContent = '';
+          svar.style.removeProperty('--tegn');
+          setning.textContent = data.t.error;
+        } else {
+          // The big answer is the US amount; the metric amount stands in the sentence below.
+          const tekst = deler(v, a, b, data.b, data.t.to)[0].replace(/ \([^)]*\)/gu, '');
+          svar.textContent = tekst;
+          // The character count drives the font size of the answer (side.css), so a long answer is shown in full instead of clipped.
+          svar.style.setProperty('--tegn', String(Math.max(tekst.length, 1)));
+          setning.textContent = setningTekst(v, a, b, data.b, data.t);
+        }
+        hurtig.forEach((k) => k.setAttribute('aria-pressed', String(a !== null && Number(k.dataset.v) === a)));
+      };
+      for (const el of [voksne, barn]) el.addEventListener('input', regn);
+      if (vare) vare.addEventListener('change', regn);
+      hurtig.forEach((k) => k.addEventListener('click', () => { voksne.value = k.dataset.v; regn(); }));
+      regn();
+    } catch { /* skip this form */ }
   }
 })();

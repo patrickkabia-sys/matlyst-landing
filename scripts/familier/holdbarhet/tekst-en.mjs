@@ -40,7 +40,7 @@ export const TEKST = {
       ['Can you freeze eggs?', `${h.k('fs-chart')} says not to freeze raw eggs in the shell. Beat the yolks and whites together, then freeze. See <a href="${FREEZE_ROOT}eggs/">can you freeze eggs</a>.`],
     ],
     soster: F('eggs', 'Can you freeze eggs?'),
-    andre: [R('hard-boiled-eggs', 'How long do hard-boiled eggs last?')],
+    andre: [R('hard-boiled-eggs', 'How long do hard-boiled eggs last?'), ['/en/internal-temperature/eggs/', 'Egg dish internal temperature']],
   }),
 
   'kokte-egg': (h) => ({
@@ -61,7 +61,7 @@ export const TEKST = {
       ['Can you eat hard-boiled eggs left out overnight?', `${h.k('fsis-eggs')} says hard-cooked eggs should be refrigerated within ${h.t('fsis-kjol')} of cooking. See also <a href="${FREEZE_ROOT}hard-boiled-eggs/">can you freeze hard-boiled eggs</a>.`],
     ],
     soster: F('hard-boiled-eggs', 'Can you freeze hard-boiled eggs?'),
-    andre: [R('eggs', 'How long do raw eggs last?'), R('egg-salad', 'How long does egg salad last?')],
+    andre: [R('eggs', 'How long do raw eggs last?'), R('egg-salad', 'How long does egg salad last?'), ['/en/cooking-times/hard-boiled-eggs/', 'How long to boil eggs']],
   }),
 
   rester: (h) => ({
@@ -83,7 +83,7 @@ export const TEKST = {
       ['Can you freeze leftovers?', `Yes, says ${h.k('fsis-leftovers')}. See <a href="${FREEZE_ROOT}leftovers/">can you freeze leftovers</a>.`],
     ],
     soster: F('leftovers', 'Can you freeze leftovers?'),
-    andre: [R('cooked-rice', 'How long does cooked rice last?'), R('soup', 'How long does soup last?')],
+    andre: [R('cooked-rice', 'How long does cooked rice last?'), R('soup', 'How long does soup last?'), ['/en/internal-temperature/leftovers/', 'What temperature to reheat leftovers to']],
   }),
 
   'cooked-chicken': (h) => ({
@@ -104,7 +104,7 @@ export const TEKST = {
       ['Can you freeze cooked chicken?', `${h.k('fs-chart')} lists a freezer time for cooked poultry. See <a href="${FREEZE_ROOT}cooked-chicken/">can you freeze cooked chicken</a>.`],
     ],
     soster: F('cooked-chicken', 'Can you freeze cooked chicken?'),
-    andre: [R('raw-chicken', 'How long does raw chicken last?'), R('turkey-leftovers', 'How long do turkey leftovers last?')],
+    andre: [R('raw-chicken', 'How long does raw chicken last?'), R('turkey-leftovers', 'How long do turkey leftovers last?'), ['/en/internal-temperature/chicken/', 'Chicken internal temperature']],
   }),
 
   'raw-chicken': (h) => ({
@@ -125,7 +125,7 @@ export const TEKST = {
       ['How long does cooked chicken last?', `Longer. See <a href="${FRIDGE_ROOT}cooked-chicken/">how long cooked chicken lasts</a>.`],
     ],
     soster: F('raw-chicken', 'Can you freeze raw chicken?'),
-    andre: [R('cooked-chicken', 'How long does cooked chicken last?'), R('ground-beef', 'How long does ground beef last?')],
+    andre: [R('cooked-chicken', 'How long does cooked chicken last?'), R('ground-beef', 'How long does ground beef last?'), ['/en/cooking-times/whole-chicken/', 'How long to roast a whole chicken']],
   }),
 
   'ground-beef': (h) => ({
@@ -146,7 +146,7 @@ export const TEKST = {
       ['Can you freeze ground beef?', `${h.k('fs-chart')} lists a freezer time. See <a href="${FREEZE_ROOT}ground-beef/">can you freeze ground beef</a>.`],
     ],
     soster: F('ground-beef', 'Can you freeze ground beef?'),
-    andre: [R('steak', 'How long do steak and chops last?')],
+    andre: [R('steak', 'How long do steak and chops last?'), ['/en/internal-temperature/ground-beef/', 'Ground beef and burger temperature']],
   }),
 
   steak: (h) => ({
@@ -167,7 +167,7 @@ export const TEKST = {
       ['Can you freeze steak?', `${h.k('fs-chart')} lists a freezer time for steaks, chops, and roasts. See <a href="${FREEZE_ROOT}steak/">can you freeze steak</a>.`],
     ],
     soster: F('steak', 'Can you freeze steak?'),
-    andre: [R('ham', 'How long does ham last?')],
+    andre: [R('ham', 'How long does ham last?'), ['/en/internal-temperature/steak/', 'Steak internal temperature']],
   }),
 
   'cooked-rice': (h) => ({
@@ -335,7 +335,7 @@ export const TEKST = {
       ['Can you freeze ham?', `${h.k('fs-chart')} lists freezer times for each kind. See <a href="${FREEZE_ROOT}ham/">can you freeze ham</a>.`],
     ],
     soster: F('ham', 'Can you freeze ham?'),
-    andre: [R('deli-meat', 'How long does deli meat last?'), R('turkey-leftovers', 'How long do turkey leftovers last?')],
+    andre: [R('deli-meat', 'How long does deli meat last?'), R('turkey-leftovers', 'How long do turkey leftovers last?'), ['/en/cooking-times/ham/', 'How long to cook a ham']],
   }),
 
   salmon: (h) => ({
@@ -356,7 +356,7 @@ export const TEKST = {
       ['Can you freeze salmon?', `${h.k('fs-chart')} lists a freezer time. See <a href="${FREEZE_ROOT}salmon/">can you freeze salmon</a>.`],
     ],
     soster: F('salmon', 'Can you freeze salmon?'),
-    andre: [R('shrimp', 'How long do shrimp last?')],
+    andre: [R('shrimp', 'How long do shrimp last?'), ['/en/internal-temperature/salmon/', 'What temperature is salmon done?']],
   }),
 
   skalldyr: (h) => ({
@@ -398,7 +398,7 @@ export const TEKST = {
       ['Can you freeze turkey leftovers?', `${h.k('fs-chart')} lists a freezer time. See <a href="${FREEZE_ROOT}turkey-leftovers/">can you freeze turkey leftovers</a>.`],
     ],
     soster: F('turkey-leftovers', 'Can you freeze turkey leftovers?'),
-    andre: [R('cooked-chicken', 'How long does cooked chicken last?'), R('pumpkin-pie', 'How long does pumpkin pie last?')],
+    andre: [R('cooked-chicken', 'How long does cooked chicken last?'), R('pumpkin-pie', 'How long does pumpkin pie last?'), ['/en/internal-temperature/turkey/', 'Turkey internal temperature'], ['/en/cooking-times/thaw-turkey/', 'How long to thaw a turkey']],
   }),
 
   casseroles: (h) => ({
@@ -419,7 +419,7 @@ export const TEKST = {
       ['Can you freeze casserole?', `${h.k('fs-chart')} lists a freezer time. See <a href="${FREEZE_ROOT}casseroles/">can you freeze casserole</a>.`],
     ],
     soster: F('casseroles', 'Can you freeze casserole?'),
-    andre: [R('leftovers', 'How long do leftovers last?')],
+    andre: [R('leftovers', 'How long do leftovers last?'), ['/en/internal-temperature/leftovers/', 'Casseroles: temperature to reheat to']],
   }),
 
   'egg-salad': (h) => ({

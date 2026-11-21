@@ -62,10 +62,10 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'auto-julebord', sider: { nb: '/julebord/' } },
   { id: 'auto-nyttarsmiddag', sider: { nb: '/nyttarsmiddag/' } },
   { id: 'auto-om', sider: { nb: '/om/' } },
-  // Bare norsk: de nøytrale sammenligningssidene (scripts/nb-sammenligning/).
-  { id: 'auto-beste-oppskriftsapp', sider: { nb: '/beste-oppskriftsapp/' } },
-  { id: 'auto-beste-handleliste-app', sider: { nb: '/beste-handleliste-app/' } },
-  { id: 'auto-beste-ukemeny-app', sider: { nb: '/beste-ukemeny-app/' } },
+  // De nøytrale sammenligningssidene (scripts/sammenligning/): norsk og amerikansk engelsk, ingen svensk eller dansk ennå.
+  { id: 'auto-beste-oppskriftsapp', sider: { nb: '/beste-oppskriftsapp/', en: '/en/best-recipe-app/' } },
+  { id: 'auto-beste-handleliste-app', sider: { nb: '/beste-handleliste-app/', en: '/en/best-grocery-list-app/' } },
+  { id: 'auto-beste-ukemeny-app', sider: { nb: '/beste-ukemeny-app/', en: '/en/best-meal-planning-app/' } },
   { id: 'enkel-middag', sider: { nb: '/enkel-middag/', sv: '/sv/enkel-middag/', da: '/da/nem-mad/', en: '/en/easy-dinner/' } },
 
   { id: 'matprat', sider: { nb: '/importer-fra-matprat/', sv: '/sv/matprat/', da: '/da/matprat/', en: '/en/matprat/' } },

@@ -1,9 +1,11 @@
 // Kontroll mot kilden for familiene «erstatning» og «rester»: hvert tall i datafila har sitatet fra kilden i `merknad`,
 // og her sjekkes at sitatet står ordrett på kildesiden. Når noe avviker, skrives lista og koden blir 1.
-// Bruk: node scripts/familier/erstatning/kildekontroll.mjs erstatning|rester
+// Bruk: node scripts/familier/erstatning/kildekontroll.mjs erstatning|rester [nb|en]  (uten marked: nb)
 // Tabellceller blir «a | b» og linjeskift i en celle «a / b», så et sitat fra en tabellrad kan kontrolleres som tekst.
 // Et tall kan ha flere sitater i merknaden, skilt med « ¦ »: alle må stå på siden.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validerData } from '../felles.mjs';
@@ -27,6 +29,18 @@ export function kildetekst(html) {
     return ` ${celler.map((c) => avkod(c).replace(/\s+/gu, ' ').trim()).join(' | ')} `;
   });
   return tegn(`${avkod(s.replace(/<br\s*\/?>/giu, ' ').replace(/<[^>]+>/gu, ' '))} ${ld}`.normalize('NFC').replace(/\u00ad/gu, '').replace(/\s+/gu, ' '));
+}
+
+/** PDF-tekst (pdftotext -layout) som én linje. Brukes for kilder som er en PDF (Texas A&M). */
+export function pdfTekst(bytes) {
+  const mappe = mkdtempSync(join(tmpdir(), 'erstatning-'));
+  try {
+    const fil = join(mappe, 'k.pdf');
+    writeFileSync(fil, bytes);
+    const ut = spawnSync('pdftotext', ['-layout', fil, '-'], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    if (ut.status !== 0) throw new Error(`pdftotext feilet: ${ut.stderr}`);
+    return ut.stdout.replace(/\s+/gu, ' ');
+  } finally { rmSync(mappe, { recursive: true, force: true }); }
 }
 
 const norm = (t) => tegn(t.normalize('NFC').replace(/\u00ad/gu, '').replace(/\s+/gu, ' ')).trim();
@@ -53,17 +67,18 @@ export function avvik(data, tekster) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const familie = process.argv[2];
-  const fil = join(fileURLToPath(new URL('..', import.meta.url)), familie, 'data.nb.json');
+  const marked = process.argv[3] ?? 'nb';
+  const fil = join(fileURLToPath(new URL('..', import.meta.url)), familie, `data.${marked}.json`);
   const data = validerData(JSON.parse(readFileSync(fil, 'utf8')));
   const tekster = {};
   for (const [id, k] of Object.entries(data.kilder)) {
     const svar = await fetch(k.adresse, { headers: { 'user-agent': 'Mozilla/5.0' } });
     if (!svar.ok) throw new Error(`${id}: ${k.adresse} svarte ${svar.status}`);
-    tekster[id] = kildetekst(await svar.text());
+    tekster[id] = k.adresse.endsWith('.pdf') ? pdfTekst(Buffer.from(await svar.arrayBuffer())) : kildetekst(await svar.text());
   }
   const liste = avvik(data, tekster);
   if (liste.length) {
-    for (const a of liste) console.error(`${familie}/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
+    for (const a of liste) console.error(`${familie}/${marked}/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
     process.exit(1);
   }
   const idag = new Date().toISOString().slice(0, 10);
@@ -71,5 +86,5 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   for (const r of ny.rader) if (r.status === 'kontrollert') r.kontrollert = idag;
   for (const k of Object.values(ny.kilder)) k.hentet = idag;
   writeFileSync(fil, `${JSON.stringify(ny, null, 2)}\n`);
-  console.log(`${familie}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length, 0)} tall har sitat som står hos kilden (${idag})`);
+  console.log(`${familie}/${marked}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length, 0)} tall har sitat som står hos kilden (${idag})`);
 }

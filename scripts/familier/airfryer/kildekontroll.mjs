@@ -1,7 +1,7 @@
 // Kontroll mot kilden for familien «airfryer»: hvert tall i datafila har sitatet fra kilden i `merknad`, og hvert utsagn uten tall
 // har sitatet i radens `tekst` (nøkkel «kildeid: tema»). Her sjekkes at sitatene fortsatt står ordrett på kildesiden.
 // Endrer ingenting når noe avviker; da skrives lista, og koden blir 1. Er alt i orden, settes `kontrollert` og `hentet` til dagens dato.
-// Bruk: node scripts/familier/airfryer/kildekontroll.mjs
+// Bruk: node scripts/familier/airfryer/kildekontroll.mjs [nb|en]   (uten argument: nb; en kontrollerer data.en.json, amerikanske kilder)
 // Tabellceller blir «a | b», og linjeskift i en celle «a / b», så et sitat fra en tabellrad kan kontrolleres som tekst.
 // En PDF (Philips sin brukerhåndbok) leses med pdftotext, både i vanlig og i rå modus (tabellrader og løpende tekst brytes ulikt), og sitatet må stå i den ene.
 import { execFileSync } from 'node:child_process';
@@ -53,13 +53,16 @@ async function hent(k) {
     const mappe = mkdtempSync(join(tmpdir(), 'airfryer-kilde-'));
     const fil = join(mappe, 'kilde.pdf');
     writeFileSync(fil, Buffer.from(await svar.arrayBuffer()));
-    return ['-layout', '-raw'].map((modus) => norm(execFileSync('pdftotext', [modus, fil, '-'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })));
+    // Tre moduser: -layout og -raw, og standardmodus (som leser tospalters PDF-er, som Illinois Extension, i riktig rekkefølge).
+    return [['-layout'], ['-raw'], []].map((modus) => norm(execFileSync('pdftotext', [...modus, fil, '-'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })));
   }
   return [norm(kildetekst(await svar.text()))];
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const fil = fileURLToPath(new URL('./data.nb.json', import.meta.url));
+  const marked = process.argv[2] ?? 'nb';
+  if (!['nb', 'en'].includes(marked)) throw new Error(`ukjent marked ${marked}`);
+  const fil = fileURLToPath(new URL(`./data.${marked}.json`, import.meta.url));
   const data = validerData(JSON.parse(readFileSync(fil, 'utf8')));
   const tekster = {};
   for (const [id, k] of Object.entries(data.kilder)) {
@@ -67,7 +70,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
   const liste = avvik(data, tekster);
   if (liste.length || process.exitCode) {
-    for (const a of liste) console.error(`airfryer/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
+    for (const a of liste) console.error(`airfryer/${marked}/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
     process.exit(1);
   }
   const idag = new Date().toISOString().slice(0, 10);
@@ -76,5 +79,5 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   for (const k of Object.values(ny.kilder)) k.hentet = idag;
   writeFileSync(fil, `${JSON.stringify(ny, null, 2)}\n`);
   const antall = ny.rader.reduce((n, r) => n + Object.keys(r.tall).length + Object.keys(r.tekst ?? {}).length, 0);
-  console.log(`airfryer: alle ${antall} sitater står hos kilden (${idag})`);
+  console.log(`airfryer/${marked}: alle ${antall} sitater står hos kilden (${idag})`);
 }

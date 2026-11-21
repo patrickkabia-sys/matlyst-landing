@@ -15,6 +15,7 @@ import { side as hanukkah } from './en-hoytider/hanukkah.mjs';
 import { side as newYearsEve } from './en-hoytider/new-years-eve.mjs';
 import { side as friendsgiving } from './en-hoytider/friendsgiving.mjs';
 import { side as mealime } from './en-flytting/mealime.mjs';
+import { sider as sammenligning } from './sammenligning/en.mjs';
 import { enhetsSider } from './en-enhetssider.mjs';
 import { animasjon, byggLese, byggRik, founder, scenario, scenarioNotat, skjerm, telefoner } from './rik-sider.mjs';
 
@@ -96,7 +97,8 @@ const recipeBookApp = (() => {
         + '<li><strong>One recipe per post.</strong> If a reel shows three recipes, you will need to split them yourself.</li>'
         + '<li><strong>It does not convert units on import.</strong> Metric is the default. Units: US keeps what the source used.</li>'
         + '<li><strong>AI can make mistakes.</strong> Matlyst uses AI to read and translate recipes, so check amounts and steps before you cook, especially from photos and handwriting.</li>'
-        + '<li><strong>Cook mode needs an internet connection.</strong> Reading a saved recipe works offline for up to 30 days after the last sync.</li></ul>'],
+        + '<li><strong>Cook mode needs an internet connection.</strong> Reading a saved recipe works offline for up to 30 days after the last sync.</li></ul>'
+        + p('Want to see Matlyst next to other recipe apps? See <a href="/en/best-recipe-app/">eight recipe apps compared</a>, with a source and a date for every fact.')],
       ['Common mistakes when organizing recipes', p('These are the ones that cost people the most time.')
         + '<ul><li><strong>Saving without reading.</strong> Amounts are the part that goes wrong. Read the draft once, every time.</li>'
         + '<li><strong>Keeping five copies.</strong> Pick one place. Add a note about what you changed so next time you don’t guess.</li>'
@@ -340,7 +342,8 @@ const shopping = byggRik({ ekstra: ekstraShopping,
         matlyst: 'Change the servings, from 1 to 20 in total, then add it to the grocery list.' })],
     ['What the grocery list doesn’t do', '<ul><li><strong>It doesn’t order groceries.</strong> It’s a list, not a store.</li>'
       + '<li><strong>It doesn’t convert units for you.</strong> Same units are added together, and different units appear as separate lines.</li>'
-      + '<li><strong>It can misread a recipe.</strong> Matlyst uses AI to read recipes from posts and photos, so check amounts before you rely on the list.</li></ul>'],
+      + '<li><strong>It can misread a recipe.</strong> Matlyst uses AI to read recipes from posts and photos, so check amounts before you rely on the list.</li></ul>'
+      + p('Want to order online, or see other list apps? See <a href="/en/best-grocery-list-app/">six grocery list apps compared</a>, with a source and a date for every fact.')],
   ],
 }).html;
 
@@ -408,7 +411,7 @@ const kjoperguide = byggRik({ ekstra: ekstraGuide,
       + '<tr><td>want to search by ingredient and keep a pantry</td><td>need barcode scanning for pantry items</td></tr>'
       + '<tr><td>want free export of everything you save</td><td>only cook from printed cookbooks and never save anything digitally</td></tr>'
       + '</tbody></table></div>'
-      + p('Matlyst is free to start, with 5 imports per calendar month. Read more on the <a href="/en/recipe-book-app/">recipe organizer app</a> page, or see how it works with <a href="/en/import-recipes-from-instagram/">Instagram</a>, <a href="/en/import-recipes-from-tiktok/">TikTok</a>, the <a href="/en/meal-plan-app/">meal plan</a>, and the <a href="/en/shopping-list/">grocery list</a>.')],
+      + p('Matlyst is free to start, with 5 imports per calendar month. Read more on the <a href="/en/recipe-book-app/">recipe organizer app</a> page, or see how it works with <a href="/en/import-recipes-from-instagram/">Instagram</a>, <a href="/en/import-recipes-from-tiktok/">TikTok</a>, the <a href="/en/meal-plan-app/">meal plan</a>, and the <a href="/en/shopping-list/">grocery list</a>.', 'Want to see named apps side by side, with a source and a date for every fact? See <a href="/en/best-recipe-app/">recipe apps</a>, <a href="/en/best-grocery-list-app/">grocery list apps</a>, and <a href="/en/best-meal-planning-app/">meal planning apps</a> compared.')],
     ['Common mistakes when choosing', '<ul><li><strong>Choosing by feature list.</strong> Test with your own recipes.</li>'
       + '<li><strong>Moving everything on day one.</strong> Start with the ten recipes you cook most.</li>'
       + '<li><strong>Not reading the import.</strong> Always check amounts.</li>'
@@ -577,6 +580,7 @@ export const rikeSider = {
   },
   ...Object.fromEntries(Object.entries({ thanksgiving, 'thanksgiving-leftovers': thanksgivingLeftovers, 'christmas-dinner': christmasDinner, hanukkah, 'new-years-eve': newYearsEve, friendsgiving }).filter(([, v]) => v).map(([k, v]) => [`holidays/${k}/`, v])),
   'mealime-alternative/': mealime,
+  ...sammenligning,
   'holidays/': {
     title: 'Holiday cooking planner: timelines and quantities',
     description: 'Plan Thanksgiving, Hanukkah, Christmas, New Year’s Eve and more with timelines, quantities, grocery lists, and food safety numbers from FoodSafety.gov.',

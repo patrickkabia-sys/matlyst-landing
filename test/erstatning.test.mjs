@@ -21,8 +21,8 @@ const tekstAv = (html) => html.replace(/<script[\s\S]*?<\/script>/gu, ' ').repla
 const ERSTATNING = ['egg', 'kulturmelk-og-kefir', 'bakepulver', 'natron', 'gjaer', 'smor', 'floete', 'creme-fraiche', 'romme', 'melk', 'hvetemel', 'maisenna', 'sukker', 'brun-farin', 'vaniljesukker', 'hvitvin', 'friske-og-torkede-urter', 'hvitlok'];
 const RESTER = ['kjottdeig', 'kylling', 'egg', 'poteter', 'kokte-poteter', 'ris', 'pasta', 'laks', 'kokt-skinke', 'floete', 'gulrotter', 'brod', 'bananer', 'epler', 'ribbe-og-pinnekjott'];
 
-test('adresselås: erstatning har samleside og 18 sider, rester har 15 undersider under /hva-kan-jeg-lage/ og bare norsk', () => {
-  assert.deepEqual(familie('erstatning').markeder, { nb: { rot: 'erstatning/' } });
+test('adresselås: erstatning har samleside og 18 sider (nb, engelsk har egen test), rester har 15 undersider under /hva-kan-jeg-lage/ og bare norsk', () => {
+  assert.deepEqual(familie('erstatning').markeder, { nb: { rot: 'erstatning/' }, en: { rot: 'substitutes/' } });
   assert.deepEqual(familie('rester').markeder, { nb: { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true } });
   assert.deepEqual(rader('erstatning').map((r) => r.slug), ERSTATNING);
   assert.deepEqual(rader('rester').map((r) => r.slug), RESTER.map((r) => `med-${r}`));
@@ -31,7 +31,8 @@ test('adresselås: erstatning har samleside og 18 sider, rester har 15 underside
     assert.match(kart, new RegExp(`<loc>https://matlyst-app\\.no${a}</loc>`, 'u'), a);
     assert.match(readFileSync(join(ROT, a.slice(1), 'index.html'), 'utf8'), new RegExp(`<link rel="canonical" href="https://matlyst-app\\.no${a}">`, 'u'), a);
   }
-  for (const mk of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROT, `sitemap-${mk}.xml`), 'utf8'), /\/erstatning\/|hva-kan-jeg-lage\/med-/u, mk);
+  // Bare <loc>: engelsk sitemap har de norske adressene som hreflang-alternativ, men ingen av dem som egen side.
+  for (const mk of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROT, `sitemap-${mk}.xml`), 'utf8'), /<loc>[^<]*(?:\/erstatning\/|hva-kan-jeg-lage\/med-)/u, mk);
   assert.equal(familieForSti('/erstatning/egg/'), 'erstatning');
   assert.equal(familieForSti('/hva-kan-jeg-lage/med-egg/'), 'rester');
 });

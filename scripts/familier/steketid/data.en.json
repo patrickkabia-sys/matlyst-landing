@@ -1,0 +1,3049 @@
+{
+  "familie": "steketid",
+  "marked": "en",
+  "kilder": {
+    "fs-chart": {
+      "navn": "Cook to a Safe Minimum Internal Temperature",
+      "utgiver": "FoodSafety.gov (U.S. Department of Health and Human Services)",
+      "aar": 2024,
+      "adresse": "https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures",
+      "hentet": "2026-11-21"
+    },
+    "fsis-thermo": {
+      "navn": "Food Thermometers",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+      "hentet": "2026-11-21"
+    },
+    "fsis-turkey-cook": {
+      "navn": "Turkey Basics: Safe Cooking",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2019,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/turkey-basics-safe-cooking",
+      "hentet": "2026-11-21"
+    },
+    "fsis-turkey": {
+      "navn": "Turkey from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/turkey-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-thaw": {
+      "navn": "Turkey Basics: Safe Thawing",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2023,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/turkey-basics-safe-thawing",
+      "hentet": "2026-11-21"
+    },
+    "fsis-alt": {
+      "navn": "Turkey: Alternate Routes to the Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2026,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/turkey-alternate-routes-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-thanks": {
+      "navn": "Your Safe Thanksgiving Guide",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2026,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/your-safe-thanksgiving-guide",
+      "hentet": "2026-11-21"
+    },
+    "fsis-holiday": {
+      "navn": "Roasting Those \"Other\" Holiday Meats",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/roasting-those-other-holiday-meats",
+      "hentet": "2026-11-21"
+    },
+    "fsis-hams": {
+      "navn": "Hams and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/hams-and-food-safety",
+      "hentet": "2026-11-21"
+    },
+    "fsis-pork": {
+      "navn": "Fresh Pork from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/fresh-pork-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-beef": {
+      "navn": "Beef from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/beef-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-lamb": {
+      "navn": "Lamb from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/lamb-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-chicken": {
+      "navn": "Chicken from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/chicken-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-corned": {
+      "navn": "Corned Beef and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/corned-beef",
+      "hentet": "2026-11-21"
+    },
+    "fsis-eggs": {
+      "navn": "Shell Eggs from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-altitude": {
+      "navn": "High Altitude Cooking",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/high-altitude-cooking",
+      "hentet": "2026-11-21"
+    },
+    "osu-egg": {
+      "navn": "Perfect Hard-Cooked Eggs",
+      "utgiver": "Oregon State University Extension Service (Food Hero)",
+      "aar": 2020,
+      "adresse": "https://extension.oregonstate.edu/imported-publication/perfect-hard-cooked-eggs",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kalkun",
+      "slug": "turkey",
+      "navn": "Turkey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "u1w-min": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Whole turkey | 8 to 12 pounds | 2¾ to 3 hours | 3 to 3½ hours"
+        },
+        "u1w-maks": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Whole turkey | 8 to 12 pounds | 2¾ to 3 hours | 3 to 3½ hours"
+        },
+        "u1t-min": {
+          "verdi": 2.75,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Whole turkey | 8 to 12 pounds | 2¾ to 3 hours | 3 to 3½ hours"
+        },
+        "u1t-maks": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Whole turkey | 8 to 12 pounds | 2¾ to 3 hours | 3 to 3½ hours"
+        },
+        "s1w-min": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Whole turkey | 8 to 12 pounds | 2¾ to 3 hours | 3 to 3½ hours"
+        },
+        "s1w-maks": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Whole turkey | 8 to 12 pounds | 2¾ to 3 hours | 3 to 3½ hours"
+        },
+        "s1t-min": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Whole turkey | 8 to 12 pounds | 2¾ to 3 hours | 3 to 3½ hours"
+        },
+        "s1t-maks": {
+          "verdi": 3.5,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Whole turkey | 8 to 12 pounds | 2¾ to 3 hours | 3 to 3½ hours"
+        },
+        "u2w-min": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "12 to 14 pounds | 3 to 3¾ hours | 3½ to 4 hours"
+        },
+        "u2w-maks": {
+          "verdi": 14,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "12 to 14 pounds | 3 to 3¾ hours | 3½ to 4 hours"
+        },
+        "u2t-min": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "12 to 14 pounds | 3 to 3¾ hours | 3½ to 4 hours"
+        },
+        "u2t-maks": {
+          "verdi": 3.75,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "12 to 14 pounds | 3 to 3¾ hours | 3½ to 4 hours"
+        },
+        "s2w-min": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "12 to 14 pounds | 3 to 3¾ hours | 3½ to 4 hours"
+        },
+        "s2w-maks": {
+          "verdi": 14,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "12 to 14 pounds | 3 to 3¾ hours | 3½ to 4 hours"
+        },
+        "s2t-min": {
+          "verdi": 3.5,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "12 to 14 pounds | 3 to 3¾ hours | 3½ to 4 hours"
+        },
+        "s2t-maks": {
+          "verdi": 4,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "12 to 14 pounds | 3 to 3¾ hours | 3½ to 4 hours"
+        },
+        "u3w-min": {
+          "verdi": 14,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "14 to 18 pounds | 3¾ to 4¼ hours | 4 to 4¼ hours"
+        },
+        "u3w-maks": {
+          "verdi": 18,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "14 to 18 pounds | 3¾ to 4¼ hours | 4 to 4¼ hours"
+        },
+        "u3t-min": {
+          "verdi": 3.75,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "14 to 18 pounds | 3¾ to 4¼ hours | 4 to 4¼ hours"
+        },
+        "u3t-maks": {
+          "verdi": 4.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "14 to 18 pounds | 3¾ to 4¼ hours | 4 to 4¼ hours"
+        },
+        "s3w-min": {
+          "verdi": 14,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "14 to 18 pounds | 3¾ to 4¼ hours | 4 to 4¼ hours"
+        },
+        "s3w-maks": {
+          "verdi": 18,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "14 to 18 pounds | 3¾ to 4¼ hours | 4 to 4¼ hours"
+        },
+        "s3t-min": {
+          "verdi": 4,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "14 to 18 pounds | 3¾ to 4¼ hours | 4 to 4¼ hours"
+        },
+        "s3t-maks": {
+          "verdi": 4.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "14 to 18 pounds | 3¾ to 4¼ hours | 4 to 4¼ hours"
+        },
+        "u4w-min": {
+          "verdi": 18,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "18 to 20 pounds | 4¼ to 4½ hours | 4¼ to 4¾ hours"
+        },
+        "u4w-maks": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "18 to 20 pounds | 4¼ to 4½ hours | 4¼ to 4¾ hours"
+        },
+        "u4t-min": {
+          "verdi": 4.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "18 to 20 pounds | 4¼ to 4½ hours | 4¼ to 4¾ hours"
+        },
+        "u4t-maks": {
+          "verdi": 4.5,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "18 to 20 pounds | 4¼ to 4½ hours | 4¼ to 4¾ hours"
+        },
+        "s4w-min": {
+          "verdi": 18,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "18 to 20 pounds | 4¼ to 4½ hours | 4¼ to 4¾ hours"
+        },
+        "s4w-maks": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "18 to 20 pounds | 4¼ to 4½ hours | 4¼ to 4¾ hours"
+        },
+        "s4t-min": {
+          "verdi": 4.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "18 to 20 pounds | 4¼ to 4½ hours | 4¼ to 4¾ hours"
+        },
+        "s4t-maks": {
+          "verdi": 4.75,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "18 to 20 pounds | 4¼ to 4½ hours | 4¼ to 4¾ hours"
+        },
+        "u5w-min": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "20 to 24 pounds | 4½ to 5 hours | 4¾ to 5¼ hours"
+        },
+        "u5w-maks": {
+          "verdi": 24,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "20 to 24 pounds | 4½ to 5 hours | 4¾ to 5¼ hours"
+        },
+        "u5t-min": {
+          "verdi": 4.5,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "20 to 24 pounds | 4½ to 5 hours | 4¾ to 5¼ hours"
+        },
+        "u5t-maks": {
+          "verdi": 5,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "20 to 24 pounds | 4½ to 5 hours | 4¾ to 5¼ hours"
+        },
+        "s5w-min": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "20 to 24 pounds | 4½ to 5 hours | 4¾ to 5¼ hours"
+        },
+        "s5w-maks": {
+          "verdi": 24,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "20 to 24 pounds | 4½ to 5 hours | 4¾ to 5¼ hours"
+        },
+        "s5t-min": {
+          "verdi": 4.75,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "20 to 24 pounds | 4½ to 5 hours | 4¾ to 5¼ hours"
+        },
+        "s5t-maks": {
+          "verdi": 5.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "20 to 24 pounds | 4½ to 5 hours | 4¾ to 5¼ hours"
+        },
+        "ovn": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-turkey",
+          "merknad": "Timetable for Turkey Cooking (325 °F oven temperature)"
+        },
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-turkey",
+          "merknad": "A whole turkey is safe cooked to a minimum internal temperature of 165 °F throughout the bird."
+        },
+        "hvile": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "fsis-turkey",
+          "merknad": "Let the bird stand 20 minutes before removing stuffing and carving."
+        },
+        "lavest": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-turkey",
+          "merknad": "Set the oven temperature no lower than 325 °F."
+        },
+        "folie-min": {
+          "verdi": 1,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "a tent of aluminum foil may be placed loosely over the breast of the turkey for the first 1 to 1 ½ hours"
+        },
+        "folie-maks": {
+          "verdi": 1.5,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "a tent of aluminum foil may be placed loosely over the breast of the turkey for the first 1 to 1 ½ hours"
+        },
+        "dyp-min": {
+          "verdi": 2,
+          "enhet": "inches",
+          "kilde": "fsis-turkey",
+          "merknad": "shallow roasting pan, 2 to 2 ½ inches deep"
+        },
+        "dyp-maks": {
+          "verdi": 2.5,
+          "enhet": "inches",
+          "kilde": "fsis-turkey",
+          "merknad": "shallow roasting pan, 2 to 2 ½ inches deep"
+        },
+        "fryst": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "fsis-alt",
+          "merknad": "Use the timing for the size turkey you have; then add 50 percent of that time to the original time."
+        }
+      },
+      "tekst": {
+        "tau": "fsis-turkey-cook|Be sure the turkey is completely thawed.",
+        "vari": "fsis-turkey-cook|A stuffed turkey takes longer to cook.",
+        "morkt": "fsis-turkey-cook|Dark roasting pans cook faster than shiny metals.",
+        "pose": "fsis-turkey-cook|An oven cooking bag can accelerate cooking time.",
+        "ovnfeil": "fsis-turkey-cook|Temperature of the oven may be inaccurate.",
+        "bein": "fsis-turkey-cook|Check the temperature in the innermost part of the thigh and wing and the thickest part of the breast.",
+        "fylling": "fsis-turkey-cook|For optimum safety, cook stuffing in a casserole.",
+        "forvarm": "fsis-turkey-cook|Preheating is not necessary.",
+        "rask": "fsis-turkey|These times are approximate and should always be used in conjunction with a properly placed food thermometer.",
+        "breast": "fsis-turkey|Place turkey breast-side up on a flat wire rack in a shallow roasting pan",
+        "frysttekst": "fsis-alt|It is safe to roast a turkey from the frozen state; however, it will take longer than a fresh or thawed bird.",
+        "sjekk": "fsis-alt|Roasting time is approximate, so check the turkey often toward the end of the estimated cooking time."
+      }
+    },
+    {
+      "id": "kalkunbryst",
+      "slug": "turkey-breast",
+      "navn": "Turkey breast",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hw-min": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Half | 2 to 3 pounds | 50 to 60 minutes | Not applicable"
+        },
+        "hw-maks": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Half | 2 to 3 pounds | 50 to 60 minutes | Not applicable"
+        },
+        "ht-min": {
+          "verdi": 50,
+          "enhet": "minutes",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Half | 2 to 3 pounds | 50 to 60 minutes | Not applicable"
+        },
+        "ht-maks": {
+          "verdi": 60,
+          "enhet": "minutes",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Half | 2 to 3 pounds | 50 to 60 minutes | Not applicable"
+        },
+        "a1w-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 4 to 6 pounds | 1½ to 2¼ hours | Not applicable"
+        },
+        "a1w-maks": {
+          "verdi": 6,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 4 to 6 pounds | 1½ to 2¼ hours | Not applicable"
+        },
+        "a1t-min": {
+          "verdi": 1.5,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 4 to 6 pounds | 1½ to 2¼ hours | Not applicable"
+        },
+        "a1t-maks": {
+          "verdi": 2.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 4 to 6 pounds | 1½ to 2¼ hours | Not applicable"
+        },
+        "a2w-min": {
+          "verdi": 6,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 6 to 8 pounds | 2¼ to 3¼ hours | 3 to 3½ hours"
+        },
+        "a2w-maks": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 6 to 8 pounds | 2¼ to 3¼ hours | 3 to 3½ hours"
+        },
+        "a2t-min": {
+          "verdi": 2.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 6 to 8 pounds | 2¼ to 3¼ hours | 3 to 3½ hours"
+        },
+        "a2t-maks": {
+          "verdi": 3.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 6 to 8 pounds | 2¼ to 3¼ hours | 3 to 3½ hours"
+        },
+        "a2s-min": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 6 to 8 pounds | 2¼ to 3¼ hours | 3 to 3½ hours"
+        },
+        "a2s-maks": {
+          "verdi": 3.5,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast, Whole | 6 to 8 pounds | 2¼ to 3¼ hours | 3 to 3½ hours"
+        },
+        "ovn": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-turkey",
+          "merknad": "Timetable for Turkey Cooking (325 °F oven temperature)"
+        },
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-turkey",
+          "merknad": "A whole turkey is safe cooked to a minimum internal temperature of 165 °F throughout the bird."
+        },
+        "hvile": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "fsis-turkey-cook",
+          "merknad": "let the bird stand 20 minutes before removing the stuffing and carving the bird to allow juices to set"
+        },
+        "mikro-min": {
+          "verdi": 11,
+          "enhet": "min/lb",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast Half (bone-in) | Medium | 11 to 15 minutes per pound"
+        },
+        "mikro-maks": {
+          "verdi": 15,
+          "enhet": "min/lb",
+          "kilde": "fsis-turkey",
+          "merknad": "Breast Half (bone-in) | Medium | 11 to 15 minutes per pound"
+        },
+        "fryst": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "fsis-alt",
+          "merknad": "Use the timing for the size turkey you have; then add 50 percent of that time to the original time."
+        }
+      },
+      "tekst": {
+        "rack": "fsis-turkey|Place turkey breast-side up on a flat wire rack in a shallow roasting pan",
+        "approx": "fsis-turkey|These times are approximate and should always be used in conjunction with a properly placed food thermometer.",
+        "hoyere": "fsis-turkey|For reasons of personal preference, consumers may choose to cook turkey to higher temperatures."
+      }
+    },
+    {
+      "id": "kalkunlar",
+      "slug": "turkey-legs-and-wings",
+      "navn": "Turkey legs, thighs, and wings",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ds-min": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Drumsticks | 3/4 to 1 pound each | 2 to 2¼ hours | Not applicable"
+        },
+        "ds-maks": {
+          "verdi": 2.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Drumsticks | 3/4 to 1 pound each | 2 to 2¼ hours | Not applicable"
+        },
+        "dw-min": {
+          "verdi": 0.75,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Drumsticks | 3/4 to 1 pound each | 2 to 2¼ hours | Not applicable"
+        },
+        "dw-maks": {
+          "verdi": 1,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Drumsticks | 3/4 to 1 pound each | 2 to 2¼ hours | Not applicable"
+        },
+        "ts-min": {
+          "verdi": 1.75,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Thighs | 3/4 to 1 pound each | 1¾ to 2 hours | Not applicable"
+        },
+        "ts-maks": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Thighs | 3/4 to 1 pound each | 1¾ to 2 hours | Not applicable"
+        },
+        "tw-min": {
+          "verdi": 0.75,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Thighs | 3/4 to 1 pound each | 1¾ to 2 hours | Not applicable"
+        },
+        "tw-maks": {
+          "verdi": 1,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "Thighs | 3/4 to 1 pound each | 1¾ to 2 hours | Not applicable"
+        },
+        "vs-min": {
+          "verdi": 1.75,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Wings, wing drumettes | 6 to 8 ounces each | 1¾ to 2¼ hours | Not applicable"
+        },
+        "vs-maks": {
+          "verdi": 2.25,
+          "enhet": "hours",
+          "kilde": "fsis-turkey",
+          "merknad": "Wings, wing drumettes | 6 to 8 ounces each | 1¾ to 2¼ hours | Not applicable"
+        },
+        "vw-min": {
+          "verdi": 6,
+          "enhet": "ounces",
+          "kilde": "fsis-turkey",
+          "merknad": "Wings, wing drumettes | 6 to 8 ounces each | 1¾ to 2¼ hours | Not applicable"
+        },
+        "vw-maks": {
+          "verdi": 8,
+          "enhet": "ounces",
+          "kilde": "fsis-turkey",
+          "merknad": "Wings, wing drumettes | 6 to 8 ounces each | 1¾ to 2¼ hours | Not applicable"
+        },
+        "ovn": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-turkey",
+          "merknad": "Timetable for Turkey Cooking (325 °F oven temperature)"
+        },
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Chicken, turkey, and other poultry | All: whole bird, breasts, legs, thighs, wings, ground poultry, giblets, sausage, and stuffing inside poultry. / / See USDA's Turkey Thawing Calculator and Turkey Cooking Calculator. | 165°F (74°C)"
+        },
+        "fryst": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "fsis-alt",
+          "merknad": "Use the timing for the size turkey you have; then add 50 percent of that time to the original time."
+        }
+      },
+      "tekst": {
+        "approx": "fsis-turkey|These times are approximate and should always be used in conjunction with a properly placed food thermometer.",
+        "flat": "fsis-turkey|Place turkey breast-side up on a flat wire rack in a shallow roasting pan"
+      }
+    },
+    {
+      "id": "kalkunmetoder",
+      "slug": "fried-smoked-grilled-turkey",
+      "navn": "Fried, grilled, and smoked turkey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fyr": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "fsis-alt",
+          "merknad": "Heat the cooking oil to 350 °F."
+        },
+        "fkg-min": {
+          "verdi": 3,
+          "enhet": "min/lb",
+          "kilde": "fsis-alt",
+          "merknad": "Allow approximately 3 to 5 minutes per pound cooking time."
+        },
+        "fkg-maks": {
+          "verdi": 5,
+          "enhet": "min/lb",
+          "kilde": "fsis-alt",
+          "merknad": "Allow approximately 3 to 5 minutes per pound cooking time."
+        },
+        "fmaks": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-alt",
+          "merknad": "The turkey should be 12 pounds or less in size."
+        },
+        "olje-min": {
+          "verdi": 1,
+          "enhet": "inches",
+          "kilde": "fsis-alt",
+          "merknad": "The oil should cover the turkey by 1 to 2 inches."
+        },
+        "olje-maks": {
+          "verdi": 2,
+          "enhet": "inches",
+          "kilde": "fsis-alt",
+          "merknad": "The oil should cover the turkey by 1 to 2 inches."
+        },
+        "fhvile": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "fsis-alt",
+          "merknad": "Let it rest about 20 minutes before carving."
+        },
+        "grill-min": {
+          "verdi": 15,
+          "enhet": "min/lb",
+          "kilde": "fsis-alt",
+          "merknad": "Estimate 15 to 18 minutes per pound if using a covered grill."
+        },
+        "grill-maks": {
+          "verdi": 18,
+          "enhet": "min/lb",
+          "kilde": "fsis-alt",
+          "merknad": "Estimate 15 to 18 minutes per pound if using a covered grill."
+        },
+        "luft-min": {
+          "verdi": 225,
+          "enhet": "°F",
+          "kilde": "fsis-alt",
+          "merknad": "Replenish with about 15 briquettes every hour as needed to maintain 225 to 300 °F."
+        },
+        "luft-maks": {
+          "verdi": 300,
+          "enhet": "°F",
+          "kilde": "fsis-alt",
+          "merknad": "Replenish with about 15 briquettes every hour as needed to maintain 225 to 300 °F."
+        },
+        "briketter": {
+          "verdi": 15,
+          "enhet": "briquettes",
+          "kilde": "fsis-alt",
+          "merknad": "Replenish with about 15 briquettes every hour as needed to maintain 225 to 300 °F."
+        },
+        "smokes-min": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-alt",
+          "merknad": "Estimate 20 to 30 minutes per pound if using a smoker."
+        },
+        "smokes-maks": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-alt",
+          "merknad": "Estimate 20 to 30 minutes per pound if using a smoker."
+        },
+        "kull-min": {
+          "verdi": 1,
+          "enhet": "hours",
+          "kilde": "fsis-alt",
+          "merknad": "Add charcoal every 1 to 2 hours, as necessary, to maintain 225 to 300 °F."
+        },
+        "kull-maks": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-alt",
+          "merknad": "Add charcoal every 1 to 2 hours, as necessary, to maintain 225 to 300 °F."
+        },
+        "roaster": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-alt",
+          "merknad": "Preheat the oven to at least 325 °F."
+        },
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-alt",
+          "merknad": "The turkey is safely cooked when the food thermometer reaches a minimum internal temperature of 165 °F in the innermost part of the thigh and wing and the thickest part of the breast."
+        },
+        "mikro-min": {
+          "verdi": 9,
+          "enhet": "min/lb",
+          "kilde": "fsis-turkey",
+          "merknad": "whole turkey, 9-10 minutes per pound"
+        },
+        "mikro-maks": {
+          "verdi": 10,
+          "enhet": "min/lb",
+          "kilde": "fsis-turkey",
+          "merknad": "whole turkey, 9-10 minutes per pound"
+        },
+        "mikromaks": {
+          "verdi": 14,
+          "enhet": "pounds",
+          "kilde": "fsis-turkey",
+          "merknad": "A 12 to 14-pound turkey is the maximum size most microwaves can accommodate."
+        },
+        "fryst": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "fsis-alt",
+          "merknad": "Use the timing for the size turkey you have; then add 50 percent of that time to the original time."
+        }
+      },
+      "tekst": {
+        "ikkefryst": "fsis-alt|(Do not smoke, grill, deep fat fry, or microwave a frozen turkey.)",
+        "kald": "fsis-alt|Never leave the hot oil unattended.",
+        "fylt": "fsis-alt|A whole turkey can be successfully cooked, provided the turkey is not stuffed and has been completely thawed.",
+        "ute": "fsis-alt|Select a safe location outdoors for deep fat frying a turkey.",
+        "vann": "fsis-alt|To determine the amount of oil needed, do a preliminary test using water.",
+        "gass": "fsis-alt|When using a gas grill, always follow manufacturer's directions for cooking times.",
+        "myke": "fsis-alt|Cooking times depend on many factors: the size and shape of the turkey, the distance from the heat"
+      }
+    },
+    {
+      "id": "tining",
+      "slug": "thaw-turkey",
+      "navn": "Thawing a turkey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "dognet": {
+          "verdi": 24,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "allow approximately 24 hours for each 4 to 5 pounds in a refrigerator set at 40 °F or below"
+        },
+        "perlb-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "allow approximately 24 hours for each 4 to 5 pounds in a refrigerator set at 40 °F or below"
+        },
+        "perlb-maks": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "allow approximately 24 hours for each 4 to 5 pounds in a refrigerator set at 40 °F or below"
+        },
+        "kjole": {
+          "verdi": 40,
+          "enhet": "°F",
+          "kilde": "fsis-thaw",
+          "merknad": "allow approximately 24 hours for each 4 to 5 pounds in a refrigerator set at 40 °F or below"
+        },
+        "k1w-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "4 to 12 pounds — 1 to 3 days"
+        },
+        "k1w-maks": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "4 to 12 pounds — 1 to 3 days"
+        },
+        "k1t-min": {
+          "verdi": 1,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "4 to 12 pounds — 1 to 3 days"
+        },
+        "k1t-maks": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "4 to 12 pounds — 1 to 3 days"
+        },
+        "k2w-min": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "12 to 16 pounds — 3 to 4 days"
+        },
+        "k2w-maks": {
+          "verdi": 16,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "12 to 16 pounds — 3 to 4 days"
+        },
+        "k2t-min": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "12 to 16 pounds — 3 to 4 days"
+        },
+        "k2t-maks": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "12 to 16 pounds — 3 to 4 days"
+        },
+        "k3w-min": {
+          "verdi": 16,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "16 to 20 pounds — 4 to 5 days"
+        },
+        "k3w-maks": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "16 to 20 pounds — 4 to 5 days"
+        },
+        "k3t-min": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "16 to 20 pounds — 4 to 5 days"
+        },
+        "k3t-maks": {
+          "verdi": 5,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "16 to 20 pounds — 4 to 5 days"
+        },
+        "k4w-min": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "20 to 24 pounds —5 to 6 days"
+        },
+        "k4w-maks": {
+          "verdi": 24,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "20 to 24 pounds —5 to 6 days"
+        },
+        "k4t-min": {
+          "verdi": 5,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "20 to 24 pounds —5 to 6 days"
+        },
+        "k4t-maks": {
+          "verdi": 6,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "20 to 24 pounds —5 to 6 days"
+        },
+        "v1w-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "4 to 12 pounds — 2 to 6 hours"
+        },
+        "v1w-maks": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "4 to 12 pounds — 2 to 6 hours"
+        },
+        "v1t-min": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "4 to 12 pounds — 2 to 6 hours"
+        },
+        "v1t-maks": {
+          "verdi": 6,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "4 to 12 pounds — 2 to 6 hours"
+        },
+        "v2w-min": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "12 to 16 pounds — 6 to 8 hours"
+        },
+        "v2w-maks": {
+          "verdi": 16,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "12 to 16 pounds — 6 to 8 hours"
+        },
+        "v2t-min": {
+          "verdi": 6,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "12 to 16 pounds — 6 to 8 hours"
+        },
+        "v2t-maks": {
+          "verdi": 8,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "12 to 16 pounds — 6 to 8 hours"
+        },
+        "v3w-min": {
+          "verdi": 16,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "16 to 20 pounds — 8 to 10 hours"
+        },
+        "v3w-maks": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "16 to 20 pounds — 8 to 10 hours"
+        },
+        "v3t-min": {
+          "verdi": 8,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "16 to 20 pounds — 8 to 10 hours"
+        },
+        "v3t-maks": {
+          "verdi": 10,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "16 to 20 pounds — 8 to 10 hours"
+        },
+        "v4w-min": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "20 to 24 pounds — 10 to 12 hours"
+        },
+        "v4w-maks": {
+          "verdi": 24,
+          "enhet": "pounds",
+          "kilde": "fsis-thaw",
+          "merknad": "20 to 24 pounds — 10 to 12 hours"
+        },
+        "v4t-min": {
+          "verdi": 10,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "20 to 24 pounds — 10 to 12 hours"
+        },
+        "v4t-maks": {
+          "verdi": 12,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "20 to 24 pounds — 10 to 12 hours"
+        },
+        "vann": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-thaw",
+          "merknad": "Allow about 30 minutes per pound."
+        },
+        "skift": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-thaw",
+          "merknad": "Change the water every 30 minutes until the turkey is thawed."
+        },
+        "etter-min": {
+          "verdi": 1,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "A thawed turkey can remain in the refrigerator for 1 or 2 days before cooking."
+        },
+        "etter-maks": {
+          "verdi": 2,
+          "enhet": "days",
+          "kilde": "fsis-thaw",
+          "merknad": "A thawed turkey can remain in the refrigerator for 1 or 2 days before cooking."
+        },
+        "farelo": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-thaw",
+          "merknad": "A package of frozen meat or poultry left thawing on the counter more than 2 hours is not at a safe temperature."
+        }
+      },
+      "tekst": {
+        "bank": "fsis-thaw|Turkeys must be kept at a safe temperature during \"the big thaw.\"",
+        "tre": "fsis-thaw|There are three safe ways to thaw food: in the refrigerator, in cold water, and in the microwave oven.",
+        "rett": "fsis-thaw|Foods thawed in the refrigerator can be refrozen without cooking but there may be some loss of quality.",
+        "pose": "fsis-thaw|First be sure the turkey is in a leak-proof plastic bag to prevent cross-contamination and to prevent the turkey from absorbing water, resulting in a watery product.",
+        "nyfrys": "fsis-thaw|After cooking, meat from the turkey can be refrozen.",
+        "mikro": "fsis-thaw|A turkey thawed in the microwave must be cooked immediately.",
+        "bunn": "fsis-thaw|Immediately after grocery store checkout, take the frozen turkey home and store it in the freezer.",
+        "disk": "fsis-thanks|Thawing a frozen turkey on the kitchen counter or in hot water is not safe."
+      }
+    },
+    {
+      "id": "skinke",
+      "slug": "ham",
+      "navn": "Ham",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-hams",
+          "merknad": "NOTE: Set oven temperature to 325°F."
+        },
+        "c1w-min": {
+          "verdi": 10,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Smoked Ham, Cook-Before-Eating Whole, Bone in | 10 to 14 | 18 to 20"
+        },
+        "c1w-maks": {
+          "verdi": 14,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Smoked Ham, Cook-Before-Eating Whole, Bone in | 10 to 14 | 18 to 20"
+        },
+        "c1t-min": {
+          "verdi": 18,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Smoked Ham, Cook-Before-Eating Whole, Bone in | 10 to 14 | 18 to 20"
+        },
+        "c1t-maks": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Smoked Ham, Cook-Before-Eating Whole, Bone in | 10 to 14 | 18 to 20"
+        },
+        "c2w-min": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 7 | 22 to 25"
+        },
+        "c2w-maks": {
+          "verdi": 7,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 7 | 22 to 25"
+        },
+        "c2t-min": {
+          "verdi": 22,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 7 | 22 to 25"
+        },
+        "c2t-maks": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 7 | 22 to 25"
+        },
+        "c3w-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Shank or Butt Portion, Bone in | 3 to 4 | 35 to 40"
+        },
+        "c3w-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Shank or Butt Portion, Bone in | 3 to 4 | 35 to 40"
+        },
+        "c3t-min": {
+          "verdi": 35,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Shank or Butt Portion, Bone in | 3 to 4 | 35 to 40"
+        },
+        "c3t-maks": {
+          "verdi": 40,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Shank or Butt Portion, Bone in | 3 to 4 | 35 to 40"
+        },
+        "c4w-min": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Arm Picnic Shoulder, Boneless | 5 to 8 | 30 to 35"
+        },
+        "c4w-maks": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Arm Picnic Shoulder, Boneless | 5 to 8 | 30 to 35"
+        },
+        "c4t-min": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Arm Picnic Shoulder, Boneless | 5 to 8 | 30 to 35"
+        },
+        "c4t-maks": {
+          "verdi": 35,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Arm Picnic Shoulder, Boneless | 5 to 8 | 30 to 35"
+        },
+        "c5w-min": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Shoulder Roll (Butt), Boneless | 2 to 4 | 35 to 40"
+        },
+        "c5w-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Shoulder Roll (Butt), Boneless | 2 to 4 | 35 to 40"
+        },
+        "c5t-min": {
+          "verdi": 35,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Shoulder Roll (Butt), Boneless | 2 to 4 | 35 to 40"
+        },
+        "c5t-maks": {
+          "verdi": 40,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Shoulder Roll (Butt), Boneless | 2 to 4 | 35 to 40"
+        },
+        "d1w-min": {
+          "verdi": 10,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Smoked Ham, Cooked Whole, Bone in | 10 to 14 | 15 to 18"
+        },
+        "d1w-maks": {
+          "verdi": 14,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Smoked Ham, Cooked Whole, Bone in | 10 to 14 | 15 to 18"
+        },
+        "d1t-min": {
+          "verdi": 15,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Smoked Ham, Cooked Whole, Bone in | 10 to 14 | 15 to 18"
+        },
+        "d1t-maks": {
+          "verdi": 18,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Smoked Ham, Cooked Whole, Bone in | 10 to 14 | 15 to 18"
+        },
+        "d2w-min": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 7 | 18 to 24"
+        },
+        "d2w-maks": {
+          "verdi": 7,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 7 | 18 to 24"
+        },
+        "d2t-min": {
+          "verdi": 18,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 7 | 18 to 24"
+        },
+        "d2t-maks": {
+          "verdi": 24,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 7 | 18 to 24"
+        },
+        "d3w-min": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Arm Picnic Shoulder, Boneless | 5 to 8 | 25 to 30"
+        },
+        "d3w-maks": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Arm Picnic Shoulder, Boneless | 5 to 8 | 25 to 30"
+        },
+        "d3t-min": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Arm Picnic Shoulder, Boneless | 5 to 8 | 25 to 30"
+        },
+        "d3t-maks": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Arm Picnic Shoulder, Boneless | 5 to 8 | 25 to 30"
+        },
+        "d4w-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Canned Ham, Boneless | 3 to 10 | 15 to 20"
+        },
+        "d4w-maks": {
+          "verdi": 10,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Canned Ham, Boneless | 3 to 10 | 15 to 20"
+        },
+        "d4t-min": {
+          "verdi": 15,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Canned Ham, Boneless | 3 to 10 | 15 to 20"
+        },
+        "d4t-maks": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Canned Ham, Boneless | 3 to 10 | 15 to 20"
+        },
+        "d5w-min": {
+          "verdi": 6,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Vacuum Packed, Boneless | 6 to 12 | 10 to 15"
+        },
+        "d5w-maks": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Vacuum Packed, Boneless | 6 to 12 | 10 to 15"
+        },
+        "d5t-min": {
+          "verdi": 10,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Vacuum Packed, Boneless | 6 to 12 | 10 to 15"
+        },
+        "d5t-maks": {
+          "verdi": 15,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Vacuum Packed, Boneless | 6 to 12 | 10 to 15"
+        },
+        "d6w-min": {
+          "verdi": 7,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Spiral Cut, Whole or Half | 7 to 9 | 10 to 18"
+        },
+        "d6w-maks": {
+          "verdi": 9,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Spiral Cut, Whole or Half | 7 to 9 | 10 to 18"
+        },
+        "d6t-min": {
+          "verdi": 10,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Spiral Cut, Whole or Half | 7 to 9 | 10 to 18"
+        },
+        "d6t-maks": {
+          "verdi": 18,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Spiral Cut, Whole or Half | 7 to 9 | 10 to 18"
+        },
+        "f1w-min": {
+          "verdi": 12,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Fresh Ham, Uncooked Whole Leg, Bone in | 12 to 16 | 22 to 26"
+        },
+        "f1w-maks": {
+          "verdi": 16,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Fresh Ham, Uncooked Whole Leg, Bone in | 12 to 16 | 22 to 26"
+        },
+        "f1t-min": {
+          "verdi": 22,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Fresh Ham, Uncooked Whole Leg, Bone in | 12 to 16 | 22 to 26"
+        },
+        "f1t-maks": {
+          "verdi": 26,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Fresh Ham, Uncooked Whole Leg, Bone in | 12 to 16 | 22 to 26"
+        },
+        "f2w-min": {
+          "verdi": 10,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Whole Leg, Boneless | 10 to 14 | 24 to 28"
+        },
+        "f2w-maks": {
+          "verdi": 14,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Whole Leg, Boneless | 10 to 14 | 24 to 28"
+        },
+        "f2t-min": {
+          "verdi": 24,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Whole Leg, Boneless | 10 to 14 | 24 to 28"
+        },
+        "f2t-maks": {
+          "verdi": 28,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Whole Leg, Boneless | 10 to 14 | 24 to 28"
+        },
+        "f3w-min": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 8 | 35 to 40"
+        },
+        "f3w-maks": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 8 | 35 to 40"
+        },
+        "f3t-min": {
+          "verdi": 35,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 8 | 35 to 40"
+        },
+        "f3t-maks": {
+          "verdi": 40,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Half, Bone in | 5 to 8 | 35 to 40"
+        },
+        "spiral": {
+          "verdi": 10,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "cover the entire ham or portion with heavy aluminum foil and heat at 325°F for about 10 minutes per pound"
+        },
+        "land-min": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Cover with water and boil 20 to 25 minutes per pound."
+        },
+        "land-maks": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-hams",
+          "merknad": "Cover with water and boil 20 to 25 minutes per pound."
+        },
+        "landbad-min": {
+          "verdi": 4,
+          "enhet": "hours",
+          "kilde": "fsis-hams",
+          "merknad": "Soak 4 to 12 hours in refrigerator."
+        },
+        "landbad-maks": {
+          "verdi": 12,
+          "enhet": "hours",
+          "kilde": "fsis-hams",
+          "merknad": "Soak 4 to 12 hours in refrigerator."
+        },
+        "landbak": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "fsis-hams",
+          "merknad": "Drain, glaze and brown at 400°F for 15 minutes."
+        },
+        "landbaktid": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "fsis-hams",
+          "merknad": "Drain, glaze and brown at 400°F for 15 minutes."
+        },
+        "rå": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-hams",
+          "merknad": "Cook-before-eating hams or fresh hams must reach 145°F, with a 3-minute rest time"
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fsis-hams",
+          "merknad": "Cook-before-eating hams or fresh hams must reach 145°F, with a 3-minute rest time"
+        },
+        "opp": {
+          "verdi": 140,
+          "enhet": "°F",
+          "kilde": "fsis-hams",
+          "merknad": "If reheating is desired, hams that were packaged in processing plants under USDA inspection must be heated to 140°F as measured with a food thermometer."
+        },
+        "anna": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-hams",
+          "merknad": "Leftover spiral-cut hams or ham that has been repackaged in any other location outside the plant, must be heated to 165°F."
+        }
+      },
+      "tekst": {
+        "cbe": "fsis-holiday|There are two types of hams: fully cooked and those that need cooking.",
+        "ferdig": "fsis-holiday|Fully cooked hams may be eaten cold or reheated to 140 degrees F.",
+        "landsalt": "fsis-hams|Country hams can be soaked 4 to 12 hours or longer in the refrigerator to reduce the salt content before cooking."
+      }
+    },
+    {
+      "id": "roastbiff",
+      "slug": "roast-beef",
+      "navn": "Roast beef",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ribw-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-beef",
+          "merknad": "Rib Roast, Bone in | 4 to 6 lbs. | Roast 325 F | 23-25 min./lb."
+        },
+        "ribw-maks": {
+          "verdi": 6,
+          "enhet": "pounds",
+          "kilde": "fsis-beef",
+          "merknad": "Rib Roast, Bone in | 4 to 6 lbs. | Roast 325 F | 23-25 min./lb."
+        },
+        "ribt-min": {
+          "verdi": 23,
+          "enhet": "min/lb",
+          "kilde": "fsis-beef",
+          "merknad": "Rib Roast, Bone in | 4 to 6 lbs. | Roast 325 F | 23-25 min./lb."
+        },
+        "ribt-maks": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-beef",
+          "merknad": "Rib Roast, Bone in | 4 to 6 lbs. | Roast 325 F | 23-25 min./lb."
+        },
+        "ovn": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-beef",
+          "merknad": "Rib Roast, Bone in | 4 to 6 lbs. | Roast 325 F | 23-25 min./lb."
+        },
+        "bl-min": {
+          "verdi": 5,
+          "enhet": "min/lb",
+          "kilde": "fsis-beef",
+          "merknad": "Rib Roast, Boneless Rolled | 4 to 6 lbs. | Roast 325 F | Add 5-8 min./lb. to times above"
+        },
+        "bl-maks": {
+          "verdi": 8,
+          "enhet": "min/lb",
+          "kilde": "fsis-beef",
+          "merknad": "Rib Roast, Boneless Rolled | 4 to 6 lbs. | Roast 325 F | Add 5-8 min./lb. to times above"
+        },
+        "rw-min": {
+          "verdi": 2.5,
+          "enhet": "pounds",
+          "kilde": "fsis-beef",
+          "merknad": "Round or Rump Roast | 2 1/2 to 4 lbs. | Roast 325 F | 30-35 min./lb."
+        },
+        "rw-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-beef",
+          "merknad": "Round or Rump Roast | 2 1/2 to 4 lbs. | Roast 325 F | 30-35 min./lb."
+        },
+        "rt-min": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-beef",
+          "merknad": "Round or Rump Roast | 2 1/2 to 4 lbs. | Roast 325 F | 30-35 min./lb."
+        },
+        "rt-maks": {
+          "verdi": 35,
+          "enhet": "min/lb",
+          "kilde": "fsis-beef",
+          "merknad": "Round or Rump Roast | 2 1/2 to 4 lbs. | Roast 325 F | 30-35 min./lb."
+        },
+        "tw-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-beef",
+          "merknad": "Tenderloin, Whole | 4 to 6 lbs. | Roast 425 F | 45-60 min. total"
+        },
+        "tw-maks": {
+          "verdi": 6,
+          "enhet": "pounds",
+          "kilde": "fsis-beef",
+          "merknad": "Tenderloin, Whole | 4 to 6 lbs. | Roast 425 F | 45-60 min. total"
+        },
+        "tt-min": {
+          "verdi": 45,
+          "enhet": "minutes",
+          "kilde": "fsis-beef",
+          "merknad": "Tenderloin, Whole | 4 to 6 lbs. | Roast 425 F | 45-60 min. total"
+        },
+        "tt-maks": {
+          "verdi": 60,
+          "enhet": "minutes",
+          "kilde": "fsis-beef",
+          "merknad": "Tenderloin, Whole | 4 to 6 lbs. | Roast 425 F | 45-60 min. total"
+        },
+        "tovn": {
+          "verdi": 425,
+          "enhet": "°F",
+          "kilde": "fsis-beef",
+          "merknad": "Tenderloin, Whole | 4 to 6 lbs. | Roast 425 F | 45-60 min. total"
+        },
+        "hribw-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, rib roast, bone-in; 4 to 8 pounds | 325 degrees F | 23 to 30 min/lb"
+        },
+        "hribw-maks": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, rib roast, bone-in; 4 to 8 pounds | 325 degrees F | 23 to 30 min/lb"
+        },
+        "hribt-min": {
+          "verdi": 23,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, rib roast, bone-in; 4 to 8 pounds | 325 degrees F | 23 to 30 min/lb"
+        },
+        "hribt-maks": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, rib roast, bone-in; 4 to 8 pounds | 325 degrees F | 23 to 30 min/lb"
+        },
+        "hblw": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, rib roast, boneless; 4 pounds | 325 degrees F | 39 to 43 min/lb"
+        },
+        "hblt-min": {
+          "verdi": 39,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, rib roast, boneless; 4 pounds | 325 degrees F | 39 to 43 min/lb"
+        },
+        "hblt-maks": {
+          "verdi": 43,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, rib roast, boneless; 4 pounds | 325 degrees F | 39 to 43 min/lb"
+        },
+        "hew-min": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, eye round roast; 2 to 3 pounds | 325 degrees F | 20 to 22 min/lb"
+        },
+        "hew-maks": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, eye round roast; 2 to 3 pounds | 325 degrees F | 20 to 22 min/lb"
+        },
+        "het-min": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, eye round roast; 2 to 3 pounds | 325 degrees F | 20 to 22 min/lb"
+        },
+        "het-maks": {
+          "verdi": 22,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, eye round roast; 2 to 3 pounds | 325 degrees F | 20 to 22 min/lb"
+        },
+        "htw-min": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, tenderloin roast, half; 2 to 3 lbs | 425 degrees F | 35 to 45 minutes total"
+        },
+        "htw-maks": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, tenderloin roast, half; 2 to 3 lbs | 425 degrees F | 35 to 45 minutes total"
+        },
+        "htt-min": {
+          "verdi": 35,
+          "enhet": "minutes",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, tenderloin roast, half; 2 to 3 lbs | 425 degrees F | 35 to 45 minutes total"
+        },
+        "htt-maks": {
+          "verdi": 45,
+          "enhet": "minutes",
+          "kilde": "fsis-holiday",
+          "merknad": "Beef, tenderloin roast, half; 2 to 3 lbs | 425 degrees F | 35 to 45 minutes total"
+        },
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-beef",
+          "merknad": "Cook all raw beef steaks and roasts to a minimum internal temperature of 145 degree F (62.8 degree C) as measured with a food thermometer before removing meat from the heat source."
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fsis-beef",
+          "merknad": "allow meat to rest for at least three minutes before carving or consuming"
+        }
+      },
+      "tekst": {
+        "kjoleskap": "fsis-beef|Times are based on beef at refrigerator temperature",
+        "varierer": "fsis-beef|Remember that appliances and outdoor grills can vary in heat.",
+        "rack": "fsis-holiday|To roast, meat is placed on a rack in a shallow, uncovered pan and is cooked by the indirect dry heat of an oven.",
+        "bone": "fsis-holiday|Boned and rolled meats require more cooking time per pound than bone-in cuts because it takes longer for the heat to penetrate through the solid meat.",
+        "mager": "fsis-holiday|Beef and veal are leaner these days so overcooking them will dry the meat."
+      }
+    },
+    {
+      "id": "svinestek",
+      "slug": "pork-roast",
+      "navn": "Pork roast",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "ROASTING: Set oven at 350 degrees F."
+        },
+        "lw-min": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Loin Roast, Bone-in or Boneless | 2 to 5 pounds | 20 min. per pound"
+        },
+        "lw-maks": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Loin Roast, Bone-in or Boneless | 2 to 5 pounds | 20 min. per pound"
+        },
+        "lt": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-pork",
+          "merknad": "Loin Roast, Bone-in or Boneless | 2 to 5 pounds | 20 min. per pound"
+        },
+        "kt": {
+          "verdi": 12,
+          "enhet": "min/lb",
+          "kilde": "fsis-pork",
+          "merknad": "Crown Roast | 10 pounds | 12 min. per pound"
+        },
+        "kw": {
+          "verdi": 10,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Crown Roast | 10 pounds | 12 min. per pound"
+        },
+        "bw-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Boston Butt | 3 to 6 pounds | 45 min. per pound"
+        },
+        "bw-maks": {
+          "verdi": 6,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Boston Butt | 3 to 6 pounds | 45 min. per pound"
+        },
+        "bt": {
+          "verdi": 45,
+          "enhet": "min/lb",
+          "kilde": "fsis-pork",
+          "merknad": "Boston Butt | 3 to 6 pounds | 45 min. per pound"
+        },
+        "fw-min": {
+          "verdi": 18,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Leg, (Fresh Ham) Whole, Bone-in | 18 to 20 pounds | 15 min. per pound"
+        },
+        "fw-maks": {
+          "verdi": 20,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Leg, (Fresh Ham) Whole, Bone-in | 18 to 20 pounds | 15 min. per pound"
+        },
+        "ft": {
+          "verdi": 15,
+          "enhet": "min/lb",
+          "kilde": "fsis-pork",
+          "merknad": "Leg, (Fresh Ham) Whole, Bone-in | 18 to 20 pounds | 15 min. per pound"
+        },
+        "hw-min": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Leg, (Fresh Ham) Half, Bone-in | 5 to 8 pounds | 22-25 min. per pound"
+        },
+        "hw-maks": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Leg, (Fresh Ham) Half, Bone-in | 5 to 8 pounds | 22-25 min. per pound"
+        },
+        "ht-min": {
+          "verdi": 22,
+          "enhet": "min/lb",
+          "kilde": "fsis-pork",
+          "merknad": "Leg, (Fresh Ham) Half, Bone-in | 5 to 8 pounds | 22-25 min. per pound"
+        },
+        "ht-maks": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-pork",
+          "merknad": "Leg, (Fresh Ham) Half, Bone-in | 5 to 8 pounds | 22-25 min. per pound"
+        },
+        "tov-min": {
+          "verdi": 425,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "Tenderloin (Roast at 425 - 450 degrees F) | ½ to 1½ pounds | Total time: 20 to 27 min."
+        },
+        "tov-maks": {
+          "verdi": 450,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "Tenderloin (Roast at 425 - 450 degrees F) | ½ to 1½ pounds | Total time: 20 to 27 min."
+        },
+        "tw-min": {
+          "verdi": 0.5,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Tenderloin (Roast at 425 - 450 degrees F) | ½ to 1½ pounds | Total time: 20 to 27 min."
+        },
+        "tw-maks": {
+          "verdi": 1.5,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Tenderloin (Roast at 425 - 450 degrees F) | ½ to 1½ pounds | Total time: 20 to 27 min."
+        },
+        "tt-min": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "fsis-pork",
+          "merknad": "Tenderloin (Roast at 425 - 450 degrees F) | ½ to 1½ pounds | Total time: 20 to 27 min."
+        },
+        "tt-maks": {
+          "verdi": 27,
+          "enhet": "minutes",
+          "kilde": "fsis-pork",
+          "merknad": "Tenderloin (Roast at 425 - 450 degrees F) | ½ to 1½ pounds | Total time: 20 to 27 min."
+        },
+        "ribt-min": {
+          "verdi": 1.5,
+          "enhet": "hours",
+          "kilde": "fsis-pork",
+          "merknad": "Ribs (Back, Country-style or Spareribs) | 2 to 4 pounds | 1½ to 2 hours (or until fork tender)"
+        },
+        "ribt-maks": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-pork",
+          "merknad": "Ribs (Back, Country-style or Spareribs) | 2 to 4 pounds | 1½ to 2 hours (or until fork tender)"
+        },
+        "ribw-min": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Ribs (Back, Country-style or Spareribs) | 2 to 4 pounds | 1½ to 2 hours (or until fork tender)"
+        },
+        "ribw-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-pork",
+          "merknad": "Ribs (Back, Country-style or Spareribs) | 2 to 4 pounds | 1½ to 2 hours (or until fork tender)"
+        },
+        "h325": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast, bone-in; 3 to 5 pounds | 325 degrees F | 20-25 min/lb"
+        },
+        "hbw-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast, bone-in; 3 to 5 pounds | 325 degrees F | 20-25 min/lb"
+        },
+        "hbw-maks": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast, bone-in; 3 to 5 pounds | 325 degrees F | 20-25 min/lb"
+        },
+        "hbt-min": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast, bone-in; 3 to 5 pounds | 325 degrees F | 20-25 min/lb"
+        },
+        "hbt-maks": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast, bone-in; 3 to 5 pounds | 325 degrees F | 20-25 min/lb"
+        },
+        "hlw-min": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast boneless; 2 to 4 pounds | 325 degrees F | 23-33 min/lb"
+        },
+        "hlw-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast boneless; 2 to 4 pounds | 325 degrees F | 23-33 min/lb"
+        },
+        "hlt-min": {
+          "verdi": 23,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast boneless; 2 to 4 pounds | 325 degrees F | 23-33 min/lb"
+        },
+        "hlt-maks": {
+          "verdi": 33,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Pork, loin roast boneless; 2 to 4 pounds | 325 degrees F | 23-33 min/lb"
+        },
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "Cook all raw pork steaks, chops and roasts to a minimum internal temperature of 145 degrees F as measured with a food thermometer before removing meat from the heat source."
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fsis-pork",
+          "merknad": "allow meat to rest for at least three minutes before carving or consuming"
+        }
+      },
+      "tekst": {
+        "kjoleskap": "fsis-pork|Times are based on pork at refrigerator temperature (40 degrees F).",
+        "varierer": "fsis-pork|Remember that appliances and outdoor grills can vary in heat.",
+        "rosa": "fsis-pork|If fresh pork has reached 145 degrees F throughout, even though it may still be pink in the center, it should be safe.",
+        "mager": "fsis-holiday|Because hogs are about 50 percent leaner than they were 25 years ago, today's pork cooks faster and can dry out when overcooked.",
+        "kompilert": "fsis-pork|NOTE: Approximate cooking times were compiled from various resources."
+      }
+    },
+    {
+      "id": "hel-kylling",
+      "slug": "whole-chicken",
+      "navn": "Whole chicken",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "Type of Chicken | Weight | Roasting 350 °F | Simmering | Grilling"
+        },
+        "bw-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole broiler-fryer* | 3 to 4 lbs. | 1 1/4 to 1 1/2 hrs. | 60 to 75 min. | 60 to 75 min.**"
+        },
+        "bw-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole broiler-fryer* | 3 to 4 lbs. | 1 1/4 to 1 1/2 hrs. | 60 to 75 min. | 60 to 75 min.**"
+        },
+        "bt-min": {
+          "verdi": 1.25,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole broiler-fryer* | 3 to 4 lbs. | 1 1/4 to 1 1/2 hrs. | 60 to 75 min. | 60 to 75 min.**"
+        },
+        "bt-maks": {
+          "verdi": 1.5,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole broiler-fryer* | 3 to 4 lbs. | 1 1/4 to 1 1/2 hrs. | 60 to 75 min. | 60 to 75 min.**"
+        },
+        "hw-min": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole roasting hen* | 5 to 7 lbs. | 2 to 2 1/4 hrs. | 1 3/4 to 2 hrs. | 18 to 25 min./lb.**"
+        },
+        "hw-maks": {
+          "verdi": 7,
+          "enhet": "pounds",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole roasting hen* | 5 to 7 lbs. | 2 to 2 1/4 hrs. | 1 3/4 to 2 hrs. | 18 to 25 min./lb.**"
+        },
+        "ht-min": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole roasting hen* | 5 to 7 lbs. | 2 to 2 1/4 hrs. | 1 3/4 to 2 hrs. | 18 to 25 min./lb.**"
+        },
+        "ht-maks": {
+          "verdi": 2.25,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole roasting hen* | 5 to 7 lbs. | 2 to 2 1/4 hrs. | 1 3/4 to 2 hrs. | 18 to 25 min./lb.**"
+        },
+        "kw-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole capon* | 4 to 8 lbs. | 2 to 3 hrs. | Not suitable | 15-20 min./lb.**"
+        },
+        "kw-maks": {
+          "verdi": 8,
+          "enhet": "pounds",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole capon* | 4 to 8 lbs. | 2 to 3 hrs. | Not suitable | 15-20 min./lb.**"
+        },
+        "kt-min": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole capon* | 4 to 8 lbs. | 2 to 3 hrs. | Not suitable | 15-20 min./lb.**"
+        },
+        "kt-maks": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole capon* | 4 to 8 lbs. | 2 to 3 hrs. | Not suitable | 15-20 min./lb.**"
+        },
+        "cw-min": {
+          "verdi": 18,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole Cornish hens* | 18 to 24 oz. | 50 to 60 min. | 35 to 40 min. | 45 to 55 min.**"
+        },
+        "cw-maks": {
+          "verdi": 24,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole Cornish hens* | 18 to 24 oz. | 50 to 60 min. | 35 to 40 min. | 45 to 55 min.**"
+        },
+        "ct-min": {
+          "verdi": 50,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole Cornish hens* | 18 to 24 oz. | 50 to 60 min. | 35 to 40 min. | 45 to 55 min.**"
+        },
+        "ct-maks": {
+          "verdi": 60,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole Cornish hens* | 18 to 24 oz. | 50 to 60 min. | 35 to 40 min. | 45 to 55 min.**"
+        },
+        "bkok-min": {
+          "verdi": 60,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole broiler-fryer* | 3 to 4 lbs. | 1 1/4 to 1 1/2 hrs. | 60 to 75 min. | 60 to 75 min.**"
+        },
+        "bkok-maks": {
+          "verdi": 75,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole broiler-fryer* | 3 to 4 lbs. | 1 1/4 to 1 1/2 hrs. | 60 to 75 min. | 60 to 75 min.**"
+        },
+        "hgrill-min": {
+          "verdi": 18,
+          "enhet": "min/lb",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole roasting hen* | 5 to 7 lbs. | 2 to 2 1/4 hrs. | 1 3/4 to 2 hrs. | 18 to 25 min./lb.**"
+        },
+        "hgrill-maks": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-chicken",
+          "merknad": "Whole roasting hen* | 5 to 7 lbs. | 2 to 2 1/4 hrs. | 1 3/4 to 2 hrs. | 18 to 25 min./lb.**"
+        },
+        "fylt-min": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "* Unstuffed. If stuffed, add an additional 15 to 30 minutes."
+        },
+        "fylt-maks": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "* Unstuffed. If stuffed, add an additional 15 to 30 minutes."
+        },
+        "mikro-min": {
+          "verdi": 9,
+          "enhet": "min/lb",
+          "kilde": "fsis-chicken",
+          "merknad": "whole chicken, 9 to 10 minutes per pound"
+        },
+        "mikro-maks": {
+          "verdi": 10,
+          "enhet": "min/lb",
+          "kilde": "fsis-chicken",
+          "merknad": "whole chicken, 9 to 10 minutes per pound"
+        },
+        "fryst": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "fsis-chicken",
+          "merknad": "The cooking time may be about 50 percent longer."
+        },
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "FSIS recommends cooking whole chicken to a safe minimum internal temperature of 165°F as measured with a food thermometer."
+        },
+        "tin-min": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "A whole (3- to 4-pound) broiler-fryer or package of parts should thaw in 2 to 3 hours."
+        },
+        "tin-maks": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "A whole (3- to 4-pound) broiler-fryer or package of parts should thaw in 2 to 3 hours."
+        },
+        "kaldvann": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "changing the water every 30 minutes to be sure it stays cold"
+        },
+        "mar": {
+          "verdi": 2,
+          "enhet": "days",
+          "kilde": "fsis-chicken",
+          "merknad": "Chicken may be marinated in the refrigerator for up to 2 days."
+        },
+        "ovnlav": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "Immediately cook the stuffed, raw chicken in an oven set no lower than 325°F."
+        }
+      },
+      "tekst": {
+        "merk": "fsis-chicken|For approximate cooking times to use in meal planning, see the following chart compiled from various resources.",
+        "pose": "fsis-chicken|Place whole chicken in an oven cooking bag or in a covered microwavable pot.",
+        "rosa": "fsis-chicken|The color of cooked chicken is not a sign of its safety.",
+        "spots": "fsis-chicken|Check the internal temperature in the innermost part of the thigh and wing and the thickest part of the breast.",
+        "vasking": "fsis-chicken|Washing raw poultry before cooking is not recommended because bacteria in raw meat and poultry juices can be spread to other foods, utensils, and surfaces.",
+        "fyll": "fsis-chicken|Consumers should not pre-stuff whole chicken to cook at a later time.",
+        "delvis": "fsis-chicken|Never brown or partially cook chicken to refrigerate and finish cooking later because any bacteria present wouldn't have been destroyed."
+      }
+    },
+    {
+      "id": "kyllingfilet",
+      "slug": "chicken-breast",
+      "navn": "Chicken breast",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "Type of Chicken | Weight | Roasting 350 °F | Simmering | Grilling"
+        },
+        "benw-min": {
+          "verdi": 6,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, bone-in | 6 to 8 oz. | 30 to 40 min. | 35 to 45 min. | 10 to 15 min./side"
+        },
+        "benw-maks": {
+          "verdi": 8,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, bone-in | 6 to 8 oz. | 30 to 40 min. | 35 to 45 min. | 10 to 15 min./side"
+        },
+        "bent-min": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, bone-in | 6 to 8 oz. | 30 to 40 min. | 35 to 45 min. | 10 to 15 min./side"
+        },
+        "bent-maks": {
+          "verdi": 40,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, bone-in | 6 to 8 oz. | 30 to 40 min. | 35 to 45 min. | 10 to 15 min./side"
+        },
+        "bensim-min": {
+          "verdi": 35,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, bone-in | 6 to 8 oz. | 30 to 40 min. | 35 to 45 min. | 10 to 15 min./side"
+        },
+        "bensim-maks": {
+          "verdi": 45,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, bone-in | 6 to 8 oz. | 30 to 40 min. | 35 to 45 min. | 10 to 15 min./side"
+        },
+        "bengrill-min": {
+          "verdi": 10,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, bone-in | 6 to 8 oz. | 30 to 40 min. | 35 to 45 min. | 10 to 15 min./side"
+        },
+        "bengrill-maks": {
+          "verdi": 15,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, bone-in | 6 to 8 oz. | 30 to 40 min. | 35 to 45 min. | 10 to 15 min./side"
+        },
+        "ubenw": {
+          "verdi": 4,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, boneless | 4 oz. | 20 to 30 min. | 25 to 30 min. | 6 to 8 min./side"
+        },
+        "ubent-min": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, boneless | 4 oz. | 20 to 30 min. | 25 to 30 min. | 6 to 8 min./side"
+        },
+        "ubent-maks": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, boneless | 4 oz. | 20 to 30 min. | 25 to 30 min. | 6 to 8 min./side"
+        },
+        "ubensim-min": {
+          "verdi": 25,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, boneless | 4 oz. | 20 to 30 min. | 25 to 30 min. | 6 to 8 min./side"
+        },
+        "ubensim-maks": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, boneless | 4 oz. | 20 to 30 min. | 25 to 30 min. | 6 to 8 min./side"
+        },
+        "ubengrill-min": {
+          "verdi": 6,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, boneless | 4 oz. | 20 to 30 min. | 25 to 30 min. | 6 to 8 min./side"
+        },
+        "ubengrill-maks": {
+          "verdi": 8,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Breast halves, boneless | 4 oz. | 20 to 30 min. | 25 to 30 min. | 6 to 8 min./side"
+        },
+        "mikro-min": {
+          "verdi": 6,
+          "enhet": "min/lb",
+          "kilde": "fsis-chicken",
+          "merknad": "boneless breasts halves, 6 to 8 minutes per pound"
+        },
+        "mikro-maks": {
+          "verdi": 8,
+          "enhet": "min/lb",
+          "kilde": "fsis-chicken",
+          "merknad": "boneless breasts halves, 6 to 8 minutes per pound"
+        },
+        "stand": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Allow 10 minutes standing time for bone-in chicken; 5 minutes for a boneless breast."
+        },
+        "standben": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Allow 10 minutes standing time for bone-in chicken; 5 minutes for a boneless breast."
+        },
+        "tin": {
+          "verdi": 1,
+          "enhet": "pounds",
+          "kilde": "fsis-chicken",
+          "merknad": "A 1-pound package of boneless breasts will thaw in an hour or less."
+        },
+        "fryst": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "fsis-chicken",
+          "merknad": "The cooking time may be about 50 percent longer."
+        },
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "When cooking pieces, breasts, drumsticks, thighs, and wings should be cooked until they reach a safe minimum internal temperature of 165°F."
+        }
+      },
+      "tekst": {
+        "tykk": "fsis-thermo|The thin probe of the thermocouple also enables it to accurately read the temperature of thin foods such as hamburger patties, pork chops and chicken breasts.",
+        "vask": "fsis-chicken|Washing raw poultry before cooking is not recommended because bacteria in raw meat and poultry juices can be spread to other foods, utensils, and surfaces.",
+        "mikroflat": "fsis-chicken|For boneless breast halves, place in a dish with 1/4 cup water; cover with plastic wrap.",
+        "rosa": "fsis-chicken|The color of cooked chicken is not a sign of its safety.",
+        "fryskok": "fsis-chicken|Do not cook frozen chicken in a slow cooker or in the microwave; thaw it before cooking."
+      }
+    },
+    {
+      "id": "kyllinglar",
+      "slug": "chicken-thighs-and-wings",
+      "navn": "Chicken thighs, drumsticks, and wings",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "Type of Chicken | Weight | Roasting 350 °F | Simmering | Grilling"
+        },
+        "lw-min": {
+          "verdi": 4,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Legs or thighs | 4 to 8 oz. | 40 to 50 min. | 40 to 50 min. | 10 to 15 min./side"
+        },
+        "lw-maks": {
+          "verdi": 8,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Legs or thighs | 4 to 8 oz. | 40 to 50 min. | 40 to 50 min. | 10 to 15 min./side"
+        },
+        "lt-min": {
+          "verdi": 40,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Legs or thighs | 4 to 8 oz. | 40 to 50 min. | 40 to 50 min. | 10 to 15 min./side"
+        },
+        "lt-maks": {
+          "verdi": 50,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Legs or thighs | 4 to 8 oz. | 40 to 50 min. | 40 to 50 min. | 10 to 15 min./side"
+        },
+        "lgrill-min": {
+          "verdi": 10,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Legs or thighs | 4 to 8 oz. | 40 to 50 min. | 40 to 50 min. | 10 to 15 min./side"
+        },
+        "lgrill-maks": {
+          "verdi": 15,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Legs or thighs | 4 to 8 oz. | 40 to 50 min. | 40 to 50 min. | 10 to 15 min./side"
+        },
+        "dw": {
+          "verdi": 4,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Drumsticks | 4 oz. | 35 to 45 min. | 40 to 50 min. | 8 to 12 min./side"
+        },
+        "dt-min": {
+          "verdi": 35,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Drumsticks | 4 oz. | 35 to 45 min. | 40 to 50 min. | 8 to 12 min./side"
+        },
+        "dt-maks": {
+          "verdi": 45,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Drumsticks | 4 oz. | 35 to 45 min. | 40 to 50 min. | 8 to 12 min./side"
+        },
+        "dsim-min": {
+          "verdi": 40,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Drumsticks | 4 oz. | 35 to 45 min. | 40 to 50 min. | 8 to 12 min./side"
+        },
+        "dsim-maks": {
+          "verdi": 50,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Drumsticks | 4 oz. | 35 to 45 min. | 40 to 50 min. | 8 to 12 min./side"
+        },
+        "dgrill-min": {
+          "verdi": 8,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Drumsticks | 4 oz. | 35 to 45 min. | 40 to 50 min. | 8 to 12 min./side"
+        },
+        "dgrill-maks": {
+          "verdi": 12,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Drumsticks | 4 oz. | 35 to 45 min. | 40 to 50 min. | 8 to 12 min./side"
+        },
+        "vw-min": {
+          "verdi": 2,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Wings or wingettes | 2 to 3 oz. | 30 to 40 min. | 35 to 45 min. | 8 to 12 min./side"
+        },
+        "vw-maks": {
+          "verdi": 3,
+          "enhet": "ounces",
+          "kilde": "fsis-chicken",
+          "merknad": "Wings or wingettes | 2 to 3 oz. | 30 to 40 min. | 35 to 45 min. | 8 to 12 min./side"
+        },
+        "vt-min": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Wings or wingettes | 2 to 3 oz. | 30 to 40 min. | 35 to 45 min. | 8 to 12 min./side"
+        },
+        "vt-maks": {
+          "verdi": 40,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Wings or wingettes | 2 to 3 oz. | 30 to 40 min. | 35 to 45 min. | 8 to 12 min./side"
+        },
+        "vsim-min": {
+          "verdi": 35,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Wings or wingettes | 2 to 3 oz. | 30 to 40 min. | 35 to 45 min. | 8 to 12 min./side"
+        },
+        "vsim-maks": {
+          "verdi": 45,
+          "enhet": "minutes",
+          "kilde": "fsis-chicken",
+          "merknad": "Wings or wingettes | 2 to 3 oz. | 30 to 40 min. | 35 to 45 min. | 8 to 12 min./side"
+        },
+        "vgrill-min": {
+          "verdi": 8,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Wings or wingettes | 2 to 3 oz. | 30 to 40 min. | 35 to 45 min. | 8 to 12 min./side"
+        },
+        "vgrill-maks": {
+          "verdi": 12,
+          "enhet": "min/side",
+          "kilde": "fsis-chicken",
+          "merknad": "Wings or wingettes | 2 to 3 oz. | 30 to 40 min. | 35 to 45 min. | 8 to 12 min./side"
+        },
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "When cooking pieces, breasts, drumsticks, thighs, and wings should be cooked until they reach a safe minimum internal temperature of 165°F."
+        },
+        "fryst": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "fsis-chicken",
+          "merknad": "The cooking time may be about 50 percent longer."
+        },
+        "tin-min": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "A whole (3- to 4-pound) broiler-fryer or package of parts should thaw in 2 to 3 hours."
+        },
+        "tin-maks": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-chicken",
+          "merknad": "A whole (3- to 4-pound) broiler-fryer or package of parts should thaw in 2 to 3 hours."
+        }
+      },
+      "tekst": {
+        "mikro": "fsis-chicken|When microwaving parts, arrange in a dish or on a rack so thick parts (of the chicken) are toward the outside of dish and thin or bony parts of the bird are in the center.",
+        "mork": "fsis-chicken|It's perfectly safe to eat chicken meat that turns dark during cooking.",
+        "bein": "fsis-chicken|Darkening around bones occurs primarily in young broiler-fryers.",
+        "vask": "fsis-chicken|Washing raw poultry before cooking is not recommended because bacteria in raw meat and poultry juices can be spread to other foods, utensils, and surfaces."
+      }
+    },
+    {
+      "id": "lammelar",
+      "slug": "leg-of-lamb",
+      "navn": "Leg of lamb and lamb roasts",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 5 to 7 lbs. | Roast 325 degrees | 20 to 25 min./lb."
+        },
+        "aw-min": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 5 to 7 lbs. | Roast 325 degrees | 20 to 25 min./lb."
+        },
+        "aw-maks": {
+          "verdi": 7,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 5 to 7 lbs. | Roast 325 degrees | 20 to 25 min./lb."
+        },
+        "at-min": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 5 to 7 lbs. | Roast 325 degrees | 20 to 25 min./lb."
+        },
+        "at-maks": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 5 to 7 lbs. | Roast 325 degrees | 20 to 25 min./lb."
+        },
+        "bw-min": {
+          "verdi": 7,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 7 to 9 lbs. | Roast 325 degrees | 15 to 20 min./lb."
+        },
+        "bw-maks": {
+          "verdi": 9,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 7 to 9 lbs. | Roast 325 degrees | 15 to 20 min./lb."
+        },
+        "bt-min": {
+          "verdi": 15,
+          "enhet": "min/lb",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 7 to 9 lbs. | Roast 325 degrees | 15 to 20 min./lb."
+        },
+        "bt-maks": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Bone-In | 7 to 9 lbs. | Roast 325 degrees | 15 to 20 min./lb."
+        },
+        "cw-min": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Boneless, Rolled | 4 to 7 lbs. | Roast 325 degrees | 25 to 30 min./lb."
+        },
+        "cw-maks": {
+          "verdi": 7,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Boneless, Rolled | 4 to 7 lbs. | Roast 325 degrees | 25 to 30 min./lb."
+        },
+        "ct-min": {
+          "verdi": 25,
+          "enhet": "min/lb",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Boneless, Rolled | 4 to 7 lbs. | Roast 325 degrees | 25 to 30 min./lb."
+        },
+        "ct-maks": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-lamb",
+          "merknad": "Lamb Leg, Boneless, Rolled | 4 to 7 lbs. | Roast 325 degrees | 25 to 30 min./lb."
+        },
+        "sw-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Shoulder Roast or Shank Leg Half | 3 to 4 lbs. | Roast 325 degrees | 30 to 35 min./lb."
+        },
+        "sw-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Shoulder Roast or Shank Leg Half | 3 to 4 lbs. | Roast 325 degrees | 30 to 35 min./lb."
+        },
+        "st-min": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-lamb",
+          "merknad": "Shoulder Roast or Shank Leg Half | 3 to 4 lbs. | Roast 325 degrees | 30 to 35 min./lb."
+        },
+        "st-maks": {
+          "verdi": 35,
+          "enhet": "min/lb",
+          "kilde": "fsis-lamb",
+          "merknad": "Shoulder Roast or Shank Leg Half | 3 to 4 lbs. | Roast 325 degrees | 30 to 35 min./lb."
+        },
+        "rw-min": {
+          "verdi": 1.5,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Breast, Rolled | 1½ to 2 lb. | *Braise 325 degrees | 1½ to 2 hours"
+        },
+        "rw-maks": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-lamb",
+          "merknad": "Breast, Rolled | 1½ to 2 lb. | *Braise 325 degrees | 1½ to 2 hours"
+        },
+        "rt-min": {
+          "verdi": 1.5,
+          "enhet": "hours",
+          "kilde": "fsis-lamb",
+          "merknad": "Breast, Rolled | 1½ to 2 lb. | *Braise 325 degrees | 1½ to 2 hours"
+        },
+        "rt-maks": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-lamb",
+          "merknad": "Breast, Rolled | 1½ to 2 lb. | *Braise 325 degrees | 1½ to 2 hours"
+        },
+        "kw-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Lamb, crown roast; 3 to 4 pounds | 375 degrees F | 20-30 min/lb"
+        },
+        "kw-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-holiday",
+          "merknad": "Lamb, crown roast; 3 to 4 pounds | 375 degrees F | 20-30 min/lb"
+        },
+        "kt-min": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Lamb, crown roast; 3 to 4 pounds | 375 degrees F | 20-30 min/lb"
+        },
+        "kt-maks": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-holiday",
+          "merknad": "Lamb, crown roast; 3 to 4 pounds | 375 degrees F | 20-30 min/lb"
+        },
+        "kov": {
+          "verdi": 375,
+          "enhet": "°F",
+          "kilde": "fsis-holiday",
+          "merknad": "Lamb, crown roast; 3 to 4 pounds | 375 degrees F | 20-30 min/lb"
+        },
+        "kote-min": {
+          "verdi": 7,
+          "enhet": "minutes",
+          "kilde": "fsis-lamb",
+          "merknad": "Chops, Rib, or Loin | 1 to 1½\" thick | Broil/Grill | 7 to 11 minutes"
+        },
+        "kote-maks": {
+          "verdi": 11,
+          "enhet": "minutes",
+          "kilde": "fsis-lamb",
+          "merknad": "Chops, Rib, or Loin | 1 to 1½\" thick | Broil/Grill | 7 to 11 minutes"
+        },
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-lamb",
+          "merknad": "Cook all raw lamb steaks, chops and roasts to a minimum internal temperature of 145 degrees F as measured with a food thermometer before removing meat from the heat source."
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fsis-lamb",
+          "merknad": "allow meat to rest for at least three minutes before carving or consuming"
+        },
+        "utbytte-min": {
+          "verdi": 8,
+          "enhet": "ounces",
+          "kilde": "fsis-lamb",
+          "merknad": "one pound of raw weight will yield 8 to 9 ounces of edible meat"
+        },
+        "utbytte-maks": {
+          "verdi": 9,
+          "enhet": "ounces",
+          "kilde": "fsis-lamb",
+          "merknad": "one pound of raw weight will yield 8 to 9 ounces of edible meat"
+        }
+      },
+      "tekst": {
+        "kjol": "fsis-lamb|Times are based on lamb held at refrigerator temperature (40 degrees F).",
+        "fell": "fsis-holiday|Leave the fell on leg roasts to help retain shape.",
+        "vary": "fsis-lamb|Remember that appliances and outdoor grills can vary in heat.",
+        "delvis": "fsis-lamb|NEVER brown or partially cook lamb to refrigerate and finish cooking later because any bacteria present wouldn't have been destroyed."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "hard-boiled-eggs",
+      "navn": "Hard-boiled eggs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "m": {
+          "verdi": 9,
+          "enhet": "minutes",
+          "kilde": "osu-egg",
+          "merknad": "medium - 9 minutes; large - 12 minutes; extra large - 15 minutes"
+        },
+        "l": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "osu-egg",
+          "merknad": "medium - 9 minutes; large - 12 minutes; extra large - 15 minutes"
+        },
+        "xl": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "osu-egg",
+          "merknad": "medium - 9 minutes; large - 12 minutes; extra large - 15 minutes"
+        },
+        "vann": {
+          "verdi": 1,
+          "enhet": "inches",
+          "kilde": "osu-egg",
+          "merknad": "Add cold water to cover the eggs by at least 1 inch."
+        },
+        "kjole": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "osu-egg",
+          "merknad": "Refrigerate within 2 hours of cooking."
+        },
+        "skrelt": {
+          "verdi": 2,
+          "enhet": "days",
+          "kilde": "osu-egg",
+          "merknad": "Use peeled eggs within 2 days or refrigerate in the shell for up to a week."
+        },
+        "uker": {
+          "verdi": 1,
+          "enhet": "weeks",
+          "kilde": "osu-egg",
+          "merknad": "Use peeled eggs within 2 days or refrigerate in the shell for up to a week."
+        },
+        "gamle-min": {
+          "verdi": 7,
+          "enhet": "days",
+          "kilde": "osu-egg",
+          "merknad": "Refrigerate the eggs for 7-10 days before cooking."
+        },
+        "gamle-maks": {
+          "verdi": 10,
+          "enhet": "days",
+          "kilde": "osu-egg",
+          "merknad": "Refrigerate the eggs for 7-10 days before cooking."
+        }
+      },
+      "tekst": {
+        "kok": "osu-egg|Heat over high heat just until the water comes to a full boil.",
+        "av": "osu-egg|Take the pan off the heat and cover with a lid or plate.",
+        "ligg": "osu-egg|Leave eggs in the hot water.",
+        "kjol": "osu-egg|Immediately drain eggs. Serve warm, or cool completely under cold running water or in ice water.",
+        "ring": "fsis-eggs|A green ring on a hard-cooked yolk can be a result of overcooking as the sulfur and iron compounds in the egg react on the yolk's surface.",
+        "hoyde": "fsis-altitude|Because water boils at a lower temperature at high altitudes, hard-cooked eggs will take longer to prepare.",
+        "skall": "osu-egg|Roll the egg gently on the counter until the shell has small cracks all over."
+      }
+    },
+    {
+      "id": "corned-beef",
+      "slug": "corned-beef",
+      "navn": "Corned beef",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "fsis-corned",
+          "merknad": "Set the oven for 350°F or no lower than 325°F."
+        },
+        "ovnlav": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-corned",
+          "merknad": "Set the oven for 350°F or no lower than 325°F."
+        },
+        "perlb": {
+          "verdi": 1,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "Allow about 1 hour per pound."
+        },
+        "pose1-min": {
+          "verdi": 2.5,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "For a 2 to 3-pound corned beef brisket, cook for 2 1/2 to 3 hours."
+        },
+        "pose1-maks": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "For a 2 to 3-pound corned beef brisket, cook for 2 1/2 to 3 hours."
+        },
+        "pose1w-min": {
+          "verdi": 2,
+          "enhet": "pounds",
+          "kilde": "fsis-corned",
+          "merknad": "For a 2 to 3-pound corned beef brisket, cook for 2 1/2 to 3 hours."
+        },
+        "pose1w-maks": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-corned",
+          "merknad": "For a 2 to 3-pound corned beef brisket, cook for 2 1/2 to 3 hours."
+        },
+        "pose2-min": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "For a 3 to 5-pound corned beef brisket, cook for 3 to 3 1/2 hours."
+        },
+        "pose2-maks": {
+          "verdi": 3.5,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "For a 3 to 5-pound corned beef brisket, cook for 3 to 3 1/2 hours."
+        },
+        "pose2w-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-corned",
+          "merknad": "For a 3 to 5-pound corned beef brisket, cook for 3 to 3 1/2 hours."
+        },
+        "pose2w-maks": {
+          "verdi": 5,
+          "enhet": "pounds",
+          "kilde": "fsis-corned",
+          "merknad": "For a 3 to 5-pound corned beef brisket, cook for 3 to 3 1/2 hours."
+        },
+        "posen": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-corned",
+          "merknad": "Preheat the oven to 325°F."
+        },
+        "sakte-min": {
+          "verdi": 10,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "Then cook for 10 to 12 hours on the low setting or 5 to 6 hours on high."
+        },
+        "sakte-maks": {
+          "verdi": 12,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "Then cook for 10 to 12 hours on the low setting or 5 to 6 hours on high."
+        },
+        "sakteh-min": {
+          "verdi": 5,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "Then cook for 10 to 12 hours on the low setting or 5 to 6 hours on high."
+        },
+        "sakteh-maks": {
+          "verdi": 6,
+          "enhet": "hours",
+          "kilde": "fsis-corned",
+          "merknad": "Then cook for 10 to 12 hours on the low setting or 5 to 6 hours on high."
+        },
+        "mikro-min": {
+          "verdi": 20,
+          "enhet": "min/lb",
+          "kilde": "fsis-corned",
+          "merknad": "Calculate cooking time at 20 to 30 minutes per pound."
+        },
+        "mikro-maks": {
+          "verdi": 30,
+          "enhet": "min/lb",
+          "kilde": "fsis-corned",
+          "merknad": "Calculate cooking time at 20 to 30 minutes per pound."
+        },
+        "gront-min": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "fsis-corned",
+          "merknad": "Vegetables may be added during the last 20 to 30 minutes of cooking."
+        },
+        "gront-maks": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "fsis-corned",
+          "merknad": "Vegetables may be added during the last 20 to 30 minutes of cooking."
+        },
+        "hvile": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "fsis-corned",
+          "merknad": "Allow the brisket to stand for about 20 minutes after removing from the heat."
+        },
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-corned",
+          "merknad": "Cook all raw corned beef to a minimum internal temperature of 145°F"
+        },
+        "hvile3": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fsis-corned",
+          "merknad": "allow meat to rest for at least three minutes before carving or consuming"
+        },
+        "rester": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-corned",
+          "merknad": "Reheat leftovers to 165°F as measured with a food thermometer."
+        }
+      },
+      "tekst": {
+        "rosa": "fsis-corned|Corned beef may still be pink in color after cooking.",
+        "nitritt": "fsis-corned|Nitrite is used in the curing process, which fixes pigment in the meat and affects the color.",
+        "gaffel": "fsis-corned|\"Fork-tender\" is a good indication of doneness but use a food thermometer to be sure.",
+        "langsom": "fsis-corned|Therefore, it requires long, moist cooking.",
+        "skjaer": "fsis-corned|it is best sliced diagonally across the grain of the meat",
+        "ingen": "fsis-corned|The USDA does not recommend one particular cooking method as best.",
+        "fryst": "fsis-corned|The cooking times are based on corned beef that is not frozen at the time of cooking."
+      }
+    },
+    {
+      "id": "brisket",
+      "slug": "brisket-and-pot-roast",
+      "navn": "Brisket, chuck roast, and short ribs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "bov": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-beef",
+          "merknad": "Chuck Roast, Brisket | 3 to 4 lbs. | *Braise 325 F | 1 1/2 to 2 1/2 hours"
+        },
+        "bw-min": {
+          "verdi": 3,
+          "enhet": "pounds",
+          "kilde": "fsis-beef",
+          "merknad": "Chuck Roast, Brisket | 3 to 4 lbs. | *Braise 325 F | 1 1/2 to 2 1/2 hours"
+        },
+        "bw-maks": {
+          "verdi": 4,
+          "enhet": "pounds",
+          "kilde": "fsis-beef",
+          "merknad": "Chuck Roast, Brisket | 3 to 4 lbs. | *Braise 325 F | 1 1/2 to 2 1/2 hours"
+        },
+        "bt-min": {
+          "verdi": 1.5,
+          "enhet": "hours",
+          "kilde": "fsis-beef",
+          "merknad": "Chuck Roast, Brisket | 3 to 4 lbs. | *Braise 325 F | 1 1/2 to 2 1/2 hours"
+        },
+        "bt-maks": {
+          "verdi": 2.5,
+          "enhet": "hours",
+          "kilde": "fsis-beef",
+          "merknad": "Chuck Roast, Brisket | 3 to 4 lbs. | *Braise 325 F | 1 1/2 to 2 1/2 hours"
+        },
+        "st-min": {
+          "verdi": 1.5,
+          "enhet": "hours",
+          "kilde": "fsis-beef",
+          "merknad": "Short Ribs | 4\" long and 2\" thick | *Braise 325 F | 1 1/2 to 2 1/2 hours"
+        },
+        "st-maks": {
+          "verdi": 2.5,
+          "enhet": "hours",
+          "kilde": "fsis-beef",
+          "merknad": "Short Ribs | 4\" long and 2\" thick | *Braise 325 F | 1 1/2 to 2 1/2 hours"
+        },
+        "gryte-min": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-beef",
+          "merknad": "Stew or / Cross-Cuts | 1 to 1 1/2\" thick | Cover with liquid; simmer | 2 to 3 hours"
+        },
+        "gryte-maks": {
+          "verdi": 3,
+          "enhet": "hours",
+          "kilde": "fsis-beef",
+          "merknad": "Stew or / Cross-Cuts | 1 to 1 1/2\" thick | Cover with liquid; simmer | 2 to 3 hours"
+        },
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-beef",
+          "merknad": "Cook all raw beef steaks and roasts to a minimum internal temperature of 145 degree F (62.8 degree C) as measured with a food thermometer before removing meat from the heat source."
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fsis-beef",
+          "merknad": "allow meat to rest for at least three minutes before carving or consuming"
+        },
+        "corned": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-corned",
+          "merknad": "Cook all raw corned beef to a minimum internal temperature of 145°F"
+        }
+      },
+      "tekst": {
+        "braise": "fsis-lamb|*Braising is roasting or simmering less-tender meats with a small amount of liquid in a tightly covered pan",
+        "kjol": "fsis-beef|Times are based on beef at refrigerator temperature",
+        "varierer": "fsis-beef|Remember that appliances and outdoor grills can vary in heat.",
+        "bruk": "fsis-beef|Use a food thermometer to check for safe cooking and doneness of beef.",
+        "corned": "fsis-corned|Corned beef is made from one of several less tender cuts of beef like the brisket, rump or round."
+      }
+    }
+  ]
+}

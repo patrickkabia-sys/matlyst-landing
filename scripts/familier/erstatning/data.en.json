@@ -1,0 +1,1380 @@
+{
+  "familie": "erstatning",
+  "marked": "en",
+  "kilder": {
+    "csu": {
+      "navn": "Ingredient Substitutions",
+      "utgiver": "Colorado State University Extension",
+      "aar": 2025,
+      "adresse": "https://extension.colostate.edu/resource/ingredient-substitutions",
+      "hentet": "2026-11-21"
+    },
+    "usu": {
+      "navn": "List of Ingredient Substitutions for Cooking and Baking",
+      "utgiver": "Utah State University Extension",
+      "aar": 2026,
+      "adresse": "https://extension.usu.edu/archive/list-of-ingredient-substitutions-for-cooking-and-baking",
+      "hentet": "2026-11-21"
+    },
+    "unl": {
+      "navn": "Basic Ingredient Substitutions",
+      "utgiver": "Nebraska Extension (University of Nebraska-Lincoln)",
+      "aar": 2026,
+      "adresse": "https://food.unl.edu/ingredient-substitutions",
+      "hentet": "2026-11-21"
+    },
+    "ndsu": {
+      "navn": "Ingredient Substitutions",
+      "utgiver": "NDSU Extension (North Dakota State University)",
+      "aar": 2023,
+      "adresse": "https://www.ndsu.edu/agriculture/extension/publications/ingredient-substitutions",
+      "hentet": "2026-11-21"
+    },
+    "tamu": {
+      "navn": "Quick Ingredient Substitutions",
+      "utgiver": "Texas A&M AgriLife Extension Service",
+      "aar": 2020,
+      "adresse": "https://agrilifeextension.tamu.edu/wp-content/uploads/2025/04/Quick-Ingredient-Subs.pdf",
+      "hentet": "2026-11-21"
+    },
+    "ill": {
+      "navn": "Recipe Substitutions",
+      "utgiver": "University of Illinois Extension",
+      "aar": 2026,
+      "adresse": "https://extension.illinois.edu/food/recipe-substitutions",
+      "hentet": "2026-11-21"
+    },
+    "msu": {
+      "navn": "Substitutions and Measurements",
+      "utgiver": "Montana State University Extension",
+      "aar": 2026,
+      "adresse": "https://montana.edu/extension/buyeatlivebetter/other_nep_resources/fact_sheets/substitutionsandmeasurements",
+      "hentet": "2026-11-21"
+    },
+    "kaf": {
+      "navn": "Buttermilk substitute: What to use",
+      "utgiver": "King Arthur Baking",
+      "aar": 2019,
+      "adresse": "https://www.kingarthurbaking.com/blog/2019/01/28/buttermilk-substitute",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "buttermilk",
+      "slug": "buttermilk",
+      "navn": "Buttermilk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "syre": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "unl",
+          "merknad": "Buttermilk | 1 cup | 1 tablespoon lemon juice or vinegar plus enough regular milk to make 1 cup (allow to stand 5 minutes)"
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "unl",
+          "merknad": "Buttermilk | 1 cup | 1 tablespoon lemon juice or vinegar plus enough regular milk to make 1 cup (allow to stand 5 minutes)"
+        },
+        "stå-unl": {
+          "verdi": 5,
+          "enhet": "minute",
+          "kilde": "unl",
+          "merknad": "enough regular milk to make 1 cup (allow to stand 5 minutes)"
+        },
+        "stå-kaf-min": {
+          "verdi": 10,
+          "enhet": "minute",
+          "kilde": "kaf",
+          "merknad": "Let the milk stand for 10 to 15 minutes"
+        },
+        "stå-kaf-maks": {
+          "verdi": 15,
+          "enhet": "minute",
+          "kilde": "kaf",
+          "merknad": "Let the milk stand for 10 to 15 minutes"
+        },
+        "kremor": {
+          "verdi": 1.75,
+          "enhet": "teaspoon",
+          "kilde": "kaf",
+          "merknad": "1 3/4 teaspoons cream of tartar mixed with 1 cup of milk"
+        },
+        "yoghurt": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Buttermilk or sour milk, 1 cup. Substitute with 1 tablespoon vinegar or lemon juice plus enough milk to make 1 cup. Let stand 5 minutes. Or 1 3/4 teaspoons cream of tartar plus 1 cup milk; or 1 cup plain yogurt."
+        },
+        "gresk-del": {
+          "verdi": 1,
+          "enhet": "part",
+          "kilde": "kaf",
+          "merknad": "Greek yogurt mixed 1:2 with 1% or skim milk (one part yogurt, two parts milk)"
+        },
+        "gresk-melk": {
+          "verdi": 2,
+          "enhet": "parts",
+          "kilde": "kaf",
+          "merknad": "Greek yogurt mixed 1:2 with 1% or skim milk (one part yogurt, two parts milk)"
+        },
+        "gresk-beger": {
+          "verdi": 5.3,
+          "enhet": "ounce",
+          "kilde": "kaf",
+          "merknad": "mix one small container (5.3 ounces) of Greek yogurt with 1 1/3 cups of milk to yield 2 cups of buttermilk substitute"
+        },
+        "gresk-melkkopp": {
+          "verdi": 1.333,
+          "enhet": "cup",
+          "kilde": "kaf",
+          "merknad": "mix one small container (5.3 ounces) of Greek yogurt with 1 1/3 cups of milk to yield 2 cups of buttermilk substitute"
+        }
+      },
+      "tekst": {
+        "flat-melk": "kaf::Using plain milk, which lacks buttermilk's acidity, results in a darker-colored, denser cake",
+        "kort-liste": "kaf::The shorter a recipe's ingredient list, the less successful a buttermilk substitute will be."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "eggs",
+      "navn": "Eggs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "bp": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "½ teaspoon baking powder plus 1 tablespoon vinegar plus 1 tablespoon liquid (for baking use only)"
+        },
+        "eddik": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "unl",
+          "merknad": "½ teaspoon baking powder plus 1 tablespoon vinegar plus 1 tablespoon liquid (for baking use only)"
+        },
+        "vaeske": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "unl",
+          "merknad": "½ teaspoon baking powder plus 1 tablespoon vinegar plus 1 tablespoon liquid (for baking use only)"
+        },
+        "mayo": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "unl",
+          "merknad": "2 tablespoons mayonnaise (suitable for use in cake batter)"
+        },
+        "eggerstatning": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "unl",
+          "merknad": "¼ cup egg substitute; check label for specific directions"
+        },
+        "hor-hvit": {
+          "verdi": 2,
+          "enhet": "egg white",
+          "kilde": "ill",
+          "merknad": "General Purpose Use one of the following substitutions for each whole egg needed: 2 egg whites."
+        },
+        "lin": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "ill",
+          "merknad": "1 Tablespoon flax or chia seed + 3 Tablespoons water (combine and let sit for 5 minutes)"
+        },
+        "lin-vann": {
+          "verdi": 3,
+          "enhet": "tablespoon",
+          "kilde": "ill",
+          "merknad": "1 Tablespoon flax or chia seed + 3 Tablespoons water (combine and let sit for 5 minutes)"
+        },
+        "moist": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "ill",
+          "merknad": "¼ cup mashed banana, mashed avocado, applesauce, pumpkin puree, sweet potato, mashed beans or silken tofu."
+        },
+        "olje": {
+          "verdi": 1.5,
+          "enhet": "tablespoon",
+          "kilde": "ill",
+          "merknad": "1-½ Tablespoons water + 1-½ Tablespoons oil + 1 teaspoon baking powder"
+        },
+        "olje-bp": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "ill",
+          "merknad": "1-½ Tablespoons water + 1-½ Tablespoons oil + 1 teaspoon baking powder"
+        },
+        "fem-egg": {
+          "verdi": 5,
+          "enhet": "large egg",
+          "kilde": "usu",
+          "merknad": "Equivalents1 large egg = 3 T.; 5 large = 1 cup."
+        },
+        "en-egg": {
+          "verdi": 3,
+          "enhet": "tablespoon",
+          "kilde": "usu",
+          "merknad": "Equivalents1 large egg = 3 T.; 5 large = 1 cup."
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Equivalents1 large egg = 3 T.; 5 large = 1 cup."
+        }
+      },
+      "tekst": {
+        "ikke-alle": "ill::Depending upon the recipe and the function of the egg, certain options are better suited than others, as the flavor and texture may be slightly altered."
+      }
+    },
+    {
+      "id": "bakepulver",
+      "slug": "baking-powder",
+      "navn": "Baking powder",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "soda": {
+          "verdi": 0.25,
+          "enhet": "teaspoon",
+          "kilde": "ill",
+          "merknad": "Substitute ¼ teaspoon baking soda and 5/8 teaspoon cream of tartar for each 1 teaspoon baking powder."
+        },
+        "kremor": {
+          "verdi": 0.625,
+          "enhet": "teaspoon",
+          "kilde": "ill",
+          "merknad": "Substitute ¼ teaspoon baking soda and 5/8 teaspoon cream of tartar for each 1 teaspoon baking powder."
+        },
+        "bp": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "ill",
+          "merknad": "Substitute ¼ teaspoon baking soda and 5/8 teaspoon cream of tartar for each 1 teaspoon baking powder."
+        },
+        "melk": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "1/4 tsp baking soda plus 1/2 cup buttermilk, sour milk or yogurt; (decrease liquid in recipe by 1/2 cup)"
+        },
+        "melk-soda": {
+          "verdi": 0.25,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "1/4 tsp baking soda plus 1/2 cup buttermilk, sour milk or yogurt; (decrease liquid in recipe by 1/2 cup)"
+        },
+        "melasse": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "1/4 tsp baking soda plus 1/4 cup molasses (decrease liquid in recipe by 1-2 Tbsp)"
+        },
+        "melasse-vaeske-min": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "1/4 tsp baking soda plus 1/4 cup molasses (decrease liquid in recipe by 1-2 Tbsp)"
+        },
+        "melasse-vaeske-maks": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "1/4 tsp baking soda plus 1/4 cup molasses (decrease liquid in recipe by 1-2 Tbsp)"
+        },
+        "tre": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "1/4 tsp baking soda, 1/2 tsp cream of tartar and 1/4 tsp cornstarch"
+        },
+        "tre-maisenna": {
+          "verdi": 0.25,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "1/4 tsp baking soda, 1/2 tsp cream of tartar and 1/4 tsp cornstarch"
+        },
+        "msu-kremor": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "msu",
+          "merknad": "Baking powder | 1 teaspoon | 1/4 teaspoon baking soda + 1/2 teaspoon cream of tartar"
+        }
+      },
+      "tekst": {
+        "syre": "usu::in order for carbon dioxide to be released and cause the product to rise, an acid ingredient must be present to react with the soda"
+      }
+    },
+    {
+      "id": "gjaer",
+      "slug": "yeast",
+      "navn": "Yeast",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pakke-oz": {
+          "verdi": 0.25,
+          "enhet": "ounce",
+          "kilde": "unl",
+          "merknad": "Yeast, compressed | 2/3 oz | 1 package (¼ ounce) active dry yeast 2 ¼ teaspoons active dry yeast"
+        },
+        "pakke-ts-unl": {
+          "verdi": 2.25,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "Yeast, compressed | 2/3 oz | 1 package (¼ ounce) active dry yeast 2 ¼ teaspoons active dry yeast"
+        },
+        "komprimert-oz": {
+          "verdi": 0.667,
+          "enhet": "ounce",
+          "kilde": "unl",
+          "merknad": "Yeast, compressed | 2/3 oz | 1 package (¼ ounce) active dry yeast 2 ¼ teaspoons active dry yeast"
+        },
+        "pakke-ts-csu": {
+          "verdi": 2.5,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Yeast, active dry (1/4 oz) | 1 package | 2 1/2 tsp dry yeast or 1 compressed yeast cake."
+        },
+        "spiseskje": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "usu",
+          "merknad": "Yeast, active dry, 1 tablespoon. Substitute with 1 package active dry yeast; or 1 compressed yeast cake."
+        },
+        "ndsu-kake": {
+          "verdi": 0.6,
+          "enhet": "ounce",
+          "kilde": "ndsu",
+          "merknad": "Yeast, active dry | 1 tablespoon | 1 cake (6/10 ounce), compressed"
+        }
+      }
+    },
+    {
+      "id": "smor",
+      "slug": "butter",
+      "navn": "Butter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "margarin": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Butter, 1 cup. Substitute with 1 cup margarine; or 7/8 to 1 cup hydrogenated fat plus ½ teaspoon salt; or 7/8 cup lard plus ½ teaspoon salt; or 4/5 cup bacon fat, clarified; or 3/4 cup chicken fat, clarified; or 7/8 cup oil."
+        },
+        "fett-min": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Butter, 1 cup. Substitute with 1 cup margarine; or 7/8 to 1 cup hydrogenated fat plus ½ teaspoon salt; or 7/8 cup lard plus ½ teaspoon salt; or 4/5 cup bacon fat, clarified; or 3/4 cup chicken fat, clarified; or 7/8 cup oil."
+        },
+        "fett-maks": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Butter, 1 cup. Substitute with 1 cup margarine; or 7/8 to 1 cup hydrogenated fat plus ½ teaspoon salt; or 7/8 cup lard plus ½ teaspoon salt; or 4/5 cup bacon fat, clarified; or 3/4 cup chicken fat, clarified; or 7/8 cup oil."
+        },
+        "salt": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "usu",
+          "merknad": "Butter, 1 cup. Substitute with 1 cup margarine; or 7/8 to 1 cup hydrogenated fat plus ½ teaspoon salt; or 7/8 cup lard plus ½ teaspoon salt; or 4/5 cup bacon fat, clarified; or 3/4 cup chicken fat, clarified; or 7/8 cup oil."
+        },
+        "smult": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Butter, 1 cup. Substitute with 1 cup margarine; or 7/8 to 1 cup hydrogenated fat plus ½ teaspoon salt; or 7/8 cup lard plus ½ teaspoon salt; or 4/5 cup bacon fat, clarified; or 3/4 cup chicken fat, clarified; or 7/8 cup oil."
+        },
+        "olje": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Butter, 1 cup. Substitute with 1 cup margarine; or 7/8 to 1 cup hydrogenated fat plus ½ teaspoon salt; or 7/8 cup lard plus ½ teaspoon salt; or 4/5 cup bacon fat, clarified; or 3/4 cup chicken fat, clarified; or 7/8 cup oil."
+        },
+        "kylling": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Butter, 1 cup. Substitute with 1 cup margarine; or 7/8 to 1 cup hydrogenated fat plus ½ teaspoon salt; or 7/8 cup lard plus ½ teaspoon salt; or 4/5 cup bacon fat, clarified; or 3/4 cup chicken fat, clarified; or 7/8 cup oil."
+        }
+      },
+      "tekst": {
+        "smeltet": "unl::An equal amount of oil can be substituted for a similar portion of melted butter if the recipe specifies using melted butter."
+      }
+    },
+    {
+      "id": "floete",
+      "slug": "heavy-cream",
+      "navn": "Heavy cream",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "smor": {
+          "verdi": 0.333,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "heavy (36-40% fat) | 1 cup | 1/3 cup butter plus 3/4 cup milk (for baking only, will not whip)"
+        },
+        "melk": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "heavy (36-40% fat) | 1 cup | 1/3 cup butter plus 3/4 cup milk (for baking only, will not whip)"
+        },
+        "fett-min": {
+          "verdi": 36,
+          "enhet": "percent fat",
+          "kilde": "csu",
+          "merknad": "heavy (36-40% fat)"
+        },
+        "fett-maks": {
+          "verdi": 40,
+          "enhet": "percent fat",
+          "kilde": "csu",
+          "merknad": "heavy (36-40% fat)"
+        },
+        "pisket": {
+          "verdi": 2,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Cream, heavy (36-40% fat), 1 cup (2-2 1/2 cups whipped)."
+        },
+        "pisket-maks": {
+          "verdi": 2.5,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Cream, heavy (36-40% fat), 1 cup (2-2 1/2 cups whipped)."
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Cream, heavy (36-40% fat), 1 cup (2-2 1/2 cups whipped)."
+        },
+        "ill-smor": {
+          "verdi": 0.333,
+          "enhet": "cup",
+          "kilde": "ill",
+          "merknad": "Heavy Whipping Cream Substitute 1/3 cup butter and ¾ cup milk (for baking only; will not whip) for each 1 cup heavy whipping cream."
+        },
+        "ill-melk": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "ill",
+          "merknad": "Heavy Whipping Cream Substitute 1/3 cup butter and ¾ cup milk (for baking only; will not whip) for each 1 cup heavy whipping cream."
+        }
+      },
+      "tekst": {
+        "pisker-ikke": "csu::(for baking only, will not whip)"
+      }
+    },
+    {
+      "id": "half-and-half",
+      "slug": "half-and-half",
+      "navn": "Half-and-half",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "evap": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "ill",
+          "merknad": "Half and Half Substitute 1 cup evaporated milk, undiluted, for each 1 cup half and half."
+        },
+        "usu-melk": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Cream, half & half (12-16% fat), 1 cup. For use in cooking and baking, substitute with 7/8 cup milk and 3 tablespoons butter or margarine; or 1 cup evaporated milk, undiluted."
+        },
+        "usu-smor": {
+          "verdi": 3,
+          "enhet": "tablespoon",
+          "kilde": "usu",
+          "merknad": "Cream, half & half (12-16% fat), 1 cup. For use in cooking and baking, substitute with 7/8 cup milk and 3 tablespoons butter or margarine; or 1 cup evaporated milk, undiluted."
+        },
+        "csu-smor": {
+          "verdi": 1.5,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "half & half (10-12% fat) | 1 cup | 1 1/2 Tbsp butter plus 7/8 cup milk; / 1/2 cup coffee cream plus 1/2 cup milk; / 1 cup evaporated milk, undiluted."
+        },
+        "csu-melk": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "half & half (10-12% fat) | 1 cup | 1 1/2 Tbsp butter plus 7/8 cup milk; / 1/2 cup coffee cream plus 1/2 cup milk; / 1 cup evaporated milk, undiluted."
+        },
+        "csu-kaffe": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "half & half (10-12% fat) | 1 cup | 1 1/2 Tbsp butter plus 7/8 cup milk; / 1/2 cup coffee cream plus 1/2 cup milk; / 1 cup evaporated milk, undiluted."
+        },
+        "ndsu-smor": {
+          "verdi": 0.5,
+          "enhet": "tablespoon",
+          "kilde": "ndsu",
+          "merknad": "Cream, half-and-half | 1 cup | ⅞ cup whole milk plus ½ tablespoon butter or margarine"
+        },
+        "ndsu-olje": {
+          "verdi": 3,
+          "enhet": "tablespoon",
+          "kilde": "ndsu",
+          "merknad": "3 tablespoons oil plus milk to equal 1 cup"
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "ndsu",
+          "merknad": "Cream, half-and-half | 1 cup"
+        }
+      }
+    },
+    {
+      "id": "sour-cream",
+      "slug": "sour-cream",
+      "navn": "Sour cream",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "yoghurt": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Sour cream, 1 cup. Substitute with 1 cup plain yogurt; or 7/8 cup sour milk plus 1/3 cup butter."
+        },
+        "sur-melk": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Sour cream, 1 cup. Substitute with 1 cup plain yogurt; or 7/8 cup sour milk plus 1/3 cup butter."
+        },
+        "smor": {
+          "verdi": 0.333,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Sour cream, 1 cup. Substitute with 1 cup plain yogurt; or 7/8 cup sour milk plus 1/3 cup butter."
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Sour cream, 1 cup."
+        },
+        "cottage": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "msu",
+          "merknad": "Sour cream | 1 cup | 1 cup plain yogurt or 1 cup cottage cheese mixed in blender with 2 Tablespoons milk + 1 tablespoon lemon juice"
+        },
+        "cottage-melk": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "msu",
+          "merknad": "Sour cream | 1 cup | 1 cup plain yogurt or 1 cup cottage cheese mixed in blender with 2 Tablespoons milk + 1 tablespoon lemon juice"
+        },
+        "cottage-sitron": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "msu",
+          "merknad": "Sour cream | 1 cup | 1 cup plain yogurt or 1 cup cottage cheese mixed in blender with 2 Tablespoons milk + 1 tablespoon lemon juice"
+        },
+        "evap": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "1 cup evaporated milk plus 1 Tbsp vinegar (allow to stand 5 minutes before using)"
+        },
+        "evap-eddik": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "1 cup evaporated milk plus 1 Tbsp vinegar (allow to stand 5 minutes before using)"
+        },
+        "evap-min": {
+          "verdi": 5,
+          "enhet": "minute",
+          "kilde": "csu",
+          "merknad": "1 cup evaporated milk plus 1 Tbsp vinegar (allow to stand 5 minutes before using)"
+        },
+        "kefir": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "7/8 cup buttermilk or sour milk"
+        }
+      }
+    },
+    {
+      "id": "melk",
+      "slug": "milk",
+      "navn": "Milk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "evap": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "whole | 1 cup | 1/2 cup evaporated milk plus 1/2 cup water"
+        },
+        "evap-vann": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "whole | 1 cup | 1/2 cup evaporated milk plus 1/2 cup water"
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "whole | 1 cup"
+        },
+        "skummet": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "1 cup skim, 2% or reconstituted dry milk"
+        },
+        "soya": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "1 cup soy or almond milk"
+        },
+        "vann-smor": {
+          "verdi": 1.5,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "1 cup water plus 1 1/2 tsp butter in baking"
+        },
+        "pulver": {
+          "verdi": 0.333,
+          "enhet": "cup",
+          "kilde": "ill",
+          "merknad": "Instant nonfat dry (powdered) milk: 1 cup water + 1/3 cup powdered milk"
+        },
+        "pulver-vann": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "ill",
+          "merknad": "Instant nonfat dry (powdered) milk: 1 cup water + 1/3 cup powdered milk"
+        },
+        "ill-evap": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "ill",
+          "merknad": "Evaporated milk: ½ cup water + ½ cup evaporated milk"
+        },
+        "eddik": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "ill",
+          "merknad": "Buttermilk: 1 Tablespoon lemon juice or vinegar + enough regular milk to make 1 cup (let sit 5 minutes)"
+        }
+      }
+    },
+    {
+      "id": "cake-flour",
+      "slug": "cake-flour",
+      "navn": "Cake flour",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "minus": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "unl",
+          "merknad": "Flour, cake | 1 cup | 1 cup minus 2 tablespoons all-purpose flour"
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "unl",
+          "merknad": "Flour, cake | 1 cup | 1 cup minus 2 tablespoons all-purpose flour"
+        },
+        "csu-oppskrift": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "cake | 1 cup | 7/8 cup all-purpose flour (1 cup less 2 Tbsp)."
+        },
+        "csu-minus": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "cake | 1 cup | 7/8 cup all-purpose flour (1 cup less 2 Tbsp)."
+        },
+        "motsatt": {
+          "verdi": 1.125,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "1 1/8 cups cake flour (1 cup plus 2 Tbsp)"
+        },
+        "motsatt-pluss": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "1 1/8 cups cake flour (1 cup plus 2 Tbsp)"
+        },
+        "usu-motsatt": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "usu",
+          "merknad": "or 1 cup plus 2 tablespoons cake flour."
+        },
+        "pastry": {
+          "verdi": 0.875,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "Flour, pastry | 1 cup | 7/8 cup all-purpose or bread flour."
+        }
+      }
+    },
+    {
+      "id": "self-rising-flour",
+      "slug": "self-rising-flour",
+      "navn": "Self-rising flour",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "csu-bp": {
+          "verdi": 1.25,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "white, all-purpose, self-rising | 1 cup | 1 cup all-purpose flour plus 1 1/4 tsp baking powder and 1/4 tsp salt."
+        },
+        "csu-salt": {
+          "verdi": 0.25,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "white, all-purpose, self-rising | 1 cup | 1 cup all-purpose flour plus 1 1/4 tsp baking powder and 1/4 tsp salt."
+        },
+        "tamu-bp": {
+          "verdi": 1.5,
+          "enhet": "teaspoon",
+          "kilde": "tamu",
+          "merknad": "1 cup all-purpose flour + 1 ½ teaspoons baking powder + ¼"
+        },
+        "tamu-salt": {
+          "verdi": 0.25,
+          "enhet": "teaspoon",
+          "kilde": "tamu",
+          "merknad": "1 ½ teaspoons baking powder + ¼ 1 cup self-rising flour teaspoon salt"
+        },
+        "unl-minus": {
+          "verdi": 2,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "Flour, self-rising | 1 cup | 1 cup minus 2 teaspoons all-purpose flour plus 1 ½ teaspoons baking powder and ½ teaspoon salt"
+        },
+        "unl-bp": {
+          "verdi": 1.5,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "Flour, self-rising | 1 cup | 1 cup minus 2 teaspoons all-purpose flour plus 1 ½ teaspoons baking powder and ½ teaspoon salt"
+        },
+        "unl-salt": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "Flour, self-rising | 1 cup | 1 cup minus 2 teaspoons all-purpose flour plus 1 ½ teaspoons baking powder and ½ teaspoon salt"
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "white, all-purpose, self-rising | 1 cup"
+        }
+      }
+    },
+    {
+      "id": "maisenna",
+      "slug": "cornstarch",
+      "navn": "Cornstarch",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mel": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "ill",
+          "merknad": "Cornstarch (for Thickening) Substitute 2 Tablespoons all-purpose flour for each 1 Tablespoon cornstarch."
+        },
+        "maisenna": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "ill",
+          "merknad": "Cornstarch (for Thickening) Substitute 2 Tablespoons all-purpose flour for each 1 Tablespoon cornstarch."
+        },
+        "tapioka": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "Cornstarch | 1 Tbsp | 2 Tbsp all-purpose flour; / 2 Tbsp granular tapioca; / 1 Tbsp arrowroot."
+        },
+        "arrowrot": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "Cornstarch | 1 Tbsp | 2 Tbsp all-purpose flour; / 2 Tbsp granular tapioca; / 1 Tbsp arrowroot."
+        },
+        "motsatt": {
+          "verdi": 0.5,
+          "enhet": "tablespoon",
+          "kilde": "usu",
+          "merknad": "Flour used as thickener, 1 tablespoon. Substitute with 1/2 tablespoon cornstarch, potato starch, rice starch or arrowroot starch"
+        },
+        "motsatt-mel": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "usu",
+          "merknad": "Flour used as thickener, 1 tablespoon."
+        },
+        "msu": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "msu",
+          "merknad": "Cornstarch | 1 Tablespoon | 2 Tablespoons flour"
+        }
+      }
+    },
+    {
+      "id": "brun-farin",
+      "slug": "brown-sugar",
+      "navn": "Brown sugar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hvit": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Brown sugar, 1 cup (firmly packed). Substitute with 1 cup granulated sugar."
+        },
+        "melasse": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "Sugar, brown | 1 cup | 1 cup granulated sugar; / 1 cup granulated sugar plus 1/4 cup unsulphured molasses"
+        },
+        "melasse-kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "Sugar, brown | 1 cup | 1 cup granulated sugar; / 1 cup granulated sugar plus 1/4 cup unsulphured molasses"
+        },
+        "halv": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "msu",
+          "merknad": "Brown sugar | 1/2 cup | 1/2 cup white sugar + 2 Tablespoons molasses"
+        },
+        "halv-melasse": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "msu",
+          "merknad": "Brown sugar | 1/2 cup | 1/2 cup white sugar + 2 Tablespoons molasses"
+        },
+        "tamu-melasse": {
+          "verdi": 2,
+          "enhet": "tablespoon",
+          "kilde": "tamu",
+          "merknad": "2 tablespoons molasses + ½ cup granulated (white) sugar"
+        },
+        "flytende": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "1/2 cup liquid brown sugar"
+        },
+        "pund": {
+          "verdi": 2.25,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Equivalent1 pound brown sugar = 2 1/4 cups firmly packed."
+        }
+      },
+      "tekst": {
+        "melasse-surt": "csu::Substitutions with an acid factor, such as molasses, need to be neutralized to avoid changes in the flavor and texture of the product."
+      }
+    },
+    {
+      "id": "powdered-sugar",
+      "slug": "powdered-sugar",
+      "navn": "Powdered sugar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "unl-sukker": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "unl",
+          "merknad": "Sugar, Confectioners' or Powdered | 1 cup | 1 cup granulated sugar plus 1 tablespoon cornstarch"
+        },
+        "unl-maisenna": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "unl",
+          "merknad": "Sugar, Confectioners' or Powdered | 1 cup | 1 cup granulated sugar plus 1 tablespoon cornstarch"
+        },
+        "tamu-maisenna": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "tamu",
+          "merknad": "1 cup granulated (white) sugar + 1 teaspoon cornstarch"
+        },
+        "csu": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "confectioners or powdered | 1 cup | 3/4 cup granulated sugar (for uses other than baking)"
+        },
+        "motsatt": {
+          "verdi": 1.333,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "1 1/3 cup confectioners sugar (for uses other than baking)"
+        }
+      },
+      "tekst": {
+        "prosesser": "unl::process in a food processor using the metal blade attachment until it's well blended and powdery"
+      }
+    },
+    {
+      "id": "honey",
+      "slug": "honey",
+      "navn": "Honey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "sukker": {
+          "verdi": 1.25,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Honey, 1 cup. Substitute 1 1/4 cups sugar plus 1/4 cup water."
+        },
+        "vann": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Honey, 1 cup. Substitute 1 1/4 cups sugar plus 1/4 cup water."
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Honey, 1 cup."
+        },
+        "csu-sukker": {
+          "verdi": 1.25,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "Honey | 1 cup | 1 1/4 cup sugar plus 1/4 cup liquid (use liquid called for in recipe)."
+        },
+        "csu-vaeske": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "Honey | 1 cup | 1 1/4 cup sugar plus 1/4 cup liquid (use liquid called for in recipe)."
+        },
+        "sirup": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "Corn syrup | 1 cup | 1 cup granulated sugar plus 1/4 cup water or other liquid called for in recipe; / 1 cup honey."
+        },
+        "som-sukker": {
+          "verdi": 0.8125,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "13/16 cup honey (1 cup less 3 Tbsp); reduce liquid in recipe by 3 Tbsp for every cup of honey added; add a pinch of baking soda to neutralize acidity"
+        },
+        "som-sukker-vaeske": {
+          "verdi": 3,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "13/16 cup honey (1 cup less 3 Tbsp); reduce liquid in recipe by 3 Tbsp for every cup of honey added; add a pinch of baking soda to neutralize acidity"
+        },
+        "usu-som-sukker": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Granulated sugar, 1 cup. Substitute with 1 cup corn syrup, 1 cup molasses or 3/4 cup honey (decrease liquid called for in recipe by 1/4 cup)"
+        },
+        "usu-vaeske": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "usu",
+          "merknad": "Granulated sugar, 1 cup. Substitute with 1 cup corn syrup, 1 cup molasses or 3/4 cup honey (decrease liquid called for in recipe by 1/4 cup)"
+        },
+        "soda": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "usu",
+          "merknad": "For each cup of honey in baked goods, add 1/2 teaspoon soda."
+        }
+      }
+    },
+    {
+      "id": "hvitvin",
+      "slug": "white-wine",
+      "navn": "White wine",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ndsu-vann": {
+          "verdi": 13,
+          "enhet": "tablespoon",
+          "kilde": "ndsu",
+          "merknad": "Wine | 1 cup | 13 tablespoons water, 3 tablespoons lemon juice and 1 tablespoon sugar"
+        },
+        "ndsu-sitron": {
+          "verdi": 3,
+          "enhet": "tablespoon",
+          "kilde": "ndsu",
+          "merknad": "Wine | 1 cup | 13 tablespoons water, 3 tablespoons lemon juice and 1 tablespoon sugar"
+        },
+        "ndsu-sukker": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "ndsu",
+          "merknad": "Wine | 1 cup | 13 tablespoons water, 3 tablespoons lemon juice and 1 tablespoon sugar"
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "ndsu",
+          "merknad": "Wine | 1 cup"
+        }
+      },
+      "tekst": {
+        "juice": "unl::The same amount of apple juice or white grape juice"
+      }
+    },
+    {
+      "id": "red-wine",
+      "slug": "red-wine",
+      "navn": "Red wine",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ndsu-vann": {
+          "verdi": 13,
+          "enhet": "tablespoon",
+          "kilde": "ndsu",
+          "merknad": "Wine | 1 cup | 13 tablespoons water, 3 tablespoons lemon juice and 1 tablespoon sugar"
+        },
+        "ndsu-sitron": {
+          "verdi": 3,
+          "enhet": "tablespoon",
+          "kilde": "ndsu",
+          "merknad": "Wine | 1 cup | 13 tablespoons water, 3 tablespoons lemon juice and 1 tablespoon sugar"
+        },
+        "ndsu-sukker": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "ndsu",
+          "merknad": "Wine | 1 cup | 13 tablespoons water, 3 tablespoons lemon juice and 1 tablespoon sugar"
+        },
+        "kopp": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "ndsu",
+          "merknad": "Wine | 1 cup"
+        }
+      },
+      "tekst": {
+        "juice": "unl::The same amount of grape juice or cranberry juice"
+      }
+    },
+    {
+      "id": "lemon-juice",
+      "slug": "lemon-juice",
+      "navn": "Lemon juice",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "eddik": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "usu",
+          "merknad": "Lemon juice, 1 teaspoon. Substitute with 1/2 teaspoon vinegar."
+        },
+        "sitron": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "usu",
+          "merknad": "Lemon juice, 1 teaspoon."
+        },
+        "csu-eddik": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "juice | 1 tsp | 1/2 tsp vinegar."
+        },
+        "en-sitron-min": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "Lemon, whole | 1 lemon | 1 to 3 Tbsp juice, plus 2 to 2 1/2 tsp grated rind."
+        },
+        "en-sitron-maks": {
+          "verdi": 3,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "Lemon, whole | 1 lemon | 1 to 3 Tbsp juice, plus 2 to 2 1/2 tsp grated rind."
+        },
+        "skall-min": {
+          "verdi": 2,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Lemon, whole | 1 lemon | 1 to 3 Tbsp juice, plus 2 to 2 1/2 tsp grated rind."
+        },
+        "skall-maks": {
+          "verdi": 2.5,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Lemon, whole | 1 lemon | 1 to 3 Tbsp juice, plus 2 to 2 1/2 tsp grated rind."
+        },
+        "kremor": {
+          "verdi": 1.5,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Cream of tartar | 1/2 tsp | 1 1/2 tsp lemon juice or vinegar."
+        },
+        "ekstrakt": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "Lemon Zest (fresh grated lemon peel) | 1 teaspoon | ½ teaspoon lemon extract"
+        }
+      }
+    },
+    {
+      "id": "friske-og-torkede-urter",
+      "slug": "fresh-vs-dried-herbs",
+      "navn": "Fresh and dried herbs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "csu": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "Herbs, fresh | 1 Tbsp | 1 tsp dried herbs."
+        },
+        "csu-torket": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Herbs, fresh | 1 Tbsp | 1 tsp dried herbs."
+        },
+        "unl-torket": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "Herbs, fresh | 1 tablespoon, finely cut | 1 teaspoon dried leaf herbs ½ teaspoon ground dried herbs"
+        },
+        "unl-malt": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "Herbs, fresh | 1 tablespoon, finely cut | 1 teaspoon dried leaf herbs ½ teaspoon ground dried herbs"
+        },
+        "tamu-malt": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "tamu",
+          "merknad": "1 tablespoon, fresh herbs diced ½ teaspoon ground, dried herbs"
+        },
+        "persille": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Parsley, fresh | 1 Tbsp | 1 tsp parsley flakes."
+        },
+        "mynte": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "Mint leaves, fresh chopped | 1/4 cup | 1 Tbsp dried mint leaves."
+        },
+        "mynte-torket": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "Mint leaves, fresh chopped | 1/4 cup | 1 Tbsp dried mint leaves."
+        },
+        "dill": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Dill, fresh | 1 head | 1 tsp dill seed."
+        },
+        "gressloek": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "Chives, finely chopped | 1 Tbsp | 1 Tbsp green onion tops, finely chopped."
+        }
+      }
+    },
+    {
+      "id": "hvitlok",
+      "slug": "garlic",
+      "navn": "Garlic",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pulver": {
+          "verdi": 0.125,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Garlic | 1 clove, small | 1/8 tsp garlic powder or instant minced garlic"
+        },
+        "salt-min": {
+          "verdi": 0.5,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "1/2-1 tsp garlic salt (reduce amount salt called for in recipe)"
+        },
+        "salt-maks": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "1/2-1 tsp garlic salt (reduce amount salt called for in recipe)"
+        },
+        "unl-pulver": {
+          "verdi": 0.125,
+          "enhet": "teaspoon",
+          "kilde": "unl",
+          "merknad": "Garlic | 1 small clove | 1/8 teaspoon garlic powder"
+        },
+        "tamu-pulver": {
+          "verdi": 0.125,
+          "enhet": "teaspoon",
+          "kilde": "tamu",
+          "merknad": "1 fresh garlic clove 1/8 teaspoon garlic powder"
+        }
+      }
+    },
+    {
+      "id": "broth",
+      "slug": "broth",
+      "navn": "Broth",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kube": {
+          "verdi": 1,
+          "enhet": "bouillon cube",
+          "kilde": "csu",
+          "merknad": "Broth, beef or chicken | 1 cup | 1 bouillon cube, 1 tsp (1 envelope) powdered broth base or 1 tsp instant granules dissolved in 1 cup water."
+        },
+        "pulver": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "csu",
+          "merknad": "Broth, beef or chicken | 1 cup | 1 bouillon cube, 1 tsp (1 envelope) powdered broth base or 1 tsp instant granules dissolved in 1 cup water."
+        },
+        "vann": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "csu",
+          "merknad": "dissolved in 1 cup water."
+        },
+        "ndsu-kube": {
+          "verdi": 1,
+          "enhet": "bouillon cube",
+          "kilde": "ndsu",
+          "merknad": "Broth, beef or chicken | 1 cup | 1 bouillon cube dissolved in 1 cup boiling water"
+        },
+        "ndsu-pulver": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "ndsu",
+          "merknad": "1 teaspoon powdered broth base dissolved in 1 cup boiling water"
+        },
+        "ndsu-vann": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "ndsu",
+          "merknad": "1 teaspoon powdered broth base dissolved in 1 cup boiling water"
+        },
+        "ndsu-hermetikk": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "ndsu",
+          "merknad": "1 cup canned or homemade chicken broth or stock"
+        }
+      }
+    },
+    {
+      "id": "vanilla",
+      "slug": "vanilla-extract",
+      "navn": "Vanilla extract",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "bonne": {
+          "verdi": 0.5,
+          "enhet": "bean",
+          "kilde": "csu",
+          "merknad": "Vanilla bean | 1/2 bean | 1 Tbsp vanilla extract."
+        },
+        "ekstrakt": {
+          "verdi": 1,
+          "enhet": "tablespoon",
+          "kilde": "csu",
+          "merknad": "Vanilla bean | 1/2 bean | 1 Tbsp vanilla extract."
+        },
+        "ndsu-ekstrakt": {
+          "verdi": 1,
+          "enhet": "teaspoon",
+          "kilde": "ndsu",
+          "merknad": "Vanilla extract | 1 teaspoon | 1-inch vanilla bean split and simmered in liquid of recipe"
+        },
+        "ndsu-bit": {
+          "verdi": 1,
+          "enhet": "inch",
+          "kilde": "ndsu",
+          "merknad": "Vanilla extract | 1 teaspoon | 1-inch vanilla bean split and simmered in liquid of recipe"
+        }
+      }
+    }
+  ]
+}
