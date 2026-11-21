@@ -46,12 +46,12 @@ const tidsrader = [
     `Stek köttbullar och frys in dem. Den 6 december lägger ${arla('arla-planering')} det i sin julplanering.${tekst('arla-6dec')} ${arla('arla-utanstress')} föreslår att du bygger upp ett lager i frysen med köttbullar och vegetarisk Jansson.${tekst('arla-forsta')}`,
     'Räkna ut mängderna med tabellerna längre ned och skriv inköpslistan.')],
   ['En vecka före, torsdag 17 december', ul(
-    `Lägg en termometer i kylskåpet. ${lv('lv-kylvaror')} anger ${t('kylskap')} som lämplig kylskåpstemperatur. Gör plats, för ett julbord fyller mycket.`,
+    `Lägg en termometer i kylskåpet. ${lv('lv-kylvaror')} anger ${t('kylskap')} som lämplig kylskåpstemperatur. Gör plats i kylen, för ett julbord tar stor plats.`,
     'Handla det som håller sig: dryck, torrvaror och bröd. Spara det färska till de sista dagarna.')],
-  ['Dan före dan, tisdag 22 december', ul(
+  ['Tisdag 22 december', ul(
     `Den 22 december föreslår ${arla('arla-planering')} att du gör i ordning julskinkan och griljerar den.${tekst('arla-22')} Hur länge skinkan behöver i ugnen står på <a href="/sv/tillagningstid/julskinka/">tillagningstid för julskinka</a>.`,
     `${arla('arla-julbord')} skriver att skinkan serveras med en god senap.${tekst('arla-skinka-senap')}`)],
-  ['Dan före dopparedan, onsdag 23 december', ul(
+  ['Dan före dan, onsdag 23 december', ul(
     `Gör Janssons frestelse. ${arla('arla-planering')} skriver att den smakar bäst om du gör den dagen innan och värmer upp den på julafton med en skvätt grädde.${tekst('arla-23')}`,
     `Låt den svalna innan den går in i kylen. ${lv('lv-avsvalning')} säger att mat i volymer under ${t('halvliter')} kan ställas in direkt i kylen även om den är lite varm.${tekst('lv-delaupp')} Större volymer kan svalna i ett kallt vattenbad.${tekst('lv-svalna')}`)],
   ['Julafton, torsdag 24 december', ul(
@@ -74,12 +74,12 @@ const mangder = p(`${sk('sk-servera')} räknar med ${t('buffe-rad')} per portion
   + tabell(['Rätt', 'Per person', `${GAESTER_RATTER[0]} gäster`, `${GAESTER_RATTER[1]} gäster`, 'Källa'], RATTER.map(rattRad))
   + p(`Vi hittade ingen svensk källa som anger en mängd för just köttbullar, prinskorv, revbensspjäll och sill. Därför visar tabellen tumregeln för proteinrätter på en buffé, ${t('buffe-rad')} per rätt. Det är en startpunkt, inte en uppgift om just den rätten. Vill du ha fler siffror om kött, se <a href="/sv/hur-mycket-per-person/kott/">hur mycket kött per person</a> och <a href="/sv/hur-mycket-per-person/korv/">hur mycket korv per person</a>.`)
   + '<h3>Om julskinkan är huvudrätten</h3>'
-  + p(`Serveras skinkan som huvudrätt vid ett bord, gäller andra tal. ${sk('sk-servera')} räknar ${t('middag-benfritt')} benfritt kött per person vid en middag, och ${t('middag-ben')} per portion för kött med ben. Ska du laga skinkan själv, säger ${sk('sk-gris')} ${t('skinka-sjalv-utan')} per person utan ben och ${t('skinka-sjalv-med')} med ben. Av färdiglagad skinka är ${t('skinka-fardig')} per person lagom, enligt samma källa. Se <a href="/sv/hur-mycket-per-person/julskinka/">hur mycket julskinka per person</a>.`)
+  + p(`Är skinkan huvudrätt vid en vanlig middag, gäller andra siffror. ${sk('sk-servera')} räknar ${t('middag-benfritt')} benfritt kött per person vid en middag, och ${t('middag-ben')} per portion för kött med ben. Ska du laga skinkan själv, säger ${sk('sk-gris')} ${t('skinka-sjalv-utan')} per person utan ben och ${t('skinka-sjalv-med')} med ben. Av färdiglagad skinka är ${t('skinka-fardig')} per person lagom, enligt samma källa. Se <a href="/sv/hur-mycket-per-person/julskinka/">hur mycket julskinka per person</a>.`)
   + '<h3>Lax på olika sätt</h3>'
   + p(`${arla('arla-lax')} skriver att det beror på sammanhanget: ${t('lax-huvud')} per person som huvudrätt, ${t('lax-buffe')} som en del av en buffé och ${t('lax-forratt')} som förrätt. Se <a href="/sv/hur-mycket-per-person/lax/">hur mycket lax per person</a>.`)
   + '<h3>När du justerar</h3>'
   + ul(
-    `${arla('arla-julbord')} skriver att ett recept för fyra personer räcker till ungefär ${t('recept-buffe')}. Det är en bra påminnelse om att receptets portioner inte är samma sak som gäster vid ett julbord.`,
+    `${arla('arla-julbord')} skriver att ett recept för fyra personer räcker till ungefär ${t('recept-buffe')}. Receptets portioner är alltså inte samma sak som gäster vid ett julbord.`,
     `Servera köttet i skivor på ett fat som gästerna tar från, så blir det mindre kvar på tallrikarna, enligt ${sk('sk-servera')}.${tekst('sk-fat')}`,
     `Potatis: ${arla('arla-potatis')} räknar med runt ${t('potatis')} per person, och skriver att det beror på hur hungriga gästerna är och hur mycket annan mat som serveras.`);
 
@@ -118,7 +118,7 @@ const avsnitt = () => [
       'Lägg recepten i <a href="/sv/veckomeny-app/">veckomenyn</a> de dagar du ska laga dem.',
       'Skicka veckomenyn till <a href="/sv/inkopslista/">inköpslistan</a>, så får du lika varor ihopslagna och sorterade efter butikens avdelningar. Varor du redan har i skafferiet är bortvalda och märkta «I skafferiet».',
       'Lägg in det som blir över i <a href="/sv/skafferi-app/">skafferiet</a>, med bäst före-datum, så ser du vad som bör användas först.')
-    + p('Matlyst varnar inte för när du ska laga vad. Skriv tiderna i anteckningarna på receptet, eller använd tidslinjen ovan. Ska du också laga nyårsmiddag? Se <a href="/sv/nyarsmiddag/">planen för nyårsmiddagen</a>.')],
+    + p('Matlyst skickar inga påminnelser om när du ska laga vad. Skriv tiderna i anteckningarna på receptet, eller använd tidslinjen ovan. Ska du också laga nyårsmiddag? Se <a href="/sv/nyarsmiddag/">planen för nyårsmiddagen</a>.')],
   ['Källor och siffror',
     KILDEINTRO + s.kilderListe()
     + p('Hittade du ett fel, eller har en källa ändrats? Skriv till <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>, så rättas sidan och datumet uppdateras.')],

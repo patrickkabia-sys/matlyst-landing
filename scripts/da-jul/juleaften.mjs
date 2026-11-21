@@ -37,7 +37,7 @@ const tidsrader = [
   ['Tre uger før, torsdag 3. december', ul(
     `Vælg menuen: and, flæskesteg eller begge dele. ${tk('taenk-jul')} skriver, at mange serverer begge dele juleaften, men at du kan overveje, om I behøver begge.${tekst('taenk-begge')} Vælger du begge, skal du regne med kød til overs.${tekst('taenk-tilovers')}`,
     `Lav en indkøbsliste, og tjek først, hvad du har i køkkenskabe, køleskab og fryser, ifølge ${tk('taenk-jul')}.${tekst('taenk-liste')}${tekst('taenk-tjek')}`,
-    'Bestil kødet, og køb det, der kan ligge: tørvarer, drikkevarer og dessertens tørre ingredienser.')],
+    'Bestil kødet, og køb det, der kan holde sig: tørvarer, drikkevarer og dessertens tørre ingredienser.')],
   ['En uge før, torsdag 17. december', ul(
     `Læg et termometer i køleskabet. ${fvst('fvst-koel')} skriver, at køleskabet skal holde højst ${t('fvst-kjol')}, og at du skal tjekke temperaturen jævnligt.${tekst('fvst-tjek')}`,
     `Ryd plads, for ${fvst('fvst-koel')} skriver, at køleskabet ikke skal overfyldes.${tekst('fvst-overfyld')}`)],
@@ -83,11 +83,11 @@ const stegetider = '<h3>And</h3>'
   + p(`${mv('mv-flaesk')} steger en svinekam på ${t('fl-vaegt')} i ${t('fl-tid')} ved ${t('fl-temp')}. Efter ${t('fl-sky')} hældes skyen fra til sovs, og stegen er færdig ved en kernetemperatur på ${t('fl-kerne')}. Den hviler ${t('fl-hvile')} utildækket, så sværen holder sig sprød.${tekst('fl-utildaekt')} Sværen skal ligge vandret.${tekst('fl-vandret')}`)
   + tabell(['Steg', 'Ovn', 'Stegetid', 'Hvile', `I ovnen senest, hvis I spiser ${kl(MIDDAG_MIN)}`], [[`Svinekam på ${t('fl-vaegt')}`, t('fl-temp'), t('fl-tid'), t('fl-hvile'), kl(FLAESK_START)]])
   + p(`Tabellen hos ${mv('mv-kerne')} har andre tal: ${t('tab-fl-tid')} ved ${t('tab-fl-ovn')}, kernetemperatur ${t('tab-fl-kerne')} og hvile ${t('tab-fl-hvile')}. ${mv('mv-flaesk')} skriver selv, at en større steg ikke nødvendigvis skal have længere tid i direkte forhold til vægten.${tekst('fl-vaegt-tid')} Brug derfor et stegetermometer og mål i den tykkeste del af kødet.${tekst('tab-termo')} Stegetiden er kun vejledende.${tekst('tab-vejl')}`)
-  + p('Steger du både and og flæskesteg, har de forskellige ovntemperaturer i kilderne, og kilderne beskriver dem hver for sig. Planlæg ovnen selv efter det.')
+  + p('Steger du både and og flæskesteg, bruger kilderne forskellige ovntemperaturer og beskriver stegene hver for sig. Hvordan du fordeler ovnen, må du selv planlægge.')
   + p('Læs også <a href="/da/stegetid/and/">stegetid for and</a>, <a href="/da/stegetid/flaeskesteg/">stegetid for flæskesteg</a>, <a href="/da/kernetemperatur/and/">kernetemperatur for and</a> og <a href="/da/kernetemperatur/flaeskesteg/">kernetemperatur for flæskesteg</a>.');
 
 const liste = `<ul>
-<li><strong>Kød:</strong> and og svinekam til flæskesteg. Den hele and kan være frossen, og den skal så tø op i køleskabet.</li>
+<li><strong>Kød:</strong> and og svinekam til flæskesteg. Køber du en frossen and, skal den tø op i køleskabet.</li>
 <li><strong>Tilbehør:</strong> kartofler til kogning og til brunede kartofler, rødkål og det, du bruger til sovsen.</li>
 <li><strong>Til brunede kartofler:</strong> sukker og smør.</li>
 <li><strong>Til anden:</strong> svesker og æbler til fyld, ifølge ${mv('mv-and')}.${tekst('and-fyld')}</li>
@@ -101,7 +101,7 @@ const avsnitt = () => [
   ['Mængder ud fra antal gæster', maengder],
   ['Stegetid, og hvornår stegen skal i ovnen', stegetider],
   ['Indkøbsliste til juleaften',
-    p(`Handl i to omgange: først det, der kan ligge, så det friske. Listen har ingen mængder, for dem finder du i tabellerne ovenfor. I Matlyst lægger du opskrifterne på indkøbslisten, så får du alt samlet og sorteret efter afdeling.`)
+    p(`Handl i to omgange: først det, der kan holde sig, så det friske. Listen har ingen mængder, for dem finder du i tabellerne ovenfor. I Matlyst lægger du opskrifterne på indkøbslisten, så får du alt samlet og sorteret efter afdeling.`)
     + liste],
   ['Kernetemperatur, køling og rester',
     p('Fødevarestyrelsen er den danske myndighed for fødevaresikkerhed, og vi viser dens regler først.')
@@ -129,7 +129,7 @@ const avsnitt = () => [
 
 export const FAQ = [
   ['Hvor længe skal en and på tre kilo have i ovnen?', `${mv('mv-and')} regner ${t('and-3kg')} ved ${t('and-temp')}. Kernetemperaturen på ${t('and-kerne')} afgør, hvornår anden er færdig, ikke tiden.`],
-  ['Hvor længe skal en flæskesteg på halvanden kilo have?', `${mv('mv-flaesk')} steger den i ${t('fl-tid')} ved ${t('fl-temp')} og tager den ud ved ${t('fl-kerne')} i kernen. Lad den hvile ${t('fl-hvile')}.`],
+  ['Hvor længe skal en flæskesteg på halvanden kilo have i ovnen?', `${mv('mv-flaesk')} steger den i ${t('fl-tid')} ved ${t('fl-temp')} og tager den ud ved ${t('fl-kerne')} i kernen. Lad den hvile ${t('fl-hvile')}.`],
   ['Hvor meget flæskesteg pr. person til juleaften?', `${dc('dc-flaesk')} regner ${t('fl-dc')} rå flæskesteg pr. voksen til juleaften. ${arla('arla-flaesk')} regner ${t('fl-arla')} og ${mv('mv-flaesk')} regner ${t('fl-mv-min')}.`],
   ['Hvornår skal anden ud af fryseren?', `${mv('mv-opto-and')} regner ${t('opto-3')} i køleskab for en and på tre til tre og en halv kilo. ${fvst('fvst-opto')} skriver, at frosne madvarer bør tøs op i køleskabet.`],
   ['Hvilken kernetemperatur skal anden have?', `${fvst('fvst-varm')} skriver, at fjerkræ bør være helt gennemstegt. ${mv('mv-and')} går efter ${t('and-kerne')}, målt i den tykkeste del af brystet og inderst i låret.`],

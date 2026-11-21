@@ -22,7 +22,7 @@ const tidsrader = [
   ['Tre uger før', ul(
     `Fastlæg dato og antal gæster. ${tk('taenk-jul')} skriver, at du kan begrænse udvalget af retter, og at der skal være mindre af hver ret, jo flere retter du serverer.${tekst('taenk-begraens')}${tekst('taenk-faerre')}`,
     `Lav en indkøbsliste. ${tk('taenk-jul')} anbefaler at tjekke køkkenskabe, køleskab og fryser først, så du ikke køber noget, du allerede har.${tekst('taenk-liste')}${tekst('taenk-tjek')}`,
-    'Bestil det, du ikke laver selv, og køb det, der kan ligge: drikkevarer, tørvarer og brød.')],
+    'Bestil det, du ikke laver selv, og køb det, der kan holde sig: drikkevarer, tørvarer og brød.')],
   ['En uge før', ul(
     `Læg et termometer i køleskabet. ${fvst('fvst-koel')} skriver, at køleskabet skal holde højst ${t('fvst-kjol')}, og at du skal tjekke temperaturen jævnligt.${tekst('fvst-tjek')}`,
     `Ryd plads. ${fvst('fvst-koel')} skriver, at du ikke skal overfylde køleskabet, så den kolde luft kan cirkulere.${tekst('fvst-overfyld')} En buffet fylder meget.`)],
@@ -60,7 +60,7 @@ const liste = `<ul>
 <li><strong>Kød og pålæg:</strong> frikadeller, sylte, leverpostej og pålæg. ${mv('mv-julemad')} nævner dem som almindelige til julefrokost.${tekst('jul-frokost')}</li>
 <li><strong>Fisk:</strong> sild.</li>
 <li><strong>Brød og smør:</strong> rugbrød og smør.</li>
-<li><strong>Tilbehør:</strong> kartofler, salat og grøntsager og sovs.</li>
+<li><strong>Tilbehør:</strong> kartofler, salat, grøntsager og sovs.</li>
 <li><strong>Dessert:</strong> det, du selv vil servere.</li>
 <li><strong>Drikkevarer og pynt:</strong> det, du selv vil have på bordet.</li></ul>`;
 
@@ -70,7 +70,7 @@ const avsnitt = () => [
     + tidslinje],
   ['Mængder ud fra antal gæster', maengder],
   ['Indkøbsliste til julefrokosten',
-    p(`Handl i to omgange: først det, der kan ligge, så det friske. ${tk('taenk-jul')} anbefaler en indkøbsliste.${tekst('taenk-liste')} Listen har ingen mængder, for dem finder du i tabellerne ovenfor. I Matlyst lægger du dine opskrifter på indkøbslisten, så får du alt samlet og sorteret efter afdeling.`)
+    p(`Handl i to omgange: først det, der kan holde sig, så det friske. ${tk('taenk-jul')} anbefaler en indkøbsliste.${tekst('taenk-liste')} Listen har ingen mængder, for dem finder du i tabellerne ovenfor. I Matlyst lægger du dine opskrifter på indkøbslisten, så får du alt samlet og sorteret efter afdeling.`)
     + liste],
   ['Køling, varmholdning og rester',
     p('Reglerne her gælder alt, du sætter frem. Fødevarestyrelsen er den danske myndighed for fødevaresikkerhed, og vi viser dens regler først.')
@@ -101,13 +101,13 @@ export const FAQ = [
   ['Hvor mange retter skal en julefrokost have?', `${tk('taenk-jul')} skriver, at du kan begrænse udvalget, og at der skal være mindre af hver ret, jo flere retter du har.`],
   ['Hvor længe kan resterne holde sig?', `${tk('taenk-hold')} skriver ${t('taenk-rester')} for tilberedt kød i køleskab, hvis det er varmet grundigt igennem og kølet hurtigt ned. ${fvst('fvst-koel')} skriver, at rester skal i køleskab ved højst ${t('fvst-kjol')}.`],
   ['Hvilken temperatur skal køleskabet have?', `${fvst('fvst-koel')} skriver højst ${t('fvst-kjol')}. Læg et termometer i køleskabet og tjek det jævnligt.`],
-  ['Hvordan får jeg frikadeller og medisterpølse sikkert varmet?', `${fvst('fvst-varm')} skriver, at hakket kød som medisterpølse og frikadeller skal gennemvarmes, og at varm mad skal være rygende og gennemvarm.`],
+  ['Hvordan varmer jeg frikadeller og medisterpølse sikkert op?', `${fvst('fvst-varm')} skriver, at hakket kød som medisterpølse og frikadeller skal gennemvarmes, og at varm mad skal være rygende og gennemvarm.`],
   ['Giver Matlyst opskrifter eller tider til julefrokosten?', 'Nej. Du gemmer de opskrifter, du selv bruger, skalerer dem til antal gæster og sender ingredienserne til én indkøbsliste.'],
 ];
 
-const TITTEL = 'Julefrokost derhjemme: plan, mængder, indkøbsliste';
+const TITTEL = 'Julefrokost derhjemme: plan, mængder og indkøb';
 const BESKRIVELSE = 'Julefrokost derhjemme fra tre uger før: tidslinje, mængder pr. gæst til buffet, indkøbsliste og køling. Alle tal har kilde og dato.';
-const H1 = 'Julefrokost derhjemme: plan, mængder og indkøbsliste';
+const H1 = 'Julefrokost derhjemme: plan, mængder og indkøb';
 
 const svarTekst = `Regn ${t('g-kod')} kød uden ben pr. voksen til en buffet, fordelt på retterne, så det med tre slags kød bliver ${t('g-buffet')} af hver. Hold maden i køleskab ved højst ${t('fvst-kjol')}, og gem resterne hurtigt på køl. Alle mængder og tider er vejledende, og hvert tal har en kilde nederst på siden.`;
 const seksjoner = avsnitt();
@@ -126,7 +126,7 @@ export const side = {
   steg: [
     ['Vælg dato og antal gæster', 'Buffet med kolde og varme retter.'],
     ['Følg tidslinjen', 'Lav det, der kan laves i forvejen, og hold koldt koldt.'],
-    ['Handl fra to lister', 'Først det, der kan ligge, så det friske.'],
+    ['Handl fra to lister', 'Først det, der kan holde sig, så det friske.'],
   ],
   alternativ: '',
   grense: '',

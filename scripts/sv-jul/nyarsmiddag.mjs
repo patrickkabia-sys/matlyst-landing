@@ -36,7 +36,7 @@ rad('kalkon-tid');
 
 const tidsrader = [
   ['Måndag 28 december, tre dagar före', ul(
-    `Ta kalkonen ur frysen om den är fryst. ${lv('lv-frysa')} säger att du kan tina maten i kylskåp eller i ett kallt vattenbad, och att upptinad mat ska förvaras kallt om du inte ska tillaga den direkt.${tekst('lv-tina')}${tekst('lv-tina-kallt')} Källorna vi läste anger ingen tid för att tina en hel kalkon, så vi anger ingen heller.`,
+    `Är kalkonen fryst, behöver den tid att tina. ${lv('lv-frysa')} säger att du kan tina maten i kylskåp eller i ett kallt vattenbad, och att upptinad mat ska förvaras kallt om du inte ska tillaga den direkt.${tekst('lv-tina')}${tekst('lv-tina-kallt')} Källorna vi läste anger ingen tid för att tina en hel kalkon, så följ förpackningen.`,
     `${sf('sf-jul')} räknar i sitt recept med en tinad kalkon på ${t('kalkon-recept')}, som räcker till ${t('kalkon-portioner')}. Det är receptets eget exempel, inte en regel för alla kalkoner.`)],
   ['Tisdag 29 december', ul(
     `${arla('arla-planering')} föreslår att du planerar nyårsmiddagen och lägger champagnen på kylning den 29 december.${tekst('arla-nyar-29')}`,
@@ -47,7 +47,7 @@ const tidsrader = [
     `Förvara den upptinade kalkonen kallt tills du ska tillaga den.${tekst('lv-tina-kallt')} Dukning och dryck kan du ta hand om nu.`)],
   ['Nyårsafton, torsdag 31 december', ul(
     `Sätt in kalkonen nederst i ugnen i ${t('kalkon-start')}. Sänk sedan värmen till ${t('kalkon-temp')}, och räkna med ${t('kalkon-kilo')}, enligt ${sf('sf-jul')}. Receptet låter den steka vidare i ${t('kalkon-tid')} efter starten.`,
-    `Ska maten stå på bordet kl. 18.00, och kalkonen väger fyra kilo, måste den alltså in i ugnen ${kl(inIUgn(4))}. Räknat så: middagstid minus vilotid minus steketid, där steketiden är starten plus tiden per kilo. Väger den fem kilo blir det ${kl(inIUgn(5))}.`,
+    `Ska maten stå på bordet kl. 18.00 och kalkonen väger fyra kilo, ska den in i ugnen ${kl(inIUgn(4))}. Det har vi räknat ut själva efter Svensk Fågels regel: middagstid minus vilotid minus steketid, där steketiden är starten plus tiden per kilo. För en kalkon på fem kilo ger samma uträkning ${kl(inIUgn(5))}. Receptet anger ingen tid för fem kilo.`,
     `Täck med aluminiumfolie om skinnet börjar få mycket färg.${tekst('sf-folie')} Ta ut kalkonen vid ${t('kalkon-ut')}, och låt den vila i minst ${t('kalkon-vila')} innan du skär den.`,
     `Inkråmet från kalkonen kan användas till sås eller buljong, enligt ${sf('sf-jul')}.${tekst('sf-inkrav')} Vill du värma köttet efter vilan, kan det värmas försiktigt under folie i ugnen vid ${t('kalkon-temp')} före serveringen.${tekst('sf-varma')}`,
     `${arla('arla-planering')} föreslår att du skålar in det nya året med krutonger med friterad grönkål och löjrom.${tekst('arla-nyar-31')}`,
@@ -67,13 +67,13 @@ const mangder = p(`${sk('sk-servera')} räknar vid en middagsbjudning ${t('midda
   + tabell(['Gäster', 'Gravad lax som förrätt', 'Kokt potatis'], GAESTER.map(tillbehorRad))
   + p('Läs mer: <a href="/sv/hur-mycket-per-person/lax/">hur mycket lax per person</a>, <a href="/sv/hur-mycket-per-person/potatis/">hur mycket potatis per person</a> och <a href="/sv/hur-mycket-per-person/kott/">hur mycket kött per person</a>.');
 
-const steking = p(`${sf('sf-jul')} räknar med ${t('kalkon-start')} nederst i ugnen, sedan ${t('kalkon-temp')} varmluft och ${t('kalkon-kilo')}. Tabellen räknar ut tiden för en kalkon på fyra och fem kilo. Receptet gäller en kalkon på ${t('kalkon-recept')}, så fem kilo är ett exempel som följer samma regel, inte en uppgift från receptet.`)
+const steking = p(`${sf('sf-jul')} räknar med ${t('kalkon-start')} nederst i ugnen, sedan ${t('kalkon-temp')} varmluft och ${t('kalkon-kilo')}. Tiderna i tabellen har vi räknat ut själva med den regeln, för en kalkon på fyra och fem kilo. Receptet gäller en kalkon på ${t('kalkon-recept')}, så raden för fem kilo är vår uträkning, inte en uppgift från receptet.`)
   + tabell(['Vikt', 'Efter starten', 'Totalt med start', 'In i ugnen för middag kl. 18.00, med vila'], VIKTER.map(stekRad))
   + p('Se också <a href="/sv/tillagningstid/kalkon/">tillagningstid för kalkon</a>, där flera källor står sida vid sida.');
 
 const kjerne = p(`Här är källorna inte helt överens, så vi visar alla. Livsmedelsverkets sidor som vi använder på den här sidan, om kyla, tining och rester, anger ingen innertemperatur för kalkon. Den här delen bygger därför på Svensk Fågel och Arla.`)
   + ul(
-    `${sf('sf-jul')} säger att kalkonen är klar när saften från lårköttet är genomskinlig och innertemperaturen har nått ${t('kalkon-klar')}.${tekst('sf-saft')} Ta gärna ut den vid ${t('kalkon-ut')}, eftersom köttet fortsätter att tillagas under vilan.`,
+    `${sf('sf-jul')} säger att kalkonen är klar när saften från lårköttet är genomskinlig och innertemperaturen har nått ${t('kalkon-klar')}.${tekst('sf-saft')} Du kan ta ut den redan vid ${t('kalkon-ut')}, enligt samma recept.`,
     `${sf('sf-hellberg')} skriver i Christian Hellbergs recept att temperaturen ska vara ${t('kalkon-hellberg')} inne vid lårbenet.`,
     `${arla('arla-kalkon')} skriver ${t('kalkon-arla')} intill lårbenet.`)
   + p('Siffrorna är inte lika, och vi avgör inte vilken som gäller för din kalkon. Läs källorna längst ned på sidan. Se också <a href="/sv/innertemperatur/kalkon/">innertemperatur för kalkon</a>.');
@@ -104,7 +104,7 @@ const avsnitt = () => [
       'Lägg recepten i <a href="/sv/veckomeny-app/">veckomenyn</a> de dagar du ska laga dem.',
       'Skicka veckomenyn till <a href="/sv/inkopslista/">inköpslistan</a>, så får du lika varor ihopslagna och sorterade efter butikens avdelningar. Varor du redan har i skafferiet är bortvalda och märkta «I skafferiet».',
       'Lägg in det som blir över i <a href="/sv/skafferi-app/">skafferiet</a>, med bäst före-datum, så ser du vad som bör användas först.')
-    + p('Matlyst varnar inte för tining eller steketider. Skriv tiderna i anteckningarna på receptet, eller använd tidslinjen ovan. Ska du också laga julbord? Se <a href="/sv/julbord/">planen för julbordet</a>.')],
+    + p('Matlyst skickar inga påminnelser om tining eller steketider. Skriv tiderna i anteckningarna på receptet, eller använd tidslinjen ovan. Ska du också laga julbord? Se <a href="/sv/julbord/">planen för julbordet</a>.')],
   ['Källor och siffror',
     KILDEINTRO + s.kilderListe()
     + p('Hittade du ett fel, eller har en källa ändrats? Skriv till <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>, så rättas sidan och datumet uppdateras.')],

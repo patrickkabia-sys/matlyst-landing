@@ -61,7 +61,7 @@ for (const { sti, nb, sv, mod } of SIDER) {
     assert.deepEqual(gruppe.sider, nb ? { nb, sv, da: sti } : { da: sti });
     assert.deepEqual(alternativerFor(sti), nb ? [['nb-NO', nb], ['sv-SE', sv], ['da-DK', sti], ['x-default', nb]] : [['da-DK', sti], ['x-default', sti]]);
     if (!nb) assert.doesNotMatch(html, /hreflang="nb-NO"/u);
-    for (const mappe of ['sv', 'en']) assert.doesNotMatch(les(`sitemap-${mappe}.xml`), new RegExp(`/da/${sti.split('/')[2]}/`));
+    for (const mappe of ['sv', 'en']) assert.doesNotMatch(les(`sitemap-${mappe}.xml`), new RegExp(`<loc>https://matlyst-app\\.no${sti}</loc>`, 'u'));
     assert.match(les('sitemap-da.xml'), new RegExp(`<loc>https://matlyst-app\\.no${sti}</loc>\\s*<lastmod>2026-11-2\\d</lastmod>`, 'u'));
     assert.ok(les('llms.txt').includes(`(https://matlyst-app.no${sti})`));
     if (nb) assert.match(html, new RegExp(`hreflang="nb-NO" href="https://matlyst-app\\.no${nb}"`, 'u'));

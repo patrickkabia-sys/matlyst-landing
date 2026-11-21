@@ -147,7 +147,7 @@ for (const { sti, nb, da, mod } of SIDER) {
 
   test(`${sti}: Matlyst-påståendena är bara det appen gör, och länkarna går till sidor som finns`, () => {
     assert.match(prosa, /Matlyst ger dig inga recept och inga/u);
-    assert.match(prosa, /Matlyst varnar inte för/u);
+    assert.match(prosa, /Matlyst skickar inga påminnelser om/u);
     assert.match(prosa, /fotoimport är en funktion i Matlyst Pro/u);
     assert.doesNotMatch(prosa, /Matlyst (?:påminner|varnar dig|skapar (?:en )?(?:meny|plan)|föreslår)/u);
     for (const lank of ['/sv/veckomeny-app/', '/sv/inkopslista/', '/sv/skafferi-app/', '/sv/hallbarhet/matrester/', '/sv/frysa/matrester/']) assert.ok(hoved.includes(`href="${lank}"`), lank);
@@ -212,10 +212,13 @@ test('julbord: tidslinjens veckodagar stämmer med 2026, och julafton är en tor
   const html = readFileSync(join(ROOT, 'sv/julbord/index.html'), 'utf8');
   const dag = ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag'];
   assert.equal(new Date(Date.UTC(2026, 11, 24)).getUTCDay(), 4, 'julafton 2026 är torsdag');
-  for (const [d, rubrik] of [[6, 'Tidigt i december, till exempel'], [17, 'En vecka före,'], [22, 'Dan före dan,'], [23, 'Dan före dopparedan,'], [24, 'Julafton,']]) {
+  // «Dan före dan» är 23 december (SO: «dagen före julafton»), inte 22 december.
+  for (const [d, rubrik] of [[6, 'Tidigt i december, till exempel '], [17, 'En vecka före, '], [22, ''], [23, 'Dan före dan, '], [24, 'Julafton, ']]) {
     const v = dag[new Date(Date.UTC(2026, 11, d)).getUTCDay()];
-    assert.match(html, new RegExp(`<h3>${rubrik} ${v} ${d} december</h3>`, 'u'), rubrik);
+    const vis = rubrik ? `${rubrik}${v}` : v[0].toUpperCase() + v.slice(1);
+    assert.match(html, new RegExp(`<h3>${vis} ${d} december</h3>`, 'u'), `${d} december`);
   }
+  assert.doesNotMatch(html, /dopparedan/u);
 });
 
 test('nyårsmiddag: mängder, steketid och tidslinje är uträknade oberoende, och datumen stämmer med veckodagarna 2026', () => {
@@ -230,8 +233,11 @@ test('nyårsmiddag: mängder, steketid och tidslinje är uträknade oberoende, o
   assert.equal(DATA.tall['kalkon-kilo'].min, 30);
   assert.equal(DATA.tall['kalkon-vila'].min, 30);
   assert.equal(18 * 60 - 30 - (20 + 4 * 30), 15 * 60 + 10);
-  assert.match(synlig(html), /måste den alltså in i ugnen kl\. 15\.10/u);
-  assert.match(synlig(html), /Väger den fem kilo blir det kl\. 14\.40/u);
+  assert.match(synlig(html), /ska den in i ugnen kl\. 15\.10/u);
+  assert.match(synlig(html), /För en kalkon på fem kilo ger samma uträkning kl\. 14\.40/u);
+  // Femkilostiden är vår egen uträkning efter Svensk Fågels regel, och sidan säger det rakt ut.
+  assert.match(synlig(html), /Det har vi räknat ut själva efter Svensk Fågels regel/u);
+  assert.match(synlig(html), /raden för fem kilo är vår uträkning, inte en uppgift från receptet/u);
   const nyarsafton = new Date(Date.UTC(2026, 11, 31));
   assert.equal(nyarsafton.getUTCDay(), 4, 'nyårsafton 2026 är torsdag');
   const dag = ['söndag', 'måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag'];
