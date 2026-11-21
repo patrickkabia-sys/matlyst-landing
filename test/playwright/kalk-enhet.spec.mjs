@@ -84,3 +84,36 @@ test('skjema uten varer settes opp', async ({ page }) => {
     await expect(svar(page, id), id).not.toHaveText('');
   }
 });
+
+// Kortet uten varerad: ingen vannrett rulling og ingen trykkflate under 44 px, også med det lengste enhetsnavnet (#lang).
+for (const bredde of [360, 390, 1280]) {
+  test(`trykkflater minst 44 px og ingen sidelengs rulling på ${bredde} px, også med lange enhetsnavn`, async ({ page }) => {
+    await page.setViewportSize({ width: bredde, height: 800 });
+    await page.goto(FIKSTUR);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), 'sidelengs rulling').toBe(true);
+    const smaa = await page.evaluate(() => [...document.querySelectorAll('form.kalk input, form.kalk select, form.kalk button')]
+      .map((e) => [e.closest('form').id, e.getAttribute('data-felt') || e.textContent.trim(), Math.round(e.getBoundingClientRect().height)])
+      .filter(([, , h]) => h < 44));
+    expect(smaa, 'trykkflater under 44 px').toEqual([]);
+    // Det lange navnet avkortes med ellipse i stedet for å bryte raden eller kortet.
+    const lang = await page.evaluate(() => {
+      const kort = document.querySelector('#lang').getBoundingClientRect();
+      return [...document.querySelectorAll('#lang .kalkenhet')].map((e) => {
+        const r = e.getBoundingClientRect();
+        return { inne: r.left >= kort.left - 1 && r.right <= kort.right + 1, ellipse: getComputedStyle(e.querySelector('select')).textOverflow };
+      });
+    });
+    for (const l of lang) { expect(l.inne, 'enhetsvalget ligger innenfor kortet').toBe(true); expect(l.ellipse).toBe('ellipsis'); }
+  });
+}
+
+test('kortet uten varerad har ikke tom luft øverst', async ({ page }) => {
+  // Første barn er selve raden: ingen skjult eller tom blokk over den, og polstringen er kortets egen.
+  const topp = await page.evaluate(() => {
+    const kort = document.querySelector('#volum');
+    const rad = kort.querySelector('.kalkrad');
+    return { forste: kort.firstElementChild === rad, avstand: Math.round(rad.getBoundingClientRect().top - kort.getBoundingClientRect().top), polstring: parseFloat(getComputedStyle(kort).paddingTop) };
+  });
+  expect(topp.forste).toBe(true);
+  expect(topp.avstand).toBe(topp.polstring);
+});

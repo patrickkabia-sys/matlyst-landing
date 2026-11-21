@@ -2,6 +2,8 @@
 // Alle faktorer er definisjoner, ikke målinger: US-enheter fra den amerikanske definisjonen
 // (1 US gallon = 3,785411784 liter, 1 pound = 0,45359237 kg, 1 inch = 2,54 cm).
 // Volum regnes via milliliter, vekt via gram, lengde via millimeter. Temperatur har egne formler.
+import { esc, kalkSkjelett, presisTekst } from './kalk-kort.mjs';
+
 export const GRUPPER = {
   volum: { base: 'ml', navn: { en: 'volume' } },
   vekt: { base: 'g', navn: { en: 'weight' } },
@@ -49,12 +51,10 @@ export function konverter(verdi, fra, til) {
   return verdi * a.f / b.f;
 }
 
-/** Tall til visning: opptil 4 gjeldende sifre, uten unødvendige nuller. */
+/** Tall til visning: fire gjeldende sifre, 1000 og over som heltall, uten unødvendige nuller og uten tak på desimaler (punktum; generatorene setter komma selv). Samme regel som kalkulatorkortet (presisTekst). */
 export function tall(n) {
   if (!Number.isFinite(n)) return '';
-  const abs = Math.abs(n);
-  const d = abs >= 1000 ? 0 : abs >= 100 ? 1 : abs >= 10 ? 2 : abs >= 1 ? 3 : abs >= 0.1 ? 4 : 5;
-  return String(Number(n.toFixed(d)));
+  return presisTekst(n, 4);
 }
 
 /** Enheter som finnes på et språk (nordiske husholdningsmål finnes bare der de brukes). */
@@ -97,4 +97,80 @@ export function omregnerData(lang, f, temperatur) {
 export function ordFor(lang, id, v) {
   const form = FLERTALL[lang]?.[id];
   return form ? form[Math.abs(Number(tall(v))) === 1 ? 0 : 1] : ENHETER[id][lang].kort;
+}
+
+// Kalkulatorkortet for enhetsomregnerne (data-kalk="enhet"). Siden skriver alt synlig tekst fra disse dataene; site.js har ingen språkstrenger.
+
+/** Hurtigmengdene (seks per enhet, stigende). Tallene skrives med språkets desimaltegn i kortet. */
+export const HURTIG = {
+  ml: [50, 100, 150, 250, 500, 1000], cl: [1, 2, 4, 10, 33, 75], dl: [0.5, 1, 2, 3, 5, 10], l: [0.5, 1, 1.5, 2, 3, 5], krm: [1, 2, 3, 4, 5, 10],
+  ts: [0.5, 1, 2, 3, 4, 5], tsk: [0.5, 1, 2, 3, 4, 5], ss: [0.5, 1, 2, 3, 4, 6], msk: [0.5, 1, 2, 3, 4, 6], spsk: [0.5, 1, 2, 3, 4, 6],
+  tsp: [0.25, 0.5, 1, 2, 3, 4], tbsp: [0.5, 1, 2, 3, 4, 8], oz: [1, 2, 4, 8, 12, 16], cups: [0.25, 0.5, 1, 2, 3, 4], pints: [0.5, 1, 2, 3, 4, 8],
+  quarts: [0.5, 1, 2, 3, 4, 6], gallons: [0.25, 0.5, 1, 2, 3, 5],
+  g: [50, 100, 150, 250, 500, 1000], kg: [0.25, 0.5, 1, 1.5, 2, 5], 'oz-vekt': [1, 2, 4, 8, 12, 16], lb: [0.25, 0.5, 1, 2, 3, 5],
+  mm: [1, 2, 5, 10, 20, 30], cm: [5, 10, 18, 20, 24, 30], inches: [1, 6, 8, 9, 10, 12],
+  c: [100, 150, 180, 200, 220, 250], f: [300, 325, 350, 375, 400, 450],
+};
+/** Brøker som hurtigmengder på engelsk (amerikanske oppskrifter), for cups, tbsp og tsp. */
+export const HURTIG_BROK = {
+  cups: ['1/4', '1/3', '1/2', '1', '2', '4'], tbsp: ['1/2', '1', '2', '3', '4', '8'], tsp: ['1/4', '1/2', '1', '2', '3', '4'],
+};
+/** Startmengden i kortet. Alle andre enheter starter på 1. */
+export const START = { c: 180, f: 350 };
+
+/** Etikettene i kortet per språk. `aria` får enhetsnavnene (ENHETER[id][lang]). */
+export const KORT_ETIKETTER = {
+  nb: { aria: (F, T) => `Kalkulator: ${F.fl} til ${T.fl}`, mengde: 'Mengde', fra: 'Fra', til: 'Til', bytt: 'Bytt enheter', vanlige: 'Vanlige mengder', feil: 'Skriv inn en mengde, for eksempel 2 eller 2,5.' },
+  // oppgave 4: sv og da skrives på eget språk; nb-verdiene står midlertidig.
+  sv: { aria: (F, T) => `Kalkulator: ${F.fl} til ${T.fl}`, mengde: 'Mengde', fra: 'Fra', til: 'Til', bytt: 'Bytt enheter', vanlige: 'Vanlige mengder', feil: 'Skriv inn en mengde, for eksempel 2 eller 2,5.' }, // oppgave 4
+  da: { aria: (F, T) => `Kalkulator: ${F.fl} til ${T.fl}`, mengde: 'Mengde', fra: 'Fra', til: 'Til', bytt: 'Bytt enheter', vanlige: 'Vanlige mengder', feil: 'Skriv inn en mengde, for eksempel 2 eller 2,5.' }, // oppgave 4
+  en: { aria: (F, T) => `Calculator: ${F.fl} to ${T.fl}`, mengde: 'Amount', fra: 'From', til: 'To', bytt: 'Swap units', vanlige: 'Common amounts', feil: 'Enter an amount, for example 2 or 1/2.' },
+};
+
+const storBokstav = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+// Samme regel som site.js: entall for nøyaktig 1, og for en ekte brøk under 1 skrevet som brøk («1/2»).
+const erEntall = (v) => {
+  const m = /^(\d+)\/(\d+)$/u.exec(v);
+  return m ? Number(m[1]) < Number(m[2]) : Number(String(v).replace(',', '.')) === 1;
+};
+
+/**
+ * Ferdig kalkulatorkort (form.kalk, data-kalk="enhet") for en enhetsomregner: enhetene i gruppen til `fra` (eller `ids`, for samlesidene),
+ * uten varerad. Mengden står ved bytte, svaret har fire gjeldende sifre, og temperatur er affin og kan være negativ. Engelsk tar brøker.
+ * Det statiske eksempelet (uten JavaScript) er det kortet selv regner ut ved lasting.
+ */
+export function enhetsKort(lang, fra, til, { ids } = {}) {
+  const gruppe = ENHETER[fra].gruppe;
+  const valg = ids ?? enheterFor(lang).filter((id) => ENHETER[id].gruppe === gruppe);
+  const komma = lang !== 'en';
+  const brok = lang === 'en';
+  const E = KORT_ETIKETTER[lang];
+  const ml = {}, g = {}, kort = {}, steg = {};
+  for (const id of valg) {
+    if (ENHETER[id].gruppe === 'vekt') g[id] = ENHETER[id].f;
+    else if (ENHETER[id].gruppe !== 'temperatur') ml[id] = ENHETER[id].f;
+    kort[id] = FLERTALL[lang]?.[id] ?? ENHETER[id][lang].kort;
+    steg[id] = brok && HURTIG_BROK[id] ? HURTIG_BROK[id] : HURTIG[id].map((n) => presisTekst(n, 4, { komma }));
+  }
+  const temperatur = gruppe === 'temperatur';
+  const data = {
+    ml, g, kort, stegFor: Object.fromEntries(valg.map((id) => [id, id])), steg, sifre: 4, beholdMengde: true,
+    ...(temperatur ? { affin: { c: [1, 0], f: [5 / 9, -160 / 9] }, negativ: true } : {}),
+    ...(brok ? { brok: true } : {}),
+    feil: E.feil,
+  };
+  const ord = (id, entall) => (Array.isArray(kort[id]) ? kort[id][entall ? 0 : 1] : kort[id]);
+  const start = START[fra] ?? 1;
+  const svar = presisTekst(konverter(start, fra, til), 4, { komma });
+  const mengde = presisTekst(start, 4, { komma });
+  return kalkSkjelett({
+    etiketter: { aria: E.aria(ENHETER[fra][lang], ENHETER[til][lang]), mengde: E.mengde, fra: E.fra, til: E.til, bytt: E.bytt, vanlige: E.vanlige },
+    enheter: valg.map((id) => [id, esc(`${storBokstav(ENHETER[id][lang].fl)} (${ENHETER[id][lang].kort})`)]),
+    fra, til, data, vareHtml: '', type: 'enhet',
+    start: {
+      mengde, svar,
+      setning: esc(`${mengde} ${ord(fra, start === 1)} = ${svar} ${ord(til, svar === '1')}`),
+      hurtig: steg[fra].map((v) => [v, esc(`${v} ${ord(fra, erEntall(v))}`)]),
+    },
+  });
 }

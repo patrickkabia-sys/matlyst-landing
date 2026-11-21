@@ -8,7 +8,7 @@
 </head>
 <body data-sidetype="omregner">
 <main id="hovedinnhold">
-<header class="locale-page-hero"><p class="eyebrow">Verktøy</p><h1 class="disp">Fikstur for enhetskortet</h1><p class="lead">Fire skjemaer uten varerad.</p>
+<header class="locale-page-hero"><p class="eyebrow">Verktøy</p><h1 class="disp">Fikstur for enhetskortet</h1><p class="lead">Fem skjemaer uten varerad.</p>
 <form class="kalk" id="volum" data-kalk="enhet" onsubmit="return false" aria-label="Kalkulator: cups til dl">
   <div class="kalkrad">
     <div class="kalkside">
@@ -72,6 +72,22 @@
   <div class="hurtig" role="group" aria-label="Vanlige mengder"><button type="button" data-v="100">100</button><button type="button" data-v="150">150</button><button type="button" data-v="180">180</button><button type="button" data-v="200">200</button><button type="button" data-v="220">220</button><button type="button" data-v="250">250</button></div>
   <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">180 °C = 356 °F</p>
   <script type="application/json" class="kalk-data">{"ml":{},"g":{},"sifre":4,"beholdMengde":true,"stegFor":{"c":"c","f":"f"},"steg":{"c":["100","150","180","200","220","250"],"f":["300","325","350","375","400","450"]},"feil":"Skriv inn en mengde, for eksempel 2 eller 2,5.","affin":{"c":[1,0],"f":[0.5555555555555556,-17.77777777777778]},"negativ":true,"kort":{"c":"°C","f":"°F"}}</script>
+</form>
+<form class="kalk" id="lang" data-kalk="enhet" onsubmit="return false" aria-label="Kalkulator: spiseskjeer til cups">
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Mengde</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="1"></label>
+      <label class="kalkenhet"><span class="skjult">Fra</span><select data-felt="fra"><option value="tbsp" selected>Amerikanske spiseskjeer, den store skjeen (tbsp)</option><option value="tsp">Amerikanske teskjeer (tsp)</option><option value="oz">Amerikanske væskeunser (fl oz)</option><option value="cups">Cups (cup)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Bytt enheter"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">0,5</output>
+      <label class="kalkenhet"><span class="skjult">Til</span><select data-felt="til"><option value="tbsp">Amerikanske spiseskjeer, den store skjeen (tbsp)</option><option value="tsp">Amerikanske teskjeer (tsp)</option><option value="oz" selected>Amerikanske væskeunser (fl oz)</option><option value="cups">Cups (cup)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Vanlige mengder"><button type="button" data-v="0,5">0,5</button><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button><button type="button" data-v="8">8</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">1 tbsp = 0,5 fl oz</p>
+  <script type="application/json" class="kalk-data">{"ml":{"tbsp":14.78676478125,"tsp":4.92892159375,"oz":29.5735295625,"cups":236.5882365},"g":{},"sifre":4,"beholdMengde":true,"stegFor":{"tbsp":"tbsp","tsp":"tsp","oz":"oz","cups":"cups"},"steg":{"tbsp":["0,5","1","2","3","4","8"],"tsp":["0,25","0,5","1","2","3","4"],"oz":["1","2","4","8","12","16"],"cups":["0,25","0,5","1","2","3","4"]},"feil":"Skriv inn en mengde, for eksempel 2 eller 2,5.","kort":{"cups":["cup","cups"],"tbsp":"tbsp","tsp":"tsp","oz":"fl oz"}}</script>
 </form>
 </header>
 </main>
