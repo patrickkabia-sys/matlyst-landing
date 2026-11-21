@@ -6,23 +6,23 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1071**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1125**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 
 | Språk | Sider |
 |---|---:|
-| nb | 352 |
+| nb | 406 |
 | sv | 265 |
 | da | 239 |
 | en | 215 |
-| Sum | 1071 |
+| Sum | 1125 |
 
 | Sidetype | nb | sv | da | en | Sum |
 |---|---:|---:|---:|---:|---:|
 | blogg | 9 | 8 | 8 | 8 | 33 |
 | forside | 1 | 1 | 1 | 1 | 4 |
-| guide-gammel | 4 |  |  |  | 4 |
+| guide-gammel | 3 |  |  |  | 3 |
 | guide-kort | 11 | 15 | 15 | 15 | 56 |
-| guide-lang | 91 | 6 | 6 | 14 | 117 |
+| guide-lang | 146 | 6 | 6 | 14 | 172 |
 | juss | 3 | 3 | 3 | 3 | 12 |
 | omregner | 233 | 232 | 206 | 174 | 845 |
 
@@ -53,21 +53,24 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | landleys-kok | Lagre oppskrifter fra Landleys Kök | guide-kort | `/importer-fra-landleys-kok/` (1) | `/sv/landleys-kok/` (1) | `/da/landleys-kok/` (1) | `/en/landleys-kok/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
 | matprat | Lagre Matprat-oppskrifter i Matlyst | guide-gammel, guide-kort | `/importer-fra-matprat/` (1) | `/sv/matprat/` (1) | `/da/matprat/` (1) | `/en/matprat/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
 | middagsforslag | Middagstips: 22 middagsforslag til hverdagen | guide-kort | `/middagsforslag/` (1) | `/sv/vad-ska-jag-laga/` (1) | `/da/middagsforslag/` (1) | `/en/dinner-ideas/` (1) | middagssider.mjs, undersider-alle-sprak.mjs |  | 2026-11-20 |
-| oppskrifter-fra-ingredienser | Hva kan jeg lage med det jeg har? | guide-gammel, guide-kort | `/hva-kan-jeg-lage/` (1) | `/sv/recept-pa-ingredienser/` (1) | `/da/opskrifter-ud-fra-ingredienser/` (1) | `/en/recipes-by-ingredients/` (1) | undersider-alle-sprak.mjs |  | 2026-11-19 |
+| oppskrifter-fra-ingredienser | Vad kan jag laga med dessa ingredienser? | guide-kort |  | `/sv/recept-pa-ingredienser/` (1) | `/da/opskrifter-ud-fra-ingredienser/` (1) | `/en/recipes-by-ingredients/` (1) | undersider-alle-sprak.mjs |  | 2026-11-19 |
 | oppskrifts-app | Digital oppskriftsbok og oppskriftsapp | guide-lang | `/oppskriftsbok-app/` (1) | `/sv/receptbok-app/` (1) | `/da/opskrifts-app/` (1) | `/en/recipe-book-app/` (1) | da-rike-sider.mjs, en-appsider.mjs, en-rike-sider.mjs, nb-rike-sider.mjs, nordiske-appsider.mjs, sv-rike-sider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
 | personvern | Personvern: Matlyst | juss | `/personvern.html` (1) | `/sv/integritet/` (1) | `/da/privatliv/` (1) | `/en/privacy/` (1) | juridisk-tekster.mjs |  | 2026-11-19 |
 | skapere | For matskapere og bloggere | guide-gammel, guide-kort | `/skapere/` (1) | `/sv/receptskapare/` (1) | `/da/opskriftsskabere/` (1) | `/en/recipe-creators/` (1) | undersider-alle-sprak.mjs |  | 2026-11-19 |
 | slett-konto | Slett konto: Matlyst | juss | `/slett-konto.html` (1) | `/sv/radera-konto/` (1) | `/da/slet-konto/` (1) | `/en/delete-account/` (1) | juridisk-tekster.mjs |  | 2026-11-19 |
-| spiskammer | Spiskammer-app: se hva du har og lag mat av det | guide-lang | `/spiskammer-app/` (1) | `/sv/skafferi-app/` (1) | `/da/spisekammer-app/` (1) | `/en/pantry-app/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs, undersider-alle-sprak.mjs |  | 2026-11-20 |
+| spiskammer | Spiskammer-app: se hva du har og lag mat av det | guide-lang | `/spiskammer-app/` (1) | `/sv/skafferi-app/` (1) | `/da/spisekammer-app/` (1) | `/en/pantry-app/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
 | tiktok-oppskrifter | Slik lagrer du oppskrifter fra TikTok | guide-lang | `/lagre-oppskrifter-fra-tiktok/` (1) | `/sv/spara-recept-fran-tiktok/` (1) | `/da/gem-opskrifter-fra-tiktok/` (1) | `/en/import-recipes-from-tiktok/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, import-guider-lokale.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-20 |
 | tom-kjoleskapet | Tøm kjøleskapet med lagrede oppskrifter | guide-kort | `/tom-kjoleskapet/` (1) | `/sv/tom-kylskapet/` (1) | `/da/toem-koeleskabet/` (1) | `/en/empty-the-fridge/` (1) | undersider-alle-sprak.mjs |  | 2026-11-19 |
 | ukemeny | Ukemeny-app: planlegg middagene for uka | guide-kort | `/ukemeny/` (1) | `/sv/veckomeny-app/` (1) | `/da/madplan-app/` (1) | `/en/meal-plan-app/` (1) | en-appsider.mjs, nordiske-appsider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
 | vilkar | Brukervilkår: Matlyst | juss | `/vilkar.html` (1) | `/sv/villkor/` (1) | `/da/vilkaar/` (1) | `/en/terms/` (1) | juridisk-tekster.mjs |  | 2026-11-19 |
+| familie:airfryer | Airfryer: tid og temperatur for vanlig mat | guide-lang | `/airfryer/` (20) |  |  |  | scripts/familier/airfryer/ (mal-nb.mjs) | scripts/familier/airfryer/data.nb.json | 2026-11-21 |
 | familie:dl-til-gram | Dl til gram: kalkulator og tabell for 29 varer | omregner | `/verktoy/dl-til-gram/` (30) | `/sv/verktyg/dl-till-gram/` (29) | `/da/vaerktoejer/dl-til-gram/` (29) | `/en/tools/cups-to-grams/` (43) | scripts/familier/dl-til-gram/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-nordisk.mjs, mal-sv.mjs) | scripts/familier/dl-til-gram/data.da.json, scripts/familier/dl-til-gram/data.en.json, scripts/familier/dl-til-gram/data.nb.json, scripts/familier/dl-til-gram/data.sv.json | 2026-11-21 |
+| familie:erstatning | Erstatning: hva kan jeg bruke i stedet? | guide-lang | `/erstatning/` (19) |  |  |  | scripts/familier/erstatning/ (mal-nb.mjs) | scripts/familier/erstatning/data.nb.json | 2026-11-21 |
 | familie:frysing | Hvor lenge kan mat ligge i fryseren? Tabell med kilder | guide-lang | `/frysing/` (14) |  |  |  | scripts/familier/frysing/ (mal-nb.mjs) | scripts/familier/frysing/data.nb.json | 2026-11-21 |
 | familie:holdbarhet | Hvor lenge holder maten seg i kjøleskapet? Tabell med kilder | guide-lang | `/holdbarhet/` (8) |  |  |  | scripts/familier/holdbarhet/ (mal-nb.mjs) | scripts/familier/holdbarhet/data.nb.json | 2026-11-21 |
 | familie:kjernetemperatur | Kjernetemperatur: tabell for kjøtt og fisk | guide-lang | `/kjernetemperatur/` (15) |  |  |  | scripts/familier/kjernetemperatur/ (mal-nb.mjs) | scripts/familier/kjernetemperatur/data.nb.json | 2026-11-21 |
 | familie:mengde-per-person | Hvor mye mat per person? Kalkulator og tabell | guide-lang | `/mengde-per-person/` (24) |  |  |  | scripts/familier/mengde-per-person/ (mal-nb.mjs) | scripts/familier/mengde-per-person/data.nb.json | 2026-11-21 |
+| familie:rester | Hva kan jeg lage med det jeg har? | guide-lang | `/hva-kan-jeg-lage/` (16) |  |  |  | scripts/familier/rester/ (mal-nb.mjs) | scripts/familier/rester/data.nb.json | 2026-11-21 |
 | familie:steketid | Steketid: hvor lenge skal maten stekes? | guide-lang | `/steketid/` (13) |  |  |  | scripts/familier/steketid/ (mal-felles.mjs, mal-nb.mjs) | scripts/familier/steketid/data.nb.json | 2026-11-21 |
 | familie:ukemeny | Ukemenyer: sju middager med handleliste | guide-lang | `/ukemenyer/` (6) |  |  |  | scripts/familier/ukemeny/ (mal-nb.mjs) | scripts/familier/ukemeny/data.nb.json | 2026-11-21 |
 | omregner:lengde | Enhetsomregnere for lengde | omregner | `/verktoy/` (6) | `/sv/verktyg/` (6) | `/da/vaerktoejer/` (6) | `/en/tools/` (6) | enheter.mjs (enhetene), nb-/sv-/da-/en-enhetssider.mjs (tekst) |  | 2026-11-21 |
@@ -90,10 +93,14 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | julemiddag | nb | sv, da, en |
 | mealime-alternative | en | nb, sv, da |
 | om | nb | sv, da, en |
+| oppskrifter-fra-ingredienser | sv, da, en | nb |
+| familie:airfryer | nb | sv, da, en |
+| familie:erstatning | nb | sv, da, en |
 | familie:frysing | nb | sv, da, en |
 | familie:holdbarhet | nb | sv, da, en |
 | familie:kjernetemperatur | nb | sv, da, en |
 | familie:mengde-per-person | nb | sv, da, en |
+| familie:rester | nb | sv, da, en |
 | familie:steketid | nb | sv, da, en |
 | familie:ukemeny | nb | sv, da, en |
 | hoytider | en | nb, sv, da |
@@ -143,7 +150,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ## Alle adresser
 
-1071 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
+1125 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
 
 ### forside
 
@@ -435,10 +442,6 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ### oppskrifter-fra-ingredienser
 
-**nb** (1)
-
-- https://matlyst-app.no/hva-kan-jeg-lage/ (2026-11-18)
-
 **sv** (1)
 
 - https://matlyst-app.no/sv/recept-pa-ingredienser/ (2026-11-19)
@@ -527,7 +530,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **nb** (1)
 
-- https://matlyst-app.no/spiskammer-app/ (2026-11-19)
+- https://matlyst-app.no/spiskammer-app/ (2026-11-21)
 
 **sv** (1)
 
@@ -612,6 +615,31 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 **en** (1)
 
 - https://matlyst-app.no/en/terms/ (2026-10-22)
+
+### familie:airfryer
+
+**nb** (20)
+
+- https://matlyst-app.no/airfryer/ (2026-11-21)
+- https://matlyst-app.no/airfryer/bacon/ (2026-11-21)
+- https://matlyst-app.no/airfryer/biff/ (2026-11-21)
+- https://matlyst-app.no/airfryer/egg/ (2026-11-21)
+- https://matlyst-app.no/airfryer/fiskepinner/ (2026-11-21)
+- https://matlyst-app.no/airfryer/frossen-mat/ (2026-11-21)
+- https://matlyst-app.no/airfryer/gronnsaker/ (2026-11-21)
+- https://matlyst-app.no/airfryer/hamburger/ (2026-11-21)
+- https://matlyst-app.no/airfryer/kjottboller/ (2026-11-21)
+- https://matlyst-app.no/airfryer/kyllingfilet/ (2026-11-21)
+- https://matlyst-app.no/airfryer/kyllinglar/ (2026-11-21)
+- https://matlyst-app.no/airfryer/kyllingvinger/ (2026-11-21)
+- https://matlyst-app.no/airfryer/laks/ (2026-11-21)
+- https://matlyst-app.no/airfryer/ovn-til-airfryer/ (2026-11-21)
+- https://matlyst-app.no/airfryer/polser/ (2026-11-21)
+- https://matlyst-app.no/airfryer/pommes-frites/ (2026-11-21)
+- https://matlyst-app.no/airfryer/potetbater/ (2026-11-21)
+- https://matlyst-app.no/airfryer/ribbe/ (2026-11-21)
+- https://matlyst-app.no/airfryer/svinekoteletter/ (2026-11-21)
+- https://matlyst-app.no/airfryer/torsk/ (2026-11-21)
 
 ### familie:dl-til-gram
 
@@ -758,6 +786,30 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/en/tools/cups-to-grams/whole-wheat-flour/ (2026-11-21)
 - https://matlyst-app.no/en/tools/cups-to-grams/yogurt/ (2026-11-20)
 
+### familie:erstatning
+
+**nb** (19)
+
+- https://matlyst-app.no/erstatning/ (2026-11-21)
+- https://matlyst-app.no/erstatning/bakepulver/ (2026-11-21)
+- https://matlyst-app.no/erstatning/brun-farin/ (2026-11-21)
+- https://matlyst-app.no/erstatning/creme-fraiche/ (2026-11-21)
+- https://matlyst-app.no/erstatning/egg/ (2026-11-21)
+- https://matlyst-app.no/erstatning/floete/ (2026-11-21)
+- https://matlyst-app.no/erstatning/friske-og-torkede-urter/ (2026-11-21)
+- https://matlyst-app.no/erstatning/gjaer/ (2026-11-21)
+- https://matlyst-app.no/erstatning/hvetemel/ (2026-11-21)
+- https://matlyst-app.no/erstatning/hvitlok/ (2026-11-21)
+- https://matlyst-app.no/erstatning/hvitvin/ (2026-11-21)
+- https://matlyst-app.no/erstatning/kulturmelk-og-kefir/ (2026-11-21)
+- https://matlyst-app.no/erstatning/maisenna/ (2026-11-21)
+- https://matlyst-app.no/erstatning/melk/ (2026-11-21)
+- https://matlyst-app.no/erstatning/natron/ (2026-11-21)
+- https://matlyst-app.no/erstatning/romme/ (2026-11-21)
+- https://matlyst-app.no/erstatning/smor/ (2026-11-21)
+- https://matlyst-app.no/erstatning/sukker/ (2026-11-21)
+- https://matlyst-app.no/erstatning/vaniljesukker/ (2026-11-21)
+
 ### familie:frysing
 
 **nb** (14)
@@ -838,6 +890,27 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/mengde-per-person/spekemat/ (2026-11-21)
 - https://matlyst-app.no/mengde-per-person/suppe/ (2026-11-21)
 - https://matlyst-app.no/mengde-per-person/svin/ (2026-11-21)
+
+### familie:rester
+
+**nb** (16)
+
+- https://matlyst-app.no/hva-kan-jeg-lage/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-bananer/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-brod/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-egg/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-epler/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-floete/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-gulrotter/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-kjottdeig/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-kokt-skinke/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-kokte-poteter/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-kylling/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-laks/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-pasta/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-poteter/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-ribbe-og-pinnekjott/ (2026-11-21)
+- https://matlyst-app.no/hva-kan-jeg-lage/med-ris/ (2026-11-21)
 
 ### familie:steketid
 
@@ -1663,7 +1736,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/blogg/kjernetemperatur/ (2026-11-20)
 - https://matlyst-app.no/blogg/koketider/ (2026-11-20)
 - https://matlyst-app.no/blogg/mat-i-fryseren/ (2026-11-21)
-- https://matlyst-app.no/blogg/ovnsoppskrift-i-airfryer/ (2026-11-20)
+- https://matlyst-app.no/blogg/ovnsoppskrift-i-airfryer/ (2026-11-21)
 - https://matlyst-app.no/blogg/rester-i-kjoleskapet/ (2026-11-21)
 - https://matlyst-app.no/blogg/velg-oppskriftsapp/ (2026-11-21)
 

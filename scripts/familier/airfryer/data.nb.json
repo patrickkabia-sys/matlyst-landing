@@ -1,0 +1,2250 @@
+{
+  "familie": "airfryer",
+  "marked": "nb",
+  "kilder": {
+    "mp-tilb": {
+      "navn": "Tilberedning med airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/tilberedning-med-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kyllingfilet": {
+      "navn": "Kyllingfilet i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/kyllingfilet-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kyllinglar": {
+      "navn": "Kyllinglår i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2024,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/kyllinglar-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kyllingklubber": {
+      "navn": "Kyllingklubber i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/kyllingklubber-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kyllingvinger": {
+      "navn": "Kyllingvinger i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/kyllingvinger-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-laks": {
+      "navn": "Laks i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/laks-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-potetbater": {
+      "navn": "Potetbåter i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/potetbater-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-baktpotet": {
+      "navn": "Bakt potet i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/kos/bakt-potet-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-sotpotet": {
+      "navn": "Søtpotet chips i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/sotpotet-chips-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-bacon": {
+      "navn": "Bacon i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/bacon-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-biff": {
+      "navn": "Biff i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/biff-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-egg": {
+      "navn": "Egg i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/oppskrifter/familien/egg-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-ribbe": {
+      "navn": "Ribbe i airfryer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2023,
+      "adresse": "https://www.matprat.no/oppskrifter/kos/ribbe-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kylling": {
+      "navn": "Steke- og koketips for kylling",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-kylling/",
+      "hentet": "2026-11-21"
+    },
+    "mp-svin": {
+      "navn": "Steke- og koketips for svinekjøtt",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-svinekjott/",
+      "hentet": "2026-11-21"
+    },
+    "mp-fisk": {
+      "navn": "Steke- og koketips for fisk og skalldyr",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-fisk-og-skalldyr/",
+      "hentet": "2026-11-21"
+    },
+    "mp-burger": {
+      "navn": "Husk å gjennomsteke burgeren!",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2023,
+      "adresse": "https://www.matprat.no/artikler/kjokkenhygiene/husk-a-gjennomsteke-burgeren/",
+      "hentet": "2026-11-21"
+    },
+    "ph-hd920": {
+      "navn": "Brukerhåndbok for Philips Essential Airfryer, matvaretabell",
+      "utgiver": "Philips",
+      "aar": 2021,
+      "adresse": "https://dam.versuni.com/m/59b7caa0caaf68e4/original/User-Manual-Philips-Essential-Airfryer.pdf",
+      "hentet": "2026-11-21"
+    },
+    "fi-10": {
+      "navn": "Findus Fiskepinner, liten pakke",
+      "utgiver": "Findus",
+      "aar": 2026,
+      "adresse": "https://www.findus.no/var-mat/fisk/fiskepinner/fiskepinner-10p",
+      "hentet": "2026-11-21"
+    },
+    "fi-32": {
+      "navn": "Findus Fiskepinner, stor pakke",
+      "utgiver": "Findus",
+      "aar": 2026,
+      "adresse": "https://www.findus.no/var-mat/fisk/fiskepinner/fiskepinner-32p",
+      "hentet": "2026-11-21"
+    },
+    "fi-fc": {
+      "navn": "Findus Fish & Crisp",
+      "utgiver": "Findus",
+      "aar": 2026,
+      "adresse": "https://www.findus.no/var-mat/fisk/panert-fisk/fish-and-crisp-fiskepinner",
+      "hentet": "2026-11-21"
+    },
+    "gi-polser": {
+      "navn": "Pølser i airfryer",
+      "utgiver": "Gilde",
+      "aar": 2026,
+      "adresse": "https://www.gilde.no/oppskrifter/polser-i-airfryer",
+      "hentet": "2026-11-21"
+    },
+    "gi-kjottboller": {
+      "navn": "Hvordan tilberede kjøttboller i airfryer",
+      "utgiver": "Gilde",
+      "aar": 2026,
+      "adresse": "https://www.gilde.no/oppskrifter/kjottboller-i-airfryer",
+      "hentet": "2026-11-21"
+    },
+    "le-hoisin": {
+      "navn": "Laks hoisin i airfryer",
+      "utgiver": "Lerøy",
+      "aar": 2023,
+      "adresse": "https://www.leroyseafood.com/no/smakfull-sjomat/oppskrifter/laks-hoisin-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "le-pommes": {
+      "navn": "Laks i airfryer med pommes frites",
+      "utgiver": "Lerøy",
+      "aar": 2023,
+      "adresse": "https://www.leroyseafood.com/no/smakfull-sjomat/oppskrifter/laks-i-airfryer-med-pommes-frites/",
+      "hentet": "2026-11-21"
+    },
+    "le-torsk": {
+      "navn": "Kebab med Lerøy Sprøpanerte torsketerninger i airfryer",
+      "utgiver": "Lerøy",
+      "aar": 2023,
+      "adresse": "https://www.leroyseafood.com/no/smakfull-sjomat/oppskrifter/kebab-med-leroy-spropanerte-torsketerninger-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "le-fiskepinner": {
+      "navn": "Hjemmelagde fiskepinner i airfryer",
+      "utgiver": "Lerøy",
+      "aar": 2023,
+      "adresse": "https://www.leroyseafood.com/no/smakfull-sjomat/oppskrifter/hjemmelagde-fiskepinner-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "le-tips": {
+      "navn": "Med tipsene fra airfryer-dronningen får fisken ben å gå på",
+      "utgiver": "Lerøy",
+      "aar": 2026,
+      "adresse": "https://www.leroyseafood.com/no/smakfull-sjomat/inspirasjon/med-tipsene-fra-airfryer-dronningen-far-fisken-ben-a-ga-pa/",
+      "hentet": "2026-11-21"
+    },
+    "godt-vinger": {
+      "navn": "Kyllingvinger i airfryer",
+      "utgiver": "Godt.no",
+      "aar": 2024,
+      "adresse": "https://www.godt.no/oppskrifter/kylling-og-fjaerkre/kylling/12632/kyllingvinger-i-airfryer",
+      "hentet": "2026-11-21"
+    },
+    "fb-airfryer": {
+      "navn": "Airfryer: regler, tips og oppskrifter du trenger",
+      "utgiver": "Fredriksstad Blad",
+      "aar": 2026,
+      "adresse": "https://www.f-b.no/airfryer/oppskrift/oppskrifter/airfryer-5-regler-3-tips-og-10-oppskrifter-du-trenger/s/5-95-3126380",
+      "hentet": "2026-11-21"
+    },
+    "mt-sommer": {
+      "navn": "Mat i sommervarmen",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/mat-i-sommervarmen",
+      "hentet": "2026-11-21"
+    },
+    "ar-airfryer": {
+      "navn": "Airfryer: anvendelse, opskrifter og tips",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/opskrifter/leksikon/viden/airfryer/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ovn-til-airfryer",
+      "slug": "ovn-til-airfryer",
+      "navn": "Ovn til airfryer",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "arla-150-ovn": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "150° | 135° | 10 | 8"
+        },
+        "arla-150-af": {
+          "verdi": 135,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "150° | 135° | 10 | 8"
+        },
+        "arla-150-ovn-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "150° | 135° | 10 | 8"
+        },
+        "arla-150-af-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "150° | 135° | 10 | 8"
+        },
+        "arla-165-ovn": {
+          "verdi": 165,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "165° | 150° | 15 | 12"
+        },
+        "arla-165-af": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "165° | 150° | 15 | 12"
+        },
+        "arla-165-ovn-tid": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "165° | 150° | 15 | 12"
+        },
+        "arla-165-af-tid": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "165° | 150° | 15 | 12"
+        },
+        "arla-175-ovn": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "175° | 165° | 20 | 16"
+        },
+        "arla-175-af": {
+          "verdi": 165,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "175° | 165° | 20 | 16"
+        },
+        "arla-175-ovn-tid": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "175° | 165° | 20 | 16"
+        },
+        "arla-175-af-tid": {
+          "verdi": 16,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "175° | 165° | 20 | 16"
+        },
+        "arla-190-ovn": {
+          "verdi": 190,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "190° | 175° | 30 | 24"
+        },
+        "arla-190-af": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "190° | 175° | 30 | 24"
+        },
+        "arla-190-ovn-tid": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "190° | 175° | 30 | 24"
+        },
+        "arla-190-af-tid": {
+          "verdi": 24,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "190° | 175° | 30 | 24"
+        },
+        "arla-200-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "200° | 185° | 45 | 36"
+        },
+        "arla-200-af": {
+          "verdi": 185,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "200° | 185° | 45 | 36"
+        },
+        "arla-200-ovn-tid": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "200° | 185° | 45 | 36"
+        },
+        "arla-200-af-tid": {
+          "verdi": 36,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "200° | 185° | 45 | 36"
+        },
+        "arla-225-ovn": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "225° | 200° | 60 | 48"
+        },
+        "arla-225-af": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "ar-airfryer",
+          "merknad": "225° | 200° | 60 | 48"
+        },
+        "arla-225-ovn-tid": {
+          "verdi": 60,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "225° | 200° | 60 | 48"
+        },
+        "arla-225-af-tid": {
+          "verdi": 48,
+          "enhet": "minutter",
+          "kilde": "ar-airfryer",
+          "merknad": "225° | 200° | 60 | 48"
+        },
+        "mp-vinger-af-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mp-vinger-af-tid-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mp-vinger-ov-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mp-vinger-ov-tid-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mp-vinger-ov-tid-maks": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mp-potetbater-af-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "mp-potetbater-af-tid-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "mp-potetbater-af-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "mp-potetbater-ov-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "mp-potetbater-ov-tid-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "mp-potetbater-ov-tid-maks": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "mp-laks-af-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Laksefilet | 10 min på 180 °C | 10-15 min på 180 °C"
+        },
+        "mp-laks-af-tid-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Laksefilet | 10 min på 180 °C | 10-15 min på 180 °C"
+        },
+        "mp-laks-ov-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Laksefilet | 10 min på 180 °C | 10-15 min på 180 °C"
+        },
+        "mp-laks-ov-tid-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Laksefilet | 10 min på 180 °C | 10-15 min på 180 °C"
+        },
+        "mp-laks-ov-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Laksefilet | 10 min på 180 °C | 10-15 min på 180 °C"
+        },
+        "mp-gronnsaker-af-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mp-gronnsaker-af-tid-min": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mp-gronnsaker-af-tid-maks": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mp-gronnsaker-ov-temp": {
+          "verdi": 210,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mp-gronnsaker-ov-tid-min": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mp-gronnsaker-ov-tid-maks": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mp-sotpotet-af-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Søtpotetchips | 5-10 min på 180 °C | 20 min på 140 °C"
+        },
+        "mp-sotpotet-af-tid-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Søtpotetchips | 5-10 min på 180 °C | 20 min på 140 °C"
+        },
+        "mp-sotpotet-af-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Søtpotetchips | 5-10 min på 180 °C | 20 min på 140 °C"
+        },
+        "mp-sotpotet-ov-temp": {
+          "verdi": 140,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Søtpotetchips | 5-10 min på 180 °C | 20 min på 140 °C"
+        },
+        "mp-sotpotet-ov-tid-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Søtpotetchips | 5-10 min på 180 °C | 20 min på 140 °C"
+        },
+        "fi10-ov-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "fi-10",
+          "merknad": "Varmluftsovn: 225°C i ca. 12 min."
+        },
+        "fi10-ov-tid": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "fi-10",
+          "merknad": "Varmluftsovn: 225°C i ca. 12 min."
+        },
+        "fi10-af-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "fi-10",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min."
+        },
+        "fi10-af-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "fi-10",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min."
+        },
+        "fi32-ov-temp": {
+          "verdi": 210,
+          "enhet": "°C",
+          "kilde": "fi-32",
+          "merknad": "Forvarm ovnen til 210°C (varmluft) eller 230°C (stekeovn)."
+        },
+        "fi32-ov-tid-min": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "fi-32",
+          "merknad": "Stek midt i ovnen i 12–14 min. Airfryer"
+        },
+        "fi32-ov-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutter",
+          "kilde": "fi-32",
+          "merknad": "Stek midt i ovnen i 12–14 min. Airfryer"
+        },
+        "fi32-af-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "fi-32",
+          "merknad": "Forvarm airfryeren til 180°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min."
+        },
+        "fi32-af-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "fi-32",
+          "merknad": "Forvarm airfryeren til 180°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min."
+        },
+        "fifc-ov-temp": {
+          "verdi": 220,
+          "enhet": "°C",
+          "kilde": "fi-fc",
+          "merknad": "Forvarm ovnen til 220°C. Fordel fiskepinnene utover et stekebrett med bakepapir. Stek midt i ovnen i 12–14 minutter (varmluft)"
+        },
+        "fifc-ov-tid-min": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "fi-fc",
+          "merknad": "Stek midt i ovnen i 12–14 minutter (varmluft)"
+        },
+        "fifc-ov-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutter",
+          "kilde": "fi-fc",
+          "merknad": "Stek midt i ovnen i 12–14 minutter (varmluft)"
+        },
+        "fifc-af-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "fi-fc",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (1/2 pakke) i kurven og tilbered i 6–8 minutter."
+        },
+        "fifc-af-tid-min": {
+          "verdi": 6,
+          "enhet": "minutter",
+          "kilde": "fi-fc",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (1/2 pakke) i kurven og tilbered i 6–8 minutter."
+        },
+        "fifc-af-tid-maks": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "fi-fc",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (1/2 pakke) i kurven og tilbered i 6–8 minutter."
+        }
+      },
+      "tekst": {
+        "ar-airfryer: tommelfingerregel": "Bemærk at tabellen kun er en tommelfingerregel, da det kommer an på den enkelte ovn og airfryers kapacitet og kraft.",
+        "ph-hd920: forvarming": "Du trenger ikke å forvarme apparatet."
+      }
+    },
+    {
+      "id": "kyllingfilet",
+      "slug": "kyllingfilet",
+      "navn": "Kyllingfilet",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Legg kyllingfileten i airfryeren og stek på 200 °C i 6 minutter. Snu kyllingfileten og stek videre i 6 minutter"
+        },
+        "mp-tid": {
+          "verdi": 6,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Legg kyllingfileten i airfryeren og stek på 200 °C i 6 minutter. Snu kyllingfileten og stek videre i 6 minutter"
+        },
+        "mp-antall": {
+          "verdi": 2,
+          "enhet": "stk",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "2 stk. kyllingfilet"
+        },
+        "ph-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 160g/6 oz) 1–3 stykk 20–25 180°C/350°F"
+        },
+        "ph-tid-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 160g/6 oz) 1–3 stykk 20–25 180°C/350°F"
+        },
+        "ph-tid-maks": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 160g/6 oz) 1–3 stykk 20–25 180°C/350°F"
+        },
+        "ph-vekt": {
+          "verdi": 160,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 160g/6 oz) 1–3 stykk 20–25 180°C/350°F"
+        },
+        "ph-antall-min": {
+          "verdi": 1,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 160g/6 oz) 1–3 stykk 20–25 180°C/350°F"
+        },
+        "ph-antall-maks": {
+          "verdi": 3,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 160g/6 oz) 1–3 stykk 20–25 180°C/350°F"
+        },
+        "kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Filet / uten ben | 200 g | Stekes 2 minutter på hver side i middels varm panne. Etterstekes på lav varme under lokk i 4 minutter. | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "mt-kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "mt-sommer: omfatter": "Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte.",
+        "ph-hd920: forslag": "Vær oppmerksom på at disse innstillingene er forslag. Vi kan ikke garantere at innstillingene vil være de beste for maten din, ettersom ingredienser varierer når det gjelder opprinnelse, størrelse, form og merke.",
+        "ph-hd920: riste": "må du riste, snu eller røre i ingrediensene i kurven to til tre ganger for å oppnå et jevnt stekeresultat.",
+        "mp-kyllingfilet: tid-varierer": "Tid kan variere mellom produsentene, så sjekk med jevne mellomrom for å unngå at det blir svidd.",
+        "mp-kyllingfilet: stekeskorpe": "Snu kyllingfileten og stek videre i 6 minutter til du har fått en fin stekeskorpe."
+      }
+    },
+    {
+      "id": "kyllinglar",
+      "slug": "kyllinglar",
+      "navn": "Kyllinglår",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-temp": {
+          "verdi": 190,
+          "enhet": "°C",
+          "kilde": "mp-kyllinglar",
+          "merknad": "Forvarm airfryeren til 190 °C i noen minutter. Legg kyllinglåret med skinnsiden ned i airfryeren, og stek i 20 minutter. Snu gjerne halvveis."
+        },
+        "mp-tid": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-kyllinglar",
+          "merknad": "Forvarm airfryeren til 190 °C i noen minutter. Legg kyllinglåret med skinnsiden ned i airfryeren, og stek i 20 minutter. Snu gjerne halvveis."
+        },
+        "mpk-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-kyllingklubber",
+          "merknad": "Legg kyllingklubbene i airfryeren med skinnet opp og stek på 180 °C i 15 minutter. Snu kyllingklubbene og stek videre i 15 minutter til skinnet er sprøtt."
+        },
+        "mpk-tid": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingklubber",
+          "merknad": "Legg kyllingklubbene i airfryeren med skinnet opp og stek på 180 °C i 15 minutter. Snu kyllingklubbene og stek videre i 15 minutter til skinnet er sprøtt."
+        },
+        "ph-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "Kyllingklubber (ca. 125 g/4,5 oz) 2–6 stykk 18–24 180°C/350°F"
+        },
+        "ph-tid-min": {
+          "verdi": 18,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Kyllingklubber (ca. 125 g/4,5 oz) 2–6 stykk 18–24 180°C/350°F"
+        },
+        "ph-tid-maks": {
+          "verdi": 24,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Kyllingklubber (ca. 125 g/4,5 oz) 2–6 stykk 18–24 180°C/350°F"
+        },
+        "ph-vekt": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Kyllingklubber (ca. 125 g/4,5 oz) 2–6 stykk 18–24 180°C/350°F"
+        },
+        "ph-antall-min": {
+          "verdi": 2,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "Kyllingklubber (ca. 125 g/4,5 oz) 2–6 stykk 18–24 180°C/350°F"
+        },
+        "ph-antall-maks": {
+          "verdi": 6,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "Kyllingklubber (ca. 125 g/4,5 oz) 2–6 stykk 18–24 180°C/350°F"
+        },
+        "kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "mt-kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "mt-sommer: omfatter": "Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte.",
+        "mp-kyllinglar: forvarm-snu": "Forvarm airfryeren til 190 °C i noen minutter. Legg kyllinglåret med skinnsiden ned i airfryeren, og stek i 20 minutter. Snu gjerne halvveis.",
+        "mp-kyllingklubber: ferdiggrillet": "5 stk. ferdiggrillet kylling lårklubbe",
+        "mp-kyllingklubber: skinnet-opp": "Legg kyllingklubbene i airfryeren med skinnet opp",
+        "ph-hd920: forvarming": "Du trenger ikke å forvarme apparatet.",
+        "ph-hd920: riste": "må du riste, snu eller røre i ingrediensene i kurven to til tre ganger for å oppnå et jevnt stekeresultat."
+      }
+    },
+    {
+      "id": "kyllingvinger",
+      "slug": "kyllingvinger",
+      "navn": "Kyllingvinger",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-kyllingvinger",
+          "merknad": "Legg kyllingvingene i airfryeren med skinnet opp og stek på 180 °C i 10 minutter. Snu kyllingvingene og stek videre i 10 minutter til skinnet er sprøtt."
+        },
+        "mp-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingvinger",
+          "merknad": "Legg kyllingvingene i airfryeren med skinnet opp og stek på 180 °C i 10 minutter. Snu kyllingvingene og stek videre i 10 minutter til skinnet er sprøtt."
+        },
+        "mp-antall": {
+          "verdi": 5,
+          "enhet": "stk",
+          "kilde": "mp-kyllingvinger",
+          "merknad": "5 stk. ferdigstekte kyllingvinger"
+        },
+        "mp-bbq-min": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingvinger",
+          "merknad": "Pensle kyllingvingene med bbq-saus og stek videre i 2-3 minutter til sausen har satt seg."
+        },
+        "mp-bbq-maks": {
+          "verdi": 3,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingvinger",
+          "merknad": "Pensle kyllingvingene med bbq-saus og stek videre i 2-3 minutter til sausen har satt seg."
+        },
+        "mpt-af-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mpt-af-tid": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mpt-ov-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mpt-ov-tid-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "mpt-ov-tid-maks": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Kyllingvinger | 20 min på 180 °C | 20-25 min på 200 °C"
+        },
+        "godt-temp": {
+          "verdi": 190,
+          "enhet": "°C",
+          "kilde": "godt-vinger",
+          "merknad": "Legg kyllingvingene på rist i airfryeren og stek på 190 °C i 10 minutter. Snu kyllingvingene og stek videre i 5-8 minutter til skinnet er sprøtt."
+        },
+        "godt-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "godt-vinger",
+          "merknad": "Legg kyllingvingene på rist i airfryeren og stek på 190 °C i 10 minutter. Snu kyllingvingene og stek videre i 5-8 minutter til skinnet er sprøtt."
+        },
+        "godt-tid2-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "godt-vinger",
+          "merknad": "Legg kyllingvingene på rist i airfryeren og stek på 190 °C i 10 minutter. Snu kyllingvingene og stek videre i 5-8 minutter til skinnet er sprøtt."
+        },
+        "godt-tid2-maks": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "godt-vinger",
+          "merknad": "Legg kyllingvingene på rist i airfryeren og stek på 190 °C i 10 minutter. Snu kyllingvingene og stek videre i 5-8 minutter til skinnet er sprøtt."
+        },
+        "godt-vekt": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "godt-vinger",
+          "merknad": "600 g kyllingvinger"
+        },
+        "kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "mt-kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "mt-sommer: omfatter": "Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte.",
+        "godt-vinger: tid-varierer": "Tid kan variere mellom ulike airfryere, så sjekk underveis for å unngå at kyllingvingene blir svidd.",
+        "godt-vinger: bbq": "For sticky kyllingvinger: Pensle kyllingvingene med bbq-saus og stek videre i 2-3 minutter.",
+        "mp-kyllingvinger: ferdigstekte": "5 stk. ferdigstekte kyllingvinger",
+        "mp-kyllingvinger: bbq": "Pensle kyllingvingene med bbq-saus og stek videre i 2-3 minutter til sausen har satt seg."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "laks",
+      "navn": "Laks",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-laks",
+          "merknad": "Legg filtene i airfryeren og stek på 180 °C i 10 minutter."
+        },
+        "mp-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-laks",
+          "merknad": "Legg filtene i airfryeren og stek på 180 °C i 10 minutter."
+        },
+        "mp-antall": {
+          "verdi": 2,
+          "enhet": "stk",
+          "kilde": "mp-laks",
+          "merknad": "2 stk. laksefilet"
+        },
+        "le-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "le-hoisin",
+          "merknad": "Stek filetene i ca 10 min i airfryer på 180 grader."
+        },
+        "le-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "le-hoisin",
+          "merknad": "Stek filetene i ca 10 min i airfryer på 180 grader."
+        },
+        "lep-pommes-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "le-pommes",
+          "merknad": "Legg pommes frites i airfryer på 200 grader i 10 min."
+        },
+        "lep-pommes-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "le-pommes",
+          "merknad": "Legg pommes frites i airfryer på 200 grader i 10 min."
+        },
+        "lep-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "le-pommes",
+          "merknad": "Rist godt og sett ned varmen til 180 grader."
+        },
+        "lep-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "le-pommes",
+          "merknad": "Stek det hele videre i airfryer i ca 8 min."
+        },
+        "ph-temp": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 200g/7 oz) 1–3 (1 lag) 22–25 160°C/325°F"
+        },
+        "ph-tid-min": {
+          "verdi": 22,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 200g/7 oz) 1–3 (1 lag) 22–25 160°C/325°F"
+        },
+        "ph-tid-maks": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 200g/7 oz) 1–3 (1 lag) 22–25 160°C/325°F"
+        },
+        "ph-vekt": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 200g/7 oz) 1–3 (1 lag) 22–25 160°C/325°F"
+        },
+        "mpt-ov-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Laksefilet | 10 min på 180 °C | 10-15 min på 180 °C"
+        },
+        "mpt-ov-tid-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Laksefilet | 10 min på 180 °C | 10-15 min på 180 °C"
+        },
+        "mpt-ov-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Laksefilet | 10 min på 180 °C | 10-15 min på 180 °C"
+        },
+        "kjerne": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        }
+      },
+      "tekst": {
+        "ph-hd920: forslag": "Vær oppmerksom på at disse innstillingene er forslag. Vi kan ikke garantere at innstillingene vil være de beste for maten din, ettersom ingredienser varierer når det gjelder opprinnelse, størrelse, form og merke.",
+        "le-pommes: halvere": "Tilberedningen er basert på bruken av en stor airfryer. Oppskriften kan fint halveres dersom du har en mindre airfryer."
+      }
+    },
+    {
+      "id": "torsk",
+      "slug": "torsk",
+      "navn": "Torsk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "le-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "le-torsk",
+          "merknad": "Stek fisken på 180°c i 9-10 minutter."
+        },
+        "le-tid-min": {
+          "verdi": 9,
+          "enhet": "minutter",
+          "kilde": "le-torsk",
+          "merknad": "Stek fisken på 180°c i 9-10 minutter."
+        },
+        "le-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "le-torsk",
+          "merknad": "Stek fisken på 180°c i 9-10 minutter."
+        },
+        "lef-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "le-fiskepinner",
+          "merknad": "Stek fisken i airfryeren på 180°C i ca. 8 minutter, eller til den er sprø og gyllen."
+        },
+        "lef-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "le-fiskepinner",
+          "merknad": "Stek fisken i airfryeren på 180°C i ca. 8 minutter, eller til den er sprø og gyllen."
+        },
+        "lef-vekt": {
+          "verdi": 800,
+          "enhet": "g",
+          "kilde": "le-fiskepinner",
+          "merknad": "800 g 1 Lerøy torsk i blokk"
+        },
+        "ph-temp": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 200g/7 oz) 1–3 (1 lag) 22–25 160°C/325°F"
+        },
+        "ph-tid-min": {
+          "verdi": 22,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 200g/7 oz) 1–3 (1 lag) 22–25 160°C/325°F"
+        },
+        "ph-tid-maks": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 200g/7 oz) 1–3 (1 lag) 22–25 160°C/325°F"
+        },
+        "ph-vekt": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 200g/7 oz) 1–3 (1 lag) 22–25 160°C/325°F"
+        },
+        "kjerne": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        }
+      },
+      "tekst": {
+        "le-tips: smor-olje": "Når du lager magrere fisk, som torsk og hyse, kan det være smart å tilsette litt smør eller olje. Da får du god smak, og et saftig resultat.",
+        "le-tips: bakeark": "Når du lager feit fisk, som for eksempel laks eller ørret, kan det være lurt å legge et bakeark over fisken, slik at fettet fra fisken ikke spruter opp i varmeelementene.",
+        "ph-hd920: forslag": "Vær oppmerksom på at disse innstillingene er forslag. Vi kan ikke garantere at innstillingene vil være de beste for maten din, ettersom ingredienser varierer når det gjelder opprinnelse, størrelse, form og merke."
+      }
+    },
+    {
+      "id": "pommes-frites",
+      "slug": "pommes-frites",
+      "navn": "Pommes frites",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ph-tynn-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        },
+        "ph-tynn-tid-min": {
+          "verdi": 16,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        },
+        "ph-tynn-tid-maks": {
+          "verdi": 22,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        },
+        "ph-tynn-mengde-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        },
+        "ph-tynn-mengde-maks": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        },
+        "ph-tynn-mm": {
+          "verdi": 7,
+          "enhet": "mm",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        },
+        "ph-hjem-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "Hjemmelaget pommes frites (10 x 10 mm/0,4 x 0,4 tommer tykk) 200–500g /7–18 oz 18–26 180°C/350°F"
+        },
+        "ph-hjem-tid-min": {
+          "verdi": 18,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Hjemmelaget pommes frites (10 x 10 mm/0,4 x 0,4 tommer tykk) 200–500g /7–18 oz 18–26 180°C/350°F"
+        },
+        "ph-hjem-tid-maks": {
+          "verdi": 26,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Hjemmelaget pommes frites (10 x 10 mm/0,4 x 0,4 tommer tykk) 200–500g /7–18 oz 18–26 180°C/350°F"
+        },
+        "ph-hjem-mengde-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Hjemmelaget pommes frites (10 x 10 mm/0,4 x 0,4 tommer tykk) 200–500g /7–18 oz 18–26 180°C/350°F"
+        },
+        "ph-hjem-mengde-maks": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Hjemmelaget pommes frites (10 x 10 mm/0,4 x 0,4 tommer tykk) 200–500g /7–18 oz 18–26 180°C/350°F"
+        },
+        "ph-hjem-mm": {
+          "verdi": 10,
+          "enhet": "mm",
+          "kilde": "ph-hd920",
+          "merknad": "Hjemmelaget pommes frites (10 x 10 mm/0,4 x 0,4 tommer tykk) 200–500g /7–18 oz 18–26 180°C/350°F"
+        },
+        "ph-bloetlegg": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Bløtlegg potetstavene i en bolle med vann i minst 30 minutter."
+        },
+        "ph-stav": {
+          "verdi": 1,
+          "enhet": "cm",
+          "kilde": "ph-hd920",
+          "merknad": "Skrell potetene, og kutt dem deretter i staver (1 x 1 cm i tykkelse)."
+        },
+        "ph-porsjon": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Det er best å luftsteke pommes frites i porsjoner på opptil 500 g/18 oz"
+        },
+        "ph-rist-min": {
+          "verdi": 2,
+          "enhet": "ganger",
+          "kilde": "ph-hd920",
+          "merknad": "Stek potetstavene, og rist kurven 2–3 ganger under steking."
+        },
+        "ph-rist-maks": {
+          "verdi": 3,
+          "enhet": "ganger",
+          "kilde": "ph-hd920",
+          "merknad": "Stek potetstavene, og rist kurven 2–3 ganger under steking."
+        },
+        "le-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "le-pommes",
+          "merknad": "Legg pommes frites i airfryer på 200 grader i 10 min."
+        },
+        "le-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "le-pommes",
+          "merknad": "Legg pommes frites i airfryer på 200 grader i 10 min."
+        }
+      },
+      "tekst": {
+        "ph-hd920: riste": "Rist, snu eller rør 2–3",
+        "ph-hd920: store": "Store pommes frites er ofte mindre sprø enn mindre pommes frites.",
+        "ph-hd920: poteter": "Velg poteter som egner seg godt til å lage pommes frites av, for eksempel nypoteter med en litt melaktig konsistens.",
+        "ph-hd920: toerk": "Tøm bollen, og tørk potetstavene med et kjøkkenhåndkle eller tørkepapir.",
+        "ph-hd920: olje": "Tilsett én spiseskje matolje i bollen, ha i potetstavene, og bland dem godt slik at de dekkes av oljen.",
+        "ph-hd920: ikke-helle": "For å unngå at den overflødige oljen havner i pannen må du ikke helle potetstavene fra bollen og ned i kurven.",
+        "ph-hd920: forslag": "Vær oppmerksom på at disse innstillingene er forslag. Vi kan ikke garantere at innstillingene vil være de beste for maten din, ettersom ingredienser varierer når det gjelder opprinnelse, størrelse, form og merke."
+      }
+    },
+    {
+      "id": "potetbater",
+      "slug": "potetbater",
+      "navn": "Potetbåter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-potetbater",
+          "merknad": "Legg potetbåtene i airfryeren og sett på 180 °C. Stek i 10-15 minutter."
+        },
+        "mp-tid-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-potetbater",
+          "merknad": "Legg potetbåtene i airfryeren og sett på 180 °C. Stek i 10-15 minutter."
+        },
+        "mp-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-potetbater",
+          "merknad": "Legg potetbåtene i airfryeren og sett på 180 °C. Stek i 10-15 minutter."
+        },
+        "mp-antall": {
+          "verdi": 4,
+          "enhet": "stk",
+          "kilde": "mp-potetbater",
+          "merknad": "4 stk. potet"
+        },
+        "mpt-ov-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "mpt-ov-tid-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "mpt-ov-tid-maks": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Potetbåter | 10-15 min på 180 °C | 20-30 min på 225 °C"
+        },
+        "bakt-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "mp-baktpotet",
+          "merknad": "Legg poteten i airfryeren og bak på 225 °C i 60 minutter."
+        },
+        "bakt-tid": {
+          "verdi": 60,
+          "enhet": "minutter",
+          "kilde": "mp-baktpotet",
+          "merknad": "Legg poteten i airfryeren og bak på 225 °C i 60 minutter."
+        },
+        "bakt-antall": {
+          "verdi": 2,
+          "enhet": "stk",
+          "kilde": "mp-baktpotet",
+          "merknad": "2 stk. bakepotet"
+        },
+        "sot-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-sotpotet",
+          "merknad": "Legg skivene i airfryeren og sett på 180 °C. Stek i 5-10 minutter."
+        },
+        "sot-tid-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mp-sotpotet",
+          "merknad": "Legg skivene i airfryeren og sett på 180 °C. Stek i 5-10 minutter."
+        },
+        "sot-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-sotpotet",
+          "merknad": "Legg skivene i airfryeren og sett på 180 °C. Stek i 5-10 minutter."
+        },
+        "sot-ov-temp": {
+          "verdi": 140,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Søtpotetchips | 5-10 min på 180 °C | 20 min på 140 °C"
+        },
+        "sot-ov-tid": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Søtpotetchips | 5-10 min på 180 °C | 20 min på 140 °C"
+        }
+      },
+      "tekst": {
+        "mp-tilb: halvere": "bacon og søtpotetchips, kan du halvere steketiden",
+        "mp-baktpotet: hull": "Bruk en gaffel og stikk mange små hull over hele poteten.",
+        "mp-baktpotet: tid-varierer": "Tid kan variere mellom produsentene, så sjekk underveis.",
+        "mp-sotpotet: mandolin": "Skrell og del søtpotet i skiver, gjerne med en mandolin så tykkelsen blir lik på alle skivene."
+      }
+    },
+    {
+      "id": "bacon",
+      "slug": "bacon",
+      "navn": "Bacon",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-bacon",
+          "merknad": "Sett airfryeren på 180 °C og stek i 5 minutter."
+        },
+        "mp-tid": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mp-bacon",
+          "merknad": "Sett airfryeren på 180 °C og stek i 5 minutter."
+        },
+        "mp-vekt": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-bacon",
+          "merknad": "150 g bacon"
+        },
+        "fb-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "fb-airfryer",
+          "merknad": "Stek på 180 grader i 7 til 10 minutter."
+        },
+        "fb-tid-min": {
+          "verdi": 7,
+          "enhet": "minutter",
+          "kilde": "fb-airfryer",
+          "merknad": "Stek på 180 grader i 7 til 10 minutter."
+        },
+        "fb-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "fb-airfryer",
+          "merknad": "Stek på 180 grader i 7 til 10 minutter."
+        }
+      },
+      "tekst": {
+        "fb-airfryer: ett-lag": "Legg baconskivene i ett lag i kurven. Ikke legg dem oppå hverandre, da blir de mer kokt enn sprø.",
+        "fb-airfryer: tykkelse": "Tynne skiver trenger kortere tid, tykke skiver trenger litt mer.",
+        "fb-airfryer: fett": "Tøm gjerne ut fett hvis du lager flere runder, ellers kan det ryke mer enn nødvendig.",
+        "mp-tilb: halvere": "bacon og søtpotetchips, kan du halvere steketiden"
+      }
+    },
+    {
+      "id": "polser",
+      "slug": "polser",
+      "navn": "Pølser",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "gi-hel-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "gi-polser",
+          "merknad": "Grillpølse, hele pakken 10 stk : 200*C i 9 min."
+        },
+        "gi-hel-tid": {
+          "verdi": 9,
+          "enhet": "minutter",
+          "kilde": "gi-polser",
+          "merknad": "Grillpølse, hele pakken 10 stk : 200*C i 9 min."
+        },
+        "gi-hel-antall": {
+          "verdi": 10,
+          "enhet": "stk",
+          "kilde": "gi-polser",
+          "merknad": "Grillpølse, hele pakken 10 stk : 200*C i 9 min."
+        },
+        "gi-halv-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "gi-polser",
+          "merknad": "Grillpølse, halve pakken 5 stk: 200*C i 6 min."
+        },
+        "gi-halv-tid": {
+          "verdi": 6,
+          "enhet": "minutter",
+          "kilde": "gi-polser",
+          "merknad": "Grillpølse, halve pakken 5 stk: 200*C i 6 min."
+        },
+        "gi-halv-antall": {
+          "verdi": 5,
+          "enhet": "stk",
+          "kilde": "gi-polser",
+          "merknad": "Grillpølse, halve pakken 5 stk: 200*C i 6 min."
+        },
+        "gi-skinnfri-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "gi-polser",
+          "merknad": "Skinnfri kjøttpølse: 180*C i 14 min."
+        },
+        "gi-skinnfri-tid": {
+          "verdi": 14,
+          "enhet": "minutter",
+          "kilde": "gi-polser",
+          "merknad": "Skinnfri kjøttpølse: 180*C i 14 min."
+        },
+        "gi-mindre-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "gi-polser",
+          "merknad": "Mindre prosessert skinnfri kjøttpølse: 180*C i 12 min."
+        },
+        "gi-mindre-tid": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "gi-polser",
+          "merknad": "Mindre prosessert skinnfri kjøttpølse: 180*C i 12 min."
+        },
+        "gi-spesial-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "gi-polser",
+          "merknad": "Stek deretter på 200*C i 5 min."
+        },
+        "gi-spesial-tid": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "gi-polser",
+          "merknad": "Stek deretter på 200*C i 5 min."
+        },
+        "ph-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 50g/1,8 oz) 1–6 stykk 9–13 200°C/400°F"
+        },
+        "ph-tid-min": {
+          "verdi": 9,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 50g/1,8 oz) 1–6 stykk 9–13 200°C/400°F"
+        },
+        "ph-tid-maks": {
+          "verdi": 13,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 50g/1,8 oz) 1–6 stykk 9–13 200°C/400°F"
+        },
+        "ph-vekt": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 50g/1,8 oz) 1–6 stykk 9–13 200°C/400°F"
+        },
+        "ph-antall-min": {
+          "verdi": 1,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 50g/1,8 oz) 1–6 stykk 9–13 200°C/400°F"
+        },
+        "ph-antall-maks": {
+          "verdi": 6,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 50g/1,8 oz) 1–6 stykk 9–13 200°C/400°F"
+        },
+        "mt-kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "mt-sommer: omfatter": "Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte.",
+        "gi-polser: avhenger": "Temperatur og steketid i airfryeren avhenger av hvilke pølser du skal steke:",
+        "gi-polser: snitt": "Må snittes for at de ikke skal sprekke. Snitt noen små snitt i skinnet med en liten kniv.",
+        "gi-polser: skinn": "Airfryer fjerner noe fuktighet fra pølsene gir derfor et fastere skinn og en mer markert struktur enn når de stekes i panne.",
+        "gi-polser: snu-ett-lag": "Pølsene bør snus halvveis inn i stekeprosessen for jevnere steking. Vi anbefaler å steke pølser i ett lag for å sikre jevn steking.",
+        "gi-polser: variere": "Steketid og temperatur kan variere noe fra airfryer til airfryer."
+      }
+    },
+    {
+      "id": "hamburger",
+      "slug": "hamburger",
+      "navn": "Hamburger",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ph-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150g/5 oz) 1–3 hamburgere 15–20 200°C/400°F"
+        },
+        "ph-tid-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150g/5 oz) 1–3 hamburgere 15–20 200°C/400°F"
+        },
+        "ph-tid-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150g/5 oz) 1–3 hamburgere 15–20 200°C/400°F"
+        },
+        "ph-vekt": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150g/5 oz) 1–3 hamburgere 15–20 200°C/400°F"
+        },
+        "ph-antall-min": {
+          "verdi": 1,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150g/5 oz) 1–3 hamburgere 15–20 200°C/400°F"
+        },
+        "ph-antall-maks": {
+          "verdi": 3,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150g/5 oz) 1–3 hamburgere 15–20 200°C/400°F"
+        },
+        "kjerne": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-burger",
+          "merknad": "Gjennomstekning til 70 °C er tilstrekkelig for å drepe eventuelle uønskede bakterier i hamburgerkjøttet."
+        },
+        "mt-kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "mt-sommer: omfatter": "Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte.",
+        "mp-burger: utbrudd": "Det foregår nå et nasjonalt utbrudd av E. coli-smitte av typen EHEC. Mattilsynet har i dette utbruddet påvist bakterien i råvare brukt til særlig hamburgere.",
+        "mp-burger: gjennomsteke": "Mattilsynet alltid anbefaler at hamburgere av kjøttdeig skal gjennomstekes.",
+        "mp-burger: overflaten": "Bakterier finnes kun på overflaten av hele kjøttstykker, og dør ved tilstrekkelig varmebehandling. Når kjøttstykker kvernes , blir bakteriene på overflaten jevnt fordelt i kjøttdeigen",
+        "mp-burger: oppmalt": "Derfor skal kjøttdeig, hamburgere og andre produkter av oppmalt kjøtt som tommelfingerregel være gjennomstekte.",
+        "mp-burger: saften": "Vent til kjøttsaften som pipler ut av burgeren er helt klar i fargen, før du legger den til hviling.",
+        "mp-burger: maler": "Har du en ekstra tykk burger er det spesielt lurt å bruke en",
+        "mp-burger: ferske-frosne": "både ferske og frosne produkter",
+        "mp-burger: kverne-selv": "Å kverne kjøttet selv kan gi en viss kontroll, og er å foretrekke dersom du ønsker å nyte en medium stekt burger."
+      }
+    },
+    {
+      "id": "kjottboller",
+      "slug": "kjottboller",
+      "navn": "Kjøttboller",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "gi-ferdig-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "gi-kjottboller",
+          "merknad": "Disse tilberedes i airfryer på 180 grader, i ca. 7 minutter."
+        },
+        "gi-ferdig-tid": {
+          "verdi": 7,
+          "enhet": "minutter",
+          "kilde": "gi-kjottboller",
+          "merknad": "Disse tilberedes i airfryer på 180 grader, i ca. 7 minutter."
+        },
+        "gi-ra-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "gi-kjottboller",
+          "merknad": "stekes de i airfryeren på 200 grader i ca. 8 minutter."
+        },
+        "gi-ra-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "gi-kjottboller",
+          "merknad": "stekes de i airfryeren på 200 grader i ca. 8 minutter."
+        },
+        "gi-deig": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "gi-kjottboller",
+          "merknad": "Gilde kjøttdeig | 400 g"
+        },
+        "kjerne": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-burger",
+          "merknad": "Gjennomstekning til 70 °C er tilstrekkelig for å drepe eventuelle uønskede bakterier i hamburgerkjøttet."
+        },
+        "mt-kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "mt-sommer: omfatter": "Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte.",
+        "gi-kjottboller: begge": "Her viser vi deg hvordan du steker både ferdige og rå kjøttboller.",
+        "gi-kjottboller: selv": "Hvis du vil lage bollene selv kan du blande sammen 400 gram kjøttdeig",
+        "mp-burger: oppmalt": "Derfor skal kjøttdeig, hamburgere og andre produkter av oppmalt kjøtt som tommelfingerregel være gjennomstekte."
+      }
+    },
+    {
+      "id": "gronnsaker",
+      "slug": "gronnsaker",
+      "navn": "Grønnsaker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mpt-af-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mpt-af-tid-min": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mpt-af-tid-maks": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mpt-ov-temp": {
+          "verdi": 210,
+          "enhet": "°C",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mpt-ov-tid-min": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "mpt-ov-tid-maks": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mp-tilb",
+          "merknad": "Grønnsaker | 25-30 min på 200 °C | 30-45 min på 210 °C"
+        },
+        "ph-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "Blandede grønnsaker (grovhakket) 200–600g /7–21 oz 10–20 180°C/350°F"
+        },
+        "ph-tid-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Blandede grønnsaker (grovhakket) 200–600g /7–21 oz 10–20 180°C/350°F"
+        },
+        "ph-tid-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Blandede grønnsaker (grovhakket) 200–600g /7–21 oz 10–20 180°C/350°F"
+        },
+        "ph-mengde-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Blandede grønnsaker (grovhakket) 200–600g /7–21 oz 10–20 180°C/350°F"
+        },
+        "ph-mengde-maks": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Blandede grønnsaker (grovhakket) 200–600g /7–21 oz 10–20 180°C/350°F"
+        }
+      },
+      "tekst": {
+        "ph-hd920: stille-inn": "Still inn steketiden",
+        "ph-hd920: egen-smak": "etter egen smak",
+        "ph-hd920: riste": "Rist, snu eller rør",
+        "mp-tilb: tid-varierer": "steketid kan variere mellom produsentene, så sjekk med jevne mellomrom for å unngå at maten blir svidd eller underkokt."
+      }
+    },
+    {
+      "id": "svinekoteletter",
+      "slug": "svinekoteletter",
+      "navn": "Svinekoteletter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ph-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150 g/5 oz) 1–2 koteletter 11–15 200°C/400°F"
+        },
+        "ph-tid-min": {
+          "verdi": 11,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150 g/5 oz) 1–2 koteletter 11–15 200°C/400°F"
+        },
+        "ph-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150 g/5 oz) 1–2 koteletter 11–15 200°C/400°F"
+        },
+        "ph-vekt": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150 g/5 oz) 1–2 koteletter 11–15 200°C/400°F"
+        },
+        "ph-antall-min": {
+          "verdi": 1,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150 g/5 oz) 1–2 koteletter 11–15 200°C/400°F"
+        },
+        "ph-antall-maks": {
+          "verdi": 2,
+          "enhet": "stk",
+          "kilde": "ph-hd920",
+          "merknad": "(ca. 150 g/5 oz) 1–2 koteletter 11–15 200°C/400°F"
+        },
+        "kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Ytrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 1 kg stekes i ca. 40 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        }
+      },
+      "tekst": {
+        "mt-sommer: hele-biter": "Ved steiking av heile kjøttstykke som biff og kotelettar er det nok at overflatene blir godt steikte, fordi det er her bakteriane finst på kjøttet.",
+        "ph-hd920: riste": "Rist, snu eller rør",
+        "ph-hd920: forslag": "Vær oppmerksom på at disse innstillingene er forslag. Vi kan ikke garantere at innstillingene vil være de beste for maten din, ettersom ingredienser varierer når det gjelder opprinnelse, størrelse, form og merke.",
+        "mp-svin: kotelett": "Koteletter / Kotelettkam, nakke | 250 g | Brunes raskt på sterk varme, 2-3 minutter på hver side. Trekk pannen vekk fra platen og legg et lokk over. La kotelettene ettersteke i ca. 5 min."
+      }
+    },
+    {
+      "id": "frossen-mat",
+      "slug": "frossen-mat",
+      "navn": "Frossen mat",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ph-kb-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne kyllingbiter 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-kb-tid-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne kyllingbiter 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-kb-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne kyllingbiter 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-kb-mengde-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne kyllingbiter 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-kb-mengde-maks": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne kyllingbiter 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-vr-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne vårruller 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-vr-tid-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne vårruller 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-vr-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne vårruller 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-vr-mengde-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne vårruller 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "ph-vr-mengde-maks": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "ph-hd920",
+          "merknad": "Frosne vårruller 200–600g /7–21 oz 10–15 200°C/400°F"
+        },
+        "fi-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "fi-10",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min."
+        },
+        "fi-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "fi-10",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min."
+        },
+        "ph-pommes-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        },
+        "ph-pommes-tid-min": {
+          "verdi": 16,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        },
+        "ph-pommes-tid-maks": {
+          "verdi": 22,
+          "enhet": "minutter",
+          "kilde": "ph-hd920",
+          "merknad": "Tynn frossen pommes frites (7 x 7 mm/0,3 x 0,3 tommer) 200–500g /7–18 oz 16–22 180°C/350°F"
+        }
+      },
+      "tekst": {
+        "fi-10: variere": "Tilberedningstiden kan variere. Sjekk at maten er gjennomvarm før servering.",
+        "ph-hd920: forvarming": "Du trenger ikke å forvarme apparatet.",
+        "ph-hd920: forslag": "Vær oppmerksom på at disse innstillingene er forslag. Vi kan ikke garantere at innstillingene vil være de beste for maten din, ettersom ingredienser varierer når det gjelder opprinnelse, størrelse, form og merke.",
+        "ph-hd920: riste": "må du riste, snu eller røre i ingrediensene i kurven to til tre ganger for å oppnå et jevnt stekeresultat."
+      }
+    },
+    {
+      "id": "fiskepinner",
+      "slug": "fiskepinner",
+      "navn": "Fiskepinner",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fi10-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "fi-10",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min. La stå i ca. 1 minutt før servering."
+        },
+        "fi10-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "fi-10",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min. La stå i ca. 1 minutt før servering."
+        },
+        "fi10-antall": {
+          "verdi": 8,
+          "enhet": "stk",
+          "kilde": "fi-10",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min. La stå i ca. 1 minutt før servering."
+        },
+        "fi10-hvile": {
+          "verdi": 1,
+          "enhet": "minutter",
+          "kilde": "fi-10",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min. La stå i ca. 1 minutt før servering."
+        },
+        "fi10-ov-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "fi-10",
+          "merknad": "Varmluftsovn: 225°C i ca. 12 min."
+        },
+        "fi10-ov-tid": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "fi-10",
+          "merknad": "Varmluftsovn: 225°C i ca. 12 min."
+        },
+        "fi32-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "fi-32",
+          "merknad": "Forvarm airfryeren til 180°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min. La stå i ca. 1 minutt før servering."
+        },
+        "fi32-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "fi-32",
+          "merknad": "Forvarm airfryeren til 180°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min. La stå i ca. 1 minutt før servering."
+        },
+        "fi32-antall": {
+          "verdi": 8,
+          "enhet": "stk",
+          "kilde": "fi-32",
+          "merknad": "Forvarm airfryeren til 180°C. Legg den fryste fisken (8 fiskepinner) i kurven og tilbered i ca. 8 min. La stå i ca. 1 minutt før servering."
+        },
+        "fi32-ov-temp": {
+          "verdi": 210,
+          "enhet": "°C",
+          "kilde": "fi-32",
+          "merknad": "Forvarm ovnen til 210°C (varmluft) eller 230°C (stekeovn)."
+        },
+        "fi32-ov-tid-min": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "fi-32",
+          "merknad": "Stek midt i ovnen i 12–14 min. Airfryer"
+        },
+        "fi32-ov-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutter",
+          "kilde": "fi-32",
+          "merknad": "Stek midt i ovnen i 12–14 min. Airfryer"
+        },
+        "fifc-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "fi-fc",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (1/2 pakke) i kurven og tilbered i 6–8 minutter."
+        },
+        "fifc-tid-min": {
+          "verdi": 6,
+          "enhet": "minutter",
+          "kilde": "fi-fc",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (1/2 pakke) i kurven og tilbered i 6–8 minutter."
+        },
+        "fifc-tid-maks": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "fi-fc",
+          "merknad": "Forvarm airfryeren til 200°C. Legg den fryste fisken (1/2 pakke) i kurven og tilbered i 6–8 minutter."
+        },
+        "fifc-ov-temp": {
+          "verdi": 220,
+          "enhet": "°C",
+          "kilde": "fi-fc",
+          "merknad": "Forvarm ovnen til 220°C. Fordel fiskepinnene utover et stekebrett med bakepapir. Stek midt i ovnen i 12–14 minutter (varmluft)"
+        },
+        "fifc-ov-tid-min": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "fi-fc",
+          "merknad": "Stek midt i ovnen i 12–14 minutter (varmluft)"
+        },
+        "fifc-ov-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutter",
+          "kilde": "fi-fc",
+          "merknad": "Stek midt i ovnen i 12–14 minutter (varmluft)"
+        },
+        "le-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "le-fiskepinner",
+          "merknad": "Stek fisken i airfryeren på 180°C i ca. 8 minutter, eller til den er sprø og gyllen."
+        },
+        "le-tid": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "le-fiskepinner",
+          "merknad": "Stek fisken i airfryeren på 180°C i ca. 8 minutter, eller til den er sprø og gyllen."
+        }
+      },
+      "tekst": {
+        "fi-10: variere": "Tilberedningstiden kan variere. Sjekk at maten er gjennomvarm før servering.",
+        "fi-fc: halv-pakke": "(1/2 pakke)"
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "egg",
+      "navn": "Egg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "mp-egg",
+          "merknad": "Forvarm aifryeren til 150 °C og legg i egg."
+        },
+        "mp-blot": {
+          "verdi": 7,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "7 minutter for bløtkokt, 9 minutter for smilende og 11 minutter for hardkokt."
+        },
+        "mp-smil": {
+          "verdi": 9,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "7 minutter for bløtkokt, 9 minutter for smilende og 11 minutter for hardkokt."
+        },
+        "mp-hard": {
+          "verdi": 11,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "7 minutter for bløtkokt, 9 minutter for smilende og 11 minutter for hardkokt."
+        },
+        "mp-antall": {
+          "verdi": 4,
+          "enhet": "stk",
+          "kilde": "mp-egg",
+          "merknad": "4 stk. egg"
+        }
+      },
+      "tekst": {
+        "mp-egg: forvarm": "Forvarm aifryeren til 150 °C og legg i egg."
+      }
+    },
+    {
+      "id": "biff",
+      "slug": "biff",
+      "navn": "Biff",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-biff",
+          "merknad": "Sett airfryeren på 200°C og stek i ca. 7 minutter."
+        },
+        "mp-tid": {
+          "verdi": 7,
+          "enhet": "minutter",
+          "kilde": "mp-biff",
+          "merknad": "Sett airfryeren på 200°C og stek i ca. 7 minutter."
+        },
+        "mp-vekt": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-biff",
+          "merknad": "400 g entrecôte av storfe"
+        },
+        "mp-temper": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-biff",
+          "merknad": "Temperer kjøttet i minimum 30 minutter før det skal stekes."
+        },
+        "mp-hvile-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-biff",
+          "merknad": "La kjøttet hvile i 10-15 minutter før du skjærer det i tynne skiver."
+        },
+        "mp-hvile-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-biff",
+          "merknad": "La kjøttet hvile i 10-15 minutter før du skjærer det i tynne skiver."
+        },
+        "kjerne-lite": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-biff",
+          "merknad": "Lite stekt: 55 °C, medium: 60 °C, medium pluss: 65 °C og gjennomstekt: 70 °C"
+        },
+        "kjerne-medium": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-biff",
+          "merknad": "Lite stekt: 55 °C, medium: 60 °C, medium pluss: 65 °C og gjennomstekt: 70 °C"
+        },
+        "kjerne-pluss": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-biff",
+          "merknad": "Lite stekt: 55 °C, medium: 60 °C, medium pluss: 65 °C og gjennomstekt: 70 °C"
+        },
+        "kjerne-gjennom": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-biff",
+          "merknad": "Lite stekt: 55 °C, medium: 60 °C, medium pluss: 65 °C og gjennomstekt: 70 °C"
+        }
+      },
+      "tekst": {
+        "mt-sommer: hele-biter": "Ved steiking av heile kjøttstykke som biff og kotelettar er det nok at overflatene blir godt steikte, fordi det er her bakteriane finst på kjøttet.",
+        "mp-biff: krydre": "Gni kjøttet godt inn med salt, pepper og olje.",
+        "mp-biff: tid-varierer": "Tid kan variere mellom produsentene, så sjekk med jevne mellomrom for å unngå overstekt biff."
+      }
+    },
+    {
+      "id": "ribbe",
+      "slug": "ribbe",
+      "navn": "Ribbe",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mp-vekt": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "mp-ribbe",
+          "merknad": "600 g ribbe"
+        },
+        "mp-temp1": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "mp-ribbe",
+          "merknad": "Forvarm airfryeren til 150 °C. Hell ca. 2 dl vann i bunnen. Legg ribba i stekekurven med svoren opp og stek i 2 timer."
+        },
+        "mp-vann": {
+          "verdi": 2,
+          "enhet": "dl",
+          "kilde": "mp-ribbe",
+          "merknad": "Forvarm airfryeren til 150 °C. Hell ca. 2 dl vann i bunnen. Legg ribba i stekekurven med svoren opp og stek i 2 timer."
+        },
+        "mp-tid1": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mp-ribbe",
+          "merknad": "Forvarm airfryeren til 150 °C. Hell ca. 2 dl vann i bunnen. Legg ribba i stekekurven med svoren opp og stek i 2 timer."
+        },
+        "mp-temp2": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-ribbe",
+          "merknad": "Øk temperaturen til 200 °C og stek videre til svoren har poppet, 10-15 minutter."
+        },
+        "mp-tid2-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-ribbe",
+          "merknad": "Øk temperaturen til 200 °C og stek videre til svoren har poppet, 10-15 minutter."
+        },
+        "mp-tid2-maks": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-ribbe",
+          "merknad": "Øk temperaturen til 200 °C og stek videre til svoren har poppet, 10-15 minutter."
+        },
+        "mp-dager": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-ribbe",
+          "merknad": "Dekk med aluminiumsfolie, og la stå i kjøleskapet i 2 dager."
+        },
+        "kjerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Skinkestek m/svor / Bog, skinke | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1,5 - 2 timer. Bruk grillen på slutten for å få svoren sprø. | Medium pluss: 68 °C / Gjennomstekt: 75 °C"
+        }
+      },
+      "tekst": {
+        "mp-ribbe: skjaer": "Skjær gjennom svoren og litt ned i spekket med en skarp, spiss kniv.",
+        "mp-ribbe: gni": "Gni ribba godt inn med salt og pepper.",
+        "mp-ribbe: ferdig-rutet": "Kjøper du ferdig rutet og krydret ribbe, kan du hoppe over første steg.",
+        "mp-ribbe: folg-med": "Her er det lurt å følge med.",
+        "mp-ribbe: hvile": "La hvile litt før servering."
+      }
+    }
+  ]
+}

@@ -3,6 +3,86 @@
   "hash": "fb1de5151e0769b8",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/airfryer/": {
+  "hash": "8de284d6374667e7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/bacon/": {
+  "hash": "288f37502d38aa90",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/biff/": {
+  "hash": "1f81594b68bd8997",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/egg/": {
+  "hash": "5fd98079ea0f4879",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/fiskepinner/": {
+  "hash": "8da7701288326ece",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/frossen-mat/": {
+  "hash": "7828a262485bf519",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/gronnsaker/": {
+  "hash": "ce92736aa8a9078c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/hamburger/": {
+  "hash": "de295f82cb61afa2",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/kjottboller/": {
+  "hash": "344ae6a978aee320",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/kyllingfilet/": {
+  "hash": "cfc0ca8226ad377d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/kyllinglar/": {
+  "hash": "43fd0fc69cca24f7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/kyllingvinger/": {
+  "hash": "6cc274959e286b94",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/laks/": {
+  "hash": "2f63054e7f26e763",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/ovn-til-airfryer/": {
+  "hash": "be5365761ed724f7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/polser/": {
+  "hash": "b3a4de74d072f060",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/pommes-frites/": {
+  "hash": "bf4d6dbf8cac9fa3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/potetbater/": {
+  "hash": "e85fd2e9fce7ae05",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/ribbe/": {
+  "hash": "7ea12f4ef7c5cdc3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/svinekoteletter/": {
+  "hash": "3b686b65161b26da",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/airfryer/torsk/": {
+  "hash": "14a810df20705bf6",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/beste-handleliste-app/": {
   "hash": "f3664b609188a75d",
   "dato": "2026-11-21"
@@ -44,8 +124,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/ovnsoppskrift-i-airfryer/": {
-  "hash": "d0ad3e6d2d92e338",
-  "dato": "2026-11-20"
+  "hash": "7602226b27f4c70a",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/rester-i-kjoleskapet/": {
   "hash": "941dd1a9cbafc087",
@@ -1895,6 +1975,82 @@
   "hash": "ddc258eea1e91da7",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/erstatning/": {
+  "hash": "51274c7a052d9685",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/bakepulver/": {
+  "hash": "97679a08c3089096",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/brun-farin/": {
+  "hash": "eb505c3f591589e6",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/creme-fraiche/": {
+  "hash": "ab76d5c76278ecac",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/egg/": {
+  "hash": "651502b2a4aba4ed",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/floete/": {
+  "hash": "ed199fd22053a41a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/friske-og-torkede-urter/": {
+  "hash": "748fad3ff8e312b2",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/gjaer/": {
+  "hash": "726abd527f448df5",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/hvetemel/": {
+  "hash": "50038e6c9958caf9",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/hvitlok/": {
+  "hash": "cd69499eaa3714f9",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/hvitvin/": {
+  "hash": "11520ed866e2c391",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/kulturmelk-og-kefir/": {
+  "hash": "9f4a22bc3957d12c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/maisenna/": {
+  "hash": "2b5cf993cacc30b3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/melk/": {
+  "hash": "eb8f06400abd79c7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/natron/": {
+  "hash": "a44bb470de7a7334",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/romme/": {
+  "hash": "e061039992ffaaa8",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/smor/": {
+  "hash": "c4f03b94f6bcbb0c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/sukker/": {
+  "hash": "cb5442b8a6d43fa9",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/vaniljesukker/": {
+  "hash": "6c3075d8696ed143",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/finn-oppskrifter/": {
   "hash": "495f4590703930b2",
   "dato": "2026-11-18"
@@ -1996,8 +2152,68 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/": {
-  "hash": "492e124a674b3817",
-  "dato": "2026-11-18"
+  "hash": "f20c9d2ff9622cb6",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-bananer/": {
+  "hash": "f6fdd5c3064e391a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-brod/": {
+  "hash": "e20aa82d45d722b9",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-egg/": {
+  "hash": "50ffb5a138236cbd",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-epler/": {
+  "hash": "df67fe09254dea09",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-floete/": {
+  "hash": "37871fd8f294555b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-gulrotter/": {
+  "hash": "f3eb4da52c952f4e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-kjottdeig/": {
+  "hash": "1141f492c5a22a00",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-kokt-skinke/": {
+  "hash": "a6e307eb11ba5713",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-kokte-poteter/": {
+  "hash": "b0be21d0f77b0133",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-kylling/": {
+  "hash": "5756c0196d580147",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-laks/": {
+  "hash": "46b02d1392029ea3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-pasta/": {
+  "hash": "2a41fa15cc4747e1",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-poteter/": {
+  "hash": "9a17a3052d915ead",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-ribbe-og-pinnekjott/": {
+  "hash": "2ae86b8600c38908",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-ris/": {
+  "hash": "13fea3328ca70d19",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/importer-fra-alletiders-kokebok/": {
   "hash": "a946eb7a1dc47478",
@@ -2028,7 +2244,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/": {
-  "hash": "7e273d2fd5e385d7",
+  "hash": "7badc4ac75c7a37e",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/biff/": {
@@ -2216,11 +2432,11 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/spiskammer-app/": {
-  "hash": "19571c1cfc4d71d7",
-  "dato": "2026-11-19"
+  "hash": "760263ce85f9dc69",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/": {
-  "hash": "769ada85e9679b5c",
+  "hash": "196fa457e66ea837",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/bakt-potet/": {

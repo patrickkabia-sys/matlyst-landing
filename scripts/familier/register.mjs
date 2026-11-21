@@ -4,6 +4,7 @@
 //
 // Oppføring: { id, sidetype: 'omregner' | 'guide-lang', mappe: URL, markeder: { [marked]: { rot } } }
 //   rot er stien uten språkmappe og uten ledende skråstrek, for eksempel 'verktoy/dl-til-gram/'.
+//   gruppeFinnes (valgfri): samlesiden står alt i en sidegruppe i locale-sider.mjs, så familien lager ingen egen gruppe for den.
 // Mappa har data.<marked>.json (se felles.mjs) og mal-<marked>.mjs, som eksporterer
 //   navSide(data, rader), sideForRad(rad, data, rader) og tillatteTall(rad, data).
 // Samme rad-id på to markeder betyr «samme vare» og gir hreflang mellom språkene.
@@ -37,6 +38,12 @@ export const FAMILIER = Object.freeze([
   { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' } } },
   // Mengde per person: bare norsk. Tall fra MatPrat og Helsedirektoratet med sitat per tall (kildekontroll.mjs), tekstene i tekst-nb.mjs.
   { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' } } },
+  // Airfryer: tid og temperatur per råvare med kilde, og omregner fra ovn. Bare norsk. Tallene står i data.nb.json med sitat fra kilden (kildekontroll.mjs).
+  { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' } } },
+  // Erstatning: hva du kan bruke i stedet for en vare du mangler. Bare norsk. Tall med sitat fra Idun, MatPrat, melk.no med flere (se erstatning/kildekontroll.mjs).
+  { id: 'erstatning', sidetype: 'guide-lang', mappe: new URL('./erstatning/', import.meta.url), markeder: { nb: { rot: 'erstatning/' } } },
+  // Rester og råvarer: undersidene /hva-kan-jeg-lage/med-<vare>/ til den eksisterende guiden. Samlesiden /hva-kan-jeg-lage/ har sidegruppen oppskrifter-fra-ingredienser (nb, sv, da, en).
+  { id: 'rester', sidetype: 'guide-lang', mappe: new URL('./rester/', import.meta.url), markeder: { nb: { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true } } },
 ]);
 
 export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });
@@ -135,14 +142,15 @@ export function familieGrupper(familier = FAMILIER) {
     const nav = { id: `auto-fam-${familie.id}-nav`, sider: {} };
     const perRad = new Map();
     for (const mk of marked) {
-      nav.sider[mk] = sti(mk, familie.markeder[mk].rot);
+      // gruppeFinnes: samlesiden hører allerede til en sidegruppe i locale-sider.mjs (med lenker til de andre språkene), så familien lager ikke en ny.
+      if (!familie.markeder[mk].gruppeFinnes) nav.sider[mk] = sti(mk, familie.markeder[mk].rot);
       for (const rad of lesFamilie(familie, mk).rader) {
         const g = perRad.get(rad.id) ?? { id: `auto-fam-${familie.id}-${rad.id}`, sider: {} };
         g.sider[mk] = sti(mk, familie.markeder[mk].rot, rad.slug);
         perRad.set(rad.id, g);
       }
     }
-    ut.push(nav, ...perRad.values());
+    ut.push(...(Object.keys(nav.sider).length ? [nav] : []), ...perRad.values());
   }
   return ut;
 }

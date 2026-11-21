@@ -146,7 +146,7 @@ export function lagMal(cfg) {
     const publisert = rader.map((r) => r.oppdatert).sort().at(-1);
     return {
       title: s.title, description: s.description, eyebrow: esc(cfg.eyebrowNavn), h1: s.h1, lead: s.lead,
-      ...SKJELETT, rik: [s.rik, cfg.app, kildeliste(data, brukt)].join('\n'),
+      ...SKJELETT, rik: [s.rik, cfg.navEkstra ?? '', cfg.app, kildeliste(data, brukt)].join('\n'),
       faqTittel: s.faqTittel, faq: s.faq, publisert,
       schemas: [
         brodsmule(),
