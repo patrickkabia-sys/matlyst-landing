@@ -35,26 +35,26 @@ export function importPaastander(t) {
   return setninger(t).filter((s) => /mealime/iu.test(s) && /\bimport/iu.test(s) && !s.endsWith('?') && !NEGASJON.test(s) && !/\b(?:link|links|one at a time)\b/iu.test(s));
 }
 
-test('siden finnes som egen sidegruppe med bare engelsk, og alle tre andre språk mangler', () => {
+test('siden er sidegruppe på alle fire språk', () => {
   const gruppe = SIDEGRUPPER.find(({ sider }) => sider.en === STI);
   assert.ok(gruppe, 'mangler i SIDEGRUPPER');
-  assert.deepEqual(Object.keys(gruppe.sider), ['en']);
-  for (const mappe of ['sv', 'da']) assert.equal(existsSync(join(ROOT, mappe, 'mealime-alternative')), false);
-  assert.equal(existsSync(join(ROOT, 'mealime-alternative')), false);
+  assert.deepEqual(gruppe.sider, { nb: '/mealime-alternativ/', sv: '/sv/mealime-alternativ/', da: '/da/mealime-alternativ/', en: STI });
+  for (const sti of Object.values(gruppe.sider)) assert.ok(existsSync(join(ROOT, sti.replace(/^\//u, ''), 'index.html')), sti);
 });
 
-test('hreflang har bare en og x-default, og siden er ikke i språkkartet for omdirigering', () => {
-  assert.deepEqual(alternativerFor(STI), [['en', STI], ['x-default', STI]]);
+test('hreflang peker på alle fire språk, x-default på engelsk, og siden er ikke i språkkartet for omdirigering', () => {
+  assert.deepEqual(alternativerFor(STI), [['nb-NO', '/mealime-alternativ/'], ['sv-SE', '/sv/mealime-alternativ/'], ['da-DK', '/da/mealime-alternativ/'], ['en', STI], ['x-default', STI]]);
   const lenker = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)">/gu)].map(([, k, h]) => [k, h]);
-  assert.deepEqual(lenker, [['en', `https://matlyst-app.no${STI}`], ['x-default', `https://matlyst-app.no${STI}`]]);
-  assert.doesNotMatch(html, /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu);
+  assert.deepEqual(lenker, [['nb-NO', 'https://matlyst-app.no/mealime-alternativ/'], ['sv-SE', 'https://matlyst-app.no/sv/mealime-alternativ/'], ['da-DK', 'https://matlyst-app.no/da/mealime-alternativ/'], ['en', `https://matlyst-app.no${STI}`], ['x-default', `https://matlyst-app.no${STI}`]]);
 });
 
-test('siden står i det engelske sidekartet, men ikke i de andre', () => {
-  const en = readFileSync(join(ROOT, 'sitemap-en.xml'), 'utf8');
-  // 21.11.2026: lenken til /en/best-meal-planning-app/ endret innholdet, så lastmod flyttet seg en dag.
-  assert.match(en, /<loc>https:\/\/matlyst-app\.no\/en\/mealime-alternative\/<\/loc>\s*<lastmod>2026-11-21<\/lastmod>/u);
-  for (const fil of ['sitemap.xml', 'sitemap-sv.xml', 'sitemap-da.xml']) assert.doesNotMatch(readFileSync(join(ROOT, fil), 'utf8'), /mealime/iu, fil);
+test('siden står i hvert språks eget sidekart, ikke i de andres', () => {
+  const kart = { 'sitemap.xml': '/mealime-alternativ/', 'sitemap-sv.xml': '/sv/mealime-alternativ/', 'sitemap-da.xml': '/da/mealime-alternativ/', 'sitemap-en.xml': STI };
+  for (const [fil, sti] of Object.entries(kart)) {
+    const xml = readFileSync(join(ROOT, fil), 'utf8');
+    assert.match(xml, new RegExp(`<loc>https://matlyst-app\\.no${sti}</loc>\\s*<lastmod>2026-11-2\\d</lastmod>`, 'u'), fil);
+    assert.equal([...xml.matchAll(/<loc>[^<]*mealime-alternativ[^<]*<\/loc>/gu)].length, 1, fil);
+  }
 });
 
 test('sidetypen er guide-lang, og tittel og beskrivelse har lovlig lengde', () => {

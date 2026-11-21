@@ -6,15 +6,15 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1446**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1452**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 
 | Språk | Sider |
 |---|---:|
-| nb | 408 |
-| sv | 354 |
-| da | 327 |
-| en | 357 |
-| Sum | 1446 |
+| nb | 409 |
+| sv | 356 |
+| da | 329 |
+| en | 358 |
+| Sum | 1452 |
 
 | Sidetype | nb | sv | da | en | Sum |
 |---|---:|---:|---:|---:|---:|
@@ -22,7 +22,7 @@ Sider i sitemap: **1446**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 | forside | 1 | 1 | 1 | 1 | 4 |
 | guide-gammel | 3 |  |  |  | 3 |
 | guide-kort | 11 | 15 | 15 | 15 | 56 |
-| guide-lang | 148 | 95 | 94 | 156 | 493 |
+| guide-lang | 149 | 97 | 96 | 157 | 499 |
 | juss | 3 | 3 | 3 | 3 | 12 |
 | omregner | 233 | 232 | 206 | 174 | 845 |
 
@@ -41,10 +41,10 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | juleaften | Juleaften: tidsplan for and og flæskesteg | guide-lang |  |  | `/da/juleaften/` (1) |  | da-rike-sider.mjs |  | 2026-11-21 |
 | julebord | Julebord hjemme: plan, mengder og handleliste | guide-lang | `/julebord/` (1) | `/sv/julbord/` (1) | `/da/julefrokost/` (1) |  | da-rike-sider.mjs, forfatter.mjs, nb-jul/julebord.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-21 |
 | julemiddag | Julemiddag: plan, mengder og handleliste | guide-lang | `/julemiddag/` (1) |  |  |  | forfatter.mjs, nb-jul/julemiddag.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
-| mealime-alternative | Mealime Alternative: Moving Your Recipes | guide-lang |  |  |  | `/en/mealime-alternative/` (1) | en-rike-sider.mjs |  | 2026-11-21 |
+| mealime-alternative | Mealime-alternativ: slik tar du oppskriftene med deg | guide-lang | `/mealime-alternativ/` (1) | `/sv/mealime-alternativ/` (1) | `/da/mealime-alternativ/` (1) | `/en/mealime-alternative/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-21 |
 | nyttarsmiddag | Nyttårsmiddag: kalkun, tider og mengder | guide-lang | `/nyttarsmiddag/` (1) | `/sv/nyarsmiddag/` (1) |  |  | forfatter.mjs, nb-jul/nyttarsmiddag.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-21 |
-| om | Om Matlyst: hvem som lager appen | guide-lang | `/om/` (1) |  |  |  | nb-rike-sider.mjs |  | 2026-11-20 |
-| bytt-fra-paprika | Flytt oppskrifter fra Paprika til Matlyst | guide-kort | `/bytt-fra-paprika/` (1) | `/sv/byt-fran-paprika/` (1) | `/da/skift-fra-paprika/` (1) | `/en/import-recipes-from-paprika/` (1) | import-guider-lokale.mjs |  | 2026-11-20 |
+| om | Om Matlyst: hvem som lager appen | guide-lang | `/om/` (1) | `/sv/om/` (1) | `/da/om/` (1) | `/en/about/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-21 |
+| bytt-fra-paprika | Flytt oppskrifter fra Paprika til Matlyst | guide-kort | `/bytt-fra-paprika/` (1) | `/sv/byt-fran-paprika/` (1) | `/da/skift-fra-paprika/` (1) | `/en/import-recipes-from-paprika/` (1) | import-guider-lokale.mjs |  | 2026-11-21 |
 | dr-mad | Lagre oppskrifter fra DR Mad | guide-kort | `/importer-fra-dr-mat/` (1) | `/sv/dr-mad/` (1) | `/da/dr-mad/` (1) | `/en/dr-food/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
 | enkel-middag | Enkel middag: 14 raske retter på under 30 minutter | guide-kort | `/enkel-middag/` (1) | `/sv/enkel-middag/` (1) | `/da/nem-mad/` (1) | `/en/easy-dinner/` (1) | middagssider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
 | finn-oppskrifter | Finn oppskriftene dine: søk og filtrer | guide-gammel, guide-kort | `/finn-oppskrifter/` (1) | `/sv/hitta-recept/` (1) | `/da/find-opskrifter/` (1) | `/en/find-recipes/` (1) | undersider-alle-sprak.mjs |  | 2026-11-21 |
@@ -90,28 +90,22 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 
 | Gruppe | Finnes på | Mangler på |
 |---|---|---|
-| juleaften | da | nb, sv, en |
 | julebord | nb, sv, da | en |
-| julemiddag | nb | sv, da, en |
-| mealime-alternative | en | nb, sv, da |
-| nyttarsmiddag | nb, sv | da, en |
-| om | nb | sv, da, en |
 | oppskrifter-fra-ingredienser | sv, da, en | nb |
 | familie:rester | nb | sv, da, en |
-| hoytider | en | nb, sv, da |
 
 ### Enkeltgrupper i samlede rader som mangler på et språk raden ellers har
 
 | Rad | Antall grupper | Per manglende språk (grupper uten språket) |
 |---|---:|---|
-| familie:airfryer | 20 | nb: 8 (andebryst, baked-potato, bakt-potet, flaeskesteg, flaskfile, hel-kylling, ...); sv: 11 (andebryst, baked-potato, biff, flaeskesteg, frossen-mat, polser, ...); da: 16 (baked-potato, bakt-potet, biff, fiskepinner, flaskfile, frossen-mat, ...); en: 10 (andebryst, bakt-potet, fiskepinner, flaeskesteg, flaskfile, hel-kylling, ...) |
+| familie:airfryer | 20 | nb: 8 (andebryst, baked-potato, bakt-potet, flaeskesteg, flaskfile, hel-kylling, ...); sv: 11 (andebryst, baked-potato, biff, flaeskesteg, frossen-mat, polser, ...); da: 16 (baked-potato, bakt-potet, biff, fiskepinner, flaskfile, frossen-mat, ...); en: 9 (andebryst, bakt-potet, fiskepinner, flaskfile, hel-kylling, kjottboller, ...) |
 | familie:dl-til-gram | 40 | nb: 26 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); sv: 27 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); da: 27 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); en: 13 (bulgur, chiafro, couscous, grotris, kokosmasse, mandelmel, ...) |
 | familie:erstatning | 32 | nb: 14 (broth, buttermilk, cake-flour, florsocker, half-and-half, honey, ...); sv: 26 (bakepulver, broth, buttermilk, cake-flour, creme-fraiche, egg, ...); da: 24 (broth, brun-farin, buttermilk, cake-flour, florsocker, friske-og-torkede-urter, ...); en: 10 (creme-fraiche, florsocker, hvetemel, kulturmelk-og-kefir, natron, romme, ...) |
 | familie:frysing | 38 | nb: 25 (bacon, casseroles, cooked-chicken, cooked-pasta, cooked-rice, deli-meat, ...); sv: 27 (bacon, baer, casseroles, cooked-chicken, cooked-pasta, cooked-rice, ...); da: 30 (bacon, baer, casseroles, cooked-chicken, cooked-pasta, cooked-rice, ...); en: 17 (baer, brod, fisk, frukt-og-gronnsaker, frysa-om, gurka-og-salat, ...) |
 | familie:holdbarhet | 36 | nb: 31 (bacon, baer, brod, casseroles, cooked-chicken, cooked-pasta, ...); sv: 28 (bacon, baer, casseroles, cooked-chicken, cooked-pasta, cooked-rice, ...); da: 28 (bacon, brod, casseroles, cooked-chicken, cooked-pasta, cooked-rice, ...); en: 17 (baer, brod, elavbrott, fisk, framme, frukt-og-gronnsaker, ...) |
 | familie:kjernetemperatur | 23 | nb: 12 (and, egg, gris, kalkundeig, kalv, kjottkake, ...); sv: 20 (and, biff, egg, entrecote, kalkundeig, kalv, ...); da: 14 (egg, entrecote, gris, kalkundeig, kjottkake, laks, ...); en: 11 (and, entrecote, gris, kalv, lammefilet, not-og-lamm, ...) |
-| familie:mengde-per-person | 35 | nb: 14 (burgers, flaeskesteg, groensager, ham, korv, mashed-potatoes, ...); sv: 26 (burgers, fisk, flaeskesteg, grillmat, groensager, ham, ...); da: 27 (biff, burgers, grillmat, ham, julemat, kjott, ...); en: 22 (biff, fisk, flaeskesteg, grillmat, groensager, julemat, ...) |
-| familie:steketid | 19 | nb: 13 (and, biff-i-panna, brisket, corned-beef, flaeskesteg, kalkunbryst, ...); sv: 14 (and, bakt-potet, brisket, corned-beef, flaeskesteg, kalkunbryst, ...); da: 14 (biff-i-panna, brisket, corned-beef, kalkunbryst, kalkunlar, kalkunmetoder, ...); en: 10 (and, bakt-potet, biff-i-panna, flaeskesteg, laks-i-ovn, pinnekjott, ...) |
+| familie:mengde-per-person | 35 | nb: 14 (burgers, flaeskesteg, groensager, ham, korv, mashed-potatoes, ...); sv: 26 (burgers, fisk, flaeskesteg, grillmat, groensager, ham, ...); da: 27 (biff, burgers, grillmat, ham, julemat, kjott, ...); en: 21 (biff, fisk, grillmat, groensager, julemat, kjott, ...) |
+| familie:steketid | 19 | nb: 13 (and, biff-i-panna, brisket, corned-beef, flaeskesteg, kalkunbryst, ...); sv: 14 (and, bakt-potet, brisket, corned-beef, flaeskesteg, kalkunbryst, ...); da: 14 (biff-i-panna, brisket, corned-beef, kalkunbryst, kalkunlar, kalkunmetoder, ...); en: 8 (and, bakt-potet, biff-i-panna, laks-i-ovn, potatis, poteter-og-ris, ...) |
 | omregner:volum | 146 | nb: 74 (enhet-cl-msk, enhet-cl-spsk, enhet-cl-tsk, enhet-cups-msk, enhet-cups-spsk, enhet-cups-tsk, ...); sv: 74 (enhet-cl-spsk, enhet-cl-ss, enhet-cl-ts, enhet-cups-spsk, enhet-cups-ss, enhet-cups-ts, ...); da: 100 (enhet-cl-krm, enhet-cl-msk, enhet-cl-ss, enhet-cl-ts, enhet-cups-krm, enhet-cups-msk, ...); en: 146 (enhet-cl-krm, enhet-cl-msk, enhet-cl-spsk, enhet-cl-ss, enhet-cl-ts, enhet-cl-tsk, ...) |
 | blogg | 2 | sv: 1 (blogg-koketid); da: 1 (blogg-koketid); en: 1 (blogg-egg) |
 
@@ -122,6 +116,21 @@ Ingen. Alle sider i flerspråklige grupper peker på alle språkene i gruppa.
 ### Uten gruppe
 
 Ingen. Alle adresser i sitemap hører til en gruppe.
+
+## Villet, ikke hull
+
+Språk en gruppe med vilje ikke har (`VILLEDE_HULL` i `scripts/sideoversikt.mjs`). Disse står ikke under «Hull».
+
+| Gruppe | Språk | Hva | Grunn |
+|---|---|---|---|
+| juleaften | nb, sv, en | hele gruppa | Dansk tradisjon (and og flæskesteg på juleaften) med danske kilder. |
+| julemiddag | sv, da, en | hele gruppa | Norsk julemiddag (ribbe og pinnekjøtt) dekkes av /sv/julbord/, /da/juleaften/ og de engelske høytidssidene, uten å være samme side. |
+| nyttarsmiddag | da | hele gruppa | Ingen danske kilder med mengder og tider er funnet. |
+| nyttarsmiddag | en | hele gruppa | Dekkes av /en/holidays/new-years-eve/, som er en amerikansk side med amerikanske kilder og ikke samme side. |
+| hoytider | nb, sv, da | hele gruppa | Amerikanske høytider (Thanksgiving, Hanukkah, Friendsgiving, USA-nyttår): sidene er skrevet for USA og følger amerikanske kilder. |
+| familie:airfryer | en | enkeltvarer: flaeskesteg | Dansk tradisjonsrett, ikke en amerikansk rett. |
+| familie:mengde-per-person | en | enkeltvarer: flaeskesteg | Dansk tradisjonsrett, ikke en amerikansk rett. |
+| familie:steketid | en | enkeltvarer: flaeskesteg, pinnekjott | Norsk og dansk tradisjonsrett, ikke amerikanske retter. |
 
 ## Utenfor sitemap
 
@@ -152,7 +161,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ## Alle adresser
 
-1446 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
+1452 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
 
 ### forside
 
@@ -272,6 +281,18 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ### mealime-alternative
 
+**nb** (1)
+
+- https://matlyst-app.no/mealime-alternativ/ (2026-11-21)
+
+**sv** (1)
+
+- https://matlyst-app.no/sv/mealime-alternativ/ (2026-11-21)
+
+**da** (1)
+
+- https://matlyst-app.no/da/mealime-alternativ/ (2026-11-21)
+
 **en** (1)
 
 - https://matlyst-app.no/en/mealime-alternative/ (2026-11-21)
@@ -290,21 +311,33 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **nb** (1)
 
-- https://matlyst-app.no/om/ (2026-11-20)
+- https://matlyst-app.no/om/ (2026-11-21)
+
+**sv** (1)
+
+- https://matlyst-app.no/sv/om/ (2026-11-21)
+
+**da** (1)
+
+- https://matlyst-app.no/da/om/ (2026-11-21)
+
+**en** (1)
+
+- https://matlyst-app.no/en/about/ (2026-11-21)
 
 ### bytt-fra-paprika
 
 **nb** (1)
 
-- https://matlyst-app.no/bytt-fra-paprika/ (2026-11-20)
+- https://matlyst-app.no/bytt-fra-paprika/ (2026-11-21)
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/byt-fran-paprika/ (2026-11-20)
+- https://matlyst-app.no/sv/byt-fran-paprika/ (2026-11-21)
 
 **da** (1)
 
-- https://matlyst-app.no/da/skift-fra-paprika/ (2026-11-20)
+- https://matlyst-app.no/da/skift-fra-paprika/ (2026-11-21)
 
 **en** (1)
 

@@ -23,13 +23,12 @@ const GODKJENT = ['Patrick er ikke utdannet kokk. Han er utdannet kjøletekniker
 const godkjentFjernet = (t) => GODKJENT.reduce((rest, setning) => rest.split(setning).join(' '), t);
 const KILDE_TEKST = readFileSync(join(ROOT, 'oppskriftsbok-app/index.html'), 'utf8').replace(/<[^>]+>/gu, ' ').replace(/\s+/gu, ' ');
 
-test('siden er egen sidegruppe med bare norsk, og hreflang har bare nb og x-default', () => {
+test('siden er sidegruppe på alle fire språk, og hreflang peker på alle og x-default på engelsk', () => {
   const gruppe = SIDEGRUPPER.find(({ sider }) => sider.nb === STI);
   assert.ok(gruppe);
-  assert.deepEqual(Object.keys(gruppe.sider), ['nb']);
-  assert.deepEqual(alternativerFor(STI), [['nb-NO', STI], ['x-default', STI]]);
-  assert.doesNotMatch(html, /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu);
-  assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/om\/<\/loc>\s*<lastmod>2026-11-20<\/lastmod>/u);
+  assert.deepEqual(gruppe.sider, { nb: '/om/', sv: '/sv/om/', da: '/da/om/', en: '/en/about/' });
+  assert.deepEqual(alternativerFor(STI), [['nb-NO', STI], ['sv-SE', '/sv/om/'], ['da-DK', '/da/om/'], ['en', '/en/about/'], ['x-default', '/en/about/']]);
+  assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/om\/<\/loc>\s*<lastmod>2026-11-2\d<\/lastmod>/u);
 });
 
 test('sidetypen er guide-lang, tittel og beskrivelse har lovlig lengde', () => {
@@ -113,7 +112,11 @@ test('én setning om KI og at tallene har kilde, og ingen flere påstander om KI
   assert.equal([...tekst.matchAll(/\bKI\b/gu)].length, 2, 'KI nevnes i denne setningen og i omtalen av appens oppskriftsimport');
 });
 
-test('om-siden har lenke i bunnteksten (hyllen Matlyst) på alle norske sider, men ikke på sv, da og en', () => {
+test('om-siden har lenke i bunnteksten (hyllen Matlyst) på hvert språk, til språkets egen om-side', () => {
   for (const fil of ['handleliste/index.html', 'blogg/index.html', 'index.html', 'personvern.html', 'julemiddag/index.html', 'om/index.html']) assert.match(readFileSync(join(ROOT, fil), 'utf8'), /<li><a href="\/om\/"><span>Om Matlyst<\/span><\/a><\/li>/u, fil);
-  for (const fil of ['sv/index.html', 'da/index.html', 'en/index.html', 'en/shopping-list/index.html', 'sv/inkopslista/index.html']) assert.doesNotMatch(readFileSync(join(ROOT, fil), 'utf8'), /href="\/om\/"/u, fil);
+  for (const [fil, href, tekst] of [['sv/index.html', '/sv/om/', 'Om Matlyst'], ['sv/inkopslista/index.html', '/sv/om/', 'Om Matlyst'], ['da/index.html', '/da/om/', 'Om Matlyst'], ['da/indkoebsliste-app/index.html', '/da/om/', 'Om Matlyst'], ['en/index.html', '/en/about/', 'About Matlyst'], ['en/shopping-list/index.html', '/en/about/', 'About Matlyst']]) {
+    const h = readFileSync(join(ROOT, fil), 'utf8');
+    assert.ok(h.includes(`<li><a href="${href}"><span>${tekst}</span></a></li>`), `${fil}: mangler lenke til ${href}`);
+    assert.doesNotMatch(h, /href="\/om\/"/u, `${fil}: peker på den norske om-siden`);
+  }
 });

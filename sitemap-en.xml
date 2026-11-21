@@ -10,6 +10,15 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/en/about/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/om/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/om/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/om/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/about/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/en/air-fryer/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/"/>
@@ -1074,6 +1083,9 @@
   <url>
     <loc>https://matlyst-app.no/en/mealime-alternative/</loc>
     <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/mealime-alternativ/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/mealime-alternativ/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/mealime-alternativ/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/mealime-alternative/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/mealime-alternative/"/>
   </url>

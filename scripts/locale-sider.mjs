@@ -55,8 +55,8 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'auto-hoytid-new-years-eve', sider: { en: '/en/holidays/new-years-eve/' } },
   { id: 'auto-hoytid-friendsgiving', sider: { en: '/en/holidays/friendsgiving/' } },
   { id: 'auto-hoytider', sider: { en: '/en/holidays/' } },
-  // Flytteside for tidligere Mealime-brukere: bare engelsk (USA). «auto-»-prefikset gir variabel språkdekning i hreflang-testen.
-  { id: 'auto-mealime-alternative', sider: { en: '/en/mealime-alternative/' } },
+  // Flytteside for tidligere Mealime-brukere: først skrevet på engelsk (USA), siden på nb, sv og da. «auto-»-prefikset gir variabel språkdekning i hreflang-testen.
+  { id: 'auto-mealime-alternative', sider: { nb: '/mealime-alternativ/', sv: '/sv/mealime-alternativ/', da: '/da/mealime-alternativ/', en: '/en/mealime-alternative/' } },
   // Julehøytidene. Julebord, julbord og julefrokost er én gruppe (selskapet med buffet), nyttårsmiddag og nyårsmiddag én.
   // Julemiddag (ribbe og pinnekjøtt) og den danske juleaften (and og flæskesteg) er ikke samme innhold, så de står hver for seg.
   // «auto-»-prefikset gir variabel språkdekning i hreflang-testen.
@@ -64,7 +64,7 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'auto-juleaften', sider: { da: '/da/juleaften/' } },
   { id: 'auto-julebord', sider: { nb: '/julebord/', sv: '/sv/julbord/', da: '/da/julefrokost/' } },
   { id: 'auto-nyttarsmiddag', sider: { nb: '/nyttarsmiddag/', sv: '/sv/nyarsmiddag/' } },
-  { id: 'auto-om', sider: { nb: '/om/' } },
+  { id: 'auto-om', sider: { nb: '/om/', sv: '/sv/om/', da: '/da/om/', en: '/en/about/' } },
   // De nøytrale sammenligningssidene (scripts/sammenligning/) på alle fire språk. Appvalget er eget per land.
   { id: 'auto-beste-oppskriftsapp', sider: { nb: '/beste-oppskriftsapp/', sv: '/sv/basta-receptapp/', da: '/da/bedste-opskriftsapp/', en: '/en/best-recipe-app/' } },
   { id: 'auto-beste-handleliste-app', sider: { nb: '/beste-handleliste-app/', sv: '/sv/basta-inkopslista-app/', da: '/da/bedste-indkoebsliste-app/', en: '/en/best-grocery-list-app/' } },

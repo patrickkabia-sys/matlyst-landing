@@ -15,6 +15,7 @@ import { side as hanukkah } from './en-hoytider/hanukkah.mjs';
 import { side as newYearsEve } from './en-hoytider/new-years-eve.mjs';
 import { side as friendsgiving } from './en-hoytider/friendsgiving.mjs';
 import { side as mealime } from './en-flytting/mealime.mjs';
+import { side as om } from './om/en.mjs';
 import { sider as sammenligning } from './sammenligning/en.mjs';
 import { enhetsSider } from './en-enhetssider.mjs';
 import { animasjon, byggLese, byggRik, founder, scenario, scenarioNotat, skjerm, telefoner } from './rik-sider.mjs';
@@ -580,6 +581,7 @@ export const rikeSider = {
   },
   ...Object.fromEntries(Object.entries({ thanksgiving, 'thanksgiving-leftovers': thanksgivingLeftovers, 'christmas-dinner': christmasDinner, hanukkah, 'new-years-eve': newYearsEve, friendsgiving }).filter(([, v]) => v).map(([k, v]) => [`holidays/${k}/`, v])),
   'mealime-alternative/': mealime,
+  'about/': om,
   ...sammenligning,
   'holidays/': {
     title: 'Holiday cooking planner: timelines and quantities',
