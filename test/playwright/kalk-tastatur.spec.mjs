@@ -4,6 +4,10 @@ import { test, expect } from '@playwright/test';
 const SIDER = [
   ['hvetemel', '/verktoy/dl-til-gram/hvetemel/', ['a', 'mengde', 'fra', 'bytt', 'til', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig']],
   ['samleside', '/verktoy/dl-til-gram/', ['vare', 'mengde', 'fra', 'bytt', 'til', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig']],
+  ['hvetemel sv', '/sv/verktyg/dl-till-gram/vetemjol/', ['a', 'mengde', 'fra', 'bytt', 'til', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig']],
+  ['samleside sv', '/sv/verktyg/dl-till-gram/', ['vare', 'mengde', 'fra', 'bytt', 'til', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig']],
+  ['hvetemel da', '/da/vaerktoejer/dl-til-gram/hvedemel/', ['a', 'mengde', 'fra', 'bytt', 'til', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig']],
+  ['samleside da', '/da/vaerktoejer/dl-til-gram/', ['vare', 'mengde', 'fra', 'bytt', 'til', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig']],
 ];
 
 // Navnet på det fokuserte elementet i kortet: data-felt, «hurtig» for hurtigknappene, «a» for lenka.
@@ -19,6 +23,10 @@ const synligFokus = (page) => page.evaluate(() => {
   const kjede = [e, e.closest('label'), e.closest('.kalkside'), e.closest('.kalkvare')].filter(Boolean);
   return kjede.some((x) => { const s = getComputedStyle(x); return (s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) > 0) || s.boxShadow !== 'none'; });
 });
+
+// Veiledningen ved ugyldig inntasting står på sidens språk.
+const FEIL = { sv: 'Skriv in en mängd, till exempel 2 eller 2,5.', da: 'Skriv en mængde, for eksempel 2 eller 2,5.' };
+const veiledning = (sti) => FEIL[sti.split('/')[1]] ?? 'Skriv inn en mengde, for eksempel 2 eller 2,5.';
 
 for (const [navn, sti, rekkefolge] of SIDER) {
   test.describe(`tastatur på ${navn}`, () => {
@@ -84,7 +92,7 @@ for (const [navn, sti, rekkefolge] of SIDER) {
       await page.keyboard.press('ControlOrMeta+A');
       await page.keyboard.type('abc');
       await expect(page.locator(`${f} [data-felt=mengde]`)).toHaveAttribute('aria-invalid', 'true');
-      await expect(page.locator(`${f} [data-felt=setning]`)).toHaveText('Skriv inn en mengde, for eksempel 2 eller 2,5.');
+      await expect(page.locator(`${f} [data-felt=setning]`)).toHaveText(veiledning(sti));
       await expect(page.locator(`${f} [data-felt=setning]`)).toHaveAttribute('role', 'status');
       await expect(page.locator(`${f} [data-felt=setning]`)).toHaveAttribute('aria-live', 'polite');
     });

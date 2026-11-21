@@ -489,8 +489,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/"/>
   </url>
@@ -502,8 +504,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/almonds/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/mandler/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/mandel/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/mandler/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/almonds/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/almonds/"/>
   </url>
@@ -539,15 +543,19 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/brown-sugar/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/brunt-sukker/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/farinsocker/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/brun-farin/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/brown-sugar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/brown-sugar/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/butter/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/smor/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/smor/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/smor/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/butter/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/butter/"/>
   </url>
@@ -559,8 +567,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/cocoa-powder/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/kakao/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/kakao/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/kakao/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/cocoa-powder/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/cocoa-powder/"/>
   </url>
@@ -572,8 +582,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/cornstarch/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/maisstivelse/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/majsstarkelse/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/majsstivelse/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/cornstarch/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/cornstarch/"/>
   </url>
@@ -591,8 +603,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/flour/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/hvetemel/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/vetemjol/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/hvedemel/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/flour/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/flour/"/>
   </url>
@@ -604,8 +618,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/heavy-cream/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/flote/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/gradde/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/floede/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/heavy-cream/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/heavy-cream/"/>
   </url>
@@ -635,8 +651,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/milk/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/melk/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/mjolk/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/maelk/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/milk/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/milk/"/>
   </url>
@@ -660,8 +678,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/powdered-sugar/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/melis/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/florsocker/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/flormelis/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/powdered-sugar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/powdered-sugar/"/>
   </url>
@@ -673,29 +693,37 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/raisins/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/rosiner/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/russin/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/rosiner/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/raisins/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/raisins/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/rice/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/ris/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/ris/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/ris/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/rice/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/rice/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/rolled-oats/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/havregryn/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/havregryn/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/havregryn/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/rolled-oats/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/rolled-oats/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/salt/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/salt/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/salt/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/salt/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/salt/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/salt/"/>
   </url>
@@ -726,8 +754,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/sugar/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/sukker/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/socker/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/sukker/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/sugar/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/sugar/"/>
   </url>
@@ -751,8 +781,10 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/tools/cups-to-grams/whole-wheat-flour/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/sammalt-hvetemel/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/fullkornsvetemjol/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/fuldkornshvedemel/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/whole-wheat-flour/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/whole-wheat-flour/"/>
   </url>

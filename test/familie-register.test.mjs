@@ -106,7 +106,13 @@ test('registeret gir auto-fam-grupper og RIKE-sider for dl til gram, og ingentin
   assert.ok(Object.hasOwn(RIKE.nb, 'verktoy/dl-til-gram/'));
   assert.ok(Object.hasOwn(RIKE.nb, 'verktoy/dl-til-gram/hvetemel/'));
   assert.equal(Object.keys(RIKE.nb).some((s) => s.includes('proeve')), false);
-  for (const mk of ['sv', 'da', 'en']) assert.equal(Object.keys(RIKE[mk]).some((s) => s.includes('dl-til-gram')), false, mk);
+  // De andre språkene har samme familie under egne roter: «dl til gram» på nb, «dl till gram» på sv, «dl til gram» på da og «cups to grams» på en.
+  for (const [mk, rot] of [['sv', 'verktyg/dl-till-gram/'], ['da', 'vaerktoejer/dl-til-gram/'], ['en', 'tools/cups-to-grams/']]) {
+    assert.ok(Object.hasOwn(RIKE[mk], rot), `${mk}: samleside`);
+    assert.equal(Object.keys(RIKE[mk]).some((s) => s.includes('proeve')), false, mk);
+  }
+  assert.ok(Object.hasOwn(RIKE.sv, 'verktyg/dl-till-gram/vetemjol/'));
+  assert.ok(Object.hasOwn(RIKE.da, 'vaerktoejer/dl-til-gram/hvedemel/'));
 });
 
 // Registeret skal ikke trenge zod så lenge ingen familie leses; først når en familie faktisk leses, skal manglende zod gi en tydelig feil.
