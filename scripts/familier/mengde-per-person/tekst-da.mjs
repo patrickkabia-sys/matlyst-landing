@@ -33,7 +33,7 @@ export const TEKST = {
         ['Hvor mange deciliter ris pr. person?', `Både Madens Verden og Arla regner med ${h.t('mv-dl')} ukogte ris pr. person.`],
         ['Skal ris vejes før eller efter kogning?', `Før kogning. ${h.s('vand')}`],
       ],
-      soster: [L('pasta', 'Hvor meget pasta pr. person?'), L('kartofler', 'Hvor meget kartofler pr. person?')],
+      soster: [L('pasta', 'Hvor meget pasta pr. person?'), L('kartofler', 'Hvor mange kartofler pr. person?')],
     }),
   },
 
@@ -77,8 +77,8 @@ export const TEKST = {
     ],
     tekst: (h) => ({
       ord: 'kartofler',
-      title: 'Hvor meget kartofler pr. person? Omregner og tabel',
-      h1: 'Hvor meget kartofler pr. person?',
+      title: 'Hvor mange kartofler pr. person? Omregner og tabel',
+      h1: 'Hvor mange kartofler pr. person?',
       description: `Madens Verden: ${h.r('kogte-min', 'kogte-maks')} kogte kartofler pr. person og ${h.t('mos')} til kartoffelmos, i rå vægt. Arla skriver ${h.r('arla-min', 'arla-maks')} pr. voksen.`,
       lead: `${h.k('mv-perperson')} regner med ${h.r('kogte-min', 'kogte-maks')} rå kartofler pr. person til kogte kartofler og ${h.t('mos')} til kartoffelmos.`,
       svar: `${h.r('kogte-min', 'kogte-maks')} rå kartofler pr. voksen til kogte kartofler, og ${h.t('mos')} til kartoffelmos (Madens Verden, 2025). Arla skriver ${h.r('arla-min', 'arla-maks')}.`,
@@ -130,7 +130,7 @@ export const TEKST = {
         ['Hvor stor skal en flæskesteg være til seks personer?', `${h.k('mv-flaesk')} skriver, at en flæskesteg på ${h.t('mv-steg')} passer godt til seks personer.`],
         ['Hvor meget flæskesteg til sandwich?', `${h.k('dc-flaesk')} skriver ${h.r('dc-sandwich-min', 'dc-sandwich-maks')} pr. person.`],
       ],
-      soster: [['/da/stegetid/flaeskesteg/', 'Hvor længe skal flæskestegen have i ovnen?'], L('kartofler', 'Hvor meget kartofler pr. person?'), L('kalkun', 'Hvor meget kalkun pr. person?')],
+      soster: [['/da/stegetid/flaeskesteg/', 'Hvor længe skal flæskestegen have i ovnen?'], L('kartofler', 'Hvor mange kartofler pr. person?'), L('kalkun', 'Hvor meget kalkun pr. person?')],
     }),
   },
 
@@ -248,8 +248,8 @@ export const TEKST = {
     ],
     tekst: (h) => ({
       ord: 'grøntsager og salat',
-      title: 'Hvor meget grøntsager og salat pr. person? Omregner og tabel',
-      h1: 'Hvor meget grøntsager og salat pr. person?',
+      title: 'Hvor mange grøntsager og hvor meget salat pr. person? Omregner og tabel',
+      h1: 'Hvor mange grøntsager og hvor meget salat pr. person?',
       description: `Madens Verden: ${h.r('tilberedte-min', 'tilberedte-maks')} tilberedte grøntsager og ${h.r('salat-min', 'salat-maks')} blandet salat pr. person. Arla skriver ${h.r('arla-min', 'arla-maks')} og ${h.r('arla-salat-min', 'arla-salat-maks')}.`,
       lead: `${h.k('mv-perperson')} regner med ${h.r('tilberedte-min', 'tilberedte-maks')} tilberedte grøntsager og ${h.r('salat-min', 'salat-maks')} blandet salat pr. person.`,
       svar: `${h.r('tilberedte-min', 'tilberedte-maks')} tilberedte grøntsager pr. voksen (Madens Verden, 2025). Arla skriver ${h.r('arla-min', 'arla-maks')}.`,
@@ -264,7 +264,7 @@ export const TEKST = {
         ['Hvor mange grøntsager pr. person?', `${h.k('mv-perperson')} skriver ${h.r('tilberedte-min', 'tilberedte-maks')}, og ${h.k('arla-maengder')} skriver ${h.r('arla-min', 'arla-maks')}.`],
         ['Hvor meget salat pr. person?', `${h.k('mv-perperson')} skriver ${h.r('salat-min', 'salat-maks')}, og ${h.k('arla-maengder')} skriver ${h.r('arla-salat-min', 'arla-salat-maks')}.`],
       ],
-      soster: [L('kartofler', 'Hvor meget kartofler pr. person?'), L('gaester', 'Hvor meget mad pr. person til gæster?')],
+      soster: [L('kartofler', 'Hvor mange kartofler pr. person?'), L('gaester', 'Hvor meget mad pr. person til gæster?')],
     }),
   },
 
@@ -299,7 +299,7 @@ export const TEKST = {
         ['Hvor gamle børn tæller som en halv portion?', `${h.k('mv-gaester')} skriver: ${h.s('barn', { med: false })}`],
         ['Hvor meget dessert pr. person?', `${h.k('mv-gaester')} skriver ${h.r('dessert-min', 'dessert-maks')} pr. voksen.`],
       ],
-      soster: [L('flaeskesteg', 'Hvor meget flæskesteg pr. person?'), L('kartofler', 'Hvor meget kartofler pr. person?')],
+      soster: [L('flaeskesteg', 'Hvor meget flæskesteg pr. person?'), L('kartofler', 'Hvor mange kartofler pr. person?')],
     }),
   },
 };

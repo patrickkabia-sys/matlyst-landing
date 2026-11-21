@@ -97,14 +97,14 @@ test('ingen norske kilder eller ord, ingen tankestrek, ingen forfatterlinje, kil
 
 test('samme rad-id på nb, da og en gir hreflang, og en vare uten norsk motstykke står uten nb', () => {
   const g = (navn) => familieGrupper().find((x) => x.id === navn);
-  assert.deepEqual(g('auto-fam-steketid-kalkun').sider, { nb: '/steketid/kalkun/', da: '/da/stegetid/kalkun/', en: '/en/cooking-times/turkey/' });
+  assert.deepEqual(g('auto-fam-steketid-kalkun').sider, { nb: '/steketid/kalkun/', sv: '/sv/tillagningstid/kalkon/', da: '/da/stegetid/kalkun/', en: '/en/cooking-times/turkey/' });
   assert.deepEqual(g('auto-fam-steketid-nav').sider.da, '/da/stegetid/');
   assert.deepEqual(g('auto-fam-steketid-flaeskesteg').sider, { da: '/da/stegetid/flaeskesteg/' });
-  assert.deepEqual(g('auto-fam-airfryer-egg').sider, { nb: '/airfryer/egg/', da: '/da/airfryer/aeg/', en: '/en/air-fryer/hard-boiled-eggs/' });
+  assert.deepEqual(g('auto-fam-airfryer-egg').sider, { nb: '/airfryer/egg/', sv: '/sv/airfryer/koka-agg/', da: '/da/airfryer/aeg/', en: '/en/air-fryer/hard-boiled-eggs/' });
   assert.deepEqual(g('auto-fam-airfryer-andebryst').sider, { da: '/da/airfryer/andebryst/' });
   assert.deepEqual(g('auto-fam-erstatning-egg').sider, { nb: '/erstatning/egg/', da: '/da/erstatning/aeg/', en: '/en/substitutes/eggs/' });
   assert.deepEqual(g('auto-fam-erstatning-nav').sider.da, '/da/erstatning/');
-  assert.deepEqual(g('auto-fam-mengde-per-person-ris').sider, { nb: '/mengde-per-person/ris/', da: '/da/hvor-meget-pr-person/ris/', en: '/en/how-much-per-person/rice/' });
+  assert.deepEqual(g('auto-fam-mengde-per-person-ris').sider, { nb: '/mengde-per-person/ris/', sv: '/sv/hur-mycket-per-person/ris/', da: '/da/hvor-meget-pr-person/ris/', en: '/en/how-much-per-person/rice/' });
   assert.deepEqual(g('auto-fam-mengde-per-person-flaeskesteg').sider, { da: '/da/hvor-meget-pr-person/flaeskesteg/' });
 });
 

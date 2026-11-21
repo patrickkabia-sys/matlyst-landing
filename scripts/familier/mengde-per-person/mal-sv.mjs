@@ -24,7 +24,7 @@ const TILL = 'till';
 const FAKTOR = 1;
 
 // Texterna kalkylatorn använder (site.js har inga språksträngar).
-const TEKSTER = { voksen: 'vuxen', voksne: 'vuxna', barn: 'barn', og: 'och', trenger: 'behöver', eller: 'eller', til: TILL, feil: 'Skriv hela tal, till exempel 4.' };
+const TEKSTER = { voksen: 'person', voksne: 'personer', barn: 'barn', og: 'och', trenger: 'behöver', eller: 'eller', til: TILL, feil: 'Skriv hela tal, till exempel 4.' };
 
 /** Ett tal ur datafilen som mängd per person i en enhet kalkylatorn kan (g eller dl), eller null. «g per 4 personer» delas på 4. */
 export function perPerson(x) {
@@ -188,7 +188,7 @@ export function sideForRad(rad, data) {
     `<h2>Tabell för 2 till 12 personer</h2>${p(TABELLINTRO)}${tabell(varianter, `Mängd för ${rad.navn.toLowerCase()}, 2 till 12 personer`)}`,
     ...s.avsnitt.map(([rubrik, html]) => `<h2>${esc(rubrik)}</h2>${html}`),
     APP,
-    `<div class="related"><h2>Läs också</h2><ul>${[...s.soster, [ROT, 'All mängd per person']].map(([href, text]) => `<li><a href="${href}">${esc(text)}</a></li>`).join('')}</ul></div>`,
+    `<div class="related"><h2>Läs också</h2><ul>${[...s.soster, [ROT, 'Mängd per person för fler varor']].map(([href, text]) => `<li><a href="${href}">${esc(text)}</a></li>`).join('')}</ul></div>`,
     kallista(data, brukt),
   ].join('\n');
   const kallorObjekt = [...brukt].map((id) => data.kilder[id]);

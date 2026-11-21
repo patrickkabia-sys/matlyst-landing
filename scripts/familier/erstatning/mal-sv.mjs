@@ -1,5 +1,5 @@
 // Malen för familjen «erstatning» (sv): samlingssida (/sv/ersatta/) och en sida per vara, skrivna från data.sv.json och tekst-sv.mjs.
-// Själva byggandet är gemensamt för de svenska familjerna (../mal-sv-felles.mjs). Mängderna är hämtade från svenska källor (KronJäst, Kungsörnen, Dansukker, Svenska Ägg), inte översatta.
+// Själva byggandet är gemensamt för de svenska familjerna (../mal-sv-felles.mjs). Mängderna är hämtade från svenska källor (KronJäst, Kungsörnen, Dansukker), inte översatta.
 import { lagMal } from '../mal-sv-felles.mjs';
 import { TEKST, nav } from './tekst-sv.mjs';
 

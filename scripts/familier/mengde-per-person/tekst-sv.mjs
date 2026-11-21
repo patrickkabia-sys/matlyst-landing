@@ -22,7 +22,7 @@ export const TEKST = {
       lead: `Räkna ungefär ${h.t('pp')} okokt ris per person. Skriv in hur många som ska äta, så får du hela mängden.`,
       svar: `<b>Ungefär ${h.t('pp')} okokt ris per person</b>. Till 4 personer blir det ${h.sum('pp', 4)}.`,
       avsnitt: [
-        ['Så mycket sväller riset', p(`${h.k('arlaris')}: ${h.s('svaller')} Arla anger att ${h.t('svall-okokt')} okokt ris blir ${h.t('svall-kokt')} kokt ris och räcker till ${h.r('port-min', 'port-maks')}.`)],
+        ['Så mycket sväller riset', p(`${h.s('svaller')} ${h.k('arlaris')} anger att ${h.t('svall-okokt')} okokt ris blir ${h.t('svall-kokt')} kokt ris och räcker till ${h.r('port-min', 'port-maks')}.`)],
         ['Okokt eller kokt', p('Siffran gäller okokt ris, mätt före kokning. Hur mycket som blir kokt ser du i Arlas siffror ovan.', BARN)],
       ],
       faq: [

@@ -28,7 +28,7 @@ export const TEKST = {
       tittel: 'Arlas omvandlingstabell', kilde: 'arlaart', intro: 'Tabellen är Arlas. Läs raden där ugnens temperatur är närmast ditt recept.',
       kolonner: ['Ugn', 'Airfryer', 'Tid i ugn', 'Tid i airfryer'],
       rader: [150, 165, 175, 190, 205].map((a) => [h.t(`u${a}-ugn`), `u${a}-air`, `u${a}-minugn`, `u${a}-minair`]),
-      etter: ['Arlas tabell har en sista rad som vi inte tar med, eftersom tiderna där inte hänger ihop med raderna ovanför. Använd raderna ovan som en riktlinje, och mät innertemperaturen på kött och fågel.'],
+      etter: ['Arlas tabell har en sista rad som vi inte tar med, eftersom tiderna där inte hänger ihop med raderna ovanför.'],
     },
     faq: [
       ['Hur ändrar man temperaturen från ugn till airfryer?', `${h.k('arlaart')} säger att du kan sänka temperaturen på ugnsrecept med ${h.t('sank-arla')}. ${h.k('obh')} anger cirka ${h.t('sank-obh')}.`],
@@ -218,7 +218,7 @@ export const TEKST = {
     ord: 'bakad potatis',
     title: 'Bakad potatis i airfryer: tid och temperatur',
     h1: 'Bakad potatis i airfryer: tid och temperatur',
-    description: `Arla (2026): bakad potatis i airfryer ${h.t('temp')} i cirka ${h.t('tid')}, och vänd potatisen efter halva tiden. Källa med sitat.`,
+    description: `Arla (2026): bakad potatis i airfryer ${h.t('temp')} i cirka ${h.t('tid')}, och vänd potatisen efter halva tiden.`,
     lead: `Arla anger ${h.t('temp')} i cirka ${h.t('tid')} för bakad potatis i airfryer. Potatisen vänds efter halva tiden. ${VEILEDENDE}`,
     kilder: [`Om förberedelsen: ${h.s('tvatta')} ${h.s('hal')}`, `Om att vända: ${h.s('vanda')}`],
     tabell: { tittel: 'Bakad potatis enligt Arla', kilde: 'abakad', intro: 'Arlas recept.', kolonner: ['Moment', 'Siffra'], rader: [['Temperatur', 'temp'], ['Tid', 'tid']] },
@@ -350,7 +350,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
   }).join('');
   return {
     title: 'Airfryer: tid och temperatur för kyckling, potatis, lax och mer',
-    h1: 'Airfryer: tid och temperatur för alla varor',
+    h1: 'Tid och temperatur i airfryer',
     description: `Hur länge ska kycklingfilé vara i airfryer? ${rader.length} sidor med tid och temperatur från Arla, Findus och OBH Nordica, med omvandling från ugn och källa på varje siffra.`,
     lead: `Siffrorna på de här sidorna kommer från svenska källor, främst Arlas receptsidor för airfryer. Arla säger att du kan sänka ugnens temperatur med ${ugn.t('sank-arla')} i airfryern. Tiderna är veiledande: modell och mängd ändrar dem.`,
     rik: [

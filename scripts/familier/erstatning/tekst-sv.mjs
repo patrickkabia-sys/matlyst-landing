@@ -1,6 +1,6 @@
 // Text för familjen «erstatning» (sv): vad du kan använda i stället för en vara du saknar. Varje mening återger vad en namngiven svensk källa säger.
 // Siffror skrivs aldrig här: h.t(fält) läser dem ur data.sv.json, och h.s(id) ger en hel mening ur källan, ordagrant.
-// Källor: KronJäst (jäst), Kungsörnen (mjöl), Dansukker (socker) och Svenska Ägg (ägg). Där källorna inte ger en mängd står det, och sidan ger inget tal.
+// Källor: KronJäst (jäst), Kungsörnen (mjöl) och Dansukker (socker). Där källorna inte ger en mängd står det, och sidan ger inget tal.
 // Vi har inte hittat en svensk källa som kan kontrolleras med mängder för att ersätta ägg, filmjölk, smör, bakpulver eller grädde, så de varorna har ingen egen sida.
 // Inga egna recept och inga råd om allergi. Undvik orden laga, steg, ugn, timer, plan, vecka, meny, köp, spara, recept, hitta i h2: scripts/app-bevis.mjs kopplar dem till appkort.
 
@@ -144,31 +144,6 @@ export const TEKST = {
     soster: L('brun-farin', 'Ersätta strösocker med brun farin'),
   }),
 
-  egg: (h) => ({
-    ord: 'ägg',
-    title: 'Ägg i olika storlekar: vad räknar receptet med?',
-    h1: 'Ägg i olika storlekar: vad räknar receptet med?',
-    description: `Svenska Ägg (2026): recept räknar oftast med medelstora ägg, ${h.t('medel')}. Små ägg väger ${h.t('liten')}, stora ${h.t('stor')}. Det går cirka ${h.t('kilo')} medelstora ägg på ett kilo.`,
-    lead: `Svenska Ägg säger att recept oftast är skrivna efter medelstora ägg, ${h.t('medel')}. Har du ägg i en annan storlek, ser du här hur mycket de väger.`,
-    kilder: [
-      `Om recepten: ${h.s('recept')}`,
-      `Om större ägg: ${h.s('skal')}`,
-      `Om vikt: ${h.k('sagg')} anger att medelvikten är ungefär ${h.t('snitt')}, och att det går cirka ${h.t('kilo')} medelstora ägg på ett kilo.`,
-    ],
-    tabell: {
-      tittel: 'Äggstorlekar enligt Svenska Ägg', kilde: 'sagg', intro: 'Vikt per ägg.',
-      kolonner: ['Storlek', 'Vikt'],
-      rader: [['Små', 'liten'], ['Medelstora', 'medel'], ['Stora', 'stor'], ['Extra stora, över', 'xl']],
-      etter: ['Vi har inte hittat en svensk källa med mängder för att ersätta ägg i bakning, till exempel med banan eller äppelmos. Därför handlar sidan bara om storleken, och vi ger ingen mängd för ersättningar.'],
-    },
-    faq: [
-      ['Vilken äggstorlek räknar recept med?', `${h.s('recept')}`],
-      ['Hur mycket väger ett ägg?', `${h.k('sagg')} anger att ett medelstort ägg väger ${h.t('medel')}, med en medelvikt på ungefär ${h.t('snitt')}.`],
-      ['Hur många ägg går det på ett kilo?', `${h.k('sagg')} anger cirka ${h.t('kilo')} medelstora ägg.`],
-    ],
-    soster: [`/sv/tillagningstid/koka-agg/`, 'Koka ägg: hur länge?'],
-    andre: [[`/sv/hallbarhet/agg/`, 'Hur länge håller ägg?']],
-  }),
 };
 
 export function nav({ data, rader, sti, h, p, esc }) {
@@ -181,7 +156,6 @@ export function nav({ data, rader, sti, h, p, esc }) {
     florsocker: ['100 g florsocker', (x) => x.t('hundra-dl'), 'dflor'],
     vaniljsukker: ['Högst per 4 portioner', (x) => `${x.t('hogst')}`, 'dvan'],
     syltsocker: ['Vikt per dl', (x) => x.t('dl'), 'dsylt'],
-    egg: ['Medelstort ägg', (x) => x.t('medel'), 'sagg'],
   };
   const radene = rader.map((r) => {
     const x = h(r);
@@ -191,7 +165,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
   return {
     title: 'Ersätta ingredienser: vad kan man använda i stället?',
     h1: 'Ersätta ingredienser: vad kan man använda i stället?',
-    description: `Vad kan man använda i stället för jäst, lantvetemjöl, florsocker eller vaniljsocker? ${rader.length} sidor med mängder från KronJäst, Kungsörnen, Dansukker och Svenska Ägg, med källa på varje siffra.`,
+    description: `Vad kan man använda i stället för jäst, lantvetemjöl, florsocker eller vaniljsocker? ${rader.length} sidor med mängder från KronJäst, Kungsörnen och Dansukker, med källa på varje siffra.`,
     lead: `Mängderna på de här sidorna kommer från svenska källor. KronJäst säger till exempel att ${jast.t('torr-g')} torrjäst motsvarar ${jast.t('farsk-g')} färsk jäst. Hittar vi ingen mängd, skriver vi det.`,
     rik: [
       `<h2>Det här säger källorna</h2>${p([
@@ -199,7 +173,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
         `${farin.k('dbfs')} anger att strösocker kan bytas mot Brun Farin Strö i samma mängd.`,
       ])}`,
       `<h2>Mängder för varje vara</h2><p>Välj en vara för alla siffror, vad de bygger på och källorna. Källan står i sista kolumnen.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Ersättningar"><table class="sprik"><thead><tr><th scope="col">Vara</th><th scope="col">Vad</th><th scope="col">Siffra</th><th scope="col">Källa</th></tr></thead><tbody>${radene}</tbody></table></div>`,
-      '<h2>Varor som inte finns här</h2><p>Vi anger bara en mängd när vi har hittat den på en svensk källsida som vi kan kontrollera. För ägg i bakning, filmjölk, smör, bakpulver och grädde har vi inte hittat en sådan källa, så de har ingen egen sida. Vi hittar inte på egna mängder.</p>',
+      '<h2>Varor som inte finns här</h2><p>Vi anger bara en mängd när vi har hittat den på en svensk källsida som vi kan kontrollera. För ägg, filmjölk, smör, bakpulver och grädde har vi inte hittat en sådan källa, så de har ingen egen sida. Vi hittar inte på egna mängder.</p>',
       '<div class="related"><h2>Läs också</h2><ul><li><a href="/sv/recept-pa-ingredienser/">Vad kan jag laga med det jag har hemma?</a></li><li><a href="/sv/hallbarhet/">Hur länge håller maten i kylen?</a></li></ul></div>',
     ].join('\n'),
     faqTittel: 'Frågor om ersättningar',

@@ -44,12 +44,12 @@ export const TEKST = {
     ord: 'julskinka',
     title: 'Julskinka: hur länge och till vilken innertemperatur?',
     h1: 'Julskinka: hur länge och till vilken innertemperatur?',
-    description: `Svenskt Kött (2026) räknar med ${h.t('tid')} per kilo skinka. Termometern visar ${h.t('saftig')} för saftig, ${h.t('perfekt')} för perfekt och ${h.t('valtillagad')} för väl tillagad.`,
-    lead: `${h.k('skjul')} räknar med ${h.t('tid')} per kilo skinka, beroende av form och storlek. Termometern är säkrare än klockan: ${h.t('perfekt')} är perfekt enligt källan.`,
+    description: `Svenskt Kött (2026) räknar med ${h.t('tid')} skinka. Termometern visar ${h.t('saftig')} för saftig, ${h.t('perfekt')} för perfekt och ${h.t('valtillagad')} för väl tillagad.`,
+    lead: `${h.k('skjul')} räknar med ${h.t('tid')} skinka, beroende på form och storlek. För innertemperaturen anger källan ${h.t('perfekt')} som perfekt.`,
     kilder: [
       `Om temperaturen: ${h.k('skjul')} anger ${h.t('saftig')} för riktigt saftig skinka, ${h.t('perfekt')} för perfekt och ${h.t('valtillagad')} för väl tillagad.`,
-      `Om kokning: ${h.k('skkokt')} anger ${h.t('sjud')} per kilo när skinkan sjuds.`,
-      `Om folie: samma recept anger ${h.t('folie')} per kilo när skinkan tillagas under folie i ugnen.`,
+      `Om kokning: ${h.k('skkokt')} anger ${h.t('sjud')} när skinkan sjuds.`,
+      `Om folie: samma recept anger ${h.t('folie')} när skinkan tillagas under folie i ugnen.`,
     ],
     tabell: {
       tittel: 'Tid per kilo skinka', kilde: 'skjul', intro: 'Båda sidorna är från Svenskt Kött.',
@@ -58,7 +58,7 @@ export const TEKST = {
       etter: ['Siffrorna gäller rå, rimmad skinka. Färdigkokt skinka behöver bara värmas och griljeras, och för den har vi ingen tid från en svensk källa.'],
     },
     faq: [
-      ['Hur länge ska julskinkan vara i ugnen?', `${h.k('skjul')} räknar med ${h.t('tid')} per kilo, beroende av form och storlek.`],
+      ['Hur länge ska julskinkan vara i ugnen?', `${h.k('skjul')} räknar med ${h.t('tid')}, beroende på form och storlek.`],
       ['Vilken innertemperatur ska julskinkan ha?', `${h.k('skjul')} anger ${h.t('saftig')} för riktigt saftig, ${h.t('perfekt')} för perfekt och ${h.t('valtillagad')} för väl tillagad.`],
       ['Hur länge ska julskinkan sjuda?', `${h.k('skkokt')} anger ${h.t('sjud')} per kilo.`],
     ],
@@ -233,7 +233,7 @@ export const TEKST = {
     title: 'Kycklingfilé: hur länge i stekpanna och ugn?',
     h1: 'Kycklingfilé: hur länge i stekpanna och ugn?',
     description: `Kronfågel (2026): ${h.t('panna')} i stekpannan och sedan ugn på ${h.t('ugn')} tills innertemperaturen är ${h.t('klar')}. Arla (2026) anger cirka ${h.t('arla-tid')} vid ${h.t('arla-temp')}.`,
-    lead: `Kronfågel anger ${h.t('panna')} i pannan och därefter ugn på ${h.t('ugn')} tills filén har ${h.t('klar')}. Arla anger cirka ${h.t('arla-tid')} vid ${h.t('arla-temp')} för ett recept med filé i ugn.`,
+    lead: `Kronfågel anger ${h.t('panna')} i pannan och därefter ugn på ${h.t('ugn')} tills innertemperaturen är ${h.t('klar')}. Arla anger cirka ${h.t('arla-tid')} vid ${h.t('arla-temp')} för ett recept med filé i ugn.`,
     kilder: [
       `Om frysta filéer: ${h.s('frys')} ${h.s('frystid')}`,
       `Om innertemperaturen: ${h.k('sfsakra')} anger ${h.t('sf-filet')} för kycklingfilé och lårfilé.`,

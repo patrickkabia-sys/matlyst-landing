@@ -49,14 +49,14 @@ export const TEKST = {
       ['Kan man lave flæskesteg i airfryer?', `Ja. Se <a href="${AF}flaeskesteg/">flæskesteg i airfryer</a> med tider fra Danish Crown.`],
     ],
     soster: [KERNE + 'flaeskesteg/', 'Kernetemperatur for flæskesteg'],
-    andre: [[AF + 'flaeskesteg/', 'Flæskesteg i airfryer'], [HVOR + 'flaeskesteg/', 'Hvor meget flæskesteg per person?'], L('and', 'Hvor længe skal anden have i ovnen?')],
+    andre: [[AF + 'flaeskesteg/', 'Flæskesteg i airfryer'], [HVOR + 'flaeskesteg/', 'Hvor meget flæskesteg pr. person?'], L('and', 'Hvor længe skal anden have i ovnen?')],
   }),
 
   and: (h) => ({
     ord: 'and',
     title: 'Hvor længe skal anden have i ovnen? Stegetid for hel and',
     h1: 'Hvor længe skal anden have i ovnen?',
-    description: `Madens Verden regner med ${h.t('tid', { ca: true })} ved ${h.t('ovn')} for en hel and. Kernetemperaturen er mindst ${h.t('kerne')}. Her er tallene.`,
+    description: `Madens Verden regner med ${h.t('tid', { ca: true })} ved ${h.t('ovn')} for en hel and, og tabellen skriver en kernetemperatur på ${h.t('kerne')}.`,
     lead: `En hel and skal have ${h.t('tid', { ca: true })} ved ${h.t('ovn')}, skriver ${h.k('mv-kerne')}. Termometeret i inderlåret afgør, hvornår den er færdig.`,
     kilder: [
       `${h.k('mv-kerne')} nævner hel and med en kernetemperatur på ${h.t('kerne')}. Anden tages ud ved ${h.t('tagaf')}, og hviletiden er ${h.t('hvile')}.`,
@@ -103,7 +103,7 @@ export const TEKST = {
     ekstra: [
       ['Store kalkuner og kalkunbryst', h.p([
         'Madens Verden skriver, at store kalkuner ikke altid følger en lineær stegetid, og at de største fugle kan være færdige tidligere end tabellen siger. Begynd derfor at måle i god tid.',
-        `Kalkunbryst har sin egen linje i oversigten: ${h.t('brysttid', { ca: true })} ved ${h.t('brystovn')}. Se også <a href="${HVOR}kalkun/">hvor meget kalkun der skal regnes per person</a>.`,
+        `Kalkunbryst har sin egen linje i oversigten: ${h.t('brysttid', { ca: true })} ved ${h.t('brystovn')}. Se også <a href="${HVOR}kalkun/">hvor meget kalkun der skal regnes pr. person</a>.`,
       ])],
     ],
     faq: [
@@ -112,7 +112,7 @@ export const TEKST = {
       ['Hvor længe skal kalkunen hvile?', `${h.k('mv-kalkun')} skriver ${h.t('k-hvile', { ca: true })}, og ${h.k('mv-kerne')} skriver ${h.t('hvile')}.`],
     ],
     soster: [KERNE + 'kalkun/', 'Kernetemperatur for kalkun'],
-    andre: [[HVOR + 'kalkun/', 'Hvor meget kalkun per person?'], L('hel-kylling', 'Hvor længe skal en hel kylling have i ovnen?')],
+    andre: [[HVOR + 'kalkun/', 'Hvor meget kalkun pr. person?'], L('hel-kylling', 'Hvor længe skal en hel kylling have i ovnen?')],
   }),
 
   'hel-kylling': (h) => ({
@@ -155,7 +155,7 @@ export const TEKST = {
       etter: [`Madens Verden skriver: ${h.s('vejl', { med: false })}`],
     },
     ekstra: [
-      ['Airfryer og mængde', h.p([`Kyllingebryst i airfryer har sin egen side: <a href="${AF}kyllingebryst/">kyllingebryst i airfryer</a>.`, `Til hvor meget der skal regnes per person, se <a href="${HVOR}kylling/">hvor meget kylling per person</a>.`])],
+      ['Airfryer og mængde', h.p([`Kyllingebryst i airfryer har sin egen side: <a href="${AF}kyllingebryst/">kyllingebryst i airfryer</a>.`, `Til hvor meget der skal regnes pr. person, se <a href="${HVOR}kylling/">hvor meget kylling pr. person</a>.`])],
     ],
     faq: [
       ['Hvor længe skal kyllingebryst steges?', `${h.k('mv-kerne')} skriver typisk ${h.t('tid')} i alt på pande eller i ovn.`],
@@ -313,14 +313,14 @@ export const TEKST = {
     ],
     tabell: { tittel: TID, kilde: 'mv-lakseside', intro: 'Tallene gælder en hel lakseside i ovnen.', kolonner: ['Hvad', 'Ovn', 'Tid', 'Kernetemperatur'], rader: [['Hel lakseside', 'temp', 'tid', 'kerne']] },
     ekstra: [
-      ['Gør laksen ikke tør', h.p([`Madens Verden skriver: ${h.s('taer', { med: false })}`, `Laks i airfryer har sin egen side: <a href="${AF}laks/">laks i airfryer</a>. Hvor meget laks der skal regnes per person, står på <a href="${HVOR}fisk/">hvor meget fisk per person</a>.`])],
+      ['Gør laksen ikke tør', h.p([`Madens Verden skriver: ${h.s('taer', { med: false })}`, `Laks i airfryer har sin egen side: <a href="${AF}laks/">laks i airfryer</a>. Hvor meget laks der skal regnes pr. person, står på <a href="${HVOR}fisk/">hvor meget fisk pr. person</a>.`])],
     ],
     faq: [
       ['Hvor længe skal laks have i ovnen?', `${h.k('mv-lakseside')} regner med ${h.t('tid', { ca: true })} ved ${h.t('temp')} varmluft for en lakseside på ${h.t('vaegt', { ca: true })}.`],
       ['Hvilken kernetemperatur skal laks have?', `${h.k('mv-lakseside')} nævner ${h.t('kerne', { ca: true })} i den tykkeste del, hvis man vil have laksen grundigt gennemtilberedt. Vi har ikke fundet et tal fra Fødevarestyrelsen for laks.`],
       ['Hvordan ved man, at laksen er færdig?', h.s('flager')],
     ],
-    andre: [[AF + 'laks/', 'Laks i airfryer'], [HVOR + 'fisk/', 'Hvor meget fisk per person?']],
+    andre: [[AF + 'laks/', 'Laks i airfryer'], [HVOR + 'fisk/', 'Hvor meget fisk pr. person?']],
   }),
 };
 
@@ -349,7 +349,7 @@ export function nav({ rader, sti, h, p, esc }) {
       ])}`,
       `<h2>Tider for alle retter</h2><p>Vælg en ret for tabellen, kilderne og kernetemperaturen. Tiderne er vejledende.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Stegetider og kogetider"><table class="sprik"><thead><tr><th scope="col">Ret</th><th scope="col">Hvad tallet gælder</th><th scope="col">Tid</th><th scope="col">Kilde</th></tr></thead><tbody>${radene}</tbody></table></div>`,
       '<h2>Varer der ikke er med</h2><p>Der er ingen side om ribbensteg, medister, hel torsk eller rødspætte, fordi vi ikke fandt en dansk kilde med en tid, vi kunne kontrollere. Kernetemperaturen for flere slags kød står på siden om kernetemperatur.</p>',
-      `<div class="related"><h2>Læs også</h2><ul><li><a href="${KERNE}">Kernetemperatur for kød og fjerkræ</a></li><li><a href="${AF}">Airfryer: tid og temperatur</a></li><li><a href="${HVOR}">Hvor meget mad per person?</a></li></ul></div>`,
+      `<div class="related"><h2>Læs også</h2><ul><li><a href="${KERNE}">Kernetemperatur for kød og fjerkræ</a></li><li><a href="${AF}">Airfryer: tid og temperatur</a></li><li><a href="${HVOR}">Hvor meget mad pr. person?</a></li></ul></div>`,
     ].join('\n'),
     faqTittel: 'Spørgsmål om stegetid',
     faq: [

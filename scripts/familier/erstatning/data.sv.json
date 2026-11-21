@@ -64,13 +64,6 @@
       "aar": 2026,
       "adresse": "https://www.dansukker.se/se/produkter/alla-produkter/syltsocker",
       "hentet": "2026-11-21"
-    },
-    "sagg": {
-      "navn": "Roliga fakta om ägg",
-      "utgiver": "Svenska Ägg",
-      "aar": 2026,
-      "adresse": "https://www.svenskaagg.se/om-agg/funfacts",
-      "hentet": "2026-11-21"
     }
   },
   "rader": [
@@ -324,74 +317,6 @@
       "tekst": {
         "istallet": "dsylt|Istället för syltsocker kan man använda vanligt socker i kombination med extra pektin eller pektinrika frukter, som äpplen.",
         "gele": "dsylt|Nej, det rekommenderar vi inte. Använd istället Gelésocker Multi."
-      }
-    },
-    {
-      "id": "egg",
-      "slug": "agg",
-      "navn": "Ägg i olika storlekar",
-      "status": "kontrollert",
-      "kontrollert": "2026-11-21",
-      "oppdatert": "2026-11-21",
-      "tall": {
-        "medel-min": {
-          "verdi": 53,
-          "enhet": "g",
-          "kilde": "sagg",
-          "merknad": "Medelstora ägg väger 53-63 gram."
-        },
-        "medel-maks": {
-          "verdi": 63,
-          "enhet": "g",
-          "kilde": "sagg",
-          "merknad": "Medelstora ägg väger 53-63 gram."
-        },
-        "liten-min": {
-          "verdi": 43,
-          "enhet": "g",
-          "kilde": "sagg",
-          "merknad": "Små ägg väger mellan 43-53 gram."
-        },
-        "liten-maks": {
-          "verdi": 53,
-          "enhet": "g",
-          "kilde": "sagg",
-          "merknad": "Små ägg väger mellan 43-53 gram."
-        },
-        "stor-min": {
-          "verdi": 63,
-          "enhet": "g",
-          "kilde": "sagg",
-          "merknad": "Stora ägg väger 63-73 gram."
-        },
-        "stor-maks": {
-          "verdi": 73,
-          "enhet": "g",
-          "kilde": "sagg",
-          "merknad": "Stora ägg väger 63-73 gram."
-        },
-        "xl": {
-          "verdi": 73,
-          "enhet": "g",
-          "kilde": "sagg",
-          "merknad": "Extra stora ägg väger över 73 gram."
-        },
-        "snitt": {
-          "verdi": 58,
-          "enhet": "g",
-          "kilde": "sagg",
-          "merknad": "Medelvikten för ägg är ungefär 58 gram vilket också motsvarar ett medelstort ägg."
-        },
-        "kilo": {
-          "verdi": 16,
-          "enhet": "st",
-          "kilde": "sagg",
-          "merknad": "På ett kilo går det cirka 16 medelstora ägg."
-        }
-      },
-      "tekst": {
-        "recept": "sagg|Lagar du mat efter recept så brukar de vara skrivna efter medelstorlek på ägg, alltså 53-63 gram eller ett Medium-ägg.",
-        "skal": "sagg|Däremot bör du hålla lite försiktigare i de större äggen."
       }
     }
   ]

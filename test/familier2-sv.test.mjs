@@ -13,7 +13,7 @@ import { synligTekst, tallUtenforData } from './hjelp/familievakt.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const ROT = { steketid: 'tillagningstid/', airfryer: 'airfryer/', erstatning: 'ersatta/', 'mengde-per-person': 'hur-mycket-per-person/' };
-const ANTALL = { steketid: 11, airfryer: 16, erstatning: 7, 'mengde-per-person': 11 };
+const ANTALL = { steketid: 11, airfryer: 16, erstatning: 6, 'mengde-per-person': 11 };
 const FAM = Object.keys(ROT);
 const familie = (id) => FAMILIER.find((f) => f.id === id);
 const data = (id) => lesData(fileURLToPath(familie(id).mappe), 'sv');
@@ -98,9 +98,9 @@ test('samme rad-id på nb og sv gir hreflang, og en vare uten norsk motstykke st
   assert.equal(g('auto-fam-steketid-potatis').sider.sv, '/sv/tillagningstid/koka-potatis/');
   assert.deepEqual(g('auto-fam-steketid-potatis').sider, { sv: '/sv/tillagningstid/koka-potatis/' });
   assert.equal(g('auto-fam-airfryer-ovn-til-airfryer').sider.sv, '/sv/airfryer/ugn-till-airfryer/');
-  assert.deepEqual(g('auto-fam-airfryer-hel-kylling').sider, { sv: '/sv/airfryer/hel-kyckling/' });
+  assert.deepEqual(g('auto-fam-airfryer-hel-kylling').sider, { sv: '/sv/airfryer/hel-kyckling/', da: '/da/airfryer/hel-kylling/' });
   assert.equal(g('auto-fam-erstatning-gjaer').sider.sv, '/sv/ersatta/jast/');
-  assert.equal(g('auto-fam-erstatning-egg').sider.sv, '/sv/ersatta/agg/');
+  assert.equal(g('auto-fam-erstatning-egg').sider.sv, undefined, 'äggsidan handlade bara om storlek och är borttagen');
   assert.deepEqual(g('auto-fam-erstatning-florsocker').sider, { sv: '/sv/ersatta/florsocker/' });
   assert.equal(g('auto-fam-mengde-per-person-ris').sider.sv, '/sv/hur-mycket-per-person/ris/');
   assert.equal(g('auto-fam-mengde-per-person-nav').sider.sv, '/sv/hur-mycket-per-person/');

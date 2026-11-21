@@ -80,7 +80,7 @@ export const TEKST = {
       `Madens Verdens oversigt over kernetemperatur har en linje for kylling i airfryer: bryst ${h.t('tabel')} ved ${h.t('temp')}, hviletid ${h.t('hvile')}. ${h.s('tider')}`,
     ],
     tabell: { tittel: TID, kilde: 'mv-bryst', intro: 'Tallene er fra Madens Verden. Tiderne er vejledende, og modellerne varierer.', kolonner: ['Hvad', 'Temperatur', 'Tid', 'Kernetemperatur'], rader: [['Kyllingebryst, opskrift', 'temp', 'tid', 'kerne'], ['Kyllingebryst, oversigten', 'temp', 'tabel', 'kerne']] },
-    ekstra: [['Ovn eller airfryer', h.p([`Kyllingebryst i ovn og på pande har sin egen side: <a href="${S}kyllingebryst/">kyllingebryst i ovn</a>. Om hvor meget kyllingebryst der skal regnes per person, står der på <a href="${HVOR}kylling/">hvor meget kylling per person</a>.`])]],
+    ekstra: [['Ovn eller airfryer', h.p([`Kyllingebryst i ovn og på pande har sin egen side: <a href="${S}kyllingebryst/">kyllingebryst i ovn</a>. Om hvor meget kyllingebryst der skal regnes pr. person, står der på <a href="${HVOR}kylling/">hvor meget kylling pr. person</a>.`])]],
     faq: [
       ['Hvor længe skal kyllingebryst være i airfryer?', `${h.k('mv-bryst')} regner med ${h.t('tid', { ca: true })} ved ${h.t('temp')}.`],
       ['Hvilken kernetemperatur skal kyllingebryst have?', `${h.k('mv-bryst')} skriver ${h.t('kerne')}.`],
@@ -141,15 +141,15 @@ export const TEKST = {
     description: `Madens Verden: laks i airfryer skal have ${h.t('tid')} ved ${h.t('temp')}, når airfryeren starter kold. Opskriften bruger ${h.t('vaegt', { ca: true })} laks.`,
     lead: `${h.k('mv-laks')} giver ${h.t('tid')} ved ${h.t('temp')}, når airfryeren starter kold. Madens Verden bruger ${h.t('vaegt', { ca: true })} laks til fire personer.`,
     kilder: [
-      `${h.k('mv-laks')} regner med ${h.t('pp')} laks per person. Til en actifry uden rørearm er stegetiden omkring ${h.t('actifry')}.`,
+      `${h.k('mv-laks')} regner med ${h.t('pp')} laks pr. person. Til en actifry uden rørearm er stegetiden omkring ${h.t('actifry')}.`,
       `Om stykket skriver Madens Verden: ${h.s('tykke', { med: false })}`,
       `${h.s('ben')}`,
     ],
     tabell: { tittel: TID, kilde: 'mv-laks', intro: 'Tallene er fra Madens Verden.', kolonner: ['Hvad', 'Temperatur', 'Tid', 'Mængde'], rader: [['Laksestykke', 'temp', 'tid', 'vaegt'], ['Laks i actifry', null, 'actifry', null]] },
-    ekstra: [['Laks i ovn', h.p([`Laks i ovn har sin egen side med tider og en kernetemperatur: <a href="${S}laks-i-ovn/">laks i ovn</a>. Hvor meget fisk der skal regnes per person, står på <a href="${HVOR}fisk/">hvor meget fisk per person</a>.`])]],
+    ekstra: [['Laks i ovn', h.p([`Laks i ovn har sin egen side med tider og en kernetemperatur: <a href="${S}laks-i-ovn/">laks i ovn</a>. Hvor meget fisk der skal regnes pr. person, står på <a href="${HVOR}fisk/">hvor meget fisk pr. person</a>.`])]],
     faq: [
       ['Hvor længe skal laks være i airfryer?', `${h.k('mv-laks')} regner med ${h.t('tid')} ved ${h.t('temp')}, med start fra kold airfryer.`],
-      ['Hvor meget laks skal man regne per person?', `${h.k('mv-laks')} regner med ${h.t('pp')} per person.`],
+      ['Hvor meget laks skal man regne pr. person?', `${h.k('mv-laks')} regner med ${h.t('pp')} pr. person.`],
     ],
     andre: [L('ovn-til-airfryer', 'Ovn til airfryer'), [S + 'laks-i-ovn/', 'Laks i ovn']],
   }),
@@ -212,7 +212,7 @@ export const TEKST = {
       ['Hvilken kernetemperatur skal frikadeller have?', `${h.k('mv-kerne')} skriver ${h.t('kerne')}.`],
     ],
     soster: [K + 'hakket-koed/', 'Kernetemperatur for hakket kød'],
-    andre: [L('bacon', 'Bacon i airfryer'), [HVOR + 'hakket-koed/', 'Hvor meget hakket kød per person?']],
+    andre: [L('bacon', 'Bacon i airfryer'), [HVOR + 'hakket-koed/', 'Hvor meget hakket kød pr. person?']],
   }),
 
   egg: (h) => ({
@@ -239,18 +239,18 @@ export const TEKST = {
     ord: 'andebryst i airfryer',
     title: 'Andebryst i airfryer: tid og temperatur',
     h1: 'Andebryst i airfryer: tid og temperatur',
-    description: `Madens Verden: andebryst ${h.t('tid1')} ved ${h.t('temp1')}, derefter ${h.t('tid2')} ved ${h.t('temp2')}. Madens Verden tager dem ud ved ${h.t('mvkerne', { ca: true })} til let rosa.`,
+    description: `Madens Verden: andebryst ${h.t('tid1')} ved ${h.t('temp1')}, derefter ${h.t('tid2')} ved ${h.t('temp2')}. Oversigten skriver ${h.t('sikker')}, opskriften tager dem ud ved ${h.t('mvkerne', { ca: true })}.`,
     lead: `${h.k('mv-and')} steger andebryst ${h.t('tid1')} ved ${h.t('temp1')} og derefter ${h.t('tid2')} ved ${h.t('temp2')}, så skindet bliver sprødt.`,
     kilder: [
-      `${h.k('mv-and')} steger ${h.t('vaegt')} andebryst og tager dem ud ved ${h.t('mvkerne', { ca: true })}, når kødet skal være let rosa. De hviler ${h.t('hvile')}.`,
-      `Madens Verdens egen oversigt over kernetemperatur skriver andebryst ${h.t('sikker')} og kalder det: ${h.s('forsigtig', { med: false })}`,
+      `Madens Verdens oversigt over kernetemperatur skriver andebryst ${h.t('sikker')} og kalder det: ${h.s('forsigtig', { med: false })}`,
+      `I opskriften steger ${h.k('mv-and')} ${h.t('vaegt')} andebryst og tager dem ud ved ${h.t('mvkerne', { ca: true })}, når kødet skal være let rosa. De hviler ${h.t('hvile')}.`,
       `Om skindet skriver Madens Verden: ${h.s('rids', { med: false })}`,
     ],
     tabell: { tittel: TID, kilde: 'mv-and', intro: 'Tallene er fra Madens Verden.', kolonner: ['Trin', 'Temperatur', 'Tid'], rader: [['Først', 'temp1', 'tid1'], ['Derefter', 'temp2', 'tid2']] },
-    ekstra: [['To tal for kernetemperaturen', h.p([`De to tal fra Madens Verden er ikke ens: ${h.t('mvkerne', { ca: true })} i opskriften og ${h.t('sikker')} i oversigten. Opskriften siger: ${h.s('rosa', { med: false })} Oversigten kalder ${h.t('sikker')} en dansk forsigtighedsanbefaling. Vi har ikke fundet et tal fra Fødevarestyrelsen for andebryst.`])]],
+    ekstra: [['To tal for kernetemperaturen', h.p([`De to tal fra Madens Verden er ikke ens: ${h.t('sikker')} i oversigten og ${h.t('mvkerne', { ca: true })} i opskriften. Oversigten kalder ${h.t('sikker')} en dansk forsigtighedsanbefaling. Opskriften siger: ${h.s('rosa', { med: false })} Vi har ikke fundet et tal fra Fødevarestyrelsen for andebryst.`])]],
     faq: [
       ['Hvor længe skal andebryst være i airfryer?', `${h.k('mv-and')}: ${h.t('tid1')} ved ${h.t('temp1')} og derefter ${h.t('tid2')} ved ${h.t('temp2')}.`],
-      ['Hvilken kernetemperatur skal andebryst have?', `${h.k('mv-and')} tager andebryst ud ved ${h.t('mvkerne', { ca: true })}, og oversigten skriver ${h.t('sikker')}.`],
+      ['Hvilken kernetemperatur skal andebryst have?', `Oversigten hos ${h.k('mv-and')} skriver ${h.t('sikker')}. Opskriften tager andebryst ud ved ${h.t('mvkerne', { ca: true })}.`],
     ],
     soster: [K + 'and/', 'Kernetemperatur for and'],
     andre: [[S + 'and/', 'Hel and i ovn'], L('flaeskesteg', 'Flæskesteg i airfryer')],
@@ -274,7 +274,7 @@ export const TEKST = {
       ['Hvilken kernetemperatur skal flæskesteg have?', `${h.k('dc-flaesk')} skriver ${h.t('kerne')}.`],
     ],
     soster: [K + 'flaeskesteg/', 'Kernetemperatur for flæskesteg'],
-    andre: [[S + 'flaeskesteg/', 'Flæskesteg i ovn'], [HVOR + 'flaeskesteg/', 'Hvor meget flæskesteg per person?']],
+    andre: [[S + 'flaeskesteg/', 'Flæskesteg i ovn'], [HVOR + 'flaeskesteg/', 'Hvor meget flæskesteg pr. person?']],
   }),
 };
 

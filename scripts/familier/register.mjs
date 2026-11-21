@@ -49,7 +49,7 @@ export const FAMILIER = Object.freeze([
   // Airfryer på svensk (/sv/airfryer/): Arla (receptsidene «… i airfryer» og artikkelen med omregningstabell), Findus og OBH Nordica. Omregningen ugn till airfryer er en tabell og en temperaturregel fra Arla og OBH Nordica, ingen omregner.
   { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' }, sv: { rot: 'airfryer/' }, da: { rot: 'airfryer/' }, en: { rot: 'air-fryer/' } } },
   // Erstatning: hva du kan bruke i stedet for en vare du mangler. Norsk (Idun, MatPrat, melk.no med flere) og amerikansk engelsk (land-grant extension og King Arthur Baking; tallene er hentet fra amerikanske kilder, ikke oversatt). Sitatkontroll i erstatning/kildekontroll.mjs.
-  // Erstatning på svensk (/sv/ersatta/): KronJäst, Kungsörnen, Dansukker og Svenska Ägg. Bare de varene en svensk kilde gir en mengde for; egg i bakning, filmjölk, smör, bakpulver og grädde er utelatt.
+  // Erstatning på svensk (/sv/ersatta/): KronJäst, Kungsörnen og Dansukker. Bare de varene en svensk kilde gir en mengde for; egg, filmjölk, smör, bakpulver og grädde er utelatt.
   { id: 'erstatning', sidetype: 'guide-lang', mappe: new URL('./erstatning/', import.meta.url), markeder: { nb: { rot: 'erstatning/' }, sv: { rot: 'ersatta/' }, da: { rot: 'erstatning/' }, en: { rot: 'substitutes/' } } },
   // Rester og råvarer: undersidene /hva-kan-jeg-lage/med-<vare>/ til den eksisterende guiden. Samlesiden /hva-kan-jeg-lage/ har sidegruppen oppskrifter-fra-ingredienser (nb, sv, da, en).
   { id: 'rester', sidetype: 'guide-lang', mappe: new URL('./rester/', import.meta.url), markeder: { nb: { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true } } },

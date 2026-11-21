@@ -6,15 +6,15 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1370**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1424**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 
 | Språk | Sider |
 |---|---:|
 | nb | 408 |
-| sv | 295 |
-| da | 316 |
+| sv | 346 |
+| da | 319 |
 | en | 351 |
-| Sum | 1370 |
+| Sum | 1424 |
 
 | Sidetype | nb | sv | da | en | Sum |
 |---|---:|---:|---:|---:|---:|
@@ -22,7 +22,7 @@ Sider i sitemap: **1370**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 | forside | 1 | 1 | 1 | 1 | 4 |
 | guide-gammel | 3 |  |  |  | 3 |
 | guide-kort | 11 | 15 | 15 | 15 | 56 |
-| guide-lang | 148 | 36 | 83 | 150 | 417 |
+| guide-lang | 148 | 87 | 86 | 150 | 471 |
 | juss | 3 | 3 | 3 | 3 | 12 |
 | omregner | 233 | 232 | 206 | 174 | 845 |
 
@@ -35,9 +35,9 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 |---|---|---|---|---|---|---|---|---|---|
 | forside | Matlyst: oppskriftsappen for iPhone og Android | forside | `/` (1) | `/sv/` (1) | `/da/` (1) | `/en/` (1) | forside.mjs |  | 2026-11-20 |
 | alletiders-kogebog | Lagre oppskrifter fra Alletiders Kogebog | guide-kort | `/importer-fra-alletiders-kokebok/` (1) | `/sv/alletiders-kogebog/` (1) | `/da/alletiders-kogebog/` (1) | `/en/alletiders-cookbook/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
-| beste-handleliste-app | Beste handleliste-app: sju apper sammenlignet | guide-lang | `/beste-handleliste-app/` (1) |  |  | `/en/best-grocery-list-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
-| beste-oppskriftsapp | Beste oppskriftsapp: sju apper sammenlignet | guide-lang | `/beste-oppskriftsapp/` (1) |  |  | `/en/best-recipe-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
-| beste-ukemeny-app | Beste ukemeny-app og middagsplanlegger | guide-lang | `/beste-ukemeny-app/` (1) |  |  | `/en/best-meal-planning-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
+| beste-handleliste-app | Beste handleliste-app: sju apper sammenlignet | guide-lang | `/beste-handleliste-app/` (1) | `/sv/basta-inkopslista-app/` (1) | `/da/bedste-indkoebsliste-app/` (1) | `/en/best-grocery-list-app/` (1) | sammenligning/da.mjs, sammenligning/en.mjs, sammenligning/nb.mjs, sammenligning/sv.mjs |  | 2026-11-21 |
+| beste-oppskriftsapp | Beste oppskriftsapp: sju apper sammenlignet | guide-lang | `/beste-oppskriftsapp/` (1) | `/sv/basta-receptapp/` (1) | `/da/bedste-opskriftsapp/` (1) | `/en/best-recipe-app/` (1) | sammenligning/da.mjs, sammenligning/en.mjs, sammenligning/nb.mjs, sammenligning/sv.mjs |  | 2026-11-21 |
+| beste-ukemeny-app | Beste ukemeny-app og middagsplanlegger | guide-lang | `/beste-ukemeny-app/` (1) | `/sv/basta-veckomeny-app/` (1) | `/da/bedste-madplan-app/` (1) | `/en/best-meal-planning-app/` (1) | sammenligning/da.mjs, sammenligning/en.mjs, sammenligning/nb.mjs, sammenligning/sv.mjs |  | 2026-11-21 |
 | julebord | Julebord hjemme: plan, mengder og handleliste | guide-lang | `/julebord/` (1) |  |  |  | forfatter.mjs, nb-jul/julebord.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | julemiddag | Julemiddag: plan, mengder og handleliste | guide-lang | `/julemiddag/` (1) |  |  |  | forfatter.mjs, nb-jul/julemiddag.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | mealime-alternative | Mealime Alternative: Moving Your Recipes | guide-lang |  |  |  | `/en/mealime-alternative/` (1) | en-rike-sider.mjs |  | 2026-11-21 |
@@ -65,15 +65,15 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | tom-kjoleskapet | Tøm kjøleskapet med lagrede oppskrifter | guide-kort | `/tom-kjoleskapet/` (1) | `/sv/tom-kylskapet/` (1) | `/da/toem-koeleskabet/` (1) | `/en/empty-the-fridge/` (1) | undersider-alle-sprak.mjs |  | 2026-11-21 |
 | ukemeny | Ukemeny-app: planlegg middagene for uka | guide-kort | `/ukemeny/` (1) | `/sv/veckomeny-app/` (1) | `/da/madplan-app/` (1) | `/en/meal-plan-app/` (1) | en-appsider.mjs, nordiske-appsider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
 | vilkar | Brukervilkår: Matlyst | juss | `/vilkar.html` (1) | `/sv/villkor/` (1) | `/da/vilkaar/` (1) | `/en/terms/` (1) | juridisk-tekster.mjs |  | 2026-11-19 |
-| familie:airfryer | Airfryer: tid og temperatur for vanlig mat | guide-lang | `/airfryer/` (20) |  | `/da/airfryer/` (12) | `/en/air-fryer/` (18) | scripts/familier/airfryer/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs) | scripts/familier/airfryer/data.da.json, scripts/familier/airfryer/data.en.json, scripts/familier/airfryer/data.nb.json | 2026-11-21 |
+| familie:airfryer | Airfryer: tid og temperatur for vanlig mat | guide-lang | `/airfryer/` (20) | `/sv/airfryer/` (17) | `/da/airfryer/` (12) | `/en/air-fryer/` (18) | scripts/familier/airfryer/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/airfryer/data.da.json, scripts/familier/airfryer/data.en.json, scripts/familier/airfryer/data.nb.json, scripts/familier/airfryer/data.sv.json | 2026-11-21 |
 | familie:dl-til-gram | Dl til gram: kalkulator og tabell for 29 varer | omregner | `/verktoy/dl-til-gram/` (30) | `/sv/verktyg/dl-till-gram/` (29) | `/da/vaerktoejer/dl-til-gram/` (29) | `/en/tools/cups-to-grams/` (43) | scripts/familier/dl-til-gram/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-nordisk.mjs, mal-sv.mjs) | scripts/familier/dl-til-gram/data.da.json, scripts/familier/dl-til-gram/data.en.json, scripts/familier/dl-til-gram/data.nb.json, scripts/familier/dl-til-gram/data.sv.json | 2026-11-21 |
-| familie:erstatning | Erstatning: hva kan jeg bruke i stedet? | guide-lang | `/erstatning/` (19) |  | `/da/erstatning/` (9) | `/en/substitutes/` (23) | scripts/familier/erstatning/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs) | scripts/familier/erstatning/data.da.json, scripts/familier/erstatning/data.en.json, scripts/familier/erstatning/data.nb.json | 2026-11-21 |
+| familie:erstatning | Erstatning: hva kan jeg bruke i stedet? | guide-lang | `/erstatning/` (19) | `/sv/ersatta/` (7) | `/da/erstatning/` (9) | `/en/substitutes/` (23) | scripts/familier/erstatning/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/erstatning/data.da.json, scripts/familier/erstatning/data.en.json, scripts/familier/erstatning/data.nb.json, scripts/familier/erstatning/data.sv.json | 2026-11-21 |
 | familie:frysing | Hvor lenge kan mat ligge i fryseren? Tabell med kilder | guide-lang | `/frysing/` (14) | `/sv/frysa/` (12) | `/da/kan-man-fryse/` (9) | `/en/can-you-freeze/` (22) | scripts/familier/frysing/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/frysing/data.da.json, scripts/familier/frysing/data.en.json, scripts/familier/frysing/data.nb.json, scripts/familier/frysing/data.sv.json | 2026-11-21 |
 | familie:holdbarhet | Hvor lenge holder maten seg i kjøleskapet? Tabell med kilder | guide-lang | `/holdbarhet/` (8) | `/sv/hallbarhet/` (11) | `/da/holdbarhed/` (11) | `/en/how-long-does-it-last/` (22) | scripts/familier/holdbarhet/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/holdbarhet/data.da.json, scripts/familier/holdbarhet/data.en.json, scripts/familier/holdbarhet/data.nb.json, scripts/familier/holdbarhet/data.sv.json | 2026-11-21 |
 | familie:kjernetemperatur | Kjernetemperatur: tabell for kjøtt og fisk | guide-lang | `/kjernetemperatur/` (15) | `/sv/innertemperatur/` (7) | `/da/kernetemperatur/` (13) | `/en/internal-temperature/` (16) | scripts/familier/kjernetemperatur/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/kjernetemperatur/data.da.json, scripts/familier/kjernetemperatur/data.en.json, scripts/familier/kjernetemperatur/data.nb.json, scripts/familier/kjernetemperatur/data.sv.json | 2026-11-21 |
-| familie:mengde-per-person | Hvor mye mat per person? Kalkulator og tabell | guide-lang | `/mengde-per-person/` (24) |  | `/da/hvor-meget-pr-person/` (11) | `/en/how-much-per-person/` (16) | scripts/familier/mengde-per-person/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs) | scripts/familier/mengde-per-person/data.da.json, scripts/familier/mengde-per-person/data.en.json, scripts/familier/mengde-per-person/data.nb.json | 2026-11-21 |
+| familie:mengde-per-person | Hvor mye mat per person? Kalkulator og tabell | guide-lang | `/mengde-per-person/` (24) | `/sv/hur-mycket-per-person/` (12) | `/da/hvor-meget-pr-person/` (11) | `/en/how-much-per-person/` (16) | scripts/familier/mengde-per-person/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/mengde-per-person/data.da.json, scripts/familier/mengde-per-person/data.en.json, scripts/familier/mengde-per-person/data.nb.json, scripts/familier/mengde-per-person/data.sv.json | 2026-11-21 |
 | familie:rester | Hva kan jeg lage med det jeg har? | guide-lang | `/hva-kan-jeg-lage/` (16) |  |  |  | scripts/familier/rester/ (mal-nb.mjs) | scripts/familier/rester/data.nb.json | 2026-11-21 |
-| familie:steketid | Steketid: hvor lenge skal maten stekes? | guide-lang | `/steketid/` (13) |  | `/da/stegetid/` (12) | `/en/cooking-times/` (16) | scripts/familier/steketid/ (mal-da.mjs, mal-en.mjs, mal-felles-en.mjs, mal-felles.mjs, mal-nb.mjs) | scripts/familier/steketid/data.da.json, scripts/familier/steketid/data.en.json, scripts/familier/steketid/data.nb.json | 2026-11-21 |
+| familie:steketid | Steketid: hvor lenge skal maten stekes? | guide-lang | `/steketid/` (13) | `/sv/tillagningstid/` (12) | `/da/stegetid/` (12) | `/en/cooking-times/` (16) | scripts/familier/steketid/ (mal-da.mjs, mal-en.mjs, mal-felles-en.mjs, mal-felles.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/steketid/data.da.json, scripts/familier/steketid/data.en.json, scripts/familier/steketid/data.nb.json, scripts/familier/steketid/data.sv.json | 2026-11-21 |
 | familie:ukemeny | Ukemenyer: sju middager med handleliste | guide-lang | `/ukemenyer/` (6) |  |  |  | scripts/familier/ukemeny/ (mal-nb.mjs) | scripts/familier/ukemeny/data.nb.json | 2026-11-21 |
 | omregner:lengde | Enhetsomregnere for lengde | omregner | `/verktoy/` (6) | `/sv/verktyg/` (6) | `/da/vaerktoejer/` (6) | `/en/tools/` (6) | enheter.mjs (enhetene), nb-/sv-/da-/en-enhetssider.mjs (tekst) |  | 2026-11-21 |
 | omregner:nav | Omregnernes samlesider og enhetsomregneren | omregner | `/verktoy/enhetsomregner/` (1) | `/sv/verktyg/enhetsomvandlare/` (1) | `/da/vaerktoejer/enhedsomregner/` (1) | `/en/tools/unit-converter/` (1) | enheter.mjs (enhetene), nb-/sv-/da-/en-enhetssider.mjs (tekst) |  | 2026-11-21 |
@@ -89,20 +89,13 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 
 | Gruppe | Finnes på | Mangler på |
 |---|---|---|
-| beste-handleliste-app | nb, en | sv, da |
-| beste-oppskriftsapp | nb, en | sv, da |
-| beste-ukemeny-app | nb, en | sv, da |
 | julebord | nb | sv, da, en |
 | julemiddag | nb | sv, da, en |
 | mealime-alternative | en | nb, sv, da |
 | nyttarsmiddag | nb | sv, da, en |
 | om | nb | sv, da, en |
 | oppskrifter-fra-ingredienser | sv, da, en | nb |
-| familie:airfryer | nb, da, en | sv |
-| familie:erstatning | nb, da, en | sv |
-| familie:mengde-per-person | nb, da, en | sv |
 | familie:rester | nb | sv, da, en |
-| familie:steketid | nb, da, en | sv |
 | familie:ukemeny | nb | sv, da, en |
 | hoytider | en | nb, sv, da |
 
@@ -110,14 +103,14 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 
 | Rad | Antall grupper | Per manglende språk (grupper uten språket) |
 |---|---:|---|
-| familie:airfryer | 18 | nb: 6 (andebryst, baked-potato, flaeskesteg, hel-kylling, reheat-pizza-leftovers, shrimp); da: 14 (baked-potato, biff, fiskepinner, frossen-mat, gronnsaker, hamburger, ...); en: 8 (andebryst, fiskepinner, flaeskesteg, hel-kylling, kjottboller, potetbater, ...) |
+| familie:airfryer | 20 | nb: 8 (andebryst, baked-potato, bakt-potet, flaeskesteg, flaskfile, hel-kylling, ...); sv: 11 (andebryst, baked-potato, biff, flaeskesteg, frossen-mat, polser, ...); da: 16 (baked-potato, bakt-potet, biff, fiskepinner, flaskfile, frossen-mat, ...); en: 10 (andebryst, bakt-potet, fiskepinner, flaeskesteg, flaskfile, hel-kylling, ...) |
 | familie:dl-til-gram | 40 | nb: 26 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); sv: 27 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); da: 27 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); en: 13 (bulgur, chiafro, couscous, grotris, kokosmasse, mandelmel, ...) |
-| familie:erstatning | 25 | nb: 11 (broth, buttermilk, cake-flour, half-and-half, honey, lemon-juice, ...); da: 21 (broth, brun-farin, buttermilk, cake-flour, friske-og-torkede-urter, gjaer, ...); en: 7 (creme-fraiche, hvetemel, kulturmelk-og-kefir, natron, romme, sukker, ...) |
+| familie:erstatning | 32 | nb: 14 (broth, buttermilk, cake-flour, florsocker, half-and-half, honey, ...); sv: 26 (bakepulver, broth, buttermilk, cake-flour, creme-fraiche, egg, ...); da: 24 (broth, brun-farin, buttermilk, cake-flour, florsocker, friske-og-torkede-urter, ...); en: 10 (creme-fraiche, florsocker, hvetemel, kulturmelk-og-kefir, natron, romme, ...) |
 | familie:frysing | 38 | nb: 25 (bacon, casseroles, cooked-chicken, cooked-pasta, cooked-rice, deli-meat, ...); sv: 27 (bacon, baer, casseroles, cooked-chicken, cooked-pasta, cooked-rice, ...); da: 30 (bacon, baer, casseroles, cooked-chicken, cooked-pasta, cooked-rice, ...); en: 17 (baer, brod, fisk, frukt-og-gronnsaker, frysa-om, gurka-og-salat, ...) |
 | familie:holdbarhet | 36 | nb: 31 (bacon, baer, brod, casseroles, cooked-chicken, cooked-pasta, ...); sv: 28 (bacon, baer, casseroles, cooked-chicken, cooked-pasta, cooked-rice, ...); da: 28 (bacon, brod, casseroles, cooked-chicken, cooked-pasta, cooked-rice, ...); en: 17 (baer, brod, elavbrott, fisk, framme, frukt-og-gronnsaker, ...) |
 | familie:kjernetemperatur | 23 | nb: 12 (and, egg, gris, kalkundeig, kalv, kjottkake, ...); sv: 20 (and, biff, egg, entrecote, kalkundeig, kalv, ...); da: 14 (egg, entrecote, gris, kalkundeig, kjottkake, laks, ...); en: 11 (and, entrecote, gris, kalv, lammefilet, not-og-lamm, ...) |
-| familie:mengde-per-person | 31 | nb: 12 (burgers, flaeskesteg, groensager, ham, mashed-potatoes, party-meat, ...); da: 25 (biff, burgers, grillmat, ham, julemat, kjott, ...); en: 20 (biff, fisk, flaeskesteg, grillmat, groensager, julemat, ...) |
-| familie:steketid | 17 | nb: 11 (and, brisket, corned-beef, flaeskesteg, kalkunbryst, kalkunlar, ...); da: 12 (brisket, corned-beef, kalkunbryst, kalkunlar, kalkunmetoder, kyllinglar, ...); en: 8 (and, bakt-potet, flaeskesteg, laks-i-ovn, pinnekjott, poteter-og-ris, ...) |
+| familie:mengde-per-person | 35 | nb: 14 (burgers, flaeskesteg, groensager, ham, korv, mashed-potatoes, ...); sv: 26 (burgers, fisk, flaeskesteg, grillmat, groensager, ham, ...); da: 27 (biff, burgers, grillmat, ham, julemat, kjott, ...); en: 22 (biff, fisk, flaeskesteg, grillmat, groensager, julemat, ...) |
+| familie:steketid | 19 | nb: 13 (and, biff-i-panna, brisket, corned-beef, flaeskesteg, kalkunbryst, ...); sv: 14 (and, bakt-potet, brisket, corned-beef, flaeskesteg, kalkunbryst, ...); da: 14 (biff-i-panna, brisket, corned-beef, kalkunbryst, kalkunlar, kalkunmetoder, ...); en: 10 (and, bakt-potet, biff-i-panna, flaeskesteg, laks-i-ovn, pinnekjott, ...) |
 | omregner:volum | 146 | nb: 74 (enhet-cl-msk, enhet-cl-spsk, enhet-cl-tsk, enhet-cups-msk, enhet-cups-spsk, enhet-cups-tsk, ...); sv: 74 (enhet-cl-spsk, enhet-cl-ss, enhet-cl-ts, enhet-cups-spsk, enhet-cups-ss, enhet-cups-ts, ...); da: 100 (enhet-cl-krm, enhet-cl-msk, enhet-cl-ss, enhet-cl-ts, enhet-cups-krm, enhet-cups-msk, ...); en: 146 (enhet-cl-krm, enhet-cl-msk, enhet-cl-spsk, enhet-cl-ss, enhet-cl-ts, enhet-cl-tsk, ...) |
 | blogg | 2 | sv: 1 (blogg-koketid); da: 1 (blogg-koketid); en: 1 (blogg-egg) |
 
@@ -158,7 +151,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ## Alle adresser
 
-1370 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
+1424 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
 
 ### forside
 
@@ -202,6 +195,14 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 - https://matlyst-app.no/beste-handleliste-app/ (2026-11-21)
 
+**sv** (1)
+
+- https://matlyst-app.no/sv/basta-inkopslista-app/ (2026-11-21)
+
+**da** (1)
+
+- https://matlyst-app.no/da/bedste-indkoebsliste-app/ (2026-11-21)
+
 **en** (1)
 
 - https://matlyst-app.no/en/best-grocery-list-app/ (2026-11-21)
@@ -212,6 +213,14 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 - https://matlyst-app.no/beste-oppskriftsapp/ (2026-11-21)
 
+**sv** (1)
+
+- https://matlyst-app.no/sv/basta-receptapp/ (2026-11-21)
+
+**da** (1)
+
+- https://matlyst-app.no/da/bedste-opskriftsapp/ (2026-11-21)
+
 **en** (1)
 
 - https://matlyst-app.no/en/best-recipe-app/ (2026-11-21)
@@ -221,6 +230,14 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 **nb** (1)
 
 - https://matlyst-app.no/beste-ukemeny-app/ (2026-11-21)
+
+**sv** (1)
+
+- https://matlyst-app.no/sv/basta-veckomeny-app/ (2026-11-21)
+
+**da** (1)
+
+- https://matlyst-app.no/da/bedste-madplan-app/ (2026-11-21)
 
 **en** (1)
 
@@ -300,7 +317,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/enkel-middag/ (2026-11-20)
+- https://matlyst-app.no/sv/enkel-middag/ (2026-11-21)
 
 **da** (1)
 
@@ -336,11 +353,11 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/inkopslista/ (2026-11-20)
+- https://matlyst-app.no/sv/inkopslista/ (2026-11-21)
 
 **da** (1)
 
-- https://matlyst-app.no/da/indkoebsliste-app/ (2026-11-20)
+- https://matlyst-app.no/da/indkoebsliste-app/ (2026-11-21)
 
 **en** (1)
 
@@ -462,7 +479,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/vad-ska-jag-laga/ (2026-11-20)
+- https://matlyst-app.no/sv/vad-ska-jag-laga/ (2026-11-21)
 
 **da** (1)
 
@@ -494,11 +511,11 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/receptbok-app/ (2026-11-20)
+- https://matlyst-app.no/sv/receptbok-app/ (2026-11-21)
 
 **da** (1)
 
-- https://matlyst-app.no/da/opskrifts-app/ (2026-11-20)
+- https://matlyst-app.no/da/opskrifts-app/ (2026-11-21)
 
 **en** (1)
 
@@ -620,7 +637,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/veckomeny-app/ (2026-11-20)
+- https://matlyst-app.no/sv/veckomeny-app/ (2026-11-21)
 
 **da** (1)
 
@@ -672,6 +689,26 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/airfryer/ribbe/ (2026-11-21)
 - https://matlyst-app.no/airfryer/svinekoteletter/ (2026-11-21)
 - https://matlyst-app.no/airfryer/torsk/ (2026-11-21)
+
+**sv** (17)
+
+- https://matlyst-app.no/sv/airfryer/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/bacon/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/bakad-potatis/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/fiskpinnar/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/flaskfile/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/gronsaker/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/hamburgare/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/hel-kyckling/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/klyftpotatis/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/koka-agg/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/kottbullar/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/kycklingben/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/kycklingfile/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/kycklingvingar/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/lax/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/pommes-frites/ (2026-11-21)
+- https://matlyst-app.no/sv/airfryer/ugn-till-airfryer/ (2026-11-21)
 
 **da** (12)
 
@@ -877,6 +914,16 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/erstatning/smor/ (2026-11-21)
 - https://matlyst-app.no/erstatning/sukker/ (2026-11-21)
 - https://matlyst-app.no/erstatning/vaniljesukker/ (2026-11-21)
+
+**sv** (7)
+
+- https://matlyst-app.no/sv/ersatta/ (2026-11-21)
+- https://matlyst-app.no/sv/ersatta/brun-farin/ (2026-11-21)
+- https://matlyst-app.no/sv/ersatta/florsocker/ (2026-11-21)
+- https://matlyst-app.no/sv/ersatta/jast/ (2026-11-21)
+- https://matlyst-app.no/sv/ersatta/lantvetemjol/ (2026-11-21)
+- https://matlyst-app.no/sv/ersatta/syltsocker/ (2026-11-21)
+- https://matlyst-app.no/sv/ersatta/vaniljsocker/ (2026-11-21)
 
 **da** (9)
 
@@ -1147,6 +1194,21 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/mengde-per-person/suppe/ (2026-11-21)
 - https://matlyst-app.no/mengde-per-person/svin/ (2026-11-21)
 
+**sv** (12)
+
+- https://matlyst-app.no/sv/hur-mycket-per-person/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/biff/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/julskinka/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/korv/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/kott/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/kottfars/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/lam/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/lax/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/pasta/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/potatis/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/ris/ (2026-11-21)
+- https://matlyst-app.no/sv/hur-mycket-per-person/svin/ (2026-11-21)
+
 **da** (11)
 
 - https://matlyst-app.no/da/hvor-meget-pr-person/ (2026-11-21)
@@ -1218,6 +1280,21 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/steketid/ribbe/ (2026-11-21)
 - https://matlyst-app.no/steketid/roastbiff/ (2026-11-21)
 - https://matlyst-app.no/steketid/svinestek/ (2026-11-21)
+
+**sv** (12)
+
+- https://matlyst-app.no/sv/tillagningstid/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/biff-i-panna/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/flaskstek/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/hel-kyckling/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/julskinka/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/kalkon/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/koka-agg/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/koka-potatis/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/kycklingfile/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/lammstek/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/lax-i-ugn/ (2026-11-21)
+- https://matlyst-app.no/sv/tillagningstid/rostbiff/ (2026-11-21)
 
 **da** (12)
 
@@ -2065,8 +2142,8 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (9)
 
-- https://matlyst-app.no/sv/blogg/ (2026-11-20)
-- https://matlyst-app.no/sv/blogg/ar-agget-farskt/ (2026-11-20)
+- https://matlyst-app.no/sv/blogg/ (2026-11-21)
+- https://matlyst-app.no/sv/blogg/ar-agget-farskt/ (2026-11-21)
 - https://matlyst-app.no/sv/blogg/dubbla-recept/ (2026-11-20)
 - https://matlyst-app.no/sv/blogg/ersatta-agg/ (2026-11-20)
 - https://matlyst-app.no/sv/blogg/innertemperatur/ (2026-11-21)
@@ -2085,7 +2162,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/da/blog/mad-i-fryseren/ (2026-11-21)
 - https://matlyst-app.no/da/blog/ovnopskrift-i-airfryer/ (2026-11-21)
 - https://matlyst-app.no/da/blog/rester-i-koeleskabet/ (2026-11-21)
-- https://matlyst-app.no/da/blog/vaelg-opskriftsapp/ (2026-11-20)
+- https://matlyst-app.no/da/blog/vaelg-opskriftsapp/ (2026-11-21)
 
 **en** (9)
 

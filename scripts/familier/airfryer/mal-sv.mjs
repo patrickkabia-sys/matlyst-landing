@@ -5,6 +5,6 @@ import { TEKST, nav } from './tekst-sv.mjs';
 
 export const ROT = '/sv/airfryer/';
 export const { sideForRad, navSide, tillatteTall, tillatteTallNav, maskeNavn } = lagMal({
-  rot: ROT, eyebrowNavn: 'Airfryer', alleTekst: 'Airfryer: tid och temperatur för alla varor', cta: 'Följ stegen i Matlyst', TEKST, nav,
+  rot: ROT, eyebrowNavn: 'Airfryer', alleTekst: 'Alla tider för airfryer', cta: 'Följ stegen i Matlyst', TEKST, nav,
   app: [['Följ stegen i matlagningsläget', 'I Matlyst blir stegen en checklista, och matlagningsläget föreslår timers när ett steg nämner en tid.'], ['Planera middagen i veckomenyn', 'Lägg receptet på dagen du ska laga det, så ser du veckan samlad.']],
 });
