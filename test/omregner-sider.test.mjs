@@ -2,7 +2,7 @@
 // og «cups» som hovedord. Forventningene utledes av kilden (generatoren og enheter.mjs), ikke av kopierte tall.
 // Alle fire språk står i tabellen SPRAK under. Engelsk har ikke kopp-ordet og ikke «cups»-regelen for navn (cups er allerede hovedordet).
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 import { ENHETER, FLERTALL, HURTIG_BROK, enhetsKort, KORT_ETIKETTER, START, enheterFor, konverter, tall } from '../scripts/enheter.mjs';
@@ -274,4 +274,24 @@ test('byggLese: samme H2 og slugg som byggRik, men uten svarboks og innholdsfort
   assert.match(rik, /class="answer"/u);
   assert.deepEqual([...lese.matchAll(/<h2 id="([^"]+)">/gu)].map((m) => m[1]), [...rik.matchAll(/<h2 id="([^"]+)">/gu)].map((m) => m[1]));
   assert.equal(lese, rik.slice(rik.indexOf('<h2 id=')));
+});
+
+test('ingen kode for den gamle omregneren står igjen', () => {
+  // Uten kommentarer: kommentarene forklarer hva som er borte og siterer derfor navnene.
+  const utenKommentarer = (kode) => kode.replace(/\/\*[\s\S]*?\*\//gu, '').replace(/(^|[^:'"`\\])\/\/[^\n]*/gu, '$1');
+  const site = utenKommentarer(readFileSync(`${ROT}site.js`, 'utf8'));
+  const css = utenKommentarer(readFileSync(`${ROT}side.css`, 'utf8'));
+  assert.ok(site.length > 1000 && css.length > 1000, 'filene er lest');
+  assert.match(site, /form\.kalk/u, 'vakten ser kalkulatorkortet i site.js, ellers er den blind');
+  assert.match(css, /\.omregner-liste/u, 'vakten ser listestilen, som blir stående');
+  for (const navn of ['form.omregner', 'omregner-rad', 'omregner-svar', 'omregner-bytt', 'omregner-data', 'data-handling']) {
+    assert.ok(!site.includes(navn), `site.js nevner ${navn}`);
+    assert.ok(!css.includes(navn), `side.css nevner ${navn}`);
+  }
+  assert.ok(!/body\[data-sidetype="omregner"\] \.toc/u.test(css), 'stilen som skjuler innholdsfortegnelsen på omregnersidene');
+  const kjede = utenKommentarer(readFileSync(`${ROT}scripts/kjede.mjs`, 'utf8'));
+  assert.match(kjede, /'app-bevis'/u, 'vakten ser etterbehandlingen');
+  assert.ok(!kjede.includes('omregner-flertall'), 'kjede.mjs nevner omregner-flertall');
+  assert.equal(existsSync(`${ROT}scripts/omregner-flertall.mjs`), false);
+  assert.equal(existsSync(`${ROT}test/omregner-flertall.test.mjs`), false);
 });

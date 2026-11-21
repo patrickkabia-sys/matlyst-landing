@@ -307,11 +307,10 @@ Alle punktene er valgt eller bekreftet av Patrick 19.11, i valgkort eller etter 
 
 ### 16.4 Omregneren
 
-- Når enhetene byttes, bytter de to valgene plass med en kort animasjon (rundt 0,3 sekunder, uten sprett). Etikettene «Fra» og «Til» står stille. Verdiene er byttet i siden med en gang, og et nytt trykk avbryter animasjonen. Ingenting beveger seg ved redusert bevegelse.
-- Svaret bruker språkets desimaltegn: komma på norsk, svensk og dansk, punktum på engelsk. Ingen tusenskille i svaret.
-- Entall for 1 og −1, flertall ellers («1 kopp», «1500 kopper»). Formene kommer fra sidens egne data.
-- Inntastingen leses som en helhet. Komma og punktum er desimaltegn, og språkets tusenskille godtas («1.500» er 1500 på norsk). Ugyldig tekst gir tomt svar, aldri et delsvar.
-- Kalkulatorkortet står i lesekolonnen og flukter med overskriften sin.
+- Enhetsomregnerne (de fire samlesidene og de 710 parsidene på norsk, svensk, dansk og engelsk) bruker kalkulatorkortet i 16.8 med `data-kalk="enhet"`, rett under ingressen. Kortet er svaret: seksjonen «Kalkulator», svarboksen og innholdsfortegnelsen finnes ikke i lesedelen, og under kortet står ett kort svar («1 cup = 2,366 dl», «180 °C = 356 °F») som åpner med den samme setningen kortet viser uten JavaScript.
+- Bytteanimasjon, flertall, desimaltegn, tallesing og regneregler beskrives av 16.8 (fire gjeldende sifre, 1000 og over som heltall, mengden står ved bytte, temperatur er affin og kan være negativ, engelsk tar brøker). Tabellene og teksten på siden bruker samme tallregel, så de er like kortets svar.
+- «Cups» er hovedordet i enhetsnavn, tittel og overskrift på norsk, svensk og dansk («1 cup», «2 cups»). «Kopp» (nb og sv) og «kop» (da) står bare i noen få nøyaktig angitte setninger: én forklaring («En cup er en amerikansk kopp på 236,6 ml») og spørsmålene «Er en cup det samme som en kopp?» og, mellom cups og dl, «Hvor mange dl er en kopp?». Adressene beholder «kopp» og «kop».
+- Samlesidene har kortet med volumenhetene og beholder sin innledning som første avsnitt i lesedelen.
 
 ### 16.5 Tekst og typografi
 
@@ -357,4 +356,4 @@ Alle punktene er valgt eller bekreftet av Patrick 19.11, i valgkort eller etter 
   - `sifre: 4`: svaret skrives slik for alle enheter, også gram. 0 er «0», absoluttverdi 1000 og over er heltall (halve runder opp, rundet på tolv gjeldende sifre først), ellers `sifre` gjeldende sifre uten overflødige nuller og uten tak på desimaler. Språkets desimaltegn.
   - `beholdMengde: true`: bytteknappen bytter fra og til og lar mengden stå.
   - `varer` kan mangle. Vareordet er da tomt, og kryssing mellom `ml` og `g` gir veiledningen. `ml` holder faktorene for gruppen som ikke er vekt (volum eller lengde); en temperaturside har `ml: {}` og `g: {}`.
-- Låst av `test/playwright/kalk.spec.mjs` (også `kalk-en.html`), `test/playwright/kalk-enhet.spec.mjs`, `test/site-tall.test.mjs` og `test/side-css.test.mjs`.
+- Låst av `test/playwright/kalk.spec.mjs` (også `kalk-en.html`), `test/playwright/kalk-enhet.spec.mjs` (også `kalk-enhet-en.html`), `test/omregner-sider.test.mjs`, `test/site-tall.test.mjs` og `test/side-css.test.mjs`.

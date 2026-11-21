@@ -17,7 +17,7 @@ test('delt stil, skall, skript og bilder gir full kontroll', () => {
     'test/playwright/revisjon.spec.mjs', 'fonts/x.woff2', 'playwright.config.mjs', '.github/workflows/revisjon.yml', 'package.json', 'package-lock.json',
     // Skriptene i ETTERBEHANDLING som skriver alle sider, og Codex sine eksempler.
     'scripts/hyller.mjs', 'scripts/app-bevis.mjs', 'scripts/bilde-attributter.mjs', 'scripts/guidelenker.mjs', 'scripts/lenker-sett.mjs',
-    'scripts/sprak-signaler.mjs', 'scripts/omregner-flertall.mjs', 'scripts/forside.mjs', 'scripts/enheter.mjs', 'scripts/locale-sider.mjs',
+    'scripts/sprak-signaler.mjs', 'scripts/forside.mjs', 'scripts/enheter.mjs', 'scripts/locale-sider.mjs',
     'images/forside/logo/14.webp', 'images/forside/qr-app.svg', 'images/en-guide/bilder.json', 'images/og.jpg', 'images/icon.png']) {
     assert.equal(omfang([f]), 'full', f);
   }

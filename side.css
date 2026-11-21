@@ -148,21 +148,7 @@ h2[id],h3[id]{scroll-margin-top:16px}
 @media (min-width:1201px){.locale-page-hero h1{font-size:3.875rem}}
 
 /* == Omregner == */
-/* Kalkulatoren på omregnersidene (skjemaet står i lesekolonnen og bryter litt ut av den på PC).
-   Verdiene er hentet fra omregner-prototypen: .kalk, .kalkrad, .kalkside, .kalktall, .bytt.
-   Alt lesbart er rem. Innholdsfortegnelsen skjules, siden kalkulatoren er svaret. */
-body[data-sidetype="omregner"] .toc{display:none}
-body[data-sidetype="omregner"] form.omregner{margin:28px 0 0;padding:28px;border-radius:32px;background:var(--hylle)}
-body[data-sidetype="omregner"] .omregner-rad{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto minmax(0,1fr);align-items:stretch;gap:16px}
-body[data-sidetype="omregner"] .omregner-rad label{display:flex;flex-direction:column;justify-content:space-between;gap:10px;min-width:0;padding:18px 22px;border-radius:24px;background:var(--flate);font-size:.9375rem;font-weight:500;line-height:1.3;color:var(--dempet);transition:box-shadow .3s}
-body[data-sidetype="omregner"] .omregner-rad label:focus-within{box-shadow:0 0 0 2px var(--blekk)}
-body[data-sidetype="omregner"] .omregner-rad input,body[data-sidetype="omregner"] .omregner-rad select{display:block;width:100%;min-width:0;min-height:44px;margin:0;padding:0;border:0;border-radius:0;background:none;font:inherit;color:var(--blekk);outline:0}
-body[data-sidetype="omregner"] .omregner-rad input{font-size:2.75rem;font-weight:700;line-height:1.1;letter-spacing:-.04em;-moz-appearance:textfield;appearance:textfield}
-body[data-sidetype="omregner"] .omregner-rad input::-webkit-inner-spin-button,body[data-sidetype="omregner"] .omregner-rad input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
-body[data-sidetype="omregner"] .omregner-rad select{appearance:none;-webkit-appearance:none;padding-right:28px;font-size:1.0625rem;font-weight:500;text-overflow:ellipsis;cursor:pointer;background:linear-gradient(45deg,transparent 50%,currentColor 50%) calc(100% - 13px) 55% / 7px 7px no-repeat,linear-gradient(135deg,currentColor 50%,transparent 50%) calc(100% - 7px) 55% / 7px 7px no-repeat}
-body[data-sidetype="omregner"] .omregner-bytt{align-self:center;display:grid;place-items:center;width:52px;height:52px;padding:0;border:1px solid var(--linje);border-radius:50%;background:var(--flate);font-size:1.375rem;line-height:1;color:var(--blekk);cursor:pointer;transition:border-color .2s}
-body[data-sidetype="omregner"] .omregner-bytt:hover,body[data-sidetype="omregner"] .omregner-bytt:focus-visible{border-color:var(--blekk)}
-body[data-sidetype="omregner"] .omregner-svar{margin:16px 0 0;padding:22px 28px;border-radius:24px;background:var(--blekk);color:var(--pro-tekst);font-size:1.75rem;font-weight:700;line-height:1.2;letter-spacing:-.02em;overflow-wrap:anywhere}
+/* Kalkulatoren på omregnersidene er kalkulatorkortet (.kalk, se «Kalkulatorkort» under). Her står bare det som er særegent for omregnerinnholdet. */
 /* Appkort og nedlasting i omregnerinnholdet: telefonvideo/-bilde, og butikkmerkene i bunnkortet */
 body[data-sidetype="omregner"] .phones{margin:32px 0 0}
 body[data-sidetype="omregner"] .phones figure{max-width:300px;margin:0 auto}
@@ -170,28 +156,6 @@ body[data-sidetype="omregner"] .phones video,body[data-sidetype="omregner"] .tel
 body[data-sidetype="omregner"] .i-appen-media .tel{max-width:200px;margin-inline:auto}
 body[data-sidetype="omregner"] .store-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
 body[data-sidetype="omregner"] .btn-store{display:inline-flex;align-items:center;min-height:48px}
-@media (min-width:721px){
-  body[data-sidetype="omregner"] .omregner-rad input{font-size:3.5rem}
-  body[data-sidetype="omregner"] .omregner-svar{font-size:2.25rem}
-}
-@media (min-width:1001px){
-  /* Kalkulatorkortet står i lesekolonnen, med samme venstrekant som overskriften «Kalkulator: …» og teksten. Utbrytingen ga bare ca. 20 px mer per felt og et kort som ragnet ut over overskriften. */
-  /* Kortet er like bredt som lesekolonnen, så «Mengde» får en egen rad og «Fra» og «Til» deler den neste: navnene på enhetene (Amerikanske kopper (kopp)) blir ikke klippet. */
-  body[data-sidetype="omregner"] .omregner-rad{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
-  body[data-sidetype="omregner"] .omregner-rad > label:first-child{grid-column:1 / -1}
-  body[data-sidetype="omregner"] .omregner-svar{font-size:2.75rem}
-}
-@media (min-width:1201px){
-  body[data-sidetype="omregner"] .omregner-rad input{font-size:4.5rem}
-}
-@media (max-width:720px){
-  body[data-sidetype="omregner"] form.omregner{padding:14px;border-radius:28px}
-  body[data-sidetype="omregner"] .omregner-rad{grid-template-columns:minmax(0,1fr);gap:10px}
-  body[data-sidetype="omregner"] .omregner-rad label{padding:16px 20px;border-radius:20px}
-  body[data-sidetype="omregner"] .omregner-bytt{justify-self:center;margin-block:-4px;transform:rotate(90deg)}
-  body[data-sidetype="omregner"] .omregner-svar{padding:18px 20px;border-radius:20px}
-}
-@media (prefers-reduced-motion:reduce){body[data-sidetype="omregner"] .omregner-bytt,body[data-sidetype="omregner"] .omregner-rad label{transition:none}}
 /* Alt skal få plass på en mobilskjerm: telefonbilder og -filmer begrenses i høyden (--ledig-hoyde) og beholder formatet; i appkort legges telefonen ved siden av teksten. */
 @media (max-width:1000px){
   body[data-sidetype="omregner"] :is(.locale-prose,main.prose) :is(video,.tel,figure img){width:auto;max-width:min(100%,300px);max-height:var(--ledig-hoyde);margin-inline:auto}

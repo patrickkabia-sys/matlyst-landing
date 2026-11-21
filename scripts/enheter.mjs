@@ -87,18 +87,6 @@ export const FLERTALL = {
   en: { cups: ['cup', 'cups'] },
 };
 
-/** Dataene en omregner bærer i siden (class omregner-data): faktorene, om det er temperatur, og ordformene (`o`) for enhetene i valglisten. */
-export function omregnerData(lang, f, temperatur) {
-  const o = Object.fromEntries(Object.keys(f).filter((id) => FLERTALL[lang]?.[id]).map((id) => [id, FLERTALL[lang][id]]));
-  return { f, t: temperatur, ...(Object.keys(o).length ? { o } : {}) };
-}
-
-/** Ordet for enhet `id` ved mengden `v` på språket: entall bare når tallet som vises er nøyaktig 1, ellers flertall. Symboler står uendret. */
-export function ordFor(lang, id, v) {
-  const form = FLERTALL[lang]?.[id];
-  return form ? form[Math.abs(Number(tall(v))) === 1 ? 0 : 1] : ENHETER[id][lang].kort;
-}
-
 // Kalkulatorkortet for enhetsomregnerne (data-kalk="enhet"). Siden skriver alt synlig tekst fra disse dataene; site.js har ingen språkstrenger.
 
 /** Hurtigmengdene (seks per enhet, stigende). Tallene skrives med språkets desimaltegn i kortet. */
