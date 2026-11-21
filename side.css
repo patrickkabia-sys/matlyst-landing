@@ -200,6 +200,11 @@ output.kalktall{word-spacing:.25em;overflow:hidden;text-overflow:ellipsis;white-
 .kalksetning{margin:18px 0 0;font-size:1.0625rem;line-height:1.4;text-align:center;color:var(--dempet)}
 @media (min-width:721px){.kalktall{font-size:3.5rem}}
 @media (min-width:1001px){.kalktall{font-size:4.5rem}}
+/* Enhetskortet: svarsiden er en beholder, og svaret krymper med tegnantallet (--tegn, satt fra site.js) til det passer, så et langt svar som «0,000002642» vises helt. Over én linje får det aldri mer enn standardstørrelsen. 0,62em er bredden på et tegn i fet skrift med litt luft. */
+.kalk[data-kalk="enhet"] .kalkside{container-type:inline-size}
+.kalk[data-kalk="enhet"] output.kalktall{--stor:2.75rem;font-size:min(var(--stor),calc(100cqw / (var(--tegn,1) * .62)))}
+@media (min-width:721px){.kalk[data-kalk="enhet"] output.kalktall{--stor:3.5rem}}
+@media (min-width:1001px){.kalk[data-kalk="enhet"] output.kalktall{--stor:4.5rem}}
 @media (max-width:720px){
   .kalk{margin-top:32px;padding:14px;border-radius:28px}
   .kalkrad{grid-template-columns:minmax(0,1fr);gap:0}

@@ -286,9 +286,12 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         if (Number.isFinite(ut)) {
           const utTekst = data.sifre ? presis(ut, data.sifre) : svarTekst(ut, til.value);
           svar.textContent = utTekst;
+          // Tegnantallet styrer skriftstørrelsen i svarsiden (side.css), så et langt svar vises helt i stedet for å klippes.
+          svar.style.setProperty('--tegn', String(Math.max(utTekst.length, 1)));
           setning.textContent = [`${m.tekst || mengdeTekst(n)} ${kort(fra.value, m.entall)}`, ord, `= ${utTekst} ${kort(til.value, utTekst === '1')}`].filter(Boolean).join(' ');
         } else {
           svar.textContent = '';
+          svar.style.removeProperty('--tegn');
           setning.textContent = data.feil;
         }
         const gruppe = data.stegFor ? data.stegFor[fra.value] : fra.value in data.g ? (fra.value === 'kg' ? 'kg' : 'g') : (fra.value === 'ml' ? 'ml' : 'volum');

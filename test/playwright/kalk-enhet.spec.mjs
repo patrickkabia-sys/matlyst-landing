@@ -109,6 +109,32 @@ for (const bredde of [360, 390, 1280]) {
   });
 }
 
+// Lange svar (opptil 11 tegn, som «0,000002642») skal vises hele i svarsiden, uten ellipse og uten å stikke ut av boksen, på alle bredder.
+// Skriften krymper med tegnantallet (--tegn satt fra site.js) i stedet for at tallet klippes.
+for (const bredde of [320, 360, 768, 1000, 1280, 1600]) {
+  test(`svaret på 11 tegn ligger innenfor boksen sin og er helt synlig på ${bredde} px`, async ({ page }) => {
+    await page.setViewportSize({ width: bredde, height: 900 });
+    await page.goto(FIKSTUR);
+    await page.selectOption('#volum [data-felt=fra]', 'ml');
+    await page.selectOption('#volum [data-felt=til]', 'gallons');
+    for (const [mengde, tall] of [['0,01', '0,000002642'], ['1', '0,0002642'], ['16', '0,004227']]) {
+      await skriv(page, 'volum', mengde);
+      await expect(svar(page, 'volum')).toHaveText(tall);
+      const m = await page.evaluate(() => {
+        const o = document.querySelector('#volum output[data-felt=svar]');
+        const boks = o.closest('.kalkside').getBoundingClientRect();
+        const r = document.createRange(); r.selectNodeContents(o);
+        const tekst = r.getBoundingClientRect();
+        return { scroll: o.scrollWidth, klient: o.clientWidth, skrift: parseFloat(getComputedStyle(o).fontSize), tekstHoyre: tekst.right, boksHoyre: boks.right, sidelengs: document.documentElement.scrollWidth <= document.documentElement.clientWidth };
+      });
+      expect(m.scroll, `${mengde}: svaret er klippet`).toBeLessThanOrEqual(m.klient);
+      expect(m.tekstHoyre, `${mengde}: svaret stikker ut av boksen`).toBeLessThanOrEqual(m.boksHoyre);
+      expect(m.skrift, `${mengde}: skriften er lesbar`).toBeGreaterThanOrEqual(24);
+      expect(m.sidelengs).toBe(true);
+    }
+  });
+}
+
 test('kortet uten varerad har ikke tom luft øverst', async ({ page }) => {
   // Første barn er selve raden: ingen skjult eller tom blokk over den, og polstringen er kortets egen.
   const topp = await page.evaluate(() => {
