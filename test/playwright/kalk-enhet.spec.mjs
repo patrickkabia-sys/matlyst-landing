@@ -87,6 +87,18 @@ test('skjema uten varer settes opp', async ({ page }) => {
   }
 });
 
+// Ikke-endelig inndata («1» fulgt av 309 nuller) på et skjema uten brøk: veiledningen og aria-invalid, som på engelsk.
+test('ikke-endelig tall gir veiledning og aria-invalid også uten brøk', async ({ page }) => {
+  for (const id of ['volum', 'temp']) {
+    await skriv(page, id, `1${'0'.repeat(309)}`);
+    await expect(setning(page, id), id).toHaveText(FEIL);
+    await expect(svar(page, id), id).toHaveText('');
+    await expect(page.locator(`#${id} [data-felt=mengde]`), id).toHaveAttribute('aria-invalid', 'true');
+    await skriv(page, id, '5');
+    await expect(page.locator(`#${id} [data-felt=mengde]`), id).not.toHaveAttribute('aria-invalid', 'true');
+  }
+});
+
 // Kortet uten varerad: ingen vannrett rulling og ingen trykkflate under 44 px, også med det lengste enhetsnavnet (#lang).
 for (const bredde of [360, 390, 1280]) {
   test(`trykkflater minst 44 px og ingen sidelengs rulling på ${bredde} px, også med lange enhetsnavn`, async ({ page }) => {
@@ -181,5 +193,29 @@ test.describe('engelsk kort med brøker', () => {
     await expect(setning(page, 'temp')).toHaveText(`350 °F = ${presisTekst((350 - 32) * 5 / 9, 4)} °C`);
     await skriv(page, 'temp', '-40');
     await expect(setning(page, 'temp')).toHaveText('-40 °F = -40 °C');
+  });
+
+  // Negative brøker (brok og negativ): «-1/2» og «-1 1/2» er gyldige og gjengis normalisert med fortegn. Entall gjelder bare positive brøker under 1,
+  // så «-1/2» bøyes som flertall (på temperatur spiller det ingen rolle, enhetene har én form). Uten negativ er en negativ brøk ugyldig (se kalk.spec.mjs).
+  test('negative brøker er gyldige på temperatur med negativ', async ({ page }) => {
+    await page.selectOption('#temp [data-felt=fra]', 'c');
+    await page.selectOption('#temp [data-felt=til]', 'f');
+    await skriv(page, 'temp', '-1/2');
+    await expect(setning(page, 'temp')).toHaveText('-1/2 °C = 31.1 °F');
+    await expect(page.locator('#temp [data-felt=mengde]')).not.toHaveAttribute('aria-invalid', 'true');
+    await skriv(page, 'temp', '-1 1/2');
+    await expect(setning(page, 'temp')).toHaveText(`-1 1/2 °C = ${presisTekst(-1.5 * 1.8 + 32, 4)} °F`);
+    await skriv(page, 'temp', '-  1/2');
+    await expect(page.locator('#temp [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
+    await skriv(page, 'temp', '--1/2');
+    await expect(setning(page, 'temp')).toHaveText(KORT_ETIKETTER.en.feil);
+  });
+
+  test('negativ brøk er ugyldig uten negativ, som negative desimaltall', async ({ page }) => {
+    await skriv(page, 'cups', '-1/2');
+    await expect(setning(page, 'cups')).toHaveText(KORT_ETIKETTER.en.feil);
+    await expect(page.locator('#cups [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
+    await skriv(page, 'cups', '-0.5');
+    await expect(page.locator('#cups [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
   });
 });

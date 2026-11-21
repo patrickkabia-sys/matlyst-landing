@@ -225,22 +225,24 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   };
   // Mengden som tall, med brøk når skjemaet tillater det: a/b eller n a/b (heltall, nevner over 0, valgfritt mellomrom rundt skråstreken).
   // Gir { n, tekst, entall } eller null. tekst er brøken normalisert («1 1/2»). entall er sant for nøyaktig 1 og for en ekte brøk under 1 skrevet som brøk («3/4»).
-  // Heltall, teller og nevner har høyst seks sifre (ellers er brøken ugyldig). Med brøk slått på er mellomrom mellom sifre ikke tusenskille («1 2» er ugyldig), ellers ville «1 2» blitt 12.
+  // Heltall, teller og nevner har høyst seks sifre (ellers er brøken ugyldig). Brøken kan ha minus rett foran («-1/2», «-1 1/2»); regn() godtar det bare med `negativ`. Med brøk slått på er mellomrom mellom sifre ikke tusenskille («1 2» er ugyldig), ellers ville «1 2» blitt 12.
   const tolkMengde = (tekst, brok) => {
     const t = String(tekst).trim();
     if (brok) {
-      const m = /^(?:(\d{1,6})\s+)?(\d{1,6})\s*\/\s*(\d{1,6})$/u.exec(t);
+      const m = /^(-)?(?:(\d{1,6})\s+)?(\d{1,6})\s*\/\s*(\d{1,6})$/u.exec(t);
       if (m) {
-        const [, hel, a, b] = m;
+        const [, minus, hel, a, b] = m;
+        // Fortegnet tolkes alltid; regn() avviser negative mengder uten `negativ`, så en negativ brøk er da ugyldig som et negativt desimaltall.
         if (Number(b) === 0) return null;
-        const n = Number(hel || 0) + Number(a) / Number(b);
-        return { n, tekst: `${hel === undefined ? '' : `${Number(hel)} `}${Number(a)}/${Number(b)}`, entall: n === 1 || (hel === undefined && n > 0 && n < 1) };
+        const abs = Number(hel || 0) + Number(a) / Number(b);
+        const n = minus ? -abs : abs;
+        return { n, tekst: `${minus || ''}${hel === undefined ? '' : `${Number(hel)} `}${Number(a)}/${Number(b)}`, entall: n === 1 || (hel === undefined && n > 0 && n < 1) };
       }
       if (/\d\s+\d/u.test(t) || t.includes('/')) return null;
     }
     const n = tolkTall(t, KOMMA);
-    // Med brøk slått på avvises også et tall som ikke er endelig (for eksempel 400 sifre).
-    return n === null || (brok && !Number.isFinite(n)) ? null : { n, tekst: null, entall: n === 1 };
+    // Et tall som ikke er endelig (for eksempel 400 sifre) er ugyldig, med eller uten brøk.
+    return n === null || !Number.isFinite(n) ? null : { n, tekst: null, entall: n === 1 };
   };
   for (const skjema of skjemaer) {
     // Hvert skjema settes opp for seg: et ødelagt skjema hoppes over (det statiske svaret i HTML-en blir stående), og resten virker.
