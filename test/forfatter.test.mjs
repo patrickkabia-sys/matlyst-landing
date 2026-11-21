@@ -4,12 +4,15 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
-import { FORFATTERLINJE, FORFATTER_SIDER, PERSON_ID, forfatterPerson, harForfatter } from '../scripts/forfatter.mjs';
+import { FORFATTERLINJE, FORFATTER_ROTER, FORFATTER_SIDER, PERSON_ID, forfatterPerson, harForfatter } from '../scripts/forfatter.mjs';
 import { alleSider } from '../scripts/sidetyper.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const sider = alleSider(ROOT);
 const html = (fil) => readFileSync(join(ROOT, fil), 'utf8');
+// Alle sider under en forfatterrot (familiene kjernetemperatur og steketid), slik de ligger på disk.
+const underRot = sider.map((s) => s.sti.replace(/^\//u, '')).filter((sti) => FORFATTER_ROTER.some((rot) => sti.startsWith(rot)));
+const MED_FORFATTER = [...FORFATTER_SIDER, ...underRot];
 const skjema = (h) => [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gu)].flatMap(([, r]) => [JSON.parse(r)].flat());
 export const harLinje = (h) => /<p class="eyebrow">Av <a href="\/om\/">Patrick Kabia<\/a>, kjøletekniker<\/p>/u.test(h);
 export const harForfatterSkjema = (h) => skjema(h).some((s) => s['@type'] === 'Article' && s.author?.['@type'] === 'Person' && s.author['@id'] === PERSON_ID);
@@ -27,7 +30,9 @@ test('registeret har bare norske sider som finnes, og linja og personen er de go
 });
 
 test('alle sider i registeret har synlig forfatterlinje og author som Person koblet til om-siden', () => {
-  for (const sti of FORFATTER_SIDER) {
+  assert.ok(underRot.length >= 20, `fant bare ${underRot.length} sider under forfatterrøttene`);
+  for (const rot of FORFATTER_ROTER) assert.ok(!/^(?:sv|da|en)\//u.test(rot), rot);
+  for (const sti of MED_FORFATTER) {
     const h = html(`${sti}index.html`);
     assert.equal([...h.matchAll(/Av <a href="\/om\/">Patrick Kabia<\/a>, kjøletekniker/gu)].length, 1, `${sti}: forfatterlinje`);
     assert.ok(harForfatterSkjema(h), `${sti}: author mangler i Article`);
@@ -38,7 +43,7 @@ test('alle sider i registeret har synlig forfatterlinje og author som Person kob
 
 test('forfatter står bare på sidene i registeret (ingen app-, import- eller andre guider, ingen andre språk)', () => {
   const med = sider.filter((s) => forfatterTreff(html(s.fil)));
-  assert.deepEqual(med.map((s) => s.sti.replace(/^\//u, '')).sort(), [...FORFATTER_SIDER].sort());
+  assert.deepEqual(med.map((s) => s.sti.replace(/^\//u, '')).sort(), [...MED_FORFATTER].sort());
   for (const sti of ['oppskriftsbok-app/', 'importer-oppskrifter/', 'ukemeny/', 'bytt-fra-paprika/', 'spiskammer-app/', 'blogg/velg-oppskriftsapp/', 'blogg/doble-oppskrift/']) assert.equal(harForfatter(sti), false, sti);
   assert.ok(sider.filter((s) => s.sprak !== 'nb').length > 100);
 });

@@ -193,6 +193,9 @@ output.kalktall{word-spacing:.25em;overflow:hidden;text-overflow:ellipsis;white-
 .bytt{align-self:center;display:grid;place-items:center;width:52px;height:52px;padding:0;border:1px solid var(--linje);border-radius:50%;background:var(--flate);color:var(--blekk);cursor:pointer;transition:border-color .2s,transform .5s var(--ut)}
 .bytt:hover{border-color:var(--blekk)}
 .bytt.snudd{transform:rotate(180deg)}
+/* Steketidskortet (kalkun) regner bare én vei, fra kilo til tid: bytteknappen finnes i markupen for site.js, men vises ikke. */
+.kalk[data-kalk="tid"] .bytt{display:none}
+@media (min-width:721px){.kalk[data-kalk="tid"] .kalkrad{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .hurtig{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px}
 .hurtig button{min-height:44px;padding:0 18px;border:1px solid var(--linje);border-radius:999px;background:var(--flate);font:inherit;font-weight:500;font-size:1rem;color:var(--blekk);cursor:pointer;transition:border-color .2s,background-color .2s,color .2s}
 .hurtig button:hover{border-color:var(--blekk)}

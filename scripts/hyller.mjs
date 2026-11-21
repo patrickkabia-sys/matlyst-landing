@@ -68,6 +68,9 @@ export const HYLLER = {
         { tekst: 'Erstatte egg', href: '/blogg/erstatte-egg/' },
         { tekst: 'Kjernetemperatur', href: '/blogg/kjernetemperatur/' },
         { tekst: 'Koketider', href: '/blogg/koketider/' },
+        // Familiene kjernetemperatur og steketid finnes bare på norsk (scripts/familier/).
+        { tekst: 'Kjernetemperatur: tabell', href: '/kjernetemperatur/', bareNb: true },
+        { tekst: 'Steketid', href: '/steketid/', bareNb: true },
         { tekst: 'Alle kjøkkentips', href: '/blogg/' },
       ],
     },

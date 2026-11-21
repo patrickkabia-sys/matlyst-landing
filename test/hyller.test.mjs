@@ -83,13 +83,13 @@ test('nøyaktig disse seks lenkene er skjult', () => {
   assert.deepEqual(skjulte, SKJULTE);
 });
 
-test('synligeLenker beholder alt unntatt de skjulte, 35 totalt', () => {
+test('synligeLenker beholder alt unntatt de skjulte, 37 totalt', () => {
   const proto = hyllerFraPrototyp();
   HYLLER.nb.forEach((h, i) => {
-    // «Om Matlyst» (bareNb) er ikke i prototypet.
+    // «Om Matlyst», «Kjernetemperatur: tabell» og «Steketid» (bareNb) er ikke i prototypet.
     assert.deepEqual(synligeLenker(h).filter((l) => !l.bareNb).map((l) => l.tekst), proto[i].lenker.filter((t) => !SKJULTE.includes(t)), h.navn);
   });
-  assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 35);
+  assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 37);
 });
 
 // Falsk tekst: hver nøkkel får en synlig verdi, så testene ser adressene og ikke oversettelsen.

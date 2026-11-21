@@ -1,5 +1,5 @@
 // Registeret over norske sider som har Patrick Kabia som forfatter: synlig linje «Av Patrick Kabia, kjøletekniker»
-// og author (Person med @id fra om-siden) i Article. ÉT sted å utvide: legg stien til i FORFATTER_SIDER.
+// og author (Person med @id fra om-siden) i Article. ÉT sted å utvide: legg stien til i FORFATTER_SIDER, eller roten til en hel familie i FORFATTER_ROTER.
 // Bare sider om kjøling og mat (holdbarhet, frysing, kjernetemperatur, koketider). Ikke app- eller importguidene.
 // Låst av test/forfatter.test.mjs: forfatter står på alle sider i lista og bare på dem.
 export const BASE = 'https://matlyst-app.no';
@@ -12,6 +12,12 @@ export const FORFATTER_SIDER = Object.freeze([
   'blogg/rester-i-kjoleskapet/',
 ]);
 
-export const harForfatter = (path) => FORFATTER_SIDER.includes(String(path).replace(/^\//u, ''));
+// Sidefamilier der hver side har forfatteren (scripts/familier/): alt under roten.
+export const FORFATTER_ROTER = Object.freeze(['kjernetemperatur/', 'steketid/']);
+
+export const harForfatter = (path) => {
+  const sti = String(path).replace(/^\//u, '');
+  return FORFATTER_SIDER.includes(sti) || FORFATTER_ROTER.some((rot) => sti.startsWith(rot));
+};
 export const forfatterPerson = () => ({ '@type': 'Person', '@id': PERSON_ID, name: 'Patrick Kabia', url: `${BASE}/om/` });
 export const FORFATTERLINJE = '<p class="eyebrow">Av <a href="/om/">Patrick Kabia</a>, kjøletekniker</p>';

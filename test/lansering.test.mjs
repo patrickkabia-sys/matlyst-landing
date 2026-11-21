@@ -67,9 +67,9 @@ for (const lang of ['sv', 'da', 'en']) {
 test('det norske sitemapet er fortsatt bare norske sider', () => {
   const sitemap = les('sitemap.xml');
   assert.doesNotMatch(sitemap, /matlyst-app\.no\/(?:sv|da|en)\//u);
-  // 24 sider + bloggforsiden, 8 håndskrevne bloggartikler, kjøperguiden, familien dl til gram (samleside og 29 varer), ukemenyene (samleside og fem menyer) og autoartiklene.
+  // 24 sider + bloggforsiden, 8 håndskrevne bloggartikler, kjøperguiden, familien dl til gram (samleside og 29 varer), ukemenyene (samleside og fem menyer), kjernetemperatur (samleside og 14) og steketid (samleside og 12), og autoartiklene.
   const auto = autoArtikler('nb', pathToFileURL(`${ROOT}/`));
-  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 275 + auto.length);
+  assert.equal((sitemap.match(/<url>/gu) ?? []).length, 303 + auto.length);
   assert.match(sitemap, /<loc>https:\/\/matlyst-app\.no\/slett-konto\.html<\/loc>/u);
 });
 

@@ -1,0 +1,1371 @@
+{
+  "familie": "steketid",
+  "marked": "nb",
+  "kilder": {
+    "mt-sommer": {
+      "navn": "Mat i sommarvarmen",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/mat-i-sommervarmen",
+      "hentet": "2026-11-21"
+    },
+    "mt-rykende": {
+      "navn": "Varm mat skal være rykende varm",
+      "utgiver": "Mattilsynet",
+      "aar": 2022,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/matservering/mathandtering-hygiene/varm-mat-skal-vaere-rykende-varm",
+      "hentet": "2026-11-21"
+    },
+    "mp-storfe": {
+      "navn": "Steke- og koketips for storfekjøtt",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-storfekjott/",
+      "hentet": "2026-11-21"
+    },
+    "mp-svin": {
+      "navn": "Steke- og koketips for svin",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-svinekjott/",
+      "hentet": "2026-11-21"
+    },
+    "mp-lam": {
+      "navn": "Steke- og koketips for lammekjøtt",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2020,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-lammekjott/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kylling": {
+      "navn": "Steke- og koketips for kylling",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-kylling/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kalkun": {
+      "navn": "Steke- og koketips for kalkun",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-kalkun/",
+      "hentet": "2026-11-21"
+    },
+    "mp-fisk": {
+      "navn": "Steke- og koketips for fisk og skalldyr",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-fisk-og-skalldyr/",
+      "hentet": "2026-11-21"
+    },
+    "mp-grill": {
+      "navn": "Grilltider, metoder og temperaturer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2018,
+      "adresse": "https://www.matprat.no/artikler/tema/grilltider-metoder-og-temperaturer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-ribbe": {
+      "navn": "Slik steker du ribbe",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/slik-steker-du-ribbe/",
+      "hentet": "2026-11-21"
+    },
+    "mp-hel-kalkun": {
+      "navn": "Slik steker du hel kalkun",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/slik-steker-du-hel-kalkun/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kalkun-pose": {
+      "navn": "Saftig kalkun i stekepose",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/saftig-kalkun-i-stekepose/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kyllingfilet": {
+      "navn": "Hvordan steke saftig kyllingfilet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/slik-steker-du-kyllingfilet/",
+      "hentet": "2026-11-21"
+    },
+    "mp-pinnekjott": {
+      "navn": "Utvanning og damping av pinnekjøtt",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/utvanning-og-damping-av-pinnekjott/",
+      "hentet": "2026-11-21"
+    },
+    "mp-lammelar-lang": {
+      "navn": "Langtidsstekt lammelår",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2019,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/langtidsstekt-lammelar/",
+      "hentet": "2026-11-21"
+    },
+    "mp-lammestek": {
+      "navn": "Slik steker du lammestek",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/slik-steker-du-lammestek/",
+      "hentet": "2026-11-21"
+    },
+    "mp-svinestek": {
+      "navn": "Surret svinestek (Oppdelingsguiden)",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/oppdelingsguiden/svin/svinebog/surret-svinestek/",
+      "hentet": "2026-11-21"
+    },
+    "mp-roastbiff": {
+      "navn": "Perfekt stekt roastbiff",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/oppskrifter/tradisjon/roastbiff/",
+      "hentet": "2026-11-21"
+    },
+    "mp-fisk-kjokken": {
+      "navn": "Fisk og skalldyr: På kjøkkenet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/ravarer/fisk-og-skalldyr-pa-kjokkenet/",
+      "hentet": "2026-11-21"
+    },
+    "mp-ingefarglaze": {
+      "navn": "Ovnsbakt laksefilet med ingefærglaze",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2016,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/laks-med-ingefarglaze/",
+      "hentet": "2026-11-21"
+    },
+    "mp-bakt-potet": {
+      "navn": "Bakt potet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/bakt-potet/",
+      "hentet": "2026-11-21"
+    },
+    "mp-potet-olje": {
+      "navn": "Bakt potet med olje",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2017,
+      "adresse": "https://www.matprat.no/oppskrifter/kos/bakt-potet-med-olje/",
+      "hentet": "2026-11-21"
+    },
+    "mp-saltbakt": {
+      "navn": "Saltbakte poteter",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/saltbakte-poteter/",
+      "hentet": "2026-11-21"
+    },
+    "mp-hasselback": {
+      "navn": "Hasselbackpoteter",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/hasselbackpoteter/",
+      "hentet": "2026-11-21"
+    },
+    "mp-egg": {
+      "navn": "Hvordan koke egg",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/slik-koker-du-egg/",
+      "hentet": "2026-11-21"
+    },
+    "mp-poteter": {
+      "navn": "Hvordan koke poteter",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2019,
+      "adresse": "https://www.matprat.no/oppskrifter/tradisjon/hvordan-koke-poteter/",
+      "hentet": "2026-11-21"
+    },
+    "mp-ris": {
+      "navn": "Hvordan koke ris",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2020,
+      "adresse": "https://www.matprat.no/oppskrifter/tradisjon/hvordan-koke-ris/",
+      "hentet": "2026-11-21"
+    },
+    "mp-and": {
+      "navn": "Helstekt and",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/helstekt-and/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ribbe",
+      "slug": "ribbe",
+      "navn": "Ribbe",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "damp-ovn": {
+          "verdi": 230,
+          "enhet": "°C",
+          "kilde": "mp-ribbe",
+          "merknad": "Forvarm ovnen til 230 °C. Sett langpanna midt i ovnen og damp i ca. 45 minutter."
+        },
+        "damp": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mp-ribbe",
+          "merknad": "Forvarm ovnen til 230 °C. Sett langpanna midt i ovnen og damp i ca. 45 minutter."
+        },
+        "stek-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-ribbe",
+          "merknad": "Fjern folien (la asjetten ligge) og reduser temperaturen til 200 °C. Sett panna tilbake midt i ovnen og la ribba steke videre i ca. 1-1 1/2 time."
+        },
+        "stek-min": {
+          "verdi": 1,
+          "enhet": "timer",
+          "kilde": "mp-ribbe",
+          "merknad": "Fjern folien (la asjetten ligge) og reduser temperaturen til 200 °C. Sett panna tilbake midt i ovnen og la ribba steke videre i ca. 1-1 1/2 time."
+        },
+        "stek-maks": {
+          "verdi": 1.5,
+          "enhet": "timer",
+          "kilde": "mp-ribbe",
+          "merknad": "Fjern folien (la asjetten ligge) og reduser temperaturen til 200 °C. Sett panna tilbake midt i ovnen og la ribba steke videre i ca. 1-1 1/2 time."
+        },
+        "hvile": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-ribbe",
+          "merknad": "La ribba hvile i ca. 20 minutter, slik at kjøttsaften \"setter seg\" og du får en saftig og god ribbe."
+        },
+        "sprø-ovn": {
+          "verdi": 250,
+          "enhet": "°C",
+          "kilde": "mp-ribbe",
+          "merknad": "Sett panna høyere i ovnen og øk temperaturen til 250 °C eller bruk ovnens grill."
+        },
+        "pp": {
+          "verdi": 450,
+          "enhet": "g",
+          "kilde": "mp-ribbe",
+          "merknad": "Beregn ca. 450 g ribbe per person; da har du også til julefrokosten."
+        },
+        "varm-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-ribbe",
+          "merknad": "Legg ribbestykkene i langpanne sammen med medisterkaker, pølser, svisker og epler og varm opp like før servering. 200 °C i ca. 30 minutter."
+        },
+        "varm": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-ribbe",
+          "merknad": "Legg ribbestykkene i langpanne sammen med medisterkaker, pølser, svisker og epler og varm opp like før servering. 200 °C i ca. 30 minutter."
+        },
+        "salt-min": {
+          "verdi": 1,
+          "enhet": "dager",
+          "kilde": "mp-ribbe",
+          "merknad": "Gni inn ribba med salt og pepper 1-3 dager før steking."
+        },
+        "salt-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-ribbe",
+          "merknad": "Gni inn ribba med salt og pepper 1-3 dager før steking."
+        },
+        "ribbe-pp-min": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-svin",
+          "merknad": "Ribbe / Tynnribbe, familieribbe | 250-450 g | Dampes i 45 minutter på 230 °C. Stekes deretter på 200 °C i ca. 1 - 1,5 time."
+        },
+        "ribbe-pp-maks": {
+          "verdi": 450,
+          "enhet": "g",
+          "kilde": "mp-svin",
+          "merknad": "Ribbe / Tynnribbe, familieribbe | 250-450 g | Dampes i 45 minutter på 230 °C. Stekes deretter på 200 °C i ca. 1 - 1,5 time."
+        }
+      },
+      "tekst": {
+        "ribbe-vekt": "mp-ribbe|Uansett om ribba veier lite eller mye, er steketiden like lang.",
+        "ribbe-tykk": "mp-ribbe|Dette kommer av at tykkelsen er den samme om ribba er lett eller tung.",
+        "ribbe-snu": "mp-ribbe|Det er ikke nødvendig å snu ribba for å få sprø svor.",
+        "ribbe-folie": "mp-ribbe|Det er veldig viktig at folien er helt tett, for at dampingen skal bli vellykket."
+      }
+    },
+    {
+      "id": "pinnekjott",
+      "slug": "pinnekjott",
+      "navn": "Pinnekjøtt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "utvann": {
+          "verdi": 30,
+          "enhet": "timer",
+          "kilde": "mp-pinnekjott",
+          "merknad": "Vann ut i rikelig vann i ca. 30 timer i romtemperatur."
+        },
+        "damp": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mp-pinnekjott",
+          "merknad": "la det dampkoke på svak varme i ca. 3 timer, med lokket tett på."
+        },
+        "regel-u": {
+          "verdi": 30,
+          "enhet": "timer",
+          "kilde": "mp-pinnekjott",
+          "merknad": "Huskeregelen er 30-3. Det vil si 30 timer utvanning og 3 timer damping."
+        },
+        "regel-d": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mp-pinnekjott",
+          "merknad": "Huskeregelen er 30-3. Det vil si 30 timer utvanning og 3 timer damping."
+        },
+        "brun": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mp-pinnekjott",
+          "merknad": "Legg pinnekjøttet på rist over langpannen, litt høyt i ovnen på sterk varme eller grill i ca. 5 minutter."
+        },
+        "tab-ovn": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Pinnekjøtt / Saltet og tørket fåreribbe | 400 g (500 g / for storspisere) / tørrvekt / 530 g (650 g / for storspisere) / utvannet | Vannes ut i ca. 30 timer i romtemperatur. Dampkokes i ca. 3 timer, og evt. brunes lett i ovn ved 225 °C i ca. 10 minutter."
+        },
+        "tab-brun": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-lam",
+          "merknad": "Pinnekjøtt / Saltet og tørket fåreribbe | 400 g (500 g / for storspisere) / tørrvekt / 530 g (650 g / for storspisere) / utvannet | Vannes ut i ca. 30 timer i romtemperatur. Dampkokes i ca. 3 timer, og evt. brunes lett i ovn ved 225 °C i ca. 10 minutter."
+        },
+        "torr": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-lam",
+          "merknad": "Pinnekjøtt / Saltet og tørket fåreribbe | 400 g (500 g / for storspisere) / tørrvekt / 530 g (650 g / for storspisere) / utvannet | Vannes ut i ca. 30 timer i romtemperatur. Dampkokes i ca. 3 timer, og evt. brunes lett i ovn ved 225 °C i ca. 10 minutter."
+        },
+        "torr-stor": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-lam",
+          "merknad": "Pinnekjøtt / Saltet og tørket fåreribbe | 400 g (500 g / for storspisere) / tørrvekt / 530 g (650 g / for storspisere) / utvannet | Vannes ut i ca. 30 timer i romtemperatur. Dampkokes i ca. 3 timer, og evt. brunes lett i ovn ved 225 °C i ca. 10 minutter."
+        },
+        "utvannet": {
+          "verdi": 530,
+          "enhet": "g",
+          "kilde": "mp-lam",
+          "merknad": "Pinnekjøtt / Saltet og tørket fåreribbe | 400 g (500 g / for storspisere) / tørrvekt / 530 g (650 g / for storspisere) / utvannet | Vannes ut i ca. 30 timer i romtemperatur. Dampkokes i ca. 3 timer, og evt. brunes lett i ovn ved 225 °C i ca. 10 minutter."
+        },
+        "utvannet-stor": {
+          "verdi": 650,
+          "enhet": "g",
+          "kilde": "mp-lam",
+          "merknad": "Pinnekjøtt / Saltet og tørket fåreribbe | 400 g (500 g / for storspisere) / tørrvekt / 530 g (650 g / for storspisere) / utvannet | Vannes ut i ca. 30 timer i romtemperatur. Dampkokes i ca. 3 timer, og evt. brunes lett i ovn ved 225 °C i ca. 10 minutter."
+        },
+        "pølse-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-pinnekjott",
+          "merknad": "Skal du servere grove julepølser eller vossakorv til pinnekjøttet, kan pølsene dampe sammen med pinnekjøttet de siste 15-20 minuttene."
+        },
+        "pølse-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-pinnekjott",
+          "merknad": "Skal du servere grove julepølser eller vossakorv til pinnekjøttet, kan pølsene dampe sammen med pinnekjøttet de siste 15-20 minuttene."
+        }
+      },
+      "tekst": {
+        "pinne-lunken": "mp-pinnekjott|Lunkent vann gir raskere utvanning.",
+        "pinne-sau": "mp-pinnekjott|Pinnekjøtt av sau bør dampes litt lenger enn pinnekjøtt av lam.",
+        "pinne-rist": "mp-pinnekjott|Legg en metallrist eller bjørkepinner uten bark i bunnen av en vid kjele."
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "kalkun",
+      "navn": "Kalkun",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Stek kalkunen ved 180 °C i cirka en halv time per kilo."
+        },
+        "per-kilo": {
+          "verdi": 30,
+          "enhet": "minutter per kilo",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Vi anbefaler 30 minutters steketid per kilo. Det vil si at en kalkun på 6 kilo trenger 3 timer i stekeovnen ved 180 °C. Er den fylt, bør man plusse på 30-45 minutter på steketiden."
+        },
+        "kg-tab-min": {
+          "verdi": 5,
+          "enhet": "kg",
+          "kilde": "mp-kalkun",
+          "merknad": "Hel kalkun / 5-7 kg | 500 g | Stekes i ovn i ca. 30 minutter pr kg på 180 °C | 68 °C"
+        },
+        "kg-tab-maks": {
+          "verdi": 7,
+          "enhet": "kg",
+          "kilde": "mp-kalkun",
+          "merknad": "Hel kalkun / 5-7 kg | 500 g | Stekes i ovn i ca. 30 minutter pr kg på 180 °C | 68 °C"
+        },
+        "ex-kg": {
+          "verdi": 6,
+          "enhet": "kg",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Vi anbefaler 30 minutters steketid per kilo. Det vil si at en kalkun på 6 kilo trenger 3 timer i stekeovnen ved 180 °C. Er den fylt, bør man plusse på 30-45 minutter på steketiden."
+        },
+        "ex-t": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Vi anbefaler 30 minutters steketid per kilo. Det vil si at en kalkun på 6 kilo trenger 3 timer i stekeovnen ved 180 °C. Er den fylt, bør man plusse på 30-45 minutter på steketiden."
+        },
+        "fylt-min": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Vi anbefaler 30 minutters steketid per kilo. Det vil si at en kalkun på 6 kilo trenger 3 timer i stekeovnen ved 180 °C. Er den fylt, bør man plusse på 30-45 minutter på steketiden."
+        },
+        "fylt-maks": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Vi anbefaler 30 minutters steketid per kilo. Det vil si at en kalkun på 6 kilo trenger 3 timer i stekeovnen ved 180 °C. Er den fylt, bør man plusse på 30-45 minutter på steketiden."
+        },
+        "hvile": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Husk å la kalkunen hvile på kjøkkenbenken i minst 20 minutter før du skjærer den opp."
+        },
+        "pp": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Hovedregelen sier at du bør beregne 500 g kalkun per person."
+        },
+        "pose-ovn": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Plasser kalkunen midt i ovnen på 160 °C. Beregn 30 minutter steketid per kilo."
+        },
+        "pose-kilo": {
+          "verdi": 30,
+          "enhet": "minutter per kilo",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Plasser kalkunen midt i ovnen på 160 °C. Beregn 30 minutter steketid per kilo."
+        },
+        "filet-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Plasser posen i en ildfast form, og sett den i forvarmet stekeovn på 200 °C i ca. 50 minutter, til en kjernetemperatur på 63 – 65 °C og la den hvile i 20-30 minutter."
+        },
+        "filet-tid": {
+          "verdi": 50,
+          "enhet": "minutter",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Plasser posen i en ildfast form, og sett den i forvarmet stekeovn på 200 °C i ca. 50 minutter, til en kjernetemperatur på 63 – 65 °C og la den hvile i 20-30 minutter."
+        },
+        "tab-filet": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-kalkun",
+          "merknad": "Kalkunfilet / uten skinn 750 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 1 time på 125 °C | 65 °C"
+        },
+        "tab-filet-tid": {
+          "verdi": 1,
+          "enhet": "time",
+          "kilde": "mp-kalkun",
+          "merknad": "Kalkunfilet / uten skinn 750 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 1 time på 125 °C | 65 °C"
+        },
+        "tab-filet-g": {
+          "verdi": 750,
+          "enhet": "g",
+          "kilde": "mp-kalkun",
+          "merknad": "Kalkunfilet / uten skinn 750 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 1 time på 125 °C | 65 °C"
+        }
+      },
+      "tekst": {
+        "kalkun-sjekk": "mp-hel-kalkun|Hvis kjøttsaften som siver ut er klar, er kalkunen ferdig stekt. Kommer det rosa kjøttsaft, trenger kalkunen litt lenger steketid.",
+        "kalkun-lun": "mp-hel-kalkun|Kalkun trenger ikke serveres glohet.",
+        "mt-fjorfe": "mt-rykende|Fjørfekjøtt og oppmalt kjøtt bør gjennomstekes, fordi det her kan være bakterier gjennom hele produktet."
+      }
+    },
+    {
+      "id": "lammelar",
+      "slug": "lammelar",
+      "navn": "Lammelår",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammestek m/ben | 250 g | Stekes i ovn på 125 °C, 2-3 kg stekes i ca. 3 timer | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ben-kg-min": {
+          "verdi": 2,
+          "enhet": "kg",
+          "kilde": "mp-lam",
+          "merknad": "Lammestek m/ben | 250 g | Stekes i ovn på 125 °C, 2-3 kg stekes i ca. 3 timer | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ben-kg-maks": {
+          "verdi": 3,
+          "enhet": "kg",
+          "kilde": "mp-lam",
+          "merknad": "Lammestek m/ben | 250 g | Stekes i ovn på 125 °C, 2-3 kg stekes i ca. 3 timer | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ben-t": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mp-lam",
+          "merknad": "Lammestek m/ben | 250 g | Stekes i ovn på 125 °C, 2-3 kg stekes i ca. 3 timer | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "surret-kg": {
+          "verdi": 2,
+          "enhet": "kg",
+          "kilde": "mp-lam",
+          "merknad": "Surret lammestek, benfri / Lår | 200 g | Stekes i ovn på 125 °C, 2 kg stekes i ca. 2 timer. Steker under 2,5 kg brunes raskt i stekepanne først."
+        },
+        "surret-t": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mp-lam",
+          "merknad": "Surret lammestek, benfri / Lår | 200 g | Stekes i ovn på 125 °C, 2 kg stekes i ca. 2 timer. Steker under 2,5 kg brunes raskt i stekepanne først."
+        },
+        "surret-grense": {
+          "verdi": 2.5,
+          "enhet": "kg",
+          "kilde": "mp-lam",
+          "merknad": "Surret lammestek, benfri / Lår | 200 g | Stekes i ovn på 125 °C, 2 kg stekes i ca. 2 timer. Steker under 2,5 kg brunes raskt i stekepanne først."
+        },
+        "art-kg": {
+          "verdi": 2.5,
+          "enhet": "kg",
+          "kilde": "mp-lammestek",
+          "merknad": "Sett inn langpannen nest nederst i ovnen på 125 °C. Da får steken en jevn steking, samtidig som kjøttet blir både mørt og saftig. Vanlig steketid for et lammelår på ca. 2,5 kg er ca. 3 timer, men kan variere noe med tykkelsen på låret."
+        },
+        "art-t": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mp-lammestek",
+          "merknad": "Sett inn langpannen nest nederst i ovnen på 125 °C. Da får steken en jevn steking, samtidig som kjøttet blir både mørt og saftig. Vanlig steketid for et lammelår på ca. 2,5 kg er ca. 3 timer, men kan variere noe med tykkelsen på låret."
+        },
+        "hvile": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-lammestek",
+          "merknad": "Ta ut steken ved ønsket kjernetemperatur og la den hvile i ca. 15 minutter."
+        },
+        "pp": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-lammestek",
+          "merknad": "Med en benfri lammestek bør du beregne ca. 200 g per person."
+        },
+        "lang-kg": {
+          "verdi": 3.3,
+          "enhet": "kg",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "ca. 3,3 kilo til en kjernetemperatur på 65 °C ved ulike temperaturer i ovnen"
+        },
+        "lang-ferdig": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "ca. 3,3 kilo til en kjernetemperatur på 65 °C ved ulike temperaturer i ovnen"
+        },
+        "lang-70": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "70 °C | 12 – 16 timer"
+        },
+        "lang-70-t-min": {
+          "verdi": 12,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "70 °C | 12 – 16 timer"
+        },
+        "lang-70-t-maks": {
+          "verdi": 16,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "70 °C | 12 – 16 timer"
+        },
+        "lang-80": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "80 °C | 7 – 8 timer"
+        },
+        "lang-80-t-min": {
+          "verdi": 7,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "80 °C | 7 – 8 timer"
+        },
+        "lang-80-t-maks": {
+          "verdi": 8,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "80 °C | 7 – 8 timer"
+        },
+        "lang-90": {
+          "verdi": 90,
+          "enhet": "°C",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "90 °C | 5 – 6 timer"
+        },
+        "lang-90-t-min": {
+          "verdi": 5,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "90 °C | 5 – 6 timer"
+        },
+        "lang-90-t-maks": {
+          "verdi": 6,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "90 °C | 5 – 6 timer"
+        },
+        "lang-100": {
+          "verdi": 100,
+          "enhet": "°C",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "100 °C | 3 – 4 timer"
+        },
+        "lang-100-t-min": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "100 °C | 3 – 4 timer"
+        },
+        "lang-100-t-maks": {
+          "verdi": 4,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "100 °C | 3 – 4 timer"
+        },
+        "lang-125": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "125 °C | 2 – 3 timer"
+        },
+        "lang-125-t-min": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "125 °C | 2 – 3 timer"
+        },
+        "lang-125-t-maks": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "125 °C | 2 – 3 timer"
+        }
+      },
+      "tekst": {
+        "lamb-term": "mp-lammestek|Stikk termometeret på skrå inn i steken, slik at det sitter midt i den tykkeste delen av låret.",
+        "lamb-varier": "mp-lammelar-lang|Det kan være litt vanskelig å anslå en helt eksakt tilberedningstid, da steketiden varierer med kjøttstykkets tykkelse, temperatur på kjøttet og om ovnen faktisk gir den temperaturen du stiller den inn på."
+      }
+    },
+    {
+      "id": "svinestek",
+      "slug": "svinestek",
+      "navn": "Svinestek",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kg": {
+          "verdi": 1.5,
+          "enhet": "kg",
+          "kilde": "mp-svin",
+          "merknad": "Surret svinestek u/svor / Bog, skinke | 200 g | Stekes i ovn på 125 °C, 1,5 kg stekes i ca. 2 timer."
+        },
+        "surret-ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Surret svinestek u/svor / Bog, skinke | 200 g | Stekes i ovn på 125 °C, 1,5 kg stekes i ca. 2 timer."
+        },
+        "surret-t": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mp-svin",
+          "merknad": "Surret svinestek u/svor / Bog, skinke | 200 g | Stekes i ovn på 125 °C, 1,5 kg stekes i ca. 2 timer."
+        },
+        "skinke-damp-ovn": {
+          "verdi": 230,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Skinkestek m/svor / Bog, skinke | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1,5 - 2 timer. Bruk grillen på slutten for å få svoren sprø."
+        },
+        "skinke-damp": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mp-svin",
+          "merknad": "Skinkestek m/svor / Bog, skinke | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1,5 - 2 timer. Bruk grillen på slutten for å få svoren sprø."
+        },
+        "skinke-ovn": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Skinkestek m/svor / Bog, skinke | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1,5 - 2 timer. Bruk grillen på slutten for å få svoren sprø."
+        },
+        "skinke-t-min": {
+          "verdi": 1.5,
+          "enhet": "timer",
+          "kilde": "mp-svin",
+          "merknad": "Skinkestek m/svor / Bog, skinke | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1,5 - 2 timer. Bruk grillen på slutten for å få svoren sprø."
+        },
+        "skinke-t-maks": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mp-svin",
+          "merknad": "Skinkestek m/svor / Bog, skinke | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1,5 - 2 timer. Bruk grillen på slutten for å få svoren sprø."
+        },
+        "kam-t-min": {
+          "verdi": 1,
+          "enhet": "timer",
+          "kilde": "mp-svin",
+          "merknad": "Svinekam / m/svor | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1 - 1,5 time. Bruk grillen på slutten for å få svoren sprø"
+        },
+        "kam-t-maks": {
+          "verdi": 1.5,
+          "enhet": "timer",
+          "kilde": "mp-svin",
+          "merknad": "Svinekam / m/svor | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1 - 1,5 time. Bruk grillen på slutten for å få svoren sprø"
+        },
+        "rokt-ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Røkt svinekam | 200 g | Pakkes i folie og stekes i ovn på 125 °C. 1,5 kg trenger 2-3 timers steketid."
+        },
+        "rokt-t-min": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mp-svin",
+          "merknad": "Røkt svinekam | 200 g | Pakkes i folie og stekes i ovn på 125 °C. 1,5 kg trenger 2-3 timers steketid."
+        },
+        "rokt-t-maks": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mp-svin",
+          "merknad": "Røkt svinekam | 200 g | Pakkes i folie og stekes i ovn på 125 °C. 1,5 kg trenger 2-3 timers steketid."
+        },
+        "hvile": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-svinestek",
+          "merknad": "La steken hvile i ca. 15 minutter før du skjærer i den."
+        }
+      },
+      "tekst": {
+        "svin-ferdig": "mp-svinestek|Stikk et steketermometer inn i den tykkeste delen av steken."
+      }
+    },
+    {
+      "id": "roastbiff",
+      "slug": "roastbiff",
+      "navn": "Roastbiff",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kg": {
+          "verdi": 1.5,
+          "enhet": "kg",
+          "kilde": "mp-storfe",
+          "merknad": "Roastbiff / Ytrefilet, flatbiff, mørbrad | 200 g | Brunes raskt i varm panne, stekes deretter i ovn på 125 °C, 1,5 kg stekes i ca. 1 time | 56 °C"
+        },
+        "ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Roastbiff / Ytrefilet, flatbiff, mørbrad | 200 g | Brunes raskt i varm panne, stekes deretter i ovn på 125 °C, 1,5 kg stekes i ca. 1 time | 56 °C"
+        },
+        "tid": {
+          "verdi": 1,
+          "enhet": "time",
+          "kilde": "mp-storfe",
+          "merknad": "Roastbiff / Ytrefilet, flatbiff, mørbrad | 200 g | Brunes raskt i varm panne, stekes deretter i ovn på 125 °C, 1,5 kg stekes i ca. 1 time | 56 °C"
+        },
+        "pp": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-storfe",
+          "merknad": "Roastbiff / Ytrefilet, flatbiff, mørbrad | 200 g | Brunes raskt i varm panne, stekes deretter i ovn på 125 °C, 1,5 kg stekes i ca. 1 time | 56 °C"
+        },
+        "opp-ovn": {
+          "verdi": 100,
+          "enhet": "°C",
+          "kilde": "mp-roastbiff",
+          "merknad": "Sett formen midt i stekeovnen på 100 °C, og stek til ønsket kjernetemperatur. Når steketermometeret viser 55 °C er snittflaten rød, ved 60-65 °C er den rosa."
+        }
+      },
+      "tekst": {
+        "roast-kald": "mp-roastbiff|Avkjøl kjøttet helt før du skjærer det i skiver.",
+        "mt-hele": "mt-rykende|Når du steker hele kjøttstykker som biff og koteletter, er det nok at overflatene blir godt stekte"
+      }
+    },
+    {
+      "id": "hel-kylling",
+      "slug": "hel-kylling",
+      "navn": "Hel kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "g": {
+          "verdi": 1200,
+          "enhet": "g",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "ovn": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "t": {
+          "verdi": 1,
+          "enhet": "time",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "m": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "pp": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "lar-ovn": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Lår | 1-2 lår | Stekes i ovn i 45-50 minutter på 180 °C"
+        },
+        "lar-t-min": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mp-kylling",
+          "merknad": "Lår | 1-2 lår | Stekes i ovn i 45-50 minutter på 180 °C"
+        },
+        "lar-t-maks": {
+          "verdi": 50,
+          "enhet": "minutter",
+          "kilde": "mp-kylling",
+          "merknad": "Lår | 1-2 lår | Stekes i ovn i 45-50 minutter på 180 °C"
+        },
+        "ving-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Vinger / rå | 300-500 g | Stekes i ovn i 40 minutter på 200 °C"
+        },
+        "ving-t": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "mp-kylling",
+          "merknad": "Vinger / rå | 300-500 g | Stekes i ovn i 40 minutter på 200 °C"
+        },
+        "grill-min": {
+          "verdi": 70,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Hel kylling | Tre kyllingen på en halvfull ølboks og sett den på indirekte varme med lokk over grillen. Grill kyllingen i ca. 70-90 minutter."
+        },
+        "grill-maks": {
+          "verdi": 90,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Hel kylling | Tre kyllingen på en halvfull ølboks og sett den på indirekte varme med lokk over grillen. Grill kyllingen i ca. 70-90 minutter."
+        },
+        "grl-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Grillet hel kylling | 1 kylling er nok til 2-3 personer | Varmes i ovn i 15-20 minutter på 200 °C"
+        },
+        "grl-t-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-kylling",
+          "merknad": "Grillet hel kylling | 1 kylling er nok til 2-3 personer | Varmes i ovn i 15-20 minutter på 200 °C"
+        },
+        "grl-t-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-kylling",
+          "merknad": "Grillet hel kylling | 1 kylling er nok til 2-3 personer | Varmes i ovn i 15-20 minutter på 200 °C"
+        },
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "mt-fjorfe": "mt-rykende|Fjørfekjøtt og oppmalt kjøtt bør gjennomstekes, fordi det her kan være bakterier gjennom hele produktet.",
+        "mt-grill": "mt-sommer|Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte."
+      }
+    },
+    {
+      "id": "kyllingfilet",
+      "slug": "kyllingfilet",
+      "navn": "Kyllingfilet",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "liten-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Liten filet | 5–7 minutter"
+        },
+        "liten-maks": {
+          "verdi": 7,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Liten filet | 5–7 minutter"
+        },
+        "middels-min": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Middels filet | 8–10 minutter"
+        },
+        "middels-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Middels filet | 8–10 minutter"
+        },
+        "stor-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Stor filet | 10–12 minutter"
+        },
+        "stor-maks": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Stor filet | 10–12 minutter"
+        },
+        "side": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Stek filetene i cirka 2 minutter på hver side. Legg på lokk og etterstek i 4–6 minutter."
+        },
+        "etter-min": {
+          "verdi": 4,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Stek filetene i cirka 2 minutter på hver side. Legg på lokk og etterstek i 4–6 minutter."
+        },
+        "etter-maks": {
+          "verdi": 6,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Stek filetene i cirka 2 minutter på hver side. Legg på lokk og etterstek i 4–6 minutter."
+        },
+        "hvile-min": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "La filetene hvile i 2–3 minutter før servering."
+        },
+        "hvile-maks": {
+          "verdi": 3,
+          "enhet": "minutter",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "La filetene hvile i 2–3 minutter før servering."
+        },
+        "ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Filet / mange i ovn | 200 g | Stekes først i middels varm panne i 2 minutter på hver side. Etterstekes i ovn på 125 °C i 25-30 minutter."
+        },
+        "ovn-t-min": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mp-kylling",
+          "merknad": "Filet / mange i ovn | 200 g | Stekes først i middels varm panne i 2 minutter på hver side. Etterstekes i ovn på 125 °C i 25-30 minutter."
+        },
+        "ovn-t-maks": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-kylling",
+          "merknad": "Filet / mange i ovn | 200 g | Stekes først i middels varm panne i 2 minutter på hver side. Etterstekes i ovn på 125 °C i 25-30 minutter."
+        },
+        "ferdig": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Kyllingfilet er ferdig stekt når kjernetemperaturen er 68 °C."
+        },
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "mt-fjorfe": "mt-rykende|Fjørfekjøtt og oppmalt kjøtt bør gjennomstekes, fordi det her kan være bakterier gjennom hele produktet.",
+        "kylling-term": "mp-kyllingfilet|Bruk derfor gjerne et steketermometer når du steker kyllingfilet.",
+        "kylling-torr": "mp-kyllingfilet|Og bikker temperaturen litt over 70 °C grader er det igjen fare for at kyllingfileten blir tørr - med andre ord: kort vei fra gjennomstekt til tørr."
+      }
+    },
+    {
+      "id": "laks-i-ovn",
+      "slug": "laks-i-ovn",
+      "navn": "Laks i ovn",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-fisk-kjokken",
+          "merknad": "Bakes i ovn på 180 °C i ca. 15 minutter, avhengig av tykkelse på fiskefileten. Filet pakket i folie, kan temperaturen økes til 200 °C."
+        },
+        "tid": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-fisk-kjokken",
+          "merknad": "Bakes i ovn på 180 °C i ca. 15 minutter, avhengig av tykkelse på fiskefileten. Filet pakket i folie, kan temperaturen økes til 200 °C."
+        },
+        "folie-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-fisk-kjokken",
+          "merknad": "Bakes i ovn på 180 °C i ca. 15 minutter, avhengig av tykkelse på fiskefileten. Filet pakket i folie, kan temperaturen økes til 200 °C."
+        },
+        "tab-ovn": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "tab-tid": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "tab-kjerne": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "tab-pp-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "tab-pp-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "g-ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-ingefarglaze",
+          "merknad": "Plasser formen midt i ovnen på 125 °C og stek i 10 minutter. Pensle igjen med sausen, og stek i ytterligere 5-10 minutter, avhengig av tykkelsen på fileten."
+        },
+        "g-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-ingefarglaze",
+          "merknad": "Plasser formen midt i ovnen på 125 °C og stek i 10 minutter. Pensle igjen med sausen, og stek i ytterligere 5-10 minutter, avhengig av tykkelsen på fileten."
+        },
+        "g-mer-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mp-ingefarglaze",
+          "merknad": "Plasser formen midt i ovnen på 125 °C og stek i 10 minutter. Pensle igjen med sausen, og stek i ytterligere 5-10 minutter, avhengig av tykkelsen på fileten."
+        },
+        "g-mer-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-ingefarglaze",
+          "merknad": "Plasser formen midt i ovnen på 125 °C og stek i 10 minutter. Pensle igjen med sausen, og stek i ytterligere 5-10 minutter, avhengig av tykkelsen på fileten."
+        },
+        "hel-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-fisk",
+          "merknad": "Helstekt fisk i folie | 300-400 g | Stekes i ovn ved 200 °C ca. 40 minutter for en fisk på en kilo. | ca. 60 °C"
+        },
+        "hel-t": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "mp-fisk",
+          "merknad": "Helstekt fisk i folie | 300-400 g | Stekes i ovn ved 200 °C ca. 40 minutter for en fisk på en kilo. | ca. 60 °C"
+        },
+        "hel-kg": {
+          "verdi": 1,
+          "enhet": "kg",
+          "kilde": "mp-fisk",
+          "merknad": "Helstekt fisk i folie | 300-400 g | Stekes i ovn ved 200 °C ca. 40 minutter for en fisk på en kilo. | ca. 60 °C"
+        }
+      },
+      "tekst": {
+        "laks-rosa": "mp-fisk-kjokken|Laksekjøttet skal være blekrosa, eventuelt med en liten rå kjerne hvis du ønsker det.",
+        "fisk-ferdig": "mp-fisk-kjokken|Den er ferdig når fiskekjøttet blir fast og får en matt farge. Muskelskivene blir mer synlig, og fisken flaker seg ved et lett press."
+      }
+    },
+    {
+      "id": "bakt-potet",
+      "slug": "bakt-potet",
+      "navn": "Bakt potet",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 220,
+          "enhet": "°C",
+          "kilde": "mp-bakt-potet",
+          "merknad": "Stek midt i stekeovn på 220 °C i ca. 1- 1 1/2 time (muligens lenger, om poteten er stor)."
+        },
+        "tid-min": {
+          "verdi": 1,
+          "enhet": "timer",
+          "kilde": "mp-bakt-potet",
+          "merknad": "Stek midt i stekeovn på 220 °C i ca. 1- 1 1/2 time (muligens lenger, om poteten er stor)."
+        },
+        "tid-maks": {
+          "verdi": 1.5,
+          "enhet": "timer",
+          "kilde": "mp-bakt-potet",
+          "merknad": "Stek midt i stekeovn på 220 °C i ca. 1- 1 1/2 time (muligens lenger, om poteten er stor)."
+        },
+        "pp": {
+          "verdi": 1,
+          "enhet": "stk",
+          "kilde": "mp-bakt-potet",
+          "merknad": "Beregn en bakepotet per person, avhengig av hvor store de er."
+        },
+        "olje-tid": {
+          "verdi": 1,
+          "enhet": "time",
+          "kilde": "mp-potet-olje",
+          "merknad": "Stek midt i stekeovn i ca. 1 time."
+        },
+        "salt-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mp-saltbakt",
+          "merknad": "Stek potetene midt i ovnen på 200 °C i ca. 40 minutter, eller til de er møre."
+        },
+        "salt-tid": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "mp-saltbakt",
+          "merknad": "Stek potetene midt i ovnen på 200 °C i ca. 40 minutter, eller til de er møre."
+        },
+        "hassel-ovn": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "mp-hasselback",
+          "merknad": "Sett potetene midt i ovnen på 225 °C og stek i ca. 40 minutter, til de har fått en gyllen overflate."
+        },
+        "hassel-tid": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "mp-hasselback",
+          "merknad": "Sett potetene midt i ovnen på 225 °C og stek i ca. 40 minutter, til de har fått en gyllen overflate."
+        }
+      },
+      "tekst": {
+        "potet-stikk": "mp-bakt-potet|Bruk en gaffel og stikk mange små hull over hele poteten.",
+        "potet-folie": "mp-bakt-potet|Pakk poteten godt inn i aluminiumsfolie og sett på en stekerist eller på et stekebrett.",
+        "potet-ferdig": "mp-bakt-potet|Poteten er ferdig når den gir lett etter når du trykker på den, eller du kan stikke en spiss kniv gjennom den."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "egg",
+      "navn": "Egg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "blot-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "Bløtkokt egg: 5-6 minutter Smilende egg 7-8 minutter Hardkokt egg: 9-11 minutter"
+        },
+        "blot-maks": {
+          "verdi": 6,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "Bløtkokt egg: 5-6 minutter Smilende egg 7-8 minutter Hardkokt egg: 9-11 minutter"
+        },
+        "smil-min": {
+          "verdi": 7,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "Bløtkokt egg: 5-6 minutter Smilende egg 7-8 minutter Hardkokt egg: 9-11 minutter"
+        },
+        "smil-maks": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "Bløtkokt egg: 5-6 minutter Smilende egg 7-8 minutter Hardkokt egg: 9-11 minutter"
+        },
+        "hard-min": {
+          "verdi": 9,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "Bløtkokt egg: 5-6 minutter Smilende egg 7-8 minutter Hardkokt egg: 9-11 minutter"
+        },
+        "hard-maks": {
+          "verdi": 11,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "Bløtkokt egg: 5-6 minutter Smilende egg 7-8 minutter Hardkokt egg: 9-11 minutter"
+        },
+        "just-min": {
+          "verdi": 1,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "Derfor kan du måtte justere med 1-2 minutter under forholdene nevnt over."
+        },
+        "just-maks": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mp-egg",
+          "merknad": "Derfor kan du måtte justere med 1-2 minutter under forholdene nevnt over."
+        }
+      },
+      "tekst": {
+        "egg-kjol": "mp-egg|Avkjøl eggene raskt i kaldt vann.",
+        "egg-hard-kjol": "mp-egg|For hardkokte egg er det lurt å avkjøle dem godt, omtrent halve tiden av det de har kokt.",
+        "egg-just": "mp-egg|Kalde egg - trenger litt lengre tid. Store egg - trenger litt lengre tid enn små Ferske egg - trenger litt lengre tid."
+      }
+    },
+    {
+      "id": "poteter-og-ris",
+      "slug": "poteter-og-ris",
+      "navn": "Poteter og ris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "potet-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-poteter",
+          "merknad": "Koketiden er avhengig av type potet og størrelsen på potetene, og kan variere mellom 15 og 25 minutter."
+        },
+        "potet-maks": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mp-poteter",
+          "merknad": "Koketiden er avhengig av type potet og størrelsen på potetene, og kan variere mellom 15 og 25 minutter."
+        },
+        "hvit": {
+          "verdi": 18,
+          "enhet": "minutter",
+          "kilde": "mp-ris",
+          "merknad": "Sjekk risen etter 18 minutter. Er den ikke helt ferdig, så la den stå et par minutter til."
+        },
+        "fullkorn-min": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-ris",
+          "merknad": "Den trenger lenger koketid – opptil 30-40 minutter, og vil også kreve noe mer vann."
+        },
+        "fullkorn-maks": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "mp-ris",
+          "merknad": "Den trenger lenger koketid – opptil 30-40 minutter, og vil også kreve noe mer vann."
+        },
+        "vill-min": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mp-ris",
+          "merknad": "Uten bløtlegging vil koketiden være rundt 45-50 minutter."
+        },
+        "vill-maks": {
+          "verdi": 50,
+          "enhet": "minutter",
+          "kilde": "mp-ris",
+          "merknad": "Uten bløtlegging vil koketiden være rundt 45-50 minutter."
+        }
+      },
+      "tekst": {
+        "potet-sort": "mp-poteter|Gaffelen skal gli lett inn i poteten når den er ferdig.",
+        "ris-lokk": "mp-ris|Sett på lokk, og la lokket stå på gjennom hele koketiden."
+      }
+    },
+    {
+      "id": "and",
+      "slug": "and",
+      "navn": "And",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "mp-and",
+          "merknad": "Stek videre på 160 °C til kjernetemperaturen viser 58-60 °C. Dette tar ca. 1 time."
+        },
+        "tid": {
+          "verdi": 1,
+          "enhet": "time",
+          "kilde": "mp-and",
+          "merknad": "Stek videre på 160 °C til kjernetemperaturen viser 58-60 °C. Dette tar ca. 1 time."
+        }
+      }
+    }
+  ]
+}
