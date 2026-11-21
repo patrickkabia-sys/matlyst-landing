@@ -179,7 +179,7 @@ export const MARKED = {
       },
       ekstra: [
         ['Planlægger du selv, eller gør appen?', p('Det er den største forskel. I de fleste af appsene vælger <strong>du</strong> måltiderne, og appen holder styr på dagene og indkøbslisten. Nogle <strong>laver planen</strong> for dig: Mambeno og Valdemarsro har færdige madplaner hver uge, og Samsung Food med Samsung Food+ og Recipe Keeper oplyser, at de kan lave en plan. Matlyst laver ikke planen for dig.',
-          'Læs mere om <a href="/da/madplan-app/">madplanen i Matlyst</a>.')],
+          'Læs mere om <a href="/da/madplan-app/">madplanen i Matlyst</a>. Vil du have en færdig uge at starte med, så se <a href="/da/madplaner/">vores madplaner med indkøbsliste</a>.')],
       ],
       iMatlyst: ['Sådan bliver ugen til en indkøbsliste i Matlyst', p('Vælger du Matlyst, lægger du de opskrifter, du har gemt, på dagene i madplanen. Derefter fører du ugens ingredienser over på indkøbslisten, som er sorteret efter afdeling i butikken.', 'Læs mere om <a href="/da/madplan-app/">madplanen</a> og <a href="/da/indkoebsliste-app/">indkøbslisten</a>.')],
       steg: [['Beslut, hvem der vælger måltiderne', 'Dig selv eller appen.'], ['Tjek indkøbslisten', 'Sørg for, at hele ugen bliver til én liste, du kan dele.'], ['Prøv en uge', 'Planlæg fem aftensmåltider, før du beslutter dig.']],

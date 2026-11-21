@@ -187,7 +187,7 @@
           "dag": "måndag",
           "rett": "Köttbullar med potatismos och lingon",
           "oppskrift": "https://www.arla.se/recept/kottbullar/",
-          "hvorfor": "Måndag behöver en rätt som alla äter. Köttbullarna steks på en gång, och potatismoset kokas medan de brynas.",
+          "hvorfor": "Måndag behöver en rätt som alla äter. Potatismoset kokas medan köttbullarna steks.",
           "lagMer": "Rulla dubbelt så många köttbullar och ställ hälften kallt till onsdag.",
           "varer": [
             "blandfärs",
@@ -275,7 +275,7 @@
           "dag": "lördag",
           "rett": "Kycklinglår i ugn med gräddsås",
           "oppskrift": "https://www.arla.se/recept/kycklinglar-i-ugn/",
-          "hvorfor": "Ugnen gör jobbet en dag med mer tid. Låren sitter kvar i såsen, så kycklingen blir saftig.",
+          "hvorfor": "På lördag får ugnen göra jobbet. Låren sitter kvar i såsen, så kycklingen blir saftig.",
           "lagMer": "Stek dubbelt så många lår. Plocka köttet från de extra låren och ställ det kallt till söndag.",
           "varer": [
             "kycklinglår",
@@ -456,7 +456,7 @@
       "faq": [
         [
           "Finns det kött eller fisk i någon av rätterna?",
-          "Nej. Ingen av de sju recepten har kött eller fisk på ingredienslistan, och där buljong används är det grönsaksbuljong. Är du noga med osten, kontrollera den själv."
+          "Nej. Inget av de sju recepten har kött eller fisk på ingredienslistan, och där buljong används är det grönsaksbuljong. Är du noga med osten, kontrollera den själv."
         ],
         [
           "Kan jag byta plats på dagarna?",
@@ -568,7 +568,7 @@
           "dag": "lördag",
           "rett": "Vegetarisk lasagne",
           "oppskrift": "https://www.arla.se/recept/vegetarisk-lasagne/",
-          "hvorfor": "Lördag är dagen för en ugnsrätt. Cottage cheese ger lasagnen sin krämiga fyllning.",
+          "hvorfor": "En ugnsrätt till lördagen. Cottage cheese ger lasagnen sin krämiga fyllning.",
           "varer": [
             "lasagneplattor",
             "purjolök",
@@ -607,7 +607,7 @@
       "h1": "Veckomeny för en person",
       "beskrivelse": "Sju middagar för dig som bor ensam. En middag blir två, en går i frysen och resten räknas ner till en portion. Med länk till recepten och en inköpslista.",
       "ingress": "Sju middagar för en, upplagda så att du handlar en gång och inte blir sittande med halva förpackningar.",
-      "vinkel": "Recept är ofta skrivna för fyra. Den här veckan räknar du ner de flesta till en portion. På onsdag lagar du hela köttfärssåsen och fryser de portioner du inte äter. På torsdag woka du extra kyckling till fredagens wrap, och på söndag tar du fram en portion sås ur frysen.",
+      "vinkel": "Recept är ofta skrivna för fyra. Den här veckan räknar du ner de flesta till en portion. På onsdag lagar du hela köttfärssåsen och fryser de portioner du inte äter. På torsdag steker du extra kyckling till fredagens wrap, och på söndag tar du fram en portion sås ur frysen.",
       "faq": [
         [
           "Hur räknar jag ner ett recept till en portion?",
@@ -708,7 +708,7 @@
           "dag": "lördag",
           "rett": "Torsk i ugn med citronsås och dill",
           "oppskrift": "https://www.arla.se/recept/torsk-i-ugn-med-citronsas-och-dill/",
-          "hvorfor": "Fisk i ugn en dag med mer tid. Räkna ner receptet till en portion.",
+          "hvorfor": "Torsk i ugn med en enkel citronsås. Räkna ner receptet till en portion.",
           "varer": [
             "torskfilé",
             "potatis",
@@ -743,8 +743,8 @@
       ]
     },
     "husmannskost": {
-      "tittel": "Husmanskost-vecka: sju klassiska middagar",
-      "h1": "Husmanskost-vecka",
+      "tittel": "Husmanskost: veckomeny med sju klassiska middagar",
+      "h1": "Veckomeny med husmanskost",
       "beskrivelse": "Kålpudding, stekt strömming, köttsoppa, ärtsoppa, raggmunk, kalops och pytt i panna. Sju klassiska middagar med länk till recepten och en inköpslista.",
       "ingress": "Sju svenska klassiker, upplagda så att kalopsen på lördag blir pytt i panna på söndag.",
       "vinkel": "Husmanskost bygger på råvaror som håller länge, och det gör veckan lätt att planera. Potatis, lök och rimmat fläsk går igen från dag till dag. Kalopsen på lördag lagas med extra kött och potatis, och det blir söndagens pytt i panna.",
@@ -864,10 +864,11 @@
           "dag": "söndag",
           "rett": "Pytt i panna",
           "oppskrift": "https://www.arla.se/recept/pytt-i-panna/",
-          "hvorfor": "Pytt i panna görs av kokt kött och kokt potatis, och båda finns kvar efter kalopsen. Allt steks i en panna.",
+          "hvorfor": "Pytt i panna är gjord för rester av kött och kokt potatis, och båda finns kvar efter kalopsen. Allt steks i en panna.",
           "rest": {
             "fra": "lördag",
-            "hva": "kalopsköttet och potatisen"
+            "hva": "kalopsköttet och potatisen",
+            "iStedetFor": "det kokta eller stekta nötköttet och den kokta potatisen"
           },
           "varer": [
             "falukorv",

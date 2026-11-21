@@ -19,7 +19,7 @@ export const T = {
   eyebrowRot: 'Veckomenyer',
   etikett: { hvorfor: 'Varför den här dagen', lagMer: 'Gör mer', rest: 'Använder rester', framgang: 'Så här gör du', oppskrift: 'Recept' },
   oppskriftLenke: 'Receptet hos Arla',
-  restLinje: (x) => `${x.rest.hva.charAt(0).toUpperCase()}${x.rest.hva.slice(1)} från ${x.rest.fra}${x.rest.via === 'fryser' ? ', via frysen' : ''}.`,
+  restLinje: (x) => `${x.rest.hva.charAt(0).toUpperCase()}${x.rest.hva.slice(1)} från ${x.rest.fra}${x.rest.via === 'fryser' ? ', via frysen' : ''}.${x.rest.iStedetFor ? ` De ersätter ${x.rest.iStedetFor} i receptet.` : ''}`,
   oversiktIntro: 'Dagarna märkta ”rester” använder något du lagar extra tidigare i veckan. Under tabellen står varför varje rätt ligger där den ligger.',
   dagKolonne: 'Dag', middagKolonne: 'Middag', restMerke: 'rester',
   restKjede: (c, esc) => `<strong>${c.fra} till ${c.til.toLowerCase()}${c.via ? ', via frysen' : ''}:</strong> ${esc(c.lagMer)} ${c.til} använder ${esc(c.hva)}.`,
@@ -31,16 +31,16 @@ export const T = {
     `<strong>Rester håller upp till en vecka.</strong> ${h.k('matlada')} skriver att tillagad mat håller upp till en vecka i kylskåpet, om kylskåpet håller ${h.n('kjol')} grader. Resterna ${hvor} används senast två dagar senare, eller fryses.`,
     `<strong>Titta, lukta och smaka.</strong> ${h.s('sinnen')}`,
     `<strong>Frys det du inte hinner äta.</strong> ${h.s('frys')}`,
-    '<strong>Ris och pasta sparas inte.</strong> I våra veckomenyer går inget ris eller pasta vidare som rester. De kokas till varje måltid.',
+    '<strong>Ris och pasta sparas inte.</strong> I våra veckomenyer sparas varken ris eller pasta till en annan dag. Båda kokas till varje måltid.',
   ]),
   listeIntro: 'Listan har alla varor de sju recepten behöver, ordnade efter hyllorna i butiken. Där en rätt använder rester står bara det du behöver köpa utöver dem. Mängderna står i recepten. Dagarna efter varje vara visar vilka middagar den ska till. Färskvaror till slutet av veckan kan du köpa närmare dagen.',
-  hjemmeFra: (basis) => `<strong>Kolla att du har:</strong> ${basis}. De här står inte i listan ovan.`,
+  hjemmeFra: (basis) => `<strong>Se till att du har hemma:</strong> ${basis}. De här står inte i listan ovan.`,
   app: ({ egne, harEgne, lenker, over, gratis }) => p('Matlyst gör inte veckomenyn åt dig, och appen vet inte vilka rester du har. Du får en veckomeny med dina recept och en inköpslista som skapas från dem. Så här lägger du in veckan:')
     + `<ol>
 <li><strong>Spara recepten.</strong> Öppna varje länk ovan och dela den med Matlyst, eller klistra in länken i appen. Läs mer om att <a href="/sv/importera-recept/">importera recept</a>.${harEgne ? ` För ${egne} finns ingen länk. Skriv in stegen ovan som ett eget recept.` : ''}</li>
 <li><strong>Lägg dem på dagarna.</strong> Öppna <a href="/sv/veckomeny-app/">Veckomeny</a> och lägg varje recept på den dag det står på här.</li>
 <li><strong>Justera portionerna.</strong> Där veckan säger ”gör mer” ökar du antalet portioner på det receptet innan du handlar.</li>
-<li><strong>Lägg veckan på inköpslistan.</strong> Matlyst slår ihop likadana varor på en rad och sorterar listan efter avdelning, se <a href="/sv/inkopslista/">inköpslistan</a>. Innan varorna läggs in ser du listan och kan ta bort bocken vid det du får från resterna, till exempel såsen i en rätt som använder såsen från en tidigare dag.</li>
+<li><strong>Lägg veckan på inköpslistan.</strong> Matlyst slår ihop likadana varor på en rad och sorterar listan efter avdelning, se <a href="/sv/inkopslista/">inköpslistan</a>. Innan varorna läggs in ser du listan och kan bocka ur det du får från resterna, till exempel såsen i en rätt som använder såsen från en tidigare dag.</li>
 </ol>`
     + p(`<strong>Gratis eller Pro:</strong> Veckomenyn och inköpslistan är gratis. Import från länkar är gratis för ${gratis} importer per kalendermånad, och den här veckan har ${['inga', 'en', 'två', 'tre', 'fyra', 'fem', 'sex', 'sju'][lenker]} länkar${over ? '. Med gratisversionen kan du spara resten månaden efter, eller skriva in dem själv' : ''}. Med Matlyst Pro finns ingen sådan gräns, och hushållet kan dela veckomenyn och inköpslistan.`),
   kildeIntro: (meny) => `${meny ? `Recepten är Arlas. Vi länkar till dem och återger dem inte, och länkarna öppnades ${meny.hentet}. Stegen utan länk är våra egna. ` : ''}Råden om rester, kylning och frysning kommer från Livsmedelsverket, den svenska myndigheten för livsmedelssäkerhet.`,
@@ -75,7 +75,7 @@ export const T = {
     velgIntro: 'Alla veckomenyer går från måndag till söndag och är byggda på samma sätt: dagarna, resterna, inköpslistan och vägen in i appen.',
     oppsett: 'Så är veckomenyerna upplagda',
     punkter: [
-      '<strong>Resterna är inplanerade.</strong> Varje vecka har dagar som ger mer och dagar som använder det. Ingen rest står längre än två dagar i kylskåpet, och inget ris eller pasta går vidare som rest.',
+      '<strong>Resterna är inplanerade.</strong> Varje vecka har dagar som ger mer och dagar som använder det. Ingen rest står längre än två dagar i kylskåpet, och varken ris eller pasta sparas som rest.',
       '<strong>En inköpslista för hela veckan.</strong> Varorna står en gång, ordnade efter samma hyllor som i Matlyst, med dagarna som behöver dem.',
       '<strong>Recepten är Arlas.</strong> Vi länkar till dem och återger dem inte. Där en rätt inte behöver recept står ett kort steg-för-steg som vi har skrivit själva.',
       '<strong>Inga siffror utan källa.</strong> Vi anger inga priser, kalorier eller portionsstorlekar. Råden om rester och kylning kommer från Livsmedelsverket.',

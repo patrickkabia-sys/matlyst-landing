@@ -200,7 +200,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/bedste-madplan-app/": {
-  "hash": "d04c11ed00206076",
+  "hash": "1634a807d119990d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/bedste-opskriftsapp/": {
@@ -336,7 +336,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/holdbarhed/rester/": {
-  "hash": "b6bd3080ad0f035f",
+  "hash": "0da5b0b01befffef",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/holdbarhed/roeget-fisk/": {
@@ -352,11 +352,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/hvor-meget-pr-person/flaeskesteg/": {
-  "hash": "48cf243bb97b92b6",
+  "hash": "f786f4cde7dc3c74",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/hvor-meget-pr-person/gaester/": {
-  "hash": "79f0bac33b05edf1",
+  "hash": "9976a58bfe9b3a69",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/hvor-meget-pr-person/groentsager/": {
@@ -393,6 +393,14 @@
  },
  "https://matlyst-app.no/da/indkoebsliste-app/": {
   "hash": "89c90d21159f9b56",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/juleaften/": {
+  "hash": "cc2b284cc9b45a80",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/julefrokost/": {
+  "hash": "aa21b062ededb0bb",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kan-man-fryse/": {
@@ -436,7 +444,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kernetemperatur/and/": {
-  "hash": "e89fc6ac930d4d3d",
+  "hash": "d9b3c6abecb817d2",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kernetemperatur/boef/": {
@@ -444,7 +452,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kernetemperatur/flaeskesteg/": {
-  "hash": "88c8bda7f4aa4dd1",
+  "hash": "d4eb9e34630d4ae6",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kernetemperatur/hakket-koed/": {
@@ -492,31 +500,31 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/da/madplan-app/": {
-  "hash": "55c3a7f90f0562c0",
+  "hash": "29b8dcb8af530d11",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/madplaner/": {
-  "hash": "23f717733872ffd8",
+  "hash": "84aef6f522a7c675",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/madplaner/billig/": {
-  "hash": "42c8c5e087d86336",
+  "hash": "bd528e1f8e3ff278",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/madplaner/boernefamilie/": {
-  "hash": "2608181a56294a99",
+  "hash": "18153d9e89b038a1",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/madplaner/klassiske-retter/": {
-  "hash": "5cf70782846d2864",
+  "hash": "5a0d4882c38ef13f",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/madplaner/til-en/": {
-  "hash": "e496aca651e40ca9",
+  "hash": "c05daa00a46d00a1",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/madplaner/vegetarisk/": {
-  "hash": "d23adde79476d258",
+  "hash": "0ea883a004d90c69",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/matprat/": {
@@ -568,7 +576,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/stegetid/and/": {
-  "hash": "5e7c71cf49f26f23",
+  "hash": "a01ca2679ad3c7a8",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/stegetid/bagt-kartoffel/": {
@@ -576,7 +584,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/stegetid/flaeskesteg/": {
-  "hash": "eaab938b5670f726",
+  "hash": "f7358a8c9daef348",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/stegetid/hel-kylling/": {
@@ -1524,7 +1532,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/best-meal-planning-app/": {
-  "hash": "9b5bf6dfdc94d057",
+  "hash": "cc8539c991da0efe",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/best-recipe-app/": {
@@ -2860,27 +2868,27 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/weekly-meal-plans/": {
-  "hash": "31563598de444b32",
+  "hash": "6a9f0015c813031f",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/weekly-meal-plans/budget/": {
-  "hash": "cd39dc5049d1b1a8",
+  "hash": "dc57f93a0fe4ecb2",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/weekly-meal-plans/comfort-food/": {
-  "hash": "f8bb0bf25b58437b",
+  "hash": "5feb791ff8dd45a0",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/weekly-meal-plans/family/": {
-  "hash": "992bdaf2cceda0e0",
+  "hash": "72ed323cb78b1427",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/weekly-meal-plans/for-one/": {
-  "hash": "238028836ef981f8",
+  "hash": "f67dd0acd4ca3689",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/weekly-meal-plans/vegetarian/": {
-  "hash": "dde940f2ee0482a3",
+  "hash": "d9edd5c928ceb267",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/enkel-middag/": {
@@ -3152,7 +3160,7 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/julebord/": {
-  "hash": "6d5cccaf545754a3",
+  "hash": "649162c25cd3008d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/julemiddag/": {
@@ -3328,7 +3336,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/nyttarsmiddag/": {
-  "hash": "e076542ee62fac87",
+  "hash": "a375a3ceb66e7ef4",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/om/": {
@@ -3492,7 +3500,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/basta-veckomeny-app/": {
-  "hash": "ff4e24ddba2cf8c2",
+  "hash": "9b19dc46a90a9b84",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/blogg/": {
@@ -3680,11 +3688,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/hur-mycket-per-person/julskinka/": {
-  "hash": "912f584486c69b56",
+  "hash": "ef58b416f843229e",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/hur-mycket-per-person/korv/": {
-  "hash": "4e855084265dd21b",
+  "hash": "72ed7aa0c14716ea",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/hur-mycket-per-person/kott/": {
@@ -3700,7 +3708,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/hur-mycket-per-person/lax/": {
-  "hash": "8e7b216ceeb9a510",
+  "hash": "c1aeba27a7a1527c",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/hur-mycket-per-person/pasta/": {
@@ -3736,7 +3744,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/innertemperatur/kalkon/": {
-  "hash": "5809a20c294c0cc0",
+  "hash": "0ae3288707a46ec7",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/innertemperatur/kottfars/": {
@@ -3759,6 +3767,10 @@
   "hash": "8b08afd719962210",
   "dato": "2026-11-16"
  },
+ "https://matlyst-app.no/sv/julbord/": {
+  "hash": "54f3f784b19e1414",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/sv/koket/": {
   "hash": "65c4a63d8f474f13",
   "dato": "2026-11-20"
@@ -3770,6 +3782,10 @@
  "https://matlyst-app.no/sv/matprat/": {
   "hash": "b81058b02d0b5ed8",
   "dato": "2026-11-20"
+ },
+ "https://matlyst-app.no/sv/nyarsmiddag/": {
+  "hash": "61982acdcc9bfa7c",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/radera-konto/": {
   "hash": "6cf6c8942417f32e",
@@ -3816,11 +3832,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/tillagningstid/julskinka/": {
-  "hash": "97c18b047aef88e0",
+  "hash": "069c1decf6c43179",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/tillagningstid/kalkon/": {
-  "hash": "419c561de5da7a10",
+  "hash": "908727270ca27703",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/tillagningstid/koka-agg/": {
@@ -3856,31 +3872,31 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/veckomeny-app/": {
-  "hash": "68c34094206ba620",
+  "hash": "ac77a2c3852ae62b",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/veckomenyer/": {
-  "hash": "240716b2c1e08e65",
+  "hash": "e561e4b882180d2e",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/veckomenyer/barnfamilj/": {
-  "hash": "7b8cd566fb65e775",
+  "hash": "cf7b09f379f3b3ec",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/veckomenyer/billig/": {
-  "hash": "5e6b607d52c0cf96",
+  "hash": "89879a30310e601c",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/veckomenyer/for-en-person/": {
-  "hash": "a2bb02271b634056",
+  "hash": "705e50231cd3b4e2",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/veckomenyer/husmanskost/": {
-  "hash": "4617993beee6041d",
+  "hash": "bc4b6fe940ad669c",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/veckomenyer/vegetarisk/": {
-  "hash": "2e891de82da31ac3",
+  "hash": "755d959a1035233e",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/verktyg/celsius-till-fahrenheit/": {

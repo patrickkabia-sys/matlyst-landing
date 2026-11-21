@@ -214,3 +214,27 @@ test('valideringen er rød for en lenke til en annen kilde, en rest som er for g
     assert.throws(() => validerMenyer(gammel, mk), mk);
   }
 });
+
+// Der resten tar plassen til noe oppskriften selv lager eller kjøper (kjøttboller, fyll, kokt kjøtt, kyllingstrimler, saus),
+// sier siden det rett ut ved retten. Lista er dagene som ble funnet ved gjennomgangen 21.11.2026.
+const BYTTER = [
+  ['sv', 'husmannskost', 'söndag', 'husmanskost', 'i receptet'],
+  ['da', 'vegetar', 'onsdag', 'vegetarisk', 'i opskriften'],
+  ['en', 'familie', 'wednesday', 'family', 'in the recipe'],
+  ['en', 'familie', 'saturday', 'family', 'in the recipe'],
+  ['en', 'billig', 'wednesday', 'budget', 'in the recipe'],
+  ['en', 'vegetar', 'wednesday', 'vegetarian', 'in the recipe'],
+];
+test('en rest som erstatter noe i oppskriften, sier det ved retten på siden', () => {
+  for (const [mk, id, dag, slug, hale] of BYTTER) {
+    const x = lesMenyerMarked(mk).menyer[id].dager.find((d) => d.dag === dag);
+    assert.ok(x.rest?.iStedetFor, `${mk}/${id}/${dag}: mangler iStedetFor`);
+    const anker = dag.replace(/[åä]/gu, 'a').replace(/[öø]/gu, 'o');
+    const kort = hoved(`${OPPSETT[mk].sprak.slice(1)}${OPPSETT[mk].rot}${slug}`).match(new RegExp(`<div class="scenario" id="dag-${anker}">[\\s\\S]*?</div>`, 'u'))?.[0] ?? '';
+    assert.ok(kort.length > 0, `${mk}/${id}/${dag}: fant ikke dagkortet`);
+    assert.ok(kort.includes(`${x.rest.iStedetFor} ${hale}`), `${mk}/${id}/${dag}: siden sier ikke hva resten erstatter`);
+  }
+  // Boller i karry lages med kokte kjøttboller; stekte frikadeller fra mandag ble byttet med kalde frikadeller og kartoffelsalat.
+  const ons = lesMenyerMarked('da').menyer.familie.dager.find((d) => d.dag === 'onsdag');
+  assert.equal(ons.oppskrift, 'https://www.arla.dk/opskrifter/kartoffelsalat/');
+});

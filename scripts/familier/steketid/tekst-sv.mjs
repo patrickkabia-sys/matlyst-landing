@@ -37,7 +37,7 @@ export const TEKST = {
       ['Hur länge ska kalkonen vila?', `${h.k('sfjul')} anger minst ${h.t('sf-vila')} innan den delas.`],
     ],
     soster: [`${INNER}kalkon/`, 'Innertemperatur kalkon'],
-    andre: [L('julskinka', 'Julskinka: tid och innertemperatur')],
+    andre: [L('julskinka', 'Julskinka: tid och innertemperatur'), ['/sv/nyarsmiddag/', 'Nyårsmiddag hemma: planering, tider och mängder']],
   }),
 
   skinke: (h) => ({
@@ -63,7 +63,7 @@ export const TEKST = {
       ['Hur länge ska julskinkan sjuda?', `${h.k('skkokt')} anger ${h.t('sjud')} per kilo.`],
     ],
     soster: [`${INNER}`, 'Innertemperatur för kött och fågel'],
-    andre: [L('kalkon', 'Hur länge ska kalkonen vara i ugnen?'), L('flaskstek', 'Fläskstek: tid och temperatur')],
+    andre: [L('kalkon', 'Hur länge ska kalkonen vara i ugnen?'), L('flaskstek', 'Fläskstek: tid och temperatur'), ['/sv/julbord/', 'Julbord hemma: planering, mängder och inköpslista']],
   }),
 
   egg: (h) => ({

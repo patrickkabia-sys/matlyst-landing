@@ -30,8 +30,11 @@ const importHub = (hub, guider) => Object.fromEntries(guider.map((sti) => [sti, 
 const VIA_HUB_FORSIDE = {
   '/': VIA_HUB,
   // Sammenligningssidene nås gjennom relatert-blokken på receptappen/opskriftsappen (lenkekartet, en-gruppen sammenligning via sidegruppene).
-  '/sv/': { ...importHub('/sv/importera-recept/', ['/sv/alletiders-kogebog/', '/sv/dr-mad/', '/sv/matprat/']), ...importHub('/sv/receptbok-app/', ['/sv/basta-receptapp/', '/sv/basta-inkopslista-app/', '/sv/basta-veckomeny-app/']) },
-  '/da/': { ...importHub('/da/importer-opskrifter/', ['/da/koket/', '/da/landleys-kok/', '/da/matprat/']), ...importHub('/da/opskrifts-app/', ['/da/bedste-opskriftsapp/', '/da/bedste-indkoebsliste-app/', '/da/bedste-madplan-app/']) },
+  '/sv/': { ...importHub('/sv/importera-recept/', ['/sv/alletiders-kogebog/', '/sv/dr-mad/', '/sv/matprat/']), ...importHub('/sv/receptbok-app/', ['/sv/basta-receptapp/', '/sv/basta-inkopslista-app/', '/sv/basta-veckomeny-app/']),
+    // Julbordet och nyårsmiddagen står i «Alla guider» i bunnen och nås genom relaterat-blocket på veckomenyn (lenkekartet, nyckeln sv).
+    ...importHub('/sv/veckomeny-app/', ['/sv/julbord/', '/sv/nyarsmiddag/']) },
+  // Julefrokosten og juleaften står i «Alle guider» i bunnen og nås gjennom relatert-blokken på madplan-appen (lenkekartet, da-gruppen hoytid).
+  '/da/': { ...importHub('/da/importer-opskrifter/', ['/da/koket/', '/da/landleys-kok/', '/da/matprat/']), ...importHub('/da/opskrifts-app/', ['/da/bedste-opskriftsapp/', '/da/bedste-indkoebsliste-app/', '/da/bedste-madplan-app/']), ...importHub('/da/madplan-app/', ['/da/julefrokost/', '/da/juleaften/']) },
   // Mealime-siden står i «All guides» i bunnen, men ikke i hovedhyllene: den nås gjennom Paprika-siden (lenkekartet, gruppen flytting).
   '/en/': { ...importHub('/en/import-recipes/', ['/en/alletiders-cookbook/', '/en/dr-food/', '/en/koket/', '/en/landleys-kok/', '/en/matprat/']), '/en/mealime-alternative/': '/en/import-recipes-from-paprika/',
     // Sammenligningssidene står i «All guides» i bunnen og nås gjennom relatert-blokken på oppskriftsappen (lenkekartet, en-gruppen sammenligning).

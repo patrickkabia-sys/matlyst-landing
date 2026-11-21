@@ -100,6 +100,7 @@
     "piskefløde": "Mejeri & æg",
     "porre": "Frugt & grønt",
     "porrer": "Frugt & grønt",
+    "purløg": "Frugt & grønt",
     "pære": "Frugt & grønt",
     "rasp": "Brød & bagværk",
     "remoulade": "Krydderier & saucer",
@@ -117,6 +118,7 @@
     "røgede mandler": "Tørvarer & konserves",
     "salsiccia": "Kød",
     "saucejævner": "Krydderier & saucer",
+    "skalotteløg": "Frugt & grønt",
     "soja": "Krydderier & saucer",
     "soltørrede tomater": "Krydderier & saucer",
     "soltørrede tomater i olie": "Tørvarer & konserves",
@@ -129,6 +131,7 @@
     "stødt spidskommen": "Krydderier & saucer",
     "sukkerærter": "Frugt & grønt",
     "syltede agurker": "Tørvarer & konserves",
+    "sød fransk sennep": "Krydderier & saucer",
     "sød soja": "Krydderier & saucer",
     "søde kartofler": "Frugt & grønt",
     "tacoskaller": "Brød & bagværk",
@@ -151,9 +154,9 @@
     "familie": {
       "tittel": "Madplan til børnefamilien: syv aftensmåltider og liste",
       "h1": "Madplan til børnefamilien",
-      "beskrivelse": "Syv aftensmåltider, som de fleste børn spiser, hvor to af dem bygger på dagen før. Med link til opskrifterne, rester lagt ind i ugen og én samlet indkøbsliste.",
+      "beskrivelse": "Syv aftensmåltider, som de fleste børn spiser, hvor to af dem bygger på en tidligere dag. Med link til opskrifterne og én samlet indkøbsliste.",
       "ingress": "Syv aftensmåltider, som de fleste børn spiser, sat op så mandagens og lørdagens madlavning giver en god start på onsdag og søndag.",
-      "vinkel": "Ugen er bygget om to portioner, der deles på to aftener. Frikadellerne fra mandag bliver til boller i karry onsdag, og kyllingen fra lørdag bliver til kylling i karry søndag. Kartofler, løg og fløde går igen i flere retter, så indkøbslisten bliver kort.",
+      "vinkel": "Ugen er bygget op om to store portioner, der deles på to aftener. Frikadellerne fra mandag spises kolde med kartoffelsalat onsdag, og kyllingen fra lørdag bliver til kylling i karry søndag. Kartofler, løg og fløde går igen i flere retter, så indkøbslisten bliver kort.",
       "faq": [
         [
           "Hvordan får jeg børnene til at spise madplanen?",
@@ -161,7 +164,7 @@
         ],
         [
           "Kan jeg bytte rundt på dagene?",
-          "Ja, men hold afstanden mellem en ret og de rester, den giver. Frikadellerne skal bruges før karryretten, og kyllingen før søndagens ret."
+          "Ja, men hold afstanden mellem en ret og de rester, den giver. Frikadellerne skal bruges før kartoffelsalaten, og kyllingen før søndagens ret."
         ]
       ],
       "dager": [
@@ -196,21 +199,21 @@
         },
         {
           "dag": "onsdag",
-          "rett": "Boller i karry med frikadellerne fra mandag",
-          "oppskrift": "https://www.arla.dk/opskrifter/boller-i-karry/",
-          "hvorfor": "Frikadellerne er allerede lavet, så du laver kun karrysovsen og koger ris. De erstatter kødbollerne i opskriften.",
+          "rett": "Kolde frikadeller med kartoffelsalat",
+          "oppskrift": "https://www.arla.dk/opskrifter/kartoffelsalat/",
+          "hvorfor": "Frikadellerne er stegt i forvejen, så du koger kun kartofler og rører salaten sammen. Arla foreslår selv kartoffelsalaten til frikadeller.",
           "rest": {
             "fra": "mandag",
             "hva": "frikadellerne"
           },
           "varer": [
-            "karry",
-            "hønsebouillon",
-            "æbler",
-            "romainesalat",
-            "sukkerærter",
-            "peanuts",
-            "ris"
+            "kartofler",
+            "creme fraiche",
+            "persille",
+            "purløg",
+            "skalotteløg",
+            "sød fransk sennep",
+            "citron"
           ]
         },
         {
@@ -311,7 +314,7 @@
           "dag": "mandag",
           "rett": "Pasta med kødsovs",
           "oppskrift": "https://www.arla.dk/opskrifter/pasta-med-kodsauce/",
-          "hvorfor": "Én portion kødsovs rækker til to måltider. Det, der ikke spises i dag, bliver til lasagne onsdag.",
+          "hvorfor": "En stor gryde kødsovs rækker til to måltider. Det, der ikke spises i dag, bliver til lasagne onsdag.",
           "lagMer": "Lav dobbelt portion kødsovs, og sæt halvdelen koldt til onsdag.",
           "varer": [
             "løg",
@@ -498,12 +501,13 @@
         },
         {
           "dag": "onsdag",
-          "rett": "Vegetarisk enchiladas med chilien fra mandag",
+          "rett": "Vegetariske enchiladas med chilien fra mandag",
           "oppskrift": "https://www.arla.dk/opskrifter/vegetarisk-enchiladas/",
-          "hvorfor": "Chilien fra mandag er fyldet, så du ruller kun tortillaerne og laver sovsen.",
+          "hvorfor": "Chilien fra mandag bliver fyldet, så du ruller kun tortillaerne og laver sovsen.",
           "rest": {
             "fra": "mandag",
-            "hva": "chilien"
+            "hva": "chilien",
+            "iStedetFor": "fyldet af søde kartofler, sorte bønner, peberfrugt og majs"
           },
           "varer": [
             "tortillaer",
@@ -557,7 +561,7 @@
           "dag": "lørdag",
           "rett": "Grøntsagslasagne",
           "oppskrift": "https://www.arla.dk/opskrifter/grontsagslasagne/",
-          "hvorfor": "Lørdag er dagen for en ovnret. Squash og oliven giver lasagnen smag uden kød.",
+          "hvorfor": "En ovnret til lørdag, hvor squash og oliven giver lasagnen smag uden kød.",
           "varer": [
             "løg",
             "hvidløg",
@@ -693,7 +697,7 @@
           "dag": "lørdag",
           "rett": "Bagt torsk i ovn",
           "oppskrift": "https://www.arla.dk/opskrifter/torsk-i-ovn/",
-          "hvorfor": "Fisk i ovnen en dag med mere tid. Regn opskriften ned til én portion.",
+          "hvorfor": "Torsk i ovnen er nemt at lave til én. Regn opskriften ned til én portion.",
           "varer": [
             "torsk",
             "løg",
@@ -793,7 +797,7 @@
           "dag": "torsdag",
           "rett": "Tarteletter med høns i asparges",
           "oppskrift": "https://www.arla.dk/opskrifter/tarteletter-med-hons-i-asparges/",
-          "hvorfor": "Tarteletter er en dansk klassiker til en dag med mere tid. Kyllingen koges i bouillon til fyldet.",
+          "hvorfor": "Tarteletter med høns i asparges hører til de store klassikere. Kyllingen koges i bouillon til fyldet.",
           "varer": [
             "kylling",
             "gulerødder",
@@ -828,7 +832,7 @@
           "dag": "lørdag",
           "rett": "Langtidsstegt flæskesteg med rødkål",
           "oppskrift": "https://www.arla.dk/opskrifter/langtidsstegt-flaskesteg/",
-          "hvorfor": "Flæskesteg får lov at stege langsomt på en dag med mere tid. Den smager godt dagen efter.",
+          "hvorfor": "Lørdag kan flæskestegen stå længe i ovnen. Den smager godt dagen efter.",
           "lagMer": "Steg hele stykket, og sæt otte skiver koldt til søndag.",
           "varer": [
             "grisekam med svær",

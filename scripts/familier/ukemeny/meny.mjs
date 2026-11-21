@@ -35,7 +35,7 @@ const dagSkjema = (marked) => z.strictObject({
   framgang: z.array(tekst).min(1).optional(),
   hvorfor: tekst,
   lagMer: tekst.optional(),
-  rest: z.strictObject({ fra: z.enum(DAGER_MARKED[marked]), hva: tekst, via: z.literal('fryser').optional() }).optional(),
+  rest: z.strictObject({ fra: z.enum(DAGER_MARKED[marked]), hva: tekst, via: z.literal('fryser').optional(), iStedetFor: tekst.optional() }).optional(),
   varer: z.array(tekst).min(1),
 });
 const menySkjema = (marked) => z.strictObject({

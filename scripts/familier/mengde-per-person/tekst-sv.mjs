@@ -188,7 +188,7 @@ export const TEKST = {
         ['Hur stor skinka behöver man när man lagar den själv?', `${h.k('skgris')} anger ${h.t('sjalv-utan')} per person utan ben och ${h.t('sjalv-med')} med ben.`],
         ['Hur mycket kassler per person?', `${h.k('skinkop')} anger ${h.t('kassler')} per portion utan ben och ${h.t('kassler-ben')} med ben.`],
       ],
-      soster: [S('svin', 'Hur mycket griskött per person?'), ['/sv/tillagningstid/julskinka/', 'Julskinka: hur länge och till vilken innertemperatur?']],
+      soster: [S('svin', 'Hur mycket griskött per person?'), ['/sv/tillagningstid/julskinka/', 'Julskinka: hur länge och till vilken innertemperatur?'], ['/sv/julbord/', 'Julbord hemma: planering, mängder och inköpslista']],
     }),
   },
 
@@ -205,7 +205,7 @@ export const TEKST = {
         ['Hur mycket korv per person?', `${h.k('skinkop')} anger ${h.t('korv')} korv, till exempel falukorv, per portion.`],
         ['Hur mycket pålägg per smörgås?', `${h.k('skinkop')} anger ${h.t('palagg')} per smörgås.`],
       ],
-      soster: [S('kott', 'Hur mycket kött per person?'), S('kottfars', 'Hur mycket köttfärs per person?')],
+      soster: [S('kott', 'Hur mycket kött per person?'), S('kottfars', 'Hur mycket köttfärs per person?'), ['/sv/julbord/', 'Julbord hemma: planering, mängder och inköpslista']],
     }),
   },
 
@@ -222,7 +222,7 @@ export const TEKST = {
         ['Hur mycket gravad lax per person?', `${h.k('arlalax')} anger ${h.t('huvud')} som huvudrätt, ${h.t('buffe')} som en del av en buffé och ${h.t('forratt')} som förrätt.`],
         ['Hur mycket gravad lax till 8 personer?', `Som huvudrätt blir det ${h.sum('huvud', 8)}, och på en buffé ${h.sum('buffe', 8)}.`],
       ],
-      soster: [['/sv/tillagningstid/lax-i-ugn/', 'Lax i ugn: tid och temperatur'], ['/sv/airfryer/lax/', 'Lax i airfryer']],
+      soster: [['/sv/tillagningstid/lax-i-ugn/', 'Lax i ugn: tid och temperatur'], ['/sv/airfryer/lax/', 'Lax i airfryer'], ['/sv/julbord/', 'Julbord hemma: planering, mängder och inköpslista']],
     }),
   },
 };

@@ -181,7 +181,7 @@ export const MARKED = {
       },
       ekstra: [
         ['Planerar du själv, eller gör appen det?', p('Det är den största skillnaden. I de flesta apparna väljer <strong>du</strong> måltiderna, och appen håller ordning på dagarna och inköpslistan. Några kan också <strong>göra planen</strong> åt dig: Arla Mat har färdiga veckomenyer, och Samsung Food med Samsung Food+ och Recipe Keeper uppger att de kan planera. Matlyst gör inte planen åt dig.',
-          'Läs mer om <a href="/sv/veckomeny-app/">veckomenyn i Matlyst</a>.')],
+          'Läs mer om <a href="/sv/veckomeny-app/">veckomenyn i Matlyst</a>. Vill du ha en färdig vecka att börja med, se <a href="/sv/veckomenyer/">våra veckomenyer med inköpslista</a>.')],
       ],
       iMatlyst: ['Så blir veckan en inköpslista i Matlyst', p('Väljer du Matlyst lägger du recepten du har sparat på dagarna i veckomenyn. Sedan för du över veckans ingredienser till inköpslistan, som är sorterad efter butikens avdelningar.', 'Läs mer om <a href="/sv/veckomeny-app/">veckomenyn</a> och <a href="/sv/inkopslista/">inköpslistan</a>.')],
       steg: [['Bestäm vem som väljer måltiderna', 'Du själv, eller appen.'], ['Kolla inköpslistan', 'Se till att hela veckan blir en lista som du kan dela.'], ['Prova en vecka', 'Planera fem middagar innan du bestämmer dig.']],
