@@ -1,0 +1,272 @@
+{
+  "_om": "H2-ene i lesedelen på de publiserte sidene (origin/main, før ombyggingen), uten kalkulatorseksjonen. Hentet av engangsskript; ett par per enhetsgruppe og språk og samlesiden. Engelsk samleside: «Convert any cooking unit» er bevisst tilbake som første seksjon (appkortet for kokemodus).",
+  "nb": {
+    "par": {
+      "volum": {
+        "side": "verktoy/ml-til-cl/",
+        "h2": [
+          "Omregningstabell: ml til cl",
+          "Slik regner du om milliliter til centiliter",
+          "Hvor oppskrifter bruker milliliter og centiliter",
+          "Tips til måling",
+          "Vanlige feil ved omregning",
+          "Regn om en hel oppskrift",
+          "Slutt å regne om for hånd",
+          "Beslektede omregninger"
+        ]
+      },
+      "vekt": {
+        "side": "verktoy/g-til-kg/",
+        "h2": [
+          "Omregningstabell: g til kg",
+          "Slik regner du om gram til kilogram",
+          "Hvor oppskrifter bruker gram og kilogram",
+          "Tips til måling",
+          "Vanlige feil ved omregning",
+          "Regn om en hel oppskrift",
+          "Slutt å regne om for hånd",
+          "Beslektede omregninger"
+        ]
+      },
+      "lengde": {
+        "side": "verktoy/mm-til-cm/",
+        "h2": [
+          "Omregningstabell: mm til cm",
+          "Slik regner du om millimeter til centimeter",
+          "Hvor oppskrifter bruker millimeter og centimeter",
+          "Tips til måling",
+          "Vanlige feil ved omregning",
+          "Regn om en hel oppskrift",
+          "Slutt å regne om for hånd",
+          "Beslektede omregninger"
+        ]
+      },
+      "temperatur": {
+        "side": "verktoy/celsius-til-fahrenheit/",
+        "h2": [
+          "Omregningstabell: °C til °F",
+          "Slik regner du om grader celsius til grader fahrenheit",
+          "Hvor oppskrifter bruker grader celsius og grader fahrenheit",
+          "Tips til måling",
+          "Vanlige feil ved omregning",
+          "Regn om en hel oppskrift",
+          "Slutt å regne om for hånd",
+          "Beslektede omregninger"
+        ]
+      }
+    },
+    "samleside": {
+      "side": "verktoy/enhetsomregner/",
+      "h2": [
+        "Volum: ml, dl, ss, ts, kopper og mer",
+        "Vekt: gram, unser og pund",
+        "Lengde: cm, mm og tommer til former og deig",
+        "Temperatur: celsius og fahrenheit",
+        "Hvorfor oppskrifter bruker ulike enheter",
+        "Slutt å regne om for hånd"
+      ]
+    }
+  },
+  "sv": {
+    "par": {
+      "volum": {
+        "side": "sv/verktyg/ml-till-cl/",
+        "h2": [
+          "Tabell: ml till cl",
+          "Så räknar du om milliliter till centiliter",
+          "Där recept använder milliliter och centiliter",
+          "Tips för mätning",
+          "Vanliga misstag vid omräkning",
+          "Räkna om ett helt recept",
+          "Sluta räkna om för hand",
+          "Närliggande omvandlingar"
+        ]
+      },
+      "vekt": {
+        "side": "sv/verktyg/g-till-kg/",
+        "h2": [
+          "Tabell: g till kg",
+          "Så räknar du om gram till kilogram",
+          "Där recept använder gram och kilogram",
+          "Tips för mätning",
+          "Vanliga misstag vid omräkning",
+          "Räkna om ett helt recept",
+          "Sluta räkna om för hand",
+          "Närliggande omvandlingar"
+        ]
+      },
+      "lengde": {
+        "side": "sv/verktyg/mm-till-cm/",
+        "h2": [
+          "Tabell: mm till cm",
+          "Så räknar du om millimeter till centimeter",
+          "Där recept använder millimeter och centimeter",
+          "Tips för mätning",
+          "Vanliga misstag vid omräkning",
+          "Räkna om ett helt recept",
+          "Sluta räkna om för hand",
+          "Närliggande omvandlingar"
+        ]
+      },
+      "temperatur": {
+        "side": "sv/verktyg/celsius-till-fahrenheit/",
+        "h2": [
+          "Tabell: °C till °F",
+          "Så räknar du om grader Celsius till grader Fahrenheit",
+          "Där recept använder grader Celsius och grader Fahrenheit",
+          "Tips för mätning",
+          "Vanliga misstag vid omräkning",
+          "Räkna om ett helt recept",
+          "Sluta räkna om för hand",
+          "Närliggande omvandlingar"
+        ]
+      }
+    },
+    "samleside": {
+      "side": "sv/verktyg/enhetsomvandlare/",
+      "h2": [
+        "Volym: ml, dl, koppar, matskedar och mer",
+        "Vikt: gram, kilogram, uns och pund",
+        "Längd: cm, mm och tum för formar och deg",
+        "Temperatur: Celsius och Fahrenheit",
+        "Därför använder recept olika enheter",
+        "Sluta räkna om för hand"
+      ]
+    }
+  },
+  "da": {
+    "par": {
+      "volum": {
+        "side": "da/vaerktoejer/ml-til-cl/",
+        "h2": [
+          "Tabel: ml til cl",
+          "Sådan regner du milliliter om til centiliter",
+          "Hvor opskrifter bruger milliliter og centiliter",
+          "Tips til måling",
+          "Almindelige fejl, når du regner om",
+          "Regn en hel opskrift om",
+          "Hold op med at regne om i hånden",
+          "Beslægtede omregninger"
+        ]
+      },
+      "vekt": {
+        "side": "da/vaerktoejer/g-til-kg/",
+        "h2": [
+          "Tabel: g til kg",
+          "Sådan regner du gram om til kilogram",
+          "Hvor opskrifter bruger gram og kilogram",
+          "Tips til måling",
+          "Almindelige fejl, når du regner om",
+          "Regn en hel opskrift om",
+          "Hold op med at regne om i hånden",
+          "Beslægtede omregninger"
+        ]
+      },
+      "lengde": {
+        "side": "da/vaerktoejer/mm-til-cm/",
+        "h2": [
+          "Tabel: mm til cm",
+          "Sådan regner du millimeter om til centimeter",
+          "Hvor opskrifter bruger millimeter og centimeter",
+          "Tips til måling",
+          "Almindelige fejl, når du regner om",
+          "Regn en hel opskrift om",
+          "Hold op med at regne om i hånden",
+          "Beslægtede omregninger"
+        ]
+      },
+      "temperatur": {
+        "side": "da/vaerktoejer/celsius-til-fahrenheit/",
+        "h2": [
+          "Tabel: °C til °F",
+          "Sådan regner du grader celsius om til grader fahrenheit",
+          "Hvor opskrifter bruger grader celsius og grader fahrenheit",
+          "Tips til måling",
+          "Almindelige fejl, når du regner om",
+          "Regn en hel opskrift om",
+          "Hold op med at regne om i hånden",
+          "Beslægtede omregninger"
+        ]
+      }
+    },
+    "samleside": {
+      "side": "da/vaerktoejer/enhedsomregner/",
+      "h2": [
+        "Danske og amerikanske mål",
+        "Volumen: milliliter, deciliter, kopper og skeer",
+        "Vægt: gram, kilo, ounces og pund",
+        "Længde: centimeter og tommer",
+        "Temperatur: Celsius og Fahrenheit",
+        "Hold op med at regne om i hånden"
+      ]
+    }
+  },
+  "en": {
+    "par": {
+      "volum": {
+        "side": "en/tools/ml-to-cl/",
+        "h2": [
+          "ml to cl conversion chart",
+          "How to convert milliliters to centiliters",
+          "Where recipes use milliliters and centiliters",
+          "Measuring tips",
+          "Common mistakes when converting",
+          "Converting a whole recipe",
+          "Stop converting by hand",
+          "Related conversions"
+        ]
+      },
+      "vekt": {
+        "side": "en/tools/g-to-kg/",
+        "h2": [
+          "g to kg conversion chart",
+          "How to convert grams to kilograms",
+          "Where recipes use grams and kilograms",
+          "Measuring tips",
+          "Common mistakes when converting",
+          "Converting a whole recipe",
+          "Stop converting by hand",
+          "Related conversions"
+        ]
+      },
+      "lengde": {
+        "side": "en/tools/mm-to-cm/",
+        "h2": [
+          "mm to cm conversion chart",
+          "How to convert millimeters to centimeters",
+          "Where recipes use millimeters and centimeters",
+          "Measuring tips",
+          "Common mistakes when converting",
+          "Converting a whole recipe",
+          "Stop converting by hand",
+          "Related conversions"
+        ]
+      },
+      "temperatur": {
+        "side": "en/tools/c-to-f/",
+        "h2": [
+          "°C to °F conversion chart",
+          "How to convert degrees Celsius to degrees Fahrenheit",
+          "Where recipes use degrees Celsius and degrees Fahrenheit",
+          "Measuring tips",
+          "Common mistakes when converting",
+          "Converting a whole recipe",
+          "Stop converting by hand",
+          "Related conversions"
+        ]
+      }
+    },
+    "samleside": {
+      "side": "en/tools/unit-converter/",
+      "h2": [
+        "Convert any cooking unit",
+        "Volume conversions: ml, dl, cups, tablespoons, and more",
+        "Weight conversions: grams, ounces, and pounds",
+        "Length conversions: cm, mm, and inches for pans and dough",
+        "Temperature conversions: Celsius and Fahrenheit",
+        "Why recipes use different units",
+        "Stop converting by hand"
+      ]
+    }
+  }
+}

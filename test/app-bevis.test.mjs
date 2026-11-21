@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import test from 'node:test';
 import { behandle } from '../scripts/app-bevis.mjs';
+import { sideForPar } from '../scripts/nb-enhetssider.mjs';
 
 const lang = (l) => `<html lang="${l}"><body><section class="prose locale-prose has-toc"><h2 id="a">How to save a recipe</h2><p>x</p><h2 id="b">Your grocery list</h2><p>y</p></section></body></html>`;
 
@@ -28,7 +29,8 @@ test('hver lang side på de fire språkene har minst to app-bevis', () => {
       if (d.isDirectory()) { if (!['node_modules', '.git', 'test-results', 'playwright-report'].includes(d.name)) gaa(`${mappe}/${d.name}`); continue; }
       if (!d.name.endsWith('.html')) continue;
       const html = readFileSync(`${mappe}/${d.name}`, 'utf8');
-      if (!/class="prose locale-prose has-toc"/u.test(html) || /<meta name="robots" content="[^"]*noindex/iu.test(html)) continue;
+      // Sider med enhetskortet (omregnerne etter at de er bygget på nytt) har ingen has-toc, men skal ha app-bevisene.
+      if (!(/class="prose locale-prose has-toc"/u.test(html) || /<form class="kalk" data-kalk="enhet"/u.test(html)) || /<meta name="robots" content="[^"]*noindex/iu.test(html)) continue;
       // Logohistorien har sine egne animasjoner og regnes som app-bevis.
       if (/class="maskot-galleri"/u.test(html)) continue;
       const n = (html.match(/class="i-appen i-/gu) ?? []).length;
@@ -37,4 +39,56 @@ test('hver lang side på de fire språkene har minst to app-bevis', () => {
   };
   gaa(rot.replace(/\/$/u, ''));
   assert.deepEqual(mangler, []);
+});
+
+// Omregnerne har kalkulatorkortet i `topp` og ingen has-toc-markør, men skal beholde de samme app-bevisene som de publiserte sidene (avgjørelse 8).
+const nøkler = (html) => [...html.matchAll(/class="i-appen i-([a-z]+)"/gu)].map((m) => m[1]);
+const omregner = (fra, til) => { const s = sideForPar(fra, til); return `<html lang="nb"><body><header class="locale-page-hero">${s.topp}</header><section class="prose locale-prose">${s.rik}</section></body></html>`; };
+
+test('en omregnerside med enhetskortet får de samme app-bevisene som den publiserte siden', () => {
+  const rot = new URL('..', import.meta.url).pathname;
+  const forventet = JSON.parse(readFileSync(`${rot}test/fasit/omregner-appbevis.json`, 'utf8')).sider['nb verktoy/dl-til-kopp/'].split(',');
+  assert.ok(forventet.includes('mapper') && forventet.includes('skalering') && forventet.includes('enheter'), `fasiten har mapper, skalering og enheter: ${forventet}`);
+  const side = omregner('dl', 'cups');
+  assert.match(side, /data-kalk="enhet"/u);
+  assert.doesNotMatch(side, /has-toc/u);
+  const ut = behandle(side, 'nb', '/verktoy/dl-til-kopp/');
+  assert.deepEqual(nøkler(ut), forventet);
+  assert.equal(behandle(ut, 'nb', '/verktoy/dl-til-kopp/'), ut, 'idempotent');
+});
+
+test('en familieside med volumvekt-kortet behandles fortsatt ikke', () => {
+  const familie = '<html lang="nb"><body><header class="locale-page-hero"><form class="kalk" data-kalk="volumvekt"></form></header><section class="prose locale-prose"><h2 id="a">Slik lagrer du</h2><p>x</p><h2 id="b">Handleliste</h2><p>y</p></section></body></html>';
+  assert.equal(behandle(familie, 'nb', '/x/'), familie);
+});
+
+// Alle 714 omregnere på de fire språkene beholder nøyaktig de samme app-bevisene som de publiserte sidene (avgjørelse 8): den gamle kalkulatorseksjonen
+// er borte fra lesedelen, og kortet står i topp, men blokkene velges fra de samme overskriftene. Fasit: test/fasit/omregner-appbevis.json, nøklene i de publiserte filene
+// på origin/main slik de var før ombyggingen (frosset, så testen ikke bare leser sidene den selv har bygget).
+test('alle omregnere på nb, sv, da og en får de samme app-bevisene som de publiserte sidene', async () => {
+  const rot = new URL('..', import.meta.url).pathname;
+  const { enhetsSiderNb } = await import('../scripts/nb-enhetssider.mjs');
+  const { enhetsSiderSv } = await import('../scripts/sv-enhetssider.mjs');
+  const { enhetsSiderDa } = await import('../scripts/da-enhetssider.mjs');
+  const { enhetsSider } = await import('../scripts/en-enhetssider.mjs');
+  const { rikeSider } = await import('../scripts/en-rike-sider.mjs');
+  const SPRÅK = [['nb', '', enhetsSiderNb], ['sv', 'sv/', enhetsSiderSv], ['da', 'da/', enhetsSiderDa], ['en', 'en/', { ...enhetsSider, 'tools/unit-converter/': rikeSider['tools/unit-converter/'] }]];
+  const fasit = JSON.parse(readFileSync(`${rot}test/fasit/omregner-appbevis.json`, 'utf8')).sider;
+  assert.equal(Object.keys(fasit).length, 714, 'fasiten har alle 714 omregnere');
+  let sjekket = 0;
+  const avvik = [];
+  for (const [lang, prefiks, sider] of SPRÅK) {
+    for (const [sti, s] of Object.entries(sider)) {
+      const publisert = fasit[`${lang} ${sti}`];
+      assert.equal(typeof publisert, 'string', `fasit for ${lang} ${sti}`);
+      const faq = `<section class="faq"><h2>${s.faqTittel}</h2>${s.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</section>`;
+      const side = `<html lang="${lang}"><body><header class="locale-page-hero">${s.topp}</header><section class="prose locale-prose">${s.rik}</section>${faq}</body></html>`;
+      assert.match(side, /data-kalk="enhet"/u, `${lang} ${sti}`);
+      const ny = nøkler(behandle(side, lang, `/${prefiks}${sti}`)).join();
+      sjekket++;
+      if (ny !== publisert) avvik.push(`${lang} ${sti}: publisert [${publisert}] ny [${ny}]`);
+    }
+  }
+  assert.equal(sjekket, 714, 'alle 714 omregnere');
+  assert.deepEqual(avvik, []);
 });

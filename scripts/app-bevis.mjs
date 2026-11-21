@@ -81,7 +81,10 @@ const STRIPP = new RegExp(`${START}[\\s\\S]*?${SLUTT}`, 'gu');
 const H2 = /<h[23](?: id="[^"]*")?>([\s\S]*?)<\/h[23]>/gu;
 
 export function behandle(html, lang, egenSti = '') {
-  if (!/class="prose locale-prose has-toc"/u.test(html) || /<meta name="robots" content="[^"]*noindex/iu.test(html)) return html;
+  // Lange sider har innholdsfortegnelse (has-toc). Enhetsomregnerne har kalkulatorkortet i `topp` i stedet og ingen has-toc, og skal beholde de samme blokkene.
+  // Familiesidene (data-kalk="volumvekt") behandles ikke.
+  const langSide = /class="prose locale-prose has-toc"/u.test(html) || /<form class="kalk" data-kalk="enhet"/u.test(html);
+  if (!langSide || /<meta name="robots" content="[^"]*noindex/iu.test(html)) return html;
   let ut = html.replace(STRIPP, '');
   const brukt = new Set();
   const treff = [];

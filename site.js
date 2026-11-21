@@ -140,11 +140,9 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   }
 })();
 
-// Enhetsomregner: regner ut mens du skriver (volum, vekt, lengde, temperatur).
+// Delte tallfunksjoner for kalkulatorkortet (form.kalk): å lese og å skrive tall.
 (() => {
-  const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
-  // Delte funksjoner: omregneren og kalkulatorkortet (form.kalk) leser og skriver tall på samme måte.
-  // Utenfor løkka, så begge bruker dem. Legges på window.MatlystTall slik at testene når dem.
+  // Legges på window.MatlystTall, slik at kortet og testene når dem.
   // visTall: antall desimaler følger størrelsen (4 gjeldende sifre som standard). Færre sifre gir færre desimaler.
   // Språkets desimaltegn (sidens lang): komma på nb, sv og da, punktum på en. Ingen tusenskille, slik sidene ellers skriver tall.
   const visTall = (n, komma, sifre = 4) => {
@@ -181,83 +179,15 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     return Number(`${m[1] === '-' ? '-' : ''}${tall}`);
   };
   window.MatlystTall = { tolkTall, visTall };
-  const tall = (n) => visTall(n, KOMMA);
-  for (const skjema of document.querySelectorAll('form.omregner')) {
-    let data;
-    try { data = JSON.parse(skjema.querySelector('.omregner-data').textContent); } catch { continue; }
-    const verdi = skjema.querySelector('[data-felt=verdi]');
-    const fra = skjema.querySelector('[data-felt=fra]');
-    const til = skjema.querySelector('[data-felt=til]');
-    const svar = skjema.querySelector('[data-felt=svar]');
-    const kort = (sel) => sel.options[sel.selectedIndex].text.replace(/^.*\(([^)]+)\)$/u, '$1');
-    // Enheter som skrives som ord har entall og flertall i sidens data (data.o): entall bare for nøyaktig 1, målt på tallet som vises.
-    const ord = (sel, n) => { const o = data.o && data.o[sel.value]; return o ? o[Math.abs(Number(tall(n))) === 1 ? 0 : 1] : kort(sel); };
-    // Inntastingen tåler både komma og punktum: feltet er tekst med desimaltastatur (type=number avviser komma i engelske nettlesere).
-    if (verdi.type === 'number') verdi.type = 'text';
-    const tolk = (tekst) => { const v = tolkTall(tekst, KOMMA); return v === null ? NaN : v; };
-    const reg = () => {
-      const v = tolk(verdi.value);
-      const tomt = String(verdi.value).trim() === '';
-      verdi.removeAttribute('aria-invalid');
-      if (!tomt && !Number.isFinite(v)) verdi.setAttribute('aria-invalid', 'true');
-      if (!Number.isFinite(v)) { svar.textContent = ''; return; }
-      let ut;
-      if (data.t) ut = fra.value === til.value ? v : fra.value === 'c' ? v * 9 / 5 + 32 : (v - 32) * 5 / 9;
-      else ut = v * data.f[fra.value] / data.f[til.value];
-      svar.textContent = `${tall(v)} ${ord(fra, v)} = ${tall(ut)} ${ord(til, ut)}`;
-    };
-    for (const el of [verdi, fra, til]) el.addEventListener('input', reg);
-    // Bytteknappen: verdiene byttes med en gang i DOM (skjermleser og tastatur får riktig tilstand straks), og bevegelsen er bare visuell (FLIP):
-    // valget i «Fra» glir til «Til» sin plass og omvendt, vannrett på PC og loddrett på mobil, med en liten bue. Bare transform og opacity.
-    // Et nytt trykk midt i bevegelsen starter fra der feltene står. Ved redusert bevegelse skjer ingenting.
-    const bytt = skjema.querySelector('[data-handling=bytt]');
-    const rolig = matchMedia('(prefers-reduced-motion: reduce)');
-    const VARIGHET = 320, EASING = 'cubic-bezier(.2,.8,.2,1)';
-    const avbryt = () => [fra, til, bytt, svar].forEach((el) => el.getAnimations().forEach((an) => an.cancel()));
-    // Slås redusert bevegelse på mens byttet pågår, stopper bevegelsen straks. Et nytt trykk avbryter også pågående bevegelse.
-    rolig.addEventListener('change', () => { if (rolig.matches) avbryt(); });
-    bytt.addEventListener('click', () => {
-      if (rolig.matches) avbryt();
-      // Etikettene («Fra», «Til») og boksene står stille; bare selve valget i feltet beveger seg.
-      const a = fra, b = til;
-      const beveger = !rolig.matches && a && b && typeof a.animate === 'function';
-      let va, vb, a0, b0, vinkel = 0;
-      if (beveger) {
-        // Gjeldende utseende (med pågående transform) leses før noe avbrytes.
-        va = a.getBoundingClientRect(); vb = b.getBoundingClientRect();
-        vinkel = parseFloat(getComputedStyle(bytt).rotate) || 0;
-        avbryt();
-        a0 = a.getBoundingClientRect(); b0 = b.getBoundingClientRect();
-      }
-      const x = fra.value; fra.value = til.value; til.value = x; reg();
-      if (!beveger) return;
-      const vannrett = Math.abs(b0.left - a0.left) > Math.abs(b0.top - a0.top);
-      const flytt = (el, fraPos, tilPos, retning) => {
-        const dx = fraPos.left - tilPos.left, dy = fraPos.top - tilPos.top;
-        const bueX = vannrett ? 0 : 6 * retning, bueY = vannrett ? -6 * retning : 0;
-        el.animate([
-          { transform: `translate(${dx}px, ${dy}px)` },
-          { transform: `translate(${dx / 2 + bueX}px, ${dy / 2 + bueY}px)`, offset: 0.5 },
-          { transform: 'none' },
-        ], { duration: VARIGHET, easing: EASING });
-      };
-      // Innholdet i «Fra» kom fra «Til» og omvendt: hvert felt starter der innholdet stod.
-      flytt(a, vb, a0, 1); flytt(b, va, b0, -1);
-      bytt.animate([{ rotate: `${vinkel}deg` }, { rotate: '180deg' }], { duration: VARIGHET, easing: EASING });
-      // Bare teksten toner (farge), bakgrunnen står uendret.
-      const [r, g, bl] = (getComputedStyle(svar).color.match(/[\d.]+/gu) || [243, 239, 232]).slice(0, 3);
-      svar.animate([{ color: `rgb(${r} ${g} ${bl} / 0.25)` }, { color: `rgb(${r} ${g} ${bl} / 1)` }], { duration: 200, easing: 'ease-out' });
-    });
-    reg();
-  }
 })();
 
 // Kalkulatorkortet (form.kalk): regner mens du skriver. Volum regnes mot volum via ml og vekt mot vekt via gram, direkte.
 // Bare kryssing mellom volum og vekt bruker varens gram per dl: ml[enhet] / 100 * gram per dl, og mangler vekten (eller er den 0), vises veiledningen.
 // All tekst (enhetsnavn, hurtigmengder, veiledning) kommer fra skjemaets egne data (script.kalk-data), så filen har ingen språkstrenger.
-// Fire valgfrie datafelt gir engelske skjemaer det de trenger, og skjemaer uten dem oppfører seg som før:
+// Valgfrie datafelt gir engelske skjemaer og enhetsomregnerne det de trenger, og skjemaer uten dem oppfører seg som før:
 // brok (mengden kan skrives «1/2» eller «1 1/2»), kort[e] som [entall, flertall], stegFor[e] (hvilken hurtiggruppe enheten bruker) og byttTil[e] (mengden ved bytte).
-// Tallesing er den delte tolkTall fra omregneren (window.MatlystTall). Skrivemåten av svaret har ikke tak på antall desimaler (visTall har det), så små tall aldri blir 0.
+// Enhetsomregning uten vare: affin[e] = [a, b] (temperatur), negativ (negative mengder er gyldige), sifre (gjeldende sifre i svaret), beholdMengde (bytte lar mengden stå), og varer kan mangle.
+// Tallesing er den delte tolkTall (window.MatlystTall). Skrivemåten av svaret har ikke tak på antall desimaler (visTall har det), så små tall aldri blir 0.
 (() => {
   const skjemaer = document.querySelectorAll('form.kalk');
   if (!skjemaer.length || !window.MatlystTall) return;
@@ -278,6 +208,16 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
     const t = (Math.round(Number((n * 10 ** desimaler).toPrecision(12))) / 10 ** desimaler).toFixed(desimaler);
     return komma(t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t);
   };
+  // Svaret med `sifre` gjeldende sifre (felt `sifre` i kalk-data), for alle enheter også gram: 1000 og over som heltall (halve runder opp), ellers uten overflødige nuller og uten tak på desimaler, så små tall aldri blir 0.
+  // Samme regel som presisTekst i scripts/kalk-kort.mjs, låst av kalk-tabell-enhet.spec.mjs.
+  const presis = (n, sifre) => {
+    const a = Math.abs(n);
+    if (a === 0) return '0';
+    if (a >= 1000) return komma(String(Math.round(Number(n.toPrecision(12)))));
+    const desimaler = Math.min(100, Math.max(0, sifre - 1 - Math.floor(Math.log10(a))));
+    const t = (Math.round(Number((n * 10 ** desimaler).toPrecision(12))) / 10 ** desimaler).toFixed(desimaler);
+    return komma(t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t);
+  };
   // Mengden gjengis slik den ble tolket, uten avrunding og uten overflødige nuller.
   const mengdeTekst = (n) => {
     const t = String(n);
@@ -285,22 +225,24 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   };
   // Mengden som tall, med brøk når skjemaet tillater det: a/b eller n a/b (heltall, nevner over 0, valgfritt mellomrom rundt skråstreken).
   // Gir { n, tekst, entall } eller null. tekst er brøken normalisert («1 1/2»). entall er sant for nøyaktig 1 og for en ekte brøk under 1 skrevet som brøk («3/4»).
-  // Heltall, teller og nevner har høyst seks sifre (ellers er brøken ugyldig). Med brøk slått på er mellomrom mellom sifre ikke tusenskille («1 2» er ugyldig), ellers ville «1 2» blitt 12.
+  // Heltall, teller og nevner har høyst seks sifre (ellers er brøken ugyldig). Brøken kan ha minus rett foran («-1/2», «-1 1/2»); regn() godtar det bare med `negativ`. Med brøk slått på er mellomrom mellom sifre ikke tusenskille («1 2» er ugyldig), ellers ville «1 2» blitt 12.
   const tolkMengde = (tekst, brok) => {
     const t = String(tekst).trim();
     if (brok) {
-      const m = /^(?:(\d{1,6})\s+)?(\d{1,6})\s*\/\s*(\d{1,6})$/u.exec(t);
+      const m = /^(-)?(?:(\d{1,6})\s+)?(\d{1,6})\s*\/\s*(\d{1,6})$/u.exec(t);
       if (m) {
-        const [, hel, a, b] = m;
+        const [, minus, hel, a, b] = m;
+        // Fortegnet tolkes alltid; regn() avviser negative mengder uten `negativ`, så en negativ brøk er da ugyldig som et negativt desimaltall.
         if (Number(b) === 0) return null;
-        const n = Number(hel || 0) + Number(a) / Number(b);
-        return { n, tekst: `${hel === undefined ? '' : `${Number(hel)} `}${Number(a)}/${Number(b)}`, entall: n === 1 || (hel === undefined && n > 0 && n < 1) };
+        const abs = Number(hel || 0) + Number(a) / Number(b);
+        const n = minus ? -abs : abs;
+        return { n, tekst: `${minus || ''}${hel === undefined ? '' : `${Number(hel)} `}${Number(a)}/${Number(b)}`, entall: n === 1 || (hel === undefined && n > 0 && n < 1) };
       }
       if (/\d\s+\d/u.test(t) || t.includes('/')) return null;
     }
     const n = tolkTall(t, KOMMA);
-    // Med brøk slått på avvises også et tall som ikke er endelig (for eksempel 400 sifre).
-    return n === null || (brok && !Number.isFinite(n)) ? null : { n, tekst: null, entall: n === 1 };
+    // Et tall som ikke er endelig (for eksempel 400 sifre) er ugyldig, med eller uten brøk.
+    return n === null || !Number.isFinite(n) ? null : { n, tekst: null, entall: n === 1 };
   };
   for (const skjema of skjemaer) {
     // Hvert skjema settes opp for seg: et ødelagt skjema hoppes over (det statiske svaret i HTML-en blir stående), og resten virker.
@@ -311,7 +253,8 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       const hurtig = [...skjema.querySelectorAll('.hurtig button')];
       // Med stegFor kreves bare gruppene den peker på (og hver fra-enhet må peke på en), ellers de fire faste gruppene.
       const grupper = data && data.stegFor && fra ? [...fra.options].map((o) => data.stegFor[o.value]) : ['volum', 'ml', 'g', 'kg'];
-      const ok = data && Array.isArray(data.varer) && data.varer.length && data.ml && data.g && data.steg && typeof data.feil === 'string'
+      // `varer` kan mangle (enhetsomregning uten vare); står den der, må den ha minst én vare.
+      const ok = data && (data.varer === undefined || (Array.isArray(data.varer) && data.varer.length)) && data.ml && data.g && data.steg && typeof data.feil === 'string'
         && grupper.every((g) => Array.isArray(data.steg[g]) && data.steg[g].length >= hurtig.length)
         && mengde && fra && til && svar && setning && bytt;
       if (!ok) continue;
@@ -324,13 +267,18 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       // Setningen under er den som leses opp; selve svarfeltet står utenfor opplesingen.
       svar.setAttribute('aria-live', 'off');
       const regn = () => {
-        const [ord, gramPerDl] = data.varer[vare ? Number(vare.value) : 0] || [];
+        const [ord, gramPerDl] = (data.varer && data.varer[vare ? Number(vare.value) : 0]) || [];
         const m = tolkMengde(mengde.value, brok);
         const n = m ? m.n : null;
-        // Negativt og alt som ikke er ett tall gir veiledning, aldri et delsvar.
-        const gyldig = n !== null && n >= 0;
+        // Negativt (unntatt med `negativ`) og alt som ikke er ett tall gir veiledning, aldri et delsvar.
+        const gyldig = n !== null && (n >= 0 || Boolean(data.negativ));
         let ut = NaN;
-        if (gyldig) {
+        const aff = data.affin;
+        if (gyldig && aff && aff[fra.value] && aff[til.value]) {
+          // Affin enhet (temperatur): grunnverdi = n * a + b, og svaret går tilbake gjennom til-enhetens a og b.
+          const [aF, bF] = aff[fra.value], [aT, bT] = aff[til.value];
+          ut = (n * aF + bF - bT) / aT;
+        } else if (gyldig) {
           const fraVekt = fra.value in data.g, tilVekt = til.value in data.g;
           const grunn = (e) => (e in data.g ? data.g[e] : data.ml[e]);
           if (fraVekt === tilVekt) ut = n * grunn(fra.value) / grunn(til.value);
@@ -338,11 +286,14 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         }
         if (gyldig) mengde.removeAttribute('aria-invalid'); else mengde.setAttribute('aria-invalid', 'true');
         if (Number.isFinite(ut)) {
-          const utTekst = svarTekst(ut, til.value);
+          const utTekst = data.sifre ? presis(ut, data.sifre) : svarTekst(ut, til.value);
           svar.textContent = utTekst;
+          // Tegnantallet styrer skriftstørrelsen i svarsiden (side.css), så et langt svar vises helt i stedet for å klippes.
+          svar.style.setProperty('--tegn', String(Math.max(utTekst.length, 1)));
           setning.textContent = [`${m.tekst || mengdeTekst(n)} ${kort(fra.value, m.entall)}`, ord, `= ${utTekst} ${kort(til.value, utTekst === '1')}`].filter(Boolean).join(' ');
         } else {
           svar.textContent = '';
+          svar.style.removeProperty('--tegn');
           setning.textContent = data.feil;
         }
         const gruppe = data.stegFor ? data.stegFor[fra.value] : fra.value in data.g ? (fra.value === 'kg' ? 'kg' : 'g') : (fra.value === 'ml' ? 'ml' : 'volum');
@@ -359,7 +310,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
       bytt.addEventListener('click', () => {
         const f = fra.value; fra.value = til.value; til.value = f;
         bytt.classList.toggle('snudd');
-        mengde.value = data.byttTil && data.byttTil[fra.value] !== undefined ? data.byttTil[fra.value] : fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
+        if (!data.beholdMengde) mengde.value = data.byttTil && data.byttTil[fra.value] !== undefined ? data.byttTil[fra.value] : fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
         regn();
       });
       regn();

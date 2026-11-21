@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fixture: the unit calculator card in English</title>
+<link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/skall.css"><link rel="stylesheet" href="/side.css">
+</head>
+<body data-sidetype="omregner">
+<main id="hovedinnhold">
+<header class="locale-page-hero"><p class="eyebrow">Tools</p><h1 class="disp">Fixture for the unit card</h1><p class="lead">Two forms with fractions: cups to ml, and °F to °C.</p>
+<form class="kalk" id="cups" data-kalk="enhet" onsubmit="return false" aria-label="Calculator: US cups to milliliters">
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Amount</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="1"></label>
+      <label class="kalkenhet"><span class="skjult">From</span><select data-felt="fra"><option value="ml">Milliliters (ml)</option><option value="cl">Centiliters (cl)</option><option value="dl">Deciliters (dl)</option><option value="l">Liters (l)</option><option value="tsp">US teaspoons (tsp)</option><option value="tbsp">US tablespoons (tbsp)</option><option value="oz">US fluid ounces (fl oz)</option><option value="cups" selected>US cups (cup)</option><option value="pints">US pints (pt)</option><option value="quarts">US quarts (qt)</option><option value="gallons">US gallons (gal)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Swap units"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">236.6</output>
+      <label class="kalkenhet"><span class="skjult">To</span><select data-felt="til"><option value="ml" selected>Milliliters (ml)</option><option value="cl">Centiliters (cl)</option><option value="dl">Deciliters (dl)</option><option value="l">Liters (l)</option><option value="tsp">US teaspoons (tsp)</option><option value="tbsp">US tablespoons (tbsp)</option><option value="oz">US fluid ounces (fl oz)</option><option value="cups">US cups (cup)</option><option value="pints">US pints (pt)</option><option value="quarts">US quarts (qt)</option><option value="gallons">US gallons (gal)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Common amounts"><button type="button" data-v="1/4">1/4 cup</button><button type="button" data-v="1/3">1/3 cup</button><button type="button" data-v="1/2">1/2 cup</button><button type="button" data-v="1">1 cup</button><button type="button" data-v="2">2 cups</button><button type="button" data-v="4">4 cups</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">1 cup = 236.6 ml</p>
+  <script type="application/json" class="kalk-data">{"ml":{"ml":1,"cl":10,"dl":100,"l":1000,"tsp":4.92892159375,"tbsp":14.78676478125,"oz":29.5735295625,"cups":236.5882365,"pints":473.176473,"quarts":946.352946,"gallons":3785.411784},"g":{},"kort":{"ml":"ml","cl":"cl","dl":"dl","l":"l","tsp":"tsp","tbsp":"tbsp","oz":"fl oz","cups":["cup","cups"],"pints":"pt","quarts":"qt","gallons":"gal"},"stegFor":{"ml":"ml","cl":"cl","dl":"dl","l":"l","tsp":"tsp","tbsp":"tbsp","oz":"oz","cups":"cups","pints":"pints","quarts":"quarts","gallons":"gallons"},"steg":{"ml":["50","100","150","250","500","1000"],"cl":["1","2","4","10","33","75"],"dl":["0.5","1","2","3","5","10"],"l":["0.5","1","1.5","2","3","5"],"tsp":["1/4","1/2","1","2","3","4"],"tbsp":["1/2","1","2","3","4","8"],"oz":["1","2","4","8","12","16"],"cups":["1/4","1/3","1/2","1","2","4"],"pints":["0.5","1","2","3","4","8"],"quarts":["0.5","1","2","3","4","6"],"gallons":["0.25","0.5","1","2","3","5"]},"sifre":4,"beholdMengde":true,"brok":true,"feil":"Enter an amount, for example 2 or 1/2."}</script>
+</form>
+<form class="kalk" id="temp" data-kalk="enhet" onsubmit="return false" aria-label="Calculator: degrees Fahrenheit to degrees Celsius">
+  <div class="kalkrad">
+    <div class="kalkside">
+      <label class="kalktall"><span class="skjult">Amount</span><input data-felt="mengde" type="text" inputmode="decimal" autocomplete="off" value="350"></label>
+      <label class="kalkenhet"><span class="skjult">From</span><select data-felt="fra"><option value="c">Degrees Celsius (°C)</option><option value="f" selected>Degrees Fahrenheit (°F)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+    <button type="button" class="bytt" data-felt="bytt" aria-label="Swap units"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4L3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"></path></svg></button>
+    <div class="kalkside til">
+      <output class="kalktall" data-felt="svar">176.7</output>
+      <label class="kalkenhet"><span class="skjult">To</span><select data-felt="til"><option value="c" selected>Degrees Celsius (°C)</option><option value="f">Degrees Fahrenheit (°F)</option></select><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg></label>
+    </div>
+  </div>
+  <div class="hurtig" role="group" aria-label="Common amounts"><button type="button" data-v="300">300 °F</button><button type="button" data-v="325">325 °F</button><button type="button" data-v="350">350 °F</button><button type="button" data-v="375">375 °F</button><button type="button" data-v="400">400 °F</button><button type="button" data-v="450">450 °F</button></div>
+  <p class="kalksetning" data-felt="setning" role="status" aria-live="polite">350 °F = 176.7 °C</p>
+  <script type="application/json" class="kalk-data">{"ml":{},"g":{},"kort":{"c":"°C","f":"°F"},"stegFor":{"c":"c","f":"f"},"steg":{"c":["100","150","180","200","220","250"],"f":["300","325","350","375","400","450"]},"sifre":4,"beholdMengde":true,"affin":{"c":[1,0],"f":[0.5555555555555556,-17.77777777777778]},"negativ":true,"brok":true,"feil":"Enter an amount, for example 2 or 1/2."}</script>
+</form>
+</header>
+</main>
+<script src="/site.js" defer></script>
+</body>
+</html>

@@ -83,13 +83,32 @@ test('skriftstørrelser bruker ikke vw (følger ikke tekststørrelsen)', () => {
   assert.deepEqual([...css.matchAll(/font-size:[^;}]*\dvw/gu)].map((m) => m[0]), []);
 });
 
-test('omregnersidene har stil for alle klassene i innholdet', () => {
-  assert.deepEqual(klasserUtenRegel('omregner', {
-    'omregner-data': 'bare data for kalkulatoren i site.js',
+test('omregnersidene har stil for alle klassene i innholdet', async () => {
+  // Klassene leses fra det generatorene lager (topp, lesedel og FAQ på alle 714 omregnerne), ikke fra de bygde filene: stilen må dekke kortet også før sidene er bygget på nytt.
+  const { enhetsSiderNb } = await import('../scripts/nb-enhetssider.mjs');
+  const { enhetsSiderSv } = await import('../scripts/sv-enhetssider.mjs');
+  const { enhetsSiderDa } = await import('../scripts/da-enhetssider.mjs');
+  const { enhetsSider } = await import('../scripts/en-enhetssider.mjs');
+  const { rikeSider } = await import('../scripts/en-rike-sider.mjs');
+  const alle = [enhetsSiderNb, enhetsSiderSv, enhetsSiderDa, { ...enhetsSider, hub: rikeSider['tools/unit-converter/'] }].flatMap((o) => Object.values(o));
+  assert.equal(alle.length, 714, 'alle omregnerne er med');
+  const unntak = {
     'disp': 'skriftvalg på overskrifter, ingen egen regel', 'has-toc': 'markør; innholdsfortegnelsen skjules', 'toc-title': 'skjules sammen med .toc',
+    'kalk-data': 'bare data for kortet i site.js',
     'i-import': 'velger bilde i app-bevis', 'i-kokemodus': 'velger bilde i app-bevis',
     'i-mapper': 'velger bilde i app-bevis', 'i-skalering': 'velger bilde i app-bevis', 'i-enheter': 'velger bilde i app-bevis',
-  }), []);
+  };
+  const regelKlasser = new Set([...klasserIVelgere(les('side.css')), ...klasserIVelgere(les('skall.css'))]);
+  const funnet = new Set();
+  for (const s of alle) {
+    const html = [s.topp, s.rik, `<div class="faq">${(s.faq ?? []).flat().join('')}</div>`].join('');
+    for (const m of html.matchAll(/\sclass="([^"]*)"/gu)) for (const k of m[1].split(/\s+/u)) if (k) funnet.add(k);
+  }
+  // Vakten må se kortet, ellers er den blind.
+  for (const k of ['kalk', 'kalkrad', 'kalkside', 'kalktall', 'kalkenhet', 'hurtig', 'kalksetning', 'kortsvar']) assert.ok(funnet.has(k), `generatorene lager ikke klassen ${k}`);
+  assert.deepEqual([...funnet].filter((k) => !regelKlasser.has(k) && !(k in unntak)).sort(), []);
+  // Den gamle omregnerens klasser er ikke i innholdet lenger.
+  for (const k of ['omregner', 'omregner-rad', 'omregner-svar', 'omregner-bytt', 'omregner-data']) assert.ok(!funnet.has(k), `${k} står fortsatt i innholdet`);
 });
 
 test('lange guider har stil for alle klassene i innholdet', () => {

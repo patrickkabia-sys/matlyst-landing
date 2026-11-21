@@ -307,11 +307,10 @@ Alle punktene er valgt eller bekreftet av Patrick 19.11, i valgkort eller etter 
 
 ### 16.4 Omregneren
 
-- Når enhetene byttes, bytter de to valgene plass med en kort animasjon (rundt 0,3 sekunder, uten sprett). Etikettene «Fra» og «Til» står stille. Verdiene er byttet i siden med en gang, og et nytt trykk avbryter animasjonen. Ingenting beveger seg ved redusert bevegelse.
-- Svaret bruker språkets desimaltegn: komma på norsk, svensk og dansk, punktum på engelsk. Ingen tusenskille i svaret.
-- Entall for 1 og −1, flertall ellers («1 kopp», «1500 kopper»). Formene kommer fra sidens egne data.
-- Inntastingen leses som en helhet. Komma og punktum er desimaltegn, og språkets tusenskille godtas («1.500» er 1500 på norsk). Ugyldig tekst gir tomt svar, aldri et delsvar.
-- Kalkulatorkortet står i lesekolonnen og flukter med overskriften sin.
+- Enhetsomregnerne (de fire samlesidene og de 710 parsidene på norsk, svensk, dansk og engelsk) bruker kalkulatorkortet i 16.8 med `data-kalk="enhet"`, rett under ingressen. Kortet er svaret: seksjonen «Kalkulator», svarboksen og innholdsfortegnelsen finnes ikke i lesedelen, og under kortet står ett kort svar («1 cup = 2,366 dl», «180 °C = 356 °F») som åpner med den samme setningen kortet viser uten JavaScript.
+- Bytteanimasjon, flertall, desimaltegn, tallesing og regneregler beskrives av 16.8 (fire gjeldende sifre, 1000 og over som heltall, mengden står ved bytte, temperatur er affin og kan være negativ, engelsk tar brøker). Tabellene og teksten på siden bruker samme tallregel, så de er like kortets svar.
+- «Cups» er hovedordet i enhetsnavn, tittel og overskrift på norsk, svensk og dansk («1 cup», «2 cups»). «Kopp» (nb og sv) og «kop» (da) står bare i noen få nøyaktig angitte setninger: én forklaring («En cup er en amerikansk kopp på 236,6 ml») og spørsmålene «Er en cup det samme som en kopp?» og, mellom cups og dl, «Hvor mange dl er en kopp?». Adressene beholder «kopp» og «kop».
+- Samlesidene har kortet med volumenhetene og beholder sin innledning som første avsnitt i lesedelen.
 
 ### 16.5 Tekst og typografi
 
@@ -344,11 +343,17 @@ Alle punktene er valgt eller bekreftet av Patrick 19.11, i valgkort eller etter 
 - Felt: mengde, fra-enhet og til-enhet (dl, ss, ts, ml, liter, cups, gram, kilo), bytteknapp og seks hurtigmengder som følger fra-enheten. Varen står fast øverst i kortet med lenken «Bytt vare», eller velges i en liste. Under står én svarsetning («2 dl hvetemel = 110 g») som leses opp (`role="status"`).
 - Regning: alt går via gram. Volum til gram er ml per enhet delt på 100 ganger gram per dl; vekt til vekt og samme enhet trenger ikke varens vekt. Bytteknappen bytter fra og til og setter mengden til 100 (gram), 1 (kilo) eller 2.
 - Tall: svar i gram fra 10 g er hele gram (halve runder opp), og under 10 g to gjeldende sifre uten «,0» til slutt (2,8 g, 8,3 g, 0,52 g). Alle andre enheter: 100 og over som heltall, 10 til 100 med tre gjeldende sifre, under 10 med to, uten «,0» til slutt (2 dl, 18,2 dl, 0,77 dl). Språkets desimaltegn, ingen tusenskille. Tallesingen er den samme som i omregneren (`tolkTall`, `visTall`). Tabellene på sidene i en sidefamilie skrives etter samme regel, låst av `test/playwright/kalk-tabell.spec.mjs`.
-- Ugyldig inntasting (tomt, tekst, flere desimaltegn, negativt tall) gir veiledningen fra sidens data og `aria-invalid="true"` på feltet, aldri «NaN» eller «0 g».
+- Ugyldig inntasting (tomt, tekst, flere desimaltegn, negativt tall) gir veiledningen fra sidens data og `aria-invalid="true"` på feltet, aldri «NaN» eller «0 g». Det gjelder også tall som ikke er endelige («1» fulgt av 309 nuller), med eller uten brøk.
 - All tekst kommer fra sidens egne data (`kalk-data`). Uten JavaScript står et ferdig utregnet eksempel. Trykkflater er minst 44 px, fokus er synlig også på den mørke siden, og bytteanimasjonen står stille ved redusert bevegelse.
 - Fire valgfrie felt i `kalk-data` gir engelske skjemaer det de trenger; mangler de, gjelder reglene over uendret (norske sider er bytelike):
-  - `brok: true`: mengden kan skrives `a/b` eller `n a/b` (heltall, nevner over 0, valgfritt mellomrom rundt skråstreken), og svarsetningen gjengir brøken normalisert («1 1/2»). Mellomrom mellom sifre er da ikke tusenskille («1 2» er ugyldig). Hurtigmengder kan være brøker, og `aria-pressed` sammenligner tallverdier.
+  - `brok: true`: mengden kan skrives `a/b` eller `n a/b` (heltall, nevner over 0, valgfritt mellomrom rundt skråstreken), og svarsetningen gjengir brøken normalisert («1 1/2»). Mellomrom mellom sifre er da ikke tusenskille («1 2» er ugyldig). Med `negativ` kan brøken ha minus rett foran («-1/2», «-1 1/2»); uten `negativ` er en negativ brøk ugyldig, som negative desimaltall. Hurtigmengder kan være brøker, og `aria-pressed` sammenligner tallverdier.
   - `kort[e]` som liste er `[entall, flertall]`: entall når mengden er nøyaktig 1 eller en ekte brøk under 1 skrevet som brøk («1/2 cup»), ellers flertall («0.8 cups», «1 1/2 cups»). På svarsiden er det entall bare når svaret vises som «1».
   - `stegFor[e]` peker på hurtiggruppen i `steg` for hver fra-enhet; bare gruppene den peker på kreves.
   - `byttTil[e]` er mengden som settes når `e` blir fra-enhet ved bytte. Enhetsnøklene i `ml` og `g` er fritt valgte (`floz` er volum, `oz` og `lb` er vekt); fluid ounces til ounces krysser volum og vekt og trenger varens vekt.
-- Låst av `test/playwright/kalk.spec.mjs` (også `kalk-en.html`), `test/site-tall.test.mjs` og `test/side-css.test.mjs`.
+- Fem valgfrie felt gir enhetsomregning uten vare (lengde, temperatur, volum, vekt); mangler de, oppfører kortet seg som over:
+  - `affin: { [enhet]: [a, b] }`: grunnverdi = `n * a + b`. Når både fra og til står i `affin`, er `ut = (n * aFra + bFra - bTil) / aTil`. Celsius er `[1, 0]`, fahrenheit `[5/9, -160/9]`.
+  - `negativ: true`: negative mengder er gyldige (minusgrader). Uten feltet gir negative tall veiledningen.
+  - `sifre: 4`: svaret skrives slik for alle enheter, også gram. 0 er «0», absoluttverdi 1000 og over er heltall (halve runder opp, rundet på tolv gjeldende sifre først), ellers `sifre` gjeldende sifre uten overflødige nuller og uten tak på desimaler. Språkets desimaltegn.
+  - `beholdMengde: true`: bytteknappen bytter fra og til og lar mengden stå.
+  - `varer` kan mangle. Vareordet er da tomt, og kryssing mellom `ml` og `g` gir veiledningen. `ml` holder faktorene for gruppen som ikke er vekt (volum eller lengde); en temperaturside har `ml: {}` og `g: {}`.
+- Låst av `test/playwright/kalk.spec.mjs` (også `kalk-en.html`), `test/playwright/kalk-enhet.spec.mjs` (også `kalk-enhet-en.html`), `test/omregner-sider.test.mjs`, `test/site-tall.test.mjs` og `test/side-css.test.mjs`.

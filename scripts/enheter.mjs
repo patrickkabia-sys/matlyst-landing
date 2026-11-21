@@ -2,6 +2,8 @@
 // Alle faktorer er definisjoner, ikke målinger: US-enheter fra den amerikanske definisjonen
 // (1 US gallon = 3,785411784 liter, 1 pound = 0,45359237 kg, 1 inch = 2,54 cm).
 // Volum regnes via milliliter, vekt via gram, lengde via millimeter. Temperatur har egne formler.
+import { esc, kalkSkjelett, presisTekst } from './kalk-kort.mjs';
+
 export const GRUPPER = {
   volum: { base: 'ml', navn: { en: 'volume' } },
   vekt: { base: 'g', navn: { en: 'weight' } },
@@ -18,7 +20,7 @@ export const ENHETER = {
   tsp: { gruppe: 'volum', f: 4.92892159375, en: { en: 'US teaspoon', fl: 'US teaspoons', kort: 'tsp' }, nb: { en: 'amerikansk teskje', fl: 'amerikanske teskjeer', kort: 'tsp' }, sv: { en: 'amerikansk tesked', fl: 'amerikanska teskedar', kort: 'tsp' }, da: { en: 'amerikansk teskefuld', fl: 'amerikanske teskefulde', kort: 'tsp' } },
   tbsp: { gruppe: 'volum', f: 14.78676478125, en: { en: 'US tablespoon', fl: 'US tablespoons', kort: 'tbsp' }, nb: { en: 'amerikansk spiseskje', fl: 'amerikanske spiseskjeer', kort: 'tbsp' }, sv: { en: 'amerikansk matsked', fl: 'amerikanska matskedar', kort: 'tbsp' }, da: { en: 'amerikansk spiseskefuld', fl: 'amerikanske spiseskefulde', kort: 'tbsp' } },
   oz: { gruppe: 'volum', f: 29.5735295625, en: { en: 'US fluid ounce', fl: 'US fluid ounces', kort: 'fl oz' }, nb: { en: 'amerikansk væskeunse', fl: 'amerikanske væskeunser', kort: 'fl oz' }, sv: { en: 'amerikanskt flytande uns', fl: 'amerikanska flytande uns', kort: 'fl oz' }, da: { en: 'amerikansk flydende ounce', fl: 'amerikanske flydende ounces', kort: 'fl oz' } },
-  cups: { gruppe: 'volum', f: 236.5882365, en: { en: 'US cup', fl: 'US cups', kort: 'cup' }, nb: { en: 'amerikansk kopp', fl: 'amerikanske kopper', kort: 'kopp' }, sv: { en: 'amerikansk kopp', fl: 'amerikanska koppar', kort: 'kopp' }, da: { en: 'amerikansk kop', fl: 'amerikanske kopper', kort: 'kop' } },
+  cups: { gruppe: 'volum', f: 236.5882365, en: { en: 'US cup', fl: 'US cups', kort: 'cup' }, nb: { en: 'cup', fl: 'cups', kort: 'cups' }, sv: { en: 'cup', fl: 'cups', kort: 'cup' }, da: { en: 'cup', fl: 'cups', kort: 'cup' } },
   pints: { gruppe: 'volum', f: 473.176473, en: { en: 'US pint', fl: 'US pints', kort: 'pt' }, nb: { en: 'amerikansk pint', fl: 'amerikanske pints', kort: 'pint' }, sv: { en: 'amerikansk pint', fl: 'amerikanska pints', kort: 'pint' }, da: { en: 'amerikansk pint', fl: 'amerikanske pints', kort: 'pint' } },
   quarts: { gruppe: 'volum', f: 946.352946, en: { en: 'US quart', fl: 'US quarts', kort: 'qt' }, nb: { en: 'amerikansk quart', fl: 'amerikanske quarts', kort: 'quart' }, sv: { en: 'amerikansk quart', fl: 'amerikanska quarts', kort: 'quart' }, da: { en: 'amerikansk quart', fl: 'amerikanske quarts', kort: 'quart' } },
   gallons: { gruppe: 'volum', f: 3785.411784, en: { en: 'US gallon', fl: 'US gallons', kort: 'gal' }, nb: { en: 'amerikansk gallon', fl: 'amerikanske gallon', kort: 'gallon' }, sv: { en: 'amerikansk gallon', fl: 'amerikanska gallon', kort: 'gallon' }, da: { en: 'amerikansk gallon', fl: 'amerikanske gallon', kort: 'gallon' } },
@@ -49,12 +51,10 @@ export function konverter(verdi, fra, til) {
   return verdi * a.f / b.f;
 }
 
-/** Tall til visning: opptil 4 gjeldende sifre, uten unødvendige nuller. */
+/** Tall til visning: fire gjeldende sifre, 1000 og over som heltall, uten unødvendige nuller og uten tak på desimaler (punktum; generatorene setter komma selv). Samme regel som kalkulatorkortet (presisTekst). */
 export function tall(n) {
   if (!Number.isFinite(n)) return '';
-  const abs = Math.abs(n);
-  const d = abs >= 1000 ? 0 : abs >= 100 ? 1 : abs >= 10 ? 2 : abs >= 1 ? 3 : abs >= 0.1 ? 4 : 5;
-  return String(Number(n.toFixed(d)));
+  return presisTekst(n, 4);
 }
 
 /** Enheter som finnes på et språk (nordiske husholdningsmål finnes bare der de brukes). */
@@ -81,20 +81,119 @@ export const parSti = (fra, til, lang = 'en') => `${VERKTOY[lang]}/${parSlug(fra
 /** Ordformen for enheter som skrives som ord (ikke symbol): [entall, flertall]. Entall gjelder bare for nøyaktig 1.
  *  Symboler (ml, dl, fl oz, pt, qt, °C ...) og ord uten egen flertallsform står ikke her og skrives som `kort`. */
 export const FLERTALL = {
-  nb: { cups: ['kopp', 'kopper'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
-  sv: { cups: ['kopp', 'koppar'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'] },
-  da: { cups: ['kop', 'kopper'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
+  nb: { cups: ['cup', 'cups'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
+  sv: { cups: ['cup', 'cups'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'] },
+  da: { cups: ['cup', 'cups'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
   en: { cups: ['cup', 'cups'] },
 };
 
-/** Dataene en omregner bærer i siden (class omregner-data): faktorene, om det er temperatur, og ordformene (`o`) for enhetene i valglisten. */
-export function omregnerData(lang, f, temperatur) {
-  const o = Object.fromEntries(Object.keys(f).filter((id) => FLERTALL[lang]?.[id]).map((id) => [id, FLERTALL[lang][id]]));
-  return { f, t: temperatur, ...(Object.keys(o).length ? { o } : {}) };
+// Kalkulatorkortet for enhetsomregnerne (data-kalk="enhet"). Siden skriver alt synlig tekst fra disse dataene; site.js har ingen språkstrenger.
+
+/** Hurtigmengdene (seks per enhet, stigende). Tallene skrives med språkets desimaltegn i kortet. */
+export const HURTIG = {
+  ml: [50, 100, 150, 250, 500, 1000], cl: [1, 2, 4, 10, 33, 75], dl: [0.5, 1, 2, 3, 5, 10], l: [0.5, 1, 1.5, 2, 3, 5], krm: [1, 2, 3, 4, 5, 10],
+  ts: [0.5, 1, 2, 3, 4, 5], tsk: [0.5, 1, 2, 3, 4, 5], ss: [0.5, 1, 2, 3, 4, 6], msk: [0.5, 1, 2, 3, 4, 6], spsk: [0.5, 1, 2, 3, 4, 6],
+  tsp: [0.25, 0.5, 1, 2, 3, 4], tbsp: [0.5, 1, 2, 3, 4, 8], oz: [1, 2, 4, 8, 12, 16], cups: [0.25, 0.5, 1, 2, 3, 4], pints: [0.5, 1, 2, 3, 4, 8],
+  quarts: [0.5, 1, 2, 3, 4, 6], gallons: [0.25, 0.5, 1, 2, 3, 5],
+  g: [50, 100, 150, 250, 500, 1000], kg: [0.25, 0.5, 1, 1.5, 2, 5], 'oz-vekt': [1, 2, 4, 8, 12, 16], lb: [0.25, 0.5, 1, 2, 3, 5],
+  mm: [1, 2, 5, 10, 20, 30], cm: [5, 10, 18, 20, 24, 30], inches: [1, 6, 8, 9, 10, 12],
+  c: [100, 150, 180, 200, 220, 250], f: [300, 325, 350, 375, 400, 450],
+};
+/** Brøker som hurtigmengder på engelsk (amerikanske oppskrifter), for cups, tbsp og tsp. */
+export const HURTIG_BROK = {
+  cups: ['1/4', '1/3', '1/2', '1', '2', '4'], tbsp: ['1/2', '1', '2', '3', '4', '8'], tsp: ['1/4', '1/2', '1', '2', '3', '4'],
+};
+/** Startmengden i kortet. Alle andre enheter starter på 1. */
+export const START = { c: 180, f: 350 };
+
+/** Etikettene i kortet per språk. `aria` får enhetsnavnene (ENHETER[id][lang]). */
+export const KORT_ETIKETTER = {
+  nb: { aria: (F, T) => `Kalkulator: ${F.fl} til ${T.fl}`, mengde: 'Mengde', fra: 'Fra', til: 'Til', bytt: 'Bytt enheter', vanlige: 'Vanlige mengder', feil: 'Skriv inn en mengde, for eksempel 2 eller 2,5.' },
+  sv: { aria: (F, T) => `Omvandlare: ${F.fl} till ${T.fl}`, mengde: 'Mängd', fra: 'Från', til: 'Till', bytt: 'Byt enheter', vanlige: 'Vanliga mängder', feil: 'Skriv en mängd, till exempel 2 eller 2,5.' },
+  da: { aria: (F, T) => `Regnemaskine: ${F.fl} til ${T.fl}`, mengde: 'Mængde', fra: 'Fra', til: 'Til', bytt: 'Skift enheder', vanlige: 'Almindelige mængder', feil: 'Skriv en mængde, for eksempel 2 eller 2,5.' },
+  en: { aria: (F, T) => `Calculator: ${F.fl} to ${T.fl}`, mengde: 'Amount', fra: 'From', til: 'To', bytt: 'Swap units', vanlige: 'Common amounts', feil: 'Enter an amount, for example 2 or 1/2.' },
+};
+
+const storBokstav = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+/** Valgteksten: «Flertallsnavn (kort)». Er kortformen lik flertallsnavnet eller entallet («Cups»), står navnet alene, ikke «Cups (cups)» eller «Cups (cup)». */
+const valgtekst = (lang, id) => {
+  const { en, fl, kort } = ENHETER[id][lang];
+  return [fl, en].some((t) => t.toLocaleLowerCase() === kort.toLocaleLowerCase()) ? storBokstav(fl) : `${storBokstav(fl)} (${kort})`;
+};
+// Samme regel som site.js: entall for nøyaktig 1, og for en ekte brøk under 1 skrevet som brøk («1/2»).
+const erEntall = (v) => {
+  const m = /^(\d+)\/(\d+)$/u.exec(v);
+  return m ? Number(m[1]) < Number(m[2]) : Number(String(v).replace(',', '.')) === 1;
+};
+
+const ordI = (lang, id, entall) => {
+  const form = FLERTALL[lang]?.[id];
+  return form ? form[entall ? 0 : 1] : ENHETER[id][lang].kort;
+};
+
+/** Ordet for enheten ved en mengde, bøyd etter samme regel som kortet: entall når mengden vises som «1» (fire gjeldende sifre), ellers flertall. Enheter uten ordform står som kortformen. */
+export const ordVed = (lang, id, v) => ordI(lang, id, tall(v) === '1');
+
+/**
+ * Tittel og H1 for en enhetsomregner. `verb(a, b)` er språkets «Regn om a til b». Mønsteret er det samme for alle sidene, også de med like ledd (cups):
+ * tittel «<verb kort>: <navn> til <navn>» (kortformen alene når den er over 60 tegn eller når delen etter kolon bare gjentar leddet foran),
+ * H1 «<Navn> til <navn> (<kort> til <kort>)» (uten parentes når parentesen ville vært lik teksten foran).
+ */
+export function tittelOgH1(lang, fra, til, verb) {
+  const F = ENHETER[fra][lang]; const T = ENHETER[til][lang];
+  const ledd = { nb: 'til', sv: 'till', da: 'til', en: 'to' }[lang];
+  const parKort = `${F.kort} ${ledd} ${T.kort}`;
+  const parNavn = `${F.fl} ${ledd} ${T.fl}`;
+  const lik = parNavn.toLocaleLowerCase() === parKort.toLocaleLowerCase();
+  const lang0 = `${verb(F.kort, T.kort)}: ${parNavn}`;
+  const base = `${storBokstav(F.fl)} ${ledd} ${T.fl}`;
+  return { title: lik || lang0.length > 60 ? verb(F.kort, T.kort) : lang0, h1: lik ? base : `${base} (${parKort})` };
 }
 
-/** Ordet for enhet `id` ved mengden `v` på språket: entall bare når tallet som vises er nøyaktig 1, ellers flertall. Symboler står uendret. */
-export function ordFor(lang, id, v) {
-  const form = FLERTALL[lang]?.[id];
-  return form ? form[Math.abs(Number(tall(v))) === 1 ? 0 : 1] : ENHETER[id][lang].kort;
+/** Setningen kortet viser uten JavaScript: startmengden regnet om («1 cup = 2,366 dl», «180 °C = 356 °F»). Det korte svaret under kortet åpner med den samme setningen, så de to viser samme regnestykke. */
+export function kortSetning(lang, fra, til) {
+  const komma = lang !== 'en';
+  const start = START[fra] ?? 1;
+  const svar = presisTekst(konverter(start, fra, til), 4, { komma });
+  return `${presisTekst(start, 4, { komma })} ${ordI(lang, fra, start === 1)} = ${svar} ${ordI(lang, til, svar === '1')}`;
+}
+
+/**
+ * Ferdig kalkulatorkort (form.kalk, data-kalk="enhet") for en enhetsomregner: enhetene i gruppen til `fra` (eller `ids`, for samlesidene),
+ * uten varerad. Mengden står ved bytte, svaret har fire gjeldende sifre, og temperatur er affin og kan være negativ. Engelsk tar brøker.
+ * Det statiske eksempelet (uten JavaScript) er det kortet selv regner ut ved lasting.
+ */
+export function enhetsKort(lang, fra, til, { ids } = {}) {
+  const gruppe = ENHETER[fra].gruppe;
+  const valg = ids ?? enheterFor(lang).filter((id) => ENHETER[id].gruppe === gruppe);
+  const komma = lang !== 'en';
+  const brok = lang === 'en';
+  const E = KORT_ETIKETTER[lang];
+  const ml = {}, g = {}, kort = {}, steg = {};
+  for (const id of valg) {
+    if (ENHETER[id].gruppe === 'vekt') g[id] = ENHETER[id].f;
+    else if (ENHETER[id].gruppe !== 'temperatur') ml[id] = ENHETER[id].f;
+    kort[id] = FLERTALL[lang]?.[id] ?? ENHETER[id][lang].kort;
+    steg[id] = brok && HURTIG_BROK[id] ? HURTIG_BROK[id] : HURTIG[id].map((n) => presisTekst(n, 4, { komma }));
+  }
+  const temperatur = gruppe === 'temperatur';
+  const data = {
+    ml, g, kort, stegFor: Object.fromEntries(valg.map((id) => [id, id])), steg, sifre: 4, beholdMengde: true,
+    ...(temperatur ? { affin: { c: [1, 0], f: [5 / 9, -160 / 9] }, negativ: true } : {}),
+    ...(brok ? { brok: true } : {}),
+    feil: E.feil,
+  };
+  const start = START[fra] ?? 1;
+  const svar = presisTekst(konverter(start, fra, til), 4, { komma });
+  const mengde = presisTekst(start, 4, { komma });
+  return kalkSkjelett({
+    etiketter: { aria: E.aria(ENHETER[fra][lang], ENHETER[til][lang]), mengde: E.mengde, fra: E.fra, til: E.til, bytt: E.bytt, vanlige: E.vanlige },
+    enheter: valg.map((id) => [id, esc(valgtekst(lang, id))]),
+    fra, til, data, vareHtml: '', type: 'enhet',
+    start: {
+      mengde, svar,
+      setning: esc(kortSetning(lang, fra, til)),
+      hurtig: steg[fra].map((v) => [v, esc(`${v} ${ordI(lang, fra, erEntall(v))}`)]),
+    },
+  });
 }
