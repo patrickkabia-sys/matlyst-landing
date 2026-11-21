@@ -179,9 +179,9 @@ test('sentrale tall står både i data og på siden, fra den amerikanske kilden'
 test('samme rad-id som norsk gir hreflang, og en vare uten norsk motstykke står alene', () => {
   const g = (navn) => familieGrupper().find((x) => x.id === navn);
   assert.deepEqual(g('auto-fam-mengde-per-person-kalkun').sider, { nb: '/mengde-per-person/kalkun/', en: '/en/how-much-per-person/turkey/' });
-  assert.deepEqual(g('auto-fam-mengde-per-person-ris').sider, { nb: '/mengde-per-person/ris/', en: '/en/how-much-per-person/rice/' });
+  assert.deepEqual(g('auto-fam-mengde-per-person-ris').sider, { nb: '/mengde-per-person/ris/', sv: '/sv/hur-mycket-per-person/ris/', en: '/en/how-much-per-person/rice/' });
   assert.deepEqual(g('auto-fam-mengde-per-person-thanksgiving').sider, { en: '/en/how-much-per-person/thanksgiving-dinner/' });
-  assert.deepEqual(g('auto-fam-mengde-per-person-nav').sider, { nb: '/mengde-per-person/', en: '/en/how-much-per-person/' });
+  assert.deepEqual(g('auto-fam-mengde-per-person-nav').sider, { nb: '/mengde-per-person/', sv: '/sv/hur-mycket-per-person/', en: '/en/how-much-per-person/' });
 });
 
 test('sidene har ingen tankestrek, ingen emoji, ingen norske kilder, ingen egne råd om hva som er nok, ingen forfatterlinje og en egen tittel hver', async () => {

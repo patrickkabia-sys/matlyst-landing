@@ -1,0 +1,723 @@
+{
+  "familie": "mengde-per-person",
+  "marked": "sv",
+  "kilder": {
+    "arlapasta": {
+      "navn": "Hur mycket pasta per person och portion?",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/artiklar/hur-mycket-pasta-per-person-och-portion/",
+      "hentet": "2026-11-21"
+    },
+    "arlaris": {
+      "navn": "Koka ris: tips för fluffigare ris",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/artiklar/koka-ris-tips/",
+      "hentet": "2026-11-21"
+    },
+    "arlapotatis": {
+      "navn": "Koka potatis",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/artiklar/koka-potatis-tider-tips/",
+      "hentet": "2026-11-21"
+    },
+    "arlalax": {
+      "navn": "Gravad lax",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/gravad-lax/",
+      "hentet": "2026-11-21"
+    },
+    "kungstag": {
+      "navn": "Tagliatelle",
+      "utgiver": "Kungsörnen",
+      "aar": 2026,
+      "adresse": "https://www.kungsornen.se/produkter/kungsornen-tagliatelle/",
+      "hentet": "2026-11-21"
+    },
+    "skinkop": {
+      "navn": "Inköpsmängd per portion",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/kopa-kott/inkopsmangd-per-portion/",
+      "hentet": "2026-11-21"
+    },
+    "sknot": {
+      "navn": "Köpa nötkött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/kopa-kott/att-kopa-notkott/",
+      "hentet": "2026-11-21"
+    },
+    "skgris": {
+      "navn": "Köpa griskött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/kopa-kott/att-kopa-griskott/",
+      "hentet": "2026-11-21"
+    },
+    "sklamm": {
+      "navn": "Köpa lammkött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/kopa-kott/kopa-lammkott/",
+      "hentet": "2026-11-21"
+    },
+    "skjul": {
+      "navn": "Allt du vill veta om julskinka",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/aktuellt/allt-du-vill-veta-om-julskinka/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ris",
+      "slug": "ris",
+      "navn": "Ris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pp": {
+          "verdi": 0.5,
+          "enhet": "dl",
+          "kilde": "arlaris",
+          "merknad": "Du kan alltså tänka ungefär 0,5 dl okokt ris per portion."
+        },
+        "svall-okokt": {
+          "verdi": 2,
+          "enhet": "dl",
+          "kilde": "arlaris",
+          "merknad": "2 dl okokt ris blir 5 dl kokt ris och räcker till 3-4 portioner."
+        },
+        "svall-kokt": {
+          "verdi": 5,
+          "enhet": "dl",
+          "kilde": "arlaris",
+          "merknad": "2 dl okokt ris blir 5 dl kokt ris och räcker till 3-4 portioner."
+        },
+        "port-min": {
+          "verdi": 3,
+          "enhet": "portioner",
+          "kilde": "arlaris",
+          "merknad": "2 dl okokt ris blir 5 dl kokt ris och räcker till 3-4 portioner."
+        },
+        "port-maks": {
+          "verdi": 4,
+          "enhet": "portioner",
+          "kilde": "arlaris",
+          "merknad": "2 dl okokt ris blir 5 dl kokt ris och räcker till 3-4 portioner."
+        }
+      },
+      "tekst": {
+        "svaller": "arlaris|Ris sväller till dryg dubbla mängden.",
+        "svag": "arlaris|Koka alltid ris på svag värme, så att det sjuder"
+      }
+    },
+    {
+      "id": "pasta",
+      "slug": "pasta",
+      "navn": "Pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "arla": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "arlapasta",
+          "merknad": "I våra näringsberäknade recept anger vi 75 gram okokt pasta per portion, det vill säga 300 gram pasta för fyra personer."
+        },
+        "norm-min": {
+          "verdi": 70,
+          "enhet": "g",
+          "kilde": "arlapasta",
+          "merknad": "Ofta nämns 70-80 gram pasta som en normalportion."
+        },
+        "norm-maks": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "arlapasta",
+          "merknad": "Ofta nämns 70-80 gram pasta som en normalportion."
+        },
+        "span-min": {
+          "verdi": 56,
+          "enhet": "g",
+          "kilde": "arlapasta",
+          "merknad": "från 56 till 100 gram per portion"
+        },
+        "span-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "arlapasta",
+          "merknad": "från 56 till 100 gram per portion"
+        },
+        "rest": {
+          "verdi": 110,
+          "enhet": "g",
+          "kilde": "arlapasta",
+          "merknad": "Ett standardmått på restauranger är 110 gram okokt pasta per portion."
+        },
+        "vida-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "arlapasta",
+          "merknad": "Med andra ord kan en normalportion pasta variera från 75-125 gram okokt pasta per person."
+        },
+        "vida-maks": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "arlapasta",
+          "merknad": "Med andra ord kan en normalportion pasta variera från 75-125 gram okokt pasta per person."
+        },
+        "tag": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "kungstag",
+          "merknad": "Beräkna ca 85 g pasta per portion."
+        },
+        "tag-vatten": {
+          "verdi": 1,
+          "enhet": "liter",
+          "kilde": "kungstag",
+          "merknad": "Använd mycket vatten, helst 1 liter per portion."
+        }
+      },
+      "tekst": {
+        "okokt": "arlapasta|Mängderna i den här artikeln gäller okokt pasta.",
+        "hal": "arlapasta|Ett hål motsvarar en portion spaghetti för en medelhungrig person.",
+        "hungrig": "arlapasta|Räkna med lite mer om gästerna är extra hungriga."
+      }
+    },
+    {
+      "id": "poteter",
+      "slug": "potatis",
+      "navn": "Potatis",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pp": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "arlapotatis",
+          "merknad": "Men du kan räkna med runt 200 gram potatis per person."
+        }
+      },
+      "tekst": {
+        "hunger": "arlapotatis|Allt beror ju såklart på hur hungriga alla i sällskapet är och hur mycket mat som serveras utöver potatisen."
+      }
+    },
+    {
+      "id": "kjott",
+      "slug": "kott",
+      "navn": "Kött",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "benfritt-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 100–125g | 400–500g med ben | 125–175g | 500–700g med mycket ben | 175–200g | 700-800g"
+        },
+        "benfritt-maks": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 100–125g | 400–500g med ben | 125–175g | 500–700g med mycket ben | 175–200g | 700-800g"
+        },
+        "ben-min": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 100–125g | 400–500g med ben | 125–175g | 500–700g med mycket ben | 175–200g | 700-800g"
+        },
+        "ben-maks": {
+          "verdi": 175,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 100–125g | 400–500g med ben | 125–175g | 500–700g med mycket ben | 175–200g | 700-800g"
+        },
+        "mben-min": {
+          "verdi": 175,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 100–125g | 400–500g med ben | 125–175g | 500–700g med mycket ben | 175–200g | 700-800g"
+        },
+        "mben-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 100–125g | 400–500g med ben | 125–175g | 500–700g med mycket ben | 175–200g | 700-800g"
+        },
+        "kokt-min": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 60–75g | 240–300g med ben | 75–100g | 300–400g med mycket ben | 125–150g | 500–600g"
+        },
+        "kokt-maks": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 60–75g | 240–300g med ben | 75–100g | 300–400g med mycket ben | 125–150g | 500–600g"
+        },
+        "kokt-ben-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 60–75g | 240–300g med ben | 75–100g | 300–400g med mycket ben | 125–150g | 500–600g"
+        },
+        "kokt-ben-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "benfritt | 60–75g | 240–300g med ben | 75–100g | 300–400g med mycket ben | 125–150g | 500–600g"
+        },
+        "lever": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Lever, tunga, njure | 100g | 400g"
+        }
+      }
+    },
+    {
+      "id": "biff",
+      "slug": "biff",
+      "navn": "Nötkött och biff",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "entre": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Beräkna ca 125 g per person."
+        },
+        "biff-utan": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Beräkna 100 g kött per person när du köper biff utan kappa."
+        },
+        "biff-med": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Med kappa går det åt ca 125 g per person."
+        },
+        "file": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Beräkna 125g oxfilé per portion."
+        },
+        "stek": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Beräkna 125 g per portion."
+        },
+        "rostbiff": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Beräkna 125 g per portion här."
+        },
+        "gryt": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Grytbitar brukar oftast komma från bog, högrev eller märgpipa. Beräkna 100 g per person."
+        },
+        "fram-utan": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Beräkna 100 g per person om du köper kött utan ben och mellan 150 och 200 g per person för kött med ben."
+        },
+        "fram-med-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Beräkna 100 g per person om du köper kött utan ben och mellan 150 och 200 g per person för kött med ben."
+        },
+        "fram-med-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "sknot",
+          "merknad": "Beräkna 100 g per person om du köper kött utan ben och mellan 150 och 200 g per person för kött med ben."
+        },
+        "svans-kg": {
+          "verdi": 3,
+          "enhet": "kg per 4 personer",
+          "kilde": "sknot",
+          "merknad": "Beräkna ca 3 kg oxsvans med ben till 4 personer."
+        }
+      }
+    },
+    {
+      "id": "svin",
+      "slug": "svin",
+      "navn": "Griskött",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "file": {
+          "verdi": 600,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Beräkna 600 g filé till 4 personer."
+        },
+        "karre-ben": {
+          "verdi": 800,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Beräkna 800 g karré med ben till 4 personer och 700 g om karrén är benfri."
+        },
+        "karre-fri": {
+          "verdi": 700,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Beräkna 800 g karré med ben till 4 personer och 700 g om karrén är benfri."
+        },
+        "bog": {
+          "verdi": 600,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Beräkna 600 g bog utan ben till 4 personer."
+        },
+        "kotlettrad": {
+          "verdi": 800,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Beräkna 800 g kotlettrad med fett och ben till 4 personer."
+        },
+        "kotlettrad-ren": {
+          "verdi": 600,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Av renputsad kotlettrad (ytterfilé eller fläskhare) räcker det med 600 g."
+        },
+        "kotlett-ben": {
+          "verdi": 800,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Beräkna 800 g kotletter ben fett och ben till 4 personer."
+        },
+        "kotlett-fri": {
+          "verdi": 600,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Av benfri kotlett räcker det med 600 g."
+        },
+        "spjall-tunna": {
+          "verdi": 800,
+          "enhet": "g per 4 personer",
+          "kilde": "skgris",
+          "merknad": "Beräkna 800 g tunna spjäll till 4 personer och 1 kg av de tjocka."
+        },
+        "stek": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "skgris",
+          "merknad": "Beräkna 125 g per person när du ska laga stek."
+        }
+      },
+      "tekst": {
+        "fett": "skgris|Räkna med att även skära bort en del fett efter tillagning.",
+        "putsad": "skgris|Köper du putsad filé kan du äta precis allt du köper."
+      }
+    },
+    {
+      "id": "lam",
+      "slug": "lam",
+      "navn": "Lammkött",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kokkott-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Beräkna 150-200 g per person, eftersom det går bort en del fett och ben."
+        },
+        "kokkott-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Beräkna 150-200 g per person, eftersom det går bort en del fett och ben."
+        },
+        "gryt-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Av grytbitar räcker det med 100-125 g per person."
+        },
+        "gryt-maks": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Av grytbitar räcker det med 100-125 g per person."
+        },
+        "entre": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Beräkna ca 150 g kött per person."
+        },
+        "fiol": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Beräkna 100 g per person."
+        },
+        "bringa-ben-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Beräkna 200-250 g per person om bringan har ben och 150 g per person av urbenad bringa."
+        },
+        "bringa-ben-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Beräkna 200-250 g per person om bringan har ben och 150 g per person av urbenad bringa."
+        },
+        "bringa-fri": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "sklamm",
+          "merknad": "Beräkna 200-250 g per person om bringan har ben och 150 g per person av urbenad bringa."
+        },
+        "kotlett-min": {
+          "verdi": 3,
+          "enhet": "st",
+          "kilde": "sklamm",
+          "merknad": "Beräkna 3-4 enkla lammkotletter eller 2 dubbla per person."
+        },
+        "kotlett-maks": {
+          "verdi": 4,
+          "enhet": "st",
+          "kilde": "sklamm",
+          "merknad": "Beräkna 3-4 enkla lammkotletter eller 2 dubbla per person."
+        }
+      },
+      "tekst": {
+        "fett": "sklamm|Beräkna 150-200 g per person, eftersom det går bort en del fett och ben."
+      }
+    },
+    {
+      "id": "kjottdeig",
+      "slug": "kottfars",
+      "navn": "Köttfärs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fars-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Köttfärs | 75–100g | 300–400g"
+        },
+        "fars-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Köttfärs | 75–100g | 300–400g"
+        },
+        "farsratt": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Färsrätter | 100g | 400g"
+        },
+        "sas": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Köttfärssås | 150g | 600g"
+        },
+        "gryta": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Köttgryta | 150g | 600g"
+        },
+        "pytt-min": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Pytt i panna | 250–350g | 1–1,4 kg"
+        },
+        "pytt-maks": {
+          "verdi": 350,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Pytt i panna | 250–350g | 1–1,4 kg"
+        }
+      }
+    },
+    {
+      "id": "skinke",
+      "slug": "julskinka",
+      "navn": "Skinka och julskinka",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "jul-min": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "skjul",
+          "merknad": "På ett traditionellt julbord, där mycket annat också står framdukat, brukar 50–75 gram per person räcka fint."
+        },
+        "jul-maks": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "skjul",
+          "merknad": "På ett traditionellt julbord, där mycket annat också står framdukat, brukar 50–75 gram per person räcka fint."
+        },
+        "sjalv-utan": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "skgris",
+          "merknad": "Ska du laga skinkan själv, räkna med 150 g per person utan ben och 200 g med ben."
+        },
+        "sjalv-med": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "skgris",
+          "merknad": "Ska du laga skinkan själv, räkna med 150 g per person utan ben och 200 g med ben."
+        },
+        "skinka-pal": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Skinka | 75g | 300g"
+        },
+        "kassler": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Kassler, benfri | 100g | 400g"
+        },
+        "kassler-ben": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Kassler, med ben | 125g | 500g"
+        },
+        "farg": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "skgris",
+          "merknad": "Av färdiglagad skinka är det lagom att köpa ca 100 g per person."
+        }
+      },
+      "tekst": {
+        "stek": "skgris|Beräkna 125 g per person när du ska laga stek."
+      }
+    },
+    {
+      "id": "korv",
+      "slug": "korv",
+      "navn": "Korv och charkuterier",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "korv": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Korv (ex falukorv) | 100g | 400g"
+        },
+        "isterband": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Isterband | 125g | 500g"
+        },
+        "polsa-min": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Pölsa | 125–175g | 500–700g"
+        },
+        "polsa-maks": {
+          "verdi": 175,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Pölsa | 125–175g | 500–700g"
+        },
+        "blod": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Blodpudding | 150g | 600g"
+        },
+        "sylta-min": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Sylta | 125–175g | 500–700g"
+        },
+        "sylta-maks": {
+          "verdi": 175,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Sylta | 125–175g | 500–700g"
+        },
+        "palagg": {
+          "verdi": 15,
+          "enhet": "g",
+          "kilde": "skinkop",
+          "merknad": "Pålägg (till smörgås) | 15g | 60g"
+        }
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "lax",
+      "navn": "Lax",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "huvud": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "arlalax",
+          "merknad": "Som huvudrätt får du räkna med ca 200 g gravad lax per person"
+        },
+        "buffe": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "arlalax",
+          "merknad": "som en del av buffé räcker det med ca 100 g per person"
+        },
+        "forratt": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "arlalax",
+          "merknad": "som en förrätt eller på en snitt kan ca 80 g per person räcka"
+        }
+      },
+      "tekst": {
+        "beror": "arlalax|Det beror helt på sammanhanget."
+      }
+    }
+  ]
+}

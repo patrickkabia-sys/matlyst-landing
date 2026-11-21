@@ -22,7 +22,7 @@ const ERSTATNING = ['egg', 'kulturmelk-og-kefir', 'bakepulver', 'natron', 'gjaer
 const RESTER = ['kjottdeig', 'kylling', 'egg', 'poteter', 'kokte-poteter', 'ris', 'pasta', 'laks', 'kokt-skinke', 'floete', 'gulrotter', 'brod', 'bananer', 'epler', 'ribbe-og-pinnekjott'];
 
 test('adresselås: erstatning har samleside og 18 sider (nb, engelsk har egen test), rester har 15 undersider under /hva-kan-jeg-lage/ og bare norsk', () => {
-  assert.deepEqual(familie('erstatning').markeder, { nb: { rot: 'erstatning/' }, en: { rot: 'substitutes/' } });
+  assert.deepEqual(familie('erstatning').markeder, { nb: { rot: 'erstatning/' }, sv: { rot: 'ersatta/' }, en: { rot: 'substitutes/' } });
   assert.deepEqual(familie('rester').markeder, { nb: { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true } });
   assert.deepEqual(rader('erstatning').map((r) => r.slug), ERSTATNING);
   assert.deepEqual(rader('rester').map((r) => r.slug), RESTER.map((r) => `med-${r}`));

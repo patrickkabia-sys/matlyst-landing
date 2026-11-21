@@ -1,0 +1,1089 @@
+{
+  "familie": "airfryer",
+  "marked": "sv",
+  "kilder": {
+    "arlaart": {
+      "navn": "Airfryer: recepten som tar maten till nästa nivå",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/artiklar/airfryer-recepten-som-tar-maten-till-nasta-niva/",
+      "hentet": "2026-11-21"
+    },
+    "obh": {
+      "navn": "Vad kan man tillaga i en Air fryer?",
+      "utgiver": "OBH Nordica",
+      "aar": 2026,
+      "adresse": "https://www.obhnordica.se/kopguider/air-fryers/guide-airfyer/vad-kan-man-tillaga-i-en-air-fryer",
+      "hentet": "2026-11-21"
+    },
+    "akyckling": {
+      "navn": "Kyckling i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/kyckling-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "aben": {
+      "navn": "Kycklingben i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/kycklingben-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "aklubbor": {
+      "navn": "Kycklingklubbor i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/kycklingklubbor-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "avingar": {
+      "navn": "Kycklingvingar i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/kycklingvingar-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "aspett": {
+      "navn": "Kycklingspett i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/kycklingspett-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "ahel": {
+      "navn": "Hel kyckling i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/hel-kyckling-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "alax": {
+      "navn": "Lax i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/lax-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "atorsk": {
+      "navn": "Torsk i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/torsk-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "apommes": {
+      "navn": "Pommes frites i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/pommes-frites-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "aklyft": {
+      "navn": "Klyftpotatis i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/klyftpotatis-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "ahassel": {
+      "navn": "Hasselbackspotatis i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/hasselbackspotatis-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "asot": {
+      "navn": "Sötpotatis i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/sotpotatis-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "abakad": {
+      "navn": "Bakad potatis i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/bakad-potatis-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "abacon": {
+      "navn": "Bacon i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/bacon-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "aburgare": {
+      "navn": "Hamburgare i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/hamburgare-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "akott": {
+      "navn": "Köttbullar i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/kottbullar-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "agront": {
+      "navn": "Grönsaker i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/gronsaker-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "abroccoli": {
+      "navn": "Broccoli i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/broccoli-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "aflask": {
+      "navn": "Fläskfilé i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/flaskfile-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "aagg": {
+      "navn": "Koka ägg i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/koka-agg-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "findusfp": {
+      "navn": "Fiskpinnar, produktsida",
+      "utgiver": "Findus",
+      "aar": 2026,
+      "adresse": "https://www.findus.se/var-mat/fisk/fiskpinnar/32-fiskpinnar-family-pack",
+      "hentet": "2026-11-21"
+    },
+    "sfsakra": {
+      "navn": "Säkra kycklingtips",
+      "utgiver": "Svensk Fågel",
+      "aar": 2024,
+      "adresse": "https://svenskfagel.se/halsa-och-recept/sakra-kycklingstips/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ovn-til-airfryer",
+      "slug": "ugn-till-airfryer",
+      "navn": "Ugn till airfryer",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "u150-ugn": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "150 | 135 | 60 | 48"
+        },
+        "u150-air": {
+          "verdi": 135,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "150 | 135 | 60 | 48"
+        },
+        "u150-minugn": {
+          "verdi": 60,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "150 | 135 | 60 | 48"
+        },
+        "u150-minair": {
+          "verdi": 48,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "150 | 135 | 60 | 48"
+        },
+        "u165-ugn": {
+          "verdi": 165,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "165 | 150 | 45 | 36"
+        },
+        "u165-air": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "165 | 150 | 45 | 36"
+        },
+        "u165-minugn": {
+          "verdi": 45,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "165 | 150 | 45 | 36"
+        },
+        "u165-minair": {
+          "verdi": 36,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "165 | 150 | 45 | 36"
+        },
+        "u175-ugn": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "175 | 165 | 30 | 24"
+        },
+        "u175-air": {
+          "verdi": 165,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "175 | 165 | 30 | 24"
+        },
+        "u175-minugn": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "175 | 165 | 30 | 24"
+        },
+        "u175-minair": {
+          "verdi": 24,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "175 | 165 | 30 | 24"
+        },
+        "u190-ugn": {
+          "verdi": 190,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "190 | 175 | 20 | 16"
+        },
+        "u190-air": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "190 | 175 | 20 | 16"
+        },
+        "u190-minugn": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "190 | 175 | 20 | 16"
+        },
+        "u190-minair": {
+          "verdi": 16,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "190 | 175 | 20 | 16"
+        },
+        "u205-ugn": {
+          "verdi": 205,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "205 | 190 | 15 | 12"
+        },
+        "u205-air": {
+          "verdi": 190,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "205 | 190 | 15 | 12"
+        },
+        "u205-minugn": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "205 | 190 | 15 | 12"
+        },
+        "u205-minair": {
+          "verdi": 12,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "205 | 190 | 15 | 12"
+        },
+        "sank-arla": {
+          "verdi": 15,
+          "enhet": "°C",
+          "kilde": "arlaart",
+          "merknad": "Ett enkelt knep är att sänka temperaturen på ugnsrecept med 15°C för att anpassa ditt recept till en airfryer."
+        },
+        "sank-obh": {
+          "verdi": 15,
+          "enhet": "°C",
+          "kilde": "obh",
+          "merknad": "Tänk på att sänka temperaturen med cirka 15 grader jämfört med vanlig ugn eftersom värmen är mer koncentrerad."
+        },
+        "forvarm-min": {
+          "verdi": 3,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "Förvärm din airfryer i 3–5 minuter innan du lägger in maten för att få ett snabbare, jämnare och ännu krispigare resultat."
+        },
+        "forvarm-maks": {
+          "verdi": 5,
+          "enhet": "minuter",
+          "kilde": "arlaart",
+          "merknad": "Förvärm din airfryer i 3–5 minuter innan du lägger in maten för att få ett snabbare, jämnare och ännu krispigare resultat."
+        }
+      },
+      "tekst": {
+        "smabitar": "arlaart|Tänk även på att mindre matbitar tillagas bäst vid högre temperaturer under en kortare tid.",
+        "storbitar": "arlaart|Större bitar blir bättre vid en lägre temperaturer under längre tid, eftersom det gör att insidan tillagas ordentligt utan att utsidan bränns.",
+        "intensiv": "arlaart|räcker det med lägre temperatur i en airfryer då den snabba luftcirkulationen ger en mer intensiv värme.",
+        "steka": "obh|Större köttbitar som hel stek riskerar att bli ojämnt tillagade på grund av den koncentrerade värmen.",
+        "ost": "obh|Ost som inte är panerad smälter lätt och kan fastna i korgen.",
+        "lager": "arlaart|lägga maten i ett lager och inte på varandra, detta för att få ett jämnt och fint resultat."
+      }
+    },
+    {
+      "id": "kyllingfilet",
+      "slug": "kycklingfile",
+      "navn": "Kycklingfilé",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "obh-temp-min": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "obh",
+          "merknad": "För optimal tillagning av kyckling ställer du in temperaturen på 180-200 grader."
+        },
+        "obh-temp-maks": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "obh",
+          "merknad": "För optimal tillagning av kyckling ställer du in temperaturen på 180-200 grader."
+        },
+        "obh-tid-min": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "obh",
+          "merknad": "Kycklingfiléer blir perfekt saftiga efter 15-20 minuter"
+        },
+        "obh-tid-maks": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "obh",
+          "merknad": "Kycklingfiléer blir perfekt saftiga efter 15-20 minuter"
+        },
+        "arla-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "akyckling",
+          "merknad": "Tillaga på 200° i ca 20 min."
+        },
+        "arla-tid": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "akyckling",
+          "merknad": "Tillaga på 200° i ca 20 min."
+        },
+        "arla-klar": {
+          "verdi": 72,
+          "enhet": "°C",
+          "kilde": "akyckling",
+          "merknad": "Innertemperaturen ska vara minst 72° när den är klar."
+        },
+        "arla-gram": {
+          "verdi": 450,
+          "enhet": "g",
+          "kilde": "akyckling",
+          "merknad": "Kycklinglårfilé | 450 g"
+        },
+        "sf-filet": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfsakra",
+          "merknad": "för kycklingfilé och kycklinglårfilé gäller 70 grader"
+        }
+      },
+      "tekst": {
+        "vs-ugn": "akyckling|Det går snabbare att tillaga kyckling i airfryer än i ugn och du får dessutom en krispigare yta på kycklingen.",
+        "saftig": "akyckling|Den blir dock inte lika saftig som när du tillagar den i ugn.",
+        "vanda": "obh|Vänd kycklingbitarna efter halva tiden och använd en köttermometer för att kontrollera innertemperaturen."
+      }
+    },
+    {
+      "id": "kyllinglar",
+      "slug": "kycklingben",
+      "navn": "Kycklingben och kycklingklubbor",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ben-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "aben",
+          "merknad": "Tillaga på 180° i ca 25 min, eller tills kycklingen har en innertemperatur vid benet på 82°."
+        },
+        "ben-tid": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "aben",
+          "merknad": "Tillaga på 180° i ca 25 min, eller tills kycklingen har en innertemperatur vid benet på 82°."
+        },
+        "ben-klar": {
+          "verdi": 82,
+          "enhet": "°C",
+          "kilde": "aben",
+          "merknad": "Tillaga på 180° i ca 25 min, eller tills kycklingen har en innertemperatur vid benet på 82°."
+        },
+        "klubb-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "aklubbor",
+          "merknad": "Tillaga kycklingen i airfryern på 200° i 25-30 min, tills de har en innertemperatur på 82° inne vid benet."
+        },
+        "klubb-tid-min": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "aklubbor",
+          "merknad": "Tillaga kycklingen i airfryern på 200° i 25-30 min, tills de har en innertemperatur på 82° inne vid benet."
+        },
+        "klubb-tid-maks": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "aklubbor",
+          "merknad": "Tillaga kycklingen i airfryern på 200° i 25-30 min, tills de har en innertemperatur på 82° inne vid benet."
+        },
+        "klubb-klar": {
+          "verdi": 82,
+          "enhet": "°C",
+          "kilde": "aklubbor",
+          "merknad": "Tillaga kycklingen i airfryern på 200° i 25-30 min, tills de har en innertemperatur på 82° inne vid benet."
+        },
+        "obh-klubb-min": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "obh",
+          "merknad": "medan kycklingklubbor behöver 25-30 minuter för att nå rätt innertemperatur på 75 grader"
+        },
+        "obh-klubb-maks": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "obh",
+          "merknad": "medan kycklingklubbor behöver 25-30 minuter för att nå rätt innertemperatur på 75 grader"
+        },
+        "obh-klubb-klar": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "obh",
+          "merknad": "medan kycklingklubbor behöver 25-30 minuter för att nå rätt innertemperatur på 75 grader"
+        },
+        "vanda": {
+          "verdi": 1,
+          "enhet": "gång",
+          "kilde": "aben",
+          "merknad": "Vänd på kycklingen några gånger under tillagningen så den inte bränns."
+        }
+      },
+      "tekst": {
+        "vs-ugn": "aklubbor|Det går snabbare att tillaga kyckling i airfryer än i ugn och du får dessutom en krispigare yta på kycklingen."
+      }
+    },
+    {
+      "id": "kyllingvinger",
+      "slug": "kycklingvingar",
+      "navn": "Kycklingvingar och kycklingspett",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ving-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "avingar",
+          "merknad": "Tillaga på 200° i 20–25 min, skaka korgen en gång under tiden."
+        },
+        "ving-tid-min": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "avingar",
+          "merknad": "Tillaga på 200° i 20–25 min, skaka korgen en gång under tiden."
+        },
+        "ving-tid-maks": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "avingar",
+          "merknad": "Tillaga på 200° i 20–25 min, skaka korgen en gång under tiden."
+        },
+        "ving-skaka": {
+          "verdi": 1,
+          "enhet": "gång",
+          "kilde": "avingar",
+          "merknad": "Tillaga på 200° i 20–25 min, skaka korgen en gång under tiden."
+        },
+        "ving-marin": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "avingar",
+          "merknad": "Låt gärna stå 30 min i kyl för extra smak."
+        },
+        "spett-temp": {
+          "verdi": 190,
+          "enhet": "°C",
+          "kilde": "aspett",
+          "merknad": "Tillaga på 190° i 5 min."
+        },
+        "spett-tid": {
+          "verdi": 5,
+          "enhet": "minuter",
+          "kilde": "aspett",
+          "merknad": "Tillaga på 190° i 5 min."
+        },
+        "spett-extra": {
+          "verdi": 5,
+          "enhet": "minuter",
+          "kilde": "aspett",
+          "merknad": "Vänd på spetten och tillaga i ytterligare 5 min."
+        },
+        "spett-blot": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "aspett",
+          "merknad": "Blötlägg träspetten i vatten i minst 30 min."
+        }
+      },
+      "tekst": {
+        "vs-ugn": "avingar|Det går snabbare att tillaga kyckling i airfryer än i ugn och du får dessutom en krispigare yta på kycklingen."
+      }
+    },
+    {
+      "id": "hel-kylling",
+      "slug": "hel-kyckling",
+      "navn": "Hel kyckling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "ahel",
+          "merknad": "Tillaga på 180° i 30 min."
+        },
+        "tid1": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "ahel",
+          "merknad": "Tillaga på 180° i 30 min."
+        },
+        "tid2": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "ahel",
+          "merknad": "Vänd på den och tillaga ytterligare 20 min."
+        },
+        "klar": {
+          "verdi": 82,
+          "enhet": "°C",
+          "kilde": "ahel",
+          "merknad": "Innertemperaturen ska vara 82° vid lårbenet då kycklingen är klar."
+        },
+        "vila": {
+          "verdi": 10,
+          "enhet": "minuter",
+          "kilde": "ahel",
+          "merknad": "Ta ut kycklingen och låt den stå i 10 min innan den skärs upp."
+        },
+        "sf-hel": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "sfsakra",
+          "merknad": "för hel kyckling gäller 80 grader intill benet"
+        }
+      },
+      "tekst": {
+        "riktning": "ahel|Lägg kycklingen i airfryerns korg med bröstsidan nedåt."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "lax",
+      "navn": "Lax",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "alax",
+          "merknad": "Tillaga laxen i airfryern på 160° i ca 15 min."
+        },
+        "tid": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "alax",
+          "merknad": "Tillaga laxen i airfryern på 160° i ca 15 min."
+        },
+        "klar-min": {
+          "verdi": 52,
+          "enhet": "°C",
+          "kilde": "alax",
+          "merknad": "Du kan även testa med en termometer, om den visar mellan 52°–56° är den genomlagad och saftig."
+        },
+        "klar-maks": {
+          "verdi": 56,
+          "enhet": "°C",
+          "kilde": "alax",
+          "merknad": "Du kan även testa med en termometer, om den visar mellan 52°–56° är den genomlagad och saftig."
+        },
+        "gram": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "alax",
+          "merknad": "Lax | 600 g"
+        },
+        "saftig": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "alax",
+          "merknad": "Saftig lax får du när du tillagar den på 160° (inte högre) och har koll på dess innertemperatur."
+        },
+        "t-temp": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "atorsk",
+          "merknad": "tillaga på 160° i 10–12 min, till en innertemperatur på 52°."
+        },
+        "t-tid-min": {
+          "verdi": 10,
+          "enhet": "minuter",
+          "kilde": "atorsk",
+          "merknad": "tillaga på 160° i 10–12 min, till en innertemperatur på 52°."
+        },
+        "t-tid-maks": {
+          "verdi": 12,
+          "enhet": "minuter",
+          "kilde": "atorsk",
+          "merknad": "tillaga på 160° i 10–12 min, till en innertemperatur på 52°."
+        },
+        "t-klar": {
+          "verdi": 52,
+          "enhet": "°C",
+          "kilde": "atorsk",
+          "merknad": "tillaga på 160° i 10–12 min, till en innertemperatur på 52°."
+        }
+      },
+      "tekst": {
+        "flagor": "alax|Laxen är klar när det går lätt att dela den i fina \"flagor\" med en gaffel.",
+        "fryst": "alax|Ja, det funkar väldigt bra att tillaga fryst lax i airfryer och du behöver inte tina fisken innan.",
+        "torka": "alax|Torka av laxen med hushållspapper innan tillagning."
+      }
+    },
+    {
+      "id": "pommes-frites",
+      "slug": "pommes-frites",
+      "navn": "Pommes frites",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "apommes",
+          "merknad": "Lägg potatisen i en airfryer och tillaga på 180° i ca 25 min."
+        },
+        "tid": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "apommes",
+          "merknad": "Lägg potatisen i en airfryer och tillaga på 180° i ca 25 min."
+        },
+        "tjock": {
+          "verdi": 1,
+          "enhet": "cm",
+          "kilde": "apommes",
+          "merknad": "Skär potatisen i 1 cm tjocka stavar."
+        },
+        "olja": {
+          "verdi": 1,
+          "enhet": "tsk",
+          "kilde": "apommes",
+          "merknad": "Däremot kan 1 tsk olja ge ett krispigare slutresultat och en jämnare färg."
+        }
+      },
+      "tekst": {
+        "torr": "apommes|Det är viktigt att du torkar potatisstavarna helt torra innan tillagning för att få krispiga pommes.",
+        "omg": "apommes|Överfyll inte korgen, tillaga dem hellre i omgångar.",
+        "sort": "apommes|Det bästa valet av potatis till pommes frites i airfryer är en mjölig sort, t.ex. King Edward.",
+        "skaka": "apommes|Skaka korgen några gånger under tillagningen."
+      }
+    },
+    {
+      "id": "potetbater",
+      "slug": "klyftpotatis",
+      "navn": "Klyftpotatis, hasselbackspotatis och sötpotatis",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "k-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "aklyft",
+          "merknad": "Tillaga på 180° i ca 25 min eller tills potatisen är klar."
+        },
+        "k-tid": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "aklyft",
+          "merknad": "Tillaga på 180° i ca 25 min eller tills potatisen är klar."
+        },
+        "k-hojd": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "aklyft",
+          "merknad": "Du kan även prova att höja temperaturen till 200°."
+        },
+        "k-blot": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "aklyft",
+          "merknad": "blötlägga potatisklyftorna i kallt vatten i ca 30 min"
+        },
+        "h-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "ahassel",
+          "merknad": "Tillaga i på 180° ca 25 min."
+        },
+        "h-tid": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "ahassel",
+          "merknad": "Tillaga i på 180° ca 25 min."
+        },
+        "s-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "asot",
+          "merknad": "Tillaga på 200° ca 25 min."
+        },
+        "s-tid": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "asot",
+          "merknad": "Tillaga på 200° ca 25 min."
+        }
+      },
+      "tekst": {
+        "sort": "aklyft|Den bästa potatisen är en fast sort t.ex. Asterix eller Queen Anne.",
+        "krispig": "aklyft|För extra krispiga klyftpotatisar kan du testa att blötlägga potatisklyftorna i kallt vatten i ca 30 min och sedan torka dem torra innan du tillagar dem i airfryern."
+      }
+    },
+    {
+      "id": "bakt-potet",
+      "slug": "bakad-potatis",
+      "navn": "Bakad potatis",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 195,
+          "enhet": "°C",
+          "kilde": "abakad",
+          "merknad": "Tillaga på 195° i ca 50 min."
+        },
+        "tid": {
+          "verdi": 50,
+          "enhet": "minuter",
+          "kilde": "abakad",
+          "merknad": "Tillaga på 195° i ca 50 min."
+        }
+      },
+      "tekst": {
+        "vanda": "abakad|Vänd på dem efter halva tiden.",
+        "hal": "abakad|Stick hål i dem med en potatissticka.",
+        "tvatta": "abakad|Tvätta potatisarna noga."
+      }
+    },
+    {
+      "id": "bacon",
+      "slug": "bacon",
+      "navn": "Bacon",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "abacon",
+          "merknad": "Tillaga 8-10 min på 180°."
+        },
+        "tid-min": {
+          "verdi": 8,
+          "enhet": "minuter",
+          "kilde": "abacon",
+          "merknad": "Tillaga 8-10 min på 180°."
+        },
+        "tid-maks": {
+          "verdi": 10,
+          "enhet": "minuter",
+          "kilde": "abacon",
+          "merknad": "Tillaga 8-10 min på 180°."
+        }
+      },
+      "tekst": {
+        "vanda": "abacon|Vänd på baconskivorna efter halva tiden så de tillagas jämnt.",
+        "papper": "abacon|Lägg ett bakplåtspapper i korgen till din airfryer."
+      }
+    },
+    {
+      "id": "hamburger",
+      "slug": "hamburgare",
+      "navn": "Hamburgare",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "aburgare",
+          "merknad": "Tillaga på 180° i 8 min."
+        },
+        "tid1": {
+          "verdi": 8,
+          "enhet": "minuter",
+          "kilde": "aburgare",
+          "merknad": "Tillaga på 180° i 8 min."
+        },
+        "tid2": {
+          "verdi": 4,
+          "enhet": "minuter",
+          "kilde": "aburgare",
+          "merknad": "Tillaga ytterligare 4 min."
+        }
+      },
+      "tekst": {
+        "lager": "aburgare|Lägg burgarna i airfryerns korg i ett jämnt lager, så att de inte ligger på varandra.",
+        "tjock": "aburgare|forma till jämntjocka burgare"
+      }
+    },
+    {
+      "id": "kjottboller",
+      "slug": "kottbullar",
+      "navn": "Köttbullar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "akott",
+          "merknad": "Tillaga på 180° i 12–15 min tills de är genomstekta."
+        },
+        "tid-min": {
+          "verdi": 12,
+          "enhet": "minuter",
+          "kilde": "akott",
+          "merknad": "Tillaga på 180° i 12–15 min tills de är genomstekta."
+        },
+        "tid-maks": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "akott",
+          "merknad": "Tillaga på 180° i 12–15 min tills de är genomstekta."
+        },
+        "antal": {
+          "verdi": 20,
+          "enhet": "st",
+          "kilde": "akott",
+          "merknad": "Forma smeten till jämstora köttbullar, ca 20 st."
+        }
+      },
+      "tekst": {
+        "skaka": "akott|Skaka korgen en gång under tiden."
+      }
+    },
+    {
+      "id": "gronnsaker",
+      "slug": "gronsaker",
+      "navn": "Grönsaker och broccoli",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "g-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "agront",
+          "merknad": "Tillaga på 200° i ca 15 min, skaka eller rör om efter halva tiden."
+        },
+        "g-tid": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "agront",
+          "merknad": "Tillaga på 200° i ca 15 min, skaka eller rör om efter halva tiden."
+        },
+        "g-extra": {
+          "verdi": 5,
+          "enhet": "minuter",
+          "kilde": "agront",
+          "merknad": "Tillaga ytterligare 5 min."
+        },
+        "b-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "abroccoli",
+          "merknad": "Tillaga på 180° i 8–10 min."
+        },
+        "b-tid-min": {
+          "verdi": 8,
+          "enhet": "minuter",
+          "kilde": "abroccoli",
+          "merknad": "Tillaga på 180° i 8–10 min."
+        },
+        "b-tid-maks": {
+          "verdi": 10,
+          "enhet": "minuter",
+          "kilde": "abroccoli",
+          "merknad": "Tillaga på 180° i 8–10 min."
+        }
+      },
+      "tekst": {
+        "lager": "agront|Placera grönsakerna i airfryerns korg i ett jämnt lager.",
+        "jamn": "agront|Skär zucchini och paprika i jämnstora bitar."
+      }
+    },
+    {
+      "id": "flaskfile",
+      "slug": "flaskfile",
+      "navn": "Fläskfilé",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "aflask",
+          "merknad": "Lägg köttet i airfryerns korg och tillaga på 180° i 20–22 minuter tills innertemperaturen är 70°."
+        },
+        "tid-min": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "aflask",
+          "merknad": "Lägg köttet i airfryerns korg och tillaga på 180° i 20–22 minuter tills innertemperaturen är 70°."
+        },
+        "tid-maks": {
+          "verdi": 22,
+          "enhet": "minuter",
+          "kilde": "aflask",
+          "merknad": "Lägg köttet i airfryerns korg och tillaga på 180° i 20–22 minuter tills innertemperaturen är 70°."
+        },
+        "klar": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "aflask",
+          "merknad": "Lägg köttet i airfryerns korg och tillaga på 180° i 20–22 minuter tills innertemperaturen är 70°."
+        }
+      },
+      "tekst": {
+        "putsa": "aflask|Putsa köttet fri från hinnor och senor."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "koka-agg",
+      "navn": "Ägg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 140,
+          "enhet": "°C",
+          "kilde": "aagg",
+          "merknad": "Tillaga på 140 °C: 12 min för medelkokt ägg (krämig gula) 14 min för hårdkokt ägg (fast gula)"
+        },
+        "medel": {
+          "verdi": 12,
+          "enhet": "minuter",
+          "kilde": "aagg",
+          "merknad": "Tillaga på 140 °C: 12 min för medelkokt ägg (krämig gula) 14 min för hårdkokt ägg (fast gula)"
+        },
+        "hard": {
+          "verdi": 14,
+          "enhet": "minuter",
+          "kilde": "aagg",
+          "merknad": "Tillaga på 140 °C: 12 min för medelkokt ägg (krämig gula) 14 min för hårdkokt ägg (fast gula)"
+        },
+        "just-min": {
+          "verdi": 1,
+          "enhet": "minut",
+          "kilde": "aagg",
+          "merknad": "Vill du ha mjukare eller hårdare gula, justera med 1–2 min upp eller ner."
+        },
+        "just-maks": {
+          "verdi": 2,
+          "enhet": "minuter",
+          "kilde": "aagg",
+          "merknad": "Vill du ha mjukare eller hårdare gula, justera med 1–2 min upp eller ner."
+        }
+      },
+      "tekst": {
+        "forvarm": "aagg|Nej det behövs inte, du kan lägga äggen direkt i korgen och påbörja tillagningen.",
+        "spricker": "aagg|Äggen kan spricka om du tillagar dem i för hög temperatur eller om de slår mot varandra under tillagningen.",
+        "kylskap": "aagg|Helst inte då det riskerar att äggen kan spricka.",
+        "modell": "aagg|Kom ihåg att tiden kan varieras något beroende på airfryer-modell och äggstorlek."
+      }
+    },
+    {
+      "id": "fiskepinner",
+      "slug": "fiskpinnar",
+      "navn": "Fiskpinnar",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "findusfp",
+          "merknad": "AIRFRYER 200°C ca. 8 min"
+        },
+        "tid": {
+          "verdi": 8,
+          "enhet": "minuter",
+          "kilde": "findusfp",
+          "merknad": "AIRFRYER 200°C ca. 8 min"
+        },
+        "antal": {
+          "verdi": 8,
+          "enhet": "st",
+          "kilde": "findusfp",
+          "merknad": "Lägg den frysta fisken (8 fiskpinnar) i nätkorgen och tillaga ca 8 min."
+        },
+        "ugn-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "findusfp",
+          "merknad": "VARMLUFTSUGN: 225°C i ca.12 min."
+        },
+        "ugn-tid": {
+          "verdi": 12,
+          "enhet": "minuter",
+          "kilde": "findusfp",
+          "merknad": "VARMLUFTSUGN: 225°C i ca.12 min."
+        },
+        "stå": {
+          "verdi": 1,
+          "enhet": "minut",
+          "kilde": "findusfp",
+          "merknad": "Låt stå i ca.1 min före servering."
+        }
+      },
+      "tekst": {
+        "forvarm": "findusfp|Förvärm Airfryern till 200 °C."
+      }
+    }
+  ]
+}
