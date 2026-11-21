@@ -200,7 +200,13 @@ Forsiden har ingen egen avslutningsseksjon. Den ble tatt ut fordi tre nedlasting
 
 - **Ingen påstand uten kilde.** Vurderingen er en fast verdi som er låst av `test/lansering.test.mjs`, og den rettes der når den endres. Kilder på samlebåndet må være målt. Gratis og Pro følger appens kode.
 - **En lenke vises først når siden finnes.** De seks nye kalkulatorene står ikke i hyllene før de er bygget.
-- **Ingen konkurrenter** nevnes, bortsett fra Paprika, og da bare om flytting.
+- **Ingen konkurrenter** nevnes, bortsett fra Paprika og Mealime når det gjelder flytting, og på de nøytrale sammenligningssidene under (21.11.2026).
+- **Sammenligningssider** (`/beste-oppskriftsapp/`, `/beste-handleliste-app/`, `/beste-ukemeny-app/`, generert fra `scripts/nb-sammenligning/`) følger fire regler:
+  - **Matlyst oppgitt som avsender.** Øverst, før første mellomtittel: «Vi lager Matlyst, så vi er part i saken. Derfor står alt med kilde og dato.»
+  - **Nøytrale.** Ingen app snakkes ned. «Beste» besvares etter behov («best for deg som ...»), andre apper får vinne der de er best, og appene står i alfabetisk rekkefølge, aldri som en rangering. Ingen stjerner, vurderinger, logoer eller skjermbilder fra andre, og ingen priser i kroner (de endrer seg).
+  - **Etterprøvbare.** Hvert faktum om en app kommer fra appens egen App Store- eller Google Play-oppføring eller egen nettside, med lenke og et ordrett sitat i datafila (`apper.nb.json`). Finnes ikke faktumet i kildene, står det «ikke oppgitt», aldri gjettet. `node scripts/nb-sammenligning/kildekontroll.mjs` sjekker at sitatene fortsatt står hos kilden.
+  - **Daterte.** Hvert kort og tabellen sier når kildene ble sjekket, og siden har sist oppdatert-dato. Sjekk kildene på nytt før datoen flyttes.
+  - Låst av `test/sammenligning.test.mjs`.
 - **Tekst skrives fra meningen på hvert språk**, etter `matlyst-sprak`. Ingen side oversettes setning for setning.
 - **«Cups», ikke «kopper»**, i omregnere og menyer.
 - **Ingen tankestrek som skilletegn** i tekst på nettstedet.

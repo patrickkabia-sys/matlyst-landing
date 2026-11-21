@@ -1,0 +1,1354 @@
+{
+  "familie": "kjernetemperatur",
+  "marked": "nb",
+  "kilder": {
+    "mt-sommer": {
+      "navn": "Mat i sommarvarmen",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/mat-i-sommervarmen",
+      "hentet": "2026-11-21"
+    },
+    "mt-rykende": {
+      "navn": "Varm mat skal være rykende varm",
+      "utgiver": "Mattilsynet",
+      "aar": 2022,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/matservering/mathandtering-hygiene/varm-mat-skal-vaere-rykende-varm",
+      "hentet": "2026-11-21"
+    },
+    "mt-hamburger": {
+      "navn": "Er det trygt å servere medium stekte hamburgere?",
+      "utgiver": "Mattilsynet",
+      "aar": 2022,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/matservering/salg-medium-stekte-hamburgere",
+      "hentet": "2026-11-21"
+    },
+    "mp-storfe": {
+      "navn": "Steke- og koketips for storfekjøtt",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-storfekjott/",
+      "hentet": "2026-11-21"
+    },
+    "mp-svin": {
+      "navn": "Steke- og koketips for svin",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-svinekjott/",
+      "hentet": "2026-11-21"
+    },
+    "mp-lam": {
+      "navn": "Steke- og koketips for lammekjøtt",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2020,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-lammekjott/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kylling": {
+      "navn": "Steke- og koketips for kylling",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-kylling/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kalkun": {
+      "navn": "Steke- og koketips for kalkun",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-kalkun/",
+      "hentet": "2026-11-21"
+    },
+    "mp-fisk": {
+      "navn": "Steke- og koketips for fisk og skalldyr",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-fisk-og-skalldyr/",
+      "hentet": "2026-11-21"
+    },
+    "mp-grill": {
+      "navn": "Grilltider, metoder og temperaturer",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2018,
+      "adresse": "https://www.matprat.no/artikler/tema/grilltider-metoder-og-temperaturer/",
+      "hentet": "2026-11-21"
+    },
+    "mp-hel-kalkun": {
+      "navn": "Slik steker du hel kalkun",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/slik-steker-du-hel-kalkun/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kalkun-pose": {
+      "navn": "Saftig kalkun i stekepose",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/saftig-kalkun-i-stekepose/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kyllingfilet": {
+      "navn": "Hvordan steke saftig kyllingfilet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/slik-steker-du-kyllingfilet/",
+      "hentet": "2026-11-21"
+    },
+    "mp-lammelar-lang": {
+      "navn": "Langtidsstekt lammelår",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2019,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/langtidsstekt-lammelar/",
+      "hentet": "2026-11-21"
+    },
+    "mp-lammestek": {
+      "navn": "Slik steker du lammestek",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/slik-steker-du-lammestek/",
+      "hentet": "2026-11-21"
+    },
+    "mp-svinestek": {
+      "navn": "Surret svinestek (Oppdelingsguiden)",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/oppdelingsguiden/svin/svinebog/surret-svinestek/",
+      "hentet": "2026-11-21"
+    },
+    "mp-entrecote": {
+      "navn": "Helstekt entrecôte i ovn",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/helstekt-entrecote/",
+      "hentet": "2026-11-21"
+    },
+    "mp-roastbiff": {
+      "navn": "Perfekt stekt roastbiff",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/oppskrifter/tradisjon/roastbiff/",
+      "hentet": "2026-11-21"
+    },
+    "mp-fisk-kjokken": {
+      "navn": "Fisk og skalldyr: På kjøkkenet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/ravarer/fisk-og-skalldyr-pa-kjokkenet/",
+      "hentet": "2026-11-21"
+    },
+    "mp-ingefarglaze": {
+      "navn": "Ovnsbakt laksefilet med ingefærglaze",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2016,
+      "adresse": "https://www.matprat.no/oppskrifter/rask/laks-med-ingefarglaze/",
+      "hentet": "2026-11-21"
+    },
+    "mp-torsk": {
+      "navn": "Ovnsbakt torsk med varm soppsalat",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2018,
+      "adresse": "https://www.matprat.no/oppskrifter/familien/ovnsbakt-torsk-med-varm-soppsalat/",
+      "hentet": "2026-11-21"
+    },
+    "mp-and": {
+      "navn": "Helstekt and",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/helstekt-and/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kylling",
+      "slug": "kylling",
+      "navn": "Kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        },
+        "mt-dor-min": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "mt-dor-maks": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "hel-pluss": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "hel-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Hel kylling / 1200 g | 300 g | Stekes i ovn i ca. 1 time og 15 minutter på 180 °C | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "filet-pluss": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Filet / uten ben | 200 g | Stekes 2 minutter på hver side i middels varm panne. Etterstekes på lav varme under lokk i 4 minutter. | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "filet-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Filet / uten ben | 200 g | Stekes 2 minutter på hver side i middels varm panne. Etterstekes på lav varme under lokk i 4 minutter. | Medium pluss: 68 °C Gjennomstekt: 75 °C"
+        },
+        "art-ferdig": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Kyllingfilet er ferdig stekt når kjernetemperaturen er 68 °C."
+        },
+        "art-hvilet-min": {
+          "verdi": 69,
+          "enhet": "°C",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Hvilet temperatur | 69–71 °C"
+        },
+        "art-hvilet-maks": {
+          "verdi": 71,
+          "enhet": "°C",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Hvilet temperatur | 69–71 °C"
+        },
+        "art-tort": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "Risiko for tørr filet | Over 70 °C"
+        },
+        "art-stig-min": {
+          "verdi": 1,
+          "enhet": "°C",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "husk at temperaturen vil øke 1-3 °C under hviletiden"
+        },
+        "art-stig-maks": {
+          "verdi": 3,
+          "enhet": "°C",
+          "kilde": "mp-kyllingfilet",
+          "merknad": "husk at temperaturen vil øke 1-3 °C under hviletiden"
+        },
+        "grill-filet": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Kyllingfilet | Grill filetene i ca. 2 minutter på hver side på høy direkte varme og legg dem deretter over på indirekte varme, sett om mulig på lokk. | 68 °C"
+        },
+        "trekk": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-kylling",
+          "merknad": "Trekking av filet i buljong | 200 g | Trekkes i vann med buljong i ca. 15 minutter på 90-95 °C | Gjennomkokt: 75 °C"
+        }
+      },
+      "tekst": {
+        "mt-fjorfe": "mt-rykende|Fjørfekjøtt og oppmalt kjøtt bør gjennomstekes, fordi det her kan være bakterier gjennom hele produktet.",
+        "mt-grill": "mt-sommer|Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte.",
+        "kylling-torr": "mp-kyllingfilet|Og bikker temperaturen litt over 70 °C grader er det igjen fare for at kyllingfileten blir tørr - med andre ord: kort vei fra gjennomstekt til tørr.",
+        "kylling-term": "mp-kyllingfilet|Bruk derfor gjerne et steketermometer når du steker kyllingfilet."
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "kalkun",
+      "navn": "Kalkun",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        },
+        "mt-dor-min": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "mt-dor-maks": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "hel": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-kalkun",
+          "merknad": "Hel kalkun / 5-7 kg | 500 g | Stekes i ovn i ca. 30 minutter pr kg på 180 °C | 68 °C"
+        },
+        "filet": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-kalkun",
+          "merknad": "Kalkunfilet / uten skinn 750 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 1 time på 125 °C | 65 °C"
+        },
+        "filet-skinn": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-kalkun",
+          "merknad": "Kalkunfilet / med skinn 1500 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 2 timer på 125 °C | 65 °C"
+        },
+        "biff": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-kalkun",
+          "merknad": "Kalkunbiff | 200 g | Stekes i middels varm panne 2 minutter på hver side. Etterstekes på lav varme under lokk i 4 minutter. | 68 °C"
+        },
+        "pose-ut-min": {
+          "verdi": 63,
+          "enhet": "°C",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Ta kalkunen ut i ovnen når kjernetemperaturen i brystet er 63 – 65 °C og la den hvile minst 30 minutter."
+        },
+        "pose-ut-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Ta kalkunen ut i ovnen når kjernetemperaturen i brystet er 63 – 65 °C og la den hvile minst 30 minutter."
+        },
+        "pose-ende-min": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Temperaturen i kjøttet vil fortsette å stige til ca. 68 – 70 °C."
+        },
+        "pose-ende-maks": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Temperaturen i kjøttet vil fortsette å stige til ca. 68 – 70 °C."
+        },
+        "pose-hvile": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-kalkun-pose",
+          "merknad": "Ta kalkunen ut i ovnen når kjernetemperaturen i brystet er 63 – 65 °C og la den hvile minst 30 minutter."
+        },
+        "hvile": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-hel-kalkun",
+          "merknad": "Husk å la kalkunen hvile på kjøkkenbenken i minst 20 minutter før du skjærer den opp."
+        }
+      },
+      "tekst": {
+        "mt-fjorfe": "mt-rykende|Fjørfekjøtt og oppmalt kjøtt bør gjennomstekes, fordi det her kan være bakterier gjennom hele produktet.",
+        "mt-grill": "mt-sommer|Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte.",
+        "pose-ferdig": "mp-kalkun-pose|Stikk et steketermometer i den tykkeste delen av brystet, og pass på at det ikke hviler mot bein."
+      }
+    },
+    {
+      "id": "svinefilet",
+      "slug": "svinefilet",
+      "navn": "Svinefilet",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        },
+        "mt-dor-min": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "mt-dor-maks": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "ind-medium": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Indrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 400 g stekes i ca. 20 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ind-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Indrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 400 g stekes i ca. 20 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ind-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Indrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 400 g stekes i ca. 20 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-medium": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Ytrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 1 kg stekes i ca. 40 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Ytrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 1 kg stekes i ca. 40 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Ytrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 1 kg stekes i ca. 40 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Indrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 400 g stekes i ca. 20 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ind-g": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-svin",
+          "merknad": "Indrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 400 g stekes i ca. 20 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ind-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-svin",
+          "merknad": "Indrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 400 g stekes i ca. 20 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-kg": {
+          "verdi": 1,
+          "enhet": "kg",
+          "kilde": "mp-svin",
+          "merknad": "Ytrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 1 kg stekes i ca. 40 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-min": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "mp-svin",
+          "merknad": "Ytrefilet | 200 g | Brunes i panne, etterstekes i ovn på 125 °C. 1 kg stekes i ca. 40 minutter. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "grill-kilo": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Beregn ca. 40 minutter steketid per kilo kjøtt."
+        },
+        "grill-skiver-min": {
+          "verdi": 3,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Ytrefilet i skiver | Grill i 3-5 minutter på hver side på medium varm grill. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "grill-skiver-maks": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Ytrefilet i skiver | Grill i 3-5 minutter på hver side på medium varm grill. | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        }
+      }
+    },
+    {
+      "id": "svinestek",
+      "slug": "svinestek",
+      "navn": "Svinestek",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        },
+        "mt-dor-min": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "mt-dor-maks": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "surret-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Surret svinestek u/svor / Bog, skinke | 200 g | Stekes i ovn på 125 °C, 1,5 kg stekes i ca. 2 timer. | Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "surret-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Surret svinestek u/svor / Bog, skinke | 200 g | Stekes i ovn på 125 °C, 1,5 kg stekes i ca. 2 timer. | Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "skinke-pluss": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Skinkestek m/svor / Bog, skinke | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1,5 - 2 timer. Bruk grillen på slutten for å få svoren sprø. | Medium pluss: 68 °C / Gjennomstekt: 75 °C"
+        },
+        "skinke-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Skinkestek m/svor / Bog, skinke | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1,5 - 2 timer. Bruk grillen på slutten for å få svoren sprø. | Medium pluss: 68 °C / Gjennomstekt: 75 °C"
+        },
+        "kam-pluss": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Svinekam / m/svor | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1 - 1,5 time. Bruk grillen på slutten for å få svoren sprø | Medium pluss: 68 °C / Gjennomstekt: 75 °C"
+        },
+        "kam-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Svinekam / m/svor | 200 g | Dampes i 45 minutter på 230 °C. Stekes i ovn på 175 °C, 1,5 kg stekes i ca. 1 - 1,5 time. Bruk grillen på slutten for å få svoren sprø | Medium pluss: 68 °C / Gjennomstekt: 75 °C"
+        },
+        "rokt-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Røkt svinekam | 200 g | Pakkes i folie og stekes i ovn på 125 °C. 1,5 kg trenger 2-3 timers steketid. | Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "rokt-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-svin",
+          "merknad": "Røkt svinekam | 200 g | Pakkes i folie og stekes i ovn på 125 °C. 1,5 kg trenger 2-3 timers steketid. | Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "hvile": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-svinestek",
+          "merknad": "La steken hvile i ca. 15 minutter før du skjærer i den."
+        }
+      },
+      "tekst": {
+        "svin-ferdig": "mp-svinestek|Stikk et steketermometer inn i den tykkeste delen av steken."
+      }
+    },
+    {
+      "id": "svinenakke",
+      "slug": "svinenakke",
+      "navn": "Svinenakke",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        },
+        "mt-dor-min": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "mt-dor-maks": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "nakke-medium": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Svinenakke (nakkefilet) | Krydre svinenakken med en rub. Grill den raskt på alle sider over direkte varme. Flytt kjøttet over på indirekte varme og la den steke til ønsket kjernetemperatur. 1,5 kg svinenakke trenger 1,5-2 timer på grillen (ved 175 °C). | Medium: 70 °C Gjennomstekt: 76 °C"
+        },
+        "nakke-gj": {
+          "verdi": 76,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Svinenakke (nakkefilet) | Krydre svinenakken med en rub. Grill den raskt på alle sider over direkte varme. Flytt kjøttet over på indirekte varme og la den steke til ønsket kjernetemperatur. 1,5 kg svinenakke trenger 1,5-2 timer på grillen (ved 175 °C). | Medium: 70 °C Gjennomstekt: 76 °C"
+        },
+        "nakke-kg": {
+          "verdi": 1.5,
+          "enhet": "kg",
+          "kilde": "mp-grill",
+          "merknad": "Svinenakke (nakkefilet) | Krydre svinenakken med en rub. Grill den raskt på alle sider over direkte varme. Flytt kjøttet over på indirekte varme og la den steke til ønsket kjernetemperatur. 1,5 kg svinenakke trenger 1,5-2 timer på grillen (ved 175 °C). | Medium: 70 °C Gjennomstekt: 76 °C"
+        },
+        "nakke-tid-min": {
+          "verdi": 1.5,
+          "enhet": "timer",
+          "kilde": "mp-grill",
+          "merknad": "Svinenakke (nakkefilet) | Krydre svinenakken med en rub. Grill den raskt på alle sider over direkte varme. Flytt kjøttet over på indirekte varme og la den steke til ønsket kjernetemperatur. 1,5 kg svinenakke trenger 1,5-2 timer på grillen (ved 175 °C). | Medium: 70 °C Gjennomstekt: 76 °C"
+        },
+        "nakke-tid-maks": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mp-grill",
+          "merknad": "Svinenakke (nakkefilet) | Krydre svinenakken med en rub. Grill den raskt på alle sider over direkte varme. Flytt kjøttet over på indirekte varme og la den steke til ønsket kjernetemperatur. 1,5 kg svinenakke trenger 1,5-2 timer på grillen (ved 175 °C). | Medium: 70 °C Gjennomstekt: 76 °C"
+        },
+        "nakke-grill": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Svinenakke (nakkefilet) | Krydre svinenakken med en rub. Grill den raskt på alle sider over direkte varme. Flytt kjøttet over på indirekte varme og la den steke til ønsket kjernetemperatur. 1,5 kg svinenakke trenger 1,5-2 timer på grillen (ved 175 °C). | Medium: 70 °C Gjennomstekt: 76 °C"
+        },
+        "pulled-min": {
+          "verdi": 86,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Pulled pork av svinenakke | Smør benfri svinenakke inn med sennep og fordel rub rundt hele stykket. Legg svinenakken på indirekte varme (150 °C) på kullgrill i ca. 5 fem timer. | 86-92 °C."
+        },
+        "pulled-maks": {
+          "verdi": 92,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Pulled pork av svinenakke | Smør benfri svinenakke inn med sennep og fordel rub rundt hele stykket. Legg svinenakken på indirekte varme (150 °C) på kullgrill i ca. 5 fem timer. | 86-92 °C."
+        },
+        "pulled-grill": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Pulled pork av svinenakke | Smør benfri svinenakke inn med sennep og fordel rub rundt hele stykket. Legg svinenakken på indirekte varme (150 °C) på kullgrill i ca. 5 fem timer. | 86-92 °C."
+        },
+        "kotelett-medium": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Sommerkoteletter/koteletter | Grill kotelettene i 3-4 minutter på hver side. | Medium: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "kotelett-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Sommerkoteletter/koteletter | Grill kotelettene i 3-4 minutter på hver side. | Medium: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "kotelett-tid-min": {
+          "verdi": 3,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Sommerkoteletter/koteletter | Grill kotelettene i 3-4 minutter på hver side. | Medium: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "kotelett-tid-maks": {
+          "verdi": 4,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Sommerkoteletter/koteletter | Grill kotelettene i 3-4 minutter på hver side. | Medium: 70 °C / Gjennomstekt: 75 °C"
+        }
+      }
+    },
+    {
+      "id": "biff",
+      "slug": "biff",
+      "navn": "Biff",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "medium": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Biffer / Indre-og ytrefilet, flatbiff, mørbrad, entrecôte (2 cm tykke) | 200 g | Stekes i panne på medium til sterk varme til kjøttsaft pipler ut på oversiden. Snu biffen og vent til det pipler, for medium stekt biff | Medium: 60 °C / Gjennomstekt: 70 °C"
+        },
+        "gj": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Biffer / Indre-og ytrefilet, flatbiff, mørbrad, entrecôte (2 cm tykke) | 200 g | Stekes i panne på medium til sterk varme til kjøttsaft pipler ut på oversiden. Snu biffen og vent til det pipler, for medium stekt biff | Medium: 60 °C / Gjennomstekt: 70 °C"
+        },
+        "tykk": {
+          "verdi": 2,
+          "enhet": "cm",
+          "kilde": "mp-storfe",
+          "merknad": "Biffer / Indre-og ytrefilet, flatbiff, mørbrad, entrecôte (2 cm tykke) | 200 g | Stekes i panne på medium til sterk varme til kjøttsaft pipler ut på oversiden. Snu biffen og vent til det pipler, for medium stekt biff | Medium: 60 °C / Gjennomstekt: 70 °C"
+        },
+        "rod-min": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Kjøttet er rødt på 55-60 °C, rosa på 65 °C, og godt stekt ved 70 °C."
+        },
+        "rod-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Kjøttet er rødt på 55-60 °C, rosa på 65 °C, og godt stekt ved 70 °C."
+        },
+        "rosa": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Kjøttet er rødt på 55-60 °C, rosa på 65 °C, og godt stekt ved 70 °C."
+        },
+        "godt": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Kjøttet er rødt på 55-60 °C, rosa på 65 °C, og godt stekt ved 70 °C."
+        },
+        "grill-pa-min": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Biffer | Grill biffene på middels sterk varme i 2-3 minutter på hver side."
+        },
+        "grill-pa-maks": {
+          "verdi": 3,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Biffer | Grill biffene på middels sterk varme i 2-3 minutter på hver side."
+        }
+      },
+      "tekst": {
+        "mt-hele": "mt-rykende|Når du steker hele kjøttstykker som biff og koteletter, er det nok at overflatene blir godt stekte",
+        "mt-grill-biff": "mt-sommer|Ved steiking av heile kjøttstykke som biff og kotelettar er det nok at overflatene blir godt steikte, fordi det er her bakteriane finst på kjøttet.",
+        "mt-ham-biff": "mt-hamburger|Biffen er derfor trygg når overflaten er stekt."
+      }
+    },
+    {
+      "id": "roastbiff",
+      "slug": "roastbiff",
+      "navn": "Roastbiff",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ferdig": {
+          "verdi": 56,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Roastbiff / Ytrefilet, flatbiff, mørbrad | 200 g | Brunes raskt i varm panne, stekes deretter i ovn på 125 °C, 1,5 kg stekes i ca. 1 time | 56 °C"
+        },
+        "ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Roastbiff / Ytrefilet, flatbiff, mørbrad | 200 g | Brunes raskt i varm panne, stekes deretter i ovn på 125 °C, 1,5 kg stekes i ca. 1 time | 56 °C"
+        },
+        "kg": {
+          "verdi": 1.5,
+          "enhet": "kg",
+          "kilde": "mp-storfe",
+          "merknad": "Roastbiff / Ytrefilet, flatbiff, mørbrad | 200 g | Brunes raskt i varm panne, stekes deretter i ovn på 125 °C, 1,5 kg stekes i ca. 1 time | 56 °C"
+        },
+        "tid": {
+          "verdi": 1,
+          "enhet": "time",
+          "kilde": "mp-storfe",
+          "merknad": "Roastbiff / Ytrefilet, flatbiff, mørbrad | 200 g | Brunes raskt i varm panne, stekes deretter i ovn på 125 °C, 1,5 kg stekes i ca. 1 time | 56 °C"
+        },
+        "rod": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-roastbiff",
+          "merknad": "Sett formen midt i stekeovnen på 100 °C, og stek til ønsket kjernetemperatur. Når steketermometeret viser 55 °C er snittflaten rød, ved 60-65 °C er den rosa."
+        },
+        "rosa-min": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-roastbiff",
+          "merknad": "Sett formen midt i stekeovnen på 100 °C, og stek til ønsket kjernetemperatur. Når steketermometeret viser 55 °C er snittflaten rød, ved 60-65 °C er den rosa."
+        },
+        "rosa-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-roastbiff",
+          "merknad": "Sett formen midt i stekeovnen på 100 °C, og stek til ønsket kjernetemperatur. Når steketermometeret viser 55 °C er snittflaten rød, ved 60-65 °C er den rosa."
+        },
+        "opp-ovn": {
+          "verdi": 100,
+          "enhet": "°C",
+          "kilde": "mp-roastbiff",
+          "merknad": "Sett formen midt i stekeovnen på 100 °C, og stek til ønsket kjernetemperatur. Når steketermometeret viser 55 °C er snittflaten rød, ved 60-65 °C er den rosa."
+        }
+      },
+      "tekst": {
+        "mt-hele": "mt-rykende|Når du steker hele kjøttstykker som biff og koteletter, er det nok at overflatene blir godt stekte",
+        "roast-kald": "mp-roastbiff|Avkjøl kjøttet helt før du skjærer det i skiver."
+      }
+    },
+    {
+      "id": "oksefilet",
+      "slug": "oksefilet",
+      "navn": "Oksefilet",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "filet-lite": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Filet / Indrefilet og ytrefilet | 200 g | Brunes raskt i panne. Stekes i ovnen på 125 °C | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "filet-medium": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Filet / Indrefilet og ytrefilet | 200 g | Brunes raskt i panne. Stekes i ovnen på 125 °C | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "filet-pluss": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Filet / Indrefilet og ytrefilet | 200 g | Brunes raskt i panne. Stekes i ovnen på 125 °C | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "filet-gj": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Filet / Indrefilet og ytrefilet | 200 g | Brunes raskt i panne. Stekes i ovnen på 125 °C | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Filet / Indrefilet og ytrefilet | 200 g | Brunes raskt i panne. Stekes i ovnen på 125 °C | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "grill-tid-min": {
+          "verdi": 35,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Hel indrefilet | Grill indrefileten på direkte varme til den blir fint brun rundt det hele. Snu ofte. Flytt fileten til indirekte varme og stek videre under lokk i 35-45 minutter til ønsket kjernetemperatur. | Fileten er ferdig når termometeret viser 60-65° C (hvis du ønsker den medium stekt)."
+        },
+        "grill-tid-maks": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Hel indrefilet | Grill indrefileten på direkte varme til den blir fint brun rundt det hele. Snu ofte. Flytt fileten til indirekte varme og stek videre under lokk i 35-45 minutter til ønsket kjernetemperatur. | Fileten er ferdig når termometeret viser 60-65° C (hvis du ønsker den medium stekt)."
+        },
+        "grill-medium-min": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Hel indrefilet | Grill indrefileten på direkte varme til den blir fint brun rundt det hele. Snu ofte. Flytt fileten til indirekte varme og stek videre under lokk i 35-45 minutter til ønsket kjernetemperatur. | Fileten er ferdig når termometeret viser 60-65° C (hvis du ønsker den medium stekt)."
+        },
+        "grill-medium-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-grill",
+          "merknad": "Hel indrefilet | Grill indrefileten på direkte varme til den blir fint brun rundt det hele. Snu ofte. Flytt fileten til indirekte varme og stek videre under lokk i 35-45 minutter til ønsket kjernetemperatur. | Fileten er ferdig når termometeret viser 60-65° C (hvis du ønsker den medium stekt)."
+        },
+        "fondue-min": {
+          "verdi": 1,
+          "enhet": "minutter",
+          "kilde": "mp-storfe",
+          "merknad": "Fondue / Mørbrad, indrefilet, ytrefilet | 200 g | Stek kjøttbiter i olje (Soya eller solsikkeolje) i 1-2 minutter."
+        },
+        "fondue-maks": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mp-storfe",
+          "merknad": "Fondue / Mørbrad, indrefilet, ytrefilet | 200 g | Stek kjøttbiter i olje (Soya eller solsikkeolje) i 1-2 minutter."
+        }
+      },
+      "tekst": {
+        "mt-hele": "mt-rykende|Når du steker hele kjøttstykker som biff og koteletter, er det nok at overflatene blir godt stekte"
+      }
+    },
+    {
+      "id": "entrecote",
+      "slug": "entrecote",
+      "navn": "Entrecôte",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hel-lite": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Helstekt entrecôte / Entrecôte med eller uten ben | 200 g | Brunes raskt i stekepanne. Stekes i ovn på 125 °C. / 1,5 kg stekes i ca. 2 timer og 30 minutter. | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "hel-medium": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Helstekt entrecôte / Entrecôte med eller uten ben | 200 g | Brunes raskt i stekepanne. Stekes i ovn på 125 °C. / 1,5 kg stekes i ca. 2 timer og 30 minutter. | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "hel-pluss": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Helstekt entrecôte / Entrecôte med eller uten ben | 200 g | Brunes raskt i stekepanne. Stekes i ovn på 125 °C. / 1,5 kg stekes i ca. 2 timer og 30 minutter. | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "hel-gj": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Helstekt entrecôte / Entrecôte med eller uten ben | 200 g | Brunes raskt i stekepanne. Stekes i ovn på 125 °C. / 1,5 kg stekes i ca. 2 timer og 30 minutter. | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "hel-ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-storfe",
+          "merknad": "Helstekt entrecôte / Entrecôte med eller uten ben | 200 g | Brunes raskt i stekepanne. Stekes i ovn på 125 °C. / 1,5 kg stekes i ca. 2 timer og 30 minutter. | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "hel-kg": {
+          "verdi": 1.5,
+          "enhet": "kg",
+          "kilde": "mp-storfe",
+          "merknad": "Helstekt entrecôte / Entrecôte med eller uten ben | 200 g | Brunes raskt i stekepanne. Stekes i ovn på 125 °C. / 1,5 kg stekes i ca. 2 timer og 30 minutter. | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "hel-t": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mp-storfe",
+          "merknad": "Helstekt entrecôte / Entrecôte med eller uten ben | 200 g | Brunes raskt i stekepanne. Stekes i ovn på 125 °C. / 1,5 kg stekes i ca. 2 timer og 30 minutter. | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "hel-m": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mp-storfe",
+          "merknad": "Helstekt entrecôte / Entrecôte med eller uten ben | 200 g | Brunes raskt i stekepanne. Stekes i ovn på 125 °C. / 1,5 kg stekes i ca. 2 timer og 30 minutter. | Lite stekt: 55 °C / Medium: 60 °C / Medium pluss: 65 °C / Gjennomstekt: 70 °C"
+        },
+        "hvile": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-entrecote",
+          "merknad": "La kjøttet hvile i 15 minutter før du skjærer det i skiver."
+        },
+        "opp-ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-entrecote",
+          "merknad": "Varm stekeovnen til 125 °C og sett formen midt i ovnen."
+        }
+      },
+      "tekst": {
+        "mt-hele": "mt-rykende|Når du steker hele kjøttstykker som biff og koteletter, er det nok at overflatene blir godt stekte"
+      }
+    },
+    {
+      "id": "lammelar",
+      "slug": "lammelar",
+      "navn": "Lammelår",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ben-medium": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammestek m/ben | 250 g | Stekes i ovn på 125 °C, 2-3 kg stekes i ca. 3 timer | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ben-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammestek m/ben | 250 g | Stekes i ovn på 125 °C, 2-3 kg stekes i ca. 3 timer | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ben-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammestek m/ben | 250 g | Stekes i ovn på 125 °C, 2-3 kg stekes i ca. 3 timer | Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "surret-lite-min": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Surret lammestek, benfri / Lår | 200 g | Stekes i ovn på 125 °C, 2 kg stekes i ca. 2 timer. Steker under 2,5 kg brunes raskt i stekepanne først. | Lite stekt: 55-60 °C / Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "surret-lite-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Surret lammestek, benfri / Lår | 200 g | Stekes i ovn på 125 °C, 2 kg stekes i ca. 2 timer. Steker under 2,5 kg brunes raskt i stekepanne først. | Lite stekt: 55-60 °C / Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "surret-medium": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Surret lammestek, benfri / Lår | 200 g | Stekes i ovn på 125 °C, 2 kg stekes i ca. 2 timer. Steker under 2,5 kg brunes raskt i stekepanne først. | Lite stekt: 55-60 °C / Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "surret-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Surret lammestek, benfri / Lår | 200 g | Stekes i ovn på 125 °C, 2 kg stekes i ca. 2 timer. Steker under 2,5 kg brunes raskt i stekepanne først. | Lite stekt: 55-60 °C / Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "surret-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Surret lammestek, benfri / Lår | 200 g | Stekes i ovn på 125 °C, 2 kg stekes i ca. 2 timer. Steker under 2,5 kg brunes raskt i stekepanne først. | Lite stekt: 55-60 °C / Medium: 65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "rokt": {
+          "verdi": 72,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lettsaltet og røkt lammelår | 250 g | Pakkes i folie, stekes i ovn på 125 °C | 72 °C"
+        },
+        "art-medium": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-lammestek",
+          "merknad": "Ved 65 °C er steken medium stekt Ved 70 °C er steken medium pluss Ved 75 °C er steken gjennomstekt Ta ut steken ved ønsket kjernetemperatur og la den hvile i ca. 15 minutter."
+        },
+        "art-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-lammestek",
+          "merknad": "Ved 65 °C er steken medium stekt Ved 70 °C er steken medium pluss Ved 75 °C er steken gjennomstekt Ta ut steken ved ønsket kjernetemperatur og la den hvile i ca. 15 minutter."
+        },
+        "art-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-lammestek",
+          "merknad": "Ved 65 °C er steken medium stekt Ved 70 °C er steken medium pluss Ved 75 °C er steken gjennomstekt Ta ut steken ved ønsket kjernetemperatur og la den hvile i ca. 15 minutter."
+        },
+        "hvile": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-lammestek",
+          "merknad": "Ved 65 °C er steken medium stekt Ved 70 °C er steken medium pluss Ved 75 °C er steken gjennomstekt Ta ut steken ved ønsket kjernetemperatur og la den hvile i ca. 15 minutter."
+        },
+        "lang": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "ca. 3,3 kilo til en kjernetemperatur på 65 °C ved ulike temperaturer i ovnen"
+        },
+        "lang-kg": {
+          "verdi": 3.3,
+          "enhet": "kg",
+          "kilde": "mp-lammelar-lang",
+          "merknad": "ca. 3,3 kilo til en kjernetemperatur på 65 °C ved ulike temperaturer i ovnen"
+        },
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      },
+      "tekst": {
+        "lamb-rosa": "mp-lammestek|Enten du foretrekker lett rosa eller helt gjennomstekt lammestek kan det være vanskelig å vite når kjøttet er ferdig stekt.",
+        "lamb-term": "mp-lammestek|Stikk termometeret på skrå inn i steken, slik at det sitter midt i den tykkeste delen av låret."
+      }
+    },
+    {
+      "id": "lammefilet",
+      "slug": "lammefilet",
+      "navn": "Lammefilet og lammecarré",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ytre-lite": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Ytrefilet | 200 g | Brunes raskt i panne, etterstekes i ovn på 125 °C i ca. 20 minutter. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-medium-min": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Ytrefilet | 200 g | Brunes raskt i panne, etterstekes i ovn på 125 °C i ca. 20 minutter. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-medium-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Ytrefilet | 200 g | Brunes raskt i panne, etterstekes i ovn på 125 °C i ca. 20 minutter. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Ytrefilet | 200 g | Brunes raskt i panne, etterstekes i ovn på 125 °C i ca. 20 minutter. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Ytrefilet | 200 g | Brunes raskt i panne, etterstekes i ovn på 125 °C i ca. 20 minutter. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "carre-lite": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammecarré | 250 g | Brun kjøttet raskt i panne, etterstek i ovn på 125 °C. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "carre-medium-min": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammecarré | 250 g | Brun kjøttet raskt i panne, etterstek i ovn på 125 °C. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "carre-medium-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammecarré | 250 g | Brun kjøttet raskt i panne, etterstek i ovn på 125 °C. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "carre-pluss": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammecarré | 250 g | Brun kjøttet raskt i panne, etterstek i ovn på 125 °C. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "carre-gj": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Lammecarré | 250 g | Brun kjøttet raskt i panne, etterstek i ovn på 125 °C. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-lam",
+          "merknad": "Ytrefilet | 200 g | Brunes raskt i panne, etterstekes i ovn på 125 °C i ca. 20 minutter. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "ytre-tid": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mp-lam",
+          "merknad": "Ytrefilet | 200 g | Brunes raskt i panne, etterstekes i ovn på 125 °C i ca. 20 minutter. | Lite stekt: 55 °C / Medium: 60-65 °C / Medium pluss: 70 °C / Gjennomstekt: 75 °C"
+        },
+        "kot-min": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mp-lam",
+          "merknad": "Koteletter / Kotelettkam / Enkle/ doble | 200-300 g | Brunes raskt på hver side i stekepanne på sterk varme. Etterstekes på svak varme ca. 2 minutter."
+        }
+      }
+    },
+    {
+      "id": "kjottdeig",
+      "slug": "kjottdeig",
+      "navn": "Kjøttdeig og hamburger",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "over": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mt-hamburger",
+          "merknad": "Tradisjonelt tilberedes egenproduserte hamburgere ved at innkjøpt kjøttdeig formes og gjennomstekes til en kjernetemperatur over 70 grader."
+        },
+        "ok": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mt-hamburger",
+          "merknad": "Varmebehandling til en kjernetemperatur på 70 grader vil være godt nok."
+        },
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        },
+        "mt-dor-min": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "mt-dor-maks": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mt-rykende",
+          "merknad": "Ved 70–80 ºC dør de aller fleste bakterier."
+        },
+        "grill-min": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Hamburger og sliders (rå) | Grill hamburgere på sterk varme, 2-3 minutter på hver side. Ekstra tykke hamburgere bør ligge noen minutter på indirekte varme til slutt."
+        },
+        "grill-maks": {
+          "verdi": 3,
+          "enhet": "minutter",
+          "kilde": "mp-grill",
+          "merknad": "Hamburger og sliders (rå) | Grill hamburgere på sterk varme, 2-3 minutter på hver side. Ekstra tykke hamburgere bør ligge noen minutter på indirekte varme til slutt."
+        }
+      },
+      "tekst": {
+        "mt-ham-gjennom": "mt-hamburger|Slike produkter må derfor gjennomstekes før servering.",
+        "mt-ham-kvern": "mt-hamburger|Når kjøttstykkene kvernes, blir bakteriene på overflaten jevnt fordelt i hele produktet.",
+        "mt-ham-biff": "mt-hamburger|Biffen er derfor trygg når overflaten er stekt.",
+        "mt-ham-utsatte": "mt-hamburger|anbefaler Mattilsynet at medium stekte hamburgere generelt ikke spises av utsatte grupper som gravide, små barn og andre med nedsatt immunforsvar.",
+        "mt-grill": "mt-sommer|Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "laks",
+      "navn": "Laks",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fisk": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "fisk-ovn": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "fisk-tid": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "glaze-min": {
+          "verdi": 50,
+          "enhet": "°C",
+          "kilde": "mp-ingefarglaze",
+          "merknad": "Bruk gjerne steketermometer, kjernetemperaturen skal være 50-55 °C."
+        },
+        "glaze-maks": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mp-ingefarglaze",
+          "merknad": "Bruk gjerne steketermometer, kjernetemperaturen skal være 50-55 °C."
+        },
+        "glaze-ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mp-ingefarglaze",
+          "merknad": "Plasser formen midt i ovnen på 125 °C og stek i 10 minutter."
+        },
+        "glaze-tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-ingefarglaze",
+          "merknad": "Plasser formen midt i ovnen på 125 °C og stek i 10 minutter."
+        },
+        "kjokken": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-fisk-kjokken",
+          "merknad": "Kjernetemperaturen er ca. 60 °C og noe lavere for enkelte fiskeslag, og om du vil at fisken ikke skal være helt gjennomstekt."
+        }
+      },
+      "tekst": {
+        "laks-rosa": "mp-fisk-kjokken|Laksekjøttet skal være blekrosa, eventuelt med en liten rå kjerne hvis du ønsker det.",
+        "fisk-ferdig": "mp-fisk-kjokken|Den er ferdig når fiskekjøttet blir fast og får en matt farge. Muskelskivene blir mer synlig, og fisken flaker seg ved et lett press."
+      }
+    },
+    {
+      "id": "torsk",
+      "slug": "torsk",
+      "navn": "Torsk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fisk": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-fisk",
+          "merknad": "Filet i ovn (tykkere stykker) | 200-250 g | Brunes 2 minutter på hver side og etterstekes i ovn på 180 °C ca. 15 minutter avhengig av tykkelse. | ca. 60 °C eller lavere om du ønsker en rå kjerne"
+        },
+        "kokt-min": {
+          "verdi": 6,
+          "enhet": "minutter",
+          "kilde": "mp-fisk",
+          "merknad": "Kokt fisk i skiver | 300-400 g | Trekkes i 6-8 minutter. Stykker tykkere enn 3 cm bør trekke i 10 minutter."
+        },
+        "kokt-maks": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "mp-fisk",
+          "merknad": "Kokt fisk i skiver | 300-400 g | Trekkes i 6-8 minutter. Stykker tykkere enn 3 cm bør trekke i 10 minutter."
+        },
+        "kokt-tykk": {
+          "verdi": 3,
+          "enhet": "cm",
+          "kilde": "mp-fisk",
+          "merknad": "Kokt fisk i skiver | 300-400 g | Trekkes i 6-8 minutter. Stykker tykkere enn 3 cm bør trekke i 10 minutter."
+        },
+        "kokt-lenge": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mp-fisk",
+          "merknad": "Kokt fisk i skiver | 300-400 g | Trekkes i 6-8 minutter. Stykker tykkere enn 3 cm bør trekke i 10 minutter."
+        },
+        "opp-tid-min": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "mp-torsk",
+          "merknad": "Sett fisken midt i ovnen på 180 °C og stek i 8-12 minutter, avhengig av tykkelsen på fiskestykkene."
+        },
+        "opp-tid-maks": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "mp-torsk",
+          "merknad": "Sett fisken midt i ovnen på 180 °C og stek i 8-12 minutter, avhengig av tykkelsen på fiskestykkene."
+        },
+        "opp-ovn": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mp-torsk",
+          "merknad": "Sett fisken midt i ovnen på 180 °C og stek i 8-12 minutter, avhengig av tykkelsen på fiskestykkene."
+        }
+      },
+      "tekst": {
+        "fisk-ferdig": "mp-fisk-kjokken|Den er ferdig når fiskekjøttet blir fast og får en matt farge. Muskelskivene blir mer synlig, og fisken flaker seg ved et lett press."
+      }
+    },
+    {
+      "id": "and",
+      "slug": "and",
+      "navn": "And",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "opp-ferdig-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mp-and",
+          "merknad": "Stek videre på 160 °C til kjernetemperaturen viser 58-60 °C."
+        },
+        "opp-ferdig-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mp-and",
+          "merknad": "Stek videre på 160 °C til kjernetemperaturen viser 58-60 °C."
+        },
+        "mt-gjennom": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mt-sommer",
+          "merknad": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+        }
+      }
+    }
+  ]
+}

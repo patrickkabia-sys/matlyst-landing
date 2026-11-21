@@ -10,7 +10,7 @@ import { alleSider } from '../scripts/sidetyper.mjs';
 const ROOT = new URL('..', import.meta.url).pathname;
 const sider = alleSider(ROOT);
 const html = (fil) => readFileSync(join(ROOT, fil), 'utf8');
-// Alle sider under en forfatterrot (familiene holdbarhet og frysing), slik de ligger på disk.
+// Alle sider under en forfatterrot (alle sidefamiliene), slik de ligger på disk.
 const underRot = sider.map((s) => s.sti.replace(/^\//u, '')).filter((sti) => FORFATTER_ROTER.some((rot) => sti.startsWith(rot)));
 const MED_FORFATTER = [...FORFATTER_SIDER, ...underRot];
 const skjema = (h) => [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gu)].flatMap(([, r]) => [JSON.parse(r)].flat());

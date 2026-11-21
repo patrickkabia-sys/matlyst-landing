@@ -13,9 +13,9 @@ const fasit = JSON.parse(readFileSync(new URL('./fasit/kjede-kjente-avvik.json',
 test('kjeden er generatorene først og så etterbehandlingen, med forsidene sist', () => {
   assert.deepEqual(KJEDE, [...GENERATORER, ...ETTERBEHANDLING]);
   // Forsidene har eget skall og skal ikke få lenkeblokker: alle andre sidetrinn står før dem.
-  for (const trinn of ETTERBEHANDLING.filter((t) => !['forside', 'lastmod', 'llms'].includes(t))) assert.ok(KJEDE.indexOf('forside') > KJEDE.indexOf(trinn), trinn);
+  for (const trinn of ETTERBEHANDLING.filter((t) => !['forside', 'lastmod', 'llms', 'sideoversikt'].includes(t))) assert.ok(KJEDE.indexOf('forside') > KJEDE.indexOf(trinn), trinn);
   assert.ok(ETTERBEHANDLING.length >= 6, 'vakten ser trinnene');
-  assert.deepEqual(KJEDE.slice(-3), ['forside', 'lastmod', 'llms']);
+  assert.deepEqual(KJEDE.slice(-4), ['forside', 'lastmod', 'llms', 'sideoversikt']);
   assert.ok(KJEDE.indexOf('skall-paa') > KJEDE.indexOf('generer-lokalsider'));
   assert.ok(!KJEDE.includes('omregner-flertall'), 'omregnerne får riktige ordformer direkte fra generatorene');
 });

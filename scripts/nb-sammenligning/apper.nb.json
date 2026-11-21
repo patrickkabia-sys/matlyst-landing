@@ -1,0 +1,1712 @@
+{
+  "sjekket": "2026-11-21",
+  "kilder": {
+    "as-matlyst": {
+      "navn": "Matlyst: Recipe Book & Pantry",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id6762563515",
+      "hentet": "2026-11-21"
+    },
+    "gp-matlyst": {
+      "navn": "Matlyst: Oppskrifter & matplan",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=app.matlyst&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    },
+    "as-paprika": {
+      "navn": "Paprika Recipe Manager 4",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id1303222868",
+      "hentet": "2026-11-21"
+    },
+    "web-paprika": {
+      "navn": "Paprika Recipe Manager",
+      "utgiver": "paprikaapp.com",
+      "adresse": "https://www.paprikaapp.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-samsung": {
+      "navn": "Samsung Food: Meal Planning",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id1133637674",
+      "hentet": "2026-11-21"
+    },
+    "gp-samsung": {
+      "navn": "Samsung Food: Meal Planner",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.foodient.whisk&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    },
+    "as-recime": {
+      "navn": "ReciMe: Recipes & Meal Planner",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id1593779280",
+      "hentet": "2026-11-21"
+    },
+    "web-recime": {
+      "navn": "ReciMe",
+      "utgiver": "recime.app",
+      "adresse": "https://www.recime.app/",
+      "hentet": "2026-11-21"
+    },
+    "as-recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id974683711",
+      "hentet": "2026-11-21"
+    },
+    "web-recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utgiver": "recipekeeperonline.com",
+      "adresse": "https://recipekeeperonline.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-crouton": {
+      "navn": "Crouton: Recipe Manager",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id1461650987",
+      "hentet": "2026-11-21"
+    },
+    "web-crouton": {
+      "navn": "Crouton",
+      "utgiver": "crouton.app",
+      "adresse": "https://crouton.app/",
+      "hentet": "2026-11-21"
+    },
+    "as-matprat": {
+      "navn": "Matprat",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id6768950196",
+      "hentet": "2026-11-21"
+    },
+    "gp-matprat": {
+      "navn": "Matprat",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=no.matprat.app&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    },
+    "as-bring": {
+      "navn": "Bring! Shopping List & Recipes",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id580669177",
+      "hentet": "2026-11-21"
+    },
+    "gp-bring": {
+      "navn": "Bring! handleliste",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=ch.publisheria.bring&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    },
+    "web-bring": {
+      "navn": "Bring!",
+      "utgiver": "getbring.com",
+      "adresse": "https://www.getbring.com/en/home",
+      "hentet": "2026-11-21"
+    },
+    "as-listonic": {
+      "navn": "Shopping List - Listonic",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id331302745",
+      "hentet": "2026-11-21"
+    },
+    "gp-listonic": {
+      "navn": "Smart handleliste - Listonic",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.l&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    },
+    "web-listonic": {
+      "navn": "Listonic",
+      "utgiver": "listonic.com",
+      "adresse": "https://listonic.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-anylist": {
+      "navn": "AnyList: Grocery Shopping List",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id522167641",
+      "hentet": "2026-11-21"
+    },
+    "web-anylist": {
+      "navn": "AnyList Features",
+      "utgiver": "anylist.com",
+      "adresse": "https://anylist.com/features",
+      "hentet": "2026-11-21"
+    },
+    "as-plantoeat": {
+      "navn": "Plan to Eat",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id1215348056",
+      "hentet": "2026-11-21"
+    },
+    "gp-plantoeat": {
+      "navn": "Plan to Eat: Meal Planner",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.plantoeat.mobile&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    },
+    "web-plantoeat": {
+      "navn": "Plan to Eat",
+      "utgiver": "plantoeat.com",
+      "adresse": "https://www.plantoeat.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-coop": {
+      "navn": "Coop medlem",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id992134528",
+      "hentet": "2026-11-21"
+    },
+    "gp-coop": {
+      "navn": "Coop medlem",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=no.coop.members&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    },
+    "as-rema": {
+      "navn": "REMA 1000",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id1184277401",
+      "hentet": "2026-11-21"
+    },
+    "gp-rema": {
+      "navn": "REMA 1000",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=no.rema.bella&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    },
+    "as-oda": {
+      "navn": "Oda - Online grocery store",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id1079537578",
+      "hentet": "2026-11-21"
+    },
+    "web-oda": {
+      "navn": "Last ned appen",
+      "utgiver": "oda.com",
+      "adresse": "https://oda.com/no/about/app/",
+      "hentet": "2026-11-21"
+    },
+    "as-meny": {
+      "navn": "MENY",
+      "utgiver": "App Store (norsk butikk)",
+      "adresse": "https://apps.apple.com/no/app/id662833115",
+      "hentet": "2026-11-21"
+    },
+    "gp-meny": {
+      "navn": "MENY",
+      "utgiver": "Google Play (Norge)",
+      "adresse": "https://play.google.com/store/apps/details?id=no.norgesgruppen.apps.meny&hl=no&gl=NO",
+      "hentet": "2026-11-21"
+    }
+  },
+  "apper": {
+    "matlyst": {
+      "navn": "Matlyst",
+      "utvikler": "Patrick Kabia",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad og Android",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "iPad Requires iPadOS"
+            },
+            {
+              "kilde": "gp-matlyst",
+              "sitat": "Matlyst: Oppskrifter & matplan"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "English, Danish, Norwegian Bokmål, Swedish"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å laste ned. Fem importer fra lenker per måned. Ukemeny og handleliste er gratis.",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Without Pro, you can import five recipes from links each month."
+            },
+            {
+              "kilde": "as-matlyst",
+              "sitat": "The meal plan and grocery list are free to use."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Matlyst Pro, abonnement",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "A Pro subscription renews automatically"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Share a link from a website, Instagram, TikTok or YouTube to Matlyst"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram, TikTok og YouTube",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Share a link from a website, Instagram, TikTok or YouTube to Matlyst"
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Add recipes to your meal plan and send the week's ingredients to your grocery list in one tap."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, lages fra oppskriftene og sorteres etter hylle",
+          "kilder": [
+            {
+              "kilde": "gp-matlyst",
+              "sitat": "Handlelista bygger seg selv av ingrediensene, sortert etter hvor varene står i butikken"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Med Pro",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Sharing them with the people you live with requires Pro."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ja. Gratisversjonen viser et begrenset antall varer.",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "The free plan shows a limited number of items, and with Pro you see them all."
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Utenlandske oppskrifter oversettes til norsk bokmål, og målene regnes om til metrisk.",
+          "kilder": [
+            {
+              "kilde": "gp-matlyst",
+              "sitat": "Utenlandske oppskrifter oversettes med KI til norsk bokmål."
+            },
+            {
+              "kilde": "gp-matlyst",
+              "sitat": "Enhetene regnes om til metrisk som standard"
+            }
+          ]
+        }
+      }
+    },
+    "paprika": {
+      "navn": "Paprika",
+      "utvikler": "Hindsight Labs LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Mac, Android og Windows",
+          "kilder": [
+            {
+              "kilde": "web-paprika",
+              "sitat": "one subscription covers iPhone, iPad, Mac, Android, and Windows."
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Japanese, Norwegian Bokmål, Polish"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å laste ned. Opptil 50 oppskrifter på én enhet.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "The free version allows you to save up to 50 recipes on a single device."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, abonnement. Ett abonnement dekker alle enhetene.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "A premium subscription unlocks unlimited recipes, cloud syncing, access on all devices, and all other premium features."
+            },
+            {
+              "kilde": "web-paprika",
+              "sitat": "one plan covers every device"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Download recipes from your favorite websites"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "TikTok, Instagram, Facebook og YouTube, med Premium",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Save recipes from the TikTok, Instagram, Facebook and YouTube apps (Premium)"
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja, for dag, uke eller måned",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Plan meals for the day, week, or month"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, sortert etter hylle. Hele uka kan legges på lista. Flere lister med Premium.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Browse grocery lists by aisles"
+            },
+            {
+              "kilde": "as-paprika",
+              "sitat": "Add the whole week to your grocery list"
+            },
+            {
+              "kilde": "as-paprika",
+              "sitat": "Create multiple grocery lists (Premium)"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Familiekontoer med Premium",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Family accounts (Premium)"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Track pantry items"
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Fungerer uten nett, og har kokemodus med talestyring.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Works offline"
+            },
+            {
+              "kilde": "as-paprika",
+              "sitat": "Cook mode: use voice commands to cook hands-free"
+            }
+          ]
+        }
+      }
+    },
+    "samsung": {
+      "navn": "Samsung Food",
+      "utvikler": "Foodient Ltd",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android og nett",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "All this, available for free on your iPhone, iPad, or web."
+            },
+            {
+              "kilde": "gp-samsung",
+              "sitat": "Samsung Food: Meal Planner"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Norsk står ikke blant språkene i App Store",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "English, French, German, Italian, Korean, Portuguese, Spanish"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "All this, available for free on your iPhone, iPad, or web."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Samsung Food+, kjøp i appen",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Samsung Food+ unlocks advanced features"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Save any recipe from any website and make it your own."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Ja. Ukeplaner laget med KI krever Samsung Food+.",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Plan your weekly meals, turn them into smart shopping lists, and share them with friends or family."
+            },
+            {
+              "kilde": "as-samsung",
+              "sitat": "AI-personalized weekly meal plans tailored to your health goals."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, lages fra ukeplanen",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Plan your weekly meals, turn them into smart shopping lists"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Delte handlelister",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Organize family shopping with shared grocery lists."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Med Samsung Food+",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Automated pantry management with personalized cooking suggestions."
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Et stort bibliotek med offentlige oppskrifter du kan søke i.",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Discover over 240,000 public recipes, including 124,000 fully guided ones."
+            }
+          ]
+        }
+      }
+    },
+    "recime": {
+      "navn": "ReciMe",
+      "utvikler": "ReciMe Pty Ltd",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android og nett",
+          "kilder": [
+            {
+              "kilde": "web-recime",
+              "sitat": "Is ReciMe available for both iOS and Android devices? Yes!"
+            },
+            {
+              "kilde": "web-recime",
+              "sitat": "You can also use our web application to save and access all your recipes."
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Norsk står ikke blant språkene i App Store",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "English, French, German, Portuguese, Spanish"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Fem importer per uke. Handleliste, måltidsplan og kokebøker er gratis.",
+          "kilder": [
+            {
+              "kilde": "web-recime",
+              "sitat": "The free version of ReciMe is limited to 5 recipe imports per week."
+            },
+            {
+              "kilde": "web-recime",
+              "sitat": "including our smart grocery list, meal plan and cookbooks features"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, abonnement per måned eller år",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "The ReciMe Premium subscription renews automatically at the end of each period (each month or year) until you cancel."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ikke oppgitt"
+        },
+        "sosiale": {
+          "tekst": "Instagram, Facebook, TikTok, YouTube og Pinterest",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Save Recipes from Instagram, Facebook, TikTok, YouTube and Pinterest"
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Meal Plan for the Week"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, sortert etter hylle eller oppskrift",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Sort ingredients by supermarket aisle or by recipe."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Deling av enkeltoppskrifter. Felles husstand er ikke oppgitt.",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Share recipes with your friends and family."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Regner ut næringsinnhold for oppskriftene.",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Calculate calories, protein, carbs, and fats for any recipe."
+            }
+          ]
+        }
+      }
+    },
+    "recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utvikler": "Tudorspan Limited",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android, PC og Mac. Andre plattformer kjøpes for seg.",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Sync your recipes across your iPhone, iPad, Android phone and tablet, PC and Mac."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "(separate purchase required for other platforms)"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Korean, Norwegian Bokmål, Portuguese"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å prøve. Hva gratisversjonen begrenser, er ikke oppgitt.",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Try it free today!"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Kjøp i appen (Recipe Keeper Pro Upgrade)",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Recipe Keeper Pro Upgrade"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Hundreds of popular recipe websites supported."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram og TikTok",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Search for recipes on the web, Instagram and TikTok and add them straight to your collection."
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja, for uke og måned, og kan lage en tilfeldig plan",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Integrated weekly and monthly meal planner allows you to plan your meals in advance."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Recipe Keeper can even create a random meal plan for you based on your hints and suggestions."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, sortert etter hylle. Alle måltidene i planen kan legges på lista i ett steg.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Fully featured shopping list that automatically groups your items by aisle."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Add all your meals to your shopping list in one step."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Felles oppskriftssamling for familien",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Create a shared family recipe collection."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Skanner oppskrifter fra bilder og PDF-filer, og flytter oppskrifter fra mange andre apper.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Scan recipes using your phone's camera or from your existing photos and PDF files."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Transfer your recipes from other apps"
+            }
+          ]
+        }
+      }
+    },
+    "crouton": {
+      "navn": "Crouton",
+      "utvikler": "Crouton LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Mac, Apple Vision og Apple Watch. Android er ikke oppgitt.",
+          "kilder": [
+            {
+              "kilde": "web-crouton",
+              "sitat": "Available on iOS, iPadOS, macOS, visionOS & watchOS"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Norsk står ikke blant språkene i App Store",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "English and 2 more English, French, German"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å laste ned, med kjøp i appen. Hva gratisversjonen begrenser, er ikke oppgitt.",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "Free · In-App Purchases"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Kjøp i appen: Crouton Plus, og Discover per måned eller år",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "Crouton Plus"
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Discover Monthly"
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Discover Yearly"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "web-crouton",
+              "sitat": "Automatically import recipe ingredients and steps from copied URLs."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Ja, og kan lage planen automatisk",
+          "kilder": [
+            {
+              "kilde": "web-crouton",
+              "sitat": "Assign saved recipes to each day of the week so you're never caught unprepared"
+            },
+            {
+              "kilde": "web-crouton",
+              "sitat": "Use your stored recipes to automatically generate meal plans"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, fra oppskriftene, og kan kobles til Påminnelser",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "Create shopping lists directly from your recipes"
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Integrates with Reminders for convenient access."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Via iCloud",
+          "kilder": [
+            {
+              "kilde": "web-crouton",
+              "sitat": "Sync with your household."
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Share your recipes with friends and family using iCloud"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Kokemodus med ett steg om gangen, og støtte for kjøkkenvekter med Bluetooth.",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "Focus on one recipe step at time as you cook"
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Pair to supported Bluetooth scales"
+            }
+          ]
+        }
+      }
+    },
+    "matprat": {
+      "navn": "Matprat",
+      "utvikler": "Matprat AS",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone og Android",
+          "kilder": [
+            {
+              "kilde": "as-matprat",
+              "sitat": "Only for iPhone"
+            },
+            {
+              "kilde": "gp-matprat",
+              "sitat": "Velkommen til Matprat-appen!"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-matprat",
+              "sitat": "Languages Norwegian Bokmål"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å laste ned",
+          "kilder": [
+            {
+              "kilde": "as-matprat",
+              "sitat": "Only for iPhone Free"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Ikke oppgitt"
+        },
+        "nett": {
+          "tekst": "Ikke oppgitt"
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Ikke oppgitt"
+        },
+        "handleliste": {
+          "tekst": "Ikke oppgitt"
+        },
+        "deling": {
+          "tekst": "Ikke oppgitt"
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Matprats egne oppskrifter, mange med video og trinnbilder. Innlogget har du favoritter og egne oppskrifter på tvers av plattformer.",
+          "kilder": [
+            {
+              "kilde": "as-matprat",
+              "sitat": "mange med videoer og trinnbilder som hjelper deg å lykkes"
+            },
+            {
+              "kilde": "as-matprat",
+              "sitat": "Som innlogget bruker har du dine Matprat-favoritter og dine egne oppskrifter tilgjengelige på tvers av plattformer."
+            }
+          ]
+        }
+      }
+    },
+    "bring": {
+      "navn": "Bring!",
+      "utvikler": "Bring! Labs AG",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Apple Watch, Android, Wear OS og nett",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "You can use the Bring! grocery shopping app for free on your smartphone, tablet or Apple Watch, or as the web version."
+            },
+            {
+              "kilde": "gp-bring",
+              "sitat": "Bruk appen til handlelisten enkelt med smartklokken fra Wear OS"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Italian, Norwegian Bokmål, Polish"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis. Å lage og dele lister, oppskrifter og tilbud er med.",
+          "kilder": [
+            {
+              "kilde": "web-bring",
+              "sitat": "All core functions – such as creating and sharing shopping lists and accessing recipes and special offers – are available free of charge."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Bring! Premium per måned eller år. Hva Premium gir, er ikke oppgitt i kildene.",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Bring! Premium 1 Year"
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Bring! Premium 1 Month"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Henter ingrediensene fra oppskrifter på nett til lista",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "you can import recipe ingredients from websites to your Bring! free grocery list"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Ikke oppgitt"
+        },
+        "handleliste": {
+          "tekst": "Ja, med kategorier som kan tilpasses butikken",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "You can also customize the product categories in the app to match the aisles in your supermarket."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja, gratis",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Set up shared grocery lists with your loved ones, roommates or colleagues"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Viser tilbud fra butikker i nærheten og har plass til kundekort.",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Save money with the latest offers and ads from stores near you."
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Store your loyalty cards securely and centrally in your Bring! wallet"
+            }
+          ]
+        }
+      }
+    },
+    "listonic": {
+      "navn": "Listonic",
+      "utvikler": "Listonic sp. z o.o.",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, Apple Watch, Android og nett",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Apple Watch Requires watchOS"
+            },
+            {
+              "kilde": "gp-listonic",
+              "sitat": "Listonic støtter alle Android-smarttelefoner og -nettbrett og er alltid tilgjengelig i nettleseren."
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Norwegian Bokmål"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis",
+          "kilder": [
+            {
+              "kilde": "web-listonic",
+              "sitat": "free to use, forever."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, som abonnement eller engangskjøp. Gir blant annet andre temaer og bruk uten reklame.",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Monthly Premium Subscription"
+            },
+            {
+              "kilde": "as-listonic",
+              "sitat": "Lifetime"
+            },
+            {
+              "kilde": "web-listonic",
+              "sitat": "For those who want extra customization like different themes or an ad-free experience, there’s also a premium version available."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ikke oppgitt"
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Måltidsplanlegging med en KI-assistent",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Plan meals and discover recipes with the AI assistant."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, sortert etter hylle, alfabetisk eller selvvalgt",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Sort products by aisle, alphabetically, or in a custom order."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Share lists in real time across all devices."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Virker uten nett, og regner ut hva handelen koster når du legger inn priser.",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Work offline and sync changes once you are back online."
+            },
+            {
+              "kilde": "gp-listonic",
+              "sitat": "Legg priser til elementene på handlelisten og Listonic beregner automatisk sluttsummen din."
+            }
+          ]
+        }
+      }
+    },
+    "anylist": {
+      "navn": "AnyList",
+      "utvikler": "Purple Cover, Inc.",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Apple Watch og Android. Mac og nett med AnyList Complete.",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "AnyList is a free download for iOS & Android."
+            },
+            {
+              "kilde": "as-anylist",
+              "sitat": "Access your lists and recipes on your Mac, PC, and Apple Watch."
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Norsk står ikke blant språkene i App Store",
+          "kilder": [
+            {
+              "kilde": "as-anylist",
+              "sitat": "Languages English and German"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Lage og dele lister er gratis. Fem oppskriftsimporter fra nett.",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "Core functionality, like creating and sharing lists, is free to use."
+            },
+            {
+              "kilde": "web-anylist",
+              "sitat": "Import recipes directly from popular websites Limit 5 Unlimited"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "AnyList Complete, årsabonnement for én person eller en husstand",
+          "kilder": [
+            {
+              "kilde": "as-anylist",
+              "sitat": "1 Year Household Subscription"
+            },
+            {
+              "kilde": "as-anylist",
+              "sitat": "12 Month AnyList Complete Individual Subscription"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Fem importer gratis, ubegrenset med Complete",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "Import recipes directly from popular websites Limit 5 Unlimited"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Med AnyList Complete, og handleliste fra planen",
+          "kilder": [
+            {
+              "kilde": "as-anylist",
+              "sitat": "Meal Planning Calendar: The easiest way to plan your family's meals for the week"
+            },
+            {
+              "kilde": "web-anylist",
+              "sitat": "Generate a grocery list from your meal plan"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, sortert i kategorier som kan tilpasses butikken",
+          "kilder": [
+            {
+              "kilde": "as-anylist",
+              "sitat": "Lists automatically sort into categories"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Lister gratis. Ukemenyen deles med husstanden med Complete.",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "Share lists with family and friends"
+            },
+            {
+              "kilde": "web-anylist",
+              "sitat": "Share meal plan with other household members"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Oppskriftene ligger i samme app som lista, og like ingredienser fra flere oppskrifter blir én vare.",
+          "kilder": [
+            {
+              "kilde": "as-anylist",
+              "sitat": "Organize all your favorite recipes in one place and turn them into shopping lists with a single tap."
+            },
+            {
+              "kilde": "web-anylist",
+              "sitat": "Automatic combining of similar ingredients into a single item in your list"
+            }
+          ]
+        }
+      }
+    },
+    "plantoeat": {
+      "navn": "Plan to Eat",
+      "utvikler": "Plan to Eat, LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android og nett",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Sign in on all of your mobile devices, and at plantoeat.com"
+            },
+            {
+              "kilde": "gp-plantoeat",
+              "sitat": "Plan to Eat: Meal Planner"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Norsk står ikke blant språkene i App Store",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Language EN English"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Ingen gratisversjon oppgitt. 14 dager gratis prøveperiode.",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Try Plan to Eat FREE for 14 days, no payment information required at sign-up."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Abonnement",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "After that, annual subscriptions can be purchased in the app."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Tap the share icon in your web browser to import recipes from the web"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Ja. Hvilke tjenester er ikke oppgitt.",
+          "kilder": [
+            {
+              "kilde": "web-plantoeat",
+              "sitat": "Save them from any website, social media, or your own cookbooks."
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja, med plan for rester og frosne måltider",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "You can scale servings, reschedule recipes, plan leftovers, and track frozen meals."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, lages fra planen",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "The shopping list auto-generates an organized grocery list based on the ingredients in your meal plan."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja, familien kan dele oppskrifter, plan og handleliste",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Your Plan to Eat account automatically syncs your recipes, planner, and shopping list across all of your devices, and your family's, too!"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Har en liste med basisvarer du ofte kjøper, og egne lister per butikk.",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "add frequently purchased items from the staples list"
+            },
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "create lists for specific stores"
+            }
+          ]
+        }
+      }
+    },
+    "coop": {
+      "navn": "Coop medlem",
+      "utvikler": "Coop Norge AS",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad og Android",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "iPad Requires iPadOS"
+            },
+            {
+              "kilde": "gp-coop",
+              "sitat": "Last ned Coop appen"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja, bokmål og nynorsk",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "English, Norwegian Bokmål, Norwegian Nynorsk"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å laste ned",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "Medlemskort, kuponger, tilbud Free"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Ikke oppgitt"
+        },
+        "nett": {
+          "tekst": "Ikke oppgitt"
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Ikke oppgitt"
+        },
+        "handleliste": {
+          "tekst": "Ja, og varer kan legges til fra kuponger og kundeavisen",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "Digital shopping list within the app"
+            },
+            {
+              "kilde": "as-coop",
+              "sitat": "Add items to your list directly from coupons and the weekly flyer"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "Share your shopping list with family and friends"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Medlemskort, kuponger og kundeavis for Coop-butikkene.",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "The Coop app can be used in all our stores"
+            }
+          ]
+        }
+      }
+    },
+    "rema": {
+      "navn": "REMA 1000",
+      "utvikler": "REMA 1000 i Norge AS",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, Apple Watch og Android",
+          "kilder": [
+            {
+              "kilde": "as-rema",
+              "sitat": "Apple Watch Requires watchOS"
+            },
+            {
+              "kilde": "gp-rema",
+              "sitat": "Søk opp varer, lag handeliste og del den med venner og familie"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-rema",
+              "sitat": "Languages Norwegian Bokmål"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å laste ned",
+          "kilder": [
+            {
+              "kilde": "as-rema",
+              "sitat": "REMA 1000 Shopping Free"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Ikke oppgitt"
+        },
+        "nett": {
+          "tekst": "Ikke oppgitt"
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Ikke oppgitt"
+        },
+        "handleliste": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-rema",
+              "sitat": "Søk opp varer, lag handeliste og del den med venner og familie"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-rema",
+              "sitat": "Søk opp varer, lag handeliste og del den med venner og familie"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Bonus og personlige priskutt hos REMA 1000.",
+          "kilder": [
+            {
+              "kilde": "as-rema",
+              "sitat": "Du får nye Personlige Priskutt"
+            }
+          ]
+        }
+      }
+    },
+    "oda": {
+      "navn": "Oda",
+      "utvikler": "Oda Norway AS",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad og Android",
+          "kilder": [
+            {
+              "kilde": "web-oda",
+              "sitat": "Du finner appen på både App Store og Google Play!"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-oda",
+              "sitat": "Languages English and Norwegian Bokmål"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å laste ned",
+          "kilder": [
+            {
+              "kilde": "as-oda",
+              "sitat": "Your online grocery store Free"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Ikke oppgitt"
+        },
+        "nett": {
+          "tekst": "Ikke oppgitt"
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Ikke oppgitt"
+        },
+        "handleliste": {
+          "tekst": "Ja, egne handlelister, og varer kan legges til med strekkode",
+          "kilder": [
+            {
+              "kilde": "web-oda",
+              "sitat": "Lage egne handlelister"
+            },
+            {
+              "kilde": "web-oda",
+              "sitat": "Scanne strekkoder for å legge til varer"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ikke oppgitt"
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "En matbutikk på nett. Varene til en oppskrift legges i handlekurven med ett klikk og leveres hjem.",
+          "kilder": [
+            {
+              "kilde": "web-oda",
+              "sitat": "Legge til oppskrifter med kun ett klikk."
+            },
+            {
+              "kilde": "as-oda",
+              "sitat": "everything is delivered to your door"
+            }
+          ]
+        }
+      }
+    },
+    "meny": {
+      "navn": "MENY",
+      "utvikler": "NorgesGruppen Data AS",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad og Android, og synker med nettbutikken",
+          "kilder": [
+            {
+              "kilde": "as-meny",
+              "sitat": "iPad Requires iPadOS"
+            },
+            {
+              "kilde": "gp-meny",
+              "sitat": "Når du er logget inn vil appen også synkroniseres med nettbutikken på MENY.no"
+            }
+          ]
+        },
+        "norsk": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-meny",
+              "sitat": "Languages Norwegian Bokmål"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis å laste ned. Flere av verktøyene er for MENY MER-kunder.",
+          "kilder": [
+            {
+              "kilde": "as-meny",
+              "sitat": "MENY Shopping Free"
+            },
+            {
+              "kilde": "as-meny",
+              "sitat": "Er du MENY MER-kunde får du tilgang til en rekke smarte verktøy"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Ikke oppgitt"
+        },
+        "nett": {
+          "tekst": "Ikke oppgitt"
+        },
+        "sosiale": {
+          "tekst": "Ikke oppgitt"
+        },
+        "ukemeny": {
+          "tekst": "Middagstips med ukemeny",
+          "kilder": [
+            {
+              "kilde": "as-meny",
+              "sitat": "Få middagstips med ukemeny"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, egne handlelister",
+          "kilder": [
+            {
+              "kilde": "as-meny",
+              "sitat": "Planlegg handelen med dine egne handlelister"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Handlevognen deles med dem du deler medlemskap med",
+          "kilder": [
+            {
+              "kilde": "as-meny",
+              "sitat": "Automatisk deling av handlevogn med de du deler medlemskap med"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ikke oppgitt"
+        },
+        "saerpreg": {
+          "tekst": "Favorittoppskrifter kan legges rett i handlevognen, og varene kan leveres hjem eller hentes.",
+          "kilder": [
+            {
+              "kilde": "as-meny",
+              "sitat": "Lagre alle favorittoppskriftene dine, og legg dem rett i handlevognen"
+            },
+            {
+              "kilde": "as-meny",
+              "sitat": "bestille og få varene levert på døren eller hente dem"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

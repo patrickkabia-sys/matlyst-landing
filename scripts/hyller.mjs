@@ -68,9 +68,12 @@ export const HYLLER = {
         { tekst: 'Erstatte egg', href: '/blogg/erstatte-egg/' },
         { tekst: 'Kjernetemperatur', href: '/blogg/kjernetemperatur/' },
         { tekst: 'Koketider', href: '/blogg/koketider/' },
-        // Familiene holdbarhet og frysing finnes bare på norsk (scripts/familier/).
+        // Familiene holdbarhet, frysing, kjernetemperatur, steketid og mengde per person finnes bare på norsk (scripts/familier/).
         { tekst: 'Holdbarhet i kjøleskapet', href: '/holdbarhet/', bareNb: true },
         { tekst: 'Frysing', href: '/frysing/', bareNb: true },
+        { tekst: 'Kjernetemperatur: tabell', href: '/kjernetemperatur/', bareNb: true },
+        { tekst: 'Steketid', href: '/steketid/', bareNb: true },
+        { tekst: 'Mengde per person', href: '/mengde-per-person/', bareNb: true },
         { tekst: 'Alle kjøkkentips', href: '/blogg/' },
       ],
     },
