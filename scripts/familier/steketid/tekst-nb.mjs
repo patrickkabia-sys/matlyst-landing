@@ -31,7 +31,7 @@ export const TEKST = {
       ['Hvor lenge skal ribba hvile?', `${h.k('mp-ribbe')} oppgir ca. ${h.t('hvile')}, slik at kjøttsaften setter seg.`],
     ],
     soster: [['/kjernetemperatur/svinestek/', 'Kjernetemperatur svinestek']],
-    andre: [['/julemiddag/', 'Julemiddag: plan, mengder og handleliste'], ['/steketid/pinnekjott/', 'Hvor lenge skal pinnekjøttet dampes?']],
+    andre: [['/julemiddag/', 'Julemiddag: plan, mengder og handleliste'], ['/steketid/pinnekjott/', 'Hvor lenge skal pinnekjøttet dampes?'], ['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?']],
   }),
 
   pinnekjott: (h) => ({
@@ -60,7 +60,7 @@ export const TEKST = {
       ['Hvor lenge skal pinnekjøttet dampes?', `Ca. ${h.t('damp')} på svak varme, ifølge ${h.k('mp-pinnekjott')}.`],
       ['Hvilken kjernetemperatur har pinnekjøtt?', `${h.k('mp-pinnekjott')} oppgir ingen kjernetemperatur for pinnekjøtt, så vi har ikke noe tall.`],
     ],
-    andre: [['/steketid/ribbe/', 'Hvor lenge skal ribba stekes?'], ['/julemiddag/', 'Julemiddag: plan, mengder og handleliste']],
+    andre: [['/steketid/ribbe/', 'Hvor lenge skal ribba stekes?'], ['/julemiddag/', 'Julemiddag: plan, mengder og handleliste'], ['/mengde-per-person/pinnekjott/', 'Hvor mye pinnekjøtt per person?']],
   }),
 
   kalkun: (h) => ({
@@ -92,7 +92,7 @@ export const TEKST = {
       ['Hvilken kjernetemperatur har kalkun?', `Se <a href="/kjernetemperatur/kalkun/">kjernetemperatur for kalkun</a>, der Mattilsynet og ${h.k('mp-kalkun')} er gjengitt.`],
     ],
     soster: [['/kjernetemperatur/kalkun/', 'Kjernetemperatur kalkun']],
-    andre: [['/steketid/ribbe/', 'Hvor lenge skal ribba stekes?'], ['/julemiddag/', 'Julemiddag: plan, mengder og handleliste']],
+    andre: [['/steketid/ribbe/', 'Hvor lenge skal ribba stekes?'], ['/julemiddag/', 'Julemiddag: plan, mengder og handleliste'], ['/mengde-per-person/kalkun/', 'Hvor mye kalkun per person?']],
   }),
 
   lammelar: (h) => ({

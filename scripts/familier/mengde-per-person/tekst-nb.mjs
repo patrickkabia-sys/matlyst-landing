@@ -35,7 +35,7 @@ export const TEKST = {
         ['Hvor mye ris trenger jeg til 10 personer?', `Til 10 voksne blir det ${h.sum('pp-g', 10)}, eller ${h.sum('pp-dl', 10)}.`],
         ['Er tallet for tørr eller kokt ris?', 'Vi leser det som tørr ris, målt før koking. MatPrat skriver ikke «tørr» ved ris, men tallet står i en liste sammen med tørre varer. Helsedirektoratets tabell oppgir tørr ris for sitt tall.'],
       ],
-      soster: [['/mengde-per-person/pasta/', 'Hvor mye pasta per person?'], ['/mengde-per-person/poteter/', 'Hvor mye poteter per person?'], ['/mengde-per-person/mat-til-selskap/', 'Hvor mye mat til selskap?']],
+      soster: [['/mengde-per-person/pasta/', 'Hvor mye pasta per person?'], ['/mengde-per-person/poteter/', 'Hvor mye poteter per person?'], ['/mengde-per-person/mat-til-selskap/', 'Hvor mye mat til selskap?'], ['/holdbarhet/kokt-ris-og-pasta/', 'Hvor lenge holder kokt ris og pasta seg?']],
     }),
   },
 
@@ -64,7 +64,7 @@ export const TEKST = {
         ['Hvor mye pasta til 10 personer?', `Med spagetti blir det ${h.sumR('spag-min', 'spag-maks', 10)} til 10 voksne.`],
         ['Hvordan måler jeg en porsjon spagetti uten vekt?', `MatPrat sier at tommel og pekefinger som danner et hull på størrelse med et kronestykke, tilsvarer ${h.t('tommel')}.`],
       ],
-      soster: [['/mengde-per-person/ris/', 'Hvor mye ris per person?'], ['/mengde-per-person/kjottdeig/', 'Hvor mye kjøttdeig per person?'], ['/mengde-per-person/mat-til-selskap/', 'Hvor mye mat til selskap?']],
+      soster: [['/mengde-per-person/ris/', 'Hvor mye ris per person?'], ['/mengde-per-person/kjottdeig/', 'Hvor mye kjøttdeig per person?'], ['/mengde-per-person/mat-til-selskap/', 'Hvor mye mat til selskap?'], ['/holdbarhet/kokt-ris-og-pasta/', 'Hvor lenge holder kokt ris og pasta seg?']],
     }),
   },
 
@@ -383,7 +383,7 @@ export const TEKST = {
         ['Hvor mye pinnekjøtt til 10 personer?', `Tørket blir det ${h.sum('toer', 10)} til 10 voksne. Utvannet blir det ${h.sum('utvannet', 10)}.`],
         ['Hvor mye kålrotstappe til pinnekjøtt?', `${h.r('kalrot-min', 'kalrot-maks')} per person (${h.kp('mp-julemat')}).`],
       ],
-      soster: [['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?'], ['/mengde-per-person/poteter/', 'Hvor mye poteter per person?']],
+      soster: [['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?'], ['/mengde-per-person/poteter/', 'Hvor mye poteter per person?'], ['/steketid/pinnekjott/', 'Hvor lenge skal pinnekjøttet dampes?']],
     }),
   },
 
@@ -408,7 +408,7 @@ export const TEKST = {
         ['Hvor mye ribbe til 10 personer?', `Til 10 voksne blir det ${h.sum('pp', 10)}.`],
         ['Hvor mye ribbe til 12 personer?', `Til 12 voksne blir det ${h.sum('pp', 12)}.`],
       ],
-      soster: [['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/mengde-per-person/pinnekjott/', 'Hvor mye pinnekjøtt per person?'], ['/mengde-per-person/poteter/', 'Hvor mye poteter per person?']],
+      soster: [['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/mengde-per-person/pinnekjott/', 'Hvor mye pinnekjøtt per person?'], ['/mengde-per-person/poteter/', 'Hvor mye poteter per person?'], ['/steketid/ribbe/', 'Hvor lenge skal ribba stekes?']],
     }),
   },
 
@@ -433,7 +433,7 @@ export const TEKST = {
         ['Hvor stor kalkun til 8 personer?', `Med ${h.t('hel')} per person blir det ${h.sum('hel', 8)} til 8 voksne.`],
         ['Hvor stor kalkun til 10 personer?', `Med ${h.t('hel')} per person blir det ${h.sum('hel', 10)} til 10 voksne.`],
       ],
-      soster: [['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/mengde-per-person/kylling/', 'Hvor mye kylling per person?'], ['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?']],
+      soster: [['/mengde-per-person/julemat/', 'Hvor mye julemat per person?'], ['/mengde-per-person/kylling/', 'Hvor mye kylling per person?'], ['/mengde-per-person/ribbe/', 'Hvor mye ribbe per person?'], ['/steketid/kalkun/', 'Hvor lenge skal kalkunen stekes?']],
     }),
   },
 
