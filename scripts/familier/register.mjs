@@ -39,6 +39,10 @@ export const FAMILIER = Object.freeze([
   { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' } } },
   // Airfryer: tid og temperatur per råvare med kilde, og omregner fra ovn. Bare norsk. Tallene står i data.nb.json med sitat fra kilden (kildekontroll.mjs).
   { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' } } },
+  // Erstatning: hva du kan bruke i stedet for en vare du mangler. Bare norsk. Tall med sitat fra Idun, MatPrat, melk.no med flere (se erstatning/kildekontroll.mjs).
+  { id: 'erstatning', sidetype: 'guide-lang', mappe: new URL('./erstatning/', import.meta.url), markeder: { nb: { rot: 'erstatning/' } } },
+  // Rester og råvarer: undersidene /hva-kan-jeg-lage/med-<vare>/ til den eksisterende guiden. Samlesiden /hva-kan-jeg-lage/ har sidegruppen oppskrifter-fra-ingredienser (nb, sv, da, en).
+  { id: 'rester', sidetype: 'guide-lang', mappe: new URL('./rester/', import.meta.url), markeder: { nb: { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true } } },
 ]);
 
 export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });

@@ -75,6 +75,7 @@ export const HYLLER = {
         { tekst: 'Steketid', href: '/steketid/', bareNb: true },
         { tekst: 'Mengde per person', href: '/mengde-per-person/', bareNb: true },
         { tekst: 'Airfryer', href: '/airfryer/', bareNb: true },
+        { tekst: 'Erstatning', href: '/erstatning/', bareNb: true },
         { tekst: 'Alle kjøkkentips', href: '/blogg/' },
       ],
     },

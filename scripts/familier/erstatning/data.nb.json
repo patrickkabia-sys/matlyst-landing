@@ -1,0 +1,1004 @@
+{
+  "familie": "erstatning",
+  "marked": "nb",
+  "kilder": {
+    "idun-heve": {
+      "navn": "Hevemidler: hva er forskjellen?",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/baketips/hevemidler-hva-er-forskjellen/",
+      "hentet": "2026-11-21"
+    },
+    "idun-gjaer-mengde": {
+      "navn": "Hvor mye gjær i en oppskrift",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/baketips/hvor-mye-gjaer-i-en-oppskrift/",
+      "hentet": "2026-11-21"
+    },
+    "idun-gjaer": {
+      "navn": "Gjær: hva er det?",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/baketips/gjaer-hva-er-det/",
+      "hentet": "2026-11-21"
+    },
+    "idun-baketips": {
+      "navn": "Baketips for gjærbakst",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/baketips/baketips-for-gjaerbakst/",
+      "hentet": "2026-11-21"
+    },
+    "melk-suppe": {
+      "navn": "Suppe og meieriprodukter",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Inspirasjon/Kokkens-tips/Suppe-og-meieriprodukter",
+      "hentet": "2026-11-21"
+    },
+    "melk-dress": {
+      "navn": "Slik bruker du meieriprodukter i dressinger",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Oppskrifter/Kokkens-tips/Slik-bruker-du-meieriprodukter-i-dressinger",
+      "hentet": "2026-11-21"
+    },
+    "idun-sporsmal": {
+      "navn": "Spørsmål om gjærbakst",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/baketips/sporsmal-om-gjaerbakst/",
+      "hentet": "2026-11-21"
+    },
+    "idun-omregning": {
+      "navn": "Omregning av vekt",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/baketips/omregning-av-vekt/",
+      "hentet": "2026-11-21"
+    },
+    "idun-muffins": {
+      "navn": "Muffins",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/baketips/muffins/",
+      "hentet": "2026-11-21"
+    },
+    "idun-pannekaker": {
+      "navn": "Pannekaker uten egg og melk",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/oppskrift/pannekaker-uten-egg-og-melk/",
+      "hentet": "2026-11-21"
+    },
+    "idun-vaniljekrem": {
+      "navn": "Vaniljekrem",
+      "utgiver": "Idun (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.idun.no/oppskrift/vaniljekrem/",
+      "hentet": "2026-11-21"
+    },
+    "mp-eggallergi": {
+      "navn": "Kosthold ved eggallergi",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/ernaring/kosthold-ved-eggallergi/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kefirkake": {
+      "navn": "Kefirkake med sjokoladekrem",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/kefirkake-med-sjokoladekrem/",
+      "hentet": "2026-11-21"
+    },
+    "mp-urtesmor": {
+      "navn": "Kryddersmør med urter",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/urtesmor/",
+      "hentet": "2026-11-21"
+    },
+    "mp-urtedressing": {
+      "navn": "Rømme- og urtedressing",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/oppskrifter/gjester/romme--og-urtedressing/",
+      "hentet": "2026-11-21"
+    },
+    "mp-glutenfri": {
+      "navn": "Råd ved glutenfri bakst",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2017,
+      "adresse": "https://www.matprat.no/artikler/tilberedning/rad-ved-glutenfri-bakst/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kantarell": {
+      "navn": "Kantarellsuppe",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/oppskrifter/kos/kantarellsuppe/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kalkun": {
+      "navn": "Kalkun med gorgonzola og pasta",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/oppskrifter/kos/kalkun-med-gorgonzola-og-pasta/",
+      "hentet": "2026-11-21"
+    },
+    "melk-kremflote": {
+      "navn": "Kremfløte",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Melkefakta/Andre-meieriprodukter/Flote/Kremflote",
+      "hentet": "2026-11-21"
+    },
+    "melk-matflote": {
+      "navn": "Matfløte",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Melkefakta/Andre-meieriprodukter/Flote/Matflote",
+      "hentet": "2026-11-21"
+    },
+    "melk-kaffeflote": {
+      "navn": "Kaffefløte",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Melkefakta/Andre-meieriprodukter/Flote/Kaffeflote",
+      "hentet": "2026-11-21"
+    },
+    "melk-cf": {
+      "navn": "Crème fraîche",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Melkefakta/Andre-meieriprodukter/Romme/Creme-fraiche",
+      "hentet": "2026-11-21"
+    },
+    "melk-romme": {
+      "navn": "Spørsmål og svar om rømme og crème fraîche",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Melkefakta/Andre-meieriprodukter/Romme/Sporsmal-og-svar-om-romme-og-creme-frache",
+      "hentet": "2026-11-21"
+    },
+    "melk-vafler": {
+      "navn": "Dette kan du putte i vaffelrøren",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Oppskrifter/Kokkens-tips/Dette-kan-du-putte-i-vaffelroren",
+      "hentet": "2026-11-21"
+    },
+    "melk-sukkerbrod": {
+      "navn": "Slik lykkes du med sukkerbrødet",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Oppskrifter/Kokkens-tips/Slik-lykkes-du-med-sukkerbrodet-",
+      "hentet": "2026-11-21"
+    },
+    "tine-lyssaus": {
+      "navn": "Lys saus og hvit saus",
+      "utgiver": "TINE",
+      "aar": 2026,
+      "adresse": "https://www.tine.no/oppskrifter/sauser-og-dressinger/varme-sauser-og-dressinger/lys-saus-og-hvit-saus",
+      "hentet": "2026-11-21"
+    },
+    "tine-protein": {
+      "navn": "Proteinpannekaker",
+      "utgiver": "TINE",
+      "aar": 2026,
+      "adresse": "https://www.tine.no/oppskrifter/lunsj-og-smaretter/omeletter-og-pannekaker/proteinpannekaker",
+      "hentet": "2026-11-21"
+    },
+    "snl-jevning": {
+      "navn": "jevning",
+      "utgiver": "Store norske leksikon",
+      "aar": 2026,
+      "adresse": "https://snl.no/jevning",
+      "hentet": "2026-11-21"
+    },
+    "snl-timian": {
+      "navn": "timian",
+      "utgiver": "Store norske leksikon",
+      "aar": 2026,
+      "adresse": "https://snl.no/timian",
+      "hentet": "2026-11-21"
+    },
+    "dan-farin": {
+      "navn": "Brun Farin",
+      "utgiver": "Dansukker",
+      "aar": 2026,
+      "adresse": "https://dansukker.no/no/oppskrifter/brun-farin-no.aspx",
+      "hentet": "2026-11-21"
+    },
+    "dan-demerara": {
+      "navn": "Demerarasukker",
+      "utgiver": "Dansukker",
+      "aar": 2026,
+      "adresse": "https://www.dansukker.no/no/oppskrifter/demerarasukker-no",
+      "hentet": "2026-11-21"
+    },
+    "oetker-sukker": {
+      "navn": "Vaniljesukker",
+      "utgiver": "Dr. Oetker",
+      "aar": 2026,
+      "adresse": "https://www.oetker.no/inspirasjon/vanilje/vaniljeprodukter/vaniljesukker",
+      "hentet": "2026-11-21"
+    },
+    "oetker-ekstrakt": {
+      "navn": "Vaniljeekstrakt",
+      "utgiver": "Dr. Oetker",
+      "aar": 2026,
+      "adresse": "https://www.oetker.no/inspirasjon/vanilje/vaniljeprodukter/vaniljeekstrakt",
+      "hentet": "2026-11-21"
+    },
+    "toro-hvitlok": {
+      "navn": "Hvitløkspulver",
+      "utgiver": "Toro (Orkla)",
+      "aar": 2026,
+      "adresse": "https://www.toro.no/produkter/hvitlokspulver/",
+      "hentet": "2026-11-21"
+    },
+    "oda-hvitlok": {
+      "navn": "Hvitløkspulver, økologisk",
+      "utgiver": "Oda (Helios hvitløkspulver, produktbeskrivelse)",
+      "aar": 2026,
+      "adresse": "https://oda.com/no/products/66278-helios-hvitlokspulver-okologisk/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "egg",
+      "slug": "egg",
+      "navn": "Egg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "vann-olje": {
+          "verdi": 2,
+          "enhet": "ss",
+          "kilde": "mp-eggallergi",
+          "merknad": "et par spiseskjeer vann eller olje for å erstatte væsken fra egget"
+        },
+        "egg-vekt": {
+          "verdi": 63,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Et gjennomsnittlig egg veier 63 gram"
+        },
+        "hvite-vekt": {
+          "verdi": 36,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "36 gram (60 %) hvite"
+        },
+        "plomme-vekt": {
+          "verdi": 19,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "19 gram (30 %) plomme"
+        },
+        "pann-mel": {
+          "verdi": 180,
+          "enhet": "g",
+          "kilde": "idun-pannekaker",
+          "merknad": "180 g hvetemel"
+        },
+        "pann-vaeske": {
+          "verdi": 6,
+          "enhet": "dl",
+          "kilde": "idun-pannekaker",
+          "merknad": "6 dl havremelk"
+        },
+        "pann-bp": {
+          "verdi": 1,
+          "enhet": "ts",
+          "kilde": "idun-pannekaker",
+          "merknad": "1 ts Idun Bakepulver"
+        }
+      },
+      "tekst": {
+        "q1": "mp-eggallergi::Bakepulver kan erstatte egg i noen bakverk.",
+        "q2": "mp-eggallergi::litt maismel for å få den gule fargen",
+        "q3": "mp-eggallergi::På pakningen er det anvisning til hvordan disse brukes.",
+        "q4": "idun-muffins::Man kan godt lage gode muffins uten egg, men strukturen blir kanskje ikke like luftig og lett som om du baker med egg.",
+        "q5": "idun-pannekaker::Pannekaker uten egg og melk"
+      }
+    },
+    {
+      "id": "kulturmelk-og-kefir",
+      "slug": "kulturmelk-og-kefir",
+      "navn": "Kulturmelk og kefir",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mel-ekstra": {
+          "verdi": 2,
+          "enhet": "ss",
+          "kilde": "mp-kefirkake",
+          "merknad": "så kan du tilsette et par spiseskjeer mel ekstra i kakerøren"
+        },
+        "pann-melk": {
+          "verdi": 2,
+          "enhet": "dl",
+          "kilde": "tine-protein",
+          "merknad": "2 dl TINE® Lettmelk 1,0 % fett"
+        }
+      },
+      "tekst": {
+        "q1": "mp-kefirkake::Kefir og kulturmelk har mange likhetstrekk, og du kan derfor fint erstatte kefir med kulturmelk",
+        "q2": "mp-kefirkake::Siden kefir er litt tykkere enn kulturmelk",
+        "q3": "mp-kefirkake::Du kan også erstatte kefir med yoghurt.",
+        "q4": "mp-kefirkake::så bør du røre den ut med litt vann",
+        "q5": "mp-kefirkake::til konsistensen er omtrent som kefir",
+        "q6": "tine-protein::Har du fløte, kefir, kulturmelk eller andre melkeprodukter i kjøleskapet, kan du bytte ut melken med det.",
+        "q7": "idun-heve::Natron reagerer med syrer som eksempelvis surmelk som inneholder melkesyre."
+      }
+    },
+    {
+      "id": "bakepulver",
+      "slug": "bakepulver",
+      "navn": "Bakepulver",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "bp-ts": {
+          "verdi": 1,
+          "enhet": "ts",
+          "kilde": "idun-heve",
+          "merknad": "vil 1 ts bakepulver kunne erstattes med 1/4 ts natron"
+        },
+        "natron-ts": {
+          "verdi": 0.25,
+          "enhet": "ts",
+          "kilde": "idun-heve",
+          "merknad": "vil 1 ts bakepulver kunne erstattes med 1/4 ts natron"
+        },
+        "bp-g-ts": {
+          "verdi": 5,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Bakepulver = 5 gram"
+        },
+        "natron-g-ts": {
+          "verdi": 6,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Natron = 6 gram"
+        }
+      },
+      "tekst": {
+        "q1": "idun-heve::Natron reagerer med syrer som eksempelvis surmelk som inneholder melkesyre.",
+        "q2": "idun-heve::kan dette ikke erstattes med natron, såfremt at oppskriften ikke inneholder en form for syre.",
+        "q3": "idun-heve::Siden bakepulver inneholder syrer, trenger man ikke tilsette oppskriften surmelk eller andre sure ingredienser",
+        "q4": "idun-heve::hornsalt er best egnet til kaker som er flate og skal stekes ved høy temperatur",
+        "q5": "idun-heve::Bakepulver brukes ofte i muffins og formkaker, men også i deig til eksempel scones."
+      }
+    },
+    {
+      "id": "natron",
+      "slug": "natron",
+      "navn": "Natron",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "bp-g-ss": {
+          "verdi": 15,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Bakepulver = 15 gram"
+        },
+        "natron-g-ss": {
+          "verdi": 18,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Natron = 18 gram"
+        },
+        "ts-ml": {
+          "verdi": 5,
+          "enhet": "ml",
+          "kilde": "idun-omregning",
+          "merknad": "1 teskje er definert som 5 milliliter (ml)"
+        }
+      },
+      "tekst": {
+        "q1": "idun-heve::må bruke en større mengde bakepulver",
+        "q2": "idun-heve::reagerer i to trinn",
+        "q3": "idun-heve::Siden bakepulver inneholder syrer, trenger man ikke tilsette oppskriften surmelk eller andre sure ingredienser",
+        "q4": "idun-heve::Natron (natriumkarbonat) er et hvitt pulver som brukes hovedsakelig som et hevemiddel til baking.",
+        "q5": "idun-heve::Natron reagerer med syrer som eksempelvis surmelk som inneholder melkesyre."
+      }
+    },
+    {
+      "id": "gjaer",
+      "slug": "gjaer",
+      "navn": "Gjær",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pakke": {
+          "verdi": 1,
+          "enhet": "pakke",
+          "kilde": "idun-gjaer-mengde",
+          "merknad": "1 pakke fersk gjær tilsvarer 1 pose tørrgjær"
+        },
+        "pose": {
+          "verdi": 1,
+          "enhet": "pose",
+          "kilde": "idun-gjaer-mengde",
+          "merknad": "1 pakke fersk gjær tilsvarer 1 pose tørrgjær"
+        },
+        "halv-pakke": {
+          "verdi": 0.5,
+          "enhet": "pakke",
+          "kilde": "idun-gjaer-mengde",
+          "merknad": "1/2 pakke fersk gjær tilsvarer ca. 2,25 ts tørrgjær"
+        },
+        "halv-ts": {
+          "verdi": 2.25,
+          "enhet": "ts",
+          "kilde": "idun-gjaer-mengde",
+          "merknad": "1/2 pakke fersk gjær tilsvarer ca. 2,25 ts tørrgjær"
+        },
+        "pose-ts": {
+          "verdi": 4.5,
+          "enhet": "ts",
+          "kilde": "idun-gjaer-mengde",
+          "merknad": "1 pose tørrgjær inneholder ca. 4,5 teskjeer"
+        },
+        "pakke-g": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "idun-gjaer",
+          "merknad": "1 pk. fersk gjær veier 50 gram"
+        },
+        "vaeske-fersk": {
+          "verdi": 30,
+          "enhet": "°C",
+          "kilde": "idun-sporsmal",
+          "merknad": "bruker du fersk gjær bør ikke væsken overstige 30 °C"
+        },
+        "vaeske-torr": {
+          "verdi": 40,
+          "enhet": "°C",
+          "kilde": "idun-sporsmal",
+          "merknad": "kan være opptil 40 °C"
+        }
+      },
+      "tekst": {
+        "q1": "idun-gjaer-mengde::Ved bruk av tørrgjær, må man derfor beregne litt lenger hevetid enn ved bruk av fersk gjær.",
+        "q2": "idun-baketips::Bruker du tørrgjær, kan det blandes direkte sammen med de tørre ingrediensene.",
+        "q3": "idun-baketips::Ved elting av gjærdeig for hånd, er det er fordel å røre ut den ferske gjæren i væsken på forhånd.",
+        "q4": "idun-gjaer::Dersom man ønsker å kjøpe et produkt med lengre holdbarhet, så anbefales tørrgjær.",
+        "q5": "idun-sporsmal::Tenk litt ekstra nøye gjennom oppskriften før du velger å bruke en annen gjærtype enn det som står i oppskriften.",
+        "q6": "idun-heve::Av den grunn, behøver man ikke ha sukker i deigen for at den skal heve med gjær."
+      }
+    },
+    {
+      "id": "smor",
+      "slug": "smor",
+      "navn": "Smør",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "smor-dl": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Smør, smeltet = 80 gram"
+        },
+        "olje-dl": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Olje = 80 gram"
+        },
+        "smor-ss": {
+          "verdi": 12,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Smør, smeltet = 12 gram"
+        },
+        "muffins-smor": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "idun-muffins",
+          "merknad": "100 g smeltet smør (Melange uten melk er et alternativ)"
+        }
+      },
+      "tekst": {
+        "q1": "idun-muffins::Olje er et godt alternativ til smør",
+        "q2": "idun-muffins::Bruker du olje i en oppskrift, må fremgangsmåten for å lage muffinsrøren endres litt.",
+        "q3": "idun-muffins::Da blander du først alle tørre ingredienser i en bakebolle og tilsetter dermed oljen vekselvis med sammenvispet egg."
+      }
+    },
+    {
+      "id": "floete",
+      "slug": "floete",
+      "navn": "Fløte",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "krem-min": {
+          "verdi": 35,
+          "enhet": "% fett",
+          "kilde": "melk-kremflote",
+          "merknad": "Kremfløte er et ferskt meieriprodukt med 35-39 % fett"
+        },
+        "krem-maks": {
+          "verdi": 39,
+          "enhet": "% fett",
+          "kilde": "melk-kremflote",
+          "merknad": "Kremfløte er et ferskt meieriprodukt med 35-39 % fett"
+        },
+        "mat-lett": {
+          "verdi": 10,
+          "enhet": "% fett",
+          "kilde": "melk-matflote",
+          "merknad": "Matfløte er en lettere fløte som er inneholder enten 10 eller 20 % fett"
+        },
+        "mat-fyldig": {
+          "verdi": 20,
+          "enhet": "% fett",
+          "kilde": "melk-matflote",
+          "merknad": "Matfløte er en lettere fløte som er inneholder enten 10 eller 20 % fett"
+        },
+        "kaffe": {
+          "verdi": 10,
+          "enhet": "% fett",
+          "kilde": "melk-kaffeflote",
+          "merknad": "Kaffefløte inneholder 10% fett"
+        }
+      },
+      "tekst": {
+        "q1": "melk-kremflote::Når du skal vispe krem til kaker, desserter og lignende, er det kun kremfløte som kan benyttes.",
+        "q2": "melk-kremflote::Har du fløte til overs, frys den gjerne i isbitformer/isbitposer og ha senere en fløteterning rett i sauser og supper.",
+        "q3": "melk-matflote::Matfløte er en magrere fløte som passer bra til supper, sauser og gryteretter",
+        "q4": "melk-matflote::tåler småkoking",
+        "q5": "melk-matflote::kun tåler et raskt oppkok før den skiller seg",
+        "q6": "melk-matflote::men den kan ikke piskes til krem.",
+        "q7": "melk-kaffeflote::Kaffefløte kan også brukes i matlaging, men tåler da kun et raskt oppkok før den skiller seg."
+      }
+    },
+    {
+      "id": "creme-fraiche",
+      "slug": "creme-fraiche",
+      "navn": "Crème fraîche",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "lett": {
+          "verdi": 10,
+          "enhet": "% fett",
+          "kilde": "melk-cf",
+          "merknad": "Crème fraîche finnes også i varianter med mindre fett ( 17% og 10% fett)"
+        },
+        "matyoghurt-min": {
+          "verdi": 8,
+          "enhet": "% fett",
+          "kilde": "melk-dress",
+          "merknad": "Matyoghurt er en fyldig og tykkere naturellvariant med en fettprosent mellom 8 – 10%"
+        },
+        "matyoghurt-maks": {
+          "verdi": 10,
+          "enhet": "% fett",
+          "kilde": "melk-dress",
+          "merknad": "Matyoghurt er en fyldig og tykkere naturellvariant med en fettprosent mellom 8 – 10%"
+        }
+      },
+      "tekst": {
+        "q1": "melk-cf::Crème fraîche er et syrnet meieriprodukt som er perfekt til varme retter da den ikke skiller seg ved koking.",
+        "q2": "melk-suppe::Tåler et raskt oppkok, men vil sprekke hvis den står og småkoker.",
+        "q3": "melk-suppe::Den er ikke kokestabil og må derfor kun tilsettes varme supper like før servering.",
+        "q4": "melk-suppe::Kvarg egner seg best å tilsette i suppen ved servering.",
+        "q5": "melk-suppe::Matyoghurt er ikke kokestabil og bør tilsettes i varme supper like før servering.",
+        "q6": "melk-dress::Ettersom rømme ikke er kokestabil må den tilsettes varme retter like før servering.",
+        "q7": "melk-dress::Den skiller seg ved koking, og egner seg derfor ikke i varme retter.",
+        "q8": "melk-cf::Det gir produktet også en litt tynnere konsistens enn seterrømme.",
+        "q9": "melk-suppe::Det finnes også to lettere varianter med 18% og 10% fett, som også tåler småkoking.",
+        "q10": "melk-cf::For at lettvariantene av crème fraîche (10 og 18% fett) skal ha en tilfredsstillende konsistens"
+      }
+    },
+    {
+      "id": "romme",
+      "slug": "romme",
+      "navn": "Rømme",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "romme-min": {
+          "verdi": 35,
+          "enhet": "% fett",
+          "kilde": "melk-romme",
+          "merknad": "Rømme med 35-39 % fett er en tykk og fyldig rømme med frisk smak"
+        },
+        "romme-maks": {
+          "verdi": 39,
+          "enhet": "% fett",
+          "kilde": "melk-romme",
+          "merknad": "Rømme med 35-39 % fett er en tykk og fyldig rømme med frisk smak"
+        },
+        "matyoghurt-min": {
+          "verdi": 8,
+          "enhet": "% fett",
+          "kilde": "melk-dress",
+          "merknad": "Matyoghurt er en fyldig og tykkere naturellvariant med en fettprosent mellom 8 – 10%"
+        },
+        "matyoghurt-maks": {
+          "verdi": 10,
+          "enhet": "% fett",
+          "kilde": "melk-dress",
+          "merknad": "Matyoghurt er en fyldig og tykkere naturellvariant med en fettprosent mellom 8 – 10%"
+        }
+      },
+      "tekst": {
+        "q1": "melk-romme::homogenisert under svært lavt trykk for at den skal skille ut fett ved tilberedning av rømmegrøt",
+        "q2": "melk-romme::crème fraiche er homogenisert under høyt trykk for at den skal være kokestabil",
+        "q3": "melk-cf::Crème fraiche kan brukes i alle varme retter som, sauser, supper, gryteretter, gratenger, bakverk og desserter.",
+        "q4": "melk-cf::Det gir produktet også en litt tynnere konsistens enn seterrømme.",
+        "q5": "melk-dress::Kvarg er et magrere alternativ til rømme i kalde retter.",
+        "q6": "melk-dress::All rømme er ypperlig i kalde retter og sauser.",
+        "q7": "melk-dress::egner seg svært godt i gryteretter, dressinger, dipp, supper, sauser, desserter, kaker og bakverk",
+        "q8": "melk-dress::Tilsett matyoghurt i en varm rett mot slutten av koketiden eller ved servering"
+      }
+    },
+    {
+      "id": "melk",
+      "slug": "melk",
+      "navn": "Melk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "muffins-melk": {
+          "verdi": 1.5,
+          "enhet": "dl",
+          "kilde": "idun-muffins",
+          "merknad": "1,5 dl melk (alternativ er ris, – mandel eller havremelk)"
+        },
+        "pann-havre": {
+          "verdi": 6,
+          "enhet": "dl",
+          "kilde": "idun-pannekaker",
+          "merknad": "6 dl havremelk"
+        },
+        "pann-melk": {
+          "verdi": 2,
+          "enhet": "dl",
+          "kilde": "tine-protein",
+          "merknad": "2 dl TINE® Lettmelk 1,0 % fett"
+        }
+      },
+      "tekst": {
+        "q1": "idun-muffins::Som erstatning for vanlig melk kan du for eksempel bruke rismelk, mandelmelk eller havremelk.",
+        "q2": "idun-pannekaker::I denne oppskriften bruker vi havremelk, men dette kan erstattes med blant annet rismelk eller soyamelk.",
+        "q3": "idun-pannekaker::Smaken blir dog en litt annen når havremelken erstattes.",
+        "q4": "melk-vafler::Putter du noen av disse i røren, kan du erstatte litt av melken som står i oppskriften.",
+        "q5": "tine-protein::Har du fløte, kefir, kulturmelk eller andre melkeprodukter i kjøleskapet, kan du bytte ut melken med det."
+      }
+    },
+    {
+      "id": "hvetemel",
+      "slug": "hvetemel",
+      "navn": "Hvetemel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hvetemel-dl": {
+          "verdi": 55,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Hvetemel = 55 gram"
+        },
+        "potetmel-dl": {
+          "verdi": 70,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Potetmel = 70 gram"
+        },
+        "sukkerbunn-potetmel": {
+          "verdi": 2,
+          "enhet": "ss",
+          "kilde": "melk-sukkerbrod",
+          "merknad": "2 ss potetmel"
+        },
+        "sukkerbunn-hvetemel": {
+          "verdi": 120,
+          "enhet": "g",
+          "kilde": "melk-sukkerbrod",
+          "merknad": "120 g hvetemel"
+        }
+      },
+      "tekst": {
+        "q1": "mp-glutenfri::I kaker kan mel erstattes med glutenfritt mel.",
+        "q2": "mp-glutenfri::Stort sett brukes samme melmengde.",
+        "q3": "mp-glutenfri::Sjekk produsentens anvisninger for ytterligere informasjon.",
+        "q4": "melk-vafler::erstatte deler av hvetemelet med sammalt hvetemel eller havregryn.",
+        "q5": "melk-sukkerbrod::Potetmel absorberer og holder på fuktigheten i større grad enn hvetemel, og kaken vil derfor få en lettere tekstur.",
+        "q6": "melk-vafler::smaker nydelig med ost og skinke"
+      }
+    },
+    {
+      "id": "maisenna",
+      "slug": "maisenna",
+      "navn": "Maisenna",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "saus-mel": {
+          "verdi": 2,
+          "enhet": "ss",
+          "kilde": "tine-lyssaus",
+          "merknad": "2 ss hvetemel eller 1–2 ts maisenna"
+        },
+        "saus-mais-min": {
+          "verdi": 1,
+          "enhet": "ts",
+          "kilde": "tine-lyssaus",
+          "merknad": "2 ss hvetemel eller 1–2 ts maisenna"
+        },
+        "saus-mais-maks": {
+          "verdi": 2,
+          "enhet": "ts",
+          "kilde": "tine-lyssaus",
+          "merknad": "2 ss hvetemel eller 1–2 ts maisenna"
+        },
+        "saus-kraft": {
+          "verdi": 4,
+          "enhet": "dl",
+          "kilde": "tine-lyssaus",
+          "merknad": "4 dl kraft fra kjøtt eller grønnsaker"
+        }
+      },
+      "tekst": {
+        "q1": "idun-vaniljekrem::Man kan bruke potetmel i stedet for maisenna, men denne skiller seg lettere.",
+        "q2": "idun-vaniljekrem::Derfor bør vaniljekrem laget med potetmel istedet for maisenna brukes samme dag.",
+        "q3": "snl-jevning::Disse er glutenfri, i motsetning til meljevning.",
+        "q4": "snl-jevning::Jevningen må varmebehandles for at den skal tykne.",
+        "q5": "snl-jevning::Den vanligste typen jevning er meljevning, som er like deler hvetemel og fett (typisk smør)."
+      }
+    },
+    {
+      "id": "sukker",
+      "slug": "sukker",
+      "navn": "Sukker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "sukker-dl": {
+          "verdi": 86,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Sukker = 86 gram"
+        },
+        "melis-dl": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Melis = 60 gram"
+        },
+        "demerara-dl": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Demerarasukker (brunt sukker) = 100 gram"
+        },
+        "muffins-sukker": {
+          "verdi": 180,
+          "enhet": "g",
+          "kilde": "idun-muffins",
+          "merknad": "180 g sukker (eller melis)"
+        }
+      },
+      "tekst": {
+        "q1": "dan-demerara::Det kan brukes på samme måte som vanlig sukker.",
+        "q2": "dan-demerara::Demerarasukker har en gyllen farge og en mild smak med lette toner av karamell,",
+        "q3": "melk-vafler::Dropp sukkeret, og la bananen være søtningen."
+      }
+    },
+    {
+      "id": "brun-farin",
+      "slug": "brun-farin",
+      "navn": "Brun farin",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "blanding-farin": {
+          "verdi": 120,
+          "enhet": "g",
+          "kilde": "dan-farin",
+          "merknad": "Bland 120 g brun farin med 380 g sukker"
+        },
+        "blanding-sukker": {
+          "verdi": 380,
+          "enhet": "g",
+          "kilde": "dan-farin",
+          "merknad": "Bland 120 g brun farin med 380 g sukker"
+        },
+        "blanding-sum": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "dan-farin",
+          "merknad": "så får du 500 g lys farin"
+        },
+        "farin-dl": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Brun farin = ca. 75 gram"
+        },
+        "sukker-dl": {
+          "verdi": 86,
+          "enhet": "g",
+          "kilde": "idun-omregning",
+          "merknad": "Sukker = 86 gram"
+        }
+      },
+      "tekst": {
+        "q1": "dan-farin::Brun Farin, er en blanding av sukker og rørsukkersirup.",
+        "q2": "dan-farin::krydrete aromaen",
+        "q3": "dan-demerara::Forsøk med Demerarasukker i stedet for Brun Farin når du lager Irish Coffee.",
+        "q4": "dan-demerara::Det kan brukes på samme måte som vanlig sukker."
+      }
+    },
+    {
+      "id": "vaniljesukker",
+      "slug": "vaniljesukker",
+      "navn": "Vaniljesukker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "idun-essens": {
+          "verdi": 0.5,
+          "enhet": "ts",
+          "kilde": "idun-muffins",
+          "merknad": "1/2 ts vaniljeessens"
+        },
+        "idun-sukker": {
+          "verdi": 1.5,
+          "enhet": "ts",
+          "kilde": "idun-muffins",
+          "merknad": "1, 5 ts vaniljesukker eller frøene fra en halv vaniljestang"
+        },
+        "poser": {
+          "verdi": 2,
+          "enhet": "poser",
+          "kilde": "oetker-sukker",
+          "merknad": "To poser vaniljesukker tilsvarer en pose vanilinsukker"
+        },
+        "stang-min": {
+          "verdi": 1,
+          "enhet": "ts",
+          "kilde": "oetker-ekstrakt",
+          "merknad": "en vaniljestang 1-2 ts vaniljeekstrakt"
+        },
+        "stang-maks": {
+          "verdi": 2,
+          "enhet": "ts",
+          "kilde": "oetker-ekstrakt",
+          "merknad": "en vaniljestang 1-2 ts vaniljeekstrakt"
+        },
+        "pulver-g": {
+          "verdi": 2,
+          "enhet": "g",
+          "kilde": "oetker-ekstrakt",
+          "merknad": "trenger man rundt 2 gram pulver som en erstatning for 2 ts essens"
+        },
+        "pulver-ts": {
+          "verdi": 2,
+          "enhet": "ts",
+          "kilde": "oetker-ekstrakt",
+          "merknad": "trenger man rundt 2 gram pulver som en erstatning for 2 ts essens"
+        }
+      },
+      "tekst": {
+        "q1": "oetker-sukker::Den enkleste erstatningen for vaniljesukker er vanillinsukker.",
+        "q2": "oetker-sukker::en blanding av sukker og finmalt vaniljestang",
+        "q3": "oetker-ekstrakt::Visste du at vaniljeekstrakt og vaniljeessens er det samme?",
+        "q4": "oetker-ekstrakt::må du passe på hvor mye du legger til",
+        "q5": "oetker-sukker::anbefaler vi at du kjøper vaniljestang",
+        "q6": "oetker-sukker::som har en mer intens smak"
+      }
+    },
+    {
+      "id": "hvitvin",
+      "slug": "hvitvin",
+      "navn": "Hvitvin i mat",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "suppe": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mp-kantarell",
+          "merknad": "1 dl hvitvin eller eplejuice"
+        },
+        "kalkun": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mp-kalkun",
+          "merknad": "ca. 1 dl eplejuice eller hvitvin"
+        }
+      }
+    },
+    {
+      "id": "friske-og-torkede-urter",
+      "slug": "friske-og-torkede-urter",
+      "navn": "Friske og tørkede urter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "friske": {
+          "verdi": 2,
+          "enhet": "ss",
+          "kilde": "mp-urtesmor",
+          "merknad": "2 ss friske = 1 ts tørkede"
+        },
+        "torkede": {
+          "verdi": 1,
+          "enhet": "ts",
+          "kilde": "mp-urtesmor",
+          "merknad": "2 ss friske = 1 ts tørkede"
+        }
+      },
+      "tekst": {
+        "q1": "mp-urtedressing::Tørkede urter kan erstatte friske urter",
+        "q2": "snl-timian::Tørket timian har en skarpere og mer intens smak enn frisk timian.",
+        "q3": "snl-timian::Tørket timian bør brukes med større forsiktighet enn frisk timian, da smaken lett kan bli dominerende.",
+        "q4": "snl-timian::Tørket timian tåler varmebehandling og er velegnet i retter som skal koke lenge."
+      }
+    },
+    {
+      "id": "hvitlok",
+      "slug": "hvitlok",
+      "navn": "Hvitløk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pulver-fedd": {
+          "verdi": 0.5,
+          "enhet": "ts",
+          "kilde": "oda-hvitlok",
+          "merknad": "½ ts hvitløkspulver tilsvarer 1 hvitløksfedd"
+        },
+        "fedd": {
+          "verdi": 1,
+          "enhet": "fedd",
+          "kilde": "oda-hvitlok",
+          "merknad": "½ ts hvitløkspulver tilsvarer 1 hvitløksfedd"
+        },
+        "vekt-pulver": {
+          "verdi": 1,
+          "enhet": "del",
+          "kilde": "toro-hvitlok",
+          "merknad": "én vekt del hvitløkpulver tilsvarer fem vektdeler fersk hvitløk"
+        },
+        "vekt-fersk": {
+          "verdi": 5,
+          "enhet": "deler",
+          "kilde": "toro-hvitlok",
+          "merknad": "fem vektdeler fersk hvitløk"
+        }
+      }
+    }
+  ]
+}

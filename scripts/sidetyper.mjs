@@ -13,7 +13,7 @@ export const TYPER = Object.freeze(['forside', 'omregner', 'guide-lang', 'guide-
 const FORSIDER = new Set(['/', '/sv/', '/da/', '/en/']);
 const JURIDISKE_GRUPPER = new Set(['personvern', 'vilkar', 'slett-konto']);
 const OMREGNER_ROTER = ['/verktoy/', '/sv/verktyg/', '/da/vaerktoejer/', '/en/tools/'];
-const GAMLE_GUIDER = new Set(['/importer-fra-matprat/', '/finn-oppskrifter/', '/hva-kan-jeg-lage/', '/skapere/']);
+const GAMLE_GUIDER = new Set(['/importer-fra-matprat/', '/finn-oppskrifter/', '/skapere/']);
 const TJENESTEGRUPPER = { avmeld: 'avmeld', 'tiktok-auth': 'auth', 'tiktok-stotte': 'kampanje', christine: 'kampanje' };
 const VERIFISERING = new Set(['/googleeaf5ec75e707227b.html', '/pinterest-55ce57abd0b250c89348ecc452354dac.html']);
 

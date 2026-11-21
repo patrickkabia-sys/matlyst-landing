@@ -230,7 +230,7 @@ const spiskammer = byggRik({
       + '<h3>Det foreslår middager fra det du har (Pro)</h3>'
       + p('I Spør Matlyst lager <strong>Lag noe av det jeg har</strong> middagsforslag fra varene i spiskammeret ditt, med tilberedningstid. Det bruker KI og har en månedlig kvote, så les resultatet før du lager maten.')
       + '<h3>Det bytter ut det du mangler</h3>'
-      + p('Er du tom for kefir? Åpne oppskriften og be Spør Matlyst om en erstatning som bruker det du har i spiskammeret. Du ser endringene som en liste og kan angre dem.')
+      + p('Er du tom for kefir? Åpne oppskriften og be Spør Matlyst om en erstatning som bruker det du har i spiskammeret. Du ser endringene som en liste og kan angre dem. Se også <a href="/erstatning/">hva du kan bruke i stedet</a>, og <a href="/hva-kan-jeg-lage/">hva du kan lage med det du har</a>.')
       + '<h3>Det holder dubletter unna handlelista</h3>'
       + p('Varer du allerede har i spiskammeret, er fravalgt og merket «Har hjemme» når du legger til en oppskrift på <a href="/handleliste/">handlelista</a>, så du ikke kjøper enda en boks av det du har. Har du en husstand, deles spiskammeret med den og oppdateres direkte.')],
     ['Slik setter du opp spiskammeret på ti minutter', p('Du trenger ikke føre opp hele kjøkkenet. En kort liste du holder oppdatert, slår en perfekt liste du gir opp.')

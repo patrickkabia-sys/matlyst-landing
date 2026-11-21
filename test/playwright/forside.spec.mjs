@@ -275,7 +275,7 @@ const unntak = [
   // «Om Matlyst» er lagt til i hyllen Matlyst etter prototypet (om-siden finnes bare på norsk).
   { seksjon: '.bunn', fra: ['For matskapere', 'Instagram'], til: ['For matskapere', 'Om Matlyst', 'Instagram'] },
   // Familiene holdbarhet, frysing, kjernetemperatur, steketid og mengde per person (bare norsk) står i hylla Kjøkkentips etter prototypet.
-  { seksjon: '.bunn', fra: ['Koketider', 'Alle kjøkkentips'], til: ['Koketider', 'Holdbarhet i kjøleskapet', 'Frysing', 'Kjernetemperatur: tabell', 'Steketid', 'Mengde per person', 'Airfryer', 'Alle kjøkkentips'] },
+  { seksjon: '.bunn', fra: ['Koketider', 'Alle kjøkkentips'], til: ['Koketider', 'Holdbarhet i kjøleskapet', 'Frysing', 'Kjernetemperatur: tabell', 'Steketid', 'Mengde per person', 'Airfryer', 'Erstatning', 'Alle kjøkkentips'] },
   // Det vedtatte sideskallet bruker korte språkkoder i begge velgerne.
 ];
 // Prototypens prøvestripe ligger utenfor de åtte seksjonene. «Juridisk» er en aria-label,
