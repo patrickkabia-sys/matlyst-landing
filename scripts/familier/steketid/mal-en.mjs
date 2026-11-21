@@ -26,7 +26,7 @@ const KALK = {
 const EKSTRA = { kalkun: ['10', '16'], tining: ['14'], kalkunbryst: ['6'], skinke: ['10'], roastbiff: ['5'], svinestek: ['4'], 'hel-kylling': ['4', '6'], lammelar: ['6'], brisket: ['1', '2', '3', '4'] };
 
 export const { sideForRad, navSide, tillatteTall, tillatteTallNav, maskeNavn } = lagMal({
-  rot: ROT, eyebrowNavn: 'Cooking times', alleTekst: 'Cooking times for every dish', cta: 'Make dinner step by step in Matlyst', TEKST, nav,
+  rot: ROT, eyebrowNavn: 'Cooking times', alleTekst: 'Cooking times for every dish', cta: 'Cook it step by step with Matlyst', TEKST, nav,
   kalk: (rad, h) => KALK[rad.id](rad, h), ekstraTall: (rad) => EKSTRA[rad.id] ?? [],
-  app: [['Follow the steps in cook mode', 'In Matlyst the steps become a checklist, and cook mode suggests timers when a step mentions a time.'], ['Plan dinner in the weekly menu', 'Put the recipe on the day you will make it and see the whole week in one place.']],
+  app: [['Follow the steps in cook mode', 'Cook mode shows one step at a time and suggests a timer when a step mentions a time.'], ['Put dinner on your meal plan', 'See the whole week of dinners in one place, and send it all to one grocery list.']],
 });

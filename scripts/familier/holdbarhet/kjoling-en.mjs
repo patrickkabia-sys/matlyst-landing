@@ -52,7 +52,7 @@ function kildeliste(data, brukt) {
   const ider = [...brukt].sort((a, b) => rekkefolge.indexOf(a) - rekkefolge.indexOf(b));
   return `<h2>Sources</h2>\n<ol class="kilder" id="kilder">${ider.map((id) => {
     const k = data.kilder[id];
-    return `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Read ${engelskDato(k.hentet)}.</li>`;
+    return `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Accessed ${engelskDato(k.hentet)}.</li>`;
   }).join('')}</ol>`;
 }
 
@@ -97,7 +97,7 @@ export function lagMal(cfg) {
     const lenker = [...(s.soster ? [s.soster] : []), [cfg.rot, cfg.alleTekst], ...(s.andre ?? [])];
     const rik = [
       `<h2>What the federal sources say</h2>${p(s.kilder)}`,
-      `<h2>${esc(tb.tittel)}</h2>${p([tb.intro])}${tabell(h, tb)}<p><small>Source: ${h.k(tb.kilde)}, “${esc(data.kilder[tb.kilde].navn)}”. Read ${engelskDato(data.kilder[tb.kilde].hentet)}.</small></p>${p(tb.etter ?? [])}`,
+      `<h2>${esc(tb.tittel)}</h2>${p([tb.intro])}${tabell(h, tb)}<p><small>Source: ${h.k(tb.kilde)}, “${esc(data.kilder[tb.kilde].navn)}”. Accessed ${engelskDato(data.kilder[tb.kilde].hentet)}.</small></p>${p(tb.etter ?? [])}`,
       ...(s.ekstra ?? []).map(([tittel, html]) => `<h2>${esc(tittel)}</h2>${html}`),
       APP,
       `<div class="related"><h2>Related pages</h2><ul>${lenker.map(([href, t]) => `<li><a href="${href}">${esc(t)}</a></li>`).join('')}</ul></div>`,

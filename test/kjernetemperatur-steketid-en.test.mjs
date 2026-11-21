@@ -85,7 +85,7 @@ test('ingen norske kilder, ingen tankestrek, kildeliste med lenke og lesedato, o
       const kilder = /<ol class="kilder" id="kilder">([\s\S]*?)<\/ol>/u.exec(side.rik)?.[1] ?? '';
       const punkter = [...kilder.matchAll(/<li>([\s\S]*?)<\/li>/gu)].map((m) => m[1]);
       assert.ok(punkter.length > 0, `${sti}: mangler kildeliste`);
-      for (const li of punkter) assert.match(li, /<a href="https:\/\/[^"]+" rel="noopener">[^<]+<\/a> \(\d{4}\)\. Read [A-Z][a-z]+ \d{1,2}, \d{4}\./u, sti);
+      for (const li of punkter) assert.match(li, /<a href="https:\/\/[^"]+" rel="noopener">[^<]+<\/a> \(\d{4}\)\. Accessed [A-Z][a-z]+ \d{1,2}, \d{4}\./u, sti);
       assert.ok(!JSON.stringify(side.schemas).includes('"Person"'), `${sti}: engelske sider har ikke Person-forfatter`);
     }
   }

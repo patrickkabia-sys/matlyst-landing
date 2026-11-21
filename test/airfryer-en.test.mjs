@@ -119,7 +119,7 @@ test('ingen norske kilder, ingen tankestrek, ingen emoji, kildeliste med lenke o
     const kilder = /<ol class="kilder" id="kilder">([\s\S]*?)<\/ol>/u.exec(html(slug))?.[1] ?? '';
     const punkter = [...kilder.matchAll(/<li>([\s\S]*?)<\/li>/gu)].map((m) => m[1]);
     assert.ok(punkter.length > 0, `${a}: mangler kildeliste`);
-    for (const li of punkter) assert.match(li, /<a href="https:\/\/[^"]+" rel="noopener">[^<]+<\/a> \(\d{4}\)\. Read [A-Z][a-z]+ \d{1,2}, \d{4}\./u, a);
+    for (const li of punkter) assert.match(li, /<a href="https:\/\/[^"]+" rel="noopener">[^<]+<\/a> \(\d{4}\)\. Accessed [A-Z][a-z]+ \d{1,2}, \d{4}\./u, a);
     assert.doesNotMatch(html(slug), /"@type":\s?"Person"/u, `${a}: engelske sider har ikke Person-forfatter`);
     assert.doesNotMatch(html(slug), /Av <a href="\/om\/">/u, a);
     // Siden sier at tidene er veiledende.

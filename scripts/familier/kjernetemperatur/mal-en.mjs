@@ -5,6 +5,6 @@ import { TEKST, nav } from './tekst-en.mjs';
 
 export const ROT = '/en/internal-temperature/';
 export const { sideForRad, navSide, tillatteTall, tillatteTallNav, maskeNavn } = lagMal({
-  rot: ROT, eyebrowNavn: 'Internal temperature', alleTekst: 'Safe temperatures for every food', cta: 'Make dinner step by step in Matlyst', TEKST, nav,
-  app: [['Follow the steps in cook mode', 'In Matlyst the steps become a checklist, and cook mode suggests timers.'], ['Plan dinner in the weekly menu', 'Put the recipe on the day you will make it and see the whole week in one place.']],
+  rot: ROT, eyebrowNavn: 'Internal temperature', alleTekst: 'Safe temperatures for every food', cta: 'Cook it step by step with Matlyst', TEKST, nav,
+  app: [['Follow the steps in cook mode', 'Cook mode shows one step at a time, with the ingredients that step needs.'], ['Put dinner on your meal plan', 'See the whole week of dinners in one place, and send it all to one grocery list.']],
 });

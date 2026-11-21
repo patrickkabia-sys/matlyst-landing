@@ -184,7 +184,7 @@ export const TEKST = {
       ],
       faq: [
         ['How much stuffing for 12 people?', `Using ${h.k('fsisstuff')}, at least ${h.sum('kasserolle', 12)}. Using ${h.k('wf')}, ${h.sum('wf', 12)}.`],
-        ['How much stuffing goes in a 16 pound turkey?', `${h.k('fsisstuff')} lists ${h.r('fugl-16-min', 'fugl-16-maks')} for a bird of 16 to 20 pounds.`],
+        ['How much stuffing goes in a 16-pound turkey?', `${h.k('fsisstuff')} lists ${h.r('fugl-16-min', 'fugl-16-maks')} for a bird of 16 to 20 pounds.`],
         ['Is this the cooked or the prepared amount?', `The USDA figures are for prepared stuffing, which is the stuffing mixed and ready to bake.`],
       ],
       soster: [L('turkey', 'How much turkey per person?'), L('thanksgiving-dinner', 'Thanksgiving dinner: how much of everything?'), L('mashed-potatoes', 'How much mashed potatoes per person?')],
@@ -283,7 +283,7 @@ export const TEKST = {
           ['isugrad', 'Any side at a party, per person', h.r('side-min', 'side-maks')],
           ['isuholiday', 'Beans, per serving', h.t('isu-bonner')],
         ])],
-        ['Vegetables next to other sides', p(`Iowa State Extension lists a serving by type of side: ${h.t('isu')} of vegetables or ${h.t('isu-bonner')} of beans, with separate weights for potatoes and grain. Plan the sides together, and you do not need a full serving of each. See <a href="/en/how-much-per-person/mashed-potatoes/">mashed potatoes</a> and <a href="/en/how-much-per-person/rice/">rice</a>.`)],
+        ['Vegetables next to other sides', p(`Iowa State Extension lists a serving by type of side: ${h.t('isu')} of vegetables or ${h.t('isu-bonner')} of beans, with separate weights for potatoes and grain. See <a href="/en/how-much-per-person/mashed-potatoes/">mashed potatoes</a> and <a href="/en/how-much-per-person/rice/">rice</a>.`)],
       ],
       faq: [
         ['How much vegetables for 10 people?', `${h.sum('wf', 10)} using ${h.k('wf')}.`],
@@ -364,7 +364,7 @@ export const TEKST = {
       faq: [
         ['How much meat for 50 people?', `For sandwiches, ${h.k('isugrad')} lists ${h.r('sandwich-kjott-min', 'sandwich-kjott-maks')} of raw meat. For sliders, ${h.r('sliders-min', 'sliders-maks')}.`],
         ['How much food per guest in total?', `${h.r('mat-min', 'mat-maks')}, says ${h.k('isugrad')}.`],
-        ['What if I do not know how many will come?', `The same source suggests planning for ${h.t('seksti')} of the guests invited at an open house.`],
+        ["What if I don't know how many people will come?", `The same source suggests planning for ${h.t('seksti')} of the guests invited at an open house.`],
       ],
       soster: [L('burgers', 'How much ground beef for burgers?'), L('tacos', 'How much ground meat for tacos?'), L('potato-salad', 'How much potato salad per person?')],
     }),
@@ -399,7 +399,7 @@ export const TEKST = {
       faq: [
         ['How much food for 8 people?', `Using ${h.k('wf')}, 8 adults need ${h.sum('kalkun', 8)} of turkey, ${h.sum('fyll', 8)} of stuffing, ${h.sum('poteter', 8)} of potatoes, and ${h.sum('saus', 8)} of gravy.`],
         ['How many pounds of potatoes for mashed potatoes?', `${h.k('wf')} says ${h.t('poteter-rå')} per guest, so ${h.sum('poteter-rå', 10)} for 10 adults.`],
-        ['How many pies?', `${h.k('wf')} lists ${h.t('pai')} of a 9 inch pie per person.`],
+        ['How many pies?', `${h.k('wf')} lists ${h.t('pai')} of a 9-inch pie per person.`],
       ],
       soster: [L('turkey', 'How much turkey per person?'), L('stuffing', 'How much stuffing per person?'), L('mashed-potatoes', 'How much mashed potatoes per person?'), L('ham', 'How much ham per person?')],
     }),
