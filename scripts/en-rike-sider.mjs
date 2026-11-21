@@ -463,8 +463,9 @@ const enhetsHub = (() => {
     const rader = ids.map((a) => `<li><strong>${navnH(a).fl}</strong>: ${ids.filter((b) => b !== a).map((b) => `<a href="/en/${parStiH(a, b)}">to ${navnH(b).kort}</a>`).join(', ')}</li>`).join('');
     return [tittel, `<ul>${rader}</ul>`];
   };
-  return p('A free cooking unit converter for every combination: milliliters, deciliters, liters, US cups, tablespoons, teaspoons, fluid ounces, pints, quarts, gallons, grams, kilograms, ounces, pounds, centimeters, inches, and °C to °F. Pick a conversion below, or use the calculator.') + p('This calculator converts volume. For weight, length, and temperature, use the lists below.') + '\n' + byggLese({
+  return byggLese({
     seksjoner: [
+      ['Convert any cooking unit', p('A free cooking unit converter for every combination: milliliters, deciliters, liters, US cups, tablespoons, teaspoons, fluid ounces, pints, quarts, gallons, grams, kilograms, ounces, pounds, centimeters, inches, and °C to °F. Pick a conversion below, or use the calculator.') + p('This calculator converts volume. For weight, length, and temperature, use the lists below.')],
       gruppe('volum', 'Volume conversions: ml, dl, cups, tablespoons, and more'),
       gruppe('vekt', 'Weight conversions: grams, ounces, and pounds'),
       gruppe('lengde', 'Length conversions: cm, mm, and inches for pans and dough'),

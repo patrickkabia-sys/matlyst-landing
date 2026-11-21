@@ -47,8 +47,7 @@ const omregner = (fra, til) => { const s = sideForPar(fra, til); return `<html l
 
 test('en omregnerside med enhetskortet får de samme app-bevisene som den publiserte siden', () => {
   const rot = new URL('..', import.meta.url).pathname;
-  const publisert = readFileSync(`${rot}verktoy/dl-til-kopp/index.html`, 'utf8');
-  const forventet = nøkler(publisert);
+  const forventet = JSON.parse(readFileSync(`${rot}test/fasit/omregner-appbevis.json`, 'utf8')).sider['nb verktoy/dl-til-kopp/'].split(',');
   assert.ok(forventet.includes('mapper') && forventet.includes('skalering') && forventet.includes('enheter'), `fasiten har mapper, skalering og enheter: ${forventet}`);
   const side = omregner('dl', 'cups');
   assert.match(side, /data-kalk="enhet"/u);
@@ -64,7 +63,8 @@ test('en familieside med volumvekt-kortet behandles fortsatt ikke', () => {
 });
 
 // Alle 714 omregnere på de fire språkene beholder nøyaktig de samme app-bevisene som de publiserte sidene (avgjørelse 8): den gamle kalkulatorseksjonen
-// er borte fra lesedelen, og kortet står i topp, men blokkene velges fra de samme overskriftene. Fasit: nøklene i de publiserte filene.
+// er borte fra lesedelen, og kortet står i topp, men blokkene velges fra de samme overskriftene. Fasit: test/fasit/omregner-appbevis.json, nøklene i de publiserte filene
+// på origin/main slik de var før ombyggingen (frosset, så testen ikke bare leser sidene den selv har bygget).
 test('alle omregnere på nb, sv, da og en får de samme app-bevisene som de publiserte sidene', async () => {
   const rot = new URL('..', import.meta.url).pathname;
   const { enhetsSiderNb } = await import('../scripts/nb-enhetssider.mjs');
@@ -73,23 +73,20 @@ test('alle omregnere på nb, sv, da og en får de samme app-bevisene som de publ
   const { enhetsSider } = await import('../scripts/en-enhetssider.mjs');
   const { rikeSider } = await import('../scripts/en-rike-sider.mjs');
   const SPRÅK = [['nb', '', enhetsSiderNb], ['sv', 'sv/', enhetsSiderSv], ['da', 'da/', enhetsSiderDa], ['en', 'en/', { ...enhetsSider, 'tools/unit-converter/': rikeSider['tools/unit-converter/'] }]];
+  const fasit = JSON.parse(readFileSync(`${rot}test/fasit/omregner-appbevis.json`, 'utf8')).sider;
+  assert.equal(Object.keys(fasit).length, 714, 'fasiten har alle 714 omregnere');
   let sjekket = 0;
   const avvik = [];
-  // Kjent og forklart avvik: kokemodus-blokken på den engelske samlesiden kom fra ordet «cooking» i den fjernede overskriften «Convert any cooking unit»
-  // (kalkulatorseksjonen). Ingen overskrift igjen på siden handler om matlagingsmodus, så blokken faller bort og siden står igjen med mapper-blokken.
-  const UNNTAK = { 'en tools/unit-converter/': { publisert: 'kokemodus,mapper', ny: 'mapper' } };
   for (const [lang, prefiks, sider] of SPRÅK) {
     for (const [sti, s] of Object.entries(sider)) {
-      const fil = `${rot}${prefiks}${sti}index.html`;
-      const publisert = nøkler(readFileSync(fil, 'utf8'));
+      const publisert = fasit[`${lang} ${sti}`];
+      assert.equal(typeof publisert, 'string', `fasit for ${lang} ${sti}`);
       const faq = `<section class="faq"><h2>${s.faqTittel}</h2>${s.faq.map(([q, a]) => `<details><summary>${q}</summary><p>${a}</p></details>`).join('')}</section>`;
       const side = `<html lang="${lang}"><body><header class="locale-page-hero">${s.topp}</header><section class="prose locale-prose">${s.rik}</section>${faq}</body></html>`;
       assert.match(side, /data-kalk="enhet"/u, `${lang} ${sti}`);
-      const ny = nøkler(behandle(side, lang, `/${prefiks}${sti}`));
+      const ny = nøkler(behandle(side, lang, `/${prefiks}${sti}`)).join();
       sjekket++;
-      const unntak = UNNTAK[`${lang} ${sti}`];
-      if (unntak) { assert.equal(publisert.join(), unntak.publisert); assert.equal(ny.join(), unntak.ny); continue; }
-      if (JSON.stringify(ny) !== JSON.stringify(publisert)) avvik.push(`${lang} ${sti}: publisert [${publisert}] ny [${ny}]`);
+      if (ny !== publisert) avvik.push(`${lang} ${sti}: publisert [${publisert}] ny [${ny}]`);
     }
   }
   assert.equal(sjekket, 714, 'alle 714 omregnere');

@@ -14,6 +14,7 @@ import { enhetsSider as enhetsSiderEn } from '../scripts/en-enhetssider.mjs';
 import { rikeSider } from '../scripts/en-rike-sider.mjs';
 
 const ROT = fileURLToPath(new URL('..', import.meta.url));
+const FASIT_SEKSJONER = JSON.parse(readFileSync(`${ROT}test/fasit/omregner-seksjoner.json`, 'utf8'));
 
 /** Synlig tekst: HTML uten script, tagger og attributter. */
 const synligTekst = (html) => html.replace(/<script[\s\S]*?<\/script>/gu, ' ').replace(/<[^>]+>/gu, ' ').replace(/&amp;/gu, '&').replace(/\s+/gu, ' ');
@@ -26,6 +27,7 @@ const SPRAK = {
     sider: { ...enhetsSiderEn, 'tools/unit-converter/': rikeSider['tools/unit-converter/'] }, mappe: 'en/tools/', hub: 'tools/unit-converter/', komma: false, hoved: /\bcups?\b/iu, biord: null, KOPP_BIORD: null, ordFor: ordFor('en'),
     publisert: 'cups-to-ml', kalkH2: / calculator$/u, kortSvar: 'Short answer:', tabellId: /^<h2 id="[a-z0-9-]+-conversion-chart"/u, likeNavn: false,
     h2: [/ conversion chart$/u, /^How to convert /u, /^Where recipes use /u, /^Measuring tips$/u, /^Common mistakes when converting$/u, /^Converting a whole recipe$/u, /^Stop converting by hand$/u, /^Related conversions$/u],
+    hubOverskrift: '<h2 id="convert-any-cooking-unit">Convert any cooking unit</h2>',
     hubInnledning: /^<p>A free cooking unit converter for every combination: /u, hubVolum: 'This calculator converts volume\\. For weight, length, and temperature, use the lists below\\.',
   },
   nb: {
@@ -88,14 +90,22 @@ for (const lang of Object.keys(SPRAK)) {
     }
   });
 
-  test(`${lang}: lesedelen begynner med tabellen og har de åtte seksjonene i dagens rekkefølge`, () => {
-    // Fasit: de åtte seksjonene som står i de publiserte sidene (eldre bygg) etter kalkulatorseksjonen, med de samme innledningene.
-    const publisert = readFileSync(`${ROT}${S.mappe}${S.publisert}/index.html`, 'utf8');
-    let gamle = [...publisert.matchAll(/<h2 id="[^"]*">([\s\S]*?)<\/h2>/gu)].map((m) => m[1]);
-    if (S.kalkH2.test(gamle[0])) gamle = gamle.slice(1);
-    assert.equal(gamle.length, 8);
-    assert.equal(S.h2.length, 8);
-    S.h2.forEach((re, i) => assert.match(gamle[i], re, `publisert side, seksjon ${i + 1}`));
+  test(`${lang}: lesedelen begynner med tabellen og har de åtte seksjonene i samme rekkefølge som de publiserte sidene`, () => {
+    // Fasit: test/fasit/omregner-seksjoner.json, frosset fra de publiserte sidene på origin/main FØR ombyggingen (ikke fra filene i arbeidskopien,
+    // som ombyggingen overskriver). Én parside per enhetsgruppe og samlesiden; kalkulatorseksjonen er tatt ut. Det eneste som er endret med vilje er
+    // ordet kopper/koppar, som nå er «cups» (avgjørelse 1), og det normaliseres bort før sammenligningen.
+    const fasit = FASIT_SEKSJONER[lang];
+    const cups = (h) => h.replace(/\bkopper\b|\bkoppar\b/gu, 'cups');
+    const h2Av = (s) => [...s.rik.matchAll(/<h2 id="[^"]*">([\s\S]*?)<\/h2>/gu)].map((m) => m[1]);
+    assert.deepEqual(Object.keys(fasit.par).sort(), ['lengde', 'temperatur', 'vekt', 'volum'], 'fasiten har ett par per gruppe');
+    for (const [gruppe, { side, h2 }] of Object.entries(fasit.par)) {
+      const sti = side.replace(/^(?:sv|da|en)\//u, '');
+      assert.ok(S.sider[sti], `${lang}: fasitsiden ${side} (${gruppe}) finnes i generatoren som ${sti}`);
+      assert.equal(h2.length, 8, `${gruppe}: fasiten har åtte seksjoner`);
+      assert.deepEqual(h2Av(S.sider[sti]), h2.map(cups), `${lang} ${gruppe}: seksjonene og rekkefølgen er som på den publiserte siden`);
+    }
+    assert.deepEqual(h2Av(S.sider[S.hub]), fasit.samleside.h2.map(cups), `${lang}: samlesidens seksjoner er som på den publiserte siden (uten kalkulatoren)`);
+    fasit.par.volum.h2.forEach((h, i) => assert.match(h, S.h2[i], `fasit, seksjon ${i + 1}`));
     for (const [sti, s] of sider) {
       const h2 = [...s.rik.matchAll(/<h2 id="[^"]*">([\s\S]*?)<\/h2>/gu)].map((m) => m[1]);
       assert.equal(h2.length, 8, sti);
@@ -213,8 +223,11 @@ for (const lang of Object.keys(SPRAK)) {
     const ids = [...hub.topp.matchAll(/<select data-felt="fra">([\s\S]*?)<\/select>/gu)][0][1].matchAll(/<option value="([^"]+)"/gu);
     assert.ok([...ids].every(([, id]) => ENHETER[id].gruppe === 'volum'));
     // Den gamle innledningen (dagens svarTekst) er første avsnitt; setningen om at kalkulatoren regner volum kommer rett etter.
-    assert.match(hub.rik, S.hubInnledning, `${S.hub}: lesedelen åpner med innledningen`);
-    assert.match(hub.rik, new RegExp(`^<p>[^<]+</p><p>${S.hubVolum}</p>`, 'u'), `${S.hub}: volumsetningen er avsnitt to`);
+    // Engelsk: de to avsnittene står under den opprinnelige overskriften «Convert any cooking unit» (første seksjon), som også utløser appkortet for kokemodus.
+    const lese = S.hubOverskrift ? hub.rik.replace(S.hubOverskrift, '') : hub.rik;
+    if (S.hubOverskrift) assert.ok(hub.rik.startsWith(S.hubOverskrift), `${S.hub}: første seksjon er «Convert any cooking unit»`);
+    assert.match(lese, S.hubInnledning, `${S.hub}: lesedelen åpner med innledningen`);
+    assert.match(lese, new RegExp(`^<p>[^<]+</p><p>${S.hubVolum}</p>`, 'u'), `${S.hub}: volumsetningen er avsnitt to`);
     assert.doesNotMatch(hub.rik, /class="answer"|class="toc"|<form/u);
   });
 }
