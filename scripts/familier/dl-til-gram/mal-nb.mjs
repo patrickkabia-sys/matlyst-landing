@@ -274,7 +274,7 @@ export function navSide(data, rader) {
     `<h2>Hvorfor veier ikke 1 dl det samme?</h2><p>Desiliter måler volum, og gram måler vekt. 1 dl ${ord(tung)} veier ${gram(tung.tall.dl.verdi)}, og 1 dl ${ord(lett)} veier ${gram(lett.tall.dl.verdi)}. Derfor har hver vare sitt eget tall når du regner mellom dl og gram.</p>
 <h2>Slik har vi regnet</h2><p>Vekten per dl er hentet fra Matvaretabellen 2026 (Mattilsynet). Spiseskje og teskje regnes som strøkne mål på 15 ml og 5 ml. Gram til dl regnes ved å dele vekten på tallet for varen.</p>`,
     kildeliste(data, kilder),
-    `<div class="related"><h2>Beslektede omregninger</h2><ul><li><a href="/verktoy/dl-til-ss/">dl til ss</a></li><li><a href="/verktoy/dl-til-ts/">dl til ts</a></li><li><a href="/verktoy/dl-til-ml/">dl til ml</a></li><li><a href="/verktoy/dl-til-kopp/">dl til kopp</a></li><li><a href="/verktoy/kopp-til-dl/">kopp til dl</a></li><li><a href="/verktoy/enhetsomregner/">Enhetsomregner</a></li></ul></div>`,
+    `<div class="related"><h2>Beslektede omregninger</h2><ul><li><a href="/verktoy/dl-til-ss/">dl til ss</a></li><li><a href="/verktoy/dl-til-ts/">dl til ts</a></li><li><a href="/verktoy/dl-til-ml/">dl til ml</a></li><li><a href="/verktoy/dl-til-kopp/">dl til cups</a></li><li><a href="/verktoy/kopp-til-dl/">cups til dl</a></li><li><a href="/verktoy/enhetsomregner/">Enhetsomregner</a></li></ul></div>`,
   ].join('\n');
   const faq = [
     ['Hvor mange gram er 1 dl?', `Det kommer an på varen. ${eksTekst.length ? `${rekke.charAt(0).toUpperCase()}${rekke.slice(1)}.` : ''} Velg varen i kalkulatoren eller i tabellen.`.replace('  ', ' ')],
