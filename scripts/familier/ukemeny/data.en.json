@@ -1,0 +1,290 @@
+{
+  "familie": "ukemeny",
+  "marked": "en",
+  "kilder": {
+    "fsis-leftovers": {
+      "navn": "Leftovers and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2020,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "familie",
+      "slug": "family",
+      "navn": "Family",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_min": {
+          "verdi": 3,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_maks": {
+          "verdi": 4,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "kjoleskap": {
+          "verdi": 40,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "the safe refrigerator-storage temperature of 40° F or below."
+        },
+        "kjol_tid": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-leftovers",
+          "merknad": "Within 2 hours of cooking food or after it is removed from an appliance keeping it warm, leftovers must be refrigerated."
+        },
+        "oppvarming": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "When reheating leftovers, be sure they reach 165° F as measured with a food thermometer."
+        }
+      },
+      "tekst": {
+        "shallow": "fsis-leftovers|To do this, divide large amounts of food into shallow containers."
+      }
+    },
+    {
+      "id": "billig",
+      "slug": "budget",
+      "navn": "Budget",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_min": {
+          "verdi": 3,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_maks": {
+          "verdi": 4,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "kjoleskap": {
+          "verdi": 40,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "the safe refrigerator-storage temperature of 40° F or below."
+        },
+        "kjol_tid": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-leftovers",
+          "merknad": "Within 2 hours of cooking food or after it is removed from an appliance keeping it warm, leftovers must be refrigerated."
+        },
+        "oppvarming": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "When reheating leftovers, be sure they reach 165° F as measured with a food thermometer."
+        }
+      },
+      "tekst": {
+        "shallow": "fsis-leftovers|To do this, divide large amounts of food into shallow containers."
+      }
+    },
+    {
+      "id": "vegetar",
+      "slug": "vegetarian",
+      "navn": "Vegetarian",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_min": {
+          "verdi": 3,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_maks": {
+          "verdi": 4,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "kjoleskap": {
+          "verdi": 40,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "the safe refrigerator-storage temperature of 40° F or below."
+        },
+        "kjol_tid": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-leftovers",
+          "merknad": "Within 2 hours of cooking food or after it is removed from an appliance keeping it warm, leftovers must be refrigerated."
+        },
+        "oppvarming": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "When reheating leftovers, be sure they reach 165° F as measured with a food thermometer."
+        }
+      },
+      "tekst": {
+        "shallow": "fsis-leftovers|To do this, divide large amounts of food into shallow containers."
+      }
+    },
+    {
+      "id": "for-en",
+      "slug": "for-one",
+      "navn": "For one",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_min": {
+          "verdi": 3,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_maks": {
+          "verdi": 4,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "kjoleskap": {
+          "verdi": 40,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "the safe refrigerator-storage temperature of 40° F or below."
+        },
+        "kjol_tid": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-leftovers",
+          "merknad": "Within 2 hours of cooking food or after it is removed from an appliance keeping it warm, leftovers must be refrigerated."
+        },
+        "oppvarming": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "When reheating leftovers, be sure they reach 165° F as measured with a food thermometer."
+        }
+      },
+      "tekst": {
+        "shallow": "fsis-leftovers|To do this, divide large amounts of food into shallow containers."
+      }
+    },
+    {
+      "id": "husmannskost",
+      "slug": "comfort-food",
+      "navn": "Comfort food",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester_min": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "rester_maks": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_min": {
+          "verdi": 3,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "fryser_maks": {
+          "verdi": 4,
+          "enhet": "months",
+          "kilde": "fsis-leftovers",
+          "merknad": "Leftovers can be kept in the refrigerator for 3 to 4 days or frozen for 3 to 4 months."
+        },
+        "kjoleskap": {
+          "verdi": 40,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "the safe refrigerator-storage temperature of 40° F or below."
+        },
+        "kjol_tid": {
+          "verdi": 2,
+          "enhet": "hours",
+          "kilde": "fsis-leftovers",
+          "merknad": "Within 2 hours of cooking food or after it is removed from an appliance keeping it warm, leftovers must be refrigerated."
+        },
+        "oppvarming": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-leftovers",
+          "merknad": "When reheating leftovers, be sure they reach 165° F as measured with a food thermometer."
+        }
+      },
+      "tekst": {
+        "shallow": "fsis-leftovers|To do this, divide large amounts of food into shallow containers."
+      }
+    }
+  ]
+}

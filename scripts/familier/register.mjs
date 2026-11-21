@@ -28,14 +28,17 @@ const trengFelles = () => {
 
 export const FAMILIER = Object.freeze([
   { id: 'dl-til-gram', sidetype: 'omregner', mappe: new URL('./dl-til-gram/', import.meta.url), markeder: { nb: { rot: 'verktoy/dl-til-gram/' }, sv: { rot: 'verktyg/dl-till-gram/' }, da: { rot: 'vaerktoejer/dl-til-gram/' }, en: { rot: 'tools/cups-to-grams/' } } },
-  // Ukemenyene: bare norsk. Rettene og varene står i menyer.nb.json (meny.mjs), tallene i data.nb.json.
+  // Ukemenyene: norsk (/ukemenyer/, MatPrat og Mattilsynet), svensk (/sv/veckomenyer/, Arla og Livsmedelsverket), dansk (/da/madplaner/, Arla og Fødevarestyrelsen)
+  // og amerikansk engelsk (/en/weekly-meal-plans/, Taste of Home og USDA FSIS). Rettene og varene står i menyer.<marked>.json (meny.mjs), tallene og sitatene i data.<marked>.json.
+  // Rettene er det man lager en hverdag i hvert land, ikke de norske rettene oversatt. Samme rad-id gir hreflang mellom språkene for samme menytype.
+  // Sitatkontroll: node scripts/familier/holdbarhet/kildekontroll.mjs ukemeny [sv|da|en].
   // Kjernetemperatur og steketid: norsk (Mattilsynet først, så MatPrat med årstall; se steketid/mal-felles.mjs) og amerikansk engelsk
   // (FoodSafety.gov, USDA FSIS og land-grant extension; se steketid/mal-felles-en.mjs). Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
   { id: 'kjernetemperatur', sidetype: 'guide-lang', mappe: new URL('./kjernetemperatur/', import.meta.url), markeder: { nb: { rot: 'kjernetemperatur/' }, sv: { rot: 'innertemperatur/' }, da: { rot: 'kernetemperatur/' }, en: { rot: 'internal-temperature/' } } },
   // Steketid på svensk (/sv/tillagningstid/): Svensk Fågel, Svenskt Kött, Svenska Ägg, Kronfågel, Findus og Arla (data.sv.json, tekst-sv.mjs). Tallene er hentet fra svenske kilder, ikke oversatt.
   // Sitatkontroll for sv: node scripts/familier/holdbarhet/kildekontroll.mjs <familie> sv (den har curl-fallback, og Arla svarer 404 på Node sin fetch). Gjelder også airfryer, erstatning og mengde-per-person.
   { id: 'steketid', sidetype: 'guide-lang', mappe: new URL('./steketid/', import.meta.url), markeder: { nb: { rot: 'steketid/' }, sv: { rot: 'tillagningstid/' }, da: { rot: 'stegetid/' }, en: { rot: 'cooking-times/' } } },
-  { id: 'ukemeny', sidetype: 'guide-lang', mappe: new URL('./ukemeny/', import.meta.url), markeder: { nb: { rot: 'ukemenyer/' } } },
+  { id: 'ukemeny', sidetype: 'guide-lang', mappe: new URL('./ukemeny/', import.meta.url), markeder: { nb: { rot: 'ukemenyer/' }, sv: { rot: 'veckomenyer/' }, da: { rot: 'madplaner/' }, en: { rot: 'weekly-meal-plans/' } } },
   // Holdbarhet i kjøleskapet og frysing: norsk (Mattilsynet først, så MatPrat; se holdbarhet/kjoling.mjs) og amerikansk engelsk (FoodSafety.gov, USDA FSIS, FDA; se holdbarhet/kjoling-en.mjs).
   // Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
   { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' }, sv: { rot: 'hallbarhet/' }, da: { rot: 'holdbarhed/' }, en: { rot: 'how-long-does-it-last/' } } },

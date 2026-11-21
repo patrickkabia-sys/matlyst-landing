@@ -925,6 +925,60 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/meal-plan-app/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/sv/veckomenyer/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/ukemenyer/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/veckomenyer/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/madplaner/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/weekly-meal-plans/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/weekly-meal-plans/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/veckomenyer/barnfamilj/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/ukemenyer/familie/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/veckomenyer/barnfamilj/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/madplaner/boernefamilie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/weekly-meal-plans/family/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/weekly-meal-plans/family/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/veckomenyer/billig/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/ukemenyer/billig/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/veckomenyer/billig/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/madplaner/billig/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/weekly-meal-plans/budget/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/weekly-meal-plans/budget/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/veckomenyer/for-en-person/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/ukemenyer/for-en/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/veckomenyer/for-en-person/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/madplaner/til-en/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/weekly-meal-plans/for-one/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/weekly-meal-plans/for-one/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/veckomenyer/husmanskost/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/ukemenyer/husmannskost/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/veckomenyer/husmanskost/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/madplaner/klassiske-retter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/weekly-meal-plans/comfort-food/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/weekly-meal-plans/comfort-food/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/veckomenyer/vegetarisk/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/ukemenyer/vegetar/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/veckomenyer/vegetarisk/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/madplaner/vegetarisk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/weekly-meal-plans/vegetarian/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/weekly-meal-plans/vegetarian/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/sv/verktyg/celsius-till-fahrenheit/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/celsius-til-fahrenheit/"/>

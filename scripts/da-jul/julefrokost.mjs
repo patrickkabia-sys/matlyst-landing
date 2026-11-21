@@ -54,7 +54,7 @@ const maengder = p(`En julefrokost er en buffet med mange små retter. ${mv('mv-
     `Serverer du flere slags tilbehør, skal du ikke regne fuld portion af hver, ifølge ${mv('mv-gaester')}.${tekst('g-flere')}`,
     `Er der mange retter, skal der være mindre af hver, skriver ${tk('taenk-jul')}.${tekst('taenk-faerre')}`,
     'Vi har ikke fundet danske tal i gram pr. gæst for sild, leverpostej eller frikadeller. De står derfor uden tal.')
-  + p('Se også <a href="/da/hvor-meget-pr-person/gaester/">hvor meget mad pr. person til gæster</a> og <a href="/da/juleaften/">planen for juleaften med and og flæskesteg</a>.');
+  + p('Se også <a href="/da/hvor-meget-pr-person/gaester/">hvor meget mad pr. person til gæster</a> og <a href="/da/juleaften/">planen for juleaften med and og flæskesteg</a>. Til hverdagene efter julen har vi <a href="/da/madplaner/">færdige madplaner med indkøbsliste</a>.');
 
 const liste = `<ul>
 <li><strong>Kød og pålæg:</strong> frikadeller, sylte, leverpostej og pålæg. ${mv('mv-julemad')} nævner dem som almindelige til julefrokost.${tekst('jul-frokost')}</li>

@@ -200,7 +200,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/bedste-madplan-app/": {
-  "hash": "d04c11ed00206076",
+  "hash": "1634a807d119990d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/bedste-opskriftsapp/": {
@@ -400,7 +400,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/julefrokost/": {
-  "hash": "05ec18ab959dcda5",
+  "hash": "aa21b062ededb0bb",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kan-man-fryse/": {
@@ -500,7 +500,31 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/da/madplan-app/": {
-  "hash": "bc0e84934b0ef18e",
+  "hash": "29b8dcb8af530d11",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/madplaner/": {
+  "hash": "84aef6f522a7c675",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/madplaner/billig/": {
+  "hash": "bd528e1f8e3ff278",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/madplaner/boernefamilie/": {
+  "hash": "18153d9e89b038a1",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/madplaner/klassiske-retter/": {
+  "hash": "5a0d4882c38ef13f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/madplaner/til-en/": {
+  "hash": "c05daa00a46d00a1",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/madplaner/vegetarisk/": {
+  "hash": "0ea883a004d90c69",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/matprat/": {
@@ -1508,7 +1532,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/best-meal-planning-app/": {
-  "hash": "9b5bf6dfdc94d057",
+  "hash": "cc8539c991da0efe",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/best-recipe-app/": {
@@ -2004,7 +2028,7 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/meal-plan-app/": {
-  "hash": "929dc54ba7fd64da",
+  "hash": "e99aa2377e998387",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/mealime-alternative/": {
@@ -2843,6 +2867,30 @@
   "hash": "170936d053de9a02",
   "dato": "2026-11-21"
  },
+ "https://matlyst-app.no/en/weekly-meal-plans/": {
+  "hash": "6a9f0015c813031f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/weekly-meal-plans/budget/": {
+  "hash": "dc57f93a0fe4ecb2",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/weekly-meal-plans/comfort-food/": {
+  "hash": "5feb791ff8dd45a0",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/weekly-meal-plans/family/": {
+  "hash": "72ed323cb78b1427",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/weekly-meal-plans/for-one/": {
+  "hash": "f67dd0acd4ca3689",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/weekly-meal-plans/vegetarian/": {
+  "hash": "d9edd5c928ceb267",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/enkel-middag/": {
   "hash": "34de3e3d89fa0ed4",
   "dato": "2026-11-21"
@@ -3452,7 +3500,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/basta-veckomeny-app/": {
-  "hash": "ff4e24ddba2cf8c2",
+  "hash": "9b19dc46a90a9b84",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/blogg/": {
@@ -3720,7 +3768,7 @@
   "dato": "2026-11-16"
  },
  "https://matlyst-app.no/sv/julbord/": {
-  "hash": "54e93251858606cb",
+  "hash": "5fffaba3efeb4f70",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/koket/": {
@@ -3824,7 +3872,31 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/veckomeny-app/": {
-  "hash": "25f5b8b66c662832",
+  "hash": "ac77a2c3852ae62b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/veckomenyer/": {
+  "hash": "e561e4b882180d2e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/veckomenyer/barnfamilj/": {
+  "hash": "cf7b09f379f3b3ec",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/veckomenyer/billig/": {
+  "hash": "89879a30310e601c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/veckomenyer/for-en-person/": {
+  "hash": "705e50231cd3b4e2",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/veckomenyer/husmanskost/": {
+  "hash": "bc4b6fe940ad669c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/veckomenyer/vegetarisk/": {
+  "hash": "755d959a1035233e",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/verktyg/celsius-till-fahrenheit/": {
@@ -4768,27 +4840,27 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/": {
-  "hash": "ce1e72b82f564ad8",
+  "hash": "a7df75b1cd972e40",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/billig/": {
-  "hash": "d13f426a501f5672",
+  "hash": "3cd3b079d0c3a0da",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/familie/": {
-  "hash": "1ce28bc819abfd92",
+  "hash": "2577d77d1dcdb83b",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/for-en/": {
-  "hash": "b801da20298dad70",
+  "hash": "33536b73d29b3e7d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/husmannskost/": {
-  "hash": "93da1dcab0862d34",
+  "hash": "a1efb73d0288f52d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/vegetar/": {
-  "hash": "d9bafd338f7de9b8",
+  "hash": "4e5316aa1a773405",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/verktoy/celsius-til-fahrenheit/": {

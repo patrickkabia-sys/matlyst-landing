@@ -181,7 +181,7 @@ export const MARKED = {
       },
       ekstra: [
         ['Do you plan, or does the app?', p('That’s the biggest difference. In most of these apps, <strong>you</strong> pick the meals, and the app keeps track of the days and the grocery list. Some can also <strong>make the plan</strong> for you: Samsung Food with Samsung Food+ and Recipe Keeper say they do. Matlyst doesn’t make the plan for you.',
-          'Read more about the <a href="/en/meal-plan-app/">meal plan in Matlyst</a>.')],
+          'Read more about the <a href="/en/meal-plan-app/">meal plan in Matlyst</a>. Want a ready-made week to start from? See <a href="/en/weekly-meal-plans/">our weekly meal plans with a grocery list</a>.')],
         ['What about Mealime?', p('Mealime isn’t on this list. Its own <a href="https://www.mealime.com/closing" rel="noopener">closing page</a> says Mealime was discontinued as of October 21, 2026, and points its users to Meals Hub in Albertsons Companies grocery apps.',
           'If you used Mealime and want your recipes somewhere you control, see <a href="/en/mealime-alternative/">how to move Mealime recipes</a>.')],
       ],

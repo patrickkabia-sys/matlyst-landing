@@ -71,7 +71,7 @@ const mangder = p(`${sk('sk-servera')} räknar med ${t('buffe-rad')} per portion
   + p(`Tabellen är räknad från ${t('buffe-rad')} per person och rätt. Tre rätter är bara ett exempel, du väljer själv hur många.`)
   + '<h3>Per rätt</h3>'
   + p(`Här är mängderna per person där en källa anger dem, uträknade för tio och tjugo gäster. Du ska inte ha alla rätterna. Julskinka på ett traditionellt julbord, där mycket annat också står framdukat: ${t('skinka-jul')} per person, enligt ${sk('sk-skinka')}.`)
-  + tabell(['Rätt', 'Per gäst', `${GAESTER_RATTER[0]} gäster`, `${GAESTER_RATTER[1]} gäster`, 'Källa'], RATTER.map(rattRad))
+  + tabell(['Rätt', 'Per gäst', `För ${GAESTER_RATTER[0]}`, `För ${GAESTER_RATTER[1]}`, 'Källa'], RATTER.map(rattRad))
   + p(`Vi hittade ingen svensk källa som anger en mängd för just köttbullar, prinskorv, revbensspjäll och sill. Därför visar tabellen tumregeln för proteinrätter på en buffé, ${t('buffe-rad')} per rätt. Det är en startpunkt, inte en uppgift om just den rätten. Vill du ha fler siffror om kött, se <a href="/sv/hur-mycket-per-person/kott/">hur mycket kött per person</a> och <a href="/sv/hur-mycket-per-person/korv/">hur mycket korv per person</a>.`)
   + '<h3>Om julskinkan är huvudrätten</h3>'
   + p(`Är skinkan huvudrätt vid en vanlig middag, gäller andra siffror. ${sk('sk-servera')} räknar ${t('middag-benfritt')} benfritt kött per person vid en middag, och ${t('middag-ben')} per portion för kött med ben. Ska du laga skinkan själv, säger ${sk('sk-gris')} ${t('skinka-sjalv-utan')} per person utan ben och ${t('skinka-sjalv-med')} med ben. Av färdiglagad skinka är ${t('skinka-fardig')} per person lagom, enligt samma källa. Se <a href="/sv/hur-mycket-per-person/julskinka/">hur mycket julskinka per person</a>.`)
@@ -118,7 +118,7 @@ const avsnitt = () => [
       'Lägg recepten i <a href="/sv/veckomeny-app/">veckomenyn</a> de dagar du ska laga dem.',
       'Skicka veckomenyn till <a href="/sv/inkopslista/">inköpslistan</a>, så får du lika varor ihopslagna och sorterade efter butikens avdelningar. Varor du redan har i skafferiet är bortvalda och märkta «I skafferiet».',
       'Lägg in det som blir över i <a href="/sv/skafferi-app/">skafferiet</a>, med bäst före-datum, så ser du vad som bör användas först.')
-    + p('Matlyst skickar inga påminnelser om när du ska laga vad. Skriv tiderna i anteckningarna på receptet, eller använd tidslinjen ovan. Ska du också laga nyårsmiddag? Se <a href="/sv/nyarsmiddag/">planen för nyårsmiddagen</a>.')],
+    + p('Matlyst skickar inga påminnelser om när du ska laga vad. Skriv tiderna i anteckningarna på receptet, eller använd tidslinjen ovan. Ska du också laga nyårsmiddag? Se <a href="/sv/nyarsmiddag/">planen för nyårsmiddagen</a>. Och för vardagarna efter helgerna finns <a href="/sv/veckomenyer/">färdiga veckomenyer med inköpslista</a>.')],
   ['Källor och siffror',
     KILDEINTRO + s.kilderListe()
     + p('Hittade du ett fel, eller har en källa ändrats? Skriv till <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>, så rättas sidan och datumet uppdateras.')],

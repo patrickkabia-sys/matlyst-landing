@@ -11,36 +11,50 @@ import { readFileSync } from 'node:fs';
 import { z } from 'zod';
 
 export const DAGER = Object.freeze(['mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag', 'søndag']);
+// Dagene slik hvert marked skriver dem i menyfila (små bokstaver). Adresseankre bruker ascii-formen (se mal-felles.mjs).
+export const DAGER_MARKED = Object.freeze({
+  nb: DAGER,
+  sv: Object.freeze(['måndag', 'tisdag', 'onsdag', 'torsdag', 'fredag', 'lördag', 'söndag']),
+  da: Object.freeze(['mandag', 'tirsdag', 'onsdag', 'torsdag', 'fredag', 'lørdag', 'søndag']),
+  en: Object.freeze(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']),
+});
 export const MAKS_DAGER_REST = 2;
-const KILDEVERTER = new Set(['www.matprat.no']);
+// Oppskriftslenkene skal gå til en kilde i landet: MatPrat (nb), Arla (sv og da) og Taste of Home (en).
+export const KILDEVERTER_MARKED = Object.freeze({
+  nb: new Set(['www.matprat.no']),
+  sv: new Set(['www.arla.se']),
+  da: new Set(['www.arla.dk']),
+  en: new Set(['www.tasteofhome.com']),
+});
 
 const tekst = z.string().trim().min(1);
-const Dag = z.strictObject({
-  dag: z.enum(DAGER),
+const dagSkjema = (marked) => z.strictObject({
+  dag: z.enum(DAGER_MARKED[marked]),
   rett: tekst,
-  oppskrift: z.string().refine((s) => { try { const u = new URL(s); return u.protocol === 'https:' && KILDEVERTER.has(u.hostname); } catch { return false; } }, 'må være en https-lenke til en godkjent norsk oppskriftskilde').optional(),
+  oppskrift: z.string().refine((s) => { try { const u = new URL(s); return u.protocol === 'https:' && KILDEVERTER_MARKED[marked].has(u.hostname); } catch { return false; } }, 'må være en https-lenke til en godkjent oppskriftskilde i landet').optional(),
   framgang: z.array(tekst).min(1).optional(),
   hvorfor: tekst,
   lagMer: tekst.optional(),
-  rest: z.strictObject({ fra: z.enum(DAGER), hva: tekst, via: z.literal('fryser').optional() }).optional(),
+  rest: z.strictObject({ fra: z.enum(DAGER_MARKED[marked]), hva: tekst, via: z.literal('fryser').optional(), iStedetFor: tekst.optional() }).optional(),
   varer: z.array(tekst).min(1),
 });
-const Meny = z.strictObject({
+const menySkjema = (marked) => z.strictObject({
   tittel: tekst.max(60), h1: tekst, beskrivelse: tekst.min(100).max(160), ingress: tekst, vinkel: tekst,
-  dager: z.array(Dag).length(7),
+  dager: z.array(dagSkjema(marked)).length(7),
   faq: z.array(z.tuple([tekst, tekst])).min(1),
 });
-const Fil = z.strictObject({
+const filSkjema = (marked) => z.strictObject({
   hentet: z.string().regex(/^\d{4}-\d{2}-\d{2}$/u),
   hyller: z.array(tekst).min(1),
   basis: z.array(tekst),
   varer: z.record(tekst, tekst),
-  menyer: z.record(tekst, Meny),
+  menyer: z.record(tekst, menySkjema(marked)),
 });
 
-/** Validerer innholdet i menyer.nb.json. Kaster med meny og dag i meldingen. */
-export function validerMenyer(obj) {
-  const d = Fil.parse(obj);
+/** Validerer innholdet i menyer.<marked>.json. Kaster med meny og dag i meldingen. */
+export function validerMenyer(obj, marked = 'nb') {
+  const DAGER = DAGER_MARKED[marked];
+  const d = filSkjema(marked).parse(obj);
   const feil = [];
   for (const [vare, hylle] of Object.entries(d.varer)) if (!d.hyller.includes(hylle)) feil.push(`varer.${vare}: ukjent hylle «${hylle}»`);
   for (const [id, m] of Object.entries(d.menyer)) {
@@ -66,14 +80,15 @@ export function validerMenyer(obj) {
   return d;
 }
 
-export const lesMenyer = (fil = new URL('./menyer.nb.json', import.meta.url)) => validerMenyer(JSON.parse(readFileSync(fil, 'utf8')));
+export const lesMenyer = (fil = new URL('./menyer.nb.json', import.meta.url), marked = 'nb') => validerMenyer(JSON.parse(readFileSync(fil, 'utf8')), marked);
+export const lesMenyerMarked = (marked) => lesMenyer(new URL(`./menyer.${marked}.json`, import.meta.url), marked);
 
 /** Handlelista for en meny: hyllene i appens rekkefølge, varene sortert, med dagene som trenger dem. */
-export function handleliste(meny, alle) {
+export function handleliste(meny, alle, sprak = 'nb') {
   const perVare = new Map();
   for (const x of meny.dager) for (const v of x.varer) perVare.set(v, [...(perVare.get(v) ?? []), x.dag]);
   return alle.hyller
-    .map((hylle) => ({ hylle, varer: [...perVare].filter(([v]) => alle.varer[v] === hylle).map(([vare, dager]) => ({ vare, dager })).sort((a, b) => a.vare.localeCompare(b.vare, 'nb')) }))
+    .map((hylle) => ({ hylle, varer: [...perVare].filter(([v]) => alle.varer[v] === hylle).map(([vare, dager]) => ({ vare, dager })).sort((a, b) => a.vare.localeCompare(b.vare, sprak)) }))
     .filter((h) => h.varer.length > 0);
 }
 
