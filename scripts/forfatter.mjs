@@ -13,7 +13,7 @@ export const FORFATTER_SIDER = Object.freeze([
 ]);
 
 // Sidefamilier der hver side har forfatteren (scripts/familier/): alt under roten.
-export const FORFATTER_ROTER = Object.freeze(['holdbarhet/', 'frysing/', 'mengde-per-person/', 'kjernetemperatur/', 'steketid/']);
+export const FORFATTER_ROTER = Object.freeze(['holdbarhet/', 'frysing/', 'mengde-per-person/', 'kjernetemperatur/', 'steketid/', 'airfryer/']);
 
 export const harForfatter = (path) => {
   const sti = String(path).replace(/^\//u, '');

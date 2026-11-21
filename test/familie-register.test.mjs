@@ -71,7 +71,7 @@ test('en tom liste endrer ingenting', async () => {
 });
 
 test('det ekte registeret har alle familiene, og ingen fiksturfamilier', () => {
-  assert.deepEqual(FAMILIER.map((f) => f.id), ['dl-til-gram', 'kjernetemperatur', 'steketid', 'ukemeny', 'holdbarhet', 'frysing', 'mengde-per-person']);
+  assert.deepEqual(FAMILIER.map((f) => f.id), ['dl-til-gram', 'kjernetemperatur', 'steketid', 'ukemeny', 'holdbarhet', 'frysing', 'mengde-per-person', 'airfryer']);
   assert.equal(familieForSti('/mengde-per-person/ris/'), 'mengde-per-person');
   assert.equal(familieForSti('/kjernetemperatur/kylling/'), 'kjernetemperatur');
   assert.equal(familieForSti('/steketid/ribbe/'), 'steketid');

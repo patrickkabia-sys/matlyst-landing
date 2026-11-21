@@ -74,6 +74,7 @@ export const HYLLER = {
         { tekst: 'Kjernetemperatur: tabell', href: '/kjernetemperatur/', bareNb: true },
         { tekst: 'Steketid', href: '/steketid/', bareNb: true },
         { tekst: 'Mengde per person', href: '/mengde-per-person/', bareNb: true },
+        { tekst: 'Airfryer', href: '/airfryer/', bareNb: true },
         { tekst: 'Alle kjøkkentips', href: '/blogg/' },
       ],
     },
