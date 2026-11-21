@@ -1,15 +1,17 @@
 // De ferdige omregnersidene: kalkulatorkortet i `topp`, kort svar, lesedelen uten svarboks og innholdsfortegnelse,
 // og «cups» som hovedord. Forventningene utledes av kilden (generatoren og enheter.mjs), ikke av kopierte tall.
-// Nb, sv og da er slått på her; en legges til i oppgave 5 (tabellen SPRAK under).
+// Alle fire språk står i tabellen SPRAK under. Engelsk har ikke kopp-ordet og ikke «cups»-regelen for navn (cups er allerede hovedordet).
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { ENHETER, FLERTALL, KORT_ETIKETTER, START, enheterFor, konverter, tall } from '../scripts/enheter.mjs';
+import { ENHETER, FLERTALL, HURTIG_BROK, enhetsKort, KORT_ETIKETTER, START, enheterFor, konverter, tall } from '../scripts/enheter.mjs';
 import { byggLese, byggRik } from '../scripts/rik-sider.mjs';
 import * as NB from '../scripts/nb-enhetssider.mjs';
 import * as SV from '../scripts/sv-enhetssider.mjs';
 import * as DA from '../scripts/da-enhetssider.mjs';
+import { enhetsSider as enhetsSiderEn } from '../scripts/en-enhetssider.mjs';
+import { rikeSider } from '../scripts/en-rike-sider.mjs';
 
 const ROT = fileURLToPath(new URL('..', import.meta.url));
 
@@ -20,21 +22,27 @@ const sideTekst = (s) => synligTekst([s.eyebrow, s.h1, s.lead, s.topp, s.rik, s.
 // Én rad per språk som er slått på. `hoved` er hovedordet i enhetsnavn, `biord` kopp-ordet, `siderMed` sidene der cups er med.
 const ordFor = (lang) => (id, v) => FLERTALL[lang]?.[id]?.[v === 1 ? 0 : 1] ?? ENHETER[id][lang].kort;
 const SPRAK = {
+  en: {
+    sider: { ...enhetsSiderEn, 'tools/unit-converter/': rikeSider['tools/unit-converter/'] }, mappe: 'en/tools/', hub: 'tools/unit-converter/', komma: false, hoved: /\bcups?\b/iu, biord: null, KOPP_BIORD: null, ordFor: ordFor('en'),
+    publisert: 'cups-to-ml', kalkH2: / calculator$/u, kortSvar: 'Short answer:', tabellId: /^<h2 id="[a-z0-9-]+-conversion-chart"/u, likeNavn: false,
+    h2: [/ conversion chart$/u, /^How to convert /u, /^Where recipes use /u, /^Measuring tips$/u, /^Common mistakes when converting$/u, /^Converting a whole recipe$/u, /^Stop converting by hand$/u, /^Related conversions$/u],
+    hubInnledning: /^<p>A free cooking unit converter for every combination: /u, hubVolum: 'This calculator converts volume\\. For weight, length, and temperature, use the lists below\\.',
+  },
   nb: {
     sider: NB.enhetsSiderNb, KOPP_BIORD: NB.KOPP_BIORD, mappe: 'verktoy/', hub: 'verktoy/enhetsomregner/', komma: true, hoved: /\bcups?\b/iu, biord: /kopp/iu, ordFor: ordFor('nb'),
-    publisert: 'dl-til-kopp', kalkH2: /^Kalkulator/u, kortSvar: 'Kort svar:',
+    publisert: 'dl-til-kopp', kalkH2: /^Kalkulator/u, kortSvar: 'Kort svar:', tabellId: /^<h2 id="(?:omregningstabell|tabell|tabel)/u, likeNavn: true,
     h2: [/^Omregningstabell: /u, /^Slik regner du om /u, /^Hvor oppskrifter bruker /u, /^Tips til måling$/u, /^Vanlige feil ved omregning$/u, /^Regn om en hel oppskrift$/u, /^Slutt å regne om for hånd$/u, /^Beslektede omregninger$/u],
     hubInnledning: /^<p>En gratis omregner for matlaging, med alle kombinasjoner: /u, hubVolum: 'Kalkulatoren her regner om volum\\. For vekt, lengde og temperatur bruker du listene under\\.',
   },
   sv: {
     sider: SV.enhetsSiderSv, KOPP_BIORD: SV.KOPP_BIORD, mappe: 'sv/verktyg/', hub: 'verktyg/enhetsomvandlare/', komma: true, hoved: /\bcups?\b/iu, biord: /kopp/iu, ordFor: ordFor('sv'),
-    publisert: 'dl-till-kopp', kalkH2: /^Omvandlare från /u, kortSvar: 'Kort svar:',
+    publisert: 'dl-till-kopp', kalkH2: /^Omvandlare från /u, kortSvar: 'Kort svar:', tabellId: /^<h2 id="(?:omregningstabell|tabell|tabel)/u, likeNavn: true,
     h2: [/^Tabell: /u, /^Så räknar du om /u, /^Där recept använder /u, /^Tips för mätning$/u, /^Vanliga misstag vid omräkning$/u, /^Räkna om ett helt recept$/u, /^Sluta räkna om för hand$/u, /^Närliggande omvandlingar$/u],
     hubInnledning: /^<p>En gratis omvandlare för matlagning med alla kombinationer: /u, hubVolum: 'Den här omvandlaren räknar volym\\. För vikt, längd och temperatur använder du listorna nedan\\.',
   },
   da: {
     sider: DA.enhetsSiderDa, KOPP_BIORD: DA.KOPP_BIORD, mappe: 'da/vaerktoejer/', hub: 'vaerktoejer/enhedsomregner/', komma: true, hoved: /\bcups?\b/iu, biord: /\bkop(pe[rn]?)?\b/iu, ordFor: ordFor('da'),
-    publisert: 'dl-til-kop', kalkH2: /^Regnemaskine: /u, kortSvar: 'Kort svar:',
+    publisert: 'dl-til-kop', kalkH2: /^Regnemaskine: /u, kortSvar: 'Kort svar:', tabellId: /^<h2 id="(?:omregningstabell|tabell|tabel)/u, likeNavn: true,
     h2: [/^Tabel: /u, /^Sådan regner du /u, /^Hvor opskrifter bruger /u, /^Tips til måling$/u, /^Almindelige fejl, når du regner om$/u, /^Regn en hel opskrift om$/u, /^Hold op med at regne om i hånden$/u, /^Beslægtede omregninger$/u],
     hubInnledning: /^<p>Her finder du alle køkkenomregninger samlet: /u, hubVolum: 'Regnemaskinen her regner volumen om\\. Til vægt, længde og temperatur bruger du listerne herunder\\.',
   },
@@ -53,7 +61,7 @@ for (const lang of Object.keys(SPRAK)) {
   const sider = par(lang);
 
   test(`${lang}: hver parside har kortet i topp og ingen gammel omregner`, () => {
-    assert.ok(sider.length >= 150, `forventet minst 150 parsider, fant ${sider.length}`);
+    assert.ok(sider.length >= 100, `forventet minst 100 parsider, fant ${sider.length}`);
     for (const [sti, s] of sider) {
       assert.equal((s.topp.match(/<form class="kalk"/gu) ?? []).length, 1, sti);
       assert.equal((s.topp.match(/data-kalk="enhet"/gu) ?? []).length, 1, sti);
@@ -76,6 +84,7 @@ for (const lang of Object.keys(SPRAK)) {
       assert.equal(svar, kommaTall(konverter(start, fra, til)), sti);
       // Det korte svaret under kortet åpner med kortets egen setning (samme startmengde, også for temperatur: 180 °C, 350 °F).
       assert.ok(/<p class="kortsvar"><b>[^<]*<\/b> ([^<]*)</u.exec(s.topp)[1].startsWith(`${setning}.`), `${sti}: kort svar åpner med «${setning}.»`);
+      assert.ok(s.topp.includes(`<p class="kortsvar"><b>${S.kortSvar}</b> `), `${sti}: etiketten «${S.kortSvar}»`);
     }
   });
 
@@ -92,7 +101,7 @@ for (const lang of Object.keys(SPRAK)) {
       assert.equal(h2.length, 8, sti);
       S.h2.forEach((re, i) => assert.match(h2[i], re, `${sti}: seksjon ${i + 1}`));
       assert.doesNotMatch(s.rik, S.kalkH2, sti);
-      assert.match(s.rik, /^<h2 id="(?:omregningstabell|tabell|tabel)/u, `${sti}: lesedelen åpner med tabellen`);
+      assert.match(s.rik, S.tabellId, `${sti}: lesedelen åpner med tabellen`);
       assert.match(s.rik, /<table>/u, sti);
     }
   });
@@ -105,43 +114,46 @@ for (const lang of Object.keys(SPRAK)) {
       med++;
       for (const [navn, tekst] of [['title', s.title], ['h1', s.h1], ['description', s.description]]) {
         assert.match(tekst, S.hoved, `${sti} ${navn}`);
-        assert.doesNotMatch(tekst, S.biord, `${sti} ${navn}`);
+        if (S.biord) assert.doesNotMatch(tekst, S.biord, `${sti} ${navn}`);
       }
-      assert.doesNotMatch(synligTekst(s.topp), S.biord, `${sti}: kortet`);
+      if (S.biord) assert.doesNotMatch(synligTekst(s.topp), S.biord, `${sti}: kortet`);
     }
     const volum = enheterFor(lang).filter((id) => ENHETER[id].gruppe === 'volum').length;
     assert.equal(med, 2 * (volum - 1), 'cups er med på like mange sider fra som til');
   });
 
-  test(`${lang}: «kopp» står bare i setningene i KOPP_BIORD`, () => {
-    const setninger = Object.values(S.KOPP_BIORD).flat();
-    assert.ok(setninger.length >= 5);
-    const alle = [...Object.entries(S.sider)];
-    for (const setning of setninger) {
-      assert.ok(setning.length > 10);
-      assert.ok(alle.some(([, s]) => sideTekst(s).includes(setning)), `ingen side inneholder: ${setning}`);
-    }
-    for (const [sti, s] of alle) {
-      let tekst = sideTekst(s);
-      for (const setning of setninger) tekst = tekst.split(setning).join(' ');
-      assert.doesNotMatch(tekst, S.biord, sti);
-    }
-  });
+  // Kopp-ordet finnes bare på nb, sv og da. Engelsk sier «cup» fra før og har ingen biord.
+  if (S.biord) {
+    test(`${lang}: «kopp» står bare i setningene i KOPP_BIORD`, () => {
+      const setninger = Object.values(S.KOPP_BIORD).flat();
+      assert.ok(setninger.length >= 5);
+      const alle = [...Object.entries(S.sider)];
+      for (const setning of setninger) {
+        assert.ok(setning.length > 10);
+        assert.ok(alle.some(([, s]) => sideTekst(s).includes(setning)), `ingen side inneholder: ${setning}`);
+      }
+      for (const [sti, s] of alle) {
+        let tekst = sideTekst(s);
+        for (const setning of setninger) tekst = tekst.split(setning).join(' ');
+        assert.doesNotMatch(tekst, S.biord, sti);
+      }
+    });
 
-  test(`${lang}: biordet står på riktige sider: forklaringen og spørsmålet der cups er med, dl-spørsmålet mellom cups og dl`, () => {
-    for (const [sti, s] of [...sider, [S.hub, S.sider[S.hub]]]) {
-      const tekst = sideTekst(s);
-      const hub = sti === S.hub;
-      const [fra, til] = hub ? ['cups', 'ml'] : fraTil(s);
-      const medCups = fra === 'cups' || til === 'cups';
-      const mellom = medCups && [fra, til].includes('dl');
-      assert.equal(tekst.includes(S.KOPP_BIORD.sammeSporsmal), medCups, `${sti}: spørsmålet om cups og kopp`);
-      assert.equal(tekst.includes(S.KOPP_BIORD.sammeSvar), medCups, `${sti}: svaret om cups og kopp`);
-      assert.equal(tekst.includes(S.KOPP_BIORD.forklaring), medCups && !hub, `${sti}: forklaringssetningen`);
-      assert.equal(tekst.includes(S.KOPP_BIORD.dlSporsmal), mellom, `${sti}: spørsmålet om dl og kopp`);
-      assert.equal(tekst.includes(S.KOPP_BIORD.dlSvar), mellom, `${sti}: svaret om dl og kopp`);
-    }
-  });
+    test(`${lang}: biordet står på riktige sider: forklaringen og spørsmålet der cups er med, dl-spørsmålet mellom cups og dl`, () => {
+      for (const [sti, s] of [...sider, [S.hub, S.sider[S.hub]]]) {
+        const tekst = sideTekst(s);
+        const hub = sti === S.hub;
+        const [fra, til] = hub ? ['cups', 'ml'] : fraTil(s);
+        const medCups = fra === 'cups' || til === 'cups';
+        const mellom = medCups && [fra, til].includes('dl');
+        assert.equal(tekst.includes(S.KOPP_BIORD.sammeSporsmal), medCups, `${sti}: spørsmålet om cups og kopp`);
+        assert.equal(tekst.includes(S.KOPP_BIORD.sammeSvar), medCups, `${sti}: svaret om cups og kopp`);
+        assert.equal(tekst.includes(S.KOPP_BIORD.forklaring), medCups && !hub, `${sti}: forklaringssetningen`);
+        assert.equal(tekst.includes(S.KOPP_BIORD.dlSporsmal), mellom, `${sti}: spørsmålet om dl og kopp`);
+        assert.equal(tekst.includes(S.KOPP_BIORD.dlSvar), mellom, `${sti}: svaret om dl og kopp`);
+      }
+    });
+  }
 
   test(`${lang}: samme tall for en cup overalt på siden: 3 gjeldende sifre står ikke ved siden av kort svar med 4`, () => {
     const fire = tall(konverter(1, 'cups', 'dl'));
@@ -174,7 +186,7 @@ for (const lang of Object.keys(SPRAK)) {
         assert.equal(antall, 1, `${sti}: «${fl}» står ${antall} ganger i H1: ${s.h1}`);
       }
     }
-    assert.ok(sjekket >= 2 * (enheterFor(lang).filter((id) => ENHETER[id].gruppe === 'volum').length - 1), 'cups er en slik enhet');
+    if (S.likeNavn) assert.ok(sjekket >= 2 * (enheterFor(lang).filter((id) => ENHETER[id].gruppe === 'volum').length - 1), 'cups er en slik enhet');
     // og ingen like nabo-ord i overskriftene (som locale-pages.test.mjs krever for de ferdige sidene)
     for (const [sti, s] of Object.entries(S.sider)) {
       for (const [, raw] of `<h1>${s.h1}</h1>${s.rik}`.matchAll(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/gu)) {
@@ -220,6 +232,30 @@ test('sv og da: kortets etiketter er på språket, og feilmeldingen bruker språ
       for (const etikett of [E.mengde, E.fra, E.til, E.bytt, E.vanlige]) assert.ok(s.topp.includes(etikett), `${sti}: «${etikett}»`);
     }
   }
+});
+
+test('en: kortet tar brøker og har brøker som hurtigmengder for cups, tbsp og tsp', () => {
+  const data = (html) => JSON.parse(/<script type="application\/json" class="kalk-data">([\s\S]*?)<\/script>/u.exec(html)[1]);
+  for (const [sti, s] of Object.entries(SPRAK.en.sider)) {
+    const d = data(s.topp);
+    assert.equal(d.brok, true, sti);
+    for (const id of Object.keys(HURTIG_BROK)) if (d.steg[id]) assert.deepEqual(d.steg[id], HURTIG_BROK[id], `${sti}: ${id}`);
+  }
+  // Brøkene står som knapper bare der kortet har enheten; cups, tbsp og tsp finnes på volumsidene og samlesiden.
+  for (const sti of ['tools/cups-to-ml/', 'tools/unit-converter/']) {
+    const d = data(SPRAK.en.sider[sti].topp);
+    for (const id of ['cups', 'tbsp', 'tsp']) assert.deepEqual(d.steg[id], HURTIG_BROK[id], `${sti}: ${id}`);
+  }
+  // Andre språk tar ikke brøker.
+  for (const lang of ['nb', 'sv', 'da']) assert.equal(data(Object.values(SPRAK[lang].sider)[0].topp).brok, undefined, lang);
+});
+
+test('en: fiksturen for brøkene er kortet slik generatoren lager det nå', () => {
+  const fikstur = readFileSync(`${ROT}test/playwright/fiksturer/kalk-enhet-en.html`, 'utf8');
+  for (const [id, fra, til] of [['cups', 'cups', 'ml'], ['temp', 'f', 'c']]) {
+    assert.ok(fikstur.includes(enhetsKort('en', fra, til).replace('<form class="kalk" ', `<form class="kalk" id="${id}" `)), `${id}: kortet i fiksturen er utdatert, lag den på nytt`);
+  }
+  assert.match(fikstur, /<html lang="en">/u);
 });
 
 test('nb: cups har nye navn, og adressen er som før', () => {

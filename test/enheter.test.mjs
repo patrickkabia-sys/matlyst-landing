@@ -153,7 +153,7 @@ test('enhetsKort: hvert par på hvert språk har gyldig kort', () => {
   }
 });
 
-test('en side per par, unike adresser, og hver side har kalkulator, tabell, Matlyst-grunn og FAQ', () => {
+test('en side per par, unike adresser, og hver side har kalkulatorkort i topp, tabell, Matlyst-grunn og FAQ', () => {
   const par = allePar();
   assert.equal(Object.keys(enhetsSider).length, par.length);
   assert.equal(new Set(par.map(([a, b]) => parSlug(a, b))).size, par.length);
@@ -161,7 +161,10 @@ test('en side per par, unike adresser, og hver side har kalkulator, tabell, Matl
     assert.match(sti, /^tools\/[a-z-]+-to-[a-z-]+\/$/u);
     assert.ok(s.title.length <= 60, `${sti}: tittel ${s.title.length}`);
     assert.ok(s.description.length >= 100 && s.description.length <= 160, `${sti}: meta ${s.description.length}`);
-    assert.match(s.rik, /class="omregner"/u, sti);
+    assert.match(s.topp, /^<form class="kalk" data-kalk="enhet" /u, `${sti}: kalkulatorkortet står i topp`);
+    assert.match(s.topp, /"brok":true/u, `${sti}: engelsk tar brøker`);
+    assert.match(s.topp, /<p class="kortsvar"><b>Short answer:<\/b> /u, sti);
+    assert.doesNotMatch(`${s.topp}${s.rik}`, /class="omregner"|class="answer"|class="toc"/u, `${sti}: ingen gammel omregner, svarboks eller innholdsfortegnelse`);
     assert.match(s.rik, /<table>/u, sti);
     assert.match(s.rik, /Stop converting by hand/u, sti);
     assert.match(s.rik, /Metric/u, sti);

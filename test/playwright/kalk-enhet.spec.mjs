@@ -1,6 +1,8 @@
 // Kalkulatorkortet uten varerad (data-kalk="enhet"): volum, vekt, lengde og temperatur, fire gjeldende sifre og bytte som beholder mengden.
 // Fiksturen har fire skjemaer: #volum (cups til dl), #vekt (lb til g), #lengde (tomme til cm) og #temp (°C til °F, med affin og negativ).
 import { test, expect } from '@playwright/test';
+import { HURTIG_BROK, KORT_ETIKETTER } from '../../scripts/enheter.mjs';
+import { presisTekst } from '../../scripts/kalk-kort.mjs';
 
 const FIKSTUR = '/test/playwright/fiksturer/kalk-enhet.html';
 const FEIL = 'Skriv inn en mengde, for eksempel 2 eller 2,5.';
@@ -116,4 +118,42 @@ test('kortet uten varerad har ikke tom luft øverst', async ({ page }) => {
   });
   expect(topp.forste).toBe(true);
   expect(topp.avstand).toBe(topp.polstring);
+});
+
+// Engelsk: kortet tar brøker (brok: true) og har brøker som hurtigmengder for cups. Egen fikstur fordi kortet leser document.documentElement.lang.
+test.describe('engelsk kort med brøker', () => {
+  const EN = '/test/playwright/fiksturer/kalk-enhet-en.html';
+  const CUP = 236.5882365;
+  test.beforeEach(async ({ page }) => { await page.goto(EN); });
+
+  test('en brøk og et blandet tall regnes om, og enheten kan byttes uten at brøken forsvinner', async ({ page }) => {
+    await skriv(page, 'cups', '1 1/2');
+    await expect(setning(page, 'cups')).toHaveText(`1 1/2 cups = ${presisTekst(1.5 * CUP, 4)} ml`);
+    await skriv(page, 'cups', '1/2');
+    await expect(setning(page, 'cups')).toHaveText(`1/2 cup = ${presisTekst(0.5 * CUP, 4)} ml`);
+    await page.click('#cups [data-felt=bytt]');
+    await expect(page.locator('#cups [data-felt=mengde]')).toHaveValue('1/2');
+    await expect(setning(page, 'cups')).toHaveText(`1/2 ml = ${presisTekst(0.5 / CUP, 4)} cups`);
+    await expect(page.locator('#cups [data-felt=mengde]')).not.toHaveAttribute('aria-invalid', 'true');
+  });
+
+  test('hurtigknappene for cups er brøker og fyller feltet med brøken', async ({ page }) => {
+    await expect(page.locator('#cups .hurtig button')).toHaveText(HURTIG_BROK.cups.map((v) => `${v} ${v === '1' ? 'cup' : v.includes('/') && Number(v.split('/')[0]) < Number(v.split('/')[1]) ? 'cup' : 'cups'}`));
+    await page.click('#cups .hurtig button[data-v="1/3"]');
+    await expect(page.locator('#cups [data-felt=mengde]')).toHaveValue('1/3');
+    await expect(setning(page, 'cups')).toHaveText(`1/3 cup = ${presisTekst(CUP / 3, 4)} ml`);
+    await expect(page.locator('#cups .hurtig button[data-v="1/3"]')).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  test('en ugyldig brøk gir veiledningen på engelsk', async ({ page }) => {
+    await skriv(page, 'cups', '1/0');
+    await expect(page.locator('#cups [data-felt=mengde]')).toHaveAttribute('aria-invalid', 'true');
+    await expect(setning(page, 'cups')).toHaveText(KORT_ETIKETTER.en.feil);
+  });
+
+  test('temperatur tar desimaler med punktum og er affin', async ({ page }) => {
+    await expect(setning(page, 'temp')).toHaveText(`350 °F = ${presisTekst((350 - 32) * 5 / 9, 4)} °C`);
+    await skriv(page, 'temp', '-40');
+    await expect(setning(page, 'temp')).toHaveText('-40 °F = -40 °C');
+  });
 });

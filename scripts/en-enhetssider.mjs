@@ -1,13 +1,12 @@
 // Enhetsomregnere på engelsk: én side per enhetspar (ml til dl, cups til ml, °F til °C osv.) pluss en hub.
 // Hver side har en kalkulator (site.js), en tabell, formel, kjøkkennotat, en grunn til å bruke Matlyst og lenker til beslektede omregninger.
-import { ENHETER, allePar, enheterFor, konverter, omregnerData, ordFor, parSti, parSlug, tall } from './enheter.mjs';
-import { animasjon, byggRik, skjerm } from './rik-sider.mjs';
+import { ENHETER, allePar, enhetsKort, kortSetning, konverter, parSti, parSlug, tall } from './enheter.mjs';
+import { animasjon, byggLese, skjerm } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
 const stor = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const N = (id) => ENHETER[id].en;
-const gruppeIds = (g) => enheterFor('en').filter((id) => ENHETER[id].gruppe === g);
 
 const VERDIER = {
   ml: [5, 10, 15, 25, 50, 75, 100, 150, 200, 250, 300, 500, 750, 1000], cl: [1, 2, 3, 5, 10, 15, 20, 25, 33, 50, 75, 100], dl: [0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 7.5, 10],
@@ -50,7 +49,7 @@ const NOTE = {
   'c>f': 'Celsius to Fahrenheit: multiply by 9/5 and add 32. 180°C is 356°F, which US recipes round to 350°F. Always preheat fully before you bake.',
   'gallons>l': 'A US gallon is 3.785 liters. A British (imperial) gallon is bigger, 4.546 liters, so a gallon in a British recipe is not the same as one in an American recipe.',
   'l>gallons': 'Liters to US gallons: divide by 3.785. A 4 liter pot holds a little more than one gallon.',
-  'cups>dl': 'A US cup is 2.37 dl. Recipes often round to 2.4 dl. If a Nordic recipe says 2.5 dl, that is a bit more than a US cup, and for forgiving recipes like soup that difference does not matter.',
+  'cups>dl': 'A US cup is 2.366 dl. Recipes often round to 2.4 dl. If a Nordic recipe says 2.5 dl, that is a bit more than a US cup, and for forgiving recipes like soup that difference does not matter.',
   'dl>cups': 'Deciliters to US cups: divide by 2.366. Three deciliters is about 1.27 cups, so for most recipes one and a quarter cups.',
   'oz>cups': 'A US cup holds 8 fluid ounces, so 16 fl oz is 2 cups. This is volume, not weight: a cup of flour weighs about 4 oz, not 8.',
   'cups>oz': 'One US cup is 8 fluid ounces. Use this for liquids. For dry ingredients, cups and ounces of weight are not interchangeable.',
@@ -83,21 +82,6 @@ function regelTekst(fra, til) {
   const inv = b.f / a.f;
   const rundt = Math.abs(inv - Math.round(inv)) < 1e-9;
   return rundt ? `divide by ${tall(inv)}` : `multiply by ${tall(x)} (or divide by ${tall(inv)})`;
-}
-
-function skjema(fra, til) {
-  const g = ENHETER[fra].gruppe;
-  const ids = gruppeIds(g);
-  const data = Object.fromEntries(ids.map((id) => [id, g === 'temperatur' ? 0 : ENHETER[id].f]));
-  const opt = (valgt) => ids.map((id) => `<option value="${id}"${id === valgt ? ' selected' : ''}>${esc(N(id).fl)} (${esc(N(id).kort)})</option>`).join('');
-  const svar = `1 ${ordFor('en', fra, 1)} = ${tall(konverter(1, fra, til))} ${ordFor('en', til, konverter(1, fra, til))}`;
-  return `<form class="omregner" data-gruppe="${g}" onsubmit="return false"><div class="omregner-rad">`
-    + `<label>Amount<input type="number" inputmode="decimal" step="any" value="1" data-felt="verdi"></label>`
-    + `<label>From<select data-felt="fra">${opt(fra)}</select></label>`
-    + `<button type="button" class="omregner-bytt" data-handling="bytt" aria-label="Swap units">⇄</button>`
-    + `<label>To<select data-felt="til">${opt(til)}</select></label></div>`
-    + `<p class="omregner-svar" role="status" aria-live="polite" data-felt="svar">${esc(svar)}</p>`
-    + `<script type="application/json" class="omregner-data">${JSON.stringify(omregnerData('en', data, g === 'temperatur'))}</script></form>`;
 }
 
 function tabell(fra, til) {
@@ -133,12 +117,10 @@ const MATLYST = p('Converting by hand gets old fast, especially when a whole rec
 export function sideForPar(fra, til) {
   const F = N(fra); const T = N(til);
   const x = konverter(1, fra, til);
-  const svar = `1 ${F.kort} = ${tall(x)} ${T.kort}. To convert ${F.fl} to ${T.fl}, ${regelTekst(fra, til)}.`;
+  const svar = `${kortSetning('en', fra, til)}. To convert ${F.fl} to ${T.fl}, ${regelTekst(fra, til)}.`;
   const note = NOTE[`${fra}>${til}`] ?? `${stor(F.fl)} are used in ${BRUK[fra]}. ${stor(T.fl)} are used in ${BRUK[til]}. That is why you convert whenever a recipe is written for one system and your tools use the other.`;
-  const rik = byggRik({
-    svarTekst: svar,
+  const rik = byggLese({
     seksjoner: [
-      [`${stor(F.fl)} to ${T.fl} calculator`, skjema(fra, til)],
       [`${F.kort} to ${T.kort} conversion chart`, p(`The numbers below are the ones recipes use most. Find your amount in the left column.`) + tabell(fra, til)],
       [`How to convert ${F.fl} to ${T.fl}`, p(`The rule: ${regelTekst(fra, til)}. In a formula: ${T.kort} = ${ENHETER[fra].gruppe === 'temperatur' ? (fra === 'f' ? '(°F − 32) × 5/9'.replace('−', '-') : '°C × 9/5 + 32') : `${F.kort} × ${tall(x)}`}.`) + p('Three quick examples:') + eksempler(fra, til)],
       [`Where recipes use ${F.fl} and ${T.fl}`, p(note)],
@@ -148,7 +130,8 @@ export function sideForPar(fra, til) {
       ['Stop converting by hand', MATLYST + skjerm('matlyst-settings-units-language', 'Matlyst Settings with Units set to US and the language set to English.') + animasjon({ fil: 'matlyst-recipe-servings-scale-4-to-6.mp4', plakat: 'matlyst-recipe-servings-scale-4-to-6-poster.webp', bredde: 540, hoyde: 1174, tekst: 'A recipe scaled from 4 servings to 6 in Matlyst, with all amounts increasing.', bildetekst: 'Change the servings and every amount follows.' })],
       ['Related conversions', relaterte(fra, til)],
     ],
-  }).html;
+  });
+  const topp = `${enhetsKort('en', fra, til)}\n<p class="kortsvar"><b>Short answer:</b> ${esc(svar)}</p>`;
   const q = (a, b) => [a, b];
   const faq = [
     q(`How many ${T.fl} are in 1 ${F.en}?`, `1 ${F.en} is ${tall(x)} ${T.fl}.`),
@@ -168,7 +151,7 @@ export function sideForPar(fra, til) {
     forst: 'Type an amount, pick the units, and read the answer.',
     stegTittel: `How to convert ${F.fl} to ${T.fl}`,
     steg: [['Enter the amount', `Type the number of ${F.fl}.`], ['Check the units', `Make sure From is ${F.fl} and To is ${T.fl}.`], ['Read the answer', `The result appears as you type: 1 ${F.kort} = ${tall(x)} ${T.kort}.`]],
-    alternativ: '', grense: '', seksjoner: [], faqTittel: `${F.kort} to ${T.kort} questions`, rik, faq,
+    alternativ: '', grense: '', seksjoner: [], faqTittel: `${F.kort} to ${T.kort} questions`, topp, rik, faq,
     cta: 'Convert recipes in Matlyst',
   };
 }
