@@ -31,13 +31,13 @@ export const FAMILIER = Object.freeze([
   // Ukemenyene: bare norsk. Rettene og varene står i menyer.nb.json (meny.mjs), tallene i data.nb.json.
   // Kjernetemperatur og steketid: norsk (Mattilsynet først, så MatPrat med årstall; se steketid/mal-felles.mjs) og amerikansk engelsk
   // (FoodSafety.gov, USDA FSIS og land-grant extension; se steketid/mal-felles-en.mjs). Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
-  { id: 'kjernetemperatur', sidetype: 'guide-lang', mappe: new URL('./kjernetemperatur/', import.meta.url), markeder: { nb: { rot: 'kjernetemperatur/' }, sv: { rot: 'innertemperatur/' }, en: { rot: 'internal-temperature/' } } },
+  { id: 'kjernetemperatur', sidetype: 'guide-lang', mappe: new URL('./kjernetemperatur/', import.meta.url), markeder: { nb: { rot: 'kjernetemperatur/' }, sv: { rot: 'innertemperatur/' }, da: { rot: 'kernetemperatur/' }, en: { rot: 'internal-temperature/' } } },
   { id: 'steketid', sidetype: 'guide-lang', mappe: new URL('./steketid/', import.meta.url), markeder: { nb: { rot: 'steketid/' }, en: { rot: 'cooking-times/' } } },
   { id: 'ukemeny', sidetype: 'guide-lang', mappe: new URL('./ukemeny/', import.meta.url), markeder: { nb: { rot: 'ukemenyer/' } } },
   // Holdbarhet i kjøleskapet og frysing: norsk (Mattilsynet først, så MatPrat; se holdbarhet/kjoling.mjs) og amerikansk engelsk (FoodSafety.gov, USDA FSIS, FDA; se holdbarhet/kjoling-en.mjs).
   // Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
-  { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' }, sv: { rot: 'hallbarhet/' }, en: { rot: 'how-long-does-it-last/' } } },
-  { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' }, sv: { rot: 'frysa/' }, en: { rot: 'can-you-freeze/' } } },
+  { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' }, sv: { rot: 'hallbarhet/' }, da: { rot: 'holdbarhed/' }, en: { rot: 'how-long-does-it-last/' } } },
+  { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' }, sv: { rot: 'frysa/' }, da: { rot: 'kan-man-fryse/' }, en: { rot: 'can-you-freeze/' } } },
   // Mengde per person: norsk (MatPrat og Helsedirektoratet, tekstene i tekst-nb.mjs) og amerikansk engelsk (USDA FSIS, land-grant extension, National Turkey Federation m.fl., tekstene i tekst-en.mjs; US-mål først, metrisk i parentes). Sitat per tall (kildekontroll.mjs [nb|en]).
   { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' }, en: { rot: 'how-much-per-person/' } } },
   // Airfryer: tid og temperatur per råvare med kilde, og omregner fra ovn. Norsk (data.nb.json) og amerikansk engelsk (data.en.json, /en/air-fryer/).

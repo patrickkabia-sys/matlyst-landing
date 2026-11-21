@@ -1,0 +1,654 @@
+{
+  "familie": "frysing",
+  "marked": "da",
+  "kilder": {
+    "fvst-optoening": {
+      "navn": "Optøning af mad",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/saadan-goer-du/optoening",
+      "hentet": "2026-11-21"
+    },
+    "fvst-varm": {
+      "navn": "Varm mad ordentligt op i private hjem",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/varm-mad-ordentligt-op",
+      "hentet": "2026-11-21"
+    },
+    "taenk-holdbarhed": {
+      "navn": "Opbevar din mad, så den holder længere",
+      "utgiver": "Forbrugerrådet Tænk",
+      "aar": 2025,
+      "adresse": "https://taenk.dk/forbrugerliv/mad-og-indkoeb/holdbarhed-opbevar-din-mad-saa-den-holder-laengere",
+      "hentet": "2026-11-21"
+    },
+    "taenk-nedfrys": {
+      "navn": "Sådan nedfryser du din mad bedst",
+      "utgiver": "Forbrugerrådet Tænk",
+      "aar": 2026,
+      "adresse": "https://taenk.dk/forbrugerliv/mad-og-indkoeb/saadan-nedfryser-du-din-mad-bedst",
+      "hentet": "2026-11-21"
+    },
+    "mv-fryser": {
+      "navn": "Hvor længe kan mad holde sig i fryseren?",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/holde-sig-i-fryseren/",
+      "hentet": "2026-11-21"
+    },
+    "arla-ost": {
+      "navn": "Kan man fryse ost?",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/alle-artikler/kan-man-fryse-ost/",
+      "hentet": "2026-11-21"
+    },
+    "arla-smor": {
+      "navn": "Smør og anvendelse i madlavning",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/opskrifter/leksikon/ravarer/smor/",
+      "hentet": "2026-11-21"
+    },
+    "arla-flode": {
+      "navn": "Kan man fryse fløde?",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://arla.dk/produkter/flode/artikler/kan-man-fryse-flode",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kjott",
+      "slug": "koed",
+      "navn": "Kød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys18": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "taenk-nedfrys",
+          "merknad": "For at opnå sikker opbevaring af maden, skal din fryser være minimum -18 C°."
+        },
+        "svin-mager": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Magert svinekød: cirka 6 måneder."
+        },
+        "svin-fedt": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fedt svinekød: cirka 3 måneder."
+        },
+        "okse": {
+          "verdi": 10,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Oksekød: cirka 10 måneder."
+        },
+        "lam": {
+          "verdi": 10,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Lammekød: cirka 10 måneder."
+        },
+        "poelser-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Pølser: 2-3 måneder."
+        },
+        "poelser-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Pølser: 2-3 måneder."
+        },
+        "roeget-min": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget kød: 4-6 måneder."
+        },
+        "roeget-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget kød: 4-6 måneder."
+        },
+        "mv-svin-mager": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Magert svinekød | Ca. 6 måneder"
+        },
+        "mv-svin-fedt": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Fedt svinekød | Ca. 3 måneder"
+        },
+        "mv-okse-min": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Oksekød i hele stykker | 8-12 måneder"
+        },
+        "mv-okse-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Oksekød i hele stykker | 8-12 måneder"
+        },
+        "mv-lam-min": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Lammekød | 8-12 måneder"
+        },
+        "mv-lam-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Lammekød | 8-12 måneder"
+        },
+        "mv-poelser-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Pølser | 1-2 måneder"
+        },
+        "mv-poelser-maks": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Pølser | 1-2 måneder"
+        },
+        "mv-tilb-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Tilberedt kød | 2-6 måneder"
+        },
+        "mv-tilb-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Tilberedt kød | 2-6 måneder"
+        }
+      },
+      "tekst": {
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet.",
+        "fedt": "mv-fryser|En god tommelfingerregel er, at mad med meget fedt ofte mister kvaliteten hurtigere end magre produkter.",
+        "harsk": "mv-fryser|Det skyldes blandt andet, at fedtet med tiden kan blive harskt, selvom maden er frosset ned.",
+        "vejledende": "taenk-holdbarhed|Angivelserne af holdbarhed er vejledende."
+      }
+    },
+    {
+      "id": "hakket-koed",
+      "slug": "hakket-koed",
+      "navn": "Hakket kød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys18": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "taenk-nedfrys",
+          "merknad": "For at opnå sikker opbevaring af maden, skal din fryser være minimum -18 C°."
+        },
+        "hak": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Hakket kød: cirka 4 måneder i fryseren, mens fars kun kan holde sig i 2 måneder."
+        },
+        "fars": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Hakket kød: cirka 4 måneder i fryseren, mens fars kun kan holde sig i 2 måneder."
+        },
+        "mv-okse-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Hakket oksekød | 3-4 måneder"
+        },
+        "mv-okse-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Hakket oksekød | 3-4 måneder"
+        },
+        "mv-svin-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Hakket svinekød | 3-4 måneder"
+        },
+        "mv-svin-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Hakket svinekød | 3-4 måneder"
+        },
+        "mv-fars-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Fars med tilsatte ingredienser | 1-2 måneder"
+        },
+        "mv-fars-maks": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Fars med tilsatte ingredienser | 1-2 måneder"
+        }
+      },
+      "tekst": {
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet.",
+        "okse-faar": "mv-fryser|Hakket oksekød bevarer normalt en god kvalitet i omkring tre-fire måneder ved -18 grader.",
+        "ikke-farlig": "mv-fryser|Er kødet pakket godt ind og holdt konstant frossent, bliver det dog ikke automatisk farligt efter denne periode."
+      }
+    },
+    {
+      "id": "kylling",
+      "slug": "kylling",
+      "navn": "Kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys18": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "taenk-nedfrys",
+          "merknad": "For at opnå sikker opbevaring af maden, skal din fryser være minimum -18 C°."
+        },
+        "kylling-min": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kylling: 8-10 måneder."
+        },
+        "kylling-maks": {
+          "verdi": 10,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kylling: 8-10 måneder."
+        },
+        "mv-hel-min": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Hel kylling | 8-12 måneder"
+        },
+        "mv-hel-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Hel kylling | 8-12 måneder"
+        },
+        "mv-stykker-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Kylling i stykker | 6-9 måneder"
+        },
+        "mv-stykker-maks": {
+          "verdi": 9,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Kylling i stykker | 6-9 måneder"
+        }
+      },
+      "tekst": {
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet.",
+        "hel": "mv-fryser|En hel kylling kan normalt bevare en god kvalitet i otte til tolv måneder.",
+        "stykker": "mv-fryser|Kylling i mindre stykker anbefales typisk brugt inden for seks til ni måneder.",
+        "frostskade": "mv-fryser|Frostskader handler normalt om kvalitet og ikke i sig selv om fødevaresikkerhed."
+      }
+    },
+    {
+      "id": "fisk",
+      "slug": "fisk",
+      "navn": "Fisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys18": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "taenk-nedfrys",
+          "merknad": "For at opnå sikker opbevaring af maden, skal din fryser være minimum -18 C°."
+        },
+        "fed-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fed fisk: 2-3 måneder."
+        },
+        "fed-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fed fisk: 2-3 måneder."
+        },
+        "mager-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Mager fisk: 3-6 måneder."
+        },
+        "mager-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Mager fisk: 3-6 måneder."
+        },
+        "roeget": {
+          "verdi": 3,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget fisk: cirka 3 uger."
+        },
+        "fiskefars-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fiskefars: 1-2 måneder."
+        },
+        "fiskefars-maks": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fiskefars: 1-2 måneder."
+        },
+        "mv-fed-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Fed fisk, eksempelvis laks | 2-3 måneder"
+        },
+        "mv-fed-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Fed fisk, eksempelvis laks | 2-3 måneder"
+        },
+        "mv-mager-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Mager fisk, eksempelvis torsk | 3-6 måneder"
+        },
+        "mv-mager-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Mager fisk, eksempelvis torsk | 3-6 måneder"
+        },
+        "mv-roeget": {
+          "verdi": 3,
+          "enhet": "uger",
+          "kilde": "mv-fryser",
+          "merknad": "Røget fisk | Ca. 3 uger"
+        }
+      },
+      "tekst": {
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet.",
+        "frosset-koebt": "mv-fryser|Har du købt fisk, som allerede er frosset ned, skal du følge holdbarhedsdatoen og opbevaringsanvisningen på pakken.",
+        "fed-mager": "mv-fryser|Fed fisk som laks og makrel bevarer typisk kvaliteten i to-tre måneder, mens magre fisk som torsk og rødspætte ofte kan holde sig i tre-seks måneder."
+      }
+    },
+    {
+      "id": "middagsrester",
+      "slug": "rester",
+      "navn": "Rester og færdigretter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys18": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "taenk-nedfrys",
+          "merknad": "For at opnå sikker opbevaring af maden, skal din fryser være minimum -18 C°."
+        },
+        "faerdige-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Færdige retter: 1-3 måneder i fryseren."
+        },
+        "faerdige-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Færdige retter: 1-3 måneder i fryseren."
+        },
+        "mv-gryde-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Færdige gryderetter og supper | 2-3 måneder"
+        },
+        "mv-gryde-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Færdige gryderetter og supper | 2-3 måneder"
+        },
+        "mv-tilb-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Tilberedt kød | 2-6 måneder"
+        },
+        "mv-tilb-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Tilberedt kød | 2-6 måneder"
+        },
+        "stop10": {
+          "verdi": -10,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "for bakterievækst stopper ved minus 10 grader celsius"
+        }
+      },
+      "tekst": {
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet.",
+        "rester": "taenk-holdbarhed|Opbevarer du mad i fryseren, kan du give dine rester et længere liv.",
+        "portioner": "mv-fryser|Mit bedste råd er at fryse færdigretter ned i passende portioner.",
+        "koel": "mv-fryser|Husk også at køle varm mad hurtigt ned, inden den fryses, og undgå at lade den stå længe på køkkenbordet.",
+        "varm": "fvst-varm|Maden skal være varmet helt igennem ved høj varme.",
+        "konsistens": "mv-fryser|Retter med fløde, kartofler eller pasta kan eksempelvis ændre konsistens efter optøning."
+      }
+    },
+    {
+      "id": "frukt-og-gronnsaker",
+      "slug": "frugt-og-groentsager",
+      "navn": "Frugt og grøntsager",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys18": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "taenk-nedfrys",
+          "merknad": "For at opnå sikker opbevaring af maden, skal din fryser være minimum -18 C°."
+        },
+        "groent-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Grøntsager: 6-12 måneder afhængig af emballagen og grøntsagstypen."
+        },
+        "groent-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Grøntsager: 6-12 måneder afhængig af emballagen og grøntsagstypen."
+        },
+        "frugt-min": {
+          "verdi": 10,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Frugt og frugtprodukter: 10-12 måneder."
+        },
+        "frugt-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Frugt og frugtprodukter: 10-12 måneder."
+        },
+        "mv-groent-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Grøntsager | 6-12 måneder"
+        },
+        "mv-groent-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Grøntsager | 6-12 måneder"
+        },
+        "mv-frugt-min": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Frugt og bær | 8-12 måneder"
+        },
+        "mv-frugt-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Frugt og bær | 8-12 måneder"
+        }
+      },
+      "tekst": {
+        "blanchere": "mv-fryser|Nogle grøntsager har godt af at blive blancheret inden nedfrysning.",
+        "bloedere": "mv-fryser|De kan dog blive lidt blødere, når de tør op, og derfor er de ofte bedst i smoothies, grød eller bagværk."
+      }
+    },
+    {
+      "id": "brod",
+      "slug": "broed",
+      "navn": "Brød og kager",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys18": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "taenk-nedfrys",
+          "merknad": "For at opnå sikker opbevaring af maden, skal din fryser være minimum -18 C°."
+        },
+        "brod-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Brød og boller | 2-3 måneder"
+        },
+        "brod-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Brød og boller | 2-3 måneder"
+        },
+        "kager-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Kager uden creme | 2-3 måneder"
+        },
+        "kager-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Kager uden creme | 2-3 måneder"
+        }
+      },
+      "tekst": {
+        "skiver": "mv-fryser|Skær eventuelt brødet i skiver, inden det fryses.",
+        "tor": "mv-fryser|De kan holde sig længere, men risikerer efterhånden at blive tørre og miste smag.",
+        "boller": "mv-fryser|Har du eksempelvis bagt for mange boller, kan du fryse dem ned, så snart de er kølet af."
+      }
+    },
+    {
+      "id": "ost",
+      "slug": "ost-og-smoer",
+      "navn": "Ost og smør",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys18": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "taenk-nedfrys",
+          "merknad": "For at opnå sikker opbevaring af maden, skal din fryser være minimum -18 C°."
+        },
+        "skaere-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "arla-ost",
+          "merknad": "Skæreoste med minimum 25% fedt kan fryses i op til 3-4 måneder."
+        },
+        "skaere-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "arla-ost",
+          "merknad": "Skæreoste med minimum 25% fedt kan fryses i op til 3-4 måneder."
+        },
+        "fedt25": {
+          "verdi": 25,
+          "enhet": "%",
+          "kilde": "arla-ost",
+          "merknad": "Skæreoste med minimum 25% fedt kan fryses i op til 3-4 måneder."
+        },
+        "revet-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "arla-ost",
+          "merknad": "Revet ost | 3-4 mdr."
+        },
+        "revet-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "arla-ost",
+          "merknad": "Revet ost | 3-4 mdr."
+        },
+        "smor": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "arla-smor",
+          "merknad": "Smør kan fryses i op til 6 måneder"
+        }
+      },
+      "tekst": {
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet.",
+        "portioner": "arla-ost|Det kan være en god idé at fryse osten ned i mindre portioner, fordi du kan risikere, at osten kan smuldre efter optøning.",
+        "moden": "arla-ost|Nogle oste egner sig bedre end andre til at blive frosset ned, men fælles for alle ostetyper er at ostenes modning stopper.",
+        "bloede": "arla-ost|Du kan godt fryse bløde oste, som skimmeloste, men konsistensen bliver grynet, så de bedst egner sig til madlavning efterfølgende.",
+        "optoe": "arla-ost|Optø osten langsomt, helst i køleskab.",
+        "floede": "arla-flode|Dog kan fløde, der har været frosset, ikke piskes til flødeskum bagefter.",
+        "karton": "arla-flode|Det anbefales ikke at fryse fløde direkte i kartonen."
+      }
+    }
+  ]
+}
