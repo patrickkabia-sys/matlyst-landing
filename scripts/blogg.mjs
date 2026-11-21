@@ -24,13 +24,13 @@ const AUTO_CTA_BILDE = {
 // tema → språk → [slug, sidetittel]. Sidetittelen er skrevet for søket, ikke for karusellen.
 export const BLOGGTEMAER = {
   koketid: {
-    nb: ['koketider', 'Koketid for poteter, egg, ris og pasta', 'Poteter koker i 18 til 22 minutter, smilende egg i 8. Her er koketidene for egg, ris, pasta, poteter og grønnsaker, regnet fra vannet koker.'],
+    nb: ['koketider', 'Koketid for poteter, egg og ris', 'Poteter koker i 15 til 25 minutter, smilende egg i 7 til 8, sier MatPrat. Her er koketidene for egg, poteter og ris, og hvor lenge poteter står i ovnen.'],
     en: ['boiling-times', 'How long to boil eggs, potatoes, and vegetables', 'Large eggs need 12 minutes in the hot water after you turn off the heat. Whole medium potatoes take 30 to 40 minutes. Times for eggs and vegetables.'],
   },
   kjernetemp: {
-    nb: ['kjernetemperatur', 'Kjernetemperatur for lam, storfe, svin og kylling', 'Lam er rosa ved 60 grader og gjennomstekt ved 70. Her er kjernetemperaturene for lam, storfe, svin, kylling og fisk, så du slipper å skjære i kjøttet.'],
+    nb: ['kjernetemperatur', 'Kjernetemperatur for lam, storfe, svin og kylling', 'Lam er medium ved 60 til 65 grader og gjennomstekt ved 75, sier MatPrat. Her er kjernetemperaturene for lam, storfe, svin, kylling og fisk.'],
     sv: ['innertemperatur', 'Innertemperatur för kött, kyckling och fisk'],
-    da: ['kernetemperatur', 'Kernetemperatur for lam, oksekød, svin og kylling', 'Lam er rosa ved 60 grader og gennemstegt ved 70. Her er kernetemperaturerne for lam, oksekød, svin, kylling og fisk, så du slipper for at skære i kødet.'],
+    da: ['kernetemperatur', 'Kernetemperatur for lam, oksekød, svin og kylling', 'Lam er medium ved 60 til 65 grader og gennemstegt ved 75, siger MatPrat. Her er kernetemperaturerne for lam, oksekød, svin, kylling og fisk.'],
     en: ['safe-internal-temperatures', 'Safe internal temperatures for meat, chicken, and fish'],
   },
   egg: {
@@ -80,6 +80,23 @@ const KILDE = {
   'mt-kjokken': { navn: 'Mattilsynet: Kjøkkenhygiene', url: 'https://www.mattilsynet.no/mat-og-drikke/forbrukere/kjokkenhygiene', dato: '2023-10-27' },
   'mp-ris': { navn: 'MatPrat: Er det farlig å spise rester av ris og pasta?', url: 'https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/hvordan-oppbevare-rester-av-ris-og-pasta/', dato: '2022-02-24' },
   'mp-fryser': { navn: 'MatPrat: Oppbevaring i fryser', url: 'https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/oppbevaring-i-fryser/', dato: '2023-08-22' },
+  // Kilder med bare årstall (fra datafilene i scripts/familier/): dato er da årstallet.
+  'mt-sommer': { navn: 'Mattilsynet: Mat i sommervarmen', url: 'https://www.mattilsynet.no/mat-og-drikke/forbrukere/mat-i-sommervarmen', dato: '2023' },
+  'mt-hamburger': { navn: 'Mattilsynet: Er det trygt å servere medium stekte hamburgere?', url: 'https://www.mattilsynet.no/mat-og-drikke/matservering/salg-medium-stekte-hamburgere', dato: '2022' },
+  'mp-storfe': { navn: 'MatPrat: Steke- og koketips for storfekjøtt', url: 'https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-storfekjott/', dato: '2014' },
+  'mp-grill': { navn: 'MatPrat: Grilltider, metoder og temperaturer', url: 'https://www.matprat.no/artikler/tema/grilltider-metoder-og-temperaturer/', dato: '2018' },
+  'mp-lam': { navn: 'MatPrat: Steke- og koketips for lammekjøtt', url: 'https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-lammekjott/', dato: '2020' },
+  'mp-svin': { navn: 'MatPrat: Steke- og koketips for svin', url: 'https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-svinekjott/', dato: '2025' },
+  'mp-fisk': { navn: 'MatPrat: Steke- og koketips for fisk og skalldyr', url: 'https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-fisk-og-skalldyr/', dato: '2026' },
+  'mp-kyllingfilet': { navn: 'MatPrat: Hvordan steke saftig kyllingfilet', url: 'https://www.matprat.no/artikler/tilberedning/slik-steker-du-kyllingfilet/', dato: '2026' },
+  'mp-egg': { navn: 'MatPrat: Hvordan koke egg', url: 'https://www.matprat.no/artikler/tilberedning/slik-koker-du-egg/', dato: '2026' },
+  'mp-poteter': { navn: 'MatPrat: Hvordan koke poteter', url: 'https://www.matprat.no/oppskrifter/tradisjon/hvordan-koke-poteter/', dato: '2019' },
+  'mp-koke-ris': { navn: 'MatPrat: Hvordan koke ris', url: 'https://www.matprat.no/oppskrifter/tradisjon/hvordan-koke-ris/', dato: '2020' },
+  'mp-bakt-potet': { navn: 'MatPrat: Bakt potet', url: 'https://www.matprat.no/oppskrifter/gjester/bakt-potet/', dato: '2014' },
+  'mp-saltbakt': { navn: 'MatPrat: Saltbakte poteter', url: 'https://www.matprat.no/oppskrifter/gjester/saltbakte-poteter/', dato: '2014' },
+  'mp-hasselback': { navn: 'MatPrat: Hasselbackpoteter', url: 'https://www.matprat.no/oppskrifter/gjester/hasselbackpoteter/', dato: '2014' },
+  'ar-airfryer': { navn: 'Arla: Airfryer, anvendelse, opskrifter og tips', url: 'https://www.arla.dk/opskrifter/leksikon/viden/airfryer/', dato: '2026' },
+  'ph-hd920': { navn: 'Philips: Brukerhåndbok for Essential Airfryer', url: 'https://dam.versuni.com/m/59b7caa0caaf68e4/original/User-Manual-Philips-Essential-Airfryer.pdf', dato: '2021' },
 };
 // tema → språk → kilde-id → [hva, tall] (tall tomt når kilden står bak et råd uten tall).
 const KARUSELL_KILDER = {
@@ -117,13 +134,96 @@ const KARUSELL_KILDER = {
       'mp-fryser': [['oksekød', '10 til 12 måneder'], ['kylling', '4 måneder'], ['magert svinekød', '6 måneder'], ['hakket kød', '4 måneder'], ['mager fisk', 'ca. 6 måneder'], ['fed fisk, som laks', 'ca. 3 måneder'], ['brød og rundstykker', '6 til 7 måneder'], ['kager og sødt bagværk', '3 til 6 måneder'], ['madrester, gryderetter og supper', '3 til 6 måneder']],
     },
   },
+  kjernetemp: {
+    nb: {
+      'mt-sommer': [['gjennomstekt betyr en kjernetemperatur på minst', '75 °C']],
+      'mt-hamburger': [['hamburgere og kjøttdeig gjennomstekes til en kjernetemperatur over', '70 °C']],
+      'mp-storfe': [['storfe, medium', '60 °C'], ['storfe, gjennomstekt', '70 °C']],
+      'mp-grill': [['storfe, rødt', '55 til 60 °C']],
+      'mp-lam': [['lam, medium', '60 til 65 °C'], ['lam, gjennomstekt', '75 °C']],
+      'mp-svin': [['svinefilet, medium', '65 °C'], ['svinefilet, gjennomstekt', '75 °C']],
+      'mp-fisk': [['fisk i ovn, tykkere stykker', 'ca. 60 °C, eller lavere om du vil ha rå kjerne']],
+      'mp-kyllingfilet': [['kyllingfilet stiger mens den hviler', '1 til 3 °C']],
+    },
+    sv: {
+      'mt-sommer': [['genomstekt betyder en innertemperatur på minst', '75 °C']],
+      'mt-hamburger': [['hamburgare och köttfärs genomstekts till en innertemperatur över', '70 °C']],
+      'mp-storfe': [['nöt, medium', '60 °C'], ['nöt, genomstekt', '70 °C']],
+      'mp-grill': [['nöt, blodigt', '55 till 60 °C']],
+      'mp-lam': [['lamm, medium', '60 till 65 °C'], ['lamm, genomstekt', '75 °C']],
+      'mp-svin': [['fläskfilé, medium', '65 °C'], ['fläskfilé, genomstekt', '75 °C']],
+      'mp-fisk': [['fisk i ugn, tjockare bitar', 'ca 60 °C, eller lägre om du vill ha en rå kärna']],
+      'mp-kyllingfilet': [['kycklingfilé stiger medan den vilar', '1 till 3 °C']],
+    },
+    da: {
+      'mt-sommer': [['gennemstegt betyder en kernetemperatur på mindst', '75 °C']],
+      'mt-hamburger': [['hamburgere og hakket kød gennemstegt til en kernetemperatur over', '70 °C']],
+      'mp-storfe': [['okse, medium', '60 °C'], ['okse, gennemstegt', '70 °C']],
+      'mp-grill': [['okse, rød', '55 til 60 °C']],
+      'mp-lam': [['lam, medium', '60 til 65 °C'], ['lam, gennemstegt', '75 °C']],
+      'mp-svin': [['svinefilet, medium', '65 °C'], ['svinefilet, gennemstegt', '75 °C']],
+      'mp-fisk': [['fisk i ovn, tykkere stykker', 'ca. 60 °C, eller lavere, hvis du vil have en rå kerne']],
+      'mp-kyllingfilet': [['kyllingefilet stiger, mens den hviler', '1 til 3 °C']],
+    },
+  },
+  koketid: {
+    nb: {
+      'mp-egg': [['bløtkokt egg', '5 til 6 minutter'], ['smilende egg', '7 til 8 minutter'], ['hardkokt egg', '9 til 11 minutter'], ['kalde, store og ferske egg', 'litt lengre tid'], ['avkjøl eggene raskt i', 'kaldt vann']],
+      'mp-poteter': [['poteter, avhengig av type og størrelse', '15 til 25 minutter']],
+      'mp-koke-ris': [['hvit ris, sjekk etter', '18 minutter'], ['fullkornsris', '30 til 40 minutter'], ['villris uten bløtlegging', '45 til 50 minutter'], ['lokket står på gjennom hele koketiden', '']],
+      'mp-bakt-potet': [['bakt potet i ovn på 220 °C', '1 til 1½ time']],
+      'mp-saltbakt': [['saltbakte poteter i ovn på 200 °C', 'ca. 40 minutter']],
+      'mp-hasselback': [['hasselbackpoteter i ovn på 225 °C', 'ca. 40 minutter']],
+    },
+  },
+  airfryer: {
+    nb: {
+      'mt-sommer': [['gjennomstekt betyr en kjernetemperatur på minst', '75 °C']],
+      'ar-airfryer': [['ovn 150 °C og 10 min', 'airfryer 135 °C og 8 min'], ['ovn 165 °C og 15 min', 'airfryer 150 °C og 12 min'], ['ovn 175 °C og 20 min', 'airfryer 165 °C og 16 min'], ['ovn 190 °C og 30 min', 'airfryer 175 °C og 24 min'], ['ovn 200 °C og 45 min', 'airfryer 185 °C og 36 min'], ['ovn 225 °C og 60 min', 'airfryer 200 °C og 48 min'], ['tabellen er en tommelfingerregel, det kommer an på ovnen og airfryeren', '']],
+      'ph-hd920': [['rist kurven under steking', '2 til 3 ganger']],
+    },
+    sv: {
+      'mt-sommer': [['genomstekt betyder en innertemperatur på minst', '75 °C']],
+      'ar-airfryer': [['ugn 150 °C och 10 min', 'airfryer 135 °C och 8 min'], ['ugn 165 °C och 15 min', 'airfryer 150 °C och 12 min'], ['ugn 175 °C och 20 min', 'airfryer 165 °C och 16 min'], ['ugn 190 °C och 30 min', 'airfryer 175 °C och 24 min'], ['ugn 200 °C och 45 min', 'airfryer 185 °C och 36 min'], ['ugn 225 °C och 60 min', 'airfryer 200 °C och 48 min'], ['tabellen är en tumregel, det beror på ugnen och airfryern', '']],
+      'ph-hd920': [['skaka korgen under tillagningen', '2 till 3 gånger']],
+    },
+    da: {
+      'mt-sommer': [['gennemstegt betyder en kernetemperatur på mindst', '75 °C']],
+      'ar-airfryer': [['ovn 150 °C og 10 min', 'airfryer 135 °C og 8 min'], ['ovn 165 °C og 15 min', 'airfryer 150 °C og 12 min'], ['ovn 175 °C og 20 min', 'airfryer 165 °C og 16 min'], ['ovn 190 °C og 30 min', 'airfryer 175 °C og 24 min'], ['ovn 200 °C og 45 min', 'airfryer 185 °C og 36 min'], ['ovn 225 °C og 60 min', 'airfryer 200 °C og 48 min'], ['tabellen er en tommelfingerregel, det afhænger af ovnen og airfryeren', '']],
+      'ph-hd920': [['ryst kurven under tilberedningen', '2 til 3 gange']],
+    },
+  },
 };
 const KILDETEKST = {
   nb: { tittel: 'Kilder og tall', intro: 'Hvert tall i tabellene står her, med kilde, adresse og dato. Mattilsynet er den norske myndigheten for mattrygghet, og MatPrat er Opplysningskontoret for egg og kjøtt. Vi har åpnet og lest hver side 21. november 2026. Tidene er veiledende.', adresse: 'Adresse', dato: 'Dato på kilden', hentet: 'Hentet', tall: 'Det vi bruker', mnd: ['januar', 'februar', 'mars', 'april', 'mai', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'desember'], punktum: '.' },
   sv: { tittel: 'Källor och siffror', intro: 'Varje siffra i tabellerna finns här, med källa, adress och datum. Mattilsynet är den norska myndigheten för livsmedelssäkerhet, och MatPrat är Opplysningskontoret for egg og kjøtt, den norska ägg- och köttbranschens informationskontor. Vi har öppnat och läst varje sida den 21 november 2026. Tiderna är ungefärliga.', adresse: 'Webbadress', dato: 'Datum på källan', hentet: 'Hämtad', tall: 'Det vi använder', mnd: ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december'], punktum: '' },
   da: { tittel: 'Kilder og tal', intro: 'Hvert tal i tabellerne står her med kilde, adresse og dato. Mattilsynet er den norske fødevaremyndighed, og MatPrat er Opplysningskontoret for egg og kjøtt, den norske æg- og kødbranches oplysningskontor. Vi har åbnet og læst hver side den 21. november 2026. Tiderne er vejledende.', adresse: 'Webadresse', dato: 'Dato på kilden', hentet: 'Hentet', tall: 'Det, vi bruger', mnd: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'], punktum: '.' },
 };
+const AAR_ETIKETT = { nb: 'Årstall på kilden', sv: 'Årtal på källan', da: 'Årstal på kilden' };
+// Tema som ikke bruker standardinnledningen (Mattilsynet og MatPrat, tidene veiledende).
+const KILDEINTRO = {
+  kjernetemp: {
+    nb: 'Hvert tall i tabellene står her, med kilde, adresse og årstall. Mattilsynet er den norske myndigheten for mattrygghet, og MatPrat er Opplysningskontoret for egg og kjøtt. Vi har åpnet og lest hver side 21. november 2026. Tallene er veiledende.',
+    sv: 'Varje siffra i tabellerna finns här, med källa, adress och årtal. Mattilsynet är den norska myndigheten för livsmedelssäkerhet, och MatPrat är Opplysningskontoret for egg og kjøtt, den norska ägg- och köttbranschens informationskontor. Vi har öppnat och läst varje sida den 21 november 2026. Siffrorna är vägledande.',
+    da: 'Hvert tal i tabellerne står her med kilde, adresse og årstal. Mattilsynet er den norske fødevaremyndighed, og MatPrat er Opplysningskontoret for egg og kjøtt, den norske æg- og kødbranches oplysningskontor. Vi har åbnet og læst hver side den 21. november 2026. Tallene er vejledende.',
+  },
+  koketid: {
+    nb: 'Hvert tall i tabellene står her, med kilde, adresse og årstall. MatPrat er Opplysningskontoret for egg og kjøtt. Vi har åpnet og lest hver side 21. november 2026. Tidene er veiledende.',
+  },
+  airfryer: {
+    nb: 'Hvert tall i tabellene står her, med kilde, adresse og årstall. Mattilsynet er den norske myndigheten for mattrygghet, Arla er et meieriselskap, og Philips lager airfryere. Omregningstabellen er Arlas. Vi har åpnet og lest hver side 21. november 2026. Tidene er veiledende.',
+    sv: 'Varje siffra i tabellerna finns här, med källa, adress och årtal. Mattilsynet är den norska myndigheten för livsmedelssäkerhet, Arla är ett mejeriföretag och Philips tillverkar airfryers. Omräkningstabellen kommer från Arla. Vi har öppnat och läst varje sida den 21 november 2026. Tiderna är ungefärliga.',
+    da: 'Hvert tal i tabellerne står her med kilde, adresse og årstal. Mattilsynet er den norske fødevaremyndighed, Arla er et mejerifirma, og Philips laver airfryere. Omregningstabellen er Arlas. Vi har åbnet og læst hver side den 21. november 2026. Tiderne er vejledende.',
+  },
+};
+// Lenker til sidefamiliene som har alle tallene (bare norsk, familiene finnes bare på norsk).
+const KILDELENKE = {
+  kjernetemp: { nb: ['Alle råvarene med kjernetemperatur og kilder:', '/kjernetemperatur/', 'Kjernetemperatur'] },
+  koketid: { nb: ['Steketider for kjøtt, fisk og poteter i ovnen:', '/steketid/', 'Steketid'] },
+  airfryer: { nb: ['Omregner og tabeller for flere retter, med kilder:', '/airfryer/ovn-til-airfryer/', 'Ovn til airfryer'] },
+};
 const datoTekst = (lang, iso) => {
+  if (/^\d{4}$/u.test(iso)) return iso; // kilder som bare har årstall
   const [aar, mnd, dag] = iso.split('-').map(Number);
   const t = KILDETEKST[lang];
   return `${dag}${t.punktum} ${t.mnd[mnd - 1]} ${aar}`;
@@ -134,12 +234,14 @@ function kilderSeksjon(lang, tema) {
   const kilder = karusellKilder(lang, tema);
   if (!kilder) return '';
   const t = KILDETEKST[lang];
+  const l = KILDELENKE[tema]?.[lang];
+  const lenke = l ? `<p>${l[0]} <a href="${l[1]}">${l[2]}</a>.</p>` : '';
   const kort = Object.entries(kilder).map(([id, tall]) => {
     const k = KILDE[id];
     const liste = tall.map(([hva, vis]) => `<li>${hva}${vis ? `: <strong>${vis}</strong>` : ''}</li>`).join('');
-    return `<div class="scenario" id="kilde-${id}"><h3>${k.navn}</h3><dl><dt>${t.adresse}</dt><dd><a href="${k.url}" rel="noopener">${k.url}</a></dd><dt>${t.dato}</dt><dd><time datetime="${k.dato}">${datoTekst(lang, k.dato)}</time></dd><dt>${t.hentet}</dt><dd><time datetime="${KILDER_HENTET}">${datoTekst(lang, KILDER_HENTET)}</time></dd><dt>${t.tall}</dt><dd><ul>${liste}</ul></dd></dl></div>`;
+    return `<div class="scenario" id="kilde-${id}"><h3>${k.navn}</h3><dl><dt>${t.adresse}</dt><dd><a href="${k.url}" rel="noopener">${k.url}</a></dd><dt>${/^\d{4}$/u.test(k.dato) ? AAR_ETIKETT[lang] : t.dato}</dt><dd><time datetime="${k.dato}">${datoTekst(lang, k.dato)}</time></dd><dt>${t.hentet}</dt><dd><time datetime="${KILDER_HENTET}">${datoTekst(lang, KILDER_HENTET)}</time></dd><dt>${t.tall}</dt><dd><ul>${liste}</ul></dd></dl></div>`;
   }).join('');
-  return `<section class="prose locale-prose"><h2 id="kilder">${t.tittel}</h2><p>${t.intro}</p>${kort}</section>\n`;
+  return `<section class="prose locale-prose"><h2 id="kilder">${t.tittel}</h2><p>${KILDEINTRO[tema]?.[lang] ?? t.intro}</p>${lenke}${kort}</section>\n`;
 }
 
 // Sluttsiden i karusellen peker på én funksjon; CTA-bildet viser den.
