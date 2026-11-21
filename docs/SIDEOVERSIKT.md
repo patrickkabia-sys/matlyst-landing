@@ -6,15 +6,15 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1326**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1332**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 
 | Språk | Sider |
 |---|---:|
 | nb | 408 |
-| sv | 295 |
-| da | 272 |
+| sv | 298 |
+| da | 275 |
 | en | 351 |
-| Sum | 1326 |
+| Sum | 1332 |
 
 | Sidetype | nb | sv | da | en | Sum |
 |---|---:|---:|---:|---:|---:|
@@ -22,7 +22,7 @@ Sider i sitemap: **1326**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 | forside | 1 | 1 | 1 | 1 | 4 |
 | guide-gammel | 3 |  |  |  | 3 |
 | guide-kort | 11 | 15 | 15 | 15 | 56 |
-| guide-lang | 148 | 36 | 39 | 150 | 373 |
+| guide-lang | 148 | 39 | 42 | 150 | 379 |
 | juss | 3 | 3 | 3 | 3 | 12 |
 | omregner | 233 | 232 | 206 | 174 | 845 |
 
@@ -35,9 +35,9 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 |---|---|---|---|---|---|---|---|---|---|
 | forside | Matlyst: oppskriftsappen for iPhone og Android | forside | `/` (1) | `/sv/` (1) | `/da/` (1) | `/en/` (1) | forside.mjs |  | 2026-11-20 |
 | alletiders-kogebog | Lagre oppskrifter fra Alletiders Kogebog | guide-kort | `/importer-fra-alletiders-kokebok/` (1) | `/sv/alletiders-kogebog/` (1) | `/da/alletiders-kogebog/` (1) | `/en/alletiders-cookbook/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
-| beste-handleliste-app | Beste handleliste-app: sju apper sammenlignet | guide-lang | `/beste-handleliste-app/` (1) |  |  | `/en/best-grocery-list-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
-| beste-oppskriftsapp | Beste oppskriftsapp: sju apper sammenlignet | guide-lang | `/beste-oppskriftsapp/` (1) |  |  | `/en/best-recipe-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
-| beste-ukemeny-app | Beste ukemeny-app og middagsplanlegger | guide-lang | `/beste-ukemeny-app/` (1) |  |  | `/en/best-meal-planning-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
+| beste-handleliste-app | Beste handleliste-app: sju apper sammenlignet | guide-lang | `/beste-handleliste-app/` (1) | `/sv/basta-inkopslista-app/` (1) | `/da/bedste-indkoebsliste-app/` (1) | `/en/best-grocery-list-app/` (1) | sammenligning/da.mjs, sammenligning/en.mjs, sammenligning/nb.mjs, sammenligning/sv.mjs |  | 2026-11-21 |
+| beste-oppskriftsapp | Beste oppskriftsapp: sju apper sammenlignet | guide-lang | `/beste-oppskriftsapp/` (1) | `/sv/basta-receptapp/` (1) | `/da/bedste-opskriftsapp/` (1) | `/en/best-recipe-app/` (1) | sammenligning/da.mjs, sammenligning/en.mjs, sammenligning/nb.mjs, sammenligning/sv.mjs |  | 2026-11-21 |
+| beste-ukemeny-app | Beste ukemeny-app og middagsplanlegger | guide-lang | `/beste-ukemeny-app/` (1) | `/sv/basta-veckomeny-app/` (1) | `/da/bedste-madplan-app/` (1) | `/en/best-meal-planning-app/` (1) | sammenligning/da.mjs, sammenligning/en.mjs, sammenligning/nb.mjs, sammenligning/sv.mjs |  | 2026-11-21 |
 | julebord | Julebord hjemme: plan, mengder og handleliste | guide-lang | `/julebord/` (1) |  |  |  | forfatter.mjs, nb-jul/julebord.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | julemiddag | Julemiddag: plan, mengder og handleliste | guide-lang | `/julemiddag/` (1) |  |  |  | forfatter.mjs, nb-jul/julemiddag.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | mealime-alternative | Mealime Alternative: Moving Your Recipes | guide-lang |  |  |  | `/en/mealime-alternative/` (1) | en-rike-sider.mjs |  | 2026-11-21 |
@@ -89,9 +89,6 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 
 | Gruppe | Finnes på | Mangler på |
 |---|---|---|
-| beste-handleliste-app | nb, en | sv, da |
-| beste-oppskriftsapp | nb, en | sv, da |
-| beste-ukemeny-app | nb, en | sv, da |
 | julebord | nb | sv, da, en |
 | julemiddag | nb | sv, da, en |
 | mealime-alternative | en | nb, sv, da |
@@ -158,7 +155,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ## Alle adresser
 
-1326 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
+1332 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
 
 ### forside
 
@@ -202,6 +199,14 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 - https://matlyst-app.no/beste-handleliste-app/ (2026-11-21)
 
+**sv** (1)
+
+- https://matlyst-app.no/sv/basta-inkopslista-app/ (2026-11-21)
+
+**da** (1)
+
+- https://matlyst-app.no/da/bedste-indkoebsliste-app/ (2026-11-21)
+
 **en** (1)
 
 - https://matlyst-app.no/en/best-grocery-list-app/ (2026-11-21)
@@ -212,6 +217,14 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 - https://matlyst-app.no/beste-oppskriftsapp/ (2026-11-21)
 
+**sv** (1)
+
+- https://matlyst-app.no/sv/basta-receptapp/ (2026-11-21)
+
+**da** (1)
+
+- https://matlyst-app.no/da/bedste-opskriftsapp/ (2026-11-21)
+
 **en** (1)
 
 - https://matlyst-app.no/en/best-recipe-app/ (2026-11-21)
@@ -221,6 +234,14 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 **nb** (1)
 
 - https://matlyst-app.no/beste-ukemeny-app/ (2026-11-21)
+
+**sv** (1)
+
+- https://matlyst-app.no/sv/basta-veckomeny-app/ (2026-11-21)
+
+**da** (1)
+
+- https://matlyst-app.no/da/bedste-madplan-app/ (2026-11-21)
 
 **en** (1)
 
@@ -336,11 +357,11 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/inkopslista/ (2026-11-20)
+- https://matlyst-app.no/sv/inkopslista/ (2026-11-21)
 
 **da** (1)
 
-- https://matlyst-app.no/da/indkoebsliste-app/ (2026-11-20)
+- https://matlyst-app.no/da/indkoebsliste-app/ (2026-11-21)
 
 **en** (1)
 
@@ -494,11 +515,11 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/receptbok-app/ (2026-11-20)
+- https://matlyst-app.no/sv/receptbok-app/ (2026-11-21)
 
 **da** (1)
 
-- https://matlyst-app.no/da/opskrifts-app/ (2026-11-20)
+- https://matlyst-app.no/da/opskrifts-app/ (2026-11-21)
 
 **en** (1)
 
@@ -620,11 +641,11 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/veckomeny-app/ (2026-11-20)
+- https://matlyst-app.no/sv/veckomeny-app/ (2026-11-21)
 
 **da** (1)
 
-- https://matlyst-app.no/da/madplan-app/ (2026-11-20)
+- https://matlyst-app.no/da/madplan-app/ (2026-11-21)
 
 **en** (1)
 
@@ -2029,7 +2050,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/da/blog/mad-i-fryseren/ (2026-11-21)
 - https://matlyst-app.no/da/blog/ovnopskrift-i-airfryer/ (2026-11-21)
 - https://matlyst-app.no/da/blog/rester-i-koeleskabet/ (2026-11-21)
-- https://matlyst-app.no/da/blog/vaelg-opskriftsapp/ (2026-11-20)
+- https://matlyst-app.no/da/blog/vaelg-opskriftsapp/ (2026-11-21)
 
 **en** (9)
 
