@@ -1212,7 +1212,7 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/can-you-freeze/": {
-  "hash": "c33edab9a0accee5",
+  "hash": "cec408cb1ed24a40",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/bacon/": {
@@ -1368,16 +1368,16 @@
   "dato": "2026-10-27"
  },
  "https://matlyst-app.no/en/dinner-ideas/": {
-  "hash": "5e47a0a74a49c012",
-  "dato": "2026-11-20"
+  "hash": "35018bda2a0961f9",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/dr-food/": {
   "hash": "aba0c3e85a66ba81",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/easy-dinner/": {
-  "hash": "9fa09e708eccec0d",
-  "dato": "2026-11-20"
+  "hash": "a04dcb3ee2be40ed",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/empty-the-fridge/": {
   "hash": "2e4f5331affa16d2",
@@ -1416,7 +1416,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/": {
-  "hash": "f90465875ba59412",
+  "hash": "8a6f0bc6f9a65656",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/bacon/": {
@@ -1501,6 +1501,70 @@
  },
  "https://matlyst-app.no/en/how-long-does-it-last/turkey-leftovers/": {
   "hash": "6b1a8e2554c99aa4",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/": {
+  "hash": "066ff4540e7a72bd",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/burgers/": {
+  "hash": "43dcfa1851f2646f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/chicken/": {
+  "hash": "7f5a24308262d850",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/ham/": {
+  "hash": "5f04ae230820f390",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/mashed-potatoes/": {
+  "hash": "d76075aeb777975e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/meat-for-a-party/": {
+  "hash": "de270061d7de6f6e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/pasta/": {
+  "hash": "83f0d1dfb76e26ef",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/potato-salad/": {
+  "hash": "3758ac71feb1281f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/prime-rib/": {
+  "hash": "d39f20172cbdaa1b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/rice/": {
+  "hash": "b175233617c6c6c7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/salad/": {
+  "hash": "3c48b95dd6f0649f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/stuffing/": {
+  "hash": "ecdd0a1d84dcdab0",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/tacos/": {
+  "hash": "911d19d74e94df2a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/thanksgiving-dinner/": {
+  "hash": "5796d889fdc5b4d7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/turkey/": {
+  "hash": "8fc87351df5fcb2e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/how-much-per-person/vegetables/": {
+  "hash": "38dc7161fca9f72f",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/import-recipes-from-instagram/": {
@@ -1600,15 +1664,15 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/meal-plan-app/": {
-  "hash": "c2e3be08e7aa96ec",
-  "dato": "2026-11-20"
+  "hash": "d39cea32590f9177",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/mealime-alternative/": {
   "hash": "a78c51eb2cfaa7d1",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/pantry-app/": {
-  "hash": "bdc0227557fc407a",
+  "hash": "bc1a1c070958ccf7",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/privacy/": {
@@ -1630,6 +1694,98 @@
  "https://matlyst-app.no/en/shopping-list/": {
   "hash": "9eccbcbf51168a01",
   "dato": "2026-11-20"
+ },
+ "https://matlyst-app.no/en/substitutes/": {
+  "hash": "05581a7e19603127",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/baking-powder/": {
+  "hash": "ad8380b2c2e1b56e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/broth/": {
+  "hash": "34fcdab1a6f6e91e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/brown-sugar/": {
+  "hash": "58770c95497c7fc4",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/butter/": {
+  "hash": "d30efd62cc52b128",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/buttermilk/": {
+  "hash": "cd4d89b507b1562b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/cake-flour/": {
+  "hash": "d663b6d6c3adb412",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/cornstarch/": {
+  "hash": "80c6df1b7f7b7dd7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/eggs/": {
+  "hash": "4a59b290b018d7dc",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/fresh-vs-dried-herbs/": {
+  "hash": "5a97db53025ffd0f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/garlic/": {
+  "hash": "8b912082c4d8519a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/half-and-half/": {
+  "hash": "ca43a7c75e692064",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/heavy-cream/": {
+  "hash": "c8106c08556adde8",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/honey/": {
+  "hash": "7daf0aaa4c5a46ad",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/lemon-juice/": {
+  "hash": "9523defc2ca6e76b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/milk/": {
+  "hash": "3bade16a28a81c75",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/powdered-sugar/": {
+  "hash": "3e84695658f6ad5f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/red-wine/": {
+  "hash": "21c5881fc8da2648",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/self-rising-flour/": {
+  "hash": "d4b74abdeb21a679",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/sour-cream/": {
+  "hash": "83091b6d8a050f55",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/vanilla-extract/": {
+  "hash": "826fdc640a316524",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/white-wine/": {
+  "hash": "04d4477c34258d0d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/substitutes/yeast/": {
+  "hash": "5650215d1a558168",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/terms/": {
   "hash": "98c63f4dc59209d3",
@@ -2348,19 +2504,19 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/enkel-middag/": {
-  "hash": "ddc258eea1e91da7",
-  "dato": "2026-11-20"
+  "hash": "34de3e3d89fa0ed4",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/": {
-  "hash": "51274c7a052d9685",
+  "hash": "09668d2b5772b605",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/bakepulver/": {
-  "hash": "97679a08c3089096",
+  "hash": "d34d7edd0e279215",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/brun-farin/": {
-  "hash": "eb505c3f591589e6",
+  "hash": "288d45da6c18bb20",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/creme-fraiche/": {
@@ -2368,19 +2524,19 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/egg/": {
-  "hash": "651502b2a4aba4ed",
+  "hash": "9bb4892d809fd902",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/floete/": {
-  "hash": "ed199fd22053a41a",
+  "hash": "5c39e2501c94b3a5",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/friske-og-torkede-urter/": {
-  "hash": "748fad3ff8e312b2",
+  "hash": "8c0149e8bd667678",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/gjaer/": {
-  "hash": "726abd527f448df5",
+  "hash": "74e10cbf513ad2bb",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/hvetemel/": {
@@ -2388,11 +2544,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/hvitlok/": {
-  "hash": "cd69499eaa3714f9",
+  "hash": "6a971f3e4432c2b7",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/hvitvin/": {
-  "hash": "11520ed866e2c391",
+  "hash": "4c9087fed0daa105",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/kulturmelk-og-kefir/": {
@@ -2400,11 +2556,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/maisenna/": {
-  "hash": "2b5cf993cacc30b3",
+  "hash": "9748c42c45d7e3cb",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/melk/": {
-  "hash": "eb8f06400abd79c7",
+  "hash": "4ef9b0c3365081a9",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/natron/": {
@@ -2416,7 +2572,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/smor/": {
-  "hash": "c4f03b94f6bcbb0c",
+  "hash": "bfe6dbb8acc3a0ba",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/erstatning/sukker/": {
@@ -2432,7 +2588,7 @@
   "dato": "2026-11-18"
  },
  "https://matlyst-app.no/frysing/": {
-  "hash": "fa11e3c575e2c58e",
+  "hash": "2f626de300ef5be1",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/frysing/baer/": {
@@ -2496,7 +2652,7 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/holdbarhet/": {
-  "hash": "7356574f46b10e98",
+  "hash": "fc83fd5bd762f8b3",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/holdbarhet/egg/": {
@@ -2692,7 +2848,7 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/mengde-per-person/": {
-  "hash": "9ceb6bca38fea567",
+  "hash": "9085201abbb2f151",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/biff/": {
@@ -2712,7 +2868,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/kalkun/": {
-  "hash": "bc0bdb44e3e78da7",
+  "hash": "109a7dd7509b053f",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/kjott/": {
@@ -2728,7 +2884,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/kylling/": {
-  "hash": "04efcccb0b28e338",
+  "hash": "e72dd524fb3d15c3",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/laks/": {
@@ -2748,7 +2904,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/pasta/": {
-  "hash": "b22ed6150a906b1b",
+  "hash": "b694cb9e11fbc607",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/pinnekjott/": {
@@ -2768,11 +2924,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/ris/": {
-  "hash": "5edf715c460080b1",
+  "hash": "e599aec9e0756769",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/salat/": {
-  "hash": "fe918aa62392c0d4",
+  "hash": "54785bfa0105fddd",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/spekemat/": {
@@ -2788,8 +2944,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/middagsforslag/": {
-  "hash": "f8d8da414cb7adf7",
-  "dato": "2026-11-20"
+  "hash": "8d6f3a51ada77e9c",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/nyttarsmiddag/": {
   "hash": "e076542ee62fac87",
@@ -2816,7 +2972,7 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/spiskammer-app/": {
-  "hash": "527674a1cf6a3e5e",
+  "hash": "a30fd9d1c5ca38fe",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/": {
@@ -3936,7 +4092,7 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/ukemeny/": {
-  "hash": "9f8b5e2e2979a066",
+  "hash": "8fc017aac3da879a",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/": {

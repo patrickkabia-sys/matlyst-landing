@@ -23,8 +23,8 @@ const siteJs = readFileSync(join(ROT, 'site.js'), 'utf8');
 const SLUGS = ['biff', 'fisk', 'grillmat', 'julemat', 'kalkun', 'kjott', 'kjottdeig', 'koldtbord', 'kylling', 'laks', 'lam', 'lutefisk', 'mat-til-selskap', 'pasta', 'pinnekjott', 'poteter', 'reker-og-skalldyr', 'ribbe', 'ris', 'salat', 'spekemat', 'suppe', 'svin'];
 const ADRESSER = ['/mengde-per-person/', ...SLUGS.map((s) => `/mengde-per-person/${s}/`)];
 
-test('adresselås: samleside og 23 sider, alle i sitemap.xml og bare der, og ingen andre språk', () => {
-  assert.deepEqual(FAMILIE.markeder, { nb: { rot: 'mengde-per-person/' } });
+test('adresselås: samleside og 23 sider (nb), alle i sitemap.xml og bare der, og de norske adressene står ikke i de andre språkenes sitemap (engelsk har egen test)', () => {
+  assert.deepEqual(FAMILIE.markeder, { nb: { rot: 'mengde-per-person/' }, en: { rot: 'how-much-per-person/' } });
   assert.deepEqual(['/mengde-per-person/', ...rader.map((r) => `/mengde-per-person/${r.slug}/`)].sort(), [...ADRESSER].sort());
   const kart = readFileSync(join(ROT, 'sitemap.xml'), 'utf8');
   for (const a of ADRESSER) {
@@ -32,7 +32,8 @@ test('adresselås: samleside og 23 sider, alle i sitemap.xml og bare der, og ing
     assert.equal(familieForSti(a), 'mengde-per-person', a);
     assert.match(html(a.slice(1)), new RegExp(`<link rel="canonical" href="https://matlyst-app\\.no${a}">`, 'u'), a);
   }
-  for (const mk of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROT, `sitemap-${mk}.xml`), 'utf8'), /mengde-per-person/u, mk);
+  // Bare <loc>: engelsk sitemap har de norske adressene som hreflang-alternativ, men ingen av dem som egen side.
+  for (const mk of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROT, `sitemap-${mk}.xml`), 'utf8'), /<loc>[^<]*mengde-per-person/u, mk);
 });
 
 test('samlesiden står i llms.txt, enkeltsidene gjør det ikke', () => {

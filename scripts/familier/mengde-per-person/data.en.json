@@ -1,0 +1,1023 @@
+{
+  "familie": "mengde-per-person",
+  "marked": "en",
+  "kilder": {
+    "fsisturkey": {
+      "navn": "Let's Talk Turkey: A Consumer Guide to Safely Roasting a Turkey",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2010,
+      "adresse": "https://www.fsis.usda.gov/sites/default/files/media_file/2021-04/Lets_Talk_Turkey.pdf",
+      "hentet": "2026-11-21"
+    },
+    "ntf": {
+      "navn": "How Much Turkey for My Table?",
+      "utgiver": "National Turkey Federation",
+      "aar": 2019,
+      "adresse": "https://www.eatturkey.org/2019/11/05/how-much-turkey-for-my-table/",
+      "hentet": "2026-11-21"
+    },
+    "sdsu": {
+      "navn": "Tips for Purchasing and Preparing Turkey, Ham and Prime Rib",
+      "utgiver": "South Dakota State University Extension",
+      "aar": 2024,
+      "adresse": "https://extension.sdstate.edu/tips-purchasing-and-preparing-turkey-ham-and-prime-rib",
+      "hentet": "2026-11-21"
+    },
+    "fsisham": {
+      "navn": "Hams and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat/hams-and-food-safety",
+      "hentet": "2026-11-21"
+    },
+    "fsisstuff": {
+      "navn": "Stuffing and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2013,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/stuffing-and-food-safety",
+      "hentet": "2026-11-21"
+    },
+    "biwfd": {
+      "navn": "Skillet-to-Oven Beef Roasting Information",
+      "utgiver": "Beef. It's What's For Dinner (Cattlemen's Beef Board and NCBA)",
+      "aar": 2019,
+      "adresse": "https://www.beefitswhatsfordinner.com/Media/BIWFD/Docs/biwfd-roasting-chart_120519-09.pdf",
+      "hentet": "2026-11-21"
+    },
+    "wf": {
+      "navn": "Holiday Servings Calculator",
+      "utgiver": "Whole Foods Market",
+      "aar": 2026,
+      "adresse": "https://www.wholefoodsmarket.com/tips-and-ideas/holiday/servings-calculator",
+      "hentet": "2026-11-21"
+    },
+    "isuholiday": {
+      "navn": "Tackling the Holiday Meat Puzzle",
+      "utgiver": "Iowa State University Extension and Outreach (AnswerLine)",
+      "aar": 2025,
+      "adresse": "https://blogs.extension.iastate.edu/answerline/2025/12/09/tackling-the-holiday-meat-puzzle/",
+      "hentet": "2026-11-21"
+    },
+    "isugrad": {
+      "navn": "Graduation Party Tips",
+      "utgiver": "Iowa State University Extension and Outreach (AnswerLine)",
+      "aar": 2026,
+      "adresse": "https://blogs.extension.iastate.edu/answerline/2026/03/03/graduation-party-planning/",
+      "hentet": "2026-11-21"
+    },
+    "isupasta": {
+      "navn": "Celebrating Spaghetti",
+      "utgiver": "Iowa State University Extension and Outreach (AnswerLine)",
+      "aar": 2021,
+      "adresse": "https://blogs.extension.iastate.edu/answerline/2021/12/29/celebrating-spaghetti/",
+      "hentet": "2026-11-21"
+    },
+    "unl": {
+      "navn": "Basic Ingredient Substitutions",
+      "utgiver": "Nebraska Extension (University of Nebraska-Lincoln)",
+      "aar": 2026,
+      "adresse": "https://food.unl.edu/ingredient-substitutions",
+      "hentet": "2026-11-21"
+    },
+    "success": {
+      "navn": "How Much Rice Is A Serving?",
+      "utgiver": "Success Rice",
+      "aar": 2026,
+      "adresse": "https://successrice.com/the-kitchen/how-much-rice-is-a-serving/",
+      "hentet": "2026-11-21"
+    },
+    "ipc": {
+      "navn": "Making Potato Salad for 100 People",
+      "utgiver": "Idaho Potato Commission",
+      "aar": 2026,
+      "adresse": "https://idahopotato.com/dr-potato/471",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kalkun",
+      "slug": "turkey",
+      "navn": "Turkey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "usda": {
+          "verdi": 1,
+          "enhet": "lb",
+          "kilde": "fsisturkey",
+          "merknad": "Allow 1 pound of turkey per person."
+        },
+        "ntf": {
+          "verdi": 1,
+          "enhet": "lb",
+          "kilde": "ntf",
+          "merknad": "recommend you allow at least 1 pound of uncooked turkey per person"
+        },
+        "ntf-sek-min": {
+          "verdi": 1.25,
+          "enhet": "lb",
+          "kilde": "ntf",
+          "merknad": "opting for 1.25-1.5 pounds per person is a safe bet"
+        },
+        "ntf-sek-maks": {
+          "verdi": 1.5,
+          "enhet": "lb",
+          "kilde": "ntf",
+          "merknad": "opting for 1.25-1.5 pounds per person is a safe bet"
+        },
+        "ntf-to-fugler": {
+          "verdi": 15,
+          "enhet": "lb",
+          "kilde": "ntf",
+          "merknad": "For a larger group that requires more than 15 pounds of turkey, you may want to consider using two smaller birds to help with even cooking."
+        },
+        "sdsu": {
+          "verdi": 1,
+          "enhet": "lb",
+          "kilde": "sdsu",
+          "merknad": "recommends approximately one pound of turkey per person"
+        },
+        "wf": {
+          "verdi": 1.25,
+          "enhet": "lb",
+          "kilde": "wf",
+          "merknad": "Turkey* / | 1¼ pounds / | 5 – 6 pounds / | 10 – 12 pounds"
+        },
+        "wf-fire": {
+          "verdi": 5,
+          "enhet": "lb",
+          "kilde": "wf",
+          "merknad": "Turkey* / | 1¼ pounds / | 5 – 6 pounds / | 10 – 12 pounds"
+        },
+        "isu-min": {
+          "verdi": 0.75,
+          "enhet": "lb",
+          "kilde": "isuholiday",
+          "merknad": "3/4 to 1 pound of boney***meats and turkey"
+        },
+        "isu-maks": {
+          "verdi": 1,
+          "enhet": "lb",
+          "kilde": "isuholiday",
+          "merknad": "3/4 to 1 pound of boney***meats and turkey"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "ham",
+      "slug": "ham",
+      "navn": "Ham",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "uten-ben-min": {
+          "verdi": 0.25,
+          "enhet": "lb",
+          "kilde": "fsisham",
+          "merknad": "1/4-1/3 lb. per serving of boneless ham"
+        },
+        "uten-ben-maks": {
+          "verdi": 0.333,
+          "enhet": "lb",
+          "kilde": "fsisham",
+          "merknad": "1/4-1/3 lb. per serving of boneless ham"
+        },
+        "med-ben-min": {
+          "verdi": 0.333,
+          "enhet": "lb",
+          "kilde": "fsisham",
+          "merknad": "1/3-1/2 lb. of meat per serving of bone-in ham"
+        },
+        "med-ben-maks": {
+          "verdi": 0.5,
+          "enhet": "lb",
+          "kilde": "fsisham",
+          "merknad": "1/3-1/2 lb. of meat per serving of bone-in ham"
+        },
+        "sdsu-uten-min": {
+          "verdi": 0.25,
+          "enhet": "lb",
+          "kilde": "sdsu",
+          "merknad": "For a boneless ham, 1/4 to 1/3 pound per person should be sufficient."
+        },
+        "sdsu-uten-maks": {
+          "verdi": 0.333,
+          "enhet": "lb",
+          "kilde": "sdsu",
+          "merknad": "For a boneless ham, 1/4 to 1/3 pound per person should be sufficient."
+        },
+        "sdsu-med-min": {
+          "verdi": 0.333,
+          "enhet": "lb",
+          "kilde": "sdsu",
+          "merknad": "increase the serving size to 1/3 to 1/2 pound per person"
+        },
+        "sdsu-med-maks": {
+          "verdi": 0.5,
+          "enhet": "lb",
+          "kilde": "sdsu",
+          "merknad": "increase the serving size to 1/3 to 1/2 pound per person"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "prime-rib",
+      "slug": "prime-rib",
+      "navn": "Prime rib",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "uten-ben-min": {
+          "verdi": 0.5,
+          "enhet": "lb",
+          "kilde": "sdsu",
+          "merknad": "If it is a boneless prime rib, plan on 1/2 to 3/4 of a pound per person."
+        },
+        "uten-ben-maks": {
+          "verdi": 0.75,
+          "enhet": "lb",
+          "kilde": "sdsu",
+          "merknad": "If it is a boneless prime rib, plan on 1/2 to 3/4 of a pound per person."
+        },
+        "ribbe": {
+          "verdi": 1,
+          "enhet": "rib per 2 guests",
+          "kilde": "sdsu",
+          "merknad": "If you’re choosing a bone-in prime rib, one rib per two people should be enough."
+        },
+        "biwfd-ribbe": {
+          "verdi": 1,
+          "enhet": "rib per 2 guests",
+          "kilde": "biwfd",
+          "merknad": "purchase a roast that has 1 rib for every 2 people."
+        },
+        "biwfd-porsjon": {
+          "verdi": 3,
+          "enhet": "oz",
+          "kilde": "biwfd",
+          "merknad": "Each recommendation will provide an approximate 3 oz serving of cooked beef per person."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "kylling",
+      "slug": "chicken",
+      "navn": "Chicken",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ben-min": {
+          "verdi": 0.75,
+          "enhet": "lb",
+          "kilde": "isuholiday",
+          "merknad": "3/4 to 1 pound of boney***meats and turkey"
+        },
+        "ben-maks": {
+          "verdi": 1,
+          "enhet": "lb",
+          "kilde": "isuholiday",
+          "merknad": "3/4 to 1 pound of boney***meats and turkey"
+        },
+        "fest-min": {
+          "verdi": 6,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Protein | 6-8 oz"
+        },
+        "fest-maks": {
+          "verdi": 8,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Protein | 6-8 oz"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "mashed-potatoes",
+      "slug": "mashed-potatoes",
+      "navn": "Mashed potatoes",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rå": {
+          "verdi": 0.5,
+          "enhet": "lb",
+          "kilde": "wf",
+          "merknad": "If buying potatoes to make mashed potatoes, buy ½ pound of potatoes per guest."
+        },
+        "ferdig": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Potatoes/Starch** / | ¾ cup / | 3 cups / | 6 cups"
+        },
+        "isu": {
+          "verdi": 5,
+          "enhet": "oz",
+          "kilde": "isuholiday",
+          "merknad": "5 oz of potatoes"
+        },
+        "ipc": {
+          "verdi": 25,
+          "enhet": "lb per 100 servings",
+          "kilde": "ipc",
+          "merknad": "100, 1/2 cup servings of potatoes needs 25 pounds of potatoes."
+        },
+        "ipc-halv": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "ipc",
+          "merknad": "100, 1/2 cup servings of potatoes needs 25 pounds of potatoes."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "potato-salad",
+      "slug": "potato-salad",
+      "navn": "Potato salad",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ferdig-min": {
+          "verdi": 12.5,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Potato Salad – 12.5-15 lbs finished salad"
+        },
+        "ferdig-maks": {
+          "verdi": 15,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Potato Salad – 12.5-15 lbs finished salad"
+        },
+        "side-min": {
+          "verdi": 4,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Sides | 4-6 oz"
+        },
+        "side-maks": {
+          "verdi": 6,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Sides | 4-6 oz"
+        },
+        "ipc": {
+          "verdi": 25,
+          "enhet": "lb per 100 servings",
+          "kilde": "ipc",
+          "merknad": "100, 1/2 cup servings of potatoes needs 25 pounds of potatoes."
+        },
+        "ipc-andre-min": {
+          "verdi": 15,
+          "enhet": "lb per 100 servings",
+          "kilde": "ipc",
+          "merknad": "if the group has other choices for sides, I think you can get by with about 15-20 pounds minimum"
+        },
+        "ipc-andre-maks": {
+          "verdi": 20,
+          "enhet": "lb per 100 servings",
+          "kilde": "ipc",
+          "merknad": "if the group has other choices for sides, I think you can get by with about 15-20 pounds minimum"
+        },
+        "gjester": {
+          "verdi": 50,
+          "enhet": "guests",
+          "kilde": "isugrad",
+          "merknad": "Quantity Needed for 50"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "stuffing",
+      "slug": "stuffing",
+      "navn": "Stuffing",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kasserolle": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "Stuffing baked in a casserole | At least 1/2 cup per person"
+        },
+        "liten-bit": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "allow about 1/2 cup of prepared stuffing per serving"
+        },
+        "fugl-min": {
+          "verdi": 0.5,
+          "enhet": "cup per pound",
+          "kilde": "fsisstuff",
+          "merknad": "allow about 1/2 to 1 cup of prepared stuffing per pound of raw poultry"
+        },
+        "fugl-maks": {
+          "verdi": 1,
+          "enhet": "cup per pound",
+          "kilde": "fsisstuff",
+          "merknad": "allow about 1/2 to 1 cup of prepared stuffing per pound of raw poultry"
+        },
+        "fugl-8-min": {
+          "verdi": 6,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "8 to 12 pounds | 6 to 9 cups"
+        },
+        "fugl-8-maks": {
+          "verdi": 9,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "8 to 12 pounds | 6 to 9 cups"
+        },
+        "fugl-12-min": {
+          "verdi": 9,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "12 to 16 pounds | 9 to 12 cups"
+        },
+        "fugl-12-maks": {
+          "verdi": 12,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "12 to 16 pounds | 9 to 12 cups"
+        },
+        "fugl-16-min": {
+          "verdi": 12,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "16 to 20 pounds | 12 to 15 cups"
+        },
+        "fugl-16-maks": {
+          "verdi": 15,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "16 to 20 pounds | 12 to 15 cups"
+        },
+        "fugl-20-min": {
+          "verdi": 15,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "20 to 24 pounds | 15 to 18 cups"
+        },
+        "fugl-20-maks": {
+          "verdi": 18,
+          "enhet": "cup",
+          "kilde": "fsisstuff",
+          "merknad": "20 to 24 pounds | 15 to 18 cups"
+        },
+        "wf": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Stuffing / | ¾ cup / | 3 cups / | 6 cups"
+        },
+        "pund-kopp": {
+          "verdi": 0.75,
+          "enhet": "cup per pound",
+          "kilde": "fsisstuff",
+          "merknad": "spoon the stuffing in loosely - about 3/4 cup of stuffing per pound"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "ris",
+      "slug": "rice",
+      "navn": "Rice",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hvit": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "success",
+          "merknad": "an adult serving is considered to be 1/2 cup"
+        },
+        "basmati": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "success",
+          "merknad": "For basmati, jasmine and quinoa, an adult serving is 1/4 cup"
+        },
+        "isu": {
+          "verdi": 1.5,
+          "enhet": "oz",
+          "kilde": "isuholiday",
+          "merknad": "1.5 oz of grain"
+        },
+        "barn-liten": {
+          "verdi": 0.25,
+          "enhet": "cup",
+          "kilde": "success",
+          "merknad": "For toddlers, experts recommend a serving size of 1/4 cup of cooked rice."
+        },
+        "barn-4": {
+          "verdi": 0.333,
+          "enhet": "cup",
+          "kilde": "success",
+          "merknad": "From the ages of 4 to 6, 1/3 cup is adequate."
+        },
+        "barn-7": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "success",
+          "merknad": "Between the ages of 7 and 10, children can eat 1/2 cup of cooked rice per serving"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "pasta",
+      "slug": "pasta",
+      "navn": "Pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tørr": {
+          "verdi": 2,
+          "enhet": "oz",
+          "kilde": "isupasta",
+          "merknad": "the proper pasta portion is 2 ounces (56g) of dry pasta per person"
+        },
+        "kokt": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "isupasta",
+          "merknad": "which will yield approximately 1 cup of cooked pasta"
+        },
+        "pund-folk": {
+          "verdi": 8,
+          "enhet": "people per pound",
+          "kilde": "isupasta",
+          "merknad": "A pound of pasta is about right for 8 people with the recommended 2 ounces dry per person."
+        },
+        "unl-oz": {
+          "verdi": 8,
+          "enhet": "oz",
+          "kilde": "unl",
+          "merknad": "8 ounces of uncooked elbow macaroni"
+        },
+        "unl-kopp": {
+          "verdi": 4,
+          "enhet": "cup",
+          "kilde": "unl",
+          "merknad": "all produce about 4 cups cooked pasta"
+        },
+        "unl-egg-oz": {
+          "verdi": 8,
+          "enhet": "oz",
+          "kilde": "unl",
+          "merknad": "Approximately 8 ounces uncooked egg noodles equal 2 ½ cups cooked noodles."
+        },
+        "unl-egg-kopp": {
+          "verdi": 2.5,
+          "enhet": "cup",
+          "kilde": "unl",
+          "merknad": "Approximately 8 ounces uncooked egg noodles equal 2 ½ cups cooked noodles."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "salat",
+      "slug": "salad",
+      "navn": "Salad",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "wf": {
+          "verdi": 2,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Salad / | 2 cups / | 2 quarts / | 4 quarts"
+        },
+        "isu": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "isuholiday",
+          "merknad": "Salads or Soups | 1 cup per person"
+        },
+        "wf-suppe": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Soup / | 1 cup / | 1 quart / | 2 quarts"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "vegetables",
+      "slug": "vegetables",
+      "navn": "Vegetables",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "wf": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Veggie Sides / | 1 cup / | 1 quart / | 2 quarts"
+        },
+        "isu": {
+          "verdi": 4,
+          "enhet": "oz",
+          "kilde": "isuholiday",
+          "merknad": "4 oz of vegetables"
+        },
+        "side-min": {
+          "verdi": 4,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Sides | 4-6 oz"
+        },
+        "side-maks": {
+          "verdi": 6,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Sides | 4-6 oz"
+        },
+        "isu-bonner": {
+          "verdi": 2,
+          "enhet": "oz",
+          "kilde": "isuholiday",
+          "merknad": "2 oz of beans"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "burgers",
+      "slug": "burgers",
+      "navn": "Burgers",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 4,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Burgers 4-6 oz"
+        },
+        "maks": {
+          "verdi": 6,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Burgers 4-6 oz"
+        },
+        "isu-uten-min": {
+          "verdi": 0.25,
+          "enhet": "lb",
+          "kilde": "isuholiday",
+          "merknad": "1/4 to 1/3 pound of boneless* meat per serving"
+        },
+        "isu-uten-maks": {
+          "verdi": 0.333,
+          "enhet": "lb",
+          "kilde": "isuholiday",
+          "merknad": "1/4 to 1/3 pound of boneless* meat per serving"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "tacos",
+      "slug": "tacos",
+      "navn": "Tacos",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 2,
+          "enhet": "taco",
+          "kilde": "isugrad",
+          "merknad": "Tacos – 12.5-16.5 lbs ground meat (2-3/person)"
+        },
+        "maks": {
+          "verdi": 3,
+          "enhet": "taco",
+          "kilde": "isugrad",
+          "merknad": "Tacos – 12.5-16.5 lbs ground meat (2-3/person)"
+        },
+        "kjott-min": {
+          "verdi": 12.5,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Tacos – 12.5-16.5 lbs ground meat (2-3/person)"
+        },
+        "kjott-maks": {
+          "verdi": 16.5,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Tacos – 12.5-16.5 lbs ground meat (2-3/person)"
+        },
+        "gjester": {
+          "verdi": 50,
+          "enhet": "guests",
+          "kilde": "isugrad",
+          "merknad": "Quantity Needed for 50"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "party-meat",
+      "slug": "meat-for-a-party",
+      "navn": "Meat for a party",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "prot-min": {
+          "verdi": 6,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Protein | 6-8 oz"
+        },
+        "prot-maks": {
+          "verdi": 8,
+          "enhet": "oz",
+          "kilde": "isugrad",
+          "merknad": "Protein | 6-8 oz"
+        },
+        "sandwich": {
+          "verdi": 1.5,
+          "enhet": "sandwich",
+          "kilde": "isugrad",
+          "merknad": "6-8 oz / 1.5 sandwich"
+        },
+        "kjottboller-min": {
+          "verdi": 2,
+          "enhet": "meatball",
+          "kilde": "isugrad",
+          "merknad": "Meatballs 2-3"
+        },
+        "kjottboller-maks": {
+          "verdi": 3,
+          "enhet": "meatball",
+          "kilde": "isugrad",
+          "merknad": "Meatballs 2-3"
+        },
+        "sandwich-kjott-min": {
+          "verdi": 20,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Sandwich – 20-25 lbs raw meat"
+        },
+        "sandwich-kjott-maks": {
+          "verdi": 25,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Sandwich – 20-25 lbs raw meat"
+        },
+        "sliders-min": {
+          "verdi": 10,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Sliders – 10-12.5 lbs raw meat"
+        },
+        "sliders-maks": {
+          "verdi": 12.5,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Sliders – 10-12.5 lbs raw meat"
+        },
+        "kjottboller-lb-min": {
+          "verdi": 10,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Meatballs – 10-15 lbs"
+        },
+        "kjottboller-lb-maks": {
+          "verdi": 15,
+          "enhet": "lb per 50 guests",
+          "kilde": "isugrad",
+          "merknad": "Meatballs – 10-15 lbs"
+        },
+        "mat-min": {
+          "verdi": 1,
+          "enhet": "lb",
+          "kilde": "isugrad",
+          "merknad": "plan for 1 to 1.5 pounds of food per guest"
+        },
+        "mat-maks": {
+          "verdi": 1.5,
+          "enhet": "lb",
+          "kilde": "isugrad",
+          "merknad": "plan for 1 to 1.5 pounds of food per guest"
+        },
+        "seksti": {
+          "verdi": 60,
+          "enhet": "percent",
+          "kilde": "isugrad",
+          "merknad": "plan for 60% of the guests invited"
+        },
+        "gjester": {
+          "verdi": 50,
+          "enhet": "guests",
+          "kilde": "isugrad",
+          "merknad": "Quantity Needed for 50"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    },
+    {
+      "id": "thanksgiving",
+      "slug": "thanksgiving-dinner",
+      "navn": "Thanksgiving dinner",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kalkun": {
+          "verdi": 1.25,
+          "enhet": "lb",
+          "kilde": "wf",
+          "merknad": "Turkey* / | 1¼ pounds / | 5 – 6 pounds / | 10 – 12 pounds"
+        },
+        "forrett": {
+          "verdi": 3,
+          "enhet": "piece",
+          "kilde": "wf",
+          "merknad": "Appetizers / | 3 pieces / | 12 pieces / | 24 pieces"
+        },
+        "suppe": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Soup / | 1 cup / | 1 quart / | 2 quarts"
+        },
+        "salat": {
+          "verdi": 2,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Salad / | 2 cups / | 2 quarts / | 4 quarts"
+        },
+        "fyll": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Stuffing / | ¾ cup / | 3 cups / | 6 cups"
+        },
+        "poteter": {
+          "verdi": 0.75,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Potatoes/Starch** / | ¾ cup / | 3 cups / | 6 cups"
+        },
+        "poteter-rå": {
+          "verdi": 0.5,
+          "enhet": "lb",
+          "kilde": "wf",
+          "merknad": "If buying potatoes to make mashed potatoes, buy ½ pound of potatoes per guest."
+        },
+        "gronnsaker": {
+          "verdi": 1,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Veggie Sides / | 1 cup / | 1 quart / | 2 quarts"
+        },
+        "rundstykker": {
+          "verdi": 1,
+          "enhet": "piece",
+          "kilde": "wf",
+          "merknad": "Bread/Rolls / | 1 piece / | 1 quart / | 2 quarts"
+        },
+        "saus": {
+          "verdi": 0.5,
+          "enhet": "cup",
+          "kilde": "wf",
+          "merknad": "Gravy / | ½ cup / | 2 cups / | 1 quart"
+        },
+        "pai": {
+          "verdi": 1,
+          "enhet": "slice",
+          "kilde": "wf",
+          "merknad": "9\" Pie / | 1 slice / | 1 pie / | 2 pies"
+        },
+        "isu-dessert": {
+          "verdi": 1.5,
+          "enhet": "piece",
+          "kilde": "isuholiday",
+          "merknad": "Dessert | 1.5 pieces per person"
+        },
+        "isu-brod-min": {
+          "verdi": 1,
+          "enhet": "piece",
+          "kilde": "isuholiday",
+          "merknad": "Bread | 1-2 portions per person"
+        },
+        "isu-brod-maks": {
+          "verdi": 2,
+          "enhet": "piece",
+          "kilde": "isuholiday",
+          "merknad": "Bread | 1-2 portions per person"
+        },
+        "fire": {
+          "verdi": 4,
+          "enhet": "guests",
+          "kilde": "wf",
+          "merknad": "Dish | Per Person | 4 People | 8 People"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "share of an adult portion",
+          "kilde": "isuholiday",
+          "merknad": "Amount Per Adult – 1/2 Per Child"
+        }
+      }
+    }
+  ]
+}
