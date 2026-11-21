@@ -6,15 +6,15 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1171**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1189**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 
 | Språk | Sider |
 |---|---:|
 | nb | 408 |
 | sv | 265 |
 | da | 239 |
-| en | 259 |
-| Sum | 1171 |
+| en | 277 |
+| Sum | 1189 |
 
 | Sidetype | nb | sv | da | en | Sum |
 |---|---:|---:|---:|---:|---:|
@@ -22,7 +22,7 @@ Sider i sitemap: **1171**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 | forside | 1 | 1 | 1 | 1 | 4 |
 | guide-gammel | 3 |  |  |  | 3 |
 | guide-kort | 11 | 15 | 15 | 15 | 56 |
-| guide-lang | 148 | 6 | 6 | 58 | 218 |
+| guide-lang | 148 | 6 | 6 | 76 | 236 |
 | juss | 3 | 3 | 3 | 3 | 12 |
 | omregner | 233 | 232 | 206 | 174 | 845 |
 
@@ -65,7 +65,7 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | tom-kjoleskapet | Tøm kjøleskapet med lagrede oppskrifter | guide-kort | `/tom-kjoleskapet/` (1) | `/sv/tom-kylskapet/` (1) | `/da/toem-koeleskabet/` (1) | `/en/empty-the-fridge/` (1) | undersider-alle-sprak.mjs |  | 2026-11-19 |
 | ukemeny | Ukemeny-app: planlegg middagene for uka | guide-kort | `/ukemeny/` (1) | `/sv/veckomeny-app/` (1) | `/da/madplan-app/` (1) | `/en/meal-plan-app/` (1) | en-appsider.mjs, nordiske-appsider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
 | vilkar | Brukervilkår: Matlyst | juss | `/vilkar.html` (1) | `/sv/villkor/` (1) | `/da/vilkaar/` (1) | `/en/terms/` (1) | juridisk-tekster.mjs |  | 2026-11-19 |
-| familie:airfryer | Airfryer: tid og temperatur for vanlig mat | guide-lang | `/airfryer/` (20) |  |  |  | scripts/familier/airfryer/ (mal-nb.mjs) | scripts/familier/airfryer/data.nb.json | 2026-11-21 |
+| familie:airfryer | Airfryer: tid og temperatur for vanlig mat | guide-lang | `/airfryer/` (20) |  |  | `/en/air-fryer/` (18) | scripts/familier/airfryer/ (mal-en.mjs, mal-nb.mjs) | scripts/familier/airfryer/data.en.json, scripts/familier/airfryer/data.nb.json | 2026-11-21 |
 | familie:dl-til-gram | Dl til gram: kalkulator og tabell for 29 varer | omregner | `/verktoy/dl-til-gram/` (30) | `/sv/verktyg/dl-till-gram/` (29) | `/da/vaerktoejer/dl-til-gram/` (29) | `/en/tools/cups-to-grams/` (43) | scripts/familier/dl-til-gram/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-nordisk.mjs, mal-sv.mjs) | scripts/familier/dl-til-gram/data.da.json, scripts/familier/dl-til-gram/data.en.json, scripts/familier/dl-til-gram/data.nb.json, scripts/familier/dl-til-gram/data.sv.json | 2026-11-21 |
 | familie:erstatning | Erstatning: hva kan jeg bruke i stedet? | guide-lang | `/erstatning/` (19) |  |  |  | scripts/familier/erstatning/ (mal-nb.mjs) | scripts/familier/erstatning/data.nb.json | 2026-11-21 |
 | familie:frysing | Hvor lenge kan mat ligge i fryseren? Tabell med kilder | guide-lang | `/frysing/` (14) |  |  | `/en/can-you-freeze/` (22) | scripts/familier/frysing/ (mal-en.mjs, mal-nb.mjs) | scripts/familier/frysing/data.en.json, scripts/familier/frysing/data.nb.json | 2026-11-21 |
@@ -98,7 +98,7 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | nyttarsmiddag | nb | sv, da, en |
 | om | nb | sv, da, en |
 | oppskrifter-fra-ingredienser | sv, da, en | nb |
-| familie:airfryer | nb | sv, da, en |
+| familie:airfryer | nb, en | sv, da |
 | familie:erstatning | nb | sv, da, en |
 | familie:frysing | nb, en | sv, da |
 | familie:holdbarhet | nb, en | sv, da |
@@ -113,6 +113,7 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 
 | Rad | Antall grupper | Per manglende språk (grupper uten språket) |
 |---|---:|---|
+| familie:airfryer | 8 | nb: 3 (baked-potato, reheat-pizza-leftovers, shrimp); en: 5 (fiskepinner, kjottboller, potetbater, ribbe, torsk) |
 | familie:dl-til-gram | 40 | nb: 26 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); sv: 27 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); da: 27 (active-dry-yeast, baking-powder, black-beans, blueberries, bread-flour, breadcrumbs, ...); en: 13 (bulgur, chiafro, couscous, grotris, kokosmasse, mandelmel, ...) |
 | familie:frysing | 30 | nb: 19 (bacon, casseroles, cooked-chicken, cooked-pasta, cooked-rice, deli-meat, ...); en: 11 (baer, brod, fisk, frukt-og-gronnsaker, kaker, kjott, ...) |
 | familie:holdbarhet | 20 | nb: 17 (bacon, casseroles, cooked-chicken, cooked-pasta, cooked-rice, deli-meat, ...); en: 3 (kjott, kjottdeig-og-kylling, kokt-ris-og-pasta) |
@@ -156,7 +157,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ## Alle adresser
 
-1171 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
+1189 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
 
 ### forside
 
@@ -658,6 +659,27 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/airfryer/ribbe/ (2026-11-21)
 - https://matlyst-app.no/airfryer/svinekoteletter/ (2026-11-21)
 - https://matlyst-app.no/airfryer/torsk/ (2026-11-21)
+
+**en** (18)
+
+- https://matlyst-app.no/en/air-fryer/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/bacon/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/baked-potato/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/burgers/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/chicken-breast/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/chicken-thighs/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/chicken-wings/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/french-fries/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/frozen-foods/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/hard-boiled-eggs/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/hot-dogs/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/oven-to-air-fryer/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/pork-chops/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/reheat-pizza-leftovers/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/salmon/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/shrimp/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/steak/ (2026-11-21)
+- https://matlyst-app.no/en/air-fryer/vegetables/ (2026-11-21)
 
 ### familie:dl-til-gram
 
@@ -1834,14 +1856,14 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **en** (9)
 
-- https://matlyst-app.no/en/blog/ (2026-11-20)
-- https://matlyst-app.no/en/blog/boiling-times/ (2026-11-20)
+- https://matlyst-app.no/en/blog/ (2026-11-21)
+- https://matlyst-app.no/en/blog/boiling-times/ (2026-11-21)
 - https://matlyst-app.no/en/blog/choose-recipe-organizer-app/ (2026-11-20)
 - https://matlyst-app.no/en/blog/double-a-recipe/ (2026-11-20)
 - https://matlyst-app.no/en/blog/egg-float-test/ (2026-11-20)
 - https://matlyst-app.no/en/blog/freezer-storage-times/ (2026-11-21)
 - https://matlyst-app.no/en/blog/leftovers-in-the-fridge/ (2026-11-21)
-- https://matlyst-app.no/en/blog/oven-to-air-fryer/ (2026-11-20)
+- https://matlyst-app.no/en/blog/oven-to-air-fryer/ (2026-11-21)
 - https://matlyst-app.no/en/blog/safe-internal-temperatures/ (2026-11-20)
 
 ### hoytider

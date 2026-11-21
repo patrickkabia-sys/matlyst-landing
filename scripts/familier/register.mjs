@@ -39,8 +39,10 @@ export const FAMILIER = Object.freeze([
   { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' }, en: { rot: 'can-you-freeze/' } } },
   // Mengde per person: bare norsk. Tall fra MatPrat og Helsedirektoratet med sitat per tall (kildekontroll.mjs), tekstene i tekst-nb.mjs.
   { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' } } },
-  // Airfryer: tid og temperatur per råvare med kilde, og omregner fra ovn. Bare norsk. Tallene står i data.nb.json med sitat fra kilden (kildekontroll.mjs).
-  { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' } } },
+  // Airfryer: tid og temperatur per råvare med kilde, og omregner fra ovn. Norsk (data.nb.json) og amerikansk engelsk (data.en.json, /en/air-fryer/).
+  // Tallene står med sitat fra kilden i datafila (kildekontroll.mjs [nb|en]). På en er de hentet fra amerikanske kilder (Cosori, KitchenAid, Instant Pot, Philips, Mississippi State og Illinois Extension, USDA FSIS), ikke oversatt.
+  // Samme rad-id på nb og en gir hreflang; rader uten norsk motstykke (shrimp, baked-potato, reheat-pizza-leftovers) står alene.
+  { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' }, en: { rot: 'air-fryer/' } } },
   // Erstatning: hva du kan bruke i stedet for en vare du mangler. Bare norsk. Tall med sitat fra Idun, MatPrat, melk.no med flere (se erstatning/kildekontroll.mjs).
   { id: 'erstatning', sidetype: 'guide-lang', mappe: new URL('./erstatning/', import.meta.url), markeder: { nb: { rot: 'erstatning/' } } },
   // Rester og råvarer: undersidene /hva-kan-jeg-lage/med-<vare>/ til den eksisterende guiden. Samlesiden /hva-kan-jeg-lage/ har sidegruppen oppskrifter-fra-ingredienser (nb, sv, da, en).

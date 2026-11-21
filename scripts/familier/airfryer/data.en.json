@@ -1,0 +1,2244 @@
+{
+  "familie": "airfryer",
+  "marked": "en",
+  "kilder": {
+    "cosori": {
+      "navn": "The Cosori Iconic Air Fryer Cooking Times Guide (Chart, Conversion Formula and Tips)",
+      "utgiver": "Cosori",
+      "aar": 2026,
+      "adresse": "https://cosori.com/blogs/blog/air-fryer-cooking-times",
+      "hentet": "2026-11-21"
+    },
+    "cosori-reheat": {
+      "navn": "The Ultimate Air Fryer Reheating Guide for Leftovers",
+      "utgiver": "Cosori",
+      "aar": 2024,
+      "adresse": "https://cosori.com/blogs/blog/the-ultimate-air-fryer-reheating-guide-for-leftovers",
+      "hentet": "2026-11-21"
+    },
+    "cosori-hd": {
+      "navn": "Air Fryer Hot Dogs (Chicago style recipe)",
+      "utgiver": "Cosori",
+      "aar": 2026,
+      "adresse": "https://cosori.com/blogs/recipes/air-fryer-hot-dogs-chicago-style",
+      "hentet": "2026-11-21"
+    },
+    "cosori-egg": {
+      "navn": "Air Fryer Hard Boiled Deviled Eggs (recipe)",
+      "utgiver": "Cosori",
+      "aar": 2026,
+      "adresse": "https://cosori.com/blogs/recipes/air-fryer-hard-boiled-deviled-eggs",
+      "hentet": "2026-11-21"
+    },
+    "msu": {
+      "navn": "Nutrition and Wellness: All about Air Fryers",
+      "utgiver": "Mississippi State University Extension Service",
+      "aar": 2024,
+      "adresse": "https://extension.msstate.edu/publications/nutrition-and-wellness-all-about-air-fryers",
+      "hentet": "2026-11-21"
+    },
+    "ill": {
+      "navn": "Kitchen Appliances: Air Fryers",
+      "utgiver": "University of Illinois Extension",
+      "aar": 2024,
+      "adresse": "https://extension.illinois.edu/sites/default/files/2024-12/air_fryer.pdf",
+      "hentet": "2026-11-21"
+    },
+    "kitchenaid": {
+      "navn": "How to use an air fryer: Instructions, settings and tips",
+      "utgiver": "KitchenAid",
+      "aar": 2026,
+      "adresse": "https://www.kitchenaid.com/pinch-of-help/countertop-appliances/how-to-use-an-air-fryer.html",
+      "hentet": "2026-11-21"
+    },
+    "instant": {
+      "navn": "Instant Pot Vortex air fryer: Cooking Time Table",
+      "utgiver": "Instant Pot",
+      "aar": 2025,
+      "adresse": "https://instantpot.com/products/instant-pot-vortex-6qt-air-fryer",
+      "hentet": "2026-11-21"
+    },
+    "instant-hd": {
+      "navn": "Classic Air Fried Hot Dogs (recipe)",
+      "utgiver": "Instant Pot",
+      "aar": 2024,
+      "adresse": "https://instantpot.com/blogs/recipes/classic-air-fried-hot-dogs",
+      "hentet": "2026-11-21"
+    },
+    "philips-book": {
+      "navn": "Airfryer Recipe Book, Guide to times and temperatures",
+      "utgiver": "Philips",
+      "aar": 2013,
+      "adresse": "https://www.usa.philips.com/consumerfiles/pageitems/locales/en_US/CONSUMER/categorypages/Airfryer2013/assets_v3/pdf/Airfryer_Recipe_Book_UnitedStates.pdf",
+      "hentet": "2026-11-21"
+    },
+    "idaho": {
+      "navn": "How Do I Bake a Potato in an Air Fryer?",
+      "utgiver": "Idaho Potato Commission",
+      "aar": 2019,
+      "adresse": "https://idahopotato.com/dr-potato/763",
+      "hentet": "2026-11-21"
+    },
+    "fsis-chart": {
+      "navn": "Safe Minimum Internal Temperature Chart",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "hentet": "2026-11-21"
+    },
+    "fsis-hd": {
+      "navn": "Hot Dogs and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/hot-dogs-food-safety",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ovn-til-airfryer",
+      "slug": "oven-to-air-fryer",
+      "navn": "Oven to air fryer",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ka-grad": {
+          "verdi": 25,
+          "enhet": "°F",
+          "kilde": "kitchenaid",
+          "merknad": "Conventional oven baking to air frying: Reduce the air fryer temperature to 25°F below suggested oven temperature, then reduce the cook time by 20 percent."
+        },
+        "ka-prosent": {
+          "verdi": 20,
+          "enhet": "percent",
+          "kilde": "kitchenaid",
+          "merknad": "Conventional oven baking to air frying: Reduce the air fryer temperature to 25°F below suggested oven temperature, then reduce the cook time by 20 percent."
+        },
+        "ka-frit-grad": {
+          "verdi": 25,
+          "enhet": "°F",
+          "kilde": "kitchenaid",
+          "merknad": "Deep frying to air frying: Reduce the temperature of the air fryer 25°F below the instructed deep frying temperature, then cook for the same amount of time."
+        },
+        "il-grad-min": {
+          "verdi": 25,
+          "enhet": "°F",
+          "kilde": "ill",
+          "merknad": "Reduce temperature by 25 to 30 F."
+        },
+        "il-grad-maks": {
+          "verdi": 30,
+          "enhet": "°F",
+          "kilde": "ill",
+          "merknad": "Reduce temperature by 25 to 30 F."
+        },
+        "il-prosent": {
+          "verdi": 20,
+          "enhet": "percent",
+          "kilde": "ill",
+          "merknad": "Reduce cooking time by 20%."
+        },
+        "pb-grad": {
+          "verdi": 70,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "As a guide,lower the conventional oven temperature by 70 degrees and reduce the cooking time by half."
+        },
+        "pb-prosent": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "philips-book",
+          "merknad": "As a guide,lower the conventional oven temperature by 70 degrees and reduce the cooking time by half."
+        },
+        "c-forvarm-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "A 3-minute preheat is sufficient for most foods."
+        },
+        "il-forvarm-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "ill",
+          "merknad": "Preheat: Follow the instruction manual — but typically preheat for 3 minutes."
+        },
+        "pb-forvarm-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Preheat theAirfryer for 3 minutes."
+        },
+        "c-frozen-ekstra-min": {
+          "verdi": 2,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Frozen items generally need 2–5 additional minutes without any thawing"
+        },
+        "c-frozen-ekstra-maks": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Frozen items generally need 2–5 additional minutes without any thawing"
+        },
+        "i-forvarm-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Preheating takes around 5 minutes or less!"
+        }
+      },
+      "tekst": {
+        "ill:frozen": "Transition most conventional oven recipes to an air fryer recipe using the guidelines below:",
+        "philips-book:pakket": "A variety of pre-made packaged foods can be cooked in theAirfryer.",
+        "philips-book:varierer": "Exact times and temperatures will vary by food.",
+        "cosori:forklaring": "That is the reason the conversion formula calls for reducing both temperature and time when adapting oven recipes.",
+        "cosori:modell": "Note that wattage, chamber size, and airflow design vary between models, which means a generic air fryer chart may not deliver the exact same results for every appliance.",
+        "ill:preheat": "Preheat: Follow the instruction manual — but typically preheat for 3 minutes.",
+        "cosori:stortid": "Thickness has the most direct impact on cook time.",
+        "cosori:frosen": "Frozen items generally need 2–5 additional minutes without any thawing",
+        "instant:forvarm": "We recommend preheating your air fryer as most food items benefit greatly from the immediate high heat of a preheated cooking chamber.",
+        "cosori:egg-kald": "The exception is hard-boiled eggs, which are placed into a cold basket.",
+        "cosori:lag": "Place food in a single, even layer as a full basket reduces airflow and extends cook time",
+        "ill:ryst": "Even cooking: In the middle of cooking time, shake fryer basket or use tongs to flip foods.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions."
+      }
+    },
+    {
+      "id": "kyllingfilet",
+      "slug": "chicken-breast",
+      "navn": "Chicken breast",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Breasts (Boneless, 8–10 oz) | 390°F | 15–22 min | Flip"
+        },
+        "c-tid-min": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Breasts (Boneless, 8–10 oz) | 390°F | 15–22 min | Flip"
+        },
+        "c-tid-maks": {
+          "verdi": 22,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Breasts (Boneless, 8–10 oz) | 390°F | 15–22 min | Flip"
+        },
+        "c-tynn-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Breasts (Thin-cut, 5 oz) | 390°F | 10–18 min | Flip"
+        },
+        "c-tynn-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Breasts (Thin-cut, 5 oz) | 390°F | 10–18 min | Flip"
+        },
+        "c-tynn-tid-maks": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Breasts (Thin-cut, 5 oz) | 390°F | 10–18 min | Flip"
+        },
+        "c-ben-temp": {
+          "verdi": 395,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Breasts (Bone-In, 10 oz) | 395°F | 24–34 min | Flip"
+        },
+        "c-ben-tid-min": {
+          "verdi": 24,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Breasts (Bone-In, 10 oz) | 395°F | 24–34 min | Flip"
+        },
+        "c-ben-tid-maks": {
+          "verdi": 34,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Breasts (Bone-In, 10 oz) | 395°F | 24–34 min | Flip"
+        },
+        "m-temp": {
+          "verdi": 380,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "chicken breast | 380 | 12"
+        },
+        "m-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "chicken breast | 380 | 12"
+        },
+        "pb-temp": {
+          "verdi": 360,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Chicken breast 4-18 10-15 360"
+        },
+        "pb-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Chicken breast 4-18 10-15 360"
+        },
+        "pb-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Chicken breast 4-18 10-15 360"
+        },
+        "pb-mengde-min": {
+          "verdi": 4,
+          "enhet": "ounces",
+          "kilde": "philips-book",
+          "merknad": "Chicken breast 4-18 10-15 360"
+        },
+        "pb-mengde-maks": {
+          "verdi": 18,
+          "enhet": "ounces",
+          "kilde": "philips-book",
+          "merknad": "Chicken breast 4-18 10-15 360"
+        },
+        "kjerne": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "All Poultry (Breasts, Whole Bird, Legs, Thighs, Wings, Ground Poultry, Giblets and Stuffing) | 165 degrees F (73.9 degrees C)"
+        }
+      },
+      "tekst": {
+        "cosori:tid-cue": "A timer is a cue to check, not a guarantee.",
+        "cosori:tykk": "Thin-Cut Proteins: Chicken cutlets and fish fillets under ¾ inch cook faster than expected, so check on them sooner.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    },
+    {
+      "id": "kyllinglar",
+      "slug": "chicken-thighs",
+      "navn": "Chicken thighs and drumsticks",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-ben-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Thighs (Bone-In) | 390°F | 18–24 min | Flip"
+        },
+        "c-ben-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Thighs (Bone-In) | 390°F | 18–24 min | Flip"
+        },
+        "c-ben-tid-maks": {
+          "verdi": 24,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Thighs (Bone-In) | 390°F | 18–24 min | Flip"
+        },
+        "c-uten-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Thighs (Boneless) | 390°F | 8–14 min | Flip"
+        },
+        "c-uten-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Thighs (Boneless) | 390°F | 8–14 min | Flip"
+        },
+        "c-uten-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Thighs (Boneless) | 390°F | 8–14 min | Flip"
+        },
+        "c-kl-temp": {
+          "verdi": 395,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Drumsticks (6 pc) | 395°F | 18–24 min | Flip"
+        },
+        "c-kl-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Drumsticks (6 pc) | 395°F | 18–24 min | Flip"
+        },
+        "c-kl-tid-maks": {
+          "verdi": 24,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Drumsticks (6 pc) | 395°F | 18–24 min | Flip"
+        },
+        "m-lar-temp": {
+          "verdi": 380,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "thighs | 380 | 22"
+        },
+        "m-lar-tid-min": {
+          "verdi": 22,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "thighs | 380 | 22"
+        },
+        "m-kl-temp": {
+          "verdi": 370,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "drumsticks | 370 | 20"
+        },
+        "m-kl-tid-min": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "drumsticks | 370 | 20"
+        },
+        "pb-kl-temp": {
+          "verdi": 360,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Drumsticks 4-18 18-22 360"
+        },
+        "pb-kl-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Drumsticks 4-18 18-22 360"
+        },
+        "pb-kl-tid-maks": {
+          "verdi": 22,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Drumsticks 4-18 18-22 360"
+        },
+        "kjerne": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "All Poultry (Breasts, Whole Bird, Legs, Thighs, Wings, Ground Poultry, Giblets and Stuffing) | 165 degrees F (73.9 degrees C)"
+        },
+        "c-ben-mer-min": {
+          "verdi": 20,
+          "enhet": "percent",
+          "kilde": "cosori",
+          "merknad": "Bone-In Cuts: These take longer than boneless equivalents at the same weight. Allow 20–30% more time."
+        },
+        "c-ben-mer-maks": {
+          "verdi": 30,
+          "enhet": "percent",
+          "kilde": "cosori",
+          "merknad": "Bone-In Cuts: These take longer than boneless equivalents at the same weight. Allow 20–30% more time."
+        }
+      },
+      "tekst": {
+        "cosori:ben": "Bone-In Cuts: These take longer than boneless equivalents at the same weight. Allow 20–30% more time.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    },
+    {
+      "id": "kyllingvinger",
+      "slug": "chicken-wings",
+      "navn": "Chicken wings",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Wings (2 lbs) | 400°F | 16–22 min | Shake"
+        },
+        "c-tid-min": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Wings (2 lbs) | 400°F | 16–22 min | Shake"
+        },
+        "c-tid-maks": {
+          "verdi": 22,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Wings (2 lbs) | 400°F | 16–22 min | Shake"
+        },
+        "m-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "wings (2 pounds) | 400 | 12"
+        },
+        "m-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "wings (2 pounds) | 400 | 12"
+        },
+        "k-temp": {
+          "verdi": 425,
+          "enhet": "°F",
+          "kilde": "kitchenaid",
+          "merknad": "CHICKEN WINGS | 425°F | 18 to 20 Minutes"
+        },
+        "k-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "kitchenaid",
+          "merknad": "CHICKEN WINGS | 425°F | 18 to 20 Minutes"
+        },
+        "k-tid-maks": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "kitchenaid",
+          "merknad": "CHICKEN WINGS | 425°F | 18 to 20 Minutes"
+        },
+        "i-temp": {
+          "verdi": 360,
+          "enhet": "°F",
+          "kilde": "instant",
+          "merknad": "Ingredient: Chicken Wings, Fresh Food Type: Meat, Poultry & Seafood Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 360°F / 182°C Cook Time: 20 - 30 min"
+        },
+        "i-tid-min": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Chicken Wings, Fresh Food Type: Meat, Poultry & Seafood Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 360°F / 182°C Cook Time: 20 - 30 min"
+        },
+        "i-tid-maks": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Chicken Wings, Fresh Food Type: Meat, Poultry & Seafood Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 360°F / 182°C Cook Time: 20 - 30 min"
+        },
+        "pb-temp": {
+          "verdi": 360,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Chicken wings 4-18 18-22 360"
+        },
+        "pb-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Chicken wings 4-18 18-22 360"
+        },
+        "pb-tid-maks": {
+          "verdi": 22,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Chicken wings 4-18 18-22 360"
+        },
+        "kjerne": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "All Poultry (Breasts, Whole Bird, Legs, Thighs, Wings, Ground Poultry, Giblets and Stuffing) | 165 degrees F (73.9 degrees C)"
+        },
+        "c-forvarm-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "A 3-minute preheat is sufficient for most foods."
+        }
+      },
+      "tekst": {
+        "cosori:lag": "Place food in a single, even layer as a full basket reduces airflow and extends cook time",
+        "philips-book:fett": "When cooking foods that are naturally high in fat,such as chicken wings,occasionally empty fat from the bottom of the Airfryer during cooking to avoid excess smoke.",
+        "philips-book:ryst": "When making smaller items such as fries,wings and croquettes,shake the basket once or twice during cooking.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "salmon",
+      "navn": "Salmon",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 380,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Salmon Fillet (1-inch) | 380°F | 6–12 min | —"
+        },
+        "c-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Salmon Fillet (1-inch) | 380°F | 6–12 min | —"
+        },
+        "c-tid-maks": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Salmon Fillet (1-inch) | 380°F | 6–12 min | —"
+        },
+        "c-tynn-temp": {
+          "verdi": 380,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Salmon Fillet (Thin, ½–¾ inch) | 380°F | 6–8 min | —"
+        },
+        "c-tynn-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Salmon Fillet (Thin, ½–¾ inch) | 380°F | 6–8 min | —"
+        },
+        "c-tynn-tid-maks": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Salmon Fillet (Thin, ½–¾ inch) | 380°F | 6–8 min | —"
+        },
+        "m-temp": {
+          "verdi": 380,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "salmon fillet (6 ounces) | 380 | 12"
+        },
+        "m-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "salmon fillet (6 ounces) | 380 | 12"
+        },
+        "i-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "instant",
+          "merknad": "Ingredient: Salmon, Filet Food Type: Meat, Poultry & Seafood Food Quantity: N/A Function: Broil Pressure Level / Temperature: 400°F / 205°C Cook Time: 10 mins"
+        },
+        "i-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Salmon, Filet Food Type: Meat, Poultry & Seafood Food Quantity: N/A Function: Broil Pressure Level / Temperature: 400°F / 205°C Cook Time: 10 mins"
+        },
+        "kjerne": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Fish & Shellfish | 145 degrees F (62.8 degrees C)"
+        }
+      },
+      "tekst": {
+        "cosori:tynn": "Thin-Cut Proteins: Chicken cutlets and fish fillets under ¾ inch cook faster than expected, so check on them sooner.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    },
+    {
+      "id": "pommes-frites",
+      "slug": "french-fries",
+      "navn": "French fries",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-tynn-temp": {
+          "verdi": 395,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "French Fries (Thin Cut) | 395°F | 14–18 min | Shake"
+        },
+        "c-tynn-tid-min": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "French Fries (Thin Cut) | 395°F | 14–18 min | Shake"
+        },
+        "c-tynn-tid-maks": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "French Fries (Thin Cut) | 395°F | 14–18 min | Shake"
+        },
+        "c-tykk-temp": {
+          "verdi": 395,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "French Fries (Thick Cut) | 395°F | 16–22 min | Shake"
+        },
+        "c-tykk-tid-min": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "French Fries (Thick Cut) | 395°F | 16–22 min | Shake"
+        },
+        "c-tykk-tid-maks": {
+          "verdi": 22,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "French Fries (Thick Cut) | 395°F | 16–22 min | Shake"
+        },
+        "m-tynn-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "french fries (thin) | 400 | 14"
+        },
+        "m-tynn-tid-min": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "french fries (thin) | 400 | 14"
+        },
+        "m-tykk-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "french fries (thick) | 400 | 18"
+        },
+        "m-tykk-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "french fries (thick) | 400 | 18"
+        },
+        "i-tynn-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "instant",
+          "merknad": "Ingredient: Potatoes, Fries, Thin-cut Food Type: Vegetables Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 400°F / 205°C Cook Time: 18 - 20 mins"
+        },
+        "i-tynn-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Potatoes, Fries, Thin-cut Food Type: Vegetables Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 400°F / 205°C Cook Time: 18 - 20 mins"
+        },
+        "i-tynn-tid-maks": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Potatoes, Fries, Thin-cut Food Type: Vegetables Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 400°F / 205°C Cook Time: 18 - 20 mins"
+        },
+        "i-tykk-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "instant",
+          "merknad": "Ingredient: Potatoes, Fries, Thick-cut Food Type: Vegetables Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 400°F / 205°C Cook Time: 20 - 25 mins"
+        },
+        "i-tykk-tid-min": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Potatoes, Fries, Thick-cut Food Type: Vegetables Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 400°F / 205°C Cook Time: 20 - 25 mins"
+        },
+        "i-tykk-tid-maks": {
+          "verdi": 25,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Potatoes, Fries, Thick-cut Food Type: Vegetables Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 400°F / 205°C Cook Time: 20 - 25 mins"
+        },
+        "k-temp": {
+          "verdi": 425,
+          "enhet": "°F",
+          "kilde": "kitchenaid",
+          "merknad": "FRENCH FRIES | 425°F | 22 to 24 Minutes"
+        },
+        "k-tid-min": {
+          "verdi": 22,
+          "enhet": "minutes",
+          "kilde": "kitchenaid",
+          "merknad": "FRENCH FRIES | 425°F | 22 to 24 Minutes"
+        },
+        "k-tid-maks": {
+          "verdi": 24,
+          "enhet": "minutes",
+          "kilde": "kitchenaid",
+          "merknad": "FRENCH FRIES | 425°F | 22 to 24 Minutes"
+        },
+        "pb-tynn-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Thin frozen fries 10-25 12-16 390"
+        },
+        "pb-tynn-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Thin frozen fries 10-25 12-16 390"
+        },
+        "pb-tynn-tid-maks": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Thin frozen fries 10-25 12-16 390"
+        },
+        "pb-tykk-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Thick frozen fries 10-25 12-20 390"
+        },
+        "pb-tykk-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Thick frozen fries 10-25 12-20 390"
+        },
+        "pb-tykk-tid-maks": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Thick frozen fries 10-25 12-20 390"
+        },
+        "pb-hjemme-temp": {
+          "verdi": 360,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Homemade fries 10-28 18-25 360"
+        },
+        "pb-hjemme-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Homemade fries 10-28 18-25 360"
+        },
+        "pb-hjemme-tid-maks": {
+          "verdi": 25,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Homemade fries 10-28 18-25 360"
+        },
+        "c-poteter-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Potatoes (Cubed) | 390°F | 8–16 min | Shake | 1-inch"
+        },
+        "c-poteter-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Potatoes (Cubed) | 390°F | 8–16 min | Shake | 1-inch"
+        },
+        "c-poteter-tid-maks": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Potatoes (Cubed) | 390°F | 8–16 min | Shake | 1-inch"
+        }
+      },
+      "tekst": {
+        "philips-book:bløt": "Soak 30 min.and add 1/2 tbsp.of oil after drying",
+        "cosori:cold": "Most frozen items do not require added oil.",
+        "cosori:crowd": "Avoid overcrowding frozen items.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions."
+      }
+    },
+    {
+      "id": "bacon",
+      "slug": "bacon",
+      "navn": "Bacon",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 385,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Bacon (Regular) | 385°F | 5–8 min | Flip"
+        },
+        "c-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Bacon (Regular) | 385°F | 5–8 min | Flip"
+        },
+        "c-tid-maks": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Bacon (Regular) | 385°F | 5–8 min | Flip"
+        },
+        "c-tykk-temp": {
+          "verdi": 385,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Bacon (Thick Cut) | 385°F | 6–10 min | Flip"
+        },
+        "c-tykk-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Bacon (Thick Cut) | 385°F | 6–10 min | Flip"
+        },
+        "c-tykk-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Bacon (Thick Cut) | 385°F | 6–10 min | Flip"
+        },
+        "m-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "bacon (regular) | 400 | 5–7"
+        },
+        "m-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "bacon (regular) | 400 | 5–7"
+        },
+        "m-tid-maks": {
+          "verdi": 7,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "bacon (regular) | 400 | 5–7"
+        },
+        "m-tykk-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "bacon (thick) | 400 | 6–10"
+        },
+        "m-tykk-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "bacon (thick) | 400 | 6–10"
+        },
+        "m-tykk-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "bacon (thick) | 400 | 6–10"
+        },
+        "c-forvarm-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "A 3-minute preheat is sufficient for most foods."
+        }
+      },
+      "tekst": {
+        "msu:sma": "Add water or a slice of bread to the drawer of the air fryer to prevent smoking.",
+        "ill:royk": "Add 1 to 2 teaspoons of water to air fryer drawer before cooking high-fat foods to help prevent smoke production.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions."
+      }
+    },
+    {
+      "id": "polser",
+      "slug": "hot-dogs",
+      "navn": "Hot dogs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "i-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "instant-hd",
+          "merknad": "Air Fry hot dogs at 400°F / 205°C for 5-7 Minutes, or until browned and slightly crispy."
+        },
+        "i-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "instant-hd",
+          "merknad": "Air Fry hot dogs at 400°F / 205°C for 5-7 Minutes, or until browned and slightly crispy."
+        },
+        "i-tid-maks": {
+          "verdi": 7,
+          "enhet": "minutes",
+          "kilde": "instant-hd",
+          "merknad": "Air Fry hot dogs at 400°F / 205°C for 5-7 Minutes, or until browned and slightly crispy."
+        },
+        "c-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "cosori-hd",
+          "merknad": "Select the Air Fry function, adjust temperature to 400°F and time to 6 minutes, then press Start/Pause."
+        },
+        "c-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori-hd",
+          "merknad": "Select the Air Fry function, adjust temperature to 400°F and time to 6 minutes, then press Start/Pause."
+        },
+        "c-bolle-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "cosori-hd",
+          "merknad": "Select the Air Fry function, adjust temperature to 400°F and time to 2 minutes, then press Start/Pause."
+        },
+        "c-bolle-tid-min": {
+          "verdi": 2,
+          "enhet": "minutes",
+          "kilde": "cosori-hd",
+          "merknad": "Select the Air Fry function, adjust temperature to 400°F and time to 2 minutes, then press Start/Pause."
+        }
+      },
+      "tekst": {
+        "instant-hd:snitt": "Make shallow cuts into each hot dog all the way down in a crosshatch or parallel pattern. This increases the crispiness of each hot dog.",
+        "cosori-hd:snitt": "Cut tiny slits (about ⅛-inch thick)into eachhot dog.",
+        "fsis-hd:oppvarm": "Although hot dogs are fully cooked, those at increased risk of foodborne illness should reheat hot dogs and luncheon meat until steaming hot before eating, due to the threat of listeriosis.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions."
+      }
+    },
+    {
+      "id": "hamburger",
+      "slug": "burgers",
+      "navn": "Burgers",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 450,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Hamburger (½–¾ inch, 4 oz) | 450°F | 6–14 min | Flip"
+        },
+        "c-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Hamburger (½–¾ inch, 4 oz) | 450°F | 6–14 min | Flip"
+        },
+        "c-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Hamburger (½–¾ inch, 4 oz) | 450°F | 6–14 min | Flip"
+        },
+        "m-temp": {
+          "verdi": 370,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "burger (4 ounces) | 370 | 16–20"
+        },
+        "m-tid-min": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "burger (4 ounces) | 370 | 16–20"
+        },
+        "m-tid-maks": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "burger (4 ounces) | 370 | 16–20"
+        },
+        "pb-temp": {
+          "verdi": 360,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Hamburger 4-18 7-14 360"
+        },
+        "pb-tid-min": {
+          "verdi": 7,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Hamburger 4-18 7-14 360"
+        },
+        "pb-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Hamburger 4-18 7-14 360"
+        },
+        "kjerne": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Ground Meats | 160 degrees F (71.1 degrees C)"
+        },
+        "kjerne-fjor": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Ground Poultry | 165 degrees F"
+        }
+      },
+      "tekst": {
+        "cosori:stortid": "Thickness has the most direct impact on cook time.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    },
+    {
+      "id": "svinekoteletter",
+      "slug": "pork-chops",
+      "navn": "Pork chops",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 450,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Pork Chop (Boneless) | 450°F | 6–14 min | Flip"
+        },
+        "c-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Pork Chop (Boneless) | 450°F | 6–14 min | Flip"
+        },
+        "c-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Pork Chop (Boneless) | 450°F | 6–14 min | Flip"
+        },
+        "c-ben-temp": {
+          "verdi": 450,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Pork Chop (Bone-In) | 450°F | 8–16 min | Flip"
+        },
+        "c-ben-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Pork Chop (Bone-In) | 450°F | 8–16 min | Flip"
+        },
+        "c-ben-tid-maks": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Pork Chop (Bone-In) | 450°F | 8–16 min | Flip"
+        },
+        "m-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "pork chops (6.5 ounces) | 400 | 12"
+        },
+        "m-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "pork chops (6.5 ounces) | 400 | 12"
+        },
+        "pb-temp": {
+          "verdi": 360,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Pork chops 4-18 10-14 360"
+        },
+        "pb-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Pork chops 4-18 10-14 360"
+        },
+        "pb-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Pork chops 4-18 10-14 360"
+        },
+        "kjerne": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Beef, Pork, Veal and Lamb Steaks, Chops and Roasts | 145 degrees F (62.8 degrees C) and allow to rest for at least 3 minutes"
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fsis-chart",
+          "merknad": "Beef, Pork, Veal and Lamb Steaks, Chops and Roasts | 145 degrees F (62.8 degrees C) and allow to rest for at least 3 minutes"
+        }
+      },
+      "tekst": {
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    },
+    {
+      "id": "biff",
+      "slug": "steak",
+      "navn": "Steak",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-strip-temp": {
+          "verdi": 450,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "New York Strip (1-inch) | 450°F | 6–12 min | Flip"
+        },
+        "c-strip-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "New York Strip (1-inch) | 450°F | 6–12 min | Flip"
+        },
+        "c-strip-tid-maks": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "New York Strip (1-inch) | 450°F | 6–12 min | Flip"
+        },
+        "c-ribeye-temp": {
+          "verdi": 450,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Boneless Ribeye (1-inch) | 450°F | 6–12 min | Flip"
+        },
+        "c-ribeye-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Boneless Ribeye (1-inch) | 450°F | 6–12 min | Flip"
+        },
+        "c-ribeye-tid-maks": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Boneless Ribeye (1-inch) | 450°F | 6–12 min | Flip"
+        },
+        "c-flank-temp": {
+          "verdi": 450,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Flank Steak (1-inch) | 450°F | 8–14 min | Flip"
+        },
+        "c-flank-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Flank Steak (1-inch) | 450°F | 8–14 min | Flip"
+        },
+        "c-flank-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Flank Steak (1-inch) | 450°F | 8–14 min | Flip"
+        },
+        "m-filet-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "filet mignon (8 ounces) | 400 | 18"
+        },
+        "m-filet-tid-min": {
+          "verdi": 18,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "filet mignon (8 ounces) | 400 | 18"
+        },
+        "m-ribeye-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "rib eye (8 ounces) | 400 | 10–15"
+        },
+        "m-ribeye-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "rib eye (8 ounces) | 400 | 10–15"
+        },
+        "m-ribeye-tid-maks": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "rib eye (8 ounces) | 400 | 10–15"
+        },
+        "m-flank-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "flank steak (1.5 pounds) | 400 | 12"
+        },
+        "m-flank-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "flank steak (1.5 pounds) | 400 | 12"
+        },
+        "k-temp": {
+          "verdi": 410,
+          "enhet": "°F",
+          "kilde": "kitchenaid",
+          "merknad": "STEAK | 410°F | 15 Minutes for Medium Done"
+        },
+        "k-tid-min": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "kitchenaid",
+          "merknad": "STEAK | 410°F | 15 Minutes for Medium Done"
+        },
+        "pb-temp": {
+          "verdi": 360,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Steak 4-18 8-12 360"
+        },
+        "pb-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Steak 4-18 8-12 360"
+        },
+        "pb-tid-maks": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Steak 4-18 8-12 360"
+        },
+        "kjerne": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Beef, Pork, Veal and Lamb Steaks, Chops and Roasts | 145 degrees F (62.8 degrees C) and allow to rest for at least 3 minutes"
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fsis-chart",
+          "merknad": "Beef, Pork, Veal and Lamb Steaks, Chops and Roasts | 145 degrees F (62.8 degrees C) and allow to rest for at least 3 minutes"
+        },
+        "c-onske-min": {
+          "verdi": 130,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Steak (varies by preference) | 130°–145°F"
+        },
+        "c-onske-maks": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Steak (varies by preference) | 130°–145°F"
+        }
+      },
+      "tekst": {
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    },
+    {
+      "id": "shrimp",
+      "slug": "shrimp",
+      "navn": "Shrimp",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 450,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Shrimp (Large) | 450°F | 3–5 min | Shake"
+        },
+        "c-tid-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Shrimp (Large) | 450°F | 3–5 min | Shake"
+        },
+        "c-tid-maks": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Shrimp (Large) | 450°F | 3–5 min | Shake"
+        },
+        "c-panert-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Breaded Shrimp | 390°F | 7–12 min | Shake"
+        },
+        "c-panert-tid-min": {
+          "verdi": 7,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Breaded Shrimp | 390°F | 7–12 min | Shake"
+        },
+        "c-panert-tid-maks": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Breaded Shrimp | 390°F | 7–12 min | Shake"
+        },
+        "m-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "shrimp | 400 | 5"
+        },
+        "m-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "shrimp | 400 | 5"
+        },
+        "m-panert-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "breaded shrimp | 400 | 9"
+        },
+        "m-panert-tid-min": {
+          "verdi": 9,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "breaded shrimp | 400 | 9"
+        },
+        "i-temp": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "instant",
+          "merknad": "Ingredient: Shrimp, Fresh Food Type: Meat, Poultry & Seafood Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 350°F / 177°C Cook Time: 8 - 10 mins"
+        },
+        "i-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Shrimp, Fresh Food Type: Meat, Poultry & Seafood Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 350°F / 177°C Cook Time: 8 - 10 mins"
+        },
+        "i-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "instant",
+          "merknad": "Ingredient: Shrimp, Fresh Food Type: Meat, Poultry & Seafood Food Quantity: N/A Function: Air Fry Pressure Level / Temperature: 350°F / 177°C Cook Time: 8 - 10 mins"
+        },
+        "kjerne": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Fish & Shellfish | 145 degrees F (62.8 degrees C)"
+        }
+      },
+      "tekst": {
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    },
+    {
+      "id": "gronnsaker",
+      "slug": "vegetables",
+      "navn": "Vegetables and broccoli",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-brokkoli-temp": {
+          "verdi": 425,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Broccoli | 425°F | 5–9 min | Shake | Small florets"
+        },
+        "c-brokkoli-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Broccoli | 425°F | 5–9 min | Shake | Small florets"
+        },
+        "c-brokkoli-tid-maks": {
+          "verdi": 9,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Broccoli | 425°F | 5–9 min | Shake | Small florets"
+        },
+        "m-brokkoli-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "broccoli | 400 | 6"
+        },
+        "m-brokkoli-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "broccoli | 400 | 6"
+        },
+        "k-brokkoli-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "kitchenaid",
+          "merknad": "BROCCOLI | 400°F | 6 Minutes"
+        },
+        "k-brokkoli-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "kitchenaid",
+          "merknad": "BROCCOLI | 400°F | 6 Minutes"
+        },
+        "c-rosenkal-temp": {
+          "verdi": 415,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Brussels Sprouts | 415°F | 8–16 min | Shake | Quartered"
+        },
+        "c-rosenkal-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Brussels Sprouts | 415°F | 8–16 min | Shake | Quartered"
+        },
+        "c-rosenkal-tid-maks": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Brussels Sprouts | 415°F | 8–16 min | Shake | Quartered"
+        },
+        "m-rosenkal-temp": {
+          "verdi": 380,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "brussels sprouts | 380 | 15"
+        },
+        "m-rosenkal-tid-min": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "brussels sprouts | 380 | 15"
+        },
+        "c-gulrot-temp": {
+          "verdi": 425,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Carrots | 425°F | 10–16 min | Shake | Sliced"
+        },
+        "c-gulrot-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Carrots | 425°F | 10–16 min | Shake | Sliced"
+        },
+        "c-gulrot-tid-maks": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Carrots | 425°F | 10–16 min | Shake | Sliced"
+        },
+        "m-gulrot-temp": {
+          "verdi": 380,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "carrots | 380 | 15"
+        },
+        "m-gulrot-tid-min": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "carrots | 380 | 15"
+        },
+        "c-blomkal-temp": {
+          "verdi": 425,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Cauliflower | 425°F | 8–14 min | Shake | Florets"
+        },
+        "c-blomkal-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Cauliflower | 425°F | 8–14 min | Shake | Florets"
+        },
+        "c-blomkal-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Cauliflower | 425°F | 8–14 min | Shake | Florets"
+        },
+        "m-blomkal-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "cauliflower | 400 | 12"
+        },
+        "m-blomkal-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "cauliflower | 400 | 12"
+        },
+        "c-bonner-temp": {
+          "verdi": 415,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Green Beans | 415°F | 4–8 min | Shake | Whole"
+        },
+        "c-bonner-tid-min": {
+          "verdi": 4,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Green Beans | 415°F | 4–8 min | Shake | Whole"
+        },
+        "c-bonner-tid-maks": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Green Beans | 415°F | 4–8 min | Shake | Whole"
+        },
+        "m-bonner-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "green beans | 400 | 5"
+        },
+        "m-bonner-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "green beans | 400 | 5"
+        },
+        "c-squash-temp": {
+          "verdi": 385,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Zucchini/Squash | 385°F | 8–14 min | Shake | 1-inch slices"
+        },
+        "c-squash-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Zucchini/Squash | 385°F | 8–14 min | Shake | 1-inch slices"
+        },
+        "c-squash-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Zucchini/Squash | 385°F | 8–14 min | Shake | 1-inch slices"
+        },
+        "m-squash-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "zucchini | 400 | 12"
+        },
+        "m-squash-tid-min": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "zucchini | 400 | 12"
+        },
+        "c-asparges-temp": {
+          "verdi": 365,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Asparagus | 365°F | 5–8 min | — | Whole spears"
+        },
+        "c-asparges-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Asparagus | 365°F | 5–8 min | — | Whole spears"
+        },
+        "c-asparges-tid-maks": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Asparagus | 365°F | 5–8 min | — | Whole spears"
+        },
+        "m-asparges-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "asparagus | 400 | 5"
+        },
+        "m-asparges-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "asparagus | 400 | 5"
+        }
+      },
+      "tekst": {
+        "ill:frosne": "Raw vegetables: Frozen vegetables crisp better than fresh.",
+        "msu:smaa": "Don’t cut vegetables too small. They could fall through the basket and burn at the bottom.",
+        "ill:blad": "Fresh greens: Circulating air causes light, leafy greens to shift, resulting in uneven cooking.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions."
+      }
+    },
+    {
+      "id": "baked-potato",
+      "slug": "baked-potato",
+      "navn": "Baked potato",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 385,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Potatoes (Baked, Whole) | 385°F | 50–60 min | — | 9–10 oz"
+        },
+        "c-tid-min": {
+          "verdi": 50,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Potatoes (Baked, Whole) | 385°F | 50–60 min | — | 9–10 oz"
+        },
+        "c-tid-maks": {
+          "verdi": 60,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Potatoes (Baked, Whole) | 385°F | 50–60 min | — | 9–10 oz"
+        },
+        "c-vekt-min": {
+          "verdi": 9,
+          "enhet": "ounces",
+          "kilde": "cosori",
+          "merknad": "Potatoes (Baked, Whole) | 385°F | 50–60 min | — | 9–10 oz"
+        },
+        "c-vekt-maks": {
+          "verdi": 10,
+          "enhet": "ounces",
+          "kilde": "cosori",
+          "merknad": "Potatoes (Baked, Whole) | 385°F | 50–60 min | — | 9–10 oz"
+        },
+        "id-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "idaho",
+          "merknad": "Set the temperature on your air fryer to 400°F."
+        },
+        "id-tid-min": {
+          "verdi": 30,
+          "enhet": "minutes",
+          "kilde": "idaho",
+          "merknad": "Air fry for 30-40 minutes."
+        },
+        "id-tid-maks": {
+          "verdi": 40,
+          "enhet": "minutes",
+          "kilde": "idaho",
+          "merknad": "Air fry for 30-40 minutes."
+        },
+        "id-kjerne": {
+          "verdi": 210,
+          "enhet": "°F",
+          "kilde": "idaho",
+          "merknad": "The best way to know your potato is done is when the internal temperature reaches 210°F."
+        },
+        "c-soet-temp": {
+          "verdi": 385,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Sweet Potato (Baked, Whole) | 385°F | 45–60 min | — | 9–10 oz"
+        },
+        "c-soet-tid-min": {
+          "verdi": 45,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Sweet Potato (Baked, Whole) | 385°F | 45–60 min | — | 9–10 oz"
+        },
+        "c-soet-tid-maks": {
+          "verdi": 60,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Sweet Potato (Baked, Whole) | 385°F | 45–60 min | — | 9–10 oz"
+        },
+        "m-soet-temp": {
+          "verdi": 380,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "sweet potatoes | 380 | 35–40"
+        },
+        "m-soet-tid-min": {
+          "verdi": 35,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "sweet potatoes | 380 | 35–40"
+        },
+        "m-soet-tid-maks": {
+          "verdi": 40,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "sweet potatoes | 380 | 35–40"
+        }
+      },
+      "tekst": {
+        "idaho:tid-avhenger": "Time will depend on your appliance, the size of your potatoes and how many you are cooking at once.",
+        "idaho:stikk": "After you wash the potatoes, make sure the skin is really dry and then poke them a few times with a fork to release the steam.",
+        "idaho:vend": "Check potatoes halfway through cook time and if they are getting really brown, flip.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions."
+      }
+    },
+    {
+      "id": "frossen-mat",
+      "slug": "frozen-foods",
+      "navn": "Frozen foods",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-nugg-temp": {
+          "verdi": 385,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Chicken Nuggets | 385°F | 7–12 min | Shake"
+        },
+        "c-nugg-tid-min": {
+          "verdi": 7,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Chicken Nuggets | 385°F | 7–12 min | Shake"
+        },
+        "c-nugg-tid-maks": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Chicken Nuggets | 385°F | 7–12 min | Shake"
+        },
+        "m-nugg-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "chicken nuggets | 400 | 10"
+        },
+        "m-nugg-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "chicken nuggets | 400 | 10"
+        },
+        "pb-nugg-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Chicken nuggets 4-18 6-10 390"
+        },
+        "pb-nugg-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Chicken nuggets 4-18 6-10 390"
+        },
+        "pb-nugg-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Chicken nuggets 4-18 6-10 390"
+        },
+        "c-mozz-temp": {
+          "verdi": 395,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Mozzarella Sticks | 395°F | 6–9 min | Flip"
+        },
+        "c-mozz-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Mozzarella Sticks | 395°F | 6–9 min | Flip"
+        },
+        "c-mozz-tid-maks": {
+          "verdi": 9,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Mozzarella Sticks | 395°F | 6–9 min | Flip"
+        },
+        "m-mozz-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "mozzarella sticks | 400 | 8"
+        },
+        "m-mozz-tid-min": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "mozzarella sticks | 400 | 8"
+        },
+        "k-mozz-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "kitchenaid",
+          "merknad": "MOZARELLA STICKS | 400°F | 5 to 7 Minutes"
+        },
+        "k-mozz-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "kitchenaid",
+          "merknad": "MOZARELLA STICKS | 400°F | 5 to 7 Minutes"
+        },
+        "k-mozz-tid-maks": {
+          "verdi": 7,
+          "enhet": "minutes",
+          "kilde": "kitchenaid",
+          "merknad": "MOZARELLA STICKS | 400°F | 5 to 7 Minutes"
+        },
+        "c-tots-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Tater Tots | 400°F | 16–24 min | Shake"
+        },
+        "c-tots-tid-min": {
+          "verdi": 16,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Tater Tots | 400°F | 16–24 min | Shake"
+        },
+        "c-tots-tid-maks": {
+          "verdi": 24,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Tater Tots | 400°F | 16–24 min | Shake"
+        },
+        "c-fisk-temp": {
+          "verdi": 395,
+          "enhet": "°F",
+          "kilde": "cosori",
+          "merknad": "Fish Sticks | 395°F | 6–14 min | Flip"
+        },
+        "c-fisk-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Fish Sticks | 395°F | 6–14 min | Flip"
+        },
+        "c-fisk-tid-maks": {
+          "verdi": 14,
+          "enhet": "minutes",
+          "kilde": "cosori",
+          "merknad": "Fish Sticks | 395°F | 6–14 min | Flip"
+        },
+        "m-fisk-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "msu",
+          "merknad": "fish sticks | 400 | 10"
+        },
+        "m-fisk-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "msu",
+          "merknad": "fish sticks | 400 | 10"
+        },
+        "pb-fisk-temp": {
+          "verdi": 390,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "Fish sticks 4-16 6-10 390"
+        },
+        "pb-fisk-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Fish sticks 4-16 6-10 390"
+        },
+        "pb-fisk-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "philips-book",
+          "merknad": "Fish sticks 4-16 6-10 390"
+        },
+        "pb-grad": {
+          "verdi": 70,
+          "enhet": "°F",
+          "kilde": "philips-book",
+          "merknad": "As a guide,lower the conventional oven temperature by 70 degrees and reduce the cooking time by half."
+        },
+        "pb-prosent": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "philips-book",
+          "merknad": "As a guide,lower the conventional oven temperature by 70 degrees and reduce the cooking time by half."
+        }
+      },
+      "tekst": {
+        "philips-book:pakket": "A variety of pre-made packaged foods can be cooked in theAirfryer.",
+        "cosori:tines": "Most frozen foods can go straight from freezer to basket with no thawing required.",
+        "cosori:is": "Ice crystals release moisture as they heat, and a full basket will steam the food rather than crisp.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "ill:ost": "Fresh cheese: Fresh cheese melts and becomes messy. Use frozen and breaded cheese, such as frozen mozzarella sticks.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "hard-boiled-eggs",
+      "navn": "Hard-boiled eggs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "c-temp": {
+          "verdi": 270,
+          "enhet": "°F",
+          "kilde": "cosori-egg",
+          "merknad": "Set temperature to 270°F and time to 15 minutes, then press Start/Pause."
+        },
+        "c-tid-min": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "cosori-egg",
+          "merknad": "Set temperature to 270°F and time to 15 minutes, then press Start/Pause."
+        }
+      },
+      "tekst": {
+        "cosori:kald": "The exception is hard-boiled eggs, which are placed into a cold basket.",
+        "cosori-egg:isbad": "Remove the eggs when done and place into an ice bath immediately to cool to room temperature.",
+        "cosori:uenighet": "Basket load, food thickness, starting temperature, and moisture content all influence actual cook time.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions."
+      }
+    },
+    {
+      "id": "reheat-pizza-leftovers",
+      "slug": "reheat-pizza-leftovers",
+      "navn": "Reheating pizza and leftovers",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pizza-tynn-temp": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Thin crust: 350°F for 3 – 4 minutes"
+        },
+        "pizza-tynn-tid-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Thin crust: 350°F for 3 – 4 minutes"
+        },
+        "pizza-tynn-tid-maks": {
+          "verdi": 4,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Thin crust: 350°F for 3 – 4 minutes"
+        },
+        "pizza-tykk-temp": {
+          "verdi": 320,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Thick crust: 320°F for 3 – 5 minutes"
+        },
+        "pizza-tykk-tid-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Thick crust: 320°F for 3 – 5 minutes"
+        },
+        "pizza-tykk-tid-maks": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Thick crust: 320°F for 3 – 5 minutes"
+        },
+        "pizza-topp-temp": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Toppings-heavy: 325°F for 5 minutes to prevent burning"
+        },
+        "pizza-topp-tid-min": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Toppings-heavy: 325°F for 5 minutes to prevent burning"
+        },
+        "pommes-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Thin-cut (fast food-style): 400°F for 3 – 5 minutes"
+        },
+        "pommes-tid-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Thin-cut (fast food-style): 400°F for 3 – 5 minutes"
+        },
+        "pommes-tid-maks": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Thin-cut (fast food-style): 400°F for 3 – 5 minutes"
+        },
+        "kylling-ben-temp": {
+          "verdi": 375,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Bone-in pieces: 375°F for 10 – 12 minutes"
+        },
+        "kylling-ben-tid-min": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Bone-in pieces: 375°F for 10 – 12 minutes"
+        },
+        "kylling-ben-tid-maks": {
+          "verdi": 12,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Bone-in pieces: 375°F for 10 – 12 minutes"
+        },
+        "kylling-tender-temp": {
+          "verdi": 375,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Boneless tenders: 375°F for 4 – 5 minutes"
+        },
+        "kylling-tender-tid-min": {
+          "verdi": 4,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Boneless tenders: 375°F for 4 – 5 minutes"
+        },
+        "kylling-tender-tid-maks": {
+          "verdi": 5,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Boneless tenders: 375°F for 4 – 5 minutes"
+        },
+        "biff-temp": {
+          "verdi": 400,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Whole steak: 400°F for 4 – 8 minutes, flipping halfway through the reheat"
+        },
+        "biff-tid-min": {
+          "verdi": 4,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Whole steak: 400°F for 4 – 8 minutes, flipping halfway through the reheat"
+        },
+        "biff-tid-maks": {
+          "verdi": 8,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Whole steak: 400°F for 4 – 8 minutes, flipping halfway through the reheat"
+        },
+        "ris-temp": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Rice: 350°F for 3 – 4 minutes"
+        },
+        "ris-tid-min": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Rice: 350°F for 3 – 4 minutes"
+        },
+        "ris-tid-maks": {
+          "verdi": 4,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Rice: 350°F for 3 – 4 minutes"
+        },
+        "lasagne-temp": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Single slice: 350°F for 6 – 7 minutes"
+        },
+        "lasagne-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Single slice: 350°F for 6 – 7 minutes"
+        },
+        "lasagne-tid-maks": {
+          "verdi": 7,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Single slice: 350°F for 6 – 7 minutes"
+        },
+        "pasta-temp": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "cosori-reheat",
+          "merknad": "Single portion: 350°F for 6 – 10 minutes"
+        },
+        "pasta-tid-min": {
+          "verdi": 6,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Single portion: 350°F for 6 – 10 minutes"
+        },
+        "pasta-tid-maks": {
+          "verdi": 10,
+          "enhet": "minutes",
+          "kilde": "cosori-reheat",
+          "merknad": "Single portion: 350°F for 6 – 10 minutes"
+        },
+        "il-temp": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "ill",
+          "merknad": "Reheating: Set air fryer temperature to 350 F and cook until food reaches internal temperature of 165 F."
+        },
+        "kjerne": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "ill",
+          "merknad": "Reheating: Set air fryer temperature to 350 F and cook until food reaches internal temperature of 165 F."
+        },
+        "fsis-rester": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Leftovers | 165 degrees F (73.9 degrees C)"
+        }
+      },
+      "tekst": {
+        "cosori:varmere": "Reheat at higher heat for crispier results.",
+        "cosori-reheat:mikro": "microwaving it can make the crust a chewy disappointment.",
+        "cosori-reheat:vann": "Tip: Add a splash of water or sauce to keep it from drying out.",
+        "cosori:varierer": "Cooking times may vary by food thickness, starting temperature, and basket load.",
+        "msu:justere": "Note: You may need to adjust cooking times and temperatures based on the size of the food and your air fryer’s cooking suggestions.",
+        "cosori:termometer": "Use an instant-read thermometer as your final check.",
+        "cosori:indre": "Internal temperature is what confirms food is done and safe to serve.",
+        "fsis-chart:termometer": "Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source."
+      }
+    }
+  ]
+}
