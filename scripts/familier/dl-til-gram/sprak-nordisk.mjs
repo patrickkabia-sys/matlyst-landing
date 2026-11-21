@@ -151,7 +151,7 @@ export const DA = {
   tesked: 'tsk',
   feil: 'Skriv en mængde, for eksempel 2 eller 2,5.',
   kalk: {
-    aria: 'Regnemaskine: deciliter til gram', mengde: 'Mængde', fra: 'Fra', til: 'Til', bytt: 'Skift retning', vanlige: 'Almindelige mængder',
+    aria: 'Omregner: deciliter til gram', mengde: 'Mængde', fra: 'Fra', til: 'Til', bytt: 'Skift retning', vanlige: 'Almindelige mængder',
     vare: 'Ingrediens', byttVare: 'Skift ingrediens',
   },
   kilder: { h2: 'Kilder', hentet: (d) => `Hentet ${d}` },
@@ -165,7 +165,7 @@ export const DA = {
   eyebrowRot: 'Værktøjer',
   navn: 'Dl til gram',
   steg: [['Skriv mængden', 'Vægten vises, mens du skriver.']],
-  skjelett: { stegTittel: 'Sådan bruger du regnemaskinen', cta: 'Regn opskrifter om i Matlyst' },
+  skjelett: { stegTittel: 'Sådan bruger du omregneren', cta: 'Regn opskrifter om i Matlyst' },
   faqTittelVare: (o) => `Spørgsmål om ${o}`,
   faqTittelNav: 'Spørgsmål om dl til gram',
   titleLang: (o) => `1 dl ${o} i gram: omregn dl, spsk og tsk`,
@@ -231,7 +231,7 @@ export const DA = {
   relatedRot: '/da/vaerktoejer/',
   navFaq: {
     q1: 'Hvor mange gram er 1 dl?',
-    a1: (rekke) => `Det afhænger af ingrediensen. ${rekke}. Vælg en ingrediens i regnemaskinen eller i tabellen.`,
+    a1: (rekke) => `Det afhænger af ingrediensen. ${rekke}. Vælg en ingrediens i omregneren eller i tabellen.`,
     q2: 'Hvordan regner jeg dl om til gram?',
     a2: (o, g, g2) => `Gang antallet af dl med vægten pr. dl for ingrediensen. 1 dl ${o} vejer ${g}, så 2 dl bliver til ${g2}.`,
     q3: 'Hvordan regner jeg gram om til dl?',

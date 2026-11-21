@@ -110,7 +110,7 @@ export const START = { c: 180, f: 350 };
 export const KORT_ETIKETTER = {
   nb: { aria: (F, T) => `Kalkulator: ${F.fl} til ${T.fl}`, mengde: 'Mengde', fra: 'Fra', til: 'Til', bytt: 'Bytt enheter', vanlige: 'Vanlige mengder', feil: 'Skriv inn en mengde, for eksempel 2 eller 2,5.' },
   sv: { aria: (F, T) => `Omvandlare: ${F.fl} till ${T.fl}`, mengde: 'Mängd', fra: 'Från', til: 'Till', bytt: 'Byt enheter', vanlige: 'Vanliga mängder', feil: 'Skriv en mängd, till exempel 2 eller 2,5.' },
-  da: { aria: (F, T) => `Regnemaskine: ${F.fl} til ${T.fl}`, mengde: 'Mængde', fra: 'Fra', til: 'Til', bytt: 'Skift enheder', vanlige: 'Almindelige mængder', feil: 'Skriv en mængde, for eksempel 2 eller 2,5.' },
+  da: { aria: (F, T) => `Omregner: ${F.fl} til ${T.fl}`, mengde: 'Mængde', fra: 'Fra', til: 'Til', bytt: 'Skift enheder', vanlige: 'Almindelige mængder', feil: 'Skriv en mængde, for eksempel 2 eller 2,5.' },
   en: { aria: (F, T) => `Calculator: ${F.fl} to ${T.fl}`, mengde: 'Amount', fra: 'From', til: 'To', bytt: 'Swap units', vanlige: 'Common amounts', feil: 'Enter an amount, for example 2 or 1/2.' },
 };
 

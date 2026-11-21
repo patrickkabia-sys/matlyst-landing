@@ -10,7 +10,7 @@ const stor = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const N = (id) => ENHETER[id].da;
 const gruppeIds = (g) => enheterFor('da').filter((id) => ENHETER[id].gruppe === g);
 
-// Dansk talformat: decimalkomma, fire gældende cifre og ingen tusindtalsseparator. Samme regel som regnemaskinekortet, så tabellen og kortets svar er ens.
+// Dansk talformat: decimalkomma, fire gældende cifre og ingen tusindtalsseparator. Samme regel som omregnerkortet, så tabellen og kortets svar er ens.
 const k = (n) => tall(n).replace('.', ',');
 /** Ordet for en enhed ved en bestemt mængde: samme regel som kortet (kort skrivemåde, men «1 cup» og «2 cups»). */
 const label = (v, id) => ordVed('da', id, v);
@@ -115,10 +115,10 @@ const FEJL = {
 };
 
 const MENTAL = {
-  volum: 'Et hurtigt overslag: en cup er lidt mindre end 2,5 dl, og en liter er lidt mere end fire cups. Brug regnemaskinen til alt, der skal hældes i en skål.',
+  volum: 'Et hurtigt overslag: en cup er lidt mindre end 2,5 dl, og en liter er lidt mere end fire cups. Brug omregneren til alt, der skal hældes i en skål.',
   vekt: 'Et hurtigt overslag: et pund er lidt mindre end et halvt kilo, og et kilo er lidt mere end to pund. En ounce er cirka 28 gram.',
   lengde: 'Et hurtigt overslag: en tomme er cirka 2,5 cm, og en form på 9 tommer er cirka 23 cm.',
-  temperatur: 'Et hurtigt overslag: fordobl celsiustallet, og læg 30 til for en grov Fahrenheit-værdi. Jo højere temperaturen er, jo mere unøjagtigt bliver det, så brug regnemaskinen til bagning.',
+  temperatur: 'Et hurtigt overslag: fordobl celsiustallet, og læg 30 til for en grov Fahrenheit-værdi. Jo højere temperaturen er, jo mere unøjagtigt bliver det, så brug omregneren til bagning.',
 };
 
 const GODT = {
@@ -184,9 +184,9 @@ const MATLYST = p('Det bliver hurtigt trælsomt at regne om i hånden, især nå
 
 function beskrivelse(F, T, kortSvar) {
   const kandidater = [
-    `Regn ${F.fl} om til ${T.fl} med en gratis regnemaskine. ${kortSvar}. Med tabel, formel og gode tips til køkkenet.`,
-    `Regn ${F.kort} om til ${T.kort} med en gratis regnemaskine. ${kortSvar}. Med tabel, formel og gode tips til køkkenet.`,
-    `Regn ${F.kort} om til ${T.kort} med en gratis regnemaskine. ${kortSvar}. Med tabel og formel.`,
+    `Regn ${F.fl} om til ${T.fl} med en gratis omregner. ${kortSvar}. Med tabel, formel og gode tips til køkkenet.`,
+    `Regn ${F.kort} om til ${T.kort} med en gratis omregner. ${kortSvar}. Med tabel, formel og gode tips til køkkenet.`,
+    `Regn ${F.kort} om til ${T.kort} med en gratis omregner. ${kortSvar}. Med tabel og formel.`,
   ];
   const ok = kandidater.find((t) => t.length >= 100 && t.length <= 160);
   return ok ?? kandidater[2];
@@ -223,16 +223,16 @@ export function sideForPar(fra, til) {
   const eksRes = konverter(eksVal, fra, til);
   const eksakt = (AMERIKANSK.has(fra) || AMERIKANSK.has(til))
     ? 'Faktoren er nøjagtig, men opskrifter runder den ofte af, så du møder lidt forskellige tal i forskellige kilder. Brug det afrundede tal, når opskriften tåler det.'
-    : temp ? 'Formlen er nøjagtig. Opskrifter runder som regel af til nærmeste 5 grader.' : 'Ja. Begge enheder er metriske eller danske husholdningsmål, så faktoren er nøjagtig, og regnemaskinen viser kun de gældende cifre.';
+    : temp ? 'Formlen er nøjagtig. Opskrifter runder som regel af til nærmeste 5 grader.' : 'Ja. Begge enheder er metriske eller danske husholdningsmål, så faktoren er nøjagtig, og omregneren viser kun de gældende cifre.';
   const faq = [
     temp ? q(`Hvad er ${k(eksVal)} ${F.kort} i ${T.kort}?`, `${val(eksVal, fra)} er ${val(eksRes, til)}. ${stor(regelTekst(fra, til))}.`)
       : q(`Hvor mange ${T.fl} er der i 1 ${F.en}?`, `1 ${F.en} er ${k(x)} ${T.fl}.`),
     temp ? q(`Hvad er ${k(eksempelVaerdier(til)[0])} ${T.kort} i ${F.kort}?`, `${k(eksempelVaerdier(til)[0])} ${T.kort} er ${k(konverter(eksempelVaerdier(til)[0], til, fra))} ${F.kort}.`)
       : q(`Hvor mange ${F.fl} er der i 1 ${T.en}?`, `1 ${T.en} er ${k(konverter(1, til, fra))} ${F.fl}.`),
-    q(`Hvordan regner jeg ${F.kort} om til ${T.kort} uden en regnemaskine?`, `${stor(regelTekst(fra, til))}. For eksempel er ${val(eksVal, fra)} lig med ${val(eksRes, til)}.`),
+    q(`Hvordan regner jeg ${F.kort} om til ${T.kort} uden en omregner?`, `${stor(regelTekst(fra, til))}. For eksempel er ${val(eksVal, fra)} lig med ${val(eksRes, til)}.`),
     q('Er omregningen nøjagtig?', eksakt),
     q(`Hvad bruges ${F.fl} og ${T.fl} til i madlavning?`, `${stor(F.fl)} bruges ${BRUG[fra]}. ${stor(T.fl)} bruges ${BRUG[til]}.`),
-    q(`Kan jeg regne ${T.kort} om til ${F.kort}?`, `Ja. Brug knappen til at skifte enheder i regnemaskinen, eller åbn siden om ${T.kort} til ${F.kort}. 1 ${T.en} er ${k(konverter(1, til, fra))} ${F.fl}.`),
+    q(`Kan jeg regne ${T.kort} om til ${F.kort}?`, `Ja. Brug knappen til at skifte enheder i omregneren, eller åbn siden om ${T.kort} til ${F.kort}. 1 ${T.en} er ${k(konverter(1, til, fra))} ${F.fl}.`),
     ...(medCups ? [[KOPP_BIORD.sammeSporsmal, KOPP_BIORD.sammeSvar]] : []),
     ...((fra === 'cups' && til === 'dl') || (fra === 'dl' && til === 'cups') ? [[KOPP_BIORD.dlSporsmal, KOPP_BIORD.dlSvar]] : []),
     q('Kan jeg bruge omregningen til en hel opskrift?', 'Ja, men regn alle ingredienser om i ét hug, og hold forholdene mellem dem ens. Rund først af til sidst. Bagning er følsom, så tjek mængderne, før du går i gang.'),
@@ -259,7 +259,7 @@ function hub() {
     const lister = par.map(([a, b]) => `<li><a href="/da/${parSti(a, b, 'da')}">${esc(N(a).kort)} til ${esc(N(b).kort)}</a>: ${esc(N(a).fl)} til ${esc(N(b).fl)}</li>`).join('');
     return [h, `<ul class="omregner-liste">${lister}</ul>`];
   };
-  const rik = p('Her finder du alle køkkenomregninger samlet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Hver side har en regnemaskine, en tabel og tips til opskrifter.') + p('Regnemaskinen herover regner volumen om. Til vægt, længde og temperatur bruger du listerne herunder.') + '\n' + byggLese({
+  const rik = p('Her finder du alle køkkenomregninger samlet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Hver side har en omregner, en tabel og tips til opskrifter.') + p('Omregneren herover regner volumen om. Til vægt, længde og temperatur bruger du listerne herunder.') + '\n' + byggLese({
     seksjoner: [
       ['Danske og amerikanske mål', p('Herhjemme måler vi med 1 tsk = 5 ml, 1 spsk = 15 ml og 1 dl = 100 ml. Amerikanske opskrifter bruger cups, spiseskefulde og teskefulde, som er lidt anderledes: en cup er 236,6 ml, og mange opskrifter runder den af til 2,4 dl. Vægt opgives i ounces og pund (1 ounce er 28,35 g, og 1 pund er 453,6 g), længder i tommer (1 tomme er 2,54 cm) og temperaturer i Fahrenheit.')],
       ...grupper.map(sektion),
@@ -271,7 +271,7 @@ function hub() {
     description: 'Gratis enhedsomregner til køkkenet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Med tabeller og tips til opskrifter.',
     eyebrow: 'Enhedsomregner',
     h1: 'Enhedsomregner til køkkenet',
-    lead: 'Alle køkkenomregninger samlet, med en regnemaskine og en tabel til hver.',
+    lead: 'Alle køkkenomregninger samlet, med en omregner og en tabel til hver.',
     forst: 'Vælg to enheder, og aflæs svaret.',
     stegTittel: 'Sådan bruger du omregneren',
     steg: [['Vælg enhederne', 'Vælg den enhed, din opskrift bruger, og den enhed, du vil have.'], ['Skriv mængden', 'Svaret vises, mens du skriver.'], ['Brug tabellen', 'Hver side har en tabel over de mængder, der oftest bruges.']],
