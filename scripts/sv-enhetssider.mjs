@@ -1,6 +1,6 @@
 // Enhetsomvandlare på svenska: en sida per enhetspar (ml till dl, cup till ml, °F till °C osv.) plus en hubbsida.
 // Samma motor och samma kalkylator (site.js) som de engelska sidorna; texten är skriven för svenska recept och svenska hushållsmått.
-import { ENHETER, FLERTALL, allePar, enheterFor, enhetsKort, kortSetning, konverter, parSti, tall } from './enheter.mjs';
+import { ENHETER, allePar, enheterFor, enhetsKort, kortSetning, konverter, ordVed, parSti, tall, tittelOgH1 } from './enheter.mjs';
 import { byggLese } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
@@ -11,9 +11,8 @@ const gruppeIds = (g) => enheterFor('sv').filter((id) => ENHETER[id].gruppe === 
 
 /** Svenskt talformat: decimalkomma, fyra gällande siffror och inget tusentalsmellanrum. Samma regel som omvandlarkortet, så tabellen och kortets svar blir lika. */
 const k = (n) => tall(n).replace('.', ',');
-const er1 = (v) => Math.abs(v - 1) < 1e-9;
-/** Ordet för en enhet vid en viss mängd (kort skrivsätt, men «1 cup» och «2 cups»). */
-const label = (v, id) => (FLERTALL.sv[id] ? FLERTALL.sv[id][er1(v) ? 0 : 1] : N(id).kort);
+/** Ordet för en enhet vid en viss mängd: samma regel som kortet (kort skrivsätt, men «1 cup» och «2 cups»). */
+const label = (v, id) => ordVed('sv', id, v);
 const val = (v, id) => `${k(v)} ${label(v, id)}`;
 
 const VERDIER = {
@@ -74,8 +73,8 @@ const NOTE = {
   'dl>cl': 'En deciliter är 10 centiliter. 2 dl är alltså 20 cl, vilket är bra att veta när ett recept blandar mått med en flaskas märkning.',
   'dl>l': 'Tio deciliter är en liter. Det gör det lätt att räkna ut hur stor gryta ett recept behöver: 15 dl soppa är 1,5 liter.',
   'l>dl': 'En liter är 10 deciliter. Ett recept på 1,5 liter buljong vill alltså ha 15 dl, och då kan du mäta upp med dl-måttet.',
-  'cups>ml': 'Amerikanska recept mäter i cups, men en cup är inte samma sak som muggen i skåpet. En cup är 236,6 ml. Många kokböcker avrundar till 240 ml, och därför ser du båda talen. Vid bakning är vägning säkrare än något volymmått.',
-  'ml>cups': 'Står receptet i milliliter och du bara har mått i cups delar du med 236,6. 250 ml är drygt en cup.',
+  'cups>ml': 'Amerikanska recept mäter i cups, men en cup är ett bestämt mått på 236,6 ml. Många kokböcker avrundar till 240 ml, och därför ser du båda talen. Vid bakning är vägning säkrare än något volymmått.',
+  'ml>cups': 'Står receptet i milliliter och du bara har amerikanska cupmått delar du med 236,6. 250 ml är drygt en cup.',
   'cups>dl': 'En cup är 2,366 dl, och recept avrundar ofta till 2,4 dl. Står det 2,5 dl i ett svenskt recept är det lite mer än en cup, och i förlåtande rätter som soppa spelar skillnaden ingen roll.',
   'dl>cups': 'Deciliter till cups: dela med 2,366. Tre deciliter är cirka 1,27 cups, alltså ungefär en och en kvarts cup i de flesta recept.',
   'cups>msk': 'En cup är ungefär 16 matskedar. Med svenska matskedar på 15 ml blir det 15,8 msk, så avrunda till 16 för de flesta recept och räkna noggrannare när du bakar.',
@@ -126,7 +125,7 @@ const NOTE = {
 
 const FEIL = {
   volum: [
-    'Att använda en kaffemugg som mätglas. En kaffemugg är sällan lika stor som ett mätglas, medan en cup är 236,6 ml.',
+    'Att mäta med en kaffemugg. En mugg rymmer sällan 236,6 ml, som en cup gör.',
     'Att blanda ihop flytande uns och uns som mäter vikt. Flytande uns är volym, uns på en förpackning är vikt.',
     'Att anta att en amerikansk pint, quart eller gallon är lika stor som den brittiska. De brittiska (imperial) måtten är större.',
     'Att avrunda för tidigt. Räkna om hela receptet först och avrunda sedan de färdiga mängderna.',
@@ -163,7 +162,7 @@ const MENTAL = {
 };
 
 const SKILLNAD = {
-  volum: 'I svenska recept är 1 krm = 1 ml, 1 tsk = 5 ml, 1 msk = 15 ml och 1 dl = 100 ml. De amerikanska måtten är lite annorlunda: en amerikansk tesked är 4,9 ml, en amerikansk matsked 14,8 ml och en cup 236,6 ml. Många recept avrundar cupen till 240 ml eller 2,4 dl, så du kan se olika tal för samma mått. Brittiska (imperial) pint och gallon är dessutom större än de amerikanska.',
+  volum: 'I svenska recept är 1 krm = 1 ml, 1 tsk = 5 ml, 1 msk = 15 ml och 1 dl = 100 ml. De amerikanska måtten är lite annorlunda: en amerikansk tesked är 4,9 ml, en amerikansk matsked 14,8 ml och en cup 236,6 ml. Många recept avrundar en cup till 240 ml eller 2,4 dl, så du kan se olika tal för samma mått. Brittiska (imperial) pint och gallon är dessutom större än de amerikanska.',
   vekt: 'Ett uns är 28,35 gram och ett pund är 453,6 gram. Sexton uns går på ett pund. Svenska recept anger nästan alltid gram och kilogram, så uns och pund dyker upp när du lagar efter ett amerikanskt eller brittiskt recept.',
   lengde: 'Ett tum är exakt 2,54 centimeter. Svenska recept anger formar och degtjocklek i centimeter och millimeter, medan amerikanska recept anger dem i tum, till exempel en kakform på 9 tum.',
   temperatur: 'Vattnet fryser vid 0 °C, som är 32 °F, och kokar vid 100 °C, som är 212 °F. Svenska recept använder Celsius. Amerikanska recept använder Fahrenheit, så 350 °F är 177 °C och 400 °F är 204 °C.',
@@ -213,11 +212,6 @@ const MATLYST = p('Att räkna om för hand blir snabbt tjatigt, särskilt när e
   + '<ul><li><strong>Importera en gång, ingen huvudräkning.</strong> Dela ett recept från Instagram, TikTok eller en webbplats med Matlyst och kontrollera utkastet innan du sparar.</li><li><strong>Skala portionerna.</strong> Ändra från 1 till 20 portioner så följer alla mängder med. Skalningen är linjär, så kontrollera bakning och kryddor själv.</li><li><strong>En inköpslista.</strong> Alla ingredienser samlas i en lista som är sorterad efter butiksavdelning.</li></ul>'
   + p('Matlyst är gratis att börja med, med 5 importer per kalendermånad. Läs mer om <a href="/sv/receptbok-app/">receptboksappen</a> eller se hur <a href="/sv/inkopslista/">inköpslistan</a> fungerar.');
 
-function titelFor(F, T) {
-  const full = `Räkna om ${F.kort} till ${T.kort}: ${F.fl} till ${T.fl}`;
-  return full.length <= 60 ? full : `Räkna om ${F.kort} till ${T.kort}`;
-}
-
 function beskrivningFor(F, T, kortSvar) {
   const kandidater = [
     `Räkna om ${F.fl} till ${T.fl} med en gratis omvandlare. ${kortSvar}. Med tabell, formel och köksråd.`,
@@ -227,12 +221,6 @@ function beskrivningFor(F, T, kortSvar) {
   return kandidater.find((t) => t.length >= 100 && t.length <= 160) ?? kandidater[1];
 }
 
-/** Är kortformen lika med namnet («cups», «tum»), skrivs enheten utan parentes: «Cups», inte «Cups (cup)». */
-const likNavn = (id) => [N(id).fl, N(id).en].some((t) => t.toLocaleLowerCase() === N(id).kort.toLocaleLowerCase());
-/** Parentesen sløyfes også når kortformen er siste ord i navnet («amerikanska gallon (gallon)» ville gitt to like nabo-ord). */
-const sisteOrd = (id) => N(id).fl.toLocaleLowerCase().split(' ').pop() === N(id).kort.toLocaleLowerCase();
-const medKort = (id) => (likNavn(id) || sisteOrd(id) ? N(id).fl : `${N(id).fl} (${N(id).kort})`);
-
 export function sideForPar(fra, til) {
   const F = N(fra); const T = N(til);
   const g = ENHETER[fra].gruppe;
@@ -241,8 +229,9 @@ export function sideForPar(fra, til) {
   const medCups = fra === 'cups' || til === 'cups';
   const note = NOTE[`${fra}>${til}`] ?? `${stor(F.fl)} förekommer i ${BRUK[fra]}. ${stor(T.fl)} förekommer i ${BRUK[til]}. Därför räknar du om varje gång ett recept är skrivet för ett system och dina redskap följer det andra.`;
   const formel = g === 'temperatur' ? (fra === 'f' ? '°C = (°F - 32) × 5/9' : '°F = °C × 9/5 + 32') : `${T.kort} = ${F.kort} × ${k(x)}`;
-  const kortSvar = `1 ${label(1, fra)} = ${val(x, til)}`;
-  const likt = likNavn(fra) || likNavn(til);
+  const kortSvar = kortSetning('sv', fra, til);
+  // Tittel och H1 följer mönstret alla sidor har (tittelOgH1), även de med lika led som cups.
+  const { title, h1 } = tittelOgH1('sv', fra, til, (a, b) => `Räkna om ${a} till ${b}`);
   const exVal = (VERDIER[fra] ?? [2]).find((v) => v >= 2) ?? 2;
   const rik = byggLese({
     seksjoner: [
@@ -251,7 +240,7 @@ export function sideForPar(fra, til) {
       [`Där recept använder ${F.fl} och ${T.fl}`, (medCups ? p(KOPP_BIORD.forklaring) : '') + p(note) + p(`Det här är förklaringen till att samma recept kan se olika ut beroende på var det är skrivet. Titta alltid efter vilken enhet receptet använder innan du mäter upp, och räkna om alla mängder på en gång.`)],
       ['Tips för mätning', MAALETIPS[g] + p(MENTAL[g])],
       ['Vanliga misstag vid omräkning', `<ul>${FEIL[g].map((t) => `<li>${t}</li>`).join('')}</ul>`],
-      ['Räkna om ett helt recept', p(`När ett recept är skrivet i ${F.fl} och du lagar mat med ${T.fl}, räkna om alla mängder i ett svep och behåll proportionerna. Skriv de nya mängderna bredvid de gamla så att du kan kontrollera arbetet. Ska du också skala receptet uppåt eller nedåt, räkna om först och skala sedan, så slipper du avrunda två gånger.`) + p('Att göra det för ett recept går bra. Att göra det för hundra sparade recept är varför många använder en app.')],
+      ['Räkna om ett helt recept', p(`När ett recept är skrivet i ${F.fl} och du lagar mat med ${T.fl}, räkna om alla mängder i ett svep och behåll proportionerna. Skriv de nya mängderna bredvid de gamla så att du kan kontrollera arbetet. Ska du också skala receptet uppåt eller nedåt, räkna om först och skala sedan, så slipper du avrunda två gånger.`) + p('Att göra det för ett recept går bra. Att göra det för hundra sparade recept är skälet till att många använder en app.')],
       ['Sluta räkna om för hand', MATLYST],
       ['Närliggande omvandlingar', relaterte(fra, til)],
     ],
@@ -271,10 +260,10 @@ export function sideForPar(fra, til) {
     q('Räknar Matlyst om enheter i recept?', 'När du importerar ett recept visar Matlyst mängderna metriskt eller behåller källans mängder, beroende på inställningen Enheter i Inställningar. Med Metriskt räknas cups, uns och pund om till milliliter och gram. Inställningen gäller nya importer.'),
   ];
   return {
-    title: titelFor(F, T),
+    title,
     description: beskrivningFor(F, T, kortSvar),
     eyebrow: 'Enhetsomvandlare',
-    h1: likt ? `${stor(medKort(fra))} till ${medKort(til)}` : `${stor(F.fl)} till ${T.fl} (${F.kort} till ${T.kort})`,
+    h1,
     lead: `${stor(F.fl)} till ${T.fl}, med tabell, formel och det du bör se upp med i ett recept.`,
     forst: 'Skriv en mängd, välj enheter och läs av svaret.',
     stegTittel: `Så räknar du om ${F.fl} till ${T.fl}`,
@@ -290,7 +279,7 @@ const enhetsHub = (() => {
     const rader = ids.map((a) => `<li><strong>${N(a).fl}</strong>: ${ids.filter((b) => b !== a).map((b) => `<a href="/sv/${parSti(a, b, 'sv')}">till ${N(b).kort}</a>`).join(', ')}</li>`).join('');
     return [tittel, `<ul>${rader}</ul>`];
   };
-  return p('En gratis omvandlare för matlagning med alla kombinationer: milliliter, centiliter, deciliter, liter, kryddmått, teskedar, matskedar, cups, flytande uns, pints, quarts, gallon, gram, kilogram, uns, pund, millimeter, centimeter, tum och grader Celsius till Fahrenheit. Välj en omräkning nedan eller använd omvandlaren.') + p('Den här omvandlaren räknar volym. För vikt, längd och temperatur använder du listorna nedan.') + '\n' + byggLese({
+  return p('En gratis omvandlare för matlagning med alla kombinationer: milliliter, centiliter, deciliter, liter, kryddmått, teskedar, matskedar, cups, flytande uns, pints, quarts, gallon, gram, kilogram, uns, pund, millimeter, centimeter, tum och grader Celsius till Fahrenheit. Välj en omräkning nedan eller använd omvandlaren ovan.') + p('Omvandlaren ovan räknar om volym. För vikt, längd och temperatur använder du listorna nedan.') + '\n' + byggLese({
     seksjoner: [
       gruppe('volum', 'Volym: ml, dl, cups, matskedar och mer'),
       gruppe('vekt', 'Vikt: gram, kilogram, uns och pund'),
@@ -303,7 +292,7 @@ const enhetsHub = (() => {
 })();
 
 const hubSida = {
-  title: 'Enhetsomvandlare för matlagning: dl, ml, cups, °F',
+  title: 'Enhetsomvandlare för matlagning: dl, ml, cup, °F',
   description: 'Gratis enhetsomvandlare för matlagning med alla kombinationer: ml till dl, cup till ml, uns till g, pund till kg, °F till °C. Med tabeller och köksråd.',
   eyebrow: 'Enhetsomvandlare',
   h1: 'Enhetsomvandlare för matlagning',

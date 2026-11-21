@@ -1,7 +1,7 @@
 // Enhetsomregnere på norsk (bokmål): én side per enhetspar (ml til dl, cups til ml, °F til °C osv.) pluss en hub.
 // Samme struktur som den engelske (en-enhetssider.mjs), men skrevet for norske kjøkken: dl, ss, ts og krm er førsteklasses enheter.
 // Statisk tekst bruker desimalkomma og mellomrom som tusenskille; kalkulatoren (site.js) tar seg av tallene i nettleseren.
-import { ENHETER, FLERTALL, allePar, enheterFor, enhetsKort, kortSetning, konverter, parSti, tall } from './enheter.mjs';
+import { ENHETER, allePar, enheterFor, enhetsKort, kortSetning, konverter, ordVed, parSti, tall, tittelOgH1 } from './enheter.mjs';
 import { byggLese, byggRik } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
@@ -14,8 +14,8 @@ const href = (fra, til) => `/${parSti(fra, til, 'nb')}`;
 /** Norsk tallformat: desimalkomma, fire gjeldende sifre og ingen tusenskille. Samme regel som kalkulatorkortet, så tabellen og kortets svar er like. */
 const k = (n) => tall(n).replace('.', ',');
 const er1 = (v) => Math.abs(v - 1) < 1e-9;
-/** Ordet for en enhet ved en gitt mengde (kort skrivemåte, men «1 cup» og «2 cups»). */
-const label = (v, id) => (FLERTALL.nb[id] ? FLERTALL.nb[id][er1(v) ? 0 : 1] : N(id).kort);
+/** Ordet for en enhet ved en gitt mengde: samme regel som kortet (kort skrivemåte, men «1 cup» og «2 cups»). */
+const label = (v, id) => ordVed('nb', id, v);
 const val = (v, id) => `${k(v)} ${label(v, id)}`;
 const enhetOrd = (v, id) => (er1(v) ? N(id).en : N(id).fl);
 
@@ -78,12 +78,12 @@ const NOTE = {
   'ml>cl': 'Del milliliter på 10 for å få centiliter. 40 ml er 4 cl, og 150 ml er 15 cl.',
   'cl>dl': 'Ti centiliter er én desiliter. En oppskrift som oppgir 25 cl fløte, trenger altså 2,5 dl.',
   'dl>cl': 'Én desiliter er 10 cl. Ganger du desiliter med 10, får du centiliter.',
-  'krm>ml': 'Ett kryddermål er 1 ml, altså en femtedel teskje. Det er en liten klype eller en spiss av en målesje, og mengden er ment å være omtrentlig.',
+  'krm>ml': 'Ett kryddermål er 1 ml, altså en femtedel teskje. Det er en liten klype eller en spiss av en måleskje, og mengden er ment å være omtrentlig.',
   'ml>krm': 'Én milliliter er ett kryddermål. For slike små mengder er det enklest å måle med kryddermålet eller teskje i stedet for et målebeger.',
   'krm>ts': 'Fem kryddermål er én teskje. Har du bare teskje, regner du ett kryddermål som en femtedel av den.',
   'ts>krm': 'En teskje er fem kryddermål. Står det 2 krm i oppskriften, er det to femtedeler av en teskje.',
-  'ts>ml': 'En teskje er 5 ml. Bruk en målesje og stryk av, ikke teskjeen fra bestikkskuffen, for den varierer mye i størrelse.',
-  'ml>ts': 'Fem milliliter er én teskje. 10 ml er 2 ts. For små mengder krydder og bakepulver er målesjeer mer presise enn et målebeger.',
+  'ts>ml': 'En teskje er 5 ml. Bruk en måleskje og stryk av, ikke teskjeen fra bestikkskuffen, for den varierer mye i størrelse.',
+  'ml>ts': 'Fem milliliter er én teskje. 10 ml er 2 ts. For små mengder krydder og bakepulver er måleskjeer mer presise enn et målebeger.',
   'ss>ml': 'En spiseskje er 15 ml i norske oppskrifter. Tre teskjeer gir den samme mengden, så du kan bytte mellom dem uten å regne lenge.',
   'ml>ss': 'Femten milliliter er én spiseskje. 45 ml er 3 ss, og 100 ml er litt over 6 ss.',
   'ss>ts': 'Det går tre teskjeer på en spiseskje. Det er den enkleste måten å skalere en kryddermengde opp eller ned.',
@@ -91,20 +91,20 @@ const NOTE = {
   'ss>dl': 'Én spiseskje er 0,15 dl. Det går litt over seks spiseskjeer på en desiliter, så en oppskrift med 1 dl og 6 ss er ikke helt det samme.',
   'dl>ss': 'Én desiliter er 6,7 spiseskjeer, som du i praksis kan runde til 6 til 7 ss. Ønsker du presise mengder, kan du måle i ml.',
   'ts>tsp': 'En norsk teskje er 5 ml og en amerikansk er 4,93 ml. Forskjellen er så liten at du kan bruke dem om hverandre.',
-  'tsp>ts': 'En amerikansk teskje er 4,93 ml, mens norske oppskrifter regner 5 ml. I praksis er det samme mengde, og du kan bruke samme målesje.',
+  'tsp>ts': 'En amerikansk teskje er 4,93 ml, mens norske oppskrifter regner 5 ml. I praksis er det samme mengde, og du kan bruke samme måleskje.',
   'ss>tbsp': 'En norsk spiseskje er 15 ml og en amerikansk er 14,8 ml. Det er ikke noe å bry seg om i vanlig matlaging.',
   'tbsp>ss': 'En amerikansk spiseskje er 14,8 ml, mens norske oppskrifter regner 15 ml. Det kan du se bort fra i vanlig matlaging.',
   'cups>ml': 'Amerikanske oppskrifter måler med cups, men en cup er ikke det samme som kruset du har i skapet. Den er 236,6 ml, og mange oppskrifter runder av til 2,4 dl. Til baking er det sikrere å veie enn å måle i volum.',
-  'ml>cups': 'Er en oppskrift skrevet i milliliter og du bare har et amerikansk målebeger i cups, deler du på 236,6. 250 ml er litt mer enn én cup.',
+  'ml>cups': 'Er en oppskrift skrevet i milliliter og du bare har amerikanske målebegre, deler du på 236,6. 250 ml er litt mer enn én cup.',
   'cups>dl': 'En cup er 2,366 dl, og oppskrifter runder ofte av til 2,4 dl. Står det 2,5 dl i en norsk oppskrift, er det litt mer enn en cup, og i suppe og gryte spiller forskjellen liten rolle.',
   'dl>cups': 'Del desiliter på 2,366 for å få cups. Tre desiliter er ca. 1,27 cups, altså én og en kvart cup i de fleste oppskrifter.',
   'cups>l': 'En cup er 0,237 liter. Fire cups er litt under en liter, noe som er greit å huske når du skal lage en stor porsjon suppe.',
   'l>cups': 'Én liter er litt over fire cups (4,23). Skal du lage en oppskrift for én liter kraft, trenger du altså litt mer enn fire cups.',
-  'cups>tbsp': 'Det går 16 amerikanske spiseskjeer på én cup. En kvart cup er 4 spiseskjeer, og en tredjedel cup er litt over 5.',
+  'cups>tbsp': 'Det går 16 amerikanske spiseskjeer på én cup. En kvart cup er 4 spiseskjeer, og en tredjedels cup er litt over 5.',
   'tbsp>ml': 'En amerikansk spiseskje er 14,8 ml, og de fleste oppskrifter runder av til 15 ml. I Australia er en spiseskje 20 ml, så sjekk hvor oppskriften kommer fra før du regner om.',
   'ml>tbsp': 'Små mengder væske i metriske oppskrifter blir spiseskjeer i amerikanske. 15 ml er ca. én amerikansk spiseskje.',
-  'tsp>ml': 'En amerikansk teskje er 4,9 ml, som oppskrifter runder av til 5 ml. Bruk en målesje og stryk av, ikke teskjeen fra bestikkskuffen.',
-  'ml>tsp': 'Fem milliliter er ca. én amerikansk teskje. For små mengder krydder og ekstrakter er målesje mer presist enn målebeger.',
+  'tsp>ml': 'En amerikansk teskje er 4,9 ml, som oppskrifter runder av til 5 ml. Bruk en måleskje og stryk av, ikke teskjeen fra bestikkskuffen.',
+  'ml>tsp': 'Fem milliliter er ca. én amerikansk teskje. For små mengder krydder og ekstrakter er måleskje mer presist enn målebeger.',
   'tbsp>tsp': 'Det går tre teskjeer på én amerikansk spiseskje. Det er den enkleste måten å skalere en kryddermengde opp eller ned.',
   'tsp>tbsp': 'Tre teskjeer er én amerikansk spiseskje. Fire teskjeer er én spiseskje og én teskje.',
   'oz>ml': 'Denne siden regner om væskeunser, som er et volummål. En amerikansk væskeunse er 29,57 ml. Unser på en melpakke eller en ostebit måler vekt, så bruk omregneren fra unser til gram for dem.',
@@ -135,14 +135,14 @@ const NOTE = {
 };
 
 const FEIL = {
-  volum: ['Å bruke et kaffekrus som målebeger. Kruset i skapet har sjelden samme størrelse som et målebeger, mens en cup er 236,6 ml.', 'Å blande væskeunser og unser. Væskeunser måler volum, mens unser på en pakke måler vekt.', 'Å tro at amerikansk og britisk pint, quart og gallon er like. De britiske er større.', 'Å avrunde for tidlig. Regn om hele oppskriften først, og rund av til slutt.', 'Å måle tørrvarer i et målebeger for væske. Mel og sukker pakker seg, og du får for mye.', 'Å bruke skjeen fra bestikkskuffen i stedet for en målesje. Størrelsen varierer mye fra skje til skje.'],
+  volum: ['Å måle med et kaffekrus. Kruset i skapet rommer sjelden 236,6 ml, som er det en cup er.', 'Å blande væskeunser og unser. Væskeunser måler volum, mens unser på en pakke måler vekt.', 'Å tro at amerikansk og britisk pint, quart og gallon er like. De britiske er større.', 'Å avrunde for tidlig. Regn om hele oppskriften først, og rund av til slutt.', 'Å måle tørrvarer i et målebeger for væske. Mel og sukker pakker seg, og du får for mye.', 'Å bruke skjeen fra bestikkskuffen i stedet for en måleskje. Størrelsen varierer mye fra skje til skje.'],
   vekt: ['Å lese unser på pakken som væskeunser. Vekt og volum er ulike mål.', 'Å bruke cups til mel og vente samme antall gram hver gang. Øser du mel rett fra posen, pakker det seg. Skjer du det i målebegeret og stryker av, blir det mindre.', 'Å runde et pund til 500 g når oppskriften er følsom, som brødbaking. Et pund er 454 g.', 'Å glemme å nullstille vekten etter at bollen er satt på.', 'Å regne om én ingrediens og ikke resten, slik at forholdene mellom dem forskyves.'],
   lengde: ['Å måle formen utenpå kanten i stedet for på innsiden.', 'Å bytte en form på 9 tommer med en på 20 cm uten å sjekke. Arealet er ikke det samme.', 'Å glemme at en dypere form trenger lengre steketid.', 'Å lese mm som cm når du kjevler deig.', 'Å ikke runde av til en formstørrelse du faktisk kan kjøpe.'],
   temperatur: ['Å bruke celsius-tallet på en ovn som viser fahrenheit. Da blir det alt for kaldt.', 'Å glemme at en ovn med varmluft ofte trenger lavere temperatur.', 'Å stole på ovnens knapp i stedet for et ovnstermometer.', 'Å åpne ovnsdøren for ofte. Temperaturen faller raskt.', 'Å regne om en oppskrift som oppgir gassmerke uten å sjekke din egen ovn.'],
 };
 
 const MAALETIPS = {
-  volum: p('Bruk et målebeger for væske og strykemål for tørre ingredienser. Les av målebegeret i øyehøyde på et flatt underlag, og stryk av skjeer og målebegre med baksiden av en kniv. Amerikanske, britiske og australske mål med samme navn er ikke alltid like store, så sjekk hvor oppskriften kommer fra.'),
+  volum: p('Bruk et målebeger for væske og strykemål for tørre ingredienser. Les av målebegeret i øyehøyde på et flatt underlag, og stryk av skjeer og strykemål med baksiden av en kniv. Amerikanske, britiske og australske mål med samme navn er ikke alltid like store, så sjekk hvor oppskriften kommer fra.'),
   vekt: p('En kjøkkenvekt slår alle målebegre, særlig for mel og sukker. Sett bollen på vekten, nullstill den og hell i ingrediensen. Har du bare cups, husk at en cup mel og en cup sukker ikke veier det samme.'),
   lengde: p('Mål formen på tvers, fra innside til innside av kanten, ikke over den ytre kanten. En form som er én størrelse unna, endrer steketiden, så sjekk kaken tidligere hvis formen din er større enn oppskriften sier.'),
   temperatur: p('Ovnens knapp viser ikke alltid riktig temperatur. Et rimelig ovnstermometer forteller deg hva som faktisk skjer inni. Ovner med varmluft steker raskere, så mange oppskrifter anbefaler lavere temperatur når du bruker varmluft.'),
@@ -210,12 +210,6 @@ const MATLYST = p('Å regne om for hånd blir fort slitsomt, særlig når en hel
 const HELOPPSKRIFT = (F, T) => p(`Når en oppskrift står i ${F.fl} og du lager mat i ${T.fl}, regner du om alle mengdene i én runde og holder forholdene mellom dem uendret. Skriv de nye mengdene ved siden av de gamle, så kan du kontrollere underveis. Skal du også skalere oppskriften opp eller ned, regner du først om enhetene og skalerer etterpå, slik at du ikke avrunder to ganger.`)
   + p('Å gjøre dette for én oppskrift går fint. Å gjøre det for hundre lagrede oppskrifter er grunnen til at mange bruker en app.');
 
-/** Er kortformen lik flertallsnavnet («cups», «tommer»), skrives enheten uten parentes: «Cups», ikke «Cups (cups)». */
-const likNavn = (id) => N(id).fl.toLocaleLowerCase() === N(id).kort.toLocaleLowerCase();
-/** Parentesen sløyfes også når kortformen er siste ord i navnet («amerikanske gallon (gallon)» ville gitt to like nabo-ord). */
-const sisteOrd = (id) => N(id).fl.toLocaleLowerCase().split(' ').pop() === N(id).kort.toLocaleLowerCase();
-const medKort = (id) => (likNavn(id) || sisteOrd(id) ? N(id).fl : `${N(id).fl} (${N(id).kort})`);
-
 export function sideForPar(fra, til) {
   const F = N(fra); const T = N(til);
   const x = konverter(1, fra, til);
@@ -250,11 +244,9 @@ export function sideForPar(fra, til) {
     EKSTRASPORSMAL[g],
     q('Regner Matlyst om enheter i oppskrifter?', 'Når du importerer en oppskrift, kan mengdene vises metrisk eller beholdes slik kilden skrev dem, avhengig av innstillingen Enheter i Innstillinger. Med Metrisk regnes cups, unser og pund om til milliliter og gram. Innstillingen gjelder nye importer.'),
   ];
-  // Tittel: «Regn om kort til kort: fl til fl», forkortet om den blir for lang.
-  const likt = likNavn(fra) || likNavn(til);
-  const langTittel = likt ? `Regn om ${medKort(fra)} til ${medKort(til)}` : `Regn om ${F.kort} til ${T.kort}: ${F.fl} til ${T.fl}`;
-  const title = langTittel.length <= 60 ? langTittel : `Regn om ${F.kort} til ${T.kort}`;
-  const kortSvar = `1 ${label(1, fra)} = ${val(x, til)}`;
+  // Tittel og H1 følger mønsteret alle sidene har (tittelOgH1), også de med like ledd som cups.
+  const { title, h1 } = tittelOgH1('nb', fra, til, (a, b) => `Regn om ${a} til ${b}`);
+  const kortSvar = kortSetning('nb', fra, til);
   const descKand = [
     `Regn om ${F.fl} til ${T.fl} med en gratis kalkulator. ${kortSvar}. Med tabell, formel og tips til kjøkkenet.`,
     `Regn om ${F.kort} til ${T.kort} med en gratis kalkulator. ${kortSvar}. Med tabell, formel og tips til kjøkkenet.`,
@@ -266,7 +258,7 @@ export function sideForPar(fra, til) {
     title,
     description,
     eyebrow: 'Enhetsomregner',
-    h1: likt ? `${stor(medKort(fra))} til ${medKort(til)}` : `${stor(F.fl)} til ${T.fl} (${F.kort} til ${T.kort})`,
+    h1,
     lead: `${stor(F.fl)} til ${T.fl}, med tabell, formel og tips til hva du bør passe på i en oppskrift.`,
     forst: 'Skriv inn en mengde, velg enhetene og les av svaret.',
     stegTittel: `Slik regner du om ${F.fl} til ${T.fl}`,
@@ -282,8 +274,8 @@ const enhetsHub = (() => {
     const rader = ids.map((a) => `<li><strong>${esc(stor(N(a).fl))}</strong>: ${ids.filter((b) => b !== a).map((b) => `<a href="${href(a, b)}">til ${esc(N(b).kort)}</a>`).join(', ')}</li>`).join('');
     return [tittel, `<ul>${rader}</ul>`];
   };
-  return p('En gratis omregner for matlaging, med alle kombinasjoner: milliliter, desiliter, liter, kryddermål, teskjeer, spiseskjeer, cups, væskeunser, pints, quarts og gallon, gram, kilo, unser, pund, centimeter, tommer og °C til °F. Velg en omregning under, eller bruk kalkulatoren.')
-    + p('Kalkulatoren her regner om volum. For vekt, lengde og temperatur bruker du listene under.') + '\n' + byggLese({
+  return p('En gratis omregner for matlaging, med alle kombinasjoner: milliliter, desiliter, liter, kryddermål, teskjeer, spiseskjeer, cups, væskeunser, pints, quarts og gallon, gram, kilo, unser, pund, centimeter, tommer og °C til °F. Velg en omregning under, eller bruk kalkulatoren over.')
+    + p('Kalkulatoren over regner om volum. For vekt, lengde og temperatur bruker du listene under.') + '\n' + byggLese({
     seksjoner: [
       gruppe('volum', 'Volum: ml, dl, ss, ts, cups og mer'),
       gruppe('vekt', 'Vekt: gram, unser og pund'),

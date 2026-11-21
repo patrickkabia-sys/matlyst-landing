@@ -131,6 +131,25 @@ const ordI = (lang, id, entall) => {
   return form ? form[entall ? 0 : 1] : ENHETER[id][lang].kort;
 };
 
+/** Ordet for enheten ved en mengde, bøyd etter samme regel som kortet: entall når mengden vises som «1» (fire gjeldende sifre), ellers flertall. Enheter uten ordform står som kortformen. */
+export const ordVed = (lang, id, v) => ordI(lang, id, tall(v) === '1');
+
+/**
+ * Tittel og H1 for en enhetsomregner. `verb(a, b)` er språkets «Regn om a til b». Mønsteret er det samme for alle sidene, også de med like ledd (cups):
+ * tittel «<verb kort>: <navn> til <navn>» (kortformen alene når den er over 60 tegn eller når delen etter kolon bare gjentar leddet foran),
+ * H1 «<Navn> til <navn> (<kort> til <kort>)» (uten parentes når parentesen ville vært lik teksten foran).
+ */
+export function tittelOgH1(lang, fra, til, verb) {
+  const F = ENHETER[fra][lang]; const T = ENHETER[til][lang];
+  const ledd = { nb: 'til', sv: 'till', da: 'til', en: 'to' }[lang];
+  const parKort = `${F.kort} ${ledd} ${T.kort}`;
+  const parNavn = `${F.fl} ${ledd} ${T.fl}`;
+  const lik = parNavn.toLocaleLowerCase() === parKort.toLocaleLowerCase();
+  const lang0 = `${verb(F.kort, T.kort)}: ${parNavn}`;
+  const base = `${storBokstav(F.fl)} ${ledd} ${T.fl}`;
+  return { title: lik || lang0.length > 60 ? verb(F.kort, T.kort) : lang0, h1: lik ? base : `${base} (${parKort})` };
+}
+
 /** Setningen kortet viser uten JavaScript: startmengden regnet om («1 cup = 2,366 dl», «180 °C = 356 °F»). Det korte svaret under kortet åpner med den samme setningen, så de to viser samme regnestykke. */
 export function kortSetning(lang, fra, til) {
   const komma = lang !== 'en';

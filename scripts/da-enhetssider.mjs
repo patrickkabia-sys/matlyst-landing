@@ -1,7 +1,7 @@
 // Enhedsomregnere på dansk: én side pr. enhedspar (ml til dl, cup til ml, °F til °C osv.) plus en hub.
 // Samme motor som den engelske (en-enhetssider.mjs), men med danske tekster, dansk decimalkomma
 // og danske husholdningsmål (1 tsk = 5 ml, 1 spsk = 15 ml, 1 dl = 100 ml).
-import { ENHETER, FLERTALL, allePar, enheterFor, enhetsKort, kortSetning, konverter, parSti, tall } from './enheter.mjs';
+import { ENHETER, allePar, enheterFor, enhetsKort, kortSetning, konverter, ordVed, parSti, tall, tittelOgH1 } from './enheter.mjs';
 import { byggLese } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
@@ -12,9 +12,8 @@ const gruppeIds = (g) => enheterFor('da').filter((id) => ENHETER[id].gruppe === 
 
 // Dansk talformat: decimalkomma, fire gældende cifre og ingen tusindtalsseparator. Samme regel som regnemaskinekortet, så tabellen og kortets svar er ens.
 const k = (n) => tall(n).replace('.', ',');
-const er1 = (v) => Math.abs(v - 1) < 1e-9;
-/** Ordet for en enhed ved en bestemt mængde (kort skrivemåde, men «1 cup» og «2 cups»). */
-const label = (v, id) => (FLERTALL.da[id] ? FLERTALL.da[id][er1(v) ? 0 : 1] : N(id).kort);
+/** Ordet for en enhed ved en bestemt mængde: samme regel som kortet (kort skrivemåde, men «1 cup» og «2 cups»). */
+const label = (v, id) => ordVed('da', id, v);
 const val = (v, id) => `${k(v)} ${label(v, id)}`;
 
 const AMERIKANSK = new Set(['tsp', 'tbsp', 'oz', 'cups', 'pints', 'quarts', 'gallons', 'oz-vekt', 'lb', 'inches', 'f']);
@@ -63,13 +62,13 @@ const NOTE = {
   'dl>l': 'Ti deciliter er en liter. 15 dl er 1,5 liter, og 5 dl er en halv liter, som er mængden i en almindelig karton fløde eller yoghurt.',
   'l>ml': 'En liter er 1000 ml. Skal du bruge 1,5 liter, skal du bruge 1500 ml. Det er den omregning, du skal bruge, når et målebæger kun viser milliliter.',
   'ml>l': 'Tusind milliliter er en liter. 750 ml er 0,75 liter, og 250 ml er en kvart liter.',
-  'cups>ml': 'Amerikanske opskrifter måler i cups, men en cup er ikke det krus, du har i skabet. En cup er 236,6 ml. Mange kogebøger runder den af til 240 ml, derfor ser du begge tal. Ved bagning er det mere pålideligt at veje end at måle i volumen.',
-  'ml>cups': 'Er en opskrift skrevet i milliliter, og du kun har målebægre i cups, dividerer du med 236,6. 250 ml er lidt mere end én cup.',
+  'cups>ml': 'Amerikanske opskrifter måler i cups, men en cup er et bestemt mål på 236,6 ml. Mange kogebøger runder den af til 240 ml, derfor ser du begge tal. Ved bagning er det mere pålideligt at veje end at måle i volumen.',
+  'ml>cups': 'Er en opskrift skrevet i milliliter, og du kun har amerikanske målebægre, dividerer du med 236,6. 250 ml er lidt mere end én cup.',
   'cups>dl': 'En cup er 2,366 dl, og opskrifter runder den ofte af til 2,4 dl. Står der 2,5 dl i en dansk opskrift, er det lidt mere end en cup. I en suppe eller en gryderet gør forskellen ingenting.',
   'dl>cups': 'Fra deciliter til cups dividerer du med 2,366. Tre deciliter er cirka 1,27 cups, altså en og en kvart cup i de fleste opskrifter.',
   'tbsp>ml': 'En amerikansk spiseskefuld er 14,8 ml, som de fleste opskrifter runder af til 15 ml. En dansk spiseskefuld er 15 ml, så forskellen er så lille, at du sjældent mærker den. I Australien er en spiseskefuld 20 ml, så tjek, hvor opskriften kommer fra.',
   'ml>tbsp': 'Små mængder væske i metriske opskrifter bliver til spiseskefulde i amerikanske opskrifter. 15 ml er cirka én amerikansk spiseskefuld.',
-  'tsp>ml': 'En amerikansk teskefuld er 4,9 ml, som opskrifter runder af til 5 ml. Brug en afstrøget målske og ikke en ske fra bestikskuffen, for dens størrelse varierer meget.',
+  'tsp>ml': 'En amerikansk teskefuld er 4,9 ml, som opskrifter runder af til 5 ml. Brug en afstrøget måleske og ikke en ske fra bestikskuffen, for dens størrelse varierer meget.',
   'ml>tsp': 'Fem milliliter er cirka én amerikansk teskefuld. Til små mængder krydderi og essens er det bedre at måle med skeer end med et målebæger.',
   'spsk>ml': 'En spiseskefuld er 15 ml. Tre spiseskefulde olie er derfor 45 ml, og seks er 90 ml, altså lidt under 1 dl.',
   'ml>spsk': 'Fra milliliter til spiseskefulde dividerer du med 15. 30 ml er 2 spsk, og 100 ml er cirka 6,7 spsk.',
@@ -109,7 +108,7 @@ const NOTE = {
 };
 
 const FEJL = {
-  volum: ['Du bruger et kaffekrus som målebæger. Et kaffekrus er sjældent lige så stort som et målebæger, mens en cup er 236,6 ml.', 'Du blander flydende ounces og ounces som vægtmål. Flydende ounces måler volumen, mens ounces på en pakke måler vægt.', 'Du tror, at en pint eller en gallon er lige stor i USA og Storbritannien. De britiske (imperial) er større end de amerikanske.', 'Du runder af for tidligt. Regn hele opskriften om først, og rund først de endelige mængder af.', 'Du måler tørre ingredienser i et målebæger til væske, så de pakker sig og giver for meget.'],
+  volum: ['Du måler med et kaffekrus. Et krus rummer sjældent 236,6 ml, som er det, en cup er.', 'Du blander flydende ounces og ounces som vægtmål. Flydende ounces måler volumen, mens ounces på en pakke måler vægt.', 'Du tror, at en pint eller en gallon er lige stor i USA og Storbritannien. De britiske (imperial) er større end de amerikanske.', 'Du runder af for tidligt. Regn hele opskriften om først, og rund først de endelige mængder af.', 'Du måler tørre ingredienser i et målebæger til væske, så de pakker sig og giver for meget.'],
   vekt: ['Du tror, at ounces på pakken er flydende ounces. Vægt og volumen er to forskellige mål.', 'Du måler mel i cups og venter samme antal gram hver gang. Øser du, pakker melet sig, og hælder du det løst i og stryger af, bliver det mindre.', 'Du runder et pund af til 500 g i en følsom opskrift, for eksempel brød. Et pund er 454 g.', 'Du glemmer at nulstille vægten, når du har sat skålen på.', 'Du regner én ingrediens om og lader de andre stå, så forholdene mellem dem skrider.'],
   lengde: ['Du måler formen på ydersiden af kanten og ikke indvendigt.', 'Du skifter en form på 9 tommer ud med en på 20 cm uden at tjekke, men det er et andet areal.', 'Du glemmer, at en dybere form kræver længere bagetid.', 'Du læser mm som cm, når du ruller dej ud.', 'Du runder ikke af til en formstørrelse, som du faktisk kan købe.'],
   temperatur: ['Du bruger celsiustallet i en ovn, der viser Fahrenheit, og så bliver den langt for kold.', 'Du glemmer, at ovne med varmluft ofte kører med en lavere temperatur end en almindelig ovn.', 'Du stoler på ovnens drejeknap og ikke på et termometer.', 'Du åbner lågen for tit, så temperaturen falder hurtigt.', 'Du regner en opskrift om, der angiver gasmærke, uden at tjekke din egen ovn.'],
@@ -137,7 +136,7 @@ const EKSTRA = {
 };
 
 const MAALETIPS = {
-  volum: p('Brug et målebæger til væske og afstrøgne målskeer eller målebægre til tørre ingredienser. Aflæs bægeret i øjenhøjde på et vandret underlag, og stryg skeer og mål af med bagsiden af en kniv.', 'Amerikanske, britiske og australske mål med samme navn er ikke altid lige store, så tjek, hvor opskriften kommer fra, før du regner om.'),
+  volum: p('Brug et målebæger til væske og afstrøgne måleskeer eller målebægre til tørre ingredienser. Aflæs bægeret i øjenhøjde på et vandret underlag, og stryg skeer og mål af med bagsiden af en kniv.', 'Amerikanske, britiske og australske mål med samme navn er ikke altid lige store, så tjek, hvor opskriften kommer fra, før du regner om.'),
   vekt: p('En køkkenvægt slår ethvert målebæger, især til mel og sukker. Sæt skålen på vægten, nulstil den, og hæld ingrediensen i.', 'Har du kun målebægre, så husk, at en cup mel og en cup sukker ikke vejer det samme.'),
   lengde: p('Mål formen på tværs af toppen fra indvendig kant til indvendig kant og ikke over ydersiden af kanten.', 'En form, der er en størrelse forkert, ændrer bagetiden, så kig til kagen tidligere, hvis din form er større end den, opskriften nævner.'),
   temperatur: p('Ovnens drejeknap er ofte upræcis. Et billigt ovntermometer viser den rigtige temperatur.', 'Ovne med varmluft bager varmere, så mange opskrifter foreslår en lavere temperatur, når du bruger dem.'),
@@ -183,13 +182,6 @@ const MATLYST = p('Det bliver hurtigt trælsomt at regne om i hånden, især nå
   + '<ul><li><strong>Importér én gang, uden regnestykker.</strong> Del en opskrift fra Instagram, TikTok eller en hjemmeside med Matlyst, og gennemgå udkastet, før du gemmer.</li><li><strong>Regn portionerne om.</strong> Vælg fra 1 til 20 portioner, og alle mængder følger med. Omregningen er lineær, så tjek selv bagning og krydderier.</li><li><strong>Én indkøbsliste.</strong> Alle ingredienser samles på én liste, sorteret efter afdeling i butikken.</li></ul>'
   + p('Matlyst er gratis at starte med, med 5 importer pr. kalendermåned. Læs mere om <a href="/da/opskrifts-app/">opskriftsappen</a>, eller se, hvordan <a href="/da/indkoebsliste-app/">indkøbslisten</a> fungerer.');
 
-function titel(F, T) {
-  const lang = `Regn ${F.kort} om til ${T.kort}: ${F.fl} til ${T.fl}`;
-  if (lang.length <= 60) return lang;
-  const mellem = `Regn ${F.kort} om til ${T.kort}: ${F.kort} til ${T.kort}`;
-  return mellem.length <= 60 ? mellem : `Regn ${F.kort} om til ${T.kort}`;
-}
-
 function beskrivelse(F, T, kortSvar) {
   const kandidater = [
     `Regn ${F.fl} om til ${T.fl} med en gratis regnemaskine. ${kortSvar}. Med tabel, formel og gode tips til køkkenet.`,
@@ -200,20 +192,15 @@ function beskrivelse(F, T, kortSvar) {
   return ok ?? kandidater[2];
 }
 
-/** Er kortformen lig med navnet («cups», «tommer»), skrives enheden uden parentes: «Cups», ikke «Cups (cup)». */
-const likNavn = (id) => [N(id).fl, N(id).en].some((t) => t.toLocaleLowerCase() === N(id).kort.toLocaleLowerCase());
-/** Parentesen udelades også, når kortformen er sidste ord i navnet («amerikanske gallon (gallon)» ville give to ens nabo-ord). */
-const sisteOrd = (id) => N(id).fl.toLocaleLowerCase().split(' ').pop() === N(id).kort.toLocaleLowerCase();
-const medKort = (id) => (likNavn(id) || sisteOrd(id) ? N(id).fl : `${N(id).fl} (${N(id).kort})`);
-
 export function sideForPar(fra, til) {
   const F = N(fra); const T = N(til);
   const g = ENHETER[fra].gruppe;
   const x = konverter(1, fra, til);
   const temp = g === 'temperatur';
   const svar = `${kortSetning('da', fra, til)}. Når du skal regne ${F.fl} om til ${T.fl}, ${regelTekst(fra, til)}.`;
-  const kortSvar = `1 ${label(1, fra)} = ${val(x, til)}`;
-  const likt = likNavn(fra) || likNavn(til);
+  const kortSvar = kortSetning('da', fra, til);
+  // Titel og H1 følger mønstret alle sider har (tittelOgH1), også dem med ens led som cups.
+  const { title, h1 } = tittelOgH1('da', fra, til, (a, b) => `Regn ${a} om til ${b}`);
   const medCups = fra === 'cups' || til === 'cups';
   const note = NOTE[`${fra}>${til}`] ?? `${stor(F.fl)} bruges ${BRUG[fra]}. ${stor(T.fl)} bruges ${BRUG[til]}. Derfor regner du om, når en opskrift er skrevet i den ene enhed, og dine måleredskaber bruger den anden.`;
   const formel = temp ? (fra === 'f' ? '(°F - 32) × 5/9' : '°C × 9/5 + 32') : `${T.kort} = ${F.kort} × ${k(x)}`;
@@ -252,10 +239,10 @@ export function sideForPar(fra, til) {
     q('Regner Matlyst enheder om i opskrifter?', 'Når du importerer en opskrift, vælger du under Enheder i Indstillinger, om mængderne vises Metrisk, eller beholdes, som kilden skrev dem. Med Metrisk regnes cups, ounces og pund om til milliliter og gram. Indstillingen gælder nye importer.'),
   ];
   return {
-    title: titel(F, T),
+    title,
     description: beskrivelse(F, T, kortSvar),
     eyebrow: 'Enhedsomregner',
-    h1: likt ? `${stor(medKort(fra))} til ${medKort(til)}` : `${stor(F.fl)} til ${T.fl} (${F.kort} til ${T.kort})`,
+    h1,
     lead: `${stor(F.fl)} til ${T.fl} med tabel, formel og det, du skal være opmærksom på i en opskrift.`,
     forst: 'Skriv en mængde, vælg enhederne, og aflæs svaret.',
     stegTittel: `Sådan regner du ${F.fl} om til ${T.fl}`,
@@ -272,7 +259,7 @@ function hub() {
     const lister = par.map(([a, b]) => `<li><a href="/da/${parSti(a, b, 'da')}">${esc(N(a).kort)} til ${esc(N(b).kort)}</a>: ${esc(N(a).fl)} til ${esc(N(b).fl)}</li>`).join('');
     return [h, `<ul class="omregner-liste">${lister}</ul>`];
   };
-  const rik = p('Her finder du alle køkkenomregninger samlet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Hver side har en regnemaskine, en tabel og tips til opskrifter.') + p('Regnemaskinen her regner volumen om. Til vægt, længde og temperatur bruger du listerne herunder.') + '\n' + byggLese({
+  const rik = p('Her finder du alle køkkenomregninger samlet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Hver side har en regnemaskine, en tabel og tips til opskrifter.') + p('Regnemaskinen herover regner volumen om. Til vægt, længde og temperatur bruger du listerne herunder.') + '\n' + byggLese({
     seksjoner: [
       ['Danske og amerikanske mål', p('Herhjemme måler vi med 1 tsk = 5 ml, 1 spsk = 15 ml og 1 dl = 100 ml. Amerikanske opskrifter bruger cups, spiseskefulde og teskefulde, som er lidt anderledes: en cup er 236,6 ml, og mange opskrifter runder den af til 2,4 dl. Vægt opgives i ounces og pund (1 ounce er 28,35 g, og 1 pund er 453,6 g), længder i tommer (1 tomme er 2,54 cm) og temperaturer i Fahrenheit.')],
       ...grupper.map(sektion),
@@ -280,7 +267,7 @@ function hub() {
     ],
   });
   return {
-    title: 'Enhedsomregner til køkkenet: dl, ml, cups, g, °F',
+    title: 'Enhedsomregner til køkkenet: dl, ml, cup, g, °F',
     description: 'Gratis enhedsomregner til køkkenet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Med tabeller og tips til opskrifter.',
     eyebrow: 'Enhedsomregner',
     h1: 'Enhedsomregner til køkkenet',
