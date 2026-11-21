@@ -25,6 +25,8 @@
   --f:'Schibsted Grotesk',system-ui,-apple-system,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;
   --skygge:40 30 18;
+  /* Antall tegn i svaret i enhetskortet. site.js setter tallet per svar på output-feltet; 1 gjelder før det. Skriften i svarsiden krymper med det (side.css). */
+  --tegn:1;
 
   /* Appkort og prisplaner: uendrede verdier fra prototypen. */
   --a-natt:#2B2926;
