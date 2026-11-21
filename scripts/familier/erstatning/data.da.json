@@ -1,0 +1,363 @@
+{
+  "familie": "erstatning",
+  "marked": "da",
+  "kilder": {
+    "arla-erst": {
+      "navn": "Hvad kan man bruge i stedet for mælk, yoghurt, smør og fløde?",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/opskrifter/leksikon/viden/erstatning-for-mejeriprodukter/",
+      "hentet": "2026-11-21"
+    },
+    "mv-erst": {
+      "navn": "Erstatning for sukker og andet du mangler",
+      "utgiver": "Madens Verden",
+      "aar": 2021,
+      "adresse": "https://madensverden.dk/erstatning-for-sukker/",
+      "hentet": "2026-11-21"
+    },
+    "mv-vegan": {
+      "navn": "Veganske æg: alternativ til æg i mad og brød",
+      "utgiver": "Madens Verden",
+      "aar": 2021,
+      "adresse": "https://madensverden.dk/veganske-aeg-alternativer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-haeve": {
+      "navn": "Hævemidler: nem guide til de forskellige slags",
+      "utgiver": "Madens Verden",
+      "aar": 2024,
+      "adresse": "https://madensverden.dk/haevemidler/",
+      "hentet": "2026-11-21"
+    },
+    "oetker-haeve": {
+      "navn": "Hævemidler",
+      "utgiver": "Dr. Oetker",
+      "aar": 2026,
+      "adresse": "https://www.oetker.dk/produkter/s/bagning/bageingredienser/haevemidler",
+      "hentet": "2026-11-21"
+    },
+    "oetker-natron": {
+      "navn": "Natron",
+      "utgiver": "Dr. Oetker",
+      "aar": 2026,
+      "adresse": "https://www.oetker.dk/produkter/p/natron",
+      "hentet": "2026-11-21"
+    },
+    "arla-natron": {
+      "navn": "Tvekulsurt natron og anvendelse i bagning",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/opskrifter/leksikon/ravarer/tvekulsurt-natron/",
+      "hentet": "2026-11-21"
+    },
+    "mv-kaernemaelk": {
+      "navn": "Kærnemælk: fakta, brug og erstatning",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/kaernemaelk/",
+      "hentet": "2026-11-21"
+    },
+    "mv-floede": {
+      "navn": "Madlavningsfløde: brug, forskel og erstatning",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/madlavningsfloede/",
+      "hentet": "2026-11-21"
+    },
+    "mv-cf": {
+      "navn": "Creme fraiche: forskel på 9, 18 og 38 procent",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/creme-fraiche/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "egg",
+      "slug": "aeg",
+      "navn": "Æg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "vand": {
+          "verdi": 2,
+          "enhet": "spsk.",
+          "kilde": "mv-erst",
+          "merknad": "En blanding af 2 spiseskefulde vand, 2 teskefulde bagepulver og en spiseskefuld olie rørt godt sammen kan gøre det ud for et æg."
+        },
+        "bagepulver": {
+          "verdi": 2,
+          "enhet": "tsk.",
+          "kilde": "mv-erst",
+          "merknad": "En blanding af 2 spiseskefulde vand, 2 teskefulde bagepulver og en spiseskefuld olie rørt godt sammen kan gøre det ud for et æg."
+        }
+      },
+      "tekst": {
+        "funktion": "mv-vegan|Da æg har en del funktioner i for eksempel bagværk, både som bindingsmiddel, hævemiddel og fugtgiver, kan det synes svært at erstatte.",
+        "banan": "mv-erst|En moset, moden banan kan gøre det ud for et æg i en kage eller i pandekager.",
+        "kartofler": "mv-erst|To spiseskefulde kartoffelmos gør det ud for et æg.",
+        "kartoffelmel": "mv-erst|Ellers kan du blande to spiseskefulde kartoffelmel med to spiseskefulde vand i stedet.",
+        "hoerfroe": "mv-vegan|Hæld to spiseskefulde hørfrø i seks spiseskefulde vand.",
+        "hoerfroe2": "mv-vegan|Lad det trække i et kvarter, blend eventuelt og brug massen som alternativ til et æg.",
+        "loppefroe": "mv-vegan|Bland en teskefuld loppefrøskaller med tre spiseskefulde vand.",
+        "aquafaba": "mv-vegan|Tre spiseskefulde, pisket kikærtevand fra en dåse kikærter svarer til en æggehvide, når du skal lave for eksempel marengs."
+      }
+    },
+    {
+      "id": "kulturmelk-og-kefir",
+      "slug": "kaernemaelk",
+      "navn": "Kærnemælk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "holdbar": {
+          "verdi": 7,
+          "enhet": "dage",
+          "kilde": "mv-kaernemaelk",
+          "merknad": "Kærnemælk bør opbevares i køleskab ved højest 5 grader, hvor den har en holdbarhed på op til 7 dage dage efter åbning."
+        },
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "mv-kaernemaelk",
+          "merknad": "Kærnemælk bør opbevares i køleskab ved højest 5 grader, hvor den har en holdbarhed på op til 7 dage dage efter åbning."
+        }
+      },
+      "tekst": {
+        "arla": "arla-erst|Hvis du mangler kærnemælk, kan du prøve følgende alternativer: kefir yoghurt fortyndet med lidt vand mælk tilsat en smule citronsaft eller eddike",
+        "arlasyre": "arla-erst|Disse løsninger giver den syrlighed, som kærnemælk normalt bidrager med.",
+        "mv": "mv-kaernemaelk|Kærnemælk kan erstattes af andre surmælksprodukter som ymer, tykmælk, yoghurt eller A38, eller med almindelig mælk.",
+        "mvsur": "mv-kaernemaelk|Hvis mælken lugter surt, bør den ikke bruges til bagning, da bakterierne kan påvirke smagen og kvaliteten på bagværket.",
+        "natron": "arla-erst|Kærnemælk har en tydelig syre, som kan påvirke hævningen i bagværk, især hvis opskriften indeholder natron.",
+        "kompakt": "arla-erst|Mælk er mere neutral og vil give et lidt anderledes resultat",
+        "ikkealtid": "arla-erst|Ikke altid. Det afhænger af opskriften, da forskellige produkter har forskellig fedtprocent og syre."
+      }
+    },
+    {
+      "id": "bakepulver",
+      "slug": "bagepulver",
+      "navn": "Bagepulver",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mv-bp": {
+          "verdi": 1,
+          "enhet": "tsk.",
+          "kilde": "mv-haeve",
+          "merknad": "Natron ↔ bagepulver: Ja, men med justering: 1 tsk bagepulver = ca. ¼ tsk natron + syre"
+        }
+      },
+      "tekst": {
+        "oetker": "oetker-haeve|Man kan godt erstatte bagepulver med natron, men det bedste er at anvende det som opskriften foreskriver.",
+        "bitter": "oetker-haeve|Hvis man erstatter bagepulver med natron, kan smagen nemt blive bitter, hvis dejen ikke indeholder et surmælksprodukt.",
+        "syre": "oetker-natron|Hvis man bager med natron, skal dejen indeholde ingredienser der indeholder syre for at aktivere natronen, det kan fx være: surmælksprodukter (fx kærnemælk og yoghurt), brun farin, sirup, chokolade, kakaopulver, eddike og nogle frugtsafter (fx citron og appelsin).",
+        "mvsyre": "mv-erst|Natron: Har du natron, kan du bruge det i stedet, men her skal du tilsætte noget syrligt i dejen for at hjælpe på hæve-effekten.",
+        "halv": "mv-erst|Brug kun halv portion natron i forhold til bagepulver, da natron kan give en bitter eftersmag.",
+        "straks": "mv-haeve|husk, at den skal bages med det samme.",
+        "arla": "arla-natron|Hvis der ikke er syre til stede, dannes der CO2 + soda, der let kan give afsmag."
+      }
+    },
+    {
+      "id": "natron",
+      "slug": "natron",
+      "navn": "Natron",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mv-nat": {
+          "verdi": 1,
+          "enhet": "tsk.",
+          "kilde": "mv-haeve",
+          "merknad": "1 tsk natron = ca. 2-3 tsk bagepulver"
+        },
+        "mv-bp-min": {
+          "verdi": 2,
+          "enhet": "tsk.",
+          "kilde": "mv-haeve",
+          "merknad": "1 tsk natron = ca. 2-3 tsk bagepulver"
+        },
+        "mv-bp-maks": {
+          "verdi": 3,
+          "enhet": "tsk.",
+          "kilde": "mv-haeve",
+          "merknad": "1 tsk natron = ca. 2-3 tsk bagepulver"
+        }
+      },
+      "tekst": {
+        "oetker": "oetker-natron|Natron kan godt erstattes med bagepulver, men det er bedst at anvende det, som opskriften foreskriver.",
+        "dobbelt": "mv-erst|Omvendt: Hvis du mangler natron, kan du bruge dobbelt dosis bagepulver i stedet.",
+        "smag": "mv-haeve|men det påvirker smag og syrebalance",
+        "straks": "mv-haeve|husk, at den skal bages med det samme.",
+        "arla": "arla-natron|Natron anvendes derfor typisk til æbleskiver, hvor der ofte bruges kærnemælk.",
+        "syre": "oetker-natron|Natron indeholder ingen syre, til forskel fra bagepulver."
+      }
+    },
+    {
+      "id": "floete",
+      "slug": "floede",
+      "navn": "Fløde",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "madlav-min": {
+          "verdi": 8,
+          "enhet": "%",
+          "kilde": "mv-floede",
+          "merknad": "Madlavningsfløde indeholder typisk 8-18 procent fedt og kan være tilsat mel, stivelse eller stabilisator."
+        },
+        "madlav-maks": {
+          "verdi": 18,
+          "enhet": "%",
+          "kilde": "mv-floede",
+          "merknad": "Madlavningsfløde indeholder typisk 8-18 procent fedt og kan være tilsat mel, stivelse eller stabilisator."
+        },
+        "kaffe-min": {
+          "verdi": 9,
+          "enhet": "%",
+          "kilde": "mv-floede",
+          "merknad": "Kaffefløde indeholder typisk 9-12 procent fedt."
+        },
+        "kaffe-maks": {
+          "verdi": 12,
+          "enhet": "%",
+          "kilde": "mv-floede",
+          "merknad": "Kaffefløde indeholder typisk 9-12 procent fedt."
+        },
+        "cf": {
+          "verdi": 38,
+          "enhet": "%",
+          "kilde": "mv-cf",
+          "merknad": "Creme fraiche 38 procent er det sikreste valg til varme retter."
+        }
+      },
+      "tekst": {
+        "maelk": "arla-erst|Ja, du kan bruge mælk i stedet for fløde i mange retter, men resultatet bliver lettere og mindre cremet.",
+        "just": "arla-erst|Du kan justere resultatet ved at: jævne med lidt mel eller majsstivelse lade retten koge ind tilsætte en smule smør",
+        "soedmaelk": "arla-erst|Ja, sødmælk kan i mange tilfælde bruges i stedet for fløde",
+        "piske": "arla-erst|Hvis du har piskefløde, kan du fortynde den med mælk for at få en lettere version, der minder om madlavningsfløde.",
+        "madlav": "mv-floede|I de fleste salte retter kan madlavningsfløde erstatte piskefløde i samme mængde.",
+        "cfsauce": "mv-cf|Ja, i mange saucer og supper.",
+        "cfsmag": "mv-cf|Smagen bliver mere syrlig, og især de magre typer kræver forsigtig opvarmning.",
+        "ikkepiske": "mv-floede|Nej. Fedtindholdet er for lavt til, at den kan piskes til flødeskum."
+      }
+    },
+    {
+      "id": "smor",
+      "slug": "smoer",
+      "navn": "Smør",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "olie": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "mv-erst",
+          "merknad": "Når du erstatter smør med olie, skal du kun bruge 85 gram olie per 100 gram smør."
+        },
+        "smor": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-erst",
+          "merknad": "Når du erstatter smør med olie, skal du kun bruge 85 gram olie per 100 gram smør."
+        }
+      },
+      "tekst": {
+        "arla": "arla-erst|Ja, i mange kager og deje kan olie erstatte smør.",
+        "arlaforskel": "arla-erst|Olie giver en blød og smidig konsistens, mens smør bidrager med smag og struktur.",
+        "smaakager": "mv-erst|Mangler du smør, når du bager småkager og cookies, er der ikke rigtigt noget at gøre.",
+        "kager": "mv-erst|Men til kager og brød kan olie sagtens erstatte smørret.",
+        "valg": "arla-erst|Smør er ofte det bedste valg, når smagen er vigtig, fx i småkager."
+      }
+    },
+    {
+      "id": "creme-fraiche",
+      "slug": "creme-fraiche",
+      "navn": "Creme fraiche",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "let": {
+          "verdi": 18,
+          "enhet": "%",
+          "kilde": "mv-cf",
+          "merknad": "Jeg vælger som regel 18 procent til kolde retter, hvor den giver en god balance mellem syrlighed og fylde."
+        },
+        "varm": {
+          "verdi": 38,
+          "enhet": "%",
+          "kilde": "mv-cf",
+          "merknad": "Creme fraiche 38 procent er det sikreste valg til varme retter."
+        },
+        "mager-min": {
+          "verdi": 5,
+          "enhet": "%",
+          "kilde": "mv-cf",
+          "merknad": "Fraiche med 5 eller 9 procent skiller lettere."
+        },
+        "mager-maks": {
+          "verdi": 9,
+          "enhet": "%",
+          "kilde": "mv-cf",
+          "merknad": "Fraiche med 5 eller 9 procent skiller lettere."
+        }
+      },
+      "tekst": {
+        "arla": "arla-erst|Ja, græsk yoghurt er et oplagt alternativ til creme fraiche i fx dips og dressinger.",
+        "arlayog": "arla-erst|Til fx tzatziki kan både skyr, yoghurt og creme fraiche bruges, hvis du justerer smagen undervejs.",
+        "mayo": "arla-erst|Mayonnaise kan bruges i fx dressinger, hvis du mangler creme fraiche.",
+        "bagning": "mv-cf|Ved bagning kan creme fraiche ofte erstattes med yoghurt naturel eller græsk yoghurt i samme mængde.",
+        "mindre": "mv-cf|Resultatet kan dog blive lidt mindre fyldigt.",
+        "sour": "mv-cf|Sour cream minder om creme fraiche, men er typisk mindre fed og mere syrlig."
+      }
+    },
+    {
+      "id": "sukker",
+      "slug": "sukker",
+      "navn": "Sukker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "sirup": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "mv-erst",
+          "merknad": "Det betyder, at du skal bruge 75 gram sirup som erstatning for 100 gram sukker."
+        },
+        "sukker": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-erst",
+          "merknad": "Det betyder, at du skal bruge 75 gram sirup som erstatning for 100 gram sukker."
+        },
+        "honning": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-erst",
+          "merknad": "Hvis kagen skal have 180 grader, ja, så nøjes med 170 til samme bagetid."
+        },
+        "honning-ned": {
+          "verdi": 170,
+          "enhet": "°C",
+          "kilde": "mv-erst",
+          "merknad": "Hvis kagen skal have 180 grader, ja, så nøjes med 170 til samme bagetid."
+        }
+      },
+      "tekst": {
+        "sirup": "mv-erst|Sirup er et flydende sukkerprodukt, som sagtens kan erstatte den almindelige hvide, raffinerede sukker.",
+        "regel": "mv-erst|Du skal kun bruge tre fjerdedele af sukkerets angivne mængde.",
+        "honning": "mv-erst|Med honningen gælder samme princip om kun at bruge tre fjerdedel som erstatning for sukker.",
+        "temp": "mv-erst|Ydermere skal du tage lidt af temperaturen, når du bager med honning."
+      }
+    }
+  ]
+}

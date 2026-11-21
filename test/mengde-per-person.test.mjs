@@ -24,7 +24,7 @@ const SLUGS = ['biff', 'fisk', 'grillmat', 'julemat', 'kalkun', 'kjott', 'kjottd
 const ADRESSER = ['/mengde-per-person/', ...SLUGS.map((s) => `/mengde-per-person/${s}/`)];
 
 test('adresselås: samleside og 23 sider (nb), alle i sitemap.xml og bare der, og de norske adressene står ikke i de andre språkenes sitemap (engelsk har egen test)', () => {
-  assert.deepEqual(FAMILIE.markeder, { nb: { rot: 'mengde-per-person/' }, en: { rot: 'how-much-per-person/' } });
+  assert.deepEqual(FAMILIE.markeder, { nb: { rot: 'mengde-per-person/' }, da: { rot: 'hvor-meget-pr-person/' }, en: { rot: 'how-much-per-person/' } });
   assert.deepEqual(['/mengde-per-person/', ...rader.map((r) => `/mengde-per-person/${r.slug}/`)].sort(), [...ADRESSER].sort());
   const kart = readFileSync(join(ROT, 'sitemap.xml'), 'utf8');
   for (const a of ADRESSER) {

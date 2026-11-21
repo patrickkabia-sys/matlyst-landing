@@ -250,9 +250,9 @@ test('omregneren er statisk først: ingen tall i feltene, ingen class, regelen s
 test('samme rad-id på nb og en gir hreflang, og en vare uten norsk motstykke står alene', () => {
   const grupper = familieGrupper();
   const g = (navn) => grupper.find((x) => x.id === navn);
-  assert.deepEqual(g('auto-fam-airfryer-egg').sider, { nb: '/airfryer/egg/', en: '/en/air-fryer/hard-boiled-eggs/' });
-  assert.deepEqual(g('auto-fam-airfryer-ovn-til-airfryer').sider, { nb: '/airfryer/ovn-til-airfryer/', en: '/en/air-fryer/oven-to-air-fryer/' });
-  assert.deepEqual(g('auto-fam-airfryer-nav').sider, { nb: '/airfryer/', en: '/en/air-fryer/' });
+  assert.deepEqual(g('auto-fam-airfryer-egg').sider, { nb: '/airfryer/egg/', da: '/da/airfryer/aeg/', en: '/en/air-fryer/hard-boiled-eggs/' });
+  assert.deepEqual(g('auto-fam-airfryer-ovn-til-airfryer').sider, { nb: '/airfryer/ovn-til-airfryer/', da: '/da/airfryer/ovn-til-airfryer/', en: '/en/air-fryer/oven-to-air-fryer/' });
+  assert.deepEqual(g('auto-fam-airfryer-nav').sider, { nb: '/airfryer/', da: '/da/airfryer/', en: '/en/air-fryer/' });
   assert.deepEqual(g('auto-fam-airfryer-shrimp').sider, { en: '/en/air-fryer/shrimp/' });
   assert.deepEqual(g('auto-fam-airfryer-baked-potato').sider, { en: '/en/air-fryer/baked-potato/' });
   assert.deepEqual(g('auto-fam-airfryer-reheat-pizza-leftovers').sider, { en: '/en/air-fryer/reheat-pizza-leftovers/' });
