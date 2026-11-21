@@ -1,0 +1,979 @@
+{
+  "familie": "airfryer",
+  "marked": "da",
+  "kilder": {
+    "arla-airfryer": {
+      "navn": "Airfryer: anvendelse, opskrifter og tips",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/opskrifter/leksikon/viden/airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-konvert": {
+      "navn": "Ovn til airfryer: konverteringsskema for tid og temperatur",
+      "utgiver": "Madens Verden",
+      "aar": 2024,
+      "adresse": "https://madensverden.dk/ovn-til-airfryer-konverteringsskema/",
+      "hentet": "2026-11-21"
+    },
+    "mv-kerne": {
+      "navn": "Kernetemperatur og stegetid på alt kød",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/kernetemperatur-og-stegetid-paa-alt-koed/",
+      "hentet": "2026-11-21"
+    },
+    "mv-bryst": {
+      "navn": "Kyllingebryst i airfryer med stegetid og temperatur",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/kyllingebryst-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-laar": {
+      "navn": "Kyllingelår i airfryer med honningmarinade",
+      "utgiver": "Madens Verden",
+      "aar": 2024,
+      "adresse": "https://madensverden.dk/kyllingelaar-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-hel": {
+      "navn": "Hel kylling i airfryer: tid og temperatur",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/hel-kylling-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "arla-hel": {
+      "navn": "Hel kylling i airfryer",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/opskrifter/hel-kylling-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-laks": {
+      "navn": "Laks i airfryer",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/laks-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-pommes": {
+      "navn": "Pommes frites i airfryer: tid og temperatur",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/pommes-frites-i-airfryer-eller-actifry/",
+      "hentet": "2026-11-21"
+    },
+    "mv-bacon": {
+      "navn": "Bacon i airfryer",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/bacon-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-frikadeller": {
+      "navn": "Frikadeller i airfryer: stegetid, temperatur og nem opskrift",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/frikadeller-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-aeg": {
+      "navn": "Sådan laver du æg i airfryer: guide med tider og tips",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/saadan-laver-du-aeg-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-and": {
+      "navn": "Andebryst i airfryer: stegetid og temperatur",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/stegt-andebryst-i-airfryer/",
+      "hentet": "2026-11-21"
+    },
+    "dc-flaesk": {
+      "navn": "Flæskesteg i airfryer",
+      "utgiver": "Danish Crown",
+      "aar": 2026,
+      "adresse": "https://www.danishcrown.com/da-dk/opskrifter/flaeskesteg-i-airfryer/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ovn-til-airfryer",
+      "slug": "ovn-til-airfryer",
+      "navn": "Ovn til airfryer",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "a1-ovn": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "Temp. i varmluft | Temp. i airfryer | Min. i ovn | Min. i airfryer 150° | 135° | 10 | 8"
+        },
+        "a1-af": {
+          "verdi": 135,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "Temp. i varmluft | Temp. i airfryer | Min. i ovn | Min. i airfryer 150° | 135° | 10 | 8"
+        },
+        "a1-mo": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "Temp. i varmluft | Temp. i airfryer | Min. i ovn | Min. i airfryer 150° | 135° | 10 | 8"
+        },
+        "a1-ma": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "Temp. i varmluft | Temp. i airfryer | Min. i ovn | Min. i airfryer 150° | 135° | 10 | 8"
+        },
+        "a2-ovn": {
+          "verdi": 165,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "165° | 150° | 15 | 12"
+        },
+        "a2-af": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "165° | 150° | 15 | 12"
+        },
+        "a2-mo": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "165° | 150° | 15 | 12"
+        },
+        "a2-ma": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "165° | 150° | 15 | 12"
+        },
+        "a3-ovn": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "175° | 165° | 20 | 16"
+        },
+        "a3-af": {
+          "verdi": 165,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "175° | 165° | 20 | 16"
+        },
+        "a3-mo": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "175° | 165° | 20 | 16"
+        },
+        "a3-ma": {
+          "verdi": 16,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "175° | 165° | 20 | 16"
+        },
+        "a4-ovn": {
+          "verdi": 190,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "190° | 175° | 30 | 24"
+        },
+        "a4-af": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "190° | 175° | 30 | 24"
+        },
+        "a4-mo": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "190° | 175° | 30 | 24"
+        },
+        "a4-ma": {
+          "verdi": 24,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "190° | 175° | 30 | 24"
+        },
+        "a5-ovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "200° | 185° | 45 | 36"
+        },
+        "a5-af": {
+          "verdi": 185,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "200° | 185° | 45 | 36"
+        },
+        "a5-mo": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "200° | 185° | 45 | 36"
+        },
+        "a5-ma": {
+          "verdi": 36,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "200° | 185° | 45 | 36"
+        },
+        "a6-ovn": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "225° | 200° | 60 | 48"
+        },
+        "a6-af": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "arla-airfryer",
+          "merknad": "225° | 200° | 60 | 48"
+        },
+        "a6-mo": {
+          "verdi": 60,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "225° | 200° | 60 | 48"
+        },
+        "a6-ma": {
+          "verdi": 48,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "225° | 200° | 60 | 48"
+        },
+        "m-ovn": {
+          "verdi": 20,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "Fra over- og undervarme: Sænk temperaturen med cirka 20 grader."
+        },
+        "m-luft-min": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "Fra varmluft: Sænk temperaturen med cirka 10-20 grader."
+        },
+        "m-luft-maks": {
+          "verdi": 20,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "Fra varmluft: Sænk temperaturen med cirka 10-20 grader."
+        },
+        "m-tid": {
+          "verdi": 20,
+          "enhet": "%",
+          "kilde": "mv-konvert",
+          "merknad": "Forkort tilberedningstiden med omkring 20 procent."
+        },
+        "m-eks30": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mv-konvert",
+          "merknad": "En opskrift, der skal have 30 minutter i ovnen, vil derfor typisk skulle have omkring 24 minutter i airfryeren."
+        },
+        "m-eks24": {
+          "verdi": 24,
+          "enhet": "minutter",
+          "kilde": "mv-konvert",
+          "merknad": "En opskrift, der skal have 30 minutter i ovnen, vil derfor typisk skulle have omkring 24 minutter i airfryeren."
+        },
+        "m-u200": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "200 grader | 180 grader"
+        },
+        "m-u180": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "200 grader | 180 grader"
+        },
+        "m-v200": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "200 grader | 180-190 grader"
+        },
+        "m-v-min": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "200 grader | 180-190 grader"
+        },
+        "m-v-maks": {
+          "verdi": 190,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "200 grader | 180-190 grader"
+        },
+        "m-ou180": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "180 grader | 160 grader"
+        },
+        "m-ou160": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "180 grader | 160 grader"
+        },
+        "m-kontrol-min": {
+          "verdi": 18,
+          "enhet": "minutter",
+          "kilde": "mv-konvert",
+          "merknad": "Første kontrol efter cirka 18-20 minutter"
+        },
+        "m-kontrol-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-konvert",
+          "merknad": "Første kontrol efter cirka 18-20 minutter"
+        },
+        "f-ovn": {
+          "verdi": 60,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "Det tog 60 minutter at stege kyllingen i den almindelige ovn, mens det tog 40 minutter i airfryeren, hvor kyllingen var delt i to halve for at kunne være i beholderen."
+        },
+        "f-af": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "arla-airfryer",
+          "merknad": "Det tog 60 minutter at stege kyllingen i den almindelige ovn, mens det tog 40 minutter i airfryeren, hvor kyllingen var delt i to halve for at kunne være i beholderen."
+        },
+        "f-vaegt": {
+          "verdi": 1300,
+          "enhet": "g",
+          "kilde": "arla-airfryer",
+          "merknad": "tilberedning af en kylling på 1300 gram i ovn og i airfryer"
+        },
+        "max": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mv-konvert",
+          "merknad": "Mange airfryere kan højst indstilles til 200 grader."
+        }
+      },
+      "tekst": {
+        "arla": "arla-airfryer|Bemærk at tabellen kun er en tommelfingerregel, da det kommer an på den enkelte ovn og airfryers kapacitet og kraft.",
+        "mvkontrol": "mv-konvert|Begynd at kontrollere maden lidt før den beregnede tid.",
+        "mvkontrol2": "mv-konvert|Det giver et mere sikkert resultat end blot at følge en fast omregning uden at kontrollere undervejs.",
+        "stanniol": "arla-airfryer|Tildækning af maden med stanniol er en dårlig ide, fordi det forhindrer den varme luft i at opvarme maden.",
+        "forvarm": "arla-airfryer|Airfryeren når lynhurtigt op på den indstillede temperatur, fordi ovnen ikke skal forvarmes i længere tid inden brug.",
+        "hurtig": "mv-konvert|Forkort tilberedningstiden med omkring 20 procent.",
+        "mtemp1": "mv-konvert|Fra over- og undervarme: Sænk temperaturen med cirka 20 grader.",
+        "mtemp2": "mv-konvert|Fra varmluft: Sænk temperaturen med cirka 10-20 grader.",
+        "ikke": "arla-airfryer|Væsker i store mængder: Fx suppe eller saucer - det kan sprøjte og ødelægge airfryeren."
+      }
+    },
+    {
+      "id": "kyllingfilet",
+      "slug": "kyllingebryst",
+      "navn": "Kyllingebryst",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-bryst",
+          "merknad": "Kyllingebryst i airfryer skal nu have ca. 20 minutter ved 180 grader."
+        },
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-bryst",
+          "merknad": "Kyllingebryst i airfryer skal nu have ca. 20 minutter ved 180 grader."
+        },
+        "kerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-bryst",
+          "merknad": "opnå en kernetemperatur på 75 grader"
+        },
+        "tabel-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kylling i airfryer | Gennemstegt | 75 °C | 72-73 °C | 5-10 min. | 180 °C: bryst 15-22 min.; lår 20-30 min."
+        },
+        "tabel-maks": {
+          "verdi": 22,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kylling i airfryer | Gennemstegt | 75 °C | 72-73 °C | 5-10 min. | 180 °C: bryst 15-22 min.; lår 20-30 min."
+        },
+        "hvile-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kylling i airfryer | Gennemstegt | 75 °C | 72-73 °C | 5-10 min."
+        },
+        "hvile-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kylling i airfryer | Gennemstegt | 75 °C | 72-73 °C | 5-10 min."
+        }
+      },
+      "tekst": {
+        "store": "mv-bryst|Er det meget store stykker kyllingebryst forlænges tiden med nogle minutter, men pas på med ikke at stege kyllingekødet fuldstændig tørt.",
+        "tider": "mv-kerne|Tiden afhænger af størrelse og model"
+      }
+    },
+    {
+      "id": "kyllinglar",
+      "slug": "kyllingelaar",
+      "navn": "Kyllingelår",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid1": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-laar",
+          "merknad": "Luk skuffen, og steg nu kyllingelårene i 20 minutter ved 180 grader."
+        },
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-laar",
+          "merknad": "Luk skuffen, og steg nu kyllingelårene i 20 minutter ved 180 grader."
+        },
+        "tid2": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mv-laar",
+          "merknad": "giv nu kyllingelårene yderligere 5 minutter ved 180 grader"
+        },
+        "samlet": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mv-laar",
+          "merknad": "Kyllingelårene steges ved 180 grader i samlet cirka 25 minutter."
+        },
+        "kerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-laar",
+          "merknad": "Kernetemperaturen skal være mindst 75 grader."
+        },
+        "stor-min": {
+          "verdi": 2,
+          "enhet": "minutter",
+          "kilde": "mv-laar",
+          "merknad": "gives kyllingelårene yderligere 2-3 minutter, inden de kontrolleres igen"
+        },
+        "stor-maks": {
+          "verdi": 3,
+          "enhet": "minutter",
+          "kilde": "mv-laar",
+          "merknad": "gives kyllingelårene yderligere 2-3 minutter, inden de kontrolleres igen"
+        },
+        "vaegt-min": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "mv-laar",
+          "merknad": "De kaldes også drumsticks og vejer normalt omkring 125-150 gram stykket."
+        },
+        "vaegt-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-laar",
+          "merknad": "De kaldes også drumsticks og vejer normalt omkring 125-150 gram stykket."
+        },
+        "tabel-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kylling i airfryer | Gennemstegt | 75 °C | 72-73 °C | 5-10 min. | 180 °C: bryst 15-22 min.; lår 20-30 min."
+        },
+        "tabel-maks": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kylling i airfryer | Gennemstegt | 75 °C | 72-73 °C | 5-10 min. | 180 °C: bryst 15-22 min.; lår 20-30 min."
+        }
+      },
+      "tekst": {
+        "marin": "mv-laar|Honning og ketchup indeholder sukker, som hurtigt kan blive mørkt ved høj varme.",
+        "knogle": "mv-laar|Mål i den tykkeste del af kødet, men sørg for, at termometerets spids ikke rører knoglen.",
+        "lag": "mv-laar|Den varme luft skal kunne cirkulere omkring kyllingelårene."
+      }
+    },
+    {
+      "id": "hel-kylling",
+      "slug": "hel-kylling",
+      "navn": "Hel kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-hel",
+          "merknad": "Tænd airfryeren på 180 grader og giv den først 25 minutter."
+        },
+        "bryst": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mv-hel",
+          "merknad": "Tænd airfryeren på 180 grader og giv den først 25 minutter."
+        },
+        "opad": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mv-hel",
+          "merknad": "Giv den 25 minutter mere ved 180 grader."
+        },
+        "samlet": {
+          "verdi": 50,
+          "enhet": "minutter",
+          "kilde": "mv-hel",
+          "merknad": "En hel kylling på cirka 1,3 kilo skal som udgangspunkt have omkring 50 minutter ved 180 grader."
+        },
+        "vaegt": {
+          "verdi": 1.3,
+          "enhet": "kg",
+          "kilde": "mv-hel",
+          "merknad": "En hel kylling på cirka 1,3 kilo skal som udgangspunkt have omkring 50 minutter ved 180 grader."
+        },
+        "hvile": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-hel",
+          "merknad": "Lad den hvile i 10 minutter før udskæring, så kødsaften når at fordele sig."
+        },
+        "arla-temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "arla-hel",
+          "merknad": "bag den i 25 min. ved 180°"
+        },
+        "arla-tid": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "arla-hel",
+          "merknad": "bag den i 25 min. ved 180°"
+        },
+        "arla-vaegt": {
+          "verdi": 1200,
+          "enhet": "g",
+          "kilde": "arla-hel",
+          "merknad": "Kylling (ca. 1200 g)"
+        },
+        "arla-hvile": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "arla-hel",
+          "merknad": "Tag kyllingen ud og lad den evt. trække i ca. 10 min."
+        },
+        "kerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C | 72-73 °C | 15 min."
+        }
+      },
+      "tekst": {
+        "kurv": "mv-hel|Den skal kunne ligge i kurven, uden at skind eller lår kommer for tæt på varmelegemet.",
+        "vejl": "mv-hel|Tiden er vejledende, fordi airfryere varierer i størrelse og effekt.",
+        "termo": "mv-hel|Lad derfor kernetemperaturen afgøre, hvornår den er færdig.",
+        "stor": "arla-hel|Hvis kyllingen er for stor til at være i airfryeren, kan du med fordel skære lårene delvis fri, så kyllingen kan bredes ud.",
+        "maal": "mv-kerne|Mål i bryst og inderlår"
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "laks",
+      "navn": "Laks",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "mv-laks",
+          "merknad": "laks i airfryer skal have 12 minutter ved 180 grader med start fra kold"
+        },
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-laks",
+          "merknad": "laks i airfryer skal have 12 minutter ved 180 grader med start fra kold"
+        },
+        "vaegt": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "mv-laks",
+          "merknad": "Du skal bruge ca. 600 g laks."
+        },
+        "pp": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-laks",
+          "merknad": "jeg har beregnet 150 gram laks pr. person"
+        },
+        "actifry": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-laks",
+          "merknad": "Stegetiden er cirka 15 minutter."
+        }
+      },
+      "tekst": {
+        "tykke": "mv-laks|Som altid skal du bede fiskehandleren om at få et stykke laks fra den tykke ende - og ikke halestykket.",
+        "ben": "mv-laks|Tjek, at laksestykket er uden ben, og fjern nemt eventuelle fiskeben med en pincet."
+      }
+    },
+    {
+      "id": "pommes-frites",
+      "slug": "pommes-frites",
+      "navn": "Pommes frites",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid1": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-pommes",
+          "merknad": "giv dem først 15 minutter ved 100 grader"
+        },
+        "temp1": {
+          "verdi": 100,
+          "enhet": "°C",
+          "kilde": "mv-pommes",
+          "merknad": "giv dem først 15 minutter ved 100 grader"
+        },
+        "tid2": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mv-pommes",
+          "merknad": "giv dem cirka 25 minutter ved 180 grader"
+        },
+        "temp2": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-pommes",
+          "merknad": "giv dem cirka 25 minutter ved 180 grader"
+        },
+        "mere-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mv-pommes",
+          "merknad": "kan de have brug for yderligere 5-10 minutter"
+        },
+        "mere-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-pommes",
+          "merknad": "kan de have brug for yderligere 5-10 minutter"
+        },
+        "vand": {
+          "verdi": 1,
+          "enhet": "time",
+          "kilde": "mv-pommes",
+          "merknad": "lad dem stå i cirka 1 time"
+        },
+        "tyk": {
+          "verdi": 1,
+          "enhet": "cm",
+          "kilde": "mv-pommes",
+          "merknad": "Skær kartoflerne i skiver på cirka 1 centimeters tykkelse"
+        }
+      },
+      "tekst": {
+        "flere": "mv-pommes|Er kurven meget fyldt, er det bedre at tilberede dem i flere hold, så den varme luft kan cirkulere.",
+        "tor": "mv-pommes|Det vil tørre kartoflerne, så de bliver nemme at stege sprøde.",
+        "ryst": "mv-pommes|Ryst kurven grundigt efter cirka 10 minutter og igen efter cirka 20 minutter."
+      }
+    },
+    {
+      "id": "bacon",
+      "slug": "bacon",
+      "navn": "Bacon",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-bacon",
+          "merknad": "giv nu baconskiverne 10 minutter ved 180 grader"
+        },
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-bacon",
+          "merknad": "giv nu baconskiverne 10 minutter ved 180 grader"
+        },
+        "antal": {
+          "verdi": 6,
+          "enhet": "skiver",
+          "kilde": "mv-bacon",
+          "merknad": "Typisk kan du have ca. 6 skiver i Airfryeren ad gangen."
+        }
+      },
+      "tekst": {
+        "tyk": "mv-bacon|Er det tykkere skiver af bacon skal de måske have et minut eller to mere.",
+        "model": "mv-bacon|Tiden kan variere afhængig af modellen af Airfryeren.",
+        "forvarm": "mv-bacon|Fordelen ved at stege baconskiver i din Airfryer er blandet andet, at Airfryeren ikke skal forvarmes som din ovn, men den er hurtig klar."
+      }
+    },
+    {
+      "id": "kjottboller",
+      "slug": "frikadeller",
+      "navn": "Frikadeller",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-frikadeller",
+          "merknad": "Giv nu frikadellerne 15 minutter ved 180 grader."
+        },
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-frikadeller",
+          "merknad": "Giv nu frikadellerne 15 minutter ved 180 grader."
+        },
+        "antal": {
+          "verdi": 12,
+          "enhet": "stk.",
+          "kilde": "mv-frikadeller",
+          "merknad": "Form nu ca. 12 frikadeller af farsen"
+        },
+        "fars": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mv-frikadeller",
+          "merknad": "400 g hakket kalv og svin"
+        },
+        "kerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Frikadeller og kødboller | Gennemstegt | 75 °C | 75 °C | 3-5 min."
+        },
+        "hvile-min": {
+          "verdi": 3,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Frikadeller og kødboller | Gennemstegt | 75 °C | 75 °C | 3-5 min."
+        },
+        "hvile-maks": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Frikadeller og kødboller | Gennemstegt | 75 °C | 75 °C | 3-5 min."
+        }
+      },
+      "tekst": {
+        "papir": "mv-frikadeller|Der skal ikke anvendes bagepapir eller andet.",
+        "model": "mv-frikadeller|maskinerne kan være forskellige, så måske skal de have nogle minutter mere",
+        "farve": "mv-kerne|Farven er ikke en sikker metode til at vurdere, om hakket kød er færdigt."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "aeg",
+      "navn": "Æg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "mv-aeg",
+          "merknad": "Indstil airfryeren på 160 grader."
+        },
+        "bloed": {
+          "verdi": 9,
+          "enhet": "minutter",
+          "kilde": "mv-aeg",
+          "merknad": "Blødkogt æg: 9 minutter Smilende æg: 10 minutter Hårdkogt æg: 12 minutter"
+        },
+        "smil": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-aeg",
+          "merknad": "Blødkogt æg: 9 minutter Smilende æg: 10 minutter Hårdkogt æg: 12 minutter"
+        },
+        "haard": {
+          "verdi": 12,
+          "enhet": "minutter",
+          "kilde": "mv-aeg",
+          "merknad": "Blødkogt æg: 9 minutter Smilende æg: 10 minutter Hårdkogt æg: 12 minutter"
+        }
+      },
+      "tekst": {
+        "model": "mv-aeg|Husk, at tiden kan variere lidt afhængig af modellen på din airfryer.",
+        "gummi": "mv-aeg|Selvom æggene bliver fine i en airfryer, så kan hviden i ægget have en tendens til at blive lidt gummiagtig",
+        "koldt": "mv-aeg|De færdigkogte æg i airfryer lægges gerne i koldt vand, hvorefter de kan pilles."
+      }
+    },
+    {
+      "id": "andebryst",
+      "slug": "andebryst",
+      "navn": "Andebryst",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid1": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-and",
+          "merknad": "Tilbered dem først i 10 minutter ved 180 grader."
+        },
+        "temp1": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-and",
+          "merknad": "Tilbered dem først i 10 minutter ved 180 grader."
+        },
+        "temp2": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mv-and",
+          "merknad": "Hæv derefter temperaturen til 200 grader, og giv andebrysterne yderligere 8-10 minutter."
+        },
+        "tid2-min": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "mv-and",
+          "merknad": "Hæv derefter temperaturen til 200 grader, og giv andebrysterne yderligere 8-10 minutter."
+        },
+        "tid2-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-and",
+          "merknad": "Hæv derefter temperaturen til 200 grader, og giv andebrysterne yderligere 8-10 minutter."
+        },
+        "mvkerne": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mv-and",
+          "merknad": "Jeg tager almindelige hele andebryster ud ved cirka 68 grader, når jeg ønsker kødet let rosa."
+        },
+        "hvile": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-and",
+          "merknad": "Læg andebrysterne på et skærebræt, og lad dem hvile i 10 minutter."
+        },
+        "vaegt": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "mv-and",
+          "merknad": "ridse fedtet på 600 g andebryst"
+        },
+        "sikker": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Andebryst | Gennemstegt | 75 °C | 72-73 °C | 8-10 min. | Steg på skindsiden; færdiggør i ovn | Min. 75 °C Dansk forsigtighedsanbefaling"
+        }
+      },
+      "tekst": {
+        "rids": "mv-and|Skær kun gennem skind og fedt.",
+        "forsigtig": "mv-kerne|Dansk forsigtighedsanbefaling",
+        "rosa": "mv-and|Jeg tager almindelige hele andebryster ud ved cirka 68 grader, når jeg ønsker kødet let rosa."
+      }
+    },
+    {
+      "id": "flaeskesteg",
+      "slug": "flaeskesteg",
+      "navn": "Flæskesteg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "vaegt": {
+          "verdi": 1,
+          "enhet": "kg",
+          "kilde": "dc-flaesk",
+          "merknad": "I denne opskrift har vi givet en flæskesteg på ca. 1 kg 40-45 minutter ved 180 grader, efterfulgt af 5-10 minutter ved 200 grader"
+        },
+        "tid-min": {
+          "verdi": 40,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "I denne opskrift har vi givet en flæskesteg på ca. 1 kg 40-45 minutter ved 180 grader, efterfulgt af 5-10 minutter ved 200 grader"
+        },
+        "tid-maks": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "I denne opskrift har vi givet en flæskesteg på ca. 1 kg 40-45 minutter ved 180 grader, efterfulgt af 5-10 minutter ved 200 grader"
+        },
+        "temp": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "dc-flaesk",
+          "merknad": "I denne opskrift har vi givet en flæskesteg på ca. 1 kg 40-45 minutter ved 180 grader, efterfulgt af 5-10 minutter ved 200 grader"
+        },
+        "svaer-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "I denne opskrift har vi givet en flæskesteg på ca. 1 kg 40-45 minutter ved 180 grader, efterfulgt af 5-10 minutter ved 200 grader"
+        },
+        "svaer-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "I denne opskrift har vi givet en flæskesteg på ca. 1 kg 40-45 minutter ved 180 grader, efterfulgt af 5-10 minutter ved 200 grader"
+        },
+        "svaertemp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "dc-flaesk",
+          "merknad": "I denne opskrift har vi givet en flæskesteg på ca. 1 kg 40-45 minutter ved 180 grader, efterfulgt af 5-10 minutter ved 200 grader"
+        },
+        "kerne": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "dc-flaesk",
+          "merknad": "Gå efter en kernetemperatur på 65 grader."
+        },
+        "hvile": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "Lad stegen hvile utildækket i cirka 15 min. og servér."
+        }
+      },
+      "tekst": {
+        "termo": "dc-flaesk|Brug altid termometeret som guide, da tykkelsen også kan påvirke tiden.",
+        "vand": "dc-flaesk|Hæld vand i bunden af airfryeren og læg stegen i airfryer-kurven herover.",
+        "rids": "dc-flaesk|Sørg for at sværen er ridset helt igennem, men pas på ikke at skære ned i kødet."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1087 @@
+{
+  "familie": "steketid",
+  "marked": "da",
+  "kilder": {
+    "mv-kerne": {
+      "navn": "Kernetemperatur og stegetid på alt kød",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/kernetemperatur-og-stegetid-paa-alt-koed/",
+      "hentet": "2026-11-21"
+    },
+    "mv-kalkun": {
+      "navn": "Stegetid på kalkun: tid pr. kilo og kernetemperatur",
+      "utgiver": "Madens Verden",
+      "aar": 2024,
+      "adresse": "https://madensverden.dk/stegetid-paa-kalkun-pr-kilo-ovn/",
+      "hentet": "2026-11-21"
+    },
+    "lf-stegning": {
+      "navn": "Stegetider: stegning i ovn og på pande",
+      "utgiver": "Landbrug & Fødevarer (voresmad.dk)",
+      "aar": 2018,
+      "adresse": "https://voresmad.dk/media/iged0rru/stegetider-2018-web.pdf",
+      "hentet": "2026-11-21"
+    },
+    "dc-flaesk": {
+      "navn": "Flæskesteg med sprøde svær: guide til flæskesteg i ovnen",
+      "utgiver": "Danish Crown",
+      "aar": 2026,
+      "adresse": "https://www.danishcrown.com/da-dk/opskrifter/guide-saadan-laver-du-flaeskesteg-i-ovnen/",
+      "hentet": "2026-11-21"
+    },
+    "mv-stegeso": {
+      "navn": "Flæskesteg i stegeso",
+      "utgiver": "Madens Verden",
+      "aar": 2024,
+      "adresse": "https://madensverden.dk/flaeskesteg-i-stegeso/",
+      "hentet": "2026-11-21"
+    },
+    "mv-kartoffel": {
+      "navn": "Bagekartofler: bedste opskrift",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/bagekartofler-bedste-opskrift/",
+      "hentet": "2026-11-21"
+    },
+    "mv-lakseside": {
+      "navn": "Hel lakseside i ovn eller på grill",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/hel-lakseside-i-ovn-eller-grill-skal-steges-i-20-minutter/",
+      "hentet": "2026-11-21"
+    },
+    "arla-aeg": {
+      "navn": "Sådan koger du dine æg",
+      "utgiver": "Arla",
+      "aar": 2017,
+      "adresse": "https://www.arla.dk/opskrifter/leksikon/viden/koge-ag/",
+      "hentet": "2026-11-21"
+    },
+    "mv-haardkogt": {
+      "navn": "Hårdkogte æg: kogetid på 8 minutter",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/haardkogte-aeg-skal-koges-i-8-minutter/",
+      "hentet": "2026-11-21"
+    },
+    "mv-bloedkogt": {
+      "navn": "Blødkogt æg: kogetid og den nemme metode",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/bloedkogt-aeg/",
+      "hentet": "2026-11-21"
+    },
+    "mv-smilende": {
+      "navn": "Smilende æg: kogetid på 7 minutter",
+      "utgiver": "Madens Verden",
+      "aar": 2024,
+      "adresse": "https://madensverden.dk/smilende-aeg/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "flaeskesteg",
+      "slug": "flaeskesteg",
+      "navn": "Flæskesteg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn-min": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Ovn 180-200 °C: ca. 60-75 min. pr. kg"
+        },
+        "ovn-maks": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Ovn 180-200 °C: ca. 60-75 min. pr. kg"
+        },
+        "tid-min": {
+          "verdi": 60,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Ovn 180-200 °C: ca. 60-75 min. pr. kg"
+        },
+        "tid-maks": {
+          "verdi": 75,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Ovn 180-200 °C: ca. 60-75 min. pr. kg"
+        },
+        "kerne-min": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min."
+        },
+        "kerne-maks": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min."
+        },
+        "tagaf-min": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min."
+        },
+        "tagaf-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min."
+        },
+        "hvile-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min."
+        },
+        "hvile-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min."
+        },
+        "dc-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "dc-flaesk",
+          "merknad": "Sæt stegen på en rist i ovnen ved 225 grader."
+        },
+        "dc-tid": {
+          "verdi": 60,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "Steg nu flæskestegen i cirka 60 minutter - til den når en kernetemperatur på 65 grader."
+        },
+        "dc-kerne": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "dc-flaesk",
+          "merknad": "Steg nu flæskestegen i cirka 60 minutter - til den når en kernetemperatur på 65 grader."
+        },
+        "dc-vaegt": {
+          "verdi": 1.4,
+          "enhet": "kg",
+          "kilde": "dc-flaesk",
+          "merknad": "1,4 kg Friland Økologisk Flæskesteg"
+        },
+        "dc-forst": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "Kog stegen med sværene nedad i 20 minutter i ovnen ved 225 grader."
+        },
+        "dc-hvile-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "Lad til sidst stegen hvile i 10-20 minutter (gerne længere)."
+        },
+        "dc-hvile-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "dc-flaesk",
+          "merknad": "Lad til sidst stegen hvile i 10-20 minutter (gerne længere)."
+        },
+        "steso-tid": {
+          "verdi": 3,
+          "enhet": "timer",
+          "kilde": "mv-stegeso",
+          "merknad": "Tilb. tid: 3 timer"
+        },
+        "steso-temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "mv-stegeso",
+          "merknad": "Skru varmen op på 150 grader almindelig over- og undervarme."
+        },
+        "steso-vaegt": {
+          "verdi": 1.8,
+          "enhet": "kg",
+          "kilde": "mv-stegeso",
+          "merknad": "1,8 kg flæskesteg"
+        },
+        "lf-kerne": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Flæskesteg 65°C"
+        }
+      },
+      "tekst": {
+        "sv": "mv-kerne|Sprøde svær styres også af overvarme",
+        "vejl": "mv-kerne|Stegetiden er kun vejledende.",
+        "termo": "mv-kerne|Brug derfor stegetiden til planlægning, men lad kernetemperaturen afgøre, hvornår kødet er færdigt.",
+        "hvile": "mv-kerne|Pak ikke kødet tæt ind i sølvpapir."
+      }
+    },
+    {
+      "id": "and",
+      "slug": "and",
+      "navn": "And",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn-min": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "ovn-maks": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "tid-min": {
+          "verdi": 45,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "tid-maks": {
+          "verdi": 60,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "kerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min."
+        },
+        "tagaf-min": {
+          "verdi": 72,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min."
+        },
+        "tagaf-maks": {
+          "verdi": 73,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min."
+        },
+        "hvile-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min."
+        },
+        "hvile-maks": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min."
+        },
+        "brysttid-min": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Andebryst | Gennemstegt | 75 °C | 72-73 °C | 8-10 min. | Steg på skindsiden; færdiggør i ovn | Min. 75 °C Dansk forsigtighedsanbefaling"
+        },
+        "brysttid-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Andebryst | Gennemstegt | 75 °C | 72-73 °C | 8-10 min. | Steg på skindsiden; færdiggør i ovn | Min. 75 °C Dansk forsigtighedsanbefaling"
+        },
+        "brysthvile": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Andebryst | Gennemstegt | 75 °C | 72-73 °C | 8-10 min. | Steg på skindsiden; færdiggør i ovn | Min. 75 °C Dansk forsigtighedsanbefaling"
+        }
+      },
+      "tekst": {
+        "laar": "mv-kerne|Mål i inderlåret",
+        "flere": "mv-kerne|Ved en hel kylling, kalkun eller and bør du kontrollere temperaturen flere steder.",
+        "vejl": "mv-kerne|Stegetiden er kun vejledende.",
+        "bryst": "mv-kerne|Dansk forsigtighedsanbefaling"
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "kalkun",
+      "navn": "Kalkun",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn-min": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kalkun | Gennemstegt | 75 °C | 72-73 °C | 30-45 min. | Ovn 160-175 °C: ca. 35-45 min. pr. kg"
+        },
+        "ovn-maks": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kalkun | Gennemstegt | 75 °C | 72-73 °C | 30-45 min. | Ovn 160-175 °C: ca. 35-45 min. pr. kg"
+        },
+        "tid-min": {
+          "verdi": 35,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kalkun | Gennemstegt | 75 °C | 72-73 °C | 30-45 min. | Ovn 160-175 °C: ca. 35-45 min. pr. kg"
+        },
+        "tid-maks": {
+          "verdi": 45,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kalkun | Gennemstegt | 75 °C | 72-73 °C | 30-45 min. | Ovn 160-175 °C: ca. 35-45 min. pr. kg"
+        },
+        "hvile-min": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kalkun | Gennemstegt | 75 °C | 72-73 °C | 30-45 min."
+        },
+        "hvile-maks": {
+          "verdi": 45,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kalkun | Gennemstegt | 75 °C | 72-73 °C | 30-45 min."
+        },
+        "kerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kalkun | Gennemstegt | 75 °C | 72-73 °C | 30-45 min."
+        },
+        "brysttid-min": {
+          "verdi": 35,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Kalkunbryst | Gennemstegt | 75 °C | 72-73 °C | 10-15 min. | Ovn 175 °C: ca. 35-50 min. pr. kg"
+        },
+        "brysttid-maks": {
+          "verdi": 50,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Kalkunbryst | Gennemstegt | 75 °C | 72-73 °C | 10-15 min. | Ovn 175 °C: ca. 35-50 min. pr. kg"
+        },
+        "brystovn": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kalkunbryst | Gennemstegt | 75 °C | 72-73 °C | 10-15 min. | Ovn 175 °C: ca. 35-50 min. pr. kg"
+        },
+        "k-tid": {
+          "verdi": 45,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kalkun",
+          "merknad": "beregner som udgangspunkt omkring 45 minutter pr. kilo"
+        },
+        "k-temp": {
+          "verdi": 160,
+          "enhet": "°C",
+          "kilde": "mv-kalkun",
+          "merknad": "ved 160 grader almindelig over- og undervarme"
+        },
+        "k-hvile": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-kalkun",
+          "merknad": "Lad kalkunen hvile i cirka 20 minutter, inden den skæres ud."
+        }
+      },
+      "tekst": {
+        "tabel": "mv-kalkun|Kalkunens vægt | Vejledende stegetid 3 kg | Ca. 2 timer og 15 minutter 4 kg | Ca. 3 timer 5 kg | Ca. 3 timer og 45 minutter 6 kg | Ca. 4 timer og 30 minutter 7 kg | Ca. 5 timer og 15 minutter 8 kg | Ca. 6 timer",
+        "tabelnote": "mv-kalkun|Tabellen er en tommelfingerregel til planlægning, ikke en garanti for, hvornår kalkunen er færdig.",
+        "flere": "mv-kerne|Mål flere steder"
+      }
+    },
+    {
+      "id": "hel-kylling",
+      "slug": "hel-kylling",
+      "navn": "Hel kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C | 72-73 °C | 15 min. | Ovn 180 °C: ca. 45-60 min. pr. kg"
+        },
+        "tid-min": {
+          "verdi": 45,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C | 72-73 °C | 15 min. | Ovn 180 °C: ca. 45-60 min. pr. kg"
+        },
+        "tid-maks": {
+          "verdi": 60,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C | 72-73 °C | 15 min. | Ovn 180 °C: ca. 45-60 min. pr. kg"
+        },
+        "kerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C | 72-73 °C | 15 min."
+        },
+        "hvile": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C | 72-73 °C | 15 min."
+        },
+        "tagaf-min": {
+          "verdi": 72,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C | 72-73 °C | 15 min."
+        },
+        "tagaf-maks": {
+          "verdi": 73,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C | 72-73 °C | 15 min."
+        }
+      },
+      "tekst": {
+        "maal": "mv-kerne|Mål i bryst og inderlår",
+        "flere": "mv-kerne|Ved en hel kylling, kalkun eller and bør du kontrollere temperaturen flere steder.",
+        "vejl": "mv-kerne|Stegetiden er kun vejledende."
+      }
+    },
+    {
+      "id": "kyllingfilet",
+      "slug": "kyllingebryst",
+      "navn": "Kyllingebryst",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingebryst | Gennemstegt | 75 °C | 72-73 °C | 5-10 min. | Pande/ovn: typisk 15-25 min. i alt"
+        },
+        "tid-maks": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingebryst | Gennemstegt | 75 °C | 72-73 °C | 5-10 min. | Pande/ovn: typisk 15-25 min. i alt"
+        },
+        "kerne": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingebryst | Gennemstegt | 75 °C | 72-73 °C | 5-10 min."
+        },
+        "hvile-min": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingebryst | Gennemstegt | 75 °C | 72-73 °C | 5-10 min."
+        },
+        "hvile-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingebryst | Gennemstegt | 75 °C | 72-73 °C | 5-10 min."
+        },
+        "laartid-min": {
+          "verdi": 35,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingelår | Gennemstegt | 75-80 °C | 73-77 °C | 10 min. | Ovn 200 °C: typisk 35-50 min."
+        },
+        "laartid-maks": {
+          "verdi": 50,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingelår | Gennemstegt | 75-80 °C | 73-77 °C | 10 min. | Ovn 200 °C: typisk 35-50 min."
+        },
+        "laarovn": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingelår | Gennemstegt | 75-80 °C | 73-77 °C | 10 min. | Ovn 200 °C: typisk 35-50 min."
+        },
+        "laarkerne-min": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingelår | Gennemstegt | 75-80 °C | 73-77 °C | 10 min."
+        },
+        "laarkerne-maks": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingelår | Gennemstegt | 75-80 °C | 73-77 °C | 10 min."
+        }
+      },
+      "tekst": {
+        "laarnote": "mv-kerne|Højere temperatur giver ofte mere mørt lårkød",
+        "vejl": "mv-kerne|Stegetiden er kun vejledende."
+      }
+    },
+    {
+      "id": "roastbiff",
+      "slug": "roastbeef",
+      "navn": "Roastbeef",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "roed-min": {
+          "verdi": 52,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Rød | 52-55 °C | 49-52 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "roed-maks": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Rød | 52-55 °C | 49-52 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "medium-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "medium-maks": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "gennem-min": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Gennemstegt | 68-70 °C | 65-67 °C | 15-20 min. | Ovn 125-150 °C: til kernetemperaturen er nået"
+        },
+        "gennem-maks": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Gennemstegt | 68-70 °C | 65-67 °C | 15-20 min. | Ovn 125-150 °C: til kernetemperaturen er nået"
+        },
+        "ovn": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "hvile-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "hvile-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "tagaf-min": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "tagaf-maks": {
+          "verdi": 59,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 125 °C: til kernetemperaturen er nået"
+        },
+        "lf-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Roastbeef 58-60°C"
+        },
+        "lf-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Roastbeef 58-60°C"
+        },
+        "filet": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksefilet og tyndsteg | Medium-rare | 54-57 °C | 51-54 °C | 15 min. | Ovn 125 °C: ca. 60-100 min. afhængigt af tykkelse"
+        },
+        "filettid-min": {
+          "verdi": 60,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Oksefilet og tyndsteg | Medium-rare | 54-57 °C | 51-54 °C | 15 min. | Ovn 125 °C: ca. 60-100 min. afhængigt af tykkelse"
+        },
+        "filettid-maks": {
+          "verdi": 100,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Oksefilet og tyndsteg | Medium-rare | 54-57 °C | 51-54 °C | 15 min. | Ovn 125 °C: ca. 60-100 min. afhængigt af tykkelse"
+        }
+      },
+      "tekst": {
+        "eftervarme": "mv-kerne|En større steg stiger typisk 2-4 grader under hviletiden.",
+        "ingen": "mv-kerne|Pak ikke kødet tæt ind i sølvpapir.",
+        "vejl": "mv-kerne|Stegetiden er kun vejledende."
+      }
+    },
+    {
+      "id": "lammelar",
+      "slug": "lammekoelle",
+      "navn": "Lammekølle",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rosa-kerne-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "rosa-kerne-maks": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "rosa-tid-min": {
+          "verdi": 45,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "rosa-tid-maks": {
+          "verdi": 60,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "ovn-min": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "ovn-maks": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C | 55-59 °C | 15-20 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+        },
+        "medium-kerne-min": {
+          "verdi": 63,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Medium | 63-66 °C | 60-63 °C | 15-20 min. | Ovn 150-175 °C: ca. 55-70 min. pr. kg"
+        },
+        "medium-kerne-maks": {
+          "verdi": 66,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Medium | 63-66 °C | 60-63 °C | 15-20 min. | Ovn 150-175 °C: ca. 55-70 min. pr. kg"
+        },
+        "medium-tid-min": {
+          "verdi": 55,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Medium | 63-66 °C | 60-63 °C | 15-20 min. | Ovn 150-175 °C: ca. 55-70 min. pr. kg"
+        },
+        "medium-tid-maks": {
+          "verdi": 70,
+          "enhet": "min. pr. kg",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Medium | 63-66 °C | 60-63 °C | 15-20 min. | Ovn 150-175 °C: ca. 55-70 min. pr. kg"
+        },
+        "hvile-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Medium | 63-66 °C | 60-63 °C | 15-20 min."
+        },
+        "hvile-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Medium | 63-66 °C | 60-63 °C | 15-20 min."
+        },
+        "rosa-tagaf-min": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C | 55-59 °C | 15-20 min."
+        },
+        "rosa-tagaf-maks": {
+          "verdi": 59,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C | 55-59 °C | 15-20 min."
+        }
+      },
+      "tekst": {
+        "rosa": "mv-kerne|Lam og kalvekød kan tilberedes rosa, når der er tale om hele kødstykker.",
+        "vejl": "mv-kerne|Stegetiden er kun vejledende."
+      }
+    },
+    {
+      "id": "svinemoerbrad",
+      "slug": "svinemoerbrad",
+      "navn": "Svinemørbrad",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rosa-kerne-min": {
+          "verdi": 63,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C | 60-62 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 15-25 min."
+        },
+        "rosa-kerne-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C | 60-62 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 15-25 min."
+        },
+        "rosa-tid-min": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C | 60-62 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 15-25 min."
+        },
+        "rosa-tid-maks": {
+          "verdi": 25,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C | 60-62 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 15-25 min."
+        },
+        "ovn": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C | 60-62 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 15-25 min."
+        },
+        "gennem-kerne-min": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Gennemstegt | 68-70 °C | 65-67 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 20-30 min."
+        },
+        "gennem-kerne-maks": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Gennemstegt | 68-70 °C | 65-67 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 20-30 min."
+        },
+        "gennem-tid-min": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Gennemstegt | 68-70 °C | 65-67 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 20-30 min."
+        },
+        "gennem-tid-maks": {
+          "verdi": 30,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Gennemstegt | 68-70 °C | 65-67 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 20-30 min."
+        },
+        "hvile-min": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C | 60-62 °C | 8-10 min."
+        },
+        "hvile-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C | 60-62 °C | 8-10 min."
+        },
+        "lf-min": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Mørbradfragris 62-65°C"
+        },
+        "lf-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Mørbradfragris 62-65°C"
+        }
+      },
+      "tekst": {
+        "kunhel": "mv-kerne|Kun hel udskæring",
+        "vejl": "mv-kerne|Stegetiden er kun vejledende."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "aeg",
+      "navn": "Æg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "arla-bloed-min": {
+          "verdi": 4,
+          "enhet": "minutter",
+          "kilde": "arla-aeg",
+          "merknad": "Blødkogte æg: 4-5 minutter"
+        },
+        "arla-bloed-maks": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "arla-aeg",
+          "merknad": "Blødkogte æg: 4-5 minutter"
+        },
+        "arla-smil-min": {
+          "verdi": 6,
+          "enhet": "minutter",
+          "kilde": "arla-aeg",
+          "merknad": "Smilende æg: 6-7 minutter"
+        },
+        "arla-smil-maks": {
+          "verdi": 7,
+          "enhet": "minutter",
+          "kilde": "arla-aeg",
+          "merknad": "Smilende æg: 6-7 minutter"
+        },
+        "arla-haard-min": {
+          "verdi": 9,
+          "enhet": "minutter",
+          "kilde": "arla-aeg",
+          "merknad": "Hårdkogte æg: 9-10 minutter"
+        },
+        "arla-haard-maks": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "arla-aeg",
+          "merknad": "Hårdkogte æg: 9-10 minutter"
+        },
+        "mv-bloed": {
+          "verdi": 5,
+          "enhet": "minutter",
+          "kilde": "mv-bloedkogt",
+          "merknad": "M eller L | Cirka 5 minutter"
+        },
+        "mv-smil": {
+          "verdi": 7,
+          "enhet": "minutter",
+          "kilde": "mv-smilende",
+          "merknad": "Tilb. tid: 7 minutter"
+        },
+        "mv-haard": {
+          "verdi": 8,
+          "enhet": "minutter",
+          "kilde": "mv-haardkogt",
+          "merknad": "Tilb. tid: 8 minutter"
+        },
+        "mv-xl-min": {
+          "verdi": 30,
+          "enhet": "sekunder",
+          "kilde": "mv-haardkogt",
+          "merknad": "Giv gerne XL-æg omkring 30-60 sekunder ekstra."
+        },
+        "mv-xl-maks": {
+          "verdi": 60,
+          "enhet": "sekunder",
+          "kilde": "mv-haardkogt",
+          "merknad": "Giv gerne XL-æg omkring 30-60 sekunder ekstra."
+        },
+        "mv-lille": {
+          "verdi": 30,
+          "enhet": "sekunder",
+          "kilde": "mv-haardkogt",
+          "merknad": "Små æg kan tages op cirka 30 sekunder tidligere."
+        }
+      },
+      "tekst": {
+        "koldt": "arla-aeg|Starter du med at lægge æggene ned i det kolde vand i gryden, tælles kogetiden fra det øjeblik, vandet begynder at koge.",
+        "afkol": "arla-aeg|Når æggene er kogt, lægges de straks i iskoldt vand for at stoppe tilberedningen.",
+        "pille": "arla-aeg|Et æg, der er en uge gammelt, er altså lettere at pille end et helt frisk æg.",
+        "mvstart": "mv-haardkogt|De otte minutters kogetid skal først regnes fra det øjeblik, hvor vandet koger.",
+        "mvstr": "mv-haardkogt|Otte minutter passer til almindelige æg i størrelse M eller L.",
+        "smil": "mv-smilende|Smilende æg har en fast æggehvide og en cremet blomme, der stadig er let blød i midten."
+      }
+    },
+    {
+      "id": "bakt-potet",
+      "slug": "bagt-kartoffel",
+      "navn": "Bagt kartoffel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mv-kartoffel",
+          "merknad": "Forvarm ovnen til 200 grader varmluft."
+        },
+        "lille-min": {
+          "verdi": 50,
+          "enhet": "minutter",
+          "kilde": "mv-kartoffel",
+          "merknad": "200-250 g | 50-60 minutter"
+        },
+        "lille-maks": {
+          "verdi": 60,
+          "enhet": "minutter",
+          "kilde": "mv-kartoffel",
+          "merknad": "200-250 g | 50-60 minutter"
+        },
+        "lillevaegt-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-kartoffel",
+          "merknad": "200-250 g | 50-60 minutter"
+        },
+        "lillevaegt-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mv-kartoffel",
+          "merknad": "200-250 g | 50-60 minutter"
+        },
+        "mellem-min": {
+          "verdi": 60,
+          "enhet": "minutter",
+          "kilde": "mv-kartoffel",
+          "merknad": "250-300 g | 60-70 minutter"
+        },
+        "mellem-maks": {
+          "verdi": 70,
+          "enhet": "minutter",
+          "kilde": "mv-kartoffel",
+          "merknad": "250-300 g | 60-70 minutter"
+        },
+        "mellemvaegt-min": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mv-kartoffel",
+          "merknad": "250-300 g | 60-70 minutter"
+        },
+        "mellemvaegt-maks": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mv-kartoffel",
+          "merknad": "250-300 g | 60-70 minutter"
+        },
+        "stor-min": {
+          "verdi": 70,
+          "enhet": "minutter",
+          "kilde": "mv-kartoffel",
+          "merknad": "300-400 g | 70-85 minutter"
+        },
+        "stor-maks": {
+          "verdi": 85,
+          "enhet": "minutter",
+          "kilde": "mv-kartoffel",
+          "merknad": "300-400 g | 70-85 minutter"
+        },
+        "storvaegt-min": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mv-kartoffel",
+          "merknad": "300-400 g | 70-85 minutter"
+        },
+        "storvaegt-maks": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mv-kartoffel",
+          "merknad": "300-400 g | 70-85 minutter"
+        },
+        "ekstra-min": {
+          "verdi": 10,
+          "enhet": "minutter",
+          "kilde": "mv-kartoffel",
+          "merknad": "Store kartofler kan have brug for yderligere 10-20 minutter."
+        },
+        "ekstra-maks": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-kartoffel",
+          "merknad": "Store kartofler kan have brug for yderligere 10-20 minutter."
+        }
+      },
+      "tekst": {
+        "spyd": "mv-kartoffel|Tjek kartoflerne med et træspyd eller en lille kniv.",
+        "vejl": "mv-kartoffel|Tiderne gælder ved 200 grader varmluft og er vejledende.",
+        "folie": "mv-kartoffel|Sølvpapir holder på fugten omkring kartoflen.",
+        "prik": "mv-kartoffel|Prik hver kartoffel fire til seks gange med en gaffel, så dampen kan slippe ud under bagningen."
+      }
+    },
+    {
+      "id": "laks-i-ovn",
+      "slug": "laks-i-ovn",
+      "navn": "Laks i ovn",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid": {
+          "verdi": 20,
+          "enhet": "minutter",
+          "kilde": "mv-lakseside",
+          "merknad": "En hel lakseside på cirka 800 gram skal som udgangspunkt have omkring 20 minutter ved 200 grader varmluft."
+        },
+        "temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "mv-lakseside",
+          "merknad": "En hel lakseside på cirka 800 gram skal som udgangspunkt have omkring 20 minutter ved 200 grader varmluft."
+        },
+        "vaegt": {
+          "verdi": 800,
+          "enhet": "g",
+          "kilde": "mv-lakseside",
+          "merknad": "En hel lakseside på cirka 800 gram skal som udgangspunkt have omkring 20 minutter ved 200 grader varmluft."
+        },
+        "tjek": {
+          "verdi": 15,
+          "enhet": "minutter",
+          "kilde": "mv-lakseside",
+          "merknad": "Jeg anbefaler at begynde at tjekke laksen efter cirka 15 minutter, så den ikke får for meget."
+        },
+        "kerne-min": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mv-lakseside",
+          "merknad": "kan du bruge et stegetermometer og gå efter cirka 60-63 grader i den tykkeste del"
+        },
+        "kerne-maks": {
+          "verdi": 63,
+          "enhet": "°C",
+          "kilde": "mv-lakseside",
+          "merknad": "kan du bruge et stegetermometer og gå efter cirka 60-63 grader i den tykkeste del"
+        }
+      },
+      "tekst": {
+        "flager": "mv-lakseside|Den er færdig, når kødet let kan deles i flager med en gaffel.",
+        "taer": "mv-lakseside|Det vigtigste er ikke at give laksen unødigt lang tid.",
+        "tykt": "mv-lakseside|Derfor afhænger stegetiden ikke kun af vægten, men også af tykkelsen på fisken."
+      }
+    }
+  ]
+}

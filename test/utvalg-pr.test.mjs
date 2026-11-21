@@ -32,7 +32,7 @@ test('PR-utvalget har tre per generert familie og språk, og alt det håndskrevn
   // Datadrevne familier av typen guide-lang (ukemenyene, holdbarhet, frysing) er generert og tas med som utvalg, ikke hele.
   const handskrevne = [...sider.values()].filter((s) => ['guide-lang', 'guide-kort', 'blogg', 'juss'].includes(s.type) && !erGenerertFamilie(s.familie));
   for (const s of handskrevne) assert.ok(rader.some((r) => r.sti === s.sti), s.sti);
-  assert.ok(rader.length < 320, `utvalget er ${rader.length} sider`);
+  assert.ok(rader.length < 330, `utvalget er ${rader.length} sider`);
 });
 test('kontrollen blir rød når en hel generert familie mangler i utvalget', () => {
   const rader = utvalg({ revisjon: 'pr', endret: [] });
