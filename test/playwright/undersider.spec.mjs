@@ -547,12 +547,12 @@ for (const bredde of [390, 1280]) test(`korte guider: steg, ideliste og kildepil
 });
 
 // Eldre sider: beregnet stil på de fire ekte sidene. Hver velger må treffe, ellers beviser regelteksten ingenting.
-const GAMMEL = ['/importer-fra-matprat/', '/finn-oppskrifter/', '/hva-kan-jeg-lage/', '/skapere/'];
+// /hva-kan-jeg-lage/ er ikke lenger en eldre side: den er samlesiden til familien «rester» (scripts/familier/rester) og har den lange guidemalen.
+const GAMMEL = ['/importer-fra-matprat/', '/finn-oppskrifter/', '/skapere/'];
 // Forventet antall per side. Et manglende element skal gi rødt, ikke en tom løkke eller et hoppet `if`.
 const FORVENTET = {
   '/importer-fra-matprat/': { fig: 0, cta: 1, faq: 1, feat: 1, rel: 1, knapp: 1 },
   '/finn-oppskrifter/': { fig: 1, cta: 1, faq: 0, feat: 1, rel: 1, knapp: 1 },
-  '/hva-kan-jeg-lage/': { fig: 0, cta: 1, faq: 0, feat: 1, rel: 1, knapp: 1 },
   '/skapere/': { fig: 0, cta: 0, faq: 1, feat: 0, rel: 0, knapp: 0 },
 };
 for (const bredde of [390, 1280]) for (const sti of GAMMEL) test(`eldre side ${sti}: topp, kort, kolonne og knapper har ny stil på ${bredde} px`, async ({ page }) => {
@@ -657,7 +657,7 @@ test('eldre side: Bare nødvendige lagrer denied, og tilbaketrekking fra bunnen 
 });
 
 // «Relaterte guider» er felles for alle sidetyper: en rolig liste, ikke piller. Lang tekst brytes i raden, ikke i en pille.
-for (const bredde of [390, 1280]) for (const sti of ['/lagre-oppskrifter-fra-instagram/', '/importer-fra-koket/', '/finn-oppskrifter/', '/hva-kan-jeg-lage/']) test(`relaterte guider er en venstrejustert liste på ${sti} ved ${bredde} px`, async ({ page }) => {
+for (const bredde of [390, 1280]) for (const sti of ['/lagre-oppskrifter-fra-instagram/', '/importer-fra-koket/', '/finn-oppskrifter/']) test(`relaterte guider er en venstrejustert liste på ${sti} ved ${bredde} px`, async ({ page }) => {
   await page.setViewportSize({ width: bredde, height: 900 });
   await page.goto(adresse(sti));
   const r = await page.evaluate(() => { const x = document.querySelector('.related'); if (!x) return null; const ul = x.querySelector('ul'); const a = x.querySelector('li a'); const st = (e, p) => getComputedStyle(e)[p]; return { disp: st(ul, 'display'), kol: st(ul, 'gridTemplateColumns').split(' ').length, align: st(x, 'textAlign'), brad: st(a, 'borderTopLeftRadius'), vekt: st(a, 'fontWeight'), linje: st(x.querySelector('li'), 'borderBottomWidth'), venstre: a.getBoundingClientRect().left - ul.getBoundingClientRect().left }; });

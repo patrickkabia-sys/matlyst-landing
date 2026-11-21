@@ -1883,6 +1883,82 @@
   "hash": "ddc258eea1e91da7",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/erstatning/": {
+  "hash": "6187d660874658b2",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/bakepulver/": {
+  "hash": "3ff7e816a2278542",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/brun-farin/": {
+  "hash": "dd49763666e2bb82",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/creme-fraiche/": {
+  "hash": "85e053e570d1cb0a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/egg/": {
+  "hash": "62a33e9a8a3cef4a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/floete/": {
+  "hash": "b72e98277026a8c5",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/friske-og-torkede-urter/": {
+  "hash": "7a43f595bd5c43c1",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/gjaer/": {
+  "hash": "90857e4166250dca",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/hvetemel/": {
+  "hash": "567ec55a190d7b64",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/hvitlok/": {
+  "hash": "6d4722fb487b9b47",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/hvitvin/": {
+  "hash": "7050130b08e7fce9",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/kulturmelk-og-kefir/": {
+  "hash": "6691f5a3d1e19e2e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/maisenna/": {
+  "hash": "dad05034d264477d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/melk/": {
+  "hash": "727ec89b91149647",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/natron/": {
+  "hash": "338e9c10474aa6d3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/romme/": {
+  "hash": "75a57c8ebffbf8fd",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/smor/": {
+  "hash": "ca1d1d06b1314460",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/sukker/": {
+  "hash": "58ec399d7ebe6e64",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/erstatning/vaniljesukker/": {
+  "hash": "a5cdc32654f36501",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/finn-oppskrifter/": {
   "hash": "495f4590703930b2",
   "dato": "2026-11-18"
@@ -1984,8 +2060,68 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/": {
-  "hash": "492e124a674b3817",
-  "dato": "2026-11-18"
+  "hash": "f20c9d2ff9622cb6",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-bananer/": {
+  "hash": "f6fdd5c3064e391a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-brod/": {
+  "hash": "e20aa82d45d722b9",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-egg/": {
+  "hash": "50ffb5a138236cbd",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-epler/": {
+  "hash": "df67fe09254dea09",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-floete/": {
+  "hash": "37871fd8f294555b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-gulrotter/": {
+  "hash": "f3eb4da52c952f4e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-kjottdeig/": {
+  "hash": "1141f492c5a22a00",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-kokt-skinke/": {
+  "hash": "a6e307eb11ba5713",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-kokte-poteter/": {
+  "hash": "b0be21d0f77b0133",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-kylling/": {
+  "hash": "5756c0196d580147",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-laks/": {
+  "hash": "46b02d1392029ea3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-pasta/": {
+  "hash": "2a41fa15cc4747e1",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-poteter/": {
+  "hash": "9a17a3052d915ead",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-ribbe-og-pinnekjott/": {
+  "hash": "2ae86b8600c38908",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/hva-kan-jeg-lage/med-ris/": {
+  "hash": "13fea3328ca70d19",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/importer-fra-alletiders-kokebok/": {
   "hash": "a946eb7a1dc47478",
@@ -2048,8 +2184,8 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/spiskammer-app/": {
-  "hash": "19571c1cfc4d71d7",
-  "dato": "2026-11-19"
+  "hash": "760263ce85f9dc69",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/": {
   "hash": "c94ab590087d6c1f",

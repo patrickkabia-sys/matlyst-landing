@@ -1,0 +1,642 @@
+{
+  "familie": "rester",
+  "marked": "nb",
+  "kilder": {
+    "mt-oppbevaring": {
+      "navn": "Råd for oppbevaring av mat og drikke",
+      "utgiver": "Mattilsynet",
+      "aar": 2026,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/rad-for-oppbevaring-av-mat",
+      "hentet": "2026-11-21"
+    },
+    "mt-ris": {
+      "navn": "Kokt ris og pasta som står fremme, kan lage giftstoffer",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/kokt-ris-og-pasta-som-star-fremme-kan-lage-giftstoffer",
+      "hentet": "2026-11-21"
+    },
+    "mt-kjokken": {
+      "navn": "Kjøkkenhygiene",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/kjokkenhygiene",
+      "hentet": "2026-11-21"
+    },
+    "mp-gront": {
+      "navn": "Bruk opp grønnsakene dine!",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/artikler/matsvinn/bruk-opp-gronnsakene-dine/",
+      "hentet": "2026-11-21"
+    },
+    "melk-vafler": {
+      "navn": "Dette kan du putte i vaffelrøren",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Oppskrifter/Kokkens-tips/Dette-kan-du-putte-i-vaffelroren",
+      "hentet": "2026-11-21"
+    },
+    "mp-kjoleskap": {
+      "navn": "Hvordan oppbevare mat riktig i kjøleskapet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/oppbevaring-i-kjoleskap/",
+      "hentet": "2026-11-21"
+    },
+    "mp-ris": {
+      "navn": "Hvordan oppbevare rester av ris og pasta",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/hvordan-oppbevare-rester-av-ris-og-pasta/",
+      "hentet": "2026-11-21"
+    },
+    "mp-rester": {
+      "navn": "God mat av rester",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/artikler/matsvinn/god-mat-av-rester/",
+      "hentet": "2026-11-21"
+    },
+    "mp-jul": {
+      "navn": "5 tips til hvordan reduserer matsvinn i jula",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2023,
+      "adresse": "https://www.matprat.no/artikler/tema/tips-til-hvordan-redusere-matsvinn-i-jula/",
+      "hentet": "2026-11-21"
+    },
+    "mp-ribbe": {
+      "navn": "10 spørsmål og svar om ribbe",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/tema/10-sporsmal-og-svar-om-ribbe/",
+      "hentet": "2026-11-21"
+    },
+    "melk-frys": {
+      "navn": "Kan alle meieriprodukter fryses?",
+      "utgiver": "Melk.no (TINE)",
+      "aar": 2026,
+      "adresse": "https://www.melk.no/Oppskrifter/Kokkens-tips/Kan-alle-meieriprodukter-fryses-",
+      "hentet": "2026-11-21"
+    },
+    "mv-kylling": {
+      "navn": "Kylling",
+      "utgiver": "Matvett",
+      "aar": 2026,
+      "adresse": "https://www.matvett.no/brukopp-leksikon/kylling",
+      "hentet": "2026-11-21"
+    },
+    "mv-egg": {
+      "navn": "Egg",
+      "utgiver": "Matvett",
+      "aar": 2026,
+      "adresse": "https://www.matvett.no/brukopp-leksikon/egg",
+      "hentet": "2026-11-21"
+    },
+    "mv-potet": {
+      "navn": "Potet",
+      "utgiver": "Matvett",
+      "aar": 2026,
+      "adresse": "https://www.matvett.no/brukopp-leksikon/potet",
+      "hentet": "2026-11-21"
+    },
+    "mv-gulrot": {
+      "navn": "Gulrot",
+      "utgiver": "Matvett",
+      "aar": 2026,
+      "adresse": "https://www.matvett.no/brukopp-leksikon/gulrot",
+      "hentet": "2026-11-21"
+    },
+    "mv-brod": {
+      "navn": "Brød",
+      "utgiver": "Matvett",
+      "aar": 2026,
+      "adresse": "https://www.matvett.no/brukopp-leksikon/brod",
+      "hentet": "2026-11-21"
+    },
+    "mv-banan": {
+      "navn": "Banan",
+      "utgiver": "Matvett",
+      "aar": 2026,
+      "adresse": "https://www.matvett.no/brukopp-leksikon/banan",
+      "hentet": "2026-11-21"
+    },
+    "mv-eple": {
+      "navn": "Eple",
+      "utgiver": "Matvett",
+      "aar": 2026,
+      "adresse": "https://www.matvett.no/brukopp-leksikon/eple",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kjottdeig",
+      "slug": "med-kjottdeig",
+      "navn": "kjøttdeig",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "raa": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Kjøttdeig/ karbonadedeig/ medisterdeig | 4 dager | 8-10 dager"
+        },
+        "rest-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "rest-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "varme": {
+          "verdi": 70,
+          "enhet": "grader",
+          "kilde": "mt-kjokken",
+          "merknad": "Ved oppvarming til temperaturar over 70 grader i fleire minutt blir dei aller fleste bakteriar drepne."
+        }
+      },
+      "tekst": {
+        "q1": "mt-oppbevaring::Skal du ikkje ete maten i nærmaste framtid, frys han med ein gong.",
+        "q2": "mt-kjokken::Fjørfekjøtt og oppmale kjøtt bør gjennomsteikjast.",
+        "q3": "mp-rester::rester av kjøttdeig"
+      }
+    },
+    {
+      "id": "kylling",
+      "slug": "med-kylling",
+      "navn": "kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "varme": {
+          "verdi": 70,
+          "enhet": "grader",
+          "kilde": "mt-kjokken",
+          "merknad": "Ved oppvarming til temperaturar over 70 grader i fleire minutt blir dei aller fleste bakteriar drepne."
+        },
+        "raa": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Rå kylling/kalkun | 4 dager | 8-10 dager"
+        },
+        "varmes": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mv-kylling",
+          "merknad": "All kylling skal varmes til 70 °C, slik at så godt som alle bakteriene dør."
+        },
+        "rest-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "rest-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        }
+      },
+      "tekst": {
+        "q1": "mt-kjokken::Fjørfekjøtt og oppmale kjøtt bør gjennomsteikjast.",
+        "q2": "mv-kylling::Generelt skal du ta datomerkingen «siste forbruksdag» ganske så bokstavelig når det gjelder kylling",
+        "q3": "mt-oppbevaring::Skal du ikkje ete maten i nærmaste framtid, frys han med ein gong."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "med-egg",
+      "navn": "egg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hardkokte-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Hardkokte egg | 2-3 dager"
+        },
+        "hardkokte-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Hardkokte egg | 2-3 dager"
+        },
+        "hviter-min": {
+          "verdi": 8,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggehviter | 8-10 dager"
+        },
+        "hviter-maks": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggehviter | 8-10 dager"
+        },
+        "plommer-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggemasse, eggeplommer | 2-3 dager"
+        },
+        "plommer-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggemasse, eggeplommer | 2-3 dager"
+        }
+      },
+      "tekst": {
+        "q1": "mv-egg::Frys dem eller bruk dem i bakst, eggerøre, omelett eller lag sufflé eller sorbet.",
+        "q2": "mv-egg::Ikke kast dem!"
+      }
+    },
+    {
+      "id": "poteter",
+      "slug": "med-poteter",
+      "navn": "poteter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjolig": {
+          "verdi": 3,
+          "enhet": "°C",
+          "kilde": "mv-potet",
+          "merknad": "men ikke under 3 °C"
+        }
+      },
+      "tekst": {
+        "q1": "mp-rester::Kokte revne poteter kan også stekes som en rösti i en stekepanne.",
+        "q2": "mv-potet::Fjern skrellet og lag potet- eller rotmos.",
+        "q3": "mv-potet::Om poteten ikke er grønn, men bare tørr og trist, kan du fortsatt bruke den.",
+        "q4": "mv-potet::Poteten skal oppbevares mørkt og kjølig.",
+        "q5": "mv-potet::Unngå tette plastposer.",
+        "q6": "mv-potet::Så lenge selve potetkjøttet ikke er grønt, kan du fjerne groene og spise potetene."
+      }
+    },
+    {
+      "id": "kokte-poteter",
+      "slug": "med-kokte-poteter",
+      "navn": "kokte poteter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rest-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "rest-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "avkjol-fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar"
+        },
+        "avkjol-til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar"
+        },
+        "avkjol-timer": {
+          "verdi": 2,
+          "enhet": "timer",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar"
+        }
+      },
+      "tekst": {
+        "q1": "mp-rester::Du kan dele dem i biter, dryppe over litt olje og steke dem gylne i stekepanne eller ovn.",
+        "q2": "mp-rester::Har du en liten rest potetmos kan du utnytte den ved å blande inn grovhakkede grønnsaksrester",
+        "q3": "mp-rester::Du kan også rive potetene grovt, blande med egg, urter og krydder og steke som potetlapper i stekepannen.",
+        "q4": "mp-rester::Potetmos eller kokte poteter kan også brukes som jevning i en suppe",
+        "q5": "mp-rester::Kokte poteter er noe av det enkleste å bruke på nytt.",
+        "q6": "mp-rester::Kokte revne poteter kan også stekes som en rösti i en stekepanne.",
+        "q7": "mt-oppbevaring::Skal du ikkje ete maten i nærmaste framtid, frys han med ein gong."
+      }
+    },
+    {
+      "id": "ris",
+      "slug": "med-ris",
+      "navn": "ris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjoleskap-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-ris",
+          "merknad": "Holder 2-3 dager i kjøleskap"
+        },
+        "kjoleskap-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-ris",
+          "merknad": "Holder 2-3 dager i kjøleskap"
+        }
+      },
+      "tekst": {
+        "q1": "mp-rester::Kald ris er supert å bruke i stekt ris, og kan også brukes for å gjøre supper eller salater mer mettende.",
+        "q2": "mt-ris::Du bør ikke oppbevare kokt ris eller kokt pasta i romtemperatur.",
+        "q3": "mt-oppbevaring::Når det gjeld ris, bør du berre koke den mengda du treng til kvart måltid.",
+        "q4": "mp-rester::Sørg for å avkjøle restene raskt og oppbevar dem i en tett boks i kjøleskapet."
+      }
+    },
+    {
+      "id": "pasta",
+      "slug": "med-pasta",
+      "navn": "pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjoleskap-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-ris",
+          "merknad": "Holder 2-3 dager i kjøleskap"
+        },
+        "kjoleskap-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-ris",
+          "merknad": "Holder 2-3 dager i kjøleskap"
+        }
+      },
+      "tekst": {
+        "q1": "mp-rester::Har du kald spagetti eller annen pasta, så lag en spagettiomelett.",
+        "q2": "mp-rester::Eller kutt spagettien i kortere biter og bruk den istedenfor makaroni i suppe.",
+        "q3": "mp-rester::Kald pasta, couscous og bulgur kan også brukes i salat",
+        "q4": "mt-ris::Du bør ikke oppbevare kokt ris eller kokt pasta i romtemperatur.",
+        "q5": "mt-oppbevaring::Skal du ikkje ete maten i nærmaste framtid, frys han med ein gong."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "med-laks",
+      "navn": "laks",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fersk-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Fersk fisk | 2-3 dager | 3-4 dager"
+        },
+        "fersk-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Fersk fisk | 2-3 dager | 3-4 dager"
+        },
+        "rest-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "rest-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        }
+      },
+      "tekst": {
+        "q1": "mp-rester::Her kan du bruk all slags fisk",
+        "q2": "mt-oppbevaring::Skal du ikkje ete maten i nærmaste framtid, frys han med ein gong.",
+        "q3": "mp-rester::Plukkfisk er enkelt og raskt å lage av rester av fersk og lettsaltet fisk."
+      }
+    },
+    {
+      "id": "kokt-skinke",
+      "slug": "med-kokt-skinke",
+      "navn": "kokt skinke",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pose-min": {
+          "verdi": 7,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Ferskt/røkt pålegg (kokt/røkt skinke, / sylte/rull, leverpostei, kylling- og kalkunpålegg mm) | 7-10 dager | 21 dager"
+        },
+        "pose-maks": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Ferskt/røkt pålegg (kokt/røkt skinke, / sylte/rull, leverpostei, kylling- og kalkunpålegg mm) | 7-10 dager | 21 dager"
+        },
+        "rest-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "rest-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "vakuum": {
+          "verdi": 21,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Ferskt/røkt pålegg (kokt/røkt skinke, / sylte/rull, leverpostei, kylling- og kalkunpålegg mm) | 7-10 dager | 21 dager"
+        }
+      },
+      "tekst": {
+        "q1": "mt-oppbevaring::Restemat held seg i kjøleskap i to til fire dagar."
+      }
+    },
+    {
+      "id": "floete",
+      "slug": "med-floete",
+      "navn": "fløte",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "frys": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "melk-frys",
+          "merknad": "All fløte kan fryses i inntil 3 måneder"
+        }
+      },
+      "tekst": {
+        "q1": "melk-frys::etter opptining er den best egnet i sauser, supper eller for eksempel fløtestuede poteter.",
+        "q2": "melk-frys::Den vil nok ha litt kornete utseende, vil ikke holde like lenge og vil lettere skille seg.",
+        "q3": "melk-frys::Svaret er ja, den kan piskes til krem."
+      }
+    },
+    {
+      "id": "gulrotter",
+      "slug": "med-gulrotter",
+      "navn": "gulrøtter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kaldt-fra": {
+          "verdi": 0,
+          "enhet": "°C",
+          "kilde": "mv-gulrot",
+          "merknad": "Gulrot skal lagres kaldt, mellom 0 og 4 °C."
+        },
+        "kaldt-til": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-gulrot",
+          "merknad": "Gulrot skal lagres kaldt, mellom 0 og 4 °C."
+        }
+      },
+      "tekst": {
+        "q1": "mp-gront::Paprikaskalken, de bløte cherrytomatene eller den slappe gulroten er alle selvsagte ingredienser i enhver rett med tomater.",
+        "q2": "mv-gulrot::Riktig lagret er de imidlertid holdbare i flere måneder.",
+        "q3": "mv-gulrot::Best er originalemballasjen i perforert plast.",
+        "q4": "mv-gulrot::kan de fortsatt brukes til kraft eller rotmos",
+        "q5": "mv-gulrot::du kan rive dem i brøddeigen eller gulrotkaken"
+      }
+    },
+    {
+      "id": "brod",
+      "slug": "med-brod",
+      "navn": "brød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ovn": {
+          "verdi": 100,
+          "enhet": "°C",
+          "kilde": "mv-brod",
+          "merknad": "Tørt brød blir som nytt om du fukter det og varmer det en kort stund på 100 °C i stekeovnen."
+        }
+      },
+      "tekst": {
+        "q1": "mp-kjoleskap::brød og bakervarer, som blir raskere tørre",
+        "q2": "mv-brod::For å unngå mugg er det best å oppbevare brød i papirpose i en brødboks.",
+        "q3": "mv-brod::Frys ned halve brødet om du ikke tror du rekker å spise det før det blir tørt.",
+        "q4": "mv-brod::Du kan også bruke tørt brød til krutonger, arme riddere eller brødpudding.",
+        "q5": "mv-brod::Bruk brødristeren din, enten til brød som har blitt litt tørt eller til brød du har frosset ned i skiver."
+      }
+    },
+    {
+      "id": "bananer",
+      "slug": "med-bananer",
+      "navn": "bananer",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ikke-under": {
+          "verdi": 14,
+          "enhet": "°C",
+          "kilde": "mv-banan",
+          "merknad": "men altså ikke under 14 °C"
+        }
+      },
+      "tekst": {
+        "q1": "mv-banan::Da blir den grå i skallet.",
+        "q2": "mv-banan::eller bruk den som smørepålegg på brødskiva eller pannekaka (med kanel og sukker).",
+        "q3": "melk-vafler::Dropp sukkeret, og la bananen være søtningen.",
+        "q4": "mv-banan::Bananer holder i flere uker etter at de begynner å få brune flekker.",
+        "q5": "mv-banan::Lag banankake, mos den oppi en smoothie, ha den i pannekakerøra eller i grøten,",
+        "q6": "mp-kjoleskap::bananer, som blir misfarget og myke"
+      }
+    },
+    {
+      "id": "epler",
+      "slug": "med-epler",
+      "navn": "epler",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjoleskap-fra": {
+          "verdi": 1,
+          "enhet": "°C",
+          "kilde": "mv-eple",
+          "merknad": "1 til 5 °C"
+        },
+        "kjoleskap-til": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "mv-eple",
+          "merknad": "1 til 5 °C"
+        }
+      },
+      "tekst": {
+        "q1": "mv-banan::Hold den derfor atskilt fra annen etylenproduserende frukt som eple og tomat.",
+        "q2": "mv-eple::dersom du oppdager epler med rift i skallet eller små myke flekker, bruk disse først.",
+        "q3": "mv-eple::Vanlige butikkepler som Aroma og Gravenstein vil holde fint i et par måneder i kjøleskap.",
+        "q4": "mv-eple::Epler som er på kanten, men ikke mugne eller råtne, kan du bruke til kaker, smoothie, coleslaw, juice eller hjemmelaget sider.",
+        "q5": "mp-kjoleskap::Frukt som epler og tomater avgir etylen, som kan få andre produkter til å modne raskere.",
+        "q6": "mv-eple::På kjøkkenbenken reduseres holdbarheten til et par uker"
+      }
+    },
+    {
+      "id": "ribbe-og-pinnekjott",
+      "slug": "med-ribbe-og-pinnekjott",
+      "navn": "ribbe og pinnekjøtt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rest-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "rest-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "varme": {
+          "verdi": 70,
+          "enhet": "grader",
+          "kilde": "mt-kjokken",
+          "merknad": "Ved oppvarming til temperaturar over 70 grader i fleire minutt blir dei aller fleste bakteriar drepne."
+        }
+      },
+      "tekst": {
+        "q1": "mt-kjokken::Varm mat skal vere rykande varm",
+        "q2": "mp-jul::Avkjøl så raskt som mulig, pakk i egnet emballasje og sett kaldt.",
+        "q3": "mp-jul::Restene kan brukes både til julelunsjer og tapas i løpet av juledagene.",
+        "q4": "mp-ribbe::Har du rester av ribbe, kan du lage noe godt til juletapas eller andre digge resteretter.",
+        "q5": "mt-oppbevaring::Skal du ikkje ete maten i nærmaste framtid, frys han med ein gong."
+      }
+    }
+  ]
+}

@@ -70,13 +70,17 @@ test('en tom liste endrer ingenting', async () => {
   assert.equal(familieForSti('/verktoy/proeve/provemel/', []), null);
 });
 
-test('det ekte registeret har dl til gram, ukemenyene, holdbarhet og frysing, og ingen fiksturfamilier', () => {
-  assert.deepEqual(FAMILIER.map((f) => f.id), ['dl-til-gram', 'ukemeny', 'holdbarhet', 'frysing']);
+test('det ekte registeret har dl til gram, ukemenyene, holdbarhet, frysing, erstatning og rester, og ingen fiksturfamilier', () => {
+  assert.deepEqual(FAMILIER.map((f) => f.id), ['dl-til-gram', 'ukemeny', 'holdbarhet', 'frysing', 'erstatning', 'rester']);
   assert.equal(familieForSti('/ukemenyer/familie/'), 'ukemeny');
   assert.equal(familieForSti('/ukemeny/'), null, 'produktsiden /ukemeny/ hører ikke til familien');
   assert.equal(familieForSti('/verktoy/dl-til-gram/hvetemel/'), 'dl-til-gram');
   assert.equal(familieForSti('/holdbarhet/egg/'), 'holdbarhet');
   assert.equal(familieForSti('/frysing/egg/'), 'frysing');
+  assert.equal(familieForSti('/erstatning/egg/'), 'erstatning');
+  assert.equal(familieForSti('/hva-kan-jeg-lage/med-kjottdeig/'), 'rester');
+  assert.equal(familieForSti('/hva-kan-jeg-lage/'), 'rester', 'samlesiden /hva-kan-jeg-lage/ er familiens rot');
+  assert.equal(familieForSti('/tom-kjoleskapet/'), null);
   assert.equal(familieForSti('/verktoy/proeve/provemel/'), null);
   assert.equal(familieForSti('/verktoy/dl-til-kopp/'), null);
 });

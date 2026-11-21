@@ -71,6 +71,7 @@ export const HYLLER = {
         // Familiene holdbarhet og frysing finnes bare på norsk (scripts/familier/).
         { tekst: 'Holdbarhet i kjøleskapet', href: '/holdbarhet/', bareNb: true },
         { tekst: 'Frysing', href: '/frysing/', bareNb: true },
+        { tekst: 'Erstatning', href: '/erstatning/', bareNb: true },
         { tekst: 'Alle kjøkkentips', href: '/blogg/' },
       ],
     },
