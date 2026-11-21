@@ -85,7 +85,7 @@ for (const [marked, land, gl] of [['sv', 'se', 'SE'], ['da', 'dk', 'DK']]) {
   });
 }
 
-test('sv og da: det sidene sier om Matlyst følger de svenske og danske appsidene (oversettelse, metrisk, ingen omregning)', () => {
+test('sv og da: det sidene sier om Matlyst følger de svenske og danske appsidene (oversettelse, metrisk, omregning ved import)', () => {
   const tekst = (m) => Object.values(m.STIER).map((sti) => synlig(hoved(les(`${MARKEDER[m === sv ? 'sv' : 'da'].prefiks.slice(1)}${sti}index.html`)))).join(' ');
   const s = tekst(sv);
   const d = tekst(da);
@@ -93,7 +93,7 @@ test('sv og da: det sidene sier om Matlyst følger de svenske og danske appsiden
   assert.match(d, /Opskrifter på andre sprog oversættes til dansk\. Mængderne er metriske som standard\./u);
   assert.doesNotMatch(s, /Matlyst (?:räknar om|omvandlar)/u);
   assert.doesNotMatch(d, /Matlyst (?:regner|omregner|konverterer)/u);
-  assert.match(les('sv/receptbok-app/index.html'), /Matlyst räknar inte om enheter vid import, och recept på andra språk översätts till svenska\./u);
+  assert.match(les('sv/receptbok-app/index.html'), /Med Enheter på Metriskt räknas cups, uns och pund om till dl och gram när du importerar\. Det gäller nya importer\. Recept på andra språk översätts till svenska\./u);
   // Dansk tekst kan ikke inneholde «nok» (locale-testen leser det som NOK), og dansk sier aftensmad, aldri middag.
   assert.doesNotMatch(d, /\bnok\b|\bmiddag/iu);
 });

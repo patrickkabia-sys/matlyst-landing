@@ -95,7 +95,7 @@ const recipeBookApp = (() => {
         + '<ul><li><strong>It reads captions, not audio.</strong> Matlyst does not transcribe videos. If the amounts are only spoken, type them in after importing.</li>'
         + '<li><strong>It doesn’t read comments.</strong> If a creator put the recipe in a comment or behind a link in the bio, copy it in by hand or share the link to the recipe page.</li>'
         + '<li><strong>One recipe per post.</strong> If a reel shows three recipes, you will need to split them yourself.</li>'
-        + '<li><strong>It does not convert units on import.</strong> Metric is the default. Units: US keeps what the source used.</li>'
+        + '<li><strong>Unit conversion only applies to new imports.</strong> With Metric, cups, ounces, and pounds are converted to milliliters and grams when you import. Recipes you have already saved keep their amounts.</li>'
         + '<li><strong>AI can make mistakes.</strong> Matlyst uses AI to read and translate recipes, so check amounts and steps before you cook, especially from photos and handwriting.</li>'
         + '<li><strong>Cook mode needs an internet connection.</strong> Reading a saved recipe works offline for up to 30 days after the last sync.</li></ul>'
         + p('Want to see Matlyst next to other recipe apps? See <a href="/en/best-recipe-app/">eight recipe apps compared</a>, with a source and a date for every fact.')],
@@ -145,7 +145,7 @@ const instagram = byggRik({ ekstra: ekstraInstagram,
       + '<li><strong>Several recipes in one reel.</strong> Matlyst imports one recipe per post. Split them by hand.</li>'
       + '<li><strong>Private, deleted, or restricted posts.</strong> Matlyst needs access to a public post, so these may not be readable.</li></ul>'],
     ['What to check in the draft before you save', p('Reading the draft takes a minute, and it is the step that decides whether the recipe works. Check these in order.')
-      + '<ol><li><strong>Amounts and units.</strong> Does each ingredient have a number? A missing amount usually means the creator didn’t write one. Matlyst uses metric by default, so switch Units to US in Settings if you want cups and ounces kept as the source wrote them. Matlyst does not convert between them.</li>'
+      + '<ol><li><strong>Amounts and units.</strong> Does each ingredient have a number? A missing amount usually means the creator didn’t write one. Matlyst uses metric by default, so switch Units to US in Settings if you want cups and ounces kept as the source wrote them. With Metric, cups, ounces, and pounds are converted to milliliters and grams on import. The setting applies to new imports.</li>'
       + '<li><strong>Ingredient groups.</strong> Long captions often split ingredients into groups, such as sauce, filling, and topping. Make sure nothing landed in the wrong group.</li>'
       + '<li><strong>Oven temperature and times.</strong> These are easy to miss in a long caption. Compare them with the post.</li>'
       + '<li><strong>The steps.</strong> Are they in order, and is every step something you do? Cut anything that is a joke or a hashtag.</li>'
