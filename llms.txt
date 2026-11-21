@@ -61,7 +61,7 @@ Matlyst henter oppskriften fra lenken, videoen eller bildet du deler, oversetter
 ## Norsk: Verktøy
 
 - [Dl til gram: kalkulator og tabell for 29 varer](https://matlyst-app.no/verktoy/dl-til-gram/): Hva veier 1 dl? Regn om dl, ss, ts og gram for 29 varer, fra mel og sukker til smør og melk, med kilde på hvert tall.
-- [Enhetsomregner for mat: dl, ml, kopper, gram og °F](https://matlyst-app.no/verktoy/enhetsomregner/): Gratis enhetsomregner for matlaging: dl til ml, kopper til ml, unser til gram, pund til kilo, °F til °C og mer, med tabeller og tips til kjøkkenet.
+- [Enhetsomregner for mat: dl, ml, cups, gram og °F](https://matlyst-app.no/verktoy/enhetsomregner/): Gratis enhetsomregner for matlaging: dl til ml, cups til ml, unser til gram, pund til kilo, °F til °C og mer, med tabeller og tips til kjøkkenet.
 
 ## Norsk: Personvern og vilkår
 
@@ -109,7 +109,7 @@ Matlyst henter opskriften fra det link, den video eller det billede, du deler, o
 
 ## Dansk: Værktøjer
 
-- [Enhedsomregner til køkkenet: dl, ml, kopper, g, °F](https://matlyst-app.no/da/vaerktoejer/enhedsomregner/): Gratis enhedsomregner til køkkenet: ml til dl, kopper til ml, ounces til gram, pund til kilo og °F til °C. Med tabeller og tips til opskrifter.
+- [Enhedsomregner til køkkenet: dl, ml, cups, g, °F](https://matlyst-app.no/da/vaerktoejer/enhedsomregner/): Gratis enhedsomregner til køkkenet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Med tabeller og tips til opskrifter.
 
 ## Dansk: Privatliv og vilkår
 
@@ -157,7 +157,7 @@ Matlyst hämtar receptet från länken, videon eller bilden du delar, översätt
 
 ## Svenska: Verktyg
 
-- [Enhetsomvandlare för matlagning: dl, ml, koppar, °F](https://matlyst-app.no/sv/verktyg/enhetsomvandlare/): Gratis enhetsomvandlare för matlagning med alla kombinationer: ml till dl, koppar till ml, uns till g, pund till kg, °F till °C. Med tabeller och köksråd.
+- [Enhetsomvandlare för matlagning: dl, ml, cups, °F](https://matlyst-app.no/sv/verktyg/enhetsomvandlare/): Gratis enhetsomvandlare för matlagning med alla kombinationer: ml till dl, cup till ml, uns till g, pund till kg, °F till °C. Med tabeller och köksråd.
 
 ## Svenska: Integritet och villkor
 
