@@ -63,7 +63,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/blog/freezer-storage-times/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/mat-i-fryseren/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/mat-i-frysen/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/mad-i-fryseren/"/>
@@ -72,7 +72,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/blog/leftovers-in-the-fridge/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/rester-i-kjoleskapet/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/rester-i-kylen/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/rester-i-koeleskabet/"/>
@@ -96,6 +96,141 @@
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/kernetemperatur/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/safe-internal-temperatures/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/safe-internal-temperatures/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/bacon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/bacon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/bacon/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/casseroles/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/casseroles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/casseroles/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/cooked-chicken/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/cooked-chicken/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/cooked-chicken/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/cooked-pasta/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/cooked-pasta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/cooked-pasta/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/cooked-rice/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/cooked-rice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/cooked-rice/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/deli-meat/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/deli-meat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/deli-meat/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/egg-salad/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/egg-salad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/egg-salad/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/eggs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/egg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/eggs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/eggs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/ground-beef/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/ground-beef/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/ground-beef/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/ham/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/ham/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/ham/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/hard-boiled-eggs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/hard-boiled-eggs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/hard-boiled-eggs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/hot-dogs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/hot-dogs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/hot-dogs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/leftovers/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/leftovers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/leftovers/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/pizza/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/pizza/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/pizza/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/pumpkin-pie/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/pumpkin-pie/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/pumpkin-pie/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/raw-chicken/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/raw-chicken/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/raw-chicken/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/salmon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/salmon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/salmon/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/shrimp/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/skalldyr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/shrimp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/shrimp/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/soup/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/soup/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/soup/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/steak/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/steak/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/steak/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/can-you-freeze/turkey-leftovers/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/turkey-leftovers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/turkey-leftovers/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/en/delete-account/</loc>
@@ -194,6 +329,143 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/holidays/thanksgiving/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/bacon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/bacon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/bacon/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/casseroles/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/casseroles/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/casseroles/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/cooked-chicken/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/cooked-chicken/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/cooked-chicken/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/cooked-pasta/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/cooked-pasta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/cooked-pasta/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/cooked-rice/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/cooked-rice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/cooked-rice/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/deli-meat/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/deli-meat/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/deli-meat/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/egg-salad/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/egg-salad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/egg-salad/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/eggs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/egg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/eggs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/eggs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/ground-beef/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/ground-beef/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/ground-beef/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/ham/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/ham/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/ham/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/hard-boiled-eggs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/kokte-egg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/hard-boiled-eggs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/hard-boiled-eggs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/hot-dogs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/hot-dogs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/hot-dogs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/leftovers/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/rester/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/leftovers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/leftovers/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/pizza/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/pizza/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/pizza/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/pumpkin-pie/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/pumpkin-pie/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/pumpkin-pie/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/raw-chicken/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/raw-chicken/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/raw-chicken/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/salmon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/salmon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/salmon/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/shrimp/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/skalldyr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/shrimp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/shrimp/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/soup/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/soup/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/soup/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/steak/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/steak/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/steak/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/how-long-does-it-last/turkey-leftovers/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/turkey-leftovers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/turkey-leftovers/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/en/import-recipes-from-instagram/</loc>
     <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/lagre-oppskrifter-fra-instagram/"/>
@@ -282,7 +554,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/pantry-app/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/spiskammer-app/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/skafferi-app/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/spisekammer-app/"/>
