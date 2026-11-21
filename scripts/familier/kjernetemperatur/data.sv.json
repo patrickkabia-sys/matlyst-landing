@@ -1,0 +1,379 @@
+{
+  "familie": "kjernetemperatur",
+  "marked": "sv",
+  "kilder": {
+    "kottfars": {
+      "navn": "Svinnkoll: Köttfärs",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/kottfars/",
+      "hentet": "2026-11-21"
+    },
+    "campy": {
+      "navn": "Campylobacter",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/bakterier-virus-parasiter-och-mogelsvampar1/bakterier/campylobacter/",
+      "hentet": "2026-11-21"
+    },
+    "skhantera": {
+      "navn": "Hantera kött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2023,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/hantera-kott/",
+      "hentet": "2026-11-21"
+    },
+    "sktemp": {
+      "navn": "Temperaturer, tider och tips när du ska tillaga kött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2024,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/laga-kott/temperaturer/",
+      "hentet": "2026-11-21"
+    },
+    "skhygien": {
+      "navn": "Hygien vid hantering av kött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2023,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/laga-kott/hygien/",
+      "hentet": "2026-11-21"
+    },
+    "skgrilla": {
+      "navn": "Grilla kött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2023,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/laga-kott/grilla/",
+      "hentet": "2026-11-21"
+    },
+    "sfsakra": {
+      "navn": "Säkra kycklingtips",
+      "utgiver": "Svensk Fågel",
+      "aar": 2024,
+      "adresse": "https://svenskfagel.se/halsa-och-recept/sakra-kycklingstips/",
+      "hentet": "2026-11-21"
+    },
+    "sfdelar": {
+      "navn": "Kycklingens delar och lär dig stycka kyckling",
+      "utgiver": "Svensk Fågel",
+      "aar": 2025,
+      "adresse": "https://svenskfagel.se/fakta-om-fagel/kycklingens-delar-och-lar-dig-stycka-kyckling/",
+      "hentet": "2026-11-21"
+    },
+    "sfjul": {
+      "navn": "Julrecept på Svensk Fågel",
+      "utgiver": "Svensk Fågel",
+      "aar": 2024,
+      "adresse": "https://svenskfagel.se/recept/julrecept-pa-svensk-fagel/",
+      "hentet": "2026-11-21"
+    },
+    "sfhellberg": {
+      "navn": "Christian Hellbergs helstekta kalkon med vitlöksrubb",
+      "utgiver": "Svensk Fågel",
+      "aar": 2024,
+      "adresse": "https://svenskfagel.se/recept/christian-hellbergs-helstekta-kalkon-med-vitloksrubb/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kylling",
+      "slug": "kyckling",
+      "navn": "Kyckling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "lag": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfsakra",
+          "merknad": "Alla bakterier, inklusive campylobacter dör vid en temperatur på minst 70 grader."
+        },
+        "hel": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "sfsakra",
+          "merknad": "för hel kyckling gäller 80 grader intill benet"
+        },
+        "filet": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfsakra",
+          "merknad": "för kycklingfilé och kycklinglårfilé gäller 70 grader"
+        },
+        "delar": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "sfdelar",
+          "merknad": "Ben, lår, klubba och hel kyckling: 80 grader"
+        },
+        "brost": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfdelar",
+          "merknad": "Bröstfilé och lårfilé: 70 grader"
+        }
+      },
+      "tekst": {
+        "termometer": "sfsakra|Använd gärna termometer",
+        "rosa": "sfsakra|Kycklingköttet ska inte vara genomskinligt och rosafärgat, köttsaften som rinner ut om du delar kycklingen ska vara klar och inte rosafärgad.",
+        "saft": "sfdelar|är köttsaften klar, utan röda inslag så är kycklingen färdig.",
+        "genomstek": "campy|Genomstek alltid kyckling",
+        "skolj": "campy|Skölj inte kycklingen under vattenkranen.",
+        "fa": "campy|Eftersom det räcker med ett fåtal campylobacter för att bli sjuk, behöver bakterierna inte föröka sig.",
+        "farsk": "campy|Campylobacter är vanligare och förekommer i större mängd i färskt kycklingkött jämfört med fryst.",
+        "hander": "campy|Tvätta alltid händerna med tvål och vatten innan du börjar laga mat och alltid direkt efter att du rört rått kött eller tagit i använda knivar och köksredskap samt förorenade skärbrädor och bänkytor."
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "kalkon",
+      "navn": "Kalkon",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "klar": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfjul",
+          "merknad": "Kalkonen är klar när saften från lårköttet är genomskinlig och innertemperaturen har nått 70 grader."
+        },
+        "ut-min": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "sfjul",
+          "merknad": "Ta gärna ut den vid en innertemperatur på 65-67 grader"
+        },
+        "ut-maks": {
+          "verdi": 67,
+          "enhet": "°C",
+          "kilde": "sfjul",
+          "merknad": "Ta gärna ut den vid en innertemperatur på 65-67 grader"
+        },
+        "vila": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "sfjul",
+          "merknad": "Kalkonen behöver vila i minst 30 minuter innan den kan trancheras."
+        },
+        "hellberg": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfhellberg",
+          "merknad": "När kalkonen är klar så skall temperaturen vara 70 grader inne vid lårbenet."
+        }
+      },
+      "tekst": {
+        "klar": "sfjul|Kalkonen är klar när saften från lårköttet är genomskinlig och innertemperaturen har nått 70 grader.",
+        "ut": "sfjul|Ta gärna ut den vid en innertemperatur på 65-67 grader, eftersom köttet fortsätter att tillagas under vilotiden.",
+        "vila": "sfjul|Kalkonen behöver vila i minst 30 minuter innan den kan trancheras.",
+        "lar": "sfhellberg|När kalkonen är klar så skall temperaturen vara 70 grader inne vid lårbenet.",
+        "folie": "sfjul|Täck med aluminiumfolie om skinnet börjar få mycket färg.",
+        "varm": "sfjul|Om man vill kan köttet sedan värmas försiktigt under folie i 150 grader i ugnen inför servering"
+      }
+    },
+    {
+      "id": "kjottdeig",
+      "slug": "kottfars",
+      "navn": "Köttfärs och hamburgare",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fars": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Därför ska köttfärs vara genomstekt, till en innertemperatur av 70˚C."
+        },
+        "map": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "kottfars",
+          "merknad": "Detta gäller särskilt färs i modifierad atmosfär, där färgen kan se färdig ut redan vid 55 grader."
+        },
+        "lv": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "kottfars",
+          "merknad": "För att vara säker ska köttfärs ha nått 70 graders innertemperatur"
+        }
+      },
+      "tekst": {
+        "farg": "kottfars|Det räcker inte att titta på färgen för att veta om köttfärs är genomstekt.",
+        "mat": "kottfars|mät gärna med en termometer, till exempel i en köttfärsbiff",
+        "ytor": "skhygien|När man maler ner köttbiten till färs maler man också ner bakterierna från ytan, samtidigt blir det massvis med nya små ytor där bakterierna lätt förökar sig.",
+        "smaka": "skhygien|Rekommendationen från Livsmedelsverket är att man inte ska smaka på rå köttfärs och att den ska genomstekas.",
+        "prov": "skhygien|Vill man testa om köttbullssmeten är lagom kryddad kan man steka en liten provbulle och smaka på den.",
+        "mapkontroll": "sktemp|Därför är det extra viktigt att kontrollera innertemperaturen på köttfärsbiffar och andra rätter med köttfärs som varit förpackad i skyddande atmosfär."
+      }
+    },
+    {
+      "id": "gris",
+      "slug": "griskott",
+      "navn": "Griskött",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "genomstekt": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Well done (genomstekt): 70˚C nöt, lamm, gris, färs"
+        },
+        "bakterier": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "skhygien",
+          "merknad": "Bakterier kan finnas på kött och de allra flesta bakterier som kan göra oss sjuka dör vid 70˚C."
+        },
+        "trikin": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "skhygien",
+          "merknad": "Trikiner dör vid upphettning till mer än 65˚C"
+        },
+        "torrt": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "När innertemperaturen kommer upp till 75 grader blir köttet torrt och grått."
+        }
+      },
+      "tekst": {
+        "yta": "sktemp|Omalet, helt kött kan ha bakterier på ytan men dessa dör vid tillagningen.",
+        "torrt": "sktemp|När innertemperaturen kommer upp till 75 grader blir köttet torrt och grått.",
+        "helt": "skhygien|När man steker eller grillar helt kött blir temperaturen tillräckligt hög på ytan även om man avbryter tillagningen när biffen är rosa i mitten.",
+        "trikin": "skhygien|Samtliga grisar som slaktas i Sverige kontrolleras avseende förekomst av trikiner.",
+        "vila": "sktemp|Tänk på att alltid låta köttet vila i cirka 10 minuter innan du serverar eller skär upp det."
+      }
+    },
+    {
+      "id": "not-og-lamm",
+      "slug": "notkott-och-lamm",
+      "navn": "Nötkött och lamm",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rare": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Rare (blodigt) : 55˚C nöt, lamm (omalet kött)"
+        },
+        "mrare-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Medium rare: 58–60˚C nöt, lamm (omalet kött)"
+        },
+        "mrare-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Medium rare: 58–60˚C nöt, lamm (omalet kött)"
+        },
+        "medium-min": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Medium: 60–65˚C nöt, lamm (omalet kött)"
+        },
+        "medium-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Medium: 60–65˚C nöt, lamm (omalet kött)"
+        },
+        "genomstekt": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Well done (genomstekt): 70˚C nöt, lamm, gris, färs"
+        }
+      },
+      "tekst": {
+        "yta": "skhygien|När man steker eller grillar helt kött blir temperaturen tillräckligt hög på ytan även om man avbryter tillagningen när biffen är rosa i mitten.",
+        "omalet": "sktemp|Omalet, helt kött kan ha bakterier på ytan men dessa dör vid tillagningen.",
+        "ehec": "skhygien|Ehec är en bakterie som kan finnas på kött från idisslare som nötkött och lammkött.",
+        "rosa": "skgrilla|Lamm och nötkött kan vara rosastekta.",
+        "digital": "skgrilla|Kolla innertemperaturen med en digital stektermometer som tål hettan från grillen.",
+        "tjockaste": "sktemp|I större köttbitar, till exempel en stek som tillagas i ugnen eller i en gryta på spisen sticker man in termometern i den tjockaste delen av köttet, se till att spetsen inte stöter emot något ben.",
+        "sida": "sktemp|Stick in termometern från sidan i skivat kött som ligger i stekpannan eller på grillen.",
+        "rumsvarmt": "sktemp|Det blir bättre resultat vid stekning i panna om köttet är rumsvarmt när det läggs i pannan."
+      }
+    },
+    {
+      "id": "vila",
+      "slug": "vila",
+      "navn": "Vila och eftervärme",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "sma-min": {
+          "verdi": 1,
+          "enhet": "grader",
+          "kilde": "skhantera",
+          "merknad": "För att komma upp i rätt slutlig innertemperatur bör man därför dra av 1–2 grader på mindre bitar och 3–4 grader på större köttbitar."
+        },
+        "sma-maks": {
+          "verdi": 2,
+          "enhet": "grader",
+          "kilde": "skhantera",
+          "merknad": "För att komma upp i rätt slutlig innertemperatur bör man därför dra av 1–2 grader på mindre bitar och 3–4 grader på större köttbitar."
+        },
+        "stora-min": {
+          "verdi": 3,
+          "enhet": "grader",
+          "kilde": "skhantera",
+          "merknad": "För att komma upp i rätt slutlig innertemperatur bör man därför dra av 1–2 grader på mindre bitar och 3–4 grader på större köttbitar."
+        },
+        "stora-maks": {
+          "verdi": 4,
+          "enhet": "grader",
+          "kilde": "skhantera",
+          "merknad": "För att komma upp i rätt slutlig innertemperatur bör man därför dra av 1–2 grader på mindre bitar och 3–4 grader på större köttbitar."
+        },
+        "vilasma-min": {
+          "verdi": 5,
+          "enhet": "minuter",
+          "kilde": "skhantera",
+          "merknad": "Skivor eller mindre bitar av kött och kan gärna vila 5–10 minuter"
+        },
+        "vilasma-maks": {
+          "verdi": 10,
+          "enhet": "minuter",
+          "kilde": "skhantera",
+          "merknad": "Skivor eller mindre bitar av kött och kan gärna vila 5–10 minuter"
+        },
+        "vilastora-min": {
+          "verdi": 10,
+          "enhet": "minuter",
+          "kilde": "skhantera",
+          "merknad": "hela stora bitar av kött, som en stek eller rostbiff, kan gärna vila 10–20 minuter"
+        },
+        "vilastora-maks": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "skhantera",
+          "merknad": "hela stora bitar av kött, som en stek eller rostbiff, kan gärna vila 10–20 minuter"
+        },
+        "kalkon": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "sfjul",
+          "merknad": "Kalkonen behöver vila i minst 30 minuter innan den kan trancheras."
+        }
+      },
+      "tekst": {
+        "saft": "skhantera|Att låta steken vila har flera fördelar jämfört med om man skivar det direkt; mer köttsaft stannar kvar i köttet, det går lättare att skära köttet i tunna, snygga skivor och färgen på köttet (särskilt nötkött) bevaras bättre.",
+        "stiger": "skhantera|Under tiden köttet vilar stiger innertemperaturen någon eller några grader.",
+        "folie": "skhantera|Är man utomhus och grillar kan man täcka köttet med en bit aluminiumfolie när man tagit det från grillen för att bevara mer av värmen, men det behövs egentligen inte inne i köket.",
+        "kalkon": "sfjul|Ta gärna ut den vid en innertemperatur på 65-67 grader, eftersom köttet fortsätter att tillagas under vilotiden."
+      }
+    }
+  ]
+}

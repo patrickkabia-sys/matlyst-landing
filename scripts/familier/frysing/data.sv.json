@@ -1,0 +1,447 @@
+{
+  "familie": "frysing",
+  "marked": "sv",
+  "kilder": {
+    "avsvalning": {
+      "navn": "Avsvalning av mat",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/avsvalning/",
+      "hentet": "2026-11-21"
+    },
+    "elfrys": {
+      "navn": "Elavbrott: så gör du med maten i frysen",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/forvaring/",
+      "hentet": "2026-11-21"
+    },
+    "frysa": {
+      "navn": "Frysa mat",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2025,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/frysa-mat/",
+      "hentet": "2026-11-21"
+    },
+    "forvara": {
+      "navn": "Förvara maten rätt",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/tips/forvara-maten-ratt/",
+      "hentet": "2026-11-21"
+    },
+    "matlada": {
+      "navn": "Svinnkoll: Matlåda",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/matlada/",
+      "hentet": "2026-11-21"
+    },
+    "agg": {
+      "navn": "Svinnkoll: Ägg",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/agg/",
+      "hentet": "2026-11-21"
+    },
+    "kottfars": {
+      "navn": "Svinnkoll: Köttfärs",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/kottfars/",
+      "hentet": "2026-11-21"
+    },
+    "ost": {
+      "navn": "Svinnkoll: Ost (hårdost)",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/ost-hardost/",
+      "hentet": "2026-11-21"
+    },
+    "brod": {
+      "navn": "Svinnkoll: Bröd (mjukt)",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/brod-mjukt/",
+      "hentet": "2026-11-21"
+    },
+    "skforvara": {
+      "navn": "Förvara kött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2023,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/forvara-kott/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kjott",
+      "slug": "kott",
+      "navn": "Kött",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "skforvara",
+          "merknad": "Lagringstid i frys -18˚C"
+        },
+        "gris-feta": {
+          "verdi": 3,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "Griskött : feta delar: 3 månader"
+        },
+        "gris-magra": {
+          "verdi": 6,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "magra delar: 6 månader"
+        },
+        "not-min": {
+          "verdi": 8,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "Nötkött : 8-12 månader"
+        },
+        "not-maks": {
+          "verdi": 12,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "Nötkött : 8-12 månader"
+        },
+        "lamm-min": {
+          "verdi": 6,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "Lammkött : 6-12 månader beroende på fetthalt"
+        },
+        "lamm-maks": {
+          "verdi": 12,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "Lammkött : 6-12 månader beroende på fetthalt"
+        },
+        "chark-min": {
+          "verdi": 1,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "Charkuterier : 1-2 månader"
+        },
+        "chark-maks": {
+          "verdi": 2,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "Charkuterier : 1-2 månader"
+        },
+        "innanmat": {
+          "verdi": 3,
+          "enhet": "månader",
+          "kilde": "skforvara",
+          "merknad": "Innanmat : 3 månader"
+        },
+        "ar": {
+          "verdi": 1,
+          "enhet": "år",
+          "kilde": "skforvara",
+          "merknad": "Kött håller sig upp till ett år i frysen, beroende på vilket djurslag och styckningsdel det är."
+        }
+      },
+      "tekst": {
+        "ar": "skforvara|Kött håller sig upp till ett år i frysen, beroende på vilket djurslag och styckningsdel det är.",
+        "harskna": "skforvara|Vid förvaring i frys är det framförallt fettet som förändras, det härsknar.",
+        "harsket": "skforvara|Om köttet ligger längre än vad som rekommenderas ovan så kan det börja lukta lite härsket men det är inte farligt att äta och smakar bra om man skär bort de fetare delarna.",
+        "fett": "frysa|Kött och fisk med hög fetthalt, som fläskkött och lax, har generellt kortare hållbarhet jämfört med kött och fisk med låg fetthalt, som kyckling, viltkött och torsk.",
+        "viltkott": "forvara|Feta charkprodukter kan därför försämras i kvalitet redan efter någon månad medan magert viltkött håller mer än ett år.",
+        "snabbt": "skforvara|En långsam infrysning ger större iskristaller och det innebär att mer av köttsaften förloras när köttet tinas och att det blir torrare vid tillagningen.",
+        "paket": "skforvara|Den snabba infrysningen åstadkommer man genom att förpacka köttet i mindre paket eller påsar som sprids ut i frysen.",
+        "datum": "skforvara|Skriv datum och innehåll på förpackningarna.",
+        "tina": "skforvara|Tina inte köttet i rumstemperatur för då blir det rumsvarmt på ytan innan kärnan är tinad.",
+        "kylen": "skforvara|Om man tinar köttet i kylen hämmas bakterietillväxten men det bildas stora iskristaller som trasar sönder cellerna i råvaran.",
+        "inget": "frysa|Det går inte att ange någon särskild hållbarhetstid för fryst mat."
+      }
+    },
+    {
+      "id": "kottfars",
+      "slug": "kottfars",
+      "navn": "Köttfärs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        },
+        "fars": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "kottfars",
+          "merknad": "För att vara säker ska köttfärs ha nått 70 graders innertemperatur"
+        }
+      },
+      "tekst": {
+        "bra": "kottfars|Köttfärs går bra att frysa. Packa i lufttät förpackning så att det inte torkar ut, och märk med datum.",
+        "harskna": "kottfars|ju fetare färsen är, desto kortare hållbarhet",
+        "portion": "kottfars|Dela upp i portionsstora förpackningar så går det snabbare att både frysa och tina",
+        "platta": "skforvara|Gör gärna platta paket av köttfärsen.",
+        "plast": "skforvara|Om du vill frysa in kött eller köttfärs från en förpackning med skyddande atmosfär ska det läggas över i en plastpåse.",
+        "syre": "skforvara|Den höga syrehalten i förpackningen med atmosfär gör att köttet får kortare hållbarhet i frysen.",
+        "tina": "skforvara|Det bästa sättet att tina fryst köttfärs eller en styckningsdetalj är att lägga förpackningen i kallt vatten i diskhon eller i en stor skål.",
+        "vatten": "skforvara|Vattnet leder värme mycket bättre än luft och tinar maten snabbt.",
+        "vaknar": "frysa|De dör inte, men frysningen gör att de går över till ett vilostadium. När maten tinas upp vaknar de och kan börja föröka sig igen om temperaturen tillåter.",
+        "genomstek": "kottfars|Det räcker inte att titta på färgen för att veta om köttfärs är genomstekt."
+      }
+    },
+    {
+      "id": "frysa-om",
+      "slug": "frysa-om",
+      "navn": "Frysa om mat",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        }
+      },
+      "tekst": {
+        "tillagat": "frysa|Mat som har tinats och tillagats går bra att frysa in igen.",
+        "otillagat": "frysa|Även tinad mat som inte har tillagats kan frysas in igen om den har tinats i kylskåp. Men den kommer då att vara torrare än tidigare på grund av att det försvinner en del vatten under tiningen.",
+        "halv": "elfrys|Halvtinad mat är mat som börjar bli lite mjuk men fortfarande har iskristaller kvar. Sådan mat kan frysas in på nytt.",
+        "helt": "elfrys|Om maten har tinat helt, men fortfarande känns kylskåpskall, kan du välja att frysa in den igen eller att tillaga den direkt.",
+        "kvalitet": "elfrys|som tinat delvis och fryses in igen kan försämras, men säkerheten påverkas inte.",
+        "tinakyl": "frysa|Tina gärna upp maten i kylskåp eller i ett kallt vattenbad.",
+        "kallt": "frysa|Tänk på att förvara den upptinade maten kallt om du inte ska äta eller tillaga den direkt.",
+        "mikron": "frysa|Om du ska tillaga eller äta maten direkt kan du tina den i mikron.",
+        "bakterier": "frysa|Eftersom bakterier, jäst och mögelsvampar då kan föröka sig lika snabbt som innan frysningen bör den tinade maten förvaras i kylskåp.",
+        "sinnen": "frysa|Titta, lukta och smaka på maten när den har tinat upp för att avgöra om du ska äta den eller inte."
+      }
+    },
+    {
+      "id": "frukt-og-gronnsaker",
+      "slug": "frukt-och-gront",
+      "navn": "Frukt, bär och grönsaker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        },
+        "ar": {
+          "verdi": 1,
+          "enhet": "år",
+          "kilde": "forvara",
+          "merknad": "I frysen håller bär, frukter och grönsaker ett år eller mer."
+        }
+      },
+      "tekst": {
+        "ar": "forvara|I frysen håller bär, frukter och grönsaker ett år eller mer.",
+        "delas": "forvara|Frukt och bär kan frysas in, men frukt måste först delas i mindre bitar.",
+        "forvall": "forvara|Grönsaker går också bra att frysa om man först förväller dem, det vill säga kokar upp vatten, låter grönsakerna koka med en kort stund och sedan spolar dem i kallt vatten innan de fryses in.",
+        "farlig": "forvara|Eftersom bakterier inte kan växa i frysen blir gammal mat inte farlig, däremot kan den torka ut och så småningom tappa i smak och konsistens.",
+        "blek": "frysa|Grönsaker och frukter brukar få en blekare färg på grund av uttorkning.",
+        "skonhet": "frysa|Om den tinade maten luktar och smakar som den ska, men kanske har små skönhetsfel, kan det fortfarande gå bra att använda den i rätter som grytor eller soppor."
+      }
+    },
+    {
+      "id": "gurka-og-salat",
+      "slug": "gurka-och-sallad",
+      "navn": "Gurka och sallad",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        }
+      },
+      "tekst": {
+        "sallad": "frysa|Vissa bladgrönsaker och gurka får också sin konsistens förstörd av frysning.",
+        "nastan": "frysa|Nästan all slags mat går bra att frysa. Men viss mat kan bli oaptitlig av att frysas.",
+        "inte": "frysa|Mat som har skurit sig eller på annat sätt förstörs i konsistensen i frysen är dock inte farlig att äta.",
+        "spaken": "forvara|Sallad, morötter och andra rotfrukter som tappat spänsten blir pigga och krispiga om de får ligga i en skål med vatten i kylskåpet några timmar.",
+        "omogen": "forvara|Det är också bra att äta mer av grönsaker som tål att lagras, till exempel morötter, rödbetor, vitkål, kålrot och blomkål, och mindre av ömtåliga grönsaker, som sallad, tomat och gurka, som snabbare blir gamla.",
+        "gryta": "forvara|Frukt och grönsaker som blivit lite skrumpna kan ätas ändå"
+      }
+    },
+    {
+      "id": "melk-og-fil",
+      "slug": "mjolk-och-fil",
+      "navn": "Mjölk, grädde och fil",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        }
+      },
+      "tekst": {
+        "mjolk": "forvara|Mjölk, grädde och matfetter kan också frysas in om de inte går åt i tid.",
+        "gradde": "forvara|Fryst grädde kan vara svår att vispa efter att den har varit fryst, men den går utmärkt att använda i matlagning.",
+        "skarsig": "frysa|Några exempel är fil, yoghurt, majonnäs och crème fraiche.",
+        "skar": "frysa|Frysningen gör att de ”skär sig”.",
+        "lukta": "forvara|Och lukta och smaka alltid på mjölk och andra mejeriprodukter innan du slänger dem",
+        "ost": "forvara|Ost håller länge i kylskåp men går också att frysa in, även om den då blir smulig."
+      }
+    },
+    {
+      "id": "ost",
+      "slug": "ost",
+      "navn": "Ost",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        },
+        "kyl": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "ost",
+          "merknad": "Livsmedelsverket rekommenderar en kylskåpstemperatur på fyra grader."
+        }
+      },
+      "tekst": {
+        "frys": "ost|Ost går bra att frysa in, även om den då blir lite smulig.",
+        "riv": "ost|Riv den gärna innan frysning, så är den redo att direkt användas i gratäng, matpaj eller till tacos.",
+        "kanter": "forvara|Tråkiga ostkanter är bra att riva och frysa in till framtida gratänger och pajer.",
+        "skilja": "ost|Det är viktigt att skilja på hårdost och andra ostar, som mögelost och färskost. För dessa gäller andra råd.",
+        "smalt": "ost|Det går utmärkt att smälta ned det sista av osten och använda i till exempel en pastasås."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "agg",
+      "navn": "Ägg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        }
+      },
+      "tekst": {
+        "vitor": "forvara|Äggvitor, och även gulor, som blir över vid bak eller matlagning kan också frysas in.",
+        "svinn": "agg|Äggvitor och äggulor som blir över vid bak eller matlagning går bra att frysa in.",
+        "skal": "agg|Frys aldrig ägg med skal på",
+        "expanderar": "agg|det expanderar och spricker",
+        "datum": "agg|Datumet på äggförpackningen är satt utifrån förvaring i rumstemperatur"
+      }
+    },
+    {
+      "id": "brod",
+      "slug": "brod",
+      "navn": "Bröd",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        },
+        "mogel": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "brod",
+          "merknad": "Generellt möglar bröd ofta efter ungefär en vecka, men vissa håller längre."
+        }
+      },
+      "tekst": {
+        "frys": "brod|Bröd går bra att frysa. Skiva gärna brödet innan det läggs i frysen, så går det lätt att ta ut lagom mycket vid behov.",
+        "mjukt": "forvara|Det går förstås också bra att frysa in mjukt bröd.",
+        "kylen": "brod|I kylen blir mjukt bröd snabbt smuligt och torrt.",
+        "delaupp": "brod|Dela upp brödet i mindre förpackningar och frys in det du inte hinner äta.",
+        "mogligt": "brod|Ät inte mögligt bröd, inte heller skivat bröd där mögel endast är synligt på vissa skivor.",
+        "hart": "forvara|Hårt bröd är torrt och ska förvaras torrt."
+      }
+    },
+    {
+      "id": "middagsrester",
+      "slug": "matrester",
+      "navn": "Matrester",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "matlada",
+          "merknad": "Nästan all mat passar bra att frysa in (-18 °C eller lägre)."
+        },
+        "halv": {
+          "verdi": 0.5,
+          "enhet": "liter",
+          "kilde": "avsvalning",
+          "merknad": "Men om du har mer än en halvliter varm mat som du inte ska äta direkt bör den först svalna så fort som möjligt."
+        }
+      },
+      "tekst": {
+        "lange": "matlada|I frysen håller maten länge, eftersom smak, konsistens och näringsinnehåll bevaras medan bakterier, mögel och jästsvampar inte kan föröka sig.",
+        "harskna": "matlada|Det som kan hända i frysen är att fet mat, som till exempel fläskkött och lax, härsknar, men det känner du isåfall på lukten och smaken.",
+        "haersk": "matlada|Det är inte heller farligt att äta härsknad mat då och då.",
+        "portion": "frysa|Undvik att frysa in för stora portioner och lägg inte in mat som fortfarande är varm i frysen. Kyl ned den först, till exempel i ett kallt vattenbad.",
+        "snabb": "frysa|Mat håller längre i frysen om själva infrysningen går snabbt.",
+        "marka": "matlada|Märk med datum och innehåll så du vet vad det är och hur gammalt det är.",
+        "inget": "frysa|Det går inte att ange någon särskild hållbarhetstid för fryst mat.",
+        "sinnen": "frysa|Det är dina egna sinnen som avgör om du kan äta maten från frysen."
+      }
+    },
+    {
+      "id": "fisk",
+      "slug": "fisk",
+      "navn": "Fisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        }
+      },
+      "tekst": {
+        "fett": "frysa|Kött och fisk med hög fetthalt, som fläskkött och lax, har generellt kortare hållbarhet jämfört med kött och fisk med låg fetthalt, som kyckling, viltkött och torsk.",
+        "harskna": "frysa|Det beror på att fett härsknar och försämrar då smak och lukt.",
+        "inte": "frysa|Men även om fettet i maten har härsknat är det inte farligt att äta det någon gång då och då.",
+        "parasiter": "frysa|Till skillnad från bakterier, jäst och mögelsvampar dör vissa parasiter i frysen, till exempel toxoplasma samt maskparasiter som kan finnas i fisk.",
+        "inpack": "forvara|Packa i lufttät förpackning så att inte köttet eller fisken torkar ut och märk med datum.",
+        "inga": "forvara|I frysen växer inga bakterier så det är inte farligt att äta mat som legat länge i frysen.",
+        "luft": "frysa|Förpacka maten i frysen så att den inte kommer i kontakt med luft, till exempel i plastpåsar som du pressar ut luften ur.",
+        "inget": "frysa|Det går inte att ange någon särskild hållbarhetstid för fryst mat."
+      }
+    }
+  ]
+}

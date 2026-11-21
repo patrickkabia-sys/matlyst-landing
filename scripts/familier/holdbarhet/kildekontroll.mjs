@@ -1,6 +1,7 @@
 // Kontroll mot kilden for familiene «holdbarhet» og «frysing»: hvert tall i datafila har sitatet fra kilden i `merknad`,
 // og her sjekkes at sitatet fortsatt står ordrett på kildesiden. Endrer ingenting når noe avviker; da skrives lista og koden blir 1.
-// Bruk: node scripts/familier/holdbarhet/kildekontroll.mjs holdbarhet|frysing [nb|en]
+// Bruk: node scripts/familier/holdbarhet/kildekontroll.mjs holdbarhet|frysing|kjernetemperatur [nb|en|sv]
+// Setningene prosaen siterer ligger i radens `tekst` som «kildeId|sitat» og kontrolleres på samme måte som tallenes sitater.
 // Tabellceller blir «a | b» og linjeskift i en celle «a / b», så et sitat fra en tabellrad kan kontrolleres som tekst.
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -33,6 +34,11 @@ export function avvik(data, tekster) {
       const tekst = tekster[tall.kilde];
       if (!tall.merknad || !tekst || !tekst.includes(norm(tall.merknad))) ut.push({ id: r.id, felt, kilde: tall.kilde });
     }
+    for (const [felt, verdi] of Object.entries(r.tekst ?? {})) {
+      const [kilde, ...rest] = verdi.split('|');
+      const sitat = rest.join('|');
+      if (!sitat || !tekster[kilde] || !tekster[kilde].includes(norm(sitat))) ut.push({ id: r.id, felt: `tekst.${felt}`, kilde });
+    }
   }
   return ut;
 }
@@ -41,14 +47,14 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   // Bruk: kildekontroll.mjs <familie> [marked]. Uten marked kontrolleres alle markeder familien har (data.nb.json, data.en.json).
   const familie = process.argv[2];
   const mappe = join(fileURLToPath(new URL('..', import.meta.url)), familie);
-  const markeder = process.argv[3] ? [process.argv[3]] : ['nb', 'en'].filter((m) => existsSync(join(mappe, `data.${m}.json`)));
+  const markeder = process.argv[3] ? [process.argv[3]] : ['nb', 'en', 'sv'].filter((m) => existsSync(join(mappe, `data.${m}.json`)));
   let feilet = false;
   for (const marked of markeder) {
     const fil = join(mappe, `data.${marked}.json`);
     const data = validerData(JSON.parse(readFileSync(fil, 'utf8')));
     const tekster = {};
     for (const [id, k] of Object.entries(data.kilder)) {
-      const svar = await fetch(k.adresse, { headers: { 'user-agent': 'Mozilla/5.0' } });
+      const svar = await fetch(k.adresse, { headers: { 'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15', 'accept-language': 'sv-SE,sv;q=0.9,nb;q=0.8,en;q=0.7', accept: 'text/html' } });
       if (!svar.ok) throw new Error(`${id}: ${k.adresse} svarte ${svar.status}`);
       tekster[id] = kildetekst(await svar.text());
     }
@@ -63,7 +69,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     for (const r of ny.rader) if (r.status === 'kontrollert') r.kontrollert = idag;
     for (const k of Object.values(ny.kilder)) k.hentet = idag;
     writeFileSync(fil, `${JSON.stringify(ny, null, 2)}\n`);
-    console.log(`${familie}/${marked}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length, 0)} sitater står hos kilden (${idag})`);
+    console.log(`${familie}/${marked}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length + Object.keys(r.tekst ?? {}).length, 0)} sitater står hos kilden (${idag})`);
   }
   if (feilet) process.exit(1);
 }

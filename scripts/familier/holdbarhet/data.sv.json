@@ -1,0 +1,462 @@
+{
+  "familie": "holdbarhet",
+  "marked": "sv",
+  "kilder": {
+    "kylvaror": {
+      "navn": "Förvaring av kylvaror",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/forvaring-av-kyld-mat/",
+      "hentet": "2026-11-21"
+    },
+    "avsvalning": {
+      "navn": "Avsvalning av mat",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/avsvalning/",
+      "hentet": "2026-11-21"
+    },
+    "elkyl": {
+      "navn": "Elavbrott: så gör du med maten i kylskåpet",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/elavbrott--sa-gor-du-med-maten-i-kylskapet/",
+      "hentet": "2026-11-21"
+    },
+    "elfrys": {
+      "navn": "Elavbrott: så gör du med maten i frysen",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/forvaring/",
+      "hentet": "2026-11-21"
+    },
+    "forvara": {
+      "navn": "Förvara maten rätt",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/tips/forvara-maten-ratt/",
+      "hentet": "2026-11-21"
+    },
+    "fruktgront": {
+      "navn": "Förvara frukt och grönt rätt",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/tips/forvara-frukt-och-gront-ratt/",
+      "hentet": "2026-11-21"
+    },
+    "matlada": {
+      "navn": "Svinnkoll: Matlåda",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/matlada/",
+      "hentet": "2026-11-21"
+    },
+    "agg": {
+      "navn": "Svinnkoll: Ägg",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/agg/",
+      "hentet": "2026-11-21"
+    },
+    "kottfars": {
+      "navn": "Svinnkoll: Köttfärs",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/kottfars/",
+      "hentet": "2026-11-21"
+    },
+    "ost": {
+      "navn": "Svinnkoll: Ost (hårdost)",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/ost-hardost/",
+      "hentet": "2026-11-21"
+    },
+    "brod": {
+      "navn": "Svinnkoll: Bröd (mjukt)",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/brod-mjukt/",
+      "hentet": "2026-11-21"
+    },
+    "bacillus": {
+      "navn": "Bacillus cereus",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/bakterier-virus-parasiter-och-mogelsvampar1/bakterier/bacillus-cereus/",
+      "hentet": "2026-11-21"
+    },
+    "skforvara": {
+      "navn": "Förvara kött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2023,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/forvara-kott/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "rester",
+      "slug": "matrester",
+      "navn": "Matrester och matlåda",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "En lämplig kylskåpstemperatur är 4 °C."
+        },
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        },
+        "halv": {
+          "verdi": 0.5,
+          "enhet": "liter",
+          "kilde": "avsvalning",
+          "merknad": "Mat i volymer mindre än en halvliter kan du ställa in direkt i kylen även om den fortfarande är lite varm."
+        }
+      },
+      "tekst": {
+        "flera": "kylvaror|I kylskåp håller tillagad mat ofta flera dagar, ibland upp till ungefär en vecka.",
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut.",
+        "lita": "matlada|Mat som förvarats rätt blir inte farlig för att den har blivit några dagar gammal.",
+        "vatten": "avsvalning|Mat i volymer större än en halvliter kan svalna i ett kallt vattenbad.",
+        "kallt": "avsvalning|Tillagad varm mat behöver svalna innan den ställs in i kylskåpet. Det beror på att den varma maten annars höjer temperaturen i hela kylen.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "framme",
+      "slug": "framme",
+      "navn": "Mat som står framme",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "h20": {
+          "verdi": 4,
+          "enhet": "timmar",
+          "kilde": "kylvaror",
+          "merknad": "Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C."
+        },
+        "g20": {
+          "verdi": 20,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C."
+        },
+        "h25": {
+          "verdi": 3,
+          "enhet": "timmar",
+          "kilde": "kylvaror",
+          "merknad": "Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C."
+        },
+        "g25": {
+          "verdi": 25,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C."
+        },
+        "h30": {
+          "verdi": 2,
+          "enhet": "timmar",
+          "kilde": "kylvaror",
+          "merknad": "Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C."
+        },
+        "g30-min": {
+          "verdi": 26,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C."
+        },
+        "g30-maks": {
+          "verdi": 30,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C."
+        }
+      },
+      "tekst": {
+        "regel": "kylvaror|Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C.",
+        "snabbt": "kylvaror|Sätt in kylvaror, som till exempel färsk fisk, kött och mejerivaror, i kylskåpet så fort som möjligt.",
+        "rester": "kylvaror|Sätt in matrester i kylskåpet så fort som möjligt efter att de har svalnat.",
+        "sol": "kylvaror|Undvik att förvara mat i direkt solljus.",
+        "helg": "forvara|Smörgåspålägg, som skinka, kalkon, korv och leverpastej, håller betydligt längre om de slipper stå flera timmar i rumstemperatur under långa helgfrukostar."
+      }
+    },
+    {
+      "id": "elavbrott",
+      "slug": "elavbrott",
+      "navn": "Maten vid elavbrott",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "h4": {
+          "verdi": 7,
+          "enhet": "timmar",
+          "kilde": "elkyl",
+          "merknad": "Du kan titta, lukta och eventuellt smaka på all mat i kylskåpet för att avgöra om de går att äta om elavbrottet varat högst 7 timmar och om temperaturen i kylskåpet från början var 4 °C högst 4 timmar och om temperaturen i kylskåpet från början var 8 °C."
+        },
+        "g4": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "elkyl",
+          "merknad": "Du kan titta, lukta och eventuellt smaka på all mat i kylskåpet för att avgöra om de går att äta om elavbrottet varat högst 7 timmar och om temperaturen i kylskåpet från början var 4 °C högst 4 timmar och om temperaturen i kylskåpet från början var 8 °C."
+        },
+        "h8": {
+          "verdi": 4,
+          "enhet": "timmar",
+          "kilde": "elkyl",
+          "merknad": "Du kan titta, lukta och eventuellt smaka på all mat i kylskåpet för att avgöra om de går att äta om elavbrottet varat högst 7 timmar och om temperaturen i kylskåpet från början var 4 °C högst 4 timmar och om temperaturen i kylskåpet från början var 8 °C."
+        },
+        "g8": {
+          "verdi": 8,
+          "enhet": "°C",
+          "kilde": "elkyl",
+          "merknad": "Du kan titta, lukta och eventuellt smaka på all mat i kylskåpet för att avgöra om de går att äta om elavbrottet varat högst 7 timmar och om temperaturen i kylskåpet från början var 4 °C högst 4 timmar och om temperaturen i kylskåpet från början var 8 °C."
+        },
+        "frys": {
+          "verdi": 2,
+          "enhet": "dygn",
+          "kilde": "elfrys",
+          "merknad": "En stängd full frys kan hålla kylan i upp till två dygn."
+        }
+      },
+      "tekst": {
+        "ingen": "elkyl|Det finns därför ingen exakt tid som alltid gäller för hur länge maten i ett kylskåp utan el förblir säker.",
+        "dorr": "elkyl|Öppna inte kylskåpsdörren i onödan, håll dörren öppen så kort tid som möjligt.",
+        "fullt": "elkyl|Ett annat sätt är att se till att kylskåpet är fullt. Matvarorna kyler varandra.",
+        "notera": "elkyl|Notera, om möjligt, tidpunkten när elavbrottet börjar.",
+        "kott": "elkyl|Kött från olika slags djurslag bör därför alltid värmebehandlas.",
+        "oppna": "elfrys|Vid elavbrott är det viktigt att du undviker att öppna frysen. Då finns kylan kvar längre tid.",
+        "halv": "elfrys|Halvtinad mat är mat som börjar bli lite mjuk men fortfarande har iskristaller kvar. Sådan mat kan frysas in på nytt."
+      }
+    },
+    {
+      "id": "kylskapstemperatur",
+      "slug": "kylskapstemperatur",
+      "navn": "Kylskåpstemperatur",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "En lämplig kylskåpstemperatur är 4 °C."
+        },
+        "varm": {
+          "verdi": 8,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "Vid 4°C håller sig maten fräsch ungefär dubbelt så länge som vid 8 °C."
+        },
+        "frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "I frysen (-18 °C eller lägre) är hållbarheten mycket längre."
+        }
+      },
+      "tekst": {
+        "dubbel": "kylvaror|Vid 4°C håller sig maten fräsch ungefär dubbelt så länge som vid 8 °C.",
+        "ju": "kylvaror|Ju lägre temperatur maten förvaras i, desto långsammare förökar bakterier sig.",
+        "mer": "kylvaror|Även de kylvaror som är märkta med att de ska förvaras vid högst 8 grader håller därför betydligt längre om de förvaras vid 4 °C.",
+        "varmmat": "avsvalning|Tillagad varm mat behöver svalna innan den ställs in i kylskåpet.",
+        "kallast": "elkyl|Var det är kallast i ett kylskåp kan variera mellan olika kylskåp, men det är oftast kallast i den nedre delen och varmast högst upp samt i dörrhyllorna.",
+        "kyldisk": "skforvara|Bra kylskåpstemperatur är +4 grader."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "agg",
+      "navn": "Ägg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "forvara",
+          "merknad": "Förvara råa ägg i kylskåpet, cirka 4 °C."
+        }
+      },
+      "tekst": {
+        "veckor": "forvara|Förvara råa ägg i kylskåpet, cirka 4 °C. Då kan de hålla flera veckor efter att bäst före-datumet har passerat.",
+        "sinnen": "forvara|Så länge ägg luktar och ser ut som de ska, går de bra att äta.",
+        "datum": "agg|Datumet på äggförpackningen är satt utifrån förvaring i rumstemperatur",
+        "rutten": "agg|Är ägget ruttet missar du det inte",
+        "utland": "agg|Men ät inte råa ägg från andra länder än Sverige, Norge, Finland och Danmark, på grund av risken för salmonella",
+        "gula": "agg|Salmonella dör när äggulan blir trögflytande och krämig.",
+        "frys": "agg|Frys aldrig ägg med skal på"
+      }
+    },
+    {
+      "id": "kjott",
+      "slug": "kott",
+      "navn": "Kött och köttfärs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "skforvara",
+          "merknad": "Bra kylskåpstemperatur är +4 grader."
+        },
+        "fars": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "kottfars",
+          "merknad": "För att vara säker ska köttfärs ha nått 70 graders innertemperatur"
+        }
+      },
+      "tekst": {
+        "nodatum": "skforvara|Färskt kött som inte är datummärkt håller i några dagar i kylen.",
+        "kallaste": "skforvara|Förvara det i den kallaste delen av kylskåpet.",
+        "kanslig": "skforvara|Köttfärs är en extra känslig råvara.",
+        "sista": "skforvara|Butikspackad köttfärs ska användas senast på den sista förbrukningsdag som står stämplad på förpackningen, annars bör den frysas in.",
+        "sistadag": "skforvara|Sista förbrukningsdag anger vilken dag som produkten senast ska ätas.",
+        "par": "kottfars|Köp bara det du tänker laga inom ett par dagar, och frysa in direkt om planerna ändras.",
+        "vakuum": "skforvara|Om färsen är förpackad i vakuum eller med modifierad atmosfär i tät förpackning har den längre hållbarhet förutsatt att förpackningen är hel.",
+        "oppna": "skforvara|Öppna inte förpackningen förrän köttet ska användas."
+      }
+    },
+    {
+      "id": "kokt-ris-og-pasta",
+      "slug": "kokt-ris-och-pasta",
+      "navn": "Kokt ris och pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "En lämplig kylskåpstemperatur är 4 °C."
+        },
+        "halv": {
+          "verdi": 0.5,
+          "enhet": "liter",
+          "kilde": "avsvalning",
+          "merknad": "Men om du har mer än en halvliter varm mat som du inte ska äta direkt bör den först svalna så fort som möjligt."
+        },
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "kylvaror",
+          "merknad": "I kylskåp håller tillagad mat ofta flera dagar, ibland upp till ungefär en vecka."
+        }
+      },
+      "tekst": {
+        "flera": "kylvaror|I kylskåp håller tillagad mat ofta flera dagar, ibland upp till ungefär en vecka.",
+        "starkelse": "bacillus|Livsmedel som kopplats samman med kräk-varianten är stärkelserika rätter som innehåller ris-, pasta, potatis och nudlar.",
+        "gift": "bacillus|Detta gift tål både värme och sura miljöer.",
+        "sporer": "bacillus|Bacillus cereus är en bakterie som är vanlig i miljön och som bildar sporer som är tåliga mot värme och torka.",
+        "kyl": "bacillus|Det bästa sättet att minska risken att bli sjuk av Bacillus cereus är att förhindra att dess sporer gror ut till växande bakterieceller i livsmedel. Detta gör du genom att snabbt kyla ner eller frysa in matrester eller tillagad mat som du inte ska äta direkt.",
+        "vattenbad": "bacillus|Kallt vattenbad: Mat i volymer större än en halvliter kan svalna i ett kallt vattenbad.",
+        "behallare": "avsvalning|Mindre behållare: Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur.",
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut."
+      }
+    },
+    {
+      "id": "hardost",
+      "slug": "hardost",
+      "navn": "Hårdost",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "ost",
+          "merknad": "Livsmedelsverket rekommenderar en kylskåpstemperatur på fyra grader."
+        },
+        "mogel": {
+          "verdi": 2,
+          "enhet": "cm",
+          "kilde": "ost",
+          "merknad": "Skär bort mögelfläckar med minst två centimeters marginal."
+        }
+      },
+      "tekst": {
+        "svinnsakert": "ost|Hårdost är ett av de mest svinnsäkra livsmedlen i kylskåpet",
+        "lange": "ost|Ost ska förvaras i kylskåp och håller sig länge där.",
+        "skilja": "ost|Det är viktigt att skilja på hårdost och andra ostar, som mögelost och färskost. För dessa gäller andra råd.",
+        "gifter": "ost|mögelgifter kan inte spridas särskilt långt från själva mögelangreppet i hårdost",
+        "kant": "ost|Det översta lagret på hårdost går att äta, så länge det inte är vaxat.",
+        "frys": "ost|Ost går bra att frysa in, även om den då blir lite smulig."
+      }
+    },
+    {
+      "id": "brod",
+      "slug": "brod",
+      "navn": "Bröd",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mogel": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "brod",
+          "merknad": "Generellt möglar bröd ofta efter ungefär en vecka, men vissa håller längre."
+        }
+      },
+      "tekst": {
+        "rum": "brod|Bröd mår bäst av att förvaras i rumstemperatur, inte i kylskåp.",
+        "kylen": "brod|I kylen blir mjukt bröd snabbt smuligt och torrt.",
+        "retro": "brod|Det beror på en process som kallas retrogradering, där kylan snabbar på förändringar i stärkelsen som gör brödet smuligare.",
+        "hygien": "brod|Idag bakas många bröd under mycket hygieniska förhållanden, vilket hindrar att mögelsporer hamnar på brödet och förlänger hållbarheten.",
+        "surdeg": "brod|Surdegsbröd håller längre än annat bröd.",
+        "mogligt": "brod|Ät inte mögligt bröd, inte heller skivat bröd där mögel endast är synligt på vissa skivor.",
+        "hart": "forvara|Hårt bröd är torrt och ska förvaras torrt. Då håller det nästan hur länge som helst.",
+        "frys": "brod|Bröd går bra att frysa."
+      }
+    },
+    {
+      "id": "frukt-og-gronnsaker",
+      "slug": "frukt-och-gront",
+      "navn": "Frukt och grönsaker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "svalt-min": {
+          "verdi": 12,
+          "enhet": "°C",
+          "kilde": "fruktgront",
+          "merknad": "Med svalt menas cirka 12-15°C."
+        },
+        "svalt-maks": {
+          "verdi": 15,
+          "enhet": "°C",
+          "kilde": "fruktgront",
+          "merknad": "Med svalt menas cirka 12-15°C."
+        }
+      },
+      "tekst": {
+        "kylen": "fruktgront|De flesta grönsaker och frukter trivs bäst i kylskåpet.",
+        "kold": "fruktgront|Men vissa frukter och grönsaker kan få köldskador i kylskåp och ska istället förvaras svalt eller i rumstemperatur.",
+        "skuret": "fruktgront|Har du skurit upp en grönsak eller frukt i mindre bitar ska du förvara dem i kylskåp.",
+        "mogna": "forvara|Tomat och avokado blir bäst om de får mogna i rumstemperatur, men när de väl har mognat håller de bättre i kylskåp.",
+        "potatis": "fruktgront|Potatis är lite speciell. Den ska förvaras mörk och svalt, 12-15°C.",
+        "solanin": "forvara|Eftersom det giftiga ämnet solanin kan bildas om potatisen utsätts för ljus eller skadas bör den förvaras mörkt, hanteras varsamt och skyddas mot stötar.",
+        "skrumpna": "forvara|Frukt och grönsaker som blivit lite skrumpna kan ätas ändå",
+        "sallad": "forvara|Sallad, morötter och andra rotfrukter som tappat spänsten blir pigga och krispiga om de får ligga i en skål med vatten i kylskåpet några timmar."
+      }
+    }
+  ]
+}
