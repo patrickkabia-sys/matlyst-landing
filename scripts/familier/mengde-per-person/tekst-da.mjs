@@ -130,7 +130,7 @@ export const TEKST = {
         ['Hvor stor skal en flæskesteg være til seks personer?', `${h.k('mv-flaesk')} skriver, at en flæskesteg på ${h.t('mv-steg')} passer godt til seks personer.`],
         ['Hvor meget flæskesteg til sandwich?', `${h.k('dc-flaesk')} skriver ${h.r('dc-sandwich-min', 'dc-sandwich-maks')} pr. person.`],
       ],
-      soster: [['/da/stegetid/flaeskesteg/', 'Hvor længe skal flæskestegen have i ovnen?'], L('kartofler', 'Hvor mange kartofler pr. person?'), L('kalkun', 'Hvor meget kalkun pr. person?')],
+      soster: [['/da/stegetid/flaeskesteg/', 'Hvor længe skal flæskestegen have i ovnen?'], L('kartofler', 'Hvor mange kartofler pr. person?'), L('kalkun', 'Hvor meget kalkun pr. person?'), ['/da/juleaften/', 'Juleaften: tidsplan, mængder og stegetid']],
     }),
   },
 
@@ -299,7 +299,7 @@ export const TEKST = {
         ['Hvor gamle børn tæller som en halv portion?', `${h.k('mv-gaester')} skriver: ${h.s('barn', { med: false })}`],
         ['Hvor meget dessert pr. person?', `${h.k('mv-gaester')} skriver ${h.r('dessert-min', 'dessert-maks')} pr. voksen.`],
       ],
-      soster: [L('flaeskesteg', 'Hvor meget flæskesteg pr. person?'), L('kartofler', 'Hvor mange kartofler pr. person?')],
+      soster: [L('flaeskesteg', 'Hvor meget flæskesteg pr. person?'), L('kartofler', 'Hvor mange kartofler pr. person?'), ['/da/julefrokost/', 'Julefrokost derhjemme: plan, mængder og indkøbsliste']],
     }),
   },
 };

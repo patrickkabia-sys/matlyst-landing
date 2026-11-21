@@ -336,7 +336,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/holdbarhed/rester/": {
-  "hash": "b6bd3080ad0f035f",
+  "hash": "0da5b0b01befffef",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/holdbarhed/roeget-fisk/": {
@@ -352,11 +352,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/hvor-meget-pr-person/flaeskesteg/": {
-  "hash": "48cf243bb97b92b6",
+  "hash": "f786f4cde7dc3c74",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/hvor-meget-pr-person/gaester/": {
-  "hash": "79f0bac33b05edf1",
+  "hash": "9976a58bfe9b3a69",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/hvor-meget-pr-person/groentsager/": {
@@ -393,6 +393,14 @@
  },
  "https://matlyst-app.no/da/indkoebsliste-app/": {
   "hash": "89c90d21159f9b56",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/juleaften/": {
+  "hash": "547a27d593c0912d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/julefrokost/": {
+  "hash": "f05d7e5007fe5bfe",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kan-man-fryse/": {
@@ -436,7 +444,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kernetemperatur/and/": {
-  "hash": "e89fc6ac930d4d3d",
+  "hash": "d9b3c6abecb817d2",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kernetemperatur/boef/": {
@@ -444,7 +452,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kernetemperatur/flaeskesteg/": {
-  "hash": "88c8bda7f4aa4dd1",
+  "hash": "d4eb9e34630d4ae6",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/kernetemperatur/hakket-koed/": {
@@ -492,7 +500,7 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/da/madplan-app/": {
-  "hash": "a0e54021fa4f1812",
+  "hash": "efa42b6fe5d45626",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/matprat/": {
@@ -544,7 +552,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/stegetid/and/": {
-  "hash": "5e7c71cf49f26f23",
+  "hash": "a01ca2679ad3c7a8",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/stegetid/bagt-kartoffel/": {
@@ -552,7 +560,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/stegetid/flaeskesteg/": {
-  "hash": "eaab938b5670f726",
+  "hash": "f7358a8c9daef348",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/stegetid/hel-kylling/": {
@@ -3104,11 +3112,11 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/julebord/": {
-  "hash": "6d5cccaf545754a3",
+  "hash": "2a938e56c8e87048",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/julemiddag/": {
-  "hash": "49ed8eb1727715c1",
+  "hash": "8f273b5b743795e6",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/": {

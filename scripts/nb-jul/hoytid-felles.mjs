@@ -5,11 +5,12 @@
 import { readFileSync } from 'node:fs';
 import { forfatterPerson, harForfatter } from '../forfatter.mjs';
 
-export const DATA = JSON.parse(readFileSync(new URL('./hoytider.data.json', import.meta.url), 'utf8'));
+export const lesDatasett = (url) => JSON.parse(readFileSync(url, 'utf8'));
+export const DATA = lesDatasett(new URL('./hoytider.data.json', import.meta.url));
 export const HENTET = DATA.hentet;
 export const HENTET_TEKST = DATA.hentetTekst;
 export const BASE = 'https://matlyst-app.no';
-export const aar = (id) => DATA.kilder[id].dato.match(/\d{4}/u)[0];
+export const aar = (id, data = DATA) => data.kilder[id].dato.match(/\d{4}/u)[0];
 
 export const p = (...ps) => ps.map((x) => `<p>${x}</p>`).join('');
 export const ul = (...li) => `<ul>${li.map((x) => `<li>${x}</li>`).join('')}</ul>`;
@@ -17,13 +18,16 @@ export const tabell = (hode, rader) => `<table><thead><tr>${hode.map((h) => `<th
 export const kg = (g) => (g >= 1000 ? `${String(Math.round(g) / 1000).replace('.', ',')} kg` : `${Math.round(g)} g`);
 export const dl = (x) => `${String(x).replace('.', ',')} dl`;
 
-/** Én sidevariant: egne tellere for hvilke tall og kilder siden faktisk bruker. */
-export function lagSide() {
+// Ord i kildekortene. Andre markeder (da, sv) sender sine egne.
+export const KORTORD_NB = { adresse: 'Adresse', dato: 'Dato på kilden', hentet: 'Hentet', tall: 'Tall vi bruker', ingen: 'Ingen tall, bare fremgangsmåte og regler i tekst.' };
+
+/** Én sidevariant: egne tellere for hvilke tall og kilder siden faktisk bruker. `data` og `kortord` byttes for et annet marked. */
+export function lagSide({ data = DATA, kortord = KORTORD_NB } = {}) {
   const bruktTall = new Set();
   const bruktTekst = new Set();
   const bruktKilde = new Set();
   const tall = (id) => {
-    const x = DATA.tall[id];
+    const x = data.tall[id];
     if (!x) throw new Error(`Tall uten kilde: ${id}`);
     return x;
   };
@@ -31,33 +35,33 @@ export function lagSide() {
   /** Tall som regnes ut av et tall (mengdetabeller): marker bare som brukt. */
   const rad = (id) => { t(id); return tall(id); };
   const henv = (prefiks, navn) => (id) => {
-    if (!DATA.kilder[id]?.navn.startsWith(`${prefiks}:`)) throw new Error(`Feil kilde for ${navn}: ${id}`);
+    if (!data.kilder[id]?.navn.startsWith(`${prefiks}:`)) throw new Error(`Feil kilde for ${navn}: ${id}`);
     bruktKilde.add(id);
-    return `${navn} (${aar(id)})`;
+    return `${navn} (${aar(id, data)})`;
   };
   const mp = henv('MatPrat', 'MatPrat');
   const mt = henv('Mattilsynet', 'Mattilsynet');
   /** Tekst uten tall som likevel hviler på en kilde: id i `tekst`-lista. Teksten på siden er en omskriving, sitatet ligger i datafila. */
-  const tekst = (id) => { const x = DATA.tekst[id]; if (!x) throw new Error(`Tekst uten kilde: ${id}`); bruktTekst.add(id); bruktKilde.add(x.kilde); return ''; };
-  const brukt = () => ({ tall: [...bruktTall], tekst: [...bruktTekst], kilder: Object.keys(DATA.kilder).filter((k) => bruktKilde.has(k)) });
+  const tekst = (id) => { const x = data.tekst[id]; if (!x) throw new Error(`Tekst uten kilde: ${id}`); bruktTekst.add(id); bruktKilde.add(x.kilde); return ''; };
+  const brukt = () => ({ tall: [...bruktTall], tekst: [...bruktTekst], kilder: Object.keys(data.kilder).filter((k) => bruktKilde.has(k)) });
   const kilderListe = () => brukt().kilder.map((id) => {
-    const k = DATA.kilder[id];
+    const k = data.kilder[id];
     const mine = [...bruktTall].filter((x) => tall(x).kilde === id);
-    const tallHtml = mine.length ? `<ul>${mine.map((x) => `<li data-tall="${x}">${tall(x).hva}: <strong>${tall(x).vis}</strong></li>`).join('')}</ul>` : 'Ingen tall, bare fremgangsmåte og regler i tekst.';
-    return `<div class="scenario" id="kilde-${id}"><h3>${k.navn}</h3><dl><dt>Adresse</dt><dd><a href="${k.url}" rel="noopener">${k.url}</a></dd><dt>Dato på kilden</dt><dd>${k.dato}</dd><dt>Hentet</dt><dd><time datetime="${HENTET}">${HENTET_TEKST}</time></dd><dt>Tall vi bruker</dt><dd>${tallHtml}</dd></dl></div>`;
+    const tallHtml = mine.length ? `<ul>${mine.map((x) => `<li data-tall="${x}">${tall(x).hva}: <strong>${tall(x).vis}</strong></li>`).join('')}</ul>` : kortord.ingen;
+    return `<div class="scenario" id="kilde-${id}"><h3>${k.navn}</h3><dl><dt>${kortord.adresse}</dt><dd><a href="${k.url}" rel="noopener">${k.url}</a></dd><dt>${kortord.dato}</dt><dd>${k.dato}</dd><dt>${kortord.hentet}</dt><dd><time datetime="${data.hentet}">${data.hentetTekst}</time></dd><dt>${kortord.tall}</dt><dd>${tallHtml}</dd></dl></div>`;
   }).join('');
-  return { t, rad, tall, mp, mt, tekst, brukt, kilderListe };
+  return { t, rad, tall, mp, mt, henv, tekst, brukt, kilderListe };
 }
 
-export function skjemaFor({ sti, tittel, h1, beskrivelse, kilder }) {
+export function skjemaFor({ sti, tittel, h1, beskrivelse, kilder, data = DATA, lang = 'nb', forside = 'Forside', hjem = `${BASE}/` }) {
   return [
     { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Forside', item: `${BASE}/` },
+      { '@type': 'ListItem', position: 1, name: forside, item: hjem },
       { '@type': 'ListItem', position: 2, name: h1, item: `${BASE}/${sti}` },
     ] },
-    { '@context': 'https://schema.org', '@type': 'Article', headline: h1, description: beskrivelse, image: [`${BASE}/images/og.jpg`], inLanguage: 'nb', datePublished: HENTET, dateModified: HENTET, mainEntityOfPage: `${BASE}/${sti}`,
+    { '@context': 'https://schema.org', '@type': 'Article', headline: h1, description: beskrivelse, image: [`${BASE}/images/og.jpg`], inLanguage: lang, datePublished: data.hentet, dateModified: data.hentet, mainEntityOfPage: `${BASE}/${sti}`,
       author: harForfatter(sti) ? forfatterPerson() : { '@type': 'Organization', name: 'Matlyst', url: `${BASE}/` }, publisher: { '@type': 'Organization', name: 'Matlyst', url: `${BASE}/` },
-      citation: kilder.map((id) => ({ '@type': 'WebPage', name: DATA.kilder[id].navn, url: DATA.kilder[id].url })) },
+      citation: kilder.map((id) => ({ '@type': 'WebPage', name: data.kilder[id].navn, url: data.kilder[id].url })) },
   ];
 }
 

@@ -41,13 +41,12 @@ export function tallUtenKilde(tekst) {
   return rest.match(/[^\s]*\d[^\s]*/gu) ?? [];
 }
 
-test('siden er egen sidegruppe med bare norsk, og hreflang har bare nb og x-default', () => {
+test('siden er sidegruppe med norsk og dansk (/da/juleaften/), og hreflang har nb, da og x-default', () => {
   const gruppe = SIDEGRUPPER.find(({ sider }) => sider.nb === STI);
   assert.ok(gruppe, 'mangler i SIDEGRUPPER');
-  assert.deepEqual(Object.keys(gruppe.sider), ['nb']);
-  assert.deepEqual(alternativerFor(STI), [['nb-NO', STI], ['x-default', STI]]);
-  assert.doesNotMatch(html, /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu);
-  for (const mappe of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mappe}.xml`), 'utf8'), /julemiddag/u);
+  assert.deepEqual(Object.keys(gruppe.sider), ['nb', 'da']);
+  assert.deepEqual(alternativerFor(STI), [['nb-NO', STI], ['da-DK', '/da/juleaften/'], ['x-default', STI]]);
+  for (const mappe of ['sv', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mappe}.xml`), 'utf8'), /julemiddag/u);
   assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/julemiddag\/<\/loc>\s*<lastmod>2026-11-2\d<\/lastmod>/u);
 });
 

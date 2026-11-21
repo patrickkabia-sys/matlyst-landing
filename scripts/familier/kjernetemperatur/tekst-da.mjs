@@ -75,7 +75,7 @@ export const TEKST = {
       ['Hvilken kernetemperatur skal and have?', `${h.k('mv-kerne')} skriver ${h.t('hel')} for hel and og for andebryst.`],
       ['Gælder det samme som for kylling?', `Madens Verden skriver ${h.t('hel')} for begge. Se <a href="${ROT}kylling/">kernetemperatur for kylling</a>.`],
     ],
-    andre: [K('kalkun', 'Kernetemperatur kalkun'), K('kylling', 'Kernetemperatur kylling')],
+    andre: [K('kalkun', 'Kernetemperatur kalkun'), K('kylling', 'Kernetemperatur kylling'), ['/da/juleaften/', 'Juleaften: tidsplan, mængder og stegetid']],
   }),
 
   svinefilet: (h) => ({
@@ -121,7 +121,7 @@ export const TEKST = {
       ['Hvilken kernetemperatur skal flæskesteg have?', `${h.k('mv-kerne')} skriver ${h.t('flaesk')}, og ${h.k('lf-stegning')} skriver ${h.t('lf-flaesk')}.`],
       ['Hvilken kernetemperatur skal ribbensteg have?', `${h.k('lf-stegning')} skriver ${h.t('lf-ribben')} for ribbensteg.`],
     ],
-    andre: [K('svinemoerbrad', 'Kernetemperatur svinemørbrad'), K('nakkesteg', 'Kernetemperatur nakkesteg')],
+    andre: [K('svinemoerbrad', 'Kernetemperatur svinemørbrad'), K('nakkesteg', 'Kernetemperatur nakkesteg'), ['/da/juleaften/', 'Juleaften: tidsplan, mængder og stegetid']],
   }),
 
   svinenakke: (h) => ({

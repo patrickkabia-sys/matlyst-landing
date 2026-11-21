@@ -82,7 +82,7 @@ export const TEKST = {
       ['Kan man fryse rester?', `Ja, kilderne har tider for færdige retter. Se <a href="${FRYS}rester/">kan man fryse rester og færdigretter</a>.`],
     ],
     soster: F('rester', 'Kan man fryse rester og færdigretter?'),
-    andre: [R('hakket-koed', 'Hvor længe kan hakket kød holde sig?'), R('fisk', 'Hvor længe kan frisk fisk holde sig?')],
+    andre: [R('hakket-koed', 'Hvor længe kan hakket kød holde sig?'), R('fisk', 'Hvor længe kan frisk fisk holde sig?'), ['/da/julefrokost/', 'Julefrokost derhjemme: plan, mængder og indkøbsliste']],
   }),
 
   fisk: (h) => ({

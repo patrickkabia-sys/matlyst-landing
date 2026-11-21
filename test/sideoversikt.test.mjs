@@ -44,9 +44,9 @@ test('hver adresse har gruppe, og radene har rot per språk, antall og siste end
   assert.match(doc, /### Uten gruppe\n\n(Ingen\.|Adresser i sitemap)/u);
   assert.match(doc, /^\| Gruppe \| Hva \| Type \| Rot nb \| Rot sv \| Rot da \| Rot en \| Generator \/ innholdskilde \| Datafil \| Siste endring \|$/mu);
   assert.match(doc, /^\| forside \|.*`\/` \(1\) \| `\/sv\/` \(1\) \| `\/da\/` \(1\) \| `\/en\/` \(1\) \|/mu);
-  // Tom celle betyr «finnes ikke»: julemiddag er bare norsk.
-  assert.match(doc, /^\| julemiddag \|[^|]*\|[^|]*\| `\/julemiddag\/` \(1\) \| {2}\| {2}\| {2}\|/mu);
-  assert.match(doc, /### Familier og grupper som mangler på et språk[\s\S]*\| julemiddag \| nb \| sv, da, en \|/u);
+  // Tom celle betyr «finnes ikke»: julemiddag finnes på norsk og dansk (juleaften), ikke på svensk og engelsk.
+  assert.match(doc, /^\| julemiddag \|[^|]*\|[^|]*\| `\/julemiddag\/` \(1\) \| {2}\| `\/da\/juleaften\/` \(1\) \| {2}\|/mu);
+  assert.match(doc, /### Familier og grupper som mangler på et språk[\s\S]*\| julemiddag \| nb, da \| sv, en \|/u);
 });
 
 test('en ukjent adresse havner i «Uten gruppe» i stedet for å forsvinne', () => {
