@@ -1,0 +1,654 @@
+{
+  "familie": "holdbarhet",
+  "marked": "nb",
+  "kilder": {
+    "mt-oppbevaring": {
+      "navn": "Råd for oppbevaring av mat og drikke",
+      "utgiver": "Mattilsynet",
+      "aar": 2026,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/rad-for-oppbevaring-av-mat",
+      "hentet": "2026-11-21"
+    },
+    "mt-merking": {
+      "navn": "Holdbarhetsmerking",
+      "utgiver": "Mattilsynet",
+      "aar": 2022,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/merking-av-mat/holdbarhetsmerking-pa-matvarer",
+      "hentet": "2026-11-21"
+    },
+    "mt-matsvinn": {
+      "navn": "Slik kan du redusere matsvinnet i hjemmet ditt",
+      "utgiver": "Mattilsynet",
+      "aar": 2024,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/slik-kan-du-redusere-matsvinnet-i-hjemmet-ditt",
+      "hentet": "2026-11-21"
+    },
+    "mt-egg": {
+      "navn": "Merking av egg: holdbarhetsdato",
+      "utgiver": "Mattilsynet",
+      "aar": 2024,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/merking-av-mat/veileder-merking-av-egg/obligatorisk-merking/holdbarhetsdato",
+      "hentet": "2026-11-21"
+    },
+    "mt-ris": {
+      "navn": "Kokt ris og pasta som står fremme, kan lage giftstoffer",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/kokt-ris-og-pasta-som-star-fremme-kan-lage-giftstoffer",
+      "hentet": "2026-11-21"
+    },
+    "mt-kylling": {
+      "navn": "Vond lukt når du åpner en pakke med kyllingfilet",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/vond-lukt-nar-du-apner-en-pakke-med-kyllingfilet",
+      "hentet": "2026-11-21"
+    },
+    "mt-kjokken": {
+      "navn": "Kjøkkenhygiene",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/kjokkenhygiene",
+      "hentet": "2026-11-21"
+    },
+    "mt-sommer": {
+      "navn": "Mat i sommervarmen",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/mat-i-sommervarmen",
+      "hentet": "2026-11-21"
+    },
+    "mp-kjoleskap": {
+      "navn": "Hvordan oppbevare mat riktig i kjøleskapet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/oppbevaring-i-kjoleskap/",
+      "hentet": "2026-11-21"
+    },
+    "mp-egg": {
+      "navn": "Egg og holdbarhet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/egg-og-holdbarhet/",
+      "hentet": "2026-11-21"
+    },
+    "mp-ris": {
+      "navn": "Er det farlig å spise rester av ris og pasta?",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2022,
+      "adresse": "https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/hvordan-oppbevare-rester-av-ris-og-pasta/",
+      "hentet": "2026-11-21"
+    },
+    "mp-fisk": {
+      "navn": "Behandling og oppbevaring av fisk og skalldyr",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2018,
+      "adresse": "https://www.matprat.no/artikler/tema/behandling-og-oppbevaring-av-fisk-og-skalldyr/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "egg",
+      "slug": "egg",
+      "navn": "Egg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+        },
+        "mt-egg-dato": {
+          "verdi": 35,
+          "enhet": "dager",
+          "kilde": "mt-egg",
+          "merknad": "For egg er det etablert en norsk sedvane for en maksimal holdbarhet på 35 dager etter legging."
+        },
+        "hele-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Rå egg, hele | 3-4 måneder"
+        },
+        "hele-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Rå egg, hele | 3-4 måneder"
+        },
+        "plommer-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggemasse, eggeplommer | 2-3 dager"
+        },
+        "plommer-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggemasse, eggeplommer | 2-3 dager"
+        },
+        "hviter-min": {
+          "verdi": 8,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggehviter | 8-10 dager"
+        },
+        "hviter-maks": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggehviter | 8-10 dager"
+        }
+      }
+    },
+    {
+      "id": "kokte-egg",
+      "slug": "kokte-egg",
+      "navn": "Kokte egg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+        },
+        "mt-avkjol-fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar."
+        },
+        "mt-avkjol-til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar."
+        },
+        "hardkokte-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Hardkokte egg | 2-3 dager"
+        },
+        "hardkokte-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Hardkokte egg | 2-3 dager"
+        },
+        "eggeretter-pose-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggeretter | 2-3 dager | 8-10 dager"
+        },
+        "eggeretter-pose-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggeretter | 2-3 dager | 8-10 dager"
+        },
+        "eggeretter-vakuum-min": {
+          "verdi": 8,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggeretter | 2-3 dager | 8-10 dager"
+        },
+        "eggeretter-vakuum-maks": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Eggeretter | 2-3 dager | 8-10 dager"
+        }
+      }
+    },
+    {
+      "id": "kokt-ris-og-pasta",
+      "slug": "kokt-ris-og-pasta",
+      "navn": "Kokt ris og pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+        },
+        "mt-avkjol-fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar."
+        },
+        "mt-avkjol-til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar."
+        },
+        "mt-ris-rom": {
+          "verdi": 10,
+          "enhet": "grader",
+          "kilde": "mt-ris",
+          "merknad": "Når risen oppbevares i romtemperatur (over 10 grader)"
+        },
+        "ris-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-ris",
+          "merknad": "om du kjøler maten raskt ned, kan du oppbevare den 2-3 dager i kjøleskapet."
+        },
+        "ris-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-ris",
+          "merknad": "om du kjøler maten raskt ned, kan du oppbevare den 2-3 dager i kjøleskapet."
+        }
+      }
+    },
+    {
+      "id": "kjottdeig-og-kylling",
+      "slug": "kjottdeig-og-kylling",
+      "navn": "Kjøttdeig og kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+        },
+        "kjottdeig-pose-min": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Kjøttdeig/ karbonadedeig/ medisterdeig | 4 dager | 8-10 dager"
+        },
+        "kjottdeig-vakuum-min": {
+          "verdi": 8,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Kjøttdeig/ karbonadedeig/ medisterdeig | 4 dager | 8-10 dager"
+        },
+        "kjottdeig-vakuum-maks": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Kjøttdeig/ karbonadedeig/ medisterdeig | 4 dager | 8-10 dager"
+        },
+        "kylling-pose-min": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Rå kylling/kalkun | 4 dager | 8-10 dager"
+        },
+        "kylling-vakuum-min": {
+          "verdi": 8,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Rå kylling/kalkun | 4 dager | 8-10 dager"
+        },
+        "kylling-vakuum-maks": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Rå kylling/kalkun | 4 dager | 8-10 dager"
+        }
+      }
+    },
+    {
+      "id": "kjott",
+      "slug": "kjott",
+      "navn": "Kjøtt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+        },
+        "stek-pose-min": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Stek/grytekjøtt/kjøtt til koking | 4-5 dager | 14 dager"
+        },
+        "stek-pose-maks": {
+          "verdi": 5,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Stek/grytekjøtt/kjøtt til koking | 4-5 dager | 14 dager"
+        },
+        "stek-vakuum-min": {
+          "verdi": 14,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Stek/grytekjøtt/kjøtt til koking | 4-5 dager | 14 dager"
+        },
+        "biff-pose-min": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Koteletter/biff | 4 dager | 14 dager"
+        },
+        "biff-vakuum-min": {
+          "verdi": 14,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Koteletter/biff | 4 dager | 14 dager"
+        },
+        "lettsaltet-pose-min": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Lettsaltet og røkt kjøtt / | 10 dager | 30 dager"
+        },
+        "lettsaltet-vakuum-min": {
+          "verdi": 30,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Lettsaltet og røkt kjøtt / | 10 dager | 30 dager"
+        },
+        "polser-pose-min": {
+          "verdi": 7,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Røkte pølser | 7 dager | 21 dager"
+        },
+        "polser-vakuum-min": {
+          "verdi": 21,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Røkte pølser | 7 dager | 21 dager"
+        },
+        "medister-pose-min": {
+          "verdi": 5,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Medisterpølser | 5 dager | 14 dager"
+        },
+        "medister-vakuum-min": {
+          "verdi": 14,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Medisterpølser | 5 dager | 14 dager"
+        },
+        "speke-skaret-vakuum-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Skåret spekepølse | - | 3-4 måneder"
+        },
+        "speke-skaret-vakuum-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Skåret spekepølse | - | 3-4 måneder"
+        },
+        "speke-hel-vakuum-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Hel spekepølse | - | 3-6 måneder"
+        },
+        "speke-hel-vakuum-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Hel spekepølse | - | 3-6 måneder"
+        }
+      }
+    },
+    {
+      "id": "skalldyr",
+      "slug": "skalldyr",
+      "navn": "Reker og skalldyr",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+        },
+        "skalldyr-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-fisk",
+          "merknad": "I vanlig kjøleskaptemperatur (+4 °C) kan fisk oppbevares i maks 3-4 dager, skalldyr bare 2-3 dager."
+        },
+        "skalldyr-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-fisk",
+          "merknad": "I vanlig kjøleskaptemperatur (+4 °C) kan fisk oppbevares i maks 3-4 dager, skalldyr bare 2-3 dager."
+        }
+      }
+    },
+    {
+      "id": "rester",
+      "slug": "rester",
+      "navn": "Rester",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+        },
+        "mt-avkjol-fra": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar."
+        },
+        "mt-avkjol-til": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar."
+        },
+        "rester-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        },
+        "rester-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Restemat held seg i kjøleskap i to til fire dagar."
+        }
+      }
+    },
+    {
+      "id": "fersk-fisk",
+      "slug": "fersk-fisk",
+      "navn": "Fersk fisk",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pose-min": {
+          "verdi": 2,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Fersk fisk | 2-3 dager | 3-4 dager"
+        },
+        "pose-maks": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Fersk fisk | 2-3 dager | 3-4 dager"
+        },
+        "artikkel-min": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-fisk",
+          "merknad": "I vanlig kjøleskaptemperatur (+4 °C) kan fisk oppbevares i maks 3-4 dager"
+        },
+        "artikkel-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-fisk",
+          "merknad": "I vanlig kjøleskaptemperatur (+4 °C) kan fisk oppbevares i maks 3-4 dager"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2026) og MatPrat (2018) oppgir ulike tider."
+      }
+    },
+    {
+      "id": "fiskemat",
+      "slug": "fiskemat",
+      "navn": "Fiskemat",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pose-min": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Fiskemat | 4-5 dager | 8-10 dager"
+        },
+        "pose-maks": {
+          "verdi": 5,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Fiskemat | 4-5 dager | 8-10 dager"
+        },
+        "apnet-min": {
+          "verdi": 3,
+          "enhet": "dager",
+          "kilde": "mp-fisk",
+          "merknad": "og 3-4 dager i kjøleskap når emballasjen er brutt."
+        },
+        "apnet-maks": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-fisk",
+          "merknad": "og 3-4 dager i kjøleskap når emballasjen er brutt."
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2026) og MatPrat (2018) oppgir ulike tider, og det er uklart om tabellen gjelder åpnet pakke."
+      }
+    },
+    {
+      "id": "palegg",
+      "slug": "palegg",
+      "navn": "Pålegg",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pose-min": {
+          "verdi": 7,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "sylte/rull, leverpostei, kylling- og kalkunpålegg mm) | 7-10 dager | 21 dager"
+        },
+        "pose-maks": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "sylte/rull, leverpostei, kylling- og kalkunpålegg mm) | 7-10 dager | 21 dager"
+        }
+      },
+      "tekst": {
+        "grunn": "Tabellen hos MatPrat (2026) og en annen artikkel fra samme utgiver gir ulike tider, og det er uklart om tallet gjelder åpnet pakke."
+      }
+    },
+    {
+      "id": "stekt-kylling",
+      "slug": "stekt-kylling",
+      "navn": "Stekt kylling",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pose-min": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Stekt kylling/ kalkun | 4-5 dager | 8-10 dager"
+        },
+        "pose-maks": {
+          "verdi": 5,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Stekt kylling/ kalkun | 4-5 dager | 8-10 dager"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2026) oppgir lenger tid enn Mattilsynet gir for restemat."
+      }
+    },
+    {
+      "id": "middagsrester-matprat",
+      "slug": "middagsrester-matprat",
+      "navn": "Middagsrester",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pose-min": {
+          "verdi": 4,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Middagsrester, supper og gryter | 4-10 dager"
+        },
+        "pose-maks": {
+          "verdi": 10,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Middagsrester, supper og gryter | 4-10 dager"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2026) oppgir lenger tid enn Mattilsynet. Siden om rester bruker Mattilsynets tid."
+      }
+    },
+    {
+      "id": "melk",
+      "slug": "melk",
+      "navn": "Melk og melkeprodukter",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pose-min": {
+          "verdi": 6,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Melk og melkeprodukter | 6-20 dager"
+        },
+        "pose-maks": {
+          "verdi": 20,
+          "enhet": "dager",
+          "kilde": "mp-kjoleskap",
+          "merknad": "Melk og melkeprodukter | 6-20 dager"
+        }
+      },
+      "tekst": {
+        "grunn": "Spennet er så vidt at det ikke sier noe om en bestemt vare."
+      }
+    }
+  ]
+}

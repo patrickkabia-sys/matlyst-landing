@@ -1,0 +1,861 @@
+{
+  "familie": "frysing",
+  "marked": "nb",
+  "kilder": {
+    "mt-oppbevaring": {
+      "navn": "Råd for oppbevaring av mat og drikke",
+      "utgiver": "Mattilsynet",
+      "aar": 2026,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/rad-for-oppbevaring-av-mat",
+      "hentet": "2026-11-21"
+    },
+    "mt-merking": {
+      "navn": "Holdbarhetsmerking",
+      "utgiver": "Mattilsynet",
+      "aar": 2022,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/merking-av-mat/holdbarhetsmerking-pa-matvarer",
+      "hentet": "2026-11-21"
+    },
+    "mt-matsvinn": {
+      "navn": "Slik kan du redusere matsvinnet i hjemmet ditt",
+      "utgiver": "Mattilsynet",
+      "aar": 2024,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/slik-kan-du-redusere-matsvinnet-i-hjemmet-ditt",
+      "hentet": "2026-11-21"
+    },
+    "mt-blaskjell": {
+      "navn": "Blåskjell bør ikke fryses",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/blaskjellvarsel/behandling-og-oppbevaring-av-blaskjell/blaskjell-bor-ikke-fryses",
+      "hentet": "2026-11-21"
+    },
+    "mt-baer": {
+      "navn": "Frukt, bær og grønnsaker bør skylles eller kokes",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/frukt-baer-og-gronnsaker-bor-skylles-eller-kokes",
+      "hentet": "2026-11-21"
+    },
+    "mt-sushi": {
+      "navn": "Slik lager du sushi som er trygg å spise",
+      "utgiver": "Mattilsynet",
+      "aar": 2023,
+      "adresse": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/slik-lager-du-sushi-som-er-trygg-a-spise",
+      "hentet": "2026-11-21"
+    },
+    "mp-fryser": {
+      "navn": "Oppbevaring i fryser",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2023,
+      "adresse": "https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/oppbevaring-i-fryser/",
+      "hentet": "2026-11-21"
+    },
+    "mp-egg": {
+      "navn": "Egg og holdbarhet",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/egg-og-holdbarhet/",
+      "hentet": "2026-11-21"
+    },
+    "mp-kjott": {
+      "navn": "Oppbevaring og holdbarhet på kjøtt",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2018,
+      "adresse": "https://www.matprat.no/artikler/oppbevaring-og-holdbarhet/oppbevaring-og-holdbarhet-pa-kjott/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ost",
+      "slug": "ost",
+      "navn": "Ost",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "fet-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Fet ost, revet ost | 3-4 mnd"
+        },
+        "fet-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Fet ost, revet ost | 3-4 mnd"
+        }
+      }
+    },
+    {
+      "id": "melk",
+      "slug": "melk",
+      "navn": "Melk, fløte og rømme",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "melk-min": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Melk, fløte, rømme | 4 mnd"
+        }
+      }
+    },
+    {
+      "id": "smor",
+      "slug": "smor",
+      "navn": "Smør og margarin",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "smor-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Smør, margarin | 6-9 mnd"
+        },
+        "smor-maks": {
+          "verdi": 9,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Smør, margarin | 6-9 mnd"
+        }
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "egg",
+      "navn": "Egg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "hele-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Egg rå, sammenvispet | 6 mnd"
+        },
+        "hviter-min": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Eggehviter rå | 8 mnd"
+        },
+        "plommer-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Eggeplommer | 6 mnd"
+        },
+        "eggeretter-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Eggeretter kokt/stekt | 6 mnd"
+        }
+      }
+    },
+    {
+      "id": "brod",
+      "slug": "brod",
+      "navn": "Brød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "brod-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Brød og rundstykker | 6-7 mnd"
+        },
+        "brod-maks": {
+          "verdi": 7,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Brød og rundstykker | 6-7 mnd"
+        },
+        "mt-unntak": {
+          "verdi": 24,
+          "enhet": "timer",
+          "kilde": "mt-merking",
+          "merknad": "bakeri- og konditorvarer som stort sett spises innen 24 timer (for eksempel ferske brød)"
+        }
+      }
+    },
+    {
+      "id": "kaker",
+      "slug": "kaker",
+      "navn": "Kaker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "sot-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kaker og søt bakst | 3-6 mnd"
+        },
+        "sot-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kaker og søt bakst | 3-6 mnd"
+        },
+        "torre-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Tørre kaker og kjeks | 6-8 mnd"
+        },
+        "torre-maks": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Tørre kaker og kjeks | 6-8 mnd"
+        }
+      }
+    },
+    {
+      "id": "kjottdeig-og-kylling",
+      "slug": "kjottdeig-og-kylling",
+      "navn": "Kjøttdeig og kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "kjottdeig-min": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kjøttdeig/ karbonadedeig | 4 mnd"
+        },
+        "kylling-min": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kylling | 4 mnd"
+        }
+      }
+    },
+    {
+      "id": "kjott",
+      "slug": "kjott",
+      "navn": "Kjøtt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "svin-magert-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Svinekjøtt | Magert: 6 mnd / Med fett: 3 mnd"
+        },
+        "svin-fett-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Svinekjøtt | Magert: 6 mnd / Med fett: 3 mnd"
+        },
+        "storfe-min": {
+          "verdi": 10,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Storfekjøtt | 10-12 mnd"
+        },
+        "storfe-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Storfekjøtt | 10-12 mnd"
+        },
+        "kalv-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kalvekjøtt | 6 mnd"
+        },
+        "lam-min": {
+          "verdi": 10,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Lammekjøtt | 10-12 mnd"
+        },
+        "lam-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Lammekjøtt | 10-12 mnd"
+        },
+        "medisterdeig-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Medisterdeig | 3 mnd"
+        },
+        "polser-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Pølser | 3 mnd"
+        },
+        "spekemat-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Spekemat | 6 mnd"
+        },
+        "innmat-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Innmat | 3 måneder"
+        }
+      }
+    },
+    {
+      "id": "middagsrester",
+      "slug": "middagsrester",
+      "navn": "Middagsrester, gryter og suppe",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "rester-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Middagsrester/gryter/supper | 3-6 mnd"
+        },
+        "rester-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Middagsrester/gryter/supper | 3-6 mnd"
+        },
+        "kraft-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kraft og buljong | 3-6 mnd"
+        },
+        "kraft-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kraft og buljong | 3-6 mnd"
+        }
+      }
+    },
+    {
+      "id": "fisk",
+      "slug": "fisk",
+      "navn": "Fisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mager-min": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Mager fisk (torsk, sei, lyr, kolje, breiflabb, rødspette, hvitting, hyse og brosme) | ca. 6 måneder"
+        },
+        "halvfet-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Halvfet fisk (uer, steinbit, røye, kveite og sjøørret) | 3-4 måneder"
+        },
+        "halvfet-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Halvfet fisk (uer, steinbit, røye, kveite og sjøørret) | 3-4 måneder"
+        },
+        "fet-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Fet fisk (makrell, laks, sild, ål) | ca. 3 måneder"
+        }
+      }
+    },
+    {
+      "id": "skalldyr",
+      "slug": "skalldyr",
+      "navn": "Reker og skalldyr",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "skalldyr-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Skalldyr | 3-6 måneder"
+        },
+        "skalldyr-maks": {
+          "verdi": 6,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Skalldyr | 3-6 måneder"
+        }
+      }
+    },
+    {
+      "id": "baer",
+      "slug": "baer",
+      "navn": "Bær",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "baer-min": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Bær | 12 mnd"
+        }
+      }
+    },
+    {
+      "id": "frukt-og-gronnsaker",
+      "slug": "frukt-og-gronnsaker",
+      "navn": "Frukt og grønnsaker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mt-frys": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Temperaturen skal vere –18 °C eller lågare."
+        },
+        "mt-kv-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "mt-kv-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mt-oppbevaring",
+          "merknad": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+        },
+        "fg-min": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Frukt og grønnsaker (bør varmebehandles) | 8-12 mnd"
+        },
+        "fg-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Frukt og grønnsaker (bør varmebehandles) | 8-12 mnd"
+        },
+        "urter-min": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Urter og bladgrønnsaker (bør varmebehandles) | 12 mnd"
+        },
+        "sopp-min": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Sopp (bør varmebehandles) | 12 mnd"
+        }
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "kalkun",
+      "navn": "Kalkun",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kalkun-min": {
+          "verdi": 1,
+          "enhet": "år",
+          "kilde": "mp-fryser",
+          "merknad": "Kalkun | 1-2 år"
+        },
+        "kalkun-maks": {
+          "verdi": 2,
+          "enhet": "år",
+          "kilde": "mp-fryser",
+          "merknad": "Kalkun | 1-2 år"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2023) oppgir lenger tid enn Mattilsynets ramme."
+      }
+    },
+    {
+      "id": "vilt",
+      "slug": "vilt",
+      "navn": "Reinsdyr og vilt",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "vilt-min": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Reinsdyr- og viltkjøtt | over 12 mnd"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2023) oppgir bare «over», ingen øvre grense."
+      }
+    },
+    {
+      "id": "saltet-kjott",
+      "slug": "saltet-kjott",
+      "navn": "Saltet kjøtt med mye fett",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "salt-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Saltet kjøtt med mye fett | 2 mnd"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2023) oppgir kortere tid enn Mattilsynets ramme."
+      }
+    },
+    {
+      "id": "kyllingkjottdeig",
+      "slug": "kyllingkjottdeig",
+      "navn": "Kyllingkjøttdeig",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kd-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kyllingkjøttdeig | 2 mnd"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2023) oppgir kortere tid enn Mattilsynets ramme."
+      }
+    },
+    {
+      "id": "kjottpalegg",
+      "slug": "kjottpalegg",
+      "navn": "Kjøttpålegg",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "p-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kjøttpålegg | 1-2 mnd"
+        },
+        "p-maks": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kjøttpålegg | 1-2 mnd"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2023) oppgir kortere tid enn Mattilsynets ramme."
+      }
+    },
+    {
+      "id": "iskrem",
+      "slug": "iskrem",
+      "navn": "Iskrem",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "is-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Iskrem | 2-3 mnd"
+        },
+        "is-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Iskrem | 2-3 mnd"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2023) oppgir kortere tid enn Mattilsynets ramme."
+      }
+    },
+    {
+      "id": "krem-kaker",
+      "slug": "krem-kaker",
+      "navn": "Kaker med krem eller glasur",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "k-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Kaker med krem/glasur | 1 mnd"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2023) oppgir kortere tid enn Mattilsynets ramme."
+      }
+    },
+    {
+      "id": "deig",
+      "slug": "deig",
+      "navn": "Deig",
+      "status": "avvist",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "d-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "mp-fryser",
+          "merknad": "Deig | 1 mnd"
+        }
+      },
+      "tekst": {
+        "grunn": "MatPrat (2023) oppgir kortere tid enn Mattilsynets ramme."
+      }
+    }
+  ]
+}

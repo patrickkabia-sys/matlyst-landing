@@ -29,7 +29,7 @@ test('PR-utvalget har tre per generert familie og språk, og alt det håndskrevn
   const rader = utvalg({ revisjon: 'pr', endret: [] });
   const sider = new Map(alleSider(ROT).map((s) => [s.sti, s]));
   kontrollerUtvalg(rader, sider);
-  // Datadrevne familier av typen guide-lang (ukemenyene) er generert og tas med som utvalg, ikke hele.
+  // Datadrevne familier av typen guide-lang (ukemenyene, holdbarhet, frysing) er generert og tas med som utvalg, ikke hele.
   const handskrevne = [...sider.values()].filter((s) => ['guide-lang', 'guide-kort', 'blogg', 'juss'].includes(s.type) && !erGenerertFamilie(s.familie));
   for (const s of handskrevne) assert.ok(rader.some((r) => r.sti === s.sti), s.sti);
   assert.ok(rader.length < 260, `utvalget er ${rader.length} sider`);

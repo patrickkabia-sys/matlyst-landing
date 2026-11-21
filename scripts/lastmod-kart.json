@@ -1887,6 +1887,62 @@
   "hash": "495f4590703930b2",
   "dato": "2026-11-18"
  },
+ "https://matlyst-app.no/frysing/": {
+  "hash": "01de862e2d28f186",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/baer/": {
+  "hash": "290c9b796a2700a1",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/brod/": {
+  "hash": "d1f998868df5b286",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/egg/": {
+  "hash": "592af6f53e00f692",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/fisk/": {
+  "hash": "579a9a45f63544c7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/frukt-og-gronnsaker/": {
+  "hash": "231156c6d41d2e1c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/kaker/": {
+  "hash": "dc03b990c10fdf12",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/kjott/": {
+  "hash": "bfae801c619dc8ad",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/kjottdeig-og-kylling/": {
+  "hash": "4332e75f6f6fdf1d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/melk/": {
+  "hash": "2eb50efc96622d84",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/middagsrester/": {
+  "hash": "b700ea28ab68c1b8",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/ost/": {
+  "hash": "5cc4374199bfd7bc",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/skalldyr/": {
+  "hash": "f22879cca76e0db8",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/frysing/smor/": {
+  "hash": "97dab0d498a7a39b",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/handleliste/": {
   "hash": "eb64864cdfb2bfa1",
   "dato": "2026-11-20"
@@ -1894,6 +1950,38 @@
  "https://matlyst-app.no/handskrevne-oppskrifter/": {
   "hash": "fe4bb7864b9cf5ab",
   "dato": "2026-11-20"
+ },
+ "https://matlyst-app.no/holdbarhet/": {
+  "hash": "3e7487666cd9b787",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/holdbarhet/egg/": {
+  "hash": "8cb0a191bf088e10",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/holdbarhet/kjott/": {
+  "hash": "56b25590791865c0",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/holdbarhet/kjottdeig-og-kylling/": {
+  "hash": "f625a7d447dab2df",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/holdbarhet/kokt-ris-og-pasta/": {
+  "hash": "c740ac7eb15d90c8",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/holdbarhet/kokte-egg/": {
+  "hash": "761f128011084003",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/holdbarhet/rester/": {
+  "hash": "73398227aec161e6",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/holdbarhet/skalldyr/": {
+  "hash": "e5ba7e4d3c71f3e3",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/": {
   "hash": "492e124a674b3817",

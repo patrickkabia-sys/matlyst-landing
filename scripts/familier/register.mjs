@@ -29,6 +29,9 @@ export const FAMILIER = Object.freeze([
   { id: 'dl-til-gram', sidetype: 'omregner', mappe: new URL('./dl-til-gram/', import.meta.url), markeder: { nb: { rot: 'verktoy/dl-til-gram/' }, sv: { rot: 'verktyg/dl-till-gram/' }, da: { rot: 'vaerktoejer/dl-til-gram/' }, en: { rot: 'tools/cups-to-grams/' } } },
   // Ukemenyene: bare norsk. Rettene og varene står i menyer.nb.json (meny.mjs), tallene i data.nb.json.
   { id: 'ukemeny', sidetype: 'guide-lang', mappe: new URL('./ukemeny/', import.meta.url), markeder: { nb: { rot: 'ukemenyer/' } } },
+  // Holdbarhet i kjøleskapet og frysing: bare norsk. Kildene er Mattilsynet først, så MatPrat (se scripts/familier/holdbarhet/kjoling.mjs).
+  { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' } } },
+  { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' } } },
 ]);
 
 export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });
