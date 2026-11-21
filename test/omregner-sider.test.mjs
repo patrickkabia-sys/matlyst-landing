@@ -50,9 +50,9 @@ const SPRAK = {
   },
   da: {
     sider: DA.enhetsSiderDa, KOPP_BIORD: DA.KOPP_BIORD, mappe: 'da/vaerktoejer/', hub: 'vaerktoejer/enhedsomregner/', komma: true, hoved: /\bcups?\b/iu, biord: /\bkop(pe[rn]?)?\b/iu, ordFor: ordFor('da'),
-    publisert: 'dl-til-kop', kalkH2: /^Regnemaskine: /u, kortSvar: 'Kort svar:', tabellId: /^<h2 id="(?:omregningstabell|tabell|tabel)/u, likeNavn: true,
+    publisert: 'dl-til-kop', kalkH2: /^Omregner: /u, kortSvar: 'Kort svar:', tabellId: /^<h2 id="(?:omregningstabell|tabell|tabel)/u, likeNavn: true,
     h2: [/^Tabel: /u, /^Sådan regner du /u, /^Hvor opskrifter bruger /u, /^Tips til måling$/u, /^Almindelige fejl, når du regner om$/u, /^Regn en hel opskrift om$/u, /^Hold op med at regne om i hånden$/u, /^Beslægtede omregninger$/u],
-    hubInnledning: /^<p>Her finder du alle køkkenomregninger samlet: /u, hubVolum: 'Regnemaskinen herover regner volumen om\\. Til vægt, længde og temperatur bruger du listerne herunder\\.',
+    hubInnledning: /^<p>Her finder du alle køkkenomregninger samlet: /u, hubVolum: 'Omregneren herover regner volumen om\\. Til vægt, længde og temperatur bruger du listerne herunder\\.',
     hubPeker: null, til: 'til', verb: (a, b) => `Regn ${a} om til ${b}`, hubCup: /\bcup\b/u,
     krus: (ml) => `Du måler med et kaffekrus. Et krus rummer sjældent ${ml} ml, som er det, en cup er.`, stavefeil: /målske/iu, riktigSkje: /måleske/u,
   },
@@ -345,7 +345,7 @@ for (const lang of Object.keys(SPRAK)) {
     assert.doesNotMatch(hub.rik, /class="answer"|class="toc"|<form/u);
     // Innledningen viser til kortet over (ikke «under» eller «her»), og setningen om volum sier det samme.
     if (S.hubPeker) assert.match(lese.split('</p>')[0] + '</p>', S.hubPeker, `${S.hub}: innledningen peker på kalkulatoren over`);
-    assert.doesNotMatch(lese.slice(0, lese.indexOf('<h2')), /Kalkulatoren her |Den här omvandlaren|Regnemaskinen her |This calculator /u, `${S.hub}: «her» peker feil vei`);
+    assert.doesNotMatch(lese.slice(0, lese.indexOf('<h2')), /Kalkulatoren her |Den här omvandlaren|Omregneren her |This calculator /u, `${S.hub}: «her» peker feil vei`);
   });
 
   test(`${lang}: samlesiden og enhetssidene har rett hovedord i tittelen`, () => {
