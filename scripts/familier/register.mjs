@@ -28,6 +28,9 @@ const trengFelles = () => {
 export const FAMILIER = Object.freeze([
   { id: 'dl-til-gram', sidetype: 'omregner', mappe: new URL('./dl-til-gram/', import.meta.url), markeder: { nb: { rot: 'verktoy/dl-til-gram/' }, sv: { rot: 'verktyg/dl-till-gram/' }, da: { rot: 'vaerktoejer/dl-til-gram/' }, en: { rot: 'tools/cups-to-grams/' } } },
   // Ukemenyene: bare norsk. Rettene og varene står i menyer.nb.json (meny.mjs), tallene i data.nb.json.
+  // Kjernetemperatur og steketid: bare norsk. Mattilsynet først, så MatPrat med årstall (se scripts/familier/steketid/mal-felles.mjs).
+  { id: 'kjernetemperatur', sidetype: 'guide-lang', mappe: new URL('./kjernetemperatur/', import.meta.url), markeder: { nb: { rot: 'kjernetemperatur/' } } },
+  { id: 'steketid', sidetype: 'guide-lang', mappe: new URL('./steketid/', import.meta.url), markeder: { nb: { rot: 'steketid/' } } },
   { id: 'ukemeny', sidetype: 'guide-lang', mappe: new URL('./ukemeny/', import.meta.url), markeder: { nb: { rot: 'ukemenyer/' } } },
   // Holdbarhet i kjøleskapet og frysing: bare norsk. Kildene er Mattilsynet først, så MatPrat (se scripts/familier/holdbarhet/kjoling.mjs).
   { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' } } },

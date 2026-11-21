@@ -173,7 +173,8 @@ const avsnitt = [
       `<strong>Rester:</strong> restemat holder seg ${t('mt-rester')} i kjøleskap. Skal du ikke spise den snart, frys den med en gang.`,
       `<strong>Oppvarming:</strong> ved oppvarming til over ${t('mt-oppvarming')} i flere minutter blir de aller fleste bakterier drept. Skal maten holdes varm, må den holde ${t('mt-varmholding')}.`)
     + '<h3>Hva med kjernetemperatur?</h3>'
-    + p(`${mt('mt-kjokken')} sier at ved oppvarming til over ${t('mt-oppvarming')} i flere minutter blir de aller fleste bakterier drept. ${mp('mp-ribbe-sp')} gir ingen kjernetemperatur for ribbe, og sier at du verken trenger steketermometer eller å tenke på kjernetemperaturen: ribba trenger høy temperatur og relativt lang steketid, og den må steke ${t('ribbe-over')} til sammen for å bli mør. For svinekam og skinkestek med svor oppgir ${mp('mp-svin')} ${t('svin-ferdig')} som gjennomstekt.`)],
+    + p(`${mt('mt-kjokken')} sier at ved oppvarming til over ${t('mt-oppvarming')} i flere minutter blir de aller fleste bakterier drept. ${mp('mp-ribbe-sp')} gir ingen kjernetemperatur for ribbe, og sier at du verken trenger steketermometer eller å tenke på kjernetemperaturen: ribba trenger høy temperatur og relativt lang steketid, og den må steke ${t('ribbe-over')} til sammen for å bli mør. For svinekam og skinkestek med svor oppgir ${mp('mp-svin')} ${t('svin-ferdig')} som gjennomstekt.`)
+    + p('Se også steketidene for <a href="/steketid/ribbe/">ribbe</a>, <a href="/steketid/pinnekjott/">pinnekjøtt</a> og <a href="/steketid/kalkun/">kalkun</a>, og <a href="/kjernetemperatur/">kjernetemperatur for kjøtt og fisk</a>.')],
   ['Forbered i forveien, og hva som kan fryses',
     p('Det du kan gjøre i forveien, tar mye press av julaften.')
     + '<h3>Ribbe dagen før</h3>'

@@ -2012,8 +2012,68 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/julemiddag/": {
-  "hash": "364965d4fe57fedd",
-  "dato": "2026-11-20"
+  "hash": "b0d6d58e7442e989",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/": {
+  "hash": "7e273d2fd5e385d7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/biff/": {
+  "hash": "62c5e23c6692bd27",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/entrecote/": {
+  "hash": "0126cc2e0cd54e8e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/kalkun/": {
+  "hash": "56fb7ff5d9956c9d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/kjottdeig/": {
+  "hash": "c6896d99d7f101ce",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/kylling/": {
+  "hash": "08062ba4b83fbbd5",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/laks/": {
+  "hash": "1e2a53ac225558ff",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/lammefilet/": {
+  "hash": "27f7f14afea13b67",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/lammelar/": {
+  "hash": "17be5378b0f44f78",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/oksefilet/": {
+  "hash": "ca439246d8a5a2e5",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/roastbiff/": {
+  "hash": "a4303ac8b24ec2a4",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/svinefilet/": {
+  "hash": "ad5c6e04a971728a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/svinenakke/": {
+  "hash": "e58cbd2d572ff650",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/svinestek/": {
+  "hash": "a5095a946368d386",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/kjernetemperatur/torsk/": {
+  "hash": "ff80fc04e1ce2729",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/lagre-oppskrifter-fra-instagram/": {
   "hash": "d8a312d49a258c00",
@@ -2146,6 +2206,58 @@
  "https://matlyst-app.no/spiskammer-app/": {
   "hash": "19571c1cfc4d71d7",
   "dato": "2026-11-19"
+ },
+ "https://matlyst-app.no/steketid/": {
+  "hash": "769ada85e9679b5c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/bakt-potet/": {
+  "hash": "3e75324387d4eb2f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/egg/": {
+  "hash": "9707b62bcf6ecc02",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/hel-kylling/": {
+  "hash": "a076382b27438141",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/kalkun/": {
+  "hash": "33888536cfc36db4",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/kyllingfilet/": {
+  "hash": "d7c76fb29ca2016e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/laks-i-ovn/": {
+  "hash": "11119aac9fc29380",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/lammelar/": {
+  "hash": "54edecf3ffa427d9",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/pinnekjott/": {
+  "hash": "e9d2e04ea793970e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/poteter-og-ris/": {
+  "hash": "6dd0102f6e7f9537",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/ribbe/": {
+  "hash": "39b6b58e079613d7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/roastbiff/": {
+  "hash": "8c66fae63eb9147d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/steketid/svinestek/": {
+  "hash": "a51c7421f4b4230d",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/": {
   "hash": "c94ab590087d6c1f",

@@ -86,7 +86,7 @@ test('nøyaktig disse seks lenkene er skjult', () => {
 test('synligeLenker beholder alt unntatt de skjulte, 37 totalt', () => {
   const proto = hyllerFraPrototyp();
   HYLLER.nb.forEach((h, i) => {
-    // «Om Matlyst», «Holdbarhet i kjøleskapet» og «Frysing» (bareNb) er ikke i prototypet.
+    // «Om Matlyst» og de nye familielenkene (bareNb) er ikke i prototypet.
     assert.deepEqual(synligeLenker(h).filter((l) => !l.bareNb).map((l) => l.tekst), proto[i].lenker.filter((t) => !SKJULTE.includes(t)), h.navn);
   });
   assert.equal(HYLLER.nb.flatMap(synligeLenker).length, 37);
