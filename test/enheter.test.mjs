@@ -67,7 +67,7 @@ const kortData = (html) => JSON.parse(/<script type="application\/json" class="k
 const synlig = (html, felt) => new RegExp(`data-felt="${felt}"[^>]*>([^<]*)<`, 'u').exec(html)[1];
 
 test('enhetsKort: data og statisk eksempel henger sammen', () => {
-  // nb cups til dl. Ordformen følger FLERTALL (som blir «cup» når navnene byttes), tallene følger kilden.
+  // nb cups til dl: hovedordet er «cup» (avgjørelse 1), tallene følger kilden.
   const nb = enhetsKort('nb', 'cups', 'dl');
   const d = kortData(nb);
   assert.match(nb, /^<form class="kalk" data-kalk="enhet" /u);
@@ -87,7 +87,8 @@ test('enhetsKort: data og statisk eksempel henger sammen', () => {
   assert.deepEqual(d.steg.dl, ['0,5', '1', '2', '3', '5', '10']);
   assert.equal(d.feil, KORT_ETIKETTER.nb.feil);
   assert.equal(synlig(nb, 'svar'), '2,366');
-  assert.equal(synlig(nb, 'setning'), `1 ${FLERTALL.nb.cups[0]} = 2,366 dl`);
+  assert.equal(synlig(nb, 'setning'), '1 cup = 2,366 dl');
+  assert.deepEqual(FLERTALL.nb.cups, ['cup', 'cups']);
   assert.equal(d.ml.cups, 236.5882365);
   assert.deepEqual(d.g, {});
   // hurtigknappene i HTML er de samme som dataene
@@ -162,4 +163,19 @@ test('en side per par, unike adresser, og hver side har kalkulator, tabell, Matl
 test('enheter i samme gruppe kan regnes mellom, andre grupper kaster', () => {
   assert.throws(() => konverter(1, 'ml', 'g'));
   assert.ok(ENHETER.ml && ENHETER.f);
+});
+
+test('valgteksten er «Flertallsnavn (kort)», men navnet står alene når kortformen er lik («Cups», ikke «Cups (cups)»)', () => {
+  const tekster = (html, felt) => Object.fromEntries([...[...html.matchAll(new RegExp(`<select data-felt="${felt}">([\\s\\S]*?)</select>`, 'gu'))][0][1].matchAll(/<option value="([^"]+)"[^>]*>([^<]*)</gu)].map((m) => [m[1], m[2]]));
+  const nb = tekster(enhetsKort('nb', 'cups', 'dl'), 'fra');
+  assert.equal(nb.cups, 'Cups');
+  assert.equal(nb.dl, 'Desiliter (dl)');
+  assert.equal(nb.pints, 'Amerikanske pints (pint)');
+  assert.equal(tekster(enhetsKort('nb', 'inches', 'cm'), 'til').inches, 'Tommer');
+  for (const lang of LANG) {
+    for (const [id, tekst] of Object.entries(tekster(enhetsKort(lang, ...allePar(lang)[0]), 'fra'))) {
+      const { fl, kort } = ENHETER[id][lang];
+      assert.equal(tekst, fl.toLocaleLowerCase() === kort.toLocaleLowerCase() ? fl.charAt(0).toUpperCase() + fl.slice(1) : `${fl.charAt(0).toUpperCase()}${fl.slice(1)} (${kort})`, `${lang} ${id}`);
+    }
+  }
 });

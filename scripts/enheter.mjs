@@ -20,7 +20,7 @@ export const ENHETER = {
   tsp: { gruppe: 'volum', f: 4.92892159375, en: { en: 'US teaspoon', fl: 'US teaspoons', kort: 'tsp' }, nb: { en: 'amerikansk teskje', fl: 'amerikanske teskjeer', kort: 'tsp' }, sv: { en: 'amerikansk tesked', fl: 'amerikanska teskedar', kort: 'tsp' }, da: { en: 'amerikansk teskefuld', fl: 'amerikanske teskefulde', kort: 'tsp' } },
   tbsp: { gruppe: 'volum', f: 14.78676478125, en: { en: 'US tablespoon', fl: 'US tablespoons', kort: 'tbsp' }, nb: { en: 'amerikansk spiseskje', fl: 'amerikanske spiseskjeer', kort: 'tbsp' }, sv: { en: 'amerikansk matsked', fl: 'amerikanska matskedar', kort: 'tbsp' }, da: { en: 'amerikansk spiseskefuld', fl: 'amerikanske spiseskefulde', kort: 'tbsp' } },
   oz: { gruppe: 'volum', f: 29.5735295625, en: { en: 'US fluid ounce', fl: 'US fluid ounces', kort: 'fl oz' }, nb: { en: 'amerikansk væskeunse', fl: 'amerikanske væskeunser', kort: 'fl oz' }, sv: { en: 'amerikanskt flytande uns', fl: 'amerikanska flytande uns', kort: 'fl oz' }, da: { en: 'amerikansk flydende ounce', fl: 'amerikanske flydende ounces', kort: 'fl oz' } },
-  cups: { gruppe: 'volum', f: 236.5882365, en: { en: 'US cup', fl: 'US cups', kort: 'cup' }, nb: { en: 'amerikansk kopp', fl: 'amerikanske kopper', kort: 'kopp' }, sv: { en: 'amerikansk kopp', fl: 'amerikanska koppar', kort: 'kopp' }, da: { en: 'amerikansk kop', fl: 'amerikanske kopper', kort: 'kop' } },
+  cups: { gruppe: 'volum', f: 236.5882365, en: { en: 'US cup', fl: 'US cups', kort: 'cup' }, nb: { en: 'cup', fl: 'cups', kort: 'cups' }, sv: { en: 'amerikansk kopp', fl: 'amerikanska koppar', kort: 'kopp' }, da: { en: 'amerikansk kop', fl: 'amerikanske kopper', kort: 'kop' } },
   pints: { gruppe: 'volum', f: 473.176473, en: { en: 'US pint', fl: 'US pints', kort: 'pt' }, nb: { en: 'amerikansk pint', fl: 'amerikanske pints', kort: 'pint' }, sv: { en: 'amerikansk pint', fl: 'amerikanska pints', kort: 'pint' }, da: { en: 'amerikansk pint', fl: 'amerikanske pints', kort: 'pint' } },
   quarts: { gruppe: 'volum', f: 946.352946, en: { en: 'US quart', fl: 'US quarts', kort: 'qt' }, nb: { en: 'amerikansk quart', fl: 'amerikanske quarts', kort: 'quart' }, sv: { en: 'amerikansk quart', fl: 'amerikanska quarts', kort: 'quart' }, da: { en: 'amerikansk quart', fl: 'amerikanske quarts', kort: 'quart' } },
   gallons: { gruppe: 'volum', f: 3785.411784, en: { en: 'US gallon', fl: 'US gallons', kort: 'gal' }, nb: { en: 'amerikansk gallon', fl: 'amerikanske gallon', kort: 'gallon' }, sv: { en: 'amerikansk gallon', fl: 'amerikanska gallon', kort: 'gallon' }, da: { en: 'amerikansk gallon', fl: 'amerikanske gallon', kort: 'gallon' } },
@@ -81,7 +81,7 @@ export const parSti = (fra, til, lang = 'en') => `${VERKTOY[lang]}/${parSlug(fra
 /** Ordformen for enheter som skrives som ord (ikke symbol): [entall, flertall]. Entall gjelder bare for nøyaktig 1.
  *  Symboler (ml, dl, fl oz, pt, qt, °C ...) og ord uten egen flertallsform står ikke her og skrives som `kort`. */
 export const FLERTALL = {
-  nb: { cups: ['kopp', 'kopper'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
+  nb: { cups: ['cup', 'cups'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
   sv: { cups: ['kopp', 'koppar'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'] },
   da: { cups: ['kop', 'kopper'], pints: ['pint', 'pints'], quarts: ['quart', 'quarts'], inches: ['tomme', 'tommer'] },
   en: { cups: ['cup', 'cups'] },
@@ -128,6 +128,11 @@ export const KORT_ETIKETTER = {
 };
 
 const storBokstav = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+/** Valgteksten: «Flertallsnavn (kort)». Er kortformen lik flertallsnavnet («Cups»), står navnet alene, ikke «Cups (cups)». */
+const valgtekst = (lang, id) => {
+  const { fl, kort } = ENHETER[id][lang];
+  return fl.toLocaleLowerCase() === kort.toLocaleLowerCase() ? storBokstav(fl) : `${storBokstav(fl)} (${kort})`;
+};
 // Samme regel som site.js: entall for nøyaktig 1, og for en ekte brøk under 1 skrevet som brøk («1/2»).
 const erEntall = (v) => {
   const m = /^(\d+)\/(\d+)$/u.exec(v);
@@ -165,7 +170,7 @@ export function enhetsKort(lang, fra, til, { ids } = {}) {
   const mengde = presisTekst(start, 4, { komma });
   return kalkSkjelett({
     etiketter: { aria: E.aria(ENHETER[fra][lang], ENHETER[til][lang]), mengde: E.mengde, fra: E.fra, til: E.til, bytt: E.bytt, vanlige: E.vanlige },
-    enheter: valg.map((id) => [id, esc(`${storBokstav(ENHETER[id][lang].fl)} (${ENHETER[id][lang].kort})`)]),
+    enheter: valg.map((id) => [id, esc(valgtekst(lang, id))]),
     fra, til, data, vareHtml: '', type: 'enhet',
     start: {
       mengde, svar,

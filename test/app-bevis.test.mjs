@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import test from 'node:test';
 import { behandle } from '../scripts/app-bevis.mjs';
+import { sideForPar } from '../scripts/nb-enhetssider.mjs';
 
 const lang = (l) => `<html lang="${l}"><body><section class="prose locale-prose has-toc"><h2 id="a">How to save a recipe</h2><p>x</p><h2 id="b">Your grocery list</h2><p>y</p></section></body></html>`;
 
@@ -28,7 +29,8 @@ test('hver lang side på de fire språkene har minst to app-bevis', () => {
       if (d.isDirectory()) { if (!['node_modules', '.git', 'test-results', 'playwright-report'].includes(d.name)) gaa(`${mappe}/${d.name}`); continue; }
       if (!d.name.endsWith('.html')) continue;
       const html = readFileSync(`${mappe}/${d.name}`, 'utf8');
-      if (!/class="prose locale-prose has-toc"/u.test(html) || /<meta name="robots" content="[^"]*noindex/iu.test(html)) continue;
+      // Sider med enhetskortet (omregnerne etter at de er bygget på nytt) har ingen has-toc, men skal ha app-bevisene.
+      if (!(/class="prose locale-prose has-toc"/u.test(html) || /<form class="kalk" data-kalk="enhet"/u.test(html)) || /<meta name="robots" content="[^"]*noindex/iu.test(html)) continue;
       // Logohistorien har sine egne animasjoner og regnes som app-bevis.
       if (/class="maskot-galleri"/u.test(html)) continue;
       const n = (html.match(/class="i-appen i-/gu) ?? []).length;
@@ -37,4 +39,26 @@ test('hver lang side på de fire språkene har minst to app-bevis', () => {
   };
   gaa(rot.replace(/\/$/u, ''));
   assert.deepEqual(mangler, []);
+});
+
+// Omregnerne har kalkulatorkortet i `topp` og ingen has-toc-markør, men skal beholde de samme app-bevisene som de publiserte sidene (avgjørelse 8).
+const nøkler = (html) => [...html.matchAll(/class="i-appen i-([a-z]+)"/gu)].map((m) => m[1]);
+const omregner = (fra, til) => { const s = sideForPar(fra, til); return `<html lang="nb"><body><header class="locale-page-hero">${s.topp}</header><section class="prose locale-prose">${s.rik}</section></body></html>`; };
+
+test('en omregnerside med enhetskortet får de samme app-bevisene som den publiserte siden', () => {
+  const rot = new URL('..', import.meta.url).pathname;
+  const publisert = readFileSync(`${rot}verktoy/dl-til-kopp/index.html`, 'utf8');
+  const forventet = nøkler(publisert);
+  assert.ok(forventet.includes('mapper') && forventet.includes('skalering') && forventet.includes('enheter'), `fasiten har mapper, skalering og enheter: ${forventet}`);
+  const side = omregner('dl', 'cups');
+  assert.match(side, /data-kalk="enhet"/u);
+  assert.doesNotMatch(side, /has-toc/u);
+  const ut = behandle(side, 'nb', '/verktoy/dl-til-kopp/');
+  assert.deepEqual(nøkler(ut), forventet);
+  assert.equal(behandle(ut, 'nb', '/verktoy/dl-til-kopp/'), ut, 'idempotent');
+});
+
+test('en familieside med volumvekt-kortet behandles fortsatt ikke', () => {
+  const familie = '<html lang="nb"><body><header class="locale-page-hero"><form class="kalk" data-kalk="volumvekt"></form></header><section class="prose locale-prose"><h2 id="a">Slik lagrer du</h2><p>x</p><h2 id="b">Handleliste</h2><p>y</p></section></body></html>';
+  assert.equal(behandle(familie, 'nb', '/x/'), familie);
 });

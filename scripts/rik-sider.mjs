@@ -74,6 +74,12 @@ export function byggRik({ svarTekst, seksjoner, ekstra = [], lang = 'en' }) {
   return { toc, html: `${svar(svarTekst)}\n${toc}\n${innhold}` };
 }
 
+// Lesedel uten svarboks og innholdsfortegnelse, for sider som har kalkulatorkortet og det korte svaret i `topp`.
+// Samme slugg og samme H2-form som byggRik. rik: [[h2, html], ...].
+export function byggLese({ seksjoner }) {
+  return seksjoner.map(([h, body]) => `<h2 id="${slugg(h)}">${h}</h2>${body}`).join('\n');
+}
+
 // Veiledningsillustrasjon (egen grafikk, fiktivt eksempel) med lokal video og plakat. Filene ligger i /images/en-guide/<lang>/ for nordiske språk.
 export function illustrasjon(lang, fil, tekst) {
   const mappe = lang === 'en' ? '' : `${lang}/`;

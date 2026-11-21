@@ -36,6 +36,18 @@ test('en side med topp har feltet inne i heroen, mellom ingressen og lesedelen',
   assert.ok(hode(html).includes('<form class="kalk"'), 'skjemaet skal stå inne i header.locale-page-hero');
 });
 
+test('en norsk omregner har kalkulatorkortet inne i heroen, mellom ingressen og lesedelen, uten has-toc', () => {
+  const html = les('verktoy/dl-til-kopp');
+  const ingress = html.indexOf('class="lead"');
+  const skjema = html.indexOf('<form class="kalk" data-kalk="enhet"');
+  const lesedel = html.indexOf('<section class="prose');
+  assert.ok(ingress > -1 && skjema > -1 && lesedel > -1, 'ingress, kort og lesedel må finnes');
+  assert.ok(ingress < skjema && skjema < lesedel, 'kortet skal stå mellom ingressen og lesedelen');
+  assert.ok(hode(html).includes('<form class="kalk" data-kalk="enhet"'), 'kortet skal stå inne i header.locale-page-hero');
+  assert.ok(hode(html).endsWith('</p>'), 'heroen slutter med det korte svaret');
+  assert.equal(/<section class="prose[^"]*"/u.exec(html)[0], '<section class="prose locale-prose"');
+});
+
 test('en side med topp får ingen innholdsfortegnelse-markør', () => {
   const html = les('verktoy/proeve-topp');
   const lesedel = /<section class="prose[^"]*"/u.exec(html)[0];
@@ -63,6 +75,7 @@ function nbSider(mappe, rel = '') {
 
 test('sider uten topp gir nøyaktig samme hero og lesedel-åpning som de publiserte sidene', () => {
   let sammenlignet = 0;
+  let medTopp = 0;
   const avvik = [];
   for (const rel of nbSider(kopi)) {
     if (rel.startsWith('verktoy/proeve-topp')) continue;
@@ -70,15 +83,18 @@ test('sider uten topp gir nøyaktig samme hero og lesedel-åpning som de publise
     const generert = HERO.exec(readFileSync(join(kopi, rel), 'utf8'));
     const publisert = HERO.exec(readFileSync(join(ROT, rel), 'utf8'));
     if (!generert && !publisert) continue;
+    // De norske omregnerne har fått kalkulatorkortet i topp (oppgave 3); de vokter test('en norsk omregner ...') og omregner-sider.test.mjs.
+    if (generert && generert[0].includes('data-kalk="enhet"')) { medTopp++; continue; }
     sammenlignet++;
     if (!generert || !publisert || generert[0] !== publisert[0]) avvik.push(rel);
   }
-  assert.ok(sammenlignet >= 200, `forventet minst 200 sider å sammenligne, fant ${sammenlignet}`);
+  assert.equal(medTopp, 203, 'de 203 norske omregnerne har kortet i topp (202 par og samlesiden)');
+  assert.ok(sammenlignet >= 30, `forventet minst 30 sider å sammenligne, fant ${sammenlignet}`);
   assert.deepEqual(avvik, []);
 });
 
 test('feltet er valgfritt: ingen «undefined» i heroen på en vanlig side', () => {
-  assert.equal(hode(les('verktoy/dl-til-kopp')).includes('undefined'), false);
+  assert.equal(hode(les('oppskriftsbok-app')).includes('undefined'), false);
 });
 
 // Den engelske generatoren (guidePage i generer-lokalsider.mjs) har samme `topp`-felt. Den skriver sidene ved import, så den kalles i kopien.
@@ -112,7 +128,7 @@ test('engelsk side uten topp: has-toc står der, og heroen er uten rest', () => 
 });
 
 test('engelsk side uten topp er tegn for tegn lik den publiserte (hero og åpningen av lesedelen)', () => {
-  const sti = 'tools/cups-to-ml/';
+  const sti = 'pantry-app/'; // en side som fortsatt er uten topp (omregnerne får topp i oppgave 5)
   const generert = HERO.exec(engelsk({ fraRik: sti }));
   const publisert = HERO.exec(readFileSync(join(ROT, 'en', sti, 'index.html'), 'utf8'));
   assert.ok(generert && publisert, 'begge sidene har hero og lesedel');

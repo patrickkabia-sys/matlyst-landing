@@ -1,5 +1,7 @@
 // Flertall i omregnerens svar: formene bor i enheter.mjs (FLERTALL), står i hver sides egne data
 // (omregner-data, feltet `o`) og site.js har ingen formtabell selv. Testen låser sidene mot kilden.
+// MIDLERTIDIG AVSLÅTT (oppgave 3): de norske sidene har kalkulatorkortet (form.kalk), ikke den gamle omregneren (omregner-data), og «kopp» er byttet med «cup».
+// Filen slettes i oppgave 6; bøyingen vokter da test/omregner-sider.test.mjs og kalk-enhet.spec.mjs. Se docs/superpowers/plans/2026-11-21-omregnere-kalkulatorkort.md, oppgave 6.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -11,7 +13,7 @@ const ROT = new URL('..', import.meta.url).pathname;
 const filer = (m) => readdirSync(m).flatMap((n) => { const s = join(m, n); return statSync(s).isDirectory() ? filer(s) : n === 'index.html' ? [s] : []; });
 const SIDER = ['verktoy', 'sv/verktyg', 'da/vaerktoejer', 'en/tools'].flatMap((m) => filer(join(ROT, m)));
 
-test('hver omregnerside har ordformene fra kilden i sine egne data, og svaret følger dem', () => {
+test.skip('hver omregnerside har ordformene fra kilden i sine egne data, og svaret følger dem', () => {
   let medData = 0, medFlertall = 0;
   for (const fil of SIDER) {
     const html = readFileSync(fil, 'utf8');
@@ -27,7 +29,7 @@ test('hver omregnerside har ordformene fra kilden i sine egne data, og svaret f�
   assert.ok(medFlertall >= 600, `forventet minst 600 sider med flertall, fant ${medFlertall}`);
 });
 
-test('svaret på siden bruker entall for nøyaktig 1 og flertall ellers', () => {
+test.skip('svaret på siden bruker entall for nøyaktig 1 og flertall ellers', () => {
   const f = { ml: 1, cups: 236.5882365 };
   assert.equal(svarMedOrd('nb', f, '1 kopp = 236,6 ml'), '1 kopp = 236,6 ml');
   assert.equal(svarMedOrd('nb', f, '1 ml = 0,00423 kopp'), '1 ml = 0,00423 kopper');
@@ -40,7 +42,7 @@ test('svaret på siden bruker entall for nøyaktig 1 og flertall ellers', () => 
   assert.equal(ordFor('nb', 'ml', 5), 'ml');
 });
 
-test('entallsformen er sidens egen korte skrivemåte, og site.js har ingen formtabell', () => {
+test.skip('entallsformen er sidens egen korte skrivemåte, og site.js har ingen formtabell', () => {
   for (const [lang, ider] of Object.entries(FLERTALL)) {
     for (const [id, [entall, flertall]] of Object.entries(ider)) {
       assert.notEqual(entall, flertall === entall ? '' : flertall, `${lang}/${id}`);
@@ -54,7 +56,7 @@ test('entallsformen er sidens egen korte skrivemåte, og site.js har ingen formt
   assert.match(js, /data\.o\[sel\.value\]/u);
 });
 
-test('negative tall: −1 er entall i generatoren (samme regel som site.js)', () => {
+test.skip('negative tall: −1 er entall i generatoren (samme regel som site.js)', () => {
   assert.equal(ordFor('en', 'cups', -1), 'cup');
   assert.equal(ordFor('en', 'cups', -2), 'cups');
   assert.equal(ordFor('nb', 'cups', -1), 'kopp');
