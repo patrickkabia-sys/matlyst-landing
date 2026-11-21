@@ -49,7 +49,7 @@ export const TEKST = {
       ['Kan man lave flæskesteg i airfryer?', `Ja. Se <a href="${AF}flaeskesteg/">flæskesteg i airfryer</a> med tider fra Danish Crown.`],
     ],
     soster: [KERNE + 'flaeskesteg/', 'Kernetemperatur for flæskesteg'],
-    andre: [[AF + 'flaeskesteg/', 'Flæskesteg i airfryer'], [HVOR + 'flaeskesteg/', 'Hvor meget flæskesteg pr. person?'], L('and', 'Hvor længe skal anden have i ovnen?')],
+    andre: [[AF + 'flaeskesteg/', 'Flæskesteg i airfryer'], [HVOR + 'flaeskesteg/', 'Hvor meget flæskesteg pr. person?'], L('and', 'Hvor længe skal anden have i ovnen?'), ['/da/juleaften/', 'Juleaften: tidsplan, mængder og stegetid']],
   }),
 
   and: (h) => ({
@@ -81,7 +81,7 @@ export const TEKST = {
       ['Hvor længe skal en and hvile?', `${h.k('mv-kerne')} skriver ${h.t('hvile')}.`],
     ],
     soster: [KERNE + 'and/', 'Kernetemperatur for and'],
-    andre: [L('flaeskesteg', 'Hvor længe skal flæskestegen have i ovnen?'), [AF + 'andebryst/', 'Andebryst i airfryer']],
+    andre: [L('flaeskesteg', 'Hvor længe skal flæskestegen have i ovnen?'), [AF + 'andebryst/', 'Andebryst i airfryer'], ['/da/juleaften/', 'Juleaften: tidsplan, mængder og stegetid']],
   }),
 
   kalkun: (h) => ({

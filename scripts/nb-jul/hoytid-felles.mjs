@@ -8,12 +8,15 @@ import { forfatterPerson, harForfatter } from '../forfatter.mjs';
 export const BASE = 'https://matlyst-app.no';
 
 // Teksten som er fast per marked (kildekort, brødsmuler, språk). Tallene og kildene ligger i datafila til markedet.
-// Norsk er standard, og de norske sidene importerer DATA, HENTET osv. direkte. Svensk bygges med lagMarked('sv') (scripts/sv-jul/).
+// Norsk er standard, og de norske sidene importerer DATA, HENTET osv. direkte. Svensk og dansk bygges med lagMarked('sv') og lagMarked('da')
+// (scripts/sv-jul/, scripts/da-jul/). sv og da får brødsmulene fra generatoren (generer-lokalsider.mjs), så skjemaFor lager bare Article for dem.
 const TEKST = {
   nb: { fil: './hoytider.data.json', lang: 'nb', forsideNavn: 'Forside', forsideSti: '/', brodsmuler: true, adresse: 'Adresse', datoKilde: 'Dato på kilden', hentet: 'Hentet', tallVi: 'Tall vi bruker', ingenTall: 'Ingen tall, bare fremgangsmåte og regler i tekst.',
     kildeintro: (ht) => `Hvert tall om mat, mengde og tid på denne siden står her, med kilde, adresse og dato. Tabellene er regnet ut ved å gange tallene per person med antall gjester. Vi har åpnet og lest hver side ${ht}, og sitatene vi bygger på er lagret ordrett og kontrollert mot sidene. Mattilsynet er den norske myndigheten for mattrygghet, og MatPrat er Opplysningskontoret for egg og kjøtt. Mengder og tider er veiledende. Gjelder kilden en annen situasjon enn din, for eksempel en annen kjøttype eller et annet kjøleskap, gjelder kilden, ikke siden her.` },
   sv: { fil: '../sv-jul/hoytider.data.json', lang: 'sv', forsideNavn: 'Startsida', forsideSti: '/sv/', brodsmuler: false, adresse: 'Adress', datoKilde: 'Datum på källan', hentet: 'Hämtad', tallVi: 'Siffror vi använder', ingenTall: 'Inga siffror, bara arbetssätt och regler i text.',
     kildeintro: (ht) => `Varje siffra om mat, mängd och tid på den här sidan står här, med källa, adress och datum. Tabellerna är räknade genom att multiplicera siffrorna per person med antalet gäster. Vi har öppnat och läst varje sida ${ht}, och citaten vi bygger på är sparade ordagrant och kontrollerade mot sidorna. Livsmedelsverket är den svenska myndigheten för mat och livsmedel. De andra källorna är Svenskt Kött, Svensk Fågel och Arla, och vi namnger dem med år varje gång. Mängder och tider är riktvärden. Gäller källan en annan situation än din, till exempel en annan köttsort eller ett annat kylskåp, gäller källan, inte den här sidan.` },
+  da: { fil: '../da-jul/hoytider.data.da.json', lang: 'da', forsideNavn: 'Forside', forsideSti: '/da/', brodsmuler: false, adresse: 'Adresse', datoKilde: 'Dato på kilden', hentet: 'Læst', tallVi: 'Tal vi bruger', ingenTall: 'Ingen tal, kun fremgangsmåde og regler i tekst.',
+    kildeintro: (ht) => `Hvert tal om mad, mængde og tid på denne side står her, med kilde, adresse og dato. Tabellerne er regnet ud ved at gange tallene pr. person med antal gæster. Vi har åbnet og læst hver side ${ht}, og de citater, vi bygger på, er gemt ordret og kontrolleret mod siderne. Fødevarestyrelsen er den danske myndighed for fødevaresikkerhed. Madens Verden er en dansk madside, Forbrugerrådet Tænk er en forbrugerorganisation, og Arla og Danish Crown er danske fødevarevirksomheder. Mængder og tider er vejledende. Gælder kilden en anden situation end din, for eksempel et andet stykke kød eller et andet køleskab, så gælder kilden, ikke siden her.` },
 };
 
 export const p = (...ps) => ps.map((x) => `<p>${x}</p>`).join('');
@@ -65,7 +68,7 @@ export function lagMarked(sprak = 'nb') {
 
   /** `sti` er adressen uten ledende skråstrek, med språkmappen: «julebord/» eller «sv/julbord/». */
   function skjemaFor({ sti, tittel, h1, beskrivelse, kilder }) {
-    // De svenske sidene får brødsmulene fra generatoren (generer-lokalsider.mjs), så de lager bare Article her.
+    // De svenske og danske sidene får brødsmulene fra generatoren (generer-lokalsider.mjs), så de lager bare Article her.
     return [
       ...(T.brodsmuler ? [{ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
         { '@type': 'ListItem', position: 1, name: T.forsideNavn, item: `${BASE}${T.forsideSti}` },

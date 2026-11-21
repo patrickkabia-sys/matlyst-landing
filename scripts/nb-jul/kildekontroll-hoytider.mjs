@@ -1,6 +1,6 @@
-// Kontroll mot kilden for høytidssidene (/julebord/, /nyttarsmiddag/): hvert sitat i hoytider.data.json skal stå ordrett på kildesiden.
-// Bruk: node scripts/nb-jul/kildekontroll-hoytider.mjs [nb|sv]   (nett kreves; avvik skrives og koden blir 1)
-// Svensk: sidene i scripts/sv-jul/ bruker samme kontroll mot hoytider.data.json der. Svenske kilder hentes med curl-fallback (Arla svarer 404 på Node sin fetch).
+// Kontroll mot kilden for høytidssidene (nb, sv, da): hvert sitat i markedets datafil skal stå ordrett på kildesiden.
+// Bruk: node scripts/nb-jul/kildekontroll-hoytider.mjs [nb|sv|da]   (nett kreves; avvik skrives og koden blir 1)
+// Svensk og dansk: sidene i scripts/sv-jul/ og scripts/da-jul/ bruker samme kontroll mot sin egen datafil. Svenske og danske kilder hentes med curl-fallback (Arla svarer 404 på Node sin fetch).
 import { fileURLToPath } from 'node:url';
 import { hent, kildetekst } from '../familier/holdbarhet/kildekontroll.mjs';
 import { lagMarked } from './hoytid-felles.mjs';

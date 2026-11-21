@@ -3,6 +3,8 @@
 // Fakta følger de engelske sidene (funksjonssjekken 18.11.2026). Ingen skjermbilder fra den engelske appen.
 // Matvaretrygg-tall er utelatt: de er ikke hentet fra Fødevarestyrelsen (se rapporten).
 import { sider as sammenligning } from './sammenligning/da.mjs';
+import { side as julefrokost } from './da-jul/julefrokost.mjs';
+import { side as juleaften } from './da-jul/juleaften.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
@@ -428,6 +430,8 @@ const kobsguide = byggRik({
 }).html;
 
 export const rikeSider = {
+  'julefrokost/': julefrokost,
+  'juleaften/': juleaften,
   'opskrifts-app/': {
     title: 'Digital kogebog og opskriftsapp',
     description: 'Digital kogebog, der samler opskrifter fra hjemmesider, Instagram, TikTok og billeder. Søg, skalér portioner og planlæg ugen. Gratis at komme i gang.',

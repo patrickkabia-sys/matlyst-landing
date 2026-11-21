@@ -16,7 +16,7 @@ import * as nyar from '../scripts/sv-jul/nyarsmiddag.mjs';
 const ROOT = new URL('..', import.meta.url).pathname;
 const { DATA, HENTET, HENTET_TEKST } = lagMarked('sv');
 const SIDER = [
-  { sti: '/sv/julbord/', nb: '/julebord/', mod: julbord },
+  { sti: '/sv/julbord/', nb: '/julebord/', da: '/da/julefrokost/', mod: julbord },
   { sti: '/sv/nyarsmiddag/', nb: '/nyttarsmiddag/', mod: nyar },
 ];
 
@@ -40,7 +40,7 @@ export function tallUtanKalla(text, tall = DATA.tall) {
 const celler = (tab) => [...tab.matchAll(/<tr>([\s\S]*?)<\/tr>/gu)].slice(1).map(([, r]) => [...r.matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gu)].map(([, c]) => c));
 const fmt = (g) => (g >= 1000 ? `${g / 1000} kg`.replace('.', ',') : `${g} g`);
 
-for (const { sti, nb, mod } of SIDER) {
+for (const { sti, nb, da, mod } of SIDER) {
   const html = readFileSync(join(ROOT, `${sti.slice(1)}index.html`), 'utf8');
   const hoved = html.match(/<main[\s\S]*?<\/main>/u)?.[0] ?? '';
   const kort = [...hoved.matchAll(/<div class="scenario" id="kilde-([^"]+)">([\s\S]*?)<\/div>/gu)].map(([, id, innehall]) => ({ id, innehall }));
@@ -57,13 +57,12 @@ for (const { sti, nb, mod } of SIDER) {
   test(`${sti}: egen sidgrupp med hreflang mot ${nb}, i sitemap-sv och llms.txt, och ingen annan språksitemap`, () => {
     const grupp = SIDEGRUPPER.find(({ sider }) => sider.sv === sti);
     assert.ok(grupp, 'saknas i SIDEGRUPPER');
-    assert.deepEqual(Object.keys(grupp.sider), ['nb', 'sv']);
-    assert.equal(grupp.sider.nb, nb);
-    assert.deepEqual(alternativerFor(sti), [['nb-NO', nb], ['sv-SE', sti], ['x-default', nb]]);
+    assert.deepEqual(grupp.sider, { nb, sv: sti, ...(da ? { da } : {}) });
+    assert.deepEqual(alternativerFor(sti), [['nb-NO', nb], ['sv-SE', sti], ...(da ? [['da-DK', da]] : []), ['x-default', nb]]);
     assert.ok(html.includes(`<link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no${nb}">`));
     assert.ok(html.includes(`<link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no${sti}">`));
     assert.ok(html.includes(`<link rel="canonical" href="https://matlyst-app.no${sti}">`));
-    for (const mapp of ['da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mapp}.xml`), 'utf8'), new RegExp(sti.slice(4)));
+    for (const mapp of da ? ['en'] : ['da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mapp}.xml`), 'utf8'), new RegExp(sti.slice(4)));
     assert.match(readFileSync(join(ROOT, 'sitemap-sv.xml'), 'utf8'), new RegExp(`<loc>https://matlyst-app\\.no${sti}</loc>\\s*<lastmod>2026-11-2\\d</lastmod>`, 'u'));
     assert.ok(readFileSync(join(ROOT, 'llms.txt'), 'utf8').includes(`(https://matlyst-app.no${sti})`));
     assert.ok(readFileSync(join(ROOT, nb.slice(1), 'index.html'), 'utf8').includes(`<link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no${sti}">`), 'den norska sidan pekar hit');
