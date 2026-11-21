@@ -353,7 +353,20 @@ test('ingen kode for den gamle omregneren står igjen', …)
 ### Task 8: Publisering (tidligst etter 04.12, etter Patricks ja)
 
 - [ ] **Step 1: Porten.** Indeksmålingen 04.12 for de 30 norske og 43 engelske familiesidene er lest og ført i minnet, og Patrick har sagt ja til forhåndsvisningen.
-- [ ] **Step 2: Rebase på `origin/main` og kjør byggekjeden på nytt,** så `lastmod` får publiseringsdagen og ikke byggedagen. `node scripts/kjedeproeve.mjs alle` gir 0 avvik, og hele testpakka er grønn.
+- [ ] **Step 2: Rebase på `origin/main`, sett lastmod til publiseringsdagen og kjør byggekjeden på nytt.** `scripts/lastmod.mjs` husker avtrykk og dato per adresse i `scripts/lastmod-kart.json`: et uendret avtrykk beholder datoen (`nyOppforing`), og `LASTMOD_DATO` gjelder bare oppføringer som er nye eller har endret avtrykk. De 714 omregnerne har i dag datoen 2026-11-21 med avtrykket til de bygde sidene, så en ny kjøring alene lar datoen stå, og `LASTMOD_DATO` alene gjør ingenting for dem. Derfor fjernes de 714 oppføringene først (adressene står i `test/fasit/omregner-adresser.json`; de andre 220 oppføringene i kartet røres ikke), og kjeden kjøres så med publiseringsdagen:
+
+```bash
+node -e "
+const fs = require('fs');
+const adresser = JSON.parse(fs.readFileSync('test/fasit/omregner-adresser.json', 'utf8'));
+const kart = JSON.parse(fs.readFileSync('scripts/lastmod-kart.json', 'utf8'));
+for (const a of adresser) delete kart['https://matlyst-app.no' + a];
+fs.writeFileSync('scripts/lastmod-kart.json', JSON.stringify(kart, null, 1) + '\\n');
+"
+LASTMOD_DATO=ÅÅÅÅ-MM-DD node scripts/lastmod.mjs   # publiseringsdagen; trinn for trinn gjennom hele kjeden (scripts/kjede.mjs) gir samme resultat
+```
+
+  Prøvd på en kopi 2026-11-21 med `LASTMOD_DATO=2026-12-05`: nøyaktig 714 oppføringer fikk den nye datoen (131 en, 177 da, 203 sv, 203 nb i sidekartene), alle andre datoer var uendret. Uten `LASTMOD_DATO` brukes dagens dato. Etter kjøringen: `git diff scripts/lastmod-kart.json | grep '^[-+].*dato' | sort | uniq -c` skal vise bare publiseringsdagen på de nye linjene. `node scripts/kjedeproeve.mjs alle` gir 0 avvik utenom de tre kjente (`/da/afmeld`, `/en/unsubscribe`, `/sv/avregistrera`, som kjeden skriver over og som gjenopprettes med `git checkout`), og hele testpakka er grønn.
 - [ ] **Step 3: Merge (squash) når CI er grønn.**
 - [ ] **Step 4: Kontroll på nettstedet:** fire sider per språk gir 200 med uendret canonical, kortet regner riktig på mobil og PC, ren konsoll, og `curl -s https://matlyst-app.no/sitemap.xml | grep -c verktoy/` er uendret fra før.
 - [ ] **Step 5: IndexNow.** Arbeidsflyten sender høyst 500 adresser per kjøring, og 714 er endret. Bekreft status 200, og send resten med en manuell kjøring av `scripts/indexnow.mjs`.
