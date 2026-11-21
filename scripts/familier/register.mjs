@@ -4,6 +4,7 @@
 //
 // Oppføring: { id, sidetype: 'omregner' | 'guide-lang', mappe: URL, markeder: { [marked]: { rot } } }
 //   rot er stien uten språkmappe og uten ledende skråstrek, for eksempel 'verktoy/dl-til-gram/'.
+//   gruppeFinnes (valgfri): samlesiden står alt i en sidegruppe i locale-sider.mjs, så familien lager ingen egen gruppe for den.
 // Mappa har data.<marked>.json (se felles.mjs) og mal-<marked>.mjs, som eksporterer
 //   navSide(data, rader), sideForRad(rad, data, rader) og tillatteTall(rad, data).
 // Samme rad-id på to markeder betyr «samme vare» og gir hreflang mellom språkene.
@@ -141,14 +142,15 @@ export function familieGrupper(familier = FAMILIER) {
     const nav = { id: `auto-fam-${familie.id}-nav`, sider: {} };
     const perRad = new Map();
     for (const mk of marked) {
-      nav.sider[mk] = sti(mk, familie.markeder[mk].rot);
+      // gruppeFinnes: samlesiden hører allerede til en sidegruppe i locale-sider.mjs (med lenker til de andre språkene), så familien lager ikke en ny.
+      if (!familie.markeder[mk].gruppeFinnes) nav.sider[mk] = sti(mk, familie.markeder[mk].rot);
       for (const rad of lesFamilie(familie, mk).rader) {
         const g = perRad.get(rad.id) ?? { id: `auto-fam-${familie.id}-${rad.id}`, sider: {} };
         g.sider[mk] = sti(mk, familie.markeder[mk].rot, rad.slug);
         perRad.set(rad.id, g);
       }
     }
-    ut.push(nav, ...perRad.values());
+    ut.push(...(Object.keys(nav.sider).length ? [nav] : []), ...perRad.values());
   }
   return ut;
 }
