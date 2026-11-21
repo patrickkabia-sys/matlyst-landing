@@ -45,7 +45,7 @@ export function kildebrudd(side) {
 
 test('adressene er låst: samleside og varesider under /holdbarhet/ og /frysing/', async () => {
   for (const id of FAM) {
-    assert.deepEqual(familie(id).markeder, { nb: { rot: `${id}/` } }, id);
+    assert.deepEqual(familie(id).markeder.nb, { rot: `${id}/` }, id);
     assert.deepEqual((await sider(id)).map(([sti]) => sti).sort(), [...ADRESSER[id]].sort(), id);
   }
 });

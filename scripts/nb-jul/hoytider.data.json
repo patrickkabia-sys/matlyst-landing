@@ -1,0 +1,563 @@
+{
+  "hentet": "2026-11-21",
+  "hentetTekst": "21. november 2026",
+  "kilder": {
+    "mp-koldtbord": {
+      "navn": "MatPrat: Koldtbord",
+      "url": "https://www.matprat.no/artikler/menyer/koldtbord/",
+      "dato": "utgitt 9. desember 2025"
+    },
+    "mp-selskaper": {
+      "navn": "MatPrat: Mat til store selskaper",
+      "url": "https://www.matprat.no/artikler/mengde-mal-og-vekt/mat-til-store-selskaper/",
+      "dato": "utgitt 1. april 2014"
+    },
+    "mp-mange": {
+      "navn": "MatPrat: Hvordan beregne mat til mange?",
+      "url": "https://www.matprat.no/artikler/mengde-mal-og-vekt/hvordan-beregne-mat-til-mange/",
+      "dato": "utgitt 1. april 2014"
+    },
+    "mp-spekemat": {
+      "navn": "MatPrat: Hvor mye spekemat beregnes?",
+      "url": "https://www.matprat.no/artikler/mengde-mal-og-vekt/hvor-mye-spekemat-beregnes/",
+      "dato": "utgitt 7. mai 2026"
+    },
+    "mp-julemat": {
+      "navn": "MatPrat: Hvordan beregne julemat til mange?",
+      "url": "https://www.matprat.no/artikler/mengde-mal-og-vekt/hvordan-beregne-julemat-til-mange/",
+      "dato": "utgitt 18. november 2025"
+    },
+    "mp-julefaq": {
+      "navn": "MatPrat: Ofte stilte spørsmål om julemat",
+      "url": "https://www.matprat.no/artikler/ravarer/ofte-stilte-sporsmal-om-julemat/",
+      "dato": "utgitt 11. desember 2025"
+    },
+    "mp-hel-kalkun": {
+      "navn": "MatPrat: Slik steker du hel kalkun",
+      "url": "https://www.matprat.no/artikler/tilberedning/slik-steker-du-hel-kalkun/",
+      "dato": "utgitt 10. desember 2025"
+    },
+    "mp-kalkun": {
+      "navn": "MatPrat: Steke- og koketips for kalkun",
+      "url": "https://www.matprat.no/artikler/steke--og-koketips/steke--og-koketips-for-kalkun/",
+      "dato": "utgitt 10. desember 2025"
+    },
+    "mt-oppbevaring": {
+      "navn": "Mattilsynet: Råd for oppbevaring av mat og drikke",
+      "url": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/rad-for-oppbevaring-av-mat",
+      "dato": "faglig gjennomgått 20. februar 2026"
+    },
+    "mt-kjokken": {
+      "navn": "Mattilsynet: Kjøkkenhygiene",
+      "url": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/kjokkenhygiene",
+      "dato": "publisert 27. oktober 2023"
+    },
+    "mt-rykende": {
+      "navn": "Mattilsynet: Varm mat skal være rykende varm",
+      "url": "https://www.mattilsynet.no/mat-og-drikke/matservering/mathandtering-hygiene/varm-mat-skal-vaere-rykende-varm",
+      "dato": "publisert 25. januar 2022"
+    },
+    "mt-sommer": {
+      "navn": "Mattilsynet: Mat i sommarvarmen",
+      "url": "https://www.mattilsynet.no/mat-og-drikke/forbrukere/mat-i-sommervarmen",
+      "dato": "publisert 2. november 2023"
+    }
+  },
+  "tall": {
+    "kb-total": {
+      "vis": "500 til 600 g",
+      "kilde": "mp-koldtbord",
+      "hva": "mat per person på et koldtbord, med tilbehør",
+      "g": [
+        500,
+        600
+      ],
+      "sitat": "Beregn ca 500-600 g mat per person inkludert tilbehør, ca. halvparten bør være fisk/kjøtt."
+    },
+    "sel-grunn": {
+      "vis": "500 g",
+      "kilde": "mp-selskaper",
+      "hva": "grunnregel for mat per person til selskap",
+      "g": 500,
+      "sitat": "En grei grunnregel er å beregne cirka 500 gram mat for hver person."
+    },
+    "sel-20": {
+      "vis": "20 personer",
+      "kilde": "mp-selskaper",
+      "hva": "eksempelet i kilden",
+      "sitat": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+    },
+    "sel-10kg": {
+      "vis": "10 kg",
+      "kilde": "mp-selskaper",
+      "hva": "mat totalt til 20 personer",
+      "sitat": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+    },
+    "sel-kjott": {
+      "vis": "4 kg",
+      "kilde": "mp-selskaper",
+      "hva": "rent kjøtt og fisk til 20 personer",
+      "sitat": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+    },
+    "sel-3kg": {
+      "vis": "3 kg",
+      "kilde": "mp-selskaper",
+      "hva": "grønnsaker, og like mye poteter, ris eller pasta, til 20 personer",
+      "sitat": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+    },
+    "kb-roastbiff": {
+      "vis": "60 g",
+      "kilde": "mp-koldtbord",
+      "hva": "roastbiff per porsjon",
+      "g": 60,
+      "sitat": "Roastbiff | 60 g per porsjon"
+    },
+    "kb-skinke": {
+      "vis": "60 g",
+      "kilde": "mp-koldtbord",
+      "hva": "røkt skinke per porsjon",
+      "g": 60,
+      "sitat": "Røkt skinke | 60 g per porsjon"
+    },
+    "kb-spekemat": {
+      "vis": "60 g",
+      "kilde": "mp-koldtbord",
+      "hva": "spekemat per porsjon",
+      "g": 60,
+      "sitat": "Spekemat | 60 g per porsjon"
+    },
+    "kb-orret": {
+      "vis": "60 g",
+      "kilde": "mp-koldtbord",
+      "hva": "kokt ørret per porsjon",
+      "g": 60,
+      "sitat": "Kokt ørret | 60 g per porsjon"
+    },
+    "kb-karbonade": {
+      "vis": "1 stk",
+      "kilde": "mp-koldtbord",
+      "hva": "karbonade med løk per porsjon",
+      "stk": 1,
+      "sitat": "Karbonade med løk | 1 stk per porsjon"
+    },
+    "kb-egg": {
+      "vis": "1 egg",
+      "kilde": "mp-koldtbord",
+      "hva": "eggerøre per porsjon",
+      "stk": 1,
+      "sitat": "Eggerøre | 1 egg per porsjon"
+    },
+    "kb-salat": {
+      "vis": "40 g",
+      "kilde": "mp-koldtbord",
+      "hva": "grønn salat, potetsalat og waldorfsalat per porsjon, hver for seg",
+      "g": 40,
+      "sitat": "Grønn salat | 40 g per porsjon Potetsalat | 40 g per porsjon Waldorfsalat | 40 g per porsjon"
+    },
+    "kb-romme": {
+      "vis": "20 g",
+      "kilde": "mp-koldtbord",
+      "hva": "rømme og pepperrotkrem per porsjon, hver for seg",
+      "g": 20,
+      "sitat": "Rømme | 20 g per porsjon Remulade | 10 g per porsjon Pepperrotkrem | 20 g per porsjon"
+    },
+    "kb-remulade": {
+      "vis": "10 g",
+      "kilde": "mp-koldtbord",
+      "hva": "remulade og cumberlandsaus per porsjon, hver for seg",
+      "g": 10,
+      "sitat": "Remulade | 10 g per porsjon Pepperrotkrem | 20 g per porsjon Cumberlandsaus | 10 g per porsjon"
+    },
+    "kb-forveien": {
+      "vis": "1 til 2 dager",
+      "kilde": "mp-koldtbord",
+      "hva": "så lenge før kan roastbiff, skinkestek, helkokt laks eller ørret, kabaret, potetsalat, waldorfsalat, cumberlandsaus og remulade lages",
+      "sitat": "Kan lages 1–2 dager før Roastbiff Skinkestek Helkokt laks eller ørret Kabaret Potetsalat Waldorfsalat Cumberlandsaus Remulade"
+    },
+    "kb-spekemat-stort": {
+      "vis": "60 til 80 g",
+      "kilde": "mp-koldtbord",
+      "hva": "spekemat per person når den er en del av et større koldtbord",
+      "sitat": "Når spekemat er en del av et større koldtbord, holder det med 60–80 gram per person."
+    },
+    "sp-fremme": {
+      "vis": "2 til 3 timer",
+      "kilde": "mp-spekemat",
+      "hva": "tid spekemat kan stå fremme, så lenge det ikke er veldig varmt eller direkte sollys",
+      "sitat": "Spekemat kan fint stå fremme i 2-3 timer, så lenge det ikke er veldig varmt eller står i direkte sollys."
+    },
+    "jm-ribbe": {
+      "vis": "300 g",
+      "kilde": "mp-julemat",
+      "hva": "ribbe per person",
+      "g": 300,
+      "sitat": "Ribbe | 300 g (450 g blir nok til frokost også)"
+    },
+    "jm-pinnekjott": {
+      "vis": "400 g",
+      "kilde": "mp-julemat",
+      "hva": "tørket pinnekjøtt per person",
+      "g": 400,
+      "sitat": "Pinnekjøtt (tørrvekt) | 400 g (500 g for storspisere)"
+    },
+    "jm-poteter": {
+      "vis": "200 g",
+      "kilde": "mp-julemat",
+      "hva": "poteter per person",
+      "g": 200,
+      "sitat": "Poteter | 200 g Saus"
+    },
+    "jm-saus": {
+      "vis": "3/4 til 1 dl",
+      "kilde": "mp-julemat",
+      "hva": "saus per person",
+      "dl": [
+        0.75,
+        1
+      ],
+      "sitat": "Saus | 3/4- 1 dl"
+    },
+    "jm-kalkun": {
+      "vis": "500 g",
+      "kilde": "mp-julemat",
+      "hva": "hel kalkun per person",
+      "g": 500,
+      "sitat": "Hel kalkun | 500 g"
+    },
+    "jm-filet": {
+      "vis": "200 g",
+      "kilde": "mp-julemat",
+      "hva": "kalkunfilet eller kalkunbryst per person",
+      "g": 200,
+      "sitat": "Kalkunfilet/ kalkunbryst | 200 g"
+    },
+    "jm-barn": {
+      "vis": "halv porsjon",
+      "kilde": "mp-julemat",
+      "hva": "til små barn",
+      "sitat": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+    },
+    "kalkun-pp": {
+      "vis": "500 g",
+      "kilde": "mp-hel-kalkun",
+      "hva": "kalkun per person, hovedregelen",
+      "g": 500,
+      "sitat": "Hovedregelen sier at du bør beregne 500 g kalkun per person."
+    },
+    "kalkun-pp-unge": {
+      "vis": "600 g",
+      "kilde": "mp-hel-kalkun",
+      "hva": "kalkun per person når mange gjester er unge voksne med god matlyst",
+      "g": 600,
+      "sitat": "Er mange av gjestene unge voksne med god matlyst, bør man legge på til 600 g per person."
+    },
+    "kalkun-6kg": {
+      "vis": "6 kilo",
+      "kilde": "mp-hel-kalkun",
+      "hva": "kalkunen kilden regner med til 10 personer med god matlyst",
+      "sitat": "Med andre ord trenger du en kalkun på 6 kilo til et selskap med 10 personer med god matlyst."
+    },
+    "kalkun-6kg-12": {
+      "vis": "12 personer",
+      "kilde": "mp-julefaq",
+      "hva": "personer en kalkun på 6 kilo holder til, ved 500 gram per person",
+      "sitat": "Vi regner 500 gram per person, så en 6-kilos kalkun holder til 12 personer."
+    },
+    "kalkun-vekt": {
+      "vis": "5 til 7 kg",
+      "kilde": "mp-kalkun",
+      "hva": "vekten på en hel kalkun i tabellen over steking og kjernetemperatur",
+      "kg": [
+        5,
+        7
+      ],
+      "sitat": "Hel kalkun / 5-7 kg | 500 g | Stekes i ovn i ca. 30 minutter pr kg på 180 °C | 68 °C"
+    },
+    "kalkun-tine": {
+      "vis": "2 til 3 dager",
+      "kilde": "mp-julefaq",
+      "hva": "så lenge før serveringsdagen en frossen kalkun tas ut av fryseren",
+      "sitat": "To eller tre dager før serveringsdagen. Det tar to døgn å tine i kjøleskap."
+    },
+    "kalkun-tine-dogn": {
+      "vis": "2 døgn",
+      "kilde": "mp-julefaq",
+      "hva": "tining av kalkun i kjøleskap",
+      "sitat": "To eller tre dager før serveringsdagen. Det tar to døgn å tine i kjøleskap."
+    },
+    "kalkun-kraft": {
+      "vis": "1 til 2 timer",
+      "kilde": "mp-hel-kalkun",
+      "hva": "koketid for kraft på innmaten",
+      "sitat": "La kraften koke i 1-2 timer."
+    },
+    "kalkun-ovn": {
+      "vis": "180 °C",
+      "kilde": "mp-hel-kalkun",
+      "hva": "ovnstemperatur for hel kalkun",
+      "sitat": "Stek kalkunen ved 180 °C i cirka en halv time per kilo."
+    },
+    "kalkun-kilo": {
+      "vis": "30 minutter per kilo",
+      "kilde": "mp-hel-kalkun",
+      "hva": "steketid for hel kalkun",
+      "min": 30,
+      "sitat": "Vi anbefaler 30 minutters steketid per kilo."
+    },
+    "kalkun-6kg-tid": {
+      "vis": "3 timer",
+      "kilde": "mp-hel-kalkun",
+      "hva": "steketid for en kalkun på 6 kilo ved 180 °C",
+      "sitat": "Det vil si at en kalkun på 6 kilo trenger 3 timer i stekeovnen ved 180 °C."
+    },
+    "kalkun-fylt": {
+      "vis": "30 til 45 minutter",
+      "kilde": "mp-hel-kalkun",
+      "hva": "ekstra steketid når kalkunen er fylt",
+      "min": [
+        30,
+        45
+      ],
+      "sitat": "Er den fylt, bør man plusse på 30-45 minutter på steketiden."
+    },
+    "kalkun-vann": {
+      "vis": "3 dl",
+      "kilde": "mp-hel-kalkun",
+      "hva": "vann i pannen under steking",
+      "sitat": "Ha 3 dl vann i pannen under steking."
+    },
+    "kalkun-hvile": {
+      "vis": "20 minutter",
+      "kilde": "mp-hel-kalkun",
+      "hva": "minste hviletid for kalkunen før den skjæres",
+      "min": 20,
+      "sitat": "Husk å la kalkunen hvile på kjøkkenbenken i minst 20 minutter før du skjærer den opp."
+    },
+    "kalkun-kjerne": {
+      "vis": "68 °C",
+      "kilde": "mp-kalkun",
+      "hva": "kjernetemperatur for ferdig tilberedt hel kalkun",
+      "sitat": "Hel kalkun / 5-7 kg | 500 g | Stekes i ovn i ca. 30 minutter pr kg på 180 °C | 68 °C"
+    },
+    "kalkun-filet-kjerne": {
+      "vis": "65 °C",
+      "kilde": "mp-kalkun",
+      "hva": "kjernetemperatur for ferdig tilberedt kalkunfilet",
+      "sitat": "Kalkunfilet / uten skinn 750 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 1 time på 125 °C | 65 °C"
+    },
+    "kalkun-filet-ovn": {
+      "vis": "125 °C",
+      "kilde": "mp-kalkun",
+      "hva": "ovnstemperatur for kalkunfilet uten skinn",
+      "sitat": "Kalkunfilet / uten skinn 750 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 1 time på 125 °C | 65 °C"
+    },
+    "kalkun-filet-tid": {
+      "vis": "ca. 1 time",
+      "kilde": "mp-kalkun",
+      "hva": "steketid for kalkunfilet uten skinn",
+      "sitat": "Kalkunfilet / uten skinn 750 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 1 time på 125 °C | 65 °C"
+    },
+    "mt-gjennom": {
+      "vis": "75 grader",
+      "kilde": "mt-sommer",
+      "hva": "minste kjernetemperatur Mattilsynet kaller gjennomstekt, i rådene om grilling",
+      "sitat": "Med gjennomsteikt meiner ein ein kjernetemperatur på minimum 75 grader."
+    },
+    "mt-over-70": {
+      "vis": "over 70 °C",
+      "kilde": "mt-rykende",
+      "hva": "oppvarming før maten holdes varm, der de aller fleste bakterier dør",
+      "sitat": "Hold derfor maten rykende varm (over 60 ºC) fram til servering etter at den har blitt oppvarmet til over 70°C."
+    },
+    "mt-over-60": {
+      "vis": "over 60 °C",
+      "kilde": "mt-rykende",
+      "hva": "temperatur maten holdes ved fram til servering",
+      "sitat": "Hold derfor maten rykende varm (over 60 ºC) fram til servering etter at den har blitt oppvarmet til over 70°C."
+    },
+    "mt-kjole-ned": {
+      "vis": "4 °C",
+      "kilde": "mt-oppbevaring",
+      "hva": "kjøleskapet bør være under denne temperaturen",
+      "sitat": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+    },
+    "mt-kjole-opp": {
+      "vis": "minus 1 °C",
+      "kilde": "mt-oppbevaring",
+      "hva": "kjøleskapet bør være over denne temperaturen",
+      "sitat": "Kjøleskapet bør vere under 4 ºC, men over –1 ºC."
+    },
+    "mt-avkjol-fra": {
+      "vis": "60 °C",
+      "kilde": "mt-oppbevaring",
+      "hva": "varm mat skal kjøles ned fra denne temperaturen",
+      "sitat": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar."
+    },
+    "mt-avkjol-til": {
+      "vis": "10 °C",
+      "kilde": "mt-oppbevaring",
+      "hva": "varm mat skal kjøles ned til denne temperaturen, så raskt som mulig og senest i løpet av to timer",
+      "sitat": "bør temperaturen senkast frå 60 ºC til 10 ºC raskast mogleg, men seinast i løpet av to timar."
+    },
+    "mt-rester": {
+      "vis": "2 til 4 dager",
+      "kilde": "mt-oppbevaring",
+      "hva": "restemat holder seg i kjøleskap",
+      "sitat": "Restemat held seg i kjøleskap i to til fire dagar."
+    },
+    "mt-fryser-kv": {
+      "vis": "3 til 12 måneder",
+      "kilde": "mt-oppbevaring",
+      "hva": "tid før kvaliteten i fryseren går ned, avhengig av produktet",
+      "sitat": "Kvaliteten vil reduserast etter 3–12 månader, avhengig av produktet."
+    },
+    "mt-bakterier": {
+      "vis": "8 til 60 grader",
+      "kilde": "mt-kjokken",
+      "hva": "temperaturområdet der bakterier trives og formerer seg raskt",
+      "sitat": "Bakteriane stortrivst og formeirar seg raskt i temperaturar frå 8 til 60º."
+    },
+    "kb-ost": {
+      "vis": "3 til 4 ulike oster",
+      "kilde": "mp-koldtbord",
+      "hva": "oster i forslaget til klassisk koldtbord",
+      "sitat": "Ost og kjeks 3–4 ulike oster 2–3 typer kjeks"
+    },
+    "kb-kjeks": {
+      "vis": "2 til 3 typer kjeks",
+      "kilde": "mp-koldtbord",
+      "hva": "kjeks i forslaget til klassisk koldtbord",
+      "sitat": "Ost og kjeks 3–4 ulike oster 2–3 typer kjeks"
+    },
+    "kalkun-10pers": {
+      "vis": "10 personer",
+      "kilde": "mp-hel-kalkun",
+      "hva": "selskapet kilden regner kalkunen på 6 kilo til, med god matlyst",
+      "sitat": "Med andre ord trenger du en kalkun på 6 kilo til et selskap med 10 personer med god matlyst."
+    },
+    "kalkun-filet-g": {
+      "vis": "750 g",
+      "kilde": "mp-kalkun",
+      "hva": "vekten på kalkunfileten uten skinn i tabellen",
+      "sitat": "Kalkunfilet / uten skinn 750 g | 200 g | Brunes i stekepanne og stekes i ovn i ca. 1 time på 125 °C | 65 °C"
+    }
+  },
+  "tekst": {
+    "mange-flere": {
+      "kilde": "mp-mange",
+      "sitat": "Jo flere retter du har, jo mindre beregner du av hver rett."
+    },
+    "sel-dagenfor": {
+      "kilde": "mp-selskaper",
+      "sitat": "Prøv å ha så mye som mulig ferdig eller forberedt dagen før selskapet"
+    },
+    "sel-buffet": {
+      "kilde": "mp-selskaper",
+      "sitat": "På en buffèt bør du også beregne litt ekstra av hver rett, slik at alle fatene ikke er tomme når alle gjestene har forsynt seg."
+    },
+    "sel-sauser": {
+      "kilde": "mp-selskaper",
+      "sitat": "Når det gjelder sauser, dressinger, pynt på fatene og tilbehør kommer dette i tillegg."
+    },
+    "sel-kaldt": {
+      "kilde": "mp-selskaper",
+      "sitat": "Sett rettene kaldt etterhvert som de er ferdig."
+    },
+    "sel-arbeidsplan": {
+      "kilde": "mp-selskaper",
+      "sitat": "Sett opp en arbeidsplan med datoer og tider på når de forskjellige rettene skal ferdigstilles."
+    },
+    "sel-menyvalg": {
+      "kilde": "mp-selskaper",
+      "sitat": "Bestem tidlig om du vil ha en tradisjonell 3-, 4- eller 5- retters meny, eller om du ønsker å ha en buffèt."
+    },
+    "sel-gronnsaker": {
+      "kilde": "mp-selskaper",
+      "sitat": "Rens og skyll grønnsaker og poteter i god tid, gjerne dagen i forveien. Oppbevar dem i kaldt vann i kjøleskapet."
+    },
+    "kb-fryses": {
+      "kilde": "mp-koldtbord",
+      "sitat": "Kan fryses ned Karbonader Paté"
+    },
+    "kb-samme-dag": {
+      "kilde": "mp-koldtbord",
+      "sitat": "Bør lages samme dag Eggerøre Grønn salat Pepperrotkrem"
+    },
+    "kb-sammensatt": {
+      "kilde": "mp-koldtbord",
+      "sitat": "Minst to kjøttretter Minst én fiskerett Flere salater"
+    },
+    "kb-populaert": {
+      "kilde": "mp-koldtbord",
+      "sitat": "Husk på at noen ting er mer populært enn andre ting."
+    },
+    "kb-enklere": {
+      "kilde": "mp-koldtbord",
+      "sitat": "Så lenge total mengde mat er omtrent den samme, kan menyen tilpasses gjestene og anledningen."
+    },
+    "kb-ferdig": {
+      "kilde": "mp-koldtbord",
+      "sitat": "Du får også kjøpt det meste ferdig i butikken."
+    },
+    "kalkun-supplere": {
+      "kilde": "mp-hel-kalkun",
+      "sitat": "Skal du ha flere gjester enn det er mat til på én kalkun, kan du supplere med kalkunfilet eller marinerte kalkunbryst."
+    },
+    "kalkun-tine-fullt": {
+      "kilde": "mp-hel-kalkun",
+      "sitat": "Hvis kjøleskapet er helt fullt må kalkunen settes i det kaldeste rommet man har. Da er den antakelig tint over natten."
+    },
+    "kalkun-tine-vann": {
+      "kilde": "mp-hel-kalkun",
+      "sitat": "Har du glemt å tine kalkunen? Da kan du tine kalkunen raskt i kaldt vann."
+    },
+    "kalkun-innmat": {
+      "kilde": "mp-hel-kalkun",
+      "sitat": "Når kalkunen er tint må innmatsposen, som ligger inne i hulrommet, tas ut og kokes til kraft."
+    },
+    "kalkun-saus": {
+      "kilde": "mp-hel-kalkun",
+      "sitat": "Sausen kan du gjerne lage ferdig dagen før selskapet."
+    },
+    "kalkun-saft": {
+      "kilde": "mp-hel-kalkun",
+      "sitat": "Hvis kjøttsaften som siver ut er klar, er kalkunen ferdig stekt. Kommer det rosa kjøttsaft, trenger kalkunen litt lenger steketid."
+    },
+    "kalkun-lun": {
+      "kilde": "mp-hel-kalkun",
+      "sitat": "Kalkun trenger ikke serveres glohet."
+    },
+    "kalkun-plast": {
+      "kilde": "mp-julefaq",
+      "sitat": "Et steketermometer som skal sprette ut når kalkunen er ferdigstekt. Men det er ikke et sikkert hjelpemiddel, det spretter ofte ut for sent."
+    },
+    "mt-fjorfe": {
+      "kilde": "mt-rykende",
+      "sitat": "Fjørfekjøtt og oppmalt kjøtt bør gjennomstekes, fordi det her kan være bakterier gjennom hele produktet."
+    },
+    "mt-fjorfe-sommer": {
+      "kilde": "mt-sommer",
+      "sitat": "Som ein generell regel bør alt fjørfekjøtt, alle rå kjøttfarseprodukt, foredla kjøttprodukt som hamburgarar og pølser blir gjennomsteikte."
+    },
+    "mt-tine": {
+      "kilde": "mt-oppbevaring",
+      "sitat": "Tin i kjøleskap, det går saktare, men er tryggare"
+    },
+    "mt-varm-kald": {
+      "kilde": "mt-sommer",
+      "sitat": "Hald varm mat varm og kald mat kald."
+    },
+    "mt-frys": {
+      "kilde": "mt-oppbevaring",
+      "sitat": "Skal du ikkje ete maten i nærmaste framtid, frys han med ein gong."
+    },
+    "mt-del": {
+      "kilde": "mt-oppbevaring",
+      "sitat": "Del maten opp i mindre porsjonar ved å bruke mindre behaldarar ved nedkjølinga."
+    },
+    "jm-frossen": {
+      "kilde": "mp-julemat",
+      "sitat": "Kalkun selges stort sett frossen, og det tar et par døgn å tine den i kjøleskap."
+    }
+  }
+}

@@ -6,6 +6,8 @@ export const BASE = 'https://matlyst-app.no';
 export const PERSON_ID = `${BASE}/om/#patrick-kabia`;
 export const FORFATTER_SIDER = Object.freeze([
   'julemiddag/',
+  'julebord/',
+  'nyttarsmiddag/',
   'blogg/kjernetemperatur/',
   'blogg/mat-i-fryseren/',
   'blogg/koketider/',

@@ -37,7 +37,9 @@
           "/en/recipes-by-ingredients/",
           "/en/find-recipes/",
           "/en/blog/leftovers-in-the-fridge/",
-          "/en/blog/freezer-storage-times/"
+          "/en/blog/freezer-storage-times/",
+          "/en/how-long-does-it-last/",
+          "/en/can-you-freeze/"
         ],
         "planlagt": []
       },
@@ -68,7 +70,9 @@
       "hoytid": {
         "hub": "/ukemeny/",
         "eiker": [
-          "/julemiddag/"
+          "/julemiddag/",
+          "/julebord/",
+          "/nyttarsmiddag/"
         ],
         "planlagt": []
       },

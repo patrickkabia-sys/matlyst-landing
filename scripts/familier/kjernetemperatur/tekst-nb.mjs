@@ -73,7 +73,7 @@ export const TEKST = {
       ['Hvor lenge skal kalkunen stekes?', 'Se <a href="/steketid/kalkun/">hvor lenge kalkunen skal stekes</a>, med kalkulator for vekt.'],
     ],
     soster: [['/steketid/kalkun/', 'Hvor lenge skal kalkunen stekes?']],
-    andre: [['/kjernetemperatur/kylling/', 'Kjernetemperatur kylling']],
+    andre: [['/kjernetemperatur/kylling/', 'Kjernetemperatur kylling'], ['/nyttarsmiddag/', 'Nyttårsmiddag: kalkun, tider og mengder']],
   }),
 
   svinefilet: (h) => ({
