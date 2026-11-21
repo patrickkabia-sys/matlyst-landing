@@ -4,19 +4,19 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/airfryer/": {
-  "hash": "8de284d6374667e7",
+  "hash": "bb40cc6458fcc376",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/bacon/": {
-  "hash": "288f37502d38aa90",
+  "hash": "0648438cf9cbbe80",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/biff/": {
-  "hash": "1f81594b68bd8997",
+  "hash": "ff75af3b0e6224c5",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/egg/": {
-  "hash": "5fd98079ea0f4879",
+  "hash": "d6aa246841188d0f",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/fiskepinner/": {
@@ -24,15 +24,15 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/frossen-mat/": {
-  "hash": "7828a262485bf519",
+  "hash": "bb158300b4092b53",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/gronnsaker/": {
-  "hash": "ce92736aa8a9078c",
+  "hash": "3caed1d977cae697",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/hamburger/": {
-  "hash": "de295f82cb61afa2",
+  "hash": "95420c48984f13b0",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/kjottboller/": {
@@ -40,31 +40,31 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/kyllingfilet/": {
-  "hash": "cfc0ca8226ad377d",
+  "hash": "14f72fe1b2678754",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/kyllinglar/": {
-  "hash": "43fd0fc69cca24f7",
+  "hash": "e0a651216e3ec359",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/kyllingvinger/": {
-  "hash": "6cc274959e286b94",
+  "hash": "da0a93a3959d1d8f",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/laks/": {
-  "hash": "2f63054e7f26e763",
+  "hash": "821d180b60bb1ceb",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/ovn-til-airfryer/": {
-  "hash": "be5365761ed724f7",
+  "hash": "e76ce76af93d59ef",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/polser/": {
-  "hash": "b3a4de74d072f060",
+  "hash": "fc713fe173c18142",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/pommes-frites/": {
-  "hash": "bf4d6dbf8cac9fa3",
+  "hash": "062a7e906d5ca76e",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/potetbater/": {
@@ -76,7 +76,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/svinekoteletter/": {
-  "hash": "3b686b65161b26da",
+  "hash": "924cc15b5e5a03ae",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/airfryer/torsk/": {
@@ -96,7 +96,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/": {
-  "hash": "c82c4b2645676ed2",
+  "hash": "51dd3c8d2eb841f7",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/doble-oppskrift/": {
@@ -116,7 +116,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/koketider/": {
-  "hash": "fba4a798411b2159",
+  "hash": "689b3c7b7b4e86cd",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/mat-i-fryseren/": {
@@ -124,7 +124,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/ovnsoppskrift-i-airfryer/": {
-  "hash": "4b1fe8279bc8e53d",
+  "hash": "680feb15d520d6b9",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/rester-i-kjoleskapet/": {
@@ -1099,17 +1099,89 @@
   "hash": "1a3d0e5646ed7215",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/en/air-fryer/": {
+  "hash": "e4f8eedb39f9810d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/bacon/": {
+  "hash": "acf2d12a00452234",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/baked-potato/": {
+  "hash": "e6966cbf55660ea0",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/burgers/": {
+  "hash": "fb77669cd5b87f9b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/chicken-breast/": {
+  "hash": "1e93d19446172ff3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/chicken-thighs/": {
+  "hash": "1fa78b1e72315892",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/chicken-wings/": {
+  "hash": "44f204c1e6a29769",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/french-fries/": {
+  "hash": "6cc8f13c11a04864",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/frozen-foods/": {
+  "hash": "5bb704e0faa2f752",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/hard-boiled-eggs/": {
+  "hash": "09720383e9acbf03",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/hot-dogs/": {
+  "hash": "0d93ca03175616e7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/oven-to-air-fryer/": {
+  "hash": "ed0dc40bd0e2db5d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/pork-chops/": {
+  "hash": "6e54020b5af42ed3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/reheat-pizza-leftovers/": {
+  "hash": "ea11c34c65835a4f",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/salmon/": {
+  "hash": "60b609af6c3ae345",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/shrimp/": {
+  "hash": "fa1151b7272985ad",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/steak/": {
+  "hash": "3e008371b07b51d5",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/air-fryer/vegetables/": {
+  "hash": "de38b6c369ac107b",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/en/alletiders-cookbook/": {
   "hash": "c23b0ec4c170e3c0",
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/blog/": {
-  "hash": "e102a0508831144c",
-  "dato": "2026-11-20"
+  "hash": "e8814ee38868a68f",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/blog/boiling-times/": {
-  "hash": "be9af785cea4abcc",
-  "dato": "2026-11-20"
+  "hash": "ca2f4e67e54921bb",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/blog/choose-recipe-organizer-app/": {
   "hash": "eaf88618658b7a3e",
@@ -1132,8 +1204,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/blog/oven-to-air-fryer/": {
-  "hash": "4c4fce5db1ad53d5",
-  "dato": "2026-11-20"
+  "hash": "735e5f0f3a35864a",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/blog/safe-internal-temperatures/": {
   "hash": "6dc6451b3b423d55",

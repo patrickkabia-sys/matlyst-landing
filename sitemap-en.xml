@@ -10,6 +10,129 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/en/air-fryer/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/bacon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/bacon/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/bacon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/bacon/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/baked-potato/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/baked-potato/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/baked-potato/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/burgers/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/hamburger/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/burgers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/burgers/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/chicken-breast/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/kyllingfilet/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/chicken-breast/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/chicken-breast/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/chicken-thighs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/kyllinglar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/chicken-thighs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/chicken-thighs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/chicken-wings/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/kyllingvinger/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/chicken-wings/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/chicken-wings/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/french-fries/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/pommes-frites/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/french-fries/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/french-fries/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/frozen-foods/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/frossen-mat/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/frozen-foods/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/frozen-foods/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/hard-boiled-eggs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/egg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/hard-boiled-eggs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/hard-boiled-eggs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/hot-dogs/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/polser/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/hot-dogs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/hot-dogs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/oven-to-air-fryer/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/ovn-til-airfryer/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/oven-to-air-fryer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/oven-to-air-fryer/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/pork-chops/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/svinekoteletter/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/pork-chops/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/pork-chops/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/reheat-pizza-leftovers/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/reheat-pizza-leftovers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/reheat-pizza-leftovers/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/salmon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/laks/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/salmon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/salmon/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/shrimp/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/shrimp/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/shrimp/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/steak/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/biff/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/steak/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/steak/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/en/air-fryer/vegetables/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/airfryer/gronnsaker/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/air-fryer/vegetables/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/air-fryer/vegetables/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/en/alletiders-cookbook/</loc>
     <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/importer-fra-alletiders-kokebok/"/>
@@ -20,7 +143,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/blog/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/"/>
@@ -29,7 +152,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/blog/boiling-times/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/koketider/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/blog/boiling-times/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/blog/boiling-times/"/>
@@ -81,7 +204,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/en/blog/oven-to-air-fryer/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/ovnsoppskrift-i-airfryer/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/ugnsrecept-i-airfryer/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/ovnopskrift-i-airfryer/"/>
