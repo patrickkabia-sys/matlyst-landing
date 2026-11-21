@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { ENHETER, FLERTALL, HURTIG, HURTIG_BROK, KORT_ETIKETTER, START, allePar, enheterFor, enhetsKort, konverter, parSlug, tall } from '../scripts/enheter.mjs';
+import { ENHETER, FLERTALL, HURTIG, HURTIG_BROK, KORT_ETIKETTER, START, allePar, enheterFor, enhetsKort, kortSetning, konverter, parSlug, tall } from '../scripts/enheter.mjs';
 import { enhetsSider } from '../scripts/en-enhetssider.mjs';
 import { presisTekst } from '../scripts/kalk-kort.mjs';
 
@@ -65,6 +65,16 @@ test('HURTIG har seks stigende mengder for hver enhet på hvert språk', () => {
 
 const kortData = (html) => JSON.parse(/<script type="application\/json" class="kalk-data">([\s\S]*?)<\/script>/u.exec(html)[1]);
 const synlig = (html, felt) => new RegExp(`data-felt="${felt}"[^>]*>([^<]*)<`, 'u').exec(html)[1];
+
+test('kortSetning er startmengden regnet om, og kortet viser den samme setningen', () => {
+  assert.equal(kortSetning('nb', 'c', 'f'), '180 °C = 356 °F');
+  assert.equal(kortSetning('nb', 'f', 'c'), '350 °F = 176,7 °C');
+  assert.equal(kortSetning('nb', 'cups', 'dl'), '1 cup = 2,366 dl');
+  assert.equal(kortSetning('en', 'cups', 'ml'), '1 cup = 236.6 ml');
+  for (const [lang, fra, til] of [['nb', 'c', 'f'], ['nb', 'cups', 'dl'], ['en', 'f', 'c'], ['en', 'lb', 'kg']]) {
+    assert.equal(synlig(enhetsKort(lang, fra, til), 'setning'), kortSetning(lang, fra, til), `${lang} ${fra} ${til}`);
+  }
+});
 
 test('enhetsKort: data og statisk eksempel henger sammen', () => {
   // nb cups til dl: hovedordet er «cup» (avgjørelse 1), tallene følger kilden.

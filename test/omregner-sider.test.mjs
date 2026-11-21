@@ -21,6 +21,7 @@ const SPRAK = {
     sider: enhetsSiderNb, mappe: 'verktoy/', hub: 'verktoy/enhetsomregner/', komma: true, hoved: /\bcups?\b/iu, biord: /kopp/iu,
     ordFor: (id, v) => FLERTALL.nb[id]?.[v === 1 ? 0 : 1] ?? ENHETER[id].nb.kort,
     sluttPaaPar: (s) => s.startsWith('verktoy/') && s !== 'verktoy/enhetsomregner/',
+    hubInnledning: /^<p>En gratis omregner for matlaging, med alle kombinasjoner: /u, hubVolum: 'Kalkulatoren her regner om volum\\. For vekt, lengde og temperatur bruker du listene under\\.',
   },
 };
 
@@ -57,9 +58,8 @@ for (const lang of Object.keys(SPRAK)) {
       assert.equal(setning, forventet, sti);
       const svar = /data-felt="svar"[^>]*>([^<]*)</u.exec(s.topp)[1];
       assert.equal(svar, kommaTall(konverter(start, fra, til)), sti);
-      // Det korte svaret under kortet er dagens svar: regnet med 1, også for temperatur.
-      const en = `1 ${S.ordFor(fra, 1)} = ${kommaTall(konverter(1, fra, til))} ${S.ordFor(til, Number(tall(konverter(1, fra, til))))}`;
-      assert.ok(/<p class="kortsvar"><b>[^<]*<\/b> ([^<]*)</u.exec(s.topp)[1].startsWith(`${en}.`), `${sti}: kort svar åpner med «${en}.»`);
+      // Det korte svaret under kortet åpner med kortets egen setning (samme startmengde, også for temperatur: 180 °C, 350 °F).
+      assert.ok(/<p class="kortsvar"><b>[^<]*<\/b> ([^<]*)</u.exec(s.topp)[1].startsWith(`${setning}.`), `${sti}: kort svar åpner med «${setning}.»`);
     }
   });
 
@@ -125,6 +125,19 @@ for (const lang of Object.keys(SPRAK)) {
     }
   });
 
+  test(`${lang}: samme tall for en cup overalt på siden: 3 gjeldende sifre står ikke ved siden av kort svar med 4`, () => {
+    const fire = tall(konverter(1, 'cups', 'dl'));
+    const tre = String(Number(Number(fire).toPrecision(3)));
+    assert.notEqual(fire, tre);
+    const mønster = new RegExp(`(?<![\\d.,])${tre.replace('.', '[.,]')} dl(?![\\p{L}\\d])`, 'u');
+    let sett = 0;
+    for (const [sti, s] of Object.entries(S.sider)) {
+      sett++;
+      assert.doesNotMatch(sideTekst(s), mønster, `${sti}: «${tre} dl» for en cup, kort svar sier ${fire}`);
+    }
+    assert.ok(sett > 0);
+  });
+
   test(`${lang}: titler er høyst 60 tegn og beskrivelser 100 til 160`, () => {
     for (const [sti, s] of Object.entries(S.sider)) {
       assert.ok(s.title.length <= 60, `${sti}: tittelen er ${s.title.length} tegn: ${s.title}`);
@@ -165,7 +178,9 @@ for (const lang of Object.keys(SPRAK)) {
     assert.doesNotMatch(hub.topp, /kalkvare/u);
     const ids = [...hub.topp.matchAll(/<select data-felt="fra">([\s\S]*?)<\/select>/gu)][0][1].matchAll(/<option value="([^"]+)"/gu);
     assert.ok([...ids].every(([, id]) => ENHETER[id].gruppe === 'volum'));
-    assert.match(hub.rik, /^<p>Kalkulatoren her regner om volum\. For vekt, lengde og temperatur bruker du listene under\.<\/p>/u);
+    // Den gamle innledningen (dagens svarTekst) er første avsnitt; setningen om at kalkulatoren regner volum kommer rett etter.
+    assert.match(hub.rik, S.hubInnledning, `${S.hub}: lesedelen åpner med innledningen`);
+    assert.match(hub.rik, new RegExp(`^<p>[^<]+</p><p>${S.hubVolum}</p>`, 'u'), `${S.hub}: volumsetningen er avsnitt to`);
     assert.doesNotMatch(hub.rik, /class="answer"|class="toc"|<form/u);
   });
 }

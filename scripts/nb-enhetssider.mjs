@@ -1,7 +1,7 @@
 // Enhetsomregnere på norsk (bokmål): én side per enhetspar (ml til dl, cups til ml, °F til °C osv.) pluss en hub.
 // Samme struktur som den engelske (en-enhetssider.mjs), men skrevet for norske kjøkken: dl, ss, ts og krm er førsteklasses enheter.
 // Statisk tekst bruker desimalkomma og mellomrom som tusenskille; kalkulatoren (site.js) tar seg av tallene i nettleseren.
-import { ENHETER, FLERTALL, allePar, enheterFor, enhetsKort, konverter, parSti, tall } from './enheter.mjs';
+import { ENHETER, FLERTALL, allePar, enheterFor, enhetsKort, kortSetning, konverter, parSti, tall } from './enheter.mjs';
 import { byggLese, byggRik } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
@@ -96,7 +96,7 @@ const NOTE = {
   'tbsp>ss': 'En amerikansk spiseskje er 14,8 ml, mens norske oppskrifter regner 15 ml. Det kan du se bort fra i vanlig matlaging.',
   'cups>ml': 'Amerikanske oppskrifter måler med cups, men en cup er ikke det samme som kruset du har i skapet. Den er 236,6 ml, og mange oppskrifter runder av til 2,4 dl. Til baking er det sikrere å veie enn å måle i volum.',
   'ml>cups': 'Er en oppskrift skrevet i milliliter og du bare har et amerikansk målebeger i cups, deler du på 236,6. 250 ml er litt mer enn én cup.',
-  'cups>dl': 'En cup er 2,37 dl, og oppskrifter runder ofte av til 2,4 dl. Står det 2,5 dl i en norsk oppskrift, er det litt mer enn en cup, og i suppe og gryte spiller forskjellen liten rolle.',
+  'cups>dl': 'En cup er 2,366 dl, og oppskrifter runder ofte av til 2,4 dl. Står det 2,5 dl i en norsk oppskrift, er det litt mer enn en cup, og i suppe og gryte spiller forskjellen liten rolle.',
   'dl>cups': 'Del desiliter på 2,366 for å få cups. Tre desiliter er ca. 1,27 cups, altså én og en kvart cup i de fleste oppskrifter.',
   'cups>l': 'En cup er 0,237 liter. Fire cups er litt under en liter, noe som er greit å huske når du skal lage en stor porsjon suppe.',
   'l>cups': 'Én liter er litt over fire cups (4,23). Skal du lage en oppskrift for én liter kraft, trenger du altså litt mer enn fire cups.',
@@ -221,7 +221,7 @@ export function sideForPar(fra, til) {
   const x = konverter(1, fra, til);
   const y = konverter(1, til, fra);
   const g = ENHETER[fra].gruppe;
-  const svar = `1 ${label(1, fra)} = ${val(x, til)}. Skal du regne om ${F.fl} til ${T.fl}, ${regelTekst(fra, til)}.`;
+  const svar = `${kortSetning('nb', fra, til)}. Skal du regne om ${F.fl} til ${T.fl}, ${regelTekst(fra, til)}.`;
   const note = NOTE[`${fra}>${til}`] ?? `${stor(F.fl)} brukes i ${BRUK[fra]}. ${stor(T.fl)} brukes i ${BRUK[til]}. Derfor regner du om hver gang en oppskrift er skrevet for ett system og redskapene dine følger et annet.`;
   const rik = byggLese({
     seksjoner: [
@@ -282,7 +282,8 @@ const enhetsHub = (() => {
     const rader = ids.map((a) => `<li><strong>${esc(stor(N(a).fl))}</strong>: ${ids.filter((b) => b !== a).map((b) => `<a href="${href(a, b)}">til ${esc(N(b).kort)}</a>`).join(', ')}</li>`).join('');
     return [tittel, `<ul>${rader}</ul>`];
   };
-  return p('Kalkulatoren her regner om volum. For vekt, lengde og temperatur bruker du listene under.') + '\n' + byggLese({
+  return p('En gratis omregner for matlaging, med alle kombinasjoner: milliliter, desiliter, liter, kryddermål, teskjeer, spiseskjeer, cups, væskeunser, pints, quarts og gallon, gram, kilo, unser, pund, centimeter, tommer og °C til °F. Velg en omregning under, eller bruk kalkulatoren.')
+    + p('Kalkulatoren her regner om volum. For vekt, lengde og temperatur bruker du listene under.') + '\n' + byggLese({
     seksjoner: [
       gruppe('volum', 'Volum: ml, dl, ss, ts, cups og mer'),
       gruppe('vekt', 'Vekt: gram, unser og pund'),

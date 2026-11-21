@@ -139,6 +139,19 @@ const erEntall = (v) => {
   return m ? Number(m[1]) < Number(m[2]) : Number(String(v).replace(',', '.')) === 1;
 };
 
+const ordI = (lang, id, entall) => {
+  const form = FLERTALL[lang]?.[id];
+  return form ? form[entall ? 0 : 1] : ENHETER[id][lang].kort;
+};
+
+/** Setningen kortet viser uten JavaScript: startmengden regnet om («1 cup = 2,366 dl», «180 °C = 356 °F»). Det korte svaret under kortet åpner med den samme setningen, så de to viser samme regnestykke. */
+export function kortSetning(lang, fra, til) {
+  const komma = lang !== 'en';
+  const start = START[fra] ?? 1;
+  const svar = presisTekst(konverter(start, fra, til), 4, { komma });
+  return `${presisTekst(start, 4, { komma })} ${ordI(lang, fra, start === 1)} = ${svar} ${ordI(lang, til, svar === '1')}`;
+}
+
 /**
  * Ferdig kalkulatorkort (form.kalk, data-kalk="enhet") for en enhetsomregner: enhetene i gruppen til `fra` (eller `ids`, for samlesidene),
  * uten varerad. Mengden står ved bytte, svaret har fire gjeldende sifre, og temperatur er affin og kan være negativ. Engelsk tar brøker.
@@ -164,7 +177,6 @@ export function enhetsKort(lang, fra, til, { ids } = {}) {
     ...(brok ? { brok: true } : {}),
     feil: E.feil,
   };
-  const ord = (id, entall) => (Array.isArray(kort[id]) ? kort[id][entall ? 0 : 1] : kort[id]);
   const start = START[fra] ?? 1;
   const svar = presisTekst(konverter(start, fra, til), 4, { komma });
   const mengde = presisTekst(start, 4, { komma });
@@ -174,8 +186,8 @@ export function enhetsKort(lang, fra, til, { ids } = {}) {
     fra, til, data, vareHtml: '', type: 'enhet',
     start: {
       mengde, svar,
-      setning: esc(`${mengde} ${ord(fra, start === 1)} = ${svar} ${ord(til, svar === '1')}`),
-      hurtig: steg[fra].map((v) => [v, esc(`${v} ${ord(fra, erEntall(v))}`)]),
+      setning: esc(kortSetning(lang, fra, til)),
+      hurtig: steg[fra].map((v) => [v, esc(`${v} ${ordI(lang, fra, erEntall(v))}`)]),
     },
   });
 }
