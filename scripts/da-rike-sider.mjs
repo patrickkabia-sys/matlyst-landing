@@ -2,6 +2,7 @@
 // felt per path som legges oppå den tynne siden, eller en ny side når path ikke finnes fra før.
 // Fakta følger de engelske sidene (funksjonssjekken 18.11.2026). Ingen skjermbilder fra den engelske appen.
 // Matvaretrygg-tall er utelatt: de er ikke hentet fra Fødevarestyrelsen (se rapporten).
+import { sider as sammenligning } from './sammenligning/da.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
@@ -93,7 +94,7 @@ const opskriftsApp = byggRik({
       + '<li><strong>At glemme kilden.</strong> Behold linket til skaberen på opskriften, så du kan finde vedkommendes andre opskrifter senere.</li></ul>'],
     ['Dine opskrifter forbliver dine', p('Du kan eksportere alle dine opskrifter når som helst og uden beregning, som en Matlyst-fil (en zip med mapper og billeder) eller som HTML. Skal du flytte fra Paprika? <a href="/da/skift-fra-paprika/">Importér din Paprika-eksport</a>, så bliver dine kategorier til mapper. Vil du vide mere om import i det hele taget, så se <a href="/da/importer-opskrifter/">importér opskrifter</a>.')
       + p('Du kan læse dine opskrifter og din indkøbsliste uden net i op til 30 dage efter sidste synkronisering. Redigering og madlavningstilstand kræver forbindelse.')],
-    ['Abonnement, grænser og deling', p('Matlyst er gratis at komme i gang med: 5 importer pr. kalendermåned, og spisekammeret viser 5 varer. Du kan gemme opskrifter, bruge mapper og søgning, lave madplan og indkøbsliste i den gratis version. Matlyst Pro giver flere importer, billedimport, Spørg Matlyst og mulighed for at oprette en husstand.')
+    ['Abonnement, grænser og deling', p('Matlyst er gratis at komme i gang med: 5 importer pr. kalendermåned, og spisekammeret viser 5 varer. Du kan gemme opskrifter, bruge mapper og søgning, lave madplan og indkøbsliste i den gratis version. Matlyst Pro giver flere importer, billedimport, Spørg Matlyst og mulighed for at oprette en husstand.', 'Vil du se Matlyst ved siden af andre opskriftsapps? Se <a href="/da/bedste-opskriftsapp/">seks opskriftsapps sammenlignet</a>, med kilde og dato for hver oplysning.')
       + p('Et Pro-medlem kan oprette en husstand for op til 6 personer, og det er gratis at blive medlem af den. Indkøbslisten, den ugentlige madplan og spisekammeret deles og opdateres live for alle. Se siden om <a href="/da/indkoebsliste-app/">indkøbslisten</a> for, hvordan delingen virker.')],
   ],
 }).html;
@@ -318,7 +319,7 @@ const indkoeb = byggRik({
       + p('Det virker med alle opskrifter i Matlyst, uanset om du har gemt dem fra en hjemmeside, TikTok eller Instagram eller skrevet dem ind selv. Du kan også tilføje ting, der ikke står i en opskrift, som kaffe og køkkenrulle.')],
     ['Hvad sker der, når to opskrifter skal bruge det samme', p('Sig, at to opskrifter begge skal bruge et løg. Så får du én linje med løg og ikke to. Matlyst lægger varer med samme navn på én linje. Er enhederne forskellige, for eksempel 1 dl i den ene opskrift og 200 g i en anden, står begge mængder på samme linje, for eksempel «1 dl · 200 g», for Matlyst gætter ikke på, hvordan de skal regnes om. Vil du have én mængde, trykker du på mængden og skriver én mængde og enhed.')
       + p('Listen er sorteret efter afdeling i butikken, så du går butikken igennem én gang og ikke krydser den to gange for den ene ting, du glemte.')],
-    ['Planlæg først, og handl én gang', p('En indkøbsliste er kun så god som den plan, der ligger bag. Læg ugens aftensmåltider ind i <a href="/da/madplan-app/">madplanen</a>, læg hele ugen over på indkøbslisten, og tag én tur i stedet for tre. Vil du se det store billede af at gemme, ordne og lave opskrifter, så læs siden om <a href="/da/opskrifts-app/">opskriftsappen</a>.')],
+    ['Planlæg først, og handl én gang', p('En indkøbsliste er kun så god som den plan, der ligger bag. Læg ugens aftensmåltider ind i <a href="/da/madplan-app/">madplanen</a>, læg hele ugen over på indkøbslisten, og tag én tur i stedet for tre. Vil du se det store billede af at gemme, ordne og lave opskrifter, så læs siden om <a href="/da/opskrifts-app/">opskriftsappen</a>.', 'Vil du se flere apps til indkøbslister side om side? Se <a href="/da/bedste-indkoebsliste-app/">seks apps til indkøbslister sammenlignet</a>, med kilde og dato.')],
     ['Spring over det, du allerede har', p('Varer, du allerede har i <a href="/da/spisekammer-app/">spisekammeret</a>, er fravalgt og mærket «På lager», når du lægger en opskrift på listen på listen. Det er en påmindelse og ikke en regel: du ser, hvad du allerede har, før du køber endnu en krukke. Tjek spisekammeret, før du handler, og opdatér det, når du laver mad.')],
     ['Del listen med din husstand', p('Et Pro-medlem kan oprette en husstand for op til 6 personer, og det er gratis at blive medlem af den. Indkøbslisten, den ugentlige madplan og spisekammeret deles og opdateres live for alle. Én planlægger, en anden handler, og den, der står i butikken, krydser af for alle.')],
     ['Tre situationer, og hvad du kan gøre', scenarioNotat('da')
@@ -416,7 +417,7 @@ const kobsguide = byggRik({
       + '<tr><td>vil søge på ingrediens og have et spisekammer</td><td>har brug for stregkodescanning til varerne i spisekammeret</td></tr>'
       + '<tr><td>vil have gratis eksport af alt, hvad du gemmer</td><td>kun laver mad efter trykte kogebøger og aldrig gemmer noget digitalt</td></tr>'
       + '</tbody></table></div>'
-      + p('Matlyst er gratis at komme i gang med, med 5 importer pr. kalendermåned. Læs mere på siden om <a href="/da/opskrifts-app/">opskriftsappen</a>, eller se, hvordan den virker med <a href="/da/gem-opskrifter-fra-instagram/">Instagram</a>, <a href="/da/gem-opskrifter-fra-tiktok/">TikTok</a>, <a href="/da/madplan-app/">madplanen</a> og <a href="/da/indkoebsliste-app/">indkøbslisten</a>. Skal du flytte fra en anden app, så se <a href="/da/skift-fra-paprika/">skift fra Paprika</a>.')],
+      + p('Matlyst er gratis at komme i gang med, med 5 importer pr. kalendermåned. Læs mere på siden om <a href="/da/opskrifts-app/">opskriftsappen</a>, eller se, hvordan den virker med <a href="/da/gem-opskrifter-fra-instagram/">Instagram</a>, <a href="/da/gem-opskrifter-fra-tiktok/">TikTok</a>, <a href="/da/madplan-app/">madplanen</a> og <a href="/da/indkoebsliste-app/">indkøbslisten</a>. Skal du flytte fra en anden app, så se <a href="/da/skift-fra-paprika/">skift fra Paprika</a>.', 'Vil du se navngivne apps side om side, med kilde og dato for hver oplysning? Se <a href="/da/bedste-opskriftsapp/">opskriftsapps</a>, <a href="/da/bedste-indkoebsliste-app/">apps til indkøbslister</a> og <a href="/da/bedste-madplan-app/">madplan-apps</a> sammenlignet.')],
     ['Hvad det koster at skifte', p('Det er billigere at skifte, end mange tror, hvis du gør det i små skridt. Start med de ti opskrifter, du laver oftest, og lad resten ligge, hvor det ligger, til du får brug for det. Ligger dine opskrifter i en anden opskriftsapp, så se, om den kan eksportere, og om den nye kan importere filen. Matlyst kan for eksempel læse en Paprika-eksport, se <a href="/da/skift-fra-paprika/">skift fra Paprika</a>.')
       + p('Husk også, hvad der sker den anden vej. Du skal kunne tage dine opskrifter med dig igen, hvis du bliver træt af appen. Det er den bedste forsikring mod at vælge forkert.')],
     ['Almindelige fejl, når man vælger', '<ul><li><strong>At vælge efter funktionslisten.</strong> Prøv med dine egne opskrifter.</li>'
@@ -526,4 +527,5 @@ export const rikeSider = {
     ],
     cta: 'Prøv med dine egne opskrifter',
   },
+  ...sammenligning,
 };

@@ -2,13 +2,18 @@
 // sjekkes at hvert sitat fortsatt står ordrett på kildesiden (App Store, Google Play eller appens egen nettside).
 // Fakta i løpende tekst som ikke hører til et appkort (for eksempel at Mealime er lagt ned) står under `notiser` og sjekkes likt.
 // Endrer ingenting når noe avviker; da skrives lista og koden blir 1. Når alt stemmer, settes hentet og sjekket til i dag.
-// Bruk: node scripts/sammenligning/kildekontroll.mjs [nb|en]   (uten markedet sjekkes begge)
+// Bruk: node scripts/sammenligning/kildekontroll.mjs [nb|en|sv|da]   (uten markedet sjekkes alle)
 // App Store-sidene hentes med en vanlig nettleser som user-agent og kommer da på engelsk, som sitatene.
 // Det engelske markedet bruker amerikansk App Store (/us/) og Google Play med hl=en_US&gl=US.
+// Svensk og dansk bruker /se/ og /dk/, Google Play med hl=sv&gl=SE og hl=da&gl=DK, og sitatene ble hentet med
+// accept-language sv-SE og da-DK. Svensk App Store svarer på svensk; dansk App Store viser beskrivelsen på appens språk
+// og resten av siden på engelsk, og Listonic sender da videre til /sv og /da.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const MARKEDER = ['nb', 'en'];
+const MARKEDER = ['nb', 'en', 'sv', 'da'];
+// Norske sitater ble hentet uten accept-language (noen nettsider svarer da på engelsk).
+const SPRAK = { en: 'en-US,en;q=0.9', sv: 'sv-SE,sv;q=0.9', da: 'da-DK,da;q=0.9' };
 const fil = (marked) => fileURLToPath(new URL(`./apper.${marked}.json`, import.meta.url));
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15';
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', shy: '' };
@@ -47,8 +52,7 @@ async function kontroller(marked) {
     let svar;
     for (let forsok = 0; forsok < 4; forsok += 1) {
       await new Promise((ok) => setTimeout(ok, 1500 * (forsok + 1)));
-      // Norske sitater ble hentet uten accept-language (noen nettsider svarer da på engelsk); amerikanske med en-US.
-      svar = await fetch(k.adresse, { headers: { 'user-agent': UA, ...(marked === 'en' ? { 'accept-language': 'en-US,en;q=0.9' } : {}) } });
+      svar = await fetch(k.adresse, { headers: { 'user-agent': UA, ...(SPRAK[marked] ? { 'accept-language': SPRAK[marked] } : {}) } });
       if (svar.status !== 429) break;
     }
     if (!svar.ok) throw new Error(`${marked}/${id}: ${k.adresse} svarte ${svar.status}`);

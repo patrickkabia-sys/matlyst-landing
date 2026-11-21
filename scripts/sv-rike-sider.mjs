@@ -2,6 +2,7 @@
 // felt per path som legges oppå den tynne siden, eller en ny side når path ikke finnes fra før.
 // Fakta følger de engelske sidene (funksjonssjekken 18.11.2026). Ingen skjermbilder av engelsk app.
 // Matsikkerhetstall fra Livsmedelsverket er IKKE hentet (sidene lot seg ikke lese ut), så tabellen er utelatt.
+import { sider as sammenligning } from './sammenligning/sv.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
@@ -90,7 +91,7 @@ const receptbok = (() => {
         + p('Du kan läsa dina recept och din inköpslista offline i upp till 30 dagar efter senaste synkningen. Redigering och matlagningsläget kräver anslutning.')],
       ['Så kommer du igång utan att det blir ett projekt', p('Det vanligaste skälet till att en receptsamling inte blir av är att det känns som ett stort jobb. Gör det litet. Spara tre recept du lagar nästa vecka, och läs utkasten ordentligt. Lägg dem i veckomenyn och skicka dem till inköpslistan. Då har du provat hela kedjan, från sparat recept till handlad vara, på en kväll.')
       + p('Därefter kan du lägga till fler, ett recept i taget, när du ändå hittar något du vill laga. Efter ett par veckor har du en samling som speglar det du faktiskt äter, inte det du tänkte att du skulle laga.')],
-    ['Planer, gränser och delning', p('Matlyst är gratis att börja med: 5 importer per kalendermånad, och skafferiet visar 5 varor. Att spara recept, mappar, sökning, veckomenyn och inköpslistan fungerar i den gratis planen. Matlyst Pro ger fler importer, fotoimport, Fråga Matlyst och möjlighet att skapa ett hushåll.')
+    ['Planer, gränser och delning', p('Matlyst är gratis att börja med: 5 importer per kalendermånad, och skafferiet visar 5 varor. Att spara recept, mappar, sökning, veckomenyn och inköpslistan fungerar i den gratis planen. Matlyst Pro ger fler importer, fotoimport, Fråga Matlyst och möjlighet att skapa ett hushåll.', 'Vill du se Matlyst bredvid andra receptappar? Se <a href="/sv/basta-receptapp/">sju receptappar jämförda</a>, med källa och datum för varje uppgift.')
         + p('En Pro-medlem kan skapa ett hushåll för upp till 6 personer, och det är gratis att gå med. Inköpslistan, veckomenyn och skafferiet delas och uppdateras direkt för alla. På sidan om <a href="/sv/inkopslista/">inköpslistan</a> står hur delningen fungerar.')],
     ],
   });
@@ -315,7 +316,7 @@ const inkopslista = byggRik({
       + p('Det fungerar med alla recept i Matlyst, oavsett om du sparat det från en webbsida, TikTok eller Instagram eller skrivit in det själv. Du kan också lägga till sådant som inte står i något recept, som kaffe och hushållspapper.')],
     ['Vad händer när två recept behöver samma sak', p('Säg att två recept båda behöver en lök. Då får du en rad för lök, inte två. Matlyst lägger varor med samma namn på en rad. När enheterna skiljer sig, som 1 dl i ett recept och 200 g i ett annat, visas båda mängderna på samma rad, till exempel «1 dl · 200 g», för Matlyst gissar inte hur de ska räknas om. Vill du ha en enda mängd trycker du på mängden och anger en mängd och enhet.')
       + p('Listan är sorterad efter butikens avdelningar, så du går igenom butiken en gång i stället för att korsa den två gånger för den enda saken du glömde.')],
-    ['Planera först, handla en gång', p('En inköpslista är bara så bra som planen bakom den. Lägg veckans middagar i <a href="/sv/veckomeny-app/">veckomenyn</a>, lägg hela veckan på inköpslistan och gör ett butiksbesök i stället för tre. Vill du ha helheten kring att spara, ordna och laga recept, se sidan om <a href="/sv/receptbok-app/">receptbok-appen</a>.')],
+    ['Planera först, handla en gång', p('En inköpslista är bara så bra som planen bakom den. Lägg veckans middagar i <a href="/sv/veckomeny-app/">veckomenyn</a>, lägg hela veckan på inköpslistan och gör ett butiksbesök i stället för tre. Vill du ha helheten kring att spara, ordna och laga recept, se sidan om <a href="/sv/receptbok-app/">receptbok-appen</a>.', 'Vill du se fler appar för inköpslistor sida vid sida? Se <a href="/sv/basta-inkopslista-app/">sex appar för inköpslistor jämförda</a>, med källa och datum.')],
     ['Hoppa över det du redan har', p('Varor som redan finns i ditt <a href="/sv/skafferi-app/">skafferi</a> är bortvalda och märkta «I skafferiet» när du lägger till ett recept. Det är en påminnelse, inte en regel: du ser vad du redan har innan du köper en burk till. Kolla skafferiet innan du handlar och uppdatera det när du lagar mat.')],
     ['Dela listan med hushållet', p('En Pro-medlem kan skapa ett hushåll för upp till 6 personer, och det är gratis att gå med. Inköpslistan, veckomenyn och skafferiet delas och uppdateras direkt för alla. En planerar, en annan handlar, och den som står i butiken bockar av åt alla.')],
     ['Tre situationer, och vad du gör', notat()
@@ -415,7 +416,7 @@ const kopguide = byggRik({
       + '<tr><td>vill söka på ingrediens och ha ett skafferi</td><td>behöver skanna streckkoder för varor i skafferiet</td></tr>'
       + '<tr><td>vill kunna exportera allt du sparar gratis</td><td>bara lagar efter tryckta kokböcker och aldrig sparar något digitalt</td></tr>'
       + '</tbody></table></div>'
-      + p('Matlyst är gratis att börja med, med 5 importer per kalendermånad. Läs mer på sidan om <a href="/sv/receptbok-app/">receptbok-appen</a>, eller se hur den fungerar med <a href="/sv/spara-recept-fran-instagram/">Instagram</a>, <a href="/sv/spara-recept-fran-tiktok/">TikTok</a>, <a href="/sv/veckomeny-app/">veckomenyn</a> och <a href="/sv/inkopslista/">inköpslistan</a>.')],
+      + p('Matlyst är gratis att börja med, med 5 importer per kalendermånad. Läs mer på sidan om <a href="/sv/receptbok-app/">receptbok-appen</a>, eller se hur den fungerar med <a href="/sv/spara-recept-fran-instagram/">Instagram</a>, <a href="/sv/spara-recept-fran-tiktok/">TikTok</a>, <a href="/sv/veckomeny-app/">veckomenyn</a> och <a href="/sv/inkopslista/">inköpslistan</a>.', 'Vill du se namngivna appar sida vid sida, med källa och datum för varje uppgift? Se <a href="/sv/basta-receptapp/">receptappar</a>, <a href="/sv/basta-inkopslista-app/">appar för inköpslistor</a> och <a href="/sv/basta-veckomeny-app/">appar för veckomeny</a> jämförda.')],
     ['Vanliga misstag när man väljer', '<ul><li><strong>Att välja efter funktionslista.</strong> Testa med dina egna recept.</li>'
       + '<li><strong>Att flytta allt första dagen.</strong> Börja med de tio recept du lagar oftast.</li>'
       + '<li><strong>Att inte läsa importen.</strong> Kontrollera alltid mängderna.</li>'
@@ -535,4 +536,5 @@ export const rikeSider = {
     ],
     cta: 'Prova med dina egna recept',
   },
+  ...sammenligning,
 };

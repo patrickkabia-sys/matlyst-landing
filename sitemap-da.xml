@@ -108,6 +108,33 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/alletiders-cookbook/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/da/bedste-indkoebsliste-app/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/beste-handleliste-app/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/basta-inkopslista-app/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/bedste-indkoebsliste-app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/best-grocery-list-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/best-grocery-list-app/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/da/bedste-madplan-app/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/beste-ukemeny-app/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/basta-veckomeny-app/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/bedste-madplan-app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/best-meal-planning-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/best-meal-planning-app/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/da/bedste-opskriftsapp/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/beste-oppskriftsapp/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/basta-receptapp/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/bedste-opskriftsapp/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/best-recipe-app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/best-recipe-app/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/da/blog/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/"/>
@@ -180,7 +207,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/da/blog/vaelg-opskriftsapp/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/velg-oppskriftsapp/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/valj-receptapp/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/vaelg-opskriftsapp/"/>
@@ -466,7 +493,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/da/indkoebsliste-app/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/handleliste/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/inkopslista/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/indkoebsliste-app/"/>
@@ -708,7 +735,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/da/opskrifts-app/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/oppskriftsbok-app/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/receptbok-app/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifts-app/"/>
