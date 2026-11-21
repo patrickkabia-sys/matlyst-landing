@@ -7,7 +7,7 @@ const MT = (h) => `${h.k('mt-oppbevaring')} skriver at du kan fryse nesten all m
 const START = (h) => `Mattilsynet sier du kan fryse nesten all mat, og at fryseren skal holde ${h.t('mt-frys')} eller kaldere.`;
 const NOTE = (h) => `${h.k('mp-fryser')} skriver at tidene gjelder førsteklasses varer som er riktig behandlet ved innfrysing. Varen kan ligge lenger, men kvaliteten blir gradvis dårligere.`;
 const FETT = (h) => `For kjøtt avhenger holdbarheten blant annet av fettinnholdet, skriver ${h.k('mt-oppbevaring')}. Fett harskner først, så magert kjøtt holder seg generelt lenger enn fett kjøtt.`;
-const TINING = (h) => ['Tin i kjøleskapet', `<p>Tin frossen mat i kjøleskapet. Det går saktere, men er tryggere, skriver ${h.k('mt-oppbevaring')}. Du kan også tine maten i kaldt, rennende vann i tett emballasje, eller i mikrobølgeovn hvis den skal lages med en gang. Ikke tin lettbedervelig mat på kjøkkenbenken.</p>`];
+const TINING = (h) => ['Slik tiner du frossen mat', `<p>Tin frossen mat i kjøleskapet. Det går saktere, men er tryggere, skriver ${h.k('mt-oppbevaring')}. Du kan også tine maten i kaldt, rennende vann i tett emballasje, eller i mikrobølgeovn hvis den skal lages med en gang. Ikke tin lettbedervelig mat på kjøkkenbenken.</p>`];
 const IKKE_IGJEN = (h) => `${h.k('mp-fryser')} skriver at ingen råvarer som har vært tint, skal fryses igjen før de er varmebehandlet.`;
 const TID = 'Tid i fryseren';
 
@@ -31,8 +31,8 @@ export const TEKST = {
     description: `Ja, melk, fløte og rømme holder seg ${h.t('melk')} i fryseren, ifølge ${h.k('mp-fryser')}. Yoghurt egner seg derimot ikke. Med Mattilsynets råd om fryseren.`,
     lead: `Ja. ${START(h)} Melk, fløte og rømme holder seg ${h.t('melk')} i fryseren, ifølge ${h.k('mp-fryser')}.`,
     mattilsynet: [MT(h)],
-    tabell: { tittel: 'Melk og fløte i fryseren', kilde: 'mp-fryser', intro: `${h.k('mp-fryser')} oppgir disse tidene for meieriprodukter:`, kolonner: ['', TID], rader: [['Melk, fløte og rømme', 'melk'], ['Yoghurt', { tekst: 'Egner seg ikke, bare hvis den skal serveres frossen' }]], etter: [NOTE(h)] },
-    faq: [['Kan man fryse yoghurt?', `${h.k('mp-fryser')} skriver at yoghurt ikke egner seg til frysing, bare hvis den skal serveres frossen.`]],
+    tabell: { tittel: 'Meieriprodukter i fryseren', kilde: 'mp-fryser', intro: `${h.k('mp-fryser')} oppgir dette for meieriprodukter:`, kolonner: ['', TID], rader: [['Melk, fløte og rømme', 'melk'], ['Yoghurt', { tekst: 'Egner seg bare hvis den skal serveres frossen' }]], etter: [NOTE(h)] },
+    faq: [['Kan man fryse yoghurt?', `${h.k('mp-fryser')} skriver at yoghurt bare egner seg til frysing hvis den skal serveres frossen.`]],
     andre: [['/frysing/ost/', 'Kan man fryse ost?'], ['/frysing/smor/', 'Kan man fryse smør?']],
   }),
 
@@ -94,7 +94,7 @@ export const TEKST = {
     tabell: {
       tittel: 'Kaker i fryseren', kilde: 'mp-fryser', intro: `${h.k('mp-fryser')} oppgir disse tidene:`, kolonner: ['', TID],
       rader: [['Kaker og søt bakst', 'sot'], ['Tørre kaker og kjeks', 'torre']],
-      etter: [`Kaker med krem eller glasur er ikke med. ${h.k('mp-fryser')} oppgir en kortere tid for dem enn Mattilsynets ramme, så vi lar det tallet ligge.`, NOTE(h)],
+      etter: [`Kaker med krem eller glasur er ikke med. ${h.k('mp-fryser')} oppgir en kortere tid for dem. Den ligger utenfor Mattilsynets ramme, der kvaliteten går ned etter ${h.t('mt-kv')}, så vi tar ikke med det tallet.`, NOTE(h)],
     },
     faq: [['Hvor lenge kan tørre kaker og kjeks ligge i fryseren?', `${h.t('torre')}, ifølge ${h.k('mp-fryser')}.`]],
     andre: [['/frysing/brod/', 'Kan man fryse brød?']],
@@ -102,20 +102,20 @@ export const TEKST = {
 
   'kjottdeig-og-kylling': (h) => ({
     ord: 'kjøttdeig og kylling',
-    title: 'Hvor lenge holder kjøttdeig og kylling i fryseren?',
-    h1: 'Hvor lenge holder kjøttdeig og kylling i fryseren?',
+    title: 'Hvor lenge kan kjøttdeig og kylling ligge i fryseren?',
+    h1: 'Hvor lenge kan kjøttdeig og kylling ligge i fryseren?',
     description: `Kjøttdeig og kylling holder seg ${h.t('kjottdeig')} i fryseren, ifølge ${h.k('mp-fryser')}. Med Mattilsynets råd om fryseren og om trygg tining.`,
     lead: `${START(h)} Kjøttdeig og kylling holder seg ${h.t('kylling')} i fryseren, ifølge ${h.k('mp-fryser')}.`,
     mattilsynet: [MT(h), FETT(h)],
     tabell: {
       tittel: 'Kjøttdeig og kylling i fryseren', kilde: 'mp-fryser', intro: `${h.k('mp-fryser')} oppgir disse tidene:`, kolonner: ['', TID],
       rader: [['Kjøttdeig og karbonadedeig', 'kjottdeig'], ['Kylling', 'kylling']],
-      etter: [`Kvernet kjøtt har stor overflate, og bakterieveksten og nedbrytningen går derfor fortere, skriver ${h.k('mp-fryser')}.`, `Kyllingkjøttdeig er ikke med. ${h.k('mp-fryser')} oppgir en kortere tid for den enn Mattilsynets ramme.`, NOTE(h)],
+      etter: [`Kvernet kjøtt har stor overflate, og bakterieveksten og nedbrytningen går derfor fortere, skriver ${h.k('mp-fryser')}.`, `Kyllingkjøttdeig er ikke med. ${h.k('mp-fryser')} oppgir en kortere tid for den. Den ligger utenfor Mattilsynets ramme, der kvaliteten går ned etter ${h.t('mt-kv')}.`, NOTE(h)],
     },
     ekstra: [TINING(h)],
     faq: [
       ['Kan man fryse kjøttdeig som har vært tint?', IKKE_IGJEN(h)],
-      ['Hvor lenge holder tint kjøttdeig?', `Bruk den samme dag som du tiner den, råder ${h.k('mt-merking')}.`],
+      ['Hvor lenge holder tint kjøttdeig seg?', `Bruk den samme dag som du tiner den, råder ${h.k('mt-merking')}.`],
     ],
     soster: ['/holdbarhet/kjottdeig-og-kylling/', 'Hvor lenge holder kjøttdeig og kylling seg i kjøleskapet?'],
     andre: [['/frysing/kjott/', 'Hvor lenge kan kjøtt ligge i fryseren?']],
@@ -126,19 +126,19 @@ export const TEKST = {
     title: 'Hvor lenge kan kjøtt ligge i fryseren?',
     h1: 'Hvor lenge kan kjøtt ligge i fryseren?',
     description: `Storfe og lam holder seg ${h.t('storfe')} i fryseren, svinekjøtt med fett ${h.t('svin-fett')}, ifølge ${h.k('mp-fryser')}. Tider for pølser, spekemat og innmat.`,
-    lead: `${START(h)} Storfe og lam holder seg ${h.t('lam')} i fryseren, svinekjøtt med fett bare ${h.t('svin-fett')}, ifølge ${h.k('mp-fryser')}.`,
+    lead: `Fett harskner først, sier Mattilsynet, så magert kjøtt holder seg generelt lenger i fryseren enn fett kjøtt. Storfe og lam holder seg ${h.t('lam')}, svinekjøtt med fett bare ${h.t('svin-fett')}, ifølge ${h.k('mp-fryser')}.`,
     mattilsynet: [MT(h), FETT(h), 'Storfekjøtt og viltkjøtt holder seg for eksempel lenger enn salt kjøtt med mye fett, skriver Mattilsynet.'],
     tabell: {
       tittel: 'Kjøtt i fryseren', kilde: 'mp-fryser', intro: `${h.k('mp-fryser')} oppgir disse tidene:`, kolonner: ['', TID],
       rader: [['Storfekjøtt', 'storfe'], ['Lammekjøtt', 'lam'], ['Kalvekjøtt', 'kalv'], ['Svinekjøtt, magert', 'svin-magert'], ['Svinekjøtt med fett', 'svin-fett'], ['Spekemat', 'spekemat'], ['Medisterdeig', 'medisterdeig'], ['Pølser', 'polser'], ['Innmat', 'innmat']],
-      etter: [`Kalkun, vilt og saltet kjøtt med mye fett er ikke med. ${h.k('mp-fryser')} oppgir tider for dem som ikke stemmer med Mattilsynets ramme.`, NOTE(h)],
+      etter: [`Kalkun, vilt og saltet kjøtt med mye fett er ikke med. ${h.k('mp-fryser')} oppgir tider for dem som ligger utenfor Mattilsynets ramme, der kvaliteten går ned etter ${h.t('mt-kv')}.`, NOTE(h)],
     },
     ekstra: [TINING(h)],
     faq: [
-      ['Kan man spise kjøtt som har ligget lenge i fryseren?', `${h.k('mp-kjott')} skriver at kjøttet kan spises, men at det neppe har beholdt den opprinnelige kvaliteten. Mattilsynet skriver at frossen mat holder seg trygg i årevis.`],
+      ['Kan man spise kjøtt som har ligget lenge i fryseren?', `Mattilsynet skriver at frossen mat holder seg trygg i årevis. ${h.k('mp-kjott')} skriver at kjøttet kan spises, men at det neppe har beholdt den opprinnelige kvaliteten.`],
     ],
     soster: ['/holdbarhet/kjott/', 'Hvor lenge holder kjøtt seg i kjøleskapet?'],
-    andre: [['/frysing/kjottdeig-og-kylling/', 'Hvor lenge holder kjøttdeig og kylling i fryseren?']],
+    andre: [['/frysing/kjottdeig-og-kylling/', 'Hvor lenge kan kjøttdeig og kylling ligge i fryseren?']],
   }),
 
   middagsrester: (h) => ({
@@ -198,7 +198,7 @@ export const TEKST = {
     title: 'Kan man fryse bær, og hvor lenge holder de seg?',
     h1: 'Kan man fryse bær?',
     description: `Ja, bær holder seg ${h.t('baer')} i fryseren, ifølge ${h.k('mp-fryser')}. Mattilsynet råder deg til å koke importerte frosne bær før bruk i kald mat.`,
-    lead: `Ja. ${START(h)} Bær holder seg ${h.t('baer')} i fryseren, ifølge ${h.k('mp-fryser')}.`,
+    lead: `Ja, men Mattilsynet råder deg til å koke importerte frosne bær i ett minutt før du bruker dem i retter som ikke skal varmebehandles. Bær holder seg ${h.t('baer')} i fryseren, ifølge ${h.k('mp-fryser')}.`,
     mattilsynet: [
       MT(h),
       `Det har vært flere utbrudd av norovirus og hepatitt A i Norden fra importerte frosne bær, skriver ${h.k('mt-baer')}. Virusene overlever godt i frosne bær, men dør ved varmebehandling. Mattilsynet råder deg derfor til å koke importerte frosne bær i ett minutt før du bruker dem i retter som ikke skal varmebehandles.`,
@@ -221,9 +221,9 @@ export const TEKST = {
     tabell: {
       tittel: 'Frukt og grønnsaker i fryseren', kilde: 'mp-fryser', intro: `${h.k('mp-fryser')} oppgir disse tidene:`, kolonner: ['', TID],
       rader: [['Frukt og grønnsaker', 'fg'], ['Urter og bladgrønnsaker', 'urter'], ['Sopp', 'sopp']],
-      etter: [`${h.k('mp-fryser')} merker alle tre med «bør varmebehandles».`, NOTE(h)],
+      etter: [`Tabellen til ${h.k('mp-fryser')} har merknaden «bør varmebehandles» ved alle tre varene.`, NOTE(h)],
     },
-    faq: [['Hvor lenge kan sopp ligge i fryseren?', `${h.t('sopp')}, ifølge ${h.k('mp-fryser')}, som merker sopp med «bør varmebehandles».`]],
+    faq: [['Hvor lenge kan sopp ligge i fryseren?', `${h.t('sopp')}, ifølge ${h.k('mp-fryser')}.`]],
     andre: [['/frysing/baer/', 'Kan man fryse bær?']],
   }),
 };
@@ -261,7 +261,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
       ])}`,
       `<h2>${tining[0]}</h2>${tining[1]}`,
       `<h2>Tider i fryseren</h2><p>Trykk på en vare for flere tider, råd og kilder. Alle tidene er fra ${forste.k('mp-fryser')}.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Tider i fryseren"><table class="sprik"><thead><tr><th scope="col">Vare</th><th scope="col">${TID}</th></tr></thead><tbody>${radene}</tbody></table></div>${p([NOTE(forste)])}`,
-      avvist.length ? `<h2>Dette er ikke med</h2><p>Vi tar bare med en tid fra ${forste.k('mp-fryser')} når den ligger innenfor Mattilsynets ramme. Disse varene har derfor ingen tid her:</p><ul>${avvist.map((r) => `<li><strong>${esc(r.navn)}.</strong> ${esc(r.tekst.grunn)}</li>`).join('')}</ul><p>${forste.k('mp-fryser')} skriver også at yoghurt og mager ost ikke egner seg til frysing.</p>` : '',
+      avvist.length ? `<h2>Dette er ikke med</h2><p>Vi tar bare med en tid fra ${forste.k('mp-fryser')} når den ligger innenfor Mattilsynets ramme, der kvaliteten går ned etter ${forste.t('mt-kv')}. Disse varene har derfor ingen tid her:</p><ul>${avvist.map((r) => `<li><strong>${esc(r.navn)}.</strong> ${esc(r.tekst.grunn)}</li>`).join('')}</ul><p>${forste.k('mp-fryser')} skriver også at yoghurt og mager ost ikke egner seg til frysing.</p>` : '',
       '<div class="related"><h2>Les også</h2><ul><li><a href="/holdbarhet/">Hvor lenge holder maten seg i kjøleskapet?</a></li></ul></div>',
     ].filter(Boolean).join('\n'),
     faqTittel: 'Spørsmål om frysing',

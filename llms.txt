@@ -62,7 +62,7 @@ Matlyst henter oppskriften fra lenken, videoen eller bildet du deler, oversetter
 ## Norsk: Verktøy
 
 - [Hvor lenge kan mat ligge i fryseren? Tabell med kilder](https://matlyst-app.no/frysing/): Hvor lenge holder kjøtt, fisk, brød, ost og rester seg i fryseren? Tider fra MatPrat (2023), med Mattilsynets råd om frysing og tining.
-- [Holdbarhet i kjøleskapet: tabell med kilder](https://matlyst-app.no/holdbarhet/): Hvor lenge holder egg, kjøttdeig, kylling, ris og rester seg i kjøleskapet? Tider med kilde og lesedato på hvert tall, og Mattilsynets råd først.
+- [Hvor lenge holder maten seg i kjøleskapet? Tabell med kilder](https://matlyst-app.no/holdbarhet/): Hvor lenge holder egg, kjøttdeig, kylling, ris og rester seg i kjøleskapet? Tider med kilde og lesedato på hvert tall, og Mattilsynets råd først.
 - [Dl til gram: kalkulator og tabell for 29 varer](https://matlyst-app.no/verktoy/dl-til-gram/): Hva veier 1 dl? Regn om dl, ss, ts og gram for 29 varer, fra mel og sukker til smør og melk, med kilde på hvert tall.
 - [Enhetsomregner for mat: dl, ml, cups, gram og °F](https://matlyst-app.no/verktoy/enhetsomregner/): Gratis enhetsomregner for matlaging: dl til ml, cups til ml, unser til gram, pund til kilo, °F til °C og mer, med tabeller og tips til kjøkkenet.
 

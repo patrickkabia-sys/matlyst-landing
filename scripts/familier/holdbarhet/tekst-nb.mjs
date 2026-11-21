@@ -3,9 +3,9 @@
 // Sitatet bak hvert tall står i datafila (merknad), og scripts/familier/holdbarhet/kildekontroll.mjs sjekker det mot kilden.
 
 const POSE = 'I pose, skål eller kartong';
-const KJOL = (h) => `Mattilsynet (2026) anbefaler at kjøleskapet holder under ${h.t('mt-kjol')}.`;
+const KJOL = (h) => `Mattilsynet (2026) anbefaler at temperaturen i kjøleskapet er under ${h.t('mt-kjol')}.`;
 // Rådet om datomerking (Mattilsynet: «Holdbarhetsmerking» og «Slik kan du redusere matsvinnet»).
-const PAKKEN = (h) => ['Står det noe på pakken, gjelder det', `<p>Følg datoen og rådene på emballasjen, skriver ${h.k('mt-matsvinn')}. Holdbarhetsdatoen gjelder bare når varen er uåpnet og oppbevart riktig, og varer merket «siste forbruksdag» bør du ikke spise etter datoen (${h.kp('mt-merking')}). Står det hvor mange dager varen holder etter åpning, er den ikke trygg etter så mange dager.</p>`];
+const PAKKEN = (h) => ['Står det noe på pakken, gjelder det', `<p>Følg datoen og rådene på emballasjen, skriver ${h.k('mt-matsvinn')}. Holdbarhetsdatoen gjelder bare når varen er uåpnet og oppbevart riktig, og varer merket «siste forbruksdag» bør du ikke spise etter datoen (${h.kp('mt-merking')}). Står det på pakken hvor mange dager varen holder seg etter åpning, er den ikke trygg etter det.</p>`];
 const SISTE = (h) => `Mat som raskt blir dårlig, merkes «siste forbruksdag», skriver ${h.k('mt-oppbevaring')}. Bakterier vokser lett i kjøtt, melk, fisk og eggprodukter.`;
 const HJEMME = (h) => `${h.k('mt-oppbevaring')} skriver at det ikke er mulig å gi én holdbarhetstid for hjemmelaget mat. Det som gjør at maten holder lenger, er rene og friske råvarer, god hygiene, rask nedkjøling, riktig temperatur og tett emballasje.`;
 const AVKJOL = (h) => `Mat som er varmebehandlet og skal oppbevares kald, bør kjøles ned fra ${h.t('mt-avkjol-fra')} til ${h.t('mt-avkjol-til')} så raskt som mulig, og senest innen to timer.`;
@@ -17,24 +17,25 @@ export const TEKST = {
     title: 'Hvor lenge holder egg seg i kjøleskapet?',
     h1: 'Hvor lenge holder egg seg i kjøleskapet?',
     description: `Hele, rå egg holder seg ${h.t('hele')} i kjøleskapet, ifølge ${h.k('mp-kjoleskap')}. Med tider for eggeplommer og eggehviter, og hva datoen på kartongen betyr.`,
-    lead: `Hold kjøleskapet under ${h.t('mt-kjol')}, sier Mattilsynet. Hele, rå egg holder seg ${h.t('hele')} i kjøleskapet, ifølge ${h.k('mp-kjoleskap')}.`,
+    lead: `Datoen på kartongen er en «best før»-dato, satt til høyst ${h.t('mt-egg-dato')} etter at egget ble lagt, ifølge Mattilsynet. Hvor lenge egget holder seg i kjøleskapet, er et annet spørsmål: hele, rå egg holder seg ${h.t('hele')}, ifølge ${h.k('mp-kjoleskap')}.`,
     mattilsynet: [
       `Pakkede egg er merket «best før». ${h.k('mt-egg')} skriver at det er norsk sedvane å sette holdbarheten til høyst ${h.t('mt-egg-dato')} etter at egget ble lagt.`,
-      `«Best før» er en veiledning om hvor lenge kvaliteten holder seg i uåpnet pakke, og «best før» betyr ofte god etter (${h.kp('mt-merking')}). Bruk sansene: se, lukt og smak.`,
+      `«Best før» er en veiledning om hvor lenge kvaliteten holder seg i uåpnet pakke, og maten er ofte god etter datoen (${h.kp('mt-merking')}). Bruk sansene: se, lukt og smak.`,
       'Gravide, personer med nedsatt immunforsvar og eldre skjøre personer skal alltid følge kostrådene, skriver Mattilsynet.',
       KJOL(h),
     ],
     tabell: {
-      tittel: 'Egg i kjøleskapet', kilde: 'mp-kjoleskap', intro: `${h.k('mp-kjoleskap')} oppgir disse tidene i kjøleskapet:`,
+      tittel: 'Så lenge holder egg seg', kilde: 'mp-kjoleskap', intro: `${h.k('mp-kjoleskap')} oppgir disse tidene i kjøleskapet:`,
       kolonner: ['Egg', 'Holdbarhet'],
       rader: [['Hele, rå egg', 'hele'], ['Eggeplommer og eggemasse', 'plommer'], ['Eggehviter', 'hviter']],
       etter: [
+        `De to tallene på denne siden svarer på ulike spørsmål. Tallet fra Mattilsynet, høyst ${h.t('mt-egg-dato')} etter legging, gjelder «best før»-datoen på kartongen, altså hvor lenge kvaliteten holder seg i uåpnet pakke (${h.kp('mt-merking')}). Tallet fra ${h.k('mp-kjoleskap')}, ${h.t('hele')}, gjelder hvor lenge hele, rå egg holder seg i kjøleskapet.`,
         `${h.k('mp-egg')} skriver at norske egg er holdbare og trygge langt ut over datoen på kartongen, så lenge de oppbevares kjølig. Spisekvaliteten går likevel ned etter hvert.`,
         `Ha eggene i kartongen. Den beskytter mot støt og mot lukt fra andre matvarer, skriver ${h.k('mp-kjoleskap')}.`,
       ],
     },
     faq: [
-      ['Kan man spise egg etter best før-datoen?', `Ja, ifølge ${h.k('mp-egg')} er norske egg trygge langt ut over datoen så lenge de er oppbevart kjølig. Mattilsynet ber deg bruke sansene etter «best før».`],
+      ['Kan man spise egg etter best før-datoen?', `Ja. Mattilsynet skriver at maten ofte er god etter «best før», og ber deg bruke sansene. ${h.k('mp-egg')} skriver at norske egg er trygge langt ut over datoen så lenge de er oppbevart kjølig.`],
       ['Hvor lenge holder eggeplommer seg i kjøleskapet?', `${h.t('plommer')}, ifølge ${h.k('mp-kjoleskap')}. Eggehviter holder seg ${h.t('hviter')}.`],
       ['Må egg stå i kjøleskapet?', `${h.k('mp-egg')} skriver at egg holder seg fint i minst en uke på benken hvis du bruker mye egg. Bruker du egg sjelden, bør de stå i kartongen i kjøleskapet.`],
     ],
@@ -46,11 +47,11 @@ export const TEKST = {
     ord: 'kokte egg',
     title: 'Hvor lenge holder kokte egg seg i kjøleskapet?',
     h1: 'Hvor lenge holder kokte egg seg i kjøleskapet?',
-    description: `Hardkokte egg holder seg ${h.t('hardkokte')} i kjøleskapet, og eggeretter like lenge, ifølge ${h.k('mp-kjoleskap')}. Med Mattilsynets råd om rask nedkjøling.`,
+    description: `Mattilsynet ber deg kjøle ned maten raskt. Hardkokte egg holder seg ${h.t('hardkokte')} i kjøleskapet, og eggeretter like lenge, ifølge ${h.k('mp-kjoleskap')}.`,
     lead: `Kjøl ned maten raskt, og hold kjøleskapet under ${h.t('mt-kjol')}, sier Mattilsynet. Hardkokte egg holder seg ${h.t('hardkokte')} i kjøleskapet, ifølge ${h.k('mp-kjoleskap')}.`,
     mattilsynet: [HJEMME(h), AVKJOL(h), KJOL(h)],
     tabell: {
-      tittel: 'Kokte egg i kjøleskapet', kilde: 'mp-kjoleskap', intro: `${h.k('mp-kjoleskap')} oppgir disse tidene:`,
+      tittel: 'Så lenge holder kokte egg seg', kilde: 'mp-kjoleskap', intro: `${h.k('mp-kjoleskap')} oppgir disse tidene i kjøleskapet:`,
       kolonner: ['', POSE, 'Vakuumpakket'],
       rader: [['Hardkokte egg', 'hardkokte', null], ['Eggeretter', 'eggeretter-pose', 'eggeretter-vakuum']],
     },
@@ -66,7 +67,7 @@ export const TEKST = {
     ord: 'ris og pasta',
     title: 'Hvor lenge holder kokt ris og pasta seg i kjøleskapet?',
     h1: 'Hvor lenge holder kokt ris og pasta seg i kjøleskapet?',
-    description: `Kokt ris og pasta holder seg ${h.t('ris')} i kjøleskapet hvis du kjøler den raskt ned, ifølge ${h.k('mp-ris')}. Mattilsynet sier hvorfor den ikke skal stå fremme.`,
+    description: `Kokt ris og pasta skal ikke stå i romtemperatur, sier Mattilsynet. Kjøler du maten raskt ned, holder den seg ${h.t('ris')} i kjøleskapet, ifølge ${h.k('mp-ris')}.`,
     lead: `Ikke la kokt ris og pasta stå i romtemperatur, sier Mattilsynet. Kjøler du maten raskt ned, holder den seg ${h.t('ris')} i kjøleskapet, ifølge ${h.k('mp-ris')}.`,
     mattilsynet: [
       `${h.k('mt-ris')} skriver at du ikke bør oppbevare kokt ris eller kokt pasta i romtemperatur. Når risen står i romtemperatur (over ${h.t('mt-ris-rom')}), kan bakterien Bacillus cereus, som har overlevd kokingen, vokse og lage giftstoffer.`,
@@ -75,7 +76,7 @@ export const TEKST = {
       AVKJOL(h),
     ],
     tabell: {
-      tittel: 'Ris og pasta i kjøleskapet', kilde: 'mp-ris', intro: `${h.k('mp-ris')} oppgir denne tiden:`,
+      tittel: 'Så lenge holder kokt ris og pasta seg', kilde: 'mp-ris', intro: `${h.k('mp-ris')} oppgir denne tiden i kjøleskapet:`,
       kolonner: ['', 'Holdbarhet'],
       rader: [['Kokt ris og pasta, raskt nedkjølt', 'ris']],
     },
@@ -91,16 +92,16 @@ export const TEKST = {
     ord: 'kjøttdeig og kylling',
     title: 'Hvor lenge holder kjøttdeig og kylling seg i kjøleskapet?',
     h1: 'Hvor lenge holder kjøttdeig og kylling seg i kjøleskapet?',
-    description: `Kjøttdeig og rå kylling holder seg ${h.t('kjottdeig-pose')} i kjøleskapet og ${h.t('kjottdeig-vakuum')} vakuumpakket, ifølge ${h.k('mp-kjoleskap')}. Datoen på pakken gjelder først.`,
-    lead: `Hold kjøleskapet under ${h.t('mt-kjol')}, sier Mattilsynet. Kjøttdeig og rå kylling holder seg ${h.t('kylling-pose')} i kjøleskapet, og ${h.t('kylling-vakuum')} vakuumpakket, ifølge ${h.k('mp-kjoleskap')}.`,
+    description: `Kjøttdeig og rå kylling holder seg ${h.t('kjottdeig-pose')} i kjøleskapet, eller ${h.t('kjottdeig-vakuum')} hvis de er vakuumpakket, ifølge ${h.k('mp-kjoleskap')}. Datoen på pakken gjelder først.`,
+    lead: `Følg datoen på pakken, sier Mattilsynet. I kjøleskapet holder kjøttdeig og rå kylling seg ${h.t('kylling-pose')} i pose, skål eller kartong og ${h.t('kylling-vakuum')} vakuumpakket, ifølge ${h.k('mp-kjoleskap')}.`,
     mattilsynet: [
       SISTE(h),
-      'Rått kjøtt kan inneholde smittestoffer. Hold det adskilt fra mat som er kokt eller klar til å spises, og pakk det godt inn så det ikke renner av.',
+      'Rått kjøtt kan inneholde smittestoffer. Hold det adskilt fra mat som er kokt eller spiseklar, og pakk det godt inn så det ikke renner av.',
       `Kjøttdeig og fjærfe bør stekes gjennom (${h.kp('mt-kjokken')}).`,
       KJOL(h),
     ],
     tabell: {
-      tittel: 'Kjøttdeig og kylling i kjøleskapet', kilde: 'mp-kjoleskap', intro: `${h.k('mp-kjoleskap')} oppgir disse tidene:`,
+      tittel: 'Så lenge holder kjøttdeig og kylling seg', kilde: 'mp-kjoleskap', intro: `${h.k('mp-kjoleskap')} oppgir disse tidene i kjøleskapet:`,
       kolonner: ['', POSE, 'Vakuumpakket'],
       rader: [['Kjøttdeig, karbonadedeig og medisterdeig', 'kjottdeig-pose', 'kjottdeig-vakuum'], ['Rå kylling og kalkun', 'kylling-pose', 'kylling-vakuum']],
       etter: [`Legg rått kjøtt, kylling og kjøttdeig nederst i kjøleskapet, der det er kaldest, skriver ${h.k('mp-kjoleskap')}.`],
@@ -110,7 +111,7 @@ export const TEKST = {
       ['Hvor lenge holder tint kjøttdeig seg i kjøleskapet?', TINT(h)],
       ['Er kyllingen dårlig hvis pakken lukter vondt?', `Ikke nødvendigvis. ${h.k('mt-kylling')} skriver at gassen i pakken kan lukte ubehagelig når du åpner den, men at lukta skal forsvinne med en gang. Lukter kjøttet fortsatt tydelig og skarpt lenge etter at pakken er åpnet, kan det være surt eller skjemt.`],
     ],
-    soster: ['/frysing/kjottdeig-og-kylling/', 'Hvor lenge holder kjøttdeig og kylling i fryseren?'],
+    soster: ['/frysing/kjottdeig-og-kylling/', 'Hvor lenge kan kjøttdeig og kylling ligge i fryseren?'],
     andre: [['/holdbarhet/kjott/', 'Hvor lenge holder kjøtt seg?']],
   }),
 
@@ -119,14 +120,14 @@ export const TEKST = {
     title: 'Hvor lenge holder kjøtt seg i kjøleskapet?',
     h1: 'Hvor lenge holder kjøtt seg i kjøleskapet?',
     description: `Biff, stek, pølser og spekepølse: hvor lenge kjøttet holder seg i kjøleskapet, i pose og vakuumpakket, ifølge ${h.k('mp-kjoleskap')}. Datoen på pakken gjelder først.`,
-    lead: `Hold kjøleskapet under ${h.t('mt-kjol')}, sier Mattilsynet. Biff og koteletter holder seg ${h.t('biff-pose')} i kjøleskapet og ${h.t('biff-vakuum')} vakuumpakket, ifølge ${h.k('mp-kjoleskap')}.`,
+    lead: `Mattilsynet ber deg følge datoen og rådene på pakken. I kjøleskapet holder biff og koteletter seg ${h.t('biff-pose')} i pose, skål eller kartong og ${h.t('biff-vakuum')} vakuumpakket, ifølge ${h.k('mp-kjoleskap')}.`,
     mattilsynet: [
       SISTE(h),
       `Vakuumpakket kjøtt kan lukte litt akkurat når du åpner pakken, uten at det er dårlig (${h.kp('mt-merking')}). Lukta skal forsvinne med en gang, med mindre varen er skjemt (${h.kp('mt-kylling')}).`,
       KJOL(h),
     ],
     tabell: {
-      tittel: 'Kjøtt i kjøleskapet', kilde: 'mp-kjoleskap', intro: `${h.k('mp-kjoleskap')} oppgir disse tidene:`,
+      tittel: 'Så lenge holder kjøtt seg', kilde: 'mp-kjoleskap', intro: `${h.k('mp-kjoleskap')} oppgir disse tidene i kjøleskapet:`,
       kolonner: ['', POSE, 'Vakuumpakket'],
       rader: [
         ['Stek, grytekjøtt og kjøtt til koking', 'stek-pose', 'stek-vakuum'],
@@ -160,7 +161,7 @@ export const TEKST = {
       KJOL(h),
     ],
     tabell: {
-      tittel: 'Skalldyr i kjøleskapet', kilde: 'mp-fisk', intro: `${h.k('mp-fisk')} oppgir denne tiden ved vanlig kjøleskapstemperatur:`,
+      tittel: 'Så lenge holder skalldyr seg', kilde: 'mp-fisk', intro: `${h.k('mp-fisk')} oppgir denne tiden ved vanlig kjøleskapstemperatur:`,
       kolonner: ['', 'Holdbarhet'],
       rader: [['Skalldyr', 'skalldyr']],
       etter: [`${h.k('mp-fisk')} skriver også at friske skalldyr bør varmebehandles så raskt som mulig.`],
@@ -185,10 +186,10 @@ export const TEKST = {
       KJOL(h),
     ],
     tabell: {
-      tittel: 'Rester i kjøleskapet', kilde: 'mt-oppbevaring', intro: `${h.k('mt-oppbevaring')} oppgir denne tiden:`,
+      tittel: 'Så lenge holder restemat seg', kilde: 'mt-oppbevaring', intro: `${h.k('mt-oppbevaring')} oppgir denne tiden i kjøleskapet:`,
       kolonner: ['', 'Holdbarhet'],
       rader: [['Restemat', 'rester']],
-      etter: [`${h.k('mp-kjoleskap')} oppgir en lengre tid for middagsrester. Den bruker vi ikke, fordi den strider mot Mattilsynet.`],
+      etter: [`${h.k('mp-kjoleskap')} oppgir en lengre tid for middagsrester. Her bruker vi Mattilsynets tid.`],
     },
     faq: [
       ['Hvor lenge kan mat stå ute?', `${h.k('mt-oppbevaring')} skriver at mat bør kjøles ned og settes i kjøleskapet innen cirka to timer, enten det er rester, takeaway eller mat du nettopp har kjøpt.`],
@@ -220,17 +221,17 @@ export function nav({ data, rader, sti, h, tabell, p, esc }) {
   const avvist = data.rader.filter((r) => r.status === 'avvist');
   const rest = rester ? h(rester) : null;
   return {
-    title: 'Holdbarhet i kjøleskapet: tabell med kilder',
+    title: 'Hvor lenge holder maten seg i kjøleskapet? Tabell med kilder',
     h1: 'Hvor lenge holder maten seg i kjøleskapet?',
     description: 'Hvor lenge holder egg, kjøttdeig, kylling, ris og rester seg i kjøleskapet? Tider med kilde og lesedato på hvert tall, og Mattilsynets råd først.',
     lead: `Hold kjøleskapet under ${forste.t('mt-kjol')}, sier Mattilsynet. Her er hvor lenge vanlige varer holder seg i kjøleskapet, med kilde på hvert tall.`,
     rik: [
       `<h2>Dette sier Mattilsynet</h2>${p([
-        `${forste.k('mt-oppbevaring')} anbefaler at kjøleskapet holder under ${forste.t('mt-kjol')}.`,
+        `${forste.k('mt-oppbevaring')} anbefaler at temperaturen i kjøleskapet er under ${forste.t('mt-kjol')}.`,
         rest ? `Restemat holder seg ${rest.t('rester')} i kjøleskapet. Bruk sansene før du spiser den.` : '',
         `Følg datoen og rådene på emballasjen (${forste.kp('mt-matsvinn')}). Holdbarhetsdatoen gjelder bare når varen er uåpnet og oppbevart riktig, og varer merket «siste forbruksdag» bør du ikke spise etter datoen (${forste.kp('mt-merking')}).`,
       ])}`,
-      `<h2>Tider i kjøleskapet</h2><p>Trykk på en vare for flere tider, råd og kilder. Kilden står i siste kolonne.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Tider i kjøleskapet"><table class="sprik"><thead><tr><th scope="col">Vare</th><th scope="col">I pose, skål eller kartong</th><th scope="col">Vakuumpakket</th><th scope="col">Kilde</th></tr></thead><tbody>${radene}</tbody></table></div>`,
+      `<h2>Tider for hver vare</h2><p>Trykk på en vare for flere tider, råd og kilder. Kilden står i siste kolonne.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Tider i kjøleskapet"><table class="sprik"><thead><tr><th scope="col">Vare</th><th scope="col">I pose, skål eller kartong</th><th scope="col">Vakuumpakket</th><th scope="col">Kilde</th></tr></thead><tbody>${radene}</tbody></table></div>`,
       avvist.length ? `<h2>Dette er ikke med</h2><p>Vi tar bare med en tid når kildene er enige. Disse varene har derfor ingen egen side:</p><ul>${avvist.map((r) => `<li><strong>${esc(r.navn)}.</strong> ${esc(r.tekst.grunn)}</li>`).join('')}</ul>` : '',
       '<div class="related"><h2>Les også</h2><ul><li><a href="/frysing/">Hvor lenge kan mat ligge i fryseren?</a></li></ul></div>',
     ].filter(Boolean).join('\n'),
