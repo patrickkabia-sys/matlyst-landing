@@ -1,0 +1,703 @@
+{
+  "familie": "holdbarhet",
+  "marked": "da",
+  "kilder": {
+    "fvst-koel": {
+      "navn": "Køl mad hurtigt ned i hjemmet",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/koel-mad-hurtigt-ned",
+      "hentet": "2026-11-21"
+    },
+    "fvst-opbevar": {
+      "navn": "Opbevar mad korrekt: Sådan holder dine fødevarer sig friske",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/madspild-i-hjemmet/opbevar-maden-korrekt",
+      "hentet": "2026-11-21"
+    },
+    "fvst-vurder": {
+      "navn": "Sådan vurderer du madens holdbarhed og undgår madspild",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/madspild-i-hjemmet/vurder-madens-holdbarhed",
+      "hentet": "2026-11-21"
+    },
+    "fvst-varm": {
+      "navn": "Varm mad ordentligt op i private hjem",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/varm-mad-ordentligt-op",
+      "hentet": "2026-11-21"
+    },
+    "taenk-holdbarhed": {
+      "navn": "Opbevar din mad, så den holder længere",
+      "utgiver": "Forbrugerrådet Tænk",
+      "aar": 2025,
+      "adresse": "https://taenk.dk/forbrugerliv/mad-og-indkoeb/holdbarhed-opbevar-din-mad-saa-den-holder-laengere",
+      "hentet": "2026-11-21"
+    },
+    "tek-sikker": {
+      "navn": "Sikker tilberedning af grise- og oksekød",
+      "utgiver": "Teknologisk Institut",
+      "aar": 2021,
+      "adresse": "https://www.teknologisk.dk/_/media/82225_15405_produktark-sikker-tilberedning_web.pdf",
+      "hentet": "2026-11-21"
+    },
+    "arla-flode": {
+      "navn": "Kan man fryse fløde?",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://arla.dk/produkter/flode/artikler/kan-man-fryse-flode",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "egg",
+      "slug": "aeg",
+      "navn": "Æg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "uger-min": {
+          "verdi": 3,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Æg skal du opbevare i køleskab og kan holde 3-4 uger."
+        },
+        "uger-maks": {
+          "verdi": 4,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Æg skal du opbevare i køleskab og kan holde 3-4 uger."
+        }
+      },
+      "tekst": {
+        "liste": "fvst-opbevar|Frisk pasta Æg Brød (risikere dog at blive tørt)",
+        "sanser": "taenk-holdbarhed|Æg kan ofte holde sig længere tid end datomærkningen. Brug dine sanser, for at tjekke, om du kan spise ægget.",
+        "bedstfoer": "taenk-holdbarhed|\"Bedst før\"-datoen betyder, at maden har en vis kvalitet indtil denne dato, hvis den er uåbnet og opbevaret rigtigt."
+      }
+    },
+    {
+      "id": "hakket-koed",
+      "slug": "hakket-koed",
+      "navn": "Hakket kød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "dage": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Hakket kød kan holde sig op til 4 dage i køleskab."
+        }
+      },
+      "tekst": {
+        "pakning": "taenk-holdbarhed|Hakkekød skal du opbevare i køleskab i original eller en lufttæt pakning.",
+        "dato": "taenk-holdbarhed|Tjek datomærkningen for at se, hvor længe kødet holder.",
+        "bakterier": "fvst-varm|Hakket kød og småkød indeholder nemlig bakterier overalt",
+        "sidste": "taenk-holdbarhed|Mærket ”sidste anvendelsesdato” bruges på mad, som du kan blive syg af at spise, hvis datoen er overskredet."
+      }
+    },
+    {
+      "id": "rester",
+      "slug": "rester",
+      "navn": "Rester",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "tilb-min": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+        },
+        "tilb-maks": {
+          "verdi": 6,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+        },
+        "tek": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "tek-sikker",
+          "merknad": "opbevar det ved maks. 5°C i op til 5 dage"
+        },
+        "vaekst": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "fvst-varm",
+          "merknad": "Kommer temperaturen under 65°C, kan bakterier vokse"
+        }
+      },
+      "tekst": {
+        "rester5": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "portioner": "fvst-koel|Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned.",
+        "varm": "fvst-varm|Maden skal være varmet helt igennem ved høj varme.",
+        "lufttaet": "taenk-holdbarhed|Tilberedt kød, der er stegt eller kogt, skal opbevares i køleskabet i en pose eller en anden lufttæt emballage."
+      }
+    },
+    {
+      "id": "fisk",
+      "slug": "fisk",
+      "navn": "Frisk fisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "max2": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Frisk fisk skal opbevares koldt ved max 2 grader."
+        },
+        "fem": {
+          "verdi": 1,
+          "enhet": "døgn",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Opbevarer du fisken ved 5 grader, som er en typisk køleskabstemperatur, kan fisken kun holde sig i 1 døgn."
+        }
+      },
+      "tekst": {
+        "fiskehandler": "taenk-holdbarhed|Fisk, du køber hos fiskehandleren, skal spises samme dag.",
+        "skaldyr": "taenk-holdbarhed|Skaldyr skal du spise samme dag eller senest dagen efter.",
+        "sidste2": "taenk-holdbarhed|Vær opmærksom på, at \"sidste anvendelsesdato\" typisk kun gælder, hvis du opbevarer fisken ved 2 grader.",
+        "skaaret": "taenk-holdbarhed|Fisk holder kortere tid, når det er skåret op eller hakket, fordi bakterier så får et større område at formere sig på."
+      }
+    },
+    {
+      "id": "roeget-fisk",
+      "slug": "roeget-fisk",
+      "navn": "Røget og gravad fisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "makrel-min": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget makrel og sild holder 4-8 dage efter åbning, alt efter hvor friskrøget fisken er."
+        },
+        "makrel-maks": {
+          "verdi": 8,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget makrel og sild holder 4-8 dage efter åbning, alt efter hvor friskrøget fisken er."
+        },
+        "laks-min": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget laks holder 2-3 dage efter åbning, mens gravad laks kun holder 1-2 dage."
+        },
+        "laks-maks": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget laks holder 2-3 dage efter åbning, mens gravad laks kun holder 1-2 dage."
+        },
+        "gravad-min": {
+          "verdi": 1,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget laks holder 2-3 dage efter åbning, mens gravad laks kun holder 1-2 dage."
+        },
+        "gravad-maks": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget laks holder 2-3 dage efter åbning, mens gravad laks kun holder 1-2 dage."
+        },
+        "sild-min": {
+          "verdi": 8,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Marinerede sild holder 8-10 dage, når glasset er åbnet."
+        },
+        "sild-maks": {
+          "verdi": 10,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Marinerede sild holder 8-10 dage, når glasset er åbnet."
+        },
+        "konserves-min": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fiskekonserves holder 2-3 dage i køleskabet."
+        },
+        "konserves-maks": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fiskekonserves holder 2-3 dage i køleskabet."
+        }
+      },
+      "tekst": {
+        "laenger": "taenk-holdbarhed|Røget, saltet og varmebehandlet fisk kan holde sig lidt længere end fersk fisk i køleskabet. Undtagelsen er gravad fisk, som har meget kort holdbarhed.",
+        "daase": "taenk-holdbarhed|Når dåsen er åbnet, kan metallet nemlig afgive uønskede stoffer til maden."
+      }
+    },
+    {
+      "id": "ost",
+      "slug": "ost",
+      "navn": "Ost",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "haard-min": {
+          "verdi": 3,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Skæreoste og parmesanost opbevarer du bedst i madpapir eller voksbehandlet papir i en plastikboks eller pose. Ostene kan holde 3-4 uger i køleskab."
+        },
+        "haard-maks": {
+          "verdi": 4,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Skæreoste og parmesanost opbevarer du bedst i madpapir eller voksbehandlet papir i en plastikboks eller pose. Ostene kan holde 3-4 uger i køleskab."
+        },
+        "blod-min": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Camembert, brie, skimmelost, feta, smøreost og hytteost kan holde sig i køleskab i 4-5 dage."
+        },
+        "blod-maks": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Camembert, brie, skimmelost, feta, smøreost og hytteost kan holde sig i køleskab i 4-5 dage."
+        }
+      },
+      "tekst": {
+        "papir": "taenk-holdbarhed|Skæreoste og parmesanost opbevarer du bedst i madpapir eller voksbehandlet papir i en plastikboks eller pose.",
+        "osten": "taenk-holdbarhed|Holdbarheden er dog afhængig af, at du opbevarer maden rigtigt og fx ikke kommer til at bruge en beskidt teske i syltetøjet eller røre ved selve osten, når du skærer den."
+      }
+    },
+    {
+      "id": "melk",
+      "slug": "maelk",
+      "navn": "Mælk og mælkeprodukter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "maelk-min": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Mælk skal opbevares i køleskab og kan holde 3-4 dage, når den er åbnet."
+        },
+        "maelk-maks": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Mælk skal opbevares i køleskab og kan holde 3-4 dage, når den er åbnet."
+        },
+        "floede-min": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fløde skal du opbevare på køl, hvor det kan holde sig 3-4 dage efter åbning."
+        },
+        "floede-maks": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fløde skal du opbevare på køl, hvor det kan holde sig 3-4 dage efter åbning."
+        },
+        "floede-arla-min": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "arla-flode",
+          "merknad": "Holdbarheden på fløde er 3-4 dage i køleskabet, efter emballagen er åbnet."
+        },
+        "floede-arla-maks": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "arla-flode",
+          "merknad": "Holdbarheden på fløde er 3-4 dage i køleskabet, efter emballagen er åbnet."
+        },
+        "yoghurt-min": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Yoghurt, skyr, cremefraiche, ymer, ylette, tykmælk og andre surmælksprodukter kan holde 5-6 dage i køleskab efter åbning."
+        },
+        "yoghurt-maks": {
+          "verdi": 6,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Yoghurt, skyr, cremefraiche, ymer, ylette, tykmælk og andre surmælksprodukter kan holde 5-6 dage i køleskab efter åbning."
+        },
+        "smor-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Smør og margarine skal opbevares i køleskab, og de kan holde sig i 2-3 måneder."
+        },
+        "smor-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Smør og margarine skal opbevares i køleskab, og de kan holde sig i 2-3 måneder."
+        },
+        "produkt3": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "fvst-vurder",
+          "merknad": "Har producenten fx mærket produktet med \"åben: 3 dage i køleskab ved 5 grader\", så kan fødevaren kun holde sig 3 dage efter åbning, og den skal være opbevaret i køleskab ved 5 grader."
+        }
+      },
+      "tekst": {
+        "indpakket": "taenk-holdbarhed|De skal pakkes ind, så lys, varme og ilt bliver udelukket, og så de ikke optager smag fra andre madvarer.",
+        "producent": "fvst-vurder|Har producenten fx mærket produktet med \"åben: 3 dage i køleskab ved 5 grader\", så kan fødevaren kun holde sig 3 dage efter åbning, og den skal være opbevaret i køleskab ved 5 grader."
+      }
+    },
+    {
+      "id": "palegg",
+      "slug": "paalaeg",
+      "navn": "Pålæg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "skinke-min": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Pålæg som skinke og rullepølse kan holde sig 2-4 dage i køleskabet, efter emballagen er brudt."
+        },
+        "skinke-maks": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Pålæg som skinke og rullepølse kan holde sig 2-4 dage i køleskabet, efter emballagen er brudt."
+        },
+        "spege": {
+          "verdi": 14,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Pølsen holder sig cirka 14 dage i køleskab efter åbning."
+        },
+        "postej-min": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Leverpostej skal opbevares i køleskab i den originale emballage med en plastpose om. Den kan holde sig 4-6 dage i køleskabet efter åbnin"
+        },
+        "postej-maks": {
+          "verdi": 6,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Leverpostej skal opbevares i køleskab i den originale emballage med en plastpose om. Den kan holde sig 4-6 dage i køleskabet efter åbnin"
+        }
+      },
+      "tekst": {
+        "roeget": "taenk-holdbarhed|Røget og tørret pålæg kan holde længere.",
+        "spegepolse": "taenk-holdbarhed|Spegepølse opbevarer du bedst i køleskab pakket ind i madpapir, så den holder sig tør.",
+        "sidste": "taenk-holdbarhed|Kød - både fersk kød og kødpålæg"
+      }
+    },
+    {
+      "id": "groentsager",
+      "slug": "groentsager",
+      "navn": "Grøntsager",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "agurk": {
+          "verdi": 1,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Agurken holder cirka 1 uge."
+        },
+        "gulerod-min": {
+          "verdi": 2,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Opbevar gulerødder i en pose med hul i køleskabet. Der kan de holde i 2-3 uger."
+        },
+        "gulerod-maks": {
+          "verdi": 3,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Opbevar gulerødder i en pose med hul i køleskabet. Der kan de holde i 2-3 uger."
+        },
+        "salat": {
+          "verdi": 1,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Salathovedet skal skylles, suge lidt væde, dryppes af og lægges i en pose i køleskabet, hvor det kan holde sig 1 uge."
+        },
+        "champignon": {
+          "verdi": 1,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Champignoner holder længst i deres indpakning i køleskab, hvor de holder sig cirka 1 uge."
+        },
+        "peber-min": {
+          "verdi": 1,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Peberfrugter skal du opbevare i køleskabet i en plastpose eller en genanvendelig beholder, hvor de kan holde sig i 1-2 uger."
+        },
+        "peber-maks": {
+          "verdi": 2,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Peberfrugter skal du opbevare i køleskabet i en plastpose eller en genanvendelig beholder, hvor de kan holde sig i 1-2 uger."
+        },
+        "blomkaal": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Blomkål holder sig cirka 1 måned i en plastpose eller genanvendelig beholder i køleskabet."
+        },
+        "asparges-min": {
+          "verdi": 1,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Asparges kan holde sig 1-2 uger i en pose eller en genanvendelig beholder i køleskabet."
+        },
+        "asparges-maks": {
+          "verdi": 2,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Asparges kan holde sig 1-2 uger i en pose eller en genanvendelig beholder i køleskabet."
+        },
+        "ingefaer-min": {
+          "verdi": 2,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Ingefær kan holde 2-3 uger i en plastpose eller anden beholder i køleskabet."
+        },
+        "ingefaer-maks": {
+          "verdi": 3,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Ingefær kan holde 2-3 uger i en plastpose eller anden beholder i køleskabet."
+        },
+        "urter-min": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Afskårne krydderurter opbevarer du bedst i køleskabet i en pose og kan holde sig 3-5 dage."
+        },
+        "urter-maks": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Afskårne krydderurter opbevarer du bedst i køleskabet i en pose og kan holde sig 3-5 dage."
+        },
+        "kartofler-min": {
+          "verdi": 8,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kartofler skal du opbevare mørkt og køligt ved 8-10 grader for eksempel i en kølig kælder eller på bagtrappen."
+        },
+        "kartofler-maks": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kartofler skal du opbevare mørkt og køligt ved 8-10 grader for eksempel i en kølig kælder eller på bagtrappen."
+        },
+        "peber-temp-min": {
+          "verdi": 7,
+          "enhet": "°C",
+          "kilde": "fvst-opbevar",
+          "merknad": "Peberfrugter (dog helst 7-10 grader)"
+        },
+        "peber-temp-maks": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "fvst-opbevar",
+          "merknad": "Peberfrugter (dog helst 7-10 grader)"
+        }
+      },
+      "tekst": {
+        "ikke-datomaerket": "taenk-holdbarhed|Frugt og grønt er ikke datomærket, da det er svært at angive en præcis holdbarhed.",
+        "kemi": "fvst-opbevar|Hold øje med, at temperaturen i køleskabet er 5 °C."
+      }
+    },
+    {
+      "id": "baer",
+      "slug": "baer",
+      "navn": "Bær",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "jordbaer-min": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Men de kan holde sig 2-3 dage i køleskabet ved 2-6 grader."
+        },
+        "jordbaer-maks": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Men de kan holde sig 2-3 dage i køleskabet ved 2-6 grader."
+        },
+        "jordbaer-temp-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Men de kan holde sig 2-3 dage i køleskabet ved 2-6 grader."
+        },
+        "jordbaer-temp-maks": {
+          "verdi": 6,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Men de kan holde sig 2-3 dage i køleskabet ved 2-6 grader."
+        },
+        "hindbaer-min": {
+          "verdi": 1,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Hindbær opbevarer du bedst i den originale indpakning i køleskabet. De kan holde sig 1-2 dage."
+        },
+        "hindbaer-maks": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Hindbær opbevarer du bedst i den originale indpakning i køleskabet. De kan holde sig 1-2 dage."
+        },
+        "blaabaer-min": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "De kan holde sig 5-7 dage ved en temperatur på 2-4 grader."
+        },
+        "blaabaer-maks": {
+          "verdi": 7,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "De kan holde sig 5-7 dage ved en temperatur på 2-4 grader."
+        },
+        "blaabaer-temp-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "De kan holde sig 5-7 dage ved en temperatur på 2-4 grader."
+        },
+        "blaabaer-temp-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "De kan holde sig 5-7 dage ved en temperatur på 2-4 grader."
+        },
+        "kirsebaer-min": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kirsebær kan holde sig i 2-3 dage."
+        },
+        "kirsebaer-maks": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kirsebær kan holde sig i 2-3 dage."
+        },
+        "ribs-min": {
+          "verdi": 1,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Opbevar ribs i køleskabet - de kan holde sig i 1-2 dage."
+        },
+        "ribs-maks": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Opbevar ribs i køleskabet - de kan holde sig i 1-2 dage."
+        },
+        "brombaer-min": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "De kan holde sig 2-3 dage ved en temperatur på 2-4 grader."
+        },
+        "brombaer-maks": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "De kan holde sig 2-3 dage ved en temperatur på 2-4 grader."
+        }
+      },
+      "tekst": {
+        "spis-samme-dag": "taenk-holdbarhed|Jordbær skal du helst spise samme dag, du køber dem.",
+        "indpakning": "taenk-holdbarhed|Hindbær opbevarer du bedst i den originale indpakning i køleskabet."
+      }
+    }
+  ]
+}

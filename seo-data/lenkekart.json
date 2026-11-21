@@ -98,5 +98,24 @@
         "planlagt": []
       }
     }
+  },
+  "da": {
+    "hubber": {
+      "spiskammer": {
+        "hub": "/da/spisekammer-app/",
+        "eiker": [
+          "/da/holdbarhed/",
+          "/da/kan-man-fryse/"
+        ],
+        "planlagt": []
+      },
+      "referanse": {
+        "hub": "/da/blog/",
+        "eiker": [
+          "/da/kernetemperatur/"
+        ],
+        "planlagt": []
+      }
+    }
   }
 }

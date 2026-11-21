@@ -126,6 +126,172 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/easy-dinner/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/sv/frysa/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kan-man-fryse/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/agg/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/egg/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/agg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/can-you-freeze/eggs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/can-you-freeze/eggs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/brod/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/brod/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/brod/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kan-man-fryse/broed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/frysing/brod/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/fisk/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/fisk/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/fisk/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kan-man-fryse/fisk/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/frysing/fisk/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/frukt-och-gront/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/frukt-og-gronnsaker/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/frukt-och-gront/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kan-man-fryse/frugt-og-groentsager/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/frysing/frukt-og-gronnsaker/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/frysa-om/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/frysa-om/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/frysa/frysa-om/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/gurka-och-sallad/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/gurka-och-sallad/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/frysa/gurka-och-sallad/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/kott/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/kjott/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/kott/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kan-man-fryse/koed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/frysing/kjott/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/kottfars/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/kottfars/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/frysa/kottfars/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/matrester/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/middagsrester/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/matrester/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kan-man-fryse/rester/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/frysing/middagsrester/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/mjolk-och-fil/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/mjolk-och-fil/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/frysa/mjolk-och-fil/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/frysa/ost/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/ost/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/frysa/ost/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kan-man-fryse/ost-og-smoer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/frysing/ost/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/holdbarhed/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/agg/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/egg/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/agg/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/holdbarhed/aeg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/eggs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/eggs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/brod/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/brod/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/hallbarhet/brod/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/elavbrott/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/elavbrott/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/hallbarhet/elavbrott/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/framme/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/framme/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/hallbarhet/framme/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/frukt-och-gront/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/frukt-och-gront/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/hallbarhet/frukt-och-gront/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/hardost/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/hardost/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/hallbarhet/hardost/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/kokt-ris-och-pasta/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/kokt-ris-og-pasta/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/kokt-ris-och-pasta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/holdbarhet/kokt-ris-og-pasta/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/kott/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/kjott/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/kott/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/holdbarhet/kjott/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/kylskapstemperatur/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/kylskapstemperatur/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/hallbarhet/kylskapstemperatur/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/hallbarhet/matrester/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/holdbarhet/rester/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hallbarhet/matrester/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/holdbarhed/rester/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/how-long-does-it-last/leftovers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/how-long-does-it-last/leftovers/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/sv/handskrivna-recept/</loc>
     <lastmod>2026-11-20</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/handskrevne-oppskrifter/"/>
@@ -160,6 +326,60 @@
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/indkoebsliste-app/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/shopping-list/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/shopping-list/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/innertemperatur/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/kjernetemperatur/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kernetemperatur/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/internal-temperature/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/internal-temperature/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/innertemperatur/griskott/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/griskott/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/innertemperatur/griskott/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/innertemperatur/kalkon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/kjernetemperatur/kalkun/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/kalkon/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kernetemperatur/kalkun/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/internal-temperature/turkey/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/internal-temperature/turkey/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/innertemperatur/kottfars/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/kjernetemperatur/kjottdeig/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/kottfars/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kernetemperatur/hakket-koed/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/internal-temperature/ground-beef/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/internal-temperature/ground-beef/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/innertemperatur/kyckling/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/kjernetemperatur/kylling/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/kyckling/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/kernetemperatur/kylling/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/internal-temperature/chicken/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/internal-temperature/chicken/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/innertemperatur/notkott-och-lamm/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/notkott-och-lamm/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/innertemperatur/notkott-och-lamm/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/innertemperatur/vila/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/innertemperatur/vila/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/sv/innertemperatur/vila/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/integritet/</loc>
@@ -235,7 +455,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/skafferi-app/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/spiskammer-app/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/skafferi-app/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/spisekammer-app/"/>
