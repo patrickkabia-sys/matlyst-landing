@@ -52,7 +52,7 @@ const tidsrader = [
   ['Nyttårsdag og romjul', ul(
     `${mt('mt-oppbevaring')} sier at varm, hjemmelaget mat skal kjøles fra ${t('mt-avkjol-fra')} til ${t('mt-avkjol-til')} så raskt som mulig, og senest i løpet av to timer. Del maten i mindre porsjoner, så går det fortere.${tekst('mt-del')}`,
     `Restemat holder seg ${t('mt-rester')} i kjøleskap. Skal du ikke spise den snart, frys den med en gang.${tekst('mt-frys')}`,
-    'Se også <a href="/holdbarhet/rester/">holdbarhet for rester</a> og <a href="/frysing/">hva som kan fryses</a>.')],
+    'Se også <a href="/holdbarhet/rester/">holdbarhet for rester</a> og <a href="/frysing/">hva som kan fryses</a>. Trenger du idéer til restene, finnes <a href="/hva-kan-jeg-lage/">hva kan jeg lage med det du har igjen</a>.')],
 ];
 const tidslinje = tidsrader.map(([naar, hva]) => `<h3>${naar}</h3>${hva}`).join('');
 

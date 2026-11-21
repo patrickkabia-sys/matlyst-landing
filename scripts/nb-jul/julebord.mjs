@@ -48,7 +48,7 @@ const tidsrader = [
     `Spekemat kan stå fremme ${t('sp-fremme')}, så lenge det ikke er veldig varmt eller direkte sollys, ifølge ${mp('mp-spekemat')}.`)],
   ['Dagen etter', ul(
     `${mt('mt-oppbevaring')} sier at restemat holder seg ${t('mt-rester')} i kjøleskap, og at du skal fryse den med en gang hvis du ikke skal spise den snart.${tekst('mt-frys')}`,
-    'Se også <a href="/holdbarhet/rester/">holdbarhet for rester</a> og <a href="/frysing/">hva som kan fryses</a>.')],
+    'Se også <a href="/holdbarhet/rester/">holdbarhet for rester</a> og <a href="/frysing/">hva som kan fryses</a>. Har du ribbe eller pinnekjøtt til overs, se <a href="/hva-kan-jeg-lage/med-ribbe-og-pinnekjott/">hva du kan lage med rester av ribbe og pinnekjøtt</a>.')],
 ];
 const tidslinje = tidsrader.map(([naar, hva]) => `<h3>${naar}</h3>${hva}`).join('');
 
