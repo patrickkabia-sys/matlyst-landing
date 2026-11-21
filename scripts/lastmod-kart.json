@@ -1176,15 +1176,15 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/ground-beef/": {
-  "hash": "a077efcf418916ed",
+  "hash": "c04aaa53ee77e94c",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/ham/": {
-  "hash": "935b5fcf89faf873",
+  "hash": "2d2ca4427885af5c",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/hard-boiled-eggs/": {
-  "hash": "7fa77e0f3dcdd90c",
+  "hash": "e2641a35f9c82eac",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/hot-dogs/": {
@@ -1204,11 +1204,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/raw-chicken/": {
-  "hash": "d9581adf04b0d7b4",
+  "hash": "138974287723d00e",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/salmon/": {
-  "hash": "fd3d3fa222f82f0a",
+  "hash": "132006b36f42cef8",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/shrimp/": {
@@ -1220,11 +1220,75 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/steak/": {
-  "hash": "2488574b5e60a29d",
+  "hash": "5cb10af225cc17e6",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/can-you-freeze/turkey-leftovers/": {
-  "hash": "86ad2e2e520a2e27",
+  "hash": "0fbfd72bfbd8d01a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/": {
+  "hash": "99049886ac6f685c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/brisket-and-pot-roast/": {
+  "hash": "b82e4ecf979512a7",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/chicken-breast/": {
+  "hash": "e2fd3acd8a8c1281",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/chicken-thighs-and-wings/": {
+  "hash": "808277345e18f7c3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/corned-beef/": {
+  "hash": "a6eae2e01965e9ad",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/fried-smoked-grilled-turkey/": {
+  "hash": "14db68fda05de23b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/ham/": {
+  "hash": "3941b78534d287fa",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/hard-boiled-eggs/": {
+  "hash": "6fb2837753035699",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/leg-of-lamb/": {
+  "hash": "39aea1ab8811957a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/pork-roast/": {
+  "hash": "bd0728432da2c22d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/roast-beef/": {
+  "hash": "2b5ec801f317e201",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/thaw-turkey/": {
+  "hash": "3b0db550fdf6cbd1",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/turkey-breast/": {
+  "hash": "62d019c385716366",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/turkey-legs-and-wings/": {
+  "hash": "c01cd99308a36cc0",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/turkey/": {
+  "hash": "9113521c335538cb",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/cooking-times/whole-chicken/": {
+  "hash": "360b4b42a3a76dd6",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/delete-account/": {
@@ -1256,8 +1320,8 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/en/holidays/christmas-dinner/": {
-  "hash": "337cdee7887ebcd3",
-  "dato": "2026-11-19"
+  "hash": "4a799e897e931904",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/holidays/friendsgiving/": {
   "hash": "77a9462ab3faee17",
@@ -1276,8 +1340,8 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/en/holidays/thanksgiving/": {
-  "hash": "6f34429bb71e147c",
-  "dato": "2026-11-19"
+  "hash": "6a55a36cf656f517",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/": {
   "hash": "f90465875ba59412",
@@ -1288,11 +1352,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/casseroles/": {
-  "hash": "16cf6d1ff916229a",
+  "hash": "6ccbc34259c3474d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/cooked-chicken/": {
-  "hash": "851edfdad09fc3fd",
+  "hash": "22b9ea202f6c0fdf",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/cooked-pasta/": {
@@ -1312,19 +1376,19 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/eggs/": {
-  "hash": "3a61d80602bf7f67",
+  "hash": "675b9d52aa43f651",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/ground-beef/": {
-  "hash": "b193bba5b532cd1f",
+  "hash": "31c47466ee22c4f1",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/ham/": {
-  "hash": "bb3bd2f1e0f50113",
+  "hash": "2e6c4bc04629a0a9",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/hard-boiled-eggs/": {
-  "hash": "ad678f0c60df250a",
+  "hash": "c185c5d07c184548",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/hot-dogs/": {
@@ -1332,7 +1396,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/leftovers/": {
-  "hash": "aabde568b2fa7d6b",
+  "hash": "91efdffa6ce91a3a",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/pizza/": {
@@ -1344,11 +1408,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/raw-chicken/": {
-  "hash": "b64b30b92bb3b16f",
+  "hash": "a83f2d133d5567ac",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/salmon/": {
-  "hash": "1e04bf0d15266600",
+  "hash": "53685fe4b5565877",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/shrimp/": {
@@ -1360,11 +1424,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/steak/": {
-  "hash": "e9bef166cc8fb4fe",
+  "hash": "5a4fcea04dd3f267",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/how-long-does-it-last/turkey-leftovers/": {
-  "hash": "b5e1ee0c129ee19a",
+  "hash": "6b1a8e2554c99aa4",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/import-recipes-from-instagram/": {
@@ -1386,6 +1450,70 @@
  "https://matlyst-app.no/en/import-recipes/": {
   "hash": "937716776349a1d9",
   "dato": "2026-11-20"
+ },
+ "https://matlyst-app.no/en/internal-temperature/": {
+  "hash": "78b8abd130805b96",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/chicken/": {
+  "hash": "b67bee6a6e8af5b3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/eggs/": {
+  "hash": "d7623131056758b4",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/ground-beef/": {
+  "hash": "bae0a6408ca6d3d5",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/ground-turkey/": {
+  "hash": "c49e0907303ed41b",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/ham/": {
+  "hash": "56d497cc43cf74fd",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/lamb/": {
+  "hash": "4c152a9b5ed3144a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/leftovers/": {
+  "hash": "d76093248f0ad668",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/meatloaf/": {
+  "hash": "11a94b7d117d4049",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/pork/": {
+  "hash": "4fb6f0da3e685fd4",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/roast-beef/": {
+  "hash": "31759e878b900ca0",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/salmon/": {
+  "hash": "53610fc323bdb2aa",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/sausage/": {
+  "hash": "64f266fe4f0310c9",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/steak/": {
+  "hash": "b2acc74063aec168",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/thermometer/": {
+  "hash": "b4ff97420f5d1e89",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/internal-temperature/turkey/": {
+  "hash": "1dbe95dc7191dc90",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/koket/": {
   "hash": "2e21e57692a28094",
@@ -2424,11 +2552,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/": {
-  "hash": "7badc4ac75c7a37e",
+  "hash": "40a44fcf4dbfb919",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/biff/": {
-  "hash": "62c5e23c6692bd27",
+  "hash": "2a7a669c08f1ca13",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/entrecote/": {
@@ -2436,19 +2564,19 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/kalkun/": {
-  "hash": "5da006e60d60dfc8",
+  "hash": "2a79730635c98106",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/kjottdeig/": {
-  "hash": "c6896d99d7f101ce",
+  "hash": "0af2205d6ee10974",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/kylling/": {
-  "hash": "08062ba4b83fbbd5",
+  "hash": "a0c43c3a9080f95f",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/laks/": {
-  "hash": "1e2a53ac225558ff",
+  "hash": "e8a4ae379dd4ee18",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/lammefilet/": {
@@ -2456,7 +2584,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/lammelar/": {
-  "hash": "17be5378b0f44f78",
+  "hash": "9acf3a52f6fe112a",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/oksefilet/": {
@@ -2464,7 +2592,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/roastbiff/": {
-  "hash": "a4303ac8b24ec2a4",
+  "hash": "3f04c50b8af2ea21",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/svinefilet/": {
@@ -2476,7 +2604,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/svinestek/": {
-  "hash": "a5095a946368d386",
+  "hash": "c14dde7e7e402edf",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/torsk/": {
@@ -2620,7 +2748,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/": {
-  "hash": "196fa457e66ea837",
+  "hash": "5bba7e224d59859b",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/bakt-potet/": {
@@ -2628,19 +2756,19 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/egg/": {
-  "hash": "9707b62bcf6ecc02",
+  "hash": "471fabe16aeb3540",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/hel-kylling/": {
-  "hash": "a076382b27438141",
+  "hash": "5f572f3ab17fd440",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/kalkun/": {
-  "hash": "315b96676e31ff2a",
+  "hash": "e3107eaf8220d14b",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/kyllingfilet/": {
-  "hash": "d7c76fb29ca2016e",
+  "hash": "af5cede195a978a3",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/laks-i-ovn/": {
@@ -2648,7 +2776,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/lammelar/": {
-  "hash": "54edecf3ffa427d9",
+  "hash": "a385efc5536c1e1d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/pinnekjott/": {
@@ -2664,11 +2792,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/roastbiff/": {
-  "hash": "8c66fae63eb9147d",
+  "hash": "eb69f60873762979",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/svinestek/": {
-  "hash": "a51c7421f4b4230d",
+  "hash": "74d4cc0baa6b7926",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/": {

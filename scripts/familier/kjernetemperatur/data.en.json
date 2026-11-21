@@ -1,0 +1,887 @@
+{
+  "familie": "kjernetemperatur",
+  "marked": "en",
+  "kilder": {
+    "fs-chart": {
+      "navn": "Cook to a Safe Minimum Internal Temperature",
+      "utgiver": "FoodSafety.gov (U.S. Department of Health and Human Services)",
+      "aar": 2024,
+      "adresse": "https://www.foodsafety.gov/food-safety-charts/safe-minimum-internal-temperatures",
+      "hentet": "2026-11-21"
+    },
+    "fsis-chart": {
+      "navn": "Safe Minimum Internal Temperature Chart",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "hentet": "2026-11-21"
+    },
+    "fsis-done": {
+      "navn": "Doneness Versus Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/doneness-versus-safety",
+      "hentet": "2026-11-21"
+    },
+    "fsis-thermo": {
+      "navn": "Food Thermometers",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+      "hentet": "2026-11-21"
+    },
+    "fsis-turkey-cook": {
+      "navn": "Turkey Basics: Safe Cooking",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2019,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/turkey-basics-safe-cooking",
+      "hentet": "2026-11-21"
+    },
+    "fsis-thanks": {
+      "navn": "Your Safe Thanksgiving Guide",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2026,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/your-safe-thanksgiving-guide",
+      "hentet": "2026-11-21"
+    },
+    "fsis-pink": {
+      "navn": "Is Pink Turkey Meat Safe?",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/pink-turkey-meat-safe",
+      "hentet": "2026-11-21"
+    },
+    "fsis-holiday": {
+      "navn": "Roasting Those \"Other\" Holiday Meats",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/roasting-those-other-holiday-meats",
+      "hentet": "2026-11-21"
+    },
+    "fsis-hams": {
+      "navn": "Hams and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/hams-and-food-safety",
+      "hentet": "2026-11-21"
+    },
+    "fsis-pork": {
+      "navn": "Fresh Pork from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/fresh-pork-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-beef": {
+      "navn": "Beef from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/beef-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-lamb": {
+      "navn": "Lamb from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/lamb-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-chicken": {
+      "navn": "Chicken from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/poultry/chicken-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-ground": {
+      "navn": "Ground Beef and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat/ground-beef-and-food-safety",
+      "hentet": "2026-11-21"
+    },
+    "fsis-colorgb": {
+      "navn": "Color of Cooked Ground Beef as It Relates to Doneness",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-fish/color-cooked-ground-beef-it-relates",
+      "hentet": "2026-11-21"
+    },
+    "fsis-eggs": {
+      "navn": "Shell Eggs from Farm to Table",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2024,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/eggs/shell-eggs-farm-table",
+      "hentet": "2026-11-21"
+    },
+    "fsis-sausage": {
+      "navn": "Sausages and Food Safety",
+      "utgiver": "USDA Food Safety and Inspection Service",
+      "aar": 2025,
+      "adresse": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/meat-catfish/sausages-and-food-safety",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kylling",
+      "slug": "chicken",
+      "navn": "Chicken",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Chicken, turkey, and other poultry | All: whole bird, breasts, legs, thighs, wings, ground poultry, giblets, sausage, and stuffing inside poultry. / / See USDA's Turkey Thawing Calculator and Turkey Cooking Calculator. | 165°F (74°C)"
+        },
+        "fsis": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "All Poultry (Breasts, Whole Bird, Legs, Thighs, Wings, Ground Poultry, Giblets and Stuffing) | 165 degrees F (73.9 degrees C)"
+        },
+        "fare-min": {
+          "verdi": 40,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "Bacteria multiplies rapidly at temperatures between 40 and 140°F"
+        },
+        "fare-maks": {
+          "verdi": 140,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "Bacteria multiplies rapidly at temperatures between 40 and 140°F"
+        },
+        "varm": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "Eat within 3 to 4 days, either cold or reheated to 165°F."
+        },
+        "dager-min": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-chicken",
+          "merknad": "Eat within 3 to 4 days, either cold or reheated to 165°F."
+        },
+        "dager-maks": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-chicken",
+          "merknad": "Eat within 3 to 4 days, either cold or reheated to 165°F."
+        },
+        "fryst": {
+          "verdi": 50,
+          "enhet": "percent",
+          "kilde": "fsis-chicken",
+          "merknad": "The cooking time may be about 50 percent longer."
+        }
+      },
+      "tekst": {
+        "spots": "fsis-chicken|Check the internal temperature in the innermost part of the thigh and wing and the thickest part of the breast.",
+        "pink": "fsis-chicken|The color of cooked chicken is not a sign of its safety.",
+        "higher": "fsis-chicken|For reasons of personal preference, consumers may choose to cook poultry to higher temperatures.",
+        "pinkwhy": "fsis-chicken|The pink color in safely cooked chicken may be due to the hemoglobin in tissues, which can form a heat-stable color.",
+        "wash": "fsis-chicken|Washing raw poultry before cooking is not recommended because bacteria in raw meat and poultry juices can be spread to other foods, utensils, and surfaces."
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "turkey",
+      "navn": "Turkey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Chicken, turkey, and other poultry | All: whole bird, breasts, legs, thighs, wings, ground poultry, giblets, sausage, and stuffing inside poultry. / / See USDA's Turkey Thawing Calculator and Turkey Cooking Calculator. | 165°F (74°C)"
+        },
+        "fsis": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "All Poultry (Breasts, Whole Bird, Legs, Thighs, Wings, Ground Poultry, Giblets and Stuffing) | 165 degrees F (73.9 degrees C)"
+        },
+        "stuffing": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-turkey-cook",
+          "merknad": "The temperature of the turkey and the center of the stuffing must reach a safe minimum internal temperature of 165 °F."
+        },
+        "hvile": {
+          "verdi": 20,
+          "enhet": "minutes",
+          "kilde": "fsis-turkey-cook",
+          "merknad": "let the bird stand 20 minutes before removing the stuffing and carving the bird to allow juices to set"
+        },
+        "pinkt": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-pink",
+          "merknad": "Turkey can remain pink even after cooking to a safe minimum internal temperature of 165 F."
+        },
+        "fare-min": {
+          "verdi": 40,
+          "enhet": "°F",
+          "kilde": "fsis-thanks",
+          "merknad": "Food that is between the temperatures of 40 degrees F and 140 degrees F is in the Danger Zone"
+        },
+        "fare-maks": {
+          "verdi": 140,
+          "enhet": "°F",
+          "kilde": "fsis-thanks",
+          "merknad": "Food that is between the temperatures of 40 degrees F and 140 degrees F is in the Danger Zone"
+        }
+      },
+      "tekst": {
+        "areas": "fsis-thanks|For a whole turkey, measure in three areas: Thickest part of the breast Innermost part of the wing Innermost part of the thigh.",
+        "bone": "fsis-thanks|Take care to ensure the thermometer does not touch any bones while measuring the temperature, as this will give an inaccurate reading.",
+        "any": "fsis-thanks|Regardless of how it is cooked, the internal temperature of cooked turkey must be a minimum of 165 degrees F.",
+        "smoked": "fsis-pink|The meat of smoked turkey is always pink.",
+        "safe": "fsis-pink|Only by using a food thermometer can one accurately determine that poultry has reached a safe minimum internal temperature of 165 F throughout the product.",
+        "optimum": "fsis-thanks|USDA does not recommend stuffing a whole turkey because it increases the risk of cross-contamination and takes longer to cook."
+      }
+    },
+    {
+      "id": "kjottdeig",
+      "slug": "ground-beef",
+      "navn": "Ground beef and burgers",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Ground meat and sausage | 160°F (71°C)"
+        },
+        "fsis": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Ground Meats | 160 degrees F (71.1 degrees C)"
+        },
+        "ground": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-ground",
+          "merknad": "To destroy harmful bacteria, cook ground beef to a safe minimum internal temperature of 160degrees F as measured with a food thermometer."
+        },
+        "brun": {
+          "verdi": 131,
+          "enhet": "°F",
+          "kilde": "fsis-colorgb",
+          "merknad": "Recent research has shown some ground beef patties to look well-done at internal temperatures as low as 131 degrees F"
+        }
+      },
+      "tekst": {
+        "fire": "fsis-done|one in four hamburgers may not be safely cooked",
+        "color": "fsis-colorgb|a sufficient number of ground beef patties were turning brown well before they reached 160 degrees F to make color an unreliable indicator of doneness",
+        "only": "fsis-done|Only a food thermometer can be relied upon to accurately ensure bacterial destruction.",
+        "partial": "fsis-ground|Is it Safe to Partially Cook Ground Beef to Use Later? No."
+      }
+    },
+    {
+      "id": "kalkundeig",
+      "slug": "ground-turkey",
+      "navn": "Ground turkey",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Chicken, turkey, and other poultry | All: whole bird, breasts, legs, thighs, wings, ground poultry, giblets, sausage, and stuffing inside poultry. / / See USDA's Turkey Thawing Calculator and Turkey Cooking Calculator. | 165°F (74°C)"
+        },
+        "fsis": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Ground Poultry | 165 degrees F"
+        },
+        "done": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-done",
+          "merknad": "Cook ground poultry to a safe minimum internal temperature of 165 °F as measured with a food thermometer."
+        },
+        "beef": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Ground meat and sausage | 160°F (71°C)"
+        }
+      },
+      "tekst": {
+        "sausage": "fsis-sausage|Uncooked sausages that contain ground turkey and chicken should be cooked to 165 degrees F.",
+        "color": "fsis-done|Research indicates that the color of the meat and the color of the juices are not accurate indicators of doneness."
+      }
+    },
+    {
+      "id": "kjottkake",
+      "slug": "meatloaf",
+      "navn": "Meatloaf",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "beef": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-beef",
+          "merknad": "cooking hamburgers and ground beef mixtures such as meat loaf to 160 degree F (71.1 degree C) as measured with a food thermometer"
+        },
+        "pork": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "cooking ground pork patties and ground pork mixtures such as meat loaf to 160 degrees F"
+        },
+        "lamb": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-lamb",
+          "merknad": "ground lamb mixtures such as meat loaf to a safe minimum internal temperature of 160 degrees F"
+        },
+        "poultry": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Chicken, turkey, and other poultry | All: whole bird, breasts, legs, thighs, wings, ground poultry, giblets, sausage, and stuffing inside poultry. / / See USDA's Turkey Thawing Calculator and Turkey Cooking Calculator. | 165°F (74°C)"
+        },
+        "mix": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Ground meat and sausage | 160°F (71°C)"
+        }
+      },
+      "tekst": {
+        "combo": "fsis-done|Casseroles and other combination dishes must be cooked to 165 °F as measured with a food thermometer.",
+        "guess": "fsis-done|Using an accurate food thermometer takes the guesswork out of cooking."
+      }
+    },
+    {
+      "id": "biff",
+      "slug": "steak",
+      "navn": "Steak",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Beef, bison, veal, goat, and lamb | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fs-chart",
+          "merknad": "Beef, bison, veal, goat, and lamb | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "fsis": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Beef, Pork, Veal and Lamb Steaks, Chops and Roasts | 145 degrees F (62.8 degrees C) and allow to rest for at least 3 minutes"
+        },
+        "beef": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-beef",
+          "merknad": "Cook all raw beef steaks and roasts to a minimum internal temperature of 145 degree F (62.8 degree C) as measured with a food thermometer before removing meat from the heat source."
+        },
+        "ground": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Ground meat and sausage | 160°F (71°C)"
+        }
+      },
+      "tekst": {
+        "higher": "fsis-beef|For reasons of personal preference, consumers may choose to cook meat to higher temperatures.",
+        "pink": "fsis-done|A consumer would not be able to determine if a roast that was pink in the center had reached the safe temperature of 145 °F without a food thermometer.",
+        "rest": "fsis-beef|For safety and quality, allow meat to rest for at least three minutes before carving or consuming.",
+        "varies": "fsis-beef|Remember that appliances and outdoor grills can vary in heat."
+      }
+    },
+    {
+      "id": "roastbiff",
+      "slug": "roast-beef",
+      "navn": "Roast beef",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Beef, bison, veal, goat, and lamb | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fs-chart",
+          "merknad": "Beef, bison, veal, goat, and lamb | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "holiday": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-holiday",
+          "merknad": "Cook all raw beef and veal steaks, roasts, and chops to a minimum internal temperature of 145 degrees F as measured with a food thermometer before removing meat from the heat source."
+        },
+        "ovn": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-holiday",
+          "merknad": "a moderately low oven temperature of 325 degrees F should be used"
+        },
+        "lav": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-holiday",
+          "merknad": "The USDA does not recommend cooking meat and poultry at oven temperatures lower than 325 degrees F"
+        }
+      },
+      "tekst": {
+        "lean": "fsis-holiday|Beef and veal are leaner these days so overcooking them will dry the meat.",
+        "tool": "fsis-holiday|Whatever the choice, have a food thermometer on hand to determine when the meat has reached a safe temperature.",
+        "rest": "fsis-holiday|For safety and quality, allow meat to rest for at least three minutes before carving or consuming."
+      }
+    },
+    {
+      "id": "svinestek",
+      "slug": "pork",
+      "navn": "Pork",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Pork | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fs-chart",
+          "merknad": "Pork | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "fsis": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Beef, Pork, Veal and Lamb Steaks, Chops and Roasts | 145 degrees F (62.8 degrees C) and allow to rest for at least 3 minutes"
+        },
+        "pork": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "Cook all raw pork steaks, chops and roasts to a minimum internal temperature of 145 degrees F as measured with a food thermometer before removing meat from the heat source."
+        },
+        "rosa": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "If fresh pork has reached 145 degrees F throughout, even though it may still be pink in the center, it should be safe."
+        },
+        "deig": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "cooking ground pork patties and ground pork mixtures such as meat loaf to 160 degrees F"
+        },
+        "indre": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "Cook all organ and variety meats (such as heart, kidney, liver, tongue and chitterlings) to 160 degrees F."
+        },
+        "varm": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-pork",
+          "merknad": "Eat within 3 to 4 days, either cold or reheated to 165 degrees F (hot and steaming)."
+        },
+        "dager-min": {
+          "verdi": 3,
+          "enhet": "days",
+          "kilde": "fsis-pork",
+          "merknad": "Eat within 3 to 4 days, either cold or reheated to 165 degrees F (hot and steaming)."
+        },
+        "dager-maks": {
+          "verdi": 4,
+          "enhet": "days",
+          "kilde": "fsis-pork",
+          "merknad": "Eat within 3 to 4 days, either cold or reheated to 165 degrees F (hot and steaming)."
+        }
+      },
+      "tekst": {
+        "lean": "fsis-holiday|Because hogs are about 50 percent leaner than they were 25 years ago, today's pork cooks faster and can dry out when overcooked.",
+        "pink": "fsis-pork|Cooked muscle meats can be pink even when the meat has reached a safe internal temperature.",
+        "higher": "fsis-pork|For reasons of personal preference, consumers may choose to cook meat to higher temperatures."
+      }
+    },
+    {
+      "id": "skinke",
+      "slug": "ham",
+      "navn": "Ham",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rå": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Raw ham | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fs-chart",
+          "merknad": "Raw ham | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "opp": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Precooked ham (to reheat) | 165°F (74°C) / Note: Reheat cooked hams packaged in USDA-inspected plants to 140°F (60°C)"
+        },
+        "anlegg": {
+          "verdi": 140,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Precooked ham (to reheat) | 165°F (74°C) / Note: Reheat cooked hams packaged in USDA-inspected plants to 140°F (60°C)"
+        },
+        "ovn": {
+          "verdi": 325,
+          "enhet": "°F",
+          "kilde": "fsis-hams",
+          "merknad": "set the oven no lower than 325°F and heat to an internal temperature of 140°F as measured with a food thermometer"
+        },
+        "spiral": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-hams",
+          "merknad": "Leftover spiral-cut hams or ham that has been repackaged in any other location outside the plant, must be heated to 165°F."
+        },
+        "ukjent": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-hams",
+          "merknad": "They are all destroyed by proper handling and thorough cooking to an internal temperature of 160°F."
+        }
+      },
+      "tekst": {
+        "cbe": "fsis-hams|Cook-before-eating hams or fresh hams must reach 145°F, with a 3-minute rest time, to be to be safely cooked before serving.",
+        "two": "fsis-holiday|There are two types of hams: fully cooked and those that need cooking.",
+        "cold": "fsis-holiday|Fully cooked hams may be eaten cold or reheated to 140 degrees F."
+      }
+    },
+    {
+      "id": "lammelar",
+      "slug": "lamb",
+      "navn": "Lamb",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Beef, bison, veal, goat, and lamb | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "hvile": {
+          "verdi": 3,
+          "enhet": "minutes",
+          "kilde": "fs-chart",
+          "merknad": "Beef, bison, veal, goat, and lamb | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "fsis": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Beef, Pork, Veal and Lamb Steaks, Chops and Roasts | 145 degrees F (62.8 degrees C) and allow to rest for at least 3 minutes"
+        },
+        "lam": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-lamb",
+          "merknad": "Cook all raw lamb steaks, chops and roasts to a minimum internal temperature of 145 degrees F as measured with a food thermometer before removing meat from the heat source."
+        },
+        "deig": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-lamb",
+          "merknad": "cooking lamb patties and ground lamb mixtures such as meat loaf to a safe minimum internal temperature of 160 degrees F as measured by a food thermometer"
+        },
+        "indre": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-lamb",
+          "merknad": "Cook all organ and variety meats (such as heart, kidney, liver and tongue) to 160 degrees F."
+        }
+      },
+      "tekst": {
+        "rest": "fsis-lamb|For safety and quality, allow meat to rest for at least three minutes before carving or consuming.",
+        "fell": "fsis-holiday|Leave the fell on leg roasts to help retain shape.",
+        "leg": "fsis-holiday|leg and loin lamb meat has a similar fat content to lean beef and pork loin when trimmed of visible fat",
+        "vary": "fsis-lamb|Remember that appliances and outdoor grills can vary in heat."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "salmon",
+      "navn": "Salmon and other fish",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Fish (whole or filet), such as salmon, tuna, tilapia, pollock, bass, cod, catfish, trout, etc. | 145°F (63°C) or cook until flesh is no longer translucent and separates easily with a fork"
+        },
+        "fsis": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Fish & Shellfish | 145 degrees F (62.8 degrees C)"
+        }
+      },
+      "tekst": {
+        "fork": "fs-chart|cook until flesh is no longer translucent and separates easily with a fork",
+        "shrimp": "fs-chart|Cook until flesh is pearly or white, and opaque",
+        "clams": "fs-chart|Cook until shells open during cooking",
+        "names": "fs-chart|such as salmon, tuna, tilapia, pollock, bass, cod, catfish, trout, etc."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "eggs",
+      "navn": "Eggs and egg dishes",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rett": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Egg dishes (such as frittata, quiche) | 160°F (71°C)"
+        },
+        "fsis": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Eggs | 160 degrees F (71.1 degrees C)"
+        },
+        "gryte": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-eggs",
+          "merknad": "Cook casseroles and other dishes containing eggs to a safe minimum internal temperature of 160 degrees F."
+        },
+        "timer": {
+          "verdi": 24,
+          "enhet": "hours",
+          "kilde": "fsis-eggs",
+          "merknad": "Cook dishes containing raw eggs immediately or refrigerate and cook within 24 hours."
+        },
+        "marengs": {
+          "verdi": 350,
+          "enhet": "°F",
+          "kilde": "fsis-eggs",
+          "merknad": "Meringue-topped pies should be safe if baked at 350 degrees F for about 15 minutes."
+        },
+        "marengstid": {
+          "verdi": 15,
+          "enhet": "minutes",
+          "kilde": "fsis-eggs",
+          "merknad": "Meringue-topped pies should be safe if baked at 350 degrees F for about 15 minutes."
+        }
+      },
+      "tekst": {
+        "raw": "fs-chart|Cook until yolk and white are firm",
+        "ring": "fsis-eggs|A green ring on a hard-cooked yolk can be a result of overcooking as the sulfur and iron compounds in the egg react on the yolk's surface."
+      }
+    },
+    {
+      "id": "rester",
+      "slug": "leftovers",
+      "navn": "Leftovers and casseroles",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "rester": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Leftovers | Any type | 165°F (74°C)"
+        },
+        "gryte": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Casseroles | Meat and meatless | 165°F (74°C)"
+        },
+        "fsis": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Leftovers | 165 degrees F (73.9 degrees C)"
+        },
+        "fsisgryte": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chart",
+          "merknad": "Casseroles | 165 degrees F (73.9 degrees C)"
+        },
+        "skinke": {
+          "verdi": 140,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Precooked ham (to reheat) | 165°F (74°C) / Note: Reheat cooked hams packaged in USDA-inspected plants to 140°F (60°C)"
+        },
+        "kylling": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-chicken",
+          "merknad": "Eat within 3 to 4 days, either cold or reheated to 165°F."
+        },
+        "thanks": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-thanks",
+          "merknad": "Before you eat leftovers, reheat them to 165 degrees F."
+        }
+      },
+      "tekst": {
+        "combo": "fsis-done|Casseroles and other combination dishes must be cooked to 165 °F as measured with a food thermometer.",
+        "browned": "fsis-done|Pathogenic bacteria could survive, however, if the meat or poultry component of a casserole was merely \"browned\" and the casserole was not subsequently heated thoroughly, especially if the dish was assembled in advance and refrigerated."
+      }
+    },
+    {
+      "id": "polser",
+      "slug": "sausage",
+      "navn": "Sausage",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjott": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fsis-sausage",
+          "merknad": "uncooked sausages that contain ground beef, pork, lamb or veal should be cooked to 160 degrees F."
+        },
+        "fjar": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fsis-sausage",
+          "merknad": "Uncooked sausages that contain ground turkey and chicken should be cooked to 165 degrees F."
+        },
+        "chart": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Ground meat and sausage | 160°F (71°C)"
+        },
+        "chartfjar": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Chicken, turkey, and other poultry | All: whole bird, breasts, legs, thighs, wings, ground poultry, giblets, sausage, and stuffing inside poultry. / / See USDA's Turkey Thawing Calculator and Turkey Cooking Calculator. | 165°F (74°C)"
+        }
+      },
+      "tekst": {
+        "label": "fsis-sausage|In cases where the sausage is partially cooked or otherwise appears cooked but requires cooking by the consumer for safety"
+      }
+    },
+    {
+      "id": "termometer",
+      "slug": "thermometer",
+      "navn": "Food thermometers",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hver": {
+          "verdi": 15,
+          "enhet": "percent",
+          "kilde": "fsis-done",
+          "merknad": "only about 15% of people consistently use a food thermometer"
+        },
+        "fort": {
+          "verdi": 2,
+          "enhet": "seconds",
+          "kilde": "fsis-thermo",
+          "merknad": "within 2 to 5 seconds"
+        },
+        "fort2": {
+          "verdi": 5,
+          "enhet": "seconds",
+          "kilde": "fsis-thermo",
+          "merknad": "within 2 to 5 seconds"
+        },
+        "dyp": {
+          "verdi": 2,
+          "enhet": "inches",
+          "kilde": "fsis-thermo",
+          "merknad": "They should be inserted at least 2 inches deep in the thickest part of the food"
+        },
+        "ti": {
+          "verdi": 10,
+          "enhet": "seconds",
+          "kilde": "fsis-thermo",
+          "merknad": "it takes roughly 10 seconds to register the temperature on the digital display"
+        },
+        "kjott": {
+          "verdi": 145,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Beef, bison, veal, goat, and lamb | Steaks, roasts, chops | 145°F (63°C) / Rest time: 3 minutes"
+        },
+        "deig": {
+          "verdi": 160,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Ground meat and sausage | 160°F (71°C)"
+        },
+        "fugl": {
+          "verdi": 165,
+          "enhet": "°F",
+          "kilde": "fs-chart",
+          "merknad": "Chicken, turkey, and other poultry | All: whole bird, breasts, legs, thighs, wings, ground poultry, giblets, sausage, and stuffing inside poultry. / / See USDA's Turkey Thawing Calculator and Turkey Cooking Calculator. | 165°F (74°C)"
+        }
+      },
+      "tekst": {
+        "thick": "fsis-done|Insert the food thermometer into the thickest part of the food, making sure it doesn't touch bone, fat, or gristle.",
+        "clean": "fsis-done|Clean your food thermometer with hot, soapy water before and after each use.",
+        "only": "fsis-done|Studies have shown that using a food thermometer is the only way to tell if harmful bacteria have been destroyed",
+        "thermocouple": "fsis-thermo|Thermocouples are not designed to remain in the food while it is cooking.",
+        "tip": "fsis-thermo|Because the center of food is usually cooler than the outer surface, place the tip of the thermistor in the center of the thickest part of the food.",
+        "thin": "fsis-thermo|The thin probe of the thermocouple also enables it to accurately read the temperature of thin foods such as hamburger patties, pork chops and chicken breasts.",
+        "liquid": "fsis-thermo|are, therefore, not appropriate for thin foods"
+      }
+    }
+  ]
+}

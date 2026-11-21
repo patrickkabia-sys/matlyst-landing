@@ -29,9 +29,10 @@ const trengFelles = () => {
 export const FAMILIER = Object.freeze([
   { id: 'dl-til-gram', sidetype: 'omregner', mappe: new URL('./dl-til-gram/', import.meta.url), markeder: { nb: { rot: 'verktoy/dl-til-gram/' }, sv: { rot: 'verktyg/dl-till-gram/' }, da: { rot: 'vaerktoejer/dl-til-gram/' }, en: { rot: 'tools/cups-to-grams/' } } },
   // Ukemenyene: bare norsk. Rettene og varene står i menyer.nb.json (meny.mjs), tallene i data.nb.json.
-  // Kjernetemperatur og steketid: bare norsk. Mattilsynet først, så MatPrat med årstall (se scripts/familier/steketid/mal-felles.mjs).
-  { id: 'kjernetemperatur', sidetype: 'guide-lang', mappe: new URL('./kjernetemperatur/', import.meta.url), markeder: { nb: { rot: 'kjernetemperatur/' } } },
-  { id: 'steketid', sidetype: 'guide-lang', mappe: new URL('./steketid/', import.meta.url), markeder: { nb: { rot: 'steketid/' } } },
+  // Kjernetemperatur og steketid: norsk (Mattilsynet først, så MatPrat med årstall; se steketid/mal-felles.mjs) og amerikansk engelsk
+  // (FoodSafety.gov, USDA FSIS og land-grant extension; se steketid/mal-felles-en.mjs). Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
+  { id: 'kjernetemperatur', sidetype: 'guide-lang', mappe: new URL('./kjernetemperatur/', import.meta.url), markeder: { nb: { rot: 'kjernetemperatur/' }, en: { rot: 'internal-temperature/' } } },
+  { id: 'steketid', sidetype: 'guide-lang', mappe: new URL('./steketid/', import.meta.url), markeder: { nb: { rot: 'steketid/' }, en: { rot: 'cooking-times/' } } },
   { id: 'ukemeny', sidetype: 'guide-lang', mappe: new URL('./ukemeny/', import.meta.url), markeder: { nb: { rot: 'ukemenyer/' } } },
   // Holdbarhet i kjøleskapet og frysing: norsk (Mattilsynet først, så MatPrat; se holdbarhet/kjoling.mjs) og amerikansk engelsk (FoodSafety.gov, USDA FSIS, FDA; se holdbarhet/kjoling-en.mjs).
   // Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
