@@ -18,17 +18,20 @@ const ROT = fileURLToPath(new URL('..', import.meta.url));
 const MAPPE = fileURLToPath(new URL('../scripts/familier/dl-til-gram/', import.meta.url));
 const nb = lesData(MAPPE, 'nb');
 
+// Varer som bare finnes i norsk butikk, og derfor ikke har side på svensk og dansk. Tallene gjelder ikke de nærmeste svenske og danske varene.
+const BARE_NORSK = ['romme'];
+
 // Det som er språkspesifikt, skrevet ut her og ikke hentet fra malen: roten, skjeene, spørsmålene, sitattegnene og forbudte ord.
 const SPRAK = {
   sv: {
-    mal: MAL_SV, tekst: TEKST_SV, rot: 'verktyg/dl-till-gram/', h1Nav: 'Dl till gram', q: ['”', '”'], mnd: 'november', hentet: 'Hämtad 20 november 2026',
+    mal: MAL_SV, tekst: TEKST_SV, rot: 'verktyg/dl-till-gram/', h1Nav: 'Dl till gram', q: ['”', '”'], mnd: 'november', hentet: 'Hämtad 20 november 2026', per: 'per',
     skjeer: [['1 krm', 1], ['1 tsk', 5], ['1 msk', 15]], tabellEtiketter: ['1 krm', '1 tsk', '1 msk', '0,5 dl', '1 dl', '2 dl', '3 dl', '4 dl', '5 dl', '1 liter'],
     forbudt: /\b(?:veier|spiseskje|spiseskjeer|teskje|teskjeer|strøken|hvor mye|oppskrift|ss|ts|og|ikke)\b/iu,
     veier: 'väger', fra: 'Från gram till dl', kortsvar: 'Kort svar:', delMed: 'Dela 100 med', titlePre: (o) => `1 dl ${o} i gram:`, eks: 'Exempel',
     tillSetning: /^Nej\. 1 dl .+ väger \d+ g, jämfört med \d+ g för .+\.$/u,
   },
   da: {
-    mal: MAL_DA, tekst: TEKST_DA, rot: 'vaerktoejer/dl-til-gram/', h1Nav: 'Dl til gram', q: ['»', '«'], mnd: 'november', hentet: 'Hentet 20. november 2026',
+    mal: MAL_DA, tekst: TEKST_DA, rot: 'vaerktoejer/dl-til-gram/', h1Nav: 'Dl til gram', q: ['»', '«'], mnd: 'november', hentet: 'Hentet 20. november 2026', per: 'pr.',
     skjeer: [['1 tsk', 5], ['1 spsk', 15]], tabellEtiketter: ['1 tsk', '1 spsk', '0,5 dl', '1 dl', '2 dl', '3 dl', '4 dl', '5 dl', '1 liter'],
     forbudt: /\b(?:veier|spiseskje|spiseskjeer|teskje|teskjeer|strøken|hvor mye|oppskrift|oppskrifter|ss|ts|regn om for)\b/iu,
     veier: 'vejer', fra: 'Fra gram til dl', kortsvar: 'Kort svar:', delMed: 'Del 100 med', titlePre: (o) => `1 dl ${o} i gram:`, eks: 'Eksempler',
@@ -84,7 +87,7 @@ function sjekkSide(S, r, rad, s) {
   } else if (!usda.length) {
     lik('FAQ 4, liter og kilo', tall(svar[3]), ['1', '10', gramT(10 * dl), '1', andreT(1000 / dl)]);
   } else {
-    for (const u of usda) assert.ok(svar[3].includes(`${u.g} g per `) && svar[3].includes(`${Math.round(Number(u.g) / 2.365882)} g per dl`), `FAQ 4, USDA: ${svar[3]}`);
+    for (const u of usda) assert.ok(svar[3].includes(`${u.g} g ${S.per} `) && svar[3].includes(`${Math.round(Number(u.g) / 2.365882)} g ${S.per} dl`), `FAQ 4, USDA: ${svar[3]}`);
     assert.ok(svar[3].endsWith(` ${dl} g.`), svar[3]);
   }
   if (usda.length) {
@@ -105,9 +108,10 @@ for (const [mk, S] of Object.entries(SPRAK)) {
   const alleSider = () => [['nav', S.mal.navSide(data, rader)], ...rader.map((r) => [r.id, S.mal.sideForRad(r, data, rader)])];
   const sideAv = (id) => S.mal.sideForRad(rad(id), data, rader);
 
-  test(`${mk}: datafila har samme varer, tall, kilder og postnavn som den norske`, () => {
+  test(`${mk}: datafila har samme varer, tall, kilder og postnavn som den norske, unntatt de rent norske varene`, () => {
     assert.equal(data.marked, mk);
-    assert.deepEqual(rader.map((r) => r.id), publiserbare(nb).map((r) => r.id));
+    assert.deepEqual(rader.map((r) => r.id), publiserbare(nb).map((r) => r.id).filter((id) => !BARE_NORSK.includes(id)));
+    for (const id of BARE_NORSK) assert.equal(data.rader.some((r) => r.id === id), false, `${id} har ingen rad på ${mk}`);
     for (const r of rader) {
       const n = publiserbare(nb).find((x) => x.id === r.id);
       assert.deepEqual(r.tall, n.tall, `${r.id}: tallene er de norske`);
@@ -120,15 +124,15 @@ for (const [mk, S] of Object.entries(SPRAK)) {
   test(`${mk}: sidene ligger under ${S.rot}, ett navn og én adresse per vare, og hver vare har en variantbetegnelse`, async () => {
     const sider = await familieSider(mk);
     assert.deepEqual(Object.keys(sider).sort(), [S.rot, ...rader.map((r) => `${S.rot}${r.slug}/`)].sort());
-    assert.equal(rader.length, 29);
+    assert.equal(rader.length, 28);
     assert.equal(new Set(rader.map((r) => r.slug)).size, rader.length);
     assert.equal(new Set(rader.map((r) => r.navn)).size, rader.length);
     for (const r of rader) assert.ok(S.tekst[r.id]?.variant, r.id);
     assert.deepEqual(Object.keys(S.tekst).filter((id) => !rad(id)), []);
-    // flytende og nære varer følger den norske
-    for (const id of Object.keys(TEKST_NB)) {
+    // flytende og nære varer følger den norske, uten de rent norske varene
+    for (const id of Object.keys(TEKST_NB).filter((x) => !BARE_NORSK.includes(x))) {
       assert.equal(S.tekst[id].flytende, TEKST_NB[id].flytende, `${id} flytende`);
-      assert.deepEqual(S.tekst[id].naer, TEKST_NB[id].naer, `${id} nære varer`);
+      assert.deepEqual(S.tekst[id].naer ?? [], (TEKST_NB[id].naer ?? []).filter((x) => !BARE_NORSK.includes(x)), `${id} nære varer`);
     }
     for (const r of rader) assert.ok(existsSync(`${ROT}${SPRAKMAPPE[mk]}${S.rot}${r.slug}/index.html`), `${r.slug}: filen er bygget`);
   });
@@ -293,6 +297,14 @@ for (const [mk, S] of Object.entries(SPRAK)) {
         const motpart = readFileSync(`${ROT}${sti.slice(1)}index.html`, 'utf8');
         assert.ok(motpart.includes(`hreflang="${{ nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en' }[mk]}" href="https://matlyst-app.no/${mk}/${S.rot}${r.slug}/"`), `${m}/${r.id}: peker tilbake til ${mk}`);
       }
+    }
+    // Rent norske varer har ingen side på språket, og den norske siden peker ikke hit.
+    for (const id of BARE_NORSK) {
+      const g = grupper.find((x) => x.id === `auto-fam-dl-til-gram-${id}`);
+      assert.ok(g?.sider.nb, `${id}: den norske siden finnes`);
+      assert.equal(g.sider[mk], undefined, `${id}: ingen ${mk}-side`);
+      const norsk = readFileSync(`${ROT}${g.sider.nb.slice(1)}index.html`, 'utf8');
+      assert.equal(norsk.includes(`/${mk}/${S.rot}`), false, `${id}: den norske siden lenker ikke til ${mk}`);
     }
     const nav = grupper.find((x) => x.id === 'auto-fam-dl-til-gram-nav');
     assert.equal(nav.sider[mk], `/${mk}/${S.rot}`);

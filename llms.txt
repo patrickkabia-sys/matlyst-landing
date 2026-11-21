@@ -109,7 +109,7 @@ Matlyst henter opskriften fra det link, den video eller det billede, du deler, o
 
 ## Dansk: Værktøjer
 
-- [Dl til gram: omregner og tabel for 29 ingredienser](https://matlyst-app.no/da/vaerktoejer/dl-til-gram/): Hvad vejer 1 dl? Regn dl, spsk, tsk og gram om for 29 ingredienser, fra mel og sukker til smør og mælk, med kilde på hvert tal.
+- [Dl til gram: omregner og tabel for 28 ingredienser](https://matlyst-app.no/da/vaerktoejer/dl-til-gram/): Hvad vejer 1 dl? Regn dl, spsk, tsk og gram om for 28 ingredienser, fra mel og sukker til smør og mælk, med kilde på hvert tal.
 - [Enhedsomregner til køkkenet: dl, ml, cup, g, °F](https://matlyst-app.no/da/vaerktoejer/enhedsomregner/): Gratis enhedsomregner til køkkenet: ml til dl, cup til ml, ounces til gram, pund til kilo og °F til °C. Med tabeller og tips til opskrifter.
 
 ## Dansk: Privatliv og vilkår
@@ -158,7 +158,7 @@ Matlyst hämtar receptet från länken, videon eller bilden du delar, översätt
 
 ## Svenska: Verktyg
 
-- [Dl till gram: tabell för 29 ingredienser](https://matlyst-app.no/sv/verktyg/dl-till-gram/): Vad väger 1 dl? Räkna om dl, msk, tsk och gram för 29 ingredienser, från mjöl och socker till smör och mjölk, med källa på varje tal.
+- [Dl till gram: tabell för 28 ingredienser](https://matlyst-app.no/sv/verktyg/dl-till-gram/): Vad väger 1 dl? Räkna om dl, msk, tsk och gram för 28 ingredienser, från mjöl och socker till smör och mjölk, med källa på varje tal.
 - [Enhetsomvandlare för matlagning: dl, ml, cup, °F](https://matlyst-app.no/sv/verktyg/enhetsomvandlare/): Gratis enhetsomvandlare för matlagning med alla kombinationer: ml till dl, cup till ml, uns till g, pund till kg, °F till °C. Med tabeller och köksråd.
 
 ## Svenska: Integritet och villkor

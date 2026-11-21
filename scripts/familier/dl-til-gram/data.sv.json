@@ -383,8 +383,8 @@
     },
     {
       "id": "kokosmasse",
-      "slug": "kokosmassa",
-      "navn": "Kokosmassa",
+      "slug": "riven-kokos",
+      "navn": "Riven kokos",
       "status": "kontrollert",
       "kontrollert": "2026-11-20",
       "oppdatert": "2026-11-20",
@@ -575,25 +575,6 @@
         "usdaFdcId": "170859",
         "usdaNavn": "Cream, fluid, heavy whipping",
         "andrePoster": "[[\"Matfløte, 18 % fett\",100],[\"Kaffefløte, 10 % fett\",100],[\"Kremfløte, 37 % fett, laktosefri\",100]]"
-      }
-    },
-    {
-      "id": "romme",
-      "slug": "seterromme",
-      "navn": "Seterrømme",
-      "status": "kontrollert",
-      "kontrollert": "2026-11-20",
-      "oppdatert": "2026-11-20",
-      "tall": {
-        "dl": {
-          "verdi": 100,
-          "enhet": "g",
-          "kilde": "matvaretabellen"
-        }
-      },
-      "tekst": {
-        "matvaretabell": "Seterrømme, 35 % fett",
-        "andrePoster": "[[\"Lettrømme, 18 % fett\",100],[\"Lettrømme, 10 % fett\",100]]"
       }
     },
     {

@@ -91,7 +91,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/blogg/valj-receptapp/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/blogg/velg-oppskriftsapp/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/blogg/valj-receptapp/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/blog/vaelg-opskriftsapp/"/>
@@ -547,14 +547,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/cocoa-powder/"/>
   </url>
   <url>
-    <loc>https://matlyst-app.no/sv/verktyg/dl-till-gram/kokosmassa/</loc>
-    <lastmod>2026-11-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/kokosmasse/"/>
-    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/kokosmassa/"/>
-    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/kokosmasse/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/verktoy/dl-til-gram/kokosmasse/"/>
-  </url>
-  <url>
     <loc>https://matlyst-app.no/sv/verktyg/dl-till-gram/majsstarkelse/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/maisstivelse/"/>
@@ -631,6 +623,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/rice/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/sv/verktyg/dl-till-gram/riven-kokos/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/kokosmasse/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/riven-kokos/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/kokosmel/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/verktoy/dl-til-gram/kokosmasse/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/sv/verktyg/dl-till-gram/roda-linser/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/rode-linser/"/>
@@ -663,15 +663,6 @@
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/sesamfron/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/sesamfro/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/verktoy/dl-til-gram/sesamfro/"/>
-  </url>
-  <url>
-    <loc>https://matlyst-app.no/sv/verktyg/dl-till-gram/seterromme/</loc>
-    <lastmod>2026-11-21</lastmod>
-    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/verktoy/dl-til-gram/romme/"/>
-    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/verktyg/dl-till-gram/seterromme/"/>
-    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/vaerktoejer/dl-til-gram/seterromme/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/tools/cups-to-grams/sour-cream/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/tools/cups-to-grams/sour-cream/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/verktyg/dl-till-gram/sirap/</loc>
