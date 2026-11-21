@@ -1,0 +1,815 @@
+{
+  "hentet": "2026-11-21",
+  "hyller": [
+    "Produce",
+    "Fish & seafood",
+    "Meat",
+    "Dairy & eggs",
+    "Frozen",
+    "Dry & canned goods",
+    "Spices & sauces",
+    "Bread & bakery"
+  ],
+  "basis": [
+    "salt",
+    "pepper",
+    "neutral oil",
+    "olive oil",
+    "butter or margarine",
+    "all-purpose flour",
+    "sugar"
+  ],
+  "varer": {
+    "Dijon mustard": "Spices & sauces",
+    "Italian sausage links": "Meat",
+    "Italian seasoning": "Spices & sauces",
+    "Mexican stewed tomatoes": "Dry & canned goods",
+    "Parmesan cheese": "Dairy & eggs",
+    "active dry yeast": "Dry & canned goods",
+    "baby spinach": "Produce",
+    "baking potatoes": "Produce",
+    "baking powder": "Spices & sauces",
+    "barbecue sauce": "Spices & sauces",
+    "bay leaves": "Spices & sauces",
+    "beef broth": "Spices & sauces",
+    "black beans": "Dry & canned goods",
+    "bone-in chicken thighs": "Meat",
+    "boneless pork loin roast": "Meat",
+    "bread flour": "Dry & canned goods",
+    "broccoli": "Produce",
+    "brown sugar": "Dry & canned goods",
+    "buttermilk": "Dairy & eggs",
+    "canned diced tomatoes": "Dry & canned goods",
+    "canned tuna": "Dry & canned goods",
+    "caraway seeds": "Spices & sauces",
+    "carrots": "Produce",
+    "cayenne pepper": "Spices & sauces",
+    "celery": "Produce",
+    "chicken broth": "Spices & sauces",
+    "chicken, cut up": "Meat",
+    "chili beans": "Dry & canned goods",
+    "chili garlic sauce": "Spices & sauces",
+    "chili powder": "Spices & sauces",
+    "cod or haddock": "Fish & seafood",
+    "cornstarch": "Spices & sauces",
+    "cream of mushroom soup": "Dry & canned goods",
+    "crushed red pepper flakes": "Spices & sauces",
+    "crushed tomatoes": "Dry & canned goods",
+    "diced tomatoes": "Dry & canned goods",
+    "diced tomatoes and green chiles": "Dry & canned goods",
+    "dried basil": "Spices & sauces",
+    "dried oregano": "Spices & sauces",
+    "dried parsley flakes": "Spices & sauces",
+    "dried thyme": "Spices & sauces",
+    "egg noodles": "Dry & canned goods",
+    "eggs": "Dairy & eggs",
+    "elbow macaroni": "Dry & canned goods",
+    "fish sauce": "Spices & sauces",
+    "flour tortillas": "Bread & bakery",
+    "fresh basil": "Produce",
+    "fresh cilantro": "Produce",
+    "fresh ginger": "Produce",
+    "fresh parsley": "Produce",
+    "fresh rosemary": "Produce",
+    "fresh thyme": "Produce",
+    "frozen corn": "Frozen",
+    "frozen peas": "Frozen",
+    "garlic": "Produce",
+    "garlic powder": "Spices & sauces",
+    "garlic salt": "Spices & sauces",
+    "goat cheese": "Dairy & eggs",
+    "green onions": "Produce",
+    "green pepper": "Produce",
+    "green peppers": "Produce",
+    "ground allspice": "Spices & sauces",
+    "ground beef": "Meat",
+    "ground cinnamon": "Spices & sauces",
+    "ground cumin": "Spices & sauces",
+    "ground ginger": "Spices & sauces",
+    "ground mustard": "Spices & sauces",
+    "hot pepper sauce": "Spices & sauces",
+    "instant brown rice": "Dry & canned goods",
+    "kidney beans": "Dry & canned goods",
+    "lasagna noodles": "Dry & canned goods",
+    "lean ground beef": "Meat",
+    "lemon": "Produce",
+    "lemons": "Produce",
+    "lettuce": "Produce",
+    "limes": "Produce",
+    "maple syrup": "Dry & canned goods",
+    "milk": "Dairy & eggs",
+    "mirin": "Spices & sauces",
+    "mushrooms": "Produce",
+    "onion": "Produce",
+    "onion salt": "Spices & sauces",
+    "pancetta": "Meat",
+    "paprika": "Spices & sauces",
+    "pears": "Produce",
+    "pepperoni": "Meat",
+    "plum tomatoes": "Produce",
+    "potatoes": "Produce",
+    "ready-to-serve brown rice": "Dry & canned goods",
+    "red onion": "Produce",
+    "red potatoes": "Produce",
+    "rice vinegar": "Spices & sauces",
+    "ricotta cheese": "Dairy & eggs",
+    "roasting chicken": "Meat",
+    "russet potatoes": "Produce",
+    "salmon fillets": "Fish & seafood",
+    "sandwich bread": "Bread & bakery",
+    "sesame oil": "Spices & sauces",
+    "shredded Mexican cheese blend": "Dairy & eggs",
+    "shredded Parmesan cheese": "Dairy & eggs",
+    "shredded cheddar cheese": "Dairy & eggs",
+    "shredded mozzarella cheese": "Dairy & eggs",
+    "slivered almonds": "Dry & canned goods",
+    "small onions": "Produce",
+    "soft bread crumbs": "Bread & bakery",
+    "sour cream": "Dairy & eggs",
+    "soy sauce": "Spices & sauces",
+    "spaghetti": "Dry & canned goods",
+    "sweet onion": "Produce",
+    "sweet potatoes": "Produce",
+    "sweet red pepper": "Produce",
+    "taco shells": "Bread & bakery",
+    "tomato juice": "Dry & canned goods",
+    "tomato paste": "Dry & canned goods",
+    "tomato sauce": "Dry & canned goods",
+    "tomatoes": "Produce",
+    "vegetable broth": "Spices & sauces",
+    "wheat crackers": "Dry & canned goods",
+    "whole milk": "Dairy & eggs",
+    "yellow summer squash": "Produce",
+    "zucchini": "Produce"
+  },
+  "menyer": {
+    "familie": {
+      "tittel": "Family meal plan: seven dinners and a grocery list",
+      "h1": "Family meal plan",
+      "beskrivelse": "Seven dinners most kids will eat, where two of them build on the night before. With links to the recipes, leftovers planned in, and one grocery list by aisle.",
+      "ingress": "Seven dinners most kids eat, set up so Monday and Thursday cook ahead for Wednesday and Saturday.",
+      "vinkel": "The week is built on two batches that each feed two dinners. Monday’s chicken thighs become quesadillas on Wednesday, and Thursday’s meat sauce becomes lasagna on Saturday. Tortillas, cheese and canned tomatoes show up in several dishes, so the list stays short.",
+      "faq": [
+        [
+          "How do I get my kids to eat the meal plan?",
+          "The week has dinners many kids already know: chicken, tacos, quesadillas, spaghetti, pizza and lasagna. Taco night lets everyone build their own plate. Swap any day for a dinner you know your kids like, and move the rest of the list with it."
+        ],
+        [
+          "Can I switch the days around?",
+          "Yes, but keep the gap between a dish and the leftovers it makes. The chicken has to come before the quesadillas, and the meat sauce before the lasagna."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "monday",
+          "rett": "Crispy baked chicken thighs",
+          "oppskrift": "https://www.tasteofhome.com/recipes/crispy-baked-chicken-thighs/",
+          "hvorfor": "A plain oven dinner that most kids like. The thighs bake while you make a side of your choice.",
+          "lagMer": "Bake twice as many thighs. Pull the meat off the extra thighs and refrigerate it for Wednesday.",
+          "varer": [
+            "bone-in chicken thighs",
+            "garlic powder",
+            "fresh thyme",
+            "paprika"
+          ]
+        },
+        {
+          "dag": "tuesday",
+          "rett": "Texas tacos",
+          "oppskrift": "https://www.tasteofhome.com/recipes/texas-tacos/",
+          "hvorfor": "Taco night lets everyone build their own plate, and nobody has to eat what they do not want.",
+          "varer": [
+            "lean ground beef",
+            "sweet red pepper",
+            "onion",
+            "diced tomatoes",
+            "frozen corn",
+            "tomato sauce",
+            "chili powder",
+            "ready-to-serve brown rice",
+            "taco shells",
+            "lettuce",
+            "tomatoes",
+            "sour cream"
+          ]
+        },
+        {
+          "dag": "wednesday",
+          "rett": "Baked chicken quesadillas with Monday’s chicken",
+          "oppskrift": "https://www.tasteofhome.com/recipes/baked-chicken-quesadillas/",
+          "hvorfor": "The chicken is already cooked. Use it in place of the packaged chicken strips in the recipe.",
+          "rest": {
+            "fra": "monday",
+            "hva": "the chicken"
+          },
+          "varer": [
+            "flour tortillas",
+            "diced tomatoes and green chiles",
+            "shredded Mexican cheese blend"
+          ]
+        },
+        {
+          "dag": "thursday",
+          "rett": "Spaghetti with meat sauce",
+          "oppskrift": "https://www.tasteofhome.com/recipes/so-easy-spaghetti-sauce/",
+          "hvorfor": "A dinner every kid knows. The sauce simmers while the spaghetti boils.",
+          "lagMer": "Make a double batch of sauce and refrigerate half for Saturday.",
+          "varer": [
+            "lean ground beef",
+            "onion",
+            "celery",
+            "tomato sauce",
+            "diced tomatoes",
+            "tomato juice",
+            "tomato paste",
+            "garlic powder",
+            "dried basil",
+            "dried oregano",
+            "bay leaves",
+            "spaghetti",
+            "Parmesan cheese"
+          ]
+        },
+        {
+          "dag": "friday",
+          "rett": "Homemade pizza",
+          "oppskrift": "https://www.tasteofhome.com/recipes/homemade-pizza/",
+          "hvorfor": "Friday pizza the whole family can top their own way.",
+          "varer": [
+            "active dry yeast",
+            "tomato sauce",
+            "dried oregano",
+            "dried basil",
+            "shredded mozzarella cheese",
+            "pepperoni",
+            "mushrooms",
+            "green pepper"
+          ]
+        },
+        {
+          "dag": "saturday",
+          "rett": "Classic lasagna with Thursday’s meat sauce",
+          "oppskrift": "https://www.tasteofhome.com/recipes/classic-lasagna/",
+          "hvorfor": "The meat sauce is ready, so you only mix the ricotta filling and layer the pan.",
+          "rest": {
+            "fra": "thursday",
+            "hva": "the meat sauce"
+          },
+          "varer": [
+            "ricotta cheese",
+            "eggs",
+            "fresh parsley",
+            "lasagna noodles"
+          ]
+        },
+        {
+          "dag": "sunday",
+          "rett": "Sausage and sweet potato sheet pan dinner",
+          "oppskrift": "https://www.tasteofhome.com/recipes/sausage-sweet-potato-sheet-pan-dinner/",
+          "hvorfor": "Sunday dinner on one pan, with nothing to cook ahead.",
+          "varer": [
+            "sweet potatoes",
+            "sweet onion",
+            "brown sugar",
+            "ground allspice",
+            "ground cinnamon",
+            "pears",
+            "Italian sausage links"
+          ]
+        }
+      ]
+    },
+    "billig": {
+      "tittel": "Budget meal plan: seven dinners that use everything",
+      "h1": "Budget meal plan",
+      "beskrivelse": "Seven affordable dinners built on chicken, beans, eggs and pasta, where two batches each become two dinners. With links to the recipes and one grocery list.",
+      "ingress": "Seven dinners from ingredients that tend to be affordable, set up so little goes to waste.",
+      "vinkel": "We list no prices, because prices change by store and by week. The week stays lean another way: the chicken and the chili are cooked once and eaten twice, and flour, eggs and milk cover several dinners.",
+      "faq": [
+        [
+          "Why are there no prices on the budget meal plan?",
+          "Prices change from store to store and from week to week, and we have no open source for what each dinner costs. Instead, the week is set up so you buy fewer items and throw less away."
+        ],
+        [
+          "What makes the week cheaper?",
+          "Two dinners are made from leftovers of an earlier day, and several items return from dish to dish. Pancakes and tuna noodle casserole rest on pantry basics."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "monday",
+          "rett": "Roast chicken",
+          "oppskrift": "https://www.tasteofhome.com/recipes/sunday-roast-chicken/",
+          "hvorfor": "A whole chicken gives more meat than the same number of breasts. It roasts while you do something else.",
+          "lagMer": "Pick all the meat off the chicken and refrigerate half of it for Wednesday.",
+          "varer": [
+            "roasting chicken",
+            "lemons",
+            "fresh rosemary"
+          ]
+        },
+        {
+          "dag": "tuesday",
+          "rett": "Pancakes for dinner",
+          "oppskrift": "https://www.tasteofhome.com/recipes/fluffy-pancakes/",
+          "hvorfor": "Breakfast for dinner is quick, and it runs on pantry basics.",
+          "varer": [
+            "milk",
+            "eggs",
+            "baking powder",
+            "maple syrup"
+          ]
+        },
+        {
+          "dag": "wednesday",
+          "rett": "Chicken noodle soup with Monday’s chicken",
+          "oppskrift": "https://www.tasteofhome.com/recipes/homey-chicken-noodle-soup/",
+          "hvorfor": "The recipe calls for chicken thighs. Use the meat from Monday’s chicken instead, and add it at the end.",
+          "rest": {
+            "fra": "monday",
+            "hva": "the chicken"
+          },
+          "varer": [
+            "onion",
+            "garlic",
+            "chicken broth",
+            "celery",
+            "carrots",
+            "bay leaves",
+            "fresh thyme",
+            "egg noodles",
+            "fresh parsley",
+            "lemon"
+          ]
+        },
+        {
+          "dag": "thursday",
+          "rett": "Quick and easy chili",
+          "oppskrift": "https://www.tasteofhome.com/recipes/quick-and-easy-chili/",
+          "hvorfor": "A pot of chili that feeds two dinners. Beans and corn stretch the beef.",
+          "lagMer": "Make a double batch of chili and refrigerate half for Friday.",
+          "varer": [
+            "ground beef",
+            "onion",
+            "green pepper",
+            "chili powder",
+            "ground cumin",
+            "Mexican stewed tomatoes",
+            "chili beans",
+            "frozen corn",
+            "shredded cheddar cheese"
+          ]
+        },
+        {
+          "dag": "friday",
+          "rett": "Baked potatoes with Thursday’s chili",
+          "oppskrift": "https://www.tasteofhome.com/recipes/baked-potatoes-with-topping/",
+          "hvorfor": "Dinner with no new cooking. The chili is the topping, in place of the bacon and mayonnaise in the recipe.",
+          "rest": {
+            "fra": "thursday",
+            "hva": "the chili"
+          },
+          "varer": [
+            "baking potatoes",
+            "green onions"
+          ]
+        },
+        {
+          "dag": "saturday",
+          "rett": "Sausage and peppers",
+          "oppskrift": "https://www.tasteofhome.com/recipes/easy-italian-sausage-and-peppers/",
+          "hvorfor": "One skillet and a few ingredients. The recipe is written for a crowd, so scale it down.",
+          "varer": [
+            "Italian sausage links",
+            "green peppers",
+            "onion",
+            "plum tomatoes",
+            "fresh parsley",
+            "chicken broth",
+            "lemon"
+          ]
+        },
+        {
+          "dag": "sunday",
+          "rett": "Tuna noodle casserole",
+          "oppskrift": "https://www.tasteofhome.com/recipes/tuna-noodle-casserole/",
+          "hvorfor": "A baked pantry dinner on canned tuna and egg noodles.",
+          "varer": [
+            "frozen peas",
+            "cream of mushroom soup",
+            "sour cream",
+            "Parmesan cheese",
+            "canned tuna",
+            "soft bread crumbs"
+          ]
+        }
+      ]
+    },
+    "vegetar": {
+      "tittel": "Vegetarian meal plan: seven dinners without meat or fish",
+      "h1": "Vegetarian meal plan",
+      "beskrivelse": "Seven vegetarian dinners built on beans, eggs, pasta and vegetables. Monday’s chili fills quesadillas on Wednesday. With recipe links and one grocery list.",
+      "ingress": "Seven dinners without meat or fish, with beans, eggs and cheese, and one pot that becomes two dinners.",
+      "vinkel": "Monday’s chili is made in a double batch and fills quesadillas on Wednesday. The rest of the week moves between a stir-fry, soup, pizza, lasagna and a frittata, so no two nights look alike.",
+      "faq": [
+        [
+          "Is there meat or fish in any of the dinners?",
+          "No. None of the seven recipes lists meat or fish, and where broth is used it is vegetable broth. If you are strict about cheese, check the cheeses yourself."
+        ],
+        [
+          "Can I switch the days around?",
+          "Yes, but use Monday’s chili by Wednesday. The other days can move freely."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "monday",
+          "rett": "Vegetarian chili",
+          "oppskrift": "https://www.tasteofhome.com/recipes/vegetarian-chili/",
+          "hvorfor": "A hearty pot of two kinds of beans and vegetables. Make a double batch, and Wednesday’s dinner is nearly done.",
+          "lagMer": "Make a double batch of chili and refrigerate half for Wednesday.",
+          "varer": [
+            "red onion",
+            "garlic",
+            "sweet red pepper",
+            "zucchini",
+            "carrots",
+            "crushed tomatoes",
+            "black beans",
+            "kidney beans",
+            "paprika",
+            "ground cumin",
+            "chili powder",
+            "ground cinnamon",
+            "cayenne pepper",
+            "limes",
+            "fresh cilantro"
+          ]
+        },
+        {
+          "dag": "tuesday",
+          "rett": "Almond vegetable stir-fry",
+          "oppskrift": "https://www.tasteofhome.com/recipes/almond-vegetable-stir-fry/",
+          "hvorfor": "A quick stir-fry on broccoli and peppers, with toasted almonds for crunch.",
+          "varer": [
+            "cornstarch",
+            "soy sauce",
+            "sesame oil",
+            "broccoli",
+            "onion",
+            "fresh ginger",
+            "garlic",
+            "slivered almonds"
+          ]
+        },
+        {
+          "dag": "wednesday",
+          "rett": "Bean and cheese quesadillas with Monday’s chili",
+          "oppskrift": "https://www.tasteofhome.com/recipes/bean-cheese-quesadillas/",
+          "hvorfor": "Dinner with almost no new cooking. Monday’s chili takes the place of the refried beans in the recipe.",
+          "rest": {
+            "fra": "monday",
+            "hva": "the chili"
+          },
+          "varer": [
+            "flour tortillas",
+            "canned diced tomatoes",
+            "green onions",
+            "shredded cheddar cheese"
+          ]
+        },
+        {
+          "dag": "thursday",
+          "rett": "Tomato soup",
+          "oppskrift": "https://www.tasteofhome.com/recipes/grandma-s-tomato-soup/",
+          "hvorfor": "A simple soup from pantry staples. Cook the noodles for this meal only.",
+          "varer": [
+            "tomato juice",
+            "egg noodles",
+            "fresh parsley"
+          ]
+        },
+        {
+          "dag": "friday",
+          "rett": "Pizza margherita",
+          "oppskrift": "https://www.tasteofhome.com/recipes/pizza-margherita/",
+          "hvorfor": "Friday pizza with tomato, mozzarella and basil.",
+          "varer": [
+            "active dry yeast",
+            "bread flour",
+            "diced tomatoes",
+            "shredded mozzarella cheese",
+            "dried oregano",
+            "fresh basil",
+            "crushed red pepper flakes"
+          ]
+        },
+        {
+          "dag": "saturday",
+          "rett": "Vegetable lasagna",
+          "oppskrift": "https://www.tasteofhome.com/recipes/vegetable-lasagna/",
+          "hvorfor": "Saturday is the day for a baked dish. The vegetables fill the layers where meat would go.",
+          "varer": [
+            "onion",
+            "garlic",
+            "plum tomatoes",
+            "mushrooms",
+            "yellow summer squash",
+            "tomato paste",
+            "vegetable broth",
+            "brown sugar",
+            "dried basil",
+            "dried thyme",
+            "Italian seasoning",
+            "lasagna noodles",
+            "eggs",
+            "ricotta cheese",
+            "shredded mozzarella cheese",
+            "shredded Parmesan cheese"
+          ]
+        },
+        {
+          "dag": "sunday",
+          "rett": "Vegetable frittata",
+          "oppskrift": "https://www.tasteofhome.com/recipes/vegetable-frittata/",
+          "hvorfor": "Sunday suits a frittata, where eggs and vegetables do the work.",
+          "varer": [
+            "onion",
+            "green pepper",
+            "garlic",
+            "red potatoes",
+            "eggs"
+          ]
+        }
+      ]
+    },
+    "for-en": {
+      "tittel": "Meal plan for one: seven dinners with little waste",
+      "h1": "Meal plan for one",
+      "beskrivelse": "Seven dinners for one person. One dinner becomes two, one goes in the freezer, and the rest scale down to a single serving. With links to the recipes.",
+      "ingress": "Seven dinners for one, set up so you shop once and do not end up with half-used packages.",
+      "vinkel": "Recipes are often written for four. This week you scale most of them down to one serving. On Wednesday you make the whole pot of meat sauce and freeze the servings you do not eat. On Thursday you bake extra chicken for Friday’s stir-fry, and on Sunday you take a serving of sauce out of the freezer.",
+      "faq": [
+        [
+          "How do I scale a recipe down to one serving?",
+          "Divide the amounts by the number of servings the recipe makes. In Matlyst you change the number of servings on the recipe, and the amounts are recalculated. The math is linear, so season to taste."
+        ],
+        [
+          "How long can the meat sauce stay in the freezer?",
+          "USDA says leftovers can be frozen for {fryser}. Freeze what you will not eat soon."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "monday",
+          "rett": "Sweet and spicy glazed salmon",
+          "oppskrift": "https://www.tasteofhome.com/recipes/sweet-spicy-glazed-salmon/",
+          "hvorfor": "One salmon fillet in the oven. The recipe makes four, so scale it down to one serving.",
+          "varer": [
+            "salmon fillets",
+            "Dijon mustard",
+            "soy sauce",
+            "paprika",
+            "ground ginger",
+            "sesame oil",
+            "brown sugar"
+          ]
+        },
+        {
+          "dag": "tuesday",
+          "rett": "Pasta carbonara",
+          "oppskrift": "https://www.tasteofhome.com/recipes/authentic-pasta-carbonara/",
+          "hvorfor": "A dinner in minutes with few ingredients. Scale the recipe down to one serving.",
+          "varer": [
+            "pancetta",
+            "eggs",
+            "Parmesan cheese",
+            "garlic",
+            "fresh parsley",
+            "spaghetti"
+          ]
+        },
+        {
+          "dag": "wednesday",
+          "rett": "Spaghetti with meat sauce",
+          "oppskrift": "https://www.tasteofhome.com/recipes/so-easy-spaghetti-sauce/",
+          "hvorfor": "Meat sauce is as much work for one as for four, so make the whole pot once.",
+          "lagMer": "Eat one serving and freeze the rest of the sauce in portions.",
+          "varer": [
+            "lean ground beef",
+            "onion",
+            "celery",
+            "tomato sauce",
+            "tomato juice",
+            "diced tomatoes",
+            "tomato paste",
+            "chili powder",
+            "garlic powder",
+            "dried basil",
+            "dried oregano",
+            "bay leaves",
+            "spaghetti"
+          ]
+        },
+        {
+          "dag": "thursday",
+          "rett": "Crispy baked chicken thighs",
+          "oppskrift": "https://www.tasteofhome.com/recipes/crispy-baked-chicken-thighs/",
+          "hvorfor": "A plain oven dinner for one. Bake a few extra thighs for tomorrow.",
+          "lagMer": "Bake two extra thighs and refrigerate them for Friday.",
+          "varer": [
+            "bone-in chicken thighs",
+            "garlic powder",
+            "fresh thyme",
+            "paprika"
+          ]
+        },
+        {
+          "dag": "friday",
+          "rett": "Quick chicken and broccoli stir-fry with Thursday’s chicken",
+          "oppskrift": "https://www.tasteofhome.com/recipes/quick-chicken-broccoli-stir-fry/",
+          "hvorfor": "No new meat to cook. The recipe asks for cooked chicken, and you have it from Thursday.",
+          "rest": {
+            "fra": "thursday",
+            "hva": "the chicken"
+          },
+          "varer": [
+            "rice vinegar",
+            "mirin",
+            "chili garlic sauce",
+            "cornstarch",
+            "fish sauce",
+            "chicken broth",
+            "instant brown rice",
+            "broccoli",
+            "green onions"
+          ]
+        },
+        {
+          "dag": "saturday",
+          "rett": "Veggie omelet with goat cheese",
+          "oppskrift": "https://www.tasteofhome.com/recipes/veggie-omelet-with-goat-cheese/",
+          "hvorfor": "An omelet is a dinner for one by nature, and it uses up the vegetables left in the fridge.",
+          "varer": [
+            "eggs",
+            "milk",
+            "zucchini",
+            "mushrooms",
+            "green pepper",
+            "baby spinach",
+            "goat cheese"
+          ]
+        },
+        {
+          "dag": "sunday",
+          "rett": "Spaghetti with meat sauce from the freezer",
+          "framgang": [
+            "Use the meat sauce you took out of the freezer yesterday and thawed in the refrigerator.",
+            "Heat it in a saucepan until it reaches 165 °F as measured with a food thermometer.",
+            "Boil spaghetti for one serving and serve with the sauce."
+          ],
+          "hvorfor": "The dinner is already made. You only boil the spaghetti.",
+          "rest": {
+            "fra": "wednesday",
+            "hva": "the meat sauce",
+            "via": "fryser"
+          },
+          "varer": [
+            "spaghetti"
+          ]
+        }
+      ]
+    },
+    "husmannskost": {
+      "tittel": "Comfort food meal plan: seven classic dinners",
+      "h1": "Comfort food meal plan",
+      "beskrivelse": "Meat loaf, chicken pot pie, macaroni and cheese, oven-fried fish, pot roast and sandwiches. Seven classic dinners with recipe links and a grocery list.",
+      "ingress": "Seven classic American dinners, set up so Monday’s meat loaf becomes Wednesday’s sandwiches and Saturday’s roast becomes Sunday’s.",
+      "vinkel": "Comfort food rests on staples that keep, which makes the week easy to plan. Monday’s meat loaf is baked whole, and the part you set aside becomes sandwiches on Wednesday. Saturday’s roast is cooked the same way and feeds Sunday’s sandwiches.",
+      "faq": [
+        [
+          "What counts as comfort food?",
+          "Familiar home cooking made from plain ingredients, like meat loaf, chicken pot pie, macaroni and cheese and pot roast. The week here sticks to dishes like that."
+        ],
+        [
+          "Can I use leftover meat loaf in other dishes?",
+          "Yes. Sliced meat loaf works in sandwiches, which is how this week uses it. Use it by Wednesday, as this plan does."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "monday",
+          "rett": "Buttermilk meat loaf with mashed potatoes",
+          "oppskrift": "https://www.tasteofhome.com/recipes/buttermilk-meat-loaf/",
+          "hvorfor": "Meat loaf is a staple, and the potatoes can boil while it bakes.",
+          "lagMer": "Bake the whole loaf and set aside half of it for Wednesday.",
+          "varer": [
+            "soft bread crumbs",
+            "eggs",
+            "red onion",
+            "barbecue sauce",
+            "buttermilk",
+            "fresh parsley",
+            "garlic salt",
+            "ground beef",
+            "russet potatoes",
+            "milk"
+          ]
+        },
+        {
+          "dag": "tuesday",
+          "rett": "Pennsylvania Dutch chicken pot pie",
+          "oppskrift": "https://www.tasteofhome.com/recipes/pennsylvania-dutch-chicken-pot-pie/",
+          "hvorfor": "A pot of chicken, potatoes and homemade noodles, simmered in one pot.",
+          "varer": [
+            "chicken, cut up",
+            "onion",
+            "celery",
+            "potatoes",
+            "carrots",
+            "fresh parsley",
+            "eggs"
+          ]
+        },
+        {
+          "dag": "wednesday",
+          "rett": "Meat loaf sandwiches",
+          "framgang": [
+            "Slice the meat loaf you set aside on Monday.",
+            "Warm the slices in a skillet.",
+            "Serve on bread with barbecue sauce and lettuce."
+          ],
+          "hvorfor": "Dinner with no new cooking. The meat loaf is ready, and you only warm it and build the sandwiches.",
+          "rest": {
+            "fra": "monday",
+            "hva": "the meat loaf"
+          },
+          "varer": [
+            "sandwich bread",
+            "lettuce"
+          ]
+        },
+        {
+          "dag": "thursday",
+          "rett": "Old-fashioned macaroni and cheese",
+          "oppskrift": "https://www.tasteofhome.com/recipes/old-fashioned-macaroni-and-cheese/",
+          "hvorfor": "A baked comfort dish from pantry staples and a lot of cheddar.",
+          "varer": [
+            "elbow macaroni",
+            "ground mustard",
+            "hot pepper sauce",
+            "whole milk",
+            "shredded cheddar cheese"
+          ]
+        },
+        {
+          "dag": "friday",
+          "rett": "Oven-fried fish",
+          "oppskrift": "https://www.tasteofhome.com/recipes/oven-fried-fish/",
+          "hvorfor": "Fish on Friday, with a cracker coating baked in place of frying.",
+          "varer": [
+            "cod or haddock",
+            "wheat crackers",
+            "Parmesan cheese",
+            "dried parsley flakes",
+            "Italian seasoning"
+          ]
+        },
+        {
+          "dag": "saturday",
+          "rett": "Pot roast with carrots and potatoes",
+          "oppskrift": "https://www.tasteofhome.com/recipes/sunday-pot-roast/",
+          "hvorfor": "The recipe cooks a pork loin roast with carrots and potatoes in one pan, a good dinner for a day with more time.",
+          "lagMer": "Roast the whole piece and set aside part of the meat for Sunday.",
+          "varer": [
+            "boneless pork loin roast",
+            "dried oregano",
+            "onion salt",
+            "caraway seeds",
+            "carrots",
+            "potatoes",
+            "small onions",
+            "beef broth"
+          ]
+        },
+        {
+          "dag": "sunday",
+          "rett": "Hot roast sandwiches",
+          "framgang": [
+            "Slice the roast you set aside on Saturday.",
+            "Warm the slices in a skillet with a little of the pan juices.",
+            "Serve on bread."
+          ],
+          "hvorfor": "Sunday dinner with no new roast. The meat is ready, and you only warm it and build the sandwiches.",
+          "rest": {
+            "fra": "saturday",
+            "hva": "the roast"
+          },
+          "varer": [
+            "sandwich bread"
+          ]
+        }
+      ]
+    }
+  }
+}

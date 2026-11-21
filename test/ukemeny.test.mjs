@@ -1,4 +1,4 @@
-// Ukemenyene (/ukemenyer/, bare norsk): adressene er låst, hver side har sju dager i rekkefølge,
+// Ukemenyene på norsk (/ukemenyer/): adressene er låst, hver side har sju dager i rekkefølge,
 // og handlelista på den publiserte siden dekker nøyaktig varene rettene i menyer.nb.json trenger.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -20,7 +20,8 @@ const hoved = (sti) => html(sti).match(/<main[\s\S]*?<\/main>/u)?.[0] ?? '';
 const ADRESSER = ['/ukemenyer/', '/ukemenyer/familie/', '/ukemenyer/billig/', '/ukemenyer/vegetar/', '/ukemenyer/for-en/', '/ukemenyer/husmannskost/'];
 
 test('adresselås: familien gir nøyaktig de seks adressene, og alle står i sitemap.xml', () => {
-  assert.deepEqual(FAMILIE.markeder, { nb: { rot: 'ukemenyer/' } });
+  // De andre markedene (sv, da, en) har egne adresselåser i test/ukemeny-flersprak.test.mjs.
+  assert.deepEqual(FAMILIE.markeder.nb, { rot: 'ukemenyer/' });
   assert.deepEqual(['/ukemenyer/', ...rader.map((r) => `/ukemenyer/${r.slug}/`)], ADRESSER);
   const kart = readFileSync(join(ROT, 'sitemap.xml'), 'utf8');
   for (const a of ADRESSER) {
@@ -28,7 +29,8 @@ test('adresselås: familien gir nøyaktig de seks adressene, og alle står i sit
     assert.equal(familieForSti(a), 'ukemeny', a);
     assert.match(html(a.slice(1)), new RegExp(`<link rel="canonical" href="https://matlyst-app\\.no${a}">`, 'u'), a);
   }
-  for (const mk of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROT, `sitemap-${mk}.xml`), 'utf8'), /ukemenyer/u, mk);
+  // De norske sidene står i sitemap.xml. De andre sitemappene nevner dem bare som hreflang-alternativer, aldri som <loc>.
+  for (const mk of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROT, `sitemap-${mk}.xml`), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/ukemenyer/u, mk);
   // Produktsiden /ukemeny/ er appens funksjonsside og hører ikke til familien.
   assert.equal(familieForSti('/ukemeny/'), null);
 });

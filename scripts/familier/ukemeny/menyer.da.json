@@ -1,0 +1,861 @@
+{
+  "hentet": "2026-11-21",
+  "hyller": [
+    "Frugt & grønt",
+    "Fisk & skaldyr",
+    "Kød",
+    "Mejeri & æg",
+    "Frostvarer",
+    "Tørvarer & konserves",
+    "Krydderier & saucer",
+    "Brød & bagværk"
+  ],
+  "basis": [
+    "salt",
+    "peber",
+    "neutral olie",
+    "olivenolie",
+    "smør eller margarine",
+    "hvedemel",
+    "sukker"
+  ],
+  "varer": {
+    "avocado": "Frugt & grønt",
+    "babysalat": "Frugt & grønt",
+    "bacon": "Kød",
+    "basilikum": "Frugt & grønt",
+    "basmatiris": "Tørvarer & konserves",
+    "bladselleri": "Frugt & grønt",
+    "blandet salat": "Frugt & grønt",
+    "blomkål": "Frugt & grønt",
+    "broccoli": "Frugt & grønt",
+    "brøndkarse": "Frugt & grønt",
+    "burgerboller": "Brød & bagværk",
+    "cashewnødder": "Tørvarer & konserves",
+    "champignoner": "Frugt & grønt",
+    "cherrytomater": "Frugt & grønt",
+    "chiliflager": "Krydderier & saucer",
+    "citron": "Frugt & grønt",
+    "citronpeber": "Krydderier & saucer",
+    "creme fraiche": "Mejeri & æg",
+    "dijon-honningsennep": "Krydderier & saucer",
+    "dijonsennep": "Krydderier & saucer",
+    "dild": "Frugt & grønt",
+    "forårsløg": "Frugt & grønt",
+    "fuldkornspasta": "Tørvarer & konserves",
+    "granatæble": "Frugt & grønt",
+    "grisebryst": "Kød",
+    "grisekam med svær": "Kød",
+    "grøntsagsbouillon": "Krydderier & saucer",
+    "gulerødder": "Frugt & grønt",
+    "hakkede tomater": "Tørvarer & konserves",
+    "hakket oksekød": "Kød",
+    "hakket svine- og kalvekød": "Kød",
+    "halloumi": "Mejeri & æg",
+    "havregryn": "Tørvarer & konserves",
+    "hel kylling": "Kød",
+    "hjertesalat": "Frugt & grønt",
+    "honning": "Tørvarer & konserves",
+    "hvide aspargessnitter": "Tørvarer & konserves",
+    "hvide bønner": "Tørvarer & konserves",
+    "hvidløg": "Frugt & grønt",
+    "hønsebouillon": "Krydderier & saucer",
+    "jasminris": "Tørvarer & konserves",
+    "karry": "Krydderier & saucer",
+    "kartofler": "Frugt & grønt",
+    "kidneybønner": "Tørvarer & konserves",
+    "knoldselleri": "Frugt & grønt",
+    "koriander": "Frugt & grønt",
+    "krydderurter": "Frugt & grønt",
+    "kylling": "Kød",
+    "kyllingefilet": "Kød",
+    "laksefilet": "Fisk & skaldyr",
+    "landbrød": "Brød & bagværk",
+    "lasagneplader": "Tørvarer & konserves",
+    "laurbærblade": "Krydderier & saucer",
+    "lime": "Frugt & grønt",
+    "linser": "Tørvarer & konserves",
+    "løg": "Frugt & grønt",
+    "løgpulver": "Krydderier & saucer",
+    "madlavningsfløde": "Mejeri & æg",
+    "majs": "Tørvarer & konserves",
+    "majsstivelse": "Krydderier & saucer",
+    "mayonnaise": "Krydderier & saucer",
+    "medisterpølse": "Kød",
+    "mornaysauce": "Mejeri & æg",
+    "muskatnød": "Krydderier & saucer",
+    "mælk": "Mejeri & æg",
+    "mørk chokolade": "Tørvarer & konserves",
+    "oksebouillon": "Krydderier & saucer",
+    "oliven": "Tørvarer & konserves",
+    "pankorasp": "Brød & bagværk",
+    "paprika": "Krydderier & saucer",
+    "parmigiano reggiano": "Mejeri & æg",
+    "pasta": "Tørvarer & konserves",
+    "pastaost": "Mejeri & æg",
+    "pastinakker": "Frugt & grønt",
+    "peanuts": "Tørvarer & konserves",
+    "persille": "Frugt & grønt",
+    "persillerødder": "Frugt & grønt",
+    "piskefløde": "Mejeri & æg",
+    "porre": "Frugt & grønt",
+    "porrer": "Frugt & grønt",
+    "pære": "Frugt & grønt",
+    "rasp": "Brød & bagværk",
+    "remoulade": "Krydderier & saucer",
+    "revet cheddar": "Mejeri & æg",
+    "ris": "Tørvarer & konserves",
+    "romainesalat": "Frugt & grønt",
+    "rugbrød": "Brød & bagværk",
+    "rød chili": "Frugt & grønt",
+    "rødbeder": "Frugt & grønt",
+    "røde peberfrugter": "Frugt & grønt",
+    "røde æbler": "Frugt & grønt",
+    "rødkål": "Frugt & grønt",
+    "rødløg": "Frugt & grønt",
+    "rødspættefilet": "Fisk & skaldyr",
+    "røgede mandler": "Tørvarer & konserves",
+    "salsiccia": "Kød",
+    "saucejævner": "Krydderier & saucer",
+    "soja": "Krydderier & saucer",
+    "soltørrede tomater": "Krydderier & saucer",
+    "soltørrede tomater i olie": "Tørvarer & konserves",
+    "spaghetti": "Tørvarer & konserves",
+    "spidskål": "Frugt & grønt",
+    "spinat": "Frugt & grønt",
+    "squash": "Frugt & grønt",
+    "stødt kardemomme": "Krydderier & saucer",
+    "stødt koriander": "Krydderier & saucer",
+    "stødt spidskommen": "Krydderier & saucer",
+    "sukkerærter": "Frugt & grønt",
+    "syltede agurker": "Tørvarer & konserves",
+    "sød soja": "Krydderier & saucer",
+    "søde kartofler": "Frugt & grønt",
+    "tacoskaller": "Brød & bagværk",
+    "tarteletter": "Brød & bagværk",
+    "tomatpuré": "Krydderier & saucer",
+    "tomatsalsa": "Tørvarer & konserves",
+    "torsk": "Fisk & skaldyr",
+    "tortillachips": "Tørvarer & konserves",
+    "tortillaer": "Brød & bagværk",
+    "tørret oregano": "Krydderier & saucer",
+    "tørret timian": "Krydderier & saucer",
+    "worcestershiresauce": "Krydderier & saucer",
+    "æbler": "Frugt & grønt",
+    "æg": "Mejeri & æg",
+    "ægnudler": "Tørvarer & konserves",
+    "ærter": "Frostvarer",
+    "østerssauce": "Krydderier & saucer"
+  },
+  "menyer": {
+    "familie": {
+      "tittel": "Madplan til børnefamilien: syv aftensmåltider og liste",
+      "h1": "Madplan til børnefamilien",
+      "beskrivelse": "Syv aftensmåltider, som de fleste børn spiser, hvor to af dem bygger på dagen før. Med link til opskrifterne, rester lagt ind i ugen og én samlet indkøbsliste.",
+      "ingress": "Syv aftensmåltider, som de fleste børn spiser, sat op så mandagens og lørdagens madlavning giver en god start på onsdag og søndag.",
+      "vinkel": "Ugen er bygget om to portioner, der deles på to aftener. Frikadellerne fra mandag bliver til boller i karry onsdag, og kyllingen fra lørdag bliver til kylling i karry søndag. Kartofler, løg og fløde går igen i flere retter, så indkøbslisten bliver kort.",
+      "faq": [
+        [
+          "Hvordan får jeg børnene til at spise madplanen?",
+          "Ugen har retter, som mange børn kender: frikadeller, fiskefilet, spaghetti bolognese, tacos og kylling. Med tacos om fredagen bygger hver sin egen. Byt gerne en dag ud med en ret, I ved børnene kan lide, og flyt resten af listen med."
+        ],
+        [
+          "Kan jeg bytte rundt på dagene?",
+          "Ja, men hold afstanden mellem en ret og de rester, den giver. Frikadellerne skal bruges før karryretten, og kyllingen før søndagens ret."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "mandag",
+          "rett": "Frikadeller med kartofler",
+          "oppskrift": "https://www.arla.dk/opskrifter/frikadeller/",
+          "hvorfor": "Mandag har brug for en ret, alle spiser. Frikadellerne steges på panden, mens kartoflerne koger.",
+          "lagMer": "Lav dobbelt så mange frikadeller, og sæt halvdelen koldt til onsdag.",
+          "varer": [
+            "hakket svine- og kalvekød",
+            "løg",
+            "æg",
+            "mælk",
+            "havregryn",
+            "kartofler"
+          ]
+        },
+        {
+          "dag": "tirsdag",
+          "rett": "Fiskefileter med remoulade",
+          "oppskrift": "https://www.arla.dk/opskrifter/fiskefileter/",
+          "hvorfor": "Fisk midt på ugen, med sprød panering som børn flest kan lide.",
+          "varer": [
+            "rødspættefilet",
+            "rasp",
+            "æg",
+            "citron",
+            "remoulade",
+            "kartofler"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Boller i karry med frikadellerne fra mandag",
+          "oppskrift": "https://www.arla.dk/opskrifter/boller-i-karry/",
+          "hvorfor": "Frikadellerne er allerede lavet, så du laver kun karrysovsen og koger ris. De erstatter kødbollerne i opskriften.",
+          "rest": {
+            "fra": "mandag",
+            "hva": "frikadellerne"
+          },
+          "varer": [
+            "karry",
+            "hønsebouillon",
+            "æbler",
+            "romainesalat",
+            "sukkerærter",
+            "peanuts",
+            "ris"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Spaghetti bolognese",
+          "oppskrift": "https://www.arla.dk/opskrifter/spaghetti-bolognese/",
+          "hvorfor": "En klassiker, som de fleste børn kender. Kødsovsen simrer, mens spaghettien koger.",
+          "varer": [
+            "salsiccia",
+            "hakket oksekød",
+            "bladselleri",
+            "hvidløg",
+            "gulerødder",
+            "tomatpuré",
+            "oksebouillon",
+            "laurbærblade",
+            "spaghetti",
+            "parmigiano reggiano"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Tacoskaller med fyld",
+          "oppskrift": "https://www.arla.dk/opskrifter/tacoskaller-med-fyld/",
+          "hvorfor": "Fredagstacos, hvor hver bygger sin egen. Ingen skal spise det, de ikke vil have.",
+          "varer": [
+            "hakket oksekød",
+            "hvidløg",
+            "stødt spidskommen",
+            "stødt koriander",
+            "chiliflager",
+            "kidneybønner",
+            "majs",
+            "creme fraiche",
+            "tomatsalsa",
+            "avocado",
+            "spidskål",
+            "koriander",
+            "lime",
+            "tacoskaller"
+          ]
+        },
+        {
+          "dag": "lørdag",
+          "rett": "Kylling i ovn med kartofler",
+          "oppskrift": "https://www.arla.dk/opskrifter/kylling-i-ovn/",
+          "hvorfor": "Ovnen klarer arbejdet på en dag med mere tid. Rodfrugterne bages i samme fad.",
+          "lagMer": "Steg hele kyllingen, pluk kødet af, og sæt halvdelen koldt til søndag.",
+          "varer": [
+            "hel kylling",
+            "hvidløg",
+            "persille",
+            "citron",
+            "rødbeder",
+            "persillerødder",
+            "søde kartofler",
+            "madlavningsfløde",
+            "saucejævner"
+          ]
+        },
+        {
+          "dag": "søndag",
+          "rett": "Kylling i karry",
+          "oppskrift": "https://www.arla.dk/opskrifter/kylling-i-karry/",
+          "hvorfor": "Kyllingen fra lørdag bruges i stedet for rå kyllingefilet. Læg den i til sidst.",
+          "rest": {
+            "fra": "lørdag",
+            "hva": "kyllingekødet"
+          },
+          "varer": [
+            "karry",
+            "blomkål",
+            "forårsløg",
+            "grøntsagsbouillon",
+            "ris"
+          ]
+        }
+      ]
+    },
+    "billig": {
+      "tittel": "Billig madplan: syv aftensmåltider uden spild",
+      "h1": "Billig madplan",
+      "beskrivelse": "Syv aftensmåltider på råvarer, der plejer at være billige, hvor to portioner bliver til to måltider hver. Med link til opskrifterne og én samlet indkøbsliste.",
+      "ingress": "Syv aftensmåltider på råvarer, der plejer at være billige, sat op så lidt som muligt ender i skraldespanden.",
+      "vinkel": "Vi skriver ingen priser, for priserne ændrer sig fra butik til butik og fra uge til uge. Ugen holdes nede på en anden måde: kødsovsen, kartoflerne og kyllingen laves én gang og bruges to gange, og æggekagen og stegt flæsk bygger på enkle basisvarer.",
+      "faq": [
+        [
+          "Hvorfor står der ingen priser på den billige madplan?",
+          "Priserne ændrer sig fra butik til butik og fra uge til uge, og vi har ingen åben kilde til, hvad hver ret koster. Vi har i stedet sat ugen op, så du køber færre varer og smider mindre ud."
+        ],
+        [
+          "Hvad gør ugen billigere?",
+          "Tre aftensmåltider laves af rester fra en tidligere dag, og flere varer går igen fra ret til ret. Æggekagen og det stegte flæsk bygger på enkle basisvarer."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "mandag",
+          "rett": "Pasta med kødsovs",
+          "oppskrift": "https://www.arla.dk/opskrifter/pasta-med-kodsauce/",
+          "hvorfor": "Én portion kødsovs rækker til to måltider. Det, der ikke spises i dag, bliver til lasagne onsdag.",
+          "lagMer": "Lav dobbelt portion kødsovs, og sæt halvdelen koldt til onsdag.",
+          "varer": [
+            "løg",
+            "hvidløg",
+            "hakket oksekød",
+            "gulerødder",
+            "knoldselleri",
+            "tomatpuré",
+            "hakkede tomater",
+            "tørret timian",
+            "pasta"
+          ]
+        },
+        {
+          "dag": "tirsdag",
+          "rett": "Æggekage med bacon",
+          "oppskrift": "https://www.arla.dk/opskrifter/aggekage/",
+          "hvorfor": "Æg og bacon er billigt, og æggekagen laves på én pande. Rugbrød og tomater gør den hel.",
+          "varer": [
+            "æg",
+            "piskefløde",
+            "persille",
+            "bacon",
+            "cherrytomater",
+            "rugbrød"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Lasagne med kødsovsen fra mandag",
+          "oppskrift": "https://www.arla.dk/opskrifter/lasagne/",
+          "hvorfor": "Kødsovsen er lavet, så du kun laver den hvide sovs og lægger lagene.",
+          "rest": {
+            "fra": "mandag",
+            "hva": "kødsovsen"
+          },
+          "varer": [
+            "mælk",
+            "lasagneplader",
+            "pastaost",
+            "rasp",
+            "muskatnød"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Stegt flæsk med persillesovs",
+          "oppskrift": "https://www.arla.dk/opskrifter/stegt-flask-med-persillesovs/",
+          "hvorfor": "En klassisk dansk ret på enkle råvarer. Kartoflerne koges til to dage.",
+          "lagMer": "Kog dobbelt så mange kartofler, og sæt halvdelen koldt til fredag.",
+          "varer": [
+            "grisebryst",
+            "rødløg",
+            "gulerødder",
+            "mælk",
+            "majsstivelse",
+            "madlavningsfløde",
+            "persille",
+            "kartofler"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Biksemad med kartoflerne fra torsdag",
+          "oppskrift": "https://www.arla.dk/opskrifter/biksemad/",
+          "hvorfor": "Biksemad laves af kogte kartofler, og dem har du fra torsdag. Alt steges på én pande.",
+          "rest": {
+            "fra": "torsdag",
+            "hva": "kartoflerne"
+          },
+          "varer": [
+            "medisterpølse",
+            "løg",
+            "creme fraiche",
+            "pastinakker",
+            "røde æbler",
+            "persille",
+            "worcestershiresauce"
+          ]
+        },
+        {
+          "dag": "lørdag",
+          "rett": "Kylling i ovn med rodfrugter",
+          "oppskrift": "https://www.arla.dk/opskrifter/kylling-i-ovn/",
+          "hvorfor": "En hel kylling giver mere mad end lige så mange fileter. Rodfrugterne bages i samme fad.",
+          "lagMer": "Pluk kødet af kyllingen, og sæt halvdelen koldt til søndag.",
+          "varer": [
+            "hel kylling",
+            "hvidløg",
+            "persille",
+            "citron",
+            "rødbeder",
+            "persillerødder",
+            "søde kartofler",
+            "madlavningsfløde",
+            "saucejævner"
+          ]
+        },
+        {
+          "dag": "søndag",
+          "rett": "Pasta med kylling og spinat",
+          "oppskrift": "https://www.arla.dk/opskrifter/pasta-med-kylling/",
+          "hvorfor": "Kyllingen fra lørdag bruges i stedet for rå kyllingefilet, så du slipper for at købe kød.",
+          "rest": {
+            "fra": "lørdag",
+            "hva": "kyllingekødet"
+          },
+          "varer": [
+            "fuldkornspasta",
+            "champignoner",
+            "hvidløg",
+            "madlavningsfløde",
+            "parmigiano reggiano",
+            "spinat",
+            "cherrytomater"
+          ]
+        }
+      ]
+    },
+    "vegetar": {
+      "tittel": "Vegetarisk madplan: syv aftensmåltider uden kød og fisk",
+      "h1": "Vegetarisk madplan",
+      "beskrivelse": "Syv vegetariske aftensmåltider med bønner, linser, æg og grøntsager. Chilien fra mandag bliver til enchiladas onsdag. Med link til opskrifterne og indkøbsliste.",
+      "ingress": "Syv aftensmåltider uden kød og fisk, med bønner, linser, æg og ost, og én gryde, der bliver til to måltider.",
+      "vinkel": "Mandagens chili laves dobbelt og bliver fyld i enchiladas onsdag. Resten af ugen skifter mellem bælgfrugter (linsegryde, one pot pasta), ovnretter (lasagne) og æg (æggekage), så ingen dag ligner dagen før.",
+      "faq": [
+        [
+          "Er der kød eller fisk i nogen af retterne?",
+          "Nej. Ingen af de syv opskrifter har kød eller fisk på ingredienslisten, og hvor der bruges bouillon, er det grøntsagsbouillon. Går du op i osten, så tjek den selv."
+        ],
+        [
+          "Kan jeg bytte rundt på dagene?",
+          "Ja, men chilien fra mandag skal bruges senest onsdag. De andre dage kan flyttes frit."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "mandag",
+          "rett": "Chili sin carne",
+          "oppskrift": "https://www.arla.dk/opskrifter/chili-sin-carne/",
+          "hvorfor": "En mættende gryde på bønner og grøntsager. Lav dobbelt portion, så er onsdagens aftensmad næsten klar.",
+          "lagMer": "Lav dobbelt portion chili, og sæt halvdelen koldt til onsdag.",
+          "varer": [
+            "rødløg",
+            "hvidløg",
+            "gulerødder",
+            "soltørrede tomater",
+            "kidneybønner",
+            "hakkede tomater",
+            "mørk chokolade",
+            "røde peberfrugter",
+            "stødt spidskommen",
+            "stødt koriander",
+            "creme fraiche",
+            "tortillachips",
+            "avocado",
+            "lime",
+            "rød chili",
+            "koriander",
+            "basmatiris"
+          ]
+        },
+        {
+          "dag": "tirsdag",
+          "rett": "Linsegryde med halloumi",
+          "oppskrift": "https://www.arla.dk/opskrifter/linsegryde-med-halloumi/",
+          "hvorfor": "Linser og halloumi i en krydret gryde med søde kartofler.",
+          "varer": [
+            "linser",
+            "halloumi",
+            "søde kartofler",
+            "løg",
+            "hvidløg",
+            "stødt kardemomme",
+            "stødt spidskommen",
+            "grøntsagsbouillon",
+            "squash",
+            "røde peberfrugter",
+            "persille",
+            "spidskål",
+            "granatæble",
+            "pære"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Vegetarisk enchiladas med chilien fra mandag",
+          "oppskrift": "https://www.arla.dk/opskrifter/vegetarisk-enchiladas/",
+          "hvorfor": "Chilien fra mandag er fyldet, så du ruller kun tortillaerne og laver sovsen.",
+          "rest": {
+            "fra": "mandag",
+            "hva": "chilien"
+          },
+          "varer": [
+            "tortillaer",
+            "revet cheddar",
+            "forårsløg",
+            "koriander",
+            "lime",
+            "tomatpuré",
+            "grøntsagsbouillon",
+            "paprika",
+            "løgpulver",
+            "tørret oregano"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Kartoffelsuppe",
+          "oppskrift": "https://www.arla.dk/opskrifter/kartoffelsuppe/",
+          "hvorfor": "En enkel suppe på kartofler og løg, som laves i én gryde.",
+          "varer": [
+            "kartofler",
+            "løg",
+            "hvidløg",
+            "grøntsagsbouillon",
+            "madlavningsfløde",
+            "citron",
+            "røgede mandler",
+            "persille",
+            "landbrød"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "One pot pasta med bønner",
+          "oppskrift": "https://www.arla.dk/opskrifter/one-pot-pasta-med-bonner-og-soltorrede-tomater/",
+          "hvorfor": "Alt koges i samme gryde, så der er kun én ting at vaske op.",
+          "varer": [
+            "grøntsagsbouillon",
+            "pasta",
+            "hakkede tomater",
+            "soltørrede tomater i olie",
+            "hvidløg",
+            "madlavningsfløde",
+            "hvide bønner",
+            "citron",
+            "parmigiano reggiano",
+            "basilikum"
+          ]
+        },
+        {
+          "dag": "lørdag",
+          "rett": "Grøntsagslasagne",
+          "oppskrift": "https://www.arla.dk/opskrifter/grontsagslasagne/",
+          "hvorfor": "Lørdag er dagen for en ovnret. Squash og oliven giver lasagnen smag uden kød.",
+          "varer": [
+            "løg",
+            "hvidløg",
+            "squash",
+            "hakkede tomater",
+            "oliven",
+            "tomatpuré",
+            "grøntsagsbouillon",
+            "tørret oregano",
+            "pastaost",
+            "lasagneplader",
+            "mornaysauce",
+            "landbrød"
+          ]
+        },
+        {
+          "dag": "søndag",
+          "rett": "Æggekage med grøntsager og halloumi",
+          "oppskrift": "https://www.arla.dk/opskrifter/aggekage-med-grontsager-og-halloumi/",
+          "hvorfor": "Søndag er en dag for æggekage med champignoner, porre og halloumi. Den bages i ovnen.",
+          "varer": [
+            "champignoner",
+            "porre",
+            "babysalat",
+            "æg",
+            "mælk",
+            "halloumi",
+            "rugbrød"
+          ]
+        }
+      ]
+    },
+    "for-en": {
+      "tittel": "Madplan til én person: syv aftensmåltider uden spild",
+      "h1": "Madplan til én person",
+      "beskrivelse": "Syv aftensmåltider til dig, der bor alene. Ét måltid bliver til to, ét går i fryseren, og resten regnes ned til én portion. Med link til opskrifterne.",
+      "ingress": "Syv aftensmåltider til én, sat op så du handler én gang og ikke sidder tilbage med halve pakker.",
+      "vinkel": "Opskrifter er ofte skrevet til fire. I denne uge regner du de fleste ned til én portion. Onsdag laver du hele kødsovsen og fryser de portioner, du ikke spiser. Torsdag steger du ekstra kylling til fredagens wrap, og søndag tager du en portion sovs op af fryseren.",
+      "faq": [
+        [
+          "Hvordan regner jeg en opskrift ned til én portion?",
+          "Del mængderne med det antal portioner, opskriften er skrevet til. I Matlyst ændrer du antallet af portioner på opskriften, så regnes mængderne om. Omregningen er lineær, så smag selv til med krydderier og salt."
+        ],
+        [
+          "Hvor længe kan kødsovsen ligge i fryseren?",
+          "Det har vi ikke fundet en fast tid for hos Fødevarestyrelsen. Frys det, du ikke skal spise snart, med det samme. Fødevarestyrelsen skriver, at frosne madvarer bør tøs op i køleskabet."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "mandag",
+          "rett": "Ovnbagt laks",
+          "oppskrift": "https://www.arla.dk/opskrifter/ovnbagt-laks/",
+          "hvorfor": "Ét stykke laks i ovnen. Opskriften er skrevet til flere, så regn den ned til én portion.",
+          "varer": [
+            "laksefilet",
+            "pankorasp",
+            "krydderurter",
+            "hvidløg",
+            "citron"
+          ]
+        },
+        {
+          "dag": "tirsdag",
+          "rett": "Spaghetti carbonara",
+          "oppskrift": "https://www.arla.dk/opskrifter/spaghetti-carbonara/",
+          "hvorfor": "Aftensmad på ti minutter med få varer. Regn opskriften ned til én portion.",
+          "varer": [
+            "bacon",
+            "æg",
+            "parmigiano reggiano",
+            "spaghetti"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Pasta med kødsovs",
+          "oppskrift": "https://www.arla.dk/opskrifter/pasta-med-kodsauce/",
+          "hvorfor": "Kødsovs er lige så meget arbejde til én som til fire. Lav hele portionen én gang.",
+          "lagMer": "Spis én portion, og frys resten af sovsen i portionsbokse.",
+          "varer": [
+            "løg",
+            "hvidløg",
+            "hakket oksekød",
+            "gulerødder",
+            "knoldselleri",
+            "tomatpuré",
+            "hakkede tomater",
+            "tørret timian",
+            "pasta"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Wok med kylling, nudler og grøntsager",
+          "oppskrift": "https://www.arla.dk/opskrifter/wok-med-kylling-nudler-og-grontsager/",
+          "hvorfor": "En hurtig wok til én. Kog kun så mange nudler, som du spiser i dag.",
+          "lagMer": "Steg et ekstra stykke kyllingefilet uden sovs, og sæt det koldt til fredag.",
+          "varer": [
+            "gulerødder",
+            "rødløg",
+            "broccoli",
+            "kyllingefilet",
+            "karry",
+            "madlavningsfløde",
+            "honning",
+            "østerssauce",
+            "forårsløg",
+            "cashewnødder",
+            "ægnudler"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Lune kyllingewraps med kyllingen fra torsdag",
+          "oppskrift": "https://www.arla.dk/opskrifter/lun-kyllingewrap/",
+          "hvorfor": "Fredag uden ny madlavning. Kyllingen er klar, og du køber kun tortillaer, creme fraiche og salat.",
+          "rest": {
+            "fra": "torsdag",
+            "hva": "kyllingen"
+          },
+          "varer": [
+            "creme fraiche",
+            "tortillaer",
+            "hjertesalat",
+            "dijon-honningsennep",
+            "sød soja",
+            "løg",
+            "jasminris"
+          ]
+        },
+        {
+          "dag": "lørdag",
+          "rett": "Bagt torsk i ovn",
+          "oppskrift": "https://www.arla.dk/opskrifter/torsk-i-ovn/",
+          "hvorfor": "Fisk i ovnen en dag med mere tid. Regn opskriften ned til én portion.",
+          "varer": [
+            "torsk",
+            "løg",
+            "knoldselleri",
+            "gulerødder",
+            "madlavningsfløde",
+            "dild",
+            "kartofler",
+            "citronpeber"
+          ]
+        },
+        {
+          "dag": "søndag",
+          "rett": "Kødsovs fra fryseren med pasta",
+          "framgang": [
+            "Brug kødsovsen, du tog op af fryseren i går og tøede op i køleskabet.",
+            "Varm den op i en gryde, til den er rygende og gennemvarm.",
+            "Kog pasta til én portion, og server med sovsen."
+          ],
+          "hvorfor": "Aftensmaden er allerede lavet. Du skal kun koge pastaen.",
+          "rest": {
+            "fra": "onsdag",
+            "hva": "kødsovsen",
+            "via": "fryser"
+          },
+          "varer": [
+            "pasta"
+          ]
+        }
+      ]
+    },
+    "husmannskost": {
+      "tittel": "Madplan med klassiske retter: syv danske aftensmåltider",
+      "h1": "Madplan med klassiske retter",
+      "beskrivelse": "Hakkebøf med bløde løg, fiskefilet, biksemad, tarteletter, boller i karry, flæskesteg og flæskestegssandwich. Syv klassikere med link til opskrifterne.",
+      "ingress": "Syv danske klassikere, sat op så mandagens kartofler bliver til biksemad onsdag, og lørdagens flæskesteg til søndagens sandwich.",
+      "vinkel": "Klassisk dansk hverdagsmad bygger på råvarer, der holder sig, og det gør ugen nem at planlægge. Kartoflerne fra mandag bliver til biksemad onsdag. Flæskestegen lørdag steges så stor, at der er kød tilbage til søndagens sandwich.",
+      "faq": [
+        [
+          "Hvad regnes som klassiske retter?",
+          "Traditionel dansk hverdagsmad lavet af enkle råvarer, som hakkebøf med bløde løg, frikadeller, tarteletter og flæskesteg. Ugen her holder sig til den slags retter."
+        ],
+        [
+          "Kan jeg bruge resterne fra flæskestegen i andre retter?",
+          "Ja. Flæskestegssandwichen skal bruge skiver af steg, og de kan være fra lørdag. Biksemad kan også laves af rester af steg."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "mandag",
+          "rett": "Hakkebøf med bløde løg",
+          "oppskrift": "https://www.arla.dk/opskrifter/hakkeboffer-med-blode-log/",
+          "hvorfor": "Hakkebøf med bløde løg er en dansk klassiker. Kartoflerne koges til to dage.",
+          "lagMer": "Kog dobbelt så mange kartofler, og sæt halvdelen koldt til onsdag.",
+          "varer": [
+            "hakket oksekød",
+            "løg",
+            "madlavningsfløde",
+            "soja",
+            "saucejævner",
+            "røde æbler",
+            "ærter",
+            "kartofler"
+          ]
+        },
+        {
+          "dag": "tirsdag",
+          "rett": "Fiskefileter med remoulade",
+          "oppskrift": "https://www.arla.dk/opskrifter/fiskefileter/",
+          "hvorfor": "Panerede fiskefileter er en klassiker, som mange kender fra barndommen.",
+          "varer": [
+            "rødspættefilet",
+            "rasp",
+            "æg",
+            "citron",
+            "remoulade"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Biksemad med kartoflerne fra mandag",
+          "oppskrift": "https://www.arla.dk/opskrifter/biksemad/",
+          "hvorfor": "Biksemad laves af kogte kartofler, og dem har du fra mandag. Alt steges på én pande.",
+          "rest": {
+            "fra": "mandag",
+            "hva": "kartoflerne"
+          },
+          "varer": [
+            "medisterpølse",
+            "pastinakker",
+            "persille",
+            "creme fraiche",
+            "worcestershiresauce"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Tarteletter med høns i asparges",
+          "oppskrift": "https://www.arla.dk/opskrifter/tarteletter-med-hons-i-asparges/",
+          "hvorfor": "Tarteletter er en dansk klassiker til en dag med mere tid. Kyllingen koges i bouillon til fyldet.",
+          "varer": [
+            "kylling",
+            "gulerødder",
+            "porrer",
+            "laurbærblade",
+            "hvide aspargessnitter",
+            "piskefløde",
+            "tarteletter",
+            "brøndkarse"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Boller i karry",
+          "oppskrift": "https://www.arla.dk/opskrifter/boller-i-karry/",
+          "hvorfor": "Boller i karry med ris og æble er en gammel dansk ret, som mange kender fra barndommen.",
+          "varer": [
+            "hakket svine- og kalvekød",
+            "hvidløg",
+            "æg",
+            "karry",
+            "hønsebouillon",
+            "æbler",
+            "romainesalat",
+            "sukkerærter",
+            "rødløg",
+            "peanuts",
+            "ris"
+          ]
+        },
+        {
+          "dag": "lørdag",
+          "rett": "Langtidsstegt flæskesteg med rødkål",
+          "oppskrift": "https://www.arla.dk/opskrifter/langtidsstegt-flaskesteg/",
+          "hvorfor": "Flæskesteg får lov at stege langsomt på en dag med mere tid. Den smager godt dagen efter.",
+          "lagMer": "Steg hele stykket, og sæt otte skiver koldt til søndag.",
+          "varer": [
+            "grisekam med svær",
+            "laurbærblade",
+            "kartofler"
+          ]
+        },
+        {
+          "dag": "søndag",
+          "rett": "Flæskestegssandwich",
+          "oppskrift": "https://www.arla.dk/opskrifter/flaskestegssandwich/",
+          "hvorfor": "Sandwichen laves af skiver fra lørdagens steg og lun rødkål. Det er en nem aftensmad dagen efter en stor ret.",
+          "rest": {
+            "fra": "lørdag",
+            "hva": "flæskestegen"
+          },
+          "varer": [
+            "creme fraiche",
+            "mayonnaise",
+            "dijonsennep",
+            "burgerboller",
+            "rødkål",
+            "syltede agurker",
+            "blandet salat"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "familie": "ukemeny",
+  "marked": "sv",
+  "kilder": {
+    "avsvalning": {
+      "navn": "Avsvalning av mat",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/avsvalning/",
+      "hentet": "2026-11-21"
+    },
+    "kylvaror": {
+      "navn": "Förvaring av kylvaror",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/forvaring-av-kyld-mat/",
+      "hentet": "2026-11-21"
+    },
+    "matlada": {
+      "navn": "Svinnkoll: Matlåda",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/matlada/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "familie",
+      "slug": "barnfamilj",
+      "navn": "Barnfamilj",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "En lämplig kylskåpstemperatur är 4 °C."
+        },
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        }
+      },
+      "tekst": {
+        "svalna": "avsvalning|Men om du har mer än en halvliter varm mat som du inte ska äta direkt bör den först svalna så fort som möjligt.",
+        "delaupp": "avsvalning|Mindre behållare: Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur.",
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "billig",
+      "slug": "billig",
+      "navn": "Billig",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "En lämplig kylskåpstemperatur är 4 °C."
+        },
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        }
+      },
+      "tekst": {
+        "svalna": "avsvalning|Men om du har mer än en halvliter varm mat som du inte ska äta direkt bör den först svalna så fort som möjligt.",
+        "delaupp": "avsvalning|Mindre behållare: Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur.",
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "vegetar",
+      "slug": "vegetarisk",
+      "navn": "Vegetarisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "En lämplig kylskåpstemperatur är 4 °C."
+        },
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        }
+      },
+      "tekst": {
+        "svalna": "avsvalning|Men om du har mer än en halvliter varm mat som du inte ska äta direkt bör den först svalna så fort som möjligt.",
+        "delaupp": "avsvalning|Mindre behållare: Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur.",
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "for-en",
+      "slug": "for-en-person",
+      "navn": "För en person",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "En lämplig kylskåpstemperatur är 4 °C."
+        },
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        }
+      },
+      "tekst": {
+        "svalna": "avsvalning|Men om du har mer än en halvliter varm mat som du inte ska äta direkt bör den först svalna så fort som möjligt.",
+        "delaupp": "avsvalning|Mindre behållare: Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur.",
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "husmannskost",
+      "slug": "husmanskost",
+      "navn": "Husmanskost",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "kylvaror",
+          "merknad": "En lämplig kylskåpstemperatur är 4 °C."
+        },
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        }
+      },
+      "tekst": {
+        "svalna": "avsvalning|Men om du har mer än en halvliter varm mat som du inte ska äta direkt bör den först svalna så fort som möjligt.",
+        "delaupp": "avsvalning|Mindre behållare: Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur.",
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    }
+  ]
+}

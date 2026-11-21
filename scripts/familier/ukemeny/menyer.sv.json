@@ -1,0 +1,883 @@
+{
+  "hentet": "2026-11-21",
+  "hyller": [
+    "Frukt & grönt",
+    "Fisk & skaldjur",
+    "Kött",
+    "Mejeri & ägg",
+    "Frysvaror",
+    "Torrvaror & konserver",
+    "Kryddor & såser",
+    "Bröd & bakverk"
+  ],
+  "basis": [
+    "salt",
+    "svartpeppar",
+    "rapsolja",
+    "olivolja",
+    "smör eller margarin",
+    "vetemjöl",
+    "strösocker"
+  ],
+  "varer": {
+    "babyspenat": "Frukt & grönt",
+    "bakpotatis": "Frukt & grönt",
+    "basilika": "Frukt & grönt",
+    "bladpersilja": "Frukt & grönt",
+    "bladspenat": "Frukt & grönt",
+    "blandade örter": "Frukt & grönt",
+    "blandfärs": "Kött",
+    "broccoli": "Frukt & grönt",
+    "champinjoner": "Frukt & grönt",
+    "chiliflakes": "Kryddor & såser",
+    "citron": "Frukt & grönt",
+    "cottage cheese": "Mejeri & ägg",
+    "crème fraiche": "Mejeri & ägg",
+    "curry": "Kryddor & såser",
+    "delikatesspotatis": "Frukt & grönt",
+    "dijonsenap": "Kryddor & såser",
+    "dill": "Frukt & grönt",
+    "falukorv": "Kött",
+    "fetaost": "Mejeri & ägg",
+    "fiskbuljong": "Kryddor & såser",
+    "fryst spenat": "Frysvaror",
+    "frysta gröna ärter": "Frysvaror",
+    "frysta lingon": "Frysvaror",
+    "fänkål": "Frukt & grönt",
+    "fänkålsfrön": "Kryddor & såser",
+    "färsk ingefära": "Frukt & grönt",
+    "färsk timjan": "Frukt & grönt",
+    "grekisk yoghurt": "Mejeri & ägg",
+    "grytbitar av nötkött": "Kött",
+    "gräddfil": "Mejeri & ägg",
+    "gräslök": "Frukt & grönt",
+    "grönsaksbuljong": "Kryddor & såser",
+    "grönsallad": "Frukt & grönt",
+    "guacamole": "Torrvaror & konserver",
+    "gul lök": "Frukt & grönt",
+    "gurka": "Frukt & grönt",
+    "gurkmeja": "Kryddor & såser",
+    "halloumi": "Mejeri & ägg",
+    "hel kyckling": "Kött",
+    "hela tomater på burk": "Torrvaror & konserver",
+    "honung": "Torrvaror & konserver",
+    "hårdost": "Mejeri & ägg",
+    "hönsbuljong": "Kryddor & såser",
+    "inlagda rödbetor": "Torrvaror & konserver",
+    "isbergssallad": "Frukt & grönt",
+    "japansk soja": "Kryddor & såser",
+    "jordgubbssylt": "Torrvaror & konserver",
+    "jäst": "Mejeri & ägg",
+    "kalvfond": "Kryddor & såser",
+    "kinesisk soja": "Kryddor & såser",
+    "koriander": "Frukt & grönt",
+    "krossade tomater": "Torrvaror & konserver",
+    "kryddnejlika": "Kryddor & såser",
+    "kryddpeppar": "Kryddor & såser",
+    "kryddpepparkorn": "Kryddor & såser",
+    "kycklingfond": "Kryddor & såser",
+    "kycklinglår": "Kött",
+    "kycklinglårfilé": "Kött",
+    "körsbärstomater": "Frukt & grönt",
+    "körsbärstomater på burk": "Torrvaror & konserver",
+    "köttbuljong": "Kryddor & såser",
+    "lagerblad": "Kryddor & såser",
+    "lasagneplattor": "Torrvaror & konserver",
+    "laxfilé": "Fisk & skaldjur",
+    "lime": "Frukt & grönt",
+    "lingonsylt": "Torrvaror & konserver",
+    "majskorn": "Torrvaror & konserver",
+    "majsstärkelse": "Kryddor & såser",
+    "mandelspån": "Torrvaror & konserver",
+    "matlagningsgrädde": "Mejeri & ägg",
+    "mjölk": "Mejeri & ägg",
+    "morot": "Frukt & grönt",
+    "mozzarella": "Mejeri & ägg",
+    "nachochips": "Torrvaror & konserver",
+    "nötfärs": "Kött",
+    "ostronsås": "Kryddor & såser",
+    "oxfond": "Kryddor & såser",
+    "palsternacka": "Frukt & grönt",
+    "paprika": "Frukt & grönt",
+    "paprikapulver": "Kryddor & såser",
+    "parmesan": "Mejeri & ägg",
+    "passerade tomater": "Torrvaror & konserver",
+    "pasta": "Torrvaror & konserver",
+    "persilja": "Frukt & grönt",
+    "pinjenötter": "Torrvaror & konserver",
+    "potatis": "Frukt & grönt",
+    "purjolök": "Frukt & grönt",
+    "rimmat fläsk i bit": "Kött",
+    "rimmat sidfläsk": "Kött",
+    "ris": "Torrvaror & konserver",
+    "riven ost": "Mejeri & ägg",
+    "rosmarin": "Frukt & grönt",
+    "rucola": "Frukt & grönt",
+    "rågbröd": "Bröd & bakverk",
+    "rårörda lingon": "Torrvaror & konserver",
+    "röd chili": "Frukt & grönt",
+    "röd paprika": "Frukt & grönt",
+    "röda linser": "Torrvaror & konserver",
+    "rödlök": "Frukt & grönt",
+    "rödvinsvinäger": "Kryddor & såser",
+    "rökt fläsk": "Kött",
+    "rökt skinka": "Kött",
+    "salami": "Kött",
+    "salladslök": "Frukt & grönt",
+    "salta jordnötter": "Torrvaror & konserver",
+    "salvia": "Frukt & grönt",
+    "sambal oelek": "Kryddor & såser",
+    "shiitakesvamp": "Frukt & grönt",
+    "sirap": "Torrvaror & konserver",
+    "sockerärtor": "Frukt & grönt",
+    "sojafärs": "Torrvaror & konserver",
+    "soltorkade tomater": "Torrvaror & konserver",
+    "spaghetti": "Torrvaror & konserver",
+    "spiskummin": "Kryddor & såser",
+    "stjälkselleri": "Frukt & grönt",
+    "stora vita bönor": "Torrvaror & konserver",
+    "ströbröd": "Bröd & bakverk",
+    "strömmingsfilé": "Fisk & skaldjur",
+    "surdegsbaguette": "Bröd & bakverk",
+    "svartpepparkorn": "Kryddor & såser",
+    "tacokrydda": "Kryddor & såser",
+    "tacoskal": "Bröd & bakverk",
+    "tacosås": "Torrvaror & konserver",
+    "tomat": "Frukt & grönt",
+    "tomatpuré": "Kryddor & såser",
+    "tomatsalsa": "Torrvaror & konserver",
+    "tomatsås för pizza": "Torrvaror & konserver",
+    "torkad dragon": "Kryddor & såser",
+    "torkad oregano": "Kryddor & såser",
+    "torkad rosmarin": "Kryddor & såser",
+    "torkad timjan": "Kryddor & såser",
+    "torkade gula ärter": "Torrvaror & konserver",
+    "torskfilé": "Fisk & skaldjur",
+    "tortillabröd eller tacoskal": "Bröd & bakverk",
+    "tunnbröd": "Bröd & bakverk",
+    "vispgrädde": "Mejeri & ägg",
+    "vitkål": "Frukt & grönt",
+    "vitlök": "Frukt & grönt",
+    "vitost": "Mejeri & ägg",
+    "zucchini": "Frukt & grönt",
+    "ägg": "Mejeri & ägg",
+    "äggnudlar": "Torrvaror & konserver",
+    "äpple": "Frukt & grönt",
+    "ättiksprit": "Kryddor & såser"
+  },
+  "menyer": {
+    "familie": {
+      "tittel": "Veckomeny för barnfamiljen: sju middagar och inköpslista",
+      "h1": "Veckomeny för barnfamiljen",
+      "beskrivelse": "Sju middagar som de flesta barn gillar, där två av dem ger nästa middag. Med länk till recepten, rester inplanerade och en inköpslista efter avdelning.",
+      "ingress": "Sju middagar som de flesta barn äter, upplagda så att måndagens och lördagens matlagning ger en bra start på onsdagens och söndagens middag.",
+      "vinkel": "Veckan bygger på två satser som delas på två middagar. Köttbullarna från måndag blir köttbullar i tomatsås på onsdag, och kycklingen från lördag blir kycklingpasta på söndag. Potatis, pasta och grädde går igen i flera rätter, så inköpslistan blir kort.",
+      "faq": [
+        [
+          "Hur får jag barnen att äta veckomenyn?",
+          "Veckan har rätter som många barn känner igen: köttbullar, korv stroganoff, pannkakor, tacos och kyckling. Med tacos på fredagen bygger var och en sin egen. Byt gärna en dag mot en rätt ni vet att barnen gillar, och flytta resten av listan efter."
+        ],
+        [
+          "Kan jag byta plats på dagarna?",
+          "Ja, men håll avståndet mellan en rätt och resterna den ger. Köttbullarna måste komma före tomatsåsen, och kycklingen före pastan."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "måndag",
+          "rett": "Köttbullar med potatismos och lingon",
+          "oppskrift": "https://www.arla.se/recept/kottbullar/",
+          "hvorfor": "Måndag behöver en rätt som alla äter. Köttbullarna steks på en gång, och potatismoset kokas medan de brynas.",
+          "lagMer": "Rulla dubbelt så många köttbullar och ställ hälften kallt till onsdag.",
+          "varer": [
+            "blandfärs",
+            "ströbröd",
+            "mjölk",
+            "gul lök",
+            "ägg",
+            "vispgrädde",
+            "potatis",
+            "gurka",
+            "frysta lingon",
+            "persilja",
+            "kryddnejlika",
+            "kryddpeppar",
+            "ättiksprit"
+          ]
+        },
+        {
+          "dag": "tisdag",
+          "rett": "Korv stroganoff med potatismos",
+          "oppskrift": "https://www.arla.se/recept/korv-stroganoff/",
+          "hvorfor": "En rätt som många barn känner igen, och korven är snabb att laga. Potatismoset kokas under tiden såsen puttrar.",
+          "varer": [
+            "falukorv",
+            "gul lök",
+            "tomatpuré",
+            "matlagningsgrädde",
+            "potatis",
+            "mjölk",
+            "grönsallad",
+            "tomat"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Köttbullar i tomatsås med pasta",
+          "oppskrift": "https://www.arla.se/recept/5050-kottbullar-i-tomatsas-med-pasta/",
+          "hvorfor": "Köttbullarna är redan stekta, så du gör bara tomatsåsen och kokar pastan.",
+          "rest": {
+            "fra": "måndag",
+            "hva": "köttbullarna"
+          },
+          "varer": [
+            "gul lök",
+            "vitlök",
+            "hela tomater på burk",
+            "basilika",
+            "pasta",
+            "hårdost"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Pannkakor med sylt och grädde",
+          "oppskrift": "https://www.arla.se/recept/pannkaka/",
+          "hvorfor": "Pannkakor är en klassiker, och barnen kan hjälpa till att steka. Ingen rest i dag, så det blir en lugn dag.",
+          "varer": [
+            "mjölk",
+            "ägg",
+            "jordgubbssylt",
+            "vispgrädde"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Fredagstacos",
+          "oppskrift": "https://www.arla.se/recept/taco/",
+          "hvorfor": "Fredagstacos har blivit en tradition, och här bygger var och en sin egen. Ingen behöver äta det de inte vill ha.",
+          "varer": [
+            "nötfärs",
+            "tacokrydda",
+            "körsbärstomater",
+            "gurka",
+            "rödlök",
+            "majskorn",
+            "riven ost",
+            "gräddfil",
+            "tomatsalsa",
+            "tortillabröd eller tacoskal",
+            "guacamole",
+            "koriander"
+          ]
+        },
+        {
+          "dag": "lördag",
+          "rett": "Kycklinglår i ugn med gräddsås",
+          "oppskrift": "https://www.arla.se/recept/kycklinglar-i-ugn/",
+          "hvorfor": "Ugnen gör jobbet en dag med mer tid. Låren sitter kvar i såsen, så kycklingen blir saftig.",
+          "lagMer": "Stek dubbelt så många lår. Plocka köttet från de extra låren och ställ det kallt till söndag.",
+          "varer": [
+            "kycklinglår",
+            "soltorkade tomater",
+            "vitlök",
+            "chiliflakes",
+            "hönsbuljong",
+            "parmesan",
+            "ris",
+            "grönsallad"
+          ]
+        },
+        {
+          "dag": "söndag",
+          "rett": "Kycklingpasta med curry",
+          "oppskrift": "https://www.arla.se/recept/kycklingpasta-med-curry/",
+          "hvorfor": "Kycklingen från lördag används i stället för rå lårfilé. Lägg i den sist, så blir den inte torr.",
+          "rest": {
+            "fra": "lördag",
+            "hva": "kycklingköttet"
+          },
+          "varer": [
+            "pasta",
+            "morot",
+            "röd paprika",
+            "äpple",
+            "curry",
+            "paprikapulver",
+            "babyspenat",
+            "kycklingfond"
+          ]
+        }
+      ]
+    },
+    "billig": {
+      "tittel": "Billig veckomeny: sju middagar som tar vara på allt",
+      "h1": "Billig veckomeny",
+      "beskrivelse": "Sju prisvärda middagar med köttfärs, kyckling, ärtor, fläsk och pizza, där två satser blir två middagar var. Med länk till recepten och en gemensam inköpslista.",
+      "ingress": "Sju middagar av råvaror som brukar vara prisvärda, upplagda så att lite eller ingenting hamnar i soporna.",
+      "vinkel": "Vi anger inga priser, eftersom priserna ändras mellan butiker och veckor. Veckan hålls nere på ett annat sätt: köttfärssåsen och kycklingen lagas en gång och äts två gånger, ärtsoppan och pizzan bygger på billiga basvaror, och mjöl, mjölk och ägg räcker till flera rätter.",
+      "faq": [
+        [
+          "Varför står det inga priser på den billiga veckomenyn?",
+          "Priserna ändras från butik till butik och från vecka till vecka, och vi har ingen öppen källa för vad varje rätt kostar. Vi har i stället lagt upp veckan så att du köper färre varor och slänger mindre."
+        ],
+        [
+          "Vad gör veckan billigare?",
+          "Två middagar lagas av rester från en tidigare dag, och flera varor går igen från rätt till rätt. Pizzan och ärtsoppan görs på billiga basvaror."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "måndag",
+          "rett": "Köttfärssås med pasta",
+          "oppskrift": "https://www.arla.se/recept/kottfarssas/",
+          "hvorfor": "En sats köttfärssås räcker till två middagar. Det som inte äts i dag blir lasagne på onsdag.",
+          "lagMer": "Gör dubbel sats köttfärssås och ställ hälften kallt till onsdag.",
+          "varer": [
+            "gul lök",
+            "morot",
+            "stjälkselleri",
+            "nötfärs",
+            "krossade tomater",
+            "kalvfond",
+            "matlagningsgrädde",
+            "torkad oregano",
+            "sambal oelek",
+            "pasta",
+            "färsk timjan"
+          ]
+        },
+        {
+          "dag": "tisdag",
+          "rett": "Ärtsoppa med rimmat fläsk",
+          "oppskrift": "https://www.arla.se/recept/artsoppa-med-rimmat-flask/",
+          "hvorfor": "Torkade ärtor och rimmat fläsk är billiga råvaror, och soppan lagas i en gryta.",
+          "varer": [
+            "torkade gula ärter",
+            "gul lök",
+            "rimmat fläsk i bit",
+            "köttbuljong",
+            "torkad timjan",
+            "lagerblad"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Lasagne med köttfärssåsen från måndag",
+          "oppskrift": "https://www.arla.se/recept/lasagne/",
+          "hvorfor": "Köttfärssåsen är klar, så du gör bara den vita såsen och varvar lagren.",
+          "rest": {
+            "fra": "måndag",
+            "hva": "köttfärssåsen"
+          },
+          "varer": [
+            "lasagneplattor",
+            "mjölk",
+            "riven ost"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Stekt fläsk med löksås",
+          "oppskrift": "https://www.arla.se/recept/stekt-flask-med-loksas/",
+          "hvorfor": "En klassisk och prisvärd husmansrätt som ger mycket mat. Potatis, ärtor och löksås gör rätten hel.",
+          "varer": [
+            "potatis",
+            "rimmat sidfläsk",
+            "frysta gröna ärter",
+            "gul lök",
+            "bladpersilja",
+            "vispgrädde",
+            "oxfond"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Hemgjord pizza",
+          "oppskrift": "https://www.arla.se/recept/pizza/",
+          "hvorfor": "Pizzadegen är billig att göra, och toppingen kan bytas mot det som finns i kylen.",
+          "varer": [
+            "jäst",
+            "tomatsås för pizza",
+            "riven ost",
+            "rödlök",
+            "champinjoner",
+            "salami",
+            "rökt skinka",
+            "torkad oregano"
+          ]
+        },
+        {
+          "dag": "lördag",
+          "rett": "Hel kyckling i ugn med rotfrukter",
+          "oppskrift": "https://www.arla.se/recept/hel-kyckling-i-ugn/",
+          "hvorfor": "En hel kyckling ger mer mat än lika många filéer. Rotfrukterna steks på samma plåt.",
+          "lagMer": "Plocka av allt kött från kycklingen och ställ hälften kallt till söndag.",
+          "varer": [
+            "hel kyckling",
+            "gul lök",
+            "vitlök",
+            "citron",
+            "rosmarin",
+            "fänkålsfrön",
+            "delikatesspotatis",
+            "morot",
+            "blandade örter",
+            "crème fraiche"
+          ]
+        },
+        {
+          "dag": "söndag",
+          "rett": "Kycklingsoppa",
+          "oppskrift": "https://www.arla.se/recept/kycklingsoppa/",
+          "hvorfor": "Soppan görs på kycklingen från lördag i stället för rå filé, så du slipper köpa kött.",
+          "rest": {
+            "fra": "lördag",
+            "hva": "kycklingköttet"
+          },
+          "varer": [
+            "gul lök",
+            "äpple",
+            "persilja",
+            "curry",
+            "passerade tomater",
+            "matlagningsgrädde",
+            "grönsaksbuljong"
+          ]
+        }
+      ]
+    },
+    "vegetar": {
+      "tittel": "Vegetarisk veckomeny: sju middagar utan kött och fisk",
+      "h1": "Vegetarisk veckomeny",
+      "beskrivelse": "Sju vegetariska middagar med bönor, linser, ägg och grönsaker. Chilin från måndag blir tacos på onsdag. Med länk till recepten och en inköpslista.",
+      "ingress": "Sju middagar utan kött och fisk, med bönor, linser, ägg och ost, och en gryta som blir två middagar.",
+      "vinkel": "Måndagens chili lagas dubbelt och blir fyllning i vegetariska tacos på onsdag. Resten av veckan växlar mellan baljväxter (halloumigryta, linssoppa), ugnsrätter (lasagne) och ägg (frittata), så ingen dag liknar dagen före.",
+      "faq": [
+        [
+          "Finns det kött eller fisk i någon av rätterna?",
+          "Nej. Ingen av de sju recepten har kött eller fisk på ingredienslistan, och där buljong används är det grönsaksbuljong. Är du noga med osten, kontrollera den själv."
+        ],
+        [
+          "Kan jag byta plats på dagarna?",
+          "Ja, men chilin från måndag ska användas senast onsdag. Övriga dagar går att flytta fritt."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "måndag",
+          "rett": "Chili sin carne",
+          "oppskrift": "https://www.arla.se/recept/chili-sin-carne/",
+          "hvorfor": "Sojafärs och vita bönor ger en matig gryta utan kött. Gör dubbel sats, så är onsdagens middag nästan klar.",
+          "lagMer": "Gör dubbel sats chili och ställ hälften kallt till onsdag.",
+          "varer": [
+            "sojafärs",
+            "gul lök",
+            "paprika",
+            "zucchini",
+            "tomatpuré",
+            "paprikapulver",
+            "torkad oregano",
+            "vitlök",
+            "krossade tomater",
+            "stora vita bönor",
+            "crème fraiche",
+            "rucola",
+            "surdegsbaguette",
+            "nachochips"
+          ]
+        },
+        {
+          "dag": "tisdag",
+          "rett": "Halloumigryta",
+          "oppskrift": "https://www.arla.se/recept/halloumigryta/",
+          "hvorfor": "Halloumi och broccoli i en kryddig tomatsås. Riset kokas till just den här middagen.",
+          "varer": [
+            "halloumi",
+            "gul lök",
+            "vitlök",
+            "broccoli",
+            "färsk ingefära",
+            "spiskummin",
+            "gurkmeja",
+            "körsbärstomater på burk",
+            "ris",
+            "mandelspån",
+            "koriander"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Vegetariska tacos med chilin",
+          "oppskrift": "https://www.arla.se/recept/vegetariska-tacos/",
+          "hvorfor": "Chilin från måndag är fyllningen, så du lägger bara ihop tacosen.",
+          "rest": {
+            "fra": "måndag",
+            "hva": "chilin"
+          },
+          "varer": [
+            "tacoskal",
+            "gräddfil",
+            "isbergssallad",
+            "salladslök",
+            "tacosås",
+            "vitost",
+            "koriander"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Röd linssoppa",
+          "oppskrift": "https://www.arla.se/recept/linssoppa/",
+          "hvorfor": "Linssoppa med baguette är en mättande middag mitt i veckan.",
+          "varer": [
+            "gul lök",
+            "vitlök",
+            "paprika",
+            "tomatpuré",
+            "spiskummin",
+            "passerade tomater",
+            "grönsaksbuljong",
+            "röda linser",
+            "crème fraiche",
+            "rödvinsvinäger",
+            "vitost",
+            "bladpersilja",
+            "surdegsbaguette"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Pasta med tomatsås och mozzarella",
+          "oppskrift": "https://www.arla.se/recept/pasta-med-tomatsas-och-mozarella/",
+          "hvorfor": "En rätt som går fort efter en lång dag. Tomatsåsen kokar medan pastan görs klar.",
+          "varer": [
+            "pasta",
+            "gul lök",
+            "vitlök",
+            "morot",
+            "hela tomater på burk",
+            "chiliflakes",
+            "honung",
+            "basilika",
+            "mozzarella",
+            "pinjenötter"
+          ]
+        },
+        {
+          "dag": "lördag",
+          "rett": "Vegetarisk lasagne",
+          "oppskrift": "https://www.arla.se/recept/vegetarisk-lasagne/",
+          "hvorfor": "Lördag är dagen för en ugnsrätt. Cottage cheese ger lasagnen sin krämiga fyllning.",
+          "varer": [
+            "lasagneplattor",
+            "purjolök",
+            "krossade tomater",
+            "tomatpuré",
+            "grönsaksbuljong",
+            "matlagningsgrädde",
+            "basilika",
+            "cottage cheese",
+            "riven ost"
+          ]
+        },
+        {
+          "dag": "söndag",
+          "rett": "Rotfruktsfrittata med fetaost",
+          "oppskrift": "https://www.arla.se/recept/rotfruktsfrittata-med-fetaost/",
+          "hvorfor": "Söndagen passar för en frittata där rotfrukter och ägg får göra jobbet.",
+          "varer": [
+            "morot",
+            "palsternacka",
+            "potatis",
+            "gul lök",
+            "persilja",
+            "ägg",
+            "fetaost",
+            "äpple",
+            "grekisk yoghurt",
+            "gräslök",
+            "rågbröd"
+          ]
+        }
+      ]
+    },
+    "for-en": {
+      "tittel": "Veckomeny för en person: sju middagar med lite matsvinn",
+      "h1": "Veckomeny för en person",
+      "beskrivelse": "Sju middagar för dig som bor ensam. En middag blir två, en går i frysen och resten räknas ner till en portion. Med länk till recepten och en inköpslista.",
+      "ingress": "Sju middagar för en, upplagda så att du handlar en gång och inte blir sittande med halva förpackningar.",
+      "vinkel": "Recept är ofta skrivna för fyra. Den här veckan räknar du ner de flesta till en portion. På onsdag lagar du hela köttfärssåsen och fryser de portioner du inte äter. På torsdag woka du extra kyckling till fredagens wrap, och på söndag tar du fram en portion sås ur frysen.",
+      "faq": [
+        [
+          "Hur räknar jag ner ett recept till en portion?",
+          "Dela mängderna med antalet portioner receptet är skrivet för. I Matlyst ändrar du antalet portioner på receptet, så räknas mängderna om. Omräkningen är rak, så smaka av kryddor och salt själv."
+        ],
+        [
+          "Hur länge kan köttfärssåsen ligga i frysen?",
+          "Livsmedelsverket skriver att mat som fryses in kan hålla mycket länge. Frys in det du inte hinner äta, och märk burken med datum och innehåll."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "måndag",
+          "rett": "Ugnsbakad lax med tomat och spenat",
+          "oppskrift": "https://www.arla.se/recept/ugnsbakad-lax-med-tomat-och-spenat/",
+          "hvorfor": "Ett laxstycke i ugnen. Receptet är skrivet för fler, så räkna ner det till en portion. Fryst spenat gör att du slipper en halv påse färsk.",
+          "varer": [
+            "laxfilé",
+            "tomat",
+            "fryst spenat",
+            "gul lök",
+            "salvia",
+            "matlagningsgrädde",
+            "ströbröd",
+            "hårdost",
+            "chiliflakes"
+          ]
+        },
+        {
+          "dag": "tisdag",
+          "rett": "Pasta carbonara",
+          "oppskrift": "https://www.arla.se/recept/pasta-carbonara/",
+          "hvorfor": "En middag på tio minuter med få varor. Räkna ner receptet till en portion.",
+          "varer": [
+            "rökt fläsk",
+            "vispgrädde",
+            "vitlök",
+            "riven ost",
+            "ägg",
+            "spaghetti"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Köttfärssås med pasta",
+          "oppskrift": "https://www.arla.se/recept/kottfarssas/",
+          "hvorfor": "Köttfärssås är lika mycket jobb för en som för fyra. Gör hela satsen en gång.",
+          "lagMer": "Ät en portion och frys resten av såsen i portionsburkar.",
+          "varer": [
+            "gul lök",
+            "morot",
+            "stjälkselleri",
+            "nötfärs",
+            "krossade tomater",
+            "kalvfond",
+            "torkad oregano",
+            "sambal oelek",
+            "pasta",
+            "färsk timjan"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Kycklingwok",
+          "oppskrift": "https://www.arla.se/recept/kycklingwok/",
+          "hvorfor": "En snabb wok för en. Koka bara så mycket nudlar som du äter i dag.",
+          "lagMer": "Stek en extra bit kycklinglårfilé utan sås och ställ den kallt till fredag.",
+          "varer": [
+            "äggnudlar",
+            "kycklinglårfilé",
+            "shiitakesvamp",
+            "rödlök",
+            "röd chili",
+            "broccoli",
+            "japansk soja",
+            "ostronsås",
+            "honung",
+            "lime",
+            "färsk ingefära",
+            "salta jordnötter"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Kycklingwrap med kyckling från torsdag",
+          "oppskrift": "https://www.arla.se/recept/kycklingwrap/",
+          "hvorfor": "Fredag utan ny matlagning. Kycklingen är klar, och du köper bara bröd, crème fraiche och sallad.",
+          "rest": {
+            "fra": "torsdag",
+            "hva": "kycklingen"
+          },
+          "varer": [
+            "crème fraiche",
+            "tunnbröd"
+          ]
+        },
+        {
+          "dag": "lördag",
+          "rett": "Torsk i ugn med citronsås och dill",
+          "oppskrift": "https://www.arla.se/recept/torsk-i-ugn-med-citronsas-och-dill/",
+          "hvorfor": "Fisk i ugn en dag med mer tid. Räkna ner receptet till en portion.",
+          "varer": [
+            "torskfilé",
+            "potatis",
+            "crème fraiche",
+            "matlagningsgrädde",
+            "citron",
+            "dill",
+            "fänkål",
+            "sockerärtor",
+            "bladspenat",
+            "fiskbuljong"
+          ]
+        },
+        {
+          "dag": "söndag",
+          "rett": "Köttfärssås ur frysen med pasta",
+          "framgang": [
+            "Använd köttfärssåsen du tog ut ur frysen i går och tinade i kylskåpet.",
+            "Värm den i en kastrull.",
+            "Koka pasta till en portion och servera med såsen."
+          ],
+          "hvorfor": "Middagen är redan lagad. Du kokar bara pastan.",
+          "rest": {
+            "fra": "onsdag",
+            "hva": "köttfärssåsen",
+            "via": "fryser"
+          },
+          "varer": [
+            "pasta"
+          ]
+        }
+      ]
+    },
+    "husmannskost": {
+      "tittel": "Husmanskost-vecka: sju klassiska middagar",
+      "h1": "Husmanskost-vecka",
+      "beskrivelse": "Kålpudding, stekt strömming, köttsoppa, ärtsoppa, raggmunk, kalops och pytt i panna. Sju klassiska middagar med länk till recepten och en inköpslista.",
+      "ingress": "Sju svenska klassiker, upplagda så att kalopsen på lördag blir pytt i panna på söndag.",
+      "vinkel": "Husmanskost bygger på råvaror som håller länge, och det gör veckan lätt att planera. Potatis, lök och rimmat fläsk går igen från dag till dag. Kalopsen på lördag lagas med extra kött och potatis, och det blir söndagens pytt i panna.",
+      "faq": [
+        [
+          "Vad räknas som husmanskost?",
+          "Traditionell svensk vardagsmat av enkla råvaror, som kålpudding, ärtsoppa, raggmunk och kalops. Veckan håller sig till sådana rätter."
+        ],
+        [
+          "Kan jag använda rester av kalops i pytt i panna?",
+          "Ja. Receptet på pytt i panna vill ha kokt eller stekt nötkött och kokt potatis, och det kan vara det som blev över från kalopsen. Använd det dagen efter."
+        ]
+      ],
+      "dager": [
+        {
+          "dag": "måndag",
+          "rett": "Kålpudding med lingonsylt",
+          "oppskrift": "https://www.arla.se/recept/kalpudding/",
+          "hvorfor": "Kålpuddingen går att laga i en form, och potatisen kokas under tiden den gräddas.",
+          "varer": [
+            "vitkål",
+            "ris",
+            "sirap",
+            "gul lök",
+            "blandfärs",
+            "ägg",
+            "mjölk",
+            "potatis",
+            "lingonsylt"
+          ]
+        },
+        {
+          "dag": "tisdag",
+          "rett": "Stekt strömming med potatismos",
+          "oppskrift": "https://www.arla.se/recept/stekt-stromming/",
+          "hvorfor": "Strömming är en svensk vardagsklassiker. Potatismoset och den inlagda gurkan gör rätten hel.",
+          "varer": [
+            "strömmingsfilé",
+            "ägg",
+            "dijonsenap",
+            "torkad dragon",
+            "vitlök",
+            "gul lök",
+            "ströbröd",
+            "gurka",
+            "ättiksprit",
+            "potatis",
+            "mjölk",
+            "rårörda lingon"
+          ]
+        },
+        {
+          "dag": "onsdag",
+          "rett": "Köttsoppa",
+          "oppskrift": "https://www.arla.se/recept/kottsoppa/",
+          "hvorfor": "Köttsoppa är en kraftig middag mitt i veckan. Köttet får sjuda, så du behöver inte stå vid spisen.",
+          "varer": [
+            "grytbitar av nötkött",
+            "vitlök",
+            "tomatpuré",
+            "torkad rosmarin",
+            "kinesisk soja",
+            "köttbuljong",
+            "bakpotatis",
+            "matlagningsgrädde",
+            "persilja"
+          ]
+        },
+        {
+          "dag": "torsdag",
+          "rett": "Ärtsoppa med rimmat fläsk",
+          "oppskrift": "https://www.arla.se/recept/artsoppa-med-rimmat-flask/",
+          "hvorfor": "Ärtsoppa på torsdag är en gammal svensk vana. Rimmat fläsk och timjan ger smaken.",
+          "varer": [
+            "torkade gula ärter",
+            "gul lök",
+            "rimmat fläsk i bit",
+            "köttbuljong",
+            "torkad timjan",
+            "lagerblad"
+          ]
+        },
+        {
+          "dag": "fredag",
+          "rett": "Raggmunk med fläsk och lingon",
+          "oppskrift": "https://www.arla.se/recept/raggmunk-med-flask/",
+          "hvorfor": "Fredag är dagen för stekt mat. Raggmunken steks i omgångar medan fläsket fräser.",
+          "varer": [
+            "rimmat sidfläsk",
+            "potatis",
+            "mjölk",
+            "ägg",
+            "lingonsylt"
+          ]
+        },
+        {
+          "dag": "lördag",
+          "rett": "Kalops med rödbetor",
+          "oppskrift": "https://www.arla.se/recept/kalops/",
+          "hvorfor": "Kalops får puttra i lugn och ro på en dag med mer tid, och den smakar ännu bättre dagen efter.",
+          "lagMer": "Lägg i extra potatis i grytan och koka. Ställ en tredjedel av köttet och några potatisar kallt till söndag.",
+          "varer": [
+            "grytbitar av nötkött",
+            "gul lök",
+            "morot",
+            "potatis",
+            "persilja",
+            "kryddpepparkorn",
+            "svartpepparkorn",
+            "kalvfond",
+            "majsstärkelse",
+            "inlagda rödbetor",
+            "gräddfil"
+          ]
+        },
+        {
+          "dag": "söndag",
+          "rett": "Pytt i panna",
+          "oppskrift": "https://www.arla.se/recept/pytt-i-panna/",
+          "hvorfor": "Pytt i panna görs av kokt kött och kokt potatis, och båda finns kvar efter kalopsen. Allt steks i en panna.",
+          "rest": {
+            "fra": "lördag",
+            "hva": "kalopsköttet och potatisen"
+          },
+          "varer": [
+            "falukorv",
+            "gul lök",
+            "persilja",
+            "inlagda rödbetor",
+            "ägg"
+          ]
+        }
+      ]
+    }
+  }
+}

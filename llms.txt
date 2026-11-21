@@ -107,6 +107,7 @@ Matlyst henter opskriften fra det link, den video eller det billede, du deler, o
 - [Gem opskrifter fra Köket.se](https://matlyst-app.no/da/koket/): Sådan gemmer du en opskrift fra Köket.se i Matlyst med kilden bevaret.
 - [Gem opskrifter fra Landleys Kök](https://matlyst-app.no/da/landleys-kok/): Sådan gemmer du en opskrift fra Landleys Kök i Matlyst med kilden bevaret.
 - [Madplan-app: ugens madplan med dine opskrifter](https://matlyst-app.no/da/madplan-app/): Lav din madplan for ugen med opskrifter, du allerede kan lide. Ingredienserne går til én indkøbsliste sorteret efter afdeling. Gratis.
+- [Madplaner: syv aftensmåltider med indkøbsliste](https://matlyst-app.no/da/madplaner/): Færdige madplaner med syv aftensmåltider, rester lagt ind i ugen og én indkøbsliste efter hylde: til børnefamilien, billig, vegetarisk, til én og klassiske retter.
 - [Gem opskrifter fra Matprat](https://matlyst-app.no/da/matprat/): Sådan gemmer du en opskrift fra Matprat i Matlyst med kilden bevaret.
 - [Aftensmad ideer: 22 forslag til hverdagen](https://matlyst-app.no/da/middagsforslag/): Idéer til aftensmad, når du er gået i stå: hurtige retter, fisk, vegetar og familiefavoritter. Og en nem måde at slippe for spørgsmålet hver dag.
 - [Nem mad: 14 hurtige retter på under 30 minutter](https://matlyst-app.no/da/nem-mad/): Nem og hurtig aftensmad til travle hverdage: 14 retter på under 30 minutter og tips, der gør aftenen lettere.
@@ -176,6 +177,7 @@ Matlyst hämtar receptet från länken, videon eller bilden du delar, översätt
 - [Töm kylskåpet med recept](https://matlyst-app.no/sv/tom-kylskapet/): Använd det du redan har genom att matcha Skafferi mot din egen receptsamling.
 - [Middagstips: 22 middagsförslag till vardagen](https://matlyst-app.no/sv/vad-ska-jag-laga/): Middagsförslag när du har kört fast: snabba rätter, fisk, vegetariskt och familjefavoriter. Och ett enkelt sätt att slippa frågan varje dag.
 - [Veckomeny-app: planera veckans middagar](https://matlyst-app.no/sv/veckomeny-app/): Planera veckans middagar med recept du redan gillar. Ingredienserna går till en inköpslista sorterad efter avdelning. Gratis för iPhone och Android.
+- [Veckomenyer: sju middagar med inköpslista](https://matlyst-app.no/sv/veckomenyer/): Färdiga veckomenyer med sju middagar, rester inplanerade och en inköpslista efter hylla: för barnfamiljen, billig, vegetarisk, för en och husmanskost.
 
 ## Svenska: Blogg
 
@@ -243,6 +245,7 @@ Matlyst imports a recipe from a shared link, video or photo, translates it into 
 - [Find recipes by ingredients](https://matlyst-app.no/en/recipes-by-ingredients/): Find recipes in your own collection that match the ingredients you already have.
 - [Shopping list app: a grocery list from recipes](https://matlyst-app.no/en/shopping-list/): A shopping list app that builds the list from your recipes. Matching items combine by store section. Free to start; sharing with your household takes Pro.
 - [Ingredient substitutes: what can I use instead?](https://matlyst-app.no/en/substitutes/): Out of buttermilk, eggs, baking powder, or brown sugar? Each page gives the swap and the ratio from a university extension service or King Arthur Baking, and what changes.
+- [Weekly meal plans: seven dinners with a grocery list](https://matlyst-app.no/en/weekly-meal-plans/): Ready-made weekly meal plans with seven dinners, leftovers planned in, and one grocery list by aisle: family, budget, vegetarian, for one, and comfort food.
 
 ## English: Blog
 

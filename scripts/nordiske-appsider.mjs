@@ -162,7 +162,7 @@ export const svenskeAppsider = [{
   alternativ: 'Ingen idé till torsdag? Under <strong>Hem</strong> får du middagsförslag från dina egna recept och det du har i skafferiet.',
   grense: 'Veckomenyn och inköpslistan är gratis. Vill du skapa eller gå med i ett hushåll och dela dem krävs Matlyst Pro.',
   seksjoner: [
-    ['Matplanering utan krångel', avsnitt('En veckomeny ska gå snabbt att göra. Lägg ett recept på måndag, ett på onsdag och lämna helgen öppen. Det tar ett par minuter, inte en hel söndagseftermiddag.')],
+    ['Matplanering utan krångel', avsnitt('En veckomeny ska gå snabbt att göra. Lägg ett recept på måndag, ett på onsdag och lämna helgen öppen. Det tar ett par minuter, inte en hel söndagseftermiddag.', 'Vill du ha en utgångspunkt? Se <a href="/sv/veckomenyer/">färdiga veckomenyer med inköpslista</a>.')],
     ['En inköpslista för hela veckan', avsnitt('Allt du planerar hamnar på samma lista. Likadana varor slås ihop till en rad, och listan är sorterad efter butikens avdelningar, så du slipper springa tillbaka efter löken.', 'Läs mer om <a href="/sv/inkopslista/">inköpslistan</a>.')],
     ['Planera tillsammans', avsnitt('Med Matlyst Pro delar hushållet veckomenyn och inköpslistan. En planerar, en annan handlar, och alla ser samma vecka.')],
     ['Om du vill att en app planerar åt dig', avsnitt('Matlyst gör inte veckan åt dig. Det gör en del andra matplanerare. Se <a href="/sv/basta-veckomeny-app/">sju appar för veckomeny jämförda</a>, med källa och datum för varje uppgift.')],
@@ -268,7 +268,7 @@ export const danskeAppsider = [{
   alternativ: 'Ingen idé til torsdag? Under <strong>Hjem</strong> får du forslag til aftensmad fra dine egne opskrifter og det, du har i spisekammeret.',
   grense: 'Madplanen og indkøbslisten er gratis. Det kræver Matlyst Pro at oprette eller deltage i en husstand og dele dem.',
   seksjoner: [
-    ['Madplan uden besvær', avsnitt('En madplan skal være hurtig at lave. Læg en opskrift på mandag, en på onsdag, og lad weekenden stå åben. Det tager et par minutter, ikke en hel søndagseftermiddag.')],
+    ['Madplan uden besvær', avsnitt('En madplan skal være hurtig at lave. Læg en opskrift på mandag, en på onsdag, og lad weekenden stå åben. Det tager et par minutter, ikke en hel søndagseftermiddag.', 'Vil du have et udgangspunkt? Se <a href="/da/madplaner/">færdige madplaner med indkøbsliste</a>.')],
     ['Én indkøbsliste til hele ugen', avsnitt('Alt, hvad du planlægger, kommer på den samme liste. Ens varer bliver samlet på én linje, og listen er sorteret efter butikkens afdelinger, så du ikke skal gå tilbage efter løgene.', 'Læs mere om <a href="/da/indkoebsliste-app/">indkøbslisten</a>.')],
     ['Planlæg sammen', avsnitt('Med Matlyst Pro deler husstanden madplanen og indkøbslisten. Én planlægger, en anden handler ind, og alle ser den samme uge.')],
     ['Hvis du vil have, at en app planlægger for dig', avsnitt('Matlyst laver ikke ugen for dig. Det gør nogle andre madplan-apps. Se <a href="/da/bedste-madplan-app/">syv madplan-apps sammenlignet</a>, med kilde og dato for hver oplysning.')],

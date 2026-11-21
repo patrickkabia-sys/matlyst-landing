@@ -1,0 +1,144 @@
+{
+  "familie": "ukemeny",
+  "marked": "da",
+  "kilder": {
+    "fvst-koel": {
+      "navn": "Køl mad hurtigt ned i hjemmet",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/koel-mad-hurtigt-ned",
+      "hentet": "2026-11-21"
+    },
+    "fvst-varm": {
+      "navn": "Varm mad ordentligt op i private hjem",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/varm-mad-ordentligt-op",
+      "hentet": "2026-11-21"
+    },
+    "fvst-optoening": {
+      "navn": "Optøning af mad",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/saadan-goer-du/optoening",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "familie",
+      "slug": "boernefamilie",
+      "navn": "Børnefamilie",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        }
+      },
+      "tekst": {
+        "koel": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "dampe": "fvst-koel|Varm mad, som du vil gemme, skal kun lige dampe af, før du sætter den i køleskab.",
+        "del": "fvst-koel|Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned.",
+        "varm": "fvst-varm|Sørg for at varme den varme mad helt igennem, så den er rygende og gennemvarm.",
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet."
+      }
+    },
+    {
+      "id": "billig",
+      "slug": "billig",
+      "navn": "Billig",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        }
+      },
+      "tekst": {
+        "koel": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "dampe": "fvst-koel|Varm mad, som du vil gemme, skal kun lige dampe af, før du sætter den i køleskab.",
+        "del": "fvst-koel|Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned.",
+        "varm": "fvst-varm|Sørg for at varme den varme mad helt igennem, så den er rygende og gennemvarm.",
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet."
+      }
+    },
+    {
+      "id": "vegetar",
+      "slug": "vegetarisk",
+      "navn": "Vegetarisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        }
+      },
+      "tekst": {
+        "koel": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "dampe": "fvst-koel|Varm mad, som du vil gemme, skal kun lige dampe af, før du sætter den i køleskab.",
+        "del": "fvst-koel|Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned.",
+        "varm": "fvst-varm|Sørg for at varme den varme mad helt igennem, så den er rygende og gennemvarm.",
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet."
+      }
+    },
+    {
+      "id": "for-en",
+      "slug": "til-en",
+      "navn": "Til én person",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        }
+      },
+      "tekst": {
+        "koel": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "dampe": "fvst-koel|Varm mad, som du vil gemme, skal kun lige dampe af, før du sætter den i køleskab.",
+        "del": "fvst-koel|Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned.",
+        "varm": "fvst-varm|Sørg for at varme den varme mad helt igennem, så den er rygende og gennemvarm.",
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet."
+      }
+    },
+    {
+      "id": "husmannskost",
+      "slug": "klassiske-retter",
+      "navn": "Klassiske retter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        }
+      },
+      "tekst": {
+        "koel": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "dampe": "fvst-koel|Varm mad, som du vil gemme, skal kun lige dampe af, før du sætter den i køleskab.",
+        "del": "fvst-koel|Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned.",
+        "varm": "fvst-varm|Sørg for at varme den varme mad helt igennem, så den er rygende og gennemvarm.",
+        "optoen": "fvst-optoening|Hvis du vil tø frosne madvarer op, bør det være i køleskabet."
+      }
+    }
+  ]
+}

@@ -6,15 +6,15 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1424**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1442**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 
 | Språk | Sider |
 |---|---:|
 | nb | 408 |
-| sv | 346 |
-| da | 319 |
-| en | 351 |
-| Sum | 1424 |
+| sv | 352 |
+| da | 325 |
+| en | 357 |
+| Sum | 1442 |
 
 | Sidetype | nb | sv | da | en | Sum |
 |---|---:|---:|---:|---:|---:|
@@ -22,7 +22,7 @@ Sider i sitemap: **1424**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 | forside | 1 | 1 | 1 | 1 | 4 |
 | guide-gammel | 3 |  |  |  | 3 |
 | guide-kort | 11 | 15 | 15 | 15 | 56 |
-| guide-lang | 148 | 87 | 86 | 150 | 471 |
+| guide-lang | 148 | 93 | 92 | 156 | 489 |
 | juss | 3 | 3 | 3 | 3 | 12 |
 | omregner | 233 | 232 | 206 | 174 | 845 |
 
@@ -74,7 +74,7 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | familie:mengde-per-person | Hvor mye mat per person? Kalkulator og tabell | guide-lang | `/mengde-per-person/` (24) | `/sv/hur-mycket-per-person/` (12) | `/da/hvor-meget-pr-person/` (11) | `/en/how-much-per-person/` (16) | scripts/familier/mengde-per-person/ (mal-da.mjs, mal-en.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/mengde-per-person/data.da.json, scripts/familier/mengde-per-person/data.en.json, scripts/familier/mengde-per-person/data.nb.json, scripts/familier/mengde-per-person/data.sv.json | 2026-11-21 |
 | familie:rester | Hva kan jeg lage med det jeg har? | guide-lang | `/hva-kan-jeg-lage/` (16) |  |  |  | scripts/familier/rester/ (mal-nb.mjs) | scripts/familier/rester/data.nb.json | 2026-11-21 |
 | familie:steketid | Steketid: hvor lenge skal maten stekes? | guide-lang | `/steketid/` (13) | `/sv/tillagningstid/` (12) | `/da/stegetid/` (12) | `/en/cooking-times/` (16) | scripts/familier/steketid/ (mal-da.mjs, mal-en.mjs, mal-felles-en.mjs, mal-felles.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/steketid/data.da.json, scripts/familier/steketid/data.en.json, scripts/familier/steketid/data.nb.json, scripts/familier/steketid/data.sv.json | 2026-11-21 |
-| familie:ukemeny | Ukemenyer: sju middager med handleliste | guide-lang | `/ukemenyer/` (6) |  |  |  | scripts/familier/ukemeny/ (mal-nb.mjs) | scripts/familier/ukemeny/data.nb.json | 2026-11-21 |
+| familie:ukemeny | Ukemenyer: sju middager med handleliste | guide-lang | `/ukemenyer/` (6) | `/sv/veckomenyer/` (6) | `/da/madplaner/` (6) | `/en/weekly-meal-plans/` (6) | scripts/familier/ukemeny/ (mal-da.mjs, mal-en.mjs, mal-felles.mjs, mal-nb.mjs, mal-sv.mjs) | scripts/familier/ukemeny/data.da.json, scripts/familier/ukemeny/data.en.json, scripts/familier/ukemeny/data.nb.json, scripts/familier/ukemeny/data.sv.json | 2026-11-21 |
 | omregner:lengde | Enhetsomregnere for lengde | omregner | `/verktoy/` (6) | `/sv/verktyg/` (6) | `/da/vaerktoejer/` (6) | `/en/tools/` (6) | enheter.mjs (enhetene), nb-/sv-/da-/en-enhetssider.mjs (tekst) |  | 2026-11-21 |
 | omregner:nav | Omregnernes samlesider og enhetsomregneren | omregner | `/verktoy/enhetsomregner/` (1) | `/sv/verktyg/enhetsomvandlare/` (1) | `/da/vaerktoejer/enhedsomregner/` (1) | `/en/tools/unit-converter/` (1) | enheter.mjs (enhetene), nb-/sv-/da-/en-enhetssider.mjs (tekst) |  | 2026-11-21 |
 | omregner:temperatur | Enhetsomregnere for temperatur | omregner | `/verktoy/` (2) | `/sv/verktyg/` (2) | `/da/vaerktoejer/` (2) | `/en/tools/` (2) | enheter.mjs (enhetene), nb-/sv-/da-/en-enhetssider.mjs (tekst) |  | 2026-11-21 |
@@ -96,7 +96,6 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | om | nb | sv, da, en |
 | oppskrifter-fra-ingredienser | sv, da, en | nb |
 | familie:rester | nb | sv, da, en |
-| familie:ukemeny | nb | sv, da, en |
 | hoytider | en | nb, sv, da |
 
 ### Enkeltgrupper i samlede rader som mangler på et språk raden ellers har
@@ -151,7 +150,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ## Alle adresser
 
-1424 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
+1442 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
 
 ### forside
 
@@ -1340,6 +1339,33 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - https://matlyst-app.no/ukemenyer/for-en/ (2026-11-21)
 - https://matlyst-app.no/ukemenyer/husmannskost/ (2026-11-21)
 - https://matlyst-app.no/ukemenyer/vegetar/ (2026-11-21)
+
+**sv** (6)
+
+- https://matlyst-app.no/sv/veckomenyer/ (2026-11-21)
+- https://matlyst-app.no/sv/veckomenyer/barnfamilj/ (2026-11-21)
+- https://matlyst-app.no/sv/veckomenyer/billig/ (2026-11-21)
+- https://matlyst-app.no/sv/veckomenyer/for-en-person/ (2026-11-21)
+- https://matlyst-app.no/sv/veckomenyer/husmanskost/ (2026-11-21)
+- https://matlyst-app.no/sv/veckomenyer/vegetarisk/ (2026-11-21)
+
+**da** (6)
+
+- https://matlyst-app.no/da/madplaner/ (2026-11-21)
+- https://matlyst-app.no/da/madplaner/billig/ (2026-11-21)
+- https://matlyst-app.no/da/madplaner/boernefamilie/ (2026-11-21)
+- https://matlyst-app.no/da/madplaner/klassiske-retter/ (2026-11-21)
+- https://matlyst-app.no/da/madplaner/til-en/ (2026-11-21)
+- https://matlyst-app.no/da/madplaner/vegetarisk/ (2026-11-21)
+
+**en** (6)
+
+- https://matlyst-app.no/en/weekly-meal-plans/ (2026-11-21)
+- https://matlyst-app.no/en/weekly-meal-plans/budget/ (2026-11-21)
+- https://matlyst-app.no/en/weekly-meal-plans/comfort-food/ (2026-11-21)
+- https://matlyst-app.no/en/weekly-meal-plans/family/ (2026-11-21)
+- https://matlyst-app.no/en/weekly-meal-plans/for-one/ (2026-11-21)
+- https://matlyst-app.no/en/weekly-meal-plans/vegetarian/ (2026-11-21)
 
 ### omregner:lengde
 
