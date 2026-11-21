@@ -3,7 +3,7 @@
 // Alla uppgifter och citat står i apper.sv.json, hämtade ur svenska App Store, Google Play (Sverige) och apparnas egna webbplatser 2026-11-21.
 // kildekontroll.mjs sv kontrollerar att varje citat fortfarande står hos källan. Låst av test/sammenligning.test.mjs.
 // Skrivet från meningen (matlyst-sprak, sv), inte översatt från de norska sidorna. Det som sägs om Matlyst följer de svenska
-// appsidorna: metriska mängder som standard, recept på andra språk översätts till svenska, ingen omräkning av enheter.
+// appsidorna: metriska mängder som standard, recept på andra språk översätts till svenska, cups, uns och pund räknas om till dl och gram vid import.
 import { lagSammenligning, p, ul } from './sammenligning.mjs';
 
 const MANADER = ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december'];

@@ -61,7 +61,7 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | skapere | For matskapere og bloggere | guide-gammel, guide-kort | `/skapere/` (1) | `/sv/receptskapare/` (1) | `/da/opskriftsskabere/` (1) | `/en/recipe-creators/` (1) | undersider-alle-sprak.mjs |  | 2026-11-19 |
 | slett-konto | Slett konto: Matlyst | juss | `/slett-konto.html` (1) | `/sv/radera-konto/` (1) | `/da/slet-konto/` (1) | `/en/delete-account/` (1) | juridisk-tekster.mjs |  | 2026-11-19 |
 | spiskammer | Spiskammer-app: se hva du har og lag mat av det | guide-lang | `/spiskammer-app/` (1) | `/sv/skafferi-app/` (1) | `/da/spisekammer-app/` (1) | `/en/pantry-app/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
-| tiktok-oppskrifter | Slik lagrer du oppskrifter fra TikTok | guide-lang | `/lagre-oppskrifter-fra-tiktok/` (1) | `/sv/spara-recept-fran-tiktok/` (1) | `/da/gem-opskrifter-fra-tiktok/` (1) | `/en/import-recipes-from-tiktok/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, import-guider-lokale.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-20 |
+| tiktok-oppskrifter | Slik lagrer du oppskrifter fra TikTok | guide-lang | `/lagre-oppskrifter-fra-tiktok/` (1) | `/sv/spara-recept-fran-tiktok/` (1) | `/da/gem-opskrifter-fra-tiktok/` (1) | `/en/import-recipes-from-tiktok/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, import-guider-lokale.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-21 |
 | tom-kjoleskapet | Tøm kjøleskapet med lagrede oppskrifter | guide-kort | `/tom-kjoleskapet/` (1) | `/sv/tom-kylskapet/` (1) | `/da/toem-koeleskabet/` (1) | `/en/empty-the-fridge/` (1) | undersider-alle-sprak.mjs |  | 2026-11-21 |
 | ukemeny | Ukemeny-app: planlegg middagene for uka | guide-kort | `/ukemeny/` (1) | `/sv/veckomeny-app/` (1) | `/da/madplan-app/` (1) | `/en/meal-plan-app/` (1) | en-appsider.mjs, nordiske-appsider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
 | vilkar | Brukervilkår: Matlyst | juss | `/vilkar.html` (1) | `/sv/villkor/` (1) | `/da/vilkaar/` (1) | `/en/terms/` (1) | juridisk-tekster.mjs |  | 2026-11-19 |
@@ -407,11 +407,11 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/spara-recept-fran-instagram/ (2026-11-20)
+- https://matlyst-app.no/sv/spara-recept-fran-instagram/ (2026-11-21)
 
 **da** (1)
 
-- https://matlyst-app.no/da/gem-opskrifter-fra-instagram/ (2026-11-20)
+- https://matlyst-app.no/da/gem-opskrifter-fra-instagram/ (2026-11-21)
 
 **en** (1)
 
@@ -601,7 +601,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **sv** (1)
 
-- https://matlyst-app.no/sv/spara-recept-fran-tiktok/ (2026-11-20)
+- https://matlyst-app.no/sv/spara-recept-fran-tiktok/ (2026-11-21)
 
 **da** (1)
 

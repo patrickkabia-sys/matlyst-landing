@@ -78,7 +78,7 @@ const receptbok = (() => {
         + '<ul><li><strong>Den läser bildtexter, inte ljud.</strong> Matlyst transkriberar inte videor. Om mängderna bara sägs skriver du in dem efter importen.</li>'
         + '<li><strong>Den läser inte kommentarer.</strong> Har skaparen lagt receptet i en kommentar eller bakom en länk i profilen kopierar du in det för hand eller delar länken till receptsidan.</li>'
         + '<li><strong>Ett recept per inlägg.</strong> Visar en reel tre recept får du dela upp dem själv.</li>'
-        + '<li><strong>Den räknar inte om enheter vid import.</strong> Mängderna är metriska som standard.</li>'
+        + '<li><strong>Omräkningen gäller nya importer.</strong> Med Enheter på Metriskt räknas cups, uns och pund om till dl och gram när du importerar. Recept du redan har sparat ändras inte.</li>'
         + '<li><strong>AI kan göra fel.</strong> Matlyst använder AI för att läsa och översätta recept, så kontrollera mängder och steg innan du lagar, särskilt från foton och handskrift.</li>'
         + '<li><strong>Matlagningsläget kräver internetanslutning.</strong> Du kan läsa ett sparat recept offline i upp till 30 dagar efter senaste synkningen.</li></ul>'],
       ['Vanliga misstag när du ordnar recept', p('Det här är de som kostar mest tid.')
@@ -130,7 +130,7 @@ const instagram = byggRik({
       + '<li><strong>Privata, borttagna eller begränsade inlägg.</strong> Matlyst behöver komma åt ett offentligt inlägg, så dessa kanske inte går att läsa.</li>'
       + '<li><strong>Videon laddas inte ner.</strong> Matlyst sparar det strukturerade receptet och källänken, inte videofilen.</li></ul>'],
     ['Det här ska du kontrollera i utkastet innan du sparar', p('Att läsa utkastet tar en minut, och det är steget som avgör om receptet fungerar. Gå igenom i den här ordningen.')
-      + '<ol><li><strong>Mängder och enheter.</strong> Har varje ingrediens en siffra? En saknad mängd betyder oftast att skaparen inte skrev någon. Mängderna är metriska och Matlyst räknar inte om mellan enheter.</li>'
+      + '<ol><li><strong>Mängder och enheter.</strong> Har varje ingrediens en siffra? En saknad mängd betyder oftast att skaparen inte skrev någon. Mängderna är metriska. Med Enheter på Metriskt räknas cups, uns och pund om till dl och gram när du importerar.</li>'
       + '<li><strong>Ingrediensgrupper.</strong> Långa bildtexter delar ofta upp ingredienserna i grupper, som sås, fyllning och topping. Se till att inget hamnat i fel grupp.</li>'
       + '<li><strong>Ugnstemperatur och tider.</strong> De är lätta att missa i en lång bildtext. Jämför med inlägget.</li>'
       + '<li><strong>Stegen.</strong> Kommer de i rätt ordning, och är varje steg något du gör? Stryk det som är ett skämt eller en hashtag.</li>'
@@ -193,7 +193,7 @@ const tiktok = byggRik({
       + p('Korta länkar som vm.tiktok.com, vt.tiktok.com och tiktok.com/t/ fungerar.')],
     ['När bildtexten saknar recept', p('Matlyst läser bildtexten, inte ljudet. Appen transkriberar inte tal och läser inte text som bara visas inne i videon. Om en skapare säger ”två matskedar honung” högt och inte skriver något finns det inget att importera. Skapa receptet för hand med mängderna du hör, eller leta efter en skriven version på skaparens profil eller webbplats. En TikTok utan någon text går inte att importera. Videon laddas aldrig ner. Matlyst sparar bara receptet och källänken.')],
     ['Det här ska du kontrollera i utkastet innan du sparar', p('Ta en minut med utkastet. Det är steget som avgör om receptet fungerar när du lagar det.')
-      + '<ul><li><strong>Mängder och enheter.</strong> En saknad siffra betyder oftast att skaparen inte skrev någon. Mängderna är metriska och Matlyst räknar inte om mellan enheter.</li>'
+      + '<ul><li><strong>Mängder och enheter.</strong> En saknad siffra betyder oftast att skaparen inte skrev någon. Mängderna är metriska. Med Enheter på Metriskt räknas cups, uns och pund om till dl och gram när du importerar.</li>'
       + '<li><strong>Stegen i ordning.</strong> TikTok-texter är korta och ibland rörigt ordnade. Flytta eller ta bort steg tills de stämmer med videon.</li>'
       + '<li><strong>Temperaturer och tider.</strong> Jämför med vad skaparen säger eller visar.</li>'
       + '<li><strong>Översatta namn.</strong> Stod bildtexten på ett annat språk är receptet översatt till svenska. Kolla ingrediensnamn du inte känner igen.</li></ul>'
@@ -436,7 +436,7 @@ export const rikeSider = {
       ['Kan jag räkna om ett recept till fler portioner?', 'Ja, mellan 1 och 20 portioner. Omräkningen är linjär, så kontrollera ägg och jäsmedel själv när du bakar.'],
       ['Fungerar den offline?', 'Du kan läsa dina recept och din inköpslista offline i upp till 30 dagar efter senaste synkningen. Matlagningsläget och redigering kräver anslutning.'],
       ['Kan jag dela recept och inköpslista med mitt hushåll?', 'Ja. En Pro-medlem skapar hushållet, upp till 6 personer kan gå med, och det är gratis att gå med. Inköpslistan, veckomenyn och skafferiet uppdateras direkt för alla.'],
-      ['Vilka enheter använder den?', 'Mängderna är metriska. Matlyst räknar inte om enheter vid import, och recept på andra språk översätts till svenska.'],
+      ['Vilka enheter använder den?', 'Mängderna är metriska. Med Enheter på Metriskt räknas cups, uns och pund om till dl och gram när du importerar. Det gäller nya importer. Recept på andra språk översätts till svenska.'],
       ['Kan jag exportera mina recept?', 'Ja, gratis, som en Matlyst-fil (en zip med mappar och bilder) eller som HTML.'],
       ['Fungerar Matlyst på iPhone och Android?', 'Ja. Matlyst finns i App Store och på Google Play.'],
       ['Vad ingår i gratisversionen?', 'Gratisversionen har ett visst antal importer per månad, och appen visar hur många du har använt. Med Matlyst Pro får du fler importer och fotoimport.'],
