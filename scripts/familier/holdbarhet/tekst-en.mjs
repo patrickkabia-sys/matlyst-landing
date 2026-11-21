@@ -9,7 +9,7 @@ const FREEZE_ROOT = '/en/can-you-freeze/';
 const F = (slug, text) => [`${FREEZE_ROOT}${slug}/`, text];
 const R = (slug, text) => [`${FRIDGE_ROOT}${slug}/`, text];
 
-const KJOL = (h) => `${h.k('fs-chart')} writes its refrigerator times for a fridge at ${h.t('kjol')} or below.`;
+const KJOL = (h) => `${h.k('fs-chart')} bases its refrigerator times on a fridge set at ${h.t('kjol')} or below.`;
 const KORT = (h) => `${h.k('fs-chart')} says the short time limits for home-refrigerated foods "will help keep them from spoiling or becoming dangerous to eat."`;
 const TWO = (h) => `${h.k('fsis-danger')} says never to leave food out of refrigeration over ${h.t('timer2')}. When the temperature is above ${h.t('varm')}, the limit is ${h.t('timer1')}.`;
 const REHEAT = (h) => `${h.k('fsis-leftovers')} says leftovers should reach ${h.t('oppvarm')} when you reheat them, measured with a food thermometer.`;
@@ -24,9 +24,9 @@ const CHART = (h) => `${h.k('fs-chart')} lists these times for the refrigerator:
 export const TEKST = {
   egg: (h) => ({
     ord: 'eggs',
-    title: LAST('an egg'),
+    title: 'How long do eggs last in the fridge?',
     h1: 'How long do eggs last in the fridge?',
-    description: `Raw eggs in the shell last ${h.t('skall')} in the fridge, and raw egg whites and yolks last ${h.t('hviter')}, according to ${h.k('fs-chart')}. What the USDA and FDA add.`,
+    description: `Raw eggs in the shell last ${h.t('skall')} in the fridge, and raw egg whites and yolks last ${h.t('hviter')}, according to ${h.k('fs-chart')}. Plus what the USDA and FDA add.`,
     lead: `Raw eggs in the shell last ${h.t('skall')} in the refrigerator, according to ${h.k('fs-chart')}. Raw egg whites and yolks that are out of the shell last ${h.t('hviter')}.`,
     kilder: [
       `${h.k('fsis-eggs')} says refrigerated eggs should not be left out more than ${h.t('ute')}.`,
@@ -68,7 +68,7 @@ export const TEKST = {
     ord: 'leftovers',
     title: 'How long do leftovers last in the fridge?',
     h1: 'How long do leftovers last in the fridge?',
-    description: `Leftovers can be kept in the refrigerator for ${h.t('lft')}, says ${h.k('fsis-leftovers')}. How to cool, wrap, and reheat them, with the rules of the USDA and FDA.`,
+    description: `Leftovers can be kept in the refrigerator for ${h.t('lft')}, says ${h.k('fsis-leftovers')}. How to cool, wrap, and reheat them, following USDA and FDA guidance.`,
     lead: `Leftovers can be kept in the refrigerator for ${h.t('lft')}, says ${h.k('fsis-leftovers')}. Cooked meat and poultry get the same ${h.t('kokt-kjott')} on the ${h.k('fs-chart')} chart.`,
     kilder: [
       TWO(h),
@@ -90,7 +90,7 @@ export const TEKST = {
     ord: 'chicken',
     title: LAST('cooked chicken'),
     h1: 'How long does cooked chicken last in the fridge?',
-    description: `Cooked chicken and other cooked poultry last ${h.t('kokt')} in the fridge, according to ${h.k('fs-chart')}. So do chicken nuggets and patties. Rules for cooling and reheating.`,
+    description: `Cooked chicken and other cooked poultry last ${h.t('kokt')} in the fridge, according to ${h.k('fs-chart')}. So do chicken nuggets and patties. Plus how to cool and reheat it.`,
     lead: `Cooked chicken lasts ${h.t('kokt')} in the refrigerator, according to ${h.k('fs-chart')}, which lists cooked meat or poultry under leftovers.`,
     kilder: [
       `${h.k('fsis-leftovers')} says to cook all poultry to an internal temperature of ${h.t('fjaerfe')}, as measured with a food thermometer, and that leftovers can be kept in the refrigerator for ${h.t('lft')}.`,
@@ -174,7 +174,7 @@ export const TEKST = {
     ord: 'rice',
     title: LAST('cooked rice'),
     h1: 'How long does cooked rice last in the fridge?',
-    description: `The federal sources do not give rice its own time. For leftovers in general, ${h.k('fsis-leftovers')} says ${h.t('lft')} in the fridge. Cooling and reheating rules.`,
+    description: `The federal sources do not give rice its own time. For leftovers in general, ${h.k('fsis-leftovers')} says ${h.t('lft')} in the fridge. Plus how to cool and reheat it.`,
     lead: `The ${h.k('fs-chart')} chart does not list rice by name. For leftovers in general, ${h.k('fsis-leftovers')} says ${h.t('lft')} in the refrigerator.`,
     kilder: [
       `Rice falls under the leftovers rule: ${h.k('fsis-leftovers')} says leftovers can be kept in the refrigerator for ${h.t('lft')}.`,
@@ -238,7 +238,7 @@ export const TEKST = {
     ord: 'pizza',
     title: LAST('pizza'),
     h1: 'How long does pizza last in the fridge?',
-    description: `Leftover pizza lasts ${h.t('pizza')} in the fridge, according to ${h.k('fs-chart')}. The leftovers rule of ${h.k('fsis-leftovers')} and how long pizza can sit out.`,
+    description: `Leftover pizza lasts ${h.t('pizza')} in the fridge, according to ${h.k('fs-chart')}. Plus the ${h.k('fsis-leftovers')} leftovers rule and how long pizza can sit out.`,
     lead: `Leftover pizza lasts ${h.t('pizza')} in the refrigerator, according to ${h.k('fs-chart')}, which lists pizza by name.`,
     kilder: [
       `${h.k('fsis-leftovers')} puts leftovers at ${h.t('lft')} in the refrigerator, which matches the pizza line on the chart.`,
@@ -419,7 +419,7 @@ export const TEKST = {
       ['Can you freeze casserole?', `${h.k('fs-chart')} lists a freezer time. See <a href="${FREEZE_ROOT}casseroles/">can you freeze casserole</a>.`],
     ],
     soster: F('casseroles', 'Can you freeze casserole?'),
-    andre: [R('leftovers', 'How long do leftovers last?'), ['/en/internal-temperature/leftovers/', 'Casseroles: temperature to reheat to']],
+    andre: [R('leftovers', 'How long do leftovers last?'), ['/en/internal-temperature/leftovers/', 'What temperature to reheat a casserole to']],
   }),
 
   'egg-salad': (h) => ({
@@ -501,10 +501,10 @@ export function nav({ data, rader, sti, h, p, esc }) {
     title: 'How long does food last in the fridge? Chart with sources',
     h1: 'How long does food last in the fridge?',
     description: 'How long do chicken, rice, ground beef, eggs, leftovers, and more last in the fridge? Times from FoodSafety.gov, USDA, and FDA, with the source on every number.',
-    lead: `Keep the fridge at ${forste.t('kjol')} or below. The federal chart on this page is written for that temperature. Every time below comes from a named source.`,
+    lead: `Keep the fridge at ${forste.t('kjol')} or below. The federal chart on this page assumes that temperature. Every time below comes from a named source.`,
     rik: [
       `<h2>What the federal sources say</h2>${p([
-        `${forste.k('fs-chart')} writes its refrigerator times for a fridge at ${forste.t('kjol')} or below.`,
+        `${forste.k('fs-chart')} bases its refrigerator times on a fridge set at ${forste.t('kjol')} or below.`,
         `${rest.k('fsis-leftovers')} says leftovers can be kept in the refrigerator for ${rest.t('lft')}.`,
         `${rest.k('fsis-danger')} says never to leave food out of refrigeration over ${rest.t('timer2')}, or ${rest.t('timer1')} when the temperature is above ${rest.t('varm')}.`,
       ])}`,
@@ -514,7 +514,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
     ].join('\n'),
     faqTittel: 'Questions about fridge times',
     faq: [
-      ['What temperature should a refrigerator be?', `${forste.k('fs-chart')} writes its refrigerator times for ${forste.t('kjol')} or below, and ${forste.k('fda-lagring')} says the same.`],
+      ['What temperature should a refrigerator be?', `${forste.k('fs-chart')} bases its refrigerator times on ${forste.t('kjol')} or below, and ${forste.k('fda-lagring')} says the same.`],
       ['How long can food sit out before it goes in the fridge?', `${rest.k('fsis-danger')} says never more than ${rest.t('timer2')}, or ${rest.t('timer1')} when the temperature is above ${rest.t('varm')}.`],
     ],
   };

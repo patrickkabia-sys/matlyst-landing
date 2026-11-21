@@ -9,7 +9,7 @@
 export const celsius = (f) => Math.round(((f - 32) * 5) / 9);
 const L = (slug, text) => [`/en/air-fryer/${slug}/`, text];
 const SVAR_ADVARSEL = 'Treat the times as a place to start.';
-const KJERNE_H = 'Core temperature: the thermometer decides, not the clock';
+const KJERNE_H = 'Internal temperature: the thermometer decides, not the clock';
 const TERMOMETER = (h) => `${h.u('cosori:termometer')}${h.u('cosori:indre')}${h.u('fsis-chart:termometer')}`;
 const STARTPUNKT = (h) => `${h.u('cosori:varierer')}${h.u('msu:justere')}`;
 const ROW = (h, kilde, etikett, felt) => [h.k(kilde), etikett, h.t(`${felt}-temp`), h.t(`${felt}-tid`)];
@@ -50,7 +50,7 @@ export const TEKST = {
       )],
     ],
     kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for all poultry, including breasts, measured with a food thermometer.`, 'chicken'),
-    app: 'Save the chicken breast recipe you like in Matlyst, and put it on the day you want to make it.',
+    app: "Save the chicken breast recipe you like in Matlyst and pick the night you'll make it.",
     faq: [
       ['Do I flip chicken breast in the air fryer?', `${h.k('cosori')} marks all three chicken breast rows for flipping. ${h.k('philips-book')} does not say.`],
       ['What temperature is chicken breast done at?', `${h.k('fsis-chart')} says ${h.t('kjerne')} for all poultry. Cosori says the internal temperature is what confirms the food is done, not the time.`],
@@ -83,13 +83,13 @@ export const TEKST = {
         `The other two sources do not separate bone-in from boneless.`,
       )],
       ['Drumsticks are not thighs', h.p(
-        `${h.k('cosori')} lists drumsticks at ${h.t('c-kl-temp')} for ${h.t('c-kl-tid')}. ${h.k('msu')} lists them at ${h.t('m-kl-temp')} for ${h.t('m-kl-tid')}, and ${h.k('philips-book')} at ${h.t('pb-kl-temp')} for ${h.t('pb-kl-tid')}. The times are close, and the temperatures are not.`,
+        `${h.k('cosori')} lists drumsticks at ${h.t('c-kl-temp')} for ${h.t('c-kl-tid')}. ${h.k('msu')} lists them at ${h.t('m-kl-temp')} for ${h.t('m-kl-tid')}, and ${h.k('philips-book')} at ${h.t('pb-kl-temp')} for ${h.t('pb-kl-tid')}. The times are close, but the temperatures are not.`,
       )],
     ],
     kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} for all poultry, and names breasts, whole birds, legs, thighs, wings, ground poultry, giblets, and stuffing. It says to measure with a food thermometer.`, 'chicken'),
-    app: 'Save your favorite chicken thigh recipe in Matlyst, and put it on the day you want to make it.',
+    app: 'Save your favorite chicken thigh recipe in Matlyst and add it to your meal plan.',
     faq: [
-      ['Are boneless chicken thighs faster in the air fryer?', `Yes in ${h.k('cosori')}: ${h.t('c-uten-tid')} for boneless, against ${h.t('c-ben-tid')} for bone-in.`],
+      ['Are boneless chicken thighs faster in the air fryer?', `Yes, according to ${h.k('cosori')}: ${h.t('c-uten-tid')} for boneless versus ${h.t('c-ben-tid')} for bone-in.`],
       ['Do I flip chicken thighs?', `${h.k('cosori')} marks thighs and drumsticks for flipping.`],
       ['What temperature are chicken thighs done at?', `${h.k('fsis-chart')} says ${h.t('kjerne')} for thighs and legs.`],
     ],
@@ -158,7 +158,7 @@ export const TEKST = {
       )],
     ],
     kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for fish and shellfish, measured with a food thermometer.`, 'salmon'),
-    app: 'Save your salmon recipe in Matlyst, and put it on the day you want to make it.',
+    app: 'Save your salmon recipe in Matlyst and put it on a weeknight.',
     faq: [
       ['Should I flip salmon in the air fryer?', `${h.k('cosori')} lists no flip or shake for salmon fillets. ${h.k('msu')} and ${h.k('instant')} do not say.`],
       ['What temperature is salmon done at?', `${h.k('fsis-chart')} says ${h.t('kjerne')} for fish and shellfish.`],
@@ -172,7 +172,7 @@ export const TEKST = {
     title: 'Air fryer shrimp: time and temperature',
     h1: 'Air fryer shrimp: time and temperature',
     description: `${h.k('cosori')} lists large shrimp at ${h.t('c-temp')} for ${h.t('c-tid')}. Fresh and breaded shrimp from three sources, and the safe temperature of ${h.t('kjerne')}.`,
-    lead: 'Shrimp is done in a few minutes, and the sources differ on the temperature. Fresh and breaded shrimp are listed apart here.',
+    lead: 'Shrimp cooks in a few minutes, and the sources differ on the temperature. Fresh and breaded shrimp are listed separately here.',
     svar: `${h.k('cosori')} lists large shrimp at ${h.t('c-temp')} for ${h.t('c-tid')}. ${h.k('msu')} lists ${h.t('m-temp')} for ${h.t('m-tid')}, and ${h.k('instant')} lists ${h.t('i-temp')} for ${h.t('i-tid')}. ${SVAR_ADVARSEL} ${h.k('fsis-chart')} sets the safe minimum for shellfish at ${h.t('kjerne')}.${STARTPUNKT(h)}`,
     tabell: {
       tittel: 'Shrimp times from three sources', intro: 'Fresh and breaded shrimp are separate rows.', kolonner: KOLONNER_MAT,
@@ -185,13 +185,13 @@ export const TEKST = {
       ],
     },
     avsnitt: [
-      ['Fresh against breaded', h.p(
+      ['Fresh vs. breaded', h.p(
         `Breaded shrimp take longer. ${h.k('cosori')} lists ${h.t('c-panert-tid')} at ${h.t('c-panert-temp')}, and ${h.k('msu')} lists ${h.t('m-panert-tid')} under frozen food.`,
         `${h.k('cosori')} marks both large shrimp and breaded shrimp for shaking.`,
       )],
     ],
     kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for fish and shellfish.`, ''),
-    app: 'Save your shrimp recipe in Matlyst, and put it on the day you want to make it.',
+    app: 'Save your shrimp recipe in Matlyst and pick a busy night for it.',
     faq: [
       ['How long do shrimp take in the air fryer?', `${h.k('cosori')} says ${h.t('c-tid')} for large shrimp at ${h.t('c-temp')}. ${h.k('instant')} says ${h.t('i-tid')} at ${h.t('i-temp')}.`],
       ['Do I shake the basket?', `${h.k('cosori')} marks shrimp for shaking.`],
@@ -226,7 +226,7 @@ export const TEKST = {
     },
     avsnitt: [
       ['Frozen fries: thin or thick', h.p(
-        `All the sources that separate them give thick fries a longer time than thin ones. At ${h.k('cosori')} it is ${h.t('c-tynn-tid')} for thin and ${h.t('c-tykk-tid')} for thick, and at ${h.k('msu')} it is ${h.t('m-tynn-tid')} against ${h.t('m-tykk-tid')}.`,
+        `All the sources that separate them give thick fries a longer time than thin ones. At ${h.k('cosori')} it is ${h.t('c-tynn-tid')} for thin and ${h.t('c-tykk-tid')} for thick, and at ${h.k('msu')} it is ${h.t('m-tynn-tid')} versus ${h.t('m-tykk-tid')}.`,
         `${h.k('cosori')} says most frozen foods go from the freezer to the basket with no thawing, and that most frozen items need no added oil.${h.u('cosori:cold')} It also says to avoid overcrowding frozen items.${h.u('cosori:crowd')}`,
       )],
       ['Fresh fries and potato cubes', h.p(
@@ -234,7 +234,7 @@ export const TEKST = {
         `${h.k('cosori')} lists cubed potatoes, one-inch dice, at ${h.t('c-poteter-temp')} for ${h.t('c-poteter-tid')}, and marks them for shaking.`,
       )],
     ],
-    app: 'Save your own fry and wedge recipes in Matlyst, and put them on the day you want to make them.',
+    app: 'Save your own fry and wedge recipes in Matlyst and pair them with a main on your meal plan.',
     faq: [
       ['How long do frozen french fries take in the air fryer?', `It depends on the source and the cut: ${h.t('c-tynn-tid')} for thin fries at ${h.k('cosori')}, and ${h.t('i-tykk-tid')} for thick fries at ${h.k('instant')}.`],
       ['Do I shake the basket?', `${h.k('cosori')} marks fries for shaking, and ${h.k('philips-book')} marks fries for shaking halfway.`],
@@ -267,11 +267,11 @@ export const TEKST = {
       ['Prepare the skin', h.p(
         `${h.k('idaho')} says to dry the skin well after washing, and to poke the potatoes a few times with a fork to let steam out.${h.u('idaho:stikk')} It says to check halfway and flip a potato that is getting very brown.${h.u('idaho:vend')}`,
       )],
-      ['Doneness: the inside temperature', h.p(
-        `${h.k('idaho')} says the best way to know a potato is done is when the internal temperature reaches ${h.t('id-kjerne')}. That is the sign the commission gives that the potato is done.`,
+      ['Doneness: the internal temperature', h.p(
+        `${h.k('idaho')} says the best way to know a potato is done is when the internal temperature reaches ${h.t('id-kjerne')}.`,
       )],
     ],
-    app: 'Save your baked potato and topping ideas in Matlyst, and put them on the day you want to make them.',
+    app: 'Save your baked potato and topping ideas in Matlyst and add them to your meal plan.',
     faq: [
       ['How long does a baked potato take in the air fryer?', `${h.k('idaho')} says ${h.t('id-tid')} at ${h.t('id-temp')}. ${h.k('cosori')} says ${h.t('c-tid')} at ${h.t('c-temp')}.`],
       ['How do I know a baked potato is done?', `${h.k('idaho')} says the internal temperature should reach ${h.t('id-kjerne')}.`],
@@ -306,7 +306,7 @@ export const TEKST = {
         `${h.k('msu')} says to add water or a slice of bread to the drawer of the air fryer to prevent smoking.${h.u('msu:sma')} ${h.k('ill')} says to add one to two teaspoons of water to the drawer before you air fry high-fat foods, to help prevent smoke.${h.u('ill:royk')}`,
       )],
     ],
-    app: 'Save your breakfast and sandwich recipes in Matlyst, and put them on the day you want to make them.',
+    app: 'Save your breakfast and sandwich recipes in Matlyst and put them on any day of the week.',
     faq: [
       ['How long does bacon take in the air fryer?', `${h.k('cosori')} says ${h.t('c-tid')} for regular bacon, and ${h.k('msu')} says ${h.t('m-tid')}.`],
       ['Do I flip bacon?', `${h.k('cosori')} marks bacon for flipping. ${h.k('msu')} does not say.`],
@@ -338,7 +338,7 @@ export const TEKST = {
         `${h.k('fsis-hd')} says hot dogs are fully cooked, and that people at increased risk of foodborne illness should reheat hot dogs until steaming hot before eating, because of the risk of listeriosis.${h.u('fsis-hd:oppvarm')} The source gives no temperature in that passage, so we list none.`,
       )],
     ],
-    app: 'Save your cookout and game day recipes in Matlyst, and put them on the day you want to make them.',
+    app: 'Save your cookout and game day recipes in Matlyst and put them on the day of the party.',
     faq: [
       ['How long do hot dogs take in the air fryer?', `${h.k('instant-hd')} says ${h.t('i-tid')} at ${h.t('i-temp')}. ${h.k('cosori-hd')} says ${h.t('c-tid')} at ${h.t('c-temp')}.`],
       ['Do I need to cut the hot dogs?', 'Both manufacturers say slits help the skin crisp. Cosori calls them optional.'],
@@ -369,7 +369,7 @@ export const TEKST = {
       )],
     ],
     kjerne: KJERNE(h, `${h.k('fsis-chart')} lists ${h.t('kjerne')} as the minimum internal temperature for ground meats, and ${h.t('kjerne-fjor')} for ground poultry, so a turkey or chicken burger has a different number.`, 'ground-beef'),
-    app: 'Save your burger recipes in Matlyst, and put them on the day you want to make them.',
+    app: 'Save your burger recipes in Matlyst and pick a night for them.',
     faq: [
       ['How long do burgers take in the air fryer?', `${h.k('cosori')} says ${h.t('c-tid')} at ${h.t('c-temp')}, and ${h.k('msu')} says ${h.t('m-tid')} at ${h.t('m-temp')}.`],
       ['Do I flip burgers?', `${h.k('cosori')} marks burgers for flipping.`],
@@ -395,7 +395,7 @@ export const TEKST = {
       ],
     },
     avsnitt: [
-      ['Bone-in against boneless', h.p(
+      ['Bone-in vs. boneless', h.p(
         `${h.k('cosori')} lists ${h.t('c-tid')} for boneless chops and ${h.t('c-ben-tid')} for bone-in, both at ${h.t('c-temp')}, and marks both for flipping.`,
         `${h.k('msu')} gives one time for a chop of six and a half ounces, without saying whether it has a bone.`,
       )],
@@ -516,7 +516,7 @@ export const TEKST = {
         `${h.k('philips-book')} gives a rule for pre-made packaged foods: take ${h.t('pb-grad')} off the conventional oven temperature and cut the time by ${h.t('pb-prosent')}.${h.u('philips-book:pakket')} See the <a href="/en/air-fryer/oven-to-air-fryer/">oven to air fryer page</a> for how that compares with the other rules.`,
       )],
     ],
-    app: 'Frozen food is a quick weeknight fix. Put it on the days you need it in Matlyst.',
+    app: 'Frozen food is a quick weeknight fix. In Matlyst, put it on the nights you need it.',
     faq: [
       ['Do I thaw frozen food before the air fryer?', `${h.k('cosori')} says most frozen foods can go straight from the freezer to the basket with no thawing.`],
       ['How long do chicken nuggets take?', `${h.k('cosori')} says ${h.t('c-nugg-tid')} at ${h.t('c-nugg-temp')}, ${h.k('msu')} says ${h.t('m-nugg-tid')} at ${h.t('m-nugg-temp')}, and ${h.k('philips-book')} says ${h.t('pb-nugg-tid')} at ${h.t('pb-nugg-temp')}.`],
@@ -580,7 +580,7 @@ export const TEKST = {
         'See our <a href="/en/internal-temperature/leftovers/">internal temperature chart for leftovers</a>.',
       )],
     ],
-    app: 'Matlyst lets you see what is left in your pantry, so leftovers get eaten before they go bad.',
+    app: "Matlyst shows what's left in your pantry, so leftovers get eaten before they go bad.",
     faq: [
       ['How long do you reheat pizza in an air fryer?', `${h.k('cosori-reheat')} says ${h.t('pizza-tynn-tid')} at ${h.t('pizza-tynn-temp')} for thin crust, and ${h.t('pizza-tykk-tid')} at ${h.t('pizza-tykk-temp')} for thick crust.`],
       ['What temperature should reheated food reach?', `${h.k('fsis-chart')} lists ${h.t('fsis-rester')} for leftovers, and ${h.k('ill')} says ${h.t('kjerne')} in the air fryer.`],
@@ -639,10 +639,10 @@ TEKST['ovn-til-airfryer'] = (h, rad) => {
     title: 'Oven to air fryer conversion: temperature and time',
     h1: 'Oven to air fryer conversion: how to change temperature and time',
     description: `Enter the oven temperature and time. The rule: ${h.t('ka-grad')} lower and ${h.t('ka-prosent')} shorter, from ${h.k('kitchenaid')} and ${h.k('ill')}. Other rules side by side.`,
-    lead: `Type in the temperature and time from an oven recipe, and get air fryer settings to start with. The rule is ${h.t('ka-grad')} lower and ${h.t('ka-prosent')} shorter. ${h.k('kitchenaid')} and ${h.k('ill')} agree on it. Treat the answer as a starting point.`,
+    lead: `Enter the temperature and time from an oven recipe and get air fryer settings to start with. The rule is ${h.t('ka-grad')} lower and ${h.t('ka-prosent')} shorter. ${h.k('kitchenaid')} and ${h.k('ill')} agree on it. Treat the answer as a starting point.`,
     svar: `Take ${h.t('ka-grad')} off the oven temperature and cut the time by ${h.t('ka-prosent')}, says ${h.k('kitchenaid')}. ${h.k('ill')} says ${h.t('il-grad')} lower and ${h.t('il-prosent')} shorter. ${h.k('philips-book')} gives a different rule for packaged foods: ${h.t('pb-grad')} lower and half the time. ${SVAR_ADVARSEL}`,
     seksjoner: [
-      ['Converter: temperature and time', `${h.p('Type in the temperature and the time from the oven recipe. The answer is a starting point, not a rule of nature.')}${kalkulator(h, rad)}`],
+      ['Converter: temperature and time', `${h.p('Enter the temperature and time from the oven recipe. The answer is a starting point, not an exact rule.')}${kalkulator(h, rad)}`],
       ['The rules side by side', `${h.p('Three sources give three rules. They do not match, so all three are shown, with what each one is for.')}${h.tabell('Oven to air fryer rules from three sources', ['Source', 'For', 'Lower the temperature by', 'Change the time'], [
         [h.k('kitchenaid'), 'Conventional oven recipes', h.t('ka-grad'), `${h.t('ka-prosent')} shorter`],
         [h.k('ill'), 'Conventional oven recipes', h.t('il-grad'), `${h.t('il-prosent')} shorter`],
@@ -659,7 +659,7 @@ TEKST['ovn-til-airfryer'] = (h, rad) => {
         `${h.k('ill')} says to shake the basket or flip the food in the middle of the time.${h.u('ill:ryst')} ${h.k('cosori')} says frozen items generally need ${h.t('c-frozen-ekstra')} more, without any thawing.${h.u('cosori:frosen')}`,
       )],
     ],
-    app: 'Have an oven recipe you want to make in the air fryer? Save it in Matlyst, and put it on the day you want to make it.',
+    app: "Have an oven recipe you want to make in the air fryer? Save it in Matlyst and pick the day you'll make it.",
     faq: [
       ['How much lower should the temperature be in an air fryer?', `${h.k('kitchenaid')} says ${h.t('ka-grad')} below the oven temperature, and ${h.k('ill')} says ${h.t('il-grad')}.`],
       ['How much shorter should the time be?', `${h.k('kitchenaid')} and ${h.k('ill')} both say ${h.t('ka-prosent')} shorter. ${h.k('philips-book')} says half the time for pre-made packaged foods.`],
@@ -713,7 +713,7 @@ export function NAV({ rader, h, sti, tabell, p, esc }) {
     lead: 'Times and temperatures for common foods in the air fryer, from named sources with the year. Where the sources disagree, you see both. Everything is a starting point.',
     svar: `Pick a food in the table for its time and temperature with source and year, or convert an oven recipe with the converter below. Where sources disagree, both are shown. ${SVAR_ADVARSEL} For meat, poultry, and fish, the thermometer decides, not the clock.`,
     seksjoner: [
-      ['Converter: temperature and time', `${p('Type in the temperature and time from the oven recipe to get air fryer settings to start with.')}${kalkulator(ov, ovnRad)}`],
+      ['Converter: temperature and time', `${p('Enter the temperature and time from the oven recipe to get air fryer settings to start with.')}${kalkulator(ov, ovnRad)}`],
       ['Times and temperatures for common foods', `${p('Each row shows one source, with the year. Open a food to see every source we found for it. Times vary with the air fryer, the amount, and the thickness.')}${tabell('Times and temperatures for common foods', ['Food', 'Source', 'Temperature', 'Time'], hurtig)}`],
       ['Rules for converting a recipe', `${p(`${ov.k('kitchenaid')} says to take ${ov.t('ka-grad')} off the oven temperature and cut the time by ${ov.t('ka-prosent')}. ${ov.k('ill')} says the same, with a drop of up to ${ov.t('il-grad-maks')}. ${ov.k('philips-book')} gives ${ov.t('pb-grad')} lower and half the time for pre-made packaged foods.`)}${p(`See all three, with examples, on the ${lenke('ovn-til-airfryer', 'oven to air fryer page')}.`)}`],
       ['Warming up the air fryer', `${p(`${ov.k('cosori')} says a preheat of ${ov.t('c-forvarm')} is enough for most foods, and ${ov.k('ill')} says typically ${ov.t('il-forvarm')}. ${ov.k('philips-book')} says ${ov.t('pb-forvarm')}, and ${ov.k('instant')} says ${ov.t('i-forvarm')} or less. ${ov.k('cosori')} makes one exception: hard-boiled eggs go into a cold basket.${ov.u('cosori:egg-kald')}`)}`],
@@ -723,7 +723,7 @@ export function NAV({ rader, h, sti, tabell, p, esc }) {
         `${ov.k('cosori')} says a full basket reduces airflow and makes the time longer, so food should go in a single, even layer.${ov.u('cosori:lag')}`,
       )],
     ],
-    app: 'Matlyst saves recipes from the web. Put them on the days of the weekly menu, and let the shopping list collect the groceries.',
+    app: 'Matlyst saves recipes from the web. Put them on your meal plan, and the grocery list collects everything you need.',
     faqTittel: 'Questions about air fryer times',
     faq: [
       ['How long does chicken take in the air fryer?', `It depends on the cut. ${kf.k('cosori')} lists boneless chicken breast at ${kf.t('c-temp')} for ${kf.t('c-tid')}, and ${kv.k('cosori')} lists wings at ${kv.t('c-temp')} for ${kv.t('c-tid')}. The thermometer decides: ${kf.t('kjerne')} for poultry, says ${kf.k('fsis-chart')}.`],

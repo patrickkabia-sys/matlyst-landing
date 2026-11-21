@@ -154,14 +154,14 @@ const kildeliste = (data, brukt) => {
   const ider = [...brukt].sort((a, b) => rekkefolge.indexOf(a) - rekkefolge.indexOf(b));
   return `<h2>Sources</h2>\n<ol class="kilder" id="kilder">${ider.map((id) => {
     const k = data.kilder[id];
-    return `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Read ${engelskDato(k.hentet)}.</li>`;
+    return `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Accessed ${engelskDato(k.hentet)}.</li>`;
   }).join('')}</ol>`;
 };
 
 // The app on the pages: app-bevis.mjs puts screenshots under these headings (the rules «scale» and «list»).
-const APP = '<h2>Scale your recipes to more servings</h2><p>If you have the recipe in Matlyst, you change the number of servings and every amount in the recipe follows.</p>\n<h2>A grocery list once you know the amount</h2><p>Put your recipes on the weekly menu in Matlyst, and all the items land on one grocery list, sorted by store section.</p>';
+const APP = '<h2>Scale your recipes to more servings</h2><p>Once you know how many people you are feeding, set the same number on the recipe in Matlyst and the ingredient amounts follow.</p>\n<h2>A grocery list once you know the amount</h2><p>Plan the meal in Matlyst, and the ingredients go straight to your grocery list.</p>';
 
-const STEG = [['Enter how many you are', 'The calculator works as you type.']];
+const STEG = [['Enter how many people are eating', 'The calculator updates as you type.']];
 const SKJELETT = { stegTittel: 'How to use the calculator', forst: '', alternativ: '', grense: '', seksjoner: [], cta: 'Scale your recipes in Matlyst', steg: STEG };
 const EYEBROW_VARE = `<a href="${ROT}">How much per person</a>`;
 const brodsmule = (...ledd) => brodsmuler([{ navn: 'Home', adresse: '/en/' }, { navn: 'How much per person', adresse: ROT }, ...ledd]);
@@ -266,7 +266,7 @@ export function navSide(data, rader) {
     description,
     eyebrow: 'How much per person',
     h1: 'How much food per person?',
-    lead: 'Pick the food, enter how many adults and kids you are, and you get the whole amount. Every number comes from a source.',
+    lead: 'Pick a food, enter how many adults and kids are eating, and get the total amount. Every number comes from a source.',
     ...SKJELETT, rik,
     faqTittel: 'Questions about amounts per person',
     faq: faqNav,

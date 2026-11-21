@@ -57,8 +57,8 @@ export function kortListe(kort) {
 
 function kildeAvsnitt(kilder, intro) {
   return p(intro)
-    + `<ol class="kilder" id="kilder">${kilder.map((k) => `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Read ${engelskDato(k.hentet)}.</li>`).join('')}</ol>`
-    + p('Did a source change, or did you spot a mistake? Write to <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.');
+    + `<ol class="kilder" id="kilder">${kilder.map((k) => `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Accessed ${engelskDato(k.hentet)}.</li>`).join('')}</ol>`
+    + p('Spot a mistake, or did a source change? Email <a href="mailto:hei@matlyst-app.no">hei@matlyst-app.no</a>.');
 }
 
 const TALL = /\d+(?:[.,]\d+)?(?:\/\d+)?|[½⅓⅔¼¾⅛⅜⅝⅞]/gu;

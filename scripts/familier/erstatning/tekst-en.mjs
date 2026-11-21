@@ -5,10 +5,10 @@
 import { kortListe, og, p, ul } from './bygg-en.mjs';
 
 const N = { csu: 'Colorado State Extension', usu: 'Utah State Extension', unl: 'Nebraska Extension', ndsu: 'NDSU Extension', tamu: 'Texas A&M AgriLife Extension', ill: 'Illinois Extension', msu: 'Montana State Extension', kaf: 'King Arthur Baking' };
-const APP_FELLES = 'Open a recipe in the app and use <strong>Ask Matlyst</strong> to get a swap based on what you have in the pantry. You see the changes as a list before you save, and you can undo them. Ask Matlyst is a Pro feature, uses AI, and has a monthly quota, so read the result before you start.';
+const APP_FELLES = 'Open a recipe in the app and use <strong>Ask Matlyst</strong> to get a swap based on what you have in the pantry. Ask Matlyst is a Pro feature, uses AI, and has a monthly quota, so read the result before you start.';
 // Two sections: the pantry (what you have) and Ask Matlyst (the swap itself). The headings decide which app cards the page gets.
 const app = (intro) => [
-  ['See what is in your pantry', p(intro, 'In the <a href="/en/pantry-app/">pantry</a> in Matlyst you add what you have and see how many days are left on each item. Then you know what you can swap in before you start.')],
+  ["See what's in your pantry", p(intro, 'Add what you have to the <a href="/en/pantry-app/">pantry</a> in Matlyst. That way you know what you can swap in before you start.')],
   ['Swap the ingredient in Matlyst', p(APP_FELLES)],
 ];
 const R = (id) => id; // related page ids, resolved by the builder
@@ -21,7 +21,7 @@ export const TEKST = {
     beskrivelse: 'Out of buttermilk? Nebraska Extension, Utah State, and King Arthur Baking give the ratios: milk with lemon juice or vinegar, cream of tartar, or thinned yogurt. See which works where.',
     ingress: 'Buttermilk is easy to replace with milk and something sour. It works best in cakes and quick breads.',
     svar: `${N.unl} says to stir ${E('syre')} of lemon juice or vinegar into regular milk to make ${E('kopp')} and let it stand ${E('stå-unl')}. ${N.kaf} says to let the milk stand ${T('stå-kaf-min')} to ${E('stå-kaf-maks')}, until it thickens slightly.`,
-    steg: [['Pick a sour', 'Lemon juice, vinegar, cream of tartar, or yogurt.'], ['Mix and wait', 'Milk with an acid needs to stand before you use it.'], ['Check the recipe', 'Plain milk is a poor swap when the recipe uses baking soda.']],
+    steg: [['Pick an acid', 'Lemon juice, vinegar, cream of tartar, or yogurt.'], ['Mix and wait', 'Milk with an acid needs to stand before you use it.'], ['Check the recipe', 'Plain milk is a poor swap when the recipe uses baking soda.']],
     kilder: ['unl', 'kaf', 'usu', 'csu'],
     beslektet: ['bakepulver', 'sour-cream', 'melk', 'lemon-juice'],
     seksjoner: [
@@ -31,8 +31,8 @@ export const TEKST = {
         ['Plain yogurt', ['Ratio', `${N.usu}: ${E('yoghurt')} of plain yogurt for 1 cup of buttermilk.`], ['What changes', 'Yogurt is thicker than buttermilk. The next swap thins it.']],
         ['Greek yogurt thinned with milk', ['Ratio', `${N.kaf}: ${T('gresk-del')} part yogurt to ${E('gresk-melk')} of 1% or skim milk. One small container (${E('gresk-beger')}) of Greek yogurt with ${E('gresk-melkkopp')} of milk makes 2 cups.`], ['What changes', `${N.kaf} found this the closest to buttermilk in flavor in simple recipes.`]],
       ])],
-      ['When a replacement works and when it does not', p(`${N.kaf} tested these swaps in biscuits, pancakes, and a buttermilk cake. Its summary: the shorter a recipe's ingredient list, the less successful a buttermilk substitute will be. The tang of buttermilk shows most when it sits next to only flour, an egg, and fat.`, `The test also found that plain milk lacks buttermilk's acidity. In a cake leavened with baking soda it gave a darker, denser cake. If your recipe uses baking soda, use one of the sour swaps above.`)],
-      ...app('Buttermilk is a one-recipe ingredient that most kitchens do not have.'),
+      ['When a replacement works and when it does not', p(`${N.kaf} tested these swaps in biscuits, pancakes, and a buttermilk cake. Its summary: the shorter a recipe's ingredient list, the less successful a buttermilk substitute will be. The tang of buttermilk shows most when it sits next to only flour, an egg, and fat.`, `The test also found that plain milk lacks buttermilk's acidity. In a cake leavened with baking soda it gave a darker, denser cake. If your recipe uses baking soda, use one of the acidic swaps above.`)],
+      ...app("Buttermilk is a one-recipe ingredient that a lot of kitchens don't keep on hand."),
     ],
     faq: [
       ['Can I use plain milk instead of buttermilk?', `${N.kaf} says plain milk lacks buttermilk's acidity. In its test it gave a denser cake and flat-tasting biscuits.`],
@@ -63,7 +63,7 @@ export const TEKST = {
       ])],
       ['What one egg measures', p(`${N.usu} gives these equivalents: 1 large egg is ${E('en-egg')}, and ${T('fem-egg')} large eggs make ${E('kopp')}. Use this when a recipe asks for a part of an egg and you need to measure it.`)],
       ['Why there is no single answer', p(`${N.ill} puts it plainly: depending upon the recipe and the function of the egg, certain options are better suited than others, as the flavor and texture may be slightly altered. For a cake that needs lift, use a swap that lifts. For a dense bar, a moist one may do.`)],
-      ...app('Eggs run out in the middle of a baking session more than any other ingredient.'),
+      ...app("It's easy to run out of eggs halfway through a recipe."),
     ],
     faq: [
       ['What is the easiest egg substitute for baking?', `${N.unl} lists ${T('bp')} teaspoon baking powder, ${E('eddik')} vinegar, and ${E('vaeske')} liquid per egg, for baking only.`],
@@ -90,7 +90,7 @@ export const TEKST = {
         ['Soda with molasses', ['Ratio', `${N.csu}: ${T('melk-soda')} teaspoon baking soda plus ${E('melasse')} molasses.`], ['What changes', `Decrease the liquid in the recipe by ${T('melasse-vaeske-min')} to ${E('melasse-vaeske-maks')}.`]],
       ])],
       ['Why soda needs an acid', p(`${N.usu} explains that in order for carbon dioxide to be released and cause the product to rise, an acid ingredient must be present to react with the soda. Molasses is acidic enough that it releases carbon dioxide.`, 'That is why each swap above pairs the soda with something sour.')],
-      ...app('Baking powder and baking soda sit side by side in the cupboard, and people grab the wrong one.'),
+      ...app("Baking powder and baking soda sit side by side in the cupboard, and it's easy to grab the wrong one."),
     ],
     faq: [
       ['How much baking soda replaces baking powder?', `${N.ill} says ${T('soda')} teaspoon baking soda plus ${T('kremor')} teaspoon cream of tartar for each ${T('bp')} teaspoon of baking powder.`],
@@ -114,9 +114,9 @@ export const TEKST = {
         ['Active dry for compressed', ['Ratio', `${N.unl}: for ${E('komprimert-oz')} of compressed yeast, use 1 package (${E('pakke-oz')}) of active dry yeast, or ${E('pakke-ts-unl')} of active dry yeast.`], ['What changes', `${N.csu} lists the same swap in the other direction: 1 package of active dry yeast (${T('pakke-oz')} ounce) or 1 compressed yeast cake.`]],
         ['One tablespoon of active dry yeast', ['Ratio', `${N.usu}: ${E('spiseskje')} of active dry yeast is 1 package of active dry yeast or 1 compressed yeast cake.`], ['What changes', `${N.ndsu} lists the cake as ${T('ndsu-kake')} ounce.`]],
       ])],
-      ['Where the sources differ', p(`${N.unl} gives one package as ${E('pakke-ts-unl')}. ${N.csu} gives ${E('pakke-ts-csu')}. For a recipe that lists a package, the package is the safe unit. For a recipe in teaspoons, check the label on your jar.`)],
+      ['Where the sources differ', p(`${N.unl} gives one package as ${E('pakke-ts-unl')}. ${N.csu} gives ${E('pakke-ts-csu')}. For a recipe that lists a package, go by the package. For a recipe in teaspoons, check the label on your jar.`)],
       ['What the sources do not cover', p('None of the extension sources we read give a ratio for instant or fresh yeast, so this page gives none. The package label is the best guide for those.')],
-      ...app('Yeast jars have an expiration date, and it is easy to forget which one is open.'),
+      ...app("Yeast jars have an expiration date, and it's easy to forget which one is open."),
     ],
     faq: [
       ['How much is one package of yeast?', `${N.unl} gives ${E('pakke-ts-unl')}. ${N.csu} gives ${E('pakke-ts-csu')}.`],
@@ -138,7 +138,7 @@ export const TEKST = {
     seksjoner: [
       ['Replacements for one cup of butter', kortListe([
         ['Margarine', ['Ratio', `${N.usu}: ${E('margarin')} of margarine.`], ['What changes', `${N.unl} says regular margarine, and lists vegetable shortening for baking.`]],
-        ['Shortening (hydrogenated fat)', ['Ratio', `${N.usu}: ${T('fett-min')} to ${E('fett-maks')} of hydrogenated fat plus ${E('salt')} of salt.`], ['What changes', 'The salt replaces what butter carries.']],
+        ['Shortening (hydrogenated fat)', ['Ratio', `${N.usu}: ${T('fett-min')} to ${E('fett-maks')} of hydrogenated fat plus ${E('salt')} of salt.`], ['What changes', 'The salt makes up for the salt in butter.']],
         ['Lard', ['Ratio', `${N.usu}: ${E('smult')} of lard plus ${E('salt')} of salt.`], ['What changes', 'Nothing more is said in the source.']],
         ['Oil', ['Ratio', `${N.usu}: ${E('olje')} of oil, and ${N.ndsu} adds the same salt.`], ['What changes', `${N.unl} says an equal amount of oil can stand in for melted butter when the recipe calls for it melted.`]],
         ['Clarified chicken fat', ['Ratio', `${N.usu}: ${E('kylling')} of clarified chicken fat.`], ['What changes', 'The source gives no more detail.']],
@@ -160,7 +160,7 @@ export const TEKST = {
     beskrivelse: 'Colorado State, Utah State, and Illinois extension give the swap: 3/4 cup milk plus 1/3 cup butter per cup of heavy cream. It is for cooking and baking only and will not whip.',
     ingress: 'You can mix a heavy cream substitute from milk and butter. It does the job of fat in a recipe, but it will not whip.',
     svar: `${N.csu}, ${N.usu}, and ${N.ill} all give the same ratio: ${E('melk')} of milk plus ${E('smor')} of butter for each cup of heavy cream. It is for baking only and will not whip.`,
-    steg: [['Melt and mix', 'Butter into milk.'], ['Use it in the pot or the oven', 'The sources say baking and cooking only.'], ['Do not whip it', 'It will not hold peaks.']],
+    steg: [['Melt and mix', 'Butter into milk.'], ['Use it for cooking and baking', 'The sources say baking and cooking only.'], ["Don't whip it", "It won't hold peaks."]],
     kilder: ['csu', 'usu', 'ill'],
     beslektet: ['half-and-half', 'sour-cream', 'smor', 'melk'],
     seksjoner: [
@@ -173,7 +173,7 @@ export const TEKST = {
     faq: [
       ['Can I whip the milk and butter swap?', `No. ${N.csu} and ${N.ill} both say it will not whip.`],
       ['How much butter and milk per cup of cream?', `${E('melk')} of milk plus ${E('smor')} of butter, according to ${N.csu}, ${N.usu}, and ${N.ill}.`],
-      ['Is it fine for soup and sauce?', `The sources say for use in cooking and baking. They do not name specific dishes.`],
+      ['Can I use it in soup or sauce?', `The sources say for use in cooking and baking. They do not name specific dishes.`],
     ],
   }),
 
@@ -194,13 +194,13 @@ export const TEKST = {
         ['Coffee cream and milk', ['Ratio', `${N.csu}: ${E('csu-kaffe')} of coffee cream plus ${E('csu-kaffe')} of milk.`], ['What changes', 'The source gives no more detail.']],
         ['Oil and milk', ['Ratio', `${N.ndsu}: ${E('ndsu-olje')} of oil plus milk to equal ${E('kopp')}.`], ['What changes', 'This one has no dairy fat.']],
       ])],
-      ['Why the butter amounts differ', p(`${N.usu} and ${N.csu} describe half-and-half with slightly different fat ranges, and they give different butter amounts: ${E('usu-smor')} against ${E('csu-smor')}. We show both rather than pick one. If your recipe is picky, start with the smaller amount.`)],
+      ['Why the butter amounts differ', p(`${N.usu} and ${N.csu} describe half-and-half with slightly different fat ranges, and they give different butter amounts: ${E('usu-smor')} versus ${E('csu-smor')}. We show both rather than pick one. If your recipe is picky, start with the smaller amount.`)],
       ...app('Half-and-half is often bought for one dish and then forgotten.'),
     ],
     faq: [
       ['Can I use milk instead of half-and-half?', `Milk alone is thinner. The sources add butter: ${N.usu} lists ${E('usu-melk')} of milk plus ${E('usu-smor')} of butter.`],
       ['Does evaporated milk work?', `Yes. Four extension sources list ${E('evap')} of undiluted evaporated milk per cup.`],
-      ['Why do the sources give different butter amounts?', `They do. ${N.usu} says ${E('usu-smor')}, ${N.csu} says ${E('csu-smor')}, and ${N.ndsu} says ${E('ndsu-smor')}.`],
+      ['Why do the sources give different butter amounts?', `The sources don't explain it. ${N.usu} says ${E('usu-smor')}, ${N.csu} says ${E('csu-smor')}, and ${N.ndsu} says ${E('ndsu-smor')}.`],
     ],
   }),
 
@@ -222,7 +222,7 @@ export const TEKST = {
         ['Evaporated milk and vinegar', ['Ratio', `${N.csu}: ${E('evap')} of evaporated milk plus ${E('evap-eddik')} of vinegar. Let it stand ${E('evap-min')} before using.`], ['What changes', 'The vinegar gives the tang.']],
       ])],
       ['What the sources do not say', p('The extension sources give ratios, not taste notes. They do not compare how each swap behaves on a baked potato, in a dip, or in a cake. Pick by what you have, and taste as you go.')],
-      ...app('Sour cream tubs sit open in the fridge for weeks.'),
+      ...app('An open tub of sour cream is easy to forget about in the fridge.'),
     ],
     faq: [
       ['Can I use yogurt instead of sour cream?', `Yes. ${N.usu} and ${N.msu} both list ${E('yoghurt')} of plain yogurt per cup.`],
@@ -250,7 +250,7 @@ export const TEKST = {
         ['Water and butter, in baking', ['Ratio', `${N.csu}: 1 cup of water plus ${E('vann-smor')} of butter.`], ['What changes', 'The source says in baking.']],
       ])],
       ['If the recipe wants sour milk', p(`${N.ill} lists ${E('eddik')} of lemon juice or vinegar plus enough regular milk to make 1 cup, left to sit 5 minutes, as a buttermilk swap. See the <a href="/en/substitutes/buttermilk/">buttermilk page</a>.`)],
-      ...app('Milk goes off before you finish the carton.'),
+      ...app('Milk can go bad before you finish the carton.'),
     ],
     faq: [
       ['Can I use water instead of milk?', `${N.csu} lists 1 cup of water plus ${E('vann-smor')} of butter, in baking.`],
@@ -328,7 +328,7 @@ export const TEKST = {
         ['Arrowroot', ['Ratio', `${N.csu}: ${E('arrowrot')} of arrowroot.`], ['What changes', 'This one is a one-to-one swap.']],
       ])],
       ['And the other direction', p(`If a recipe calls for flour as a thickener and you have cornstarch, ${N.usu} says ${E('motsatt-mel')} of flour is ${E('motsatt')} of cornstarch, potato starch, rice starch, or arrowroot.`)],
-      ...app('Thickeners are a small-box ingredient that is easy to run out of.'),
+      ...app('Cornstarch comes in a small box, and it is easy to run out of.'),
     ],
     faq: [
       ['How much flour replaces cornstarch?', `${E('mel')} of all-purpose flour for each ${E('maisenna')} of cornstarch, according to ${N.ill}.`],
@@ -482,7 +482,7 @@ export const TEKST = {
         ['Lemon extract for grated zest', ['Ratio', `${N.unl}: ${E('ekstrakt')} of lemon extract for 1 teaspoon of fresh grated lemon peel.`], ['What changes', 'The source gives no more detail.']],
       ])],
       ['Lemon juice as a replacement', p(`Lemon juice also stands in for other things. ${N.csu} lists ${E('kremor')} of lemon juice or vinegar for 1/2 teaspoon of cream of tartar. See also the <a href="/en/substitutes/buttermilk/">buttermilk page</a>, where lemon juice makes milk sour.`)],
-      ...app('A lemon is the first fruit to dry out in the fruit bowl.'),
+      ...app("It's easy to be out of lemons right when a recipe calls for one."),
     ],
     faq: [
       ['How much vinegar replaces lemon juice?', `${N.usu} and ${N.csu}: ${E('eddik')} of vinegar for ${E('sitron')} of lemon juice.`],
@@ -492,8 +492,8 @@ export const TEKST = {
   }),
 
   'friske-og-torkede-urter': (T, E) => ({
-    gruppe: 'Savory dishes', kort: 'One tablespoon fresh is one teaspoon dried, or half a teaspoon ground.', lenke: 'Fresh vs dried herbs',
-    tittel: 'Fresh vs dried herbs: how much to use',
+    gruppe: 'Savory dishes', kort: 'One tablespoon fresh is one teaspoon dried, or half a teaspoon ground.', lenke: 'Fresh vs. dried herbs',
+    tittel: 'Fresh vs. dried herbs: how much to use',
     h1: 'How much dried herb equals fresh?',
     beskrivelse: 'Colorado State and Nebraska extension say 1 tablespoon of fresh herbs is 1 teaspoon of dried leaf herbs. Nebraska and Texas A&M say 1/2 teaspoon if the herb is ground. Plus parsley, mint, dill, and chives.',
     ingress: 'Dried herbs are stronger, so you use less. A tablespoon of fresh is about a teaspoon of dried.',
@@ -512,7 +512,7 @@ export const TEKST = {
         ['Dill', ['Ratio', `${N.csu}: ${E('dill')} of dill seed for 1 head of fresh dill.`], ['What changes', 'Seed, not leaf.']],
         ['Chives', ['Ratio', `${N.csu}: ${E('gressloek')} of green onion tops for ${E('gressloek')} of chives.`], ['What changes', 'A fresh swap, not a dried one.']],
       ])],
-      ...app('Fresh herbs wilt in days. Dried ones last years.'),
+      ...app('Fresh herbs wilt in days. Dried ones last much longer.'),
     ],
     faq: [
       ['How much dried herb equals one tablespoon of fresh?', `${E('csu-torket')} of dried leaf herbs, says ${N.csu}.`],
@@ -564,7 +564,7 @@ export const TEKST = {
         ['Canned or homemade broth', ['Ratio', `${N.ndsu}: ${E('ndsu-hermetikk')} of canned or homemade chicken broth or stock, when the recipe lists stock base.`], ['What changes', 'This is the way back from the concentrate.']],
       ])],
       ['What the sources do not cover', p('The extension sources do not cover vegetable broth or how salty a bouillon cube is. If your recipe adds salt, taste before you do.')],
-      ...app('Broth cartons are opened for one cup and the rest is forgotten.'),
+      ...app('A carton of broth often gets opened for one cup, and the rest gets forgotten.'),
     ],
     faq: [
       ['How much bouillon makes one cup of broth?', `${N.csu}: ${E('kube')}, or ${E('pulver')} of powdered broth base, in ${E('vann')} of water.`],
@@ -617,13 +617,13 @@ export const NAV = {
       seksjoner: [
         ['Pick the ingredient you are missing', grupper.map(([g, l]) => `<h3>${g}</h3>${l.map((s) => `<div class="scenario"><h3><a href="${s.href}">${s.rad.navn}</a></h3><p>${s.c.kort}</p></div>`).join('')}`).join('')],
         ['How these pages are made', ul([
-          '<strong>Numbers with sources.</strong> Every ratio comes from a land-grant university extension service (Colorado State, Utah State, Nebraska, NDSU, Texas A&M, Illinois, Montana State) or King Arthur Baking, with a link and a year at the bottom of the page. Where a page has no date of its own, the year is the year we read it.',
+          '<strong>Numbers with sources.</strong> Every ratio comes from a land-grant university extension service (Colorado State, Utah State, Nebraska, NDSU, Texas A&M, Illinois, Montana State) or King Arthur Baking, with a link and a year at the bottom of the page. If a source page has no date, the year shown is the year we accessed it.',
           '<strong>No source, no number.</strong> Where no source gives a ratio, the page says so instead of guessing. Some pages have few numbers for that reason.',
           '<strong>Where sources disagree, you see both.</strong> A few swaps have two different amounts in two sources. We show them side by side.',
           '<strong>No recipes, and no allergy or food safety advice.</strong> The pages say what can be swapped, not what is safe for you.',
         ])],
-        ['See what is in your pantry', p('Add what you have to the <a href="/en/pantry-app/">pantry</a> in Matlyst, and you see what you can swap in before you start.')],
-        ['Swap the ingredient in Matlyst', p('Open a recipe in the app and use <strong>Ask Matlyst</strong> to get a swap based on what you have. You see the changes before you save, and you can undo them. Ask Matlyst is a Pro feature, uses AI, and has a monthly quota, so read the result before you start.')],
+        ["See what's in your pantry", p('Add what you have to the <a href="/en/pantry-app/">pantry</a> in Matlyst and see what you can swap in before you start.')],
+        ['Swap the ingredient in Matlyst', p('Open a recipe in the app and use <strong>Ask Matlyst</strong> to get a swap based on what you have. Ask Matlyst is a Pro feature, uses AI, and has a monthly quota, so read the result before you start.')],
       ],
       faq: [
         ['Why are some common swaps missing?', 'We only include swaps we found in a university extension source or King Arthur Baking. If the sources give no ratio, we do not give one.'],
