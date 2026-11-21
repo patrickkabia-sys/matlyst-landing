@@ -109,7 +109,7 @@ export const SV = {
   navForskjell: (tung, gT, lett, gL) => `Deciliter mäter volym och gram mäter vikt. 1 dl ${tung} väger ${gT} och 1 dl ${lett} väger ${gL}. Därför har varje ingrediens sitt eget tal när du räknar mellan dl och gram.`,
   navHurH2: 'Så har vi räknat',
   navHur: 'Vikten per dl är hämtad från Matvaretabellen 2026, Mattilsynets norska livsmedelstabell. Matsked och tesked räknas som strukna mått på 15 ml och 5 ml. Gram till dl räknar du ut genom att dela vikten med talet för ingrediensen.',
-  relatedH2: 'Besläktade omvandlingar',
+  relatedH2: 'Närliggande omvandlingar',
   related: [['dl-till-msk', 'dl till msk'], ['dl-till-tsk', 'dl till tsk'], ['dl-till-ml', 'dl till ml'], ['dl-till-kopp', 'dl till cups'], ['kopp-till-dl', 'cups till dl'], ['enhetsomvandlare', 'Enhetsomvandlare']],
   relatedRot: '/sv/verktyg/',
   navFaq: {
