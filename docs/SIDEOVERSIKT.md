@@ -6,15 +6,15 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1071**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1073**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 
 | Språk | Sider |
 |---|---:|
-| nb | 352 |
+| nb | 354 |
 | sv | 265 |
 | da | 239 |
 | en | 215 |
-| Sum | 1071 |
+| Sum | 1073 |
 
 | Sidetype | nb | sv | da | en | Sum |
 |---|---:|---:|---:|---:|---:|
@@ -22,7 +22,7 @@ Sider i sitemap: **1071**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 | forside | 1 | 1 | 1 | 1 | 4 |
 | guide-gammel | 4 |  |  |  | 4 |
 | guide-kort | 11 | 15 | 15 | 15 | 56 |
-| guide-lang | 91 | 6 | 6 | 14 | 117 |
+| guide-lang | 93 | 6 | 6 | 14 | 119 |
 | juss | 3 | 3 | 3 | 3 | 12 |
 | omregner | 233 | 232 | 206 | 174 | 845 |
 
@@ -38,8 +38,10 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | beste-handleliste-app | Beste handleliste-app: sju apper sammenlignet | guide-lang | `/beste-handleliste-app/` (1) |  |  |  | nb-sammenligning/sammenligning.mjs |  | 2026-11-21 |
 | beste-oppskriftsapp | Beste oppskriftsapp: sju apper sammenlignet | guide-lang | `/beste-oppskriftsapp/` (1) |  |  |  | nb-sammenligning/sammenligning.mjs |  | 2026-11-21 |
 | beste-ukemeny-app | Beste ukemeny-app og middagsplanlegger | guide-lang | `/beste-ukemeny-app/` (1) |  |  |  | nb-sammenligning/sammenligning.mjs |  | 2026-11-21 |
+| julebord | Julebord hjemme: plan, mengder og handleliste | guide-lang | `/julebord/` (1) |  |  |  | forfatter.mjs, nb-jul/julebord.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | julemiddag | Julemiddag: plan, mengder og handleliste | guide-lang | `/julemiddag/` (1) |  |  |  | forfatter.mjs, nb-jul/julemiddag.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | mealime-alternative | Mealime Alternative: Moving Your Recipes | guide-lang |  |  |  | `/en/mealime-alternative/` (1) | en-rike-sider.mjs |  | 2026-11-20 |
+| nyttarsmiddag | Nyttårsmiddag: kalkun, tider og mengder | guide-lang | `/nyttarsmiddag/` (1) |  |  |  | forfatter.mjs, nb-jul/nyttarsmiddag.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | om | Om Matlyst: hvem som lager appen | guide-lang | `/om/` (1) |  |  |  | nb-rike-sider.mjs |  | 2026-11-20 |
 | bytt-fra-paprika | Flytt oppskrifter fra Paprika til Matlyst | guide-kort | `/bytt-fra-paprika/` (1) | `/sv/byt-fran-paprika/` (1) | `/da/skift-fra-paprika/` (1) | `/en/import-recipes-from-paprika/` (1) | import-guider-lokale.mjs |  | 2026-11-20 |
 | dr-mad | Lagre oppskrifter fra DR Mad | guide-kort | `/importer-fra-dr-mat/` (1) | `/sv/dr-mad/` (1) | `/da/dr-mad/` (1) | `/en/dr-food/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
@@ -87,8 +89,10 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | beste-handleliste-app | nb | sv, da, en |
 | beste-oppskriftsapp | nb | sv, da, en |
 | beste-ukemeny-app | nb | sv, da, en |
+| julebord | nb | sv, da, en |
 | julemiddag | nb | sv, da, en |
 | mealime-alternative | en | nb, sv, da |
+| nyttarsmiddag | nb | sv, da, en |
 | om | nb | sv, da, en |
 | familie:frysing | nb | sv, da, en |
 | familie:holdbarhet | nb | sv, da, en |
@@ -143,7 +147,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ## Alle adresser
 
-1071 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
+1073 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
 
 ### forside
 
@@ -199,6 +203,12 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 - https://matlyst-app.no/beste-ukemeny-app/ (2026-11-21)
 
+### julebord
+
+**nb** (1)
+
+- https://matlyst-app.no/julebord/ (2026-11-21)
+
 ### julemiddag
 
 **nb** (1)
@@ -210,6 +220,12 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 **en** (1)
 
 - https://matlyst-app.no/en/mealime-alternative/ (2026-11-20)
+
+### nyttarsmiddag
+
+**nb** (1)
+
+- https://matlyst-app.no/nyttarsmiddag/ (2026-11-21)
 
 ### om
 

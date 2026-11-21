@@ -62,10 +62,12 @@ const mengder = p(`${mp('mp-hel-kalkun')} sier ${t('kalkun-pp')} kalkun per pers
   + '<h3>Filet, poteter og saus</h3>'
   + p(`${mp('mp-julemat')} oppgir ${t('jm-filet')} kalkunfilet eller kalkunbryst per person, ${t('jm-poteter')} poteter og ${t('jm-saus')} saus.`)
   + tabell(['Gjester', 'Kalkunfilet', 'Poteter', 'Saus'], GJESTER.map(tilbehorRad))
-  + p(`Små barn: ${mp('mp-julemat')} sier at du kan beregne en ${t('jm-barn')} til dem og en full porsjon til ungdom og voksne.`);
+  + p(`Små barn: ${mp('mp-julemat')} sier at du kan beregne en ${t('jm-barn')} til dem og en full porsjon til ungdom og voksne.`)
+  + p('Les også <a href="/mengde-per-person/kalkun/">hvor mye kalkun per person</a> og <a href="/mengde-per-person/julemat/">hvor mye julemat per person</a>.');
 
 const steking = p(`${mp('mp-hel-kalkun')} anbefaler ${t('kalkun-kilo')} ved ${t('kalkun-ovn')}, og sier at en kalkun på ${t('kalkun-6kg')} trenger ${t('kalkun-6kg-tid')}. Er den fylt, legger du til ${t('kalkun-fylt')}. Tabellen regner ut steketiden for vektene i ${mp('mp-kalkun')}, ${t('kalkun-vekt')}.`)
   + tabell(['Vekt', 'Steketid', 'Fylt kalkun', `Holder til (${rader.pp.vis} per person)`], VEKTER.map(stekRad))
+  + p('Se også <a href="/steketid/kalkun/">steketid for kalkun, med kalkulator for vekt</a>.')
   + p(`Ekstra for filet: ${mp('mp-kalkun')} oppgir kalkunfilet uten skinn på ${t('kalkun-filet-g')}, brunet i stekepanne og stekt i ovn ${t('kalkun-filet-tid')} på ${t('kalkun-filet-ovn')}.`);
 
 const kjerne = p(`Her sier kildene ikke det samme, så vi viser begge. Mattilsynet er myndigheten for mattrygghet, og står først.`)
@@ -75,7 +77,7 @@ const kjerne = p(`Her sier kildene ikke det samme, så vi viser begge. Mattilsyn
     `${mp('mp-kalkun')} oppgir en kjernetemperatur på ${t('kalkun-kjerne')} for ferdig tilberedt hel kalkun, og ${t('kalkun-filet-kjerne')} for kalkunfilet.`,
     `${mp('mp-hel-kalkun')} sier at kalkunen er ferdig stekt hvis kjøttsaften som siver ut er klar, og at rosa kjøttsaft betyr litt lenger steketid.${tekst('kalkun-saft')}`,
     `${mp('mp-julefaq')} sier at plastdingsen som følger med noen kalkuner ikke er et sikkert hjelpemiddel, fordi den ofte spretter ut for sent.${tekst('kalkun-plast')}`)
-  + p('Tallene er ikke like, og vi avgjør ikke hvilket som gjelder for din kalkun. Les begge kildene nederst på siden.');
+  + p('Tallene er ikke like, og vi avgjør ikke hvilket som gjelder for din kalkun. Les begge kildene nederst på siden. Se også <a href="/kjernetemperatur/kalkun/">kjernetemperatur for kalkun</a>.');
 
 const liste = `<ul>
 <li><strong>Kjøtt:</strong> hel kalkun, og kalkunfilet hvis dere er flere enn kalkunen holder til (se tabellen).</li>

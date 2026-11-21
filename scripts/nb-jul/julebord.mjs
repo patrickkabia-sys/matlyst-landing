@@ -65,7 +65,8 @@ const mengder = p(`${mp('mp-koldtbord')} sier at du bør beregne ${t('kb-total')
     `${mp('mp-selskaper')} sier at du bør beregne litt ekstra av hver rett på en buffet, så ikke alle fatene er tomme når gjestene har forsynt seg.${tekst('sel-buffet')} Saus, dressing, pynt og tilbehør kommer i tillegg.${tekst('sel-sauser')}`,
     `${mp('mp-koldtbord')} minner om at noe er mer populært enn annet. Er det mange retter, beregner du mindre av hver, ifølge ${mp('mp-mange')}.${tekst('kb-populaert')}${tekst('mange-flere')}`)
   + '<h3>Varm julemat i tillegg</h3>'
-  + p(`Skal det også være ribbe eller pinnekjøtt, regner ${mp('mp-julemat')} ${t('jm-ribbe')} ribbe eller ${t('jm-pinnekjott')} tørket pinnekjøtt per person, og ${t('jm-poteter')} poteter og ${t('jm-saus')} saus. Har du koldtbord ved siden av, bruker du mindre av hver rett. Planen for selve steketiden står på <a href="/julemiddag/">julemiddagssiden</a>.`);
+  + p(`Skal det også være ribbe eller pinnekjøtt, regner ${mp('mp-julemat')} ${t('jm-ribbe')} ribbe eller ${t('jm-pinnekjott')} tørket pinnekjøtt per person, og ${t('jm-poteter')} poteter og ${t('jm-saus')} saus. Har du koldtbord ved siden av, bruker du mindre av hver rett. Planen for selve steketiden står på <a href="/julemiddag/">julemiddagssiden</a>.`)
+  + p('Les også <a href="/mengde-per-person/koldtbord/">hvor mye mat til koldtbord</a>, <a href="/mengde-per-person/spekemat/">hvor mye spekemat per person</a>, <a href="/mengde-per-person/mat-til-selskap/">hvor mye mat til selskap</a> og <a href="/mengde-per-person/julemat/">hvor mye julemat per person</a>.');
 
 const liste = `<ul>
 <li><strong>Kjøtt og pålegg:</strong> roastbiff, skinkestek, røkt skinke, spekemat, karbonader og paté. Du kan kjøpe det meste ferdig oppskåret, ifølge ${mp('mp-koldtbord')}.${tekst('kb-ferdig')}</li>

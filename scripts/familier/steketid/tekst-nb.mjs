@@ -92,7 +92,7 @@ export const TEKST = {
       ['Hvilken kjernetemperatur har kalkun?', `Se <a href="/kjernetemperatur/kalkun/">kjernetemperatur for kalkun</a>, der Mattilsynet og ${h.k('mp-kalkun')} er gjengitt.`],
     ],
     soster: [['/kjernetemperatur/kalkun/', 'Kjernetemperatur kalkun']],
-    andre: [['/steketid/ribbe/', 'Hvor lenge skal ribba stekes?'], ['/julemiddag/', 'Julemiddag: plan, mengder og handleliste'], ['/mengde-per-person/kalkun/', 'Hvor mye kalkun per person?']],
+    andre: [['/steketid/ribbe/', 'Hvor lenge skal ribba stekes?'], ['/julemiddag/', 'Julemiddag: plan, mengder og handleliste'], ['/mengde-per-person/kalkun/', 'Hvor mye kalkun per person?'], ['/nyttarsmiddag/', 'Nyttårsmiddag: kalkun, tider og mengder']],
   }),
 
   lammelar: (h) => ({

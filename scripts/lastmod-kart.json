@@ -2023,8 +2023,12 @@
   "hash": "56614b36af30f1b1",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/julebord/": {
+  "hash": "5d290fbdd6b7d285",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/julemiddag/": {
-  "hash": "b0d6d58e7442e989",
+  "hash": "49ed8eb1727715c1",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/": {
@@ -2040,7 +2044,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/kalkun/": {
-  "hash": "56fb7ff5d9956c9d",
+  "hash": "5da006e60d60dfc8",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/kjernetemperatur/kjottdeig/": {
@@ -2112,11 +2116,11 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/julemat/": {
-  "hash": "5dddc02976b61751",
+  "hash": "75826368fbdf23ce",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/kalkun/": {
-  "hash": "5009bce73d0ddc46",
+  "hash": "bc0bdb44e3e78da7",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/kjott/": {
@@ -2128,7 +2132,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/koldtbord/": {
-  "hash": "84a638890ac611e3",
+  "hash": "6f1979e9d56ba16f",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/kylling/": {
@@ -2148,7 +2152,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/mat-til-selskap/": {
-  "hash": "1236b49b5b66135e",
+  "hash": "aa3cf88b598c0959",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/pasta/": {
@@ -2180,7 +2184,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/spekemat/": {
-  "hash": "779459bbc1a0d69a",
+  "hash": "e65adf1446bf70dc",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/suppe/": {
@@ -2194,6 +2198,10 @@
  "https://matlyst-app.no/middagsforslag/": {
   "hash": "f8d8da414cb7adf7",
   "dato": "2026-11-20"
+ },
+ "https://matlyst-app.no/nyttarsmiddag/": {
+  "hash": "05794fdfd44201e0",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/om/": {
   "hash": "b4a38ed63f2543c5",
@@ -2236,7 +2244,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/kalkun/": {
-  "hash": "6e2fb7ec154285a3",
+  "hash": "315b96676e31ff2a",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/steketid/kyllingfilet/": {
@@ -3336,7 +3344,7 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/ukemeny/": {
-  "hash": "cd1e70483b132c93",
+  "hash": "9f8b5e2e2979a066",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/": {

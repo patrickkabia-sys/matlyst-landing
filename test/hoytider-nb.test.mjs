@@ -138,6 +138,14 @@ for (const { sti, mod } of SIDER) {
   });
 }
 
+test('familiesidene på main lenker hit, og sidene lenker til familiene', () => {
+  const les = (f) => readFileSync(join(ROOT, f), 'utf8');
+  for (const f of ['mengde-per-person/kalkun', 'mengde-per-person/julemat', 'steketid/kalkun', 'kjernetemperatur/kalkun']) assert.ok(les(`${f}/index.html`).includes('href="/nyttarsmiddag/"'), f);
+  for (const f of ['mengde-per-person/julemat', 'mengde-per-person/koldtbord', 'mengde-per-person/spekemat', 'mengde-per-person/mat-til-selskap']) assert.ok(les(`${f}/index.html`).includes('href="/julebord/"'), f);
+  for (const l of ['/mengde-per-person/kalkun/', '/steketid/kalkun/', '/kjernetemperatur/kalkun/']) assert.ok(les('nyttarsmiddag/index.html').includes(`href="${l}"`), l);
+  for (const l of ['/mengde-per-person/koldtbord/', '/mengde-per-person/spekemat/', '/mengde-per-person/mat-til-selskap/']) assert.ok(les('julebord/index.html').includes(`href="${l}"`), l);
+});
+
 test('julemiddag-siden lenker til begge, og begge lenker tilbake', () => {
   const jul = readFileSync(join(ROOT, 'julemiddag/index.html'), 'utf8');
   for (const sti of ['/julebord/', '/nyttarsmiddag/']) assert.ok(jul.includes(`href="${sti}"`), sti);
