@@ -122,7 +122,7 @@ for (const [mk, S] of Object.entries(SPRAK)) {
   });
 
   test(`${mk}: sidene ligger under ${S.rot}, ett navn og én adresse per vare, og hver vare har en variantbetegnelse`, async () => {
-    const sider = await familieSider(mk);
+    const sider = await familieSider(mk, [FAMILIER.find((x) => x.id === 'dl-til-gram')]);
     assert.deepEqual(Object.keys(sider).sort(), [S.rot, ...rader.map((r) => `${S.rot}${r.slug}/`)].sort());
     assert.equal(rader.length, 28);
     assert.equal(new Set(rader.map((r) => r.slug)).size, rader.length);

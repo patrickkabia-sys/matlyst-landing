@@ -78,13 +78,13 @@ test('ingen norske kilder, ingen tankestrek, kildeliste med lenke og lesedato, o
   }
 });
 
-test('samme rad-id på nb og en gir hreflang, og en vare uten norsk motstykke står alene', () => {
+test('samme rad-id på nb, da og en gir hreflang, og en vare uten norsk motstykke står alene', () => {
   const grupper = familieGrupper();
   const g = (navn) => grupper.find((x) => x.id === navn);
-  assert.deepEqual(g('auto-fam-holdbarhet-egg').sider, { nb: '/holdbarhet/egg/', en: '/en/how-long-does-it-last/eggs/' });
+  assert.deepEqual(g('auto-fam-holdbarhet-egg').sider, { nb: '/holdbarhet/egg/', da: '/da/holdbarhed/aeg/', en: '/en/how-long-does-it-last/eggs/' });
   assert.deepEqual(g('auto-fam-frysing-skalldyr').sider, { nb: '/frysing/skalldyr/', en: '/en/can-you-freeze/shrimp/' });
   assert.deepEqual(g('auto-fam-holdbarhet-cooked-rice').sider, { en: '/en/how-long-does-it-last/cooked-rice/' });
-  assert.deepEqual(g('auto-fam-holdbarhet-nav').sider, { nb: '/holdbarhet/', en: '/en/how-long-does-it-last/' });
+  assert.deepEqual(g('auto-fam-holdbarhet-nav').sider, { nb: '/holdbarhet/', da: '/da/holdbarhed/', en: '/en/how-long-does-it-last/' });
 });
 
 test('sidene om ris og pasta sier at kildene ikke har en egen linje for dem', async () => {

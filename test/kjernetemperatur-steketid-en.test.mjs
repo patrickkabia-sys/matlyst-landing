@@ -94,11 +94,11 @@ test('ingen norske kilder, ingen tankestrek, kildeliste med lenke og lesedato, o
 test('samme rad-id på nb og en gir hreflang, og en vare uten norsk motstykke står alene', () => {
   const grupper = familieGrupper();
   const g = (navn) => grupper.find((x) => x.id === navn);
-  assert.deepEqual(g('auto-fam-kjernetemperatur-kalkun').sider, { nb: '/kjernetemperatur/kalkun/', en: '/en/internal-temperature/turkey/' });
+  assert.deepEqual(g('auto-fam-kjernetemperatur-kalkun').sider, { nb: '/kjernetemperatur/kalkun/', da: '/da/kernetemperatur/kalkun/', en: '/en/internal-temperature/turkey/' });
   assert.deepEqual(g('auto-fam-steketid-kalkun').sider, { nb: '/steketid/kalkun/', en: '/en/cooking-times/turkey/' });
   assert.deepEqual(g('auto-fam-steketid-hel-kylling').sider, { nb: '/steketid/hel-kylling/', en: '/en/cooking-times/whole-chicken/' });
   assert.deepEqual(g('auto-fam-steketid-tining').sider, { en: '/en/cooking-times/thaw-turkey/' });
-  assert.deepEqual(g('auto-fam-kjernetemperatur-nav').sider, { nb: '/kjernetemperatur/', en: '/en/internal-temperature/' });
+  assert.deepEqual(g('auto-fam-kjernetemperatur-nav').sider, { nb: '/kjernetemperatur/', da: '/da/kernetemperatur/', en: '/en/internal-temperature/' });
   assert.deepEqual(g('auto-fam-steketid-nav').sider, { nb: '/steketid/', en: '/en/cooking-times/' });
 });
 

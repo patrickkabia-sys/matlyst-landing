@@ -1,0 +1,811 @@
+{
+  "familie": "kjernetemperatur",
+  "marked": "da",
+  "kilder": {
+    "fvst-varm": {
+      "navn": "Varm mad ordentligt op i private hjem",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/varm-mad-ordentligt-op",
+      "hentet": "2026-11-21"
+    },
+    "mv-kerne": {
+      "navn": "Kernetemperatur og stegetid på alt kød",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/kernetemperatur-og-stegetid-paa-alt-koed/",
+      "hentet": "2026-11-21"
+    },
+    "lf-stegning": {
+      "navn": "Stegetider: stegning i ovn og på pande",
+      "utgiver": "Landbrug & Fødevarer (voresmad.dk)",
+      "aar": 2018,
+      "adresse": "https://voresmad.dk/media/iged0rru/stegetider-2018-web.pdf",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kylling",
+      "slug": "kylling",
+      "navn": "Kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min75": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Fjerkræ og hakket kød bør gennemsteges til en kernetemperatur på mindst 75 °C."
+        },
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "hel": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kylling | Gennemstegt | 75 °C"
+        },
+        "bryst": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingebryst | Gennemstegt | 75 °C"
+        },
+        "laar-min": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingelår | Gennemstegt | 75-80 °C"
+        },
+        "laar-maks": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kyllingelår | Gennemstegt | 75-80 °C"
+        },
+        "airfryer": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kylling i airfryer | Gennemstegt | 75 °C"
+        },
+        "fvst-gr": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "fvst-varm",
+          "merknad": "Kommer temperaturen under 65°C, kan bakterier vokse"
+        }
+      },
+      "tekst": {
+        "gennemstegt": "fvst-varm|Både kylling og hakkebøf bør være gennemstegt, så du er sikker på, at eventuelle bakterier er dræbt.",
+        "rod": "fvst-varm|Tjek derfor, om kyllingen er rød f.eks. helt inde ved lårbenet, inden du spiser den.",
+        "tykkeste": "mv-kerne|Brug altid et stegetermometer, og mål temperaturen i den tykkeste del af kødet uden at ramme en knogle.",
+        "maal": "mv-kerne|Mål både i den tykkeste del af brystet og ved inderlåret uden at ramme knoglen."
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "kalkun",
+      "navn": "Kalkun",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min75": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Fjerkræ og hakket kød bør gennemsteges til en kernetemperatur på mindst 75 °C."
+        },
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "hel": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel kalkun | Gennemstegt | 75 °C"
+        },
+        "bryst": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kalkunbryst | Gennemstegt | 75 °C"
+        }
+      },
+      "tekst": {
+        "flere": "mv-kerne|Ved en hel kylling, kalkun eller and bør du kontrollere temperaturen flere steder.",
+        "tykkeste": "mv-kerne|Brug altid et stegetermometer, og mål temperaturen i den tykkeste del af kødet uden at ramme en knogle."
+      }
+    },
+    {
+      "id": "and",
+      "slug": "and",
+      "navn": "And",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min75": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Fjerkræ og hakket kød bør gennemsteges til en kernetemperatur på mindst 75 °C."
+        },
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "hel": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hel and | Gennemstegt | 75 °C"
+        },
+        "bryst": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Andebryst | Gennemstegt | 75 °C"
+        }
+      },
+      "tekst": {
+        "tykkeste": "mv-kerne|Brug altid et stegetermometer, og mål temperaturen i den tykkeste del af kødet uden at ramme en knogle.",
+        "forsigtig": "mv-kerne|Andebryst | Gennemstegt | 75 °C | 72-73 °C | 8-10 min. | Steg på skindsiden; færdiggør i ovn | Min. 75 °C Dansk forsigtighedsanbefaling",
+        "inderlaar": "mv-kerne|Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg | Min. 75 °C Mål i inderlåret"
+      }
+    },
+    {
+      "id": "svinefilet",
+      "slug": "svinemoerbrad",
+      "navn": "Svinemørbrad",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "rosa-min": {
+          "verdi": 63,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C"
+        },
+        "rosa-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Rosa | 63-65 °C"
+        },
+        "gennem-min": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Gennemstegt | 68-70 °C"
+        },
+        "gennem-maks": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinemørbrad | Gennemstegt | 68-70 °C"
+        },
+        "lf-min": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Mørbrad fra gris 62-65°C"
+        },
+        "lf-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Mørbrad fra gris 62-65°C"
+        }
+      },
+      "tekst": {
+        "hel": "mv-kerne|Svinemørbrad | Rosa | 63-65 °C | 60-62 °C | 8-10 min. | Brun på pande; ovn 175 °C: ca. 15-25 min. | Kun hel udskæring",
+        "lf-note": "lf-stegning|Hele stykker af både okse-, kalve- og grisekød må gerne være røde/rosa i midten."
+      }
+    },
+    {
+      "id": "svinestek",
+      "slug": "flaeskesteg",
+      "navn": "Flæskesteg og svinekam",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "kam-min": {
+          "verdi": 63,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinekam og kamsteg | Rosa | 63-65 °C"
+        },
+        "kam-maks": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Svinekam og kamsteg | Rosa | 63-65 °C"
+        },
+        "flaesk-min": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Flæskesteg | Gennemstegt | 65-68 °C"
+        },
+        "flaesk-maks": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Flæskesteg | Gennemstegt | 65-68 °C"
+        },
+        "lf-flaesk": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Flæskesteg 65°C"
+        },
+        "lf-ribben": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Ribbenssteg 70°C"
+        }
+      },
+      "tekst": {
+        "hel": "mv-kerne|Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min. | Ovn 180-200 °C: ca. 60-75 min. pr. kg | Sprøde svær styres også af overvarme",
+        "lf-termo": "lf-stegning|Sæt et stegetermometer i stegen, så spidsen af spydet sidder i centrum af stegen."
+      }
+    },
+    {
+      "id": "svinenakke",
+      "slug": "nakkesteg",
+      "navn": "Nakkesteg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "nakkefilet-min": {
+          "verdi": 88,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Nakkefilet og nakkekam | Mørt/langtid | 88-93 °C"
+        },
+        "nakkefilet-maks": {
+          "verdi": 93,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Nakkefilet og nakkekam | Mørt/langtid | 88-93 °C"
+        },
+        "lf-nakke": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Nakkesteg 80°C"
+        }
+      },
+      "tekst": {
+        "lf-fedt": "lf-stegning|Mere fedtrige og bindevævsrige udskæringer som fx tykkam, bryst, bov og skank tåler lang stegetid og højere ovntemperatur.",
+        "mv-sigt": "mv-kerne|Nakkefilet og nakkekam | Mørt/langtid | 88-93 °C | 88-91 °C | 20-30 min. | Ovn 125-150 °C: typisk 4-7 timer | Til skærefast, mørt kød: sigt mod nedre del"
+      }
+    },
+    {
+      "id": "biff",
+      "slug": "boef",
+      "navn": "Bøf og entrecote",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "rod-min": {
+          "verdi": 52,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Bøf, entrecote og ribeye | Rød | 52-54 °C"
+        },
+        "rod-maks": {
+          "verdi": 54,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Bøf, entrecote og ribeye | Rød | 52-54 °C"
+        },
+        "mr-min": {
+          "verdi": 54,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Bøf, entrecote og ribeye | Medium-rare | 54-57 °C"
+        },
+        "mr-maks": {
+          "verdi": 57,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Bøf, entrecote og ribeye | Medium-rare | 54-57 °C"
+        },
+        "medium-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Bøf, entrecote og ribeye | Medium | 58-62 °C"
+        },
+        "medium-maks": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Bøf, entrecote og ribeye | Medium | 58-62 °C"
+        },
+        "gennem-min": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Bøf, entrecote og ribeye | Gennemstegt | 68-70 °C"
+        },
+        "gennem-maks": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Bøf, entrecote og ribeye | Gennemstegt | 68-70 °C"
+        }
+      },
+      "tekst": {
+        "hel": "mv-kerne|De lavere temperaturer for eksempelvis oksekød og lammekød gælder hele kødstykker og viser den ønskede stegegrad.",
+        "tykkeste": "mv-kerne|Brug altid et stegetermometer, og mål temperaturen i den tykkeste del af kødet uden at ramme en knogle."
+      }
+    },
+    {
+      "id": "roastbiff",
+      "slug": "roastbeef",
+      "navn": "Roastbeef",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "rod-min": {
+          "verdi": 52,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Rød | 52-55 °C"
+        },
+        "rod-maks": {
+          "verdi": 55,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Rød | 52-55 °C"
+        },
+        "medium-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C"
+        },
+        "medium-maks": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Medium | 58-62 °C"
+        },
+        "gennem-min": {
+          "verdi": 68,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Gennemstegt | 68-70 °C"
+        },
+        "gennem-maks": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Roastbeef | Gennemstegt | 68-70 °C"
+        },
+        "lf-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Roastbeef 58-60°C"
+        },
+        "lf-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Roastbeef 58-60°C"
+        },
+        "lf-stig": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Centrumtemperaturen i kødet kan stige op til 5 grader efter, at kødet er kommet ud af ovnen."
+        }
+      },
+      "tekst": {
+        "hvile-mv": "mv-kerne|En større steg stiger typisk 2-4 grader under hviletiden."
+      }
+    },
+    {
+      "id": "oksefilet",
+      "slug": "oksefilet",
+      "navn": "Oksefilet",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "mb-mr-min": {
+          "verdi": 54,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksemørbrad, hel | Medium-rare | 54-57 °C"
+        },
+        "mb-mr-maks": {
+          "verdi": 57,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksemørbrad, hel | Medium-rare | 54-57 °C"
+        },
+        "mb-med-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksemørbrad, hel | Medium | 58-60 °C"
+        },
+        "mb-med-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksemørbrad, hel | Medium | 58-60 °C"
+        },
+        "fil-mr-min": {
+          "verdi": 54,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksefilet og tyndsteg | Medium-rare | 54-57 °C"
+        },
+        "fil-mr-maks": {
+          "verdi": 57,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksefilet og tyndsteg | Medium-rare | 54-57 °C"
+        },
+        "fil-med-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksefilet og tyndsteg | Medium | 58-62 °C"
+        },
+        "fil-med-maks": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Oksefilet og tyndsteg | Medium | 58-62 °C"
+        },
+        "lf-moerbrad-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Oksemørbrad 58-60°C"
+        },
+        "lf-moerbrad-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Oksemørbrad 58-60°C"
+        },
+        "lf-filet-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Oksefilet 58-60°C"
+        },
+        "lf-filet-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Oksefilet 58-60°C"
+        }
+      },
+      "tekst": {
+        "lf-tor": "lf-stegning|Magert kød som fx filet eller mørbrad bør ikke steges for længe, så bliver det tørt og trevlet."
+      }
+    },
+    {
+      "id": "lammelar",
+      "slug": "lammekoelle",
+      "navn": "Lammekølle",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "rosa-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C"
+        },
+        "rosa-maks": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Rosa | 58-62 °C"
+        },
+        "medium-min": {
+          "verdi": 63,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Medium | 63-66 °C"
+        },
+        "medium-maks": {
+          "verdi": 66,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekølle | Medium | 63-66 °C"
+        },
+        "krone-min": {
+          "verdi": 56,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekrone og lammeculotte | Rosa | 56-60 °C"
+        },
+        "krone-maks": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammekrone og lammeculotte | Rosa | 56-60 °C"
+        },
+        "skank-min": {
+          "verdi": 88,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammeskank og lammebov | Mørt/langtid | 88-93 °C"
+        },
+        "skank-maks": {
+          "verdi": 93,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Lammeskank og lammebov | Mørt/langtid | 88-93 °C"
+        }
+      },
+      "tekst": {
+        "hele": "mv-kerne|De lavere temperaturer for eksempelvis oksekød og lammekød gælder hele kødstykker og viser den ønskede stegegrad.",
+        "kulinarisk": "mv-kerne|Temperaturer markeret som \"kulinarisk\" er ønskede stegegrader for hele kødstykker og er ikke en generel sikkerhedsgrænse for alle råvarer eller risikogrupper."
+      }
+    },
+    {
+      "id": "kalv",
+      "slug": "kalv",
+      "navn": "Kalv",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "stig-min": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "stig-maks": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Husk også, at kernetemperaturen ofte stiger 2-4 grader, mens kødet hviler."
+        },
+        "filet-min": {
+          "verdi": 58,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kalvefilet og kalvemørbrad | Rosa | 58-62 °C"
+        },
+        "filet-maks": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kalvefilet og kalvemørbrad | Rosa | 58-62 °C"
+        },
+        "steg-min": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kalvesteg | Medium | 60-64 °C"
+        },
+        "steg-maks": {
+          "verdi": 64,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Kalvesteg | Medium | 60-64 °C"
+        },
+        "lf-min": {
+          "verdi": 60,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Kalvefilet 60-62°C"
+        },
+        "lf-maks": {
+          "verdi": 62,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Kalvefilet 60-62°C"
+        }
+      },
+      "tekst": {
+        "lf-hele": "lf-stegning|Hele stykker af både okse-, kalve- og grisekød må gerne være røde/rosa i midten."
+      }
+    },
+    {
+      "id": "kjottdeig",
+      "slug": "hakket-koed",
+      "navn": "Hakket kød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "min75": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Fjerkræ og hakket kød bør gennemsteges til en kernetemperatur på mindst 75 °C."
+        },
+        "fvst": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "fvst-varm",
+          "merknad": "Hakkebøffen er helt gennemstegt, når den er gennemvarm med en kernetemperatur på minimum 75 grader C."
+        },
+        "boef": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Hakkebøf af oksekød | Gennemstegt | 75 °C"
+        },
+        "frikadeller": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Frikadeller og kødboller | Gennemstegt | 75 °C"
+        },
+        "farsbroed": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Farsbrød og forloren hare | Gennemstegt | 75 °C"
+        },
+        "polser": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "mv-kerne",
+          "merknad": "Pølser af rå fars | Gennemstegt | 75 °C"
+        },
+        "lf-hakket": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Hakket kød, rullesteg o.l. 70°C"
+        },
+        "lf-marineret": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "lf-stegning",
+          "merknad": "Industrielt marineret kød 70°C"
+        },
+        "under65": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "fvst-varm",
+          "merknad": "Kommer temperaturen under 65°C, kan bakterier vokse"
+        }
+      },
+      "tekst": {
+        "bakterier": "fvst-varm|Hakket kød og småkød indeholder nemlig bakterier overalt",
+        "frikadeller": "fvst-varm|Det er vigtigt at gennemvarme hakket kød (f.eks. medisterpølse, frikadeller og andre farsprodukter)",
+        "farve": "mv-kerne|Hakkebøf af oksekød | Gennemstegt | 75 °C | 75 °C | 3-5 min. | Pande: tiden afhænger især af tykkelsen | Min. 75 °C Farven alene er ikke nok",
+        "lf-gennem": "lf-stegning|Hakket kød og industrielt marineret kød skal gennemsteges."
+      }
+    }
+  ]
+}
