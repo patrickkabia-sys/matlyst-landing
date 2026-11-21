@@ -52,7 +52,8 @@ test('hreflang har bare en og x-default, og siden er ikke i språkkartet for omd
 
 test('siden står i det engelske sidekartet, men ikke i de andre', () => {
   const en = readFileSync(join(ROOT, 'sitemap-en.xml'), 'utf8');
-  assert.match(en, /<loc>https:\/\/matlyst-app\.no\/en\/mealime-alternative\/<\/loc>\s*<lastmod>2026-11-20<\/lastmod>/u);
+  // 21.11.2026: lenken til /en/best-meal-planning-app/ endret innholdet, så lastmod flyttet seg en dag.
+  assert.match(en, /<loc>https:\/\/matlyst-app\.no\/en\/mealime-alternative\/<\/loc>\s*<lastmod>2026-11-21<\/lastmod>/u);
   for (const fil of ['sitemap.xml', 'sitemap-sv.xml', 'sitemap-da.xml']) assert.doesNotMatch(readFileSync(join(ROOT, fil), 'utf8'), /mealime/iu, fil);
 });
 

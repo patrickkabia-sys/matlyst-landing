@@ -113,7 +113,8 @@ test('engelsk TikTok-side svarer på søkeintensjonen uten å love videotranskri
   assert.match(html, /<h1 class="disp">Turn a TikTok into a recipe you can actually cook<\/h1>/u);
   assert.match(html, /It does not transcribe speech or text shown only inside the video\./u);
   assert.match(html, /href="\/en\/import-recipes\/"/u);
-  assert.doesNotMatch(html, /best recipe app|number one recipe app/iu);
+  // Bare sidens eget innhold: guidehyllen i bunnen lenker til sammenligningssidene (/en/best-recipe-app/), som er nøytrale og ikke et løfte om Matlyst.
+  assert.doesNotMatch(html.match(/<main[\s\S]*?<\/main>/u)[0], /best recipe app|number one recipe app/iu);
 
   const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gu)]
     .flatMap(([, raw]) => {

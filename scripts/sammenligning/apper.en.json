@@ -1,0 +1,1756 @@
+{
+  "sjekket": "2026-11-21",
+  "kilder": {
+    "as-matlyst": {
+      "navn": "Matlyst: Recipe Book & Pantry",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id6762563515",
+      "hentet": "2026-11-21"
+    },
+    "gp-matlyst": {
+      "navn": "Matlyst: Recipe Book & Pantry",
+      "utgiver": "Google Play (US)",
+      "adresse": "https://play.google.com/store/apps/details?id=app.matlyst&hl=en_US&gl=US",
+      "hentet": "2026-11-21"
+    },
+    "web-matlyst": {
+      "navn": "Matlyst recipe organizer app",
+      "utgiver": "matlyst-app.no",
+      "adresse": "https://matlyst-app.no/en/recipe-book-app/",
+      "hentet": "2026-11-21"
+    },
+    "as-paprika": {
+      "navn": "Paprika Recipe Manager 4",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id1303222868",
+      "hentet": "2026-11-21"
+    },
+    "web-paprika": {
+      "navn": "Paprika Recipe Manager",
+      "utgiver": "paprikaapp.com",
+      "adresse": "https://www.paprikaapp.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-samsung": {
+      "navn": "Samsung Food: Meal Planner",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id1133637674",
+      "hentet": "2026-11-21"
+    },
+    "gp-samsung": {
+      "navn": "Samsung Food: Meal Planner",
+      "utgiver": "Google Play (US)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.foodient.whisk&hl=en_US&gl=US",
+      "hentet": "2026-11-21"
+    },
+    "as-recime": {
+      "navn": "ReciMe: Recipes & Meal Planner",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id1593779280",
+      "hentet": "2026-11-21"
+    },
+    "web-recime": {
+      "navn": "ReciMe",
+      "utgiver": "recime.app",
+      "adresse": "https://www.recime.app/",
+      "hentet": "2026-11-21"
+    },
+    "as-recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id974683711",
+      "hentet": "2026-11-21"
+    },
+    "web-recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utgiver": "recipekeeperonline.com",
+      "adresse": "https://recipekeeperonline.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-crouton": {
+      "navn": "Crouton: Recipe Manager",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id1461650987",
+      "hentet": "2026-11-21"
+    },
+    "web-crouton": {
+      "navn": "Crouton",
+      "utgiver": "crouton.app",
+      "adresse": "https://crouton.app/",
+      "hentet": "2026-11-21"
+    },
+    "as-mela": {
+      "navn": "Mela - Recipe Manager",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id1548466041",
+      "hentet": "2026-11-21"
+    },
+    "web-mela": {
+      "navn": "Mela",
+      "utgiver": "mela.recipes",
+      "adresse": "https://mela.recipes/",
+      "hentet": "2026-11-21"
+    },
+    "as-pestle": {
+      "navn": "Pestle: Recipe Manager",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id1574776971",
+      "hentet": "2026-11-21"
+    },
+    "web-pestle": {
+      "navn": "Pestle",
+      "utgiver": "pestlechef.app",
+      "adresse": "https://pestlechef.app/",
+      "hentet": "2026-11-21"
+    },
+    "as-anylist": {
+      "navn": "AnyList: Grocery Shopping List",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id522167641",
+      "hentet": "2026-11-21"
+    },
+    "web-anylist": {
+      "navn": "AnyList features",
+      "utgiver": "anylist.com",
+      "adresse": "https://www.anylist.com/features",
+      "hentet": "2026-11-21"
+    },
+    "as-plantoeat": {
+      "navn": "Plan to Eat",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id1215348056",
+      "hentet": "2026-11-21"
+    },
+    "gp-plantoeat": {
+      "navn": "Plan to Eat: Meal Planner",
+      "utgiver": "Google Play (US)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.plantoeat.mobile&hl=en_US&gl=US",
+      "hentet": "2026-11-21"
+    },
+    "web-plantoeat": {
+      "navn": "Plan to Eat",
+      "utgiver": "plantoeat.com",
+      "adresse": "https://www.plantoeat.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-bring": {
+      "navn": "Bring! Grocery Shopping List",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id580669177",
+      "hentet": "2026-11-21"
+    },
+    "gp-bring": {
+      "navn": "Bring! Grocery Shopping List",
+      "utgiver": "Google Play (US)",
+      "adresse": "https://play.google.com/store/apps/details?id=ch.publisheria.bring&hl=en_US&gl=US",
+      "hentet": "2026-11-21"
+    },
+    "web-bring": {
+      "navn": "Bring!",
+      "utgiver": "getbring.com",
+      "adresse": "https://www.getbring.com/en/home",
+      "hentet": "2026-11-21"
+    },
+    "as-listonic": {
+      "navn": "Grocery Shopping List - Listonic",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id331302745",
+      "hentet": "2026-11-21"
+    },
+    "gp-listonic": {
+      "navn": "Grocery Shopping List Listonic",
+      "utgiver": "Google Play (US)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.l&hl=en_US&gl=US",
+      "hentet": "2026-11-21"
+    },
+    "web-listonic": {
+      "navn": "Listonic",
+      "utgiver": "listonic.com",
+      "adresse": "https://listonic.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-ourgroceries": {
+      "navn": "Our Groceries Shopping List",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id325851015",
+      "hentet": "2026-11-21"
+    },
+    "web-ourgroceries": {
+      "navn": "OurGroceries",
+      "utgiver": "ourgroceries.com",
+      "adresse": "https://www.ourgroceries.com/overview",
+      "hentet": "2026-11-21"
+    },
+    "as-outofmilk": {
+      "navn": "Grocery List: Out of Milk",
+      "utgiver": "App Store (US)",
+      "adresse": "https://apps.apple.com/us/app/id564974992",
+      "hentet": "2026-11-21"
+    },
+    "gp-outofmilk": {
+      "navn": "Grocery List App - Out of Milk",
+      "utgiver": "Google Play (US)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.capigami.outofmilk&hl=en_US&gl=US",
+      "hentet": "2026-11-21"
+    },
+    "web-outofmilk": {
+      "navn": "Out of Milk",
+      "utgiver": "outofmilk.com",
+      "adresse": "https://outofmilk.com/",
+      "hentet": "2026-11-21"
+    },
+    "web-mealime": {
+      "navn": "Mealime closing page",
+      "utgiver": "mealime.com",
+      "adresse": "https://www.mealime.com/closing",
+      "hentet": "2026-11-21"
+    }
+  },
+  "apper": {
+    "matlyst": {
+      "navn": "Matlyst",
+      "utvikler": "Patrick Kabia",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, and Android",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Requires iPadOS"
+            },
+            {
+              "kilde": "gp-matlyst",
+              "sitat": "Matlyst: Recipe Book & Pantry - Apps on Google Play"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Metric by default. With Units set to US, it keeps the cups, ounces, and °F the recipe used.",
+          "kilder": [
+            {
+              "kilde": "web-matlyst",
+              "sitat": "Amounts are metric by default."
+            },
+            {
+              "kilde": "web-matlyst",
+              "sitat": "Switch to Units: US in Settings and Matlyst keeps the cups, ounces, and degrees Fahrenheit the source used."
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Free to download. Five recipe imports from links per month. The meal plan and grocery list are free.",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Without Pro, you can import five recipes from links each month."
+            },
+            {
+              "kilde": "as-matlyst",
+              "sitat": "The meal plan and grocery list are free to use."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Matlyst Pro, subscription. No ads.",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "A Pro subscription renews automatically"
+            },
+            {
+              "kilde": "as-matlyst",
+              "sitat": "There are no ads in Matlyst."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Share a link from a website, Instagram, TikTok or YouTube to Matlyst"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram, TikTok, and YouTube",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Share a link from a website, Instagram, TikTok or YouTube to Matlyst"
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Add recipes to your meal plan and send the week's ingredients to your grocery list in one tap."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, built from your recipes and grouped by store section",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "send the week's ingredients to your grocery list in one tap"
+            },
+            {
+              "kilde": "web-matlyst",
+              "sitat": "the ingredients go to one grocery list, combined and sorted by store section."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "With Pro",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Sharing them with the people you live with requires Pro."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Yes. The free plan shows a limited number of items.",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "The free plan shows a limited number of items, and with Pro you see them all."
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Recipes in other languages are translated into English. Photo import comes with Pro.",
+          "kilder": [
+            {
+              "kilde": "gp-matlyst",
+              "sitat": "Matlyst uses AI to read your recipes and to translate recipes in other languages into the language you use in the app"
+            },
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Matlyst Pro adds photo import"
+            }
+          ]
+        }
+      }
+    },
+    "paprika": {
+      "navn": "Paprika",
+      "utvikler": "Hindsight Labs LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Mac, Android, and Windows",
+          "kilder": [
+            {
+              "kilde": "web-paprika",
+              "sitat": "one subscription covers iPhone, iPad, Mac, Android, and Windows."
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Converts measurements",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Scale servings and convert measurements"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Free to download. Up to 50 recipes on one device.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "The free version allows you to save up to 50 recipes on a single device."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, subscription. One subscription covers every device.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "A premium subscription unlocks unlimited recipes, cloud syncing, access on all devices, and all other premium features."
+            },
+            {
+              "kilde": "web-paprika",
+              "sitat": "one plan covers every device"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Download recipes from your favorite websites"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "TikTok, Instagram, Facebook, and YouTube, with Premium",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Save recipes from the TikTok, Instagram, Facebook and YouTube apps (Premium)"
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Yes, by day, week, or month",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Plan meals for the day, week, or month"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, by aisle. The whole week can go on the list. More lists with Premium.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Browse grocery lists by aisles"
+            },
+            {
+              "kilde": "as-paprika",
+              "sitat": "Add the whole week to your grocery list"
+            },
+            {
+              "kilde": "as-paprika",
+              "sitat": "Create multiple grocery lists (Premium)"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Family accounts with Premium",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Family accounts (Premium)"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Track pantry items"
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Works offline, and cook mode takes voice commands.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Works offline"
+            },
+            {
+              "kilde": "as-paprika",
+              "sitat": "Cook mode: use voice commands to cook hands-free"
+            }
+          ]
+        }
+      }
+    },
+    "samsung": {
+      "navn": "Samsung Food",
+      "utvikler": "Foodient Ltd.",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android, and web",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "available for free on your iPhone, iPad, or web."
+            },
+            {
+              "kilde": "gp-samsung",
+              "sitat": "Samsung Food: Meal Planner - Apps on Google Play"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Not stated"
+        },
+        "gratis": {
+          "tekst": "Free: saving recipes, weekly planning, and shared grocery lists",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Plan your weekly meals, turn them into smart shopping lists, and share them with friends or family."
+            },
+            {
+              "kilde": "as-samsung",
+              "sitat": "All this, available for free on your iPhone, iPad, or web."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Samsung Food+, a paid upgrade in the app",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Samsung Food+ unlocks advanced features"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Save any recipe from any website and make it your own."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Not stated"
+        },
+        "ukemeny": {
+          "tekst": "Yes. Weekly plans made with AI come with Samsung Food+.",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Plan your weekly meals"
+            },
+            {
+              "kilde": "as-samsung",
+              "sitat": "AI-personalized weekly meal plans tailored to your health goals."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, made from the meal plan",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "turn them into smart shopping lists"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Shared grocery lists",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Organize family shopping with shared grocery lists."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "With Samsung Food+",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Automated pantry management with personalized cooking suggestions."
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "A large library of public recipes, with nutrition information and health scores.",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "public recipes, including"
+            },
+            {
+              "kilde": "as-samsung",
+              "sitat": "Access detailed nutrition information and health scores"
+            }
+          ]
+        }
+      }
+    },
+    "recime": {
+      "navn": "ReciMe",
+      "utvikler": "ReciMe Pty Ltd",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android, and web",
+          "kilder": [
+            {
+              "kilde": "web-recime",
+              "sitat": "Is ReciMe available for both iOS and Android devices? Yes!"
+            },
+            {
+              "kilde": "web-recime",
+              "sitat": "You can also use our web application to save and access all your recipes."
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Converts between standard and metric",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Change recipe measurements between standard and metric."
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Five recipe imports per week. The grocery list, meal plan, and cookbooks are free.",
+          "kilder": [
+            {
+              "kilde": "web-recime",
+              "sitat": "The free version of ReciMe is limited to 5 recipe imports per week."
+            },
+            {
+              "kilde": "web-recime",
+              "sitat": "including our smart grocery list, meal plan and cookbooks features"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, subscription by the month or year. 7-day free trial.",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "The ReciMe Premium subscription renews automatically at the end of each period (each month or year) until you cancel."
+            },
+            {
+              "kilde": "as-recime",
+              "sitat": "You can start a 7-day free trial to access these premium features."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes, and with a Chrome extension",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Upload recipes from anywhere"
+            },
+            {
+              "kilde": "web-recime",
+              "sitat": "You can also install ReciMe's Chrome Extension to save recipes even faster."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram, Facebook, TikTok, YouTube, and Pinterest",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Save Recipes from Instagram, Facebook, TikTok, YouTube and Pinterest"
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Yes, by breakfast, lunch, and dinner",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Categorize meals for breakfast, lunch, or dinner with the built-in meal planner."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, sorted by supermarket aisle or by recipe. Groceries can be ordered in the app.",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Sort ingredients by supermarket aisle or by recipe."
+            },
+            {
+              "kilde": "as-recime",
+              "sitat": "Order directly in-app and get ingredients to your door."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Single recipes with friends and family. A shared household is not stated.",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Share recipes with your friends and family."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Saves recipes from screenshots and photos of handwritten recipes. Nutrition for every recipe with Premium.",
+          "kilder": [
+            {
+              "kilde": "web-recime",
+              "sitat": "ReciMe can even save recipes from screenshots or photos of handwritten recipes."
+            },
+            {
+              "kilde": "as-recime",
+              "sitat": "Calculate nutrition for every recipe"
+            }
+          ]
+        }
+      }
+    },
+    "recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utvikler": "Tudorspan Limited",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android, Windows, and Mac",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Share your recipes, shopping lists and meal planner across your iPhone, iPad, Android phone and tablet, Windows PC and Mac."
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Converts between US/Imperial and metric",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Convert recipes between US/Imperial and Metric units"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Free to try. The limits of the free version are not stated.",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Try it free today!"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "In-app purchase (Recipe Keeper Pro Upgrade). Other platforms are bought separately.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Recipe Keeper Pro Upgrade"
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "separate purchase required for other platforms"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Hundreds of popular recipe websites supported."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram and TikTok",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Search for recipes on the web, Instagram and TikTok and add them straight to your collection."
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Yes, weekly and monthly. It can make a random plan from your hints.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Integrated weekly and monthly meal planner allows you to plan your meals in advance."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Recipe Keeper can even create a random meal plan for you based on your hints and suggestions."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, grouped by aisle. All your planned meals go on the list in one step.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Fully featured shopping list that automatically groups your items by aisle."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Add all your meals to your shopping list in one step."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Shared family recipe collection and meal plan",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Create a shared family recipe collection."
+            },
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Share your meal plan with all your family."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Scans recipes from photos and PDF files, and imports recipes from many other recipe apps.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Scan recipes using your phone's camera or from your existing photos and PDF files."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Transfer your recipes from other apps such as"
+            }
+          ]
+        }
+      }
+    },
+    "crouton": {
+      "navn": "Crouton",
+      "utvikler": "CROUTON LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Mac, Apple Vision, and Apple Watch",
+          "kilder": [
+            {
+              "kilde": "web-crouton",
+              "sitat": "Available on iOS, iPadOS, macOS, visionOS & watchOS"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Converts between metric and imperial",
+          "kilder": [
+            {
+              "kilde": "web-crouton",
+              "sitat": "Quickly convert recipes between metric and imperial."
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Free to download, with in-app purchases. The limits of the free version are not stated.",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "Free · In‑App Purchases"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "In-app purchases: Crouton Plus, and Discover by the month or year",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "Crouton Plus"
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Discover Monthly"
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Discover Yearly"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "Pull recipes automatically out of websites"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Not stated"
+        },
+        "ukemeny": {
+          "tekst": "Yes. It can make the plan from your saved recipes.",
+          "kilder": [
+            {
+              "kilde": "web-crouton",
+              "sitat": "Use your stored recipes to automatically generate meal plans"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, from your recipes. Works with Reminders.",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "Create shopping lists directly from your recipes"
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Integrates with Reminders for convenient access."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Through iCloud",
+          "kilder": [
+            {
+              "kilde": "web-crouton",
+              "sitat": "Sync with your household."
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Share your recipes with friends and family using iCloud"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Step-by-step mode you can use hands-free, and support for Bluetooth kitchen scales.",
+          "kilder": [
+            {
+              "kilde": "as-crouton",
+              "sitat": "With hands free mode you can move between steps without touching your device!"
+            },
+            {
+              "kilde": "as-crouton",
+              "sitat": "Pair to supported Bluetooth scales"
+            }
+          ]
+        }
+      }
+    },
+    "mela": {
+      "navn": "Mela",
+      "utvikler": "Silvio Rizzi",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, and Mac",
+          "kilder": [
+            {
+              "kilde": "web-mela",
+              "sitat": "recipe manager for iOS and macOS"
+            },
+            {
+              "kilde": "as-mela",
+              "sitat": "on the same screen on the iPad and a swipe-left away on the iPhone"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Not stated"
+        },
+        "gratis": {
+          "tekst": "Free to download. Unlocking all features takes a one-time purchase.",
+          "kilder": [
+            {
+              "kilde": "as-mela",
+              "sitat": "Mela is free to download but will require a one-time purchase to unlock all features."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "One-time purchase",
+          "kilder": [
+            {
+              "kilde": "as-mela",
+              "sitat": "Mela is free to download but will require a one-time purchase to unlock all features."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes, from sites that support it",
+          "kilder": [
+            {
+              "kilde": "as-mela",
+              "sitat": "If Mela detects a recipe on the currently viewed page, it will be displayed in Mela's native recipe viewer"
+            },
+            {
+              "kilde": "as-mela",
+              "sitat": "Extracting recipes only works for websites that support this, most of them do."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Not stated"
+        },
+        "ukemeny": {
+          "tekst": "Yes, in the Calendar app",
+          "kilder": [
+            {
+              "kilde": "as-mela",
+              "sitat": "Do your meal planning by using Mela's built-in calendar. It's managed by Calendar.app"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, in the Reminders app",
+          "kilder": [
+            {
+              "kilde": "as-mela",
+              "sitat": "Mela uses the Reminders.app to manage your grocery list."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "A shared recipe library with other iCloud users",
+          "kilder": [
+            {
+              "kilde": "as-mela",
+              "sitat": "by sharing a recipe library with other iCloud users"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Follows your favorite recipe blogs, and Mela says it collects no data.",
+          "kilder": [
+            {
+              "kilde": "as-mela",
+              "sitat": "Subscribe to your favorite recipe blogs"
+            },
+            {
+              "kilde": "web-mela",
+              "sitat": "Mela does not collect any data."
+            }
+          ]
+        }
+      }
+    },
+    "pestle": {
+      "navn": "Pestle",
+      "utvikler": "Will Bishop",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone and iPad",
+          "kilder": [
+            {
+              "kilde": "web-pestle",
+              "sitat": "Free forever on iPhone and iPad."
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Converts between metric and imperial",
+          "kilder": [
+            {
+              "kilde": "web-pestle",
+              "sitat": "You can also convert units from Metric to Imperial, or vice versa, instantly."
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Free to download. Keep up to 15 recipes.",
+          "kilder": [
+            {
+              "kilde": "web-pestle",
+              "sitat": "Keep 15 recipes"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Pestle Pro: monthly, yearly, or lifetime",
+          "kilder": [
+            {
+              "kilde": "as-pestle",
+              "sitat": "Pestle Pro (Monthly)"
+            },
+            {
+              "kilde": "as-pestle",
+              "sitat": "Pestle Pro (Yearly)"
+            },
+            {
+              "kilde": "as-pestle",
+              "sitat": "Pestle Pro (Lifetime)"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "web-pestle",
+              "sitat": "Save from any website"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram, TikTok, Facebook, and YouTube",
+          "kilder": [
+            {
+              "kilde": "as-pestle",
+              "sitat": "Save recipes from Instagram, TikTok, Facebook, YouTube and more with Pestle."
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Yes, up to 14 days ahead, with Pestle Pro",
+          "kilder": [
+            {
+              "kilde": "as-pestle",
+              "sitat": "Pestle can help you plan out your next 14-days"
+            },
+            {
+              "kilde": "web-pestle",
+              "sitat": "Pestle Households Create meal plans"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, from your recipes",
+          "kilder": [
+            {
+              "kilde": "as-pestle",
+              "sitat": "Take every ingredient from your recipe and add it to your shopping list!"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Households, with Pestle Pro",
+          "kilder": [
+            {
+              "kilde": "as-pestle",
+              "sitat": "Create a Pestle Household and share all of your recipes with your family"
+            },
+            {
+              "kilde": "web-pestle",
+              "sitat": "Pestle Households Create meal plans"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Guided cooking you can control hands-free, and cooking together over FaceTime.",
+          "kilder": [
+            {
+              "kilde": "as-pestle",
+              "sitat": "Control Pestle hands-free"
+            },
+            {
+              "kilde": "web-pestle",
+              "sitat": "When you are on a FaceTime with someone and start cooking with Pestle, the steps will synchronise between you."
+            }
+          ]
+        }
+      }
+    },
+    "anylist": {
+      "navn": "AnyList",
+      "utvikler": "Purple Cover, Inc.",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, and Android. Mac, PC, and Apple Watch with AnyList Complete.",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "AnyList is a free download for iOS & Android."
+            },
+            {
+              "kilde": "as-anylist",
+              "sitat": "Access your lists and recipes on your Mac, PC, and Apple Watch."
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Not stated"
+        },
+        "gratis": {
+          "tekst": "Making and sharing lists is free. Five recipe imports from websites.",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "Core functionality, like creating and sharing lists, is free to use."
+            },
+            {
+              "kilde": "web-anylist",
+              "sitat": "Import recipes directly from popular websites Limit 5 Unlimited"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "AnyList Complete, yearly subscription for one person or a household",
+          "kilder": [
+            {
+              "kilde": "as-anylist",
+              "sitat": "12 Month AnyList Complete Individual Subscription"
+            },
+            {
+              "kilde": "as-anylist",
+              "sitat": "1 Year Household Subscription"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes. Five free, unlimited with AnyList Complete.",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "Import recipes directly from popular websites Limit 5 Unlimited"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Not stated"
+        },
+        "ukemeny": {
+          "tekst": "Yes, with AnyList Complete",
+          "kilder": [
+            {
+              "kilde": "as-anylist",
+              "sitat": "Meal Planning Calendar: The easiest way to plan your family's meals for the week"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes. Sorted into categories you can arrange to match your store.",
+          "kilder": [
+            {
+              "kilde": "as-anylist",
+              "sitat": "Lists automatically sort into categories (Produce, Dairy, Deli, etc.) that can be re-arranged to match your store's layout"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Lists for free. The meal plan with your household on AnyList Complete.",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "Share lists with family and friends"
+            },
+            {
+              "kilde": "web-anylist",
+              "sitat": "Share meal plan with other household members"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Shop online at Walmart, Instacart, Kroger, and more. Add prices to see a running total with AnyList Complete.",
+          "kilder": [
+            {
+              "kilde": "web-anylist",
+              "sitat": "Shop online at Walmart, Instacart, Kroger and more"
+            },
+            {
+              "kilde": "as-anylist",
+              "sitat": "Stick to Your Budget: Add item prices as you shop to see your running total."
+            }
+          ]
+        }
+      }
+    },
+    "plantoeat": {
+      "navn": "Plan to Eat",
+      "utvikler": "Plan to Eat, LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android, and web",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Sign in on all of your mobile devices, and at plantoeat.com"
+            },
+            {
+              "kilde": "gp-plantoeat",
+              "sitat": "Plan to Eat: Meal Planner - Apps on Google Play"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Not stated"
+        },
+        "gratis": {
+          "tekst": "No free plan stated. 14-day free trial, no payment information needed.",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Try Plan to Eat FREE for 14 days, no payment information required at sign-up."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Subscription",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "annual subscriptions can be purchased in the app."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Yes",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Tap the share icon in your web browser to import recipes from the web"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Yes. Which platforms is not stated.",
+          "kilder": [
+            {
+              "kilde": "web-plantoeat",
+              "sitat": "Save them from any website, social media, or your own cookbooks."
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Yes. You can plan leftovers and track frozen meals.",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "You can scale servings, reschedule recipes, plan leftovers, and track frozen meals."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes, made from the meal plan and organized by aisle",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "The shopping list auto-generates an organized grocery list based on the ingredients in your meal plan."
+            },
+            {
+              "kilde": "web-plantoeat",
+              "sitat": "Buy everything you need from a clear, aisle-by-aisle list."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Yes, your family can share recipes, meal plans, and shopping lists",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Sign in on all of your mobile devices, and at plantoeat.com, to share recipes, meal plans, and shopping lists."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "A staples list for things you buy often, and lists for specific stores.",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "add frequently purchased items from the staples list, customize and re-order your list categories, and create lists for specific stores."
+            }
+          ]
+        }
+      }
+    },
+    "bring": {
+      "navn": "Bring!",
+      "utvikler": "Bring! Labs AG",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android, Apple Watch, and web",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "for free on your smartphone, tablet or Apple Watch, or as the web version"
+            },
+            {
+              "kilde": "web-bring",
+              "sitat": "on your smartphone (iOS & Android)"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Not stated"
+        },
+        "gratis": {
+          "tekst": "Free. Making and sharing lists, recipes, and offers are included.",
+          "kilder": [
+            {
+              "kilde": "web-bring",
+              "sitat": "All core functions – such as creating and sharing shopping lists and accessing recipes and special offers – are available free of charge."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Bring! Premium by the month or year. The app shows ads.",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Bring! Premium 1 Year"
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Bring! Premium 1 Month"
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Contains Advertising"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ingredients from recipe websites",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "you can import recipe ingredients from websites to your Bring! free grocery list"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Not stated"
+        },
+        "ukemeny": {
+          "tekst": "Not stated"
+        },
+        "handleliste": {
+          "tekst": "Yes. Grouped automatically, and the categories can match your store’s aisles.",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "You can also customize the product categories in the app to match the aisles in your supermarket."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Yes, shared lists in real time",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Share your grocery shopping list in real time"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Shows offers from stores near you, and keeps your loyalty cards.",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Save money with the latest offers and ads from stores near you."
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Store your loyalty cards securely and centrally in your Bring! wallet"
+            }
+          ]
+        }
+      }
+    },
+    "listonic": {
+      "navn": "Listonic",
+      "utvikler": "Listonic",
+      "fakta": {
+        "plattformer": {
+          "tekst": "Android, iPhone, iPad, web, Windows, and Mac",
+          "kilder": [
+            {
+              "kilde": "web-listonic",
+              "sitat": "Android iOS iPad Web Windows Mac"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Not stated"
+        },
+        "gratis": {
+          "tekst": "Free. As many lists as you like.",
+          "kilder": [
+            {
+              "kilde": "web-listonic",
+              "sitat": "Create as many lists as you like, for free."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, subscription by the month or year. The Android app shows ads.",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Monthly Premium Subscription"
+            },
+            {
+              "kilde": "as-listonic",
+              "sitat": "Yearly Subscription"
+            },
+            {
+              "kilde": "gp-listonic",
+              "sitat": "Contains ads"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Not stated"
+        },
+        "sosiale": {
+          "tekst": "Not stated"
+        },
+        "ukemeny": {
+          "tekst": "Through the AI Assistant",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Use the AI Assistant to plan meals, discover recipes, and turn ideas into products to buy"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Yes. By aisle, A to Z, or your own order.",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Group products by aisle to spend less time walking back and forth through the store"
+            },
+            {
+              "kilde": "as-listonic",
+              "sitat": "Sort products alphabetically or create your own order"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Yes, shared lists in real time",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Share lists in real time, so everyone can work from the latest version"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Works offline, and adds up what the trip will cost.",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "You can also use Listonic offline"
+            },
+            {
+              "kilde": "web-listonic",
+              "sitat": "Plan your spending with the total cost calculator."
+            }
+          ]
+        }
+      }
+    },
+    "ourgroceries": {
+      "navn": "OurGroceries",
+      "utvikler": "OurGroceries, Inc.",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Apple Watch, Android, and web",
+          "kilder": [
+            {
+              "kilde": "web-ourgroceries",
+              "sitat": "Use on iPhone, Android, Apple Watch, Alexa, web browser, AI assistants, and more"
+            },
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "on any other iPhone, Watch, iPad, or other smartphone grouped with yours"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Not stated"
+        },
+        "gratis": {
+          "tekst": "Free, with ads",
+          "kilder": [
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "The easiest way to manage your family’s grocery shopping—and it’s FREE!"
+            },
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "Contains Advertising"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "In-app purchase to remove ads, including a lifetime option",
+          "kilder": [
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "Remove Ads (Lifetime)"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Not stated"
+        },
+        "sosiale": {
+          "tekst": "Not stated"
+        },
+        "ukemeny": {
+          "tekst": "Not stated"
+        },
+        "handleliste": {
+          "tekst": "Yes, by category or aisle. A recipe’s ingredients go on the list in one tap.",
+          "kilder": [
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "Organize your items by category or aisle to make shopping faster and easier."
+            },
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "Add all the ingredients for a recipe to your shopping list with a single tap."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "The whole household, by entering the same email address in each app",
+          "kilder": [
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "Simply enter the same email address into each copy of the OurGroceries app."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Not stated"
+        },
+        "saerpreg": {
+          "tekst": "Add items by photo, by barcode, or by voice with Siri or Alexa.",
+          "kilder": [
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "Add an item just by taking a photo!"
+            },
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "Add items by scanning barcodes."
+            },
+            {
+              "kilde": "as-ourgroceries",
+              "sitat": "Add items with your voice using Siri on your iPhone, Watch, or HomePod."
+            },
+            {
+              "kilde": "web-ourgroceries",
+              "sitat": "Use Alexa to update your lists"
+            }
+          ]
+        }
+      }
+    },
+    "outofmilk": {
+      "navn": "Out of Milk",
+      "utvikler": "inMarket Media, LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android, and web",
+          "kilder": [
+            {
+              "kilde": "as-outofmilk",
+              "sitat": "Access your lists online from anywhere"
+            },
+            {
+              "kilde": "gp-outofmilk",
+              "sitat": "Grocery List App - Out of Milk - Apps on Google Play"
+            }
+          ]
+        },
+        "enheter": {
+          "tekst": "Not stated"
+        },
+        "gratis": {
+          "tekst": "Free to download. The Android app shows ads.",
+          "kilder": [
+            {
+              "kilde": "web-outofmilk",
+              "sitat": "Out of Milk - Free Grocery Shopping List App"
+            },
+            {
+              "kilde": "gp-outofmilk",
+              "sitat": "Contains ads"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Out of Milk Premium, in-app purchase",
+          "kilder": [
+            {
+              "kilde": "as-outofmilk",
+              "sitat": "Out of Milk Premium"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Not stated"
+        },
+        "sosiale": {
+          "tekst": "Not stated"
+        },
+        "ukemeny": {
+          "tekst": "Not stated"
+        },
+        "handleliste": {
+          "tekst": "Yes. Items grouped into categories, with a running total.",
+          "kilder": [
+            {
+              "kilde": "as-outofmilk",
+              "sitat": "Save time by grouping items into categories"
+            },
+            {
+              "kilde": "as-outofmilk",
+              "sitat": "Displays grand total and running total on your shopping list"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Lists shared by text or email",
+          "kilder": [
+            {
+              "kilde": "as-outofmilk",
+              "sitat": "Share lists by text or email"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Yes, a pantry list",
+          "kilder": [
+            {
+              "kilde": "as-outofmilk",
+              "sitat": "Pantry list lets you inventory anything so you always know what's in your pantry"
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Barcode scanning, and a to-do list in the same app.",
+          "kilder": [
+            {
+              "kilde": "as-outofmilk",
+              "sitat": "Easily scan or enter items in your shopping lists"
+            },
+            {
+              "kilde": "as-outofmilk",
+              "sitat": "Make a To-Do list"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "notiser": {
+    "mealime": {
+      "tekst": "Mealime was discontinued as of October 21, 2026, and points its users to Meals Hub in Albertsons Companies grocery apps.",
+      "kilder": [
+        {
+          "kilde": "web-mealime",
+          "sitat": "Mealime will be discontinued as of October 21, 2026."
+        },
+        {
+          "kilde": "web-mealime",
+          "sitat": "Meals Hub, available in Albertsons Companies grocery apps"
+        }
+      ]
+    }
+  }
+}

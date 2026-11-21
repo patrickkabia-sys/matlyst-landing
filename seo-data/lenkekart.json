@@ -65,6 +65,15 @@
           "/en/mealime-alternative/"
         ],
         "planlagt": []
+      },
+      "sammenligning": {
+        "hub": "/en/recipe-book-app/",
+        "eiker": [
+          "/en/best-recipe-app/",
+          "/en/best-grocery-list-app/",
+          "/en/best-meal-planning-app/"
+        ],
+        "planlagt": []
       }
     }
   },

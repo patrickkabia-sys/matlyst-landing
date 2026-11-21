@@ -147,8 +147,8 @@ test('rendringen lager ingen nye doble id-er på noen side', () => {
   }
 });
 
-test('alle 1206 sider med fullt skall har nøyaktig ett banner-landemerke', () => {
-  assert.equal(fulltSkall.length, 1206);
+test('alle 1170 sider med fullt skall har nøyaktig ett banner-landemerke', () => {
+  assert.equal(fulltSkall.length, 1170);
   for (const s of fulltSkall) {
     const bannere = elementer(s.etter).filter((e) => attr(e.tagg, 'role') === 'banner'
       || (e.navn === 'header' && !attr(e.tagg, 'role') && !e.forfedre.some((n) => ['article', 'aside', 'main', 'nav', 'section'].includes(n))));
@@ -157,8 +157,8 @@ test('alle 1206 sider med fullt skall har nøyaktig ett banner-landemerke', () =
   }
 });
 
-test('alle 1206 sider med fullt skall har én hopp-lenke og ett eksisterende mål', () => {
-  assert.equal(fulltSkall.length, 1206);
+test('alle 1170 sider med fullt skall har én hopp-lenke og ett eksisterende mål', () => {
+  assert.equal(fulltSkall.length, 1170);
   for (const s of fulltSkall) {
     const alle = elementer(s.etter);
     const lenker = alle.filter((e) => e.navn === 'a' && (
