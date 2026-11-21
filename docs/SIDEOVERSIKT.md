@@ -50,7 +50,7 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 | handleliste | Handleliste-app: lages fra oppskriftene dine | guide-lang | `/handleliste/` (1) | `/sv/inkopslista/` (1) | `/da/indkoebsliste-app/` (1) | `/en/shopping-list/` (1) | da-rike-sider.mjs, en-appsider.mjs, en-rike-sider.mjs, nb-rike-sider.mjs, nordiske-appsider.mjs, sv-rike-sider.mjs, undersider-alle-sprak.mjs |  | 2026-11-21 |
 | handskrevne-oppskrifter | Skann håndskrevne oppskrifter og kokebøker | guide-kort | `/handskrevne-oppskrifter/` (1) | `/sv/handskrivna-recept/` (1) | `/da/haandskrevne-opskrifter/` (1) | `/en/import-recipes-from-photos/` (1) | import-guider-lokale.mjs |  | 2026-11-20 |
 | importer-oppskrifter | Importer oppskrift fra lenke, YouTube og nettsider | guide-kort | `/importer-oppskrifter/` (1) | `/sv/importera-recept/` (1) | `/da/importer-opskrifter/` (1) | `/en/import-recipes/` (1) | import-guider-lokale.mjs |  | 2026-11-20 |
-| instagram-oppskrifter | Lagre oppskrifter fra Instagram og reels | guide-lang | `/lagre-oppskrifter-fra-instagram/` (1) | `/sv/spara-recept-fran-instagram/` (1) | `/da/gem-opskrifter-fra-instagram/` (1) | `/en/import-recipes-from-instagram/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, import-guider-lokale.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-20 |
+| instagram-oppskrifter | Lagre oppskrifter fra Instagram og reels | guide-lang | `/lagre-oppskrifter-fra-instagram/` (1) | `/sv/spara-recept-fran-instagram/` (1) | `/da/gem-opskrifter-fra-instagram/` (1) | `/en/import-recipes-from-instagram/` (1) | da-rike-sider.mjs, en-rike-sider.mjs, import-guider-lokale.mjs, nb-rike-sider.mjs, sv-rike-sider.mjs |  | 2026-11-21 |
 | koket | Lagre oppskrifter fra Köket.se | guide-kort | `/importer-fra-koket/` (1) | `/sv/koket/` (1) | `/da/koket/` (1) | `/en/koket/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
 | landleys-kok | Lagre oppskrifter fra Landleys Kök | guide-kort | `/importer-fra-landleys-kok/` (1) | `/sv/landleys-kok/` (1) | `/da/landleys-kok/` (1) | `/en/landleys-kok/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
 | matprat | Lagre Matprat-oppskrifter i Matlyst | guide-gammel, guide-kort | `/importer-fra-matprat/` (1) | `/sv/matprat/` (1) | `/da/matprat/` (1) | `/en/matprat/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
@@ -398,7 +398,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **en** (1)
 
-- https://matlyst-app.no/en/import-recipes-from-instagram/ (2026-11-20)
+- https://matlyst-app.no/en/import-recipes-from-instagram/ (2026-11-21)
 
 ### koket
 
@@ -2047,10 +2047,10 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **en** (7)
 
-- https://matlyst-app.no/en/holidays/ (2026-11-19)
+- https://matlyst-app.no/en/holidays/ (2026-11-21)
 - https://matlyst-app.no/en/holidays/christmas-dinner/ (2026-11-21)
-- https://matlyst-app.no/en/holidays/friendsgiving/ (2026-11-19)
-- https://matlyst-app.no/en/holidays/hanukkah/ (2026-11-19)
-- https://matlyst-app.no/en/holidays/new-years-eve/ (2026-11-19)
-- https://matlyst-app.no/en/holidays/thanksgiving-leftovers/ (2026-11-19)
+- https://matlyst-app.no/en/holidays/friendsgiving/ (2026-11-21)
+- https://matlyst-app.no/en/holidays/hanukkah/ (2026-11-21)
+- https://matlyst-app.no/en/holidays/new-years-eve/ (2026-11-21)
+- https://matlyst-app.no/en/holidays/thanksgiving-leftovers/ (2026-11-21)
 - https://matlyst-app.no/en/holidays/thanksgiving/ (2026-11-21)

@@ -129,7 +129,7 @@ export const TEKST = {
           ['isuholiday', 'Potatoes, per serving', h.t('isu')],
           ['ipc', 'Raw potatoes for 100 half-cup servings', `${h.n('ipc')} lb`],
         ])],
-        ['Raw weight and what you get', p(`${h.k('ipc')} says that 100 servings of 1/2 cup need ${h.n('ipc')} pounds of potatoes. The calculator divides that by 100 to give the amount for one half-cup serving.`, 'Whole Foods Market lists a bigger serving of potatoes at a holiday dinner, which is why its raw weight per person is higher.')],
+        ['Raw weight and what you get', p(`${h.k('ipc')} says that 100 servings of 1/2 cup need ${h.n('ipc')} pounds of potatoes. The calculator divides that by 100 to give the amount for one half-cup serving.`, 'Whole Foods Market lists a bigger serving of potatoes at a holiday dinner.')],
       ],
       faq: [
         ['How many pounds of potatoes for 12 people?', `Using ${h.k('wf')}, 12 adults need ${h.sum('rå', 12)} of raw potatoes for mashed potatoes.`],
@@ -307,7 +307,7 @@ export const TEKST = {
           ['isugrad', 'Burgers at a party, per person', h.r('min', 'maks')],
           ['isuholiday', 'Ground meat as the main dish, per serving', h.r('isu-uten-min', 'isu-uten-maks')],
         ])],
-        ['Pounds of ground beef for a big group', p(`With ${h.k('isugrad')}, 4 adults need ${h.sumR('min', 'maks', 4)} of burger meat, and 12 adults need ${h.sumR('min', 'maks', 12)}. The table above has 2 to 12 adults.`, 'The source does not say whether this is raw or cooked weight. Treat it as the amount of meat you start with.')],
+        ['Pounds of ground beef for a big group', p(`With ${h.k('isugrad')}, 4 adults need ${h.sumR('min', 'maks', 4)} of burger meat, and 12 adults need ${h.sumR('min', 'maks', 12)}. The table above has 2 to 12 adults.`, 'The source does not say whether this is raw or cooked weight.')],
       ],
       faq: [
         ['How much ground beef for 10 burgers?', `With ${h.k('isugrad')}, 10 adults need ${h.sumR('min', 'maks', 10)}.`],

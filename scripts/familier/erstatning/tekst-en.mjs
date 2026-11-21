@@ -62,7 +62,7 @@ export const TEKST = {
         ['Two egg whites', ['Ratio', `${N.ill}: ${E('hor-hvit')}, as a general-purpose swap.`], ['What changes', 'The source does not say which recipes suit it.']],
       ])],
       ['What one egg measures', p(`${N.usu} gives these equivalents: 1 large egg is ${E('en-egg')}, and ${T('fem-egg')} large eggs make ${E('kopp')}. Use this when a recipe asks for a part of an egg and you need to measure it.`)],
-      ['Why there is no single answer', p(`${N.ill} puts it plainly: depending upon the recipe and the function of the egg, certain options are better suited than others, as the flavor and texture may be slightly altered. For a cake that needs lift, use a swap that lifts. For a dense bar, a moist one may do.`)],
+      ['Why there is no single answer', p(`${N.ill} puts it plainly: depending upon the recipe and the function of the egg, certain options are better suited than others, as the flavor and texture may be slightly altered.`)],
       ...app("It's easy to run out of eggs halfway through a recipe."),
     ],
     faq: [
@@ -89,7 +89,7 @@ export const TEKST = {
         ['Soda with buttermilk, sour milk, or yogurt', ['Ratio', `${N.csu}: ${T('melk-soda')} teaspoon baking soda plus ${E('melk')} buttermilk, sour milk, or yogurt.`], ['What changes', `Decrease the liquid in the recipe by ${E('melk')}.`]],
         ['Soda with molasses', ['Ratio', `${N.csu}: ${T('melk-soda')} teaspoon baking soda plus ${E('melasse')} molasses.`], ['What changes', `Decrease the liquid in the recipe by ${T('melasse-vaeske-min')} to ${E('melasse-vaeske-maks')}.`]],
       ])],
-      ['Why soda needs an acid', p(`${N.usu} explains that in order for carbon dioxide to be released and cause the product to rise, an acid ingredient must be present to react with the soda. Molasses is acidic enough that it releases carbon dioxide.`, 'That is why each swap above pairs the soda with something sour.')],
+      ['Why soda needs an acid', p(`${N.usu} explains that in order for carbon dioxide to be released and cause the product to rise, an acid ingredient must be present to react with the soda. Molasses is acidic enough that it releases carbon dioxide.`)],
       ...app("Baking powder and baking soda sit side by side in the cupboard, and it's easy to grab the wrong one."),
     ],
     faq: [
@@ -143,7 +143,7 @@ export const TEKST = {
         ['Oil', ['Ratio', `${N.usu}: ${E('olje')} of oil, and ${N.ndsu} adds the same salt.`], ['What changes', `${N.unl} says an equal amount of oil can stand in for melted butter when the recipe calls for it melted.`]],
         ['Clarified chicken fat', ['Ratio', `${N.usu}: ${E('kylling')} of clarified chicken fat.`], ['What changes', 'The source gives no more detail.']],
       ])],
-      ['Melted butter is the easy case', p(`${N.unl}: an equal amount of oil can be substituted for a similar portion of melted butter if the recipe specifies using melted butter. If the recipe asks for creamed or cold butter, use one of the solid swaps instead.`)],
+      ['Melted butter is the easy case', p(`${N.unl}: an equal amount of oil can be substituted for a similar portion of melted butter if the recipe specifies using melted butter.`)],
       ...app('Butter is a staple that runs out fast when you bake.'),
     ],
     faq: [
@@ -194,7 +194,7 @@ export const TEKST = {
         ['Coffee cream and milk', ['Ratio', `${N.csu}: ${E('csu-kaffe')} of coffee cream plus ${E('csu-kaffe')} of milk.`], ['What changes', 'The source gives no more detail.']],
         ['Oil and milk', ['Ratio', `${N.ndsu}: ${E('ndsu-olje')} of oil plus milk to equal ${E('kopp')}.`], ['What changes', 'This one has no dairy fat.']],
       ])],
-      ['Why the butter amounts differ', p(`${N.usu} and ${N.csu} describe half-and-half with slightly different fat ranges, and they give different butter amounts: ${E('usu-smor')} versus ${E('csu-smor')}. We show both rather than pick one. If your recipe is picky, start with the smaller amount.`)],
+      ['Why the butter amounts differ', p(`${N.usu} and ${N.csu} describe half-and-half with slightly different fat ranges, and they give different butter amounts: ${E('usu-smor')} versus ${E('csu-smor')}. We show both rather than pick one.`)],
       ...app('Half-and-half is often bought for one dish and then forgotten.'),
     ],
     faq: [
@@ -353,7 +353,7 @@ export const TEKST = {
         ['Granulated sugar and molasses', ['Ratio', `${N.csu}: ${E('melasse-kopp')} of granulated sugar plus ${E('melasse')} of unsulphured molasses.`], ['What changes', `${N.msu} and ${N.tamu} give the same ratio per half cup: ${E('halv')} of white sugar plus ${E('halv-melasse')} of molasses.`]],
         ['Liquid brown sugar', ['Ratio', `${N.csu}: ${E('flytende')} of liquid brown sugar.`], ['What changes', 'This is a smaller amount than the dry sugar.']],
       ])],
-      ['Why the molasses matters', p(`${N.csu} warns that substitutions with an acid factor, such as molasses, need to be neutralized to avoid changes in the flavor and texture of the product. If your recipe has baking soda, the soda may already do that.`, `For weight, ${N.usu} gives 1 pound of brown sugar as ${E('pund')} firmly packed.`)],
+      ['Why the molasses matters', p(`${N.csu} warns that substitutions with an acid factor, such as molasses, need to be neutralized to avoid changes in the flavor and texture of the product.`, `For weight, ${N.usu} gives 1 pound of brown sugar as ${E('pund')} firmly packed.`)],
       ...app('Brown sugar goes hard in the bag.'),
     ],
     faq: [
