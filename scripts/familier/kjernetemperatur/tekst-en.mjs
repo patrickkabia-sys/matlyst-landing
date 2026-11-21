@@ -37,7 +37,7 @@ export const TEKST = {
         rader: [['Minimum for chicken pieces and a whole bird', 'min'], ['Leftover chicken, when you reheat it', 'varm']],
       }) + h.note('fs-chart') + h.note('fsis-chicken')],
       ['Two more facts from FSIS', p([
-        `${h.k('fsis-chicken')} says bacteria multiply rapidly at temperatures between ${h.t('fare-min')} and ${h.t('fare-maks')}. That is the range raw chicken must not sit in for long.`,
+        `${h.k('fsis-chicken')} says bacteria multiply rapidly at temperatures between ${h.t('fare-min')} and ${h.t('fare-maks')}.`,
         `Chicken can go in the oven or on the stove from frozen. The same page says the cooking time may be ${h.t('fryst', { ca: true })} longer. The temperature to reach does not change.`,
         h.s('wash'),
       ])],

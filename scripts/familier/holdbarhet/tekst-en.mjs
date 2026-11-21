@@ -387,7 +387,7 @@ export const TEKST = {
     description: `Leftover turkey lasts ${h.t('kokt')} in the fridge, according to ${h.k('fs-chart')}. What the USDA says about the two-hour rule on a holiday table.`,
     lead: `Leftover turkey lasts ${h.t('kokt')} in the refrigerator, according to ${h.k('fs-chart')}. That is the time for cooked meat or poultry, and it matches the leftovers rule of ${h.k('fsis-leftovers')}.`,
     kilder: [
-      `${h.k('fsis-danger')} says never to leave food out of refrigeration over ${h.t('timer2')}. When the temperature is above ${h.t('varm')}, the limit is ${h.t('timer1')}. On a holiday table, that is the clock for the whole meal.`,
+      `${h.k('fsis-danger')} says never to leave food out of refrigeration over ${h.t('timer2')}. When the temperature is above ${h.t('varm')}, the limit is ${h.t('timer1')}.`,
       `${h.k('fsis-leftovers')} says leftovers can be kept in the refrigerator for ${h.t('lft')}, and that you should reheat them to ${h.t('oppvarm')}.`,
       SHALLOW(h),
       `A raw whole turkey has a much shorter time on the ${h.k('fs-chart')} chart: ${h.t('raa-hel')}.`,
