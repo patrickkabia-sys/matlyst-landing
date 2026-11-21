@@ -32,6 +32,8 @@ export const FAMILIER = Object.freeze([
   // Holdbarhet i kjøleskapet og frysing: bare norsk. Kildene er Mattilsynet først, så MatPrat (se scripts/familier/holdbarhet/kjoling.mjs).
   { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' } } },
   { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' } } },
+  // Airfryer: tid og temperatur per råvare med kilde, og omregner fra ovn. Bare norsk. Tallene står i data.nb.json med sitat fra kilden (kildekontroll.mjs).
+  { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' } } },
 ]);
 
 export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });

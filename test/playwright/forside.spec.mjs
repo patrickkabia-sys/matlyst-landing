@@ -274,8 +274,8 @@ const unntak = [
   { seksjon: '.bunn', fra: ['Porsjoner', 'Kakeform', 'Steketid', 'Pizzadeig', 'Gjær', 'Alle kalkulatorer'], til: [] },
   // «Om Matlyst» er lagt til i hyllen Matlyst etter prototypet (om-siden finnes bare på norsk).
   { seksjon: '.bunn', fra: ['For matskapere', 'Instagram'], til: ['For matskapere', 'Om Matlyst', 'Instagram'] },
-  // Familiene holdbarhet og frysing (bare norsk) står i hylla Kjøkkentips etter prototypet.
-  { seksjon: '.bunn', fra: ['Koketider', 'Alle kjøkkentips'], til: ['Koketider', 'Holdbarhet i kjøleskapet', 'Frysing', 'Alle kjøkkentips'] },
+  // Familiene holdbarhet, frysing og airfryer (bare norsk) står i hylla Kjøkkentips etter prototypet.
+  { seksjon: '.bunn', fra: ['Koketider', 'Alle kjøkkentips'], til: ['Koketider', 'Holdbarhet i kjøleskapet', 'Frysing', 'Airfryer', 'Alle kjøkkentips'] },
   // Det vedtatte sideskallet bruker korte språkkoder i begge velgerne.
 ];
 // Prototypens prøvestripe ligger utenfor de åtte seksjonene. «Juridisk» er en aria-label,
