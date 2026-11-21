@@ -1,8 +1,8 @@
 // Kontroll mot kilden for familiene «holdbarhet» og «frysing»: hvert tall i datafila har sitatet fra kilden i `merknad`,
 // og her sjekkes at sitatet fortsatt står ordrett på kildesiden. Endrer ingenting når noe avviker; da skrives lista og koden blir 1.
-// Bruk: node scripts/familier/holdbarhet/kildekontroll.mjs holdbarhet|frysing
+// Bruk: node scripts/familier/holdbarhet/kildekontroll.mjs holdbarhet|frysing [nb|en]
 // Tabellceller blir «a | b» og linjeskift i en celle «a / b», så et sitat fra en tabellrad kan kontrolleres som tekst.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validerData } from '../felles.mjs';
@@ -38,24 +38,32 @@ export function avvik(data, tekster) {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  // Bruk: kildekontroll.mjs <familie> [marked]. Uten marked kontrolleres alle markeder familien har (data.nb.json, data.en.json).
   const familie = process.argv[2];
-  const fil = join(fileURLToPath(new URL('..', import.meta.url)), familie, 'data.nb.json');
-  const data = validerData(JSON.parse(readFileSync(fil, 'utf8')));
-  const tekster = {};
-  for (const [id, k] of Object.entries(data.kilder)) {
-    const svar = await fetch(k.adresse, { headers: { 'user-agent': 'Mozilla/5.0' } });
-    if (!svar.ok) throw new Error(`${id}: ${k.adresse} svarte ${svar.status}`);
-    tekster[id] = kildetekst(await svar.text());
+  const mappe = join(fileURLToPath(new URL('..', import.meta.url)), familie);
+  const markeder = process.argv[3] ? [process.argv[3]] : ['nb', 'en'].filter((m) => existsSync(join(mappe, `data.${m}.json`)));
+  let feilet = false;
+  for (const marked of markeder) {
+    const fil = join(mappe, `data.${marked}.json`);
+    const data = validerData(JSON.parse(readFileSync(fil, 'utf8')));
+    const tekster = {};
+    for (const [id, k] of Object.entries(data.kilder)) {
+      const svar = await fetch(k.adresse, { headers: { 'user-agent': 'Mozilla/5.0' } });
+      if (!svar.ok) throw new Error(`${id}: ${k.adresse} svarte ${svar.status}`);
+      tekster[id] = kildetekst(await svar.text());
+    }
+    const liste = avvik(data, tekster);
+    if (liste.length) {
+      feilet = true;
+      for (const a of liste) console.error(`${familie}/${marked}/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
+      continue;
+    }
+    const idag = new Date().toISOString().slice(0, 10);
+    const ny = JSON.parse(readFileSync(fil, 'utf8'));
+    for (const r of ny.rader) if (r.status === 'kontrollert') r.kontrollert = idag;
+    for (const k of Object.values(ny.kilder)) k.hentet = idag;
+    writeFileSync(fil, `${JSON.stringify(ny, null, 2)}\n`);
+    console.log(`${familie}/${marked}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length, 0)} sitater står hos kilden (${idag})`);
   }
-  const liste = avvik(data, tekster);
-  if (liste.length) {
-    for (const a of liste) console.error(`${familie}/${a.id}: sitatet for «${a.felt}» står ikke hos ${a.kilde}`);
-    process.exit(1);
-  }
-  const idag = new Date().toISOString().slice(0, 10);
-  const ny = JSON.parse(readFileSync(fil, 'utf8'));
-  for (const r of ny.rader) if (r.status === 'kontrollert') r.kontrollert = idag;
-  for (const k of Object.values(ny.kilder)) k.hentet = idag;
-  writeFileSync(fil, `${JSON.stringify(ny, null, 2)}\n`);
-  console.log(`${familie}: alle ${ny.rader.reduce((n, r) => n + Object.keys(r.tall).length, 0)} sitater står hos kilden (${idag})`);
+  if (feilet) process.exit(1);
 }

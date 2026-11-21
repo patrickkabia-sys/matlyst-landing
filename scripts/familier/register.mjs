@@ -32,9 +32,10 @@ export const FAMILIER = Object.freeze([
   { id: 'kjernetemperatur', sidetype: 'guide-lang', mappe: new URL('./kjernetemperatur/', import.meta.url), markeder: { nb: { rot: 'kjernetemperatur/' } } },
   { id: 'steketid', sidetype: 'guide-lang', mappe: new URL('./steketid/', import.meta.url), markeder: { nb: { rot: 'steketid/' } } },
   { id: 'ukemeny', sidetype: 'guide-lang', mappe: new URL('./ukemeny/', import.meta.url), markeder: { nb: { rot: 'ukemenyer/' } } },
-  // Holdbarhet i kjøleskapet og frysing: bare norsk. Kildene er Mattilsynet først, så MatPrat (se scripts/familier/holdbarhet/kjoling.mjs).
-  { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' } } },
-  { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' } } },
+  // Holdbarhet i kjøleskapet og frysing: norsk (Mattilsynet først, så MatPrat; se holdbarhet/kjoling.mjs) og amerikansk engelsk (FoodSafety.gov, USDA FSIS, FDA; se holdbarhet/kjoling-en.mjs).
+  // Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
+  { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' }, en: { rot: 'how-long-does-it-last/' } } },
+  { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' }, en: { rot: 'can-you-freeze/' } } },
   // Mengde per person: bare norsk. Tall fra MatPrat og Helsedirektoratet med sitat per tall (kildekontroll.mjs), tekstene i tekst-nb.mjs.
   { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' } } },
 ]);
