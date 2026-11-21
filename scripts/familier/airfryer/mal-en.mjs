@@ -69,7 +69,7 @@ function kildeliste(data, brukt) {
   const ider = [...brukt].sort((a, b) => rekkefolge.indexOf(a) - rekkefolge.indexOf(b));
   return `<ol class="kilder" id="kilder">${ider.map((id) => {
     const k = data.kilder[id];
-    return `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Read ${engelskDato(k.hentet)}.</li>`;
+    return `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Accessed ${engelskDato(k.hentet)}.</li>`;
   }).join('')}</ol>`;
 }
 
@@ -87,8 +87,8 @@ const faqSkjema = (faq) => ({
 
 // Appen på sidene. Overskriftene er valgt så app-bevis.mjs legger skjermbilder under dem (plan og cook mode), og ingen andre overskrifter treffer regelene.
 const APP = (tekst) => [
-  ['Put dinner on the weekly menu', `${p(esc(tekst))}${p('Matlyst saves recipes from the web, puts them on the days of the weekly menu, and builds one shopping list from them.')}`],
-  ['Cook with step-by-step timers', p('Cook mode in Matlyst shows the steps as a checklist and suggests timers. The times on this page are a place to start, not a replacement for your recipe.')],
+  ['Put dinner on your meal plan', `${p(esc(tekst))}${p('Matlyst saves recipes from the web, puts them on your meal plan, and builds one grocery list from them.')}`],
+  ['Cook with step-by-step timers', p('Cook mode in Matlyst shows one step at a time and suggests a timer when a step mentions a time. The times on this page are a place to start, not a replacement for your recipe.')],
 ];
 
 const SKJELETT = { stegTittel: 'How to read the times', forst: '', alternativ: '', grense: '', seksjoner: [], cta: 'Plan your dinners in Matlyst', steg: [['Pick a source', 'Every time has a source and a year, side by side where the sources disagree.']] };
@@ -101,7 +101,7 @@ function relatert(egenSti, ekstra = []) {
   return `<div class="related"><h2>Related pages</h2><ul>${unike.map(([href, tekst]) => `<li><a href="${href}">${esc(tekst)}</a></li>`).join('')}</ul></div>`;
 }
 
-const kildeAvsnitt = (data, brukt) => ['Sources', `${p('Every number on this page comes from these sources. The quote behind each number is stored in the data file the page is built from, and it is checked against the source.')}${kildeliste(data, brukt)}`];
+const kildeAvsnitt = (data, brukt) => ['Sources', `${p('Every number on this page comes from the sources below. We keep the exact quote behind each number and check it against the source page.')}${kildeliste(data, brukt)}`];
 
 export function sideForRad(rad, data) {
   const h = hjelpere(rad, data);

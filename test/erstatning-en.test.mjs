@@ -110,7 +110,7 @@ test('sidene har ingen tankestrek, ingen emoji, ingen norske kilder, ingen aller
     const kilder = /<ol class="kilder" id="kilder">([\s\S]*?)<\/ol>/u.exec(side.rik)?.[1] ?? '';
     const punkter = [...kilder.matchAll(/<li>([\s\S]*?)<\/li>/gu)].map((m) => m[1]);
     assert.ok(punkter.length > 0, `${sti}: mangler kildeliste`);
-    for (const li of punkter) assert.match(li, /<a href="https:\/\/[^"]+" rel="noopener">[^<]+<\/a> \(\d{4}\)\. Read [A-Z][a-z]+ \d{1,2}, \d{4}\./u, sti);
+    for (const li of punkter) assert.match(li, /<a href="https:\/\/[^"]+" rel="noopener">[^<]+<\/a> \(\d{4}\)\. Accessed [A-Z][a-z]+ \d{1,2}, \d{4}\./u, sti);
   }
   for (const a of SLUGS) assert.doesNotMatch(hoved(`en/substitutes/${a}`), /Patrick Kabia/u, a);
 });

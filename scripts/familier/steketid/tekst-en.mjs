@@ -25,10 +25,10 @@ export const TEKST = {
     kalk: true,
     title: 'How long to cook a turkey: time by weight and calculator',
     h1: 'How long does it take to cook a turkey?',
-    description: `${h.k('fsis-turkey')} gives roasting times by weight for a turkey in a ${h.t('ovn')} oven, stuffed and unstuffed. Type in the weight of your turkey to see the time, then check with a thermometer.`,
-    lead: `FSIS gives turkey roasting times by weight band, at ${h.t('ovn')}. A 16 pound turkey, unstuffed, takes ${h.t('u3t')}. Type in your weight below. The turkey is done when a thermometer reads ${h.t('min')}, not when the timer rings.`,
+    description: `${h.k('fsis-turkey')} gives roasting times by weight for a turkey in a ${h.t('ovn')} oven, stuffed and unstuffed. Enter your turkey's weight to see the time, then check it with a thermometer.`,
+    lead: `FSIS gives turkey roasting times by weight band, at ${h.t('ovn')}. A 16-pound turkey, unstuffed, takes ${h.t('u3t')}. Enter your turkey's weight below. The turkey is done when a thermometer reads ${h.t('min')}, not when the timer rings.`,
     blokker: [
-      ['Roasting time calculator', p([`The calculator looks your weight up in the ${h.k('fsis-turkey')} table below. FSIS gives a range for each band of weights, so you get a range back, not one exact minute. ${h.s('rask')}`]) + '@@KALK@@'],
+      ['Roasting time calculator', p([`The calculator looks up your weight in the ${h.k('fsis-turkey')} table below. FSIS gives a range for each band of weights, so you get a range back, not an exact time. ${h.s('rask')}`]) + '@@KALK@@'],
       ['Roasting time by weight', tabell({
         tittel: 'Turkey roasting times at 325°F',
         kolonner: ['Whole turkey weight', 'Unstuffed', 'Stuffed'],
@@ -39,18 +39,18 @@ export const TEKST = {
         h.s('tau'),
         `The turkey goes breast-side up on a flat wire rack in a shallow roasting pan, ${h.t('dyp')} deep. A tent of aluminum foil may go loosely over the breast for the first ${h.t('folie')}, then come off for browning.`,
       ])],
-      ['Why your turkey may take longer or shorter', p([`${h.k('fsis-turkey-cook')} lists some of the reasons:`]) + liste([h.s('vari'), h.s('morkt'), h.s('pose'), h.s('ovnfeil')])],
-      ['How to know it is done', p([
+      ['Why your turkey may cook faster or slower', p([`${h.k('fsis-turkey-cook')} lists some of the reasons:`]) + liste([h.s('vari'), h.s('morkt'), h.s('pose'), h.s('ovnfeil')])],
+      ["How to know it's done", p([
         `A whole turkey is safe at ${h.t('min')} throughout. ${h.s('bein')}`,
-        `${h.k('fsis-turkey-cook')} says the bird should stand ${h.t('hvile')} before the stuffing comes out and it is carved, so the juices can set.`,
+        `${h.k('fsis-turkey-cook')} says to let the bird stand ${h.t('hvile')} before you remove the stuffing and carve it, so the juices can set.`,
         h.s('fylling'),
-        `More on the number and the spots: <a href="${K}turkey/">turkey internal temperature</a>.`,
+        `More on the temperature and where to check it: <a href="${K}turkey/">turkey internal temperature</a>.`,
       ])],
       ['A frozen turkey', p([h.s('frysttekst'), `${h.k('fsis-alt')} gives this rule for roasting from frozen: use the timing for the size of turkey you have, then add ${h.t('fryst')} of that time. ${h.s('sjekk')}`])],
     ],
     faq: [
-      ['How long does a 16 pound turkey take to roast?', `${h.k('fsis-turkey')} gives ${h.t('u3t')} unstuffed, and ${h.t('s3t')} stuffed, for a whole turkey of ${h.t('u3w')}, at ${h.t('ovn')}.`],
-      ['How long does a 10 pound turkey take?', `A turkey of ${h.t('u1w')} takes ${h.t('u1t')} unstuffed and ${h.t('s1t')} stuffed, says ${h.k('fsis-turkey')}.`],
+      ['How long does a 16-pound turkey take to roast?', `${h.k('fsis-turkey')} gives ${h.t('u3t')} unstuffed, and ${h.t('s3t')} stuffed, for a whole turkey of ${h.t('u3w')}, at ${h.t('ovn')}.`],
+      ['How long does a 10-pound turkey take?', `A turkey of ${h.t('u1w')} takes ${h.t('u1t')} unstuffed and ${h.t('s1t')} stuffed, says ${h.k('fsis-turkey')}.`],
       ['How long should the turkey rest?', `${h.k('fsis-turkey-cook')} says to let the bird stand ${h.t('hvile')} before carving.`],
       ['Is it safe to roast a turkey from frozen?', `${h.k('fsis-alt')} says it is safe to roast a turkey from the frozen state, but it will take longer. Add ${h.t('fryst')} to the time.`],
       ['Should the turkey be stuffed?', h.s('fylling')],
@@ -77,7 +77,7 @@ export const TEKST = {
       ['A frozen breast', p([`${h.k('fsis-alt')} says to take the timing for your size and add ${h.t('fryst')} of that time when you roast from frozen.`])],
     ],
     faq: [
-      ['How long does a 6 pound turkey breast take?', `A weight of ${h.t('a1w')} takes ${h.t('a1t')}. A breast of ${h.t('a2w')} takes ${h.t('a2t')}. A weight on the line between the two rows is in both. Source: ${h.k('fsis-turkey')}.`],
+      ['How long does a 6-pound turkey breast take?', `A weight of ${h.t('a1w')} takes ${h.t('a1t')}. A breast of ${h.t('a2w')} takes ${h.t('a2t')}. A weight on the line between the two rows is in both. Source: ${h.k('fsis-turkey')}.`],
       ['What temperature is a turkey breast done?', `${h.t('min')}, measured with a food thermometer.`],
       ['How long does half a turkey breast take?', `${h.k('fsis-turkey')} gives ${h.t('ht')} for a breast half of ${h.t('hw')}.`],
     ],
@@ -149,7 +149,7 @@ export const TEKST = {
     title: 'How long to thaw a turkey: fridge and cold water times',
     h1: 'How long does it take to thaw a turkey?',
     description: `In the refrigerator, allow about ${h.t('dognet')} for each ${h.t('perlb')} of turkey. In cold water, allow ${h.t('vann')} per pound. Times by weight from ${h.k('fsis-thaw')}.`,
-    lead: `In the refrigerator, FSIS says to allow about ${h.t('dognet')} for each ${h.t('perlb')}. In cold water it is about ${h.t('vann')} per pound. Pick the method and type in the weight below.`,
+    lead: `In the refrigerator, FSIS says to allow about ${h.t('dognet')} for each ${h.t('perlb')}. In cold water it is about ${h.t('vann')} per pound. Pick a method and enter the weight below.`,
     blokker: [
       ['Thawing time calculator', p([`The calculator looks your weight up in the ${h.k('fsis-thaw')} tables below. A weight on a line between two rows is in both.`]) + '@@KALK@@'],
       ['Refrigerator thawing', p([`${h.k('fsis-thaw')} says to allow approximately ${h.t('dognet')} for each ${h.t('perlb')} in a refrigerator set at ${h.t('kjole')} or below.`]) + tabell({
@@ -167,7 +167,7 @@ export const TEKST = {
       ['Three safe ways, and the first step', p([h.s('tre'), h.s('bunn'), h.s('bank')])],
     ],
     faq: [
-      ['How many days does it take to thaw a 14 pound turkey?', `A weight of ${h.t('k2w')} takes ${h.t('k2t')} in the refrigerator, says ${h.k('fsis-thaw')}.`],
+      ['How many days does it take to thaw a 14-pound turkey?', `A weight of ${h.t('k2w')} takes ${h.t('k2t')} in the refrigerator, says ${h.k('fsis-thaw')}.`],
       ['How long does cold water thawing take?', `About ${h.t('vann')} per pound, with the water changed every ${h.t('skift')}.`],
       ['How long can a thawed turkey wait in the fridge?', `${h.t('etter')} before cooking, according to ${h.k('fsis-thaw')}.`],
       ['Can I thaw a turkey on the counter?', h.s('disk')],
@@ -202,7 +202,7 @@ export const TEKST = {
       ['Country ham', p([h.s('landsalt'), `For cooking, the timetable says to soak ${h.t('landbad')} in the refrigerator, cover with water, and boil ${h.t('land')}. Then drain, glaze, and brown at ${h.t('landbak')} for ${h.t('landbaktid')}.`])],
     ],
     faq: [
-      ['How long does a 10 pound ham take?', `A fully cooked whole ham of ${h.t('d1w')} takes ${h.t('d1t')}. A cook-before-eating whole ham of ${h.t('c1w')} takes ${h.t('c1t')}. Source: ${h.k('fsis-hams')}.`],
+      ['How long does a 10-pound ham take?', `A fully cooked whole ham of ${h.t('d1w')} takes ${h.t('d1t')}. A cook-before-eating whole ham of ${h.t('c1w')} takes ${h.t('c1t')}. Source: ${h.k('fsis-hams')}.`],
       ['How long does a spiral ham take?', `A spiral-cut ham of ${h.t('d6w')} takes ${h.t('d6t')} in the FSIS table. A spiral-sliced ham reheated under foil takes about ${h.t('spiral')}.`],
       ['What temperature should a ham reach?', `A cook-before-eating ham needs ${h.t('rå')}. A fully cooked ham packaged in a USDA-inspected plant is heated to ${h.t('opp')}. See <a href="${K}ham/">ham internal temperature</a>.`],
     ],
@@ -232,8 +232,8 @@ export const TEKST = {
       ['When is it done?', p([`${h.k('fsis-beef')} says to cook raw beef steaks and roasts to a minimum internal temperature of ${h.t('min')}, and to rest the meat at least ${h.t('hvile')} before carving. See <a href="${K}roast-beef/">roast beef internal temperature</a>.`])],
     ],
     faq: [
-      ['How long to cook a 5 pound rib roast?', `A bone-in rib roast of ${h.t('ribw')} takes ${h.t('ribt')} per ${h.k('fsis-beef')}. A 5 pound roast falls inside that weight range.`],
-      ['How long for a beef tenderloin?', `A whole tenderloin of ${h.t('tw')} takes ${h.t('tt')} total at ${h.t('tovn')}, according to ${h.k('fsis-beef')}.`],
+      ['How long do you cook a 5-pound rib roast?', `A bone-in rib roast of ${h.t('ribw')} takes ${h.t('ribt')}, per ${h.k('fsis-beef')}. A 5-pound roast falls inside that weight range.`],
+      ['How long does a beef tenderloin take?', `A whole tenderloin of ${h.t('tw')} takes ${h.t('tt')} total at ${h.t('tovn')}, according to ${h.k('fsis-beef')}.`],
       ['How long does a round roast take?', `${h.t('rt')} for a roast of ${h.t('rw')} at ${h.t('ovn')}.`],
     ],
     soster: kk('roast-beef', 'Roast beef internal temperature'),
@@ -266,7 +266,7 @@ export const TEKST = {
       ['A note on the numbers', p([h.s('kompilert')])],
     ],
     faq: [
-      ['How long to cook a 4 pound pork loin?', `At ${h.t('ovn')}, ${h.k('fsis-pork')} gives ${h.t('lt')} for a loin roast of ${h.t('lw')}. At ${h.t('h325')}, ${h.k('fsis-holiday')} gives ${h.t('hbt')} for a bone-in loin of ${h.t('hbw')}.`],
+      ['How long do you cook a 4-pound pork loin?', `At ${h.t('ovn')}, ${h.k('fsis-pork')} gives ${h.t('lt')} for a loin roast of ${h.t('lw')}. At ${h.t('h325')}, ${h.k('fsis-holiday')} gives ${h.t('hbt')} for a bone-in loin of ${h.t('hbw')}.`],
       ['How long does a pork tenderloin take?', `${h.t('tt')} total, roasted at ${h.t('tov')}, for a tenderloin of ${h.t('tw')}, per ${h.k('fsis-pork')}.`],
       ['How long does a pork butt take?', `${h.t('bt')} for a Boston butt of ${h.t('bw')}, at ${h.t('ovn')}.`],
     ],
@@ -293,11 +293,11 @@ export const TEKST = {
       ['Stuffing and the oven', p([h.s('fyll'), `${h.k('fsis-chicken')} says to cook a stuffed raw chicken right away in an oven set no lower than ${h.t('ovnlav')}.`])],
       ['From frozen', p([`${h.k('fsis-chicken')} says chicken can be cooked from frozen in the oven or on the stove, and the cooking time may be ${h.t('fryst', { ca: true })} longer. Thawing in cold water takes about ${h.t('tin')} for a whole broiler-fryer.`])],
       ['Is it done?', p([`${h.k('fsis-chicken')} recommends cooking whole chicken to ${h.t('min')}. ${h.s('spots')} ${h.s('rosa')} See <a href="${K}chicken/">chicken internal temperature</a>.`])],
-      ['Do not wash it first', p([h.s('vasking'), h.s('delvis')])],
+      ["Don't wash it first", p([h.s('vasking'), h.s('delvis')])],
     ],
     faq: [
-      ['How long does a 4 pound chicken take to roast?', `${h.t('bt')} for a whole broiler-fryer of ${h.t('bw')}, at ${h.t('ovn')}, says ${h.k('fsis-chicken')}.`],
-      ['How long does a 6 pound roasting chicken take?', `${h.t('ht')} for a roasting hen of ${h.t('hw')}.`],
+      ['How long does a 4-pound chicken take to roast?', `${h.t('bt')} for a whole broiler-fryer of ${h.t('bw')}, at ${h.t('ovn')}, says ${h.k('fsis-chicken')}.`],
+      ['How long does a 6-pound roasting chicken take?', `${h.t('ht')} for a roasting hen of ${h.t('hw')}.`],
       ['How long does a stuffed chicken take?', `Add ${h.t('fylt')} to the time for an unstuffed bird. Do not microwave a stuffed chicken.`],
     ],
     soster: kk('chicken', 'Chicken internal temperature'),
@@ -317,7 +317,7 @@ export const TEKST = {
         rader: [['Bone-in', { html: h.t('benw') }, { html: h.t('bent') }, { html: h.t('bensim') }, { html: h.t('bengrill') }], ['Boneless', { html: h.t('ubenw') }, { html: h.t('ubent') }, { html: h.t('ubensim') }, { html: h.t('ubengrill') }]],
       }) + h.note('fsis-chicken')],
       ['In the microwave', p([`${h.k('fsis-chicken')} gives ${h.t('mikro')} on medium-high for boneless breast halves. ${h.s('mikroflat')} Allow ${h.t('stand')} standing time for a boneless breast, and ${h.t('standben')} for bone-in chicken.`])],
-      ['Frozen breasts', p([`A 1 pound package of boneless breasts thaws in an hour or less in cold water, says ${h.k('fsis-chicken')}. ${h.s('fryskok')} In the oven or on the stove, the cooking time may be ${h.t('fryst', { ca: true })} longer.`])],
+      ['Frozen breasts', p([`A 1-pound package of boneless breasts thaws in an hour or less in cold water, says ${h.k('fsis-chicken')}. ${h.s('fryskok')} In the oven or on the stove, the cooking time may be ${h.t('fryst', { ca: true })} longer.`])],
       ['The safe number', p([`${h.k('fsis-chicken')} says breasts, drumsticks, thighs, and wings should be cooked until they reach ${h.t('min')}. ${h.s('tykk')}`, h.s('rosa'), h.s('vask')])],
     ],
     faq: [
@@ -370,10 +370,10 @@ export const TEKST = {
       ['Crown roast and chops', p([`${h.k('fsis-holiday')} gives ${h.t('kt')} for a crown roast of ${h.t('kw')} at ${h.t('kov')}. For rib or loin chops, ${h.k('fsis-lamb')} gives ${h.t('kote')} under the broiler or on the grill.`])],
       ['Is it done?', p([`${h.k('fsis-lamb')} says to cook raw lamb steaks, chops, and roasts to ${h.t('min')} and rest them at least ${h.t('hvile')}. See <a href="${K}lamb/">lamb internal temperature</a>.`])],
       ['Cuts and yield', p([h.s('fell'), `After cooking a bone-in leg or roast, one pound of raw weight yields ${h.t('utbytte')} of edible meat, per ${h.k('fsis-lamb')}.`])],
-      ['Do not stop halfway', p([h.s('delvis')])],
+      ["Don't cook it partway", p([h.s('delvis')])],
     ],
     faq: [
-      ['How long to cook a 6 pound leg of lamb?', `${h.t('at')} for a bone-in leg of ${h.t('aw')}, at ${h.t('ovn')}, says ${h.k('fsis-lamb')}.`],
+      ['How long do you cook a 6-pound leg of lamb?', `${h.t('at')} for a bone-in leg of ${h.t('aw')}, at ${h.t('ovn')}, says ${h.k('fsis-lamb')}.`],
       ['How long does a boneless leg of lamb take?', `${h.t('ct')} for a boneless, rolled leg of ${h.t('cw')}.`],
       ['What temperature is lamb done?', `${h.t('min')} with a rest of ${h.t('hvile')}.`],
     ],
@@ -453,11 +453,11 @@ export const TEKST = {
       }) + h.note('fsis-beef')],
       ['What braising means', p([`${h.k('fsis-lamb')} defines the word on its lamb page. ${h.s('braise')}`])],
       ['About the times', p([h.s('kjol'), h.s('varierer'), h.s('bruk')])],
-      ['Brisket that is corned', p([h.s('corned'), `A corned brisket has its own times: see <a href="${S}corned-beef/">how long to cook corned beef</a>.`])],
-      ['The safe number', p([`${h.k('fsis-beef')} says to cook raw beef steaks and roasts to ${h.t('min')} and to rest the meat at least ${h.t('hvile')}. Raw corned beef is held to ${h.t('corned')}.`])],
+      ['Corned brisket', p([h.s('corned'), `A corned brisket has its own times: see <a href="${S}corned-beef/">how long to cook corned beef</a>.`])],
+      ['The safe number', p([`${h.k('fsis-beef')} says to cook raw beef steaks and roasts to ${h.t('min')} and to rest the meat at least ${h.t('hvile')}. Raw corned beef needs ${h.t('corned')}.`])],
     ],
     faq: [
-      ['How long to cook a 3 pound brisket?', `FSIS gives ${h.t('bt')} for a chuck roast or brisket of ${h.t('bw')}, braised at ${h.t('bov')}.`],
+      ['How long do you cook a 3-pound brisket?', `FSIS gives ${h.t('bt')} for a chuck roast or brisket of ${h.t('bw')}, braised at ${h.t('bov')}.`],
       ['How long do beef short ribs take?', `${h.t('st')} braised at ${h.t('bov')}.`],
       ['How long does beef stew meat take?', `${h.t('gryte')} simmered in liquid.`],
     ],
@@ -493,7 +493,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
     title: 'How long to cook it: times for turkey, ham, chicken, and more',
     h1: 'How long to cook turkey, ham, roasts, chicken, and eggs',
     description: 'How long to cook a turkey, ham, roast beef, pork roast, chicken, lamb, and hard-boiled eggs. Times from USDA FSIS and Oregon State Extension, with the source on every number. Thanksgiving calculators included.',
-    lead: `The turkey times here come as a calculator: type the weight and see the FSIS range. A turkey, unstuffed, takes ${t.t('u3t')} at ${t.t('ovn')} if it weighs ${t.t('u3w')}. Every time is approximate. A thermometer decides when the food is done.`,
+    lead: `The turkey times here come with a calculator: enter the weight and see the FSIS range. A turkey, unstuffed, takes ${t.t('u3t')} at ${t.t('ovn')} if it weighs ${t.t('u3w')}. Every time is approximate. A thermometer decides when the food is done.`,
     rik: [
       `<h2>Thanksgiving turkey</h2>${p([
         `These pages cover the turkey. <a href="${sti(rader.find((r) => r.id === 'kalkun'))}">How long to roast a turkey</a> has the weight calculator, <a href="${sti(rader.find((r) => r.id === 'tining'))}">how long to thaw a turkey</a> has the fridge and cold water times, and there are pages for <a href="${sti(rader.find((r) => r.id === 'kalkunbryst'))}">turkey breast</a> and for <a href="${sti(rader.find((r) => r.id === 'kalkunmetoder'))}">frying, grilling, and smoking</a>.`,

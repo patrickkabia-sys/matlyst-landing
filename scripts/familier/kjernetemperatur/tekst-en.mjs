@@ -19,7 +19,7 @@ const TERMO = kk(...MEASURE);
 export const TEKST = {
   kylling: (h, { tabell, p }) => ({
     ord: 'chicken',
-    title: 'Chicken internal temperature: what is safe?',
+    title: 'Chicken internal temperature: when is chicken done?',
     h1: 'What internal temperature is chicken done?',
     description: `${h.k('fs-chart')} and ${h.k('fsis-chart')} both give ${h.t('min')} for chicken: whole bird, breasts, legs, thighs, and wings. Where to put the thermometer, and why color is not a test.`,
     lead: `Chicken is safe at ${h.t('min')}, measured with a food thermometer. That is the minimum from ${h.k('fs-chart')} for a whole bird, breasts, legs, thighs, and wings. ${h.k('fsis-chart')} gives the same number.`,
@@ -88,7 +88,7 @@ export const TEKST = {
 
   kjottdeig: (h, { tabell, p }) => ({
     ord: 'ground beef',
-    title: 'Ground beef and burger temperature: what is done?',
+    title: 'Ground beef and burger temperature: when is it done?',
     h1: 'What internal temperature is a hamburger done?',
     description: `Ground beef is safe at ${h.t('min')}, says ${h.k('fs-chart')}. Why a brown burger is not proof, and why FSIS says to measure through the patty.`,
     lead: `Cook ground beef and hamburgers to ${h.t('min')}. ${h.k('fs-chart')} gives that number for ground meat and sausage, and ${h.k('fsis-ground')} repeats it for ground beef.`,
@@ -104,11 +104,11 @@ export const TEKST = {
         h.s('only'),
       ])],
       ['A warning about hamburgers', p([`${h.k('fsis-done')} reports that ${h.s('fire')}`])],
-      ['Do not stop halfway', p([`${h.k('fsis-ground')} asks the question on its page: ${h.s('partial')}`])],
+      ["Don't cook it partway", p([`${h.k('fsis-ground')} asks the question on its page: ${h.s('partial')}`])],
       ['At a glance', tabell({
         tittel: 'Ground beef temperatures',
         kolonner: ['What', 'Temperature'],
-        rader: [['Ground beef, hamburgers, ground meat', 'min'], ['The brown-patty case that fooled cooks in the study', 'brun']],
+        rader: [['Ground beef, hamburgers, ground meat', 'min'], ['Lowest reading at which a patty already looked well-done', 'brun']],
       }) + h.note('fs-chart') + h.note('fsis-colorgb')],
     ],
     faq: [
@@ -178,7 +178,7 @@ export const TEKST = {
       ['What if I mix beef and pork?', `${h.k('fsis-beef')} and ${h.k('fsis-pork')} both give ${h.t('beef')} for their ground meat, so a beef and pork loaf is covered by the same number. We found no federal page for a blend with poultry.`],
     ],
     soster: kk('ground-beef', 'Ground beef and burger temperature'),
-    andre: [kk('ground-turkey', 'Ground turkey internal temperature'), kk('leftovers', 'Leftovers and casseroles: reheating temperature'), TERMO],
+    andre: [kk('ground-turkey', 'Ground turkey internal temperature'), kk('leftovers', 'Reheating temperature for leftovers and casseroles'), TERMO],
   }),
 
   biff: (h, { tabell, p }) => ({
@@ -297,7 +297,7 @@ export const TEKST = {
       ['Do I have to reheat a fully cooked ham?', h.s('cold')],
     ],
     soster: ss('ham', 'How long to cook a ham, by weight and type'),
-    andre: [rr('ham', 'How long does ham last in the fridge?'), kk('pork', 'Pork internal temperature'), kk('leftovers', 'Leftovers: reheating temperature'), TERMO],
+    andre: [rr('ham', 'How long does ham last in the fridge?'), kk('pork', 'Pork internal temperature'), kk('leftovers', 'Reheating temperature for leftovers'), TERMO],
   }),
 
   lammelar: (h, { tabell, p }) => ({
@@ -314,7 +314,7 @@ export const TEKST = {
       ])],
       ['Ground lamb and organ meats', p([`${h.k('fsis-lamb')} recommends ${h.t('deig')} for lamb patties and ground lamb mixtures such as meat loaf. For organ and variety meats such as heart, kidney, liver, and tongue, it gives ${h.t('indre')}.`])],
       ['Cuts and the fell', p([h.s('leg'), h.s('fell')])],
-      ['Your oven is not the standard', p([h.s('vary')])],
+      ['Ovens vary', p([h.s('vary')])],
       ['The numbers in one table', tabell({
         tittel: 'Lamb temperatures',
         kolonner: ['Lamb product', 'Minimum temperature'],
@@ -391,7 +391,7 @@ export const TEKST = {
 
   rester: (h, { tabell, p }) => ({
     ord: 'leftovers',
-    title: 'Leftovers and casseroles: temperature to reheat to',
+    title: 'Reheating temperature for leftovers and casseroles',
     h1: 'What temperature should leftovers and casseroles reach?',
     description: `Leftovers and casseroles are reheated to ${h.t('rester')}, says ${h.k('fs-chart')}. Reheated ham and other cases, from ${h.k('fsis-chart')} and ${h.k('fsis-thanks')}.`,
     lead: `Reheat leftovers to ${h.t('rester')}. A casserole, with or without meat, also reaches ${h.t('gryte')}. ${h.k('fs-chart')} lists both numbers.`,

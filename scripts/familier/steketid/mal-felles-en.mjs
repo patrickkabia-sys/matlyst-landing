@@ -69,7 +69,7 @@ export function hjelpere(rad, data, brukt = new Set()) {
     return `“${esc(rest.join('|').trim())}” (${kp(kilde)})`;
   };
   /** Kildelinje under en tabell. */
-  const note = (id) => `<p><small>Source: ${k(id)}, “${esc(data.kilder[id].navn)}”. Read ${engelskDato(data.kilder[id].hentet)}.</small></p>`;
+  const note = (id) => `<p><small>Source: ${k(id)}, “${esc(data.kilder[id].navn)}”. Accessed ${engelskDato(data.kilder[id].hentet)}.</small></p>`;
   return { t, n, k, kp, s, note, brukt };
 }
 
@@ -78,7 +78,7 @@ function kildeliste(data, brukt) {
   const ider = [...brukt].sort((a, b) => rekkefolge.indexOf(a) - rekkefolge.indexOf(b));
   return `<h2>Sources</h2>\n<ol class="kilder" id="kilder">${ider.map((id) => {
     const k = data.kilder[id];
-    return `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Read ${engelskDato(k.hentet)}.</li>`;
+    return `<li>${esc(k.utgiver)}: <a href="${esc(k.adresse)}" rel="noopener">${esc(k.navn)}</a> (${k.aar}). Accessed ${engelskDato(k.hentet)}.</li>`;
   }).join('')}</ol>`;
 }
 

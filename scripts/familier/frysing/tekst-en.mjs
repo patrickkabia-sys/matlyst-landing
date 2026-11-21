@@ -8,7 +8,7 @@ const FREEZE_ROOT = '/en/can-you-freeze/';
 const R = (slug, text) => [`${FRIDGE_ROOT}${slug}/`, text];
 const F = (slug, text) => [`${FREEZE_ROOT}${slug}/`, text];
 
-const FREEZER = (h) => `${h.k('fs-chart')} writes its freezer times for a freezer at ${h.t('fryser')} or below.`;
+const FREEZER = (h) => `${h.k('fs-chart')} bases its freezer times on a freezer set at ${h.t('fryser')} or below.`;
 const QUALITY = (h) => `${h.k('fs-chart')} says its freezer guidelines are for quality only, and that frozen foods stored continuously at ${h.t('fryser')} or below can be kept indefinitely.`;
 const SAFE = (h) => `${h.k('fsis-freezing')} says food stored constantly at ${h.t('trygg')} will always be safe, and that only the quality suffers with lengthy freezer storage.`;
 const BURN = (h) => `${h.k('fsis-freezing')} says freezer burn does not make food unsafe, merely dry in spots.`;
@@ -254,7 +254,7 @@ export const TEKST = {
     tabell: { tittel: TIMES, kilde: 'fsis-leftovers', intro: `${h.k('fsis-leftovers')} gives one time for leftovers, with no separate line for rice:`, kolonner: COLS, rader: [['Leftovers, including cooked rice', 'lftfryst']], etter: [QUALITY(h)] },
     faq: [
       ['Is there a special rule for freezing rice?', `Not on the ${h.k('fs-chart')} chart or in ${h.k('fsis-leftovers')}. They speak of leftovers in general.`],
-      ['How long can rice stay in the fridge first?', `The leftovers rule says ${h.t('tint')} after thawing. For the fridge before freezing, see <a href="${FRIDGE_ROOT}cooked-rice/">how long cooked rice lasts</a>.`],
+      ['How long can rice stay in the fridge first?', `For the fridge before freezing, see <a href="${FRIDGE_ROOT}cooked-rice/">how long cooked rice lasts</a>. After thawing, the leftovers rule says to use it within ${h.t('tint')}.`],
     ],
     soster: R('cooked-rice', 'How long does cooked rice last in the fridge?'),
     andre: [F('cooked-pasta', 'Can you freeze cooked pasta?'), F('leftovers', 'Can you freeze leftovers?')],
@@ -491,7 +491,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
     ].join('\n'),
     faqTittel: 'Questions about freezer times',
     faq: [
-      ['What temperature should the freezer be?', `${forste.k('fs-chart')} writes its freezer times for ${forste.t('fryser')} or below.`],
+      ['What temperature should the freezer be?', `${forste.k('fs-chart')} bases its freezer times on ${forste.t('fryser')} or below.`],
       ['Is frozen food still safe after the time runs out?', `${forste.k('fs-chart')} says the freezer guidelines are for quality only. ${forste.k('fsis-freezing')} says food stored constantly at ${forste.t('trygg')} will always be safe, and only the quality suffers.`],
     ],
   };

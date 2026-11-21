@@ -9,7 +9,7 @@ export const { sideForRad, navSide, tillatteTall, tillatteTallNav, maskeNavn } =
   innhold: TEKST,
   nav: NAV,
   eyebrow: 'Ingredient substitutes',
-  cta: 'Find out what you can make with what you have, in Matlyst',
+  cta: 'See what you can make with what you have in Matlyst',
   relatertTittel: 'More substitutes',
-  kildeIntro: 'Every ratio on this page comes from the sources below, and the quote was checked against the source page. Where a page has no date of its own, the year is the year we read it. We give no number that is not in a source.',
+  kildeIntro: "Every ratio on this page comes from the sources below, and we checked each quote against the source page. If a page has no date, the year shown is the year we accessed it. We don't give any number that isn't in a source.",
 });
