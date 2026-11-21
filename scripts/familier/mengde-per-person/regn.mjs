@@ -43,6 +43,6 @@ export const ordVoksne = (n, t) => (n === 1 ? t.voksen : t.voksne);
 
 /** Setningen under kalkulatoren: «Ris: 4 voksne og 2 barn trenger 360 g eller 6 dl.» */
 export function setning(variant, voksne, barn, barnFaktor, t) {
-  const hvem = `${voksne} ${ordVoksne(voksne, t)}${barn > 0 ? ` ${t.og} ${barn} ${t.barn}` : ''}`;
+  const hvem = `${voksne} ${ordVoksne(voksne, t)}${barn > 0 ? ` ${t.og} ${barn} ${barn === 1 && t.ettBarn ? t.ettBarn : t.barn}` : ''}`;
   return `${variant.navn}: ${hvem} ${t.trenger} ${variantDeler(variant, voksne, barn, barnFaktor, t.til).join(` ${t.eller} `)}.`;
 }

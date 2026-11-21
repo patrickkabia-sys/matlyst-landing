@@ -1,0 +1,863 @@
+{
+  "familie": "mengde-per-person",
+  "marked": "da",
+  "kilder": {
+    "arla-maengder": {
+      "navn": "Mængder til hverdagsmad",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/opskrifter/leksikon/viden/maengder-til-hverdagsmad/",
+      "hentet": "2026-11-21"
+    },
+    "mv-perperson": {
+      "navn": "Mad pr. person: hvor meget skal du beregne?",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/mad-per-person-til-aftensmad/",
+      "hentet": "2026-11-21"
+    },
+    "mv-gaester": {
+      "navn": "Mad til gæster: mængder pr. person og beregner",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/mad-til-gaester/",
+      "hentet": "2026-11-21"
+    },
+    "mv-pasta": {
+      "navn": "Pasta: typer, kogetid, mængder og gode råd",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/pasta/",
+      "hentet": "2026-11-21"
+    },
+    "mv-flaesk": {
+      "navn": "Flæskesteg i ovn: sprøde svær og stegetid",
+      "utgiver": "Madens Verden",
+      "aar": 2026,
+      "adresse": "https://madensverden.dk/perfekt-flaeskesteg-i-ovn/",
+      "hentet": "2026-11-21"
+    },
+    "arla-flaesk": {
+      "navn": "Flæskesteg med sprød svær",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.dk/opskrifter/flaskesteg-med-sprod-svar/",
+      "hentet": "2026-11-21"
+    },
+    "dc-flaesk": {
+      "navn": "Flæskesteg med sprøde svær",
+      "utgiver": "Danish Crown",
+      "aar": 2026,
+      "adresse": "https://www.danishcrown.com/da-dk/opskrifter/flaeskesteg-med-sproede-svaer/",
+      "hentet": "2026-11-21"
+    },
+    "mv-kalkun": {
+      "navn": "Stegetid på kalkun: tid pr. kilo og kernetemperatur",
+      "utgiver": "Madens Verden",
+      "aar": 2024,
+      "adresse": "https://madensverden.dk/stegetid-paa-kalkun-pr-kilo-ovn/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ris",
+      "slug": "ris",
+      "navn": "Ris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "mv-dl": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mv-perperson",
+          "merknad": "Ris | Ca. 1 dl ukogte ris"
+        },
+        "mv-g-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Ris: Beregn omkring en deciliter ukogte ris pr. person. Det svarer normalt til cirka 75-85 gram, afhængigt af ristypen."
+        },
+        "mv-g-maks": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Ris: Beregn omkring en deciliter ukogte ris pr. person. Det svarer normalt til cirka 75-85 gram, afhængigt af ristypen."
+        },
+        "arla-g": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Regn desuden med ca. 80 g rå ris (ca. 1 dl) pr. person."
+        },
+        "arla-dl": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "arla-maengder",
+          "merknad": "Regn desuden med ca. 80 g rå ris (ca. 1 dl) pr. person."
+        },
+        "gaest-dl": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mv-gaester",
+          "merknad": "Ukogte ris | Ca. 1 dl"
+        }
+      },
+      "tekst": {
+        "vand": "mv-perperson|Husk, at både pasta og ris optager vand under kogningen og derfor vejer betydeligt mere, når de er færdige.",
+        "gryde": "mv-perperson|Skal du servere en gryderet med mange grøntsager, kan du ofte nøjes med lidt mindre.",
+        "flere": "mv-gaester|Det er dog vigtigt, at du ikke beregner fuld portion af både kartofler, pasta og ris, hvis du serverer flere slags tilbehør.",
+        "barn": "mv-gaester|Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+      }
+    },
+    {
+      "id": "pasta",
+      "slug": "pasta",
+      "navn": "Pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "hoved-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Tørret pasta som hovedret | 75-100 gram"
+        },
+        "hoved-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Tørret pasta som hovedret | 75-100 gram"
+        },
+        "tilbehoer-min": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Tørret pasta som tilbehør | 50-75 gram"
+        },
+        "tilbehoer-maks": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Tørret pasta som tilbehør | 50-75 gram"
+        },
+        "boern-min": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Tørret pasta til børn | 50-75 gram"
+        },
+        "boern-maks": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Tørret pasta til børn | 50-75 gram"
+        },
+        "frisk-min": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Frisk pasta som hovedret | 125-150 gram"
+        },
+        "frisk-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Frisk pasta som hovedret | 125-150 gram"
+        },
+        "arla-toer-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Som tommelfingerregel kan du regne med ca. 75-100 g tørret spaghetti eller pasta pr. voksen."
+        },
+        "arla-toer-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Som tommelfingerregel kan du regne med ca. 75-100 g tørret spaghetti eller pasta pr. voksen."
+        },
+        "arla-frisk": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Hvis du bruger frisk pasta, skal du regne med ca. 150 g pr. voksen."
+        },
+        "fire-toer-min": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Som eksempel skal du beregne cirka 300-400 gram tørret pasta til fire voksne, når du laver en almindelig pastaret."
+        },
+        "fire-toer-maks": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Som eksempel skal du beregne cirka 300-400 gram tørret pasta til fire voksne, når du laver en almindelig pastaret."
+        },
+        "fire-frisk-min": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Bruger du frisk pasta, kan du beregne cirka 500-600 gram til fire personer."
+        },
+        "fire-frisk-maks": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "mv-pasta",
+          "merknad": "Bruger du frisk pasta, kan du beregne cirka 500-600 gram til fire personer."
+        },
+        "mv-frisk-p": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Frisk pasta | 100-125 g"
+        },
+        "mv-frisk-p-maks": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Frisk pasta | 100-125 g"
+        }
+      },
+      "tekst": {
+        "ukogt": "mv-pasta|Alle mængder er angivet for ukogt pasta.",
+        "optag": "mv-pasta|Husk også, at tørret pasta optager vand under kogningen og derfor bliver væsentligt tungere.",
+        "meget": "mv-pasta|Er der meget kød, fisk eller grøntsager i retten, kan du ofte nøjes med lidt mindre.",
+        "barn": "mv-gaester|Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+      }
+    },
+    {
+      "id": "poteter",
+      "slug": "kartofler",
+      "navn": "Kartofler",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "kogte-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til almindelige kogte kartofler vil 150-200 gram pr. person ofte være passende, når der også bliver serveret kød, fisk og grøntsager."
+        },
+        "kogte-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til almindelige kogte kartofler vil 150-200 gram pr. person ofte være passende, når der også bliver serveret kød, fisk og grøntsager."
+        },
+        "mos": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Her vil jeg anbefale omkring 250 gram rå kartofler pr. person."
+        },
+        "ovn-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til ovnstegte kartofler eller hjemmelavede pommes frites er 200-250 gram rå kartofler pr. person et godt udgangspunkt."
+        },
+        "ovn-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til ovnstegte kartofler eller hjemmelavede pommes frites er 200-250 gram rå kartofler pr. person et godt udgangspunkt."
+        },
+        "floede-min": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "hvor man typisk kan beregne omkring 250-300 gram kartofler pr. person"
+        },
+        "floede-maks": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "hvor man typisk kan beregne omkring 250-300 gram kartofler pr. person"
+        },
+        "arla-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Kartofler: 200-250 g pr. voksen"
+        },
+        "arla-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Kartofler: 200-250 g pr. voksen"
+        },
+        "gaest": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Kartofler | Ca. 150 g før skrælning"
+        }
+      },
+      "tekst": {
+        "svind": "mv-perperson|Husk, at der kan være lidt svind, når kartoflerne skrælles.",
+        "flere": "mv-gaester|Det er dog vigtigt, at du ikke beregner fuld portion af både kartofler, pasta og ris, hvis du serverer flere slags tilbehør.",
+        "skraeld": "mv-gaester|Til almindelige kogte kartofler kan du beregne cirka 150 gram rå kartofler pr. person, hvilket svarer til omtrent 100 gram efter skrælning og tilberedning."
+      }
+    },
+    {
+      "id": "flaeskesteg",
+      "slug": "flaeskesteg",
+      "navn": "Flæskesteg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "mv-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-flaesk",
+          "merknad": "Beregn som udgangspunkt 200-250 gram rå flæskesteg pr. voksen."
+        },
+        "mv-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mv-flaesk",
+          "merknad": "Beregn som udgangspunkt 200-250 gram rå flæskesteg pr. voksen."
+        },
+        "arla-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "arla-flaesk",
+          "merknad": "Ca. 200-300 g rå steg pr. person"
+        },
+        "arla-maks": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "arla-flaesk",
+          "merknad": "Ca. 200-300 g rå steg pr. person"
+        },
+        "arla-meget-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "arla-flaesk",
+          "merknad": "så er 150-250 g nok"
+        },
+        "arla-meget-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "arla-flaesk",
+          "merknad": "så er 150-250 g nok"
+        },
+        "arla-sulten-min": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "arla-flaesk",
+          "merknad": "kan du beregne ca. 300-350 g"
+        },
+        "arla-sulten-maks": {
+          "verdi": 350,
+          "enhet": "g",
+          "kilde": "arla-flaesk",
+          "merknad": "kan du beregne ca. 300-350 g"
+        },
+        "dc-hverdag-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "dc-flaesk",
+          "merknad": "Hverdagsmåltid | 200–250 g"
+        },
+        "dc-hverdag-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "dc-flaesk",
+          "merknad": "Hverdagsmåltid | 200–250 g"
+        },
+        "dc-jul": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "dc-flaesk",
+          "merknad": "Juleaften eller gæstemiddag | 300 g"
+        },
+        "dc-sandwich-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "dc-flaesk",
+          "merknad": "Flæskestegssandwich | 150–200 g"
+        },
+        "dc-sandwich-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "dc-flaesk",
+          "merknad": "Flæskestegssandwich | 150–200 g"
+        },
+        "dc-svind-min": {
+          "verdi": 20,
+          "enhet": "%",
+          "kilde": "dc-flaesk",
+          "merknad": "Flæskesteg svinder ca. 20–25 % under tilberedning"
+        },
+        "dc-svind-maks": {
+          "verdi": 25,
+          "enhet": "%",
+          "kilde": "dc-flaesk",
+          "merknad": "Flæskesteg svinder ca. 20–25 % under tilberedning"
+        },
+        "mv-steg": {
+          "verdi": 1.5,
+          "enhet": "kg",
+          "kilde": "mv-flaesk",
+          "merknad": "En flæskesteg på 1,5 kilo passer godt til seks personer"
+        }
+      },
+      "tekst": {
+        "afhaenger": "mv-flaesk|Den præcise mængde afhænger af appetit, mængden af tilbehør og ønsket om rester.",
+        "dagen": "mv-flaesk|En flæskesteg på 1,5 kilo passer godt til seks personer og giver ofte også lidt kød til næste dag."
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "kalkun",
+      "navn": "Kalkun",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "hel": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mv-kalkun",
+          "merknad": "Jeg bruger som tommelfingerregel cirka 500 gram hel kalkun pr. person, når der også serveres kartofler, sovs og grøntsager."
+        }
+      },
+      "tekst": {
+        "benskrog": "mv-kalkun|Når du køber en hel kalkun, skal du huske, at en del af vægten består af ben og skrog.",
+        "mere": "mv-kalkun|Derfor skal du beregne mere end ved eksempelvis en udbenet kalkunfilet.",
+        "fire": "mv-kalkun|Det betyder, at en kalkun på fire kilo normalt passer til omkring otte personer.",
+        "fem": "mv-kalkun|En kalkun på fem kilo vil som udgangspunkt kunne række til cirka ti personer, mens en kalkun på seks kilo kan række til omkring tolv."
+      }
+    },
+    {
+      "id": "kylling",
+      "slug": "kylling",
+      "navn": "Kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "bryst-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til kyllingebryst kan du som udgangspunkt beregne 150-200 gram pr. person."
+        },
+        "bryst-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til kyllingebryst kan du som udgangspunkt beregne 150-200 gram pr. person."
+        },
+        "ben-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Her vil 200-300 gram råt kød pr. person ofte være passende, men det afhænger meget af udskæringen."
+        },
+        "ben-maks": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Her vil 200-300 gram råt kød pr. person ofte være passende, men det afhænger meget af udskæringen."
+        },
+        "arla-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Kød (råt): 150-200 g pr. voksen"
+        },
+        "arla-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Kød (råt): 150-200 g pr. voksen"
+        },
+        "arla-boern-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Til børn er 75-100 g ofte nok."
+        },
+        "arla-boern-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Til børn er 75-100 g ofte nok."
+        }
+      },
+      "tekst": {
+        "hel": "mv-perperson|Hvis du steger en hel kylling, vil en kylling på omkring 1.200-1.400 gram ofte kunne række til fire personer, når der også serveres godt med tilbehør.",
+        "stor": "mv-perperson|Er appetitten stor, vil jeg vælge en større kylling.",
+        "kod": "arla-maengder|Når du laver en hovedret med kød, er det passende at beregne 150-200 g råt kød pr. voksen."
+      }
+    },
+    {
+      "id": "fisk",
+      "slug": "fisk",
+      "navn": "Fisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "filet-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til en almindelig fiskefilet uden ben kan du som udgangspunkt bruge 150-200 gram rå fisk pr. person."
+        },
+        "filet-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til en almindelig fiskefilet uden ben kan du som udgangspunkt bruge 150-200 gram rå fisk pr. person."
+        },
+        "torsk-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til en mager fisk som torsk kan du eventuelt beregne 200-250 gram, hvis fisken er hoveddelen af måltidet, og der ikke er meget andet tilbehør."
+        },
+        "torsk-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til en mager fisk som torsk kan du eventuelt beregne 200-250 gram, hvis fisken er hoveddelen af måltidet, og der ikke er meget andet tilbehør."
+        },
+        "arla-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Til en hovedret anbefales det at beregne 150-200 g rå fisk pr. voksen."
+        },
+        "arla-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Til en hovedret anbefales det at beregne 150-200 g rå fisk pr. voksen."
+        },
+        "arla-boern-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Til børn er 75-100 g passende."
+        },
+        "arla-boern-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Til børn er 75-100 g passende."
+        }
+      },
+      "tekst": {
+        "hel": "mv-perperson|Bruger du en hel fisk med hoved, ben og eventuelt skind, skal du selvfølgelig beregne ekstra til det, der ikke kan spises.",
+        "ben": "arla-maengder|Husk også at tage højde for eventuelle ben og skind, hvis du ikke bruger renset fisk.",
+        "laks": "mv-perperson|Laver du laks i ovnen, vil 150-200 gram pr. person ofte passe fint, især når der også bliver serveret kartofler, ris og grøntsager."
+      }
+    },
+    {
+      "id": "kjottdeig",
+      "slug": "hakket-koed",
+      "navn": "Hakket kød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "mv-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til hakket oksekød eller svinekød kan du som udgangspunkt beregne 100-150 gram råt kød pr. person."
+        },
+        "mv-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til hakket oksekød eller svinekød kan du som udgangspunkt beregne 100-150 gram råt kød pr. person."
+        },
+        "gryde-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "kan du ofte reducere mængden til omkring 75-125 gram kød pr. person"
+        },
+        "gryde-maks": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "kan du ofte reducere mængden til omkring 75-125 gram kød pr. person"
+        },
+        "arla-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "kan du nøjes med 100-150 g"
+        },
+        "arla-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "kan du nøjes med 100-150 g"
+        }
+      },
+      "tekst": {
+        "brug": "mv-perperson|Hvis du eksempelvis laver frikadeller, hakkebøffer eller en gryderet med hakket kød, er det en brugbar mængde at tage udgangspunkt i.",
+        "arla": "arla-maengder|Skal kødet bruges i en ret med mange grøntsager, pasta eller ris, kan du nøjes med 100-150 g."
+      }
+    },
+    {
+      "id": "groensager",
+      "slug": "groentsager",
+      "navn": "Grøntsager og salat",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "tilberedte-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "kan du som udgangspunkt beregne omkring 150-250 gram pr. person"
+        },
+        "tilberedte-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "kan du som udgangspunkt beregne omkring 150-250 gram pr. person"
+        },
+        "salat-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til en blandet grøn salat vil 100-125 gram pr. person ofte være en passende mængde."
+        },
+        "salat-maks": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "mv-perperson",
+          "merknad": "Til en blandet grøn salat vil 100-125 gram pr. person ofte være en passende mængde."
+        },
+        "arla-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Grøntsager: 150-200 g pr. voksen"
+        },
+        "arla-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Grøntsager: 150-200 g pr. voksen"
+        },
+        "arla-salat-min": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Blandet salat: 75-125 g pr. voksen"
+        },
+        "arla-salat-maks": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "arla-maengder",
+          "merknad": "Blandet salat: 75-125 g pr. voksen"
+        },
+        "gaest": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Salat og grøntsager | Mindst 100 g"
+        }
+      },
+      "tekst": {
+        "frosne": "mv-perperson|Frosne grøntsager kan beregnes efter samme princip som friske grøntsager.",
+        "flere": "mv-perperson|Det afhænger af, om grøntsagerne er det vigtigste tilbehør, eller om der også bliver serveret kartofler, ris eller pasta."
+      }
+    },
+    {
+      "id": "mat-til-selskap",
+      "slug": "gaester",
+      "navn": "Mad til gæster",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "alder-min": {
+          "verdi": 4,
+          "enhet": "år",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "alder-maks": {
+          "verdi": 10,
+          "enhet": "år",
+          "kilde": "mv-gaester",
+          "merknad": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+        },
+        "koed": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Kød uden ben | Ca. 200 g"
+        },
+        "fisk-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Fiskefilet | 150-200 g"
+        },
+        "fisk-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Fiskefilet | 150-200 g"
+        },
+        "kartofler": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Kartofler | Ca. 150 g før skrælning"
+        },
+        "pasta": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Tørret pasta | Ca. 100 g"
+        },
+        "ris": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mv-gaester",
+          "merknad": "Ukogte ris | Ca. 1 dl"
+        },
+        "salat": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Salat og grøntsager | Mindst 100 g"
+        },
+        "sovs": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mv-gaester",
+          "merknad": "Sovs | Ca. 1 dl"
+        },
+        "dessert-min": {
+          "verdi": 130,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Dessert | 130-150 g"
+        },
+        "dessert-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Dessert | 130-150 g"
+        },
+        "suppe-min": {
+          "verdi": 2,
+          "enhet": "dl",
+          "kilde": "mv-gaester",
+          "merknad": "Suppe som forret | 2-2,5 dl"
+        },
+        "suppe-maks": {
+          "verdi": 2.5,
+          "enhet": "dl",
+          "kilde": "mv-gaester",
+          "merknad": "Suppe som forret | 2-2,5 dl"
+        },
+        "forret": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Anden forret | Ca. 150 g"
+        },
+        "buffet-min": {
+          "verdi": 65,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Det svarer til omkring 65-70 gram af hver slags kød pr. person"
+        },
+        "buffet-maks": {
+          "verdi": 70,
+          "enhet": "g",
+          "kilde": "mv-gaester",
+          "merknad": "Det svarer til omkring 65-70 gram af hver slags kød pr. person"
+        }
+      },
+      "tekst": {
+        "barn": "mv-gaester|Børn mellem cirka 4 og 10 år regnes som en halv voksenportion.",
+        "buffet": "mv-gaester|Serverer du eksempelvis tre slags kød, kan du tage udgangspunkt i de samme 200 gram kød pr. voksen og fordele mængden mellem retterne.",
+        "vejl": "mv-gaester|Mængderne er vejledende og skal tilpasses den menu, du har planlagt.",
+        "mindre": "mv-gaester|Store tillæg kan give unødigt madspild."
+      }
+    }
+  ]
+}

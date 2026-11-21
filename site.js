@@ -394,7 +394,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   };
   const totalt = (perPerson, voksne, barn, faktor) => perPerson * (voksne + faktor * barn);
   const deler = (v, voksne, barn, faktor, til) => v.d.map(([min, maks, enhet]) => delTekst(totalt(min, voksne, barn, faktor), totalt(maks, voksne, barn, faktor), enhet, til));
-  const setningTekst = (v, voksne, barn, faktor, t) => `${v.n}: ${voksne} ${voksne === 1 ? t.voksen : t.voksne}${barn > 0 ? ` ${t.og} ${barn} ${t.barn}` : ''} ${t.trenger} ${deler(v, voksne, barn, faktor, t.til).join(` ${t.eller} `)}.`;
+  const setningTekst = (v, voksne, barn, faktor, t) => `${v.n}: ${voksne} ${voksne === 1 ? t.voksen : t.voksne}${barn > 0 ? ` ${t.og} ${barn} ${barn === 1 && t.ettBarn ? t.ettBarn : t.barn}` : ''} ${t.trenger} ${deler(v, voksne, barn, faktor, t.til).join(` ${t.eller} `)}.`;
   // porsjon:slutt
   for (const skjema of skjemaer) {
     // Hvert skjema settes opp for seg: et ødelagt skjema hoppes over (det statiske svaret i HTML-en blir stående), og resten virker.

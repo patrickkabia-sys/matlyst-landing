@@ -1,0 +1,1423 @@
+{
+  "sjekket": "2026-11-21",
+  "kilder": {
+    "as-matlyst": {
+      "navn": "Matlyst: Recept & matsedel",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id6762563515",
+      "hentet": "2026-11-21"
+    },
+    "gp-matlyst": {
+      "navn": "Matlyst: Recept & matsedel",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=app.matlyst&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "web-matlyst": {
+      "navn": "Matlyst receptbok-app",
+      "utgiver": "matlyst-app.no",
+      "adresse": "https://matlyst-app.no/sv/receptbok-app/",
+      "hentet": "2026-11-21"
+    },
+    "as-paprika": {
+      "navn": "Paprika recepthanterare 4",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id1303222868",
+      "hentet": "2026-11-21"
+    },
+    "web-paprika": {
+      "navn": "Paprika Recipe Manager",
+      "utgiver": "paprikaapp.com",
+      "adresse": "https://www.paprikaapp.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-recime": {
+      "navn": "ReciMe: Recipes & Meal Planner",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id1593779280",
+      "hentet": "2026-11-21"
+    },
+    "web-recime": {
+      "navn": "ReciMe",
+      "utgiver": "recime.app",
+      "adresse": "https://www.recime.app/",
+      "hentet": "2026-11-21"
+    },
+    "as-recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id974683711",
+      "hentet": "2026-11-21"
+    },
+    "web-recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utgiver": "recipekeeperonline.com",
+      "adresse": "https://recipekeeperonline.com/",
+      "hentet": "2026-11-21"
+    },
+    "as-samsung": {
+      "navn": "Samsung Food: Meal Planner",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id1133637674",
+      "hentet": "2026-11-21"
+    },
+    "gp-samsung": {
+      "navn": "Samsung Food: Meal Planner",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.foodient.whisk&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "as-arla": {
+      "navn": "Arla Mat - Recept",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id415895347",
+      "hentet": "2026-11-21"
+    },
+    "gp-arla": {
+      "navn": "Arla Mat – Recept & Planering",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=arla.activities&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "as-ica": {
+      "navn": "ICA – recept och erbjudanden",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id458324110",
+      "hentet": "2026-11-21"
+    },
+    "gp-ica": {
+      "navn": "ICA – recept och erbjudanden",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=se.ica.handla&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "as-coop": {
+      "navn": "Coop | Mat Erbjudanden Medlem",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id408840395",
+      "hentet": "2026-11-21"
+    },
+    "gp-coop": {
+      "navn": "Coop | Mat Erbjudanden Medlem",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=se.nansen.coop&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "as-willys": {
+      "navn": "Willy:s",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id593028703",
+      "hentet": "2026-11-21"
+    },
+    "gp-willys": {
+      "navn": "Willys",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=se.axfood.willys&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "as-bring": {
+      "navn": "Bring! Inköpslista & Recept",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id580669177",
+      "hentet": "2026-11-21"
+    },
+    "gp-bring": {
+      "navn": "Bring! Matinköpslista",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=ch.publisheria.bring&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "web-bring": {
+      "navn": "Bring!",
+      "utgiver": "getbring.com",
+      "adresse": "https://www.getbring.com/en/home",
+      "hentet": "2026-11-21"
+    },
+    "as-listonic": {
+      "navn": "Smart Inköpslista - Listonic",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id331302745",
+      "hentet": "2026-11-21"
+    },
+    "gp-listonic": {
+      "navn": "Smart Inköpslista - Listonic",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.l&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "web-listonic": {
+      "navn": "Listonic",
+      "utgiver": "listonic.com",
+      "adresse": "https://listonic.com/sv",
+      "hentet": "2026-11-21"
+    },
+    "as-plantoeat": {
+      "navn": "Plan to Eat",
+      "utgiver": "App Store (Sverige)",
+      "adresse": "https://apps.apple.com/se/app/id1215348056",
+      "hentet": "2026-11-21"
+    },
+    "gp-plantoeat": {
+      "navn": "Plan to Eat: Meal Planner",
+      "utgiver": "Google Play (Sverige)",
+      "adresse": "https://play.google.com/store/apps/details?id=com.plantoeat.mobile&hl=sv&gl=SE",
+      "hentet": "2026-11-21"
+    },
+    "web-plantoeat": {
+      "navn": "Plan to Eat",
+      "utgiver": "plantoeat.com",
+      "adresse": "https://www.plantoeat.com/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "apper": {
+    "matlyst": {
+      "navn": "Matlyst",
+      "utvikler": "Patrick Kabia",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad och Android",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "iPad Kräver iPadOS"
+            },
+            {
+              "kilde": "gp-matlyst",
+              "sitat": "Matlyst: Recept & matsedel"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "svenska, danska, engelska, norska bokmål"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis att ladda ner. Fem importer via länk per månad. Veckomeny och inköpslista är gratis.",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Du kan importera fem recept via länk per månad utan Pro."
+            },
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Veckomeny och Inköpslista kan användas utan Pro."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Matlyst Pro, abonnemang",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Ett Pro-abonnemang förnyas automatiskt"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Importera via en länk från en webbplats, Instagram, TikTok eller YouTube."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram, TikTok och YouTube",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Importera via en länk från en webbplats, Instagram, TikTok eller YouTube."
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Lägg recept i Veckomeny och för över veckans ingredienser till Inköpslista."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, görs från recepten och sorteras efter butikens avdelningar",
+          "kilder": [
+            {
+              "kilde": "web-matlyst",
+              "sitat": "så hamnar ingredienserna på en inköpslista, sammanslagna och sorterade efter butikens avdelningar."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Med Pro",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Delning inom ett hushåll kräver Pro."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ja. Gratisversionen visar ett begränsat antal varor.",
+          "kilder": [
+            {
+              "kilde": "as-matlyst",
+              "sitat": "Gratisversionen visar ett begränsat antal varor. Med Pro ser du alla."
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Recept på andra språk översätts till svenska. Mängderna är metriska som standard.",
+          "kilder": [
+            {
+              "kilde": "web-matlyst",
+              "sitat": "Recept på andra språk översätts till svenska."
+            },
+            {
+              "kilde": "web-matlyst",
+              "sitat": "Mängderna är metriska som standard."
+            }
+          ]
+        }
+      }
+    },
+    "paprika": {
+      "navn": "Paprika",
+      "utvikler": "Hindsight Labs LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Mac, Android och Windows",
+          "kilder": [
+            {
+              "kilde": "web-paprika",
+              "sitat": "one subscription covers iPhone, iPad, Mac, Android, and Windows."
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "svenska, danska, engelska, finska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis att ladda ner. Upp till 50 recept på en enhet.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Gratisversionen låter dig spara upp till 50 recept på en enhet."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, abonnemang. Ett abonnemang gäller alla enheter.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "En premiumprenumeration låser upp obegränsat antal recept, molnsynkronisering, åtkomst på alla enheter och alla andra premiumfunktioner."
+            },
+            {
+              "kilde": "web-paprika",
+              "sitat": "one plan covers every device"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Ladda ner recept från dina favoritwebbplatser"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "TikTok, Instagram, Facebook och YouTube, med Premium",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Spara recept från TikTok-, Instagram-, Facebook- och YouTube-apparna (Premium)"
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja, för dagen, veckan eller månaden",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Planera måltider för dagen, veckan eller månaden"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, efter avdelning. Hela veckan kan läggas på listan.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Bläddra i inköpslistor efter avdelningar"
+            },
+            {
+              "kilde": "as-paprika",
+              "sitat": "Lägg till hela veckan i inköpslistan"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Familjekonton med Premium",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Familjekonton (Premium)"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Håll koll på skafferivaror"
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Fungerar offline, och matlagningsläget tar röstkommandon.",
+          "kilder": [
+            {
+              "kilde": "as-paprika",
+              "sitat": "Fungerar offline"
+            },
+            {
+              "kilde": "as-paprika",
+              "sitat": "Matlagningsläge: använd röstkommandon och laga mat utan att röra skärmen"
+            }
+          ]
+        }
+      }
+    },
+    "recime": {
+      "navn": "ReciMe",
+      "utvikler": "ReciMe Pty Ltd",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android och webb",
+          "kilder": [
+            {
+              "kilde": "web-recime",
+              "sitat": "Is ReciMe available for both iOS and Android devices? Yes!"
+            },
+            {
+              "kilde": "web-recime",
+              "sitat": "You can also use our web application to save and access all your recipes."
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Svenska står inte bland språken i App Store",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "engelska, franska, portugisiska, spanska, tyska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Fem importer per vecka. Inköpslista, veckomeny och kokböcker är gratis.",
+          "kilder": [
+            {
+              "kilde": "web-recime",
+              "sitat": "The free version of ReciMe is limited to 5 recipe imports per week."
+            },
+            {
+              "kilde": "web-recime",
+              "sitat": "including our smart grocery list, meal plan and cookbooks features"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, abonnemang per månad eller år",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "The ReciMe Premium subscription renews automatically at the end of each period (each month or year) until you cancel."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Upload recipes from anywhere"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram, Facebook, TikTok, YouTube och Pinterest",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Save Recipes from Instagram, Facebook, TikTok, YouTube and Pinterest"
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja, uppdelad på frukost, lunch och middag",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Categorize meals for breakfast, lunch, or dinner with the built-in meal planner."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, sorterad efter avdelning eller recept",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Sort ingredients by supermarket aisle or by recipe."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Enskilda recept med vänner och familj. Ett delat hushåll uppges inte.",
+          "kilder": [
+            {
+              "kilde": "as-recime",
+              "sitat": "Share recipes with your friends and family."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "Sparar recept från skärmdumpar och foton av handskrivna recept. Näringsvärden med Premium.",
+          "kilder": [
+            {
+              "kilde": "web-recime",
+              "sitat": "ReciMe can even save recipes from screenshots or photos of handwritten recipes."
+            },
+            {
+              "kilde": "as-recime",
+              "sitat": "Calculate nutrition for every recipe"
+            }
+          ]
+        }
+      }
+    },
+    "recipekeeper": {
+      "navn": "Recipe Keeper",
+      "utvikler": "Tudorspan Limited",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android, pc och Mac. Andra plattformar köps separat.",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Synkronisera dina recept via din iPhone, iPad, Android-telefon och surfplatta, PC och Mac."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "separat köp krävs för andra plattformar"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "svenska, danska, engelska, finska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis att prova. Vad gratisversionen begränsar uppges inte.",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Prova det gratis idag!"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Köp i appen (Recipe Keeper Pro Uppgradering)",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Recipe Keeper Pro Uppgradering"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Hundratals populära receptwebbplatser stöds."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Instagram och TikTok",
+          "kilder": [
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Sök efter recept på webben, Instagram och TikTok och lägg till dem direkt i din samling."
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja, per vecka och månad. Appen kan göra en slumpad plan utifrån dina önskemål.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Med en integrerad veckoplanerare och månadsplanering kan du planera dina måltider i förväg."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Skapa en slumpmässig måltidsplan baserat på dina tips och förslag."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, grupperad efter gång. Alla planerade måltider kan läggas på listan i ett steg.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Fullständig inköpslista som automatiskt grupperar dina varor efter gång."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Lägg till alla dina måltider i din inköpslista i ett steg."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Delad receptsamling och måltidsplan för familjen",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Skapa en delad familjeceptsamling."
+            },
+            {
+              "kilde": "web-recipekeeper",
+              "sitat": "Dela din måltidsplan med hela din familj."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "Skannar recept från foton och PDF-filer och tar in recept från många andra receptappar.",
+          "kilder": [
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Skanna recept med telefonens kamera eller från dina befintliga foton och PDF-filer."
+            },
+            {
+              "kilde": "as-recipekeeper",
+              "sitat": "Överför dina recept från andra appar som"
+            }
+          ]
+        }
+      }
+    },
+    "samsung": {
+      "navn": "Samsung Food",
+      "utvikler": "Foodient Ltd",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android och webb",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "available for free on your iPhone, iPad, or web."
+            },
+            {
+              "kilde": "gp-samsung",
+              "sitat": "Samsung Food: Meal Planner"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Svenska står inte bland språken i App Store",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "engelska, franska, italienska, koreanska, portugisiska, spanska, tyska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis: spara recept, planera veckan och dela inköpslistor",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Plan your weekly meals, turn them into smart shopping lists, and share them with friends or family."
+            },
+            {
+              "kilde": "as-samsung",
+              "sitat": "All this, available for free on your iPhone, iPad, or web."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Samsung Food+, köp i appen",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Samsung Food+ unlocks advanced features"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Save any recipe from any website and make it your own."
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Uppges inte"
+        },
+        "ukemeny": {
+          "tekst": "Ja. Veckoplaner gjorda med AI ingår i Samsung Food+.",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Plan your weekly meals"
+            },
+            {
+              "kilde": "as-samsung",
+              "sitat": "AI-personalized weekly meal plans tailored to your health goals."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, görs från veckoplanen",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "turn them into smart shopping lists"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Delade inköpslistor",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Organize family shopping with shared grocery lists."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Med Samsung Food+",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "Automated pantry management with personalized cooking suggestions."
+            }
+          ]
+        },
+        "saerpreg": {
+          "tekst": "Ett stort bibliotek med offentliga recept, med näringsvärden och hälsopoäng.",
+          "kilder": [
+            {
+              "kilde": "as-samsung",
+              "sitat": "public recipes, including"
+            },
+            {
+              "kilde": "as-samsung",
+              "sitat": "Access detailed nutrition information and health scores"
+            }
+          ]
+        }
+      }
+    },
+    "arla": {
+      "navn": "Arla Mat",
+      "utvikler": "Arla Foods amba",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad och Android",
+          "kilder": [
+            {
+              "kilde": "as-arla",
+              "sitat": "iPad Kräver iPadOS"
+            },
+            {
+              "kilde": "gp-arla",
+              "sitat": "Arla Mat – Recept & Planering"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-arla",
+              "sitat": "Språk SV svenska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis att ladda ner",
+          "kilder": [
+            {
+              "kilde": "as-arla",
+              "sitat": "6500 recept, kokbok, planering Gratis"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Uppges inte"
+        },
+        "nett": {
+          "tekst": "Uppges inte"
+        },
+        "sosiale": {
+          "tekst": "Uppges inte"
+        },
+        "ukemeny": {
+          "tekst": "Två färdiga veckomenyer varje vecka, och egna måltidsplaner i Min Matsedel",
+          "kilder": [
+            {
+              "kilde": "as-arla",
+              "sitat": "Veckomenyer – två färdiga matsedlar varje vecka"
+            },
+            {
+              "kilde": "as-arla",
+              "sitat": "Min Matsedel – skapa egna måltidsplaner"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, direkt från recepten",
+          "kilder": [
+            {
+              "kilde": "as-arla",
+              "sitat": "Inköpslistor – direkt från recept till butik"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Uppges inte"
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "Över 6500 recept från Arla, med timer och steg för steg-läge.",
+          "kilder": [
+            {
+              "kilde": "as-arla",
+              "sitat": "Med över 6500 recept"
+            },
+            {
+              "kilde": "as-arla",
+              "sitat": "Timerfunktion – för varje steg i receptet"
+            }
+          ]
+        }
+      }
+    },
+    "ica": {
+      "navn": "ICA",
+      "utvikler": "ICA Sverige AB",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad och Android",
+          "kilder": [
+            {
+              "kilde": "as-ica",
+              "sitat": "iPad Kräver iPadOS"
+            },
+            {
+              "kilde": "gp-ica",
+              "sitat": "ICA – recept och erbjudanden"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-ica",
+              "sitat": "Språk SV svenska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis att ladda ner",
+          "kilder": [
+            {
+              "kilde": "as-ica",
+              "sitat": "Mat och smart inköpslista Gratis"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Uppges inte"
+        },
+        "nett": {
+          "tekst": "Uppges inte"
+        },
+        "sosiale": {
+          "tekst": "Uppges inte"
+        },
+        "ukemeny": {
+          "tekst": "Uppges inte"
+        },
+        "handleliste": {
+          "tekst": "Ja. Hela recept, ingredienser eller erbjudanden kan läggas på listan, och den sorteras efter din ICA-butik.",
+          "kilder": [
+            {
+              "kilde": "as-ica",
+              "sitat": "Lägg till hela recept, utvalda ingredienser eller erbjudanden till din inköpslista."
+            },
+            {
+              "kilde": "as-ica",
+              "sitat": "Dela listan med ditt hushåll och sortera den efter din ICA-butik."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja, inköpslistan och egna receptsamlingar",
+          "kilder": [
+            {
+              "kilde": "as-ica",
+              "sitat": "Dela listan med ditt hushåll"
+            },
+            {
+              "kilde": "as-ica",
+              "sitat": "Du kan även skapa egna receptsamlingar som du, om du vill, kan dela med andra i hushållet."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "Tusentals recept från ICA och personliga erbjudanden varje vecka.",
+          "kilder": [
+            {
+              "kilde": "as-ica",
+              "sitat": "Sök bland tusentals recept"
+            },
+            {
+              "kilde": "as-ica",
+              "sitat": "Personliga erbjudanden varje vecka"
+            }
+          ]
+        }
+      }
+    },
+    "coop": {
+      "navn": "Coop",
+      "utvikler": "Coop Sverige AB",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad och Android",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "iPad Kräver iPadOS"
+            },
+            {
+              "kilde": "gp-coop",
+              "sitat": "Coop | Mat Erbjudanden Medlem"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "Språk SV svenska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis att ladda ner",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "Välkommen till Ditt Coop Gratis"
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Uppges inte"
+        },
+        "nett": {
+          "tekst": "Uppges inte"
+        },
+        "sosiale": {
+          "tekst": "Uppges inte"
+        },
+        "ukemeny": {
+          "tekst": "Uppges inte"
+        },
+        "handleliste": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "Planera ditt inköp med vår smarta inköpslista."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Uppges inte"
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "Handla online, Scan & Pay i butik och tusentals recept.",
+          "kilder": [
+            {
+              "kilde": "as-coop",
+              "sitat": "Här kan du också handla online och snabbt beställa hem din mat eller hämta upp i butik."
+            },
+            {
+              "kilde": "as-coop",
+              "sitat": "Med Scan & Pay kan du själv scanna varorna själv i butik"
+            },
+            {
+              "kilde": "as-coop",
+              "sitat": "så har vi även samlat tusentals goda och prisvärda recept!"
+            }
+          ]
+        }
+      }
+    },
+    "willys": {
+      "navn": "Willys",
+      "utvikler": "Willys AB",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone och Android",
+          "kilder": [
+            {
+              "kilde": "as-willys",
+              "sitat": "Endast för iPhone"
+            },
+            {
+              "kilde": "gp-willys",
+              "sitat": "Willys"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Beskrivningen är på svenska. Språklistan i App Store anger bara engelska.",
+          "kilder": [
+            {
+              "kilde": "as-willys",
+              "sitat": "Willys app är för dig som är Willys-kund!"
+            },
+            {
+              "kilde": "as-willys",
+              "sitat": "Språk EN engelska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis att ladda ner. Det är gratis att bli Willys Plus-kund.",
+          "kilder": [
+            {
+              "kilde": "as-willys",
+              "sitat": "Det är helt gratis att bli Willys Plus-kund."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Uppges inte"
+        },
+        "nett": {
+          "tekst": "Uppges inte"
+        },
+        "sosiale": {
+          "tekst": "Uppges inte"
+        },
+        "ukemeny": {
+          "tekst": "Uppges inte"
+        },
+        "handleliste": {
+          "tekst": "Ja, med erbjudanden och andra varor. Listorna finns också på willys.se.",
+          "kilder": [
+            {
+              "kilde": "as-willys",
+              "sitat": "Skapa inköpslistor genom att lägga till erbjudanden eller andra varor i din lista."
+            },
+            {
+              "kilde": "as-willys",
+              "sitat": "Du kommer enkelt åt dina inköpslistor i appen eller när du loggar in på willys.se."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja, med andra i hushållet",
+          "kilder": [
+            {
+              "kilde": "as-willys",
+              "sitat": "Dessutom kan du dela dem med andra personer som ingår i ditt hushåll."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "E-handel från Willys och Scan & Go i butik.",
+          "kilder": [
+            {
+              "kilde": "as-willys",
+              "sitat": "Här kan du e-handla från Willys till samma låga priser som i butik."
+            },
+            {
+              "kilde": "as-willys",
+              "sitat": "Med Scan & Go kan du självscanna dina varor och handla direkt i mobilen."
+            }
+          ]
+        }
+      }
+    },
+    "bring": {
+      "navn": "Bring!",
+      "utvikler": "Bring! Labs AG",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Apple Watch, Android och webb",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Använd Bring!-inköpslistor-appen i farten på din smarttelefon och surfplatta eller hemma som en webbversion."
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Använd Bring!-Watch appen från Apple Watch App Store"
+            },
+            {
+              "kilde": "gp-bring",
+              "sitat": "Bring! Matinköpslista"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "svenska, engelska, franska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis. Att skapa och dela listor, recept och erbjudanden ingår.",
+          "kilder": [
+            {
+              "kilde": "web-bring",
+              "sitat": "All core functions – such as creating and sharing shopping lists and accessing recipes and special offers – are available free of charge."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Bring! Premium per månad eller år. Appen visar reklam.",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Bring! Premium 1 Year"
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Bring! Premium 1 Month"
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Innehåller Reklam"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Uppges inte"
+        },
+        "sosiale": {
+          "tekst": "Uppges inte"
+        },
+        "ukemeny": {
+          "tekst": "Uppges inte"
+        },
+        "handleliste": {
+          "tekst": "Ja. Varorna grupperas efter kategori, och kategorierna kan sorteras efter butikens gångar.",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Gruppera artiklarna i din inköpslista efter produktkategorier."
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Sortera produktkategorierna på din inköpslista efter varugångarna i din stormarknad."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja, listan synkas efter varje ändring",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Dela dina inköpslistor med din familj, partner eller rumskompisar."
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "synkroniseras inköpslistan enkelt per automatik efter varje ändring"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "Recept i Inspiration Stream, och plats för dina kundkort.",
+          "kilder": [
+            {
+              "kilde": "as-bring",
+              "sitat": "Variera din tallrik med fantastiska recept i Inspiration Stream"
+            },
+            {
+              "kilde": "as-bring",
+              "sitat": "Spara dina kundkort och ha dem alltid redo vid kassan"
+            }
+          ]
+        }
+      }
+    },
+    "listonic": {
+      "navn": "Listonic",
+      "utvikler": "Listonic sp. z o.o.",
+      "fakta": {
+        "plattformer": {
+          "tekst": "Android, iPhone, iPad, webb, Windows och Mac",
+          "kilder": [
+            {
+              "kilde": "web-listonic",
+              "sitat": "Android iOS iPad Web Windows Mac"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Språk svenska och 41 till"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Gratis. Så många listor du vill.",
+          "kilder": [
+            {
+              "kilde": "web-listonic",
+              "sitat": "Så många listor du vill, helt gratis."
+            },
+            {
+              "kilde": "web-listonic",
+              "sitat": "Ja, Listonic är gratis, för alltid."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Premium, som ger bland annat andra teman och en app utan annonser. Androidappen visar annonser.",
+          "kilder": [
+            {
+              "kilde": "web-listonic",
+              "sitat": "Vill du ha mer, som andra teman eller en app utan annonser, finns det också en premiumversion."
+            },
+            {
+              "kilde": "gp-listonic",
+              "sitat": "Innehåller annonser"
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Uppges inte"
+        },
+        "sosiale": {
+          "tekst": "Uppges inte"
+        },
+        "ukemeny": {
+          "tekst": "Via AI-assistenten",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Använda AI-assistenten för att planera måltider, hitta recept och omvandla idéer till varor"
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja. Efter avdelning, i bokstavsordning eller i egen ordning.",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Gruppera varor efter butikens avdelningar"
+            },
+            {
+              "kilde": "as-listonic",
+              "sitat": "Sortera dem alfabetiskt eller i valfri ordning"
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja, listorna uppdateras i realtid",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Dela och uppdatera listor i realtid"
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "Fungerar utan internet och räknar ut vad inköpen kostar.",
+          "kilder": [
+            {
+              "kilde": "as-listonic",
+              "sitat": "Listonic fungerar även utan internet"
+            },
+            {
+              "kilde": "web-listonic",
+              "sitat": "Planera utgifterna: listan räknar ut totalsumman åt dig."
+            }
+          ]
+        }
+      }
+    },
+    "plantoeat": {
+      "navn": "Plan to Eat",
+      "utvikler": "Plan to Eat, LLC",
+      "fakta": {
+        "plattformer": {
+          "tekst": "iPhone, iPad, Android och webb",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Sign in on all of your mobile devices, and at plantoeat.com"
+            },
+            {
+              "kilde": "gp-plantoeat",
+              "sitat": "Plan to Eat: Meal Planner"
+            }
+          ]
+        },
+        "sprak": {
+          "tekst": "Svenska står inte bland språken i App Store",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Språk EN engelska"
+            }
+          ]
+        },
+        "gratis": {
+          "tekst": "Ingen gratisversion uppges. 14 dagars gratis provperiod.",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Try Plan to Eat FREE for 14 days, no payment information required at sign-up."
+            }
+          ]
+        },
+        "betalt": {
+          "tekst": "Abonnemang",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "annual subscriptions can be purchased in the app."
+            }
+          ]
+        },
+        "nett": {
+          "tekst": "Ja",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Tap the share icon in your web browser to import recipes from the web"
+            }
+          ]
+        },
+        "sosiale": {
+          "tekst": "Ja. Vilka tjänster uppges inte.",
+          "kilder": [
+            {
+              "kilde": "web-plantoeat",
+              "sitat": "Save them from any website, social media, or your own cookbooks."
+            }
+          ]
+        },
+        "ukemeny": {
+          "tekst": "Ja. Du kan planera rester och hålla koll på fryst mat.",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "You can scale servings, reschedule recipes, plan leftovers, and track frozen meals."
+            }
+          ]
+        },
+        "handleliste": {
+          "tekst": "Ja, görs från veckoplanen och ordnas efter gång",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "The shopping list auto-generates an organized grocery list based on the ingredients in your meal plan."
+            },
+            {
+              "kilde": "web-plantoeat",
+              "sitat": "Buy everything you need from a clear, aisle-by-aisle list."
+            }
+          ]
+        },
+        "deling": {
+          "tekst": "Ja, familjen kan dela recept, planer och inköpslistor",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "Sign in on all of your mobile devices, and at plantoeat.com, to share recipes, meal plans, and shopping lists."
+            }
+          ]
+        },
+        "spiskammer": {
+          "tekst": "Uppges inte"
+        },
+        "saerpreg": {
+          "tekst": "En lista med basvaror du ofta köper, och listor för olika butiker.",
+          "kilder": [
+            {
+              "kilde": "as-plantoeat",
+              "sitat": "add frequently purchased items from the staples list, customize and re-order your list categories, and create lists for specific stores."
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
-// Sammenligningssidene: norsk (/beste-oppskriftsapp/, /beste-handleliste-app/, /beste-ukemeny-app/) og amerikansk engelsk
-// (/en/best-recipe-app/, /en/best-grocery-list-app/, /en/best-meal-planning-app/), fra samme generator (scripts/sammenligning/).
+// Sammenligningssidene: norsk (/beste-oppskriftsapp/, /beste-handleliste-app/, /beste-ukemeny-app/), amerikansk engelsk
+// (/en/best-recipe-app/, /en/best-grocery-list-app/, /en/best-meal-planning-app/), svensk (/sv/basta-receptapp/,
+// /sv/basta-inkopslista-app/, /sv/basta-veckomeny-app/) og dansk (/da/bedste-opskriftsapp/, /da/bedste-indkoebsliste-app/,
+// /da/bedste-madplan-app/), fra samme generator (scripts/sammenligning/). Appvalget er eget per land.
 // Regelen (designspec punkt 10): nøytrale, etterprøvbare, daterte, og Matlyst oppgitt som avsender.
 // Hvert faktum om en app har kilde og sitat i scripts/sammenligning/apper.<marked>.json, eller står som «ikke oppgitt» / «Not stated».
 import assert from 'node:assert/strict';
@@ -10,6 +12,8 @@ import { fileURLToPath } from 'node:url';
 import { avvik, kildetekst, sitater } from '../scripts/sammenligning/kildekontroll.mjs';
 import * as nb from '../scripts/sammenligning/nb.mjs';
 import * as en from '../scripts/sammenligning/en.mjs';
+import * as sv from '../scripts/sammenligning/sv.mjs';
+import * as da from '../scripts/sammenligning/da.mjs';
 import { alternativerFor } from '../scripts/locale-sider.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
@@ -23,7 +27,19 @@ const MARKEDER = {
   en: { mod: en, prefiks: '/en/', sitemap: 'sitemap-en.xml', bestFor: 'Best for you if you', kilder: 'Sources', sjekket: 'checked', ikke: 'not stated', tall: [],
     felt: ['plattformer', 'enheter', 'gratis', 'betalt', 'nett', 'sosiale', 'ukemeny', 'handleliste', 'deling', 'spiskammer', 'saerpreg'],
     priser: /\$\s?\d|\d\s*(?:USD|dollars?)\b|\bUSD\s*\d/iu },
+  sv: { mod: sv, prefiks: '/sv/', sitemap: 'sitemap-sv.xml', bestFor: 'Bäst för dig som', kilder: 'Källor', sjekket: 'kontrollerat', ikke: 'uppges inte', tall: [],
+    felt: ['plattformer', 'sprak', 'gratis', 'betalt', 'nett', 'sosiale', 'ukemeny', 'handleliste', 'deling', 'spiskammer', 'saerpreg'],
+    priser: /\d\s*(?:kr|kronor|SEK)\b|\b(?:kr|SEK)\s*\d/iu },
+  da: { mod: da, prefiks: '/da/', sitemap: 'sitemap-da.xml', bestFor: 'Bedst for dig, der', kilder: 'Kilder', sjekket: 'tjekket', ikke: 'ikke oplyst', tall: ['1000'], // navnet REMA 1000
+    felt: ['plattformer', 'sprak', 'gratis', 'betalt', 'nett', 'sosiale', 'ukemeny', 'handleliste', 'deling', 'spiskammer', 'saerpreg'],
+    priser: /\d\s*(?:kr|kroner|DKK)\b|\b(?:kr|DKK)\s*\d/iu },
 };
+const PAR = [
+  { nb: '/beste-oppskriftsapp/', sv: '/sv/basta-receptapp/', da: '/da/bedste-opskriftsapp/', en: '/en/best-recipe-app/' },
+  { nb: '/beste-handleliste-app/', sv: '/sv/basta-inkopslista-app/', da: '/da/bedste-indkoebsliste-app/', en: '/en/best-grocery-list-app/' },
+  { nb: '/beste-ukemeny-app/', sv: '/sv/basta-veckomeny-app/', da: '/da/bedste-madplan-app/', en: '/en/best-meal-planning-app/' },
+];
+const KODE = { nb: 'nb-NO', sv: 'sv-SE', da: 'da-DK', en: 'en' };
 
 /** Hovedinnholdet: fra H1 til FAQ, uten app-bevis, skall og relatert-blokker. */
 function hoved(h) {
@@ -43,6 +59,43 @@ test('kildekontrollen blir rød når et sitat ikke står hos kilden, også i not
   assert.equal(avvik(medNotis, { a: kildetekst('<p>Norwegian Bokmål</p>') }).length, 1, 'notisen er ikke kontrollert');
   assert.ok(sitater(nb.DATA).length > 100);
   assert.ok(sitater(en.DATA).length > 100);
+  assert.ok(sitater(sv.DATA).length > 100);
+  assert.ok(sitater(da.DATA).length > 100);
+});
+
+test('hreflang binder de tre sammenligningene sammen på alle fire språk, i begge retninger', () => {
+  for (const gruppe of PAR) {
+    const forventet = [...['nb', 'sv', 'da', 'en'].map((l) => [KODE[l], gruppe[l]]), ['x-default', gruppe.en]];
+    for (const sti of Object.values(gruppe)) {
+      assert.deepEqual(alternativerFor(sti), forventet, sti);
+      const h = les(`${sti.slice(1)}index.html`);
+      for (const [kode, annen] of forventet.slice(0, 4)) assert.ok(h.includes(`<link rel="alternate" hreflang="${kode}" href="https://matlyst-app.no${annen}">`), `${sti} mangler ${kode}`);
+    }
+  }
+});
+
+for (const [marked, land, gl] of [['sv', 'se', 'SE'], ['da', 'dk', 'DK']]) {
+  test(`${marked}: kildene er butikkene i landet (App Store /${land}/, Google Play gl=${gl}) eller appens egen nettside`, () => {
+    const { DATA } = MARKEDER[marked].mod;
+    for (const [id, k] of Object.entries(DATA.kilder)) {
+      if (k.adresse.includes('apps.apple.com')) assert.match(k.adresse, new RegExp(`^https://apps\\.apple\\.com/${land}/app/id\\d+$`, 'u'), id);
+      if (k.adresse.includes('play.google.com')) assert.match(k.adresse, new RegExp(`[?&]hl=${marked}&gl=${gl}$`, 'u'), id);
+      if (k.utgiver.startsWith('App Store') || k.utgiver.startsWith('Google Play')) assert.match(k.utgiver, marked === 'sv' ? /\(Sverige\)$/u : /\(Danmark\)$/u, id);
+    }
+  });
+}
+
+test('sv og da: det sidene sier om Matlyst følger de svenske og danske appsidene (oversettelse, metrisk, ingen omregning)', () => {
+  const tekst = (m) => Object.values(m.STIER).map((sti) => synlig(hoved(les(`${MARKEDER[m === sv ? 'sv' : 'da'].prefiks.slice(1)}${sti}index.html`)))).join(' ');
+  const s = tekst(sv);
+  const d = tekst(da);
+  assert.match(s, /Recept på andra språk översätts till svenska\. Mängderna är metriska som standard\./u);
+  assert.match(d, /Opskrifter på andre sprog oversættes til dansk\. Mængderne er metriske som standard\./u);
+  assert.doesNotMatch(s, /Matlyst (?:räknar om|omvandlar)/u);
+  assert.doesNotMatch(d, /Matlyst (?:regner|omregner|konverterer)/u);
+  assert.match(les('sv/receptbok-app/index.html'), /Matlyst räknar inte om enheter vid import, och recept på andra språk översätts till svenska\./u);
+  // Dansk tekst kan ikke inneholde «nok» (locale-testen leser det som NOK), og dansk sier aftensmad, aldri middag.
+  assert.doesNotMatch(d, /\bnok\b|\bmiddag/iu);
 });
 
 for (const [marked, M] of Object.entries(MARKEDER)) {
@@ -74,15 +127,6 @@ for (const [marked, M] of Object.entries(MARKEDER)) {
         if (k.adresse.includes('apps.apple.com')) assert.match(k.adresse, /^https:\/\/apps\.apple\.com\/us\/app\/id\d+$/u, id);
         if (k.adresse.includes('play.google.com')) assert.match(k.adresse, /[?&]gl=US(&|$)/u, id);
         if (k.utgiver.startsWith('App Store') || k.utgiver.startsWith('Google Play')) assert.match(k.utgiver, /\(US\)$/u, id);
-      }
-    });
-    test('en: hreflang peker til den norske motparten, og den norske tilbake', () => {
-      const par = { 'best-recipe-app/': '/beste-oppskriftsapp/', 'best-grocery-list-app/': '/beste-handleliste-app/', 'best-meal-planning-app/': '/beste-ukemeny-app/' };
-      for (const [sti, norsk] of Object.entries(par)) {
-        const enSti = `/en/${sti}`;
-        assert.deepEqual(alternativerFor(enSti), [['nb-NO', norsk], ['en', enSti], ['x-default', enSti]]);
-        assert.ok(html[sti].includes(`<link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no${norsk}">`), sti);
-        assert.ok(les(`${norsk.slice(1)}index.html`).includes(`<link rel="alternate" hreflang="en" href="https://matlyst-app.no${enSti}">`), norsk);
       }
     });
     test('en: det siden sier om Matlyst og enheter følger de andre engelske sidene (ingen omregning til cups)', () => {
@@ -173,13 +217,13 @@ for (const [marked, M] of Object.entries(MARKEDER)) {
 }
 
 test('ingen omtale av Zesti på sidene, i datafilene, i generatoren eller i llms.txt', () => {
-  const filer = [...['beste-oppskriftsapp', 'beste-handleliste-app', 'beste-ukemeny-app', 'en/best-recipe-app', 'en/best-grocery-list-app', 'en/best-meal-planning-app'].map((d) => `${d}/index.html`),
-    'llms.txt', 'scripts/sammenligning/sammenligning.mjs', 'scripts/sammenligning/nb.mjs', 'scripts/sammenligning/en.mjs', 'scripts/sammenligning/apper.nb.json', 'scripts/sammenligning/apper.en.json'];
+  const filer = [...PAR.flatMap((g) => Object.values(g)).map((sti) => `${sti.slice(1)}index.html`), 'llms.txt', 'scripts/sammenligning/sammenligning.mjs',
+    ...['nb', 'en', 'sv', 'da'].flatMap((m) => [`scripts/sammenligning/${m}.mjs`, `scripts/sammenligning/apper.${m}.json`])];
   for (const fil of filer) assert.doesNotMatch(les(fil), /zesti/iu, fil);
 });
 
 test('generatoren er felles: markedsfilene har ingen egen kopi av kort, tabell eller side', () => {
-  for (const fil of ['scripts/sammenligning/nb.mjs', 'scripts/sammenligning/en.mjs']) {
+  for (const fil of ['nb', 'en', 'sv', 'da'].map((m) => `scripts/sammenligning/${m}.mjs`)) {
     const kode = utenKommentarer(les(fil));
     assert.match(kode, /lagSammenligning\(MARKED\)/u, fil);
     assert.doesNotMatch(kode, /function (?:kort|tabell|side)\b|<table|<dl>/u, fil);
@@ -197,6 +241,14 @@ test('de relevante sidene lenker inn til sammenligningene', () => {
     'en/meal-plan-app/index.html': ['/en/best-meal-planning-app/'],
     'en/mealime-alternative/index.html': ['/en/best-meal-planning-app/'],
     'en/blog/choose-recipe-organizer-app/index.html': ['/en/best-recipe-app/', '/en/best-grocery-list-app/', '/en/best-meal-planning-app/'],
+    'sv/receptbok-app/index.html': ['/sv/basta-receptapp/'],
+    'sv/inkopslista/index.html': ['/sv/basta-inkopslista-app/'],
+    'sv/veckomeny-app/index.html': ['/sv/basta-veckomeny-app/'],
+    'sv/blogg/valj-receptapp/index.html': ['/sv/basta-receptapp/', '/sv/basta-inkopslista-app/', '/sv/basta-veckomeny-app/'],
+    'da/opskrifts-app/index.html': ['/da/bedste-opskriftsapp/'],
+    'da/indkoebsliste-app/index.html': ['/da/bedste-indkoebsliste-app/'],
+    'da/madplan-app/index.html': ['/da/bedste-madplan-app/'],
+    'da/blog/vaelg-opskriftsapp/index.html': ['/da/bedste-opskriftsapp/', '/da/bedste-indkoebsliste-app/', '/da/bedste-madplan-app/'],
   };
   for (const [fil, mal] of Object.entries(lenker)) {
     const h = les(fil);

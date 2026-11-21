@@ -1,0 +1,323 @@
+{
+  "familie": "erstatning",
+  "marked": "sv",
+  "kilder": {
+    "kron": {
+      "navn": "Frågor och svar",
+      "utgiver": "KronJäst",
+      "aar": 2026,
+      "adresse": "https://kronjast.se/fragor-och-svar/",
+      "hentet": "2026-11-21"
+    },
+    "kronlex": {
+      "navn": "Baklexikon",
+      "utgiver": "KronJäst",
+      "aar": 2026,
+      "adresse": "https://kronjast.se/baklexikon/",
+      "hentet": "2026-11-21"
+    },
+    "kungs": {
+      "navn": "Vad ska jag använda för att ersätta Kungsörnens Lantvetemjöl? (kundforum)",
+      "utgiver": "Kungsörnen",
+      "aar": 2026,
+      "adresse": "https://forum.kungsornen.se/org/kungsornen/d/lantvetemjol-85fd/",
+      "hentet": "2026-11-21"
+    },
+    "dfar": {
+      "navn": "Farinsocker",
+      "utgiver": "Dansukker",
+      "aar": 2026,
+      "adresse": "https://www.dansukker.se/se/produkter/alla-produkter/farinsocker",
+      "hentet": "2026-11-21"
+    },
+    "dstro": {
+      "navn": "Strösocker 1 kg",
+      "utgiver": "Dansukker",
+      "aar": 2026,
+      "adresse": "https://www.dansukker.se/se/produkter/alla-produkter/strosocker-1-kg",
+      "hentet": "2026-11-21"
+    },
+    "dbfs": {
+      "navn": "Brun Farin Strö",
+      "utgiver": "Dansukker",
+      "aar": 2026,
+      "adresse": "https://www.dansukker.se/se/produkter/alla-produkter/brun-farin-stro",
+      "hentet": "2026-11-21"
+    },
+    "dflor": {
+      "navn": "Florsocker",
+      "utgiver": "Dansukker",
+      "aar": 2026,
+      "adresse": "https://www.dansukker.se/se/produkter/alla-produkter/florsocker",
+      "hentet": "2026-11-21"
+    },
+    "dvan": {
+      "navn": "Vaniljsocker",
+      "utgiver": "Dansukker",
+      "aar": 2026,
+      "adresse": "https://www.dansukker.se/se/produkter/alla-produkter/vaniljsocker",
+      "hentet": "2026-11-21"
+    },
+    "dsylt": {
+      "navn": "Syltsocker",
+      "utgiver": "Dansukker",
+      "aar": 2026,
+      "adresse": "https://www.dansukker.se/se/produkter/alla-produkter/syltsocker",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "gjaer",
+      "slug": "jast",
+      "navn": "Färsk jäst och torrjäst",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "torr-g": {
+          "verdi": 14,
+          "enhet": "g",
+          "kilde": "kron",
+          "merknad": "1 paket KronJäst torr 14g (ca 4 tsk) motsvarar 1 pkt 50g färsk KronJäst."
+        },
+        "torr-tsk": {
+          "verdi": 4,
+          "enhet": "tsk",
+          "kilde": "kron",
+          "merknad": "1 paket KronJäst torr 14g (ca 4 tsk) motsvarar 1 pkt 50g färsk KronJäst."
+        },
+        "farsk-g": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "kron",
+          "merknad": "1 paket KronJäst torr 14g (ca 4 tsk) motsvarar 1 pkt 50g färsk KronJäst."
+        },
+        "knivsudd": {
+          "verdi": 7,
+          "enhet": "g",
+          "kilde": "kronlex",
+          "merknad": "En knivsudd jäst är ca 7 gram."
+        },
+        "oppnad": {
+          "verdi": 3,
+          "enhet": "dygn",
+          "kilde": "kron",
+          "merknad": "En öppnad förpackning med torrjäst bör förbrukas inom 3 dygn."
+        }
+      },
+      "tekst": {
+        "start": "kron|Skillnaden mellan torrjäst och färskjäst (förutom doseringen) är att torrjästen har en längre startsträcka och behöver aktiveras varsamt.",
+        "instant": "kron|Active dry yeast blandas i degvätska och Instant dry yeast blandas i de torra ingredienserna.",
+        "frys": "kron|Jäst ska ej frysas."
+      }
+    },
+    {
+      "id": "hvetemel",
+      "slug": "lantvetemjol",
+      "navn": "Lantvetemjöl",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "vete": {
+          "verdi": 80,
+          "enhet": "procent",
+          "kilde": "kungs",
+          "merknad": "Vi rekommenderar att du använder 80% Vetemjöl Special och 20% Rågsikt."
+        },
+        "rag": {
+          "verdi": 20,
+          "enhet": "procent",
+          "kilde": "kungs",
+          "merknad": "Vi rekommenderar att du använder 80% Vetemjöl Special och 20% Rågsikt."
+        }
+      },
+      "tekst": {
+        "ger": "kungs|Då får du det som vi vill definiera som lantvetemjöl, ett mjöl som är lite mörkare och med mer karaktär."
+      }
+    },
+    {
+      "id": "brun-farin",
+      "slug": "brun-farin",
+      "navn": "Strösocker och brun farin",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "far-dl": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "dfar",
+          "merknad": "Farinsocker 1 dl = ca 75 g 1 msk = ca 13 g 1 tsk = ca 4 g"
+        },
+        "far-msk": {
+          "verdi": 13,
+          "enhet": "g",
+          "kilde": "dfar",
+          "merknad": "Farinsocker 1 dl = ca 75 g 1 msk = ca 13 g 1 tsk = ca 4 g"
+        },
+        "far-tsk": {
+          "verdi": 4,
+          "enhet": "g",
+          "kilde": "dfar",
+          "merknad": "Farinsocker 1 dl = ca 75 g 1 msk = ca 13 g 1 tsk = ca 4 g"
+        },
+        "stro-dl": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "dstro",
+          "merknad": "Strösocker 1 dl = 100 ml = ca 85 g 1 msk = 15 ml = ca 15 g 1 tsk = 5 ml = ca 5 g"
+        },
+        "stro-msk": {
+          "verdi": 15,
+          "enhet": "g",
+          "kilde": "dstro",
+          "merknad": "Strösocker 1 dl = 100 ml = ca 85 g 1 msk = 15 ml = ca 15 g 1 tsk = 5 ml = ca 5 g"
+        },
+        "stro-tsk": {
+          "verdi": 5,
+          "enhet": "g",
+          "kilde": "dstro",
+          "merknad": "Strösocker 1 dl = 100 ml = ca 85 g 1 msk = 15 ml = ca 15 g 1 tsk = 5 ml = ca 5 g"
+        }
+      },
+      "tekst": {
+        "samma": "dbfs|Du kan byta ut strösocker mot Brun Farin Strö i samma mängd, men smaken blir fylligare och färgen något mörkare.",
+        "sirap": "dbfs|Eftersom Brun Farin Strö innehåller lite sirap påverkas även saftigheten något, vilket ofta ger ett mjukare resultat.",
+        "skillnad": "dfar|I bakning bidrar farinsocker till saftigare och mjukare resultat, medan strösocker ger mer struktur och luftighet.",
+        "mel": "dfar|Farinsocker innehåller melass, vilket gör det fuktigt och ger en rundare och fylligare smak."
+      }
+    },
+    {
+      "id": "florsocker",
+      "slug": "florsocker",
+      "navn": "Florsocker och strösocker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hundra": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "dflor",
+          "merknad": "Hundra gram florsocker motsvarar ungefär 1,6–1,7 deciliter."
+        },
+        "hundra-dl-min": {
+          "verdi": 1.6,
+          "enhet": "dl",
+          "kilde": "dflor",
+          "merknad": "Hundra gram florsocker motsvarar ungefär 1,6–1,7 deciliter."
+        },
+        "hundra-dl-maks": {
+          "verdi": 1.7,
+          "enhet": "dl",
+          "kilde": "dflor",
+          "merknad": "Hundra gram florsocker motsvarar ungefär 1,6–1,7 deciliter."
+        },
+        "flor-dl": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "dflor",
+          "merknad": "Florsocker 1 dl = ca 60 g 1 msk = ca 10 g 1 tsk = ca 3 g"
+        },
+        "stro-dl": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "dstro",
+          "merknad": "Strösocker 1 dl = 100 ml = ca 85 g 1 msk = 15 ml = ca 15 g 1 tsk = 5 ml = ca 5 g"
+        }
+      },
+      "tekst": {
+        "ersatt": "dflor|I vissa recept kan florsocker ersättas med strösocker, men resultatet blir ofta annorlunda.",
+        "grov": "dflor|Strösocker löser sig långsammare och kan ge en grövre konsistens.",
+        "glasyr": "dflor|I glasyrer och frostingar är florsocker att föredra för ett slätt resultat.",
+        "smalta": "dflor|Vid bakning där sockret ska smälta helt kan strösocker fungera, men kräver ofta mer bearbetning."
+      }
+    },
+    {
+      "id": "vaniljsukker",
+      "slug": "vaniljsocker",
+      "navn": "Vaniljsocker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "van-dl": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "dvan",
+          "merknad": "Vaniljsocker 1 dl = ca 60 g 1 msk = ca 10 g 1 tsk = ca 3 g"
+        },
+        "van-msk": {
+          "verdi": 10,
+          "enhet": "g",
+          "kilde": "dvan",
+          "merknad": "Vaniljsocker 1 dl = ca 60 g 1 msk = ca 10 g 1 tsk = ca 3 g"
+        },
+        "van-tsk": {
+          "verdi": 3,
+          "enhet": "g",
+          "kilde": "dvan",
+          "merknad": "Vaniljsocker 1 dl = ca 60 g 1 msk = ca 10 g 1 tsk = ca 3 g"
+        },
+        "hogst-min": {
+          "verdi": 1,
+          "enhet": "tsk",
+          "kilde": "dvan",
+          "merknad": "rekommenderar vi högst 1–2 tsk Vaniljsocker för 4 portioner"
+        },
+        "hogst-maks": {
+          "verdi": 2,
+          "enhet": "tsk",
+          "kilde": "dvan",
+          "merknad": "rekommenderar vi högst 1–2 tsk Vaniljsocker för 4 portioner"
+        },
+        "portioner": {
+          "verdi": 4,
+          "enhet": "portioner",
+          "kilde": "dvan",
+          "merknad": "rekommenderar vi högst 1–2 tsk Vaniljsocker för 4 portioner"
+        }
+      },
+      "tekst": {
+        "stang": "dvan|Ja, vaniljsocker kan ersättas med vaniljstång, men då behöver man justera både sötma och mängd.",
+        "stang2": "dvan|Vid byte används vaniljstång tillsammans med strösocker.",
+        "pulver": "dvan|Vaniljpulver används när man vill tillsätta vaniljsmak utan extra sötma.",
+        "mer": "dvan|önskas mer sötma, tillsätt Florsocker."
+      }
+    },
+    {
+      "id": "syltsocker",
+      "slug": "syltsocker",
+      "navn": "Syltsocker",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "dl": {
+          "verdi": 85,
+          "enhet": "g",
+          "kilde": "dsylt",
+          "merknad": "Syltsocker 1 dl = ca 85 g 1 msk = ca 15 g 1 tsk = ca 5 g"
+        },
+        "msk": {
+          "verdi": 15,
+          "enhet": "g",
+          "kilde": "dsylt",
+          "merknad": "Syltsocker 1 dl = ca 85 g 1 msk = ca 15 g 1 tsk = ca 5 g"
+        },
+        "tsk": {
+          "verdi": 5,
+          "enhet": "g",
+          "kilde": "dsylt",
+          "merknad": "Syltsocker 1 dl = ca 85 g 1 msk = ca 15 g 1 tsk = ca 5 g"
+        }
+      },
+      "tekst": {
+        "istallet": "dsylt|Istället för syltsocker kan man använda vanligt socker i kombination med extra pektin eller pektinrika frukter, som äpplen.",
+        "gele": "dsylt|Nej, det rekommenderar vi inte. Använd istället Gelésocker Multi."
+      }
+    }
+  ]
+}

@@ -32,20 +32,25 @@ export const FAMILIER = Object.freeze([
   // Kjernetemperatur og steketid: norsk (Mattilsynet først, så MatPrat med årstall; se steketid/mal-felles.mjs) og amerikansk engelsk
   // (FoodSafety.gov, USDA FSIS og land-grant extension; se steketid/mal-felles-en.mjs). Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
   { id: 'kjernetemperatur', sidetype: 'guide-lang', mappe: new URL('./kjernetemperatur/', import.meta.url), markeder: { nb: { rot: 'kjernetemperatur/' }, sv: { rot: 'innertemperatur/' }, da: { rot: 'kernetemperatur/' }, en: { rot: 'internal-temperature/' } } },
-  { id: 'steketid', sidetype: 'guide-lang', mappe: new URL('./steketid/', import.meta.url), markeder: { nb: { rot: 'steketid/' }, en: { rot: 'cooking-times/' } } },
+  // Steketid på svensk (/sv/tillagningstid/): Svensk Fågel, Svenskt Kött, Svenska Ägg, Kronfågel, Findus og Arla (data.sv.json, tekst-sv.mjs). Tallene er hentet fra svenske kilder, ikke oversatt.
+  // Sitatkontroll for sv: node scripts/familier/holdbarhet/kildekontroll.mjs <familie> sv (den har curl-fallback, og Arla svarer 404 på Node sin fetch). Gjelder også airfryer, erstatning og mengde-per-person.
+  { id: 'steketid', sidetype: 'guide-lang', mappe: new URL('./steketid/', import.meta.url), markeder: { nb: { rot: 'steketid/' }, sv: { rot: 'tillagningstid/' }, da: { rot: 'stegetid/' }, en: { rot: 'cooking-times/' } } },
   { id: 'ukemeny', sidetype: 'guide-lang', mappe: new URL('./ukemeny/', import.meta.url), markeder: { nb: { rot: 'ukemenyer/' } } },
   // Holdbarhet i kjøleskapet og frysing: norsk (Mattilsynet først, så MatPrat; se holdbarhet/kjoling.mjs) og amerikansk engelsk (FoodSafety.gov, USDA FSIS, FDA; se holdbarhet/kjoling-en.mjs).
   // Samme rad-id på nb og en gir hreflang; tallene på en er hentet fra amerikanske kilder, ikke oversatt.
   { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' }, sv: { rot: 'hallbarhet/' }, da: { rot: 'holdbarhed/' }, en: { rot: 'how-long-does-it-last/' } } },
   { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' }, sv: { rot: 'frysa/' }, da: { rot: 'kan-man-fryse/' }, en: { rot: 'can-you-freeze/' } } },
   // Mengde per person: norsk (MatPrat og Helsedirektoratet, tekstene i tekst-nb.mjs) og amerikansk engelsk (USDA FSIS, land-grant extension, National Turkey Federation m.fl., tekstene i tekst-en.mjs; US-mål først, metrisk i parentes). Sitat per tall (kildekontroll.mjs [nb|en]).
-  { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' }, en: { rot: 'how-much-per-person/' } } },
+  // Mengde per person på svensk (/sv/hur-mycket-per-person/): Arla, Svenskt Kött og Kungsörnen. Kalkulatoren regner personer: ingen svensk kilde gir et barnetall, så barnefeltet er skjult (0).
+  { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' }, sv: { rot: 'hur-mycket-per-person/' }, da: { rot: 'hvor-meget-pr-person/' }, en: { rot: 'how-much-per-person/' } } },
   // Airfryer: tid og temperatur per råvare med kilde, og omregner fra ovn. Norsk (data.nb.json) og amerikansk engelsk (data.en.json, /en/air-fryer/).
   // Tallene står med sitat fra kilden i datafila (kildekontroll.mjs [nb|en]). På en er de hentet fra amerikanske kilder (Cosori, KitchenAid, Instant Pot, Philips, Mississippi State og Illinois Extension, USDA FSIS), ikke oversatt.
   // Samme rad-id på nb og en gir hreflang; rader uten norsk motstykke (shrimp, baked-potato, reheat-pizza-leftovers) står alene.
-  { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' }, en: { rot: 'air-fryer/' } } },
+  // Airfryer på svensk (/sv/airfryer/): Arla (receptsidene «… i airfryer» og artikkelen med omregningstabell), Findus og OBH Nordica. Omregningen ugn till airfryer er en tabell og en temperaturregel fra Arla og OBH Nordica, ingen omregner.
+  { id: 'airfryer', sidetype: 'guide-lang', mappe: new URL('./airfryer/', import.meta.url), markeder: { nb: { rot: 'airfryer/' }, sv: { rot: 'airfryer/' }, da: { rot: 'airfryer/' }, en: { rot: 'air-fryer/' } } },
   // Erstatning: hva du kan bruke i stedet for en vare du mangler. Norsk (Idun, MatPrat, melk.no med flere) og amerikansk engelsk (land-grant extension og King Arthur Baking; tallene er hentet fra amerikanske kilder, ikke oversatt). Sitatkontroll i erstatning/kildekontroll.mjs.
-  { id: 'erstatning', sidetype: 'guide-lang', mappe: new URL('./erstatning/', import.meta.url), markeder: { nb: { rot: 'erstatning/' }, en: { rot: 'substitutes/' } } },
+  // Erstatning på svensk (/sv/ersatta/): KronJäst, Kungsörnen og Dansukker. Bare de varene en svensk kilde gir en mengde for; egg, filmjölk, smör, bakpulver og grädde er utelatt.
+  { id: 'erstatning', sidetype: 'guide-lang', mappe: new URL('./erstatning/', import.meta.url), markeder: { nb: { rot: 'erstatning/' }, sv: { rot: 'ersatta/' }, da: { rot: 'erstatning/' }, en: { rot: 'substitutes/' } } },
   // Rester og råvarer: undersidene /hva-kan-jeg-lage/med-<vare>/ til den eksisterende guiden. Samlesiden /hva-kan-jeg-lage/ har sidegruppen oppskrifter-fra-ingredienser (nb, sv, da, en).
   { id: 'rester', sidetype: 'guide-lang', mappe: new URL('./rester/', import.meta.url), markeder: { nb: { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true } } },
 ]);

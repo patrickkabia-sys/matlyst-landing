@@ -80,7 +80,7 @@ export const MARKED = {
       svar: 'Det finnes ingen app som er best for alle. Vil du lagre fra Instagram og TikTok, oppgir Matlyst, ReciMe og Recipe Keeper det. Av dem har Matlyst og Recipe Keeper norsk i appen. Vil du ha samme app på PC, Mac og Android, se på Paprika eller Recipe Keeper. Bruker du bare Apple-enheter, er Crouton laget for dem. Vil du ha ferdige norske oppskrifter, er Matprat-appen et naturlig valg.',
       valg: ul([
         '<strong>Du lagrer fra Instagram og TikTok:</strong> Matlyst, ReciMe og Recipe Keeper oppgir import fra begge. Paprika gjør det med Premium.',
-        '<strong>Du vil ha appen på norsk:</strong> Matlyst, Paprika, Recipe Keeper og Matprat har norsk bokmål i App Store. Matlyst oppgir i tillegg at utenlandske oppskrifter oversettes til norsk og at målene regnes om til metrisk.',
+        '<strong>Du vil ha appen på norsk:</strong> Matlyst, Paprika, Recipe Keeper og Matprat har norsk bokmål i App Store. Matlyst oppgir i tillegg at utenlandske oppskrifter oversettes til norsk, og at målene er metriske som standard.',
         '<strong>Du vil bruke den gratis:</strong> ReciMe oppgir fem importer per uke, Matlyst fem per måned, og Paprika lar deg lagre opptil 50 oppskrifter på én enhet.',
         '<strong>Du bruker PC eller Windows:</strong> Paprika og Recipe Keeper oppgir begge Windows eller PC.',
         '<strong>Du bruker bare Apple-enheter:</strong> Crouton finnes for iPhone, iPad, Mac, Apple Vision og Apple Watch.',

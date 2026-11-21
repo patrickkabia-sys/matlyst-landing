@@ -304,7 +304,7 @@
           ]
         },
         "saerpreg": {
-          "tekst": "Utenlandske oppskrifter oversettes til norsk bokmål, og målene regnes om til metrisk.",
+          "tekst": "Utenlandske oppskrifter oversettes til norsk bokmål. Målene er metriske som standard.",
           "kilder": [
             {
               "kilde": "gp-matlyst",

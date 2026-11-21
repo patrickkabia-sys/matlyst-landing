@@ -1,0 +1,1047 @@
+{
+  "familie": "steketid",
+  "marked": "sv",
+  "kilder": {
+    "sfjul": {
+      "navn": "Julrecept på Svensk Fågel",
+      "utgiver": "Svensk Fågel",
+      "aar": 2024,
+      "adresse": "https://svenskfagel.se/recept/julrecept-pa-svensk-fagel/",
+      "hentet": "2026-11-21"
+    },
+    "sfhellberg": {
+      "navn": "Christian Hellbergs helstekta kalkon med vitlöksrubb",
+      "utgiver": "Svensk Fågel",
+      "aar": 2024,
+      "adresse": "https://svenskfagel.se/recept/christian-hellbergs-helstekta-kalkon-med-vitloksrubb/",
+      "hentet": "2026-11-21"
+    },
+    "arlakalkon": {
+      "navn": "Kalkon i ugn",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/kalkon-i-ugn/",
+      "hentet": "2026-11-21"
+    },
+    "sfsakra": {
+      "navn": "Säkra kycklingtips",
+      "utgiver": "Svensk Fågel",
+      "aar": 2024,
+      "adresse": "https://svenskfagel.se/halsa-och-recept/sakra-kycklingstips/",
+      "hentet": "2026-11-21"
+    },
+    "skjul": {
+      "navn": "Allt du vill veta om julskinka",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/aktuellt/allt-du-vill-veta-om-julskinka/",
+      "hentet": "2026-11-21"
+    },
+    "skkokt": {
+      "navn": "Kokt julskinka",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/recept/kokt-julskinka/",
+      "hentet": "2026-11-21"
+    },
+    "agg": {
+      "navn": "Vanliga frågor om ägg",
+      "utgiver": "Svenska Ägg",
+      "aar": 2026,
+      "adresse": "https://www.svenskaagg.se/om-agg/faq",
+      "hentet": "2026-11-21"
+    },
+    "sktemp": {
+      "navn": "Temperaturer, tider och tips när du ska tillaga kött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2024,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/laga-kott/temperaturer/",
+      "hentet": "2026-11-21"
+    },
+    "skugn": {
+      "navn": "Steka kött i ugn",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/kottskolan/steka-kott-i-ugn/",
+      "hentet": "2026-11-21"
+    },
+    "skskink": {
+      "navn": "Skinkstekens hemlighet: ljuvlig fläskstek i ugn",
+      "utgiver": "Svenskt Kött",
+      "aar": 2026,
+      "adresse": "https://svensktkott.se/blogg/skinkstekens-hemlighet-ljuvlig-flaskstek-i-ugn/",
+      "hentet": "2026-11-21"
+    },
+    "kron": {
+      "navn": "Tillagning (Kycklingguiden)",
+      "utgiver": "Kronfågel",
+      "aar": 2026,
+      "adresse": "https://www.kronfagel.se/kycklingguide/tillagning/",
+      "hentet": "2026-11-21"
+    },
+    "arlafile": {
+      "navn": "Kycklingfilé i ugn",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/kycklingfile-i-ugn/",
+      "hentet": "2026-11-21"
+    },
+    "findus": {
+      "navn": "Laxfilé, ASC-certifierad",
+      "utgiver": "Findus",
+      "aar": 2026,
+      "adresse": "https://www.findus.se/var-mat/fisk/asc-certifierad-laxfile",
+      "hentet": "2026-11-21"
+    },
+    "arlalaxsida": {
+      "navn": "Laxsida i ugn",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/laxsida-i-ugn/",
+      "hentet": "2026-11-21"
+    },
+    "arlalax": {
+      "navn": "Lax i ugn",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/recept/lax-i-ugn/",
+      "hentet": "2026-11-21"
+    },
+    "arlapotatis": {
+      "navn": "Koka potatis",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://www.arla.se/artiklar/koka-potatis-tider-tips/",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "kalkun",
+      "slug": "kalkon",
+      "navn": "Kalkon",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "sf-start": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "sfjul",
+          "merknad": "ställ in nederst i ugnen i 20 minuter. Sänk sedan värmen till 150 grader"
+        },
+        "sf-temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "sfjul",
+          "merknad": "Sänk sedan värmen till 150 grader (fortfarande varmluft)"
+        },
+        "sf-kilo": {
+          "verdi": 30,
+          "enhet": "minuter per kilo",
+          "kilde": "sfjul",
+          "merknad": "(räkna med 30 minuter per kilo)"
+        },
+        "sf-klar": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfjul",
+          "merknad": "Kalkonen är klar när saften från lårköttet är genomskinlig och innertemperaturen har nått 70 grader."
+        },
+        "sf-ut-min": {
+          "verdi": 65,
+          "enhet": "°C",
+          "kilde": "sfjul",
+          "merknad": "Ta gärna ut den vid en innertemperatur på 65-67 grader"
+        },
+        "sf-ut-maks": {
+          "verdi": 67,
+          "enhet": "°C",
+          "kilde": "sfjul",
+          "merknad": "Ta gärna ut den vid en innertemperatur på 65-67 grader"
+        },
+        "sf-vila": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "sfjul",
+          "merknad": "Kalkonen behöver vila i minst 30 minuter innan den kan trancheras."
+        },
+        "h-start": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "sfhellberg",
+          "merknad": "Baka sedan kalkonen på 225 grader i ca 20 minuter"
+        },
+        "h-start-tid": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "sfhellberg",
+          "merknad": "Baka sedan kalkonen på 225 grader i ca 20 minuter"
+        },
+        "h-temp": {
+          "verdi": 170,
+          "enhet": "°C",
+          "kilde": "sfhellberg",
+          "merknad": "sänk sedan ugnen till 170 grader"
+        },
+        "h-kilo": {
+          "verdi": 1,
+          "enhet": "timme per kilo",
+          "kilde": "sfhellberg",
+          "merknad": "Jag brukar räkna en timme per kilo kalkon."
+        },
+        "h-klar": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfhellberg",
+          "merknad": "När kalkonen är klar så skall temperaturen vara 70 grader inne vid lårbenet."
+        },
+        "a-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "arlakalkon",
+          "merknad": "Sätt ugnen på 225° eller 200° varmluft."
+        },
+        "a-sank": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "arlakalkon",
+          "merknad": "sänk värmen till 180°"
+        },
+        "a-klar": {
+          "verdi": 72,
+          "enhet": "°C",
+          "kilde": "arlakalkon",
+          "merknad": "Kalkonen är klar när den har en innertemperatur på 72° intill lårbenet."
+        }
+      },
+      "tekst": {
+        "folie": "sfjul|Täck med aluminiumfolie om skinnet börjar få mycket färg.",
+        "osa": "sfjul|Ös var 45:e minut med skyn som bildas i pannan"
+      }
+    },
+    {
+      "id": "skinke",
+      "slug": "julskinka",
+      "navn": "Julskinka",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "tid-min": {
+          "verdi": 45,
+          "enhet": "minuter per kilo",
+          "kilde": "skjul",
+          "merknad": "Man beräknar cirka 45 minuter till en timme och en kvart per kilo skinka"
+        },
+        "tid-maks": {
+          "verdi": 75,
+          "enhet": "minuter per kilo",
+          "kilde": "skjul",
+          "merknad": "Man beräknar cirka 45 minuter till en timme och en kvart per kilo skinka"
+        },
+        "saftig": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "skjul",
+          "merknad": "visar 70 grader är skinkan riktigt saftig"
+        },
+        "perfekt": {
+          "verdi": 72,
+          "enhet": "°C",
+          "kilde": "skjul",
+          "merknad": "vid 72 grader är den perfekt"
+        },
+        "valtillagad": {
+          "verdi": 75,
+          "enhet": "°C",
+          "kilde": "skjul",
+          "merknad": "vid 75 grader är den väl tillagad"
+        },
+        "sjud-min": {
+          "verdi": 45,
+          "enhet": "minuter per kilo",
+          "kilde": "skkokt",
+          "merknad": "Det tar ca ¾ timme −1 ¼ timme per kilo skinka."
+        },
+        "sjud-maks": {
+          "verdi": 75,
+          "enhet": "minuter per kilo",
+          "kilde": "skkokt",
+          "merknad": "Det tar ca ¾ timme −1 ¼ timme per kilo skinka."
+        },
+        "folie-min": {
+          "verdi": 1,
+          "enhet": "timme per kilo",
+          "kilde": "skkokt",
+          "merknad": "Det tar 1−1 ¾ timme per kilo skinka."
+        },
+        "folie-maks": {
+          "verdi": 1.75,
+          "enhet": "timmar per kilo",
+          "kilde": "skkokt",
+          "merknad": "Det tar 1−1 ¾ timme per kilo skinka."
+        }
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "koka-agg",
+      "navn": "Ägg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "k3": {
+          "verdi": 3,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "3 minuters ägg: Vitan och gulan är lös."
+        },
+        "k4": {
+          "verdi": 4,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "4 minuters ägg: Nu är vitan lite fastare men fortfarande lös."
+        },
+        "k6": {
+          "verdi": 6,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "6 minuters ägg: Det perfekta frukostägget? Vitan är fast, gulan är rinnig i mitten."
+        },
+        "k8": {
+          "verdi": 8,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "8 minuters ägg: Ett perfekt hårdkokt ägg? Vitan är fast, gulan är fast men krämig."
+        },
+        "k9": {
+          "verdi": 9,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "9 minuters ägg: Nu är både vitan och gulan fasta."
+        },
+        "k11": {
+          "verdi": 11,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "11 minuters ägg: Hårdkokt med ljusgul gula."
+        },
+        "stek": {
+          "verdi": 1,
+          "enhet": "minut per sida",
+          "kilde": "agg",
+          "merknad": "Stek cirka 1 minut per sida eller till dess att äggvitan stelnat."
+        },
+        "pochera": {
+          "verdi": 3,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "Sjud 3 min."
+        },
+        "kokt-min": {
+          "verdi": 3,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "(3–11 minuters koktid av ett medelstort ägg)"
+        },
+        "kokt-maks": {
+          "verdi": 11,
+          "enhet": "minuter",
+          "kilde": "agg",
+          "merknad": "(3–11 minuters koktid av ett medelstort ägg)"
+        }
+      },
+      "tekst": {
+        "sjuda": "agg|Låt aldrig vattnet stormkoka, det ska bara sjuda.",
+        "rum": "agg|Låt ägget bli rumstempererat före kokning.",
+        "lang": "agg|Längre koktid leder ofta till att gulan blir lite torr och mjölig.",
+        "rinnig": "agg|Konsten att koka ett ägg är för vissa lätt som en plätt"
+      }
+    },
+    {
+      "id": "roastbiff",
+      "slug": "rostbiff",
+      "navn": "Rostbiff",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "eng-temp": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Rostbiff, engelsk | 175˚ | cirka 1 timme"
+        },
+        "eng-tid": {
+          "verdi": 1,
+          "enhet": "timme",
+          "kilde": "sktemp",
+          "merknad": "Rostbiff, engelsk | 175˚ | cirka 1 timme"
+        },
+        "fr-temp": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Rostbiff, fransk | 125˚ | cirka 1½ timme"
+        },
+        "fr-tid": {
+          "verdi": 1.5,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Rostbiff, fransk | 125˚ | cirka 1½ timme"
+        },
+        "not-temp": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Nötstek | 125˚ | 2–2¼ timme"
+        },
+        "not-min": {
+          "verdi": 2,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Nötstek | 125˚ | 2–2¼ timme"
+        },
+        "not-maks": {
+          "verdi": 2.25,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Nötstek | 125˚ | 2–2¼ timme"
+        },
+        "vila-min": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "skugn",
+          "merknad": "Låt det vila 15–20 minuter."
+        },
+        "vila-maks": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "skugn",
+          "merknad": "Låt det vila 15–20 minuter."
+        },
+        "rum": {
+          "verdi": 1,
+          "enhet": "timme",
+          "kilde": "skugn",
+          "merknad": "Förbered köttet genom att ta fram det ur kylen någon timme innan det ska tillagas."
+        },
+        "luft": {
+          "verdi": 25,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Med varmluftsugn blir värmen effektivare och man kan sänka temperaturen med 25˚C jämfört med över- och undervärme."
+        }
+      },
+      "tekst": {
+        "term": "sktemp|Digitaltermometern ett bättre instrument än klockan för att avgöra när köttet är klart.",
+        "fransk": "skugn|gör att exempelvis rostbiff får en jämnrosa färg, det kallas för fransk rostbiff.",
+        "engelsk": "skugn|Med högre temperatur i ugnen (ca 175˚C), men att man avbryter tillagningen vid samma innertemperatur, blir rostbiffen genomstekt med en rosa kärna, det kallas för engelsk rostbiff."
+      }
+    },
+    {
+      "id": "svinestek",
+      "slug": "flaskstek",
+      "navn": "Fläskstek",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Bogbladsstek | 150˚ | cirka 1–1 ½ timme"
+        },
+        "bog-min": {
+          "verdi": 1,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Bogbladsstek | 150˚ | cirka 1–1 ½ timme"
+        },
+        "bog-maks": {
+          "verdi": 1.5,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Bogbladsstek | 150˚ | cirka 1–1 ½ timme"
+        },
+        "karre-min": {
+          "verdi": 1.75,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Karré | 150˚ | cirka 1¾–2 timme"
+        },
+        "karre-maks": {
+          "verdi": 2,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Karré | 150˚ | cirka 1¾–2 timme"
+        },
+        "kotlettrad-min": {
+          "verdi": 1.5,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Kotlettrad | 150˚ | cirka 1½–2 timme"
+        },
+        "kotlettrad-maks": {
+          "verdi": 2,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Kotlettrad | 150˚ | cirka 1½–2 timme"
+        },
+        "skinkstek-min": {
+          "verdi": 1.5,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Skinkstek | 150˚ | cirka 1½–2 timme"
+        },
+        "skinkstek-maks": {
+          "verdi": 2,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Skinkstek | 150˚ | cirka 1½–2 timme"
+        },
+        "blogg-temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "skskink",
+          "merknad": "Placera i mitten av ugnen på 150 grader värme."
+        },
+        "blogg-klar": {
+          "verdi": 82,
+          "enhet": "°C",
+          "kilde": "skskink",
+          "merknad": "ta ut köttet när det är 82 grader"
+        },
+        "blogg-vila": {
+          "verdi": 40,
+          "enhet": "minuter",
+          "kilde": "skskink",
+          "merknad": "Lägg på ett lock och låt vila i 40 minuter."
+        },
+        "vila-min": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "skugn",
+          "merknad": "Låt det vila 15–20 minuter."
+        },
+        "vila-maks": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "skugn",
+          "merknad": "Låt det vila 15–20 minuter."
+        }
+      },
+      "tekst": {
+        "term": "sktemp|Digitaltermometern ett bättre instrument än klockan för att avgöra när köttet är klart.",
+        "salt": "skugn|Salta köttet cirka en timme innan det ska tillagas, saltet gör att saftigheten bevaras bättre."
+      }
+    },
+    {
+      "id": "lammelar",
+      "slug": "lammstek",
+      "navn": "Lammstek och lammsadel",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Lammstek | 150˚ | cirka 1½–2 timme"
+        },
+        "stek-min": {
+          "verdi": 1.5,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Lammstek | 150˚ | cirka 1½–2 timme"
+        },
+        "stek-maks": {
+          "verdi": 2,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Lammstek | 150˚ | cirka 1½–2 timme"
+        },
+        "sadel-min": {
+          "verdi": 1.5,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Lammsadel | 150˚ | cirka 1½–2 timme"
+        },
+        "sadel-maks": {
+          "verdi": 2,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Lammsadel | 150˚ | cirka 1½–2 timme"
+        },
+        "kalv-temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "sktemp",
+          "merknad": "Kalvstek | 150˚ | 1¼ –1½ timme"
+        },
+        "kalv-min": {
+          "verdi": 1.25,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Kalvstek | 150˚ | 1¼ –1½ timme"
+        },
+        "kalv-maks": {
+          "verdi": 1.5,
+          "enhet": "timmar",
+          "kilde": "sktemp",
+          "merknad": "Kalvstek | 150˚ | 1¼ –1½ timme"
+        },
+        "kotlett-tjock": {
+          "verdi": 1.5,
+          "enhet": "cm",
+          "kilde": "sktemp",
+          "merknad": "Kotlett | 1½ cm | 2–3 min/sida"
+        },
+        "kotlett-min": {
+          "verdi": 2,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Kotlett | 1½ cm | 2–3 min/sida"
+        },
+        "kotlett-maks": {
+          "verdi": 3,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Kotlett | 1½ cm | 2–3 min/sida"
+        },
+        "vila-min": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "skugn",
+          "merknad": "Låt det vila 15–20 minuter."
+        },
+        "vila-maks": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "skugn",
+          "merknad": "Låt det vila 15–20 minuter."
+        }
+      },
+      "tekst": {
+        "luft": "sktemp|Med varmluftsugn blir värmen effektivare och man kan sänka temperaturen med 25˚C jämfört med över- och undervärme."
+      }
+    },
+    {
+      "id": "biff-i-panna",
+      "slug": "biff-i-panna",
+      "navn": "Biff, karré och kotlett i stekpanna",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "biff-min": {
+          "verdi": 2,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Biff/entrecôte | 1½ cm | 2–3 min/sida"
+        },
+        "biff-maks": {
+          "verdi": 3,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Biff/entrecôte | 1½ cm | 2–3 min/sida"
+        },
+        "rost-min": {
+          "verdi": 3,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Skiva av rostbiff | 2 cm | 3–4 min/sida"
+        },
+        "rost-maks": {
+          "verdi": 4,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Skiva av rostbiff | 2 cm | 3–4 min/sida"
+        },
+        "lov-min": {
+          "verdi": 0.5,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Lövbiff | ½ cm | ½–1 min/sida"
+        },
+        "lov-maks": {
+          "verdi": 1,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Lövbiff | ½ cm | ½–1 min/sida"
+        },
+        "karre-min": {
+          "verdi": 3,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Karré | 2 cm | 3–4 min/sida"
+        },
+        "karre-maks": {
+          "verdi": 4,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Karré | 2 cm | 3–4 min/sida"
+        },
+        "skinka-min": {
+          "verdi": 3,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Skinka | 1½ cm | 3–4 min/sida"
+        },
+        "skinka-maks": {
+          "verdi": 4,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Skinka | 1½ cm | 3–4 min/sida"
+        },
+        "kotlett": {
+          "verdi": 3,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Kotlett | 1½–2 cm | 3 min/sida"
+        },
+        "lamm-min": {
+          "verdi": 2,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Kotlett | 1½ cm | 2–3 min/sida"
+        },
+        "lamm-maks": {
+          "verdi": 3,
+          "enhet": "minuter per sida",
+          "kilde": "sktemp",
+          "merknad": "Kotlett | 1½ cm | 2–3 min/sida"
+        },
+        "tjock-biff": {
+          "verdi": 1.5,
+          "enhet": "cm",
+          "kilde": "sktemp",
+          "merknad": "Biff/entrecôte | 1½ cm | 2–3 min/sida"
+        },
+        "tjock-rost": {
+          "verdi": 2,
+          "enhet": "cm",
+          "kilde": "sktemp",
+          "merknad": "Skiva av rostbiff | 2 cm | 3–4 min/sida"
+        },
+        "tjock-lov": {
+          "verdi": 0.5,
+          "enhet": "cm",
+          "kilde": "sktemp",
+          "merknad": "Lövbiff | ½ cm | ½–1 min/sida"
+        },
+        "tjock-karre": {
+          "verdi": 2,
+          "enhet": "cm",
+          "kilde": "sktemp",
+          "merknad": "Karré | 2 cm | 3–4 min/sida"
+        },
+        "tjock-skinka": {
+          "verdi": 1.5,
+          "enhet": "cm",
+          "kilde": "sktemp",
+          "merknad": "Skinka | 1½ cm | 3–4 min/sida"
+        },
+        "tjock-kotlett": {
+          "verdi": 2,
+          "enhet": "cm",
+          "kilde": "sktemp",
+          "merknad": "Kotlett | 1½–2 cm | 3 min/sida"
+        },
+        "vila": {
+          "verdi": 10,
+          "enhet": "minuter",
+          "kilde": "sktemp",
+          "merknad": "Tänk på att alltid låta köttet vila i cirka 10 minuter innan du serverar eller skär upp det."
+        }
+      },
+      "tekst": {
+        "tid": "sktemp|Köttets temperatur före tillagning, skivans tjocklek och temperaturen i pannan påverkar stektiden, därför är tiderna ungefärliga.",
+        "rum": "sktemp|går det lättare att få en fin stekyta om bitarna är rumstempererade innan de läggs i stekpannan."
+      }
+    },
+    {
+      "id": "hel-kylling",
+      "slug": "hel-kyckling",
+      "navn": "Hel kyckling i ugn",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "temp-min": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "kron",
+          "merknad": "Baka i ugn på 150-175 gr i ca 1 timme eller tills en innertemp på 82 grader"
+        },
+        "temp-maks": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "kron",
+          "merknad": "Baka i ugn på 150-175 gr i ca 1 timme eller tills en innertemp på 82 grader"
+        },
+        "tid": {
+          "verdi": 1,
+          "enhet": "timme",
+          "kilde": "kron",
+          "merknad": "Baka i ugn på 150-175 gr i ca 1 timme eller tills en innertemp på 82 grader"
+        },
+        "klar": {
+          "verdi": 82,
+          "enhet": "°C",
+          "kilde": "kron",
+          "merknad": "Baka i ugn på 150-175 gr i ca 1 timme eller tills en innertemp på 82 grader"
+        },
+        "os-min": {
+          "verdi": 4,
+          "enhet": "gånger",
+          "kilde": "kron",
+          "merknad": "Ös kycklingen 4-5 ggr under tillagningstiden"
+        },
+        "os-maks": {
+          "verdi": 5,
+          "enhet": "gånger",
+          "kilde": "kron",
+          "merknad": "Ös kycklingen 4-5 ggr under tillagningstiden"
+        },
+        "rimtid-min": {
+          "verdi": 1,
+          "enhet": "timmar",
+          "kilde": "kron",
+          "merknad": "Låt kycklingen ligga i 1-2 timmar."
+        },
+        "rimtid-maks": {
+          "verdi": 2,
+          "enhet": "timmar",
+          "kilde": "kron",
+          "merknad": "Låt kycklingen ligga i 1-2 timmar."
+        },
+        "sf-hel": {
+          "verdi": 80,
+          "enhet": "°C",
+          "kilde": "sfsakra",
+          "merknad": "för hel kyckling gäller 80 grader intill benet"
+        }
+      },
+      "tekst": {
+        "term": "kron|Använd termometer och placera intill benet",
+        "rimma": "kron|Gör en rimlag på 2% salt, 1% socker och vatten."
+      }
+    },
+    {
+      "id": "kyllingfilet",
+      "slug": "kycklingfile",
+      "navn": "Kycklingfilé",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "panna": {
+          "verdi": 3,
+          "enhet": "minuter per sida",
+          "kilde": "kron",
+          "merknad": "Stek ca 3 min på varje sida"
+        },
+        "ugn-min": {
+          "verdi": 100,
+          "enhet": "°C",
+          "kilde": "kron",
+          "merknad": "Baka i ugn på 100-125 gr tills kycklingen har en innertemp på 70 grader"
+        },
+        "ugn-maks": {
+          "verdi": 125,
+          "enhet": "°C",
+          "kilde": "kron",
+          "merknad": "Baka i ugn på 100-125 gr tills kycklingen har en innertemp på 70 grader"
+        },
+        "klar": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "kron",
+          "merknad": "Baka i ugn på 100-125 gr tills kycklingen har en innertemp på 70 grader"
+        },
+        "arla-temp": {
+          "verdi": 200,
+          "enhet": "°C",
+          "kilde": "arlafile",
+          "merknad": "Sätt ugnen på 200° eller 180° varmluft."
+        },
+        "arla-luft": {
+          "verdi": 180,
+          "enhet": "°C",
+          "kilde": "arlafile",
+          "merknad": "Sätt ugnen på 200° eller 180° varmluft."
+        },
+        "arla-tid": {
+          "verdi": 20,
+          "enhet": "minuter",
+          "kilde": "arlafile",
+          "merknad": "Tillaga i mitten av ugnen ca 20 min eller tills kycklingen har en innertemperatur på 72°."
+        },
+        "arla-klar": {
+          "verdi": 72,
+          "enhet": "°C",
+          "kilde": "arlafile",
+          "merknad": "Tillaga i mitten av ugnen ca 20 min eller tills kycklingen har en innertemperatur på 72°."
+        },
+        "sf-filet": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "sfsakra",
+          "merknad": "för kycklingfilé och kycklinglårfilé gäller 70 grader"
+        }
+      },
+      "tekst": {
+        "frys": "arlafile|Ja du kan tillaga kycklingfilé direkt från frysen i ugnen.",
+        "frystid": "arlafile|Tänk på att tillagningstiden kommer variera då det kommer ta mycket längre tid att tillaga den frysta filén än om den är kylskåpskall."
+      }
+    },
+    {
+      "id": "laks-i-ovn",
+      "slug": "lax-i-ugn",
+      "navn": "Lax i ugn",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "f-temp": {
+          "verdi": 175,
+          "enhet": "°C",
+          "kilde": "findus",
+          "merknad": "Tillagning UGN (175°C), 12-13 min"
+        },
+        "f-tid-min": {
+          "verdi": 12,
+          "enhet": "minuter",
+          "kilde": "findus",
+          "merknad": "Tillaga i ugnen i 12-13 minuter eller tills fisken har en innertemperatur på 48ºC i mitten av filén."
+        },
+        "f-tid-maks": {
+          "verdi": 13,
+          "enhet": "minuter",
+          "kilde": "findus",
+          "merknad": "Tillaga i ugnen i 12-13 minuter eller tills fisken har en innertemperatur på 48ºC i mitten av filén."
+        },
+        "f-klar": {
+          "verdi": 48,
+          "enhet": "°C",
+          "kilde": "findus",
+          "merknad": "Tillaga i ugnen i 12-13 minuter eller tills fisken har en innertemperatur på 48ºC i mitten av filén."
+        },
+        "f-panna-min": {
+          "verdi": 4,
+          "enhet": "minuter per sida",
+          "kilde": "findus",
+          "merknad": "Stek tinade filéer i lite olja på medelstark värme i stekpanna eller på grill placerat på aluminiumfolie i 4-5 minuter på vardera sida."
+        },
+        "f-panna-maks": {
+          "verdi": 5,
+          "enhet": "minuter per sida",
+          "kilde": "findus",
+          "merknad": "Stek tinade filéer i lite olja på medelstark värme i stekpanna eller på grill placerat på aluminiumfolie i 4-5 minuter på vardera sida."
+        },
+        "ls-temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "arlalaxsida",
+          "merknad": "Sätt ugnen på 150° eller 125° varmluft."
+        },
+        "ls-tid": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "arlalaxsida",
+          "merknad": "Det tar ca 25 min beroende på ugn och tjocklek på laxen."
+        },
+        "ls-klar-min": {
+          "verdi": 52,
+          "enhet": "°C",
+          "kilde": "arlalaxsida",
+          "merknad": "Tillaga mitt i ugnen till en innertemperatur på 52–56°."
+        },
+        "ls-klar-maks": {
+          "verdi": 56,
+          "enhet": "°C",
+          "kilde": "arlalaxsida",
+          "merknad": "Tillaga mitt i ugnen till en innertemperatur på 52–56°."
+        },
+        "l-temp": {
+          "verdi": 225,
+          "enhet": "°C",
+          "kilde": "arlalax",
+          "merknad": "Sätt ugnen på 225° eller 200° varmluft."
+        },
+        "l-tid": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "arlalax",
+          "merknad": "Stek i mitten av ugnen ca 15 min."
+        },
+        "fryst-temp": {
+          "verdi": 150,
+          "enhet": "°C",
+          "kilde": "arlalaxsida",
+          "merknad": "Sätt ugnen på 150°, lägg fryst lax i en ugnsform, krydda och ringla över lite olja eller smör."
+        },
+        "fryst-tid-min": {
+          "verdi": 30,
+          "enhet": "minuter",
+          "kilde": "arlalaxsida",
+          "merknad": "baka i 30–40 min tills laxen är genomstekt och innertemperaturen är ca 56°."
+        },
+        "fryst-klar": {
+          "verdi": 56,
+          "enhet": "°C",
+          "kilde": "arlalaxsida",
+          "merknad": "baka i 30–40 min tills laxen är genomstekt och innertemperaturen är ca 56°."
+        },
+        "fryst-tid-maks": {
+          "verdi": 40,
+          "enhet": "minuter",
+          "kilde": "arlalaxsida",
+          "merknad": "baka i 30–40 min tills laxen är genomstekt och innertemperaturen är ca 56°."
+        }
+      }
+    },
+    {
+      "id": "potatis",
+      "slug": "koka-potatis",
+      "navn": "Kokt potatis",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "farsk-min": {
+          "verdi": 10,
+          "enhet": "minuter",
+          "kilde": "arlapotatis",
+          "merknad": "Små färskpotatisar kan koka endast 10-15 minuter"
+        },
+        "farsk-maks": {
+          "verdi": 15,
+          "enhet": "minuter",
+          "kilde": "arlapotatis",
+          "merknad": "Små färskpotatisar kan koka endast 10-15 minuter"
+        },
+        "fast": {
+          "verdi": 25,
+          "enhet": "minuter",
+          "kilde": "arlapotatis",
+          "merknad": "medan stor fastpotatis kan behöva upp till 25 minuter koktid"
+        },
+        "pp": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "arlapotatis",
+          "merknad": "Men du kan räkna med runt 200 gram potatis per person."
+        }
+      },
+      "tekst": {
+        "lika": "arlapotatis|För att få samma koktid på potatisar i olika storlek kan du skära dem i lika stora bitar."
+      }
+    }
+  ]
+}

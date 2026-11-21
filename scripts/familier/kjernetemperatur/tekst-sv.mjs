@@ -33,7 +33,7 @@ export const TEKST = {
       ['Ska man skölja kycklingen?', `${h.s('skolj')}`],
     ],
     soster: I('kalkon', 'Innertemperatur kalkon'),
-    andre: [I('vila', 'Vila och eftervärme'), I('kottfars', 'Innertemperatur köttfärs')],
+    andre: [I('vila', 'Vila och eftervärme'), I('kottfars', 'Innertemperatur köttfärs'), ['/sv/tillagningstid/hel-kyckling/', 'Hel kyckling i ugn: hur länge?'], ['/sv/airfryer/kycklingfile/', 'Kycklingfilé i airfryer']],
   }),
 
   kalkun: (h) => ({
@@ -56,7 +56,7 @@ export const TEKST = {
       ['Hur länge ska kalkonen vila?', `${h.s('vila')}`],
     ],
     soster: I('kyckling', 'Innertemperatur kyckling'),
-    andre: [I('vila', 'Vila och eftervärme')],
+    andre: [I('vila', 'Vila och eftervärme'), ['/sv/tillagningstid/kalkon/', 'Hur länge ska kalkonen vara i ugnen?']],
   }),
 
   kjottdeig: (h) => ({
@@ -184,7 +184,7 @@ export function nav({ data, rader, sti, h, p, esc }) {
       ])}`,
       `<h2>Siffror för varje sort</h2><p>Välj en sort för alla siffror, reglerna bakom dem och källorna. Källan står i sista kolumnen.</p><div class="table-wrap" tabindex="0" role="region" aria-label="Innertemperatur"><table class="sprik"><thead><tr><th scope="col">Sort</th><th scope="col">Vad</th><th scope="col">Siffra</th><th scope="col">Källa</th></tr></thead><tbody>${radene}</tbody></table></div>`,
       '<h2>Varor som inte finns här</h2><p>Vi anger bara en siffra när vi har hittat den på en svensk källsida. För fisk har vi inte hittat någon siffra hos en svensk myndighet eller branschorganisation, så fisk har ingen egen sida.</p>',
-      '<div class="related"><h2>Läs också</h2><ul><li><a href="/sv/hallbarhet/">Hur länge håller maten i kylen?</a></li><li><a href="/sv/frysa/">Kan man frysa det?</a></li></ul></div>',
+      '<div class="related"><h2>Läs också</h2><ul><li><a href="/sv/hallbarhet/">Hur länge håller maten i kylen?</a></li><li><a href="/sv/frysa/">Kan man frysa det?</a></li><li><a href="/sv/tillagningstid/">Tillagningstider: hur länge ska maten vara i ugnen?</a></li><li><a href="/sv/airfryer/">Airfryer: tid och temperatur</a></li><li><a href="/sv/hur-mycket-per-person/">Hur mycket mat per person?</a></li></ul></div>',
     ].join('\n'),
     faqTittel: 'Frågor om innertemperatur',
     faq: [

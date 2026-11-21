@@ -89,10 +89,10 @@ test('kildekontrollen blir rød når et sitat ikke står hos kilden, og grønn n
 
 test('samme rad-id som norsk gir hreflang, og en vare uten norsk motstykke står alene', () => {
   const g = (navn) => familieGrupper().find((x) => x.id === navn);
-  assert.deepEqual(g('auto-fam-erstatning-egg').sider, { nb: '/erstatning/egg/', en: '/en/substitutes/eggs/' });
-  assert.deepEqual(g('auto-fam-erstatning-brun-farin').sider, { nb: '/erstatning/brun-farin/', en: '/en/substitutes/brown-sugar/' });
+  assert.deepEqual(g('auto-fam-erstatning-egg').sider, { nb: '/erstatning/egg/', da: '/da/erstatning/aeg/', en: '/en/substitutes/eggs/' });
+  assert.deepEqual(g('auto-fam-erstatning-brun-farin').sider, { nb: '/erstatning/brun-farin/', sv: '/sv/ersatta/brun-farin/', en: '/en/substitutes/brown-sugar/' });
   assert.deepEqual(g('auto-fam-erstatning-buttermilk').sider, { en: '/en/substitutes/buttermilk/' });
-  assert.deepEqual(g('auto-fam-erstatning-nav').sider, { nb: '/erstatning/', en: '/en/substitutes/' });
+  assert.deepEqual(g('auto-fam-erstatning-nav').sider, { nb: '/erstatning/', sv: '/sv/ersatta/', da: '/da/erstatning/', en: '/en/substitutes/' });
 });
 
 test('sidene har ingen tankestrek, ingen emoji, ingen norske kilder, ingen allergi- eller helseråd og ingen forfatterlinje', async () => {
