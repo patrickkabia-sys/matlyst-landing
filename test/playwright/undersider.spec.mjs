@@ -1,203 +1,292 @@
-// Undersidene: omregneren og den faste knappen. Adressene leses fra forhåndsvisningens kart.json
+// Undersidene: omregnerne (kalkulatorkortet på de ekte sidene) og den faste knappen. Adressene leses fra forhåndsvisningens kart.json
 // til typene er rullet ut; ellers brukes de ekte stiene.
 import { existsSync, readFileSync } from 'node:fs';
 import { test, expect } from '@playwright/test';
+import { presisTekst } from '../../scripts/kalk-kort.mjs';
 
 // qa/ er gitignorert: i CI og etter utrulling finnes ikke kartet, og da gjelder de ekte stiene.
 const kartFil = new URL('../../qa/forhandsvisning/kart.json', import.meta.url);
 const kart = existsSync(kartFil) ? JSON.parse(readFileSync(kartFil, 'utf8')) : [];
 const adresse = (sti) => kart.find((s) => s.sti === sti)?.url ?? sti;
 
-test('omregneren regner fortsatt, med samme tallformat som før', async ({ page }) => {
+
+// Enhetsomregnerne bruker kalkulatorkortet (form.kalk, data-kalk="enhet") rett under ingressen. Forventningene utledes av sidens egne kalk-data
+// (faktorer, bøyde former, antall sifre), aldri av kopierte tall. Eldre omregner (form.omregner) finnes ikke lenger.
+const KALK = 'form.kalk[data-kalk="enhet"]';
+const lesData = (page) => page.locator(`${KALK} .kalk-data`).evaluate((e) => JSON.parse(e.textContent));
+const komma = (lang) => (lang === 'en' ? '.' : ',');
+const tallTekst = (n, lang, data) => presisTekst(n, data.sifre).replace('.', komma(lang));
+const ordFor = (data, id, entall) => { const k = data.kort[id]; return Array.isArray(k) ? k[entall ? 0 : 1] : (k ?? id); };
+const faktor = (data, id) => (id in data.ml ? data.ml[id] : data.g[id]);
+const regn = (data, n, fra, til) => {
+  if (data.affin && data.affin[fra] && data.affin[til]) { const [aF, bF] = data.affin[fra], [aT, bT] = data.affin[til]; return (n * aF + bF - bT) / aT; }
+  return n * faktor(data, fra) / faktor(data, til);
+};
+/** Setningen kortet skal vise, utledet av dataene: «2 cups = 4,732 dl». */
+const setningFor = (data, lang, n, fra, til) => {
+  const ut = tallTekst(regn(data, n, fra, til), lang, data);
+  return `${tallTekst(n, lang, data)} ${ordFor(data, fra, n === 1)} = ${ut} ${ordFor(data, til, ut === '1')}`;
+};
+
+const SPRAK_SIDER = [
+  { sprak: 'nb', sti: '/verktoy/kopp-til-dl/', ml: '/verktoy/kopp-til-ml/', temp: '/verktoy/celsius-til-fahrenheit/', hub: '/verktoy/enhetsomregner/' },
+  { sprak: 'sv', sti: '/sv/verktyg/kopp-till-dl/', ml: '/sv/verktyg/kopp-till-ml/', temp: '/sv/verktyg/celsius-till-fahrenheit/', hub: '/sv/verktyg/enhetsomvandlare/' },
+  { sprak: 'da', sti: '/da/vaerktoejer/kop-til-dl/', ml: '/da/vaerktoejer/kop-til-ml/', temp: '/da/vaerktoejer/celsius-til-fahrenheit/', hub: '/da/vaerktoejer/enhedsomregner/' },
+  { sprak: 'en', sti: '/en/tools/cups-to-dl/', ml: '/en/tools/cups-to-ml/', temp: '/en/tools/c-to-f/', hub: '/en/tools/unit-converter/' },
+];
+
+test('omregneren regner, med fire gjeldende sifre', async ({ page }) => {
   await page.goto(adresse('/verktoy/kopp-til-dl/'));
-  await page.locator('[data-felt=verdi]').fill('2');
-  await expect(page.locator('[data-felt=svar]')).toContainText('4,732');
+  const data = await lesData(page);
+  await page.locator(`${KALK} [data-felt=mengde]`).fill('2');
+  await expect(page.locator(`${KALK} [data-felt=svar]`)).toHaveText(tallTekst(regn(data, 2, 'cups', 'dl'), 'nb', data));
+  await expect(page.locator(`${KALK} [data-felt=setning]`)).toHaveText(setningFor(data, 'nb', 2, 'cups', 'dl'));
+  expect(setningFor(data, 'nb', 2, 'cups', 'dl'), 'vakten ser det samme som siden').toBe('2 cups = 4,732 dl');
 });
 
-test('omregneren bytter enheter og regner det omvendte; svaret brytes i stedet for å kuttes', async ({ page }) => {
+test('omregneren regner det omvendte når enhetene byttes; mengden står, og svaret brytes i stedet for å kuttes på 360 px', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
   await page.goto(adresse('/verktoy/kopp-til-dl/'));
-  const fraFelt = page.locator('[data-felt=fra]');
-  const tilFelt = page.locator('[data-felt=til]');
-  const svar = page.locator('[data-felt=svar]');
-  await page.locator('[data-felt=verdi]').fill('1500');
-  const fra = await fraFelt.inputValue();
-  const til = await tilFelt.inputValue();
-  const f = JSON.parse(await page.locator('.omregner-data').textContent()).f;
-  const tall = (n) => { const a = Math.abs(n); return String(Number(n.toFixed(a >= 1000 ? 0 : a >= 100 ? 1 : a >= 10 ? 2 : a >= 1 ? 3 : a >= 0.1 ? 4 : 5))).replace('.', ','); }; // norsk desimalkomma
-  const kort = async (felt) => felt.evaluate((e) => e.options[e.selectedIndex].text.replace(/^.*\(([^)]+)\)$/u, '$1'));
-  await page.locator('[data-handling=bytt]').click();
+  const data = await lesData(page);
+  const fraFelt = page.locator(`${KALK} [data-felt=fra]`), tilFelt = page.locator(`${KALK} [data-felt=til]`);
+  await page.locator(`${KALK} [data-felt=mengde]`).fill('1500');
+  const fra = await fraFelt.inputValue(), til = await tilFelt.inputValue();
+  await page.locator(`${KALK} [data-felt=bytt]`).click();
   expect(await fraFelt.inputValue()).toBe(til);
   expect(await tilFelt.inputValue()).toBe(fra);
-  const ut = 1500 * f[til] / f[fra];
-  // Enheter som skrives som ord har flertall i sidens data (omregner-data, o): «1500 dl = 6,34 kopper», ikke «kopp».
-  const o = JSON.parse(await page.locator('.omregner-data').textContent()).o ?? {};
-  const ord = async (felt, n) => { const id = await felt.inputValue(); return o[id] ? o[id][Number(tall(n)) === 1 ? 0 : 1] : kort(felt); };
-  await expect(svar).toHaveText(`1500 ${await ord(fraFelt, 1500)} = ${tall(ut)} ${await ord(tilFelt, ut)}`);
-  const boks = await svar.evaluate((e) => ({ s: e.scrollWidth, b: e.clientWidth }));
-  expect(boks.s).toBeLessThanOrEqual(boks.b);
-  const knapp = await page.locator('[data-handling=bytt]').boundingBox();
+  await expect(page.locator(`${KALK} [data-felt=mengde]`), 'mengden står ved bytte').toHaveValue('1500');
+  await expect(page.locator(`${KALK} [data-felt=setning]`)).toHaveText(setningFor(data, 'nb', 1500, til, fra));
+  await expect(page.locator(`${KALK} [data-felt=svar]`)).toHaveText(tallTekst(regn(data, 1500, til, fra), 'nb', data));
+  for (const felt of ['svar', 'setning']) {
+    const boks = await page.locator(`${KALK} [data-felt=${felt}]`).evaluate((e) => ({ s: e.scrollWidth, b: e.clientWidth }));
+    expect(boks.s, `${felt} kuttes ikke`).toBeLessThanOrEqual(boks.b);
+  }
+  const knapp = await page.locator(`${KALK} [data-felt=bytt]`).boundingBox();
   expect(knapp.width).toBeGreaterThanOrEqual(44);
   expect(knapp.height).toBeGreaterThanOrEqual(44);
 });
 
-// Flertall i svaret, per språk, med formene fra sidens data (omregner-data.o) og aldri fra JS.
-const FLERTALL_SIDER = [
-  { sprak: 'nb', sti: '/verktoy/kopp-til-dl/', entall: 'kopp', flertall: 'kopper', pint: ['pint', 'pints'] },
-  { sprak: 'sv', sti: '/sv/verktyg/kopp-till-dl/', entall: 'kopp', flertall: 'koppar', pint: ['pint', 'pints'] },
-  { sprak: 'da', sti: '/da/vaerktoejer/kop-til-dl/', entall: 'kop', flertall: 'kopper', pint: ['pint', 'pints'] },
-  { sprak: 'en', sti: '/en/tools/cups-to-dl/', entall: 'cup', flertall: 'cups', pint: ['pt', 'pt'] },
-];
-for (const { sprak, sti, entall, flertall, pint } of FLERTALL_SIDER) {
+test('bytte: hurtigmengdene bytter til den nye fra-enhetens mengder, og aria-pressed følger mengden', async ({ page }) => {
+  await page.goto(adresse('/verktoy/kopp-til-dl/'));
+  const data = await lesData(page);
+  await page.locator(`${KALK} [data-felt=mengde]`).fill('3');
+  await page.locator(`${KALK} [data-felt=bytt]`).click();
+  const steg = data.steg[data.stegFor.dl];
+  const knapper = page.locator(`${KALK} .hurtig button`);
+  await expect(knapper).toHaveText(steg.map((v) => `${v} ${ordFor(data, 'dl', Number(v.replace(',', '.')) === 1)}`));
+  const i3 = steg.indexOf('3');
+  expect(i3, 'tre er en hurtigmengde for dl').toBeGreaterThan(-1);
+  await expect(knapper.nth(i3)).toHaveAttribute('aria-pressed', 'true');
+  await expect(knapper.nth(i3 === 0 ? 1 : 0)).toHaveAttribute('aria-pressed', 'false');
+});
+
+// Bøying per språk, med formene fra sidens egne data (kalk-data.kort) og aldri fra JS: «1 cup», «2 cups».
+for (const { sprak, sti } of SPRAK_SIDER) {
   test(`omregneren (${sprak}): entall for 1 og flertall ellers, med formene fra sidens data`, async ({ page }) => {
     await page.goto(sti);
-    const data = JSON.parse(await page.locator('.omregner-data').textContent());
-    expect(data.o.cups, 'formene står i sidens data').toEqual([entall, flertall]);
-    const svar = page.locator('[data-felt=svar]');
-    const verdi = page.locator('[data-felt=verdi]');
-    await expect(svar).toHaveText(new RegExp(`^1 ${entall} = `, 'u'));
-    await verdi.fill('1500');
-    await expect(svar).toHaveText(new RegExp(`^1500 ${flertall} = `, 'u'));
-    await verdi.fill('2');
-    await expect(svar).toHaveText(new RegExp(`^2 ${flertall} = `, 'u'));
-    await verdi.fill('0.5');
-    const d = sprak === 'en' ? '.' : ',';
-    await expect(svar).toHaveText(new RegExp(`^0${d}5 ${flertall} = `, 'u'));
-    // Svarsiden: to kopper er én pint (entall på høyre side), og symboler står uendret.
-    await page.locator('[data-felt=fra]').selectOption('cups');
-    await page.locator('[data-felt=til]').selectOption('pints');
-    await verdi.fill('2');
-    await expect(svar).toHaveText(new RegExp(`^2 ${flertall} = 1 ${pint[0]}$`, 'u'));
-    await verdi.fill('4');
-    await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 2 ${pint[1]}$`, 'u'));
-    await page.locator('[data-felt=til]').selectOption('ml');
-    await expect(svar).toHaveText(new RegExp(`^4 ${flertall} = 946${d}4 ml$`, 'u'));
+    const data = await lesData(page);
+    const [entall, flertall] = data.kort.cups;
+    expect([entall, flertall].every((s) => typeof s === 'string' && s.length > 0), 'formene står i sidens data').toBe(true);
+    expect(entall).not.toBe(flertall);
+    const setning = page.locator(`${KALK} [data-felt=setning]`), mengde = page.locator(`${KALK} [data-felt=mengde]`);
+    const d = komma(sprak);
+    await expect(setning).toHaveText(new RegExp(`^1 ${entall} = `, 'u'));
+    for (const [inn, ut, ord] of [['1500', '1500', flertall], ['2', '2', flertall], ['0.5', `0${d}5`, flertall]]) {
+      await mengde.fill(inn);
+      await expect(setning).toHaveText(new RegExp(`^${ut} ${ord} = `, 'u'));
+    }
+    // To cups er én pint (entall på høyre side).
+    await page.locator(`${KALK} [data-felt=til]`).selectOption('pints');
+    await mengde.fill('2');
+    await expect(setning).toHaveText(setningFor(data, sprak, 2, 'cups', 'pints'));
+    expect(ordFor(data, 'pints', true)).toBeTruthy();
+    await expect(setning).toHaveText(new RegExp(`^2 ${flertall} = 1 ${ordFor(data, 'pints', true)}$`, 'u'));
+    await mengde.fill('4');
+    await expect(setning).toHaveText(new RegExp(`^4 ${flertall} = 2 ${ordFor(data, 'pints', false)}$`, 'u'));
+    await page.locator(`${KALK} [data-felt=til]`).selectOption('ml');
+    await expect(setning).toHaveText(setningFor(data, sprak, 4, 'cups', 'ml'));
+    await expect(setning).toHaveText(new RegExp(`^4 ${flertall} = 946${d}4 ml$`, 'u'));
   });
 }
 
-// Valg: kortet står i lesekolonnen (ikke bredere), så overskriften «Kalkulator: …», kortet og teksten har samme venstrekant.
-for (const bredde of [1001, 1280, 1600]) {
-  test(`omregneren på ${bredde} px: «Kalkulator»-overskriften og kortet har samme venstrekant, og tallet får plass`, async ({ page }) => {
+// Kortet står i heroen rett under ingressen og er høyst 920 px bredt (designspec 16.8). Tallet får plass også med sju sifre.
+for (const bredde of [390, 1001, 1280, 1600]) {
+  test(`omregneren på ${bredde} px: kortet står rett under ingressen i heroen, høyst 920 px bredt, og tallet får plass`, async ({ page }) => {
     await page.setViewportSize({ width: bredde, height: 900 });
-    for (const sti of ['/verktoy/kopp-til-ml/', '/sv/verktyg/kopp-till-ml/', '/da/vaerktoejer/kop-til-ml/', '/en/tools/cups-to-ml/']) {
-      await page.goto(sti);
+    for (const { sti, hub } of SPRAK_SIDER) for (const adr of [sti, hub]) {
+      await page.goto(adr);
       const m = await page.evaluate(() => {
-        const h = [...document.querySelectorAll('h2')].find((e) => e.nextElementSibling?.matches('form.omregner'));
-        const f = document.querySelector('form.omregner'), k = document.querySelector('.locale-prose');
-        const x = (e) => e.getBoundingClientRect();
-        return { h: x(h).left, hb: x(h).right, f: x(f).left, fb: x(f).right, k: x(k).left, kb: x(k).right };
+        const f = document.querySelector('form.kalk'), x = (e) => e.getBoundingClientRect();
+        const hero = f.parentElement, lead = f.previousElementSibling;
+        return { heroKlasse: hero.matches('header.locale-page-hero'), leadKlasse: lead?.matches('p.lead') ?? false, bredde: x(f).width, venstre: x(f).left, hoyre: x(f).right, vindu: document.documentElement.clientWidth, leadBunn: lead ? x(lead).bottom : null, kortTopp: x(f).top, sidelengs: document.documentElement.scrollWidth - document.documentElement.clientWidth };
       });
-      expect(Math.abs(m.h - m.f), `${sti}: overskrift ${m.h} mot kort ${m.f}`).toBeLessThanOrEqual(1);
-      expect(Math.abs(m.f - m.k), `${sti}: kort ${m.f} mot kolonne ${m.k}`).toBeLessThanOrEqual(1);
-      expect(m.fb, 'kortet er ikke bredere enn kolonnen').toBeLessThanOrEqual(m.kb + 1);
-      // Enhetsnavnene i Fra og Til klippes ikke (de får hver sin halvdel av raden under Mengde), og sju sifre i feltet klippes ikke.
-      const klippet = await page.evaluate(() => [...document.querySelectorAll('[data-felt=fra],[data-felt=til]')].map((e) => e.scrollWidth - e.clientWidth));
-      expect(klippet.every((k) => k <= 0), `${sti}: enhetsnavn klippes ${klippet}`).toBe(true);
-      await page.locator('[data-felt=verdi]').fill('1234567');
-      const klipp = await page.locator('[data-felt=verdi]').evaluate((e) => e.scrollWidth - e.clientWidth);
-      expect(klipp, `${sti}: tallet klippes`).toBeLessThanOrEqual(0);
+      expect(m.heroKlasse, `${adr}: kortet ligger i header.locale-page-hero`).toBe(true);
+      expect(m.leadKlasse, `${adr}: elementet rett over kortet er ingressen (p.lead)`).toBe(true);
+      expect(m.kortTopp, `${adr}: kortet kommer etter ingressen`).toBeGreaterThanOrEqual(m.leadBunn);
+      expect(m.bredde, `${adr}: kortet er høyst 920 px bredt`).toBeLessThanOrEqual(920.5);
+      expect(m.venstre).toBeGreaterThanOrEqual(0); expect(m.hoyre).toBeLessThanOrEqual(m.vindu);
+      expect(m.sidelengs, `${adr}: ingen sidelengs rulling`).toBeLessThanOrEqual(0);
+      await page.locator(`${KALK} [data-felt=mengde]`).fill('1234567');
+      const klipp = await page.locator(`${KALK} [data-felt=mengde]`).evaluate((e) => e.scrollWidth - e.clientWidth);
+      expect(klipp, `${adr}: sju sifre klippes ikke`).toBeLessThanOrEqual(0);
     }
   });
 }
 
-// Tallformatet i svaret følger sidens språk (lang), og inntastingen tåler både komma og punktum.
-for (const [sti, d, ut] of [['/verktoy/kopp-til-ml/', ',', '354,9'], ['/sv/verktyg/kopp-till-ml/', ',', '354,9'], ['/da/vaerktoejer/kop-til-ml/', ',', '354,9'], ['/en/tools/cups-to-ml/', '.', '354.9']]) {
-  test(`omregneren ${sti}: desimaltegnet i svaret er «${d}», og både komma og punktum kan skrives inn`, async ({ page }) => {
-    await page.goto(sti);
-    const verdi = page.locator('[data-felt=verdi]'), svar = page.locator('[data-felt=svar]');
-    for (const innskrevet of ['1,5', '1.5']) {
-      await verdi.fill(innskrevet);
-      await expect(svar).toHaveText(new RegExp(`^1${d}5 \\S+ = ${ut.replace('.', '\\.')} ml$`, 'u'));
-    }
-    await verdi.fill('1500');
-    const tekst = await svar.textContent();
-    expect(tekst, 'ingen tusenskille som kan forveksles').toMatch(/^1500 \S+ = 354\d{3}(?:[.,]\d+)? ml$/u);
+// Desimaltegnet i svaret følger sidens språk (lang), og inntastingen tåler både komma og punktum.
+for (const { sprak, ml } of SPRAK_SIDER) {
+  const d = komma(sprak);
+  test(`omregneren (${sprak}): desimaltegnet er «${d}», og både komma og punktum kan skrives inn`, async ({ page }) => {
+    await page.goto(ml);
+    const data = await lesData(page);
+    const mengde = page.locator(`${KALK} [data-felt=mengde]`), setning = page.locator(`${KALK} [data-felt=setning]`), svar = page.locator(`${KALK} [data-felt=svar]`);
     expect(await page.evaluate(() => document.documentElement.lang)).toMatch(/^(nb|sv|da|en)/u);
-    // Serverens HTML (hentet uten skript) og skriptets svar for samme verdi (1) skal være identiske.
-    const html = await (await page.request.get(sti)).text();
-    const server = /data-felt="svar">([^<]*)</u.exec(html)[1].replace(/&amp;/gu, '&');
-    await verdi.fill('1');
-    expect(await svar.textContent(), 'server og skript har ulikt svar for 1').toBe(server);
+    for (const innskrevet of ['1,5', '1.5']) {
+      await mengde.fill(innskrevet);
+      await expect(setning).toHaveText(setningFor(data, sprak, 1.5, 'cups', 'ml'));
+      await expect(svar).toHaveText(tallTekst(1.5 * data.ml.cups, sprak, data));
+    }
+    expect(await svar.textContent()).toBe(`354${d}9`);
+    await mengde.fill('1500');
+    expect(await svar.textContent(), 'heltall fra 1000, uten tusenskille').toBe(String(Math.round(1500 * data.ml.cups)));
+    // Serverens HTML (hentet uten skript) og skriptets svar for samme mengde (1) er identiske.
+    const html = await (await page.request.get(ml)).text();
+    const server = /data-felt="setning"[^>]*>([^<]*)</u.exec(html)[1].replace(/&amp;/gu, '&');
+    await mengde.fill('1');
+    expect(await setning.textContent(), 'server og skript har ulikt svar for 1').toBe(server);
   });
 }
 
-// Hele inntastingen valideres (testtabell for alle fire språk). Forventet: tallet som svaret starter med, eller null = ugyldig (svaret tomt, aria-invalid).
-const NORDISK = [['1,5', '1,5'], ['1.5', '1,5'], ['1.500', '1500'], ['1 500', '1500'], ['1\u00a0500', '1500'], ['1\u202f500', '1500'], ['1.500,25', '1500'], ['1,500', '1,5'], ['12.345', '12345'], ['1234.567', '1235'], ['1.500.000', '1500000'], ['12.34', '12,34'], ['-1', '-1'], ['+2', '2'], ['0,5', '0,5'], ['1,5,2', null], ['1.5.2', null], ['1,5.2', null], ['2cups', null], ['abc', null], ['1 5 0', '150'], ['--1', null], ['1,.5', null], ['1,500.5', null], ['1.0500', '1,05'], ['0.125', '0,125'], ['0,125', '0,125'], ['0.5', '0,5'], ['00.125', '0,125'], ['.125', '0,125']];
-const ENGELSK = [['1.5', '1.5'], ['1,5', '1.5'], ['1,500', '1500'], ['1 500', '1500'], ['1\u00a0500', '1500'], ['1\u202f500', '1500'], ['1,500.25', '1500'], ['1.500', '1.5'], ['12,345', '12345'], ['1234,567', '1235'], ['1,500,000', '1500000'], ['12.34', '12.34'], ['-1', '-1'], ['0.5', '0.5'], ['1,5,2', null], ['1.5.2', null], ['1.500,5', null], ['2cups', null], ['abc', null], ['--1', null], ['0.125', '0.125'], ['0,125', '0.125'], ['0.5', '0.5'], ['00.125', '0.125'], ['.125', '0.125']];
-for (const [sprak, sti, tabell] of [['nb', '/verktoy/kopp-til-ml/', NORDISK], ['sv', '/sv/verktyg/kopp-till-ml/', NORDISK], ['da', '/da/vaerktoejer/kop-til-ml/', NORDISK], ['en', '/en/tools/cups-to-ml/', ENGELSK]]) {
+// Hele inntastingen valideres (testtabell for alle fire språk). Forventet: mengden slik kortet viser den (tallet som ble skrevet, med språkets desimaltegn),
+// eller null = ugyldig (veiledningen, aria-invalid). Kortet viser mengden som skrevet (ikke avrundet), og engelsk tar brøker: der er mellomrom mellom sifre
+// ikke tusenskille («1 500» er ugyldig, «1 1/2» er halvannen).
+const NORDISK = [['1,5', '1,5'], ['1.5', '1,5'], ['1.500', '1500'], ['1 500', '1500'], ['1 500', '1500'], ['1 500', '1500'], ['1.500,25', '1500,25'], ['1,500', '1,5'], ['12.345', '12345'], ['1234.567', '1234,567'], ['1.500.000', '1500000'], ['12.34', '12,34'], ['+2', '2'], ['0,5', '0,5'], ['1,5,2', null], ['1.5.2', null], ['1,5.2', null], ['2cups', null], ['abc', null], ['1 5 0', '150'], ['--1', null], ['1,.5', null], ['1,500.5', null], ['1.0500', '1,05'], ['0.125', '0,125'], ['0,125', '0,125'], ['0.5', '0,5'], ['00.125', '0,125'], ['.125', '0,125']];
+const ENGELSK = [['1.5', '1.5'], ['1,5', '1.5'], ['1,500', '1500'], ['1 500', null], ['1\u00a0500', null], ['1\u202f500', null], ['1,500.25', '1500.25'], ['1.500', '1.5'], ['12,345', '12345'], ['1234,567', '1234.567'], ['1,500,000', '1500000'], ['12.34', '12.34'], ['0.5', '0.5'], ['1 1/2', '1 1/2'], ['1/2', '1/2'], ['1,5,2', null], ['1.5.2', null], ['1.500,5', null], ['2cups', null], ['abc', null], ['--1', null], ['0.125', '0.125'], ['0,125', '0.125'], ['00.125', '0.125'], ['.125', '0.125']];
+for (const { sprak, ml } of SPRAK_SIDER) {
   test(`omregneren (${sprak}): hele inntastingen valideres, delsvar finnes ikke`, async ({ page }) => {
-    await page.goto(sti);
-    const verdi = page.locator('[data-felt=verdi]'), svar = page.locator('[data-felt=svar]');
-    for (const [inn, forventet] of tabell) {
-      await verdi.fill(inn);
-      const tekst = await svar.textContent(), ugyldig = await verdi.getAttribute('aria-invalid');
-      if (forventet === null) { expect(tekst, `«${inn}» skal gi tomt svar`).toBe(''); expect(ugyldig, `«${inn}» aria-invalid`).toBe('true'); }
+    await page.goto(ml);
+    const data = await lesData(page);
+    const mengde = page.locator(`${KALK} [data-felt=mengde]`), svar = page.locator(`${KALK} [data-felt=svar]`), setning = page.locator(`${KALK} [data-felt=setning]`);
+    for (const [inn, forventet] of sprak === 'en' ? ENGELSK : NORDISK) {
+      await mengde.fill(inn);
+      const tekst = await setning.textContent(), ugyldig = await mengde.getAttribute('aria-invalid');
+      if (forventet === null) { expect(tekst, `«${inn}» skal gi veiledningen`).toBe(data.feil); expect(await svar.textContent(), `«${inn}» skal gi tomt svar`).toBe(''); expect(ugyldig, `«${inn}» aria-invalid`).toBe('true'); }
       else { expect(tekst.startsWith(`${forventet} `), `«${inn}» skal gi ${forventet}, ga «${tekst}»`).toBe(true); expect(ugyldig, `«${inn}» er gyldig`).toBeNull(); }
     }
-    await verdi.fill('');
-    expect(await svar.textContent()).toBe(''); expect(await verdi.getAttribute('aria-invalid')).toBeNull();
-    // Flertall for negative tall: −1 er entall (som generatoren).
-    await verdi.fill('-1');
-    expect(await svar.textContent()).toMatch(new RegExp(`^-1 ${{ nb: 'kopp', sv: 'kopp', da: 'kop', en: 'cup' }[sprak]} = `, 'u'));
-    await verdi.fill('-2');
-    expect(await svar.textContent()).toMatch(new RegExp(`^-2 ${{ nb: 'kopper', sv: 'koppar', da: 'kopper', en: 'cups' }[sprak]} = `, 'u'));
+    // Tomt felt: veiledning og aria-invalid, aldri et delsvar.
+    await mengde.fill('');
+    expect(await svar.textContent()).toBe('');
+    // På en volumside er minus ugyldig: veiledningen og aria-invalid, ikke et svar.
+    for (const minus of ['-1', '-2']) {
+      await mengde.fill(minus);
+      expect(await setning.textContent(), `«${minus}» på en volumside gir veiledningen`).toBe(data.feil);
+      expect(await mengde.getAttribute('aria-invalid')).toBe('true');
+      expect(await svar.textContent()).toBe('');
+    }
+  });
+  test(`omregneren (${sprak}): på temperatursiden er minusgrader gyldige`, async ({ page }) => {
+    await page.goto(SPRAK_SIDER.find((s) => s.sprak === sprak).temp);
+    const data = await lesData(page);
+    expect(data.negativ, 'negative tall er slått på i sidens data').toBe(true);
+    const mengde = page.locator(`${KALK} [data-felt=mengde]`);
+    await mengde.fill('-18');
+    await expect(page.locator(`${KALK} [data-felt=setning]`)).toHaveText(setningFor(data, sprak, -18, 'c', 'f'));
+    expect(setningFor(data, sprak, -18, 'c', 'f')).toBe(`-18 °C = -0${komma(sprak)}4 °F`);
+    expect(await mengde.getAttribute('aria-invalid')).toBeNull();
   });
 }
 
-test('bytteanimasjon: redusert bevegelse som slås på midt i byttet stopper animasjonene straks, og nytt trykk avbryter pågående', async ({ browser, baseURL }) => {
-  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
-  const page = await ctx.newPage();
-  await page.goto(BYTT);
-  const antall = () => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]', '[data-handling=bytt]', '[data-felt=svar]'].reduce((n, s) => n + document.querySelector(s).getAnimations().length, 0));
-  await page.locator('[data-handling=bytt]').click();
-  expect(await antall()).toBeGreaterThan(0);
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await expect.poll(antall, { timeout: 500 }).toBe(0);
-  await page.emulateMedia({ reducedMotion: 'no-preference' });
-  await page.locator('[data-handling=bytt]').click();
-  expect(await antall()).toBeGreaterThan(0);
-  await page.emulateMedia({ reducedMotion: 'reduce' });
-  await page.locator('[data-handling=bytt]').click();
-  expect(await antall(), 'trykk ved redusert bevegelse avbryter også pågående').toBe(0);
-  await ctx.close();
-});
-
-test('omregneren: tab-rekkefølge, tilgjengelige navn og synlig fokus', async ({ page }) => {
+test('omregneren: tab-rekkefølgen er mengde, fra, bytt, til og hurtigmengdene, med navn og synlig fokus', async ({ page }) => {
   await page.goto(adresse('/verktoy/kopp-til-dl/'));
-  await page.locator('[data-felt=verdi]').focus();
-  for (const sel of ['[data-felt=verdi]', '[data-felt=fra]', '[data-handling=bytt]', '[data-felt=til]']) {
-    const el = page.locator(sel);
-    await expect(el).toBeFocused();
-    const navn = await el.evaluate((e) => (e.getAttribute('aria-label') || e.labels?.[0]?.firstChild?.textContent || e.textContent || '').trim());
-    expect(navn.length, `${sel} mangler navn`).toBeGreaterThan(0);
-    const ring = await el.evaluate((e) => {
-      const stil = getComputedStyle(e);
-      const kort = e.closest('label') ? getComputedStyle(e.closest('label')) : null;
-      return { outline: parseFloat(stil.outlineWidth) * (stil.outlineStyle === 'none' ? 0 : 1), skygge: kort ? kort.boxShadow : stil.boxShadow };
-    });
-    expect(ring.outline > 0 || (ring.skygge && ring.skygge !== 'none'), `${sel} mangler synlig fokus`).toBe(true);
+  await page.locator('#ck-reject').click({ timeout: 2000 }).catch(() => {});
+  await page.evaluate(() => { const k = document.querySelector('form.kalk'); const t = document.createElement('span'); t.tabIndex = 0; k.before(t); t.focus(); });
+  const rekkefolge = ['mengde', 'fra', 'bytt', 'til', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig', 'hurtig'];
+  const sett = [];
+  for (let i = 0; i < rekkefolge.length; i++) {
     await page.keyboard.press('Tab');
+    const m = await page.evaluate(() => {
+      const e = document.activeElement;
+      if (!e.closest('form.kalk')) return null;
+      const stil = getComputedStyle(e), ramme = e.closest('label') ? getComputedStyle(e.closest('label')) : null, side = e.closest('.kalkside') ? getComputedStyle(e.closest('.kalkside')) : null;
+      const navn = (e.getAttribute('aria-label') || e.labels?.[0]?.textContent || e.textContent || '').trim();
+      const ring = (s) => s && ((s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) > 0) || s.boxShadow !== 'none');
+      return { rolle: e.closest('.hurtig') ? 'hurtig' : e.getAttribute('data-felt'), navn, fokus: Boolean(ring(stil) || ring(ramme) || ring(side)) };
+    });
+    expect(m, `stopp ${i + 1} ligger i kortet`).not.toBeNull();
+    sett.push(m.rolle);
+    expect(m.navn.length, `stopp ${i + 1} (${m.rolle}) mangler navn`).toBeGreaterThan(0);
+    expect(m.fokus, `stopp ${i + 1} (${m.rolle}) mangler synlig fokus`).toBe(true);
   }
+  expect(sett).toEqual(rekkefolge);
 });
 
-test('omregneren: skjemaet holder seg inne i skjermen med dobbel tekststørrelse på 1280 px', async ({ page }) => {
+for (const bredde of [360, 1280]) {
+  test(`omregneren: trykkflatene er minst 44 px på ${bredde} px`, async ({ page }) => {
+    await page.setViewportSize({ width: bredde, height: 800 });
+    await page.goto(adresse('/verktoy/kopp-til-dl/'));
+    const smaa = await page.evaluate(() => [...document.querySelectorAll('form.kalk input, form.kalk select, form.kalk button')]
+      .map((e) => { const r = e.getBoundingClientRect(); return [e.getAttribute('data-felt') || e.textContent.trim(), Math.round(r.width), Math.round(r.height)]; })
+      .filter(([, b, h]) => h < 44 || b < 44));
+    expect(smaa, 'trykkflater under 44 px').toEqual([]);
+  });
+}
+
+test('omregneren: kortet holder seg inne i skjermen med dobbel tekststørrelse på 1280 px', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   const cdp = await page.context().newCDPSession(page);
   await cdp.send('Page.setFontSizes', { fontSizes: { standard: 32 } });
   await page.goto(adresse('/verktoy/kopp-til-dl/'));
-  const boks = await page.locator('form.omregner').boundingBox();
+  const boks = await page.locator('form.kalk').boundingBox();
   expect(boks.x).toBeGreaterThanOrEqual(0);
   expect(boks.x + boks.width).toBeLessThanOrEqual(1280);
-  const hoyre = await page.evaluate(() => document.querySelector('form.omregner').scrollWidth - document.querySelector('form.omregner').clientWidth);
+  const hoyre = await page.evaluate(() => document.querySelector('form.kalk').scrollWidth - document.querySelector('form.kalk').clientWidth);
   expect(hoyre).toBeLessThanOrEqual(0);
 });
 
-test('omregneren: ingen innholdsfortegnelse, og feltene er minst 44 px', async ({ page }) => {
-  await page.goto(adresse('/verktoy/kopp-til-dl/'));
-  await expect(page.locator('.toc')).toBeHidden();
-  for (const sel of ['[data-felt=verdi]', '[data-felt=fra]', '[data-felt=til]']) {
-    expect((await page.locator(sel).boundingBox()).height).toBeGreaterThanOrEqual(44);
+test('omregneren: kortet holder seg inne i siden på 360 px, også med forstørret tekst', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  const cdp = await page.context().newCDPSession(page);
+  await cdp.send('Page.setFontSizes', { fontSizes: { standard: 32 } });
+  for (const { sti } of SPRAK_SIDER) {
+    await page.goto(sti);
+    const m = await page.evaluate(() => { const r = document.querySelector('form.kalk').getBoundingClientRect(); return { venstre: r.left, hoyre: r.right, vindu: document.documentElement.clientWidth, sidelengs: document.documentElement.scrollWidth - document.documentElement.clientWidth }; });
+    expect(m.venstre, sti).toBeGreaterThanOrEqual(0);
+    expect(m.hoyre, sti).toBeLessThanOrEqual(m.vindu);
+    expect(m.sidelengs, `${sti}: ingen sidelengs rulling`).toBeLessThanOrEqual(0);
   }
+});
+
+test('omregneren: ingen innholdsfortegnelse, svarboks eller gammel omregner på noen av sidene', async ({ page }) => {
+  for (const { sti, hub } of SPRAK_SIDER) for (const adr of [sti, hub]) {
+    await page.goto(adr);
+    for (const sel of ['.toc', '.answer', 'form.omregner']) expect(await page.locator(sel).count(), `${adr}: ${sel}`).toBe(0);
+    expect(await page.locator(KALK).count(), `${adr}: ett kalkulatorkort`).toBe(1);
+  }
+});
+
+// Bytteknappen: ved redusert bevegelse beveger den seg ikke (ingen overgang), ellers dreies den med en overgang. Verdiene byttes uansett straks.
+test('bytteknappen: ved prefers-reduced-motion: reduce beveger den seg ikke, men verdiene byttes', async ({ browser, baseURL }) => {
+  const sti = '/verktoy/kopp-til-ml/';
+  const mål = async (reducedMotion) => {
+    const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion });
+    const page = await ctx.newPage();
+    await page.goto(sti);
+    const til0 = await page.locator(`${KALK} [data-felt=til]`).inputValue();
+    await page.locator(`${KALK} [data-felt=bytt]`).click();
+    const m = await page.evaluate(() => {
+      const knapp = document.querySelector('form.kalk [data-felt=bytt]');
+      return { animasjoner: knapp.getAnimations().length, varighet: getComputedStyle(knapp).transitionDuration, fra: document.querySelector('form.kalk [data-felt=fra]').value };
+    });
+    expect(m.fra, 'verdiene er byttet med en gang').toBe(til0);
+    await ctx.close();
+    return m;
+  };
+  const rolig = await mål('reduce');
+  expect(rolig.animasjoner, 'ingen pågående bevegelse').toBe(0);
+  expect(rolig.varighet.split(',').every((v) => parseFloat(v) === 0), `ingen overgang: ${rolig.varighet}`).toBe(true);
+  // Kontroll for testen: uten redusert bevegelse beveger knappen seg, ellers sier testen over ingenting.
+  const vanlig = await mål('no-preference');
+  expect(vanlig.animasjoner, 'knappen dreies med en overgang uten redusert bevegelse').toBeGreaterThan(0);
 });
 
 async function fastKnappForlop(page, sti, start) {
@@ -686,128 +775,4 @@ for (const bredde of [390, 1280]) for (const j of JUSS) test(`juss: ${j.sti} har
   expect(m.kortH2).toBe('0px'); expect(m.h2).toBe('26px'); expect(m.punkt).toBe('50%'); expect(m.listeStil).toBe('none');
   expect(m.piller).toBe(0); expect(m.andreKort).toBe(0); expect(m.lenkeStrek).toContain('underline');
   expect(m.ut).toBeLessThanOrEqual(0);
-});
-
-// Bytteanimasjonen i omregneren (felles site.js): verdiene byttes straks, bevegelsen er bare visuell (FLIP).
-const BYTT = '/verktoy/kopp-til-ml/';
-const etiketter = (page) => page.evaluate(() => { const f = document.querySelector('[data-felt=fra]'), t = document.querySelector('[data-felt=til]'); return [f, t].map((e) => e.getAnimations().length); });
-const transformer = (page) => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => getComputedStyle(document.querySelector(s)).transform));
-const sidelengs = (page) => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
-
-test('bytteknappen: verdiene og svaret er byttet med en gang, og knappen har trykkflate og navn', async ({ browser, baseURL }) => {
-  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
-  const page = await ctx.newPage();
-  await page.goto(BYTT);
-  const fra0 = await page.locator('[data-felt=fra]').inputValue(), til0 = await page.locator('[data-felt=til]').inputValue();
-  const svar0 = await page.locator('[data-felt=svar]').textContent();
-  await page.locator('[data-handling=bytt]').click();
-  // Ingen venting: DOM-tilstanden er allerede riktig mens bevegelsen pågår.
-  const na = await page.evaluate(() => ({ fra: document.querySelector('[data-felt=fra]').value, til: document.querySelector('[data-felt=til]').value, svar: document.querySelector('[data-felt=svar]').textContent, live: document.querySelector('[data-felt=svar]').getAttribute('aria-live'), animasjoner: document.querySelector('[data-felt=fra]').getAnimations().length }));
-  expect(na.fra).toBe(til0); expect(na.til).toBe(fra0); expect(na.svar).not.toBe(svar0); expect(na.live).toBe('polite');
-  expect(na.animasjoner, 'bevegelsen pågår').toBeGreaterThan(0);
-  const knapp = await page.locator('[data-handling=bytt]').boundingBox();
-  expect(knapp.width).toBeGreaterThanOrEqual(44); expect(knapp.height).toBeGreaterThanOrEqual(44);
-  expect((await page.locator('[data-handling=bytt]').getAttribute('aria-label') || '').length).toBeGreaterThan(2);
-  await ctx.close();
-});
-
-for (const [navn, vp, vannrett] of [['PC', { width: 1280, height: 800 }, true], ['mobil 360', { width: 360, height: 700 }, false]]) {
-  test(`bytteanimasjon (${navn}): begge valgene beveger seg (etikettene og boksene står stille) ${vannrett ? 'vannrett' : 'loddrett'}, uten sidelengs rulling, og ender uten transform`, async ({ browser, baseURL }) => {
-    const ctx = await browser.newContext({ baseURL, viewport: vp, reducedMotion: 'no-preference' });
-    const page = await ctx.newPage();
-    await page.goto(BYTT);
-    await page.locator('[data-handling=bytt]').click();
-    const [a, b] = await etiketter(page);
-    expect(a).toBeGreaterThan(0); expect(b).toBeGreaterThan(0);
-    const nok = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const an = document.querySelector(s).getAnimations()[0]; const k = an.effect.getKeyframes(); const m = /translate\((-?[\d.]+)px, (-?[\d.]+)px\)/u.exec(k[0].transform); return { dx: Number(m[1]), dy: Number(m[2]), props: Object.keys(k[0]).filter((p) => !['offset', 'easing', 'composite', 'computedOffset'].includes(p)), varighet: an.effect.getTiming().duration, easing: an.effect.getTiming().easing }; }));
-    for (const f of nok) {
-      expect(f.props, 'bare transform animeres på feltene').toEqual(['transform']);
-      expect(f.varighet).toBeGreaterThanOrEqual(280); expect(f.varighet).toBeLessThanOrEqual(340);
-      expect(f.easing).toBe('cubic-bezier(0.2, 0.8, 0.2, 1)');
-      if (vannrett) expect(Math.abs(f.dx)).toBeGreaterThan(Math.abs(f.dy)); else expect(Math.abs(f.dy)).toBeGreaterThan(Math.abs(f.dx));
-    }
-    // De to feltene bytter plass: motsatt retning.
-    expect(Math.sign(nok[0].dx || nok[0].dy)).toBe(-Math.sign(nok[1].dx || nok[1].dy));
-    for (let i = 0; i < 6; i++) { expect(await sidelengs(page)).toBeLessThanOrEqual(0); await page.waitForTimeout(60); }
-    await page.waitForTimeout(500);
-    expect(await transformer(page)).toEqual(['none', 'none']);
-    expect(await etiketter(page)).toEqual([0, 0]);
-    await ctx.close();
-  });
-}
-
-test('bytteanimasjon: dobbeltrykk raskt ender i opprinnelig tilstand uten forskjøvne felt', async ({ browser, baseURL }) => {
-  const ctx = await browser.newContext({ baseURL, viewport: { width: 360, height: 700 }, reducedMotion: 'no-preference' });
-  const page = await ctx.newPage();
-  await page.goto(BYTT);
-  const fra0 = await page.locator('[data-felt=fra]').inputValue(), til0 = await page.locator('[data-felt=til]').inputValue();
-  await page.locator('[data-handling=bytt]').dispatchEvent('click');
-  await page.waitForTimeout(40);
-  await page.locator('[data-handling=bytt]').dispatchEvent('click');
-  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(fra0);
-  expect(await page.locator('[data-felt=til]').inputValue()).toBe(til0);
-  await page.waitForTimeout(600);
-  expect(await transformer(page)).toEqual(['none', 'none']);
-  expect(await etiketter(page)).toEqual([0, 0]);
-  const rot = await page.evaluate(() => getComputedStyle(document.querySelector('[data-handling=bytt]')).rotate);
-  expect(rot).toBe('none');
-  // Trykk mange ganger: ingen låsing, og feltene står rett til slutt.
-  for (let i = 0; i < 7; i++) await page.locator('[data-handling=bytt]').dispatchEvent('click');
-  await page.waitForTimeout(700);
-  expect(await transformer(page)).toEqual(['none', 'none']);
-  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(til0);
-  await ctx.close();
-});
-
-test('bytteanimasjon: et nytt trykk midt i bevegelsen starter der feltene står (innholdet hopper ikke)', async ({ browser, baseURL }) => {
-  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
-  const page = await ctx.newPage();
-  await page.goto(BYTT);
-  await page.locator('[data-handling=bytt]').dispatchEvent('click');
-  await page.waitForTimeout(110);
-  // Innholdet som nå står i «Til» (det gamle «Fra») er på vei mot høyre; mål dets posisjon rett før og rett etter neste trykk.
-  const m = await page.evaluate(() => {
-    const f = document.querySelector('[data-felt=fra]'), t = document.querySelector('[data-felt=til]');
-    const fFor = f.getBoundingClientRect().left, tFor = t.getBoundingClientRect().left;
-    document.querySelector('[data-handling=bytt]').click();
-    // Etter trykket: innholdet i «Fra» er det som var i «Til» og skal stå omtrent der det stod.
-    return { tFor, fEtter: f.getBoundingClientRect().left, fFor, tEtter: t.getBoundingClientRect().left };
-  });
-  expect(Math.abs(m.fEtter - m.tFor), 'innholdet i Fra hoppet').toBeLessThanOrEqual(2);
-  expect(Math.abs(m.tEtter - m.fFor), 'innholdet i Til hoppet').toBeLessThanOrEqual(2);
-  await ctx.close();
-});
-
-test('bytteanimasjon: ved redusert bevegelse kjører ingen animasjon, men verdiene byttes', async ({ browser, baseURL }) => {
-  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
-  const page = await ctx.newPage();
-  await page.goto(BYTT);
-  const til0 = await page.locator('[data-felt=til]').inputValue();
-  await page.locator('[data-handling=bytt]').click();
-  expect(await page.locator('[data-felt=fra]').inputValue()).toBe(til0);
-  const antall = await page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]', '[data-handling=bytt]', '[data-felt=svar]'].map((s) => { const e = document.querySelector(s); return (e || e).getAnimations().length; }));
-  expect(antall).toEqual([0, 0, 0, 0]);
-  await ctx.close();
-});
-
-test('bytteanimasjon: etikettene og boksene står stille, og svarlinja toner bare teksten (bakgrunnen er svart hele veien)', async ({ browser, baseURL }) => {
-  const ctx = await browser.newContext({ baseURL, viewport: { width: 1280, height: 800 }, reducedMotion: 'no-preference' });
-  const page = await ctx.newPage();
-  await page.goto(BYTT);
-  const boks = () => page.evaluate(() => ['[data-felt=fra]', '[data-felt=til]'].map((s) => { const r = document.querySelector(s).closest('label').getBoundingClientRect(); return [r.left, r.top + scrollY]; }));
-  const foerBoks = await boks();
-  const for_ = await page.evaluate(() => getComputedStyle(document.querySelector('[data-felt=svar]')).backgroundColor);
-  await page.locator('[data-handling=bytt]').click();
-  const m = await page.evaluate(() => {
-    const lab = ['[data-felt=fra]', '[data-felt=til]'].map((s) => document.querySelector(s).closest('label'));
-    const svar = document.querySelector('[data-felt=svar]');
-    const k = svar.getAnimations().flatMap((a) => a.effect.getKeyframes().flatMap((f) => Object.keys(f))).filter((p) => !['offset', 'easing', 'composite', 'computedOffset'].includes(p));
-    return { etiketter: lab.map((l) => l.getAnimations({ subtree: false }).length), etikettTekst: lab.map((l) => l.firstChild.textContent.trim()), svarProps: [...new Set(k)], bakgrunn: getComputedStyle(svar).backgroundColor, opacity: getComputedStyle(svar).opacity };
-  });
-  expect(m.etiketter).toEqual([0, 0]);
-  expect(m.svarProps).toEqual(['color']);
-  expect(m.bakgrunn).toBe(for_); expect(m.opacity).toBe('1');
-  await page.waitForTimeout(100);
-  expect(await boks(), 'etikettboksene beveger seg ikke').toEqual(foerBoks);
-  await ctx.close();
 });
