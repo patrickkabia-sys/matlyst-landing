@@ -32,6 +32,8 @@ export const FAMILIER = Object.freeze([
   // Holdbarhet i kjøleskapet og frysing: bare norsk. Kildene er Mattilsynet først, så MatPrat (se scripts/familier/holdbarhet/kjoling.mjs).
   { id: 'holdbarhet', sidetype: 'guide-lang', mappe: new URL('./holdbarhet/', import.meta.url), markeder: { nb: { rot: 'holdbarhet/' } } },
   { id: 'frysing', sidetype: 'guide-lang', mappe: new URL('./frysing/', import.meta.url), markeder: { nb: { rot: 'frysing/' } } },
+  // Mengde per person: bare norsk. Tall fra MatPrat og Helsedirektoratet med sitat per tall (kildekontroll.mjs), tekstene i tekst-nb.mjs.
+  { id: 'mengde-per-person', sidetype: 'guide-lang', mappe: new URL('./mengde-per-person/', import.meta.url), markeder: { nb: { rot: 'mengde-per-person/' } } },
 ]);
 
 export const SPRAKMAPPE = Object.freeze({ nb: '', sv: 'sv/', da: 'da/', en: 'en/' });

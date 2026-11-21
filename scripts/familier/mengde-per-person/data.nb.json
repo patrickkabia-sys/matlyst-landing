@@ -1,0 +1,1928 @@
+{
+  "familie": "mengde-per-person",
+  "marked": "nb",
+  "kilder": {
+    "mp-porsjon": {
+      "navn": "Porsjonsberegning i hverdagen",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2023,
+      "adresse": "https://www.matprat.no/artikler/matsvinn/porsjonsberegning-i-hverdagen/",
+      "hentet": "2026-11-21"
+    },
+    "mp-mange": {
+      "navn": "Hvordan beregne mat til mange?",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/mengde-mal-og-vekt/hvordan-beregne-mat-til-mange/",
+      "hentet": "2026-11-21"
+    },
+    "mp-julemat": {
+      "navn": "Hvor mye julemat per person?",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/mengde-mal-og-vekt/hvordan-beregne-julemat-til-mange/",
+      "hentet": "2026-11-21"
+    },
+    "mp-julefaq": {
+      "navn": "Ofte stilte spørsmål om julemat",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/ravarer/ofte-stilte-sporsmal-om-julemat/",
+      "hentet": "2026-11-21"
+    },
+    "mp-selskaper": {
+      "navn": "Mat til store selskaper",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/mengde-mal-og-vekt/mat-til-store-selskaper/",
+      "hentet": "2026-11-21"
+    },
+    "mp-spekemat": {
+      "navn": "Hvor mye spekemat beregnes?",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2026,
+      "adresse": "https://www.matprat.no/artikler/mengde-mal-og-vekt/hvor-mye-spekemat-beregnes/",
+      "hentet": "2026-11-21"
+    },
+    "mp-koldtbord": {
+      "navn": "Koldtbord",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2025,
+      "adresse": "https://www.matprat.no/artikler/menyer/koldtbord/",
+      "hentet": "2026-11-21"
+    },
+    "mp-fisk": {
+      "navn": "Fisk og skalldyr: I butikken",
+      "utgiver": "MatPrat (Opplysningskontoret for egg og kjøtt)",
+      "aar": 2014,
+      "adresse": "https://www.matprat.no/artikler/ravarer/fisk-og-skalldyr-i-butikken/",
+      "hentet": "2026-11-21"
+    },
+    "hdir-porsjon": {
+      "navn": "Mål, vekt og porsjonsstørrelser for matvarer",
+      "utgiver": "Mattilsynet, Universitetet i Oslo og Helsedirektoratet",
+      "aar": 2015,
+      "adresse": "https://www.helsedirektoratet.no/brosjyrer/mal-vekt-og-porsjonsstorrelser-for-matvarer",
+      "hentet": "2026-11-21"
+    }
+  },
+  "rader": [
+    {
+      "id": "ris",
+      "slug": "ris",
+      "navn": "Ris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pp-g": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Ris, bulgur, couscous, perlegryn og quinoa | 1 dl (ca 60 g)"
+        },
+        "pp-dl": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mp-porsjon",
+          "merknad": "Ris, bulgur, couscous, perlegryn og quinoa | 1 dl (ca 60 g)"
+        },
+        "hdir-g": {
+          "verdi": 55,
+          "enhet": "g",
+          "kilde": "hdir-porsjon",
+          "merknad": "Ris, tørr desiliter 55d 80a"
+        },
+        "buffet-kg": {
+          "verdi": 3,
+          "enhet": "kg",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "buffet-personer": {
+          "verdi": 20,
+          "enhet": "personer",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-porsjon:2": "Hvor mye du beregner per person er avhengig av hva du skal lage, og om råvaren er med eller uten bein."
+      }
+    },
+    {
+      "id": "pasta",
+      "slug": "pasta",
+      "navn": "Pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "spag-min": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Spagetti, tagliatelle mm | 60-100 g tørr pasta"
+        },
+        "spag-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Spagetti, tagliatelle mm | 60-100 g tørr pasta"
+        },
+        "mak-g": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Makaroni og annen liten pasta | 1 ½ dl (60 g)"
+        },
+        "mak-dl": {
+          "verdi": 1.5,
+          "enhet": "dl",
+          "kilde": "mp-porsjon",
+          "merknad": "Makaroni og annen liten pasta | 1 ½ dl (60 g)"
+        },
+        "hdir-spag": {
+          "verdi": 65,
+          "enhet": "g",
+          "kilde": "hdir-porsjon",
+          "merknad": "Spagetti, tørr 65d"
+        },
+        "hdir-mak": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "hdir-porsjon",
+          "merknad": "Makaroni, tørr desiliter 75d 40a"
+        },
+        "hdir-pasta": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "hdir-porsjon",
+          "merknad": "Pasta, tørr desiliter 75d 30a"
+        },
+        "tommel": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "tilsvare en porsjon spagetti (100 g)"
+        },
+        "buffet-kg": {
+          "verdi": 3,
+          "enhet": "kg",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "buffet-personer": {
+          "verdi": 20,
+          "enhet": "personer",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-porsjon:1": "Mange pastasleiver har hull i midten, som tilsvarer en porsjon pasta."
+      }
+    },
+    {
+      "id": "poteter",
+      "slug": "poteter",
+      "navn": "Poteter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pp": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Poteter | 200 g"
+        },
+        "pp-jul": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Poteter | 200 g"
+        },
+        "hdir-kokt": {
+          "verdi": 170,
+          "enhet": "g",
+          "kilde": "hdir-porsjon",
+          "merknad": "Potet, kokt porsjon 35/65/120d 83j 30/55/100d 170d"
+        },
+        "potetsalat": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Potetsalat | 40 g per porsjon"
+        },
+        "buffet-kg": {
+          "verdi": 3,
+          "enhet": "kg",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "buffet-personer": {
+          "verdi": 20,
+          "enhet": "personer",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn."
+      }
+    },
+    {
+      "id": "kjott",
+      "slug": "kjott",
+      "navn": "Kjøtt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "gryte-uten": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Kjøtt uten ben til gryteretter | 150 g"
+        },
+        "gryte-med": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Kjøtt med ben til gryteretter | 250 g"
+        },
+        "mye-ben": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Kjøtt med mye ben (fårikål, lammekoteletter) | 300 g"
+        },
+        "fileter": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Fileter og biffer | 200 g"
+        },
+        "stek-uten": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Stek (u/ben) | 200 g"
+        },
+        "stek-med-min": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Stek (m/ben) | 250-300 g"
+        },
+        "stek-med-maks": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Stek (m/ben) | 250-300 g"
+        },
+        "kotelett": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Svinekoteletter | 250 g"
+        },
+        "polser": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Pølser | 150 g"
+        },
+        "ribs": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Spareribs | 500 g"
+        },
+        "uten-ben-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøtt uten ben | 150 – 200 g"
+        },
+        "uten-ben-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøtt uten ben | 150 – 200 g"
+        },
+        "med-ben": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøtt med ben | 250 g"
+        },
+        "deig-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøttdeig og karbonadedeig | 100-150 g"
+        },
+        "deig-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøttdeig og karbonadedeig | 100-150 g"
+        },
+        "deig-eldre": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Kjøttdeig og karbonadedeig | 150 g"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-mange:2": "må du tenke på om det er rent kjøtt eller om det er en stykningsdel som inneholder en del bein",
+        "sitat:mp-mange:3": "Du bør også tenke over om du skal servere kjøttet med lite eller mye tilbehør, og om tilbehøret er svært mettende eller ikke.",
+        "sitat:mp-porsjon:3": "Dette er cirkaberegninger, og i mange retter kan mengden justeres ned og kjøtt og fisk kan godt suppleres eller erstattes av andre proteiner."
+      }
+    },
+    {
+      "id": "biff",
+      "slug": "biff",
+      "navn": "Biff",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "fileter": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Fileter og biffer | 200 g"
+        },
+        "stek-uten": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Stek (u/ben) | 200 g"
+        },
+        "stek-med-min": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Stek (m/ben) | 250-300 g"
+        },
+        "stek-med-maks": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Stek (m/ben) | 250-300 g"
+        },
+        "roastbiff": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Roastbiff | 60 g per porsjon"
+        },
+        "mat-total": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "En god regel er å beregne ca. 500 gram mat per person, der om lag halvparten er kjøtt eller fisk."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-mange:2": "Du bør også tenke over om du skal servere kjøttet med lite eller mye tilbehør, og om tilbehøret er svært mettende eller ikke."
+      }
+    },
+    {
+      "id": "svin",
+      "slug": "svin",
+      "navn": "Svin",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "kotelett": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Svinekoteletter | 250 g"
+        },
+        "kotelett-23": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Koteletter | 250 g"
+        },
+        "skinkestek": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Skinkestek, reinsdyrstek og andre typer stek | 200 g"
+        },
+        "ribbe": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ribbe | 300 g (450 g blir nok til frokost også)"
+        },
+        "ribs": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Spareribs | 500 g"
+        },
+        "polser": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Pølser | 150 g"
+        },
+        "roket-skinke": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Røkt skinke | 60 g per porsjon"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-mange:2": "Du bør også tenke over om du skal servere kjøttet med lite eller mye tilbehør, og om tilbehøret er svært mettende eller ikke."
+      }
+    },
+    {
+      "id": "lam",
+      "slug": "lam",
+      "navn": "Lam",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "mye-ben": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Kjøtt med mye ben (fårikål, lammekoteletter) | 300 g"
+        },
+        "stek-med-min": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Stek (m/ben) | 250-300 g"
+        },
+        "stek-med-maks": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Stek (m/ben) | 250-300 g"
+        },
+        "gryte-med": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Kjøtt med ben til gryteretter | 250 g"
+        },
+        "gryte-uten": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Kjøtt uten ben til gryteretter | 150 g"
+        },
+        "pinne-toer": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Pinnekjøtt (tørrvekt) | 400 g (500 g for storspisere)"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn."
+      }
+    },
+    {
+      "id": "kjottdeig",
+      "slug": "kjottdeig",
+      "navn": "Kjøttdeig",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pp-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøttdeig og karbonadedeig | 100-150 g"
+        },
+        "pp-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøttdeig og karbonadedeig | 100-150 g"
+        },
+        "pp-eldre": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Kjøttdeig og karbonadedeig | 150 g"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-porsjon:3": "Dette er cirkaberegninger, og i mange retter kan mengden justeres ned og kjøtt og fisk kan godt suppleres eller erstattes av andre proteiner."
+      }
+    },
+    {
+      "id": "kylling",
+      "slug": "kylling",
+      "navn": "Kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hel": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kylling, hel | 500 g"
+        },
+        "uten-ben-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøtt uten ben | 150 – 200 g"
+        },
+        "uten-ben-maks": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøtt uten ben | 150 – 200 g"
+        },
+        "med-ben": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøtt med ben | 250 g"
+        },
+        "kalkun-hel": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Hel kalkun | 500 g"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-porsjon:2": "Hvor mye du beregner per person er avhengig av hva du skal lage, og om råvaren er med eller uten bein."
+      }
+    },
+    {
+      "id": "fisk",
+      "slug": "fisk",
+      "navn": "Fisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "filet": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Fiskefilet | 200 g"
+        },
+        "filet-jul": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Fiskefilet | 200 g per person"
+        },
+        "filet-eldre-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Filet | 200-250 g"
+        },
+        "filet-eldre-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Filet | 200-250 g"
+        },
+        "skiver-min": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Fisk hel eller i skiver | 300-400 g"
+        },
+        "skiver-maks": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Fisk hel eller i skiver | 300-400 g"
+        },
+        "hel": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Hel fisk | 500 g"
+        },
+        "forrett-min": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Forrett: Røkelaks, gravlaks eller filet | 50-100 g"
+        },
+        "forrett-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Forrett: Røkelaks, gravlaks eller filet | 50-100 g"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-mange:2": "Du kan beregne mindre dersom det er til forrett eller du skal servere flere småretter."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "laks",
+      "navn": "Laks",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "filet": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Fiskefilet | 200 g"
+        },
+        "filet-eldre-min": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Filet | 200-250 g"
+        },
+        "filet-eldre-maks": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Filet | 200-250 g"
+        },
+        "forrett-min": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Forrett: Røkelaks, gravlaks eller filet | 50-100 g"
+        },
+        "forrett-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Forrett: Røkelaks, gravlaks eller filet | 50-100 g"
+        },
+        "hel": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Hel fisk | 500 g"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-fisk:1": "Beregn noe mindre porsjoner av bearbeidet fisk som for eksempel lettsaltet, varm- eller kaldrøkt fisk, gravet fisk og fet fisk som laks, kveite, sild og makrell."
+      }
+    },
+    {
+      "id": "reker-og-skalldyr",
+      "slug": "reker-og-skalldyr",
+      "navn": "Reker og skalldyr",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "reker-min": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Reker | 400-500 g"
+        },
+        "reker-maks": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Reker | 400-500 g"
+        },
+        "reker-rene-min": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Reker (rensede til f.eks salat) | 80-100 g"
+        },
+        "reker-rene-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Reker (rensede til f.eks salat) | 80-100 g"
+        },
+        "skjell-min": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Blåskjell | 400-500 g"
+        },
+        "skjell-maks": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Blåskjell | 400-500 g"
+        },
+        "skjell-forrett": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Blåskjell | 250 g"
+        },
+        "klo-min": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Krabbeklør / trollkrabbeklør | 400-500 g"
+        },
+        "klo-maks": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Krabbeklør / trollkrabbeklør | 400-500 g"
+        },
+        "krabbe-stk": {
+          "verdi": 1,
+          "enhet": "stk",
+          "kilde": "mp-porsjon",
+          "merknad": "Krabbe | 1 stk per person"
+        },
+        "hummer-min": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Krabbe / hummer | 1 stk. (400-500 g)"
+        },
+        "hummer-maks": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Krabbe / hummer | 1 stk. (400-500 g)"
+        },
+        "sjokreps-min": {
+          "verdi": 3,
+          "enhet": "stk",
+          "kilde": "mp-mange",
+          "merknad": "Sjøkreps | 3-4 stk."
+        },
+        "sjokreps-maks": {
+          "verdi": 4,
+          "enhet": "stk",
+          "kilde": "mp-mange",
+          "merknad": "Sjøkreps | 3-4 stk."
+        },
+        "kreps-min": {
+          "verdi": 8,
+          "enhet": "stk",
+          "kilde": "mp-fisk",
+          "merknad": "Kreps | 8-10 stk"
+        },
+        "kreps-maks": {
+          "verdi": 10,
+          "enhet": "stk",
+          "kilde": "mp-fisk",
+          "merknad": "Kreps | 8-10 stk"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-mange:1": "Skal du servere flere typer skalldyr sammen til et måltid, bør du halvere mengden av hver sort, eller redusere ytterligere etter hvor mange ulike typer du serverer.",
+        "sitat:mp-mange:2": "Du kan beregne mindre dersom det er til forrett eller du skal servere flere småretter."
+      }
+    },
+    {
+      "id": "lutefisk",
+      "slug": "lutefisk",
+      "navn": "Lutefisk",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pp": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Lutefisk | 500 g (750 g for storspisere)"
+        },
+        "storspiser": {
+          "verdi": 750,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Lutefisk | 500 g (750 g for storspisere)"
+        },
+        "eldre-min": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-fisk",
+          "merknad": "Lutefisk | 500-1000 g"
+        },
+        "eldre-maks": {
+          "verdi": 1000,
+          "enhet": "g",
+          "kilde": "mp-fisk",
+          "merknad": "Lutefisk | 500-1000 g"
+        },
+        "bacon": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Bacon til lutefisk | 100 g"
+        },
+        "poteter": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Poteter | 200 g"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn."
+      }
+    },
+    {
+      "id": "pinnekjott",
+      "slug": "pinnekjott",
+      "navn": "Pinnekjøtt",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "toer": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Pinnekjøtt (tørrvekt) | 400 g (500 g for storspisere)"
+        },
+        "toer-storspiser": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Pinnekjøtt (tørrvekt) | 400 g (500 g for storspisere)"
+        },
+        "utvannet": {
+          "verdi": 530,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Pinnekjøtt (utvannet) | 530 g (650 g for storspisere)"
+        },
+        "utvannet-storspiser": {
+          "verdi": 650,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Pinnekjøtt (utvannet) | 530 g (650 g for storspisere)"
+        },
+        "vossakorv": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Vossakorv (som tilbehør) | 100 g"
+        },
+        "kalrot-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Kålrotstappe til pinnekjøtt | 100-150 g"
+        },
+        "kalrot-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Kålrotstappe til pinnekjøtt | 100-150 g"
+        },
+        "poteter": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Poteter | 200 g"
+        },
+        "saus-min": {
+          "verdi": 0.75,
+          "enhet": "dl",
+          "kilde": "mp-julemat",
+          "merknad": "Saus | 3/4- 1 dl"
+        },
+        "saus-maks": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mp-julemat",
+          "merknad": "Saus | 3/4- 1 dl"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn."
+      }
+    },
+    {
+      "id": "ribbe",
+      "slug": "ribbe",
+      "navn": "Ribbe",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "pp": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ribbe | 300 g (450 g blir nok til frokost også)"
+        },
+        "frokost": {
+          "verdi": 450,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ribbe | 300 g (450 g blir nok til frokost også)"
+        },
+        "med-polse": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ribbe (med pølse og medisterkaker) | 250 g"
+        },
+        "medister-til-min": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Medisterkaker / medisterpølse som tilbehør til ribbe | 50-100 g"
+        },
+        "medister-til-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Medisterkaker / medisterpølse som tilbehør til ribbe | 50-100 g"
+        },
+        "medister-alene": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Medisterkaker / medisterpølser (alene) | 200 g"
+        },
+        "surkal-min": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Surkål/rødkål til ribbe | 80-100 g"
+        },
+        "surkal-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Surkål/rødkål til ribbe | 80-100 g"
+        },
+        "poteter": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Poteter | 200 g"
+        },
+        "saus-min": {
+          "verdi": 0.75,
+          "enhet": "dl",
+          "kilde": "mp-julemat",
+          "merknad": "Saus | 3/4- 1 dl"
+        },
+        "saus-maks": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mp-julemat",
+          "merknad": "Saus | 3/4- 1 dl"
+        },
+        "ekstra-min": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ekstra grønnsaker (som rosenkål) | 80-100 g"
+        },
+        "ekstra-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ekstra grønnsaker (som rosenkål) | 80-100 g"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn."
+      }
+    },
+    {
+      "id": "kalkun",
+      "slug": "kalkun",
+      "navn": "Kalkun",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "hel": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Hel kalkun | 500 g"
+        },
+        "hel-faq": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-julefaq",
+          "merknad": "Vi regner 500 gram per person, så en 6-kilos kalkun holder til 12 personer."
+        },
+        "kilo-stor": {
+          "verdi": 6,
+          "enhet": "kg",
+          "kilde": "mp-julefaq",
+          "merknad": "Vi regner 500 gram per person, så en 6-kilos kalkun holder til 12 personer."
+        },
+        "personer-stor": {
+          "verdi": 12,
+          "enhet": "personer",
+          "kilde": "mp-julefaq",
+          "merknad": "Vi regner 500 gram per person, så en 6-kilos kalkun holder til 12 personer."
+        },
+        "filet": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Kalkunfilet/ kalkunbryst | 200 g"
+        },
+        "stek": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Skinkestek, reinsdyrstek og andre typer stek | 200 g"
+        },
+        "til-bords": {
+          "verdi": 16,
+          "enhet": "personer",
+          "kilde": "mp-julefaq",
+          "merknad": "Vi er 16 til bords, og jeg har ikke plass i stekeovnen til to hele kalkuner, hva i all verden skal jeg gjøre?"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-julefaq:1": "Da kjøper du to ferske kalkufileter i tillegg, og steker dem ved siden av den hele kalkunen.",
+        "sitat:mp-julefaq:2": "Så har du én stor festfugl å bære inn på bordet, med skiver av ferske kalkunfileter i tillegg."
+      }
+    },
+    {
+      "id": "julemat",
+      "slug": "julemat",
+      "navn": "Julemat",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "ribbe": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ribbe | 300 g (450 g blir nok til frokost også)"
+        },
+        "ribbe-polse": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ribbe (med pølse og medisterkaker) | 250 g"
+        },
+        "medister-til-min": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Medisterkaker / medisterpølse som tilbehør til ribbe | 50-100 g"
+        },
+        "medister-til-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Medisterkaker / medisterpølse som tilbehør til ribbe | 50-100 g"
+        },
+        "medister-alene": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Medisterkaker / medisterpølser (alene) | 200 g"
+        },
+        "pinne-toer": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Pinnekjøtt (tørrvekt) | 400 g (500 g for storspisere)"
+        },
+        "pinne-utvannet": {
+          "verdi": 530,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Pinnekjøtt (utvannet) | 530 g (650 g for storspisere)"
+        },
+        "kalkun-hel": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Hel kalkun | 500 g"
+        },
+        "kalkun-filet": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Kalkunfilet/ kalkunbryst | 200 g"
+        },
+        "stek": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Skinkestek, reinsdyrstek og andre typer stek | 200 g"
+        },
+        "lutefisk": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Lutefisk | 500 g (750 g for storspisere)"
+        },
+        "juletorsk-min": {
+          "verdi": 300,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Fisk i skiver eller med ben, juletorsk | 300-400 g per person"
+        },
+        "juletorsk-maks": {
+          "verdi": 400,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Fisk i skiver eller med ben, juletorsk | 300-400 g per person"
+        },
+        "fiskefilet": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Fiskefilet | 200 g per person"
+        },
+        "rakfisk-forrett": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Rakfisk til forrett | 100 g"
+        },
+        "rakfisk-hoved": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Rakfisk til hovedrett | 200 g"
+        },
+        "poteter": {
+          "verdi": 200,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Poteter | 200 g"
+        },
+        "saus-min": {
+          "verdi": 0.75,
+          "enhet": "dl",
+          "kilde": "mp-julemat",
+          "merknad": "Saus | 3/4- 1 dl"
+        },
+        "saus-maks": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mp-julemat",
+          "merknad": "Saus | 3/4- 1 dl"
+        },
+        "kalrot-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Kålrotstappe til pinnekjøtt | 100-150 g"
+        },
+        "kalrot-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Kålrotstappe til pinnekjøtt | 100-150 g"
+        },
+        "surkal-min": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Surkål/rødkål til ribbe | 80-100 g"
+        },
+        "surkal-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Surkål/rødkål til ribbe | 80-100 g"
+        },
+        "ekstra-min": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ekstra grønnsaker (som rosenkål) | 80-100 g"
+        },
+        "ekstra-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Ekstra grønnsaker (som rosenkål) | 80-100 g"
+        },
+        "vossakorv": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-julemat",
+          "merknad": "Vossakorv (som tilbehør) | 100 g"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-julemat:1": "Lager du mat til mange, vil behovene jevne seg ut, og da holder standardberegningene som regel veldig godt."
+      }
+    },
+    {
+      "id": "suppe",
+      "slug": "suppe",
+      "navn": "Suppe",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "forrett": {
+          "verdi": 2,
+          "enhet": "dl",
+          "kilde": "mp-porsjon",
+          "merknad": "Suppe til forrett | 2 dl"
+        },
+        "hoved-min": {
+          "verdi": 4,
+          "enhet": "dl",
+          "kilde": "mp-porsjon",
+          "merknad": "Suppe til hovedrett | 4-6 dl, avhengig av type suppe"
+        },
+        "hoved-maks": {
+          "verdi": 6,
+          "enhet": "dl",
+          "kilde": "mp-porsjon",
+          "merknad": "Suppe til hovedrett | 4-6 dl, avhengig av type suppe"
+        },
+        "forrett-eldre": {
+          "verdi": 2,
+          "enhet": "dl",
+          "kilde": "mp-mange",
+          "merknad": "Suppe til forrett | 2 dl"
+        },
+        "hoved-eldre": {
+          "verdi": 4,
+          "enhet": "dl",
+          "kilde": "mp-mange",
+          "merknad": "Suppe til hovedrett | 4 dl"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn."
+      }
+    },
+    {
+      "id": "salat",
+      "slug": "salat",
+      "navn": "Salat",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "salat-raakost": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Salat og råkost beregn ca 150 g per person"
+        },
+        "gronnsak-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Til middag beregnes vanligvis minimum 150 g grønnsaket per porsjon."
+        },
+        "sopp-min": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Sopp beregnes mellom 50 og 150 g, avhengig av om soppen skal blandes med egne ingredienser eller serveres alene."
+        },
+        "sopp-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Sopp beregnes mellom 50 og 150 g, avhengig av om soppen skal blandes med egne ingredienser eller serveres alene."
+        },
+        "gronn-koldtbord": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Grønn salat | 40 g per porsjon"
+        },
+        "potetsalat": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Potetsalat | 40 g per porsjon"
+        },
+        "waldorf": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Waldorfsalat | 40 g per porsjon"
+        },
+        "dressing-min": {
+          "verdi": 0.5,
+          "enhet": "dl",
+          "kilde": "mp-porsjon",
+          "merknad": "Dressing | ½ - 1 dl, avhengig av type dressing"
+        },
+        "dressing-maks": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mp-porsjon",
+          "merknad": "Dressing | ½ - 1 dl, avhengig av type dressing"
+        },
+        "dressing-eldre": {
+          "verdi": 0.5,
+          "enhet": "dl",
+          "kilde": "mp-mange",
+          "merknad": "Dressing | 0,5 dl"
+        },
+        "delt-eks-kal": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "for eksempel 75 g kål,50 g gulrot og 25 g sukkererter"
+        },
+        "delt-eks-gulrot": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "for eksempel 75 g kål,50 g gulrot og 25 g sukkererter"
+        },
+        "delt-eks-erter": {
+          "verdi": 25,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "for eksempel 75 g kål,50 g gulrot og 25 g sukkererter"
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-porsjon:2": "Skal du bruke mer enn én grønnsak, fordeler du vekten på de ulike grønnsakene"
+      }
+    },
+    {
+      "id": "grillmat",
+      "slug": "grillmat",
+      "navn": "Grillmat",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "polser": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Pølser | 150 g"
+        },
+        "kotelett": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Koteletter | 250 g"
+        },
+        "med-ben": {
+          "verdi": 250,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøtt med ben | 250 g"
+        },
+        "deig-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøttdeig og karbonadedeig | 100-150 g"
+        },
+        "deig-maks": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kjøttdeig og karbonadedeig | 100-150 g"
+        },
+        "ribs": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "Spareribs | 500 g"
+        },
+        "mat-total": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "En god regel er å beregne ca. 500 gram mat per person, der om lag halvparten er kjøtt eller fisk."
+        },
+        "kylling-hel": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Kylling, hel | 500 g"
+        },
+        "gronnsak-min": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-porsjon",
+          "merknad": "Til middag beregnes vanligvis minimum 150 g grønnsaket per porsjon."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-mange:2": "Jo flere retter du har, jo mindre beregner du av hver rett."
+      }
+    },
+    {
+      "id": "koldtbord",
+      "slug": "koldtbord",
+      "navn": "Koldtbord",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "total-min": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Beregn ca 500-600 g mat per person inkludert tilbehør, ca. halvparten bør være fisk/kjøtt."
+        },
+        "total-maks": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Beregn ca 500-600 g mat per person inkludert tilbehør, ca. halvparten bør være fisk/kjøtt."
+        },
+        "roastbiff": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Roastbiff | 60 g per porsjon"
+        },
+        "roket-skinke": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Røkt skinke | 60 g per porsjon"
+        },
+        "spekemat": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Spekemat | 60 g per porsjon"
+        },
+        "orret": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Kokt ørret | 60 g per porsjon"
+        },
+        "karbonade": {
+          "verdi": 1,
+          "enhet": "stk",
+          "kilde": "mp-koldtbord",
+          "merknad": "Karbonade med løk | 1 stk per porsjon"
+        },
+        "egg": {
+          "verdi": 1,
+          "enhet": "stk",
+          "kilde": "mp-koldtbord",
+          "merknad": "Eggerøre | 1 egg per porsjon"
+        },
+        "gronn-salat": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Grønn salat | 40 g per porsjon"
+        },
+        "potetsalat": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Potetsalat | 40 g per porsjon"
+        },
+        "waldorf": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Waldorfsalat | 40 g per porsjon"
+        },
+        "romme": {
+          "verdi": 20,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Rømme | 20 g per porsjon"
+        },
+        "pepperrot": {
+          "verdi": 20,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Pepperrotkrem | 20 g per porsjon"
+        },
+        "remulade": {
+          "verdi": 10,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Remulade | 10 g per porsjon"
+        },
+        "cumberland": {
+          "verdi": 10,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Cumberlandsaus | 10 g per porsjon"
+        },
+        "spekemat-i-koldtbord-min": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Når spekemat er en del av et større koldtbord, holder det med 60–80 gram per person."
+        },
+        "spekemat-i-koldtbord-maks": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Når spekemat er en del av et større koldtbord, holder det med 60–80 gram per person."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-koldtbord:1": "Mengdeberegning avhenger av hvor stort koldtbord du har og mengde kjøtt og fisk avhenger av tilbehøret.",
+        "sitat:mp-koldtbord:2": "Så lenge total mengde mat er omtrent den samme, kan menyen tilpasses gjestene og anledningen."
+      }
+    },
+    {
+      "id": "spekemat",
+      "slug": "spekemat",
+      "navn": "Spekemat",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "lett": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Til en spekematanretning eller med lett tilbehør som flatbrød, melon eller en frisk salat. | 150 g"
+        },
+        "mektig-min": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Mektig tilbehør som potetsalat, focaccia, eggerøre og diverse oster. | 100 – 125 g"
+        },
+        "mektig-maks": {
+          "verdi": 125,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Mektig tilbehør som potetsalat, focaccia, eggerøre og diverse oster. | 100 – 125 g"
+        },
+        "gror": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Rømmegrøt med spekemat, flatbrød og smør. | 100 g"
+        },
+        "tapas-min": {
+          "verdi": 70,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Tapasbord eller sharing med et utvalg andre retter. | 70 – 100 g"
+        },
+        "tapas-maks": {
+          "verdi": 100,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Tapasbord eller sharing med et utvalg andre retter. | 70 – 100 g"
+        },
+        "skinke-alene": {
+          "verdi": 150,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Spekeskinke som det eneste kjøttet: 150 g"
+        },
+        "skinke-tilbehor-min": {
+          "verdi": 70,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Spekeskinke og godt med annet tilbehør: 70-80 g per person."
+        },
+        "skinke-tilbehor-maks": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Spekeskinke og godt med annet tilbehør: 70-80 g per person."
+        },
+        "skinke-tapas-min": {
+          "verdi": 40,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Spekeskinke til tapasbordet: 40-50 g per person."
+        },
+        "skinke-tapas-maks": {
+          "verdi": 50,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Spekeskinke til tapasbordet: 40-50 g per person."
+        },
+        "fire-skinke": {
+          "verdi": 75,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Spekeskinke uten ben | 75 g | 750 g | 3 kg"
+        },
+        "fire-fenalar": {
+          "verdi": 25,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Fenalår uten ben | 25 g | 250 g | 1 kg"
+        },
+        "fire-salami": {
+          "verdi": 25,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Salami | 25 g | 250 g | 1 kg"
+        },
+        "fire-morr": {
+          "verdi": 25,
+          "enhet": "g",
+          "kilde": "mp-spekemat",
+          "merknad": "Morrpølse | 25 g | 250 g | 1 kg"
+        },
+        "koldtbord-min": {
+          "verdi": 60,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Når spekemat er en del av et større koldtbord, holder det med 60–80 gram per person."
+        },
+        "koldtbord-maks": {
+          "verdi": 80,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Når spekemat er en del av et større koldtbord, holder det med 60–80 gram per person."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-spekemat:1": "Spekeskinke er ofte mest populært, og det lønner seg derfor å beregne mest av denne",
+        "sitat:mp-spekemat:2": "menn spiser mer enn damer, mens barn og eldre personer spiser ofte litt mindre under gjennomsnittet",
+        "sitat:mp-spekemat:3": "Husk at jo flere ulike tilbehør du har, jo mindre trenger du av hver rett."
+      }
+    },
+    {
+      "id": "mat-til-selskap",
+      "slug": "mat-til-selskap",
+      "navn": "Mat til selskap",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-21",
+      "oppdatert": "2026-11-21",
+      "tall": {
+        "total": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-selskaper",
+          "merknad": "En grei grunnregel er å beregne cirka 500 gram mat for hver person."
+        },
+        "total-mange": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-mange",
+          "merknad": "En god regel er å beregne ca. 500 gram mat per person, der om lag halvparten er kjøtt eller fisk."
+        },
+        "koldtbord-min": {
+          "verdi": 500,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Beregn ca 500-600 g mat per person inkludert tilbehør, ca. halvparten bør være fisk/kjøtt."
+        },
+        "koldtbord-maks": {
+          "verdi": 600,
+          "enhet": "g",
+          "kilde": "mp-koldtbord",
+          "merknad": "Beregn ca 500-600 g mat per person inkludert tilbehør, ca. halvparten bør være fisk/kjøtt."
+        },
+        "suppe-forrett": {
+          "verdi": 2,
+          "enhet": "dl",
+          "kilde": "mp-mange",
+          "merknad": "Suppe til forrett | 2 dl"
+        },
+        "suppe-hoved": {
+          "verdi": 4,
+          "enhet": "dl",
+          "kilde": "mp-mange",
+          "merknad": "Suppe til hovedrett | 4 dl"
+        },
+        "saus-tynn": {
+          "verdi": 0.5,
+          "enhet": "dl",
+          "kilde": "mp-mange",
+          "merknad": "Saus, tynn (sjysaus og lignende) | 0,5 dl"
+        },
+        "saus-tykk": {
+          "verdi": 1,
+          "enhet": "dl",
+          "kilde": "mp-mange",
+          "merknad": "Saus, tykk (fløtesaus og lignende) | 1 dl"
+        },
+        "dressing": {
+          "verdi": 0.5,
+          "enhet": "dl",
+          "kilde": "mp-mange",
+          "merknad": "Dressing | 0,5 dl"
+        },
+        "kjott-kg": {
+          "verdi": 4,
+          "enhet": "kg",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "gronnsak-kg": {
+          "verdi": 3,
+          "enhet": "kg",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "karbo-kg": {
+          "verdi": 3,
+          "enhet": "kg",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "totalt-kg": {
+          "verdi": 10,
+          "enhet": "kg",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "personer-eks": {
+          "verdi": 20,
+          "enhet": "personer",
+          "kilde": "mp-selskaper",
+          "merknad": "Om det for eksempel er 20 personer, må du beregne cirka 10 kg mat totalt. Det blir cirka 4 kg rent kjøtt og fisk, 3 kg grønnsaker og 3 kg poteter/ris/pasta."
+        },
+        "barn": {
+          "verdi": 0.5,
+          "enhet": "porsjon",
+          "kilde": "mp-julemat",
+          "merknad": "Små barn spiser ofte mindre, så beregn gjerne en halv porsjon til dem og en full porsjon til ungdom og voksne."
+        }
+      },
+      "tekst": {
+        "sitat:mp-selskaper:1": "Beregn litt mer mat hvis det er mest sultne mannfolk, og litt mindre om det er mye damer og barn.",
+        "sitat:mp-selskaper:2": "På en buffèt bør du også beregne litt ekstra av hver rett, slik at alle fatene ikke er tomme når alle gjestene har forsynt seg.",
+        "sitat:mp-selskaper:3": "Mange vil gjerne forsyne seg både to og tre ganger",
+        "sitat:mp-selskaper:4": "Er det flere retter på en buffèt fordeler du disse mengdene utover de ulike rettene slik at det til sammen blir 10 kg.",
+        "sitat:mp-selskaper:5": "Når det gjelder sauser, dressinger, pynt på fatene og tilbehør kommer dette i tillegg.",
+        "sitat:mp-mange:2": "Jo flere retter du har, jo mindre beregner du av hver rett."
+      }
+    }
+  ]
+}

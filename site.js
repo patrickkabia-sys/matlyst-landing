@@ -189,7 +189,7 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 // Enhetsomregning uten vare: affin[e] = [a, b] (temperatur), negativ (negative mengder er gyldige), sifre (gjeldende sifre i svaret), beholdMengde (bytte lar mengden stå), og varer kan mangle.
 // Tallesing er den delte tolkTall (window.MatlystTall). Skrivemåten av svaret har ikke tak på antall desimaler (visTall har det), så små tall aldri blir 0.
 (() => {
-  const skjemaer = document.querySelectorAll('form.kalk');
+  const skjemaer = document.querySelectorAll('form.kalk:not([data-kalk="porsjon"])');
   if (!skjemaer.length || !window.MatlystTall) return;
   const { tolkTall } = window.MatlystTall;
   const KOMMA = ['nb', 'no', 'nn', 'sv', 'da'].includes((document.documentElement.lang || 'en').slice(0, 2).toLowerCase());
@@ -313,6 +313,74 @@ document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
         if (!data.beholdMengde) mengde.value = data.byttTil && data.byttTil[fra.value] !== undefined ? data.byttTil[fra.value] : fra.value === 'g' ? '100' : fra.value === 'kg' ? '1' : '2';
         regn();
       });
+      regn();
+    } catch { /* hopp over dette skjemaet */ }
+  }
+})();
+
+// Mengde per person (form.kalk[data-kalk="porsjon"]): voksne og barn gir hele mengden fra kildens tall per person.
+// Varianter, tall og tekster kommer fra skjemaets egne data (script.kalk-data): v = [{ n: navn, d: [[min, maks, enhet]] }], b = barnets andel av en voksen, t = tekstene.
+// Reglene mellom «porsjon:start» og «porsjon:slutt» er de samme som i scripts/familier/mengde-per-person/regn.mjs (tabellene på sidene skrives med den),
+// og test/mengde-per-person.test.mjs kjører denne blokken mot regn.mjs. Siden finnes bare på norsk, så desimaltegnet er komma.
+(() => {
+  const skjemaer = document.querySelectorAll('form.kalk[data-kalk="porsjon"]');
+  if (!skjemaer.length || !window.MatlystTall) return;
+  // porsjon:start
+  const ENH = { g: { stor: 'kg', faktor: 1000, d: [0, 2] }, dl: { stor: 'liter', faktor: 10, d: [2, 2] } };
+  const rund = (n, d) => Math.round(Number((n * 10 ** d).toPrecision(12))) / 10 ** d;
+  const pent = (n, d) => {
+    const t = rund(n, d).toFixed(d);
+    return (t.includes('.') ? t.replace(/0+$/u, '').replace(/\.$/u, '') : t).replace('.', ',');
+  };
+  const del = (n, enhet) => {
+    const e = ENH[enhet];
+    if (rund(n, e.d[0]) >= e.faktor) return { tall: pent(n / e.faktor, e.d[1]), enhet: e.stor };
+    return { tall: pent(n, e.d[0]), enhet };
+  };
+  const delTekst = (min, maks, enhet, til) => {
+    const a = del(min, enhet);
+    if (maks === min) return `${a.tall} ${a.enhet}`;
+    const b = del(maks, enhet);
+    return a.enhet === b.enhet ? `${a.tall} ${til} ${b.tall} ${b.enhet}` : `${a.tall} ${a.enhet} ${til} ${b.tall} ${b.enhet}`;
+  };
+  const totalt = (perPerson, voksne, barn, faktor) => perPerson * (voksne + faktor * barn);
+  const deler = (v, voksne, barn, faktor, til) => v.d.map(([min, maks, enhet]) => delTekst(totalt(min, voksne, barn, faktor), totalt(maks, voksne, barn, faktor), enhet, til));
+  const setningTekst = (v, voksne, barn, faktor, t) => `${v.n}: ${voksne} ${voksne === 1 ? t.voksen : t.voksne}${barn > 0 ? ` ${t.og} ${barn} ${t.barn}` : ''} ${t.trenger} ${deler(v, voksne, barn, faktor, t.til).join(` ${t.eller} `)}.`;
+  // porsjon:slutt
+  for (const skjema of skjemaer) {
+    // Hvert skjema settes opp for seg: et ødelagt skjema hoppes over (det statiske svaret i HTML-en blir stående), og resten virker.
+    try {
+      const data = JSON.parse(skjema.querySelector('.kalk-data').textContent);
+      const felt = (navn) => skjema.querySelector(`[data-felt="${navn}"]`);
+      const voksne = felt('voksne'), barn = felt('barn'), svar = felt('svar'), setning = felt('setning'), vare = felt('vare');
+      const hurtig = [...skjema.querySelectorAll('.hurtig button')];
+      if (!(data && Array.isArray(data.v) && data.v.length && typeof data.b === 'number' && data.t && typeof data.t.feil === 'string' && voksne && barn && svar && setning)) continue;
+      svar.setAttribute('aria-live', 'off');
+      // Hele tall fra 0 til 10 000. Alt annet gir veiledning, aldri et delsvar.
+      const heltall = (el) => {
+        const n = window.MatlystTall.tolkTall(el.value, true);
+        return n !== null && Number.isInteger(n) && n >= 0 && n <= 10000 ? n : null;
+      };
+      const regn = () => {
+        const v = data.v[vare ? vare.selectedIndex : 0];
+        const a = heltall(voksne), b = heltall(barn);
+        for (const [el, n] of [[voksne, a], [barn, b]]) { if (n === null) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid'); }
+        if (a === null || b === null) {
+          svar.textContent = '';
+          svar.style.removeProperty('--tegn');
+          setning.textContent = data.t.feil;
+        } else {
+          const tekst = deler(v, a, b, data.b, data.t.til)[0];
+          svar.textContent = tekst;
+          // Tegnantallet styrer skriftstørrelsen i svarflaten (side.css), så et langt svar vises helt i stedet for å klippes.
+          svar.style.setProperty('--tegn', String(Math.max(tekst.length, 1)));
+          setning.textContent = setningTekst(v, a, b, data.b, data.t);
+        }
+        hurtig.forEach((k) => k.setAttribute('aria-pressed', String(a !== null && Number(k.dataset.v) === a)));
+      };
+      for (const el of [voksne, barn]) el.addEventListener('input', regn);
+      if (vare) vare.addEventListener('change', regn);
+      hurtig.forEach((k) => k.addEventListener('click', () => { voksne.value = k.dataset.v; regn(); }));
       regn();
     } catch { /* hopp over dette skjemaet */ }
   }

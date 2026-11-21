@@ -12,8 +12,8 @@ export const FORFATTER_SIDER = Object.freeze([
   'blogg/rester-i-kjoleskapet/',
 ]);
 
-// Sidefamilier der hver side har forfatteren (scripts/familier/holdbarhet og frysing): alt under roten.
-export const FORFATTER_ROTER = Object.freeze(['holdbarhet/', 'frysing/']);
+// Sidefamilier der hver side har forfatteren (scripts/familier/holdbarhet, frysing og mengde-per-person): alt under roten.
+export const FORFATTER_ROTER = Object.freeze(['holdbarhet/', 'frysing/', 'mengde-per-person/']);
 
 export const harForfatter = (path) => {
   const sti = String(path).replace(/^\//u, '');

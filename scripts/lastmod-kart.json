@@ -2023,6 +2023,102 @@
   "hash": "3675c191a44d14e6",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/mengde-per-person/": {
+  "hash": "9ceb6bca38fea567",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/biff/": {
+  "hash": "79929617f100f911",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/fisk/": {
+  "hash": "9d8c7ce0bd33b7db",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/grillmat/": {
+  "hash": "72ae026eb1ddd52e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/julemat/": {
+  "hash": "5dddc02976b61751",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/kalkun/": {
+  "hash": "71d08beae8acd18d",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/kjott/": {
+  "hash": "a6f99bbd8de7f1ea",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/kjottdeig/": {
+  "hash": "22e037336f293ed3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/koldtbord/": {
+  "hash": "84a638890ac611e3",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/kylling/": {
+  "hash": "04efcccb0b28e338",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/laks/": {
+  "hash": "ce453567b55bc153",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/lam/": {
+  "hash": "6e6bf7efb5195203",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/lutefisk/": {
+  "hash": "04e67b872857e2f0",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/mat-til-selskap/": {
+  "hash": "1236b49b5b66135e",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/pasta/": {
+  "hash": "e5d538bf61644bb5",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/pinnekjott/": {
+  "hash": "0c3b622e4ce0bc63",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/poteter/": {
+  "hash": "4d3b5da713349595",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/reker-og-skalldyr/": {
+  "hash": "80c8f7149b56d226",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/ribbe/": {
+  "hash": "c106b53ecff66f98",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/ris/": {
+  "hash": "4c8e9e09aa998e8c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/salat/": {
+  "hash": "fe918aa62392c0d4",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/spekemat/": {
+  "hash": "779459bbc1a0d69a",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/suppe/": {
+  "hash": "194065e20e074cdb",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/mengde-per-person/svin/": {
+  "hash": "451535aeccdcce8b",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/middagsforslag/": {
   "hash": "f8d8da414cb7adf7",
   "dato": "2026-11-20"
@@ -3116,7 +3212,7 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/ukemeny/": {
-  "hash": "8576f80ef6f70710",
+  "hash": "0ed2d38f28f871cf",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/ukemenyer/": {
@@ -3220,7 +3316,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/verktoy/dl-til-gram/": {
-  "hash": "cd9595150b06a475",
+  "hash": "34269dbe5d988479",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/verktoy/dl-til-gram/brunt-sukker/": {
