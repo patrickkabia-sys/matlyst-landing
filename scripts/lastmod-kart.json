@@ -3028,8 +3028,32 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/ukemeny/": {
-  "hash": "db4d53411b28b319",
-  "dato": "2026-11-20"
+  "hash": "8576f80ef6f70710",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/ukemenyer/": {
+  "hash": "ce1e72b82f564ad8",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/ukemenyer/billig/": {
+  "hash": "d13f426a501f5672",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/ukemenyer/familie/": {
+  "hash": "1ce28bc819abfd92",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/ukemenyer/for-en/": {
+  "hash": "b801da20298dad70",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/ukemenyer/husmannskost/": {
+  "hash": "93da1dcab0862d34",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/ukemenyer/vegetar/": {
+  "hash": "d9bafd338f7de9b8",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/verktoy/celsius-til-fahrenheit/": {
   "hash": "93a425186c4a57dd",

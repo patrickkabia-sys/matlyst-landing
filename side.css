@@ -288,6 +288,13 @@ body[data-sidetype="guide-lang"] .locale-prose .scenario h3{margin:0}
 body[data-sidetype="guide-lang"] .locale-prose .scenario dl{display:grid;grid-template-columns:minmax(0,170px) minmax(0,1fr);gap:12px 28px;margin:18px 0 0}
 body[data-sidetype="guide-lang"] .locale-prose .scenario dt{font-size:.9375rem;font-weight:500;line-height:1.6;color:var(--dempet)}
 body[data-sidetype="guide-lang"] .locale-prose .scenario dd{margin:0;font-size:1.0625rem;line-height:1.55}
+/* Handlelista i ukemenyene: én vare per linje, to kolonner fra 700 px, dagene dempet etter varen. */
+body[data-sidetype="guide-lang"] .locale-prose .handleliste{margin:10px 0 0;padding:0 0 0 22px}
+body[data-sidetype="guide-lang"] .locale-prose .handleliste li{margin-top:4px;break-inside:avoid}
+body[data-sidetype="guide-lang"] .locale-prose .handleliste small{font-size:.875rem;color:var(--dempet)}
+@media (min-width:700px){
+  body[data-sidetype="guide-lang"] .locale-prose .handleliste{column-count:2;column-gap:40px}
+}
 body[data-sidetype="guide-lang"] .locale-prose .scenario-note{margin:14px 0 0;padding:14px 20px;border-radius:20px;background:var(--hylle);font-size:.9375rem;color:var(--dempet)}
 body[data-sidetype="guide-lang"] .locale-prose .founder{display:grid;grid-template-columns:minmax(0,1fr);gap:0 32px;align-items:center;margin:40px 0 0;padding:32px;border-radius:28px;background:var(--hylle)}
 body[data-sidetype="guide-lang"] .locale-prose .founder:has(> img){grid-template-columns:minmax(0,180px) minmax(0,1fr)}

@@ -28,7 +28,10 @@ export function sideInfo(html) {
 }
 
 // Samlesidene til de registrerte familiene (scripts/familier/), per språk. Enkeltsidene under dem tas ikke med.
-const familiesamlesider = (familier, sprak) => new Set(familier.flatMap((f) => Object.entries(f.markeder).filter(([marked]) => marked === sprak).map(([marked, { rot }]) => `/${SPRAKMAPPE[marked]}${rot}`)));
+// Omregnerfamilier står under verktøy; andre familier (guide-lang, for eksempel ukemenyene) står med funksjonssidene.
+const familieroter = (familier, sprak, filter = () => true) => familier.filter(filter).flatMap((f) => Object.entries(f.markeder).filter(([marked]) => marked === sprak).map(([marked, { rot }]) => `/${SPRAKMAPPE[marked]}${rot}`));
+const familiesamlesider = (familier, sprak, filter) => new Set(familieroter(familier, sprak, filter));
+const erOmregner = (f) => (f.sidetype ?? 'omregner') === 'omregner';
 
 // Pure funksjon: registeroppføringer med tittel/beskrivelse inn, llms.txt-tekst ut.
 export function byggLlms(sider, tekst, familier = FAMILIER) {
@@ -39,11 +42,14 @@ export function byggLlms(sider, tekst, familier = FAMILIER) {
     const t = tekst.sprak[sprak];
     const av = sider.filter((s) => s.sprak === sprak && !s.noindex && s.tittel && s.beskrivelse);
     const blogg = av.filter((s) => s.sti.startsWith(BLOGGROT[sprak]));
-    const nav = familiesamlesider(familier, sprak);
+    const nav = familiesamlesider(familier, sprak, erOmregner);
+    const roter = familieroter(familier, sprak);
+    const andreNav = familiesamlesider(familier, sprak, (f) => !erOmregner(f));
+    const underFamilie = (sti) => roter.some((rot) => sti.startsWith(rot) && sti !== rot);
     const hub = av.filter((s) => s.sti === VERKTOYHUB[sprak] || nav.has(s.sti));
     const juss = av.filter((s) => s.type === 'juss');
     const forside = av.filter((s) => s.type === 'forside');
-    const funksjoner = av.filter((s) => ['guide-kort', 'guide-lang', 'guide-gammel'].includes(s.type) && !s.sti.startsWith(BLOGGROT[sprak]));
+    const funksjoner = av.filter((s) => ['guide-kort', 'guide-lang', 'guide-gammel'].includes(s.type) && !s.sti.startsWith(BLOGGROT[sprak]) && !underFamilie(s.sti) && (!nav.has(s.sti) || andreNav.has(s.sti)));
     ut.push(`## ${t.navn}`, '', t.intro, '', ...liste(forside), ...liste(funksjoner), '');
     ut.push(`## ${t.navn}: ${t.blogg}`, '', ...liste(blogg), '');
     ut.push(`## ${t.navn}: ${t.verktoy}`, '', ...liste(hub), '');

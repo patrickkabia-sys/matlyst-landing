@@ -70,8 +70,10 @@ test('en tom liste endrer ingenting', async () => {
   assert.equal(familieForSti('/verktoy/proeve/provemel/', []), null);
 });
 
-test('det ekte registeret har dl til gram, og ingen fiksturfamilier', () => {
-  assert.deepEqual(FAMILIER.map((f) => f.id), ['dl-til-gram']);
+test('det ekte registeret har dl til gram og ukemenyene, og ingen fiksturfamilier', () => {
+  assert.deepEqual(FAMILIER.map((f) => f.id), ['dl-til-gram', 'ukemeny']);
+  assert.equal(familieForSti('/ukemenyer/familie/'), 'ukemeny');
+  assert.equal(familieForSti('/ukemeny/'), null, 'produktsiden /ukemeny/ hører ikke til familien');
   assert.equal(familieForSti('/verktoy/dl-til-gram/hvetemel/'), 'dl-til-gram');
   assert.equal(familieForSti('/verktoy/proeve/provemel/'), null);
   assert.equal(familieForSti('/verktoy/dl-til-kopp/'), null);
