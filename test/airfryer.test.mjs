@@ -27,6 +27,8 @@ const ADRESSER = ['/airfryer/', ...SLUGS.map((s) => `/airfryer/${s}/`)];
 const MED_KJERNE = { kyllingfilet: 'kjerne', kyllinglar: 'kjerne', kyllingvinger: 'kjerne', laks: 'kjerne', torsk: 'kjerne', hamburger: 'kjerne', kjottboller: 'kjerne', svinekoteletter: 'kjerne', ribbe: 'kjerne', biff: 'kjerne-gjennom', polser: 'mt-kjerne' };
 
 // Radene som også finnes på engelsk (samme rad-id) og derfor har hreflang en. Resten av de norske sidene står alene.
+// Radene som også finnes på svensk (samme rad-id, /sv/airfryer/) og derfor har hreflang sv.
+const MED_SV = new Set(['ovn-til-airfryer', 'kyllingfilet', 'kyllinglar', 'kyllingvinger', 'laks', 'pommes-frites', 'potetbater', 'bacon', 'hamburger', 'kjottboller', 'gronnsaker', 'fiskepinner', 'egg']);
 const MED_EN = new Set(['ovn-til-airfryer', 'kyllingfilet', 'kyllinglar', 'kyllingvinger', 'laks', 'pommes-frites', 'bacon', 'polser', 'hamburger', 'gronnsaker', 'svinekoteletter', 'frossen-mat', 'egg', 'biff']);
 
 test('adresselås: familien gir nøyaktig de tjue adressene, og alle står i sitemap.xml med canonical og hreflang bare mot en der raden finnes på engelsk', () => {
@@ -37,12 +39,13 @@ test('adresselås: familien gir nøyaktig de tjue adressene, og alle står i sit
     assert.match(kart, new RegExp(`<loc>https://matlyst-app\\.no${a}</loc>`, 'u'), a);
     assert.equal(familieForSti(a), 'airfryer', a);
     assert.match(html(a.slice(1)), new RegExp(`<link rel="canonical" href="https://matlyst-app\\.no${a}">`, 'u'), a);
-    assert.doesNotMatch(html(a.slice(1)), /hreflang="(?:sv|da)/u, `${a}: ingen svensk eller dansk side`);
+    assert.doesNotMatch(html(a.slice(1)), /hreflang="da/u, `${a}: ingen dansk side`);
     const id = a === '/airfryer/' ? 'nav' : rader.find((r) => `/airfryer/${r.slug}/` === a).id;
     const harEn = id === 'nav' || MED_EN.has(id);
     assert.equal(/hreflang="en"/u.test(html(a.slice(1))), harEn, `${a}: hreflang en bare der raden finnes på engelsk`);
+    assert.equal(/hreflang="sv-SE"/u.test(html(a.slice(1))), id === 'nav' || MED_SV.has(id), `${a}: hreflang sv bare der raden finnes på svensk`);
   }
-  for (const mk of ['sv', 'da']) assert.doesNotMatch(readFileSync(join(ROT, `sitemap-${mk}.xml`), 'utf8'), /\/airfryer\//u, mk);
+  for (const mk of ['sv', 'da']) assert.doesNotMatch(readFileSync(join(ROT, `sitemap-${mk}.xml`), 'utf8'), /<loc>https:\/\/matlyst-app\.no\/airfryer\//u, mk);
   // Det engelske sitemapet har de norske sidene bare som hreflang-alternativer, aldri som egne adresser (<loc>).
   assert.doesNotMatch(readFileSync(join(ROT, 'sitemap-en.xml'), 'utf8'), /<loc>[^<]*\/airfryer\//u);
 });

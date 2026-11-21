@@ -95,11 +95,11 @@ test('samme rad-id på nb og en gir hreflang, og en vare uten norsk motstykke st
   const grupper = familieGrupper();
   const g = (navn) => grupper.find((x) => x.id === navn);
   assert.deepEqual(g('auto-fam-kjernetemperatur-kalkun').sider, { nb: '/kjernetemperatur/kalkun/', sv: '/sv/innertemperatur/kalkon/', da: '/da/kernetemperatur/kalkun/', en: '/en/internal-temperature/turkey/' });
-  assert.deepEqual(g('auto-fam-steketid-kalkun').sider, { nb: '/steketid/kalkun/', en: '/en/cooking-times/turkey/' });
-  assert.deepEqual(g('auto-fam-steketid-hel-kylling').sider, { nb: '/steketid/hel-kylling/', en: '/en/cooking-times/whole-chicken/' });
+  assert.deepEqual(g('auto-fam-steketid-kalkun').sider, { nb: '/steketid/kalkun/', sv: '/sv/tillagningstid/kalkon/', en: '/en/cooking-times/turkey/' });
+  assert.deepEqual(g('auto-fam-steketid-hel-kylling').sider, { nb: '/steketid/hel-kylling/', sv: '/sv/tillagningstid/hel-kyckling/', en: '/en/cooking-times/whole-chicken/' });
   assert.deepEqual(g('auto-fam-steketid-tining').sider, { en: '/en/cooking-times/thaw-turkey/' });
   assert.deepEqual(g('auto-fam-kjernetemperatur-nav').sider, { nb: '/kjernetemperatur/', sv: '/sv/innertemperatur/', da: '/da/kernetemperatur/', en: '/en/internal-temperature/' });
-  assert.deepEqual(g('auto-fam-steketid-nav').sider, { nb: '/steketid/', en: '/en/cooking-times/' });
+  assert.deepEqual(g('auto-fam-steketid-nav').sider, { nb: '/steketid/', sv: '/sv/tillagningstid/', en: '/en/cooking-times/' });
 });
 
 test('kalkunkalkulatoren slår opp vekten i FSIS-tabellen: bandene i skjemaet er radens egne tall', async () => {
