@@ -1,12 +1,15 @@
 // Enhetsomregnere på engelsk: én side per enhetspar (ml til dl, cups til ml, °F til °C osv.) pluss en hub.
 // Hver side har en kalkulator (site.js), en tabell, formel, kjøkkennotat, en grunn til å bruke Matlyst og lenker til beslektede omregninger.
-import { ENHETER, allePar, enhetsKort, kortSetning, konverter, parSti, parSlug, tall } from './enheter.mjs';
+import { ENHETER, allePar, enhetsKort, kortSetning, konverter, ordVed, parSti, parSlug, tall, tittelOgH1 } from './enheter.mjs';
 import { animasjon, byggLese, skjerm } from './rik-sider.mjs';
 
 const esc = (s) => String(s).replace(/&/gu, '&amp;').replace(/</gu, '&lt;').replace(/"/gu, '&quot;');
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
 const stor = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 const N = (id) => ENHETER[id].en;
+/** Ordet for en enhet ved en mengde: samme regel som kortet («1 cup», «2 cups», «1.5 cups», «0.4227 cups»). */
+const label = (v, id) => ordVed('en', id, v);
+const val = (v, id) => `${tall(v)} ${label(v, id)}`;
 
 const VERDIER = {
   ml: [5, 10, 15, 25, 50, 75, 100, 150, 200, 250, 300, 500, 750, 1000], cl: [1, 2, 3, 5, 10, 15, 20, 25, 33, 50, 75, 100], dl: [0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 7.5, 10],
@@ -19,7 +22,7 @@ const VERDIER = {
 
 // Hvor enheten dukker opp (til generisk kjøkkennotat).
 const BRUK = {
-  ml: 'metric recipes, measuring jugs, and most recipes from outside the United States', cl: 'drinks, cocktails, and some European recipes', dl: 'Nordic and some European recipes, where a deciliter is a common everyday measure',
+  ml: 'metric recipes, liquid measuring cups, and most recipes from outside the United States', cl: 'drinks, cocktails, and some European recipes', dl: 'Nordic and some European recipes, where a deciliter is a common everyday measure',
   l: 'stock, soup, milk, and anything cooked in a large pot', tsp: 'US recipes for spices, baking powder, extracts, and small amounts of anything', tbsp: 'US recipes for oil, sauces, butter, and flour',
   oz: 'US recipes for liquids, and on US drink and sauce packaging', cups: 'US recipes, which measure most ingredients by volume', pints: 'US recipes for cream, ice cream, and berries', quarts: 'US recipes for stock, soup, and dairy', gallons: 'US milk, water, and large batch cooking',
   g: 'metric recipes, kitchen scales, and nutrition labels', kg: 'metric recipes for meat, potatoes, flour, and bulk buying', 'oz-vekt': 'US recipes and packaging for meat, cheese, chocolate, and canned goods', lb: 'US recipes and grocery packaging for meat, produce, and flour',
@@ -29,14 +32,14 @@ const BRUK = {
 
 // Håndskrevne notater for de mest brukte parene (nøkkel «fra>til»).
 const NOTE = {
-  'ml>dl': 'Deciliters are everyday kitchen units in Nordic recipes, so a recipe that asks for 2 dl of milk means 200 ml. Many measuring jugs show both, so you can read the dl mark directly.',
-  'dl>ml': 'A recipe that asks for 3 dl is asking for 300 ml. If your measuring jug only has milliliters, multiply by 100 and pour to that line.',
+  'ml>dl': 'Deciliters are everyday kitchen units in Nordic recipes, so a recipe that asks for 2 dl of milk means 200 ml. Many liquid measuring cups show both, so you can read the dl mark directly.',
+  'dl>ml': 'A recipe that asks for 3 dl is asking for 300 ml. If your liquid measuring cup only has milliliters, multiply by 100 and pour to that line.',
   'cups>ml': 'American recipes measure by the cup, but a US cup is not the cup you may have in the cupboard. A US cup is 236.6 ml. Many cookbooks round it to 240 ml, which is why you see both numbers. For baking, weighing is more reliable than any volume.',
   'ml>cups': 'When a metric recipe is written in milliliters and you only own US measuring cups, divide by 236.6. 250 ml is a little more than one US cup.',
   'tbsp>ml': 'A US tablespoon is 14.8 ml, which most recipes round to 15 ml. In Australia a tablespoon is 20 ml, so check where a recipe comes from before you convert.',
   'ml>tbsp': 'Small liquid amounts in metric recipes become tablespoons in US recipes. 15 ml is about one US tablespoon.',
   'tsp>ml': 'A US teaspoon is 4.9 ml, which recipes round to 5 ml. Use a level measuring spoon, not the spoon from the cutlery drawer, whose size varies a lot.',
-  'ml>tsp': 'Five milliliters is about one US teaspoon. For tiny amounts of spices and extracts, measure with spoons rather than a jug.',
+  'ml>tsp': 'Five milliliters is about one US teaspoon. For tiny amounts of spices and extracts, measure with spoons rather than a liquid measuring cup.',
   'oz>ml': 'This page converts fluid ounces, a measure of volume. A US fluid ounce is 29.57 ml. Ounces on a bag of flour or a block of cheese measure weight instead, so use the ounces to grams converter for those.',
   'ml>oz': 'Milliliters to US fluid ounces: divide by 29.57. 250 ml is about 8.5 fl oz. Fluid ounces measure volume, while ounces on packaged food measure weight.',
   'oz-vekt>g': 'An ounce of weight is 28.35 grams, so 4 oz is about 113 g and 8 oz is about 227 g. This is the number you need for butter, cheese, chocolate, and meat in American recipes.',
@@ -62,7 +65,7 @@ const NOTE = {
 
 
 const FEIL = {
-  volum: ['Using a coffee mug as a cup. A mug is rarely the size of a measuring cup, while a US cup is 236.6 ml.', 'Mixing up fluid ounces and ounces of weight. Fluid ounces measure volume, ounces on a package measure weight.', 'Assuming a US pint, quart, or gallon equals the British one. The imperial versions are about 20 percent larger.', 'Rounding too early. Convert the whole recipe first, then round the final amounts.', 'Measuring dry ingredients in a liquid jug, which packs them and gives you too much.'],
+  volum: ['Using a coffee mug as a cup. A mug is rarely the size of a measuring cup, while a US cup is 236.6 ml.', 'Mixing up fluid ounces and ounces of weight. Fluid ounces measure volume, ounces on a package measure weight.', 'Assuming a US pint, quart, or gallon equals the British one. The imperial versions are about 20 percent larger.', 'Rounding too early. Convert the whole recipe first, then round the final amounts.', 'Measuring dry ingredients in a liquid measuring cup, which packs them and gives you too much.'],
   vekt: ['Treating ounces on the package as fluid ounces. Weight and volume are different measures.', 'Using a cup for flour and expecting the same grams every time. Scooping packs flour; spooning and leveling gives less.', 'Rounding a pound to 500 g when the recipe is sensitive, like bread. A pound is 454 g.', 'Forgetting to zero the scale after adding the bowl.', 'Converting one ingredient and not the others, so the ratios drift.'],
   lengde: ['Measuring a pan from the outside rim instead of the inside.', 'Swapping a 9 inch pan for a 20 cm pan without checking, which is a different area.', 'Forgetting that a deeper pan needs a longer bake.', 'Reading mm as cm when rolling dough.', 'Not rounding to a pan size you can actually buy.'],
   temperatur: ['Using the Celsius number on a Fahrenheit oven, which is far too cool.', 'Forgetting to lower the temperature for a fan oven.', 'Trusting the oven dial instead of a thermometer.', 'Opening the door too often, which drops the temperature fast.', 'Converting a recipe that gives a gas mark without checking your own oven.'],
@@ -85,18 +88,18 @@ function regelTekst(fra, til) {
 }
 
 function tabell(fra, til) {
-  const rader = (VERDIER[fra] ?? [1, 2, 5, 10]).map((v) => `<tr><td>${tall(v)} ${N(fra).kort}</td><td>${tall(konverter(v, fra, til))} ${N(til).kort}</td></tr>`).join('');
+  const rader = (VERDIER[fra] ?? [1, 2, 5, 10]).map((v) => `<tr><td>${val(v, fra)}</td><td>${val(konverter(v, fra, til), til)}</td></tr>`).join('');
   return `<div class="table-wrap"><table><thead><tr><th>${esc(stor(N(fra).fl))}</th><th>${esc(stor(N(til).fl))}</th></tr></thead><tbody>${rader}</tbody></table></div>`;
 }
 
 function eksempler(fra, til) {
   const vals = (VERDIER[fra] ?? [1, 2, 5]).filter((v) => v >= 1).slice(1, 4);
-  const lista = (vals.length ? vals : [1, 2, 5]).map((v) => `<li><strong>${tall(v)} ${N(fra).kort}</strong> = ${tall(konverter(v, fra, til))} ${N(til).kort}</li>`).join('');
+  const lista = (vals.length ? vals : [1, 2, 5]).map((v) => `<li><strong>${val(v, fra)}</strong> = ${val(konverter(v, fra, til), til)}</li>`).join('');
   return `<ul>${lista}</ul>`;
 }
 
 const MAALETIPS = {
-  volum: p('Use a liquid measuring jug for liquids and level dry measures for dry ingredients. Read a jug at eye level on a flat surface, and level spoons and cups with the back of a knife. US, UK, and Australian measures with the same name are not always the same size, so check where a recipe comes from.'),
+  volum: p('Use a liquid measuring cup for liquids and level dry measures for dry ingredients. Read a liquid measuring cup at eye level on a flat surface, and level spoons and dry measuring cups with the back of a knife. US, UK, and Australian measures with the same name are not always the same size, so check where a recipe comes from.'),
   vekt: p('A kitchen scale beats any measuring cup, especially for flour and sugar. Set the bowl on the scale, zero it, and add the ingredient. If you only have cups, remember that a cup of flour and a cup of sugar do not weigh the same.'),
   lengde: p('Measure a pan across the top from inside edge to inside edge, not across the outside rim. A pan one size off changes baking time, so check the cake earlier if yours is larger than the recipe says.'),
   temperatur: p('Oven dials are often inaccurate. An inexpensive oven thermometer tells you the real temperature. Fan ovens cook hotter, so many recipes suggest lowering the temperature when you use one.'),
@@ -117,11 +120,13 @@ const MATLYST = p('Converting by hand gets old fast, especially when a whole rec
 export function sideForPar(fra, til) {
   const F = N(fra); const T = N(til);
   const x = konverter(1, fra, til);
-  const svar = `${kortSetning('en', fra, til)}. To convert ${F.fl} to ${T.fl}, ${regelTekst(fra, til)}.`;
+  const kortSvar = kortSetning('en', fra, til);
+  const exVal = (VERDIER[fra] ?? [2]).find((v) => v >= 2) ?? 2;
+  const svar = `${kortSvar}. To convert ${F.fl} to ${T.fl}, ${regelTekst(fra, til)}.`;
   const note = NOTE[`${fra}>${til}`] ?? `${stor(F.fl)} are used in ${BRUK[fra]}. ${stor(T.fl)} are used in ${BRUK[til]}. That is why you convert whenever a recipe is written for one system and your tools use the other.`;
   const rik = byggLese({
     seksjoner: [
-      [`${F.kort} to ${T.kort} conversion chart`, p(`The numbers below are the ones recipes use most. Find your amount in the left column.`) + tabell(fra, til)],
+      [`${stor(F.kort)} to ${T.kort} conversion chart`, p(`The numbers below are the ones recipes use most. Find your amount in the left column.`) + tabell(fra, til)],
       [`How to convert ${F.fl} to ${T.fl}`, p(`The rule: ${regelTekst(fra, til)}. In a formula: ${T.kort} = ${ENHETER[fra].gruppe === 'temperatur' ? (fra === 'f' ? '(°F − 32) × 5/9'.replace('−', '-') : '°C × 9/5 + 32') : `${F.kort} × ${tall(x)}`}.`) + p('Three quick examples:') + eksempler(fra, til)],
       [`Where recipes use ${F.fl} and ${T.fl}`, p(note)],
       ['Measuring tips', MAALETIPS[ENHETER[fra].gruppe] + p(MENTAL[ENHETER[fra].gruppe])],
@@ -131,27 +136,28 @@ export function sideForPar(fra, til) {
       ['Related conversions', relaterte(fra, til)],
     ],
   });
+  const { title, h1 } = tittelOgH1('en', fra, til, (a, b) => `Convert ${a} to ${b}`);
   const topp = `${enhetsKort('en', fra, til)}\n<p class="kortsvar"><b>Short answer:</b> ${esc(svar)}</p>`;
   const q = (a, b) => [a, b];
   const faq = [
     q(`How many ${T.fl} are in 1 ${F.en}?`, `1 ${F.en} is ${tall(x)} ${T.fl}.`),
     q(`How many ${F.fl} are in 1 ${T.en}?`, `1 ${T.en} is ${tall(konverter(1, til, fra))} ${F.fl}.`),
-    q(`How do I convert ${F.kort} to ${T.kort} without a calculator?`, `${stor(regelTekst(fra, til))}. For example, ${tall((VERDIER[fra] ?? [2]).find((v) => v >= 2) ?? 2)} ${F.kort} is ${tall(konverter((VERDIER[fra] ?? [2]).find((v) => v >= 2) ?? 2, fra, til))} ${T.kort}.`),
+    q(`How do I convert ${F.kort} to ${T.kort} without a calculator?`, `${stor(regelTekst(fra, til))}. For example, ${val(exVal, fra)} is ${val(konverter(exVal, fra, til), til)}.`),
     q(`Is this conversion exact?`, ENHETER[fra].gruppe === 'temperatur' ? 'The formula is exact. Recipes usually round to the nearest 5 degrees.' : 'The factor is exact, but recipes usually round it, for example 236.6 ml for a US cup to 240 ml. Use the rounded number only when the recipe is forgiving.'),
     q(`What is ${F.kort} to ${T.kort} used for in cooking?`, `${stor(F.fl)} are used in ${BRUK[fra]}. ${stor(T.fl)} are used in ${BRUK[til]}.`),
     q(`Can I convert ${T.kort} back to ${F.kort}?`, `Yes. Use the swap button in the calculator, or open the ${T.kort} to ${F.kort} page. 1 ${T.en} is ${tall(konverter(1, til, fra))} ${F.fl}.`),
     q('Does Matlyst convert units in recipes?', 'When you import a recipe, Matlyst shows the amounts in metric or keeps the source amounts, depending on the Units setting in Settings. With Metric, cups, ounces, and pounds are converted to milliliters and grams. The setting applies to new imports.'),
   ];
   return {
-    title: `Convert ${F.kort} to ${T.kort}: ${F.fl} to ${T.fl}`,
-    description: `Convert ${F.fl} to ${T.fl} with a free calculator. 1 ${F.kort} = ${tall(x)} ${T.kort}. Includes a conversion chart, the formula, and kitchen tips.`,
+    title,
+    description: `Convert ${F.fl} to ${T.fl} with a free calculator. ${kortSvar}. Includes a conversion chart, the formula, and kitchen tips.`,
     eyebrow: 'Unit converter',
-    h1: `${stor(F.fl)} to ${T.fl} (${F.kort} to ${T.kort})`,
+    h1,
     lead: `${stor(F.fl)} to ${T.fl}, with a chart, the formula, and what to watch for in a recipe.`,
     forst: 'Type an amount, pick the units, and read the answer.',
     stegTittel: `How to convert ${F.fl} to ${T.fl}`,
-    steg: [['Enter the amount', `Type the number of ${F.fl}.`], ['Check the units', `Make sure From is ${F.fl} and To is ${T.fl}.`], ['Read the answer', `The result appears as you type: 1 ${F.kort} = ${tall(x)} ${T.kort}.`]],
-    alternativ: '', grense: '', seksjoner: [], faqTittel: `${F.kort} to ${T.kort} questions`, topp, rik, faq,
+    steg: [['Enter the amount', `Type the number of ${F.fl}.`], ['Check the units', `Make sure From is ${F.fl} and To is ${T.fl}.`], ['Read the answer', `The result appears as you type: ${kortSvar}.`]],
+    alternativ: '', grense: '', seksjoner: [], faqTittel: `${stor(F.kort)} to ${T.kort} questions`, topp, rik, faq,
     cta: 'Convert recipes in Matlyst',
   };
 }

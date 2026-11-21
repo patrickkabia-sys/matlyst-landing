@@ -465,7 +465,7 @@ const enhetsHub = (() => {
   };
   return byggLese({
     seksjoner: [
-      ['Convert any cooking unit', p('A free cooking unit converter for every combination: milliliters, deciliters, liters, US cups, tablespoons, teaspoons, fluid ounces, pints, quarts, gallons, grams, kilograms, ounces, pounds, centimeters, inches, and °C to °F. Pick a conversion below, or use the calculator.') + p('This calculator converts volume. For weight, length, and temperature, use the lists below.')],
+      ['Convert any cooking unit', p('A free cooking unit converter for every combination: milliliters, deciliters, liters, US cups, tablespoons, teaspoons, fluid ounces, pints, quarts, gallons, grams, kilograms, ounces, pounds, centimeters, inches, and °C to °F. Pick a conversion below, or use the calculator above.') + p('The calculator above converts volume. For weight, length, and temperature, use the lists below.')],
       gruppe('volum', 'Volume conversions: ml, dl, cups, tablespoons, and more'),
       gruppe('vekt', 'Weight conversions: grams, ounces, and pounds'),
       gruppe('lengde', 'Length conversions: cm, mm, and inches for pans and dough'),

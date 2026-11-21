@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
-import { ENHETER, FLERTALL, HURTIG_BROK, enhetsKort, KORT_ETIKETTER, START, enheterFor, konverter, tall } from '../scripts/enheter.mjs';
+import { ENHETER, FLERTALL, HURTIG_BROK, enhetsKort, KORT_ETIKETTER, START, enheterFor, kortSetning, konverter, tall } from '../scripts/enheter.mjs';
 import { byggLese, byggRik } from '../scripts/rik-sider.mjs';
 import * as NB from '../scripts/nb-enhetssider.mjs';
 import * as SV from '../scripts/sv-enhetssider.mjs';
@@ -13,6 +13,7 @@ import * as DA from '../scripts/da-enhetssider.mjs';
 import { enhetsSider as enhetsSiderEn } from '../scripts/en-enhetssider.mjs';
 import { rikeSider } from '../scripts/en-rike-sider.mjs';
 
+const stor = (t) => t.charAt(0).toUpperCase() + t.slice(1);
 const ROT = fileURLToPath(new URL('..', import.meta.url));
 const FASIT_SEKSJONER = JSON.parse(readFileSync(`${ROT}test/fasit/omregner-seksjoner.json`, 'utf8'));
 
@@ -28,25 +29,32 @@ const SPRAK = {
     publisert: 'cups-to-ml', kalkH2: / calculator$/u, kortSvar: 'Short answer:', tabellId: /^<h2 id="[a-z0-9-]+-conversion-chart"/u, likeNavn: false,
     h2: [/ conversion chart$/u, /^How to convert /u, /^Where recipes use /u, /^Measuring tips$/u, /^Common mistakes when converting$/u, /^Converting a whole recipe$/u, /^Stop converting by hand$/u, /^Related conversions$/u],
     hubOverskrift: '<h2 id="convert-any-cooking-unit">Convert any cooking unit</h2>',
-    hubInnledning: /^<p>A free cooking unit converter for every combination: /u, hubVolum: 'This calculator converts volume\\. For weight, length, and temperature, use the lists below\\.',
+    hubInnledning: /^<p>A free cooking unit converter for every combination: /u, hubVolum: 'The calculator above converts volume\\. For weight, length, and temperature, use the lists below\\.',
+    hubPeker: /use the calculator above\.<\/p>/u, til: 'to', verb: (a, b) => `Convert ${a} to ${b}`,
   },
   nb: {
     sider: NB.enhetsSiderNb, KOPP_BIORD: NB.KOPP_BIORD, mappe: 'verktoy/', hub: 'verktoy/enhetsomregner/', komma: true, hoved: /\bcups?\b/iu, biord: /kopp/iu, ordFor: ordFor('nb'),
     publisert: 'dl-til-kopp', kalkH2: /^Kalkulator/u, kortSvar: 'Kort svar:', tabellId: /^<h2 id="(?:omregningstabell|tabell|tabel)/u, likeNavn: true,
     h2: [/^Omregningstabell: /u, /^Slik regner du om /u, /^Hvor oppskrifter bruker /u, /^Tips til måling$/u, /^Vanlige feil ved omregning$/u, /^Regn om en hel oppskrift$/u, /^Slutt å regne om for hånd$/u, /^Beslektede omregninger$/u],
-    hubInnledning: /^<p>En gratis omregner for matlaging, med alle kombinasjoner: /u, hubVolum: 'Kalkulatoren her regner om volum\\. For vekt, lengde og temperatur bruker du listene under\\.',
+    hubInnledning: /^<p>En gratis omregner for matlaging, med alle kombinasjoner: /u, hubVolum: 'Kalkulatoren over regner om volum\\. For vekt, lengde og temperatur bruker du listene under\\.',
+    hubPeker: /bruk kalkulatoren over\.<\/p>/u, til: 'til', verb: (a, b) => `Regn om ${a} til ${b}`,
+    krus: (ml) => `Å måle med et kaffekrus. Kruset i skapet rommer sjelden ${ml} ml, som er det en cup er.`, stavefeil: /målesje/iu, riktigSkje: /måleskje/u,
   },
   sv: {
     sider: SV.enhetsSiderSv, KOPP_BIORD: SV.KOPP_BIORD, mappe: 'sv/verktyg/', hub: 'verktyg/enhetsomvandlare/', komma: true, hoved: /\bcups?\b/iu, biord: /kopp/iu, ordFor: ordFor('sv'),
     publisert: 'dl-till-kopp', kalkH2: /^Omvandlare från /u, kortSvar: 'Kort svar:', tabellId: /^<h2 id="(?:omregningstabell|tabell|tabel)/u, likeNavn: true,
     h2: [/^Tabell: /u, /^Så räknar du om /u, /^Där recept använder /u, /^Tips för mätning$/u, /^Vanliga misstag vid omräkning$/u, /^Räkna om ett helt recept$/u, /^Sluta räkna om för hand$/u, /^Närliggande omvandlingar$/u],
-    hubInnledning: /^<p>En gratis omvandlare för matlagning med alla kombinationer: /u, hubVolum: 'Den här omvandlaren räknar volym\\. För vikt, längd och temperatur använder du listorna nedan\\.',
+    hubInnledning: /^<p>En gratis omvandlare för matlagning med alla kombinationer: /u, hubVolum: 'Omvandlaren ovan räknar om volym\\. För vikt, längd och temperatur använder du listorna nedan\\.',
+    hubPeker: /använd omvandlaren ovan\.<\/p>/u, til: 'till', verb: (a, b) => `Räkna om ${a} till ${b}`, hubCup: /\bcup\b/u,
+    krus: (ml) => `Att mäta med en kaffemugg. En mugg rymmer sällan ${ml} ml, som en cup gör.`,
   },
   da: {
     sider: DA.enhetsSiderDa, KOPP_BIORD: DA.KOPP_BIORD, mappe: 'da/vaerktoejer/', hub: 'vaerktoejer/enhedsomregner/', komma: true, hoved: /\bcups?\b/iu, biord: /\bkop(pe[rn]?)?\b/iu, ordFor: ordFor('da'),
     publisert: 'dl-til-kop', kalkH2: /^Regnemaskine: /u, kortSvar: 'Kort svar:', tabellId: /^<h2 id="(?:omregningstabell|tabell|tabel)/u, likeNavn: true,
     h2: [/^Tabel: /u, /^Sådan regner du /u, /^Hvor opskrifter bruger /u, /^Tips til måling$/u, /^Almindelige fejl, når du regner om$/u, /^Regn en hel opskrift om$/u, /^Hold op med at regne om i hånden$/u, /^Beslægtede omregninger$/u],
-    hubInnledning: /^<p>Her finder du alle køkkenomregninger samlet: /u, hubVolum: 'Regnemaskinen her regner volumen om\\. Til vægt, længde og temperatur bruger du listerne herunder\\.',
+    hubInnledning: /^<p>Her finder du alle køkkenomregninger samlet: /u, hubVolum: 'Regnemaskinen herover regner volumen om\\. Til vægt, længde og temperatur bruger du listerne herunder\\.',
+    hubPeker: null, til: 'til', verb: (a, b) => `Regn ${a} om til ${b}`, hubCup: /\bcup\b/u,
+    krus: (ml) => `Du måler med et kaffekrus. Et krus rummer sjældent ${ml} ml, som er det, en cup er.`, stavefeil: /målske/iu, riktigSkje: /måleske/u,
   },
 };
 for (const S of Object.values(SPRAK)) S.sluttPaaPar = (n) => n !== S.hub;
@@ -93,9 +101,9 @@ for (const lang of Object.keys(SPRAK)) {
   test(`${lang}: lesedelen begynner med tabellen og har de åtte seksjonene i samme rekkefølge som de publiserte sidene`, () => {
     // Fasit: test/fasit/omregner-seksjoner.json, frosset fra de publiserte sidene på origin/main FØR ombyggingen (ikke fra filene i arbeidskopien,
     // som ombyggingen overskriver). Én parside per enhetsgruppe og samlesiden; kalkulatorseksjonen er tatt ut. Det eneste som er endret med vilje er
-    // ordet kopper/koppar, som nå er «cups» (avgjørelse 1), og det normaliseres bort før sammenligningen.
+    // ordet kopper/koppar, som nå er «cups» (avgjørelse 1), og at H2 med kortform først har stor forbokstav («Ml to cl conversion chart»); begge normaliseres før sammenligningen.
     const fasit = FASIT_SEKSJONER[lang];
-    const cups = (h) => h.replace(/\bkopper\b|\bkoppar\b/gu, 'cups');
+    const cups = (h) => stor(h.replace(/\bkopper\b|\bkoppar\b/gu, 'cups'));
     const h2Av = (s) => [...s.rik.matchAll(/<h2 id="[^"]*">([\s\S]*?)<\/h2>/gu)].map((m) => m[1]);
     assert.deepEqual(Object.keys(fasit.par).sort(), ['lengde', 'temperatur', 'vekt', 'volum'], 'fasiten har ett par per gruppe');
     for (const [gruppe, { side, h2 }] of Object.entries(fasit.par)) {
@@ -185,25 +193,131 @@ for (const lang of Object.keys(SPRAK)) {
     }
   });
 
-  test(`${lang}: H1 gjentar ikke samme ord som langform og kortform`, () => {
-    let sjekket = 0;
+  // Tittel og H1 følger mønsteret alle sidene har: «Regn om <kort> til <kort>: <navn> til <navn>» og «<Navn> til <navn> (<kort> til <kort>)».
+  // Sammenslåingen av like ledd gjelder bare valgteksten i kortet, ikke tittel og H1. Unntak: forkortes når delen etter kolon bare gjentar parleddet,
+  // og tittelen er kortformen alene når den lange er over 60 tegn. H1 uten parentes når parentesen ville vært identisk med teksten foran.
+  test(`${lang}: tittel og H1 følger mønsteret, med søkeordet sammenhengende («cups til dl»)`, () => {
+    let medLikt = 0;
     for (const [sti, s] of sider) {
-      for (const id of fraTil(s)) {
-        const { en, fl, kort } = ENHETER[id][lang];
-        if (![fl, en].some((t) => t.toLocaleLowerCase() === kort.toLocaleLowerCase())) continue;
-        sjekket++;
-        const antall = (s.h1.toLocaleLowerCase().match(new RegExp(`(?<![\\p{L}])${fl.toLocaleLowerCase()}(?![\\p{L}])`, 'gu')) ?? []).length;
-        assert.equal(antall, 1, `${sti}: «${fl}» står ${antall} ganger i H1: ${s.h1}`);
-      }
+      const [fra, til] = fraTil(s);
+      const F = ENHETER[fra][lang]; const T = ENHETER[til][lang];
+      const parKort = `${F.kort} ${S.til} ${T.kort}`;
+      const parNavn = `${F.fl} ${S.til} ${T.fl}`;
+      const lang0 = `${S.verb(F.kort, T.kort)}: ${parNavn}`;
+      const forventetTittel = parNavn.toLocaleLowerCase() === parKort.toLocaleLowerCase() || lang0.length > 60 ? S.verb(F.kort, T.kort) : lang0;
+      assert.equal(s.title, forventetTittel, sti);
+      const base = `${stor(F.fl)} ${S.til} ${T.fl}`;
+      const forventetH1 = base.toLocaleLowerCase() === parKort.toLocaleLowerCase() ? base : `${base} (${parKort})`;
+      assert.equal(s.h1, forventetH1, sti);
+      if ([F, T].some((e) => [e.fl, e.en].some((t) => t.toLocaleLowerCase() === e.kort.toLocaleLowerCase()))) medLikt++;
     }
-    if (S.likeNavn) assert.ok(sjekket >= 2 * (enheterFor(lang).filter((id) => ENHETER[id].gruppe === 'volum').length - 1), 'cups er en slik enhet');
-    // og ingen like nabo-ord i overskriftene (som locale-pages.test.mjs krever for de ferdige sidene)
+    if (S.likeNavn) assert.ok(medLikt >= 2 * (enheterFor(lang).filter((id) => ENHETER[id].gruppe === 'volum').length - 1), 'cups er en slik enhet, og sidene med den er med');
+    // Konkrete sider fra bestillingen.
+    if (lang === 'nb') {
+      assert.equal(S.sider['verktoy/kopp-til-dl/'].title, 'Regn om cups til dl: cups til desiliter');
+      assert.equal(S.sider['verktoy/kopp-til-dl/'].h1, 'Cups til desiliter (cups til dl)');
+      assert.equal(S.sider['verktoy/dl-til-kopp/'].title, 'Regn om dl til cups: desiliter til cups');
+      assert.equal(S.sider['verktoy/dl-til-kopp/'].h1, 'Desiliter til cups (dl til cups)');
+    }
+    if (lang === 'sv') {
+      assert.equal(S.sider['verktyg/kopp-till-dl/'].title, 'Räkna om cup till dl: cups till deciliter');
+      assert.equal(S.sider['verktyg/kopp-till-dl/'].h1, 'Cups till deciliter (cup till dl)');
+    }
+    if (lang === 'da') {
+      assert.equal(S.sider['vaerktoejer/kop-til-dl/'].title, 'Regn cup om til dl: cups til deciliter');
+      assert.equal(S.sider['vaerktoejer/kop-til-dl/'].h1, 'Cups til deciliter (cup til dl)');
+    }
+  });
+
+  test(`${lang}: ingen tittel gjentar parleddet etter kolon`, () => {
+    const ord = (t) => t.toLocaleLowerCase().match(/[\p{L}\p{N}°]+/gu) ?? [];
+    let medKolon = 0;
+    for (const [sti, s] of Object.entries(S.sider)) {
+      const [foran, ...etter] = s.title.split(': ');
+      if (!etter.length) continue;
+      medKolon++;
+      const fore = new Set(ord(foran));
+      assert.ok(!ord(etter.join(': ')).every((o) => fore.has(o)), `${sti}: «${s.title}» gjentar leddet`);
+    }
+    assert.ok(medKolon > 100, 'vakten ser titler med kolon');
+  });
+
+  test(`${lang}: ingen like nabo-ord i overskriftene`, () => {
     for (const [sti, s] of Object.entries(S.sider)) {
       for (const [, raw] of `<h1>${s.h1}</h1>${s.rik}`.matchAll(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/gu)) {
         const ord = synligTekst(raw).toLocaleLowerCase().match(/[\p{L}\p{N}]+/gu) ?? [];
         for (let i = 1; i < ord.length; i += 1) assert.notEqual(ord[i], ord[i - 1], `${sti}: ${raw}`);
       }
     }
+  });
+
+  test(`${lang}: overskriftene begynner med stor forbokstav`, () => {
+    for (const [sti, s] of Object.entries(S.sider)) {
+      for (const [, raw] of `<h1>${s.h1}</h1>${s.rik}<h2>${s.faqTittel}</h2>`.matchAll(/<h[1-3][^>]*>([\s\S]*?)<\/h[1-3]>/gu)) {
+        const t = synligTekst(raw).trim();
+        assert.equal(t.charAt(0), t.charAt(0).toLocaleUpperCase(lang), `${sti}: «${t}»`);
+      }
+    }
+  });
+
+  test(`${lang}: regnestykket er det samme i description, steg 3, kort svar og kortets setning (temperatur: 180 °C, 350 °F)`, () => {
+    let temp = 0;
+    for (const [sti, s] of sider) {
+      const [fra, til] = fraTil(s);
+      const forventet = kortSetning(lang, fra, til);
+      if (ENHETER[fra].gruppe === 'temperatur') {
+        temp++;
+        assert.ok(forventet.startsWith(fra === 'c' ? '180 °C = 356 °F' : '350 °F = 176'), `${sti}: ${forventet}`);
+      }
+      assert.ok(s.description.includes(`${forventet}.`), `${sti}: description har «${forventet}.»: ${s.description}`);
+      assert.ok(s.steg[2][1].includes(`${forventet}.`), `${sti}: steg 3 har «${forventet}.»: ${s.steg[2][1]}`);
+      assert.ok(/<p class="kortsvar"><b>[^<]*<\/b> ([^<]*)</u.exec(s.topp)[1].startsWith(`${forventet}.`), `${sti}: kort svar`);
+      assert.equal(/data-felt="setning"[^>]*>([^<]*)</u.exec(s.topp)[1], forventet, `${sti}: kortets setning`);
+    }
+    assert.equal(temp, 2, 'celsius til fahrenheit og motsatt');
+  });
+
+  // Enheten bøyes etter samme regel overalt på siden som i kortet: «1 cup», «2 cups», «1,5 cups», «0,4227 cups».
+  test(`${lang}: enheter med flertallsform bøyes ved hvert tall (tittel, beskrivelse, tabell, eksempler, spørsmål, steg)`, () => {
+    const former = Object.values(FLERTALL[lang] ?? {});
+    let sett = 0;
+    for (const [sti, s] of Object.entries(S.sider)) {
+      const tekst = `${sideTekst(s)} ${s.title} ${s.description}`;
+      for (const [entall, flertall] of former) {
+        const re = new RegExp(`(?<![\\p{L}\\d.,/-])(\\d+(?:[.,]\\d+)?) (${entall}|${flertall})(?![\\p{L}\\d])`, 'gu');
+        for (const [, n, ord] of tekst.matchAll(re)) {
+          sett++;
+          const skalVaereEntall = n === '1';
+          assert.equal(ord, skalVaereEntall ? entall : flertall, `${sti}: «${n} ${ord}»`);
+        }
+      }
+    }
+    if (lang !== 'en' || former.length) assert.ok(sett > 100, `vakten ser tall ved enhetene (${sett})`);
+  });
+
+  test(`${lang}: kaffekrus-setningen i feillisten gjelder volumet, ikke størrelsen på målebegeret`, { skip: !S.krus }, () => {
+    const setning = S.krus(tall(ENHETER.cups.f).replace('.', ','));
+    assert.equal(setning.includes('236,6'), true);
+    let sett = 0;
+    for (const [sti, s] of sider) {
+      if (ENHETER[fraTil(s)[0]].gruppe !== 'volum') continue;
+      sett++;
+      assert.ok(synligTekst(s.rik).includes(setning), `${sti}: «${setning}»`);
+      assert.doesNotMatch(synligTekst(s.rik), /som målebeger|som mätglas|som målebæger|lige så stort som et målebæger/u, sti);
+    }
+    assert.ok(sett > 100);
+  });
+
+  test(`${lang}: ingen ordet «målesje» eller «målske», og «måleskje»/«måleske» står rett`, { skip: !S.stavefeil }, () => {
+    const kilde = readFileSync(`${ROT}scripts/${lang}-enhetssider.mjs`, 'utf8');
+    assert.doesNotMatch(kilde, S.stavefeil, 'generatoren');
+    let rett = 0;
+    for (const [sti, s] of Object.entries(S.sider)) {
+      const tekst = `${sideTekst(s)} ${s.title} ${s.description}`;
+      assert.doesNotMatch(tekst, S.stavefeil, sti);
+      if (S.riktigSkje.test(tekst)) rett++;
+    }
+    assert.ok(rett > 5, 'vakten ser det riktige ordet');
   });
 
   test(`${lang}: ingen tankestrek i synlig tekst`, () => {
@@ -229,6 +343,23 @@ for (const lang of Object.keys(SPRAK)) {
     assert.match(lese, S.hubInnledning, `${S.hub}: lesedelen åpner med innledningen`);
     assert.match(lese, new RegExp(`^<p>[^<]+</p><p>${S.hubVolum}</p>`, 'u'), `${S.hub}: volumsetningen er avsnitt to`);
     assert.doesNotMatch(hub.rik, /class="answer"|class="toc"|<form/u);
+    // Innledningen viser til kortet over (ikke «under» eller «her»), og setningen om volum sier det samme.
+    if (S.hubPeker) assert.match(lese.split('</p>')[0] + '</p>', S.hubPeker, `${S.hub}: innledningen peker på kalkulatoren over`);
+    assert.doesNotMatch(lese.slice(0, lese.indexOf('<h2')), /Kalkulatoren her |Den här omvandlaren|Regnemaskinen her |This calculator /u, `${S.hub}: «her» peker feil vei`);
+  });
+
+  test(`${lang}: samlesiden og enhetssidene har rett hovedord i tittelen`, () => {
+    const hub = S.sider[S.hub];
+    assert.ok(hub.title.length <= 60, hub.title);
+    if (S.hubCup) {
+      assert.match(hub.title, S.hubCup, hub.title);
+      assert.doesNotMatch(hub.title, /\bcups\b/u, hub.title);
+    }
+  });
+
+  test(`${lang}: «jug» står ikke i sidene, og væske måles i «liquid measuring cup»`, { skip: lang !== 'en' }, () => {
+    for (const [sti, s] of Object.entries(S.sider)) assert.doesNotMatch(`${sideTekst(s)} ${s.description}`, /\bjugs?\b/iu, sti);
+    assert.match(sideTekst(S.sider['tools/ml-to-dl/']), /liquid measuring cup/u);
   });
 }
 
