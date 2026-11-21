@@ -48,7 +48,7 @@ export const TEKST = {
       ['Hvilken temperatur er kyllingfilet ferdig ved?', `${h.k('mt-sommer')} oppgir minimum ${h.t('mt-kjerne')} i kjernen for gjennomstekt fjørfekjøtt, og ${h.k('mp-kylling')} oppgir ${h.t('kjerne')} for kyllingfilet. Det er kjernetemperaturen som avgjør, ikke tiden i airfryeren.`],
       ['Hvor lenge skal frossen kyllingfilet i airfryeren?', 'Vi har ikke funnet en kilde for frossen kyllingfilet, så vi oppgir ingen tid. Philips har en egen rad for frosne kyllingbiter, og den står under frossen mat.'],
     ],
-    les: [L('kyllinglar', 'Kyllinglår og kyllingklubber i airfryer'), L('kyllingvinger', 'Kyllingvinger i airfryer'), L('frossen-mat', 'Frossen mat i airfryer')],
+    les: [L('kyllinglar', 'Kyllinglår og kyllingklubber i airfryer'), L('kyllingvinger', 'Kyllingvinger i airfryer'), L('frossen-mat', 'Frossen mat i airfryer'), ['/kjernetemperatur/kylling/', 'Kjernetemperatur for kylling']],
   }),
 
   kyllinglar: (h) => ({
@@ -87,7 +87,7 @@ export const TEKST = {
       ['Må jeg forvarme airfryeren til kyllinglår?', 'MatPrat forvarmer til kyllinglår, mens Philips skriver at du ikke trenger å forvarme. Kildene er uenige.'],
       ['Hvilken kjernetemperatur har kyllinglår?', `${h.k('mt-sommer')} oppgir minimum ${h.t('mt-kjerne')} for gjennomstekt fjørfekjøtt. MatPrat har ingen egen verdi for lår, men ${h.t('kjerne')} for hel kylling og filet.`],
     ],
-    les: [L('kyllingfilet', 'Kyllingfilet i airfryer'), L('kyllingvinger', 'Kyllingvinger i airfryer')],
+    les: [L('kyllingfilet', 'Kyllingfilet i airfryer'), L('kyllingvinger', 'Kyllingvinger i airfryer'), ['/kjernetemperatur/kylling/', 'Kjernetemperatur for kylling']],
   }),
 
   kyllingvinger: (h) => ({
@@ -126,7 +126,7 @@ export const TEKST = {
       ['Hvilken temperatur skal jeg bruke til kyllingvinger?', `${h.k('godt-vinger')} bruker ${h.t('godt-temp')} og MatPrat ${h.t('mp-temp')}. Begge er veiledende.`],
       ['Må jeg snu vingene?', 'Ja, begge kildene snur vingene underveis i steketiden.'],
     ],
-    les: [L('kyllinglar', 'Kyllinglår og kyllingklubber i airfryer'), L('kyllingfilet', 'Kyllingfilet i airfryer')],
+    les: [L('kyllinglar', 'Kyllinglår og kyllingklubber i airfryer'), L('kyllingfilet', 'Kyllingfilet i airfryer'), ['/kjernetemperatur/kylling/', 'Kjernetemperatur for kylling']],
   }),
 
   // ---------------------------------------------------------------- fisk
@@ -163,7 +163,7 @@ export const TEKST = {
       ['Hvorfor oppgir Philips så lang tid for fisk?', `${h.k('ph-hd920')} oppgir ${h.t('ph-tid')} ved ${h.t('ph-temp')} for fiskefilet generelt. Tabellen er for hele apparatet og er ikke skrevet for laks. Philips kaller innstillingene forslag.`],
       ['Hvilken kjernetemperatur har laks?', `${h.k('mp-fisk')} oppgir ca. ${h.t('kjerne')} for filet i ovn.`],
     ],
-    les: [L('torsk', 'Torsk i airfryer'), L('fiskepinner', 'Fiskepinner i airfryer')],
+    les: [L('torsk', 'Torsk i airfryer'), L('fiskepinner', 'Fiskepinner i airfryer'), ['/kjernetemperatur/laks/', 'Kjernetemperatur for laks']],
   }),
 
   torsk: (h) => ({
@@ -197,7 +197,7 @@ export const TEKST = {
       ['Kan jeg bruke tiden for fiskepinner til torskefilet?', 'Nei, det er ikke samme produkt. Fiskepinner er ferdigpanerte pakker med egne tider, og tallene for dem står på siden om fiskepinner.'],
       ['Hvilken kjernetemperatur har torsk?', `${h.k('mp-fisk')} oppgir ca. ${h.t('kjerne')} for filet i ovn, og tabellen gjelder fisk generelt.`],
     ],
-    les: [L('laks', 'Laks i airfryer'), L('fiskepinner', 'Fiskepinner i airfryer')],
+    les: [L('laks', 'Laks i airfryer'), L('fiskepinner', 'Fiskepinner i airfryer'), ['/kjernetemperatur/torsk/', 'Kjernetemperatur for torsk']],
   }),
 
   fiskepinner: (h) => ({
@@ -450,7 +450,7 @@ export const TEKST = {
       ['Kan jeg ha medium stekt burger?', 'MatPrat skriver at å kverne kjøttet selv kan gi en viss kontroll, og er å foretrekke dersom du ønsker å nyte en medium stekt burger. Samtidig skal hamburgere av kjøttdeig gjennomstekes, skriver de.'],
       ['Hva med karbonader?', 'Vi har ikke funnet en kilde med tid for karbonader i airfryer, så vi oppgir ingen.'],
     ],
-    les: [L('kjottboller', 'Kjøttboller i airfryer'), L('svinekoteletter', 'Svinekoteletter i airfryer')],
+    les: [L('kjottboller', 'Kjøttboller i airfryer'), L('svinekoteletter', 'Svinekoteletter i airfryer'), ['/kjernetemperatur/kjottdeig/', 'Kjernetemperatur for kjøttdeig']],
   }),
 
   kjottboller: (h) => ({
@@ -484,7 +484,7 @@ export const TEKST = {
       ['Hvor mye kjøttdeig til hjemmelagde kjøttboller?', `Gildes eksempel bruker ${h.t('gi-deig')} kjøttdeig. Gilde oppgir ikke en egen tid for de hjemmelagde.`],
       ['Må jeg gjennomsteke rå kjøttboller?', `${h.k('mt-sommer')} skriver at alle rå kjøttfarseprodukter bør gjennomstekes, med minimum ${h.t('mt-kjerne')} i kjernen. MatPrat skriver at produkter av oppmalt kjøtt som tommelfingerregel skal være gjennomstekte, og oppgir ${h.t('kjerne')} for hamburgere.`],
     ],
-    les: [L('hamburger', 'Hamburger i airfryer'), L('polser', 'Pølser i airfryer')],
+    les: [L('hamburger', 'Hamburger i airfryer'), L('polser', 'Pølser i airfryer'), ['/kjernetemperatur/kjottdeig/', 'Kjernetemperatur for kjøttdeig']],
   }),
 
   svinekoteletter: (h) => ({
@@ -517,7 +517,7 @@ export const TEKST = {
       ['Hvilken kjernetemperatur har svinekotelett?', `MatPrat har ingen egen verdi for koteletter. For andre svinekjøttstykker oppgir ${h.k('mp-svin')} ${h.t('kjerne')} som gjennomstekt.`],
       ['Må jeg snu koteletten?', 'Philips ber deg riste, snu eller røre halvveis.'],
     ],
-    les: [L('hamburger', 'Hamburger i airfryer'), L('ribbe', 'Ribbe i airfryer')],
+    les: [L('hamburger', 'Hamburger i airfryer'), L('ribbe', 'Ribbe i airfryer'), ['/kjernetemperatur/svinefilet/', 'Kjernetemperatur for svin']],
   }),
 
   biff: (h) => ({
@@ -555,7 +555,7 @@ export const TEKST = {
       ['Hvilken kjernetemperatur har medium stekt biff?', `MatPrat oppgir ${h.t('kjerne-medium')} for medium og ${h.t('kjerne-pluss')} for medium pluss.`],
       ['Hvor lenge skal biffen hvile?', `MatPrat ber deg la den hvile ${h.t('mp-hvile')}.`],
     ],
-    les: [L('svinekoteletter', 'Svinekoteletter i airfryer'), L('ribbe', 'Ribbe i airfryer')],
+    les: [L('svinekoteletter', 'Svinekoteletter i airfryer'), L('ribbe', 'Ribbe i airfryer'), ['/kjernetemperatur/biff/', 'Kjernetemperatur for biff']],
   }),
 
   ribbe: (h) => ({
@@ -813,7 +813,7 @@ export function NAV({ rader, h, sti, tabell, p, esc }) {
       ['Tid og temperatur for vanlig mat', `${p('Hver rad viser én kilde. Trykk på matvaren for å se alle kildene vi har brukt, med hva de gjelder. Tallene er veiledende, og de varierer med airfryer, mengde og tykkelse.')}${tabell('Tid og temperatur for vanlig mat', ['Matvare', 'Kilde', 'Temperatur', 'Tid'], hurtig)}`],
       ['Ovn til airfryer', `${p(`Omregneren øverst bruker tabellen til ${ovn.k('ar-airfryer')} for varmluftsovn. Lavere temperatur og en femtedel kortere tid er utgangspunktet. Tabellen er en tommelfingerregel, og MatPrats egne tall for fem retter viser at ikke alt følger den.`)}${p(`Se hele tabellen, og tallene fra MatPrat og Findus, på ${lenke('ovn-til-airfryer', 'siden om ovn til airfryer')}.`)}`],
       ['Forvarming: kildene er uenige', `${p('Noen sier at du bør forvarme airfryeren, og noen at du ikke trenger det. Her er det de sier, hver for seg.')}${tabell('Hva kildene sier om forvarming', ['Kilde', 'Hva de skriver', 'Referanse'], forvarm)}${p('Vi tar ikke side. Les i brukerveiledningen for din egen airfryer.')}`],
-      ['Kjernetemperatur', `${p('For kylling, kjøtt og fisk er det kjernetemperaturen som avgjør om maten er ferdig, ikke klokka. Tidene på sidene våre er veiledende og sier bare hvor du kan begynne å sjekke. Dette er kjernetemperaturene vi har funnet hos Mattilsynet og MatPrat:')}${tabell('Kjernetemperaturer fra Mattilsynet og MatPrat', ['Hva', 'Kilde', 'Kjernetemperatur', 'Merknad'], kjerneRader)}${p(`Mattilsynet og MatPrat er ikke helt enige om hamburger: Mattilsynet oppgir minimum ${hb.t('mt-kjerne')} som gjennomstekt, og MatPrat oppgir ${hb.t('kjerne')} som tilstrekkelig. Vi viser begge. Vi har ikke funnet kjernetemperatur for bacon, og oppgir derfor ingen. Du kan lese mer i artikkelen <a href="/blogg/kjernetemperatur/">kjernetemperatur for lam, storfe, svin og kylling</a>.`)}`],
+      ['Kjernetemperatur', `${p('For kylling, kjøtt og fisk er det kjernetemperaturen som avgjør om maten er ferdig, ikke klokka. Tidene på sidene våre er veiledende og sier bare hvor du kan begynne å sjekke. Dette er kjernetemperaturene vi har funnet hos Mattilsynet og MatPrat:')}${tabell('Kjernetemperaturer fra Mattilsynet og MatPrat', ['Hva', 'Kilde', 'Kjernetemperatur', 'Merknad'], kjerneRader)}${p(`Mattilsynet og MatPrat er ikke helt enige om hamburger: Mattilsynet oppgir minimum ${hb.t('mt-kjerne')} som gjennomstekt, og MatPrat oppgir ${hb.t('kjerne')} som tilstrekkelig. Vi viser begge. Vi har ikke funnet kjernetemperatur for bacon, og oppgir derfor ingen. Se alle kjøtt- og fisketypene i <a href="/kjernetemperatur/">tabellen over kjernetemperatur</a>. Du kan lese mer i artikkelen <a href="/blogg/kjernetemperatur/">kjernetemperatur for lam, storfe, svin og kylling</a>.`)}`],
       ['Slik leser du tidene', p(
         `${t('hamburger').k('ph-hd920')} skriver at innstillingene er forslag, og at de ikke kan garantere at de passer maten din. MatPrat skriver at steketid kan variere mellom produsentene, og ber deg sjekke med jevne mellomrom for å unngå at maten blir svidd eller underkokt.`,
         'Philips ber deg riste, snu eller røre i ingrediensene i større mengder mat, som pommes frites og frosne snacks. Gilde anbefaler å steke pølser i ett lag, og Philips ber deg ikke overstige mengdene i tabellen sin.',

@@ -15,7 +15,8 @@ const vekter = (rad) => {
 const perKilo = (rad) => rad.tall['per-kilo'].verdi;
 
 export const { sideForRad, navSide, tillatteTall, tillatteTallNav, maskeNavn } = lagMal({
-  rot: ROT, eyebrowNavn: 'Steketid', alleTekst: 'Steketid for alle rettene', cta: 'Lag middagen steg for steg i Matlyst',
+  rot: ROT, navEkstra: '<div class="related"><h2>Les også</h2><ul><li><a href="/airfryer/">Airfryer: tid og temperatur for vanlig mat</a></li></ul></div>',
+  eyebrowNavn: 'Steketid', alleTekst: 'Steketid for alle rettene', cta: 'Lag middagen steg for steg i Matlyst',
   stegTittel: 'Slik leser du tabellen', steg0: 'Finn retten', steg1: 'Tidene står i tabellen, med kilde.', app: APP, TEKST, nav,
   kalk: (rad, h) => kalkTid({ perKilo: perKilo(rad), ordKilde: `${h.k('mp-hel-kalkun')}: ${h.t('per-kilo')} ved ${h.t('ovn')}`, eksempelKg: rad.tall['ex-kg'].verdi, steg: vekter(rad).map(String) }),
   // Tallene i kalkulatoren som ikke er kildetall: enhetsfaktorer i skjemaets data, eksempelet i feilmeldingen, og vekt ganger faktor for hvert hurtigvalg.

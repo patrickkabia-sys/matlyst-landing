@@ -31,6 +31,8 @@ test('registeret har bare norske sider som finnes, og linja og personen er de go
 
 test('alle sider i registeret har synlig forfatterlinje og author som Person koblet til om-siden', () => {
   assert.ok(underRot.length >= 20, `fant bare ${underRot.length} sider under forfatterrøttene`);
+  assert.ok(!FORFATTER_ROTER.includes('erstatning/'), 'kjøletekniker passer ikke på bakeerstatninger');
+  assert.ok(FORFATTER_ROTER.includes('hva-kan-jeg-lage/'));
   for (const rot of FORFATTER_ROTER) assert.ok(!/^(?:sv|da|en)\//u.test(rot), rot);
   for (const sti of MED_FORFATTER) {
     const h = html(`${sti}index.html`);
