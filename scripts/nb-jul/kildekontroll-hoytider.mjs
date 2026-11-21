@@ -1,10 +1,12 @@
-// Kontroll mot kilden for høytidssidene (/julebord/, /nyttarsmiddag/): hvert sitat i hoytider.data.json skal stå ordrett på kildesiden.
-// Bruk: node scripts/nb-jul/kildekontroll-hoytider.mjs   (nett kreves; avvik skrives og koden blir 1)
+// Kontroll mot kilden for høytidssidene (nb, sv, da): hvert sitat i markedets datafil skal stå ordrett på kildesiden.
+// Bruk: node scripts/nb-jul/kildekontroll-hoytider.mjs [nb|sv|da]   (nett kreves; avvik skrives og koden blir 1)
+// Svensk og dansk: sidene i scripts/sv-jul/ og scripts/da-jul/ bruker samme kontroll mot sin egen datafil. Svenske og danske kilder hentes med curl-fallback (Arla svarer 404 på Node sin fetch).
 import { fileURLToPath } from 'node:url';
-import { kildetekst } from '../familier/holdbarhet/kildekontroll.mjs';
-import { DATA } from './hoytid-felles.mjs';
+import { hent, kildetekst } from '../familier/holdbarhet/kildekontroll.mjs';
+import { lagMarked } from './hoytid-felles.mjs';
 
-const norm = (t) => t.replace(/­/gu, '').replace(/\s+/gu, ' ').trim();
+// NFC: noen sider (Arla) skriver ö som o + tegn for prikker, og sitatet er skrevet med ett tegn.
+const norm = (t) => t.normalize('NFC').replace(/­/gu, '').replace(/\s+/gu, ' ').trim().replace(/ ([,.;:!?])/gu, '$1');
 
 /** Sitater som ikke står i kildeteksten: { id, kilde }[]. `tekster` er { [kildeId]: kildetekst }. */
 export function avvik(data, tekster) {
@@ -12,19 +14,16 @@ export function avvik(data, tekster) {
   for (const [gruppe, rader] of [['tall', data.tall], ['tekst', data.tekst]]) {
     for (const [id, x] of Object.entries(rader)) {
       const tekst = tekster[x.kilde];
-      if (!x.sitat || !tekst || !tekst.includes(norm(x.sitat))) ut.push({ id: `${gruppe}/${id}`, kilde: x.kilde });
+      if (!x.sitat || !tekst || !norm(tekst).includes(norm(x.sitat))) ut.push({ id: `${gruppe}/${id}`, kilde: x.kilde });
     }
   }
   return ut;
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const DATA = lagMarked(process.argv[2] ?? 'nb').DATA;
   const tekster = {};
-  for (const [id, k] of Object.entries(DATA.kilder)) {
-    const svar = await fetch(k.url, { headers: { 'user-agent': 'Mozilla/5.0' } });
-    if (!svar.ok) throw new Error(`${id}: ${k.url} svarte ${svar.status}`);
-    tekster[id] = kildetekst(await svar.text());
-  }
+  for (const [id, k] of Object.entries(DATA.kilder)) tekster[id] = kildetekst((await hent(k.url, id)).toString('utf8'));
   const liste = avvik(DATA, tekster);
   if (liste.length) {
     for (const a of liste) console.error(`${a.id}: sitatet står ikke hos ${a.kilde}`);

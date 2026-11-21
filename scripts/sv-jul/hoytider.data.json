@@ -1,0 +1,424 @@
+{
+  "hentet": "2026-11-21",
+  "hentetTekst": "21 november 2026",
+  "kilder": {
+    "lv-kylvaror": {
+      "navn": "Livsmedelsverket: Förvaring av kylvaror",
+      "url": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/forvaring-av-kyld-mat/",
+      "dato": "granskad 15 september 2026"
+    },
+    "lv-avsvalning": {
+      "navn": "Livsmedelsverket: Avsvalning av mat",
+      "url": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/avsvalning/",
+      "dato": "granskad 11 augusti 2026"
+    },
+    "lv-matlada": {
+      "navn": "Livsmedelsverket: Svinnkoll: Matlåda",
+      "url": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/matlada/",
+      "dato": "granskad 18 september 2026"
+    },
+    "lv-frysa": {
+      "navn": "Livsmedelsverket: Frysa mat",
+      "url": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/frysa-mat/",
+      "dato": "granskad 7 februari 2025"
+    },
+    "sk-skinka": {
+      "navn": "Svenskt Kött: Allt du vill veta om julskinka",
+      "url": "https://svensktkott.se/aktuellt/allt-du-vill-veta-om-julskinka/",
+      "dato": "publicerad 3 december 2025"
+    },
+    "sk-servera": {
+      "navn": "Svenskt Kött: Hur mycket kött ska man servera?",
+      "url": "https://svensktkott.se/aktuellt/hur-mycket-kott-ska-man-servera/",
+      "dato": "publicerad 3 juni 2024"
+    },
+    "sk-gris": {
+      "navn": "Svenskt Kött: Köpa griskött",
+      "url": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/kopa-kott/att-kopa-griskott/",
+      "dato": "senast ändrad 12 augusti 2020"
+    },
+    "sf-jul": {
+      "navn": "Svensk Fågel: Julrecept på Svensk Fågel",
+      "url": "https://svenskfagel.se/recept/julrecept-pa-svensk-fagel/",
+      "dato": "publicerad 11 december 2024"
+    },
+    "sf-hellberg": {
+      "navn": "Svensk Fågel: Christian Hellbergs helstekta kalkon med vitlöksrubb",
+      "url": "https://svenskfagel.se/recept/christian-hellbergs-helstekta-kalkon-med-vitloksrubb/",
+      "dato": "publicerad 11 december 2024"
+    },
+    "arla-julbord": {
+      "navn": "Arla: Julbordet, 13 klassiska rätter som måste finnas med",
+      "url": "https://www.arla.se/artiklar/klassiska-ratter-julbordet/",
+      "dato": "publicerad 7 april 2026"
+    },
+    "arla-planering": {
+      "navn": "Arla: Julplanering, guiden till en fröjdefull jul",
+      "url": "https://www.arla.se/artiklar/julplanering/",
+      "dato": "publicerad 14 april 2026"
+    },
+    "arla-utanstress": {
+      "navn": "Arla: Så fixar du julbordet utan stress",
+      "url": "https://www.arla.se/artiklar/fixa-julbord-tips/",
+      "dato": "publicerad 7 april 2026"
+    },
+    "arla-lax": {
+      "navn": "Arla: Gravad lax",
+      "url": "https://www.arla.se/recept/gravad-lax/",
+      "dato": "senast uppdaterad 20 augusti 2026"
+    },
+    "arla-jansson": {
+      "navn": "Arla Kundwebb: Janssons frestelse",
+      "url": "https://kund.arla.se/inspiration/recept/janssons-frestelse/",
+      "dato": "senast uppdaterad 27 oktober 2026"
+    },
+    "arla-potatis": {
+      "navn": "Arla: Koka potatis",
+      "url": "https://www.arla.se/artiklar/koka-potatis-tider-tips/",
+      "dato": "publicerad 7 april 2026"
+    },
+    "arla-kalkon": {
+      "navn": "Arla: Kalkon i ugn",
+      "url": "https://www.arla.se/recept/kalkon-i-ugn/",
+      "dato": "senast uppdaterad 20 augusti 2026"
+    }
+  },
+  "tall": {
+    "skinka-jul": {
+      "vis": "50 till 75 g",
+      "kilde": "sk-skinka",
+      "hva": "julskinka per person på ett traditionellt julbord",
+      "g": [
+        50,
+        75
+      ],
+      "sitat": "På ett traditionellt julbord, där mycket annat också står framdukat, brukar 50–75 gram per person räcka fint."
+    },
+    "buffe-rad": {
+      "vis": "50 g",
+      "kilde": "sk-servera",
+      "hva": "kött och andra proteinrätter per person och rätt på en buffé",
+      "g": 50,
+      "sitat": "När det gäller kött och andra proteinalternativ är cirka 50 gram per portion och rätt en bra tumregel när du serverar flera proteinalternativ."
+    },
+    "middag-benfritt": {
+      "vis": "125 till 150 g",
+      "kilde": "sk-servera",
+      "hva": "benfritt kött per person vid en middagsbjudning",
+      "g": [
+        125,
+        150
+      ],
+      "sitat": "När det kommer till köttet kan du beräkna ungefär 125–150 gram benfritt kött per person."
+    },
+    "middag-ben": {
+      "vis": "175 g",
+      "kilde": "sk-servera",
+      "hva": "kött med ben per person vid en middagsbjudning",
+      "g": 175,
+      "sitat": "För kött med ben som exempelvis kotlett eller karré med ben eller lammracks kan du räkna på cirka 175 gram per portion."
+    },
+    "skinka-sjalv-utan": {
+      "vis": "150 g",
+      "kilde": "sk-gris",
+      "hva": "egenlagad julskinka utan ben per person",
+      "g": 150,
+      "sitat": "Ska du laga skinkan själv, räkna med 150 g per person utan ben och 200 g med ben."
+    },
+    "skinka-sjalv-med": {
+      "vis": "200 g",
+      "kilde": "sk-gris",
+      "hva": "egenlagad julskinka med ben per person",
+      "g": 200,
+      "sitat": "Ska du laga skinkan själv, räkna med 150 g per person utan ben och 200 g med ben."
+    },
+    "skinka-fardig": {
+      "vis": "100 g",
+      "kilde": "sk-gris",
+      "hva": "färdiglagad skinka per person",
+      "g": 100,
+      "sitat": "Av färdiglagad skinka är det lagom att köpa ca 100 g per person."
+    },
+    "lax-buffe": {
+      "vis": "100 g",
+      "kilde": "arla-lax",
+      "hva": "gravad lax per person som en del av en buffé",
+      "g": 100,
+      "sitat": "som en del av buffé räcker det med ca 100 g per person"
+    },
+    "lax-huvud": {
+      "vis": "200 g",
+      "kilde": "arla-lax",
+      "hva": "gravad lax per person som huvudrätt",
+      "g": 200,
+      "sitat": "Som huvudrätt får du räkna med ca 200 g gravad lax per person"
+    },
+    "lax-forratt": {
+      "vis": "80 g",
+      "kilde": "arla-lax",
+      "hva": "gravad lax per person som förrätt",
+      "g": 80,
+      "sitat": "som en förrätt eller på en snitt kan ca 80 g per person räcka"
+    },
+    "jansson": {
+      "vis": "70 till 100 g",
+      "kilde": "arla-jansson",
+      "hva": "Janssons frestelse per person på ett stort julbord",
+      "g": [
+        70,
+        100
+      ],
+      "sitat": "Om det är ett stort julbord går det åt endast 70–100 g gratäng per person."
+    },
+    "potatis": {
+      "vis": "200 g",
+      "kilde": "arla-potatis",
+      "hva": "kokt potatis per person",
+      "g": 200,
+      "sitat": "Men du kan räkna med runt 200 gram potatis per person."
+    },
+    "recept-buffe": {
+      "vis": "10 till 12 bufféportioner",
+      "kilde": "arla-julbord",
+      "hva": "bufféportioner av ett recept för fyra personer",
+      "sitat": "Ett recept för fyra personer räcker till ungefär 10-12 bufféportioner."
+    },
+    "framme": {
+      "vis": "fyra timmar vid högst 20 °C, tre timmar vid högst 25 °C och två timmar vid 26 till 30 °C",
+      "kilde": "lv-kylvaror",
+      "hva": "hur länge kylvaror får stå framme",
+      "sitat": "Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C."
+    },
+    "kylskap": {
+      "vis": "4 °C",
+      "kilde": "lv-kylvaror",
+      "hva": "lämplig kylskåpstemperatur",
+      "sitat": "En lämplig kylskåpstemperatur är 4 °C."
+    },
+    "halvliter": {
+      "vis": "en halv liter",
+      "kilde": "lv-avsvalning",
+      "hva": "gräns för när varm mat bör svalna före kylen",
+      "sitat": "Mat i volymer mindre än en halvliter kan du ställa in direkt i kylen även om den fortfarande är lite varm."
+    },
+    "rester": {
+      "vis": "upp till en vecka",
+      "kilde": "lv-matlada",
+      "hva": "hur länge tillagad mat håller i kylskåp vid 4 °C",
+      "sitat": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+    },
+    "frys": {
+      "vis": "-18 °C",
+      "kilde": "lv-frysa",
+      "hva": "lagom temperatur i frysen",
+      "sitat": "En lagom temperatur i frysen är -18 °C."
+    },
+    "kalkon-recept": {
+      "vis": "cirka 4 kg",
+      "kilde": "sf-jul",
+      "hva": "kalkonens vikt i Svensk Fågels recept på helstekt kalkon",
+      "sitat": "6 portioner 1 hel kalkon, cirka 4 kg (tinad)"
+    },
+    "kalkon-portioner": {
+      "vis": "6 portioner",
+      "kilde": "sf-jul",
+      "hva": "antal portioner i Svensk Fågels recept på helstekt kalkon",
+      "sitat": "6 portioner 1 hel kalkon, cirka 4 kg (tinad)"
+    },
+    "kalkon-start": {
+      "vis": "20 minuter",
+      "kilde": "sf-jul",
+      "hva": "första tiden nederst i ugnen",
+      "sitat": "ställ in nederst i ugnen i 20 minuter.",
+      "min": 20
+    },
+    "kalkon-temp": {
+      "vis": "150 °C",
+      "kilde": "sf-jul",
+      "hva": "ugnstemperatur efter starten, varmluft",
+      "sitat": "Sänk sedan värmen till 150 grader (fortfarande varmluft)"
+    },
+    "kalkon-kilo": {
+      "vis": "30 minuter per kilo",
+      "kilde": "sf-jul",
+      "hva": "steketid per kilo kalkon",
+      "min": 30,
+      "sitat": "(räkna med 30 minuter per kilo)"
+    },
+    "kalkon-klar": {
+      "vis": "70 °C",
+      "kilde": "sf-jul",
+      "hva": "innertemperatur när kalkonen är klar",
+      "sitat": "Kalkonen är klar när saften från lårköttet är genomskinlig och innertemperaturen har nått 70 grader."
+    },
+    "kalkon-ut": {
+      "vis": "65 till 67 °C",
+      "kilde": "sf-jul",
+      "hva": "innertemperatur då kalkonen kan tas ut",
+      "sitat": "Ta gärna ut den vid en innertemperatur på 65-67 grader"
+    },
+    "kalkon-vila": {
+      "vis": "30 minuter",
+      "kilde": "sf-jul",
+      "hva": "minsta vilotid för kalkon",
+      "min": 30,
+      "sitat": "Kalkonen behöver vila i minst 30 minuter innan den kan trancheras."
+    },
+    "kalkon-hellberg": {
+      "vis": "70 °C",
+      "kilde": "sf-hellberg",
+      "hva": "innertemperatur vid lårbenet enligt Christian Hellberg",
+      "sitat": "När kalkonen är klar så skall temperaturen vara 70 grader inne vid lårbenet."
+    },
+    "kalkon-arla": {
+      "vis": "72 °C",
+      "kilde": "arla-kalkon",
+      "hva": "innertemperatur intill lårbenet i Arlas recept",
+      "sitat": "Kalkonen är klar när den har en innertemperatur på 72° intill lårbenet."
+    },
+    "kalkon-tid": {
+      "vis": "cirka 2 till 2½ timme",
+      "kilde": "sf-jul",
+      "hva": "steketid efter starten i Svensk Fågels recept",
+      "sitat": "stek vidare i cirka 2-2 1/2 timme"
+    }
+  },
+  "tekst": {
+    "arla-forsta": {
+      "kilde": "arla-utanstress",
+      "sitat": "Och bygg i god tid upp ett lager med köttbullar, vegetarisk Jansson, småkakor som hallongrottor med kanel i frysen."
+    },
+    "arla-onskerratt": {
+      "kilde": "arla-utanstress",
+      "sitat": "Låt alla som ska äta julbord önska sig var sin favoriträtt."
+    },
+    "arla-farre": {
+      "kilde": "arla-utanstress",
+      "sitat": "Julbordet behöver inte vara gigantiskt, särskilt inte när vi inte ska vara så många till bords. Gör färre rätter men satsa på smakerna."
+    },
+    "arla-flerratter": {
+      "kilde": "arla-julbord",
+      "sitat": "En enkel regel är ju fler rätter du serverar, desto mindre äter gästerna av varje rätt."
+    },
+    "arla-ratter": {
+      "kilde": "arla-julbord",
+      "sitat": "5. Gravad lax 6. Revbensspjäll 7. Grönkål 8. Rödbetssallad 9. Risgrynsgröt 10. Ägghalvor 11. Ostbricka 12. Julgodis 13. Gubbröra"
+    },
+    "arla-skinka-senap": {
+      "kilde": "arla-julbord",
+      "sitat": "Serveras självklart med en god senap till."
+    },
+    "arla-6dec": {
+      "kilde": "arla-planering",
+      "sitat": "Stek köttbullar till julbordet och stoppa i frysen."
+    },
+    "arla-vortbrod": {
+      "kilde": "arla-planering",
+      "sitat": "Ingen skinkmacka utan vörtbröd."
+    },
+    "arla-22": {
+      "kilde": "arla-planering",
+      "sitat": "22 december Gör i ordning julskinkan och griljera den!"
+    },
+    "arla-23": {
+      "kilde": "arla-planering",
+      "sitat": "23 december Dags att göra Janssons frestelse. Smakar bäst om du gör den dagen innan och värmer upp den på julaftonen med en skvätt grädde."
+    },
+    "arla-24": {
+      "kilde": "arla-planering",
+      "sitat": "Gör i ordning sillen, vårt tips är Gummans currysill från Skåne."
+    },
+    "arla-24-tina": {
+      "kilde": "arla-planering",
+      "sitat": "Glöm inte att ta fram köttbullar, korv och lax ur frysen så att de hinner tina."
+    },
+    "arla-24-lax": {
+      "kilde": "arla-planering",
+      "sitat": "Laxen går lättast att skära i tunna skrivor när den är halvfryst."
+    },
+    "arla-27": {
+      "kilde": "arla-planering",
+      "sitat": "27 december Julskinka kvar i kylen? Gör en god paj med julskinka på resterna."
+    },
+    "arla-nyar-29": {
+      "kilde": "arla-planering",
+      "sitat": "29 december Planera årets nyårsmiddag och lägg champagnen på kylning."
+    },
+    "arla-nyar-31": {
+      "kilde": "arla-planering",
+      "sitat": "Skåla in det nya året med krutonger med friterad grönkål och löjrom."
+    },
+    "sk-tre": {
+      "kilde": "sk-servera",
+      "sitat": "Serverar du fler än tre proteinrätter kan du dra ner på portionsstorlekarna något."
+    },
+    "sk-hellre-mer": {
+      "kilde": "sk-servera",
+      "sitat": "Beräkna hellre lite för mycket än för lite om du känner dig osäker och spara det som blir över."
+    },
+    "sk-fat": {
+      "kilde": "sk-servera",
+      "sitat": "Istället för att servera exempelvis en kotlett per person så trancherar du köttet i skivor. Servera sedan på ett fat som gästerna får ta för sig av själv."
+    },
+    "lv-snabbt": {
+      "kilde": "lv-kylvaror",
+      "sitat": "Sätt in kylvaror, som till exempel färsk fisk, kött och mejerivaror, i kylskåpet så fort som möjligt."
+    },
+    "lv-solljus": {
+      "kilde": "lv-kylvaror",
+      "sitat": "Undvik att förvara mat i direkt solljus."
+    },
+    "lv-rester-in": {
+      "kilde": "lv-kylvaror",
+      "sitat": "Sätt in matrester i kylskåpet så fort som möjligt efter att de har svalnat."
+    },
+    "lv-svalna": {
+      "kilde": "lv-avsvalning",
+      "sitat": "Mat i volymer större än en halvliter kan svalna i ett kallt vattenbad."
+    },
+    "lv-delaupp": {
+      "kilde": "lv-avsvalning",
+      "sitat": "Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur."
+    },
+    "lv-tina": {
+      "kilde": "lv-frysa",
+      "sitat": "Tina gärna upp maten i kylskåp eller i ett kallt vattenbad."
+    },
+    "lv-tina-kallt": {
+      "kilde": "lv-frysa",
+      "sitat": "Tänk på att förvara den upptinade maten kallt om du inte ska äta eller tillaga den direkt."
+    },
+    "lv-sinnen": {
+      "kilde": "lv-frysa",
+      "sitat": "Titta, lukta och smaka på maten när den har tinat upp för att avgöra om du ska äta den eller inte."
+    },
+    "lv-frys-in": {
+      "kilde": "lv-matlada",
+      "sitat": "Frys in det du inte hinner äta."
+    },
+    "lv-marka": {
+      "kilde": "lv-matlada",
+      "sitat": "Märk med datum och innehåll så du vet vad det är och hur gammalt det är."
+    },
+    "sf-saft": {
+      "kilde": "sf-jul",
+      "sitat": "Kalkonen är klar när saften från lårköttet är genomskinlig"
+    },
+    "sf-folie": {
+      "kilde": "sf-jul",
+      "sitat": "Täck med aluminiumfolie om skinnet börjar få mycket färg."
+    },
+    "sf-inkrav": {
+      "kilde": "sf-jul",
+      "sitat": "Till och med inkråmet av den helstekta kalkonen kan användas för att laga god sås eller buljong på till mellandagarna."
+    },
+    "sf-varma": {
+      "kilde": "sf-jul",
+      "sitat": "Om man vill kan köttet sedan värmas försiktigt under folie i 150 grader i ugnen inför serveringen."
+    },
+    "sk-fettkappa": {
+      "kilde": "sk-servera",
+      "sitat": "Är det kött med en fettkappa som exempelvis biff med kappa eller picanha kan du räkna i det högre spannet eftersom fettkappan oftast inte äts upp."
+    }
+  }
+}

@@ -14,8 +14,8 @@ import * as nyttar from '../scripts/nb-jul/nyttarsmiddag.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const SIDER = [
-  { sti: '/julebord/', mod: julebord },
-  { sti: '/nyttarsmiddag/', mod: nyttar },
+  { sti: '/julebord/', mod: julebord, sv: '/sv/julbord/', da: '/da/julefrokost/' },
+  { sti: '/nyttarsmiddag/', mod: nyttar, sv: '/sv/nyarsmiddag/' },
 ];
 
 const synlig = (t) => t.replace(/<!--[\s\S]*?-->/gu, ' ').replace(/<script[\s\S]*?<\/script>/gu, ' ').replace(/<style[\s\S]*?<\/style>/gu, ' ')
@@ -34,7 +34,7 @@ export function tallUtenKilde(tekst, tall = DATA.tall) {
   return rest.match(/[^\s]*\d[^\s]*/gu) ?? [];
 }
 
-for (const { sti, mod } of SIDER) {
+for (const { sti, mod, sv, da } of SIDER) {
   const html = readFileSync(join(ROOT, `${sti.slice(1)}index.html`), 'utf8');
   const hoved = html.match(/<main[\s\S]*?<\/main>/u)?.[0] ?? '';
   const kort = [...hoved.matchAll(/<div class="scenario" id="kilde-([^"]+)">([\s\S]*?)<\/div>/gu)].map(([, id, innhold]) => ({ id, innhold }));
@@ -49,13 +49,14 @@ for (const { sti, mod } of SIDER) {
   const celler = (tab) => [...tab.matchAll(/<tr>([\s\S]*?)<\/tr>/gu)].slice(1).map(([, r]) => [...r.matchAll(/<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gu)].map(([, c]) => c));
   const tallSomBrukt = Object.fromEntries(brukt.tall.map((id) => [id, DATA.tall[id]]));
 
-  test(`${sti}: egen sidegruppe med bare norsk, i sitemap og llms.txt, og ingen annen sitemap`, () => {
+  test(`${sti}: egen sidegruppe med norsk og motstykker, i sitemap og llms.txt, og ingen sitemap for språk uten motstykke`, () => {
     const gruppe = SIDEGRUPPER.find(({ sider }) => sider.nb === sti);
     assert.ok(gruppe, 'mangler i SIDEGRUPPER');
-    assert.deepEqual(Object.keys(gruppe.sider), ['nb']);
-    assert.deepEqual(alternativerFor(sti), [['nb-NO', sti], ['x-default', sti]]);
-    assert.doesNotMatch(html, /<script\b[^>]*\bsrc\s*=\s*["']?\/locale\.js(?![\w.])/iu);
-    for (const mappe of ['sv', 'da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mappe}.xml`), 'utf8'), new RegExp(sti.replaceAll('/', '')));
+    // Svenske og danske motstykker (scripts/sv-jul/, scripts/da-jul/) gir hreflang: julebord, julbord og julefrokost; nyttårsmiddag og nyårsmiddag.
+    const forventet = { nb: sti, sv, ...(da ? { da } : {}) };
+    assert.deepEqual(gruppe.sider, forventet);
+    assert.deepEqual(alternativerFor(sti), [['nb-NO', sti], ['sv-SE', sv], ...(da ? [['da-DK', da]] : []), ['x-default', sti]]);
+    for (const mappe of da ? ['en'] : ['da', 'en']) assert.doesNotMatch(readFileSync(join(ROOT, `sitemap-${mappe}.xml`), 'utf8'), new RegExp(sti.replaceAll('/', '')));
     assert.match(readFileSync(join(ROOT, 'sitemap.xml'), 'utf8'), new RegExp(`<loc>https://matlyst-app\\.no${sti}</loc>\\s*<lastmod>2026-11-2\\d</lastmod>`, 'u'));
     assert.ok(readFileSync(join(ROOT, 'llms.txt'), 'utf8').includes(`(https://matlyst-app.no${sti})`));
   });

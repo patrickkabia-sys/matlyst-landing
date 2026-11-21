@@ -1,0 +1,596 @@
+{
+  "hentet": "2026-11-21",
+  "hentetTekst": "21. november 2026",
+  "kilder": {
+    "fvst-koel": {
+      "navn": "Fødevarestyrelsen: Køl mad hurtigt ned i hjemmet",
+      "url": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/koel-mad-hurtigt-ned",
+      "dato": "ingen dato på siden, læst 21. november 2026"
+    },
+    "fvst-varm": {
+      "navn": "Fødevarestyrelsen: Varm mad ordentligt op i private hjem",
+      "url": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/varm-mad-ordentligt-op",
+      "dato": "ingen dato på siden, læst 21. november 2026"
+    },
+    "fvst-opto": {
+      "navn": "Fødevarestyrelsen: Optøning af mad",
+      "url": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/saadan-goer-du/optoening",
+      "dato": "ingen dato på siden, læst 21. november 2026"
+    },
+    "taenk-hold": {
+      "navn": "Forbrugerrådet Tænk: Stop madspild, få styr på holdbarhed og opbevaring af mad",
+      "url": "https://taenk.dk/forbrugerliv/mad-og-indkoeb/holdbarhed-opbevar-din-mad-saa-den-holder-laengere",
+      "dato": "30. september 2025"
+    },
+    "taenk-jul": {
+      "navn": "Forbrugerrådet Tænk: Sådan undgår du madspild i julen",
+      "url": "https://taenk.dk/forbrugerliv/mad-og-indkoeb/julemad-saadan-undgaar-du-madspild",
+      "dato": "18. november 2026"
+    },
+    "mv-gaester": {
+      "navn": "Madens Verden: Mad til gæster, mængder pr. person og beregner",
+      "url": "https://madensverden.dk/mad-til-gaester/",
+      "dato": "opdateret 15. juli 2025"
+    },
+    "mv-julemad": {
+      "navn": "Madens Verden: Dansk julemad, historie og juletraditioner",
+      "url": "https://madensverden.dk/julemad",
+      "dato": "opdateret 4. november 2024"
+    },
+    "mv-and": {
+      "navn": "Madens Verden: Stegetid på and, tabel med vægt og kernetemperatur",
+      "url": "https://madensverden.dk/stegetid-paa-and-vaegt-tid-ovn/",
+      "dato": "opdateret 23. december 2023"
+    },
+    "mv-opto-and": {
+      "navn": "Madens Verden: Optøning af and",
+      "url": "https://madensverden.dk/optoening-af-and/",
+      "dato": "opdateret 7. november 2023"
+    },
+    "mv-genop-and": {
+      "navn": "Madens Verden: Genopvarmning af andesteg",
+      "url": "https://madensverden.dk/bedste-maade-genopvarme-andesteg/",
+      "dato": "opdateret 1. november 2023"
+    },
+    "mv-flaesk": {
+      "navn": "Madens Verden: Flæskesteg i ovn, sprøde svær og stegetid",
+      "url": "https://madensverden.dk/perfekt-flaeskesteg-i-ovn/",
+      "dato": "opdateret 1. september 2026"
+    },
+    "mv-kerne": {
+      "navn": "Madens Verden: Kernetemperatur på kød, stor tabel med stegetider",
+      "url": "https://madensverden.dk/kernetemperatur-og-stegetid-paa-alt-koed/",
+      "dato": "opdateret 4. august 2026"
+    },
+    "mv-brunede": {
+      "navn": "Madens Verden: Brunede kartofler",
+      "url": "https://madensverden.dk/brunede-kartofler",
+      "dato": "opdateret 4. december 2025"
+    },
+    "arla-flaesk": {
+      "navn": "Arla: Flæskesteg med sprød svær, nem opskrift",
+      "url": "https://www.arla.dk/opskrifter/flaskesteg-med-sprod-svar/",
+      "dato": "senest opdateret 17. november 2026"
+    },
+    "dc-flaesk": {
+      "navn": "Danish Crown: Flæskesteg med sprøde svær, nem opskrift i ovn",
+      "url": "https://www.danishcrown.com/da-dk/opskrifter/flaeskesteg-med-sproede-svaer/",
+      "dato": "opdateret 10. november 2026"
+    }
+  },
+  "tall": {
+    "fvst-kjol": {
+      "vis": "5 °C",
+      "kilde": "fvst-koel",
+      "hva": "køleskabets højeste temperatur: kød, pålæg, mejeriprodukter, ost og rester",
+      "sitat": "Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C."
+    },
+    "fvst-vaekst": {
+      "vis": "20 til 40 °C",
+      "kilde": "fvst-koel",
+      "hva": "temperaturområdet, hvor bakterier stortrives ved stuetemperatur",
+      "sitat": "Bakterierne stortrives nemlig mellem 20-40 °C."
+    },
+    "taenk-rester": {
+      "vis": "5 til 6 dage",
+      "kilde": "taenk-hold",
+      "hva": "tilberedt kød i køleskabet, varmet grundigt igennem og kølet hurtigt ned",
+      "sitat": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+    },
+    "g-kod": {
+      "vis": "200 g",
+      "kilde": "mv-gaester",
+      "hva": "kød uden ben pr. voksen til en hovedret",
+      "g": 200,
+      "sitat": "Kød uden ben | Ca. 200 g"
+    },
+    "g-buffet": {
+      "vis": "65 til 70 g",
+      "kilde": "mv-gaester",
+      "hva": "af hver slags kød pr. person, når buffeten har tre slags kød",
+      "g": [
+        65,
+        70
+      ],
+      "sitat": "Det svarer til omkring 65-70 gram af hver slags kød pr. person"
+    },
+    "g-kartofler": {
+      "vis": "150 g",
+      "kilde": "mv-gaester",
+      "hva": "kartofler pr. voksen, før skrælning",
+      "g": 150,
+      "sitat": "Kartofler | Ca. 150 g før skrælning"
+    },
+    "g-salat": {
+      "vis": "mindst 100 g",
+      "kilde": "mv-gaester",
+      "hva": "salat og grøntsager pr. voksen",
+      "g": 100,
+      "sitat": "Salat og grøntsager | Mindst 100 g"
+    },
+    "g-sovs": {
+      "vis": "1 dl",
+      "kilde": "mv-gaester",
+      "hva": "sovs pr. voksen",
+      "dl": 1,
+      "sitat": "Sovs | Ca. 1 dl"
+    },
+    "g-dessert": {
+      "vis": "130 til 150 g",
+      "kilde": "mv-gaester",
+      "hva": "dessert pr. voksen",
+      "g": [
+        130,
+        150
+      ],
+      "sitat": "Dessert | 130-150 g"
+    },
+    "g-barn": {
+      "vis": "4 til 10 år",
+      "kilde": "mv-gaester",
+      "hva": "børn i denne alder regnes som en halv voksenportion",
+      "sitat": "Børn mellem cirka 4 og 10 år regnes som en halv voksenportion."
+    },
+    "and-tid": {
+      "vis": "30 minutter pr. halve kilo",
+      "kilde": "mv-and",
+      "hva": "stegetid for and ved 160 grader varmluft",
+      "min": 60,
+      "sitat": "Stegetiden på and er nemlig cirka 30 minutter pr. halve kilo."
+    },
+    "and-temp": {
+      "vis": "160 °C varmluft",
+      "kilde": "mv-and",
+      "hva": "ovnindstilling for and i Madens Verdens tider",
+      "sitat": "Jeg steger and ved 160 grader varmluft og regner som tommelfingerregel med cirka 30 minutters stegetid pr. halve kilo."
+    },
+    "and-2kg": {
+      "vis": "2 timer",
+      "kilde": "mv-and",
+      "hva": "steketid for en and på 2 kg ved 160 grader varmluft",
+      "min": 120,
+      "sitat": "En and på 2 kilo skal steges i cirka 2 timer"
+    },
+    "and-25kg": {
+      "vis": "2,5 timer",
+      "kilde": "mv-and",
+      "hva": "steketid for en and på 2,5 kg ved 160 grader varmluft",
+      "min": 150,
+      "sitat": "En and på 2,5 kilo skal steges i cirka 2,5 timer"
+    },
+    "and-3kg": {
+      "vis": "3 timer",
+      "kilde": "mv-and",
+      "hva": "steketid for en and på 3 kg ved 160 grader varmluft",
+      "min": 180,
+      "sitat": "En and på 3 kilo skal steges i cirka 3 timer"
+    },
+    "and-35kg": {
+      "vis": "3,5 timer",
+      "kilde": "mv-and",
+      "hva": "steketid for en and på 3,5 kg ved 160 grader varmluft",
+      "min": 210,
+      "sitat": "En and på 3,5 kilo skal steges i cirka 3,5 timer"
+    },
+    "and-4kg": {
+      "vis": "4 timer",
+      "kilde": "mv-and",
+      "hva": "steketid for en and på 4 kg ved 160 grader varmluft",
+      "min": 240,
+      "sitat": "En and på 4 kilo skal steges i 4 timer"
+    },
+    "and-kerne": {
+      "vis": "75 °C",
+      "kilde": "mv-and",
+      "hva": "kernetemperatur i den færdigstegte and",
+      "sitat": "Jeg går efter en kernetemperatur på 75 grader i den færdigstegte and."
+    },
+    "and-4pers": {
+      "vis": "4 personer",
+      "kilde": "mv-and",
+      "hva": "antal personer i Madens Verdens opskrift med en and på cirka 3 kilo",
+      "sitat": "Antal: 4 personer Ingredienser 0,5x 1x 2x 3x ▢ 1 and (på ca. 3 kilo)"
+    },
+    "opto-2": {
+      "vis": "1 til 2 døgn",
+      "kilde": "mv-opto-and",
+      "hva": "optøning i køleskab for en and på 2 til 2,5 kg",
+      "sitat": "2-2,5 kilo | Ca. 1-2 døgn"
+    },
+    "opto-3": {
+      "vis": "2 til 3 døgn",
+      "kilde": "mv-opto-and",
+      "hva": "optøning i køleskab for en and på 3 til 3,5 kg",
+      "d": 3,
+      "sitat": "3-3,5 kilo | Ca. 2-3 døgn"
+    },
+    "opto-4": {
+      "vis": "3 til 4 døgn",
+      "kilde": "mv-opto-and",
+      "hva": "optøning i køleskab for en and på 4 til 5 kg",
+      "sitat": "4-5 kilo | Ca. 3-4 døgn"
+    },
+    "genop-temp": {
+      "vis": "225 °C",
+      "kilde": "mv-genop-and",
+      "hva": "ovntemperatur (over- og undervarme) til at genopvarme en andesteg",
+      "sitat": "Forvarm ovnen til 225 grader over/under varme."
+    },
+    "genop-tid": {
+      "vis": "ca. 15 minutter",
+      "kilde": "mv-genop-and",
+      "hva": "tid i ovnen for at genopvarme and dagen efter",
+      "sitat": "Sæt anden i den varme ovn i cirka 15 minutter."
+    },
+    "genop-kerne": {
+      "vis": "75 °C",
+      "kilde": "mv-genop-and",
+      "hva": "kernetemperatur i de tykkeste stykker efter genopvarmning",
+      "sitat": "Jeg går efter omkring 75 grader i de tykkeste stykker."
+    },
+    "tab-and-ovn": {
+      "vis": "150 til 175 °C",
+      "kilde": "mv-kerne",
+      "hva": "ovntemperatur for hel and i tabellen",
+      "sitat": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+    },
+    "tab-and-tid": {
+      "vis": "45 til 60 minutter pr. kg",
+      "kilde": "mv-kerne",
+      "hva": "stegetid for hel and i tabellen",
+      "min": 60,
+      "sitat": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+    },
+    "tab-and-hvile": {
+      "vis": "20 til 30 minutter",
+      "kilde": "mv-kerne",
+      "hva": "hviletid for hel and i tabellen",
+      "min": 30,
+      "sitat": "Hel and | Gennemstegt | 75 °C | 72-73 °C | 20-30 min. | Ovn 150-175 °C: ca. 45-60 min. pr. kg"
+    },
+    "tab-fl-tid": {
+      "vis": "60 til 75 minutter pr. kg",
+      "kilde": "mv-kerne",
+      "hva": "stegetid for flæskesteg i tabellen",
+      "sitat": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min. | Ovn 180-200 °C: ca. 60-75 min. pr. kg"
+    },
+    "tab-fl-ovn": {
+      "vis": "180 til 200 °C",
+      "kilde": "mv-kerne",
+      "hva": "ovntemperatur for flæskesteg i tabellen",
+      "sitat": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min. | Ovn 180-200 °C: ca. 60-75 min. pr. kg"
+    },
+    "tab-fl-kerne": {
+      "vis": "65 til 68 °C",
+      "kilde": "mv-kerne",
+      "hva": "kernetemperatur for gennemstegt flæskesteg i tabellen",
+      "sitat": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min. | Ovn 180-200 °C: ca. 60-75 min. pr. kg"
+    },
+    "tab-fl-hvile": {
+      "vis": "15 til 20 minutter",
+      "kilde": "mv-kerne",
+      "hva": "hviletid for flæskesteg i tabellen",
+      "sitat": "Flæskesteg | Gennemstegt | 65-68 °C | 62-65 °C | 15-20 min. | Ovn 180-200 °C: ca. 60-75 min. pr. kg"
+    },
+    "fl-vaegt": {
+      "vis": "1,5 kg",
+      "kilde": "mv-flaesk",
+      "hva": "vægten på svinekammen i Madens Verdens opskrift",
+      "sitat": "En flæskesteg på 1,5 kilo passer godt til seks personer og giver ofte også lidt kød til næste dag."
+    },
+    "fl-temp": {
+      "vis": "225 °C varmluft",
+      "kilde": "mv-flaesk",
+      "hva": "ovntemperatur i Madens Verdens opskrift",
+      "sitat": "Stil fadet ind midt i en forvarmet ovn ved 225 grader varmluft, og steg den i 1 time og 15 minutter."
+    },
+    "fl-tid": {
+      "vis": "1 time og 15 minutter",
+      "kilde": "mv-flaesk",
+      "hva": "stegetid for en flæskesteg på 1,5 kg i Madens Verdens opskrift",
+      "min": 75,
+      "sitat": "Stil fadet ind midt i en forvarmet ovn ved 225 grader varmluft, og steg den i 1 time og 15 minutter."
+    },
+    "fl-sky": {
+      "vis": "45 minutter",
+      "kilde": "mv-flaesk",
+      "hva": "tid i ovnen, før skyen hældes fra til sovs",
+      "min": 45,
+      "sitat": "Efter 45 minutter tages stegen ud af ovnen, og skyen sigtes over i en skål."
+    },
+    "fl-kerne": {
+      "vis": "65 °C",
+      "kilde": "mv-flaesk",
+      "hva": "kernetemperatur, når flæskestegen tages ud",
+      "sitat": "Tag flæskestegen ud, når kernetemperaturen er 65 grader."
+    },
+    "fl-hvile": {
+      "vis": "cirka 15 minutter",
+      "kilde": "mv-flaesk",
+      "hva": "hviletid, inden flæskestegen skæres ud",
+      "min": 15,
+      "sitat": "Lad gerne flæskestegen hvile i cirka 15 minutter, inden den skæres ud."
+    },
+    "fl-mv-min": {
+      "vis": "200 til 250 g",
+      "kilde": "mv-flaesk",
+      "hva": "rå flæskesteg pr. voksen",
+      "g": [
+        200,
+        250
+      ],
+      "sitat": "Beregn som udgangspunkt 200-250 gram rå flæskesteg pr. voksen."
+    },
+    "fl-arla": {
+      "vis": "200 til 300 g",
+      "kilde": "arla-flaesk",
+      "hva": "rå steg pr. person",
+      "g": [
+        200,
+        300
+      ],
+      "sitat": "Ca. 200-300 g rå steg pr. person"
+    },
+    "fl-arla-tilbehor": {
+      "vis": "150 til 250 g",
+      "kilde": "arla-flaesk",
+      "hva": "rå steg pr. person, når der er meget tilbehør, forret og dessert",
+      "g": [
+        150,
+        250
+      ],
+      "sitat": "Hvis der er meget tilbehør (+ forret og dessert), så er 150-250 g"
+    },
+    "fl-dc": {
+      "vis": "300 g",
+      "kilde": "dc-flaesk",
+      "hva": "rå flæskesteg pr. voksen til juleaften eller gæstemiddag",
+      "g": 300,
+      "sitat": "Juleaften eller gæstemiddag | 300 g"
+    },
+    "fl-dc-svind": {
+      "vis": "20 til 25 %",
+      "kilde": "dc-flaesk",
+      "hva": "flæskesteg svinder under tilberedning",
+      "sitat": "Flæskesteg svinder ca. 20–25 % under tilberedning"
+    },
+    "br-alene": {
+      "vis": "200 til 250 g",
+      "kilde": "mv-brunede",
+      "hva": "brunede kartofler pr. person",
+      "g": [
+        200,
+        250
+      ],
+      "sitat": "Beregn cirka 200-250 gram pr. person."
+    },
+    "br-hvide": {
+      "vis": "150 til 200 g",
+      "kilde": "mv-brunede",
+      "hva": "brunede kartofler pr. person, når der også er hvide kartofler og meget andet tilbehør",
+      "g": [
+        150,
+        200
+      ],
+      "sitat": "Serveres der også hvide kartofler og meget andet tilbehør, kan 150-200 gram pr. person"
+    }
+  },
+  "tekst": {
+    "fvst-dampe": {
+      "kilde": "fvst-koel",
+      "sitat": "Varm mad, som du vil gemme, skal kun lige dampe af, før du sætter den i køleskab."
+    },
+    "fvst-portioner": {
+      "kilde": "fvst-koel",
+      "sitat": "Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned."
+    },
+    "fvst-overfyld": {
+      "kilde": "fvst-koel",
+      "sitat": "Sørg for ikke at overfylde køleskabet, så den kolde luft kan cirkulere omkring madvarerne."
+    },
+    "fvst-tjek": {
+      "kilde": "fvst-koel",
+      "sitat": "Tjek jævnligt, at temperaturen i køleskabet er højst +5°C."
+    },
+    "fvst-rygende": {
+      "kilde": "fvst-varm",
+      "sitat": "Sørg for at varme den varme mad helt igennem, så den er rygende og gennemvarm."
+    },
+    "fvst-hakket": {
+      "kilde": "fvst-varm",
+      "sitat": "Det er vigtigt at gennemvarme hakket kød (f.eks. medisterpølse, frikadeller og andre farsprodukter)"
+    },
+    "fvst-fjerkrae": {
+      "kilde": "fvst-varm",
+      "sitat": "Fisk og fjerkræ bør også være helt gennemstegt."
+    },
+    "fvst-opto": {
+      "kilde": "fvst-opto",
+      "sitat": "Hvis du vil tø frosne madvarer op, bør det være i køleskabet."
+    },
+    "fvst-opto-bakt": {
+      "kilde": "fvst-opto",
+      "sitat": "Kulden i køleskabet hæmmer vækst af bakterier i madvarerne."
+    },
+    "taenk-lufttaet": {
+      "kilde": "taenk-hold",
+      "sitat": "Tilberedt kød, der er stegt eller kogt, skal opbevares i køleskabet i en pose eller en anden lufttæt emballage."
+    },
+    "taenk-faerre": {
+      "kilde": "taenk-jul",
+      "sitat": "Jo flere retter, desto mindre skal der være af hver ret."
+    },
+    "taenk-begraens": {
+      "kilde": "taenk-jul",
+      "sitat": "Prøv at begrænse udvalget og mængderne af retterne."
+    },
+    "taenk-liste": {
+      "kilde": "taenk-jul",
+      "sitat": "Lav også en indkøbsliste til at holde overblikket."
+    },
+    "taenk-tjek": {
+      "kilde": "taenk-jul",
+      "sitat": "Tjek, hvad du allerede har i køkkenskabe, køleskab og fryser, inden du handler, så du ikke får købt noget, du allerede har."
+    },
+    "taenk-fade": {
+      "kilde": "taenk-jul",
+      "sitat": "Servér maden på små tallerkener og på små fade, så tager gæsterne automatisk mindre på tallerkenen, og det giver i sidste ende mindre madspild."
+    },
+    "taenk-rester": {
+      "kilde": "taenk-jul",
+      "sitat": "Få alle rester hurtigst muligt på køl, og opbevar madresterne korrekt, så den holder længere."
+    },
+    "taenk-rester-brug": {
+      "kilde": "taenk-jul",
+      "sitat": "Madrester fra juleaften eller julefrokosten, som stadig er friske, kan du enten fryse ned, bruge i dagene efter eller give dine gæster med hjem."
+    },
+    "taenk-begge": {
+      "kilde": "taenk-jul",
+      "sitat": "Mange serverer både and og flæskesteg juleaften, men overvej om I behøver begge dele."
+    },
+    "taenk-tilovers": {
+      "kilde": "taenk-jul",
+      "sitat": "Hvis du vælger at servere begge dele, så forvent at have kød tilovers, som I kan spise i dagene efter."
+    },
+    "g-buffet200": {
+      "kilde": "mv-gaester",
+      "sitat": "Serverer du eksempelvis tre slags kød, kan du tage udgangspunkt i de samme 200 gram kød pr. voksen og fordele mængden mellem retterne."
+    },
+    "g-populaer": {
+      "kilde": "mv-gaester",
+      "sitat": "Husk dog, at nogle retter er mere populære end andre."
+    },
+    "g-lidt": {
+      "kilde": "mv-gaester",
+      "sitat": "Jeg anbefaler også at sætte mindre portioner frem ad gangen og fylde op efter behov."
+    },
+    "g-vejl": {
+      "kilde": "mv-gaester",
+      "sitat": "Mængderne er vejledende og skal tilpasses den menu, du har planlagt."
+    },
+    "g-flere": {
+      "kilde": "mv-gaester",
+      "sitat": "Det er dog vigtigt, at du ikke beregner fuld portion af både kartofler, pasta og ris, hvis du serverer flere slags tilbehør."
+    },
+    "g-fuld": {
+      "kilde": "mv-gaester",
+      "sitat": "Her vælger gæsterne ofte lidt af flere forskellige retter, og derfor skal du ikke lave en fuld portion af hver ret til hver person."
+    },
+    "g-med-ben": {
+      "kilde": "mv-gaester",
+      "sitat": "Skal du lave en hel steg med ben, skal du købe mere, fordi knoglerne naturligvis ikke bliver spist."
+    },
+    "jul-frokost": {
+      "kilde": "mv-julemad",
+      "sitat": "Der er også forskel på, hvad man spiser juleaften og i juledagene, hvor julefrokoster med sild, sylte, leverpostej, frikadeller og forskellige slags pålæg er almindelige."
+    },
+    "and-vend": {
+      "kilde": "mv-and",
+      "sitat": "Stil anden i ovnen med brystet nedad, og nu skal den have i alt tre timer. Men efter en time vendes anden om, så den steges færdig i de sidste to timer med brystkødet opad!"
+    },
+    "and-sted": {
+      "kilde": "mv-and",
+      "sitat": "Mål i den tykkeste del af brystet og inderst i låret uden at ramme knoglen."
+    },
+    "and-skyl": {
+      "kilde": "mv-and",
+      "sitat": "Anden skal ikke skylles under vandhanen."
+    },
+    "and-term": {
+      "kilde": "mv-and",
+      "sitat": "Det er kernetemperaturen, der afgør, hvornår anden er færdig - ikke tiden alene."
+    },
+    "and-dagen": {
+      "kilde": "mv-and",
+      "sitat": "Andestegen kan desuden laves i god tid."
+    },
+    "opto-bord": {
+      "kilde": "mv-opto-and",
+      "sitat": "Nej, du bør ikke tø en frossen and op på køkkenbordet ved stuetemperatur."
+    },
+    "opto-fad": {
+      "kilde": "mv-opto-and",
+      "sitat": "Jeg lader altid anden blive i den originale emballage og lægger den i et fad med høje kanter."
+    },
+    "genop-helt": {
+      "kilde": "mv-genop-and",
+      "sitat": "Anden skal være helt færdigstegt dagen før."
+    },
+    "genop-kol": {
+      "kilde": "mv-genop-and",
+      "sitat": "Sæt anden hurtigt på køl, når den kun lige har dampet af, og dæk fadet til."
+    },
+    "genop-fedt": {
+      "kilde": "mv-genop-and",
+      "sitat": "Gem altid noget af fedtet fra anden."
+    },
+    "tab-termo": {
+      "kilde": "mv-kerne",
+      "sitat": "Brug altid et stegetermometer, og mål temperaturen i den tykkeste del af kødet uden at ramme en knogle."
+    },
+    "tab-vejl": {
+      "kilde": "mv-kerne",
+      "sitat": "Stegetiden er kun vejledende."
+    },
+    "fl-seks": {
+      "kilde": "mv-flaesk",
+      "sitat": "Denne opskrift er til en svinekam på 1,5 kilo og passer til cirka seks personer."
+    },
+    "fl-vandret": {
+      "kilde": "mv-flaesk",
+      "sitat": "Sværen skal ligge vandret"
+    },
+    "fl-utildaekt": {
+      "kilde": "mv-flaesk",
+      "sitat": "Lad den stå utildækket, så sværen bevarer sin sprødhed."
+    },
+    "fl-dagen": {
+      "kilde": "mv-flaesk",
+      "sitat": "Kan flæskestegen forberedes dagen før? Ja."
+    },
+    "fl-arla-dagen": {
+      "kilde": "arla-flaesk",
+      "sitat": "Men hvis du vil stege den dagen inden, så steg den næsten færdig dagen før"
+    },
+    "fl-dc-dagen": {
+      "kilde": "dc-flaesk",
+      "sitat": "Ja, du kan sagtens lave flæskestegen dagen før og varme den op igen."
+    },
+    "br-dagen": {
+      "kilde": "mv-brunede",
+      "sitat": "Det bedste er at koge og pille kartoflerne dagen før og først brune dem kort inden servering."
+    },
+    "br-holder": {
+      "kilde": "mv-brunede",
+      "sitat": "Færdige brunede kartofler kan dog opbevares i en lukket beholder i køleskabet i op til to dage."
+    },
+    "fl-vaegt-tid": {
+      "kilde": "mv-flaesk",
+      "sitat": "Ikke nødvendigvis i direkte forhold til vægten."
+    },
+    "and-fyld": {
+      "kilde": "mv-and",
+      "sitat": "Og så skal du fylde anden med svesker og æblebåde, så du får det mest saftige andekød."
+    }
+  }
+}

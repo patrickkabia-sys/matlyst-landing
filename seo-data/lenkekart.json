@@ -115,6 +115,26 @@
           "/da/kernetemperatur/"
         ],
         "planlagt": []
+      },
+      "hoytid": {
+        "hub": "/da/madplan-app/",
+        "eiker": [
+          "/da/julefrokost/",
+          "/da/juleaften/"
+        ],
+        "planlagt": []
+      }
+    }
+  },
+  "sv": {
+    "hubber": {
+      "hoytid": {
+        "hub": "/sv/veckomeny-app/",
+        "eiker": [
+          "/sv/julbord/",
+          "/sv/nyarsmiddag/"
+        ],
+        "planlagt": []
       }
     }
   }

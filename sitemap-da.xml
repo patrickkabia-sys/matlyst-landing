@@ -517,6 +517,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/shopping-list/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/da/juleaften/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/juleaften/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/da/juleaften/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/da/julefrokost/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/julebord/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/julbord/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/julefrokost/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/julebord/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/da/kan-man-fryse/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/frysing/"/>

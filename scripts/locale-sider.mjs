@@ -57,10 +57,13 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'auto-hoytider', sider: { en: '/en/holidays/' } },
   // Flytteside for tidligere Mealime-brukere: bare engelsk (USA). «auto-»-prefikset gir variabel språkdekning i hreflang-testen.
   { id: 'auto-mealime-alternative', sider: { en: '/en/mealime-alternative/' } },
-  // Bare norsk: julemiddagsplanen og om-siden. «auto-»-prefikset gir variabel språkdekning i hreflang-testen.
+  // Julehøytidene. Julebord, julbord og julefrokost er én gruppe (selskapet med buffet), nyttårsmiddag og nyårsmiddag én.
+  // Julemiddag (ribbe og pinnekjøtt) og den danske juleaften (and og flæskesteg) er ikke samme innhold, så de står hver for seg.
+  // «auto-»-prefikset gir variabel språkdekning i hreflang-testen.
   { id: 'auto-julemiddag', sider: { nb: '/julemiddag/' } },
-  { id: 'auto-julebord', sider: { nb: '/julebord/' } },
-  { id: 'auto-nyttarsmiddag', sider: { nb: '/nyttarsmiddag/' } },
+  { id: 'auto-juleaften', sider: { da: '/da/juleaften/' } },
+  { id: 'auto-julebord', sider: { nb: '/julebord/', sv: '/sv/julbord/', da: '/da/julefrokost/' } },
+  { id: 'auto-nyttarsmiddag', sider: { nb: '/nyttarsmiddag/', sv: '/sv/nyarsmiddag/' } },
   { id: 'auto-om', sider: { nb: '/om/' } },
   // De nøytrale sammenligningssidene (scripts/sammenligning/) på alle fire språk. Appvalget er eget per land.
   { id: 'auto-beste-oppskriftsapp', sider: { nb: '/beste-oppskriftsapp/', sv: '/sv/basta-receptapp/', da: '/da/bedste-opskriftsapp/', en: '/en/best-recipe-app/' } },

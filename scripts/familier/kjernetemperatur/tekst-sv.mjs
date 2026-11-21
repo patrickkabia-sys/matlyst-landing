@@ -56,7 +56,7 @@ export const TEKST = {
       ['Hur länge ska kalkonen vila?', `${h.s('vila')}`],
     ],
     soster: I('kyckling', 'Innertemperatur kyckling'),
-    andre: [I('vila', 'Vila och eftervärme'), ['/sv/tillagningstid/kalkon/', 'Hur länge ska kalkonen vara i ugnen?']],
+    andre: [I('vila', 'Vila och eftervärme'), ['/sv/tillagningstid/kalkon/', 'Hur länge ska kalkonen vara i ugnen?'], ['/sv/nyarsmiddag/', 'Nyårsmiddag hemma: planering, tider och mängder']],
   }),
 
   kjottdeig: (h) => ({
