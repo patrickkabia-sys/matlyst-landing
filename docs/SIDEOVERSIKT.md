@@ -6,15 +6,15 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1171**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1174**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 
 | Språk | Sider |
 |---|---:|
 | nb | 408 |
 | sv | 265 |
 | da | 239 |
-| en | 259 |
-| Sum | 1171 |
+| en | 262 |
+| Sum | 1174 |
 
 | Sidetype | nb | sv | da | en | Sum |
 |---|---:|---:|---:|---:|---:|
@@ -22,7 +22,7 @@ Sider i sitemap: **1171**. Sider utenfor sitemap (noindex og tjenestesider): 22.
 | forside | 1 | 1 | 1 | 1 | 4 |
 | guide-gammel | 3 |  |  |  | 3 |
 | guide-kort | 11 | 15 | 15 | 15 | 56 |
-| guide-lang | 148 | 6 | 6 | 58 | 218 |
+| guide-lang | 148 | 6 | 6 | 61 | 221 |
 | juss | 3 | 3 | 3 | 3 | 12 |
 | omregner | 233 | 232 | 206 | 174 | 845 |
 
@@ -35,12 +35,12 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 |---|---|---|---|---|---|---|---|---|---|
 | forside | Matlyst: oppskriftsappen for iPhone og Android | forside | `/` (1) | `/sv/` (1) | `/da/` (1) | `/en/` (1) | forside.mjs |  | 2026-11-20 |
 | alletiders-kogebog | Lagre oppskrifter fra Alletiders Kogebog | guide-kort | `/importer-fra-alletiders-kokebok/` (1) | `/sv/alletiders-kogebog/` (1) | `/da/alletiders-kogebog/` (1) | `/en/alletiders-cookbook/` (1) | undersider-alle-sprak.mjs |  | 2026-11-20 |
-| beste-handleliste-app | Beste handleliste-app: sju apper sammenlignet | guide-lang | `/beste-handleliste-app/` (1) |  |  |  | nb-sammenligning/sammenligning.mjs |  | 2026-11-21 |
-| beste-oppskriftsapp | Beste oppskriftsapp: sju apper sammenlignet | guide-lang | `/beste-oppskriftsapp/` (1) |  |  |  | nb-sammenligning/sammenligning.mjs |  | 2026-11-21 |
-| beste-ukemeny-app | Beste ukemeny-app og middagsplanlegger | guide-lang | `/beste-ukemeny-app/` (1) |  |  |  | nb-sammenligning/sammenligning.mjs |  | 2026-11-21 |
+| beste-handleliste-app | Beste handleliste-app: sju apper sammenlignet | guide-lang | `/beste-handleliste-app/` (1) |  |  | `/en/best-grocery-list-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
+| beste-oppskriftsapp | Beste oppskriftsapp: sju apper sammenlignet | guide-lang | `/beste-oppskriftsapp/` (1) |  |  | `/en/best-recipe-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
+| beste-ukemeny-app | Beste ukemeny-app og middagsplanlegger | guide-lang | `/beste-ukemeny-app/` (1) |  |  | `/en/best-meal-planning-app/` (1) | sammenligning/en.mjs, sammenligning/nb.mjs |  | 2026-11-21 |
 | julebord | Julebord hjemme: plan, mengder og handleliste | guide-lang | `/julebord/` (1) |  |  |  | forfatter.mjs, nb-jul/julebord.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | julemiddag | Julemiddag: plan, mengder og handleliste | guide-lang | `/julemiddag/` (1) |  |  |  | forfatter.mjs, nb-jul/julemiddag.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
-| mealime-alternative | Mealime Alternative: Moving Your Recipes | guide-lang |  |  |  | `/en/mealime-alternative/` (1) | en-rike-sider.mjs |  | 2026-11-20 |
+| mealime-alternative | Mealime Alternative: Moving Your Recipes | guide-lang |  |  |  | `/en/mealime-alternative/` (1) | en-rike-sider.mjs |  | 2026-11-21 |
 | nyttarsmiddag | Nyttårsmiddag: kalkun, tider og mengder | guide-lang | `/nyttarsmiddag/` (1) |  |  |  | forfatter.mjs, nb-jul/nyttarsmiddag.mjs, nb-rike-sider.mjs |  | 2026-11-21 |
 | om | Om Matlyst: hvem som lager appen | guide-lang | `/om/` (1) |  |  |  | nb-rike-sider.mjs |  | 2026-11-20 |
 | bytt-fra-paprika | Flytt oppskrifter fra Paprika til Matlyst | guide-kort | `/bytt-fra-paprika/` (1) | `/sv/byt-fran-paprika/` (1) | `/da/skift-fra-paprika/` (1) | `/en/import-recipes-from-paprika/` (1) | import-guider-lokale.mjs |  | 2026-11-20 |
@@ -89,9 +89,9 @@ Sidene skrives av `generer-norske-importguider.mjs` (norsk), `generer-lokalsider
 
 | Gruppe | Finnes på | Mangler på |
 |---|---|---|
-| beste-handleliste-app | nb | sv, da, en |
-| beste-oppskriftsapp | nb | sv, da, en |
-| beste-ukemeny-app | nb | sv, da, en |
+| beste-handleliste-app | nb, en | sv, da |
+| beste-oppskriftsapp | nb, en | sv, da |
+| beste-ukemeny-app | nb, en | sv, da |
 | julebord | nb | sv, da, en |
 | julemiddag | nb | sv, da, en |
 | mealime-alternative | en | nb, sv, da |
@@ -156,7 +156,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 ## Alle adresser
 
-1171 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
+1174 adresser fra sitemapene, gruppert per rad og språk. Hver linje er én adresse med lastmod.
 
 ### forside
 
@@ -200,17 +200,29 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 - https://matlyst-app.no/beste-handleliste-app/ (2026-11-21)
 
+**en** (1)
+
+- https://matlyst-app.no/en/best-grocery-list-app/ (2026-11-21)
+
 ### beste-oppskriftsapp
 
 **nb** (1)
 
 - https://matlyst-app.no/beste-oppskriftsapp/ (2026-11-21)
 
+**en** (1)
+
+- https://matlyst-app.no/en/best-recipe-app/ (2026-11-21)
+
 ### beste-ukemeny-app
 
 **nb** (1)
 
 - https://matlyst-app.no/beste-ukemeny-app/ (2026-11-21)
+
+**en** (1)
+
+- https://matlyst-app.no/en/best-meal-planning-app/ (2026-11-21)
 
 ### julebord
 
@@ -228,7 +240,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **en** (1)
 
-- https://matlyst-app.no/en/mealime-alternative/ (2026-11-20)
+- https://matlyst-app.no/en/mealime-alternative/ (2026-11-21)
 
 ### nyttarsmiddag
 
@@ -330,7 +342,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **en** (1)
 
-- https://matlyst-app.no/en/shopping-list/ (2026-11-20)
+- https://matlyst-app.no/en/shopping-list/ (2026-11-21)
 
 ### handskrevne-oppskrifter
 
@@ -488,7 +500,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **en** (1)
 
-- https://matlyst-app.no/en/recipe-book-app/ (2026-11-20)
+- https://matlyst-app.no/en/recipe-book-app/ (2026-11-21)
 
 ### personvern
 
@@ -614,7 +626,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 **en** (1)
 
-- https://matlyst-app.no/en/meal-plan-app/ (2026-11-20)
+- https://matlyst-app.no/en/meal-plan-app/ (2026-11-21)
 
 ### vilkar
 
@@ -1836,7 +1848,7 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 
 - https://matlyst-app.no/en/blog/ (2026-11-20)
 - https://matlyst-app.no/en/blog/boiling-times/ (2026-11-20)
-- https://matlyst-app.no/en/blog/choose-recipe-organizer-app/ (2026-11-20)
+- https://matlyst-app.no/en/blog/choose-recipe-organizer-app/ (2026-11-21)
 - https://matlyst-app.no/en/blog/double-a-recipe/ (2026-11-20)
 - https://matlyst-app.no/en/blog/egg-float-test/ (2026-11-20)
 - https://matlyst-app.no/en/blog/freezer-storage-times/ (2026-11-21)

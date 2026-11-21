@@ -60,6 +60,7 @@ export const amerikanskeAppsider = [{
     ['Meal planning without the spreadsheet', avsnitt('A plan only helps if it\'s quick to make. Put a recipe on Monday, another on Wednesday, and leave the weekend open. It takes a couple of minutes, not a Sunday afternoon.')],
     ['One grocery list for the whole week', avsnitt('Everything you plan lands on one list. Matching items are combined into one line, and the list is grouped by aisle, so you\'re not walking back across the store for the onions.', 'Read more about the <a href="/en/shopping-list/">grocery list</a>.')],
     ['Plan together', avsnitt('With Matlyst Pro, your household shares the meal plan and the grocery list. One person plans, another shops, and everyone sees the same week.')],
+    ['If you want an app to plan for you', avsnitt('Matlyst doesn\'t build the week for you. Some meal planners do. See <a href="/en/best-meal-planning-app/">seven meal planning apps compared</a>, with a source and a date for every fact.')],
     ['Cook it when the day comes', avsnitt('Open the recipe in cook mode and tick off the steps as you go. When a step mentions a time, Matlyst suggests a timer. New to Matlyst? Start by <a href="/en/recipe-book-app/">building your recipe collection</a>.')],
   ],
   faqTittel: 'Meal planner questions',

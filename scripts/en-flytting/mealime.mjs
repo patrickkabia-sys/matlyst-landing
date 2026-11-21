@@ -45,7 +45,7 @@ const html = byggRik({
       'So the recipes you can still reach are the published ones, and those you can bring over by link. A recipe you created yourself is only safe if you already have a screenshot or a copy. Mealime says personal data will be deleted at shutdown.')],
 
     ['What your week looks like in Matlyst', p(
-      'Matlyst is built around recipes you save yourself, and it doesn’t build your week for you. If you want an app that picks the dinners, this isn’t that. You choose the recipes, and the app does the bookkeeping.')
+      'Matlyst is built around recipes you save yourself, and it doesn’t build your week for you. If you want an app that picks the dinners, this isn’t that. You choose the recipes, and the app does the bookkeeping.', 'Want to see other meal planners side by side? See <a href="/en/best-meal-planning-app/">seven meal planning apps compared</a>, with a source and a date for every fact.')
       + '<h3>Meal plan</h3>'
       + p('Open <strong>Meal Plan</strong>, tap a day, and choose a saved recipe. Plan one dinner or the whole week. Read more about the <a href="/en/meal-plan-app/">meal plan</a>.')
       + '<h3>Grocery list</h3>'

@@ -84,15 +84,15 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/beste-handleliste-app/": {
-  "hash": "f3664b609188a75d",
+  "hash": "a2d15f0337852668",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/beste-oppskriftsapp/": {
-  "hash": "c74045ee0de80701",
+  "hash": "181a0b7ac47a6076",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/beste-ukemeny-app/": {
-  "hash": "7b4c4d0380763d60",
+  "hash": "dbc40d96ab3d1c2d",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/blogg/": {
@@ -1103,6 +1103,18 @@
   "hash": "c23b0ec4c170e3c0",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/en/best-grocery-list-app/": {
+  "hash": "3b5eac6e6d0dbb54",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/best-meal-planning-app/": {
+  "hash": "94b80abb76e2fe24",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/en/best-recipe-app/": {
+  "hash": "ad8003d621283fe5",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/en/blog/": {
   "hash": "e102a0508831144c",
   "dato": "2026-11-20"
@@ -1112,8 +1124,8 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/blog/choose-recipe-organizer-app/": {
-  "hash": "eaf88618658b7a3e",
-  "dato": "2026-11-20"
+  "hash": "b952abc35b6cef3c",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/blog/double-a-recipe/": {
   "hash": "1b1a5fdbc713d48e",
@@ -1400,12 +1412,12 @@
   "dato": "2026-11-20"
  },
  "https://matlyst-app.no/en/meal-plan-app/": {
-  "hash": "c2e3be08e7aa96ec",
-  "dato": "2026-11-20"
+  "hash": "f94aea3e504bc786",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/mealime-alternative/": {
-  "hash": "a78c51eb2cfaa7d1",
-  "dato": "2026-11-20"
+  "hash": "39eefcdc551ca16b",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/pantry-app/": {
   "hash": "bdc0227557fc407a",
@@ -1416,8 +1428,8 @@
   "dato": "2026-11-16"
  },
  "https://matlyst-app.no/en/recipe-book-app/": {
-  "hash": "71ae8767f92a0755",
-  "dato": "2026-11-20"
+  "hash": "64c14fe032d9d61d",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/recipe-creators/": {
   "hash": "03c6c4d9b4d3e4ce",
@@ -1428,8 +1440,8 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/en/shopping-list/": {
-  "hash": "9eccbcbf51168a01",
-  "dato": "2026-11-20"
+  "hash": "2c25308e9d4902b8",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/terms/": {
   "hash": "98c63f4dc59209d3",

@@ -32,7 +32,9 @@ const VIA_HUB_FORSIDE = {
   '/sv/': importHub('/sv/importera-recept/', ['/sv/alletiders-kogebog/', '/sv/dr-mad/', '/sv/matprat/']),
   '/da/': importHub('/da/importer-opskrifter/', ['/da/koket/', '/da/landleys-kok/', '/da/matprat/']),
   // Mealime-siden står i «All guides» i bunnen, men ikke i hovedhyllene: den nås gjennom Paprika-siden (lenkekartet, gruppen flytting).
-  '/en/': { ...importHub('/en/import-recipes/', ['/en/alletiders-cookbook/', '/en/dr-food/', '/en/koket/', '/en/landleys-kok/', '/en/matprat/']), '/en/mealime-alternative/': '/en/import-recipes-from-paprika/' },
+  '/en/': { ...importHub('/en/import-recipes/', ['/en/alletiders-cookbook/', '/en/dr-food/', '/en/koket/', '/en/landleys-kok/', '/en/matprat/']), '/en/mealime-alternative/': '/en/import-recipes-from-paprika/',
+    // Sammenligningssidene står i «All guides» i bunnen og nås gjennom relatert-blokken på oppskriftsappen (lenkekartet, en-gruppen sammenligning).
+    '/en/best-recipe-app/': '/en/recipe-book-app/', '/en/best-grocery-list-app/': '/en/recipe-book-app/', '/en/best-meal-planning-app/': '/en/recipe-book-app/' },
 };
 
 // Låser at ingen guide er foreldreløs: hver side i en sitemap med bunntekst skal
