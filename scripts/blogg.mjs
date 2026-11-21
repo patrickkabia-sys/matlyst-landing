@@ -220,6 +220,7 @@ const KILDEINTRO = {
 const KILDELENKE = {
   kjernetemp: { nb: ['Alle råvarene med kjernetemperatur og kilder:', '/kjernetemperatur/', 'Kjernetemperatur'] },
   koketid: { nb: ['Steketider for kjøtt, fisk og poteter i ovnen:', '/steketid/', 'Steketid'] },
+  airfryer: { nb: ['Omregner og tabeller for flere retter, med kilder:', '/airfryer/ovn-til-airfryer/', 'Ovn til airfryer'] },
 };
 const datoTekst = (lang, iso) => {
   if (/^\d{4}$/u.test(iso)) return iso; // kilder som bare har årstall

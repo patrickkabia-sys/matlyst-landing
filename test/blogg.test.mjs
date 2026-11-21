@@ -98,11 +98,14 @@ for (const [tema, forbudt] of Object.entries(GAMLE_TALL_2)) {
     });
   }
 }
-test('nb: kjernetemperatur og koketider lenker til familiesidene', () => {
+test('nb: kjernetemperatur og koketider og airfryer lenker til familiesidene', () => {
   const kt = les(bloggArtikler('nb').find((x) => x.tema === 'kjernetemp').path);
   assert.ok(kt.includes('href="/kjernetemperatur/"'));
   const kk = les(bloggArtikler('nb').find((x) => x.tema === 'koketid').path);
   assert.ok(kk.includes('href="/steketid/"'));
+  const af = les(bloggArtikler('nb').find((x) => x.tema === 'airfryer').path);
+  assert.ok(af.includes('href="/airfryer/ovn-til-airfryer/"'));
+  assert.ok(existsSync(new URL('airfryer/ovn-til-airfryer/index.html', ROT)));
 });
 test('kjernetemperatur-bloggen bruker de samme tallene som datafila', () => {
   const d = JSON.parse(readFileSync(new URL('scripts/familier/kjernetemperatur/data.nb.json', ROT), 'utf8'));
