@@ -185,7 +185,8 @@ const avsnitt = [
       `Rå ribbe: ${mp('mp-ribbe-sp')} anbefaler ${t('frys-ra')} i fryseren.`,
       `Ferdigstekt ribbe: ${mp('mp-ribbe-sp')} fraråder å fryse den, fordi svoren mister sprøheten og blir gummiaktig. Stek den heller i forveien og oppbevar den i kjøleskap.`,
       `Tint ribbe, ifølge ${mp('mp-ribbe-sp')}: saltet og pepret med en gang holder den ${t('tint-saltet')}, rå og tint bare ${t('tint-ra')}.`)
-    + p('For sausen, stappen, tilbehøret og desserten har vi ikke funnet en kilde med frysetider, så vi oppgir ingen. Følg oppskriften eller pakningen.')],
+    + p('For sausen, stappen, tilbehøret og desserten har vi ikke funnet en kilde med frysetider, så vi oppgir ingen. Følg oppskriften eller pakningen.')
+    + p('Skal du ha gjester før eller etter julaften? Se planen for <a href="/julebord/">julebord hjemme</a> og for <a href="/nyttarsmiddag/">nyttårsmiddag med kalkun</a>.')],
   ['Slik bruker du Matlyst til julemiddagen',
     p('Matlyst gir deg ingen oppskrifter og ingen steketider. Du lagrer oppskriftene du selv bruker, og Matlyst hjelper deg å holde orden.')
     + ul(

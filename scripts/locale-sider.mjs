@@ -59,6 +59,8 @@ export const SIDEGRUPPER = Object.freeze([
   { id: 'auto-mealime-alternative', sider: { en: '/en/mealime-alternative/' } },
   // Bare norsk: julemiddagsplanen og om-siden. «auto-»-prefikset gir variabel språkdekning i hreflang-testen.
   { id: 'auto-julemiddag', sider: { nb: '/julemiddag/' } },
+  { id: 'auto-julebord', sider: { nb: '/julebord/' } },
+  { id: 'auto-nyttarsmiddag', sider: { nb: '/nyttarsmiddag/' } },
   { id: 'auto-om', sider: { nb: '/om/' } },
   // Bare norsk: de nøytrale sammenligningssidene (scripts/nb-sammenligning/).
   { id: 'auto-beste-oppskriftsapp', sider: { nb: '/beste-oppskriftsapp/' } },

@@ -16,7 +16,7 @@ const sider = alleSider(rot);
 const type = (sti) => sider.find((s) => s.sti === sti)?.type;
 
 test('hver publiserbar HTML-fil får én type og én nøkkel', () => {
-  assert.equal(sider.length, 882 + familieAntall().omregner + familieAntall()['guide-lang'], 'nye sider: forklar endringen i commit-meldingen og rett tallet');
+  assert.equal(sider.length, 884 + familieAntall().omregner + familieAntall()['guide-lang'], 'nye sider: forklar endringen i commit-meldingen og rett tallet');
   for (const s of sider) {
     assert.ok(TYPER.includes(s.type), s.sti);
     assert.equal(s.nokkel, s.type === 'tjeneste' ? `tjeneste:${tjenestefamilie(s.sti)}` : s.type, s.sti);
@@ -45,7 +45,7 @@ test('omregnerne er alle parene pluss fire hubber', () => {
 });
 test('typene har de målte antallene', () => {
   const fa = familieAntall();
-  assert.deepEqual(TYPER.map((t) => sider.filter((s) => s.type === t).length), [4, 714 + fa.omregner, 37 + fa['guide-lang'], 56, 4, 33, 12, 22]);
+  assert.deepEqual(TYPER.map((t) => sider.filter((s) => s.type === t).length), [4, 714 + fa.omregner, 39 + fa['guide-lang'], 56, 4, 33, 12, 22]);
 });
 test('kjente sider får riktig type', () => {
   for (const [sti, forventet] of [
