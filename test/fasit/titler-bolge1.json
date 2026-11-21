@@ -35,14 +35,14 @@
   "meta": "Flytt oppskriftene fra Paprika til Matlyst: eksporter filen fra Paprika, importer den i Matlyst, velg oppskriftene og kontroller resultatet."
  },
  "/blogg/koketider/": {
-  "tittel": "Koketid for poteter, egg, ris og pasta | Matlyst",
-  "h1": "Koketid for poteter, egg, ris og pasta",
-  "meta": "Poteter koker i 18 til 22 minutter, smilende egg i 8. Her er koketidene for egg, ris, pasta, poteter og grønnsaker, regnet fra vannet koker."
+  "tittel": "Koketid for poteter, egg og ris | Matlyst",
+  "h1": "Koketid for poteter, egg og ris",
+  "meta": "Poteter koker i 15 til 25 minutter, smilende egg i 7 til 8, sier MatPrat. Her er koketidene for egg, poteter og ris, og hvor lenge poteter står i ovnen."
  },
  "/blogg/kjernetemperatur/": {
   "tittel": "Kjernetemperatur for lam, storfe, svin og kylling | Matlyst",
   "h1": "Kjernetemperatur for lam, storfe, svin og kylling",
-  "meta": "Lam er rosa ved 60 grader og gjennomstekt ved 70. Her er kjernetemperaturene for lam, storfe, svin, kylling og fisk, så du slipper å skjære i kjøttet."
+  "meta": "Lam er medium ved 60 til 65 grader og gjennomstekt ved 75, sier MatPrat. Her er kjernetemperaturene for lam, storfe, svin, kylling og fisk."
  },
  "/sv/inkopslista/": {
   "tittel": "Inköpslista från recept: dela med hushållet | Matlyst",
@@ -132,7 +132,7 @@
  "/da/blog/kernetemperatur/": {
   "tittel": "Kernetemperatur for lam, oksekød, svin og kylling | Matlyst",
   "h1": "Kernetemperatur for lam, oksekød, svin og kylling",
-  "meta": "Lam er rosa ved 60 grader og gennemstegt ved 70. Her er kernetemperaturerne for lam, oksekød, svin, kylling og fisk, så du slipper for at skære i kødet."
+  "meta": "Lam er medium ved 60 til 65 grader og gennemstegt ved 75, siger MatPrat. Her er kernetemperaturerne for lam, oksekød, svin, kylling og fisk."
  },
  "/da/blog/mad-i-fryseren/": {
   "tittel": "Kan man fryse mad? Så længe holder det i fryseren | Matlyst",

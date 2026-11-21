@@ -2,14 +2,14 @@
   "nb": {
     "koketid": {
       "etikett": "Koketider",
-      "ingress": "Smilende egg tar 8 minutter. Her er koketidene for egg, ris, pasta, poteter og grønnsaker, regnet fra vannet koker.",
+      "ingress": "Smilende egg tar 7 til 8 minutter, sier MatPrat (2026). Poteter koker i 15 til 25 minutter (2019). Her er koketidene for egg, poteter og ris, og hvor lenge poteter står i ovnen.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Hvor lenge skal det <em>koke</em>?",
-          "under": "Egg, ris, pasta og grønnsaker. Tiden regnes fra vannet koker.",
+          "under": "Egg, poteter og ris. Tallene er fra MatPrat.",
           "fra": "smilende egg",
-          "til": "<b>8</b> min"
+          "til": "<b>7–8</b> min"
         },
         {
           "type": "tabell",
@@ -17,69 +17,57 @@
           "rader": [
             [
               "bløtkokt",
-              "<b>6</b> min"
+              "<b>5–6</b> min"
             ],
             [
               "smilende",
-              "<b>8</b> min"
+              "<b>7–8</b> min"
             ],
             [
               "hardkokt",
-              "<b>10</b> min"
+              "<b>9–11</b> min"
             ]
           ],
-          "notis": "Store egg rett fra kjøleskapet, lagt i kokende vann. Avkjøl i kaldt vann etterpå."
+          "notis": "Kalde, store og ferske egg trenger litt lengre tid. Avkjøl eggene raskt i kaldt vann."
         },
         {
           "type": "tabell",
-          "tittel": "Ris, pasta og poteter",
+          "tittel": "Poteter og ris",
           "rader": [
             [
-              "pasta",
-              "<b>8–12</b> min"
+              "poteter",
+              "<b>15–25</b> min"
             ],
             [
-              "jasminris",
-              "<b>10–12</b> min"
+              "hvit ris, sjekk etter",
+              "<b>18</b> min"
             ],
             [
               "fullkornsris",
-              "<b>25–30</b> min"
+              "<b>30–40</b> min"
             ],
             [
-              "quinoa",
-              "<b>12–15</b> min"
-            ],
-            [
-              "poteter",
-              "<b>18–22</b> min"
+              "villris",
+              "<b>45–50</b> min"
             ]
           ],
-          "notis": "Pasta: se pakken. Ris: la den stå under lokk i 10 minutter etter koking."
+          "notis": "Ris: sett på lokk, og la lokket stå på gjennom hele koketiden."
         },
         {
           "type": "tabell",
-          "tittel": "Grønnsaker",
+          "tittel": "Poteter i ovnen",
           "rader": [
             [
-              "brokkoli",
-              "<b>3–4</b> min"
+              "bakt potet, 220 °C",
+              "<b>1–1½</b> time"
             ],
             [
-              "grønne bønner",
-              "<b>4–5</b> min"
+              "saltbakt, 200 °C",
+              "<b>40</b> min"
             ],
             [
-              "blomkål",
-              "<b>5–7</b> min"
-            ],
-            [
-              "gulrot i skiver",
-              "<b>6–8</b> min"
-            ],
-            [
-              "frosne erter",
-              "<b>2–3</b> min"
+              "hasselback, 225 °C",
+              "<b>40</b> min"
             ]
           ]
         },
@@ -100,7 +88,7 @@
     },
     "kjernetemp": {
       "etikett": "Steketermometer",
-      "ingress": "Kylling er ferdig på 75 grader, laks på 50. Her er kjernetemperaturene for storfe, lam, svin, kylling og fisk, så du slipper å skjære i kjøttet for å sjekke.",
+      "ingress": "Kylling er ferdig på 75 grader, sier Mattilsynet (2023). Lam er medium på 60 til 65 grader, sier MatPrat (2020), og fisk i ovn er ferdig på ca. 60 (2026). Her er kjernetemperaturene for storfe, lam, svin, kylling og fisk, så du slipper å skjære i kjøttet for å sjekke.",
       "sider": [
         {
           "type": "forside",
@@ -115,23 +103,23 @@
           "rader": [
             [
               "storfe, rødt",
-              "<b>52</b> °C"
+              "<b>55–60</b> °C"
             ],
             [
               "storfe, medium",
-              "<b>58</b> °C"
+              "<b>60</b> °C"
             ],
             [
               "storfe, gjennomstekt",
               "<b>70</b> °C"
             ],
             [
-              "lam, rosa",
-              "<b>60</b> °C"
+              "lam, medium",
+              "<b>60–65</b> °C"
             ],
             [
               "lam, gjennomstekt",
-              "<b>70</b> °C"
+              "<b>75</b> °C"
             ]
           ]
         },
@@ -140,27 +128,27 @@
           "tittel": "Svin, kylling og fisk",
           "rader": [
             [
-              "svinekjøtt",
-              "<b>65–70</b> °C"
+              "svinefilet, medium",
+              "<b>65</b> °C"
+            ],
+            [
+              "svinefilet, gjennomstekt",
+              "<b>75</b> °C"
             ],
             [
               "kylling",
               "<b>75</b> °C"
             ],
             [
-              "kjøttdeig og farse",
-              "<b>75</b> °C"
+              "kjøttdeig og hamburger",
+              "over <b>70</b> °C"
             ],
             [
-              "laks",
-              "<b>50</b> °C"
-            ],
-            [
-              "torsk og hvit fisk",
-              "<b>50</b> °C"
+              "fisk i ovn",
+              "ca. <b>60</b> °C"
             ]
           ],
-          "notis": "La kjøttet hvile i 10 minutter. Temperaturen stiger et par grader mens det hviler, så ta det ut litt før."
+          "notis": "Kyllingfilet stiger 1 til 3 grader mens den hviler, sier MatPrat (2026). Tallene er veiledende."
         },
         {
           "type": "logo",
@@ -450,14 +438,14 @@
     },
     "airfryer": {
       "etikett": "Airfryer",
-      "ingress": "Ovnsoppskrift i airfryeren? Ta 20 grader ned og 20 prosent av tiden. Her er regelen og noen eksempler.",
+      "ingress": "Fra 175 °C og 20 minutter i varmluftsovn blir det 165 °C og 16 minutter i airfryeren, ifølge Arla (2026). Her er regelen og noen eksempler.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Ovnsoppskrift i <em>airfryeren</em>?",
-          "under": "Regelen som gjør om tid og temperatur.",
-          "fra": "200 °C ovn",
-          "til": "<b>180</b> °C"
+          "under": "Arlas tabell for tid og temperatur.",
+          "fra": "175 °C ovn",
+          "til": "<b>165</b> °C"
         },
         {
           "type": "tabell",
@@ -465,19 +453,19 @@
           "rader": [
             [
               "temperatur",
-              "<b>20</b> °C lavere"
+              "<b>10–25</b> °C lavere"
             ],
             [
               "tid",
               "<b>20</b> % kortere"
             ],
             [
-              "halvveis",
-              "rist kurven"
+              "rist kurven",
+              "<b>2–3</b> ganger"
             ],
             [
-              "kurven",
-              "ett lag"
+              "tabellen",
+              "tommelfingerregel"
             ]
           ]
         },
@@ -486,26 +474,26 @@
           "tittel": "Eksempler",
           "rader": [
             [
-              "200 °C, 25 min",
-              "<b>180</b> °C, <b>20</b> min"
+              "175 °C, 20 min",
+              "<b>165</b> °C, <b>16</b> min"
             ],
             [
-              "220 °C, 30 min",
-              "<b>200</b> °C, <b>24</b> min"
+              "190 °C, 30 min",
+              "<b>175</b> °C, <b>24</b> min"
             ],
             [
               "kyllinglår",
               "til <b>75</b> °C inni"
             ]
           ],
-          "notis": "Airfryere er ulike. Sjekk første gang litt før tiden er ute. Se <a href=\"/airfryer/ovn-til-airfryer/\">omregneren og tabellene med kilder</a>."
+          "notis": "Tabellen er en tommelfingerregel, sier Arla. Det kommer an på ovnen og airfryeren."
         },
         {
           "type": "logo",
           "prikk": "termometer",
           "grader": [
             20,
-            180
+            165
           ],
           "tittel": "Eller følg <em>steget</em>.",
           "under": "Kokemodus i Matlyst viser stegene som en sjekkliste, i stor skrift."
@@ -1248,7 +1236,7 @@
   "sv": {
     "kjernetemp": {
       "etikett": "Stektermometer",
-      "ingress": "Kyckling är klar vid 75 grader, lax vid 50. Här är innertemperaturerna för nöt, lamm, fläsk, kyckling och fisk, så slipper du skära i köttet för att kolla.",
+      "ingress": "Kyckling är klar vid 75 grader, enligt Mattilsynet (2023). Lamm är medium vid 60 till 65 grader, enligt MatPrat (2020), och fisk i ugn är klar vid ca 60 (2026). Här är innertemperaturerna för nöt, lamm, fläsk, kyckling och fisk, så slipper du skära i köttet för att kolla.",
       "sider": [
         {
           "type": "forside",
@@ -1263,23 +1251,23 @@
           "rader": [
             [
               "nöt, blodigt",
-              "<b>52</b> °C"
+              "<b>55–60</b> °C"
             ],
             [
               "nöt, medium",
-              "<b>58</b> °C"
+              "<b>60</b> °C"
             ],
             [
               "nöt, genomstekt",
               "<b>70</b> °C"
             ],
             [
-              "lamm, rosa",
-              "<b>60</b> °C"
+              "lamm, medium",
+              "<b>60–65</b> °C"
             ],
             [
               "lamm, genomstekt",
-              "<b>70</b> °C"
+              "<b>75</b> °C"
             ]
           ]
         },
@@ -1288,27 +1276,27 @@
           "tittel": "Fläsk, kyckling och fisk",
           "rader": [
             [
-              "fläskkött",
-              "<b>65–70</b> °C"
+              "fläskfilé, medium",
+              "<b>65</b> °C"
+            ],
+            [
+              "fläskfilé, genomstekt",
+              "<b>75</b> °C"
             ],
             [
               "kyckling",
               "<b>75</b> °C"
             ],
             [
-              "köttfärs",
-              "<b>75</b> °C"
+              "köttfärs och hamburgare",
+              "över <b>70</b> °C"
             ],
             [
-              "lax",
-              "<b>50</b> °C"
-            ],
-            [
-              "torsk och vit fisk",
-              "<b>50</b> °C"
+              "fisk i ugn",
+              "ca <b>60</b> °C"
             ]
           ],
-          "notis": "Låt köttet vila i 10 minuter. Temperaturen stiger ett par grader medan det vilar, så ta ut det lite tidigare."
+          "notis": "Kycklingfilé stiger 1 till 3 grader medan den vilar, enligt MatPrat (2026). Siffrorna är vägledande."
         },
         {
           "type": "logo",
@@ -1598,14 +1586,14 @@
     },
     "airfryer": {
       "etikett": "Airfryer",
-      "ingress": "Ugnsrecept i airfryern? Sänk värmen med 20 grader och korta tiden med 20 procent. Här är regeln och några exempel.",
+      "ingress": "Från 175 °C och 20 minuter i varmluftsugn blir det 165 °C och 16 minuter i airfryern, enligt Arla (2026). Här är regeln och några exempel.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Ugnsrecept i <em>airfryern</em>?",
-          "under": "Regeln som räknar om tid och temperatur.",
-          "fra": "200 °C ugn",
-          "til": "<b>180</b> °C"
+          "under": "Arlas tabell för tid och temperatur.",
+          "fra": "175 °C ugn",
+          "til": "<b>165</b> °C"
         },
         {
           "type": "tabell",
@@ -1613,19 +1601,19 @@
           "rader": [
             [
               "temperatur",
-              "<b>20</b> °C lägre"
+              "<b>10–25</b> °C lägre"
             ],
             [
               "tid",
               "<b>20</b> % kortare"
             ],
             [
-              "halvvägs",
-              "skaka korgen"
+              "skaka korgen",
+              "<b>2–3</b> gånger"
             ],
             [
-              "korgen",
-              "ett lager"
+              "tabellen",
+              "tumregel"
             ]
           ]
         },
@@ -1634,26 +1622,26 @@
           "tittel": "Exempel",
           "rader": [
             [
-              "200 °C, 25 min",
-              "<b>180</b> °C, <b>20</b> min"
+              "175 °C, 20 min",
+              "<b>165</b> °C, <b>16</b> min"
             ],
             [
-              "220 °C, 30 min",
-              "<b>200</b> °C, <b>24</b> min"
+              "190 °C, 30 min",
+              "<b>175</b> °C, <b>24</b> min"
             ],
             [
               "kycklinglår",
               "till <b>75</b> °C inuti"
             ]
           ],
-          "notis": "Ingen airfryer är den andra lik. Kolla lite före tiden första gången."
+          "notis": "Tabellen är en tumregel, säger Arla. Det beror på ugnen och airfryern."
         },
         {
           "type": "logo",
           "prikk": "termometer",
           "grader": [
             20,
-            180
+            165
           ],
           "tittel": "Eller följ <em>steget</em>.",
           "under": "Matlagningsläget i Matlyst visar stegen som en checklista, i stor text."
@@ -1825,7 +1813,7 @@
   "da": {
     "kjernetemp": {
       "etikett": "Stegetermometer",
-      "ingress": "Kylling er færdig ved 75 grader, laks ved 50. Her er kernetemperaturerne for okse, lam, svin, kylling og fisk, så du slipper for at skære i kødet for at tjekke.",
+      "ingress": "Kylling er færdig ved 75 grader, siger Mattilsynet (2023). Lam er medium ved 60 til 65 grader, siger MatPrat (2020), og fisk i ovn er færdig ved ca. 60 (2026). Her er kernetemperaturerne for okse, lam, svin, kylling og fisk, så du slipper for at skære i kødet for at tjekke.",
       "sider": [
         {
           "type": "forside",
@@ -1840,23 +1828,23 @@
           "rader": [
             [
               "okse, rød",
-              "<b>52</b> °C"
+              "<b>55–60</b> °C"
             ],
             [
               "okse, medium",
-              "<b>58</b> °C"
+              "<b>60</b> °C"
             ],
             [
               "okse, gennemstegt",
               "<b>70</b> °C"
             ],
             [
-              "lam, rosa",
-              "<b>60</b> °C"
+              "lam, medium",
+              "<b>60–65</b> °C"
             ],
             [
               "lam, gennemstegt",
-              "<b>70</b> °C"
+              "<b>75</b> °C"
             ]
           ]
         },
@@ -1865,27 +1853,27 @@
           "tittel": "Svin, kylling og fisk",
           "rader": [
             [
-              "svinekød",
-              "<b>65–70</b> °C"
+              "svinefilet, medium",
+              "<b>65</b> °C"
+            ],
+            [
+              "svinefilet, gennemstegt",
+              "<b>75</b> °C"
             ],
             [
               "kylling",
               "<b>75</b> °C"
             ],
             [
-              "hakket kød og fars",
-              "<b>75</b> °C"
+              "hakket kød og hamburger",
+              "over <b>70</b> °C"
             ],
             [
-              "laks",
-              "<b>50</b> °C"
-            ],
-            [
-              "torsk og hvid fisk",
-              "<b>50</b> °C"
+              "fisk i ovn",
+              "ca. <b>60</b> °C"
             ]
           ],
-          "notis": "Lad kødet hvile i 10 minutter. Temperaturen stiger et par grader, mens det hviler, så tag det ud lidt før."
+          "notis": "Kyllingefilet stiger 1 til 3 grader, mens den hviler, ifølge MatPrat (2026). Tallene er vejledende."
         },
         {
           "type": "logo",
@@ -2175,14 +2163,14 @@
     },
     "airfryer": {
       "etikett": "Airfryer",
-      "ingress": "Ovnopskrift i airfryeren? Skru 20 grader ned, og skær 20 procent af tiden. Her er reglen og et par eksempler.",
+      "ingress": "Fra 175 °C og 20 minutter i varmluftsovn bliver det 165 °C og 16 minutter i airfryeren, ifølge Arla (2026). Her er reglen og et par eksempler.",
       "sider": [
         {
           "type": "forside",
           "tittel": "Ovnopskrift i <em>airfryeren</em>?",
-          "under": "Reglen, der omregner tid og temperatur.",
-          "fra": "200 °C ovn",
-          "til": "<b>180</b> °C"
+          "under": "Arlas tabel for tid og temperatur.",
+          "fra": "175 °C ovn",
+          "til": "<b>165</b> °C"
         },
         {
           "type": "tabell",
@@ -2190,19 +2178,19 @@
           "rader": [
             [
               "temperatur",
-              "<b>20</b> °C lavere"
+              "<b>10–25</b> °C lavere"
             ],
             [
               "tid",
               "<b>20</b> % kortere"
             ],
             [
-              "halvvejs",
-              "ryst kurven"
+              "ryst kurven",
+              "<b>2–3</b> gange"
             ],
             [
-              "kurven",
-              "ét lag"
+              "tabellen",
+              "tommelfingerregel"
             ]
           ]
         },
@@ -2211,26 +2199,26 @@
           "tittel": "Eksempler",
           "rader": [
             [
-              "200 °C, 25 min.",
-              "<b>180</b> °C, <b>20</b> min."
+              "175 °C, 20 min.",
+              "<b>165</b> °C, <b>16</b> min."
             ],
             [
-              "220 °C, 30 min.",
-              "<b>200</b> °C, <b>24</b> min."
+              "190 °C, 30 min.",
+              "<b>175</b> °C, <b>24</b> min."
             ],
             [
               "kyllingelår",
               "<b>75</b> °C inderst"
             ]
           ],
-          "notis": "Airfryere er forskellige. Tjek maden lidt før tid første gang."
+          "notis": "Tabellen er en tommelfingerregel, siger Arla. Det afhænger af ovnen og airfryeren."
         },
         {
           "type": "logo",
           "prikk": "termometer",
           "grader": [
             20,
-            180
+            165
           ],
           "tittel": "Eller følg <em>trinnet</em>.",
           "under": "Madlavningstilstanden i Matlyst viser trinnene som en tjekliste, med stor skrift."
