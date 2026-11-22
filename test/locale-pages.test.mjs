@@ -16,8 +16,7 @@ function finnHtml(dir) {
   });
 }
 
-// Kampanjesidene /hanna/ er håndbygde noindex-sider (som /christine/), ikke generert lokalside med hovedinnhold-skall.
-const filer = ['sv', 'da', 'en'].flatMap((lang) => finnHtml(join(root, lang))).filter((f) => !/\/hanna\/index\.html$/u.test(f));
+const filer = ['sv', 'da', 'en'].flatMap((lang) => finnHtml(join(root, lang)));
 const les = (fil) => readFileSync(fil, 'utf8');
 const urlTilFil = (href) => {
   const path = new URL(href).pathname;

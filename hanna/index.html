@@ -30,9 +30,10 @@
   } catch (e) {}
 })();
 </script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Matlyst med Hanna H. Food","url":"https://matlyst-app.no/hanna/"}</script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="14 dager gratis Matlyst Pro med koden HANNA14">
-<meta property="og:description" content="Del en oppskrift til Matlyst, så står den klar med ingredienser og fremgangsmåte.">
+<meta property="og:description" content="Del en oppskrift, så står den klar i Matlyst med ingredienser og fremgangsmåte.">
 <meta property="og:image" content="https://matlyst-app.no/images/og-importer-oppskrifter.jpg">
 <!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- /skall:stil -->
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -67,17 +68,19 @@
   .foot{font-size:.9375rem;color:var(--dempet);max-width:34ch;line-height:1.5}
   .foot a{color:var(--dempet);text-decoration:underline;text-underline-offset:.2em}
   @media (max-width:640px){.skaperside h1{font-size:2.25rem}}
+  .samtykke{text-align:center;padding:0 16px 32px;font-size:.9375rem}
+  .samtykke a{color:var(--dempet);text-decoration:underline;text-underline-offset:.2em}
 </style>
 <link rel="stylesheet" href="/language-switcher.css">
 <script src="/language-switcher.js" defer></script>
 </head>
 <body data-sidetype="tjeneste" data-tjeneste="kampanje">
 <div class="language-switcher-standalone language-switcher-standalone-top"><a class="nav-brand" href="/">Mat<em>lyst</em></a><!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/hanna/" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">Norsk</a><a href="/sv/hanna/" lang="sv" hreflang="sv" aria-label="Svenska">Svenska</a><a href="/da/hanna/" lang="da" hreflang="da" aria-label="Dansk">Dansk</a><a href="/en/hanna/" lang="en" hreflang="en" aria-label="English">English</a></span><!-- /språkvelger:topp --></div>
-<main class="skaperside">
+<main id="hovedinnhold" class="skaperside">
   <img class="appicon" src="/images/icon.png" width="62" height="62" alt="">
   <p class="k">Matlyst × Hanna H. Food</p>
   <h1>Alle oppskriftene dine, <em>samlet</em></h1>
-  <p class="lead">Del en oppskrift fra Instagram, TikTok eller en nettside til Matlyst, så står den klar med ingredienser og fremgangsmåte. Ukemeny og handleliste ordner appen for deg.</p>
+  <p class="lead">Del en oppskrift fra Instagram, TikTok eller en nettside, så står den klar i Matlyst med ingredienser og fremgangsmåte. Ukemeny og handleliste ordner appen for deg.</p>
 
   <div class="kode">
     <span class="lbl">Koden din</span>
@@ -116,6 +119,7 @@
 
   <p class="foot">Matlyst lages i Norge. <a href="/vilkar.html">Vilkår</a> og <a href="/personvern.html">personvern</a>.</p>
 </main>
+<p class="samtykke"><a href="#" data-consent-withdraw>Informasjonskapsler</a></p>
 
 <!-- Samtykke-banner -->
 <div class="cookie" id="cookie" hidden>
@@ -127,9 +131,9 @@
   </div>
 </div>
 
-<!-- site.js eier banneret og all lasting av PostHog, og MÅ ligge først: uten den
-     rekker ikke «Godta»-lytteren å sette samtykket før skriptet under fyrer. -->
-<script src="/site.js"></script>
+<!-- site.js eier banneret og all lasting av PostHog, og lastes defer og kjører før DOMContentLoaded;
+     skriptet under leser samtykket først ved klikk, så rekkefølgen er uten betydning. -->
+<script src="/site.js" defer></script>
 <script>
 (function () {
   var KILDE = 'hanna'; var SPRAK = 'nb';
