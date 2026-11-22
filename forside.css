@@ -3,8 +3,9 @@
 .hero h1{margin:0 auto;max-width:16ch;font-size:clamp(2.375rem,calc(5vw * var(--skala)),3.875rem);line-height:1.05}
 .hero > p{margin:20px auto 0;max-width:48ch;font-size:1.25rem;line-height:1.5;color:var(--dempet)}
 .hero .valg{margin-top:32px}
-.spiller{display:flex;flex-direction:column;align-items:center}
 .hero .spiller{margin-top:64px}
+/*importfilm:start*/
+.spiller{display:flex;flex-direction:column;align-items:center}
 /* Importflyten: bare telefonen i filmen, stegene er tekst ved siden av */
 .importflyt{display:grid;grid-template-columns:minmax(0,330px) minmax(0,360px);align-items:center;justify-content:center;gap:0 72px}
 /* Filmen er klippet nøyaktig rundt telefonen. Hjørnene rundes her, så ingenting av filmens bakgrunn synes. */
@@ -16,19 +17,6 @@
 .st b{flex:none;display:grid;place-items:center;width:30px;height:30px;border:1.5px solid var(--linje);border-radius:50%;font:500 .8125rem/1 var(--mono);transition:background-color .3s,border-color .3s,color .3s}
 .naa .st{color:var(--blekk);font-weight:700}
 .naa .st b{background:var(--blekk);border-color:var(--blekk);color:var(--flate)}
-@media (min-width:1001px){
-  .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:1fr auto auto auto auto auto 1fr;column-gap:72px;padding-block:40px 0;text-align:left}
-  .hero h1{grid-column:1;grid-row:2;margin:0;font-size:clamp(3.25rem,calc(5.4vw * var(--skala)),4.375rem)}
-  .hero > p{grid-column:1;grid-row:3;margin:20px 0 0;max-width:40ch}
-  .hero .valg{grid-column:1;grid-row:4}
-  .hero .bevis{grid-column:1;grid-row:5;justify-content:flex-start}
-  .hero .spiller{display:contents}
-  .hero .steg{grid-column:1;grid-row:6;max-width:420px;margin-top:34px}
-  .hero .st{gap:14px;min-height:44px;font-size:1.0625rem}
-  .hero .st b{width:26px;height:26px;font-size:.75rem}
-  .hero .film{grid-column:2;grid-row:1 / 8;align-self:end;width:clamp(250px,calc((100vh - 200px) * .483),330px);max-width:none;margin-right:clamp(0px,5vw,72px)}
-  .hero .kilder{grid-column:1 / -1;grid-row:8;text-align:center}
-}
 .bevis{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;margin-top:18px;font-size:.9375rem;color:var(--dempet)}
 .bevis b{color:var(--blekk);font-weight:700}
 .stjerner{display:inline-flex;gap:2px;color:var(--blekk)}
@@ -47,6 +35,32 @@
   .bane{width:auto;animation:none}
   .bane ul{flex-wrap:wrap;justify-content:center;row-gap:20px}
   .bane ul + ul{display:none}
+}
+@media (max-width:720px){
+  .importflyt{display:flex;flex-direction:column;align-items:center}
+  .film{width:min(82%,310px,calc(var(--ledig-hoyde) * 628 / 1300 / 1.008))}
+  .steg{order:-1;width:100%;min-height:60px;margin-bottom:6px}
+  .steg li{display:none}
+  .steg li.naa{display:block}
+  .st{justify-content:center;min-height:60px;cursor:default}
+  .kilder{margin-top:52px}
+  .bane li{gap:13px;padding:0 28px;font-size:1.625rem}
+  .bane svg{width:36px;height:36px}
+}
+@media (prefers-reduced-motion:reduce){.st,.st b{transition:none}.st{cursor:default}}
+/*importfilm:slutt*/
+@media (min-width:1001px){
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:1fr auto auto auto auto auto 1fr;column-gap:72px;padding-block:40px 0;text-align:left}
+  .hero h1{grid-column:1;grid-row:2;margin:0;font-size:clamp(3.25rem,calc(5.4vw * var(--skala)),4.375rem)}
+  .hero > p{grid-column:1;grid-row:3;margin:20px 0 0;max-width:40ch}
+  .hero .valg{grid-column:1;grid-row:4}
+  .hero .bevis{grid-column:1;grid-row:5;justify-content:flex-start}
+  .hero .spiller{display:contents}
+  .hero .steg{grid-column:1;grid-row:6;max-width:420px;margin-top:34px}
+  .hero .st{gap:14px;min-height:44px;font-size:1.0625rem}
+  .hero .st b{width:26px;height:26px;font-size:.75rem}
+  .hero .film{grid-column:2;grid-row:1 / 8;align-self:end;width:clamp(250px,calc((100vh - 200px) * .483),330px);max-width:none;margin-right:clamp(0px,5vw,72px)}
+  .hero .kilder{grid-column:1 / -1;grid-row:8;text-align:center}
 }
 /* Overskriften skrives inn. Plassen er satt av på forhånd, så ingenting flytter seg. */
 .hero h1 .ord{display:inline-block;white-space:nowrap}
@@ -74,12 +88,6 @@
 html.js .hero h1:not(.klar){visibility:hidden}
 @media (max-width:900px){.importflyt{gap:0 32px}}
 @media (max-width:720px){
-  .importflyt{display:flex;flex-direction:column;align-items:center}
-  .film{width:min(82%,310px,calc(var(--ledig-hoyde) * 628 / 1300 / 1.008))}
-  .steg{order:-1;width:100%;min-height:60px;margin-bottom:6px}
-  .steg li{display:none}
-  .steg li.naa{display:block}
-  .st{justify-content:center;min-height:60px;cursor:default}
   .hero{padding-block:40px 0}
   .hero > p{font-size:1.125rem}
   .hero .knapp{display:flex}
@@ -90,9 +98,6 @@ html.js .hero h1:not(.klar){visibility:hidden}
   .hero .spiller{order:3;margin-top:28px}
   .hero > p{order:4;margin-top:32px}
   .hero .kilder{order:5}
-  .kilder{margin-top:52px}
-  .bane li{gap:13px;padding:0 28px;font-size:1.625rem}
-  .bane svg{width:36px;height:36px}
 }
 @media (prefers-reduced-motion:reduce){
   .hero h1 .tegn{opacity:1}

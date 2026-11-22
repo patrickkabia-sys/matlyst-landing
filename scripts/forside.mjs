@@ -200,20 +200,33 @@ const IKONER = {
 const stjerne = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"></path></svg>';
 const hake = '<svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.5 5.5L20 7"></path></svg>';
 
-function helt(t, oppsett) {
-  const vurdering = t.vurdering;
-  const bevis = vurdering === '' ? '' : `<div class="bevis"><span class="stjerner" aria-hidden="true">${stjerne.repeat(5)}</span><span>${skjerm(vurdering).replace(/^(\S+)/, '<b>$1</b>')}</span></div>`;
-  return `<section class="hero ramme">
-    <h1>${skjerm(t.h1)}</h1>
-    <p class="lead">${skjerm(t.ingress)}</p>
-    <div class="valg"><a class="knapp" href="/app" data-hent="helt">${skjerm(t.knapp)}</a></div>
-    ${bevis}
-    <div class="spiller importflyt">
+function bevisBlokk(t) {
+  return t.vurdering === '' ? '' : `<div class="bevis"><span class="stjerner" aria-hidden="true">${stjerne.repeat(5)}</span><span>${skjerm(t.vurdering).replace(/^(\S+)/, '<b>$1</b>')}</span></div>`;
+}
+
+function filmBlokk(t, oppsett) {
+  return `<div class="spiller importflyt">
       <ol class="steg" aria-label="${skjerm(t.stegAria)}">
         ${t.steg.map((steg, i) => `<li${i === 0 ? ' class="naa"' : ''}><button type="button" class="st" data-t="${t.stegtider[i]}"${i === 0 ? ' aria-current="step"' : ''}><b>${i === t.steg.length - 1 ? hake : i + 1}</b><span>${skjerm(steg)}</span></button></li>`).join('\n        ')}
       </ol>
       <div class="film" id="lagre"><video src="${oppsett.film}" width="628" height="1300" poster="${oppsett.plakat}" muted playsinline loop preload="metadata" aria-label="${skjerm(t.filmAria)}"></video></div>
-    </div>
+    </div>`;
+}
+
+/** Blokkene kampanjesidene (/hanna/) gjenbruker fra forsiden på samme språk, ordrett. */
+export function forsideBlokker(sprak) {
+  if (!Object.hasOwn(TEKST, sprak) || !Object.hasOwn(SPRAK, sprak)) throw new RangeError(`Mangler forside for språk: ${sprak}`);
+  const t = lesTekst(TEKST[sprak], sprak), oppsett = SPRAK[sprak];
+  return { bevis: bevisBlokk(t), film: filmBlokk(t, oppsett), kilder: kilder(t) };
+}
+
+function helt(t, oppsett) {
+  return `<section class="hero ramme">
+    <h1>${skjerm(t.h1)}</h1>
+    <p class="lead">${skjerm(t.ingress)}</p>
+    <div class="valg"><a class="knapp" href="/app" data-hent="helt">${skjerm(t.knapp)}</a></div>
+    ${bevisBlokk(t)}
+    ${filmBlokk(t, oppsett)}
     ${kilder(t)}
   </section>`;
 }
