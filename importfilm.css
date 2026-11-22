@@ -1,0 +1,44 @@
+/* GENERERT av scripts/hanna-innhold.mjs fra forside.css (importfilm:start til importfilm:slutt). Ikke rediger. */
+.spiller{display:flex;flex-direction:column;align-items:center}
+/* Importflyten: bare telefonen i filmen, stegene er tekst ved siden av */
+.importflyt{display:grid;grid-template-columns:minmax(0,330px) minmax(0,360px);align-items:center;justify-content:center;gap:0 72px}
+/* Filmen er klippet nøyaktig rundt telefonen. Hjørnene rundes her, så ingenting av filmens bakgrunn synes. */
+.film{grid-column:1;grid-row:1;width:100%;max-width:330px;aspect-ratio:628/1300;border-radius:13.4% / 6.47%;overflow:hidden;background:var(--blekk);box-shadow:0 44px 60px -34px rgb(var(--skygge) / .5),0 10px 22px -12px rgb(var(--skygge) / .28)}
+.film{position:relative}
+.film video{display:block;width:100%;height:100%;object-fit:cover;transform:scale(1.008)}
+.steg{grid-column:2;grid-row:1;list-style:none;margin:0;padding:0;text-align:left}
+.st{display:flex;align-items:center;gap:16px;width:100%;min-height:56px;padding:0;border:0;background:none;text-align:left;font-size:1.1875rem;line-height:1.3;color:var(--dempet);cursor:pointer;transition:color .3s}
+.st b{flex:none;display:grid;place-items:center;width:30px;height:30px;border:1.5px solid var(--linje);border-radius:50%;font:500 .8125rem/1 var(--mono);transition:background-color .3s,border-color .3s,color .3s}
+.naa .st{color:var(--blekk);font-weight:700}
+.naa .st b{background:var(--blekk);border-color:var(--blekk);color:var(--flate)}
+.bevis{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;margin-top:18px;font-size:.9375rem;color:var(--dempet)}
+.bevis b{color:var(--blekk);font-weight:700}
+.stjerner{display:inline-flex;gap:2px;color:var(--blekk)}
+.stjerner svg{display:block;width:15px;height:15px}
+.kilder{margin-top:72px}
+.kildetittel{margin:0;font-size:.9375rem;color:var(--dempet)}
+/* Samlebåndet: kildene glir fra høyre mot venstre i full bredde. Lista står fire ganger og flyttes én listebredde per runde, så båndet aldri tar slutt, heller ikke på svært brede skjermer. */
+.band{width:100vw;margin:22px 0 0 calc(50% - 50vw);padding-block:8px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,var(--svart) 14%,var(--svart) 86%,transparent);mask-image:linear-gradient(90deg,transparent,var(--svart) 14%,var(--svart) 86%,transparent)}
+.bane{display:flex;width:max-content;animation:band 54s linear infinite}
+.bane ul{display:flex;align-items:center;margin:0;padding:0;list-style:none}
+.bane li{display:flex;align-items:center;gap:16px;padding:0 46px;font-size:1.875rem;line-height:1.1;font-weight:700;letter-spacing:-.02em;white-space:nowrap}
+.bane svg{flex:none;display:block;width:42px;height:42px}
+@keyframes band{to{transform:translateX(-25%)}}
+@media (prefers-reduced-motion:reduce){
+  .band{width:auto;margin-left:0;-webkit-mask-image:none;mask-image:none}
+  .bane{width:auto;animation:none}
+  .bane ul{flex-wrap:wrap;justify-content:center;row-gap:20px}
+  .bane ul + ul{display:none}
+}
+@media (max-width:720px){
+  .importflyt{display:flex;flex-direction:column;align-items:center}
+  .film{width:min(82%,310px,calc(var(--ledig-hoyde) * 628 / 1300 / 1.008))}
+  .steg{order:-1;width:100%;min-height:60px;margin-bottom:6px}
+  .steg li{display:none}
+  .steg li.naa{display:block}
+  .st{justify-content:center;min-height:60px;cursor:default}
+  .kilder{margin-top:52px}
+  .bane li{gap:13px;padding:0 28px;font-size:1.625rem}
+  .bane svg{width:36px;height:36px}
+}
+@media (prefers-reduced-motion:reduce){.st,.st b{transition:none}.st{cursor:default}}

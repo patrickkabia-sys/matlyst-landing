@@ -1,4 +1,5 @@
 (() => {
+  // importfilm:start
   const bevegelse = matchMedia('(prefers-reduced-motion: reduce)');
   const rolig = bevegelse.matches;
   // Felles håndtering av bevegelsesendringer: hver del (kort, Spør Matlyst, film) melder inn hva den gjør når bevegelse slås av (rolig) og på (levende).
@@ -15,6 +16,7 @@
   bevegelse.addEventListener('change', avstemBevegelse);
   addEventListener('scroll', avstemBevegelse, { passive: true });
   document.addEventListener('visibilitychange', avstemBevegelse);
+  // importfilm:slutt
   // Aktiv: synlig høyde er minst 60 % av det minste av kortets høyde og skjermens høyde (da kan ingen demo bli stående inaktiv for alltid på lave skjermer).
   const TERSKLER = Array.from({ length: 21 }, (_, i) => i / 20);
   const aktivAndel = (rad) => rad.intersectionRect.height >= 0.6 * Math.min(rad.boundingClientRect.height, innerHeight) - 0.5;
@@ -66,6 +68,7 @@
     les();
   }
 
+  // importfilm:start
   // Film og samlebånd går i loop mens de er i bildet, uten brukerstyrt pause.
   // Ved redusert bevegelse fjernes videokilden, slik at plakaten vises.
   const video = document.querySelector('.film video');
@@ -129,6 +132,7 @@
   }
   bevegelseDeler.push({ rolig: settBevegelse, levende: settBevegelse });
   settBevegelse();
+  // importfilm:slutt
   // Kokeboka følger rullingen på PC. På mobil sveipes raden direkte.
   {
     const seksjon = document.querySelector('.kokebok');
