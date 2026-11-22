@@ -15,7 +15,7 @@ function finnHtml(dir) {
   });
 }
 
-const sider = ['sv', 'da', 'en'].flatMap((lang) => finnHtml(join(ROOT, lang)));
+const sider = ['sv', 'da', 'en'].flatMap((lang) => finnHtml(join(ROOT, lang))).filter((f) => !/\/hanna\/index\.html$/u.test(f)); // håndbygd noindex-kampanje, godkjent tekst
 const tekst = (html) => html
   .replace(/<script(?! type="application\/ld\+json")[\s\S]*?<\/script>/gu, ' ')
   .replace(/<[^>]+>/gu, ' ')

@@ -6,7 +6,7 @@ Dokumentet ligger i `docs/`, som ikke publiseres (se `exclude` i `_config.yml`),
 
 ## Totaler
 
-Sider i sitemap: **1446**. Sider utenfor sitemap (noindex og tjenestesider): 22.
+Sider i sitemap: **1446**. Sider utenfor sitemap (noindex og tjenestesider): 26.
 
 | Språk | Sider |
 |---|---:|
@@ -133,16 +133,20 @@ HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiser
 - /bekreft/
 - /christine/
 - /da/afmeld/
+- /da/hanna/
 - /da/tiktok-auth/
 - /da/tiktok/
 - /da/v/
+- /en/hanna/
 - /en/tiktok-auth/
 - /en/tiktok/
 - /en/unsubscribe/
 - /en/v/
 - /googleeaf5ec75e707227b.html
+- /hanna/
 - /pinterest-55ce57abd0b250c89348ecc452354dac.html
 - /sv/avregistrera/
+- /sv/hanna/
 - /sv/tiktok-auth/
 - /sv/tiktok/
 - /sv/v/

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="nb">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +7,32 @@
      funnet i søk. Den står heller ikke i sitemap.xml. -->
 <meta name="robots" content="noindex">
 <title>Matlyst med Hanna H. Food</title>
-<meta name="description" content="Brug koden HANNA14 og få 14 dage gratis Matlyst Pro. Matlyst samler dine opskrifter, laver madplanen og skriver indkøbslisten.">
+<meta name="description" content="Bruk koden HANNA14 og få 14 dager gratis Matlyst Pro. Matlyst samler oppskriftene dine, lager ukemenyen og skriver handlelista.">
 <link rel="canonical" href="https://matlyst-app.no/hanna/">
-<link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/hanna/">
-<link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/hanna/">
+<link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hanna/">
+<link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hanna/">
+<link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/hanna/">
+<link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/hanna/">
+<link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/hanna/">
+<script>
+// Hannas lenke er /hanna/. Telefonens språk velger versjonen: nb, sv, da, ellers engelsk.
+// ?sprak= (fra språkvelgeren) stopper omdirigeringen, så et manuelt valg står.
+(function () {
+  try {
+    if (/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent)) return;
+    if (new URLSearchParams(location.search).has('sprak')) return;
+    var m = { nb: '/hanna/', sv: '/sv/hanna/', da: '/da/hanna/', en: '/en/hanna/' };
+    var l = String(navigator.language || '').toLowerCase().split('-')[0];
+    if (l === 'no' || l === 'nn') l = 'nb';
+    var mal = m[l] || m.en;
+    var her = location.pathname.replace(/index\.html$/, '');
+    if (her !== mal) location.replace(mal + location.hash);
+  } catch (e) {}
+})();
+</script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="14 dage gratis Matlyst Pro med koden HANNA14">
-<meta property="og:description" content="Del en opskrift til Matlyst, så står den klar med ingredienser og fremgangsmåde.">
+<meta property="og:title" content="14 dager gratis Matlyst Pro med koden HANNA14">
+<meta property="og:description" content="Del en oppskrift til Matlyst, så står den klar med ingredienser og fremgangsmåte.">
 <meta property="og:image" content="https://matlyst-app.no/images/og-importer-oppskrifter.jpg">
 <!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- /skall:stil -->
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -53,17 +72,17 @@
 <script src="/language-switcher.js" defer></script>
 </head>
 <body data-sidetype="tjeneste" data-tjeneste="kampanje">
-<div class="language-switcher-standalone language-switcher-standalone-top"><a class="nav-brand" href="/">Mat<em>lyst</em></a><!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Sprog"><a href="/hanna/" lang="da" hreflang="da" aria-label="Dansk" aria-current="page">Dansk</a></span><!-- /språkvelger:topp --></div>
+<div class="language-switcher-standalone language-switcher-standalone-top"><a class="nav-brand" href="/">Mat<em>lyst</em></a><!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Språk"><a href="/hanna/" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">Norsk</a><a href="/sv/hanna/" lang="sv" hreflang="sv" aria-label="Svenska">Svenska</a><a href="/da/hanna/" lang="da" hreflang="da" aria-label="Dansk">Dansk</a><a href="/en/hanna/" lang="en" hreflang="en" aria-label="English">English</a></span><!-- /språkvelger:topp --></div>
 <main class="skaperside">
   <img class="appicon" src="/images/icon.png" width="62" height="62" alt="">
   <p class="k">Matlyst × Hanna H. Food</p>
-  <h1>Alle dine opskrifter, <em>samlet</em></h1>
-  <p class="lead">Del en opskrift fra Instagram, TikTok eller en hjemmeside til Matlyst, så står den klar med ingredienser og fremgangsmåde. Madplan og indkøbsliste klarer appen for dig.</p>
+  <h1>Alle oppskriftene dine, <em>samlet</em></h1>
+  <p class="lead">Del en oppskrift fra Instagram, TikTok eller en nettside til Matlyst, så står den klar med ingredienser og fremgangsmåte. Ukemeny og handleliste ordner appen for deg.</p>
 
   <div class="kode">
-    <span class="lbl">Din kode</span>
+    <span class="lbl">Koden din</span>
     <span class="verdi">HANNA14</span>
-    <span class="hva">14 dage gratis Matlyst Pro</span>
+    <span class="hva">14 dager gratis Matlyst Pro</span>
   </div>
 
   <div class="stores">
@@ -72,38 +91,39 @@
         <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.02-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.24 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.28-1.27 3.13-2.53.99-1.45 1.4-2.86 1.42-2.93-.03-.01-2.72-1.04-2.75-4.13zM14.6 4.5c.71-.87 1.19-2.07 1.06-3.27-1.02.04-2.26.68-3 1.54-.66.76-1.24 1.98-1.08 3.15 1.14.09 2.31-.58 3.02-1.42z"/></svg>
         <span class="name">iPhone og iPad</span>
       </span>
-      <span class="hint">Åbner App Store med koden udfyldt.</span>
+      <span class="hint">Åpner App Store med koden fylt inn.</span>
     </a>
-    <a class="store" id="btn-android" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;referrer=utm_source%3Dhanna%26utm_medium%3Dcreator" target="_blank" rel="noopener">
+    <a class="store" id="btn-android" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;referrer=utm_source%3Dhanna%26utm_content%3Dnb%26utm_medium%3Dcreator" target="_blank" rel="noopener">
       <span class="row">
         <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1zM17.2 15.1l-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2zM16.9 15.4 13.5 12l-9.9 9.9c.4.4 1 .4 1.7.1l11.6-6.6zM16.9 8.6 5.3 2c-.7-.4-1.3-.3-1.7.1L13.5 12l3.4-3.4z"/></svg>
         <span class="name">Android</span>
       </span>
-      <span class="hint">Hent appen, og skriv koden i appen.</span>
+      <span class="hint">Last ned appen, og skriv koden i appen.</span>
     </a>
   </div>
 
   <section class="slik">
-    <h2>Sådan bruger du koden</h2>
+    <h2>Slik bruker du koden</h2>
     <h3>iPhone og iPad</h3>
-    <p>Tryk på knappen ovenfor. App Store åbner med koden HANNA14 udfyldt, og når du har indløst den, henter du appen. Har du allerede Matlyst, kan du også skrive koden i appen under «Har du en kode?».</p>
+    <p>Trykk på knappen over. App Store åpner med koden HANNA14 fylt inn, og når du har løst den inn, laster du ned appen. Har du allerede Matlyst, kan du også skrive koden i appen under «Har du en kode?».</p>
     <h3>Android</h3>
-    <p>Hent Matlyst i Google Play, og åbn appen. Gå til siden med Pro, tryk på «Har du en kode?», og skriv HANNA14. Du sendes videre til Play Butik, hvor koden bliver indløst.</p>
-    <h3>Hvad sker der efter de 14 dage?</h3>
-    <p>Koden giver 14 dages gratis prøveperiode på årsabonnementet. Opsiger du ikke inden, fortsætter abonnementet til den almindelige pris. Du kan opsige når som helst i App Store eller Google Play.</p>
+    <p>Last ned Matlyst fra Google Play, og åpne appen. Gå til siden med Pro, trykk på «Har du en kode?», og skriv HANNA14. Du sendes videre til Play Butikk, der koden løses inn.</p>
+    <h3>Hva skjer etter de 14 dagene?</h3>
+    <p>Koden gir 14 dagers gratis prøveperiode på årsabonnementet. Sier du ikke opp før den er over, fortsetter abonnementet til vanlig pris. Du kan si opp når som helst i App Store eller Google Play.</p>
   </section>
 
-  <p class="smaa">Koden gælder i Danmark, Norge og Sverige, hvis du ikke allerede har Matlyst Pro. Uden abonnement kan du stadig bruge appen gratis med fem importer om måneden.</p>
+  <p class="smaa">Koden gjelder i Norge, Sverige og Danmark hvis du ikke allerede har Matlyst Pro. Uten abonnement kan du fortsatt bruke appen gratis med fem importer i måneden.</p>
 
-  <p class="foot">Matlyst laves i Norge. <a href="/da/vilkaar/">Vilkår</a> og <a href="/da/privatliv/">privatliv</a>.</p>
+  <p class="foot">Matlyst lages i Norge. <a href="/vilkar.html">Vilkår</a> og <a href="/personvern.html">personvern</a>.</p>
 </main>
 
 <!-- Samtykke-banner -->
 <div class="cookie" id="cookie" hidden>
-  <p>Vi bruger nødvendig lagring, for at siden virker. Siger du ja, bruger vi også analyse (PostHog og Google Analytics) til at forbedre Matlyst. Læs mere i vores <a href="/da/privatliv/">privatlivspolitik</a>.</p>
+  <h3>Vi bruker informasjonskapsler</h3>
+  <p>Vi måler hva som fungerer, slik at vi kan forbedre Matlyst. Du bestemmer. Les mer i <a href="/personvern.html">personvernerklæringen</a>.</p>
   <div class="cookie-actions">
-    <button class="ck-btn ck-accept" id="ck-accept" type="button">Acceptér</button>
-    <button class="ck-btn ck-reject" id="ck-reject" type="button">Kun nødvendige</button>
+    <button class="ck-btn ck-accept" id="ck-accept" type="button">Godta</button>
+    <button class="ck-btn ck-reject" id="ck-reject" type="button">Bare nødvendige</button>
   </div>
 </div>
 
@@ -112,7 +132,7 @@
 <script src="/site.js"></script>
 <script>
 (function () {
-  var KILDE = 'hanna';
+  var KILDE = 'hanna'; var SPRAK = 'nb';
 
   // Personvern: spor KUN ved samtykke, samme 'matlyst-consent'-flagg som resten
   // av nettstedet. Samtykket leses på nytt ved hvert kall, ikke låst ved page
@@ -126,25 +146,25 @@
   }
 
   document.getElementById('btn-ios').addEventListener('click', function () {
-    cap('creator_store_click', { kilde: KILDE, store: 'app_store' });
+    cap('creator_store_click', { kilde: KILDE, sprak: SPRAK, store: 'app_store' });
   });
   document.getElementById('btn-android').addEventListener('click', function () {
-    cap('creator_store_click', { kilde: KILDE, store: 'play' });
+    cap('creator_store_click', { kilde: KILDE, sprak: SPRAK, store: 'play' });
   });
 
   // Besøket telles så snart det er lov. Alle som kommer fra en story er
   // førstegangsbesøkende med banner, så uten den andre grenen mister vi hele
   // trafikken.
   if (hasConsent()) {
-    cap('creator_link_click', { kilde: KILDE });
+    cap('creator_link_click', { kilde: KILDE, sprak: SPRAK });
   } else {
     var accept = document.getElementById('ck-accept');
     if (accept) {
-      accept.addEventListener('click', function () { cap('creator_link_click', { kilde: KILDE }); });
+      accept.addEventListener('click', function () { cap('creator_link_click', { kilde: KILDE, sprak: SPRAK }); });
     }
   }
 })();
 </script>
-<div class="language-switcher-standalone language-switcher-standalone-bottom"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Sprog"><a href="/hanna/" lang="da" hreflang="da" aria-label="Dansk" aria-current="page">Dansk</a></span><!-- /språkvelger:bunn --></div>
+<div class="language-switcher-standalone language-switcher-standalone-bottom"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Språk"><a href="/hanna/" lang="nb" hreflang="nb" aria-label="Norsk" aria-current="page">Norsk</a><a href="/sv/hanna/" lang="sv" hreflang="sv" aria-label="Svenska">Svenska</a><a href="/da/hanna/" lang="da" hreflang="da" aria-label="Dansk">Dansk</a><a href="/en/hanna/" lang="en" hreflang="en" aria-label="English">English</a></span><!-- /språkvelger:bunn --></div>
 </body>
 </html>

@@ -177,7 +177,7 @@ export function rendre(html, sti, utrullet = UTRULLET) {
   if (n === 'tjeneste:vervekort' || n === 'tjeneste:verifisering') return html;
   const gruppe = gruppeForSti(normaliserSti(sti));
   if (n.startsWith('tjeneste:')) {
-    const sprak = /^\/(sv|da|en)\//u.exec(normaliserSti(sti))?.[1] ?? 'nb';
+    const sprak = /^\/(sv|da|en)\//u.exec(normaliserSti(sti))?.[1] ?? Object.entries(gruppe?.sider ?? {}).find(([, href]) => normaliserSti(href) === normaliserSti(sti))?.[0] ?? 'nb';
     let ut = bodyAttributter(stilHode(html, true), 'tjeneste', tjenestefamilie(sti));
     if (gruppe) for (const plass of ['topp', 'bunn']) {
       ut = ut.replace(new RegExp(`<!-- språkvelger:${plass} -->[\\s\\S]*?<!-- /språkvelger:${plass} -->`, 'gu'), () => sprakvelger(sprak, plass, gruppe.sider));
