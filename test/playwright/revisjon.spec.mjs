@@ -102,6 +102,9 @@ test('forhåndsvisning uten kart.json eller med tom kart.json feiler tydelig', (
   }
 });
 
+// /hanna/-sidene sender etter navigator.language; ?sprak= stopper videresendingen (som språkvelgeren), så hver språkversjon revideres selv.
+const adresse = (side) => (/\/hanna\/$/u.test(side.url) ? `${side.url}?sprak=revisjon` : side.url);
+
 for (const side of rader) {
   const navn = `${side.type} ${side.url}`;
 
@@ -111,7 +114,7 @@ for (const side of rader) {
     const feil = samleFeil(page, new URL(baseURL).origin);
     for (const bredde of BREDDER) {
       await page.setViewportSize({ width: bredde, height: 900 });
-      await page.goto(side.url);
+      await page.goto(adresse(side));
       expect(new URL(page.url()).pathname, `sluttadresse på ${bredde}`).toBe(side.url);
       const r = await reviderSiden(page, side);
       expect(r, `funn på ${bredde} px`).toEqual({ sidelengs: 0, utenforBoks: [], overlapp: [], iframer: [] });
@@ -125,7 +128,7 @@ for (const side of rader) {
     // Både mobil og PC: titler med vw i clamp() skalerer bare på mobil, så 1280 px må måles også.
     for (const bredde of [390, 1280]) {
       await page.setViewportSize({ width: bredde, height: 900 });
-      await page.goto(side.url);
+      await page.goto(adresse(side));
       const utenSkall = side.fulltSkall === false ? TJENESTE_TEKST : TEKST_OG_SKALL;
       const faktorer = await skalering(page, utenSkall);
       expect(faktorer.length, `ingen tekst å måle på ${bredde} px`).toBeGreaterThan(0);
@@ -139,7 +142,7 @@ for (const side of rader) {
     test.skip(side.fulltSkall === false, 'tjenestesidene har ingen telefonmockuper');
     for (const [bredde, hoyde] of [[390, 664], [360, 640]]) {
       await page.setViewportSize({ width: bredde, height: hoyde });
-      await page.goto(side.url);
+      await page.goto(adresse(side));
       expect(await forHoyePaaMobil(page), `for høye elementer på ${bredde} x ${hoyde}`).toEqual([]);
       // Forsidens fliser (alle fem rutene og begge Spør Matlyst-flisene), i alle varianter.
       if (side.type === 'forside') expect(await forHoyeFliserPaaMobil(page), `for høye fliser på ${bredde} x ${hoyde}`).toEqual([]);
@@ -165,7 +168,7 @@ for (const side of rader) {
       const context = await browser.newContext({ baseURL, javaScriptEnabled: false });
       try {
         const page = await context.newPage();
-        await page.goto(side.url);
+        await page.goto(adresse(side));
         const hent = await page.$$eval('[data-hent]', (a) => a.map((e) => ({ verdi: e.getAttribute('data-hent'), href: e.getAttribute('href') })));
         expect(hent.length).toBeGreaterThan(0);
         for (const h of hent) expect(h.href, `data-hent=${h.verdi}`).toBe('/app');
@@ -184,7 +187,7 @@ for (const side of rader) {
     test(`skjermbilder: ${navn}`, async ({ page }) => {
       for (const bredde of [390, 1280]) {
         await page.setViewportSize({ width: bredde, height: 900 });
-        await page.goto(side.url);
+        await page.goto(adresse(side));
         mkdirSync(`qa/skjermbilder/${side.type}`, { recursive: true });
         await page.screenshot({ path: `qa/skjermbilder/${side.type}/${side.sprak}-${bredde}.png`, fullPage: true });
       }
