@@ -1,0 +1,395 @@
+{
+  "familie": "rester",
+  "marked": "sv",
+  "kilder": {
+    "skforvara": {
+      "navn": "Förvara kött",
+      "utgiver": "Svenskt Kött",
+      "aar": 2023,
+      "adresse": "https://svensktkott.se/om-kott/kopa-laga-och-forvara/forvara-kott/",
+      "hentet": "2026-11-22"
+    },
+    "kottfars": {
+      "navn": "Svinnkoll: Köttfärs",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/kottfars/",
+      "hentet": "2026-11-22"
+    },
+    "matlada": {
+      "navn": "Svinnkoll: Matlåda",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/matlada/",
+      "hentet": "2026-11-22"
+    },
+    "kylvaror": {
+      "navn": "Förvaring av kylvaror",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/forvaring-av-kyld-mat/",
+      "hentet": "2026-11-22"
+    },
+    "avsvalning": {
+      "navn": "Avsvalning av mat",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/avsvalning/",
+      "hentet": "2026-11-22"
+    },
+    "forvara": {
+      "navn": "Förvara maten rätt",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/tips/forvara-maten-ratt/",
+      "hentet": "2026-11-22"
+    },
+    "agg": {
+      "navn": "Svinnkoll: Ägg",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/agg/",
+      "hentet": "2026-11-22"
+    },
+    "fruktgront": {
+      "navn": "Förvara frukt och grönt rätt",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/tips/forvara-frukt-och-gront-ratt/",
+      "hentet": "2026-11-22"
+    },
+    "bacillus": {
+      "navn": "Bacillus cereus",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/bakterier-virus-parasiter-och-mogelsvampar1/bakterier/bacillus-cereus/",
+      "hentet": "2026-11-22"
+    },
+    "frysa": {
+      "navn": "Frysa mat",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2025,
+      "adresse": "https://www.livsmedelsverket.se/livsmedel-och-innehall/tillagning-forvaring-hallbarhet/frysa-mat/",
+      "hentet": "2026-11-22"
+    },
+    "brod": {
+      "navn": "Svinnkoll: Bröd (mjukt)",
+      "utgiver": "Livsmedelsverket",
+      "aar": 2026,
+      "adresse": "https://www.livsmedelsverket.se/matvanor-halsa--miljo/matsvinn/svinnkoll/brod-mjukt/",
+      "hentet": "2026-11-22"
+    }
+  },
+  "rader": [
+    {
+      "id": "kjottdeig",
+      "slug": "med-kottfars",
+      "navn": "köttfärs",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "skforvara",
+          "merknad": "Bra kylskåpstemperatur är +4 grader."
+        },
+        "fars": {
+          "verdi": 70,
+          "enhet": "°C",
+          "kilde": "kottfars",
+          "merknad": "För att vara säker ska köttfärs ha nått 70 graders innertemperatur"
+        }
+      },
+      "tekst": {
+        "sista": "skforvara|Butikspackad köttfärs ska användas senast på den sista förbrukningsdag som står stämplad på förpackningen, annars bör den frysas in.",
+        "kanslig": "skforvara|Köttfärs är en extra känslig råvara.",
+        "par": "kottfars|Köp bara det du tänker laga inom ett par dagar, och frysa in direkt om planerna ändras.",
+        "vakuum": "skforvara|Om färsen är förpackad i vakuum eller med modifierad atmosfär i tät förpackning har den längre hållbarhet förutsatt att förpackningen är hel.",
+        "bra": "kottfars|Köttfärs går bra att frysa. Packa i lufttät förpackning så att det inte torkar ut, och märk med datum.",
+        "harskna": "kottfars|ju fetare färsen är, desto kortare hållbarhet",
+        "genomstek": "kottfars|Det räcker inte att titta på färgen för att veta om köttfärs är genomstekt."
+      }
+    },
+    {
+      "id": "kylling",
+      "slug": "med-kyckling",
+      "navn": "kyckling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        }
+      },
+      "tekst": {
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut.",
+        "kallt": "avsvalning|Tillagad varm mat behöver svalna innan den ställs in i kylskåpet. Det beror på att den varma maten annars höjer temperaturen i hela kylen.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "med-agg",
+      "navn": "ägg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "kjol": {
+          "verdi": 4,
+          "enhet": "°C",
+          "kilde": "forvara",
+          "merknad": "Förvara råa ägg i kylskåpet, cirka 4 °C."
+        }
+      },
+      "tekst": {
+        "veckor": "forvara|Förvara råa ägg i kylskåpet, cirka 4 °C. Då kan de hålla flera veckor efter att bäst före-datumet har passerat.",
+        "sinnen": "forvara|Så länge ägg luktar och ser ut som de ska, går de bra att äta.",
+        "vitor": "forvara|Äggvitor, och även gulor, som blir över vid bak eller matlagning kan också frysas in.",
+        "skal": "agg|Frys aldrig ägg med skal på"
+      }
+    },
+    {
+      "id": "poteter",
+      "slug": "med-potatis",
+      "navn": "potatis",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "svalt-min": {
+          "verdi": 12,
+          "enhet": "°C",
+          "kilde": "fruktgront",
+          "merknad": "Med svalt menas cirka 12-15°C."
+        },
+        "svalt-maks": {
+          "verdi": 15,
+          "enhet": "°C",
+          "kilde": "fruktgront",
+          "merknad": "Med svalt menas cirka 12-15°C."
+        }
+      },
+      "tekst": {
+        "potatis": "fruktgront|Potatis är lite speciell. Den ska förvaras mörk och svalt, 12-15°C.",
+        "solanin": "forvara|Eftersom det giftiga ämnet solanin kan bildas om potatisen utsätts för ljus eller skadas bör den förvaras mörkt, hanteras varsamt och skyddas mot stötar."
+      }
+    },
+    {
+      "id": "kokte-poteter",
+      "slug": "med-kokt-potatis",
+      "navn": "kokt potatis",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        },
+        "halv": {
+          "verdi": 0.5,
+          "enhet": "liter",
+          "kilde": "avsvalning",
+          "merknad": "Mat i volymer mindre än en halvliter kan du ställa in direkt i kylen även om den fortfarande är lite varm."
+        }
+      },
+      "tekst": {
+        "kallt": "avsvalning|Tillagad varm mat behöver svalna innan den ställs in i kylskåpet. Det beror på att den varma maten annars höjer temperaturen i hela kylen.",
+        "vatten": "avsvalning|Mat i volymer större än en halvliter kan svalna i ett kallt vattenbad.",
+        "starkelse": "bacillus|Livsmedel som kopplats samman med kräk-varianten är stärkelserika rätter som innehåller ris-, pasta, potatis och nudlar.",
+        "behallare": "avsvalning|Mindre behållare: Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "ris",
+      "slug": "med-ris",
+      "navn": "ris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "kylvaror",
+          "merknad": "I kylskåp håller tillagad mat ofta flera dagar, ibland upp till ungefär en vecka."
+        },
+        "halv": {
+          "verdi": 0.5,
+          "enhet": "liter",
+          "kilde": "avsvalning",
+          "merknad": "Men om du har mer än en halvliter varm mat som du inte ska äta direkt bör den först svalna så fort som möjligt."
+        }
+      },
+      "tekst": {
+        "starkelse": "bacillus|Livsmedel som kopplats samman med kräk-varianten är stärkelserika rätter som innehåller ris-, pasta, potatis och nudlar.",
+        "kyl": "bacillus|Det bästa sättet att minska risken att bli sjuk av Bacillus cereus är att förhindra att dess sporer gror ut till växande bakterieceller i livsmedel. Detta gör du genom att snabbt kyla ner eller frysa in matrester eller tillagad mat som du inte ska äta direkt.",
+        "vattenbad": "bacillus|Kallt vattenbad: Mat i volymer större än en halvliter kan svalna i ett kallt vattenbad."
+      }
+    },
+    {
+      "id": "pasta",
+      "slug": "med-pasta",
+      "navn": "pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "kylvaror",
+          "merknad": "I kylskåp håller tillagad mat ofta flera dagar, ibland upp till ungefär en vecka."
+        }
+      },
+      "tekst": {
+        "behallare": "avsvalning|Mindre behållare: Dela upp större volymer mat i mindre behållare så att den svalnar snabbt i rumstemperatur.",
+        "flera": "kylvaror|I kylskåp håller tillagad mat ofta flera dagar, ibland upp till ungefär en vecka.",
+        "sinnen": "kylvaror|Om du låter maten svalna snabbt efter tillagning och sedan förvarar den i kylskåp i tillsluten förpackning kan du äta maten så länge den luktar och smakar som den ska, samt ser ok ut."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "med-lax",
+      "navn": "lax",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        },
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        }
+      },
+      "tekst": {
+        "fett": "frysa|Kött och fisk med hög fetthalt, som fläskkött och lax, har generellt kortare hållbarhet jämfört med kött och fisk med låg fetthalt, som kyckling, viltkött och torsk.",
+        "harskna": "frysa|Det beror på att fett härsknar och försämrar då smak och lukt.",
+        "luft": "frysa|Förpacka maten i frysen så att den inte kommer i kontakt med luft, till exempel i plastpåsar som du pressar ut luften ur."
+      }
+    },
+    {
+      "id": "kokt-skinke",
+      "slug": "med-julskinka",
+      "navn": "julskinka",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "vecka": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "matlada",
+          "merknad": "Rätt förvarad, vid en kylskåpstemperatur på 4 grader, håller tillagad mat upp till en vecka i kylskåpet."
+        }
+      },
+      "tekst": {
+        "regel": "kylvaror|Låt inte kylvaror stå framme längre än fyra timmar om det är högst 20 °C tre timmar om det är högst 25 °C två timmar om det är 26 - 30 °C.",
+        "helg": "forvara|Smörgåspålägg, som skinka, kalkon, korv och leverpastej, håller betydligt längre om de slipper stå flera timmar i rumstemperatur under långa helgfrukostar.",
+        "frys": "matlada|Frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "floete",
+      "slug": "med-gradde",
+      "navn": "grädde",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "fryser": {
+          "verdi": -18,
+          "enhet": "°C",
+          "kilde": "frysa",
+          "merknad": "En lagom temperatur i frysen är -18 °C."
+        }
+      },
+      "tekst": {
+        "gradde": "forvara|Fryst grädde kan vara svår att vispa efter att den har varit fryst, men den går utmärkt att använda i matlagning.",
+        "mjolk": "forvara|Mjölk, grädde och matfetter kan också frysas in om de inte går åt i tid.",
+        "lukta": "forvara|Och lukta och smaka alltid på mjölk och andra mejeriprodukter innan du slänger dem"
+      }
+    },
+    {
+      "id": "gulrotter",
+      "slug": "med-morotter",
+      "navn": "morötter",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "ar": {
+          "verdi": 1,
+          "enhet": "år",
+          "kilde": "forvara",
+          "merknad": "I frysen håller bär, frukter och grönsaker ett år eller mer."
+        }
+      },
+      "tekst": {
+        "sallad": "forvara|Sallad, morötter och andra rotfrukter som tappat spänsten blir pigga och krispiga om de får ligga i en skål med vatten i kylskåpet några timmar.",
+        "kylen": "fruktgront|De flesta grönsaker och frukter trivs bäst i kylskåpet.",
+        "forvall": "forvara|Grönsaker går också bra att frysa om man först förväller dem, det vill säga kokar upp vatten, låter grönsakerna koka med en kort stund och sedan spolar dem i kallt vatten innan de fryses in."
+      }
+    },
+    {
+      "id": "brod",
+      "slug": "med-brod",
+      "navn": "bröd",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "mogel": {
+          "verdi": 1,
+          "enhet": "veckor",
+          "kilde": "brod",
+          "merknad": "Generellt möglar bröd ofta efter ungefär en vecka, men vissa håller längre."
+        }
+      },
+      "tekst": {
+        "rum": "brod|Bröd mår bäst av att förvaras i rumstemperatur, inte i kylskåp.",
+        "kylen": "brod|I kylen blir mjukt bröd snabbt smuligt och torrt.",
+        "surdeg": "brod|Surdegsbröd håller längre än annat bröd.",
+        "frys": "brod|Bröd går bra att frysa. Skiva gärna brödet innan det läggs i frysen, så går det lätt att ta ut lagom mycket vid behov.",
+        "delaupp": "brod|Dela upp brödet i mindre förpackningar och frys in det du inte hinner äta."
+      }
+    },
+    {
+      "id": "bananer",
+      "slug": "med-bananer",
+      "navn": "bananer",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "ar": {
+          "verdi": 1,
+          "enhet": "år",
+          "kilde": "forvara",
+          "merknad": "I frysen håller bär, frukter och grönsaker ett år eller mer."
+        }
+      },
+      "tekst": {
+        "delas": "forvara|Frukt och bär kan frysas in, men frukt måste först delas i mindre bitar.",
+        "farlig": "forvara|Eftersom bakterier inte kan växa i frysen blir gammal mat inte farlig, däremot kan den torka ut och så småningom tappa i smak och konsistens."
+      }
+    }
+  ]
+}

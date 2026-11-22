@@ -34,6 +34,7 @@ const ETIKETT = {
 // med `varer` (id-ene fra «Enkeltgrupper ...») gjelder det bare de enkeltvarene i familien. `grunn` er kort og skal kunne etterprøves.
 export const VILLEDE_HULL = [
   { gruppe: 'hoytider', sprak: ['nb', 'sv', 'da'], grunn: 'Amerikanske høytider (Thanksgiving, Hanukkah, Friendsgiving, USA-nyttår): sidene er skrevet for USA og følger amerikanske kilder.' },
+  { gruppe: 'julebord', sprak: ['en'], grunn: 'Julebord (firmajulebord og julebuffet) er en nordisk tradisjon. Dekkes av /en/holidays/christmas-dinner/, en amerikansk side med amerikanske kilder og ikke samme side.' },
   { gruppe: 'juleaften', sprak: ['nb', 'sv', 'en'], grunn: 'Dansk tradisjon (and og flæskesteg på juleaften) med danske kilder.' },
   { gruppe: 'julemiddag', sprak: ['sv', 'da', 'en'], grunn: 'Norsk julemiddag (ribbe og pinnekjøtt) dekkes av /sv/julbord/, /da/juleaften/ og de engelske høytidssidene, uten å være samme side.' },
   { gruppe: 'nyttarsmiddag', sprak: ['da'], grunn: 'Ingen danske kilder med mengder og tider er funnet.' },

@@ -54,17 +54,19 @@ test('hver adresse har gruppe, og radene har rot per språk, antall og siste end
 const hull = (tekst) => tekst.split('\n## Hull')[1].split('\n## Villet, ikke hull')[0];
 const villet = (tekst) => tekst.split('\n## Villet, ikke hull')[1].split('\n## Utenfor sitemap')[0];
 
-test('villede hull står i egen del og er tatt ut av «Hull»; ekte hull står igjen', () => {
+test('villede hull står i egen del og er tatt ut av «Hull»; ingen hull står igjen på gruppenivå', () => {
   assert.ok(VILLEDE_HULL.length >= 5);
   const v = villet(doc);
   const h = hull(doc);
-  for (const [gruppe, sprak] of [['hoytider', 'nb, sv, da'], ['juleaften', 'nb, sv, en'], ['julemiddag', 'sv, da, en'], ['nyttarsmiddag', 'da'], ['nyttarsmiddag', 'en']]) {
+  for (const [gruppe, sprak] of [['hoytider', 'nb, sv, da'], ['juleaften', 'nb, sv, en'], ['julemiddag', 'sv, da, en'], ['nyttarsmiddag', 'da'], ['nyttarsmiddag', 'en'], ['julebord', 'en']]) {
     assert.match(v, new RegExp(`^\\| ${gruppe} \\| ${sprak} \\| hele gruppa \\| \\S`, 'mu'), `${gruppe} ${sprak} mangler i Villet`);
     assert.doesNotMatch(h, new RegExp(`^\\| ${gruppe} \\|`, 'mu'), `${gruppe} står fortsatt i Hull`);
   }
-  // Et ekte hull blir stående: julebord finnes ikke på engelsk, og det er ikke erklært villet.
-  assert.match(h, /^\| julebord \| nb, sv, da \| en \|/mu);
-  assert.doesNotMatch(v, /^\| julebord \|/mu);
+  // Julebord på engelsk er villet (dekkes av /en/holidays/christmas-dinner/), og begge hullene til rester er lukket: samlesidene på sv, da og en
+  // er nå familiens samlesider, så hverken «familie:rester» eller «oppskrifter-fra-ingredienser» står i Hull.
+  assert.match(v, /^\| julebord \| en \| hele gruppa \| \S/mu);
+  assert.doesNotMatch(h.split('### Enkeltgrupper')[0], /^\| (?:julebord|familie:rester|oppskrifter-fra-ingredienser) \|/mu);
+  assert.match(h, /### Familier og grupper som mangler på et språk\n\nIngen\./u);
 });
 
 test('hver villet post er levende: gruppa finnes som rad, og hvert språk mangler faktisk', () => {
