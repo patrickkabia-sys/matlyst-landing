@@ -136,8 +136,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/bytt-fra-paprika/": {
-  "hash": "512f7be4bd6b0f8d",
-  "dato": "2026-11-20"
+  "hash": "62bfdeb07bacdfa7",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/": {
   "hash": "fdb1a24ce1a0a5cf",
@@ -531,6 +531,10 @@
   "hash": "59e711ac18d8d22e",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/da/mealime-alternativ/": {
+  "hash": "9803478fca61f119",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/da/middagsforslag/": {
   "hash": "bca1b038601c8915",
   "dato": "2026-11-21"
@@ -539,9 +543,69 @@
   "hash": "91093dd492ca2079",
   "dato": "2026-11-21"
  },
- "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/": {
-  "hash": "118e84c89bb37de2",
+ "https://matlyst-app.no/da/om/": {
+  "hash": "45117c7785794b35",
   "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/": {
+  "hash": "51ddb460c947fd45",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-aeg/": {
+  "hash": "07e3c9ec2ebeca4f",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-and/": {
+  "hash": "863f4fab80412317",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-bananer/": {
+  "hash": "9de8168a0302d0d5",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-flaeskesteg/": {
+  "hash": "ba8b1712b2a023ca",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-floede/": {
+  "hash": "c1e005cd10c8bb48",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-gulerodder/": {
+  "hash": "c805ee9dc2b8f209",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-hakket-oksekoed/": {
+  "hash": "d34fc7f9ae7afa2f",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-kartofler/": {
+  "hash": "e6072ee1604f1a91",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-kogte-kartofler/": {
+  "hash": "b2e4187b0f0faf90",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-kylling/": {
+  "hash": "3b3be47cd01ae069",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-laks/": {
+  "hash": "793bfd0f96504a7a",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-pasta/": {
+  "hash": "ed72baa894bbd9b5",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-ris/": {
+  "hash": "3ccd44ed203d21fc",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-rugbroed/": {
+  "hash": "f4f31406abaecbb6",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/da/opskrifts-app/": {
   "hash": "e8eaf013b7dec9b8",
@@ -556,8 +620,8 @@
   "dato": "2026-11-16"
  },
  "https://matlyst-app.no/da/skift-fra-paprika/": {
-  "hash": "66a55c1223a53337",
-  "dato": "2026-11-20"
+  "hash": "5e0550a283e24a88",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/slet-konto/": {
   "hash": "d1cf198c74f67cf1",
@@ -1451,6 +1515,10 @@
   "hash": "1a3d0e5646ed7215",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/en/about/": {
+  "hash": "ac67b3ae4562af4f",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/en/air-fryer/": {
   "hash": "ab5d8d8bd2d476a5",
   "dato": "2026-11-21"
@@ -1744,8 +1812,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/empty-the-fridge/": {
-  "hash": "2e4f5331affa16d2",
-  "dato": "2026-11-19"
+  "hash": "627002db27504944",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/en/find-recipes/": {
   "hash": "92daed6ff2d88559",
@@ -2032,12 +2100,12 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/mealime-alternative/": {
-  "hash": "510280ce3a0bb5aa",
+  "hash": "65fa2629af944754",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/pantry-app/": {
-  "hash": "c33b9ce50e623c75",
-  "dato": "2026-11-21"
+  "hash": "a61c37dd62c05fc4",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/en/privacy/": {
   "hash": "ba83a2f114f5a6e1",
@@ -2052,16 +2120,64 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/en/recipes-by-ingredients/": {
-  "hash": "36c2ce03f2d17fec",
-  "dato": "2026-11-19"
+  "hash": "da179906a1d90d35",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-carrots/": {
+  "hash": "9dafa5141ef8f02e",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-chicken/": {
+  "hash": "cdda58e8ece37846",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-eggs/": {
+  "hash": "47bf47e8fd73a18e",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-ground-beef/": {
+  "hash": "b0857dc4802bb1f0",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-heavy-cream/": {
+  "hash": "4cad08cd88aa791f",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-ham/": {
+  "hash": "6fcf754da3c47e9e",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-pasta/": {
+  "hash": "50ddfd3727208f08",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-potatoes/": {
+  "hash": "18abf844a0974d8c",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-rice/": {
+  "hash": "2909428534cbb906",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-turkey/": {
+  "hash": "7d3fc8e574ac9e2d",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-rotisserie-chicken/": {
+  "hash": "c93dd4a3c9487663",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/en/recipes-by-ingredients/with-salmon/": {
+  "hash": "279de67b1de8cb57",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/en/shopping-list/": {
   "hash": "7eed98383e00513e",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/substitutes/": {
-  "hash": "f1df20f1b594e203",
-  "dato": "2026-11-21"
+  "hash": "2675c18af76bf33b",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/en/substitutes/baking-powder/": {
   "hash": "ee5da888707d245d",
@@ -3076,64 +3192,64 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-bananer/": {
-  "hash": "f6fdd5c3064e391a",
-  "dato": "2026-11-21"
+  "hash": "68a6ca1d01dc674f",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-brod/": {
-  "hash": "e20aa82d45d722b9",
-  "dato": "2026-11-21"
+  "hash": "7d5bd45316c73e1a",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-egg/": {
-  "hash": "50ffb5a138236cbd",
-  "dato": "2026-11-21"
+  "hash": "606e5963bc7bc52a",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-epler/": {
   "hash": "df67fe09254dea09",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-floete/": {
-  "hash": "37871fd8f294555b",
-  "dato": "2026-11-21"
+  "hash": "4ae633ddb22e4507",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-gulrotter/": {
-  "hash": "f3eb4da52c952f4e",
-  "dato": "2026-11-21"
+  "hash": "75d4733c7e99b8ea",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-kjottdeig/": {
-  "hash": "1141f492c5a22a00",
-  "dato": "2026-11-21"
+  "hash": "4a6d76b069e5a4bc",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-kokt-skinke/": {
-  "hash": "a6e307eb11ba5713",
-  "dato": "2026-11-21"
+  "hash": "9b48c8842c5f81ea",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-kokte-poteter/": {
-  "hash": "b0be21d0f77b0133",
-  "dato": "2026-11-21"
+  "hash": "73c50f6ff3ab3ed8",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-kylling/": {
-  "hash": "5756c0196d580147",
-  "dato": "2026-11-21"
+  "hash": "82a93c21d940a1ca",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-laks/": {
-  "hash": "46b02d1392029ea3",
-  "dato": "2026-11-21"
+  "hash": "fc21d9f4e1ea3fdf",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-pasta/": {
-  "hash": "2a41fa15cc4747e1",
-  "dato": "2026-11-21"
+  "hash": "776accaaa5e291eb",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-poteter/": {
-  "hash": "9a17a3052d915ead",
-  "dato": "2026-11-21"
+  "hash": "9020ec1eedb1f8f1",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-ribbe-og-pinnekjott/": {
   "hash": "2ae86b8600c38908",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/hva-kan-jeg-lage/med-ris/": {
-  "hash": "13fea3328ca70d19",
-  "dato": "2026-11-21"
+  "hash": "e6fcec07521f48fe",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/importer-fra-alletiders-kokebok/": {
   "hash": "a946eb7a1dc47478",
@@ -3234,6 +3350,10 @@
  "https://matlyst-app.no/lagre-oppskrifter-fra-tiktok/": {
   "hash": "3675c191a44d14e6",
   "dato": "2026-11-20"
+ },
+ "https://matlyst-app.no/mealime-alternativ/": {
+  "hash": "43dc71aa69cf2b56",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/mengde-per-person/": {
   "hash": "4d99caa121ce3179",
@@ -3340,8 +3460,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/om/": {
-  "hash": "b4a38ed63f2543c5",
-  "dato": "2026-11-20"
+  "hash": "8335bc254a47d334",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/oppskriftsbok-app/": {
   "hash": "01ffd8a77f3587b8",
@@ -3540,8 +3660,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/byt-fran-paprika/": {
-  "hash": "a3da62b0923440cc",
-  "dato": "2026-11-20"
+  "hash": "71770ae8bd988cd2",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/dr-mad/": {
   "hash": "daccb389b35845cf",
@@ -3552,8 +3672,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/ersatta/": {
-  "hash": "d9cd65f6c321b417",
-  "dato": "2026-11-21"
+  "hash": "a0ce7bc46f8f417a",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/sv/ersatta/brun-farin/": {
   "hash": "5617fdc759b99314",
@@ -3783,8 +3903,16 @@
   "hash": "b81058b02d0b5ed8",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/sv/mealime-alternativ/": {
+  "hash": "dea3e419d0e8d83a",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/sv/nyarsmiddag/": {
   "hash": "61982acdcc9bfa7c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/om/": {
+  "hash": "80a4cb725b0176c4",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/radera-konto/": {
@@ -3792,8 +3920,60 @@
   "dato": "2026-10-27"
  },
  "https://matlyst-app.no/sv/recept-pa-ingredienser/": {
-  "hash": "b81f4d14636dc8dd",
-  "dato": "2026-11-19"
+  "hash": "4ace1bc8308e7512",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-agg/": {
+  "hash": "d8cf7bf529ff31cd",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-bananer/": {
+  "hash": "36511e5bae026a24",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-brod/": {
+  "hash": "8fec15e5e14856fe",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-gradde/": {
+  "hash": "fc808c97e3907e93",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-julskinka/": {
+  "hash": "76e80da0adbe08b3",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-kokt-potatis/": {
+  "hash": "36702e08a0780d8c",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-kottfars/": {
+  "hash": "507fbf64405aa476",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-kyckling/": {
+  "hash": "669297b65ba9151b",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-lax/": {
+  "hash": "91665f0eb7f62ae6",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-morotter/": {
+  "hash": "16acd92a1f895d40",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-pasta/": {
+  "hash": "a17ccfee5f784627",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-potatis/": {
+  "hash": "8538e60949b0c8ca",
+  "dato": "2026-11-22"
+ },
+ "https://matlyst-app.no/sv/recept-pa-ingredienser/med-ris/": {
+  "hash": "b1e9aca4648e062c",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/sv/receptbok-app/": {
   "hash": "67264eaa541f79ec",
@@ -3804,8 +3984,8 @@
   "dato": "2026-11-19"
  },
  "https://matlyst-app.no/sv/skafferi-app/": {
-  "hash": "1e3292f578d5fb54",
-  "dato": "2026-11-21"
+  "hash": "bd651d6378daae95",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/sv/spara-recept-fran-instagram/": {
   "hash": "13c3c14df0d652d4",
@@ -3864,8 +4044,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/tom-kylskapet/": {
-  "hash": "208b8df07f58d65e",
-  "dato": "2026-11-19"
+  "hash": "70d0e3eda9e480f6",
+  "dato": "2026-11-22"
  },
  "https://matlyst-app.no/sv/vad-ska-jag-laga/": {
   "hash": "2c1e0e7e1c76f3e7",

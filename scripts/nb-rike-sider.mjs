@@ -6,6 +6,7 @@ import { side as julemiddag } from './nb-jul/julemiddag.mjs';
 import { side as julebord } from './nb-jul/julebord.mjs';
 import { side as nyttarsmiddag } from './nb-jul/nyttarsmiddag.mjs';
 import { side as om } from './nb-om/om.mjs';
+import { side as mealime } from './flytting/nb.mjs';
 import { sider as sammenligning } from './sammenligning/nb.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
@@ -515,5 +516,6 @@ export const rikeSider = {
   'julebord/': julebord,
   'nyttarsmiddag/': nyttarsmiddag,
   'om/': om,
+  'mealime-alternativ/': mealime,
   ...sammenligning,
 };

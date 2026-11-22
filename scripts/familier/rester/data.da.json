@@ -1,0 +1,483 @@
+{
+  "familie": "rester",
+  "marked": "da",
+  "kilder": {
+    "taenk-holdbarhed": {
+      "navn": "Opbevar din mad, så den holder længere",
+      "utgiver": "Forbrugerrådet Tænk",
+      "aar": 2025,
+      "adresse": "https://taenk.dk/forbrugerliv/mad-og-indkoeb/holdbarhed-opbevar-din-mad-saa-den-holder-laengere",
+      "hentet": "2026-11-22"
+    },
+    "fvst-koel": {
+      "navn": "Køl mad hurtigt ned i hjemmet",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/koel-mad-hurtigt-ned",
+      "hentet": "2026-11-22"
+    },
+    "fvst-varm": {
+      "navn": "Varm mad ordentligt op i private hjem",
+      "utgiver": "Fødevarestyrelsen",
+      "aar": 2026,
+      "adresse": "https://www.foedevarestyrelsen.dk/kost-og-foedevarer/alt-om-mad/god-koekkenhygiejne/fem-raad-til-god-koekkenhygiejne/varm-mad-ordentligt-op",
+      "hentet": "2026-11-22"
+    },
+    "mv-fryser": {
+      "navn": "Hvor længe kan mad holde sig i fryseren?",
+      "utgiver": "Madens Verden",
+      "aar": 2025,
+      "adresse": "https://madensverden.dk/holde-sig-i-fryseren/",
+      "hentet": "2026-11-22"
+    },
+    "tek-sikker": {
+      "navn": "Sikker tilberedning af grise- og oksekød",
+      "utgiver": "Teknologisk Institut",
+      "aar": 2021,
+      "adresse": "https://www.teknologisk.dk/_/media/82225_15405_produktark-sikker-tilberedning_web.pdf",
+      "hentet": "2026-11-22"
+    },
+    "arla-flode": {
+      "navn": "Kan man fryse fløde?",
+      "utgiver": "Arla",
+      "aar": 2026,
+      "adresse": "https://arla.dk/produkter/flode/artikler/kan-man-fryse-flode",
+      "hentet": "2026-11-22"
+    }
+  },
+  "rader": [
+    {
+      "id": "kjottdeig",
+      "slug": "med-hakket-oksekoed",
+      "navn": "hakket oksekød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "dage": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Hakket kød kan holde sig op til 4 dage i køleskab."
+        },
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "mv-okse-min": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Hakket oksekød | 3-4 måneder"
+        },
+        "mv-okse-maks": {
+          "verdi": 4,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Hakket oksekød | 3-4 måneder"
+        }
+      },
+      "tekst": {
+        "pakning": "taenk-holdbarhed|Hakkekød skal du opbevare i køleskab i original eller en lufttæt pakning.",
+        "dato": "taenk-holdbarhed|Tjek datomærkningen for at se, hvor længe kødet holder.",
+        "bakterier": "fvst-varm|Hakket kød og småkød indeholder nemlig bakterier overalt",
+        "okse-faar": "mv-fryser|Hakket oksekød bevarer normalt en god kvalitet i omkring tre-fire måneder ved -18 grader.",
+        "ikke-farlig": "mv-fryser|Er kødet pakket godt ind og holdt konstant frossent, bliver det dog ikke automatisk farligt efter denne periode."
+      }
+    },
+    {
+      "id": "kylling",
+      "slug": "med-kylling",
+      "navn": "kylling",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "tilb-min": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+        },
+        "tilb-maks": {
+          "verdi": 6,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+        },
+        "kylling-min": {
+          "verdi": 8,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kylling: 8-10 måneder."
+        },
+        "kylling-maks": {
+          "verdi": 10,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kylling: 8-10 måneder."
+        }
+      },
+      "tekst": {
+        "lufttaet": "taenk-holdbarhed|Tilberedt kød, der er stegt eller kogt, skal opbevares i køleskabet i en pose eller en anden lufttæt emballage.",
+        "varm": "fvst-varm|Maden skal være varmet helt igennem ved høj varme.",
+        "stykker": "mv-fryser|Kylling i mindre stykker anbefales typisk brugt inden for seks til ni måneder."
+      }
+    },
+    {
+      "id": "egg",
+      "slug": "med-aeg",
+      "navn": "æg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "uger-min": {
+          "verdi": 3,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Æg skal du opbevare i køleskab og kan holde 3-4 uger."
+        },
+        "uger-maks": {
+          "verdi": 4,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Æg skal du opbevare i køleskab og kan holde 3-4 uger."
+        }
+      },
+      "tekst": {
+        "sanser": "taenk-holdbarhed|Æg kan ofte holde sig længere tid end datomærkningen. Brug dine sanser, for at tjekke, om du kan spise ægget."
+      }
+    },
+    {
+      "id": "poteter",
+      "slug": "med-kartofler",
+      "navn": "kartofler",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "kartofler-min": {
+          "verdi": 8,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kartofler skal du opbevare mørkt og køligt ved 8-10 grader for eksempel i en kølig kælder eller på bagtrappen."
+        },
+        "kartofler-maks": {
+          "verdi": 10,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kartofler skal du opbevare mørkt og køligt ved 8-10 grader for eksempel i en kølig kælder eller på bagtrappen."
+        }
+      }
+    },
+    {
+      "id": "kokte-poteter",
+      "slug": "med-kogte-kartofler",
+      "navn": "kogte kartofler",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "faerdige-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Færdige retter: 1-3 måneder i fryseren."
+        },
+        "faerdige-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Færdige retter: 1-3 måneder i fryseren."
+        }
+      },
+      "tekst": {
+        "rester5": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "portioner": "fvst-koel|Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned.",
+        "koel": "mv-fryser|Husk også at køle varm mad hurtigt ned, inden den fryses, og undgå at lade den stå længe på køkkenbordet."
+      }
+    },
+    {
+      "id": "ris",
+      "slug": "med-ris",
+      "navn": "ris",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        }
+      },
+      "tekst": {
+        "rester5": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "koel": "mv-fryser|Husk også at køle varm mad hurtigt ned, inden den fryses, og undgå at lade den stå længe på køkkenbordet."
+      }
+    },
+    {
+      "id": "pasta",
+      "slug": "med-pasta",
+      "navn": "pasta",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        },
+        "faerdige-min": {
+          "verdi": 1,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Færdige retter: 1-3 måneder i fryseren."
+        },
+        "faerdige-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Færdige retter: 1-3 måneder i fryseren."
+        }
+      },
+      "tekst": {
+        "varm": "fvst-varm|Maden skal være varmet helt igennem ved høj varme.",
+        "portioner": "mv-fryser|Mit bedste råd er at fryse færdigretter ned i passende portioner."
+      }
+    },
+    {
+      "id": "laks",
+      "slug": "med-laks",
+      "navn": "laks",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "max2": {
+          "verdi": 2,
+          "enhet": "°C",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Frisk fisk skal opbevares koldt ved max 2 grader."
+        },
+        "fem": {
+          "verdi": 1,
+          "enhet": "døgn",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Opbevarer du fisken ved 5 grader, som er en typisk køleskabstemperatur, kan fisken kun holde sig i 1 døgn."
+        },
+        "fed-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fed fisk: 2-3 måneder."
+        },
+        "fed-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fed fisk: 2-3 måneder."
+        },
+        "laks-min": {
+          "verdi": 2,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget laks holder 2-3 dage efter åbning, mens gravad laks kun holder 1-2 dage."
+        },
+        "laks-maks": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Røget laks holder 2-3 dage efter åbning, mens gravad laks kun holder 1-2 dage."
+        }
+      },
+      "tekst": {
+        "fiskehandler": "taenk-holdbarhed|Fisk, du køber hos fiskehandleren, skal spises samme dag.",
+        "fed-mager": "mv-fryser|Fed fisk som laks og makrel bevarer typisk kvaliteten i to-tre måneder, mens magre fisk som torsk og rødspætte ofte kan holde sig i tre-seks måneder.",
+        "laenger": "taenk-holdbarhed|Røget, saltet og varmebehandlet fisk kan holde sig lidt længere end fersk fisk i køleskabet. Undtagelsen er gravad fisk, som har meget kort holdbarhed."
+      }
+    },
+    {
+      "id": "flaeskesteg",
+      "slug": "med-flaeskesteg",
+      "navn": "flæskesteg",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "tilb-min": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+        },
+        "tilb-maks": {
+          "verdi": 6,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+        },
+        "tek": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "tek-sikker",
+          "merknad": "opbevar det ved maks. 5°C i op til 5 dage"
+        }
+      },
+      "tekst": {
+        "lufttaet": "taenk-holdbarhed|Tilberedt kød, der er stegt eller kogt, skal opbevares i køleskabet i en pose eller en anden lufttæt emballage.",
+        "portioner": "fvst-koel|Del store portioner af f.eks. saucer og kødretter op i mindre portioner, så bliver maden kølet hurtigere ned.",
+        "varm": "fvst-varm|Maden skal være varmet helt igennem ved høj varme."
+      }
+    },
+    {
+      "id": "and",
+      "slug": "med-and",
+      "navn": "and",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "tilb-min": {
+          "verdi": 5,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+        },
+        "tilb-maks": {
+          "verdi": 6,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Kødet kan holde sig cirka 5-6 dage i køleskab, hvis det er varmet grundigt igennem, kølet hurtigt ned."
+        },
+        "kjol": {
+          "verdi": 5,
+          "enhet": "°C",
+          "kilde": "fvst-koel",
+          "merknad": "Temperaturen i køleskabet bør være højst +5°C"
+        }
+      },
+      "tekst": {
+        "rester5": "fvst-koel|Kød, pålæg, mælkeprodukter, ost og rester fra middagen skal opbevares i køleskab ved højst +5°C.",
+        "varm": "fvst-varm|Maden skal være varmet helt igennem ved høj varme.",
+        "koel": "mv-fryser|Husk også at køle varm mad hurtigt ned, inden den fryses, og undgå at lade den stå længe på køkkenbordet."
+      }
+    },
+    {
+      "id": "floete",
+      "slug": "med-floede",
+      "navn": "fløde",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "floede-min": {
+          "verdi": 3,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fløde skal du opbevare på køl, hvor det kan holde sig 3-4 dage efter åbning."
+        },
+        "floede-maks": {
+          "verdi": 4,
+          "enhet": "dage",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Fløde skal du opbevare på køl, hvor det kan holde sig 3-4 dage efter åbning."
+        }
+      },
+      "tekst": {
+        "floede": "arla-flode|Dog kan fløde, der har været frosset, ikke piskes til flødeskum bagefter."
+      }
+    },
+    {
+      "id": "gulrotter",
+      "slug": "med-gulerodder",
+      "navn": "gulerødder",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "gulerod-min": {
+          "verdi": 2,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Opbevar gulerødder i en pose med hul i køleskabet. Der kan de holde i 2-3 uger."
+        },
+        "gulerod-maks": {
+          "verdi": 3,
+          "enhet": "uger",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Opbevar gulerødder i en pose med hul i køleskabet. Der kan de holde i 2-3 uger."
+        }
+      },
+      "tekst": {
+        "blanchere": "mv-fryser|Nogle grøntsager har godt af at blive blancheret inden nedfrysning."
+      }
+    },
+    {
+      "id": "brod",
+      "slug": "med-rugbroed",
+      "navn": "rugbrød",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "brod-min": {
+          "verdi": 2,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Brød og boller | 2-3 måneder"
+        },
+        "brod-maks": {
+          "verdi": 3,
+          "enhet": "måneder",
+          "kilde": "mv-fryser",
+          "merknad": "Brød og boller | 2-3 måneder"
+        }
+      },
+      "tekst": {
+        "skiver": "mv-fryser|Skær eventuelt brødet i skiver, inden det fryses.",
+        "tor": "mv-fryser|De kan holde sig længere, men risikerer efterhånden at blive tørre og miste smag."
+      }
+    },
+    {
+      "id": "bananer",
+      "slug": "med-bananer",
+      "navn": "bananer",
+      "status": "kontrollert",
+      "kontrollert": "2026-11-22",
+      "oppdatert": "2026-11-22",
+      "tall": {
+        "frugt-min": {
+          "verdi": 10,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Frugt og frugtprodukter: 10-12 måneder."
+        },
+        "frugt-maks": {
+          "verdi": 12,
+          "enhet": "måneder",
+          "kilde": "taenk-holdbarhed",
+          "merknad": "Frugt og frugtprodukter: 10-12 måneder."
+        }
+      }
+    }
+  ]
+}

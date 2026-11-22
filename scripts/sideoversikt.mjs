@@ -29,6 +29,21 @@ const ETIKETT = {
   'omregner:temperatur': 'Enhetsomregnere for temperatur',
 };
 
+// Villede hull: språk en gruppe med vilje ikke har. De står i «Villet, ikke hull» og tas ut av «Hull».
+// `gruppe` er radnavnet i tabellen over (for eksempel «julemiddag» eller «familie:airfryer»). Uten `varer` gjelder det hele gruppa på språket;
+// med `varer` (id-ene fra «Enkeltgrupper ...») gjelder det bare de enkeltvarene i familien. `grunn` er kort og skal kunne etterprøves.
+export const VILLEDE_HULL = [
+  { gruppe: 'hoytider', sprak: ['nb', 'sv', 'da'], grunn: 'Amerikanske høytider (Thanksgiving, Hanukkah, Friendsgiving, USA-nyttår): sidene er skrevet for USA og følger amerikanske kilder.' },
+  { gruppe: 'julebord', sprak: ['en'], grunn: 'Julebord (firmajulebord og julebuffet) er en nordisk tradisjon. Dekkes av /en/holidays/christmas-dinner/, en amerikansk side med amerikanske kilder og ikke samme side.' },
+  { gruppe: 'juleaften', sprak: ['nb', 'sv', 'en'], grunn: 'Dansk tradisjon (and og flæskesteg på juleaften) med danske kilder.' },
+  { gruppe: 'julemiddag', sprak: ['sv', 'da', 'en'], grunn: 'Norsk julemiddag (ribbe og pinnekjøtt) dekkes av /sv/julbord/, /da/juleaften/ og de engelske høytidssidene, uten å være samme side.' },
+  { gruppe: 'nyttarsmiddag', sprak: ['da'], grunn: 'Ingen danske kilder med mengder og tider er funnet.' },
+  { gruppe: 'nyttarsmiddag', sprak: ['en'], grunn: 'Dekkes av /en/holidays/new-years-eve/, som er en amerikansk side med amerikanske kilder og ikke samme side.' },
+  { gruppe: 'familie:airfryer', sprak: ['en'], varer: ['flaeskesteg'], grunn: 'Dansk tradisjonsrett, ikke en amerikansk rett.' },
+  { gruppe: 'familie:mengde-per-person', sprak: ['en'], varer: ['flaeskesteg'], grunn: 'Dansk tradisjonsrett, ikke en amerikansk rett.' },
+  { gruppe: 'familie:steketid', sprak: ['en'], varer: ['flaeskesteg', 'pinnekjott'], grunn: 'Norsk og dansk tradisjonsrett, ikke amerikanske retter.' },
+];
+
 const sorter = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
 const sprakForSti = (sti) => SPRAK.find((s) => s !== 'nb' && sti.startsWith(`/${s === 'en' ? 'en' : s}/`)) ?? 'nb';
 const KODE_TIL_SPRAK = Object.fromEntries(Object.entries(SPRAKKODER).map(([s, k]) => [k, s]));
@@ -215,11 +230,21 @@ export function byggOversikt(rot, familier = FAMILIER) {
     const mangler = SPRAK.filter((s) => !r.antall[s]);
     if (r.xs.length && mangler.length) hullSprak.push({ r, mangler });
   }
+  // Villede hull på hele gruppa tas ut av hullene. Bare språk som faktisk mangler regnes som villet (en gruppe som er bygget siden, er ikke et hull).
+  const villetGruppe = (navn, s) => VILLEDE_HULL.find((v) => v.gruppe === navn && !v.varer && v.sprak.includes(s));
+  const villedeRader = [];
+  const virkeligeHull = hullSprak.map(({ r, mangler }) => {
+    for (const v of VILLEDE_HULL.filter((x) => x.gruppe === r.navn && !x.varer)) {
+      const gjelder = v.sprak.filter((s) => mangler.includes(s));
+      if (gjelder.length) villedeRader.push({ navn: r.navn, sprak: gjelder, grunn: v.grunn, finnes: SPRAK.filter((s) => r.antall[s]) });
+    }
+    return { r, mangler: mangler.filter((s) => !villetGruppe(r.navn, s)) };
+  }).filter(({ mangler }) => mangler.length);
   ut.push('### Familier og grupper som mangler på et språk', '');
-  if (!hullSprak.length) ut.push('Ingen.', '');
+  if (!virkeligeHull.length) ut.push('Ingen.', '');
   else {
     ut.push('| Gruppe | Finnes på | Mangler på |', '|---|---|---|');
-    for (const { r, mangler } of hullSprak) ut.push(`| ${celle(r.navn)} | ${SPRAK.filter((s) => r.antall[s]).join(', ')} | ${mangler.join(', ')} |`);
+    for (const { r, mangler } of virkeligeHull) ut.push(`| ${celle(r.navn)} | ${SPRAK.filter((s) => r.antall[s]).join(', ')} | ${mangler.join(', ')} |`);
     ut.push('');
   }
 
@@ -243,11 +268,17 @@ export function byggOversikt(rot, familier = FAMILIER) {
   else {
     ut.push('| Rad | Antall grupper | Per manglende språk (grupper uten språket) |', '|---|---:|---|');
     for (const { r, mangler, klyngeSprak } of grupperIKlynge) {
+      const villet = (s) => VILLEDE_HULL.filter((v) => v.gruppe === r.navn && v.varer && v.sprak.includes(s)).flatMap((v) => v.varer);
       const per = klyngeSprak.map((s) => {
         const uten = mangler.filter(([, set]) => !set.has(s)).map(([id]) => kortId(id, familier));
-        return uten.length ? `${s}: ${uten.length} (${uten.slice(0, 6).join(', ')}${uten.length > 6 ? ', ...' : ''})` : '';
+        const igjen = uten.filter((id) => !villet(s).includes(id));
+        return igjen.length ? `${s}: ${igjen.length} (${igjen.slice(0, 6).join(', ')}${igjen.length > 6 ? ', ...' : ''})` : '';
       }).filter(Boolean).join('; ');
-      ut.push(`| ${celle(r.navn)} | ${mangler.length} | ${celle(per)} |`);
+      if (per) ut.push(`| ${celle(r.navn)} | ${mangler.length} | ${celle(per)} |`);
+      for (const v of VILLEDE_HULL.filter((x) => x.gruppe === r.navn && x.varer)) {
+        const manglerHer = v.varer.filter((id) => mangler.some(([g, set]) => kortId(g, familier) === id && v.sprak.some((s) => !set.has(s))));
+        if (manglerHer.length) villedeRader.push({ navn: r.navn, sprak: v.sprak, varer: manglerHer, grunn: v.grunn });
+      }
     }
     ut.push('');
   }
@@ -276,6 +307,14 @@ export function byggOversikt(rot, familier = FAMILIER) {
   if (uten.length) ut.push('');
   const utenFil = sider.filter((s) => !s.finnes);
   if (utenFil.length) ut.push('### Adresser i sitemap uten fil', '', ...utenFil.map((s) => `- ${s.url}`), '');
+
+  ut.push('## Villet, ikke hull', '', 'Språk en gruppe med vilje ikke har (`VILLEDE_HULL` i `scripts/sideoversikt.mjs`). Disse står ikke under «Hull».', '');
+  if (!villedeRader.length) ut.push('Ingen.', '');
+  else {
+    ut.push('| Gruppe | Språk | Hva | Grunn |', '|---|---|---|---|');
+    for (const v of villedeRader) ut.push(`| ${celle(v.navn)} | ${v.sprak.join(', ')} | ${v.varer ? `enkeltvarer: ${v.varer.join(', ')}` : 'hele gruppa'} | ${celle(v.grunn)} |`);
+    ut.push('');
+  }
 
   ut.push('## Utenfor sitemap', '', utenfor.length ? 'HTML-sider som finnes, men ikke står i sitemap (noindex, tjeneste- og verifiseringssider):' : 'Ingen.', '');
   for (const sti of utenfor) ut.push(`- ${sti}`);

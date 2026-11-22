@@ -21,9 +21,9 @@ const tekstAv = (html) => html.replace(/<script[\s\S]*?<\/script>/gu, ' ').repla
 const ERSTATNING = ['egg', 'kulturmelk-og-kefir', 'bakepulver', 'natron', 'gjaer', 'smor', 'floete', 'creme-fraiche', 'romme', 'melk', 'hvetemel', 'maisenna', 'sukker', 'brun-farin', 'vaniljesukker', 'hvitvin', 'friske-og-torkede-urter', 'hvitlok'];
 const RESTER = ['kjottdeig', 'kylling', 'egg', 'poteter', 'kokte-poteter', 'ris', 'pasta', 'laks', 'kokt-skinke', 'floete', 'gulrotter', 'brod', 'bananer', 'epler', 'ribbe-og-pinnekjott'];
 
-test('adresselås: erstatning har samleside og 18 sider (nb, engelsk har egen test), rester har 15 undersider under /hva-kan-jeg-lage/ og bare norsk', () => {
+test('adresselås: erstatning har samleside og 18 sider (nb, engelsk har egen test), rester har 15 undersider under /hva-kan-jeg-lage/ (norsk; sv, da og en har egen test)', () => {
   assert.deepEqual(familie('erstatning').markeder, { nb: { rot: 'erstatning/' }, sv: { rot: 'ersatta/' }, da: { rot: 'erstatning/' }, en: { rot: 'substitutes/' } });
-  assert.deepEqual(familie('rester').markeder, { nb: { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true } });
+  assert.deepEqual(familie('rester').markeder.nb, { rot: 'hva-kan-jeg-lage/', gruppeFinnes: true }, 'sv, da og en har egen test: test/rester-flersprak.test.mjs');
   assert.deepEqual(rader('erstatning').map((r) => r.slug), ERSTATNING);
   assert.deepEqual(rader('rester').map((r) => r.slug), RESTER.map((r) => `med-${r}`));
   const kart = readFileSync(join(ROT, 'sitemap.xml'), 'utf8');

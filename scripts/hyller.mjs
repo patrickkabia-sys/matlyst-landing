@@ -83,8 +83,8 @@ export const HYLLER = {
       id: 'matlyst', navn: 'Matlyst', flis: 'b3fdbf.webp',
       lenker: [
         { tekst: 'For matskapere', href: '/skapere/' },
-        // Om-siden finnes bare på norsk (bareNb): sv, da og en får ikke lenka før de har en egen om-side.
-        { tekst: 'Om Matlyst', href: '/om/', bareNb: true },
+        // Om-siden finnes på alle fire språk (/om/, /sv/om/, /da/om/, /en/about/) og er ikke med i prototypet (se test/hyller.test.mjs).
+        { tekst: 'Om Matlyst', href: '/om/', ikkeProto: true },
         { tekst: 'Instagram', href: 'https://www.instagram.com/matlyst_app/' },
         { tekst: 'TikTok', href: 'https://www.tiktok.com/@matlyst.appen' },
         { tekst: 'YouTube', href: 'https://www.youtube.com/@matlyst' },
@@ -141,6 +141,7 @@ export const HYLLETEKST = {
       '/blogg/koketider/': 'Koktider',
       '/blogg/': 'Alla kökstips',
       '/skapere/': 'För receptskapare',
+      '/om/': 'Om Matlyst',
       'https://www.instagram.com/matlyst_app/': 'Instagram',
       'https://www.tiktok.com/@matlyst.appen': 'TikTok',
       'https://www.youtube.com/@matlyst': 'YouTube',
@@ -188,6 +189,7 @@ export const HYLLETEKST = {
       '/blogg/koketider/': 'Kogetider',
       '/blogg/': 'Alle køkkentips',
       '/skapere/': 'For opskriftsskabere',
+      '/om/': 'Om Matlyst',
       'https://www.instagram.com/matlyst_app/': 'Instagram',
       'https://www.tiktok.com/@matlyst.appen': 'TikTok',
       'https://www.youtube.com/@matlyst': 'YouTube',
@@ -236,6 +238,7 @@ export const HYLLETEKST = {
       '/en/holidays/': 'Holiday cooking',
       '/blogg/': 'All kitchen tips',
       '/skapere/': 'For recipe creators',
+      '/om/': 'About Matlyst',
       'https://www.instagram.com/matlyst_app/': 'Instagram',
       'https://www.tiktok.com/@matlyst.appen': 'TikTok',
       'https://www.youtube.com/@matlyst': 'YouTube',
