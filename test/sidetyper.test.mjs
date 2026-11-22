@@ -17,7 +17,7 @@ const type = (sti) => sider.find((s) => s.sti === sti)?.type;
 
 test('hver publiserbar HTML-fil får én type og én nøkkel', () => {
   // 899: de tre samlesidene på sv, da og en var egne sider i grunnlaget (guide-kort) og er nå familiens samlesider (guide-lang), så de telles bare én gang.
-  assert.equal(sider.length, 899 + familieAntall().omregner + familieAntall()['guide-lang'], 'nye sider: forklar endringen i commit-meldingen og rett tallet');
+  assert.equal(sider.length, 903 + familieAntall().omregner + familieAntall()['guide-lang'], 'nye sider: forklar endringen i commit-meldingen og rett tallet');
   for (const s of sider) {
     assert.ok(TYPER.includes(s.type), s.sti);
     assert.equal(s.nokkel, s.type === 'tjeneste' ? `tjeneste:${tjenestefamilie(s.sti)}` : s.type, s.sti);
@@ -46,7 +46,7 @@ test('omregnerne er alle parene pluss fire hubber', () => {
 });
 test('typene har de målte antallene', () => {
   const fa = familieAntall();
-  assert.deepEqual(TYPER.map((t) => sider.filter((s) => s.type === t).length), [4, 714 + fa.omregner, 58 + fa['guide-lang'], 53, 3, 33, 12, 22]);
+  assert.deepEqual(TYPER.map((t) => sider.filter((s) => s.type === t).length), [4, 714 + fa.omregner, 58 + fa['guide-lang'], 53, 3, 33, 12, 26]);
 });
 test('kjente sider får riktig type', () => {
   for (const [sti, forventet] of [
@@ -80,6 +80,7 @@ test('ukjent side kaster med stien, og EllerNull gir null', () => {
 test('tjenestefamilier og bloggindekser dekker alle språk', () => {
   assert.equal(tjenestefamilie('/googleeaf5ec75e707227b.html'), 'verifisering');
   assert.equal(tjenestefamilie('/christine/'), 'kampanje');
+  assert.equal(tjenestefamilie('/hanna/'), 'kampanje');
   assert.equal(tjenestefamilie('/ukemeny/'), null);
   assert.deepEqual(Object.keys(BLOGGINDEKS).sort(), ['da', 'en', 'nb', 'sv']);
   for (const sti of Object.values(BLOGGINDEKS)) assert.equal(type(sti), 'blogg', sti);

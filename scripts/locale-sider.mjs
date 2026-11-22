@@ -73,6 +73,7 @@ export const SIDEGRUPPER = Object.freeze([
 
   { id: 'matprat', sider: { nb: '/importer-fra-matprat/', sv: '/sv/matprat/', da: '/da/matprat/', en: '/en/matprat/' } },
   { id: 'christine', sider: { nb: '/christine/' } },
+  { id: 'hanna', redirect: false, sider: { nb: '/hanna/', sv: '/sv/hanna/', da: '/da/hanna/', en: '/en/hanna/' } },
   { id: 'koket', sider: { nb: '/importer-fra-koket/', sv: '/sv/koket/', da: '/da/koket/', en: '/en/koket/' } },
   { id: 'landleys-kok', sider: { nb: '/importer-fra-landleys-kok/', sv: '/sv/landleys-kok/', da: '/da/landleys-kok/', en: '/en/landleys-kok/' } },
   { id: 'alletiders-kogebog', sider: { nb: '/importer-fra-alletiders-kokebok/', sv: '/sv/alletiders-kogebog/', da: '/da/alletiders-kogebog/', en: '/en/alletiders-cookbook/' } },

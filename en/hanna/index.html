@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ⚠️ noindex med vilje. Sida finnes for å MÅLE én kanal, ikke for å bli
+     funnet i søk. Den står heller ikke i sitemap.xml. -->
+<meta name="robots" content="noindex">
+<title>Matlyst with Hanna H. Food</title>
+<meta name="description" content="Use the code HANNA14 to get 14 days of Matlyst Pro for free. Matlyst keeps your recipes in one place, plans your week and writes your grocery list.">
+<link rel="canonical" href="https://matlyst-app.no/en/hanna/">
+<link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hanna/">
+<link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/hanna/">
+<link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/hanna/">
+<link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/hanna/">
+<link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/hanna/">
+<script>
+// Hannas lenke er /hanna/. Telefonens språk velger versjonen: nb, sv, da, ellers engelsk.
+// ?sprak= (fra språkvelgeren) stopper omdirigeringen, så et manuelt valg står.
+(function () {
+  try {
+    if (/bot|crawl|spider|slurp|lighthouse/i.test(navigator.userAgent)) return;
+    if (new URLSearchParams(location.search).has('sprak')) return;
+    var m = { nb: '/hanna/', sv: '/sv/hanna/', da: '/da/hanna/', en: '/en/hanna/' };
+    var l = String(navigator.language || '').toLowerCase().split('-')[0];
+    if (l === 'no' || l === 'nn') l = 'nb';
+    var mal = m[l] || m.en;
+    var her = location.pathname.replace(/index\.html$/, '');
+    if (her !== mal) location.replace(mal + location.hash);
+  } catch (e) {}
+})();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Matlyst with Hanna H. Food","url":"https://matlyst-app.no/en/hanna/"}</script>
+<meta property="og:type" content="website">
+<meta property="og:title" content="14 days of Matlyst Pro, free, with the code HANNA14">
+<meta property="og:description" content="Share a recipe, and it is ready in Matlyst with ingredients and steps.">
+<meta property="og:image" content="https://matlyst-app.no/images/og-importer-oppskrifter.jpg">
+<!-- skall:stil --><link rel="stylesheet" href="/tokens.css"><link rel="stylesheet" href="/tjeneste.css"><link rel="apple-touch-icon" href="/images/apple-touch-icon.png"><!-- /skall:stil -->
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/favicon-192.png">
+<style>
+  .skaperside{min-height:calc(100vh - 160px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(28px,7vw,64px) max(16px,env(safe-area-inset-left,0px));gap:22px}
+  .appicon{width:62px;height:62px;border-radius:14px;box-shadow:0 6px 22px rgb(var(--skygge) / .14)}
+  .skaperside .k{font-size:.9375rem;font-weight:500;color:var(--dempet)}
+  .skaperside h1{font-weight:700;font-size:3rem;line-height:1.05;letter-spacing:-.028em;max-width:14ch;text-wrap:balance}
+  .skaperside h1 em{font-style:normal}
+  .skaperside .lead{font-size:1.1875rem;color:var(--dempet);max-width:38ch;line-height:1.55}
+  /* Butikkvalg. BEGGE knappene har med vilje nøyaktig samme visuelle vekt:
+     bommer en OS-gjetning og feil knapp fremheves, klikker brukeren den
+     høyeste og havner i en blindvei. Å ikke gjette er tryggere enn å gjette feil. */
+  .stores{display:flex;flex-direction:column;gap:14px;width:100%;max-width:360px;margin-top:4px}
+  .store{display:block;text-decoration:none;background:var(--blekk);color:var(--flate);border-radius:999px;padding:14px 28px;transition:background-color .2s}
+  .store:hover{background:var(--blekk-lys)}
+  .store .row{display:flex;align-items:center;justify-content:center;gap:10px}
+  .store .glyph{width:19px;height:19px;flex:none;fill:currentColor}
+  .store .name{font-size:1rem;font-weight:700}
+  .store .hint{display:block;font-size:.875rem;font-weight:400;margin-top:4px;line-height:1.35}
+
+  .kode{width:100%;max-width:360px;border:1.5px dashed var(--dempet);border-radius:16px;padding:16px 20px}
+  .kode .lbl{font-size:.875rem;color:var(--dempet)}
+  .kode .verdi{display:block;font-size:1.75rem;font-weight:700;letter-spacing:.06em;margin-top:2px}
+  .kode .hva{display:block;font-size:.9375rem;margin-top:4px}
+  .slik{width:100%;max-width:420px;text-align:left;margin-top:8px}
+  .slik h2{font-size:1.25rem;font-weight:700;text-align:center;margin-bottom:12px}
+  .slik h3{font-size:1rem;font-weight:700;margin:14px 0 4px}
+  .slik p{font-size:1rem;line-height:1.55;color:var(--dempet)}
+  .smaa{font-size:.875rem;color:var(--dempet);max-width:42ch;line-height:1.5}
+  .foot{font-size:.9375rem;color:var(--dempet);max-width:34ch;line-height:1.5}
+  .foot a{color:var(--dempet);text-decoration:underline;text-underline-offset:.2em}
+  @media (max-width:640px){.skaperside h1{font-size:2.25rem}}
+  .samtykke{text-align:center;padding:0 16px 32px;font-size:.9375rem}
+  .samtykke a{color:var(--dempet);text-decoration:underline;text-underline-offset:.2em}
+</style>
+<link rel="stylesheet" href="/language-switcher.css">
+<script src="/language-switcher.js" defer></script>
+</head>
+<body data-sidetype="tjeneste" data-tjeneste="kampanje">
+<div class="language-switcher-standalone language-switcher-standalone-top"><a class="nav-brand" href="/">Mat<em>lyst</em></a><!-- språkvelger:topp --><span class="language-switcher language-switcher-top" role="navigation" aria-label="Language"><a href="/hanna/" lang="nb" hreflang="nb" aria-label="Norsk">Norsk</a><a href="/sv/hanna/" lang="sv" hreflang="sv" aria-label="Svenska">Svenska</a><a href="/da/hanna/" lang="da" hreflang="da" aria-label="Dansk">Dansk</a><a href="/en/hanna/" lang="en" hreflang="en" aria-label="English" aria-current="page">English</a></span><!-- /språkvelger:topp --></div>
+<main id="hovedinnhold" class="skaperside">
+  <img class="appicon" src="/images/icon.png" width="62" height="62" alt="">
+  <p class="k">Matlyst × Hanna H. Food</p>
+  <h1>All your recipes, <em>in one place</em></h1>
+  <p class="lead">Share a recipe from Instagram, TikTok or any website, and it is ready in Matlyst with ingredients and steps. The app takes care of your meal plan and grocery list.</p>
+
+  <div class="kode">
+    <span class="lbl">Your code</span>
+    <span class="verdi">HANNA14</span>
+    <span class="hva">14 days of Matlyst Pro, free</span>
+  </div>
+
+  <div class="stores">
+    <a class="store" id="btn-ios" href="https://apps.apple.com/redeem?ctx=offercodes&amp;id=6762563515&amp;code=HANNA14" target="_blank" rel="noopener">
+      <span class="row">
+        <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 12.04c-.02-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.9-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.24 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.28-1.27 3.13-2.53.99-1.45 1.4-2.86 1.42-2.93-.03-.01-2.72-1.04-2.75-4.13zM14.6 4.5c.71-.87 1.19-2.07 1.06-3.27-1.02.04-2.26.68-3 1.54-.66.76-1.24 1.98-1.08 3.15 1.14.09 2.31-.58 3.02-1.42z"/></svg>
+        <span class="name">iPhone and iPad</span>
+      </span>
+      <span class="hint">Opens the App Store with the code filled in.</span>
+    </a>
+    <a class="store" id="btn-android" href="https://play.google.com/store/apps/details?id=app.matlyst&amp;referrer=utm_source%3Dhanna%26utm_content%3Den%26utm_medium%3Dcreator" target="_blank" rel="noopener">
+      <span class="row">
+        <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8c-.3.3-.5.8-.5 1.4v17.6c0 .6.2 1.1.5 1.4l.1.1 9.9-9.9v-.2L3.7 1.7l-.1.1zM17.2 15.1l-3.3-3.3v-.2l3.3-3.3.1.1 3.9 2.2c1.1.6 1.1 1.7 0 2.3l-3.9 2.2zM16.9 15.4 13.5 12l-9.9 9.9c.4.4 1 .4 1.7.1l11.6-6.6zM16.9 8.6 5.3 2c-.7-.4-1.3-.3-1.7.1L13.5 12l3.4-3.4z"/></svg>
+        <span class="name">Android</span>
+      </span>
+      <span class="hint">Get the app, then enter the code in the app.</span>
+    </a>
+  </div>
+
+  <section class="slik">
+    <h2>How to use the code</h2>
+    <h3>iPhone and iPad</h3>
+    <p>Tap the button above. The App Store opens with HANNA14 filled in. Redeem it, then download the app. Already have Matlyst? You can also enter the code in the app under “Have a code?”.</p>
+    <h3>Android</h3>
+    <p>Download Matlyst from Google Play and open the app. Go to the Pro screen, tap “Have a code?” and enter HANNA14. You will be taken to the Play Store to redeem it.</p>
+    <h3>What happens after 14 days?</h3>
+    <p>The code gives you a 14-day free trial of the yearly plan. If you don’t cancel before it ends, the subscription continues at the regular price. You can cancel anytime in the App Store or Google Play.</p>
+  </section>
+
+  <p class="smaa">The code works in Norway, Sweden and Denmark if you don’t already have Matlyst Pro. Without a subscription, you can still use the app for free with five imports a month.</p>
+
+  <p class="foot">Matlyst is made in Norway. <a href="/en/terms/">Terms</a> and <a href="/en/privacy/">privacy</a>.</p>
+</main>
+<p class="samtykke"><a href="#" data-consent-withdraw>Cookie settings</a></p>
+
+<!-- Samtykke-banner -->
+<div class="cookie" id="cookie" hidden>
+  <p>We use essential storage to make this site work. If you say yes, we also use cookies for analytics (PostHog, Google Analytics). Read more in our <a href="/en/privacy/">privacy policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="ck-btn ck-accept" id="ck-accept" type="button">Accept</button>
+    <button class="ck-btn ck-reject" id="ck-reject" type="button">Essential only</button>
+  </div>
+</div>
+
+<!-- site.js eier banneret og all lasting av PostHog, og lastes defer og kjører før DOMContentLoaded;
+     skriptet under leser samtykket først ved klikk, så rekkefølgen er uten betydning. -->
+<script src="/site.js" defer></script>
+<script>
+(function () {
+  var KILDE = 'hanna'; var SPRAK = 'en';
+
+  // Personvern: spor KUN ved samtykke, samme 'matlyst-consent'-flagg som resten
+  // av nettstedet. Samtykket leses på nytt ved hvert kall, ikke låst ved page
+  // load, slik at et samtykke gitt underveis får virkning med en gang.
+  function hasConsent() {
+    try { return localStorage.getItem('matlyst-consent') === 'granted'; } catch (e) { return false; }
+  }
+  function cap(name, props) {
+    if (!hasConsent() || !window.posthog) return;
+    try { posthog.capture(name, props || {}); } catch (e) {}
+  }
+
+  document.getElementById('btn-ios').addEventListener('click', function () {
+    cap('creator_store_click', { kilde: KILDE, sprak: SPRAK, store: 'app_store' });
+  });
+  document.getElementById('btn-android').addEventListener('click', function () {
+    cap('creator_store_click', { kilde: KILDE, sprak: SPRAK, store: 'play' });
+  });
+
+  // Besøket telles så snart det er lov. Alle som kommer fra en story er
+  // førstegangsbesøkende med banner, så uten den andre grenen mister vi hele
+  // trafikken.
+  if (hasConsent()) {
+    cap('creator_link_click', { kilde: KILDE, sprak: SPRAK });
+  } else {
+    var accept = document.getElementById('ck-accept');
+    if (accept) {
+      accept.addEventListener('click', function () { cap('creator_link_click', { kilde: KILDE, sprak: SPRAK }); });
+    }
+  }
+})();
+</script>
+<div class="language-switcher-standalone language-switcher-standalone-bottom"><!-- språkvelger:bunn --><span class="language-switcher language-switcher-bottom" role="navigation" aria-label="Language"><a href="/hanna/" lang="nb" hreflang="nb" aria-label="Norsk">Norsk</a><a href="/sv/hanna/" lang="sv" hreflang="sv" aria-label="Svenska">Svenska</a><a href="/da/hanna/" lang="da" hreflang="da" aria-label="Dansk">Dansk</a><a href="/en/hanna/" lang="en" hreflang="en" aria-label="English" aria-current="page">English</a></span><!-- /språkvelger:bunn --></div>
+</body>
+</html>

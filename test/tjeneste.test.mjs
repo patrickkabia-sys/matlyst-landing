@@ -136,7 +136,7 @@ test('/app/ har ingen egne fargevariabler, ingen mørk modus og ingen sporing', 
 });
 
 test('kampanjesidene og 404 laster tokens og tjeneste.css', () => {
-  assert.equal(familie('kampanje').length, 5);
+  assert.equal(familie('kampanje').length, 9);
   assert.equal(familie('feil').length, 1);
   for (const s of [...familie('kampanje'), ...familie('feil')]) {
     const h = les(s.fil);
