@@ -291,7 +291,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/ersatta/</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/erstatning/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/ersatta/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/erstatning/"/>
@@ -765,12 +765,125 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-agg/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-egg/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-agg/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-aeg/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-eggs/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-eggs/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-bananer/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-bananer/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-bananer/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-bananer/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/hva-kan-jeg-lage/med-bananer/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-brod/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-brod/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-brod/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-rugbroed/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/hva-kan-jeg-lage/med-brod/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-gradde/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-floete/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-gradde/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-floede/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-heavy-cream/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-heavy-cream/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-julskinka/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-kokt-skinke/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-julskinka/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-ham/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-ham/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-kokt-potatis/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-kokte-poteter/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-kokt-potatis/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-kogte-kartofler/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-potatoes/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-potatoes/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-kottfars/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-kjottdeig/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-kottfars/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-hakket-oksekoed/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-ground-beef/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-ground-beef/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-kyckling/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-kylling/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-kyckling/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-kylling/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-chicken/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-chicken/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-lax/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-laks/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-lax/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-laks/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-salmon/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-salmon/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-morotter/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-gulrotter/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-morotter/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-gulerodder/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-carrots/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-carrots/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-pasta/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-pasta/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-pasta/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-pasta/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-pasta/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-pasta/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-potatis/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-poteter/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-potatis/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-kartofler/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/hva-kan-jeg-lage/med-poteter/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/recept-pa-ingredienser/med-ris/</loc>
+    <lastmod>2026-11-22</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/hva-kan-jeg-lage/med-ris/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/recept-pa-ingredienser/med-ris/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/med-ris/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-rice/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/recipes-by-ingredients/with-leftover-rice/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/receptbok-app/</loc>
@@ -792,7 +905,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/skafferi-app/</loc>
-    <lastmod>2026-11-21</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/spiskammer-app/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/skafferi-app/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/spisekammer-app/"/>
@@ -917,7 +1030,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/tom-kylskapet/</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-22</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/tom-kjoleskapet/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/tom-kylskapet/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/toem-koeleskabet/"/>
