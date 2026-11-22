@@ -5,6 +5,8 @@
 import { sider as sammenligning } from './sammenligning/da.mjs';
 import { side as julefrokost } from './da-jul/julefrokost.mjs';
 import { side as juleaften } from './da-jul/juleaften.mjs';
+import { side as om } from './om/da.mjs';
+import { side as mealime } from './flytting/da.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
 const p = (...ps) => ps.map((t) => `<p>${t}</p>`).join('');
@@ -430,6 +432,8 @@ const kobsguide = byggRik({
 }).html;
 
 export const rikeSider = {
+  'om/': om,
+  'mealime-alternativ/': mealime,
   'julefrokost/': julefrokost,
   'juleaften/': juleaften,
   'opskrifts-app/': {

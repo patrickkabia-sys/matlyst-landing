@@ -264,7 +264,7 @@
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/byt-fran-paprika/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/bytt-fra-paprika/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/byt-fran-paprika/"/>
     <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/skift-fra-paprika/"/>
@@ -730,11 +730,29 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/matprat/"/>
   </url>
   <url>
+    <loc>https://matlyst-app.no/sv/mealime-alternativ/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/mealime-alternativ/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/mealime-alternativ/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/mealime-alternativ/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/mealime-alternative/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/mealime-alternative/"/>
+  </url>
+  <url>
     <loc>https://matlyst-app.no/sv/nyarsmiddag/</loc>
     <lastmod>2026-11-21</lastmod>
     <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/nyttarsmiddag/"/>
     <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/nyarsmiddag/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/nyttarsmiddag/"/>
+  </url>
+  <url>
+    <loc>https://matlyst-app.no/sv/om/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="nb-NO" href="https://matlyst-app.no/om/"/>
+    <xhtml:link rel="alternate" hreflang="sv-SE" href="https://matlyst-app.no/sv/om/"/>
+    <xhtml:link rel="alternate" hreflang="da-DK" href="https://matlyst-app.no/da/om/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://matlyst-app.no/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matlyst-app.no/en/about/"/>
   </url>
   <url>
     <loc>https://matlyst-app.no/sv/radera-konto/</loc>

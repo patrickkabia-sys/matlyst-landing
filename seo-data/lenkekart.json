@@ -96,6 +96,13 @@
           "/beste-ukemeny-app/"
         ],
         "planlagt": []
+      },
+      "flytting": {
+        "hub": "/bytt-fra-paprika/",
+        "eiker": [
+          "/mealime-alternativ/"
+        ],
+        "planlagt": []
       }
     }
   },
@@ -123,6 +130,13 @@
           "/da/juleaften/"
         ],
         "planlagt": []
+      },
+      "flytting": {
+        "hub": "/da/skift-fra-paprika/",
+        "eiker": [
+          "/da/mealime-alternativ/"
+        ],
+        "planlagt": []
       }
     }
   },
@@ -133,6 +147,13 @@
         "eiker": [
           "/sv/julbord/",
           "/sv/nyarsmiddag/"
+        ],
+        "planlagt": []
+      },
+      "flytting": {
+        "hub": "/sv/byt-fran-paprika/",
+        "eiker": [
+          "/sv/mealime-alternativ/"
         ],
         "planlagt": []
       }

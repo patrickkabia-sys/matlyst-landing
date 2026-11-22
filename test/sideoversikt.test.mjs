@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { FAMILIER } from '../scripts/familier/register.mjs';
 import { KJEDE } from '../scripts/kjede.mjs';
 import { SITEMAPER } from '../scripts/lastmod.mjs';
-import { UTFIL, byggOversikt, lesSitemap } from '../scripts/sideoversikt.mjs';
+import { UTFIL, VILLEDE_HULL, byggOversikt, lesSitemap } from '../scripts/sideoversikt.mjs';
 
 const rot = fileURLToPath(new URL('..', import.meta.url));
 const doc = byggOversikt(rot);
@@ -46,7 +46,54 @@ test('hver adresse har gruppe, og radene har rot per språk, antall og siste end
   assert.match(doc, /^\| forside \|.*`\/` \(1\) \| `\/sv\/` \(1\) \| `\/da\/` \(1\) \| `\/en\/` \(1\) \|/mu);
   // Tom celle betyr «finnes ikke»: julemiddag er bare norsk.
   assert.match(doc, /^\| julemiddag \|[^|]*\|[^|]*\| `\/julemiddag\/` \(1\) \| {2}\| {2}\| {2}\|/mu);
-  assert.match(doc, /### Familier og grupper som mangler på et språk[\s\S]*\| julemiddag \| nb \| sv, da, en \|/u);
+  // Julemiddag mangler på sv, da og en med vilje: den står under «Villet, ikke hull», ikke under «Hull».
+  assert.doesNotMatch(hull(doc), /^\| julemiddag \|/mu);
+  assert.match(villet(doc), /^\| julemiddag \| sv, da, en \| hele gruppa \|/mu);
+});
+
+const hull = (tekst) => tekst.split('\n## Hull')[1].split('\n## Villet, ikke hull')[0];
+const villet = (tekst) => tekst.split('\n## Villet, ikke hull')[1].split('\n## Utenfor sitemap')[0];
+
+test('villede hull står i egen del og er tatt ut av «Hull»; ekte hull står igjen', () => {
+  assert.ok(VILLEDE_HULL.length >= 5);
+  const v = villet(doc);
+  const h = hull(doc);
+  for (const [gruppe, sprak] of [['hoytider', 'nb, sv, da'], ['juleaften', 'nb, sv, en'], ['julemiddag', 'sv, da, en'], ['nyttarsmiddag', 'da'], ['nyttarsmiddag', 'en']]) {
+    assert.match(v, new RegExp(`^\\| ${gruppe} \\| ${sprak} \\| hele gruppa \\| \\S`, 'mu'), `${gruppe} ${sprak} mangler i Villet`);
+    assert.doesNotMatch(h, new RegExp(`^\\| ${gruppe} \\|`, 'mu'), `${gruppe} står fortsatt i Hull`);
+  }
+  // Et ekte hull blir stående: julebord finnes ikke på engelsk, og det er ikke erklært villet.
+  assert.match(h, /^\| julebord \| nb, sv, da \| en \|/mu);
+  assert.doesNotMatch(v, /^\| julebord \|/mu);
+});
+
+test('hver villet post er levende: gruppa finnes som rad, og hvert språk mangler faktisk', () => {
+  const rader = new Set([...doc.matchAll(/^\| ([^|\n]+?) \| [^|\n]*\| [^|\n]*\|/gmu)].map((m) => m[1]));
+  for (const v of VILLEDE_HULL) {
+    assert.ok(rader.has(v.gruppe), `${v.gruppe}: finnes ikke som rad i oversikten`);
+    assert.ok(v.grunn.length > 20, `${v.gruppe}: grunnen mangler`);
+    // Alle språkene i posten må stå i Villet-tabellen. En post for en gruppe som er bygget siden, forsvinner og feiler her.
+    const rad = villet(doc).split('\n').filter((l) => l.startsWith(`| ${v.gruppe} |`) && l.includes(v.grunn.replace(/\|/gu, '\\|')));
+    assert.equal(rad.length, 1, `${v.gruppe} (${v.sprak.join(', ')}): posten er foreldet, fjern den fra VILLEDE_HULL`);
+    for (const s of v.sprak) assert.ok(rad[0].split('|')[2].includes(s), `${v.gruppe}: ${s}`);
+  }
+});
+
+test('villede enkeltvarer tas ut av enkeltgruppe-tabellen, og resten av varene står igjen', () => {
+  const airfryer = doc.split('\n').find((l) => l.startsWith('| familie:airfryer |') && l.includes('Per manglende') === false && l.includes(' en: '));
+  assert.ok(airfryer, 'airfryer-raden finnes');
+  const en = airfryer.match(/ en: \d+ \(([^)]*)\)/u)[1];
+  assert.doesNotMatch(en, /flaeskesteg/u);
+  assert.match(en, /andebryst/u);
+  assert.match(villet(doc), /^\| familie:airfryer \| en \| enkeltvarer: flaeskesteg \|/mu);
+});
+
+test('om-siden og Mealime-siden finnes på alle fire språk og er verken hull eller villet', () => {
+  for (const gruppe of ['om', 'mealime-alternative']) {
+    assert.match(doc, new RegExp(`^\\| ${gruppe} \\|[^\\n]*\\| \`/[^|]*\` \\(1\\) \\| \`/sv/[^|]*\` \\(1\\) \\| \`/da/[^|]*\` \\(1\\) \\| \`/en/[^|]*\` \\(1\\) \\|`, 'mu'), `${gruppe}: rad med fire språk`);
+    assert.doesNotMatch(hull(doc), new RegExp(`^\\| ${gruppe} \\|`, 'mu'));
+    assert.doesNotMatch(villet(doc), new RegExp(`^\\| ${gruppe} \\|`, 'mu'));
+  }
 });
 
 test('en ukjent adresse havner i «Uten gruppe» i stedet for å forsvinne', () => {

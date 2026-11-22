@@ -23,6 +23,8 @@ const VIA_HUB = {
   '/beste-ukemeny-app/': '/oppskriftsbok-app/',
   '/julebord/': '/ukemeny/',
   '/nyttarsmiddag/': '/ukemeny/',
+  // Mealime-siden nås gjennom Paprika-siden (lenkekartet, nb-gruppen flytting).
+  '/mealime-alternativ/': '/bytt-fra-paprika/',
 };
 
 // Forsidene på sv, da og en når kildeguidene gjennom importhubben på sitt språk, som på norsk.
@@ -32,9 +34,13 @@ const VIA_HUB_FORSIDE = {
   // Sammenligningssidene nås gjennom relatert-blokken på receptappen/opskriftsappen (lenkekartet, en-gruppen sammenligning via sidegruppene).
   '/sv/': { ...importHub('/sv/importera-recept/', ['/sv/alletiders-kogebog/', '/sv/dr-mad/', '/sv/matprat/']), ...importHub('/sv/receptbok-app/', ['/sv/basta-receptapp/', '/sv/basta-inkopslista-app/', '/sv/basta-veckomeny-app/']),
     // Julbordet och nyårsmiddagen står i «Alla guider» i bunnen och nås genom relaterat-blocket på veckomenyn (lenkekartet, nyckeln sv).
-    ...importHub('/sv/veckomeny-app/', ['/sv/julbord/', '/sv/nyarsmiddag/']) },
+    ...importHub('/sv/veckomeny-app/', ['/sv/julbord/', '/sv/nyarsmiddag/']),
+    // Mealime-sidan nås genom Paprika-sidan (lenkekartet, sv-gruppen flytting).
+    '/sv/mealime-alternativ/': '/sv/byt-fran-paprika/' },
   // Julefrokosten og juleaften står i «Alle guider» i bunnen og nås gjennom relatert-blokken på madplan-appen (lenkekartet, da-gruppen hoytid).
-  '/da/': { ...importHub('/da/importer-opskrifter/', ['/da/koket/', '/da/landleys-kok/', '/da/matprat/']), ...importHub('/da/opskrifts-app/', ['/da/bedste-opskriftsapp/', '/da/bedste-indkoebsliste-app/', '/da/bedste-madplan-app/']), ...importHub('/da/madplan-app/', ['/da/julefrokost/', '/da/juleaften/']) },
+  '/da/': { ...importHub('/da/importer-opskrifter/', ['/da/koket/', '/da/landleys-kok/', '/da/matprat/']), ...importHub('/da/opskrifts-app/', ['/da/bedste-opskriftsapp/', '/da/bedste-indkoebsliste-app/', '/da/bedste-madplan-app/']), ...importHub('/da/madplan-app/', ['/da/julefrokost/', '/da/juleaften/']),
+    // Mealime-siden nås gennem Paprika-siden (lenkekartet, da-gruppen flytting).
+    '/da/mealime-alternativ/': '/da/skift-fra-paprika/' },
   // Mealime-siden står i «All guides» i bunnen, men ikke i hovedhyllene: den nås gjennom Paprika-siden (lenkekartet, gruppen flytting).
   '/en/': { ...importHub('/en/import-recipes/', ['/en/alletiders-cookbook/', '/en/dr-food/', '/en/koket/', '/en/landleys-kok/', '/en/matprat/']), '/en/mealime-alternative/': '/en/import-recipes-from-paprika/',
     // Sammenligningssidene står i «All guides» i bunnen og nås gjennom relatert-blokken på oppskriftsappen (lenkekartet, en-gruppen sammenligning).

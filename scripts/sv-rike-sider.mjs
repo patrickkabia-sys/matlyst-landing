@@ -5,6 +5,8 @@
 import { sider as sammenligning } from './sammenligning/sv.mjs';
 import { side as julbord } from './sv-jul/julbord.mjs';
 import { side as nyarsmiddag } from './sv-jul/nyarsmiddag.mjs';
+import { side as om } from './om/sv.mjs';
+import { side as mealime } from './flytting/sv.mjs';
 import { byggRik, founder, illustrasjon, scenario, scenarioNotat } from './rik-sider.mjs';
 
 export const RIK_DATO = '2026-11-18';
@@ -427,6 +429,8 @@ const kopguide = byggRik({
 }).html;
 
 export const rikeSider = {
+  'om/': om,
+  'mealime-alternativ/': mealime,
   'julbord/': julbord,
   'nyarsmiddag/': nyarsmiddag,
   'receptbok-app/': {

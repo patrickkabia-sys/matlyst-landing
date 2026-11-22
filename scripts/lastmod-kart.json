@@ -136,8 +136,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/bytt-fra-paprika/": {
-  "hash": "512f7be4bd6b0f8d",
-  "dato": "2026-11-20"
+  "hash": "62bfdeb07bacdfa7",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/": {
   "hash": "fdb1a24ce1a0a5cf",
@@ -531,12 +531,20 @@
   "hash": "59e711ac18d8d22e",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/da/mealime-alternativ/": {
+  "hash": "9803478fca61f119",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/da/middagsforslag/": {
   "hash": "bca1b038601c8915",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/nem-mad/": {
   "hash": "91093dd492ca2079",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/da/om/": {
+  "hash": "45117c7785794b35",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/opskrifter-ud-fra-ingredienser/": {
@@ -556,8 +564,8 @@
   "dato": "2026-11-16"
  },
  "https://matlyst-app.no/da/skift-fra-paprika/": {
-  "hash": "66a55c1223a53337",
-  "dato": "2026-11-20"
+  "hash": "5e0550a283e24a88",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/da/slet-konto/": {
   "hash": "d1cf198c74f67cf1",
@@ -1451,6 +1459,10 @@
   "hash": "1a3d0e5646ed7215",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/en/about/": {
+  "hash": "ac67b3ae4562af4f",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/en/air-fryer/": {
   "hash": "ab5d8d8bd2d476a5",
   "dato": "2026-11-21"
@@ -2032,7 +2044,7 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/mealime-alternative/": {
-  "hash": "510280ce3a0bb5aa",
+  "hash": "65fa2629af944754",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/en/pantry-app/": {
@@ -3235,6 +3247,10 @@
   "hash": "3675c191a44d14e6",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/mealime-alternativ/": {
+  "hash": "43dc71aa69cf2b56",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/mengde-per-person/": {
   "hash": "4d99caa121ce3179",
   "dato": "2026-11-21"
@@ -3340,8 +3356,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/om/": {
-  "hash": "b4a38ed63f2543c5",
-  "dato": "2026-11-20"
+  "hash": "8335bc254a47d334",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/oppskriftsbok-app/": {
   "hash": "01ffd8a77f3587b8",
@@ -3540,8 +3556,8 @@
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/byt-fran-paprika/": {
-  "hash": "a3da62b0923440cc",
-  "dato": "2026-11-20"
+  "hash": "71770ae8bd988cd2",
+  "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/dr-mad/": {
   "hash": "daccb389b35845cf",
@@ -3783,8 +3799,16 @@
   "hash": "b81058b02d0b5ed8",
   "dato": "2026-11-20"
  },
+ "https://matlyst-app.no/sv/mealime-alternativ/": {
+  "hash": "dea3e419d0e8d83a",
+  "dato": "2026-11-21"
+ },
  "https://matlyst-app.no/sv/nyarsmiddag/": {
   "hash": "61982acdcc9bfa7c",
+  "dato": "2026-11-21"
+ },
+ "https://matlyst-app.no/sv/om/": {
+  "hash": "80a4cb725b0176c4",
   "dato": "2026-11-21"
  },
  "https://matlyst-app.no/sv/radera-konto/": {
