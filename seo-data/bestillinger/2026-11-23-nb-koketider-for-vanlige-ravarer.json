@@ -1,0 +1,23 @@
+{
+  "dato": "2026-11-23",
+  "sprak": "nb",
+  "emne_id": "e-c6a3f7a8d831289f",
+  "slug": "koketider-for-vanlige-ravarer",
+  "emne": "En praktisk veiledning om koketider for vanlige råvarer.",
+  "vinkel": "Vis hvordan leseren kan forklare hva som påvirker tiden og hvordan resultatet kontrolleres.",
+  "appkoblinger": [
+    "kokemodus"
+  ],
+  "kilde_ider": [
+    "matvaretabellen"
+  ],
+  "krav": {
+    "ord_min": 600,
+    "ord_maks": 1200,
+    "seksjoner_min": 3,
+    "seksjoner_maks": 6,
+    "faq_min": 3,
+    "faq_maks": 5,
+    "sprakregler_ref": "seo-data/sprak/nb.json"
+  }
+}

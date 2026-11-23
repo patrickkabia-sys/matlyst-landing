@@ -1,0 +1,16 @@
+{
+  "dato": "2026-11-23",
+  "modus": "utkast",
+  "resultat": "bestilling",
+  "statuskode": "bestilling-opprettet",
+  "grunnkoder": [],
+  "antall": {
+    "gsc": 3248,
+    "forslag": 166,
+    "ko": 31,
+    "bestillinger": 1
+  },
+  "sprak": "nb",
+  "slug": "koketider-for-vanlige-ravarer",
+  "bestilling_id": "2026-11-23-nb-koketider-for-vanlige-ravarer"
+}
