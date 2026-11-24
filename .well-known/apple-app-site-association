@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["7M27YA42P2.app.matlyst"],
+        "components": [{"/": "/oda/callback"}]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["7M27YA42P2.app.matlyst"]
+  }
+}
