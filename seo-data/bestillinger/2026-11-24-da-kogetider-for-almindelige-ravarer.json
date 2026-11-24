@@ -1,0 +1,21 @@
+{
+  "dato": "2026-11-24",
+  "sprak": "da",
+  "emne_id": "e-fe02b00b5fde12ae",
+  "slug": "kogetider-for-almindelige-ravarer",
+  "emne": "En praktisk guide til kogetider for almindelige råvarer.",
+  "vinkel": "Vis, hvordan læseren kan forklare, hvad der påvirker tiden, og hvordan resultatet kontrolleres.",
+  "appkoblinger": [
+    "kokemodus"
+  ],
+  "kilde_ider": [],
+  "krav": {
+    "ord_min": 600,
+    "ord_maks": 1200,
+    "seksjoner_min": 3,
+    "seksjoner_maks": 6,
+    "faq_min": 3,
+    "faq_maks": 5,
+    "sprakregler_ref": "seo-data/sprak/da.json"
+  }
+}
