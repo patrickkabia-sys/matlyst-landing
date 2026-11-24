@@ -25,10 +25,13 @@ const HEMMELIGE = [
 
 function kopierRepo(t) {
   const mappe = mkdtempSync(join(tmpdir(), 'matlyst-seo-personvern-'));
+  const privatDriftsfil = fileURLToPath(new URL('seo-data/privat.enc', REPO));
   t.after(() => rmSync(mappe, { recursive: true, force: true }));
   cpSync(REPO, mappe, {
     recursive: true,
-    filter: (kilde) => !['.git', '.superpowers', 'node_modules'].includes(kilde.split('/').at(-1)),
+    // Tørrkjøringen lager egne testdata med testnøkkelen, ikke driftsnøkkelen.
+    filter: (kilde) => kilde !== privatDriftsfil
+      && !['.git', '.superpowers', 'node_modules'].includes(kilde.split('/').at(-1)),
   });
   symlinkSync(fileURLToPath(new URL('../node_modules', import.meta.url)), join(mappe, 'node_modules'), 'dir');
   return mappe;
