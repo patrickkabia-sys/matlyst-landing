@@ -1,0 +1,21 @@
+{
+  "dato": "2026-11-25",
+  "sprak": "da",
+  "emne_id": "e-07604b03392c859f",
+  "slug": "saml-og-organiser-opskrifter",
+  "emne": "En praktisk guide til at samle og organisere opskrifter fra forskellige steder.",
+  "vinkel": "Vis, hvordan læseren kan lave et system, der gør opskrifterne nemme at finde igen.",
+  "appkoblinger": [
+    "import"
+  ],
+  "kilde_ider": [],
+  "krav": {
+    "ord_min": 600,
+    "ord_maks": 1200,
+    "seksjoner_min": 3,
+    "seksjoner_maks": 6,
+    "faq_min": 3,
+    "faq_maks": 5,
+    "sprakregler_ref": "seo-data/sprak/da.json"
+  }
+}
