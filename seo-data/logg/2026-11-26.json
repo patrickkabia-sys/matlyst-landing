@@ -1,0 +1,16 @@
+{
+  "dato": "2026-11-26",
+  "modus": "utkast",
+  "resultat": "bestilling",
+  "statuskode": "bestilling-opprettet",
+  "grunnkoder": [],
+  "antall": {
+    "gsc": 3248,
+    "forslag": 166,
+    "ko": 31,
+    "bestillinger": 4
+  },
+  "sprak": "da",
+  "slug": "aftensmad-af-det-du-har",
+  "bestilling_id": "2026-11-26-da-aftensmad-af-det-du-har"
+}

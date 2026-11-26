@@ -1,0 +1,21 @@
+{
+  "dato": "2026-11-26",
+  "sprak": "da",
+  "emne_id": "e-1302b0ca775d4586",
+  "slug": "aftensmad-af-det-du-har",
+  "emne": "En praktisk guide til aftensmad ud fra råvarerne, der allerede er hjemme.",
+  "vinkel": "Vis, hvordan læseren kan gå fra et hurtigt råvareoverblik til konkrete middagsvalg.",
+  "appkoblinger": [
+    "bruk-det-jeg-har"
+  ],
+  "kilde_ider": [],
+  "krav": {
+    "ord_min": 600,
+    "ord_maks": 1200,
+    "seksjoner_min": 3,
+    "seksjoner_maks": 6,
+    "faq_min": 3,
+    "faq_maks": 5,
+    "sprakregler_ref": "seo-data/sprak/da.json"
+  }
+}
