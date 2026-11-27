@@ -1,0 +1,23 @@
+{
+  "dato": "2026-11-27",
+  "sprak": "da",
+  "emne_id": "e-24b50b48ec85a69c",
+  "slug": "opbevaring-af-mad",
+  "emne": "En praktisk guide til overskuelig opbevaring af almindelige fødevarer.",
+  "vinkel": "Vis, hvordan læseren kan samle kildebaserede opbevaringsråd i et enkelt hverdagstjek.",
+  "appkoblinger": [
+    "import"
+  ],
+  "kilde_ider": [
+    "foedevarestyrelsen"
+  ],
+  "krav": {
+    "ord_min": 600,
+    "ord_maks": 1200,
+    "seksjoner_min": 3,
+    "seksjoner_maks": 6,
+    "faq_min": 3,
+    "faq_maks": 5,
+    "sprakregler_ref": "seo-data/sprak/da.json"
+  }
+}

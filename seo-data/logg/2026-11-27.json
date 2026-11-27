@@ -1,0 +1,16 @@
+{
+  "dato": "2026-11-27",
+  "modus": "utkast",
+  "resultat": "bestilling",
+  "statuskode": "bestilling-opprettet",
+  "grunnkoder": [],
+  "antall": {
+    "gsc": 3248,
+    "forslag": 166,
+    "ko": 31,
+    "bestillinger": 5
+  },
+  "sprak": "da",
+  "slug": "opbevaring-af-mad",
+  "bestilling_id": "2026-11-27-da-opbevaring-af-mad"
+}
