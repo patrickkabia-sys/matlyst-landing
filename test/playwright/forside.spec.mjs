@@ -193,6 +193,18 @@ test('punktumet kommer minst 400 ms etter siste bokstav', async ({ page }) => {
   expect(tider[1].tid - tider[0].tid).toBeGreaterThanOrEqual(400);
 });
 
+test('etter skriveanimasjonen er overskriften hel tekst, og ordmerket oversettes ikke', async ({ page }) => {
+  await page.goto(STI);
+  const h1 = page.locator('.hero h1');
+  await expect(h1.locator('.tegn').first()).toBeAttached();
+  await expect(h1.locator('*')).toHaveCount(0, { timeout: 10_000 });
+  await expect(h1).toHaveText(T.h1);
+  await expect(h1).not.toHaveAttribute('aria-label');
+  const merker = page.locator('.ordmerke');
+  expect(await merker.count()).toBeGreaterThan(0);
+  expect(await merker.evaluateAll((alle) => alle.filter((m) => m.getAttribute('translate') !== 'no').length)).toBe(0);
+});
+
 for (const [bredde, luft] of [[1280, 72], [390, 52]]) test(`bånd og kokebok har ${luft} px luft på ${bredde} px`, async ({ page }) => {
   await page.setViewportSize({ width: bredde, height: 800 }); await page.goto(STI);
   await page.evaluate(() => document.fonts.ready);

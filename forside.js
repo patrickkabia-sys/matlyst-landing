@@ -35,7 +35,12 @@
       const skrivestrek = document.createElement('i'); skrivestrek.className = 'skrivestrek'; skrivestrek.setAttribute('aria-hidden', 'true');
       let n = 0;
       const neste = () => {
-        if (n >= tegn.length) { skrivestrek.classList.add('ferdig'); setTimeout(() => skrivestrek.remove(), 2100); return; }
+        if (n >= tegn.length) {
+          skrivestrek.classList.add('ferdig');
+          // Hel tekst tilbake når animasjonen er ferdig: nettleserens oversetter leser ikke ett tegn om gangen
+          setTimeout(() => { h1.textContent = tekst; h1.removeAttribute('aria-label'); }, 2100);
+          return;
+        }
         const t = tegn[n++]; t.classList.add('inne'); t.after(skrivestrek);
         // Punktumet kommer etter en liten pause, som når man setter det med vilje
         setTimeout(neste, tegn[n] && tegn[n].textContent === '.' ? 620 : 34 + Math.random() * 34);

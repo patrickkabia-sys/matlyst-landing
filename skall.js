@@ -2,6 +2,9 @@
   const bevegelse = matchMedia('(prefers-reduced-motion: reduce)');
   const kurve = 'cubic-bezier(.16,1,.3,1)';
 
+  // Navnet skal stå urørt når nettleseren oversetter siden («matlyst» ble til «medbegær»).
+  for (const merke of document.querySelectorAll('.ordmerke')) merke.setAttribute('translate', 'no');
+
   // Hyllemenyen kan mangle på sider som bare bruker deler av skallet.
   const knapp = document.getElementById('menyknapp');
   const panel = document.getElementById('panel');
