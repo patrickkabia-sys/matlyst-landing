@@ -1,0 +1,23 @@
+{
+  "dato": "2026-11-28",
+  "sprak": "nb",
+  "emne_id": "e-51668eab21df3ac7",
+  "slug": "bruk-rester-i-middag",
+  "emne": "En praktisk veiledning om rester i nye måltider.",
+  "vinkel": "Vis hvordan leseren kan bruke det som finnes hjemme før nye varer kjøpes.",
+  "appkoblinger": [
+    "bruk-det-jeg-har"
+  ],
+  "kilde_ider": [
+    "mattilsynet"
+  ],
+  "krav": {
+    "ord_min": 600,
+    "ord_maks": 1200,
+    "seksjoner_min": 3,
+    "seksjoner_maks": 6,
+    "faq_min": 3,
+    "faq_maks": 5,
+    "sprakregler_ref": "seo-data/sprak/nb.json"
+  }
+}

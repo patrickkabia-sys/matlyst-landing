@@ -1,0 +1,16 @@
+{
+  "dato": "2026-11-28",
+  "modus": "utkast",
+  "resultat": "bestilling",
+  "statuskode": "bestilling-opprettet",
+  "grunnkoder": [],
+  "antall": {
+    "gsc": 3248,
+    "forslag": 166,
+    "ko": 31,
+    "bestillinger": 6
+  },
+  "sprak": "nb",
+  "slug": "bruk-rester-i-middag",
+  "bestilling_id": "2026-11-28-nb-bruk-rester-i-middag"
+}
